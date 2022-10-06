@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "ramda": "^0.28.0",
     "vue": "^3.2.37"
   },
   "devDependencies": {

@@ -4,6 +4,7 @@ import IconSort from './icons/IconSort.vue';
 import IconSortAsc from './icons/IconSortAsc.vue';
 import IconSortDesc from './icons/IconSortDesc.vue';
 import { SORT_STATE_ASCEND, SORT_STATE_DESCEND, SORT_STATE_ORIGINAL } from '../constants.js';
+import { useI18n } from '../composables/useI18n';
 
 const props = defineProps({
   columns: {
@@ -26,6 +27,8 @@ const props = defineProps({
     default: false,
   },
 });
+
+const { t } = useI18n();
 
 const columns = computed(() => props.columns);
 const columnCount = computed(() => Object.keys(props.columns).length);
@@ -55,7 +58,7 @@ const sortBy = (column, prop) => {
           @click="sortBy(column, prop)"
         >
           <slot :name="`header-${prop}`" :column="column">
-            <span>{{ column.label }}</span>
+            <span>{{ t(column.label) }}</span>
           </slot>
           <IconSort v-if="column.sortOrders && prop !== sort.sortTarget" class="icon-sort"></IconSort>
           <IconSort

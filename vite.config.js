@@ -13,12 +13,13 @@ export default defineConfig({
     rollupOptions: {
       // input: "src/bundle.js",
       // Externalize deps that shouldn't be bundled into the library.
-      external: ['vue'],
+      external: ['vue', 'vue-i18n'],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
           vue: 'Vue',
+          'vue-i18n': 'vueI18n',
         },
       },
     },
@@ -39,7 +40,6 @@ export default defineConfig({
           },
         },
       },
-      // customElement: true,
     }),
   ],
 });

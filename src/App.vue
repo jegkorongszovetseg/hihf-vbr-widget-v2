@@ -1,9 +1,9 @@
 <script setup>
-import ScheduleTable from './components/widgets/ScheduleTable.vue';
+import Schedule from './components/widgets/Schedule.ce.vue';
 </script>
 
 <template>
   <div>
-    <ScheduleTable></ScheduleTable>
+    <Schedule></Schedule>
   </div>
 </template>
