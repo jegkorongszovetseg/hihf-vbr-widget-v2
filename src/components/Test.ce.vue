@@ -1,3 +1,12 @@
+<script setup>
+import Child from "./child.vue";
+</script>
+
 <template>
-  <div>TEST</div>
+  <div class="text">
+    TEST
+    <Child></Child>
+  </div>
 </template>
+
+<style src="../assets/common.css"></style>

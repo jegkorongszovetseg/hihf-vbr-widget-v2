@@ -6,16 +6,25 @@ export default defineConfig({
   build: {
     lib: {
       entry: "src/bundle.js",
+      name: "bundle",
       fileName: "bundle",
-      formats: ["es"],
+      formats: ["es", "umd", "iife"],
     },
     rollupOptions: {
+      // input: "src/bundle.js",
       // Externalize deps that shouldn't be bundled into the library.
       external: ["vue"],
+      output: {
+        // Provide global variables to use in the UMD build
+        // for externalized deps
+        globals: {
+          vue: "Vue",
+        },
+      },
     },
     sourcemap: false,
     // Reduce bloat from legacy polyfills.
-    target: "esnext",
+    target: "modules",
     // Leave minification up to applications.
     minify: false,
   },
@@ -30,7 +39,7 @@ export default defineConfig({
           },
         },
       },
-      customElement: true,
+      // customElement: true,
     }),
   ],
 });
