@@ -43,7 +43,6 @@
     }
   };
   const Test2 = /* @__PURE__ */ _export_sfc(_sfc_main, [["styles", [_style_0, _style_1]]]);
-  const style = "";
   customElements.define("vbr-test-vue", vue.defineCustomElement(Test));
   customElements.define("vbr-test2-vue", vue.defineCustomElement(Test2));
 })(Vue);
