@@ -30,6 +30,8 @@ const props = defineProps({
 
 const { t } = useI18n();
 
+console.log(t('table.homeTeam.short').value)
+
 const columns = computed(() => props.columns);
 const columnCount = computed(() => Object.keys(props.columns).length);
 
@@ -58,7 +60,7 @@ const sortBy = (column, prop) => {
           @click="sortBy(column, prop)"
         >
           <slot :name="`header-${prop}`" :column="column">
-            <span>{{ t(column.label) }}</span>
+            {{ t(column.label) }}
           </slot>
           <IconSort v-if="column.sortOrders && prop !== sort.sortTarget" class="icon-sort"></IconSort>
           <IconSort
@@ -96,10 +98,10 @@ const sortBy = (column, prop) => {
     </tbody>
     <tfoot>
       <tr v-if="rows.length === 0 && !isLoading">
-        <td :colspan="columnCount">{{ 'common.noData' }}</td>
+        <td :colspan="columnCount">{{ t('common.noData') }}</td>
       </tr>
       <tr v-if="isLoading">
-        <td :colspan="columnCount">{{ 'common.loading' }}</td>
+        <td :colspan="columnCount">{{ t('common.loading') }}</td>
       </tr>
     </tfoot>
   </table>

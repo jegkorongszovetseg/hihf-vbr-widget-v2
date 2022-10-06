@@ -16,15 +16,15 @@ export const createI18n = ({ messages = {}, locale = '', fallbackLocale = '' }) 
 
   const translate = (key) => {
     const keyArray = key.split('.') || [];
-    let translation = computed(() => getTranslation(state.locale, keyArray));
+    let translation = computed(() => getTranslation(state.locale, keyArray, state.messages));
     if (!translation.value) {
-      translation = computed(() => getTranslation(state.fallbackLocale, keyArray));
+      translation = computed(() => getTranslation(state.fallbackLocale, keyArray, state.messages));
     }
     return translation;
   };
 
-  function getTranslation(locale, keys) {
-    return path([locale, ...keys], state.messages);
+  function getTranslation(locale, keys, messages) {
+    return path([locale, ...keys], messages);
   }
 
   const setLocale = (locale) => {

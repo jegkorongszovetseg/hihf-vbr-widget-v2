@@ -4,7 +4,7 @@ import DataTable from '../DataTable.vue';
 import { COLUMNS_SCHEDULE } from './internal';
 
 const { t, locale, setLocale } = useI18n();
-const msg = t('hello');
+const msg = t('game.data.localTime');
 </script>
 
 <template>
