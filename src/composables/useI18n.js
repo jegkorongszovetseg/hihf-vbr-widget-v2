@@ -74,6 +74,16 @@ const useI18nContext = () => {
   return api;
 };
 
+const translate = (key, data = {}) => {
+  const hasInterpolation = !isEmpty(data);
+  const keyArray = key.split('.') || [];
+  let translation = computed(() => getTranslation(state.locale, keyArray, state.messages));
+  if (!translation.value) {
+    translation = computed(() => getTranslation(state.fallbackLocale, keyArray, state.messages));
+  }
+  return hasInterpolation ? computed(() => replacer(translation.value, data)) : translation;
+};
+
 const replacer = function (tpl, data) {
   return tpl.replace(/\{(\w+)\}/g, function ($1, $2) {
     return data[$2];

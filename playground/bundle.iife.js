@@ -7,34 +7,34 @@
     }
     return target;
   };
-  const _sfc_main$9 = {};
-  const _hoisted_1$6 = { class: "child" };
-  function _sfc_render$4(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$6, "CHILD");
+  const _sfc_main$a = {};
+  const _hoisted_1$8 = { class: "child" };
+  function _sfc_render$5(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$8, "CHILD");
   }
-  const Child = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$4]]);
+  const Child = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$5]]);
   const _style_0 = ":host {\n  --text-color: red;\n  --bg-color: white;\n}\n.text {\n  width: 100%;\n  text-align: center;\n  color: var(--text-color);\n}\n.child {\n  width: 100%;\n  text-align: center;\n  font-weight: 700;\n  background-color: var(--bg-color);\n}\n";
-  const _hoisted_1$5 = { class: "text" };
-  const _sfc_main$8 = {
+  const _hoisted_1$7 = { class: "text" };
+  const _sfc_main$9 = {
     __name: "Test.ce",
     setup(__props) {
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$5, [
+        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$7, [
           vue.createTextVNode(" TEST "),
           vue.createVNode(Child)
         ]);
       };
     }
   };
-  const Test = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["styles", [_style_0]]]);
+  const Test = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["styles", [_style_0]]]);
   const _style_1 = ".table {\n  background-color: beige;\n}\n";
-  const _hoisted_1$4 = { class: "text" };
+  const _hoisted_1$6 = { class: "text" };
   const _hoisted_2$4 = /* @__PURE__ */ vue.createElementVNode("div", { class: "table" }, "Table", -1);
-  const _sfc_main$7 = {
+  const _sfc_main$8 = {
     __name: "Test2.ce",
     setup(__props) {
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$4, [
+        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$6, [
           vue.createTextVNode(" TEST2 "),
           vue.createVNode(Child),
           _hoisted_2$4
@@ -42,7 +42,130 @@
       };
     }
   };
-  const Test2 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["styles", [_style_0, _style_1]]]);
+  const Test2 = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["styles", [_style_0, _style_1]]]);
+  var _a;
+  const isClient = typeof window !== "undefined";
+  const noop = () => {
+  };
+  isClient && ((_a = window == null ? void 0 : window.navigator) == null ? void 0 : _a.userAgent) && /iP(ad|hone|od)/.test(window.navigator.userAgent);
+  function promiseTimeout(ms, throwOnTimeout = false, reason = "Timeout") {
+    return new Promise((resolve, reject) => {
+      if (throwOnTimeout)
+        setTimeout(() => reject(reason), ms);
+      else
+        setTimeout(resolve, ms);
+    });
+  }
+  function identity(arg) {
+    return arg;
+  }
+  isClient ? window : void 0;
+  isClient ? window.document : void 0;
+  isClient ? window.navigator : void 0;
+  isClient ? window.location : void 0;
+  function useAsyncState(promise, initialState, options) {
+    const {
+      immediate = true,
+      delay = 0,
+      onError = noop,
+      resetOnExecute = true,
+      shallow = true,
+      throwError
+    } = options != null ? options : {};
+    const state2 = shallow ? vue.shallowRef(initialState) : vue.ref(initialState);
+    const isReady = vue.ref(false);
+    const isLoading = vue.ref(false);
+    const error = vue.ref(void 0);
+    async function execute(delay2 = 0, ...args) {
+      if (resetOnExecute)
+        state2.value = initialState;
+      error.value = void 0;
+      isReady.value = false;
+      isLoading.value = true;
+      if (delay2 > 0)
+        await promiseTimeout(delay2);
+      const _promise = typeof promise === "function" ? promise(...args) : promise;
+      try {
+        const data = await _promise;
+        state2.value = data;
+        isReady.value = true;
+      } catch (e) {
+        error.value = e;
+        onError(e);
+        if (throwError)
+          throw error;
+      } finally {
+        isLoading.value = false;
+      }
+      return state2.value;
+    }
+    if (immediate)
+      execute(delay);
+    return {
+      state: state2,
+      isReady,
+      isLoading,
+      error,
+      execute
+    };
+  }
+  const _global = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
+  const globalKey = "__vueuse_ssr_handlers__";
+  _global[globalKey] = _global[globalKey] || {};
+  _global[globalKey];
+  var SwipeDirection;
+  (function(SwipeDirection2) {
+    SwipeDirection2["UP"] = "UP";
+    SwipeDirection2["RIGHT"] = "RIGHT";
+    SwipeDirection2["DOWN"] = "DOWN";
+    SwipeDirection2["LEFT"] = "LEFT";
+    SwipeDirection2["NONE"] = "NONE";
+  })(SwipeDirection || (SwipeDirection = {}));
+  var __defProp = Object.defineProperty;
+  var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __propIsEnum = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+  var __spreadValues = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    if (__getOwnPropSymbols)
+      for (var prop of __getOwnPropSymbols(b)) {
+        if (__propIsEnum.call(b, prop))
+          __defNormalProp(a, prop, b[prop]);
+      }
+    return a;
+  };
+  const _TransitionPresets = {
+    easeInSine: [0.12, 0, 0.39, 0],
+    easeOutSine: [0.61, 1, 0.88, 1],
+    easeInOutSine: [0.37, 0, 0.63, 1],
+    easeInQuad: [0.11, 0, 0.5, 0],
+    easeOutQuad: [0.5, 1, 0.89, 1],
+    easeInOutQuad: [0.45, 0, 0.55, 1],
+    easeInCubic: [0.32, 0, 0.67, 0],
+    easeOutCubic: [0.33, 1, 0.68, 1],
+    easeInOutCubic: [0.65, 0, 0.35, 1],
+    easeInQuart: [0.5, 0, 0.75, 0],
+    easeOutQuart: [0.25, 1, 0.5, 1],
+    easeInOutQuart: [0.76, 0, 0.24, 1],
+    easeInQuint: [0.64, 0, 0.78, 0],
+    easeOutQuint: [0.22, 1, 0.36, 1],
+    easeInOutQuint: [0.83, 0, 0.17, 1],
+    easeInExpo: [0.7, 0, 0.84, 0],
+    easeOutExpo: [0.16, 1, 0.3, 1],
+    easeInOutExpo: [0.87, 0, 0.13, 1],
+    easeInCirc: [0.55, 0, 1, 0.45],
+    easeOutCirc: [0, 0.55, 0.45, 1],
+    easeInOutCirc: [0.85, 0, 0.15, 1],
+    easeInBack: [0.36, 0, 0.66, -0.56],
+    easeOutBack: [0.34, 1.56, 0.64, 1],
+    easeInOutBack: [0.68, -0.6, 0.32, 1.6]
+  };
+  __spreadValues({
+    linear: identity
+  }, _TransitionPresets);
   function _isPlaceholder(a) {
     return a != null && typeof a === "object" && a["@@functional/placeholder"] === true;
   }
@@ -65,8 +188,8 @@
             return fn(a, _b);
           });
         default:
-          return _isPlaceholder(a) && _isPlaceholder(b) ? f2 : _isPlaceholder(a) ? _curry1(function(_a) {
-            return fn(_a, b);
+          return _isPlaceholder(a) && _isPlaceholder(b) ? f2 : _isPlaceholder(a) ? _curry1(function(_a2) {
+            return fn(_a2, b);
           }) : _isPlaceholder(b) ? _curry1(function(_b) {
             return fn(a, _b);
           }) : fn(a, b);
@@ -181,8 +304,8 @@
   function _uniqContentEquals(aIterator, bIterator, stackA, stackB) {
     var a = _arrayFromIterator(aIterator);
     var b = _arrayFromIterator(bIterator);
-    function eq(_a, _b) {
-      return _equals(_a, _b, stackA.slice(), stackB.slice());
+    function eq(_a2, _b) {
+      return _equals(_a2, _b, stackA.slice(), stackB.slice());
     }
     return !_includesWith(function(b2, aItem) {
       return !_includesWith(eq, aItem, b2);
@@ -394,8 +517,8 @@
       return data[$2];
     });
   };
-  const _sfc_main$6 = {};
-  const _hoisted_1$3 = {
+  const _sfc_main$7 = {};
+  const _hoisted_1$5 = {
     "aria-hidden": "true",
     focusable: "false",
     "data-prefix": "fas",
@@ -412,12 +535,12 @@
   const _hoisted_3$3 = [
     _hoisted_2$3
   ];
-  function _sfc_render$3(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$3, _hoisted_3$3);
+  function _sfc_render$4(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$5, _hoisted_3$3);
   }
-  const IconSort = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$3]]);
-  const _sfc_main$5 = {};
-  const _hoisted_1$2 = {
+  const IconSort = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$4]]);
+  const _sfc_main$6 = {};
+  const _hoisted_1$4 = {
     "aria-hidden": "true",
     focusable: "false",
     "data-prefix": "fas",
@@ -434,12 +557,12 @@
   const _hoisted_3$2 = [
     _hoisted_2$2
   ];
-  function _sfc_render$2(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$2, _hoisted_3$2);
+  function _sfc_render$3(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$4, _hoisted_3$2);
   }
-  const IconSortAsc = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$2]]);
-  const _sfc_main$4 = {};
-  const _hoisted_1$1 = {
+  const IconSortAsc = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$3]]);
+  const _sfc_main$5 = {};
+  const _hoisted_1$3 = {
     "aria-hidden": "true",
     focusable: "false",
     "data-prefix": "fas",
@@ -456,19 +579,19 @@
   const _hoisted_3$1 = [
     _hoisted_2$1
   ];
-  function _sfc_render$1(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$1, _hoisted_3$1);
+  function _sfc_render$2(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$3, _hoisted_3$1);
   }
-  const IconSortDesc = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$1]]);
+  const IconSortDesc = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$2]]);
   const SORT_STATE_ORIGINAL = "original";
   const SORT_STATE_DESCEND = "descend";
   const SORT_STATE_ASCEND = "ascend";
-  const _hoisted_1 = ["onClick"];
+  const _hoisted_1$2 = ["onClick"];
   const _hoisted_2 = { key: 0 };
   const _hoisted_3 = ["colspan"];
   const _hoisted_4 = { key: 1 };
   const _hoisted_5 = ["colspan"];
-  const _sfc_main$3 = {
+  const _sfc_main$4 = {
     __name: "DataTable",
     props: {
       columns: {
@@ -536,7 +659,7 @@
                     key: 3,
                     class: "icon-sort"
                   })) : vue.createCommentVNode("", true)
-                ], 10, _hoisted_1);
+                ], 10, _hoisted_1$2);
               }), 128))
             ])
           ]),
@@ -623,9 +746,20 @@
       label: ""
     }
   };
-  const _sfc_main$2 = {
+  const _sfc_main$3 = {
     __name: "ScheduleTable",
+    props: {
+      rows: {
+        type: Array,
+        default: () => []
+      },
+      isLoading: {
+        type: Boolean,
+        deafult: false
+      }
+    },
     setup(__props) {
+      const props = __props;
       const { t, locale, setLocale } = useI18n();
       const msg = t("table.gameDateTime.short", { offsetName: "CET" });
       return (_ctx, _cache) => {
@@ -634,7 +768,11 @@
           vue.createElementVNode("button", {
             onClick: _cache[0] || (_cache[0] = ($event) => vue.unref(setLocale)(vue.unref(locale) === "en" ? "hu" : "en"))
           }, "EN"),
-          vue.createVNode(_sfc_main$3, { columns: vue.unref(COLUMNS_SCHEDULE) }, null, 8, ["columns"])
+          vue.createVNode(_sfc_main$4, {
+            columns: vue.unref(COLUMNS_SCHEDULE),
+            rows: props.rows,
+            "is-loading": __props.isLoading
+          }, null, 8, ["columns", "rows", "is-loading"])
         ], 64);
       };
     }
@@ -1294,7 +1432,7 @@
       }
     }
   };
-  const _sfc_main$1 = vue.defineComponent({
+  const _sfc_main$2 = vue.defineComponent({
     props: {
       locale: {
         type: String,
@@ -1311,27 +1449,91 @@
       });
     }
   });
-  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.renderSlot(_ctx.$slots, "default");
   }
-  const I18NProvider = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
+  const I18NProvider = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1]]);
+  const fetchVBRData = async (route, apiKey, data) => {
+    const url = `${"https://api.icehockey.hu/vbr"}${route}?${objectToQueryString(data)}`;
+    return new Promise((resolve, reject) => {
+      fetch(url, {
+        method: "GET",
+        cache: "no-cache",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-KEY": apiKey || window.__MJSZ_VBR_WIDGET__.apiKey
+        }
+      }).then((response) => {
+        return response.json();
+      }).then((response) => {
+        if (response.error)
+          return reject(response);
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  };
+  const objectToQueryString = (obj) => {
+    return Object.keys(obj).map((key) => key + "=" + obj[key]).join("&");
+  };
+  const ResponsiveTable_vue_vue_type_style_index_0_lang = "";
+  const _sfc_main$1 = {};
+  const _hoisted_1$1 = { class: "table-responsive" };
+  function _sfc_render(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$1, [
+      vue.renderSlot(_ctx.$slots, "default")
+    ]);
+  }
+  const ResponsiveTable = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
+  const _hoisted_1 = { key: 0 };
   const _sfc_main = {
     __name: "Schedule.ce",
     props: {
       locale: {
         type: String,
         default: "hu"
+      },
+      championshipId: {
+        type: String,
+        default: "3314"
+      },
+      division: {
+        type: String,
+        default: "Alapszakasz"
+      },
+      apiKey: {
+        type: String,
+        default: "7b4f4d1b466b5a3572990ae24452abf2a086e7ee"
       }
     },
     setup(__props) {
       const props = __props;
       const locale = vue.computed(() => props.locale);
+      const { state: rows, error, isLoading } = useAsyncState(
+        fetchVBRData("/v1/gamesList", props.apiKey, {
+          championshipId: Number(props.championshipId),
+          division: props.division
+        })
+      );
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", null, [
           vue.createVNode(I18NProvider, { locale: vue.unref(locale) }, {
-            default: vue.withCtx(() => [
-              vue.createVNode(_sfc_main$2)
-            ]),
+            default: vue.withCtx(() => {
+              var _a2;
+              return [
+                ((_a2 = vue.unref(error)) == null ? void 0 : _a2.error) ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1, vue.toDisplayString(vue.unref(error).message), 1)) : vue.createCommentVNode("", true),
+                vue.createVNode(ResponsiveTable, null, {
+                  default: vue.withCtx(() => [
+                    vue.createVNode(_sfc_main$3, {
+                      rows: vue.unref(rows),
+                      "is-loading": vue.unref(isLoading)
+                    }, null, 8, ["rows", "is-loading"])
+                  ]),
+                  _: 1
+                })
+              ];
+            }),
             _: 1
           }, 8, ["locale"])
         ]);

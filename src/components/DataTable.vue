@@ -28,16 +28,16 @@ const props = defineProps({
   },
 });
 
-const { t } = useI18n();
+const emit = defineEmits(['sort'])
 
-console.log(t('table.homeTeam.short').value)
+const { t } = useI18n();
 
 const columns = computed(() => props.columns);
 const columnCount = computed(() => Object.keys(props.columns).length);
 
 const sortBy = (column, prop) => {
   if (!column.sortOrders) return;
-  this.$emit('sort', { target: prop, orders: column.sortOrders });
+  emit('sort', { target: prop, orders: column.sortOrders });
 };
 </script>
 
