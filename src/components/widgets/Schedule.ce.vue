@@ -7,6 +7,7 @@ import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import convert from '../../utils/convert';
 import ScheduleTable from './ScheduleTable.vue';
 import I18NProvider from '../I18NProvider.vue';
+import Paginator from '../Paginator.vue';
 
 const props = defineProps({
   locale: {
@@ -50,7 +51,8 @@ const {
   fetchVBRData('/v1/gamesList', props.apiKey, {
     championshipId: Number(props.championshipId),
     division: props.division,
-  })
+  }),
+  []
 );
 
 const page = ref(1);
@@ -62,6 +64,9 @@ const convertedRows = computed(() => {
 
 // const { t, locale: i18nlocale } = useI18n({ useGlobal: true});
 // const msg = t('table.gameDateTime.short', { offsetName: 'CET' });
+const onPaginatorChange = (value) => {
+  page.value = value;
+};
 </script>
 <template>
   <div>
@@ -70,7 +75,19 @@ const convertedRows = computed(() => {
       {{ locale }}
       <button @click="i18nlocale = locale === 'en' ? 'hu' : 'en'">{{ locale === 'en' ? 'hu' : 'en' }}</button> -->
       <div v-if="error?.error">{{ error.message }}</div>
-      <ScheduleTable v-else :rows="convertedRows.rows" :is-loading="isLoading"></ScheduleTable>
+      <ScheduleTable :rows="convertedRows.rows" :is-loading="isLoading"></ScheduleTable>
+
+      <Paginator
+        :page="page"
+        :items-per-page="props.limit"
+        :total-items="rows.length"
+        :range-length="5"
+        @change="onPaginatorChange"
+      />
     </I18NProvider>
   </div>
 </template>
+
+<style src="../../assets/common.css"></style>
+<style src="../../assets/table.css"></style>
+<style lang="scss" src="../../assets/paginator.scss"></style>

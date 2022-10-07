@@ -7,53 +7,53 @@
     }
     return target;
   };
-  const _sfc_main$a = {};
-  const _hoisted_1$8 = { class: "child" };
-  function _sfc_render$5(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$8, "CHILD");
+  const _sfc_main$d = {};
+  const _hoisted_1$c = { class: "child" };
+  function _sfc_render$8(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$c, "CHILD");
   }
-  const Child = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$5]]);
-  const _style_0 = ":host {\n  --text-color: red;\n  --bg-color: white;\n}\n.text {\n  width: 100%;\n  text-align: center;\n  color: var(--text-color);\n}\n.child {\n  width: 100%;\n  text-align: center;\n  font-weight: 700;\n  background-color: var(--bg-color);\n}\n";
-  const _hoisted_1$7 = { class: "text" };
-  const _sfc_main$9 = {
+  const Child = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$8]]);
+  const _style_0 = ":host {\n  --text-color: red;\n  --bg-color: white;\n\n  --vbr-widget-primary-color-0: #ffffff;\n  --vbr-widget-primary-color-50: #eceff1;\n  --vbr-widget-primary-color-100: #cfd8dc;\n  --vbr-widget-primary-color-200: #b0bec5;\n  --vbr-widget-primary-color-300: #90a4ae;\n  --vbr-widget-primary-color-400: #78909c;\n  --vbr-widget-primary-color-500: #607d8b;\n  --vbr-widget-primary-color-600: #546e7a;\n  --vbr-widget-primary-color-700: #455a64;\n  --vbr-widget-primary-color-800: #37474f;\n  --vbr-widget-primary-color-900: #263238;\n\n  --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-hover-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-paginator-hover-bg-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);\n}\n.text {\n  width: 100%;\n  text-align: center;\n  color: var(--text-color);\n}\n.child {\n  width: 100%;\n  text-align: center;\n  font-weight: 700;\n  background-color: var(--bg-color);\n}\n";
+  const _hoisted_1$b = { class: "text" };
+  const _sfc_main$c = {
     __name: "Test.ce",
     setup(__props) {
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$7, [
+        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$b, [
           vue.createTextVNode(" TEST "),
           vue.createVNode(Child)
         ]);
       };
     }
   };
-  const Test = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["styles", [_style_0]]]);
+  const Test = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["styles", [_style_0]]]);
   const _style_1 = ".table {\n  background-color: beige;\n}\n";
-  const _hoisted_1$6 = { class: "text" };
-  const _hoisted_2$4 = /* @__PURE__ */ vue.createElementVNode("div", { class: "table" }, "Table", -1);
-  const _sfc_main$8 = {
+  const _hoisted_1$a = { class: "text" };
+  const _hoisted_2$7 = /* @__PURE__ */ vue.createElementVNode("div", { class: "table" }, "Table", -1);
+  const _sfc_main$b = {
     __name: "Test2.ce",
     setup(__props) {
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$6, [
+        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$a, [
           vue.createTextVNode(" TEST2 "),
           vue.createVNode(Child),
-          _hoisted_2$4
+          _hoisted_2$7
         ]);
       };
     }
   };
-  const Test2 = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["styles", [_style_0, _style_1]]]);
+  const Test2 = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["styles", [_style_0, _style_1]]]);
   var _a;
   const isClient = typeof window !== "undefined";
   const noop = () => {
   };
   isClient && ((_a = window == null ? void 0 : window.navigator) == null ? void 0 : _a.userAgent) && /iP(ad|hone|od)/.test(window.navigator.userAgent);
   function promiseTimeout(ms, throwOnTimeout = false, reason = "Timeout") {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve2, reject2) => {
       if (throwOnTimeout)
-        setTimeout(() => reject(reason), ms);
+        setTimeout(() => reject2(reason), ms);
       else
-        setTimeout(resolve, ms);
+        setTimeout(resolve2, ms);
     });
   }
   function identity(arg) {
@@ -127,13 +127,13 @@
   var __propIsEnum = Object.prototype.propertyIsEnumerable;
   var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
   var __spreadValues = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
+    for (var prop2 in b || (b = {}))
+      if (__hasOwnProp.call(b, prop2))
+        __defNormalProp(a, prop2, b[prop2]);
     if (__getOwnPropSymbols)
-      for (var prop of __getOwnPropSymbols(b)) {
-        if (__propIsEnum.call(b, prop))
-          __defNormalProp(a, prop, b[prop]);
+      for (var prop2 of __getOwnPropSymbols(b)) {
+        if (__propIsEnum.call(b, prop2))
+          __defNormalProp(a, prop2, b[prop2]);
       }
     return a;
   };
@@ -166,6 +166,237 @@
   __spreadValues({
     linear: identity
   }, _TransitionPresets);
+  var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
+  var dayjs_min = { exports: {} };
+  (function(module, exports) {
+    !function(t, e) {
+      module.exports = e();
+    }(commonjsGlobal, function() {
+      var t = 1e3, e = 6e4, n = 36e5, r = "millisecond", i = "second", s = "minute", u = "hour", a = "day", o = "week", f = "month", h = "quarter", c = "year", d = "date", $ = "Invalid Date", l = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_") }, m = function(t2, e2, n2) {
+        var r2 = String(t2);
+        return !r2 || r2.length >= e2 ? t2 : "" + Array(e2 + 1 - r2.length).join(n2) + t2;
+      }, g = { s: m, z: function(t2) {
+        var e2 = -t2.utcOffset(), n2 = Math.abs(e2), r2 = Math.floor(n2 / 60), i2 = n2 % 60;
+        return (e2 <= 0 ? "+" : "-") + m(r2, 2, "0") + ":" + m(i2, 2, "0");
+      }, m: function t2(e2, n2) {
+        if (e2.date() < n2.date())
+          return -t2(n2, e2);
+        var r2 = 12 * (n2.year() - e2.year()) + (n2.month() - e2.month()), i2 = e2.clone().add(r2, f), s2 = n2 - i2 < 0, u2 = e2.clone().add(r2 + (s2 ? -1 : 1), f);
+        return +(-(r2 + (n2 - i2) / (s2 ? i2 - u2 : u2 - i2)) || 0);
+      }, a: function(t2) {
+        return t2 < 0 ? Math.ceil(t2) || 0 : Math.floor(t2);
+      }, p: function(t2) {
+        return { M: f, y: c, w: o, d: a, D: d, h: u, m: s, s: i, ms: r, Q: h }[t2] || String(t2 || "").toLowerCase().replace(/s$/, "");
+      }, u: function(t2) {
+        return void 0 === t2;
+      } }, v = "en", D = {};
+      D[v] = M;
+      var p = function(t2) {
+        return t2 instanceof _;
+      }, S = function t2(e2, n2, r2) {
+        var i2;
+        if (!e2)
+          return v;
+        if ("string" == typeof e2) {
+          var s2 = e2.toLowerCase();
+          D[s2] && (i2 = s2), n2 && (D[s2] = n2, i2 = s2);
+          var u2 = e2.split("-");
+          if (!i2 && u2.length > 1)
+            return t2(u2[0]);
+        } else {
+          var a2 = e2.name;
+          D[a2] = e2, i2 = a2;
+        }
+        return !r2 && i2 && (v = i2), i2 || !r2 && v;
+      }, w = function(t2, e2) {
+        if (p(t2))
+          return t2.clone();
+        var n2 = "object" == typeof e2 ? e2 : {};
+        return n2.date = t2, n2.args = arguments, new _(n2);
+      }, O = g;
+      O.l = S, O.i = p, O.w = function(t2, e2) {
+        return w(t2, { locale: e2.$L, utc: e2.$u, x: e2.$x, $offset: e2.$offset });
+      };
+      var _ = function() {
+        function M2(t2) {
+          this.$L = S(t2.locale, null, true), this.parse(t2);
+        }
+        var m2 = M2.prototype;
+        return m2.parse = function(t2) {
+          this.$d = function(t3) {
+            var e2 = t3.date, n2 = t3.utc;
+            if (null === e2)
+              return new Date(NaN);
+            if (O.u(e2))
+              return new Date();
+            if (e2 instanceof Date)
+              return new Date(e2);
+            if ("string" == typeof e2 && !/Z$/i.test(e2)) {
+              var r2 = e2.match(l);
+              if (r2) {
+                var i2 = r2[2] - 1 || 0, s2 = (r2[7] || "0").substring(0, 3);
+                return n2 ? new Date(Date.UTC(r2[1], i2, r2[3] || 1, r2[4] || 0, r2[5] || 0, r2[6] || 0, s2)) : new Date(r2[1], i2, r2[3] || 1, r2[4] || 0, r2[5] || 0, r2[6] || 0, s2);
+              }
+            }
+            return new Date(e2);
+          }(t2), this.$x = t2.x || {}, this.init();
+        }, m2.init = function() {
+          var t2 = this.$d;
+          this.$y = t2.getFullYear(), this.$M = t2.getMonth(), this.$D = t2.getDate(), this.$W = t2.getDay(), this.$H = t2.getHours(), this.$m = t2.getMinutes(), this.$s = t2.getSeconds(), this.$ms = t2.getMilliseconds();
+        }, m2.$utils = function() {
+          return O;
+        }, m2.isValid = function() {
+          return !(this.$d.toString() === $);
+        }, m2.isSame = function(t2, e2) {
+          var n2 = w(t2);
+          return this.startOf(e2) <= n2 && n2 <= this.endOf(e2);
+        }, m2.isAfter = function(t2, e2) {
+          return w(t2) < this.startOf(e2);
+        }, m2.isBefore = function(t2, e2) {
+          return this.endOf(e2) < w(t2);
+        }, m2.$g = function(t2, e2, n2) {
+          return O.u(t2) ? this[e2] : this.set(n2, t2);
+        }, m2.unix = function() {
+          return Math.floor(this.valueOf() / 1e3);
+        }, m2.valueOf = function() {
+          return this.$d.getTime();
+        }, m2.startOf = function(t2, e2) {
+          var n2 = this, r2 = !!O.u(e2) || e2, h2 = O.p(t2), $2 = function(t3, e3) {
+            var i2 = O.w(n2.$u ? Date.UTC(n2.$y, e3, t3) : new Date(n2.$y, e3, t3), n2);
+            return r2 ? i2 : i2.endOf(a);
+          }, l2 = function(t3, e3) {
+            return O.w(n2.toDate()[t3].apply(n2.toDate("s"), (r2 ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(e3)), n2);
+          }, y2 = this.$W, M3 = this.$M, m3 = this.$D, g2 = "set" + (this.$u ? "UTC" : "");
+          switch (h2) {
+            case c:
+              return r2 ? $2(1, 0) : $2(31, 11);
+            case f:
+              return r2 ? $2(1, M3) : $2(0, M3 + 1);
+            case o:
+              var v2 = this.$locale().weekStart || 0, D2 = (y2 < v2 ? y2 + 7 : y2) - v2;
+              return $2(r2 ? m3 - D2 : m3 + (6 - D2), M3);
+            case a:
+            case d:
+              return l2(g2 + "Hours", 0);
+            case u:
+              return l2(g2 + "Minutes", 1);
+            case s:
+              return l2(g2 + "Seconds", 2);
+            case i:
+              return l2(g2 + "Milliseconds", 3);
+            default:
+              return this.clone();
+          }
+        }, m2.endOf = function(t2) {
+          return this.startOf(t2, false);
+        }, m2.$set = function(t2, e2) {
+          var n2, o2 = O.p(t2), h2 = "set" + (this.$u ? "UTC" : ""), $2 = (n2 = {}, n2[a] = h2 + "Date", n2[d] = h2 + "Date", n2[f] = h2 + "Month", n2[c] = h2 + "FullYear", n2[u] = h2 + "Hours", n2[s] = h2 + "Minutes", n2[i] = h2 + "Seconds", n2[r] = h2 + "Milliseconds", n2)[o2], l2 = o2 === a ? this.$D + (e2 - this.$W) : e2;
+          if (o2 === f || o2 === c) {
+            var y2 = this.clone().set(d, 1);
+            y2.$d[$2](l2), y2.init(), this.$d = y2.set(d, Math.min(this.$D, y2.daysInMonth())).$d;
+          } else
+            $2 && this.$d[$2](l2);
+          return this.init(), this;
+        }, m2.set = function(t2, e2) {
+          return this.clone().$set(t2, e2);
+        }, m2.get = function(t2) {
+          return this[O.p(t2)]();
+        }, m2.add = function(r2, h2) {
+          var d2, $2 = this;
+          r2 = Number(r2);
+          var l2 = O.p(h2), y2 = function(t2) {
+            var e2 = w($2);
+            return O.w(e2.date(e2.date() + Math.round(t2 * r2)), $2);
+          };
+          if (l2 === f)
+            return this.set(f, this.$M + r2);
+          if (l2 === c)
+            return this.set(c, this.$y + r2);
+          if (l2 === a)
+            return y2(1);
+          if (l2 === o)
+            return y2(7);
+          var M3 = (d2 = {}, d2[s] = e, d2[u] = n, d2[i] = t, d2)[l2] || 1, m3 = this.$d.getTime() + r2 * M3;
+          return O.w(m3, this);
+        }, m2.subtract = function(t2, e2) {
+          return this.add(-1 * t2, e2);
+        }, m2.format = function(t2) {
+          var e2 = this, n2 = this.$locale();
+          if (!this.isValid())
+            return n2.invalidDate || $;
+          var r2 = t2 || "YYYY-MM-DDTHH:mm:ssZ", i2 = O.z(this), s2 = this.$H, u2 = this.$m, a2 = this.$M, o2 = n2.weekdays, f2 = n2.months, h2 = function(t3, n3, i3, s3) {
+            return t3 && (t3[n3] || t3(e2, r2)) || i3[n3].slice(0, s3);
+          }, c2 = function(t3) {
+            return O.s(s2 % 12 || 12, t3, "0");
+          }, d2 = n2.meridiem || function(t3, e3, n3) {
+            var r3 = t3 < 12 ? "AM" : "PM";
+            return n3 ? r3.toLowerCase() : r3;
+          }, l2 = { YY: String(this.$y).slice(-2), YYYY: this.$y, M: a2 + 1, MM: O.s(a2 + 1, 2, "0"), MMM: h2(n2.monthsShort, a2, f2, 3), MMMM: h2(f2, a2), D: this.$D, DD: O.s(this.$D, 2, "0"), d: String(this.$W), dd: h2(n2.weekdaysMin, this.$W, o2, 2), ddd: h2(n2.weekdaysShort, this.$W, o2, 3), dddd: o2[this.$W], H: String(s2), HH: O.s(s2, 2, "0"), h: c2(1), hh: c2(2), a: d2(s2, u2, true), A: d2(s2, u2, false), m: String(u2), mm: O.s(u2, 2, "0"), s: String(this.$s), ss: O.s(this.$s, 2, "0"), SSS: O.s(this.$ms, 3, "0"), Z: i2 };
+          return r2.replace(y, function(t3, e3) {
+            return e3 || l2[t3] || i2.replace(":", "");
+          });
+        }, m2.utcOffset = function() {
+          return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
+        }, m2.diff = function(r2, d2, $2) {
+          var l2, y2 = O.p(d2), M3 = w(r2), m3 = (M3.utcOffset() - this.utcOffset()) * e, g2 = this - M3, v2 = O.m(this, M3);
+          return v2 = (l2 = {}, l2[c] = v2 / 12, l2[f] = v2, l2[h] = v2 / 3, l2[o] = (g2 - m3) / 6048e5, l2[a] = (g2 - m3) / 864e5, l2[u] = g2 / n, l2[s] = g2 / e, l2[i] = g2 / t, l2)[y2] || g2, $2 ? v2 : O.a(v2);
+        }, m2.daysInMonth = function() {
+          return this.endOf(f).$D;
+        }, m2.$locale = function() {
+          return D[this.$L];
+        }, m2.locale = function(t2, e2) {
+          if (!t2)
+            return this.$L;
+          var n2 = this.clone(), r2 = S(t2, e2, true);
+          return r2 && (n2.$L = r2), n2;
+        }, m2.clone = function() {
+          return O.w(this.$d, this);
+        }, m2.toDate = function() {
+          return new Date(this.valueOf());
+        }, m2.toJSON = function() {
+          return this.isValid() ? this.toISOString() : null;
+        }, m2.toISOString = function() {
+          return this.$d.toISOString();
+        }, m2.toString = function() {
+          return this.$d.toUTCString();
+        }, M2;
+      }(), T = _.prototype;
+      return w.prototype = T, [["$ms", r], ["$s", i], ["$m", s], ["$H", u], ["$W", a], ["$M", f], ["$y", c], ["$D", d]].forEach(function(t2) {
+        T[t2[1]] = function(e2) {
+          return this.$g(e2, t2[0], t2[1]);
+        };
+      }), w.extend = function(t2, e2) {
+        return t2.$i || (t2(e2, _, w), t2.$i = true), w;
+      }, w.locale = S, w.isDayjs = p, w.unix = function(t2) {
+        return w(1e3 * t2);
+      }, w.en = D[v], w.Ls = D, w.p = {}, w;
+    });
+  })(dayjs_min);
+  const dayjs = dayjs_min.exports;
+  const fetchVBRData = async (route, apiKey, data) => {
+    const url = `${"https://api.icehockey.hu/vbr"}${route}?${objectToQueryString(data)}`;
+    return new Promise((resolve2, reject2) => {
+      fetch(url, {
+        method: "GET",
+        cache: "no-cache",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-KEY": apiKey || window.__MJSZ_VBR_WIDGET__.apiKey
+        }
+      }).then((response) => {
+        return response.json();
+      }).then((response) => {
+        if (response.error)
+          return reject2(response);
+        resolve2(response.data);
+      }).catch((error) => {
+        reject2(error);
+      });
+    });
+  };
+  const objectToQueryString = (obj) => {
+    return Object.keys(obj).map((key) => key + "=" + obj[key]).join("&");
+  };
   function _isPlaceholder(a) {
     return a != null && typeof a === "object" && a["@@functional/placeholder"] === true;
   }
@@ -196,19 +427,288 @@
       }
     };
   }
+  function _arity(n, fn) {
+    switch (n) {
+      case 0:
+        return function() {
+          return fn.apply(this, arguments);
+        };
+      case 1:
+        return function(a0) {
+          return fn.apply(this, arguments);
+        };
+      case 2:
+        return function(a0, a1) {
+          return fn.apply(this, arguments);
+        };
+      case 3:
+        return function(a0, a1, a2) {
+          return fn.apply(this, arguments);
+        };
+      case 4:
+        return function(a0, a1, a2, a3) {
+          return fn.apply(this, arguments);
+        };
+      case 5:
+        return function(a0, a1, a2, a3, a4) {
+          return fn.apply(this, arguments);
+        };
+      case 6:
+        return function(a0, a1, a2, a3, a4, a5) {
+          return fn.apply(this, arguments);
+        };
+      case 7:
+        return function(a0, a1, a2, a3, a4, a5, a6) {
+          return fn.apply(this, arguments);
+        };
+      case 8:
+        return function(a0, a1, a2, a3, a4, a5, a6, a7) {
+          return fn.apply(this, arguments);
+        };
+      case 9:
+        return function(a0, a1, a2, a3, a4, a5, a6, a7, a8) {
+          return fn.apply(this, arguments);
+        };
+      case 10:
+        return function(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9) {
+          return fn.apply(this, arguments);
+        };
+      default:
+        throw new Error("First argument to _arity must be a non-negative integer no greater than ten");
+    }
+  }
+  function _curryN(length, received, fn) {
+    return function() {
+      var combined = [];
+      var argsIdx = 0;
+      var left = length;
+      var combinedIdx = 0;
+      while (combinedIdx < received.length || argsIdx < arguments.length) {
+        var result;
+        if (combinedIdx < received.length && (!_isPlaceholder(received[combinedIdx]) || argsIdx >= arguments.length)) {
+          result = received[combinedIdx];
+        } else {
+          result = arguments[argsIdx];
+          argsIdx += 1;
+        }
+        combined[combinedIdx] = result;
+        if (!_isPlaceholder(result)) {
+          left -= 1;
+        }
+        combinedIdx += 1;
+      }
+      return left <= 0 ? fn.apply(this, combined) : _arity(left, _curryN(length, combined, fn));
+    };
+  }
+  var curryN = /* @__PURE__ */ _curry2(function curryN2(length, fn) {
+    if (length === 1) {
+      return _curry1(fn);
+    }
+    return _arity(length, _curryN(length, [], fn));
+  });
+  const curryN$1 = curryN;
+  function _curry3(fn) {
+    return function f3(a, b, c) {
+      switch (arguments.length) {
+        case 0:
+          return f3;
+        case 1:
+          return _isPlaceholder(a) ? f3 : _curry2(function(_b, _c) {
+            return fn(a, _b, _c);
+          });
+        case 2:
+          return _isPlaceholder(a) && _isPlaceholder(b) ? f3 : _isPlaceholder(a) ? _curry2(function(_a2, _c) {
+            return fn(_a2, b, _c);
+          }) : _isPlaceholder(b) ? _curry2(function(_b, _c) {
+            return fn(a, _b, _c);
+          }) : _curry1(function(_c) {
+            return fn(a, b, _c);
+          });
+        default:
+          return _isPlaceholder(a) && _isPlaceholder(b) && _isPlaceholder(c) ? f3 : _isPlaceholder(a) && _isPlaceholder(b) ? _curry2(function(_a2, _b) {
+            return fn(_a2, _b, c);
+          }) : _isPlaceholder(a) && _isPlaceholder(c) ? _curry2(function(_a2, _c) {
+            return fn(_a2, b, _c);
+          }) : _isPlaceholder(b) && _isPlaceholder(c) ? _curry2(function(_b, _c) {
+            return fn(a, _b, _c);
+          }) : _isPlaceholder(a) ? _curry1(function(_a2) {
+            return fn(_a2, b, c);
+          }) : _isPlaceholder(b) ? _curry1(function(_b) {
+            return fn(a, _b, c);
+          }) : _isPlaceholder(c) ? _curry1(function(_c) {
+            return fn(a, b, _c);
+          }) : fn(a, b, c);
+      }
+    };
+  }
   const _isArray = Array.isArray || function _isArray2(val) {
     return val != null && val.length >= 0 && Object.prototype.toString.call(val) === "[object Array]";
   };
+  function _isTransformer(obj) {
+    return obj != null && typeof obj["@@transducer/step"] === "function";
+  }
+  function _dispatchable(methodNames, transducerCreator, fn) {
+    return function() {
+      if (arguments.length === 0) {
+        return fn();
+      }
+      var obj = arguments[arguments.length - 1];
+      if (!_isArray(obj)) {
+        var idx = 0;
+        while (idx < methodNames.length) {
+          if (typeof obj[methodNames[idx]] === "function") {
+            return obj[methodNames[idx]].apply(obj, Array.prototype.slice.call(arguments, 0, -1));
+          }
+          idx += 1;
+        }
+        if (_isTransformer(obj)) {
+          var transducer = transducerCreator.apply(null, Array.prototype.slice.call(arguments, 0, -1));
+          return transducer(obj);
+        }
+      }
+      return fn.apply(this, arguments);
+    };
+  }
+  const _xfBase = {
+    init: function() {
+      return this.xf["@@transducer/init"]();
+    },
+    result: function(result) {
+      return this.xf["@@transducer/result"](result);
+    }
+  };
+  function _map(fn, functor) {
+    var idx = 0;
+    var len = functor.length;
+    var result = Array(len);
+    while (idx < len) {
+      result[idx] = fn(functor[idx]);
+      idx += 1;
+    }
+    return result;
+  }
   function _isString(x) {
     return Object.prototype.toString.call(x) === "[object String]";
   }
-  function _has(prop, obj) {
-    return Object.prototype.hasOwnProperty.call(obj, prop);
+  var _isArrayLike = /* @__PURE__ */ _curry1(function isArrayLike(x) {
+    if (_isArray(x)) {
+      return true;
+    }
+    if (!x) {
+      return false;
+    }
+    if (typeof x !== "object") {
+      return false;
+    }
+    if (_isString(x)) {
+      return false;
+    }
+    if (x.length === 0) {
+      return true;
+    }
+    if (x.length > 0) {
+      return x.hasOwnProperty(0) && x.hasOwnProperty(x.length - 1);
+    }
+    return false;
+  });
+  const _isArrayLike$1 = _isArrayLike;
+  var XWrap = /* @__PURE__ */ function() {
+    function XWrap2(fn) {
+      this.f = fn;
+    }
+    XWrap2.prototype["@@transducer/init"] = function() {
+      throw new Error("init not implemented on XWrap");
+    };
+    XWrap2.prototype["@@transducer/result"] = function(acc) {
+      return acc;
+    };
+    XWrap2.prototype["@@transducer/step"] = function(acc, x) {
+      return this.f(acc, x);
+    };
+    return XWrap2;
+  }();
+  function _xwrap(fn) {
+    return new XWrap(fn);
   }
-  var toString = Object.prototype.toString;
+  var bind = /* @__PURE__ */ _curry2(function bind2(fn, thisObj) {
+    return _arity(fn.length, function() {
+      return fn.apply(thisObj, arguments);
+    });
+  });
+  const bind$1 = bind;
+  function _arrayReduce(xf, acc, list) {
+    var idx = 0;
+    var len = list.length;
+    while (idx < len) {
+      acc = xf["@@transducer/step"](acc, list[idx]);
+      if (acc && acc["@@transducer/reduced"]) {
+        acc = acc["@@transducer/value"];
+        break;
+      }
+      idx += 1;
+    }
+    return xf["@@transducer/result"](acc);
+  }
+  function _iterableReduce(xf, acc, iter) {
+    var step = iter.next();
+    while (!step.done) {
+      acc = xf["@@transducer/step"](acc, step.value);
+      if (acc && acc["@@transducer/reduced"]) {
+        acc = acc["@@transducer/value"];
+        break;
+      }
+      step = iter.next();
+    }
+    return xf["@@transducer/result"](acc);
+  }
+  function _methodReduce(xf, acc, obj, methodName) {
+    return xf["@@transducer/result"](obj[methodName](bind$1(xf["@@transducer/step"], xf), acc));
+  }
+  var symIterator = typeof Symbol !== "undefined" ? Symbol.iterator : "@@iterator";
+  function _reduce(fn, acc, list) {
+    if (typeof fn === "function") {
+      fn = _xwrap(fn);
+    }
+    if (_isArrayLike$1(list)) {
+      return _arrayReduce(fn, acc, list);
+    }
+    if (typeof list["fantasy-land/reduce"] === "function") {
+      return _methodReduce(fn, acc, list, "fantasy-land/reduce");
+    }
+    if (list[symIterator] != null) {
+      return _iterableReduce(fn, acc, list[symIterator]());
+    }
+    if (typeof list.next === "function") {
+      return _iterableReduce(fn, acc, list);
+    }
+    if (typeof list.reduce === "function") {
+      return _methodReduce(fn, acc, list, "reduce");
+    }
+    throw new TypeError("reduce: list must be array or iterable");
+  }
+  var XMap = /* @__PURE__ */ function() {
+    function XMap2(f, xf) {
+      this.xf = xf;
+      this.f = f;
+    }
+    XMap2.prototype["@@transducer/init"] = _xfBase.init;
+    XMap2.prototype["@@transducer/result"] = _xfBase.result;
+    XMap2.prototype["@@transducer/step"] = function(result, input) {
+      return this.xf["@@transducer/step"](result, this.f(input));
+    };
+    return XMap2;
+  }();
+  var _xmap = /* @__PURE__ */ _curry2(function _xmap2(f, xf) {
+    return new XMap(f, xf);
+  });
+  const _xmap$1 = _xmap;
+  function _has(prop2, obj) {
+    return Object.prototype.hasOwnProperty.call(obj, prop2);
+  }
+  var toString$2 = Object.prototype.toString;
   var _isArguments = /* @__PURE__ */ function() {
-    return toString.call(arguments) === "[object Arguments]" ? function _isArguments2(x) {
-      return toString.call(x) === "[object Arguments]";
+    return toString$2.call(arguments) === "[object Arguments]" ? function _isArguments2(x) {
+      return toString$2.call(x) === "[object Arguments]";
     } : function _isArguments2(x) {
       return _has("callee", x);
     };
@@ -237,20 +737,20 @@
     if (Object(obj) !== obj) {
       return [];
     }
-    var prop, nIdx;
+    var prop2, nIdx;
     var ks = [];
     var checkArgsLength = hasArgsEnumBug && _isArguments$1(obj);
-    for (prop in obj) {
-      if (_has(prop, obj) && (!checkArgsLength || prop !== "length")) {
-        ks[ks.length] = prop;
+    for (prop2 in obj) {
+      if (_has(prop2, obj) && (!checkArgsLength || prop2 !== "length")) {
+        ks[ks.length] = prop2;
       }
     }
     if (hasEnumBug) {
       nIdx = nonEnumerableProps.length - 1;
       while (nIdx >= 0) {
-        prop = nonEnumerableProps[nIdx];
-        if (_has(prop, obj) && !contains(ks, prop)) {
-          ks[ks.length] = prop;
+        prop2 = nonEnumerableProps[nIdx];
+        if (_has(prop2, obj) && !contains(ks, prop2)) {
+          ks[ks.length] = prop2;
         }
         nIdx -= 1;
       }
@@ -258,6 +758,24 @@
     return ks;
   });
   const keys$1 = keys;
+  var map = /* @__PURE__ */ _curry2(
+    /* @__PURE__ */ _dispatchable(["fantasy-land/map", "map"], _xmap$1, function map2(fn, functor) {
+      switch (Object.prototype.toString.call(functor)) {
+        case "[object Function]":
+          return curryN$1(functor.length, function() {
+            return fn.call(this, functor.apply(this, arguments));
+          });
+        case "[object Object]":
+          return _reduce(function(acc, key) {
+            acc[key] = fn(functor[key]);
+            return acc;
+          }, {}, keys$1(functor));
+        default:
+          return _map(fn, functor);
+      }
+    })
+  );
+  const map$1 = map;
   const _isInteger = Number.isInteger || function _isInteger2(n) {
     return n << 0 === n;
   };
@@ -266,10 +784,79 @@
     return _isString(list) ? list.charAt(idx) : list[idx];
   });
   const nth$1 = nth;
+  var prop = /* @__PURE__ */ _curry2(function prop2(p, obj) {
+    if (obj == null) {
+      return;
+    }
+    return _isInteger(p) ? nth$1(p, obj) : obj[p];
+  });
+  const prop$1 = prop;
+  var reduce = /* @__PURE__ */ _curry3(_reduce);
+  const reduce$1 = reduce;
+  var always = /* @__PURE__ */ _curry1(function always2(val) {
+    return function() {
+      return val;
+    };
+  });
+  const always$1 = always;
+  var ascend = /* @__PURE__ */ _curry3(function ascend2(fn, a, b) {
+    var aa = fn(a);
+    var bb = fn(b);
+    return aa < bb ? -1 : aa > bb ? 1 : 0;
+  });
+  const ascend$1 = ascend;
+  function _isFunction(x) {
+    var type2 = Object.prototype.toString.call(x);
+    return type2 === "[object Function]" || type2 === "[object AsyncFunction]" || type2 === "[object GeneratorFunction]" || type2 === "[object AsyncGeneratorFunction]";
+  }
   var type = /* @__PURE__ */ _curry1(function type2(val) {
     return val === null ? "Null" : val === void 0 ? "Undefined" : Object.prototype.toString.call(val).slice(8, -1);
   });
   const type$1 = type;
+  function _pipe(f, g) {
+    return function() {
+      return g.call(this, f.apply(this, arguments));
+    };
+  }
+  function _checkForMethod(methodname, fn) {
+    return function() {
+      var length = arguments.length;
+      if (length === 0) {
+        return fn();
+      }
+      var obj = arguments[length - 1];
+      return _isArray(obj) || typeof obj[methodname] !== "function" ? fn.apply(this, arguments) : obj[methodname].apply(obj, Array.prototype.slice.call(arguments, 0, length - 1));
+    };
+  }
+  var slice = /* @__PURE__ */ _curry3(
+    /* @__PURE__ */ _checkForMethod("slice", function slice2(fromIndex, toIndex, list) {
+      return Array.prototype.slice.call(list, fromIndex, toIndex);
+    })
+  );
+  const slice$1 = slice;
+  var tail = /* @__PURE__ */ _curry1(
+    /* @__PURE__ */ _checkForMethod(
+      "tail",
+      /* @__PURE__ */ slice$1(1, Infinity)
+    )
+  );
+  const tail$1 = tail;
+  function pipe() {
+    if (arguments.length === 0) {
+      throw new Error("pipe requires at least one argument");
+    }
+    return _arity(arguments[0].length, reduce$1(_pipe, arguments[0], tail$1(arguments)));
+  }
+  var reverse = /* @__PURE__ */ _curry1(function reverse2(list) {
+    return _isString(list) ? list.split("").reverse().join("") : Array.prototype.slice.call(list, 0).reverse();
+  });
+  const reverse$1 = reverse;
+  function compose() {
+    if (arguments.length === 0) {
+      throw new Error("compose requires at least one argument");
+    }
+    return pipe.apply(this, reverse$1(arguments));
+  }
   function _arrayFromIterator(iter) {
     var list = [];
     var next;
@@ -414,9 +1001,167 @@
     return _equals(a, b, [], []);
   });
   const equals$1 = equals;
+  function _indexOf(list, a, idx) {
+    var inf, item;
+    if (typeof list.indexOf === "function") {
+      switch (typeof a) {
+        case "number":
+          if (a === 0) {
+            inf = 1 / a;
+            while (idx < list.length) {
+              item = list[idx];
+              if (item === 0 && 1 / item === inf) {
+                return idx;
+              }
+              idx += 1;
+            }
+            return -1;
+          } else if (a !== a) {
+            while (idx < list.length) {
+              item = list[idx];
+              if (typeof item === "number" && item !== item) {
+                return idx;
+              }
+              idx += 1;
+            }
+            return -1;
+          }
+          return list.indexOf(a, idx);
+        case "string":
+        case "boolean":
+        case "function":
+        case "undefined":
+          return list.indexOf(a, idx);
+        case "object":
+          if (a === null) {
+            return list.indexOf(a, idx);
+          }
+      }
+    }
+    while (idx < list.length) {
+      if (equals$1(list[idx], a)) {
+        return idx;
+      }
+      idx += 1;
+    }
+    return -1;
+  }
+  function _includes(a, list) {
+    return _indexOf(list, a, 0) >= 0;
+  }
+  function _quote(s) {
+    var escaped = s.replace(/\\/g, "\\\\").replace(/[\b]/g, "\\b").replace(/\f/g, "\\f").replace(/\n/g, "\\n").replace(/\r/g, "\\r").replace(/\t/g, "\\t").replace(/\v/g, "\\v").replace(/\0/g, "\\0");
+    return '"' + escaped.replace(/"/g, '\\"') + '"';
+  }
+  var pad = function pad2(n) {
+    return (n < 10 ? "0" : "") + n;
+  };
+  var _toISOString = typeof Date.prototype.toISOString === "function" ? function _toISOString2(d) {
+    return d.toISOString();
+  } : function _toISOString2(d) {
+    return d.getUTCFullYear() + "-" + pad(d.getUTCMonth() + 1) + "-" + pad(d.getUTCDate()) + "T" + pad(d.getUTCHours()) + ":" + pad(d.getUTCMinutes()) + ":" + pad(d.getUTCSeconds()) + "." + (d.getUTCMilliseconds() / 1e3).toFixed(3).slice(2, 5) + "Z";
+  };
+  const _toISOString$1 = _toISOString;
+  function _complement(f) {
+    return function() {
+      return !f.apply(this, arguments);
+    };
+  }
+  function _filter(fn, list) {
+    var idx = 0;
+    var len = list.length;
+    var result = [];
+    while (idx < len) {
+      if (fn(list[idx])) {
+        result[result.length] = list[idx];
+      }
+      idx += 1;
+    }
+    return result;
+  }
   function _isObject(x) {
     return Object.prototype.toString.call(x) === "[object Object]";
   }
+  var XFilter = /* @__PURE__ */ function() {
+    function XFilter2(f, xf) {
+      this.xf = xf;
+      this.f = f;
+    }
+    XFilter2.prototype["@@transducer/init"] = _xfBase.init;
+    XFilter2.prototype["@@transducer/result"] = _xfBase.result;
+    XFilter2.prototype["@@transducer/step"] = function(result, input) {
+      return this.f(input) ? this.xf["@@transducer/step"](result, input) : result;
+    };
+    return XFilter2;
+  }();
+  var _xfilter = /* @__PURE__ */ _curry2(function _xfilter2(f, xf) {
+    return new XFilter(f, xf);
+  });
+  const _xfilter$1 = _xfilter;
+  var filter = /* @__PURE__ */ _curry2(
+    /* @__PURE__ */ _dispatchable(["fantasy-land/filter", "filter"], _xfilter$1, function(pred, filterable) {
+      return _isObject(filterable) ? _reduce(function(acc, key) {
+        if (pred(filterable[key])) {
+          acc[key] = filterable[key];
+        }
+        return acc;
+      }, {}, keys$1(filterable)) : _filter(pred, filterable);
+    })
+  );
+  const filter$1 = filter;
+  var reject = /* @__PURE__ */ _curry2(function reject2(pred, filterable) {
+    return filter$1(_complement(pred), filterable);
+  });
+  const reject$1 = reject;
+  function _toString(x, seen) {
+    var recur = function recur2(y) {
+      var xs = seen.concat([x]);
+      return _includes(y, xs) ? "<Circular>" : _toString(y, xs);
+    };
+    var mapPairs = function(obj, keys2) {
+      return _map(function(k) {
+        return _quote(k) + ": " + recur(obj[k]);
+      }, keys2.slice().sort());
+    };
+    switch (Object.prototype.toString.call(x)) {
+      case "[object Arguments]":
+        return "(function() { return arguments; }(" + _map(recur, x).join(", ") + "))";
+      case "[object Array]":
+        return "[" + _map(recur, x).concat(mapPairs(x, reject$1(function(k) {
+          return /^\d+$/.test(k);
+        }, keys$1(x)))).join(", ") + "]";
+      case "[object Boolean]":
+        return typeof x === "object" ? "new Boolean(" + recur(x.valueOf()) + ")" : x.toString();
+      case "[object Date]":
+        return "new Date(" + (isNaN(x.valueOf()) ? recur(NaN) : _quote(_toISOString$1(x))) + ")";
+      case "[object Null]":
+        return "null";
+      case "[object Number]":
+        return typeof x === "object" ? "new Number(" + recur(x.valueOf()) + ")" : 1 / x === -Infinity ? "-0" : x.toString(10);
+      case "[object String]":
+        return typeof x === "object" ? "new String(" + recur(x.valueOf()) + ")" : _quote(x);
+      case "[object Undefined]":
+        return "undefined";
+      default:
+        if (typeof x.toString === "function") {
+          var repr = x.toString();
+          if (repr !== "[object Object]") {
+            return repr;
+          }
+        }
+        return "{" + mapPairs(x, keys$1(x)).join(", ") + "}";
+    }
+  }
+  var toString = /* @__PURE__ */ _curry1(function toString2(val) {
+    return _toString(val, []);
+  });
+  const toString$1 = toString;
+  var descend = /* @__PURE__ */ _curry3(function descend2(fn, a, b) {
+    var aa = fn(a);
+    var bb = fn(b);
+    return aa > bb ? -1 : aa < bb ? 1 : 0;
+  });
+  const descend$1 = descend;
   function _isTypedArray(val) {
     var type2 = Object.prototype.toString.call(val);
     return type2 === "[object Uint8ClampedArray]" || type2 === "[object Int8Array]" || type2 === "[object Uint8Array]" || type2 === "[object Int16Array]" || type2 === "[object Uint16Array]" || type2 === "[object Int32Array]" || type2 === "[object Uint32Array]" || type2 === "[object Float32Array]" || type2 === "[object Float64Array]" || type2 === "[object BigInt64Array]" || type2 === "[object BigUint64Array]";
@@ -427,6 +1172,22 @@
     }() : _isTypedArray(x) ? x.constructor.from("") : void 0;
   });
   const empty$1 = empty;
+  var ifElse = /* @__PURE__ */ _curry3(function ifElse2(condition, onTrue, onFalse) {
+    return curryN$1(Math.max(condition.length, onTrue.length, onFalse.length), function _ifElse() {
+      return condition.apply(this, arguments) ? onTrue.apply(this, arguments) : onFalse.apply(this, arguments);
+    });
+  });
+  const ifElse$1 = ifElse;
+  var invoker = /* @__PURE__ */ _curry2(function invoker2(arity, method) {
+    return curryN$1(arity + 1, function() {
+      var target = arguments[arity];
+      if (target != null && _isFunction(target[method])) {
+        return target[method].apply(target, Array.prototype.slice.call(arguments, 0, arity));
+      }
+      throw new TypeError(toString$1(target) + ' does not have a method named "' + method + '"');
+    });
+  });
+  const invoker$1 = invoker;
   var isEmpty = /* @__PURE__ */ _curry1(function isEmpty2(x) {
     return x != null && equals$1(x, empty$1(x));
   });
@@ -452,6 +1213,472 @@
     return paths$1([pathAr], obj)[0];
   });
   const path$1 = path;
+  var omit = /* @__PURE__ */ _curry2(function omit2(names, obj) {
+    var result = {};
+    var index = {};
+    var idx = 0;
+    var len = names.length;
+    while (idx < len) {
+      index[names[idx]] = 1;
+      idx += 1;
+    }
+    for (var prop2 in obj) {
+      if (!index.hasOwnProperty(prop2)) {
+        result[prop2] = obj[prop2];
+      }
+    }
+    return result;
+  });
+  const omit$1 = omit;
+  var propEq = /* @__PURE__ */ _curry3(function propEq2(name, val, obj) {
+    return equals$1(val, prop$1(name, obj));
+  });
+  const propEq$1 = propEq;
+  var sortWith = /* @__PURE__ */ _curry2(function sortWith2(fns, list) {
+    return Array.prototype.slice.call(list, 0).sort(function(a, b) {
+      var result = 0;
+      var i = 0;
+      while (result === 0 && i < fns.length) {
+        result = fns[i](a, b);
+        i += 1;
+      }
+      return result;
+    });
+  });
+  const sortWith$1 = sortWith;
+  var split = /* @__PURE__ */ invoker$1(1, "split");
+  const split$1 = split;
+  var ws = "	\n\v\f\r \xA0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF";
+  var zeroWidth = "\u200B";
+  var hasProtoTrim = typeof String.prototype.trim === "function";
+  var trim = !hasProtoTrim || /* @__PURE__ */ ws.trim() || !/* @__PURE__ */ zeroWidth.trim() ? /* @__PURE__ */ _curry1(function trim2(str) {
+    var beginRx = new RegExp("^[" + ws + "][" + ws + "]*");
+    var endRx = new RegExp("[" + ws + "][" + ws + "]*$");
+    return str.replace(beginRx, "").replace(endRx, "");
+  }) : /* @__PURE__ */ _curry1(function trim2(str) {
+    return str.trim();
+  });
+  const trim$1 = trim;
+  const SORT_STATE_ORIGINAL = "original";
+  const SORT_STATE_DESCEND = "descend";
+  const SORT_STATE_ASCEND = "ascend";
+  (/* @__PURE__ */ new Map()).set("hu", "hu-hu").set("en", "hu-gb");
+  (/* @__PURE__ */ new Map()).set("Europe/Budapest", { countryLabelKey: "hungary", timezone: "Europe/Budapest" }).set("Europe/Bucharest", { countryLabelKey: "romania", timezone: "Europe/Bucharest" });
+  var utc$1 = { exports: {} };
+  (function(module, exports) {
+    !function(t, i) {
+      module.exports = i();
+    }(commonjsGlobal, function() {
+      var t = "minute", i = /[+-]\d\d(?::?\d\d)?/g, e = /([+-]|\d\d)/g;
+      return function(s, f, n) {
+        var u = f.prototype;
+        n.utc = function(t2) {
+          var i2 = { date: t2, utc: true, args: arguments };
+          return new f(i2);
+        }, u.utc = function(i2) {
+          var e2 = n(this.toDate(), { locale: this.$L, utc: true });
+          return i2 ? e2.add(this.utcOffset(), t) : e2;
+        }, u.local = function() {
+          return n(this.toDate(), { locale: this.$L, utc: false });
+        };
+        var o = u.parse;
+        u.parse = function(t2) {
+          t2.utc && (this.$u = true), this.$utils().u(t2.$offset) || (this.$offset = t2.$offset), o.call(this, t2);
+        };
+        var r = u.init;
+        u.init = function() {
+          if (this.$u) {
+            var t2 = this.$d;
+            this.$y = t2.getUTCFullYear(), this.$M = t2.getUTCMonth(), this.$D = t2.getUTCDate(), this.$W = t2.getUTCDay(), this.$H = t2.getUTCHours(), this.$m = t2.getUTCMinutes(), this.$s = t2.getUTCSeconds(), this.$ms = t2.getUTCMilliseconds();
+          } else
+            r.call(this);
+        };
+        var a = u.utcOffset;
+        u.utcOffset = function(s2, f2) {
+          var n2 = this.$utils().u;
+          if (n2(s2))
+            return this.$u ? 0 : n2(this.$offset) ? a.call(this) : this.$offset;
+          if ("string" == typeof s2 && (s2 = function(t2) {
+            void 0 === t2 && (t2 = "");
+            var s3 = t2.match(i);
+            if (!s3)
+              return null;
+            var f3 = ("" + s3[0]).match(e) || ["-", 0, 0], n3 = f3[0], u3 = 60 * +f3[1] + +f3[2];
+            return 0 === u3 ? 0 : "+" === n3 ? u3 : -u3;
+          }(s2), null === s2))
+            return this;
+          var u2 = Math.abs(s2) <= 16 ? 60 * s2 : s2, o2 = this;
+          if (f2)
+            return o2.$offset = u2, o2.$u = 0 === s2, o2;
+          if (0 !== s2) {
+            var r2 = this.$u ? this.toDate().getTimezoneOffset() : -1 * this.utcOffset();
+            (o2 = this.local().add(u2 + r2, t)).$offset = u2, o2.$x.$localOffset = r2;
+          } else
+            o2 = this.utc();
+          return o2;
+        };
+        var h = u.format;
+        u.format = function(t2) {
+          var i2 = t2 || (this.$u ? "YYYY-MM-DDTHH:mm:ss[Z]" : "");
+          return h.call(this, i2);
+        }, u.valueOf = function() {
+          var t2 = this.$utils().u(this.$offset) ? 0 : this.$offset + (this.$x.$localOffset || this.$d.getTimezoneOffset());
+          return this.$d.valueOf() - 6e4 * t2;
+        }, u.isUTC = function() {
+          return !!this.$u;
+        }, u.toISOString = function() {
+          return this.toDate().toISOString();
+        }, u.toString = function() {
+          return this.toDate().toUTCString();
+        };
+        var l = u.toDate;
+        u.toDate = function(t2) {
+          return "s" === t2 && this.$offset ? n(this.format("YYYY-MM-DD HH:mm:ss:SSS")).toDate() : l.call(this);
+        };
+        var c = u.diff;
+        u.diff = function(t2, i2, e2) {
+          if (t2 && this.$u === t2.$u)
+            return c.call(this, t2, i2, e2);
+          var s2 = this.local(), f2 = n(t2).local();
+          return c.call(s2, f2, i2, e2);
+        };
+      };
+    });
+  })(utc$1);
+  const utc = utc$1.exports;
+  var timezone$1 = { exports: {} };
+  (function(module, exports) {
+    !function(t, e) {
+      module.exports = e();
+    }(commonjsGlobal, function() {
+      var t = { year: 0, month: 1, day: 2, hour: 3, minute: 4, second: 5 }, e = {};
+      return function(n, i, o) {
+        var r, a = function(t2, n2, i2) {
+          void 0 === i2 && (i2 = {});
+          var o2 = new Date(t2), r2 = function(t3, n3) {
+            void 0 === n3 && (n3 = {});
+            var i3 = n3.timeZoneName || "short", o3 = t3 + "|" + i3, r3 = e[o3];
+            return r3 || (r3 = new Intl.DateTimeFormat("en-US", { hour12: false, timeZone: t3, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", timeZoneName: i3 }), e[o3] = r3), r3;
+          }(n2, i2);
+          return r2.formatToParts(o2);
+        }, u = function(e2, n2) {
+          for (var i2 = a(e2, n2), r2 = [], u2 = 0; u2 < i2.length; u2 += 1) {
+            var f2 = i2[u2], s2 = f2.type, m = f2.value, c = t[s2];
+            c >= 0 && (r2[c] = parseInt(m, 10));
+          }
+          var d = r2[3], l = 24 === d ? 0 : d, v = r2[0] + "-" + r2[1] + "-" + r2[2] + " " + l + ":" + r2[4] + ":" + r2[5] + ":000", h = +e2;
+          return (o.utc(v).valueOf() - (h -= h % 1e3)) / 6e4;
+        }, f = i.prototype;
+        f.tz = function(t2, e2) {
+          void 0 === t2 && (t2 = r);
+          var n2 = this.utcOffset(), i2 = this.toDate(), a2 = i2.toLocaleString("en-US", { timeZone: t2 }), u2 = Math.round((i2 - new Date(a2)) / 1e3 / 60), f2 = o(a2).$set("millisecond", this.$ms).utcOffset(15 * -Math.round(i2.getTimezoneOffset() / 15) - u2, true);
+          if (e2) {
+            var s2 = f2.utcOffset();
+            f2 = f2.add(n2 - s2, "minute");
+          }
+          return f2.$x.$timezone = t2, f2;
+        }, f.offsetName = function(t2) {
+          var e2 = this.$x.$timezone || o.tz.guess(), n2 = a(this.valueOf(), e2, { timeZoneName: t2 }).find(function(t3) {
+            return "timezonename" === t3.type.toLowerCase();
+          });
+          return n2 && n2.value;
+        };
+        var s = f.startOf;
+        f.startOf = function(t2, e2) {
+          if (!this.$x || !this.$x.$timezone)
+            return s.call(this, t2, e2);
+          var n2 = o(this.format("YYYY-MM-DD HH:mm:ss:SSS"));
+          return s.call(n2, t2, e2).tz(this.$x.$timezone, true);
+        }, o.tz = function(t2, e2, n2) {
+          var i2 = n2 && e2, a2 = n2 || e2 || r, f2 = u(+o(), a2);
+          if ("string" != typeof t2)
+            return o(t2).tz(a2);
+          var s2 = function(t3, e3, n3) {
+            var i3 = t3 - 60 * e3 * 1e3, o2 = u(i3, n3);
+            if (e3 === o2)
+              return [i3, e3];
+            var r2 = u(i3 -= 60 * (o2 - e3) * 1e3, n3);
+            return o2 === r2 ? [i3, o2] : [t3 - 60 * Math.min(o2, r2) * 1e3, Math.max(o2, r2)];
+          }(o.utc(t2, i2).valueOf(), f2, a2), m = s2[0], c = s2[1], d = o(m).utcOffset(c);
+          return d.$x.$timezone = a2, d;
+        }, o.tz.guess = function() {
+          return Intl.DateTimeFormat().resolvedOptions().timeZone;
+        }, o.tz.setDefault = function(t2) {
+          r = t2;
+        };
+      };
+    });
+  })(timezone$1);
+  const timezone = timezone$1.exports;
+  var advancedFormat$1 = { exports: {} };
+  (function(module, exports) {
+    !function(e, t) {
+      module.exports = t();
+    }(commonjsGlobal, function() {
+      return function(e, t, r) {
+        var n = t.prototype, s = n.format;
+        r.en.ordinal = function(e2) {
+          var t2 = ["th", "st", "nd", "rd"], r2 = e2 % 100;
+          return "[" + e2 + (t2[(r2 - 20) % 10] || t2[r2] || t2[0]) + "]";
+        }, n.format = function(e2) {
+          var t2 = this, r2 = this.$locale();
+          if (!this.isValid())
+            return s.bind(this)(e2);
+          var n2 = this.$utils(), a = (e2 || "YYYY-MM-DDTHH:mm:ssZ").replace(/\[([^\]]+)]|Q|wo|ww|w|WW|W|zzz|z|gggg|GGGG|Do|X|x|k{1,2}|S/g, function(e3) {
+            switch (e3) {
+              case "Q":
+                return Math.ceil((t2.$M + 1) / 3);
+              case "Do":
+                return r2.ordinal(t2.$D);
+              case "gggg":
+                return t2.weekYear();
+              case "GGGG":
+                return t2.isoWeekYear();
+              case "wo":
+                return r2.ordinal(t2.week(), "W");
+              case "w":
+              case "ww":
+                return n2.s(t2.week(), "w" === e3 ? 1 : 2, "0");
+              case "W":
+              case "WW":
+                return n2.s(t2.isoWeek(), "W" === e3 ? 1 : 2, "0");
+              case "k":
+              case "kk":
+                return n2.s(String(0 === t2.$H ? 24 : t2.$H), "k" === e3 ? 1 : 2, "0");
+              case "X":
+                return Math.floor(t2.$d.getTime() / 1e3);
+              case "x":
+                return t2.$d.getTime();
+              case "z":
+                return "[" + t2.offsetName() + "]";
+              case "zzz":
+                return "[" + t2.offsetName("long") + "]";
+              default:
+                return e3;
+            }
+          });
+          return s.bind(this)(a);
+        };
+      };
+    });
+  })(advancedFormat$1);
+  const advancedFormat = advancedFormat$1.exports;
+  var localizedFormat$1 = { exports: {} };
+  (function(module, exports) {
+    !function(e, t) {
+      module.exports = t();
+    }(commonjsGlobal, function() {
+      var e = { LTS: "h:mm:ss A", LT: "h:mm A", L: "MM/DD/YYYY", LL: "MMMM D, YYYY", LLL: "MMMM D, YYYY h:mm A", LLLL: "dddd, MMMM D, YYYY h:mm A" };
+      return function(t, o, n) {
+        var r = o.prototype, i = r.format;
+        n.en.formats = e, r.format = function(t2) {
+          void 0 === t2 && (t2 = "YYYY-MM-DDTHH:mm:ssZ");
+          var o2 = this.$locale().formats, n2 = function(t3, o3) {
+            return t3.replace(/(\[[^\]]+])|(LTS?|l{1,4}|L{1,4})/g, function(t4, n3, r2) {
+              var i2 = r2 && r2.toUpperCase();
+              return n3 || o3[r2] || e[r2] || o3[i2].replace(/(\[[^\]]+])|(MMMM|MM|DD|dddd)/g, function(e2, t5, o4) {
+                return t5 || o4.slice(1);
+              });
+            });
+          }(t2, void 0 === o2 ? {} : o2);
+          return i.call(this, n2);
+        };
+      };
+    });
+  })(localizedFormat$1);
+  const localizedFormat = localizedFormat$1.exports;
+  var hu$1 = { exports: {} };
+  (function(module, exports) {
+    !function(e, n) {
+      module.exports = n(dayjs_min.exports);
+    }(commonjsGlobal, function(e) {
+      function n(e2) {
+        return e2 && "object" == typeof e2 && "default" in e2 ? e2 : { default: e2 };
+      }
+      var t = n(e), r = { name: "hu", weekdays: "vas\xE1rnap_h\xE9tf\u0151_kedd_szerda_cs\xFCt\xF6rt\xF6k_p\xE9ntek_szombat".split("_"), weekdaysShort: "vas_h\xE9t_kedd_sze_cs\xFCt_p\xE9n_szo".split("_"), weekdaysMin: "v_h_k_sze_cs_p_szo".split("_"), months: "janu\xE1r_febru\xE1r_m\xE1rcius_\xE1prilis_m\xE1jus_j\xFAnius_j\xFAlius_augusztus_szeptember_okt\xF3ber_november_december".split("_"), monthsShort: "jan_feb_m\xE1rc_\xE1pr_m\xE1j_j\xFAn_j\xFAl_aug_szept_okt_nov_dec".split("_"), ordinal: function(e2) {
+        return e2 + ".";
+      }, weekStart: 1, relativeTime: { future: "%s m\xFAlva", past: "%s", s: function(e2, n2, t2, r2) {
+        return "n\xE9h\xE1ny m\xE1sodperc" + (r2 || n2 ? "" : "e");
+      }, m: function(e2, n2, t2, r2) {
+        return "egy perc" + (r2 || n2 ? "" : "e");
+      }, mm: function(e2, n2, t2, r2) {
+        return e2 + " perc" + (r2 || n2 ? "" : "e");
+      }, h: function(e2, n2, t2, r2) {
+        return "egy " + (r2 || n2 ? "\xF3ra" : "\xF3r\xE1ja");
+      }, hh: function(e2, n2, t2, r2) {
+        return e2 + " " + (r2 || n2 ? "\xF3ra" : "\xF3r\xE1ja");
+      }, d: function(e2, n2, t2, r2) {
+        return "egy " + (r2 || n2 ? "nap" : "napja");
+      }, dd: function(e2, n2, t2, r2) {
+        return e2 + " " + (r2 || n2 ? "nap" : "napja");
+      }, M: function(e2, n2, t2, r2) {
+        return "egy " + (r2 || n2 ? "h\xF3nap" : "h\xF3napja");
+      }, MM: function(e2, n2, t2, r2) {
+        return e2 + " " + (r2 || n2 ? "h\xF3nap" : "h\xF3napja");
+      }, y: function(e2, n2, t2, r2) {
+        return "egy " + (r2 || n2 ? "\xE9v" : "\xE9ve");
+      }, yy: function(e2, n2, t2, r2) {
+        return e2 + " " + (r2 || n2 ? "\xE9v" : "\xE9ve");
+      } }, formats: { LT: "H:mm", LTS: "H:mm:ss", L: "YYYY.MM.DD.", LL: "YYYY. MMMM D.", LLL: "YYYY. MMMM D. H:mm", LLLL: "YYYY. MMMM D., dddd H:mm" } };
+      return t.default.locale(r, null, true), r;
+    });
+  })(hu$1);
+  dayjs.extend(utc);
+  dayjs.extend(timezone);
+  dayjs.extend(advancedFormat);
+  dayjs.extend(localizedFormat);
+  const format = (datetime = "", format2 = "", timezone2 = "", locale = "hu") => {
+    timezone2 = timezone2 ? timezone2 : dayjs.tz.guess();
+    return dayjs(datetime).isValid() ? dayjs(datetime).tz(timezone2).locale(locale).format(format2) : "";
+  };
+  const convertMinToSec = (minutes) => {
+    const splitted = minutes.split(":");
+    return parseInt(splitted[0], 10) * 60 + parseInt(splitted[1], 10);
+  };
+  const convert = (data = []) => {
+    return {
+      result: [...data],
+      filteredRowsLength: 0,
+      value() {
+        return {
+          rows: this.result,
+          totalItems: this.filteredRowsLength ? this.filteredRowsLength : data.length
+        };
+      },
+      teamFilter(name) {
+        if (name) {
+          const filteredRows = filter$1(propEq$1("teamName", name), this.result);
+          this.filteredRowsLength = filteredRows.length;
+          this.result = filteredRows;
+        }
+        return this;
+      },
+      sorted(sort) {
+        if (!sort.sortTarget)
+          return this;
+        if (sort.orders[0].direction === SORT_STATE_ORIGINAL)
+          return this;
+        const sortDirection = ifElse$1(equals$1(SORT_STATE_ASCEND), always$1(ascend$1), always$1(descend$1));
+        this.result = sortWith$1(sort.orders.map((s) => compose(sortDirection(s.direction), prop$1)(s.target)))(this.result);
+        return this;
+      },
+      addIndex(target = null) {
+        this.result.reduce((rows, row, index) => {
+          const lastRow = rows[rows.length - 1] || [];
+          const isSameRow = target && lastRow[target] === row[target];
+          row.index = isSameRow ? lastRow.index : index + 1;
+          row.indexClass = isSameRow ? "is-duplicated" : null;
+          rows.push(row);
+          return rows;
+        }, []);
+        return this;
+      },
+      addContinuousIndex() {
+        this.result = this.result.map((row, index) => ({
+          ...row,
+          index: index + 1
+        }));
+        return this;
+      },
+      pagination(page, limit) {
+        page = Number(page);
+        limit = Number(limit);
+        const startIndex = (page - 1) * limit;
+        const endIndex = startIndex + limit;
+        this.result = this.result.slice(startIndex, endIndex);
+        return this;
+      },
+      playerName() {
+        this.result = this.result.map((row) => ({
+          ...row,
+          name: `${row.lastName} ${row.firstName}`
+        }));
+        return this;
+      },
+      schedule(timezone2 = "", locale = "hu") {
+        this.result = this.result.map((row) => ({
+          ...row,
+          gameResult: `${row.homeTeamScore}-${row.awayTeamScore}`,
+          gameDateDate: format(row.gameDate, "L dddd", timezone2, locale),
+          gameDateTime: format(row.gameDate, "HH:mm", timezone2, locale)
+        }));
+        return this;
+      },
+      convertTimes(targets = []) {
+        this.result = this.result.map((row) => {
+          targets.map((key) => row[`${key}Sec`] = convertMinToSec(row[key]));
+          return row;
+        });
+        return this;
+      }
+    };
+  };
+  const _sfc_main$a = {};
+  const _hoisted_1$9 = {
+    "aria-hidden": "true",
+    focusable: "false",
+    "data-prefix": "fas",
+    "data-icon": "sort",
+    class: "svg-inline--fa fa-sort fa-w-10",
+    role: "img",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 320 512"
+  };
+  const _hoisted_2$6 = /* @__PURE__ */ vue.createElementVNode("path", {
+    fill: "currentColor",
+    d: "M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z"
+  }, null, -1);
+  const _hoisted_3$6 = [
+    _hoisted_2$6
+  ];
+  function _sfc_render$7(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$9, _hoisted_3$6);
+  }
+  const IconSort = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$7]]);
+  const _sfc_main$9 = {};
+  const _hoisted_1$8 = {
+    "aria-hidden": "true",
+    focusable: "false",
+    "data-prefix": "fas",
+    "data-icon": "sort-down",
+    class: "svg-inline--fa fa-sort-down fa-w-10",
+    role: "img",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 320 512"
+  };
+  const _hoisted_2$5 = /* @__PURE__ */ vue.createElementVNode("path", {
+    fill: "currentColor",
+    d: "M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"
+  }, null, -1);
+  const _hoisted_3$5 = [
+    _hoisted_2$5
+  ];
+  function _sfc_render$6(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$8, _hoisted_3$5);
+  }
+  const IconSortAsc = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$6]]);
+  const _sfc_main$8 = {};
+  const _hoisted_1$7 = {
+    "aria-hidden": "true",
+    focusable: "false",
+    "data-prefix": "fas",
+    "data-icon": "sort-up",
+    class: "svg-inline--fa fa-sort-up fa-w-10",
+    role: "img",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 320 512"
+  };
+  const _hoisted_2$4 = /* @__PURE__ */ vue.createElementVNode("path", {
+    fill: "currentColor",
+    d: "M279 224H41c-21.4 0-32.1-25.9-17-41L143 64c9.4-9.4 24.6-9.4 33.9 0l119 119c15.2 15.1 4.5 41-16.9 41z"
+  }, null, -1);
+  const _hoisted_3$4 = [
+    _hoisted_2$4
+  ];
+  function _sfc_render$5(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$7, _hoisted_3$4);
+  }
+  const IconSortDesc = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$5]]);
   const I18nContext = Symbol("I18nContext");
   const state = vue.reactive({
     messages: {},
@@ -517,81 +1744,12 @@
       return data[$2];
     });
   };
-  const _sfc_main$7 = {};
-  const _hoisted_1$5 = {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "sort",
-    class: "svg-inline--fa fa-sort fa-w-10",
-    role: "img",
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 320 512"
-  };
-  const _hoisted_2$3 = /* @__PURE__ */ vue.createElementVNode("path", {
-    fill: "currentColor",
-    d: "M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z"
-  }, null, -1);
-  const _hoisted_3$3 = [
-    _hoisted_2$3
-  ];
-  function _sfc_render$4(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$5, _hoisted_3$3);
-  }
-  const IconSort = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$4]]);
-  const _sfc_main$6 = {};
-  const _hoisted_1$4 = {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "sort-down",
-    class: "svg-inline--fa fa-sort-down fa-w-10",
-    role: "img",
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 320 512"
-  };
-  const _hoisted_2$2 = /* @__PURE__ */ vue.createElementVNode("path", {
-    fill: "currentColor",
-    d: "M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"
-  }, null, -1);
-  const _hoisted_3$2 = [
-    _hoisted_2$2
-  ];
-  function _sfc_render$3(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$4, _hoisted_3$2);
-  }
-  const IconSortAsc = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$3]]);
-  const _sfc_main$5 = {};
-  const _hoisted_1$3 = {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "sort-up",
-    class: "svg-inline--fa fa-sort-up fa-w-10",
-    role: "img",
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 320 512"
-  };
-  const _hoisted_2$1 = /* @__PURE__ */ vue.createElementVNode("path", {
-    fill: "currentColor",
-    d: "M279 224H41c-21.4 0-32.1-25.9-17-41L143 64c9.4-9.4 24.6-9.4 33.9 0l119 119c15.2 15.1 4.5 41-16.9 41z"
-  }, null, -1);
-  const _hoisted_3$1 = [
-    _hoisted_2$1
-  ];
-  function _sfc_render$2(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$3, _hoisted_3$1);
-  }
-  const IconSortDesc = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$2]]);
-  const SORT_STATE_ORIGINAL = "original";
-  const SORT_STATE_DESCEND = "descend";
-  const SORT_STATE_ASCEND = "ascend";
-  const _hoisted_1$2 = ["onClick"];
-  const _hoisted_2 = { key: 0 };
-  const _hoisted_3 = ["colspan"];
-  const _hoisted_4 = { key: 1 };
-  const _hoisted_5 = ["colspan"];
-  const _sfc_main$4 = {
+  const _hoisted_1$6 = ["onClick"];
+  const _hoisted_2$3 = { key: 0 };
+  const _hoisted_3$3 = ["colspan"];
+  const _hoisted_4$1 = { key: 1 };
+  const _hoisted_5$1 = ["colspan"];
+  const _sfc_main$7 = {
     __name: "DataTable",
     props: {
       columns: {
@@ -611,76 +1769,76 @@
         default: false
       }
     },
-    setup(__props) {
+    emits: ["sort"],
+    setup(__props, { emit }) {
       const props = __props;
       const { t } = useI18n();
-      console.log(t("table.homeTeam.short").value);
       const columns = vue.computed(() => props.columns);
       const columnCount = vue.computed(() => Object.keys(props.columns).length);
-      const sortBy = (column, prop) => {
+      const sortBy = (column, prop2) => {
         if (!column.sortOrders)
           return;
-        this.$emit("sort", { target: prop, orders: column.sortOrders });
+        emit("sort", { target: prop2, orders: column.sortOrders });
       };
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("table", null, [
           vue.createElementVNode("thead", null, [
             vue.createElementVNode("tr", null, [
-              (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(columns), (column, prop) => {
+              (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(columns), (column, prop2) => {
                 return vue.openBlock(), vue.createElementBlock("th", {
-                  key: prop,
+                  key: prop2,
                   class: vue.normalizeClass([
                     [column.class],
                     {
-                      "is-active": prop === __props.sort.sortTarget && __props.sort.orders[0].direction !== vue.unref(SORT_STATE_ORIGINAL),
+                      "is-active": prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction !== vue.unref(SORT_STATE_ORIGINAL),
                       "is-sortable": column.sortOrders,
-                      "is-desc": prop === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_DESCEND),
-                      "is-asc": prop === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ASCEND)
+                      "is-desc": prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_DESCEND),
+                      "is-asc": prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ASCEND)
                     }
                   ]),
-                  onClick: ($event) => sortBy(column, prop)
+                  onClick: ($event) => sortBy(column, prop2)
                 }, [
-                  vue.renderSlot(_ctx.$slots, `header-${prop}`, { column }, () => [
-                    vue.createTextVNode(vue.toDisplayString(vue.unref(t)(column.label)), 1)
+                  vue.renderSlot(_ctx.$slots, `header-${prop2}`, { column }, () => [
+                    vue.createTextVNode(vue.toDisplayString(column.label), 1)
                   ]),
-                  column.sortOrders && prop !== __props.sort.sortTarget ? (vue.openBlock(), vue.createBlock(IconSort, {
+                  column.sortOrders && prop2 !== __props.sort.sortTarget ? (vue.openBlock(), vue.createBlock(IconSort, {
                     key: 0,
                     class: "icon-sort"
                   })) : vue.createCommentVNode("", true),
-                  prop === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ORIGINAL) ? (vue.openBlock(), vue.createBlock(IconSort, {
+                  prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ORIGINAL) ? (vue.openBlock(), vue.createBlock(IconSort, {
                     key: 1,
                     class: "icon-sort"
                   })) : vue.createCommentVNode("", true),
-                  prop === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_DESCEND) ? (vue.openBlock(), vue.createBlock(IconSortAsc, {
+                  prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_DESCEND) ? (vue.openBlock(), vue.createBlock(IconSortAsc, {
                     key: 2,
                     class: "icon-sort"
                   })) : vue.createCommentVNode("", true),
-                  prop === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ASCEND) ? (vue.openBlock(), vue.createBlock(IconSortDesc, {
+                  prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ASCEND) ? (vue.openBlock(), vue.createBlock(IconSortDesc, {
                     key: 3,
                     class: "icon-sort"
                   })) : vue.createCommentVNode("", true)
-                ], 10, _hoisted_1$2);
+                ], 10, _hoisted_1$6);
               }), 128))
             ])
           ]),
           vue.createElementVNode("tbody", null, [
             (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(props.rows, (row, index) => {
               return vue.openBlock(), vue.createElementBlock("tr", { key: index }, [
-                (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(columns), (_, prop) => {
+                (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(columns), (_, prop2) => {
                   return vue.openBlock(), vue.createElementBlock("td", {
-                    key: prop,
+                    key: prop2,
                     class: vue.normalizeClass([
                       [_.class],
                       {
-                        "is-active": prop === __props.sort.sortTarget && __props.sort.orders[0].direction !== vue.unref(SORT_STATE_ORIGINAL)
+                        "is-active": prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction !== vue.unref(SORT_STATE_ORIGINAL)
                       }
                     ])
                   }, [
-                    vue.renderSlot(_ctx.$slots, `cell-${prop}`, {
+                    vue.renderSlot(_ctx.$slots, `cell-${prop2}`, {
                       row,
-                      prop
+                      prop: prop2
                     }, () => [
-                      vue.createTextVNode(vue.toDisplayString(row[prop]), 1)
+                      vue.createTextVNode(vue.toDisplayString(row[prop2]), 1)
                     ])
                   ], 2);
                 }), 128))
@@ -688,16 +1846,52 @@
             }), 128))
           ]),
           vue.createElementVNode("tfoot", null, [
-            __props.rows.length === 0 && !__props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_2, [
-              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.noData")), 9, _hoisted_3)
+            __props.rows.length === 0 && !__props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_2$3, [
+              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.noData")), 9, _hoisted_3$3)
             ])) : vue.createCommentVNode("", true),
-            __props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_4, [
-              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.loading")), 9, _hoisted_5)
+            __props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_4$1, [
+              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.loading")), 9, _hoisted_5$1)
             ])) : vue.createCommentVNode("", true)
           ])
         ]);
       };
     }
+  };
+  const useColumns = (columns, hiddenColumns = "") => {
+    const error = vue.ref("");
+    const { t } = useI18n();
+    if (hiddenColumns) {
+      try {
+        const columnsToHide = validateColumnsName(columns, hiddenColumns);
+        columns = omit$1(columnsToHide, columns);
+      } catch (err) {
+        error.value = t("errors.undefinedColumn", { column: err });
+      }
+    }
+    const convert2 = (column) => {
+      var _a2, _b;
+      return {
+        ...column,
+        ...column.label && { label: t((_a2 = column.label) != null ? _a2 : "") },
+        ...column.tooltip && { tooltip: t((_b = column.tooltip) != null ? _b : "") }
+      };
+    };
+    const converted = map$1(convert2, columns);
+    return {
+      columns: converted,
+      error
+    };
+  };
+  const validateColumnsName = (columns, hiddenColumns = "") => {
+    const hiddenColumnsArray = map$1(trim$1, split$1(",", hiddenColumns));
+    const columnsArray = keys$1(columns);
+    if (hiddenColumnsArray[0] === "")
+      return resolve([]);
+    const index = hiddenColumnsArray.findIndex((column) => !columnsArray.includes(column));
+    if (index > -1) {
+      throw hiddenColumnsArray[index];
+    }
+    return hiddenColumnsArray;
   };
   const COLUMNS_SCHEDULE = {
     name: {
@@ -746,7 +1940,17 @@
       label: ""
     }
   };
-  const _sfc_main$3 = {
+  const ResponsiveTable_vue_vue_type_style_index_0_lang = "";
+  const _sfc_main$6 = {};
+  const _hoisted_1$5 = { class: "table-responsive" };
+  function _sfc_render$4(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$5, [
+      vue.renderSlot(_ctx.$slots, "default")
+    ]);
+  }
+  const ResponsiveTable = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$4]]);
+  const _hoisted_1$4 = { key: 0 };
+  const _sfc_main$5 = {
     __name: "ScheduleTable",
     props: {
       rows: {
@@ -756,23 +1960,28 @@
       isLoading: {
         type: Boolean,
         deafult: false
+      },
+      hideColumns: {
+        type: String,
+        default: ""
       }
     },
     setup(__props) {
       const props = __props;
-      const { t, locale, setLocale } = useI18n();
-      const msg = t("table.gameDateTime.short", { offsetName: "CET" });
+      const { columns, error } = useColumns(COLUMNS_SCHEDULE, props.hideColumns);
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.createTextVNode(vue.toDisplayString(vue.unref(msg)) + " " + vue.toDisplayString(vue.unref(locale)) + " ", 1),
-          vue.createElementVNode("button", {
-            onClick: _cache[0] || (_cache[0] = ($event) => vue.unref(setLocale)(vue.unref(locale) === "en" ? "hu" : "en"))
-          }, "EN"),
-          vue.createVNode(_sfc_main$4, {
-            columns: vue.unref(COLUMNS_SCHEDULE),
-            rows: props.rows,
-            "is-loading": __props.isLoading
-          }, null, 8, ["columns", "rows", "is-loading"])
+          vue.unref(error) ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1$4, vue.toDisplayString(vue.unref(error)), 1)) : vue.createCommentVNode("", true),
+          vue.createVNode(ResponsiveTable, null, {
+            default: vue.withCtx(() => [
+              vue.createVNode(_sfc_main$7, {
+                columns: vue.unref(columns),
+                rows: props.rows,
+                "is-loading": __props.isLoading
+              }, null, 8, ["columns", "rows", "is-loading"])
+            ]),
+            _: 1
+          })
         ], 64);
       };
     }
@@ -1432,7 +2641,7 @@
       }
     }
   };
-  const _sfc_main$2 = vue.defineComponent({
+  const _sfc_main$4 = vue.defineComponent({
     props: {
       locale: {
         type: String,
@@ -1449,43 +2658,206 @@
       });
     }
   });
-  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.renderSlot(_ctx.$slots, "default");
   }
-  const I18NProvider = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1]]);
-  const fetchVBRData = async (route, apiKey, data) => {
-    const url = `${"https://api.icehockey.hu/vbr"}${route}?${objectToQueryString(data)}`;
-    return new Promise((resolve, reject) => {
-      fetch(url, {
-        method: "GET",
-        cache: "no-cache",
-        headers: {
-          "Content-Type": "application/json",
-          "X-API-KEY": apiKey || window.__MJSZ_VBR_WIDGET__.apiKey
-        }
-      }).then((response) => {
-        return response.json();
-      }).then((response) => {
-        if (response.error)
-          return reject(response);
-        resolve(response.data);
-      }).catch((error) => {
-        reject(error);
-      });
-    });
+  const I18NProvider = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3]]);
+  const _sfc_main$3 = {};
+  const _hoisted_1$3 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    "stroke-width": "2",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round"
   };
-  const objectToQueryString = (obj) => {
-    return Object.keys(obj).map((key) => key + "=" + obj[key]).join("&");
-  };
-  const ResponsiveTable_vue_vue_type_style_index_0_lang = "";
-  const _sfc_main$1 = {};
-  const _hoisted_1$1 = { class: "table-responsive" };
-  function _sfc_render(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$1, [
-      vue.renderSlot(_ctx.$slots, "default")
-    ]);
+  const _hoisted_2$2 = /* @__PURE__ */ vue.createElementVNode("polyline", { points: "15 18 9 12 15 6" }, null, -1);
+  const _hoisted_3$2 = [
+    _hoisted_2$2
+  ];
+  function _sfc_render$2(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$3, _hoisted_3$2);
   }
-  const ResponsiveTable = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
+  const IconLeft = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$2]]);
+  const _sfc_main$2 = {};
+  const _hoisted_1$2 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    "stroke-width": "2",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round"
+  };
+  const _hoisted_2$1 = /* @__PURE__ */ vue.createElementVNode("polyline", { points: "9 18 15 12 9 6" }, null, -1);
+  const _hoisted_3$1 = [
+    _hoisted_2$1
+  ];
+  function _sfc_render$1(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$2, _hoisted_3$1);
+  }
+  const IconRight = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1]]);
+  const common_css_vue_type_style_index_0_src_true_lang = "";
+  const paginator_scss_vue_type_style_index_1_src_7148e40c_scoped_7148e40c_lang = "";
+  const _sfc_main$1 = {
+    name: "Paginator",
+    components: {
+      IconLeft,
+      IconRight
+    },
+    props: {
+      page: {
+        type: Number,
+        required: false,
+        default: 0,
+        validator: (value) => {
+          return value >= 0;
+        }
+      },
+      itemsPerPage: {
+        type: Number,
+        required: false,
+        default: 10,
+        validator: (value) => {
+          return value > 0;
+        }
+      },
+      totalItems: {
+        type: Number,
+        required: true,
+        validator: (value) => {
+          return value >= 0;
+        }
+      },
+      rangeLength: {
+        type: Number,
+        default: 3,
+        validator: (value) => {
+          return value >= 2;
+        }
+      },
+      isCompact: {
+        type: Boolean,
+        default: false
+      }
+    },
+    computed: {
+      pageCount() {
+        return Math.ceil(this.totalItems / this.itemsPerPage);
+      },
+      range() {
+        const page = this.page - 1;
+        const range = Array.from({ length: this.pageCount }, (_, i) => i + 1);
+        const minus = Math.floor(this.rangeLength / 2);
+        let startIndex = Math.max(page - minus, 0);
+        if (startIndex + this.rangeLength >= this.pageCount) {
+          startIndex = Math.max(this.pageCount - this.rangeLength, 0);
+        }
+        return range.slice(startIndex, startIndex + this.rangeLength);
+      }
+    },
+    methods: {
+      pageStep(v) {
+        const page = this.page + v;
+        if (this.validPage(page))
+          this.$emit("change", page);
+      },
+      goTo(page) {
+        if (this.validPage(page))
+          this.$emit("change", page);
+      },
+      validPage(page) {
+        return page <= this.pageCount && page > 0;
+      }
+    }
+  };
+  const _withScopeId = (n) => (vue.pushScopeId("data-v-7148e40c"), n = n(), vue.popScopeId(), n);
+  const _hoisted_1$1 = {
+    key: 0,
+    class: "mjsz-vbr-pagination"
+  };
+  const _hoisted_2 = {
+    key: 1,
+    class: "is-extended"
+  };
+  const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("span", null, "...", -1));
+  const _hoisted_4 = [
+    _hoisted_3
+  ];
+  const _hoisted_5 = ["onClick"];
+  const _hoisted_6 = {
+    key: 2,
+    class: "is-extended"
+  };
+  const _hoisted_7 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("span", null, "...", -1));
+  const _hoisted_8 = [
+    _hoisted_7
+  ];
+  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_IconLeft = vue.resolveComponent("IconLeft");
+    const _component_IconRight = vue.resolveComponent("IconRight");
+    return $options.pageCount > 1 ? (vue.openBlock(), vue.createElementBlock("ul", _hoisted_1$1, [
+      vue.createElementVNode("li", {
+        class: vue.normalizeClass({ "is-disabled": $props.page === 1 })
+      }, [
+        vue.createElementVNode("a", {
+          href: "#",
+          onClick: _cache[0] || (_cache[0] = vue.withModifiers(($event) => $options.pageStep(-1), ["prevent"]))
+        }, [
+          vue.renderSlot(_ctx.$slots, "prev", {}, () => [
+            vue.createVNode(_component_IconLeft, { class: "icon paginator-left" })
+          ], true)
+        ])
+      ], 2),
+      !$props.isCompact ? (vue.openBlock(), vue.createElementBlock("li", {
+        key: 0,
+        class: vue.normalizeClass({ "is-disabled": $props.page === 1 })
+      }, [
+        vue.createElementVNode("a", {
+          href: "#",
+          type: "button",
+          onClick: _cache[1] || (_cache[1] = vue.withModifiers(($event) => $options.goTo(1), ["prevent"]))
+        }, " 1 ")
+      ], 2)) : vue.createCommentVNode("", true),
+      !$props.isCompact ? (vue.openBlock(), vue.createElementBlock("li", _hoisted_2, _hoisted_4)) : vue.createCommentVNode("", true),
+      (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($options.range, (n) => {
+        return vue.openBlock(), vue.createElementBlock("li", {
+          key: n,
+          class: vue.normalizeClass({ "is-active": n === $props.page })
+        }, [
+          vue.createElementVNode("a", {
+            href: "#",
+            onClick: vue.withModifiers(($event) => $options.goTo(n), ["prevent"])
+          }, vue.toDisplayString(n), 9, _hoisted_5)
+        ], 2);
+      }), 128)),
+      !$props.isCompact ? (vue.openBlock(), vue.createElementBlock("li", _hoisted_6, _hoisted_8)) : vue.createCommentVNode("", true),
+      !$props.isCompact ? (vue.openBlock(), vue.createElementBlock("li", {
+        key: 3,
+        class: vue.normalizeClass({ "is-disabled": $props.page === $options.pageCount })
+      }, [
+        vue.createElementVNode("a", {
+          href: "#",
+          onClick: _cache[2] || (_cache[2] = vue.withModifiers(($event) => $options.goTo($options.pageCount), ["prevent"]))
+        }, vue.toDisplayString($options.pageCount), 1)
+      ], 2)) : vue.createCommentVNode("", true),
+      vue.createElementVNode("li", {
+        class: vue.normalizeClass({ "is-disabled": $props.page === $options.pageCount })
+      }, [
+        vue.createElementVNode("a", {
+          href: "#",
+          onClick: _cache[3] || (_cache[3] = vue.withModifiers(($event) => $options.pageStep(1), ["prevent"]))
+        }, [
+          vue.renderSlot(_ctx.$slots, "next", {}, () => [
+            vue.createVNode(_component_IconRight, { class: "icon paginator-left" })
+          ], true)
+        ])
+      ], 2)
+    ])) : vue.createCommentVNode("", true);
+  }
+  const Paginator = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__scopeId", "data-v-7148e40c"]]);
+  const _style_2 = ".mjsz-vbr-pagination {\n  display: flex;\n  flex-direction: row;\n  list-style-type: none;\n  margin: 10px 0;\n  padding: 0;\n}\n.mjsz-vbr-pagination li {\n  display: flex;\n}\n.mjsz-vbr-pagination li a,\n.mjsz-vbr-pagination li span {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 6px 12px;\n  text-decoration: none;\n  color: var(--vbr-widget-paginator-color);\n  border: 1px solid var(--vbr-widget-paginator-border-color);\n  background-color: var(--vbr-widget-paginator-bg-color);\n  margin-left: -1px;\n}\n.mjsz-vbr-pagination li a .icon,\n.mjsz-vbr-pagination li span .icon {\n  width: 16px;\n  height: 16px;\n  margin: 0 -4px;\n}\n.mjsz-vbr-pagination li span {\n  border: none;\n  margin-left: 0;\n}\n.mjsz-vbr-pagination li:hover:not(.mjsz-vbr-pagination li.is-disabled) a {\n  color: var(--vbr-widget-paginator-hover-color);\n  background-color: var(--vbr-widget-paginator-hover-bg-color);\n}\n.mjsz-vbr-pagination li.is-disabled a,\n.mjsz-vbr-pagination li.is-disabled span {\n  color: var(--vbr-widget-paginator-disabled-color);\n  background-color: var(--vbr-widget-paginator-bg-color);\n  pointer-events: none;\n  cursor: default;\n}\n.mjsz-vbr-pagination li:focus a, .mjsz-vbr-pagination li.is-active a {\n  color: var(--vbr-widget-paginator-active-color);\n  background-color: var(--vbr-widget-paginator-active-bg-color);\n  border-color: var(--vbr-widget-paginator-active-bg-color);\n  cursor: default;\n}";
   const _hoisted_1 = { key: 0 };
   const _sfc_main = {
     __name: "Schedule.ce",
@@ -1505,17 +2877,38 @@
       apiKey: {
         type: String,
         default: "7b4f4d1b466b5a3572990ae24452abf2a086e7ee"
+      },
+      pagination: {
+        type: Boolean,
+        default: true
+      },
+      limit: {
+        type: Number,
+        default: 20
       }
     },
     setup(__props) {
       const props = __props;
       const locale = vue.computed(() => props.locale);
-      const { state: rows, error, isLoading } = useAsyncState(
+      const {
+        state: rows,
+        error,
+        isLoading
+      } = useAsyncState(
         fetchVBRData("/v1/gamesList", props.apiKey, {
           championshipId: Number(props.championshipId),
           division: props.division
-        })
+        }),
+        []
       );
+      const page = vue.ref(1);
+      const timezone2 = dayjs.tz.guess();
+      const convertedRows = vue.computed(() => {
+        return convert(vue.unref(rows)).schedule(timezone2, vue.unref(locale)).pagination(vue.unref(page), props.limit).value();
+      });
+      const onPaginatorChange = (value) => {
+        page.value = value;
+      };
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", null, [
           vue.createVNode(I18NProvider, { locale: vue.unref(locale) }, {
@@ -1523,15 +2916,17 @@
               var _a2;
               return [
                 ((_a2 = vue.unref(error)) == null ? void 0 : _a2.error) ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1, vue.toDisplayString(vue.unref(error).message), 1)) : vue.createCommentVNode("", true),
-                vue.createVNode(ResponsiveTable, null, {
-                  default: vue.withCtx(() => [
-                    vue.createVNode(_sfc_main$3, {
-                      rows: vue.unref(rows),
-                      "is-loading": vue.unref(isLoading)
-                    }, null, 8, ["rows", "is-loading"])
-                  ]),
-                  _: 1
-                })
+                vue.createVNode(_sfc_main$5, {
+                  rows: vue.unref(convertedRows).rows,
+                  "is-loading": vue.unref(isLoading)
+                }, null, 8, ["rows", "is-loading"]),
+                vue.createVNode(Paginator, {
+                  page: page.value,
+                  "items-per-page": props.limit,
+                  "total-items": vue.unref(rows).length,
+                  "range-length": 5,
+                  onChange: onPaginatorChange
+                }, null, 8, ["page", "items-per-page", "total-items"])
               ];
             }),
             _: 1
@@ -1540,7 +2935,8 @@
       };
     }
   };
+  const Schedule = /* @__PURE__ */ _export_sfc(_sfc_main, [["styles", [_style_0, _style_1, _style_2]]]);
   customElements.define("vbr-test-vue", vue.defineCustomElement(Test));
   customElements.define("vbr-test2-vue", vue.defineCustomElement(Test2));
-  customElements.define("vbr-schedule", vue.defineCustomElement(_sfc_main));
+  customElements.define("vbr-schedule", vue.defineCustomElement(Schedule));
 })(Vue);

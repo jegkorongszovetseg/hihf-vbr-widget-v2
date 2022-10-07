@@ -1,6 +1,28 @@
+:root,
 :host {
   --text-color: red;
   --bg-color: white;
+
+  --vbr-widget-primary-color-0: #ffffff;
+  --vbr-widget-primary-color-50: #eceff1;
+  --vbr-widget-primary-color-100: #cfd8dc;
+  --vbr-widget-primary-color-200: #b0bec5;
+  --vbr-widget-primary-color-300: #90a4ae;
+  --vbr-widget-primary-color-400: #78909c;
+  --vbr-widget-primary-color-500: #607d8b;
+  --vbr-widget-primary-color-600: #546e7a;
+  --vbr-widget-primary-color-700: #455a64;
+  --vbr-widget-primary-color-800: #37474f;
+  --vbr-widget-primary-color-900: #263238;
+
+  --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);
+  --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);
+  --vbr-widget-paginator-hover-color: var(--vbr-widget-primary-color-700);
+  --vbr-widget-paginator-hover-bg-color: var(--vbr-widget-primary-color-100);
+  --vbr-widget-paginator-border-color: var(--vbr-widget-primary-color-100);
+  --vbr-widget-paginator-active-color: var(--vbr-widget-primary-color-0);
+  --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);
+  --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);
 }
 
 .text {

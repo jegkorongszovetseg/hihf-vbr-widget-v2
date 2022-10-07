@@ -26,7 +26,6 @@ export default defineConfig({
     sourcemap: false,
     // Reduce bloat from legacy polyfills.
     target: 'modules',
-    // Leave minification up to applications.
     minify: false,
   },
   plugins: [
