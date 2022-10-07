@@ -21,16 +21,12 @@ const props = defineProps({
   },
 });
 
-const { columns, error } = useColumns(COLUMNS_SCHEDULE, 'gameDateDate, gameDateTime');
-
-const onSort = () => {
-  console.log('SORT');
-};
+const { columns, error } = useColumns(COLUMNS_SCHEDULE, props.hideColumns);
 </script>
 
 <template>
   <div v-if="error">{{ error }}</div>
   <ResponsiveTable>
-    <DataTable :columns="columns" :rows="props.rows" :is-loading="isLoading" @sort="onSort"></DataTable>
+    <DataTable :columns="columns" :rows="props.rows" :is-loading="isLoading"></DataTable>
   </ResponsiveTable>
 </template>
