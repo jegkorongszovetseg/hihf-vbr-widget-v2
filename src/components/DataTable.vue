@@ -60,7 +60,7 @@ const sortBy = (column, prop) => {
           @click="sortBy(column, prop)"
         >
           <slot :name="`header-${prop}`" :column="column">
-            {{ t(column.label) }}
+            {{ column.label }}
           </slot>
           <IconSort v-if="column.sortOrders && prop !== sort.sortTarget" class="icon-sort"></IconSort>
           <IconSort

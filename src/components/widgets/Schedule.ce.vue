@@ -5,7 +5,6 @@ import { fetchVBRData } from '../../composables/useFetchVBRApi';
 // import { useI18n } from '../../composables/useI18n';
 import ScheduleTable from './ScheduleTable.vue';
 import I18NProvider from '../I18NProvider.vue';
-import ResponsiveTable from '../ResponsiveTable.vue';
 
 const props = defineProps({
   locale: {
@@ -51,9 +50,7 @@ const {
       {{ locale }}
       <button @click="i18nlocale = locale === 'en' ? 'hu' : 'en'">{{ locale === 'en' ? 'hu' : 'en' }}</button> -->
       <div v-if="error?.error">{{ error.message }}</div>
-      <ResponsiveTable v-else>
-        <ScheduleTable :rows="rows" :is-loading="isLoading"></ScheduleTable>
-      </ResponsiveTable>
+      <ScheduleTable v-else :rows="rows" :is-loading="isLoading"></ScheduleTable>
     </I18NProvider>
   </div>
 </template>
