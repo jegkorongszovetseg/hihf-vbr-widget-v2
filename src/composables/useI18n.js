@@ -1,5 +1,5 @@
 import { computed, inject, provide, reactive } from 'vue';
-import { path } from 'ramda';
+import { path, isEmpty } from 'ramda';
 
 const I18nContext = Symbol('I18nContext');
 
@@ -14,13 +14,14 @@ export const createI18n = ({ messages = {}, locale = '', fallbackLocale = '' }) 
   state.locale = locale;
   state.fallbackLocale = fallbackLocale;
 
-  const translate = (key) => {
+  const translate = (key, data = {}) => {
+    const hasInterpolation = !isEmpty(data);
     const keyArray = key.split('.') || [];
     let translation = computed(() => getTranslation(state.locale, keyArray, state.messages));
     if (!translation.value) {
       translation = computed(() => getTranslation(state.fallbackLocale, keyArray, state.messages));
     }
-    return translation;
+    return hasInterpolation ? computed(() => replacer(translation.value, data)) : translation;
   };
 
   function getTranslation(locale, keys, messages) {
@@ -71,4 +72,10 @@ const useI18nContext = () => {
     throw new Error('Privider is missing a parent component.');
   }
   return api;
+};
+
+const replacer = function (tpl, data) {
+  return tpl.replace(/\{(\w+)\}/g, function ($1, $2) {
+    return data[$2];
+  });
 };

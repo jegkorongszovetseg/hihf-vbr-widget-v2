@@ -4,6 +4,6 @@ import Schedule from './components/widgets/Schedule.ce.vue';
 
 <template>
   <div>
-    <Schedule></Schedule>
+    <Schedule locale="en"></Schedule>
   </div>
 </template>
