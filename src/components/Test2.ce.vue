@@ -11,4 +11,3 @@
   </template>
   
   <style src="../assets/common.css"></style>
-  <style src="../assets/table.css"></style>

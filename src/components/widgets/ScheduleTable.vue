@@ -27,6 +27,7 @@ const { columns, error } = useColumns(COLUMNS_SCHEDULE, props.hideColumns);
 <template>
   <div v-if="error">{{ error }}</div>
   <ResponsiveTable>
-    <DataTable :columns="columns" :rows="props.rows" :is-loading="isLoading"></DataTable>
+    <DataTable class="mjsz-vbr-table" :columns="columns" :rows="props.rows" :is-loading="isLoading"></DataTable>
   </ResponsiveTable>
 </template>
+ 

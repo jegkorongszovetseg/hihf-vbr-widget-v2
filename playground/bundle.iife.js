@@ -8,18 +8,18 @@
     return target;
   };
   const _sfc_main$d = {};
-  const _hoisted_1$c = { class: "child" };
-  function _sfc_render$8(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$c, "CHILD");
+  const _hoisted_1$b = { class: "child" };
+  function _sfc_render$7(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$b, "CHILD");
   }
-  const Child = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$8]]);
-  const _style_0 = ":host {\n  --text-color: red;\n  --bg-color: white;\n\n  --vbr-widget-primary-color-0: #ffffff;\n  --vbr-widget-primary-color-50: #eceff1;\n  --vbr-widget-primary-color-100: #cfd8dc;\n  --vbr-widget-primary-color-200: #b0bec5;\n  --vbr-widget-primary-color-300: #90a4ae;\n  --vbr-widget-primary-color-400: #78909c;\n  --vbr-widget-primary-color-500: #607d8b;\n  --vbr-widget-primary-color-600: #546e7a;\n  --vbr-widget-primary-color-700: #455a64;\n  --vbr-widget-primary-color-800: #37474f;\n  --vbr-widget-primary-color-900: #263238;\n\n  --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-hover-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-paginator-hover-bg-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);\n}\n.text {\n  width: 100%;\n  text-align: center;\n  color: var(--text-color);\n}\n.child {\n  width: 100%;\n  text-align: center;\n  font-weight: 700;\n  background-color: var(--bg-color);\n}\n";
-  const _hoisted_1$b = { class: "text" };
+  const Child = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$7]]);
+  const _style_0 = ":root,\n:host {\n  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;\n  --text-color: red;\n  --bg-color: white;\n\n  --vbr-widget-primary-color-0: #ffffff;\n  --vbr-widget-primary-color-50: #eceff1;\n  --vbr-widget-primary-color-100: #cfd8dc;\n  --vbr-widget-primary-color-200: #b0bec5;\n  --vbr-widget-primary-color-300: #90a4ae;\n  --vbr-widget-primary-color-400: #78909c;\n  --vbr-widget-primary-color-500: #607d8b;\n  --vbr-widget-primary-color-600: #546e7a;\n  --vbr-widget-primary-color-700: #455a64;\n  --vbr-widget-primary-color-800: #37474f;\n  --vbr-widget-primary-color-900: #263238;\n\n  --vbr-widget-secondary-color-100: #dcedc8;\n  --vbr-widget-secondary-color-200: #badb94;\n  --vbr-widget-secondary-color-300: #aed581;\n  --vbr-widget-secondary-color-400: #9ccc65;\n  --vbr-widget-secondary-color-500: #8bc34a;\n  --vbr-widget-secondary-color-700: #689f38;\n  --vbr-widget-secondary-color-800: #558b2f;\n  --vbr-widget-secondary-color-900: #33691e;\n\n  --vbr-widget-danger-color-50: #ffebee;\n  --vbr-widget-danger-color-100: #ffcdd2;\n  --vbr-widget-danger-color-200: #ef9a9a;\n  --vbr-widget-danger-color-300: #e57373;\n  --vbr-widget-danger-color-400: #ef5350;\n  --vbr-widget-danger-color-500: #f44336;\n  --vbr-widget-danger-color-700: #d32f2f;\n  --vbr-widget-danger-color-900: #b71c1c;\n  --vbr-widget-danger-color-a400: #ff1744;\n\n  --vbr-widget-table-header-font-size: 12px;\n  --vbr-widget-table-default-column-width: 30px;\n  --vbr-widget-table-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-neutral-color: var(--vbr-widget-primary-color-300);\n  --vbr-widget-table-header-bg-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-color: var(--vbr-widget-primary-color-200);\n  --vbr-widget-table-table-header-active-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-table-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-hover-bg-color: var(--vbr-widget-secondary-color-100);\n  --vbr-widget-table-active-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-bg-color: var(--vbr-widget-secondary-color-200);\n  --vbr-widget-table-active-even-bg-color: var(--vbr-widget-secondary-color-300);\n  --vbr-widget-table-active-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-hover-bg-color: var(--vbr-widget-secondary-color-400);\n  --vbr-widget-table-portrait-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-table-portrait-bg-color: var(--vbr-widget-primary-color-50);\n  --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-600);\n  --vbr-widget-table-cell-dark-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-table-stripped-bg-color: #f8f9fa;\n  --vbr-widget-table-label-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-table-label-bg-color: var(--vbr-widget-primary-color-50);\n\n  --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-hover-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-paginator-hover-bg-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);\n}\n.mjsz-vbr-text {\n  width: 100%;\n  text-align: center;\n  color: var(--text-color);\n}\n.mjsz-vbr-child {\n  width: 100%;\n  text-align: center;\n  font-weight: 700;\n  background-color: var(--bg-color);\n}\n.mjsz-vbr-tteeest _vb {\n    color: red;\n}\n";
+  const _hoisted_1$a = { class: "text" };
   const _sfc_main$c = {
     __name: "Test.ce",
     setup(__props) {
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$b, [
+        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$a, [
           vue.createTextVNode(" TEST "),
           vue.createVNode(Child)
         ]);
@@ -27,14 +27,13 @@
     }
   };
   const Test = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["styles", [_style_0]]]);
-  const _style_1 = ".table {\n  background-color: beige;\n}\n";
-  const _hoisted_1$a = { class: "text" };
+  const _hoisted_1$9 = { class: "text" };
   const _hoisted_2$7 = /* @__PURE__ */ vue.createElementVNode("div", { class: "table" }, "Table", -1);
   const _sfc_main$b = {
     __name: "Test2.ce",
     setup(__props) {
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$a, [
+        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$9, [
           vue.createTextVNode(" TEST2 "),
           vue.createVNode(Child),
           _hoisted_2$7
@@ -42,7 +41,7 @@
       };
     }
   };
-  const Test2 = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["styles", [_style_0, _style_1]]]);
+  const Test2 = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["styles", [_style_0]]]);
   var _a;
   const isClient = typeof window !== "undefined";
   const noop = () => {
@@ -1614,7 +1613,7 @@
     };
   };
   const _sfc_main$a = {};
-  const _hoisted_1$9 = {
+  const _hoisted_1$8 = {
     "aria-hidden": "true",
     focusable: "false",
     "data-prefix": "fas",
@@ -1631,12 +1630,12 @@
   const _hoisted_3$6 = [
     _hoisted_2$6
   ];
-  function _sfc_render$7(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$9, _hoisted_3$6);
+  function _sfc_render$6(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$8, _hoisted_3$6);
   }
-  const IconSort = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$7]]);
+  const IconSort = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$6]]);
   const _sfc_main$9 = {};
-  const _hoisted_1$8 = {
+  const _hoisted_1$7 = {
     "aria-hidden": "true",
     focusable: "false",
     "data-prefix": "fas",
@@ -1653,12 +1652,12 @@
   const _hoisted_3$5 = [
     _hoisted_2$5
   ];
-  function _sfc_render$6(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$8, _hoisted_3$5);
+  function _sfc_render$5(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$7, _hoisted_3$5);
   }
-  const IconSortAsc = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$6]]);
+  const IconSortAsc = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$5]]);
   const _sfc_main$8 = {};
-  const _hoisted_1$7 = {
+  const _hoisted_1$6 = {
     "aria-hidden": "true",
     focusable: "false",
     "data-prefix": "fas",
@@ -1675,10 +1674,10 @@
   const _hoisted_3$4 = [
     _hoisted_2$4
   ];
-  function _sfc_render$5(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$7, _hoisted_3$4);
+  function _sfc_render$4(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$6, _hoisted_3$4);
   }
-  const IconSortDesc = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$5]]);
+  const IconSortDesc = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$4]]);
   const I18nContext = Symbol("I18nContext");
   const state = vue.reactive({
     messages: {},
@@ -1744,7 +1743,11 @@
       return data[$2];
     });
   };
-  const _hoisted_1$6 = ["onClick"];
+  const useMainClass = (className) => {
+    const prefix = "mjsz-vbr-";
+    return prefix + className;
+  };
+  const _hoisted_1$5 = ["onClick"];
   const _hoisted_2$3 = { key: 0 };
   const _hoisted_3$3 = ["colspan"];
   const _hoisted_4$1 = { key: 1 };
@@ -1773,6 +1776,7 @@
     setup(__props, { emit }) {
       const props = __props;
       const { t } = useI18n();
+      const mainClassName = useMainClass("table");
       const columns = vue.computed(() => props.columns);
       const columnCount = vue.computed(() => Object.keys(props.columns).length);
       const sortBy = (column, prop2) => {
@@ -1781,7 +1785,9 @@
         emit("sort", { target: prop2, orders: column.sortOrders });
       };
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("table", null, [
+        return vue.openBlock(), vue.createElementBlock("table", {
+          class: vue.normalizeClass(vue.unref(mainClassName))
+        }, [
           vue.createElementVNode("thead", null, [
             vue.createElementVNode("tr", null, [
               (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(columns), (column, prop2) => {
@@ -1817,7 +1823,7 @@
                     key: 3,
                     class: "icon-sort"
                   })) : vue.createCommentVNode("", true)
-                ], 10, _hoisted_1$6);
+                ], 10, _hoisted_1$5);
               }), 128))
             ])
           ]),
@@ -1853,7 +1859,7 @@
               vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.loading")), 9, _hoisted_5$1)
             ])) : vue.createCommentVNode("", true)
           ])
-        ]);
+        ], 2);
       };
     }
   };
@@ -1940,15 +1946,19 @@
       label: ""
     }
   };
-  const ResponsiveTable_vue_vue_type_style_index_0_lang = "";
-  const _sfc_main$6 = {};
-  const _hoisted_1$5 = { class: "table-responsive" };
-  function _sfc_render$4(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$5, [
-      vue.renderSlot(_ctx.$slots, "default")
-    ]);
-  }
-  const ResponsiveTable = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$4]]);
+  const _sfc_main$6 = {
+    __name: "ResponsiveTable",
+    setup(__props) {
+      const mainClassName = useMainClass("table-responsive");
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", {
+          class: vue.normalizeClass(vue.unref(mainClassName))
+        }, [
+          vue.renderSlot(_ctx.$slots, "default")
+        ], 2);
+      };
+    }
+  };
   const _hoisted_1$4 = { key: 0 };
   const _sfc_main$5 = {
     __name: "ScheduleTable",
@@ -1972,9 +1982,10 @@
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
           vue.unref(error) ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1$4, vue.toDisplayString(vue.unref(error)), 1)) : vue.createCommentVNode("", true),
-          vue.createVNode(ResponsiveTable, null, {
+          vue.createVNode(_sfc_main$6, null, {
             default: vue.withCtx(() => [
               vue.createVNode(_sfc_main$7, {
+                class: "mjsz-vbr-table",
                 columns: vue.unref(columns),
                 rows: props.rows,
                 "is-loading": __props.isLoading
@@ -2698,8 +2709,6 @@
     return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$2, _hoisted_3$1);
   }
   const IconRight = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1]]);
-  const common_css_vue_type_style_index_0_src_true_lang = "";
-  const paginator_scss_vue_type_style_index_1_src_7148e40c_scoped_7148e40c_lang = "";
   const _sfc_main$1 = {
     name: "Paginator",
     components: {
@@ -2742,6 +2751,12 @@
         default: false
       }
     },
+    setup() {
+      const mainClassName = useMainClass("paginator");
+      return {
+        mainClassName
+      };
+    },
     computed: {
       pageCount() {
         return Math.ceil(this.totalItems / this.itemsPerPage);
@@ -2772,32 +2787,30 @@
       }
     }
   };
-  const _withScopeId = (n) => (vue.pushScopeId("data-v-7148e40c"), n = n(), vue.popScopeId(), n);
   const _hoisted_1$1 = {
-    key: 0,
-    class: "mjsz-vbr-pagination"
-  };
-  const _hoisted_2 = {
     key: 1,
     class: "is-extended"
   };
-  const _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("span", null, "...", -1));
-  const _hoisted_4 = [
-    _hoisted_3
+  const _hoisted_2 = /* @__PURE__ */ vue.createElementVNode("span", null, "...", -1);
+  const _hoisted_3 = [
+    _hoisted_2
   ];
-  const _hoisted_5 = ["onClick"];
-  const _hoisted_6 = {
+  const _hoisted_4 = ["onClick"];
+  const _hoisted_5 = {
     key: 2,
     class: "is-extended"
   };
-  const _hoisted_7 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("span", null, "...", -1));
-  const _hoisted_8 = [
-    _hoisted_7
+  const _hoisted_6 = /* @__PURE__ */ vue.createElementVNode("span", null, "...", -1);
+  const _hoisted_7 = [
+    _hoisted_6
   ];
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_IconLeft = vue.resolveComponent("IconLeft");
     const _component_IconRight = vue.resolveComponent("IconRight");
-    return $options.pageCount > 1 ? (vue.openBlock(), vue.createElementBlock("ul", _hoisted_1$1, [
+    return $options.pageCount > 1 ? (vue.openBlock(), vue.createElementBlock("ul", {
+      key: 0,
+      class: vue.normalizeClass($setup.mainClassName)
+    }, [
       vue.createElementVNode("li", {
         class: vue.normalizeClass({ "is-disabled": $props.page === 1 })
       }, [
@@ -2807,7 +2820,7 @@
         }, [
           vue.renderSlot(_ctx.$slots, "prev", {}, () => [
             vue.createVNode(_component_IconLeft, { class: "icon paginator-left" })
-          ], true)
+          ])
         ])
       ], 2),
       !$props.isCompact ? (vue.openBlock(), vue.createElementBlock("li", {
@@ -2820,7 +2833,7 @@
           onClick: _cache[1] || (_cache[1] = vue.withModifiers(($event) => $options.goTo(1), ["prevent"]))
         }, " 1 ")
       ], 2)) : vue.createCommentVNode("", true),
-      !$props.isCompact ? (vue.openBlock(), vue.createElementBlock("li", _hoisted_2, _hoisted_4)) : vue.createCommentVNode("", true),
+      !$props.isCompact ? (vue.openBlock(), vue.createElementBlock("li", _hoisted_1$1, _hoisted_3)) : vue.createCommentVNode("", true),
       (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($options.range, (n) => {
         return vue.openBlock(), vue.createElementBlock("li", {
           key: n,
@@ -2829,10 +2842,10 @@
           vue.createElementVNode("a", {
             href: "#",
             onClick: vue.withModifiers(($event) => $options.goTo(n), ["prevent"])
-          }, vue.toDisplayString(n), 9, _hoisted_5)
+          }, vue.toDisplayString(n), 9, _hoisted_4)
         ], 2);
       }), 128)),
-      !$props.isCompact ? (vue.openBlock(), vue.createElementBlock("li", _hoisted_6, _hoisted_8)) : vue.createCommentVNode("", true),
+      !$props.isCompact ? (vue.openBlock(), vue.createElementBlock("li", _hoisted_5, _hoisted_7)) : vue.createCommentVNode("", true),
       !$props.isCompact ? (vue.openBlock(), vue.createElementBlock("li", {
         key: 3,
         class: vue.normalizeClass({ "is-disabled": $props.page === $options.pageCount })
@@ -2851,13 +2864,15 @@
         }, [
           vue.renderSlot(_ctx.$slots, "next", {}, () => [
             vue.createVNode(_component_IconRight, { class: "icon paginator-left" })
-          ], true)
+          ])
         ])
       ], 2)
-    ])) : vue.createCommentVNode("", true);
+    ], 2)) : vue.createCommentVNode("", true);
   }
-  const Paginator = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__scopeId", "data-v-7148e40c"]]);
-  const _style_2 = ".mjsz-vbr-pagination {\n  display: flex;\n  flex-direction: row;\n  list-style-type: none;\n  margin: 10px 0;\n  padding: 0;\n}\n.mjsz-vbr-pagination li {\n  display: flex;\n}\n.mjsz-vbr-pagination li a,\n.mjsz-vbr-pagination li span {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 6px 12px;\n  text-decoration: none;\n  color: var(--vbr-widget-paginator-color);\n  border: 1px solid var(--vbr-widget-paginator-border-color);\n  background-color: var(--vbr-widget-paginator-bg-color);\n  margin-left: -1px;\n}\n.mjsz-vbr-pagination li a .icon,\n.mjsz-vbr-pagination li span .icon {\n  width: 16px;\n  height: 16px;\n  margin: 0 -4px;\n}\n.mjsz-vbr-pagination li span {\n  border: none;\n  margin-left: 0;\n}\n.mjsz-vbr-pagination li:hover:not(.mjsz-vbr-pagination li.is-disabled) a {\n  color: var(--vbr-widget-paginator-hover-color);\n  background-color: var(--vbr-widget-paginator-hover-bg-color);\n}\n.mjsz-vbr-pagination li.is-disabled a,\n.mjsz-vbr-pagination li.is-disabled span {\n  color: var(--vbr-widget-paginator-disabled-color);\n  background-color: var(--vbr-widget-paginator-bg-color);\n  pointer-events: none;\n  cursor: default;\n}\n.mjsz-vbr-pagination li:focus a, .mjsz-vbr-pagination li.is-active a {\n  color: var(--vbr-widget-paginator-active-color);\n  background-color: var(--vbr-widget-paginator-active-bg-color);\n  border-color: var(--vbr-widget-paginator-active-bg-color);\n  cursor: default;\n}";
+  const Paginator = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
+  const _style_1 = ".mjsz-vbr-table {\n  color: var(--vbr-widget-table-color);\n}\n.mjsz-vbr-table th {\n  width: var(--vbr-widget-table-default-column-width);\n  background-color: var(--vbr-widget-table-header-bg-color);\n  font-size: var(--vbr-widget-table-header-font-size);\n  font-weight: 700;\n  color: var(--vbr-widget-table-header-color);\n  text-align: center;\n}\n.mjsz-vbr-table th:hover {\n  background-color: var(--vbr-widget-table-header-hover-bg-color);\n}\n.mjsz-vbr-table th.mjsz-vbr-is-sortable {\n  position: relative;\n  cursor: pointer;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-sortable .mjsz-vbr-icon-sort {\n  opacity: 0.5;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-active {\n  background-color: var(--vbr-widget-table-table-header-active-bg-color);\n  color: var(--vbr-widget-table-header-active-color);\n}\n.mjsz-vbr-table th.mjsz-vbr-is-active .mjsz-vbr-icon-sort {\n  opacity: 1;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-asc {\n  position: relative;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-desc {\n  position: relative;\n}\n.mjsz-vbr-table th.mjsz-vbr-w-auto {\n  width: auto;\n}\n.mjsz-vbr-table th .mjsz-vbr-icon-sort {\n  width: 11px;\n  height: 11px;\n  margin-left: 5px;\n}\n.mjsz-vbr-table td {\n  text-align: center;\n}\n.mjsz-vbr-table td.mjsz-vbr-is-active {\n  font-weight: 700;\n  color: var(--vbr-widget-table-active-color);\n  background-color: var(--vbr-widget-table-active-bg-color);\n}\n.mjsz-vbr-table td .mjsz-vbr-text-light, .mjsz-vbr-table td.mjsz-vbr-text-light {\n  color: var(--vbr-widget-table-cell-light-color);\n}\n.mjsz-vbr-table td .mjsz-vbr-text-dark, .mjsz-vbr-table td.mjsz-vbr-text-dark {\n  color: var(--vbr-widget-table-cell-dark-color);\n}\n.mjsz-vbr-table td svg {\n  width: 16px;\n  height: 16px;\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button {\n  padding: 3px 3px;\n  line-height: 0;\n  border: none;\n  outline: none;\n  background-color: transparent;\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:hover {\n  background-color: var(--vbr-widget-popover-trigger-hover-bg-color);\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:active, .mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:focus {\n  background-color: var(--vbr-widget-popover-trigger-focus-bg-color);\n}\n.mjsz-vbr-table td a {\n  text-decoration: none;\n}\n.mjsz-vbr-table td .mjsz-vbr-label {\n  padding: 3px 6px;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--vbr-widget-table-label-color);\n  background-color: var(--vbr-widget-table-label-bg-color);\n  border-radius: 2px;\n}\n.mjsz-vbr-table td .mjsz-vbr-label:not(:last-of-type) {\n  margin-right: 3px;\n}\n.mjsz-vbr-table th,\n.mjsz-vbr-table td {\n  padding: 8px;\n  white-space: nowrap;\n  vertical-align: middle;\n}\n.mjsz-vbr-table th.mjsz-vbr-text-left,\n.mjsz-vbr-table td.mjsz-vbr-text-left {\n  text-align: left;\n}\n.mjsz-vbr-table th.mjsz-vbr-text-right,\n.mjsz-vbr-table td.mjsz-vbr-text-right {\n  text-align: right;\n}\n.mjsz-vbr-table th .mjsz-vbr-is-duplicated,\n.mjsz-vbr-table td .mjsz-vbr-is-duplicated {\n  color: var(--vbr-widget-table-neutral-color);\n}\n.mjsz-vbr-table tr:nth-child(even) {\n  background-color: var(--vbr-widget-table-stripped-bg-color);\n}\n.mjsz-vbr-table tr:nth-child(even) td.mjsz-vbr-is-active {\n  background-color: var(--vbr-widget-table-active-even-bg-color);\n}\n.mjsz-vbr-table tr:focus-within,\n.mjsz-vbr-table tr:hover {\n  color: var(--vbr-widget-table-hover-color);\n  background-color: var(--vbr-widget-table-hover-bg-color);\n}\n.mjsz-vbr-table tr:focus-within td.mjsz-vbr-is-active,\n.mjsz-vbr-table tr:hover td.mjsz-vbr-is-active {\n  color: var(--vbr-widget-table-active-hover-color);\n  background-color: var(--vbr-widget-table-active-hover-bg-color);\n}";
+  const _style_2 = ".mjsz-vbr-table-responsive {\n  width: 100%;\n  overflow-x: auto;\n}\n.mjsz-vbr-table-responsive table {\n  width: 100%;\n}\n";
+  const _style_3 = ".mjsz-vbr-paginator {\n  display: flex;\n  flex-direction: row;\n  list-style-type: none;\n  margin: 10px 0;\n  padding: 0;\n}\n.mjsz-vbr-paginator li {\n  display: flex;\n}\n.mjsz-vbr-paginator li a,\n.mjsz-vbr-paginator li span {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 6px 12px;\n  text-decoration: none;\n  color: var(--vbr-widget-paginator-color);\n  border: 1px solid var(--vbr-widget-paginator-border-color);\n  background-color: var(--vbr-widget-paginator-bg-color);\n  margin-left: -1px;\n}\n.mjsz-vbr-paginator li a .mjsz-vbr-icon,\n.mjsz-vbr-paginator li span .mjsz-vbr-icon {\n  width: 16px;\n  height: 16px;\n  margin: 0 -4px;\n}\n.mjsz-vbr-paginator li span {\n  border: none;\n  margin-left: 0;\n}\n.mjsz-vbr-paginator li:hover:not(.mjsz-vbr-paginator li.mjsz-vbr-is-disabled) a {\n  color: var(--vbr-widget-paginator-hover-color);\n  background-color: var(--vbr-widget-paginator-hover-bg-color);\n}\n.mjsz-vbr-paginator li.mjsz-vbr-is-disabled a,\n.mjsz-vbr-paginator li.mjsz-vbr-is-disabled span {\n  color: var(--vbr-widget-paginator-disabled-color);\n  background-color: var(--vbr-widget-paginator-bg-color);\n  pointer-events: none;\n  cursor: default;\n}\n.mjsz-vbr-paginator li:focus a, .mjsz-vbr-paginator li.mjsz-vbr-is-active a {\n  color: var(--vbr-widget-paginator-active-color);\n  background-color: var(--vbr-widget-paginator-active-bg-color);\n  border-color: var(--vbr-widget-paginator-active-bg-color);\n  cursor: default;\n}";
   const _hoisted_1 = { key: 0 };
   const _sfc_main = {
     __name: "Schedule.ce",
@@ -2935,7 +2950,7 @@
       };
     }
   };
-  const Schedule = /* @__PURE__ */ _export_sfc(_sfc_main, [["styles", [_style_0, _style_1, _style_2]]]);
+  const Schedule = /* @__PURE__ */ _export_sfc(_sfc_main, [["styles", [_style_0, _style_1, _style_2, _style_3]]]);
   customElements.define("vbr-test-vue", vue.defineCustomElement(Test));
   customElements.define("vbr-test2-vue", vue.defineCustomElement(Test2));
   customElements.define("vbr-schedule", vue.defineCustomElement(Schedule));

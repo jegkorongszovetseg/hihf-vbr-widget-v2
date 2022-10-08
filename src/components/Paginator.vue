@@ -1,5 +1,5 @@
 <template>
-  <ul class="mjsz-vbr-pagination" v-if="pageCount > 1">
+  <ul :class="mainClassName" v-if="pageCount > 1">
     <li :class="{ 'is-disabled': page === 1 }">
       <a href="#" @click.prevent="pageStep(-1)">
         <slot name="prev">
@@ -38,6 +38,7 @@
   </ul>
 </template>
 <script>
+import { useMainClass } from '../composables/useMainClass';
 import IconLeft from './icons/IconLeft.vue';
 import IconRight from './icons/IconRight.vue';
 
@@ -87,6 +88,14 @@ export default {
     isCompact: {
       type: Boolean,
       default: false
+    }
+  },
+
+  setup() {
+    const mainClassName = useMainClass('paginator');
+
+    return {
+      mainClassName
     }
   },
 

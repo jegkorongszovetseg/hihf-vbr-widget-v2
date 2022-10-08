@@ -1,13 +1,9 @@
-<template>
-  <div class="table-responsive"><slot /></div>
-</template>
+<script setup>
+import { useMainClass } from '../composables/useMainClass';
 
-<style>
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
-}
-.table-responsive table {
-  width: 100%;
-}
-</style>
+  const mainClassName = useMainClass('table-responsive');
+</script>
+
+<template>
+  <div :class="mainClassName"><slot /></div>
+</template>

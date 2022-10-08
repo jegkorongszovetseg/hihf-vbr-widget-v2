@@ -5,6 +5,7 @@ import IconSortAsc from './icons/IconSortAsc.vue';
 import IconSortDesc from './icons/IconSortDesc.vue';
 import { SORT_STATE_ASCEND, SORT_STATE_DESCEND, SORT_STATE_ORIGINAL } from '../constants.js';
 import { useI18n } from '../composables/useI18n';
+import { useMainClass } from '../composables/useMainClass';
 
 const props = defineProps({
   columns: {
@@ -32,6 +33,8 @@ const emit = defineEmits(['sort'])
 
 const { t } = useI18n();
 
+const mainClassName = useMainClass('table');
+
 const columns = computed(() => props.columns);
 const columnCount = computed(() => Object.keys(props.columns).length);
 
@@ -42,7 +45,7 @@ const sortBy = (column, prop) => {
 </script>
 
 <template>
-  <table>
+  <table :class="mainClassName">
     <thead>
       <tr>
         <th
