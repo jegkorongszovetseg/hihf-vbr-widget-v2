@@ -21,7 +21,7 @@ const props = defineProps({
   },
 });
 
-const { columns, error } = useColumns(COLUMNS_SCHEDULE, props.hideColumns);
+const { columns, error } = useColumns(COLUMNS_SCHEDULE, props.hideColumns, { offsetName: 'CET' });
 </script>
 
 <template>
@@ -30,4 +30,3 @@ const { columns, error } = useColumns(COLUMNS_SCHEDULE, props.hideColumns);
     <DataTable class="mjsz-vbr-table" :columns="columns" :rows="props.rows" :is-loading="isLoading"></DataTable>
   </ResponsiveTable>
 </template>
- 

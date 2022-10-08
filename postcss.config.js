@@ -5,7 +5,7 @@ export default ({ mode }) => {
   return {
     plugins: {
       'postcss-nesting': {},
-      'postcss-prefixer': { prefix: process.env.VITE_CSS_CLASS_PREFIX },
+      'postcss-prefixer': { prefix: process.env.VITE_CSS_CLASS_PREFIX, ignore: [/icon/, '.is-active', '.is-disabled'] },
     },
   };
 };

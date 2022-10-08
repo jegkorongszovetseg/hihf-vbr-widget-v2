@@ -62,18 +62,16 @@ const convertedRows = computed(() => {
   return convert(unref(rows)).schedule(timezone, unref(locale)).pagination(unref(page), props.limit).value();
 });
 
-// const { t, locale: i18nlocale } = useI18n({ useGlobal: true});
-// const msg = t('table.gameDateTime.short', { offsetName: 'CET' });
+const localLocale = ref('en');
+
 const onPaginatorChange = (value) => {
   page.value = value;
 };
 </script>
 <template>
   <div>
-    <I18NProvider :locale="locale">
-      <!-- {{ msg }}
-      {{ locale }}
-      <button @click="i18nlocale = locale === 'en' ? 'hu' : 'en'">{{ locale === 'en' ? 'hu' : 'en' }}</button> -->
+    <I18NProvider :locale="localLocale">
+      <button @click="localLocale = localLocale === 'en' ? 'hu' : 'en'">{{ localLocale === 'en' ? 'hu' : 'en' }}</button>
       <div v-if="error?.error">{{ error.message }}</div>
       <ScheduleTable :rows="convertedRows.rows" :is-loading="isLoading"></ScheduleTable>
 

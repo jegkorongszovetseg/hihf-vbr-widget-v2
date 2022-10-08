@@ -57,6 +57,9 @@
         border-color: var(--vbr-widget-paginator-active-bg-color);
         cursor: default;
       }
+      &:hover {
+        background-color: var(--vbr-widget-paginator-active-bg-color);
+      }
     }
   }
 }
