@@ -17,7 +17,7 @@ export const COLUMNS_SCHEDULE = {
   homeTeamName: {
     label: 'table.homeTeam.short',
     tooltip: 'table.homeTeam.tooltip',
-    class: 'text-right w-auto text-bold',
+    class: 'text-right is-w-auto text-bold',
   },
   gameResult: {
     label: '',
@@ -30,7 +30,7 @@ export const COLUMNS_SCHEDULE = {
   awayTeamName: {
     label: 'table.awayTeam.short',
     tooltip: 'table.awayTeam.tooltip',
-    class: 'text-left w-auto text-bold',
+    class: 'text-left is-w-auto text-bold',
   },
   location: {
     label: 'table.location.short',

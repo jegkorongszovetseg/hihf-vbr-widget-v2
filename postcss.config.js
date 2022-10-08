@@ -5,7 +5,7 @@ export default ({ mode }) => {
   return {
     plugins: {
       'postcss-nested': {},
-      'postcss-prefixer': { prefix: process.env.VITE_CSS_CLASS_PREFIX, ignore: [/icon/, /is-[a-zA-Z]*/] },
+      'postcss-prefixer': { prefix: process.env.VITE_CSS_CLASS_PREFIX, ignore: [/icon/, /is-[a-zA-Z]*/, 'label'] },
     },
   };
 };
