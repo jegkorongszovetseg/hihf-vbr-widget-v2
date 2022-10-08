@@ -1,5 +1,5 @@
 <script setup>
-import { computed, unref } from 'vue';
+import { computed } from 'vue';
 import IconSort from './icons/IconSort.vue';
 import IconSortAsc from './icons/IconSortAsc.vue';
 import IconSortDesc from './icons/IconSortDesc.vue';
@@ -29,7 +29,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['sort'])
+const emit = defineEmits(['sort']);
 
 const { t } = useI18n();
 
@@ -63,7 +63,7 @@ const sortBy = (column, prop) => {
           @click="sortBy(column, prop)"
         >
           <slot :name="`header-${prop}`" :column="column">
-            <span>{{ unref(column.label) }}</span>
+            {{ column.label }}
           </slot>
           <IconSort v-if="column.sortOrders && prop !== sort.sortTarget" class="icon-sort"></IconSort>
           <IconSort

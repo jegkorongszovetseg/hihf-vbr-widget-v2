@@ -1,5 +1,6 @@
 import { computed, inject, provide, reactive } from 'vue';
-import { path, isEmpty } from 'ramda';
+import { $computed } from 'vue/macros';
+import { path, isEmpty, trim, map, split } from 'ramda';
 
 const I18nContext = Symbol('I18nContext');
 
@@ -16,12 +17,16 @@ export const createI18n = ({ messages = {}, locale = '', fallbackLocale = '' }) 
 
   const translate = (key, data = {}) => {
     const hasInterpolation = !isEmpty(data);
-    const keyArray = key.split('.') || [];
-    let translation = computed(() => getTranslation(state.locale, keyArray, state.messages));
-    if (!translation.value) {
-      translation = computed(() => getTranslation(state.fallbackLocale, keyArray, state.messages));
-    }
-    return hasInterpolation ? computed(() => replacer(translation.value, data)) : translation;
+    const keyArray = map(trim, split('.', key));
+
+    const translation = $computed(() => {
+      let rawTransition = getTranslation(state.locale, keyArray, state.messages);
+      if (!rawTransition && state.fallbackLocale) {
+        rawTransition = getTranslation(state.fallbackLocale, keyArray, state.messages);
+      }
+      return hasInterpolation ? replacer(rawTransition, data) : rawTransition;
+    });
+    return translation;
   };
 
   function getTranslation(locale, keys, messages) {
@@ -72,16 +77,6 @@ const useI18nContext = () => {
     throw new Error('Privider is missing a parent component.');
   }
   return api;
-};
-
-const translate = (key, data = {}) => {
-  const hasInterpolation = !isEmpty(data);
-  const keyArray = key.split('.') || [];
-  let translation = computed(() => getTranslation(state.locale, keyArray, state.messages));
-  if (!translation.value) {
-    translation = computed(() => getTranslation(state.fallbackLocale, keyArray, state.messages));
-  }
-  return hasInterpolation ? computed(() => replacer(translation.value, data)) : translation;
 };
 
 const replacer = function (tpl, data) {

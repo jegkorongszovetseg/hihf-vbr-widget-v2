@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { map, keys, trim, omit, split } from 'ramda';
 import { useI18n } from './useI18n';
 
@@ -20,7 +20,7 @@ export const useColumns = (columns, hiddenColumns = '', variables = {}) => {
     ...(column.label && { label: t(column.label ?? '', variables) }),
     ...(column.tooltip && { tooltip: t(column.tooltip ?? '') }),
   });
-  const converted = map(convert, columns);
+  const converted = computed(() => map(convert, columns));
   return {
     columns: converted,
     error,
