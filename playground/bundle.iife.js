@@ -1,47 +1,5 @@
 (function(vue) {
   "use strict";
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
-  const _sfc_main$d = {};
-  const _hoisted_1$b = { class: "child" };
-  function _sfc_render$7(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$b, "CHILD");
-  }
-  const Child = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$7]]);
-  const _style_0 = ":root,\n:host {\n  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;\n  --text-color: red;\n  --bg-color: white;\n\n  --vbr-widget-primary-color-0: #ffffff;\n  --vbr-widget-primary-color-50: #eceff1;\n  --vbr-widget-primary-color-100: #cfd8dc;\n  --vbr-widget-primary-color-200: #b0bec5;\n  --vbr-widget-primary-color-300: #90a4ae;\n  --vbr-widget-primary-color-400: #78909c;\n  --vbr-widget-primary-color-500: #607d8b;\n  --vbr-widget-primary-color-600: #546e7a;\n  --vbr-widget-primary-color-700: #455a64;\n  --vbr-widget-primary-color-800: #37474f;\n  --vbr-widget-primary-color-900: #263238;\n\n  --vbr-widget-secondary-color-100: #dcedc8;\n  --vbr-widget-secondary-color-200: #badb94;\n  --vbr-widget-secondary-color-300: #aed581;\n  --vbr-widget-secondary-color-400: #9ccc65;\n  --vbr-widget-secondary-color-500: #8bc34a;\n  --vbr-widget-secondary-color-700: #689f38;\n  --vbr-widget-secondary-color-800: #558b2f;\n  --vbr-widget-secondary-color-900: #33691e;\n\n  --vbr-widget-danger-color-50: #ffebee;\n  --vbr-widget-danger-color-100: #ffcdd2;\n  --vbr-widget-danger-color-200: #ef9a9a;\n  --vbr-widget-danger-color-300: #e57373;\n  --vbr-widget-danger-color-400: #ef5350;\n  --vbr-widget-danger-color-500: #f44336;\n  --vbr-widget-danger-color-700: #d32f2f;\n  --vbr-widget-danger-color-900: #b71c1c;\n  --vbr-widget-danger-color-a400: #ff1744;\n\n  --vbr-widget-table-header-font-size: 12px;\n  --vbr-widget-table-default-column-width: 30px;\n  --vbr-widget-table-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-neutral-color: var(--vbr-widget-primary-color-300);\n  --vbr-widget-table-header-bg-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-color: var(--vbr-widget-primary-color-200);\n  --vbr-widget-table-table-header-active-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-table-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-hover-bg-color: var(--vbr-widget-secondary-color-100);\n  --vbr-widget-table-active-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-bg-color: var(--vbr-widget-secondary-color-200);\n  --vbr-widget-table-active-even-bg-color: var(--vbr-widget-secondary-color-300);\n  --vbr-widget-table-active-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-hover-bg-color: var(--vbr-widget-secondary-color-400);\n  --vbr-widget-table-portrait-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-table-portrait-bg-color: var(--vbr-widget-primary-color-50);\n  --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-600);\n  --vbr-widget-table-cell-dark-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-table-stripped-bg-color: #f8f9fa;\n  --vbr-widget-table-label-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-table-label-bg-color: var(--vbr-widget-primary-color-50);\n\n  --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-hover-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-paginator-hover-bg-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);\n}\n.mjsz-vbr-text {\n  width: 100%;\n  text-align: center;\n  color: var(--text-color);\n}\n.mjsz-vbr-child {\n  width: 100%;\n  text-align: center;\n  font-weight: 700;\n  background-color: var(--bg-color);\n}\n.mjsz-vbr-tteeest _vb {\n    color: red;\n}\n";
-  const _hoisted_1$a = { class: "text" };
-  const _sfc_main$c = {
-    __name: "Test.ce",
-    setup(__props) {
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$a, [
-          vue.createTextVNode(" TEST "),
-          vue.createVNode(Child)
-        ]);
-      };
-    }
-  };
-  const Test = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["styles", [_style_0]]]);
-  const _hoisted_1$9 = { class: "text" };
-  const _hoisted_2$7 = /* @__PURE__ */ vue.createElementVNode("div", { class: "table" }, "Table", -1);
-  const _sfc_main$b = {
-    __name: "Test2.ce",
-    setup(__props) {
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$9, [
-          vue.createTextVNode(" TEST2 "),
-          vue.createVNode(Child),
-          _hoisted_2$7
-        ]);
-      };
-    }
-  };
-  const Test2 = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["styles", [_style_0]]]);
   var _a;
   const isClient = typeof window !== "undefined";
   const noop = () => {
@@ -1612,6 +1570,13 @@
       }
     };
   };
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   const _sfc_main$a = {};
   const _hoisted_1$8 = {
     "aria-hidden": "true",
@@ -1623,15 +1588,15 @@
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 320 512"
   };
-  const _hoisted_2$6 = /* @__PURE__ */ vue.createElementVNode("path", {
+  const _hoisted_2$7 = /* @__PURE__ */ vue.createElementVNode("path", {
     fill: "currentColor",
     d: "M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z"
   }, null, -1);
-  const _hoisted_3$6 = [
-    _hoisted_2$6
+  const _hoisted_3$7 = [
+    _hoisted_2$7
   ];
   function _sfc_render$6(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$8, _hoisted_3$6);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$8, _hoisted_3$7);
   }
   const IconSort = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$6]]);
   const _sfc_main$9 = {};
@@ -1645,15 +1610,15 @@
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 320 512"
   };
-  const _hoisted_2$5 = /* @__PURE__ */ vue.createElementVNode("path", {
+  const _hoisted_2$6 = /* @__PURE__ */ vue.createElementVNode("path", {
     fill: "currentColor",
     d: "M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"
   }, null, -1);
-  const _hoisted_3$5 = [
-    _hoisted_2$5
+  const _hoisted_3$6 = [
+    _hoisted_2$6
   ];
   function _sfc_render$5(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$7, _hoisted_3$5);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$7, _hoisted_3$6);
   }
   const IconSortAsc = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$5]]);
   const _sfc_main$8 = {};
@@ -1667,15 +1632,15 @@
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 320 512"
   };
-  const _hoisted_2$4 = /* @__PURE__ */ vue.createElementVNode("path", {
+  const _hoisted_2$5 = /* @__PURE__ */ vue.createElementVNode("path", {
     fill: "currentColor",
     d: "M279 224H41c-21.4 0-32.1-25.9-17-41L143 64c9.4-9.4 24.6-9.4 33.9 0l119 119c15.2 15.1 4.5 41-16.9 41z"
   }, null, -1);
-  const _hoisted_3$4 = [
-    _hoisted_2$4
+  const _hoisted_3$5 = [
+    _hoisted_2$5
   ];
   function _sfc_render$4(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$6, _hoisted_3$4);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$6, _hoisted_3$5);
   }
   const IconSortDesc = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$4]]);
   const I18nContext = Symbol("I18nContext");
@@ -1748,9 +1713,9 @@
     return prefix + className;
   };
   const _hoisted_1$5 = ["onClick"];
-  const _hoisted_2$3 = { key: 0 };
-  const _hoisted_3$3 = ["colspan"];
-  const _hoisted_4$1 = { key: 1 };
+  const _hoisted_2$4 = { key: 0 };
+  const _hoisted_3$4 = ["colspan"];
+  const _hoisted_4$2 = { key: 1 };
   const _hoisted_5$1 = ["colspan"];
   const _sfc_main$7 = {
     __name: "DataTable",
@@ -1805,7 +1770,7 @@
                   onClick: ($event) => sortBy(column, prop2)
                 }, [
                   vue.renderSlot(_ctx.$slots, `header-${prop2}`, { column }, () => [
-                    vue.createTextVNode(vue.toDisplayString(column.label), 1)
+                    vue.createElementVNode("span", null, vue.toDisplayString(vue.unref(column.label)), 1)
                   ]),
                   column.sortOrders && prop2 !== __props.sort.sortTarget ? (vue.openBlock(), vue.createBlock(IconSort, {
                     key: 0,
@@ -1852,10 +1817,10 @@
             }), 128))
           ]),
           vue.createElementVNode("tfoot", null, [
-            __props.rows.length === 0 && !__props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_2$3, [
-              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.noData")), 9, _hoisted_3$3)
+            __props.rows.length === 0 && !__props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_2$4, [
+              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.noData")), 9, _hoisted_3$4)
             ])) : vue.createCommentVNode("", true),
-            __props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_4$1, [
+            __props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_4$2, [
               vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.loading")), 9, _hoisted_5$1)
             ])) : vue.createCommentVNode("", true)
           ])
@@ -1863,7 +1828,7 @@
       };
     }
   };
-  const useColumns = (columns, hiddenColumns = "") => {
+  const useColumns = (columns, hiddenColumns = "", variables = {}) => {
     const error = vue.ref("");
     const { t } = useI18n();
     if (hiddenColumns) {
@@ -1878,7 +1843,7 @@
       var _a2, _b;
       return {
         ...column,
-        ...column.label && { label: t((_a2 = column.label) != null ? _a2 : "") },
+        ...column.label && { label: t((_a2 = column.label) != null ? _a2 : "", variables) },
         ...column.tooltip && { tooltip: t((_b = column.tooltip) != null ? _b : "") }
       };
     };
@@ -1960,6 +1925,18 @@
     }
   };
   const _hoisted_1$4 = { key: 0 };
+  const _hoisted_2$3 = {
+    key: 0,
+    class: "label"
+  };
+  const _hoisted_3$3 = {
+    key: 1,
+    class: "label"
+  };
+  const _hoisted_4$1 = {
+    key: 2,
+    class: "label"
+  };
   const _sfc_main$5 = {
     __name: "ScheduleTable",
     props: {
@@ -1978,7 +1955,8 @@
     },
     setup(__props) {
       const props = __props;
-      const { columns, error } = useColumns(COLUMNS_SCHEDULE, props.hideColumns);
+      const { columns, error } = useColumns(COLUMNS_SCHEDULE, props.hideColumns, { offsetName: "CET" });
+      const { t } = useI18n();
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
           vue.unref(error) ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1$4, vue.toDisplayString(vue.unref(error)), 1)) : vue.createCommentVNode("", true),
@@ -1989,7 +1967,14 @@
                 columns: vue.unref(columns),
                 rows: props.rows,
                 "is-loading": __props.isLoading
-              }, null, 8, ["columns", "rows", "is-loading"])
+              }, {
+                "cell-gameResultType": vue.withCtx(({ row }) => [
+                  row.isOvertime ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_2$3, vue.toDisplayString(vue.unref(vue.unref(t)("common.overtimeShort"))), 1)) : vue.createCommentVNode("", true),
+                  row.isShootout ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_3$3, vue.toDisplayString(vue.unref(vue.unref(t)("common.shootoutShort"))), 1)) : vue.createCommentVNode("", true),
+                  row.seriesStandings ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_4$1, vue.toDisplayString(row.seriesStandings), 1)) : vue.createCommentVNode("", true)
+                ]),
+                _: 1
+              }, 8, ["columns", "rows", "is-loading"])
             ]),
             _: 1
           })
@@ -2661,7 +2646,7 @@
     },
     setup(props) {
       createI18n({
-        locale: props.locale,
+        locale: vue.computed(() => props.locale),
         messages: {
           hu,
           en
@@ -2870,9 +2855,10 @@
     ], 2)) : vue.createCommentVNode("", true);
   }
   const Paginator = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
-  const _style_1 = ".mjsz-vbr-table {\n  color: var(--vbr-widget-table-color);\n}\n.mjsz-vbr-table th {\n  width: var(--vbr-widget-table-default-column-width);\n  background-color: var(--vbr-widget-table-header-bg-color);\n  font-size: var(--vbr-widget-table-header-font-size);\n  font-weight: 700;\n  color: var(--vbr-widget-table-header-color);\n  text-align: center;\n}\n.mjsz-vbr-table th:hover {\n  background-color: var(--vbr-widget-table-header-hover-bg-color);\n}\n.mjsz-vbr-table th.mjsz-vbr-is-sortable {\n  position: relative;\n  cursor: pointer;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-sortable .mjsz-vbr-icon-sort {\n  opacity: 0.5;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-active {\n  background-color: var(--vbr-widget-table-table-header-active-bg-color);\n  color: var(--vbr-widget-table-header-active-color);\n}\n.mjsz-vbr-table th.mjsz-vbr-is-active .mjsz-vbr-icon-sort {\n  opacity: 1;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-asc {\n  position: relative;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-desc {\n  position: relative;\n}\n.mjsz-vbr-table th.mjsz-vbr-w-auto {\n  width: auto;\n}\n.mjsz-vbr-table th .mjsz-vbr-icon-sort {\n  width: 11px;\n  height: 11px;\n  margin-left: 5px;\n}\n.mjsz-vbr-table td {\n  text-align: center;\n}\n.mjsz-vbr-table td.mjsz-vbr-is-active {\n  font-weight: 700;\n  color: var(--vbr-widget-table-active-color);\n  background-color: var(--vbr-widget-table-active-bg-color);\n}\n.mjsz-vbr-table td .mjsz-vbr-text-light, .mjsz-vbr-table td.mjsz-vbr-text-light {\n  color: var(--vbr-widget-table-cell-light-color);\n}\n.mjsz-vbr-table td .mjsz-vbr-text-dark, .mjsz-vbr-table td.mjsz-vbr-text-dark {\n  color: var(--vbr-widget-table-cell-dark-color);\n}\n.mjsz-vbr-table td svg {\n  width: 16px;\n  height: 16px;\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button {\n  padding: 3px 3px;\n  line-height: 0;\n  border: none;\n  outline: none;\n  background-color: transparent;\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:hover {\n  background-color: var(--vbr-widget-popover-trigger-hover-bg-color);\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:active, .mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:focus {\n  background-color: var(--vbr-widget-popover-trigger-focus-bg-color);\n}\n.mjsz-vbr-table td a {\n  text-decoration: none;\n}\n.mjsz-vbr-table td .mjsz-vbr-label {\n  padding: 3px 6px;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--vbr-widget-table-label-color);\n  background-color: var(--vbr-widget-table-label-bg-color);\n  border-radius: 2px;\n}\n.mjsz-vbr-table td .mjsz-vbr-label:not(:last-of-type) {\n  margin-right: 3px;\n}\n.mjsz-vbr-table th,\n.mjsz-vbr-table td {\n  padding: 8px;\n  white-space: nowrap;\n  vertical-align: middle;\n}\n.mjsz-vbr-table th.mjsz-vbr-text-left,\n.mjsz-vbr-table td.mjsz-vbr-text-left {\n  text-align: left;\n}\n.mjsz-vbr-table th.mjsz-vbr-text-right,\n.mjsz-vbr-table td.mjsz-vbr-text-right {\n  text-align: right;\n}\n.mjsz-vbr-table th .mjsz-vbr-is-duplicated,\n.mjsz-vbr-table td .mjsz-vbr-is-duplicated {\n  color: var(--vbr-widget-table-neutral-color);\n}\n.mjsz-vbr-table tr:nth-child(even) {\n  background-color: var(--vbr-widget-table-stripped-bg-color);\n}\n.mjsz-vbr-table tr:nth-child(even) td.mjsz-vbr-is-active {\n  background-color: var(--vbr-widget-table-active-even-bg-color);\n}\n.mjsz-vbr-table tr:focus-within,\n.mjsz-vbr-table tr:hover {\n  color: var(--vbr-widget-table-hover-color);\n  background-color: var(--vbr-widget-table-hover-bg-color);\n}\n.mjsz-vbr-table tr:focus-within td.mjsz-vbr-is-active,\n.mjsz-vbr-table tr:hover td.mjsz-vbr-is-active {\n  color: var(--vbr-widget-table-active-hover-color);\n  background-color: var(--vbr-widget-table-active-hover-bg-color);\n}";
+  const _style_0 = ":root,\n:host {\n  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;\n  --text-color: red;\n  --bg-color: white;\n\n  --vbr-widget-primary-color-0: #ffffff;\n  --vbr-widget-primary-color-50: #eceff1;\n  --vbr-widget-primary-color-100: #cfd8dc;\n  --vbr-widget-primary-color-200: #b0bec5;\n  --vbr-widget-primary-color-300: #90a4ae;\n  --vbr-widget-primary-color-400: #78909c;\n  --vbr-widget-primary-color-500: #607d8b;\n  --vbr-widget-primary-color-600: #546e7a;\n  --vbr-widget-primary-color-700: #455a64;\n  --vbr-widget-primary-color-800: #37474f;\n  --vbr-widget-primary-color-900: #263238;\n\n  --vbr-widget-secondary-color-100: #dcedc8;\n  --vbr-widget-secondary-color-200: #badb94;\n  --vbr-widget-secondary-color-300: #aed581;\n  --vbr-widget-secondary-color-400: #9ccc65;\n  --vbr-widget-secondary-color-500: #8bc34a;\n  --vbr-widget-secondary-color-700: #689f38;\n  --vbr-widget-secondary-color-800: #558b2f;\n  --vbr-widget-secondary-color-900: #33691e;\n\n  --vbr-widget-danger-color-50: #ffebee;\n  --vbr-widget-danger-color-100: #ffcdd2;\n  --vbr-widget-danger-color-200: #ef9a9a;\n  --vbr-widget-danger-color-300: #e57373;\n  --vbr-widget-danger-color-400: #ef5350;\n  --vbr-widget-danger-color-500: #f44336;\n  --vbr-widget-danger-color-700: #d32f2f;\n  --vbr-widget-danger-color-900: #b71c1c;\n  --vbr-widget-danger-color-a400: #ff1744;\n\n  --vbr-widget-table-header-font-size: 12px;\n  --vbr-widget-table-default-column-width: 30px;\n  --vbr-widget-table-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-neutral-color: var(--vbr-widget-primary-color-300);\n  --vbr-widget-table-header-bg-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-color: var(--vbr-widget-primary-color-200);\n  --vbr-widget-table-table-header-active-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-table-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-hover-bg-color: var(--vbr-widget-secondary-color-100);\n  --vbr-widget-table-active-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-bg-color: var(--vbr-widget-secondary-color-200);\n  --vbr-widget-table-active-even-bg-color: var(--vbr-widget-secondary-color-300);\n  --vbr-widget-table-active-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-hover-bg-color: var(--vbr-widget-secondary-color-400);\n  --vbr-widget-table-portrait-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-table-portrait-bg-color: var(--vbr-widget-primary-color-50);\n  --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-600);\n  --vbr-widget-table-cell-dark-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-table-stripped-bg-color: #f8f9fa;\n  --vbr-widget-table-label-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-table-label-bg-color: var(--vbr-widget-primary-color-50);\n\n  --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-hover-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-paginator-hover-bg-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);\n}\n";
+  const _style_1 = ".mjsz-vbr-table {\n  border-collapse: collapse;\n  border-spacing: 0;\n  color: var(--vbr-widget-table-color);\n}\n.mjsz-vbr-table table,\n.mjsz-vbr-table caption,\n.mjsz-vbr-table tbody,\n.mjsz-vbr-table tfoot,\n.mjsz-vbr-table thead,\n.mjsz-vbr-table tr,\n.mjsz-vbr-table th,\n.mjsz-vbr-table td {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline;\n}\n.mjsz-vbr-table th {\n  width: var(--vbr-widget-table-default-column-width);\n  background-color: var(--vbr-widget-table-header-bg-color);\n  font-size: var(--vbr-widget-table-header-font-size);\n  font-weight: 700;\n  color: var(--vbr-widget-table-header-color);\n  text-align: center;\n}\n.mjsz-vbr-table th:hover {\n  background-color: var(--vbr-widget-table-header-hover-bg-color);\n}\n.mjsz-vbr-table th.mjsz-vbr-is-sortable {\n  position: relative;\n  cursor: pointer;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-sortable .icon-sort {\n  opacity: 0.5;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-active {\n  background-color: var(--vbr-widget-table-table-header-active-bg-color);\n  color: var(--vbr-widget-table-header-active-color);\n}\n.mjsz-vbr-table th.mjsz-vbr-is-active .icon-sort {\n  opacity: 1;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-asc {\n  position: relative;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-desc {\n  position: relative;\n}\n.mjsz-vbr-table th.mjsz-vbr-w-auto {\n  width: auto;\n}\n.mjsz-vbr-table th .icon-sort {\n  width: 11px;\n  height: 11px;\n  margin-left: 5px;\n}\n.mjsz-vbr-table td {\n  text-align: center;\n}\n.mjsz-vbr-table td.mjsz-vbr-is-active {\n  font-weight: 700;\n  color: var(--vbr-widget-table-active-color);\n  background-color: var(--vbr-widget-table-active-bg-color);\n}\n.mjsz-vbr-table td .mjsz-vbr-text-light, .mjsz-vbr-table td.mjsz-vbr-text-light {\n  color: var(--vbr-widget-table-cell-light-color);\n}\n.mjsz-vbr-table td .mjsz-vbr-text-dark, .mjsz-vbr-table td.mjsz-vbr-text-dark {\n  color: var(--vbr-widget-table-cell-dark-color);\n}\n.mjsz-vbr-table td svg {\n  width: 16px;\n  height: 16px;\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button {\n  padding: 3px 3px;\n  line-height: 0;\n  border: none;\n  outline: none;\n  background-color: transparent;\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:hover {\n  background-color: var(--vbr-widget-popover-trigger-hover-bg-color);\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:active, .mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:focus {\n  background-color: var(--vbr-widget-popover-trigger-focus-bg-color);\n}\n.mjsz-vbr-table td a {\n  text-decoration: none;\n}\n.mjsz-vbr-table td .mjsz-vbr-label {\n  padding: 3px 6px;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--vbr-widget-table-label-color);\n  background-color: var(--vbr-widget-table-label-bg-color);\n  border-radius: 2px;\n}\n.mjsz-vbr-table td .mjsz-vbr-label:not(:last-of-type) {\n  margin-right: 3px;\n}\n.mjsz-vbr-table th,\n.mjsz-vbr-table td {\n  padding: 8px;\n  white-space: nowrap;\n  vertical-align: middle;\n}\n.mjsz-vbr-table th.mjsz-vbr-text-left,\n.mjsz-vbr-table td.mjsz-vbr-text-left {\n  text-align: left;\n}\n.mjsz-vbr-table th.mjsz-vbr-text-right,\n.mjsz-vbr-table td.mjsz-vbr-text-right {\n  text-align: right;\n}\n.mjsz-vbr-table th .mjsz-vbr-is-duplicated,\n.mjsz-vbr-table td .mjsz-vbr-is-duplicated {\n  color: var(--vbr-widget-table-neutral-color);\n}\n.mjsz-vbr-table tr:nth-child(even) {\n  background-color: var(--vbr-widget-table-stripped-bg-color);\n}\n.mjsz-vbr-table tr:nth-child(even) td.mjsz-vbr-is-active {\n  background-color: var(--vbr-widget-table-active-even-bg-color);\n}\n.mjsz-vbr-table tr:focus-within,\n.mjsz-vbr-table tr:hover {\n  color: var(--vbr-widget-table-hover-color);\n  background-color: var(--vbr-widget-table-hover-bg-color);\n}\n.mjsz-vbr-table tr:focus-within td.mjsz-vbr-is-active,\n.mjsz-vbr-table tr:hover td.mjsz-vbr-is-active {\n  color: var(--vbr-widget-table-active-hover-color);\n  background-color: var(--vbr-widget-table-active-hover-bg-color);\n}";
   const _style_2 = ".mjsz-vbr-table-responsive {\n  width: 100%;\n  overflow-x: auto;\n}\n.mjsz-vbr-table-responsive table {\n  width: 100%;\n}\n";
-  const _style_3 = ".mjsz-vbr-paginator {\n  display: flex;\n  flex-direction: row;\n  list-style-type: none;\n  margin: 10px 0;\n  padding: 0;\n}\n.mjsz-vbr-paginator li {\n  display: flex;\n}\n.mjsz-vbr-paginator li a,\n.mjsz-vbr-paginator li span {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 6px 12px;\n  text-decoration: none;\n  color: var(--vbr-widget-paginator-color);\n  border: 1px solid var(--vbr-widget-paginator-border-color);\n  background-color: var(--vbr-widget-paginator-bg-color);\n  margin-left: -1px;\n}\n.mjsz-vbr-paginator li a .mjsz-vbr-icon,\n.mjsz-vbr-paginator li span .mjsz-vbr-icon {\n  width: 16px;\n  height: 16px;\n  margin: 0 -4px;\n}\n.mjsz-vbr-paginator li span {\n  border: none;\n  margin-left: 0;\n}\n.mjsz-vbr-paginator li:hover:not(.mjsz-vbr-paginator li.mjsz-vbr-is-disabled) a {\n  color: var(--vbr-widget-paginator-hover-color);\n  background-color: var(--vbr-widget-paginator-hover-bg-color);\n}\n.mjsz-vbr-paginator li.mjsz-vbr-is-disabled a,\n.mjsz-vbr-paginator li.mjsz-vbr-is-disabled span {\n  color: var(--vbr-widget-paginator-disabled-color);\n  background-color: var(--vbr-widget-paginator-bg-color);\n  pointer-events: none;\n  cursor: default;\n}\n.mjsz-vbr-paginator li:focus a, .mjsz-vbr-paginator li.mjsz-vbr-is-active a {\n  color: var(--vbr-widget-paginator-active-color);\n  background-color: var(--vbr-widget-paginator-active-bg-color);\n  border-color: var(--vbr-widget-paginator-active-bg-color);\n  cursor: default;\n}";
+  const _style_3 = ".mjsz-vbr-paginator {\n  display: flex;\n  flex-direction: row;\n  list-style-type: none;\n  margin: 10px 0;\n  padding: 0;\n}\n.mjsz-vbr-paginator li {\n  display: flex;\n}\n.mjsz-vbr-paginator li a,\n.mjsz-vbr-paginator li span {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 6px 12px;\n  text-decoration: none;\n  color: var(--vbr-widget-paginator-color);\n  border: 1px solid var(--vbr-widget-paginator-border-color);\n  background-color: var(--vbr-widget-paginator-bg-color);\n  margin-left: -1px;\n}\n.mjsz-vbr-paginator li a .icon,\n.mjsz-vbr-paginator li span .icon {\n  width: 16px;\n  height: 16px;\n  margin: 0 -4px;\n}\n.mjsz-vbr-paginator li span {\n  border: none;\n  margin-left: 0;\n}\n.mjsz-vbr-paginator li:hover:not(.mjsz-vbr-paginator li.mjsz-vbr-is-disabled) a {\n  color: var(--vbr-widget-paginator-hover-color);\n  background-color: var(--vbr-widget-paginator-hover-bg-color);\n}\n.mjsz-vbr-paginator li.mjsz-vbr-is-disabled a,\n.mjsz-vbr-paginator li.mjsz-vbr-is-disabled span {\n  color: var(--vbr-widget-paginator-disabled-color);\n  background-color: var(--vbr-widget-paginator-bg-color);\n  pointer-events: none;\n  cursor: default;\n}\n.mjsz-vbr-paginator li:focus a, .mjsz-vbr-paginator li.mjsz-vbr-is-active a {\n  color: var(--vbr-widget-paginator-active-color);\n  background-color: var(--vbr-widget-paginator-active-bg-color);\n  border-color: var(--vbr-widget-paginator-active-bg-color);\n  cursor: default;\n}\n.mjsz-vbr-paginator li:focus:hover, .mjsz-vbr-paginator li.mjsz-vbr-is-active:hover {\n  background-color: var(--vbr-widget-paginator-active-bg-color);\n}";
   const _hoisted_1 = { key: 0 };
   const _sfc_main = {
     __name: "Schedule.ce",
@@ -2921,15 +2907,19 @@
       const convertedRows = vue.computed(() => {
         return convert(vue.unref(rows)).schedule(timezone2, vue.unref(locale)).pagination(vue.unref(page), props.limit).value();
       });
+      const localLocale = vue.ref("en");
       const onPaginatorChange = (value) => {
         page.value = value;
       };
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", null, [
-          vue.createVNode(I18NProvider, { locale: vue.unref(locale) }, {
+          vue.createVNode(I18NProvider, { locale: localLocale.value }, {
             default: vue.withCtx(() => {
               var _a2;
               return [
+                vue.createElementVNode("button", {
+                  onClick: _cache[0] || (_cache[0] = ($event) => localLocale.value = localLocale.value === "en" ? "hu" : "en")
+                }, vue.toDisplayString(localLocale.value === "en" ? "hu" : "en"), 1),
                 ((_a2 = vue.unref(error)) == null ? void 0 : _a2.error) ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1, vue.toDisplayString(vue.unref(error).message), 1)) : vue.createCommentVNode("", true),
                 vue.createVNode(_sfc_main$5, {
                   rows: vue.unref(convertedRows).rows,
@@ -2951,7 +2941,5 @@
     }
   };
   const Schedule = /* @__PURE__ */ _export_sfc(_sfc_main, [["styles", [_style_0, _style_1, _style_2, _style_3]]]);
-  customElements.define("vbr-test-vue", vue.defineCustomElement(Test));
-  customElements.define("vbr-test2-vue", vue.defineCustomElement(Test2));
   customElements.define("vbr-schedule", vue.defineCustomElement(Schedule));
 })(Vue);
