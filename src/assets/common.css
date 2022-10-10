@@ -58,6 +58,7 @@
   --vbr-widget-table-stripped-bg-color: #f8f9fa;
   --vbr-widget-table-label-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-table-label-bg-color: var(--vbr-widget-primary-color-50);
+  --vbr-widget-table-cell-logo-size: 20px;
 
   --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);
@@ -67,4 +68,12 @@
   --vbr-widget-paginator-active-color: var(--vbr-widget-primary-color-0);
   --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);
   --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);
+}
+
+img {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+img.is-loaded {
+  opacity: 1;
 }

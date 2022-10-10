@@ -1,26 +1,7 @@
-@mixin ResetTable() {
-  border-collapse: collapse;
-  border-spacing: 0;
-
-  table,
-  caption,
-  tbody,
-  tfoot,
-  thead,
-  tr,
-  th,
-  td {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-  }
-}
+@import './mixins.css';
 
 .table {
-  @include ResetTable;
+  @add-mixin ResetTable;
   color: var(--vbr-widget-table-color);
 
   th {
@@ -65,7 +46,7 @@
       width: auto;
     }
 
-    .icon-sort {
+    .is-icon-sort {
       width: 11px;
       height: 11px;
       margin-left: 5px;
@@ -81,14 +62,18 @@
       background-color: var(--vbr-widget-table-active-bg-color);
     }
 
-    .text-light,
-    &.text-light {
+    .is-text-light,
+    &.is-text-light {
       color: var(--vbr-widget-table-cell-light-color);
     }
 
-    .text-dark,
-    &.text-dark {
+    .is-text-dark,
+    &.is-text-dark {
       color: var(--vbr-widget-table-cell-dark-color);
+    }
+
+    .is-logo-image {
+      width: var(--vbr-widget-table-cell-logo-size)
     }
 
     svg {
@@ -137,11 +122,11 @@
     white-space: nowrap;
     vertical-align: middle;
 
-    &.text-left {
+    &.is-text-left {
       text-align: left;
     }
 
-    &.text-right {
+    &.is-text-right {
       text-align: right;
     }
 

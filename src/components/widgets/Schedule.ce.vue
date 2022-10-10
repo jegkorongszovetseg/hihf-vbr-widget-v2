@@ -87,6 +87,6 @@ const onPaginatorChange = (value) => {
 </template>
 
 <style src="../../assets/common.css"></style>
-<style lang="scss" src="../../assets/table.scss"></style>
+<style lang="scss" src="../../assets/table.css"></style>
 <style lang="scss" src="../../assets/responsive-table.css"></style>
 <style lang="scss" src="../../assets/paginator.css"></style>

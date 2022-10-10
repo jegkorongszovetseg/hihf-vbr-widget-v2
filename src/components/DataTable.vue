@@ -65,18 +65,18 @@ const sortBy = (column, prop) => {
           <slot :name="`header-${prop}`" :column="column">
             {{ column.label }}
           </slot>
-          <IconSort v-if="column.sortOrders && prop !== sort.sortTarget" class="icon-sort"></IconSort>
+          <IconSort v-if="column.sortOrders && prop !== sort.sortTarget" class="is-icon-sort"></IconSort>
           <IconSort
             v-if="prop === sort.sortTarget && sort.orders[0].direction === SORT_STATE_ORIGINAL"
-            class="icon-sort"
+            class="is-icon-sort"
           ></IconSort>
           <IconSortAsc
             v-if="prop === sort.sortTarget && sort.orders[0].direction === SORT_STATE_DESCEND"
-            class="icon-sort"
+            class="is-icon-sort"
           ></IconSortAsc>
           <IconSortDesc
             v-if="prop === sort.sortTarget && sort.orders[0].direction === SORT_STATE_ASCEND"
-            class="icon-sort"
+            class="is-icon-sort"
           ></IconSortDesc>
         </th>
       </tr>

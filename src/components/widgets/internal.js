@@ -2,26 +2,26 @@ export const COLUMNS_SCHEDULE = {
   name: {
     label: 'table.gameName.short',
     tooltip: 'table.gameName.tooltip',
-    class: 'text-left text-light',
+    class: 'is-text-left is-text-light',
   },
   gameDateDate: {
     label: 'table.gameDate.short',
     tooltip: 'table.gameDate.tooltip',
-    class: 'text-left',
+    class: 'is-text-left',
   },
   gameDateTime: {
     label: 'table.gameDateTime.short',
     tooltip: 'table.gameDateTime.tooltip',
-    class: 'text-left',
+    class: 'is-text-left',
   },
   homeTeamName: {
     label: 'table.homeTeam.short',
     tooltip: 'table.homeTeam.tooltip',
-    class: 'text-right is-w-auto text-bold',
+    class: 'is-text-right is-w-auto is-text-bold',
   },
   gameResult: {
     label: '',
-    class: 'text-bold text-xl',
+    class: 'is-text-bold is-text-xl',
   },
   gameResultType: {
     label: '',
@@ -30,12 +30,12 @@ export const COLUMNS_SCHEDULE = {
   awayTeamName: {
     label: 'table.awayTeam.short',
     tooltip: 'table.awayTeam.tooltip',
-    class: 'text-left is-w-auto text-bold',
+    class: 'is-text-left is-is-w-auto is-text-bold',
   },
   location: {
     label: 'table.location.short',
     tooltip: 'table.location.tooltip',
-    class: 'text-left',
+    class: 'is-text-left',
   },
   broadcast: {
     label: 'table.broadcast.short',
