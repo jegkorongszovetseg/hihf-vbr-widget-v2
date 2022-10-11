@@ -5,6 +5,9 @@
   const noop = () => {
   };
   isClient && ((_a = window == null ? void 0 : window.navigator) == null ? void 0 : _a.userAgent) && /iP(ad|hone|od)/.test(window.navigator.userAgent);
+  function resolveUnref(r) {
+    return typeof r === "function" ? r() : vue.unref(r);
+  }
   function promiseTimeout(ms, throwOnTimeout = false, reason = "Timeout") {
     return new Promise((resolve2, reject2) => {
       if (throwOnTimeout)
@@ -70,6 +73,42 @@
   const globalKey = "__vueuse_ssr_handlers__";
   _global[globalKey] = _global[globalKey] || {};
   _global[globalKey];
+  var __defProp$9 = Object.defineProperty;
+  var __getOwnPropSymbols$a = Object.getOwnPropertySymbols;
+  var __hasOwnProp$a = Object.prototype.hasOwnProperty;
+  var __propIsEnum$a = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp$9 = (obj, key, value) => key in obj ? __defProp$9(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+  var __spreadValues$9 = (a, b) => {
+    for (var prop2 in b || (b = {}))
+      if (__hasOwnProp$a.call(b, prop2))
+        __defNormalProp$9(a, prop2, b[prop2]);
+    if (__getOwnPropSymbols$a)
+      for (var prop2 of __getOwnPropSymbols$a(b)) {
+        if (__propIsEnum$a.call(b, prop2))
+          __defNormalProp$9(a, prop2, b[prop2]);
+      }
+    return a;
+  };
+  async function loadImage(options) {
+    return new Promise((resolve2, reject2) => {
+      const img = new Image();
+      const { src, srcset, sizes } = options;
+      img.src = src;
+      if (srcset)
+        img.srcset = srcset;
+      if (sizes)
+        img.sizes = sizes;
+      img.onload = () => resolve2(img);
+      img.onerror = reject2;
+    });
+  }
+  const useImage = (options, asyncStateOptions = {}) => {
+    const state2 = useAsyncState(() => loadImage(resolveUnref(options)), void 0, __spreadValues$9({
+      resetOnExecute: true
+    }, asyncStateOptions));
+    vue.watch(() => resolveUnref(options), () => state2.execute(asyncStateOptions.delay), { deep: true });
+    return state2;
+  };
   var SwipeDirection;
   (function(SwipeDirection2) {
     SwipeDirection2["UP"] = "UP";
@@ -1216,6 +1255,7 @@
     return str.trim();
   });
   const trim$1 = trim;
+  const DEFAULT_EXTERNAL_BASE_URL = "https://www.jegkorongszovetseg.hu/event/game/";
   const SORT_STATE_ORIGINAL = "original";
   const SORT_STATE_DESCEND = "descend";
   const SORT_STATE_ASCEND = "ascend";
@@ -1570,79 +1610,6 @@
       }
     };
   };
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
-  const _sfc_main$a = {};
-  const _hoisted_1$8 = {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "sort",
-    class: "svg-inline--fa fa-sort fa-w-10",
-    role: "img",
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 320 512"
-  };
-  const _hoisted_2$7 = /* @__PURE__ */ vue.createElementVNode("path", {
-    fill: "currentColor",
-    d: "M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z"
-  }, null, -1);
-  const _hoisted_3$7 = [
-    _hoisted_2$7
-  ];
-  function _sfc_render$6(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$8, _hoisted_3$7);
-  }
-  const IconSort = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$6]]);
-  const _sfc_main$9 = {};
-  const _hoisted_1$7 = {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "sort-down",
-    class: "svg-inline--fa fa-sort-down fa-w-10",
-    role: "img",
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 320 512"
-  };
-  const _hoisted_2$6 = /* @__PURE__ */ vue.createElementVNode("path", {
-    fill: "currentColor",
-    d: "M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"
-  }, null, -1);
-  const _hoisted_3$6 = [
-    _hoisted_2$6
-  ];
-  function _sfc_render$5(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$7, _hoisted_3$6);
-  }
-  const IconSortAsc = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$5]]);
-  const _sfc_main$8 = {};
-  const _hoisted_1$6 = {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "sort-up",
-    class: "svg-inline--fa fa-sort-up fa-w-10",
-    role: "img",
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 320 512"
-  };
-  const _hoisted_2$5 = /* @__PURE__ */ vue.createElementVNode("path", {
-    fill: "currentColor",
-    d: "M279 224H41c-21.4 0-32.1-25.9-17-41L143 64c9.4-9.4 24.6-9.4 33.9 0l119 119c15.2 15.1 4.5 41-16.9 41z"
-  }, null, -1);
-  const _hoisted_3$5 = [
-    _hoisted_2$5
-  ];
-  function _sfc_render$4(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$6, _hoisted_3$5);
-  }
-  const IconSortDesc = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$4]]);
   const I18nContext = Symbol("I18nContext");
   const state = vue.reactive({
     messages: {},
@@ -1655,12 +1622,15 @@
     state.fallbackLocale = fallbackLocale;
     const translate = (key, data = {}) => {
       const hasInterpolation = !isEmpty$1(data);
-      const keyArray = key.split(".") || [];
-      let translation = vue.computed(() => getTranslation(state.locale, keyArray, state.messages));
-      if (!translation.value) {
-        translation = vue.computed(() => getTranslation(state.fallbackLocale, keyArray, state.messages));
-      }
-      return hasInterpolation ? vue.computed(() => replacer(translation.value, data)) : translation;
+      const keyArray = map$1(trim$1, split$1(".", key));
+      const translation = vue.computed(() => {
+        let rawTransition = getTranslation(state.locale, keyArray, state.messages);
+        if (!rawTransition && state.fallbackLocale) {
+          rawTransition = getTranslation(state.fallbackLocale, keyArray, state.messages);
+        }
+        return hasInterpolation ? replacer(rawTransition, data) : rawTransition;
+      });
+      return translation.value;
     };
     function getTranslation(locale2, keys2, messages2) {
       return path$1([locale2, ...keys2], messages2);
@@ -1708,15 +1678,232 @@
       return data[$2];
     });
   };
+  const useColumns = (columns, hiddenColumns = "", variables = {}) => {
+    const error = vue.ref("");
+    const { t } = useI18n();
+    if (hiddenColumns) {
+      try {
+        const columnsToHide = validateColumnsName(columns, hiddenColumns);
+        columns = omit$1(columnsToHide, columns);
+      } catch (err) {
+        error.value = t("errors.undefinedColumn", { column: err });
+      }
+    }
+    const convert2 = (column) => {
+      var _a2, _b;
+      return {
+        ...column,
+        ...column.label && { label: t((_a2 = column.label) != null ? _a2 : "", variables) },
+        ...column.tooltip && { tooltip: t((_b = column.tooltip) != null ? _b : "") }
+      };
+    };
+    const converted = vue.computed(() => map$1(convert2, columns));
+    return {
+      columns: converted,
+      error
+    };
+  };
+  const validateColumnsName = (columns, hiddenColumns = "") => {
+    const hiddenColumnsArray = map$1(trim$1, split$1(",", hiddenColumns));
+    const columnsArray = keys$1(columns);
+    if (hiddenColumnsArray[0] === "")
+      return resolve([]);
+    const index = hiddenColumnsArray.findIndex((column) => !columnsArray.includes(column));
+    if (index > -1) {
+      throw hiddenColumnsArray[index];
+    }
+    return hiddenColumnsArray;
+  };
+  const COLUMNS_SCHEDULE = {
+    name: {
+      label: "table.gameName.short",
+      tooltip: "table.gameName.tooltip",
+      class: "is-text-left is-text-light"
+    },
+    gameDateDate: {
+      label: "table.gameDate.short",
+      tooltip: "table.gameDate.tooltip",
+      class: "is-text-left"
+    },
+    gameDateTime: {
+      label: "table.gameDateTime.short",
+      tooltip: "table.gameDateTime.tooltip",
+      class: "is-text-left"
+    },
+    homeTeamName: {
+      label: "table.homeTeam.short",
+      tooltip: "table.homeTeam.tooltip",
+      class: "is-text-right is-w-auto is-text-bold"
+    },
+    homeTeamLogo: {
+      label: "",
+      class: "is-has-image"
+    },
+    gameResult: {
+      label: "",
+      class: "is-text-bold is-text-xl"
+    },
+    gameResultType: {
+      label: "",
+      tooltip: ""
+    },
+    awayTeamLogo: {
+      label: "",
+      class: "is-has-image"
+    },
+    awayTeamName: {
+      label: "table.awayTeam.short",
+      tooltip: "table.awayTeam.tooltip",
+      class: "is-text-left is-is-w-auto is-text-bold"
+    },
+    location: {
+      label: "table.location.short",
+      tooltip: "table.location.tooltip",
+      class: "is-text-left"
+    },
+    broadcast: {
+      label: "table.broadcast.short",
+      tooltip: "table.broadcast.tooltip"
+    },
+    more: {
+      label: ""
+    }
+  };
   const useMainClass = (className) => {
     const prefix = "mjsz-vbr-";
     return prefix + className;
   };
-  const _hoisted_1$5 = ["onClick"];
-  const _hoisted_2$4 = { key: 0 };
-  const _hoisted_3$4 = ["colspan"];
-  const _hoisted_4$2 = { key: 1 };
-  const _hoisted_5$1 = ["colspan"];
+  const _sfc_main$c = {
+    __name: "ResponsiveTable",
+    setup(__props) {
+      const mainClassName = useMainClass("table-responsive");
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", {
+          class: vue.normalizeClass(vue.unref(mainClassName))
+        }, [
+          vue.renderSlot(_ctx.$slots, "default")
+        ], 2);
+      };
+    }
+  };
+  const _hoisted_1$a = ["src"];
+  const _hoisted_2$9 = ["src", "title"];
+  const _sfc_main$b = {
+    __name: "Image",
+    props: {
+      src: {
+        type: String,
+        default: ""
+      },
+      title: {
+        type: String,
+        default: ""
+      },
+      defaultSrc: {
+        type: String,
+        default: ""
+      }
+    },
+    setup(__props) {
+      const props = __props;
+      const imageOptions = vue.ref({ src: props.src });
+      const defaultSrc = vue.ref({ src: props.defaultSrc });
+      const { error, isReady } = useImage(imageOptions);
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+          vue.unref(error) && defaultSrc.value ? (vue.openBlock(), vue.createElementBlock("img", {
+            key: 0,
+            src: defaultSrc.value,
+            class: vue.normalizeClass(_ctx.$attrs.class)
+          }, null, 10, _hoisted_1$a)) : vue.createCommentVNode("", true),
+          !vue.unref(error) ? (vue.openBlock(), vue.createElementBlock("img", {
+            key: 1,
+            src: imageOptions.value.src,
+            class: vue.normalizeClass([_ctx.$attrs.class, { "is-loaded": vue.unref(isReady) }]),
+            title: props.title
+          }, null, 10, _hoisted_2$9)) : vue.createCommentVNode("", true)
+        ], 64);
+      };
+    }
+  };
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
+  const _sfc_main$a = {};
+  const _hoisted_1$9 = {
+    "aria-hidden": "true",
+    focusable: "false",
+    "data-prefix": "fas",
+    "data-icon": "sort",
+    class: "svg-inline--fa fa-sort fa-w-10",
+    role: "img",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 320 512"
+  };
+  const _hoisted_2$8 = /* @__PURE__ */ vue.createElementVNode("path", {
+    fill: "currentColor",
+    d: "M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z"
+  }, null, -1);
+  const _hoisted_3$8 = [
+    _hoisted_2$8
+  ];
+  function _sfc_render$6(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$9, _hoisted_3$8);
+  }
+  const IconSort = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$6]]);
+  const _sfc_main$9 = {};
+  const _hoisted_1$8 = {
+    "aria-hidden": "true",
+    focusable: "false",
+    "data-prefix": "fas",
+    "data-icon": "sort-down",
+    class: "svg-inline--fa fa-sort-down fa-w-10",
+    role: "img",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 320 512"
+  };
+  const _hoisted_2$7 = /* @__PURE__ */ vue.createElementVNode("path", {
+    fill: "currentColor",
+    d: "M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"
+  }, null, -1);
+  const _hoisted_3$7 = [
+    _hoisted_2$7
+  ];
+  function _sfc_render$5(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$8, _hoisted_3$7);
+  }
+  const IconSortAsc = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$5]]);
+  const _sfc_main$8 = {};
+  const _hoisted_1$7 = {
+    "aria-hidden": "true",
+    focusable: "false",
+    "data-prefix": "fas",
+    "data-icon": "sort-up",
+    class: "svg-inline--fa fa-sort-up fa-w-10",
+    role: "img",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 320 512"
+  };
+  const _hoisted_2$6 = /* @__PURE__ */ vue.createElementVNode("path", {
+    fill: "currentColor",
+    d: "M279 224H41c-21.4 0-32.1-25.9-17-41L143 64c9.4-9.4 24.6-9.4 33.9 0l119 119c15.2 15.1 4.5 41-16.9 41z"
+  }, null, -1);
+  const _hoisted_3$6 = [
+    _hoisted_2$6
+  ];
+  function _sfc_render$4(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$7, _hoisted_3$6);
+  }
+  const IconSortDesc = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$4]]);
+  const _hoisted_1$6 = ["title", "onClick"];
+  const _hoisted_2$5 = { key: 0 };
+  const _hoisted_3$5 = ["colspan"];
+  const _hoisted_4$3 = { key: 1 };
+  const _hoisted_5$3 = ["colspan"];
   const _sfc_main$7 = {
     __name: "DataTable",
     props: {
@@ -1767,28 +1954,29 @@
                       "is-asc": prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ASCEND)
                     }
                   ]),
+                  title: column.tooltip,
                   onClick: ($event) => sortBy(column, prop2)
                 }, [
                   vue.renderSlot(_ctx.$slots, `header-${prop2}`, { column }, () => [
-                    vue.createElementVNode("span", null, vue.toDisplayString(vue.unref(column.label)), 1)
+                    vue.createTextVNode(vue.toDisplayString(column.label), 1)
                   ]),
                   column.sortOrders && prop2 !== __props.sort.sortTarget ? (vue.openBlock(), vue.createBlock(IconSort, {
                     key: 0,
-                    class: "icon-sort"
+                    class: "is-icon-sort"
                   })) : vue.createCommentVNode("", true),
                   prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ORIGINAL) ? (vue.openBlock(), vue.createBlock(IconSort, {
                     key: 1,
-                    class: "icon-sort"
+                    class: "is-icon-sort"
                   })) : vue.createCommentVNode("", true),
                   prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_DESCEND) ? (vue.openBlock(), vue.createBlock(IconSortAsc, {
                     key: 2,
-                    class: "icon-sort"
+                    class: "is-icon-sort"
                   })) : vue.createCommentVNode("", true),
                   prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ASCEND) ? (vue.openBlock(), vue.createBlock(IconSortDesc, {
                     key: 3,
-                    class: "icon-sort"
+                    class: "is-icon-sort"
                   })) : vue.createCommentVNode("", true)
-                ], 10, _hoisted_1$5);
+                ], 10, _hoisted_1$6);
               }), 128))
             ])
           ]),
@@ -1817,126 +2005,75 @@
             }), 128))
           ]),
           vue.createElementVNode("tfoot", null, [
-            __props.rows.length === 0 && !__props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_2$4, [
-              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.noData")), 9, _hoisted_3$4)
+            __props.rows.length === 0 && !__props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_2$5, [
+              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.noData")), 9, _hoisted_3$5)
             ])) : vue.createCommentVNode("", true),
-            __props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_4$2, [
-              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.loading")), 9, _hoisted_5$1)
+            __props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_4$3, [
+              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.loading")), 9, _hoisted_5$3)
             ])) : vue.createCommentVNode("", true)
           ])
         ], 2);
       };
     }
   };
-  const useColumns = (columns, hiddenColumns = "", variables = {}) => {
-    const error = vue.ref("");
-    const { t } = useI18n();
-    if (hiddenColumns) {
-      try {
-        const columnsToHide = validateColumnsName(columns, hiddenColumns);
-        columns = omit$1(columnsToHide, columns);
-      } catch (err) {
-        error.value = t("errors.undefinedColumn", { column: err });
-      }
-    }
-    const convert2 = (column) => {
-      var _a2, _b;
-      return {
-        ...column,
-        ...column.label && { label: t((_a2 = column.label) != null ? _a2 : "", variables) },
-        ...column.tooltip && { tooltip: t((_b = column.tooltip) != null ? _b : "") }
-      };
-    };
-    const converted = map$1(convert2, columns);
-    return {
-      columns: converted,
-      error
-    };
+  const _sfc_main$6 = {};
+  const _hoisted_1$5 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    "stroke-width": "2",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round"
   };
-  const validateColumnsName = (columns, hiddenColumns = "") => {
-    const hiddenColumnsArray = map$1(trim$1, split$1(",", hiddenColumns));
-    const columnsArray = keys$1(columns);
-    if (hiddenColumnsArray[0] === "")
-      return resolve([]);
-    const index = hiddenColumnsArray.findIndex((column) => !columnsArray.includes(column));
-    if (index > -1) {
-      throw hiddenColumnsArray[index];
-    }
-    return hiddenColumnsArray;
-  };
-  const COLUMNS_SCHEDULE = {
-    name: {
-      label: "table.gameName.short",
-      tooltip: "table.gameName.tooltip",
-      class: "text-left text-light"
-    },
-    gameDateDate: {
-      label: "table.gameDate.short",
-      tooltip: "table.gameDate.tooltip",
-      class: "text-left"
-    },
-    gameDateTime: {
-      label: "table.gameDateTime.short",
-      tooltip: "table.gameDateTime.tooltip",
-      class: "text-left"
-    },
-    homeTeamName: {
-      label: "table.homeTeam.short",
-      tooltip: "table.homeTeam.tooltip",
-      class: "text-right w-auto text-bold"
-    },
-    gameResult: {
-      label: "",
-      class: "text-bold text-xl"
-    },
-    gameResultType: {
-      label: "",
-      tooltip: ""
-    },
-    awayTeamName: {
-      label: "table.awayTeam.short",
-      tooltip: "table.awayTeam.tooltip",
-      class: "text-left w-auto text-bold"
-    },
-    location: {
-      label: "table.location.short",
-      tooltip: "table.location.tooltip",
-      class: "text-left"
-    },
-    broadcast: {
-      label: "table.broadcast.short",
-      tooltip: "table.broadcast.tooltip"
-    },
-    more: {
-      label: ""
-    }
-  };
-  const _sfc_main$6 = {
-    __name: "ResponsiveTable",
-    setup(__props) {
-      const mainClassName = useMainClass("table-responsive");
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", {
-          class: vue.normalizeClass(vue.unref(mainClassName))
-        }, [
-          vue.renderSlot(_ctx.$slots, "default")
-        ], 2);
-      };
-    }
-  };
+  const _hoisted_2$4 = /* @__PURE__ */ vue.createElementVNode("rect", {
+    x: "2",
+    y: "3",
+    width: "20",
+    height: "14",
+    rx: "2",
+    ry: "2"
+  }, null, -1);
+  const _hoisted_3$4 = /* @__PURE__ */ vue.createElementVNode("line", {
+    x1: "8",
+    y1: "21",
+    x2: "16",
+    y2: "21"
+  }, null, -1);
+  const _hoisted_4$2 = /* @__PURE__ */ vue.createElementVNode("line", {
+    x1: "12",
+    y1: "17",
+    x2: "12",
+    y2: "21"
+  }, null, -1);
+  const _hoisted_5$2 = [
+    _hoisted_2$4,
+    _hoisted_3$4,
+    _hoisted_4$2
+  ];
+  function _sfc_render$3(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$5, _hoisted_5$2);
+  }
+  const IconBroadcast = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$3]]);
   const _hoisted_1$4 = { key: 0 };
   const _hoisted_2$3 = {
     key: 0,
+    class: "is-text-dark"
+  };
+  const _hoisted_3$3 = ["href"];
+  const _hoisted_4$1 = {
+    key: 0,
     class: "label"
   };
-  const _hoisted_3$3 = {
+  const _hoisted_5$1 = {
     key: 1,
     class: "label"
   };
-  const _hoisted_4$1 = {
+  const _hoisted_6$1 = {
     key: 2,
     class: "label"
   };
+  const _hoisted_7$1 = { key: 1 };
   const _sfc_main$5 = {
     __name: "ScheduleTable",
     props: {
@@ -1947,6 +2084,10 @@
       isLoading: {
         type: Boolean,
         deafult: false
+      },
+      externalBaseUrl: {
+        type: String,
+        default: DEFAULT_EXTERNAL_BASE_URL
       },
       hideColumns: {
         type: String,
@@ -1960,18 +2101,42 @@
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
           vue.unref(error) ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1$4, vue.toDisplayString(vue.unref(error)), 1)) : vue.createCommentVNode("", true),
-          vue.createVNode(_sfc_main$6, null, {
+          vue.createVNode(_sfc_main$c, null, {
             default: vue.withCtx(() => [
               vue.createVNode(_sfc_main$7, {
-                class: "mjsz-vbr-table",
                 columns: vue.unref(columns),
                 rows: props.rows,
                 "is-loading": __props.isLoading
               }, {
+                "cell-homeTeamLogo": vue.withCtx(({ row }) => [
+                  (vue.openBlock(), vue.createBlock(_sfc_main$b, {
+                    class: "is-logo-image is-right",
+                    key: row.id,
+                    src: row.homeTeamLogo
+                  }, null, 8, ["src"]))
+                ]),
+                "cell-awayTeamLogo": vue.withCtx(({ row }) => [
+                  (vue.openBlock(), vue.createBlock(_sfc_main$b, {
+                    class: "is-logo-image is-right",
+                    key: row.id,
+                    src: row.awayTeamLogo
+                  }, null, 8, ["src"]))
+                ]),
+                "cell-gameResult": vue.withCtx(({ row }) => [
+                  row.gameStatus === 0 ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_2$3, "-:-")) : (vue.openBlock(), vue.createElementBlock("a", {
+                    key: 1,
+                    href: __props.externalBaseUrl + row.id,
+                    target: "_blank",
+                    class: vue.normalizeClass({ "is-text-dark": row.gameStatus !== 1, "is-text-accent": row.gameStatus === 1 })
+                  }, vue.toDisplayString(row.homeTeamScore) + ":" + vue.toDisplayString(row.awayTeamScore), 11, _hoisted_3$3))
+                ]),
                 "cell-gameResultType": vue.withCtx(({ row }) => [
-                  row.isOvertime ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_2$3, vue.toDisplayString(vue.unref(vue.unref(t)("common.overtimeShort"))), 1)) : vue.createCommentVNode("", true),
-                  row.isShootout ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_3$3, vue.toDisplayString(vue.unref(vue.unref(t)("common.shootoutShort"))), 1)) : vue.createCommentVNode("", true),
-                  row.seriesStandings ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_4$1, vue.toDisplayString(row.seriesStandings), 1)) : vue.createCommentVNode("", true)
+                  row.isOvertime ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_4$1, vue.toDisplayString(vue.unref(t)("common.overtimeShort")), 1)) : vue.createCommentVNode("", true),
+                  row.isShootout ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_5$1, vue.toDisplayString(vue.unref(t)("common.shootoutShort").value), 1)) : vue.createCommentVNode("", true),
+                  row.seriesStandings ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_6$1, vue.toDisplayString(row.seriesStandings), 1)) : vue.createCommentVNode("", true)
+                ]),
+                "cell-broadcast": vue.withCtx(({ row }) => [
+                  row.broadcast ? (vue.openBlock(), vue.createBlock(IconBroadcast, { key: 0 })) : (vue.openBlock(), vue.createElementBlock("span", _hoisted_7$1))
                 ]),
                 _: 1
               }, 8, ["columns", "rows", "is-loading"])
@@ -2654,10 +2819,42 @@
       });
     }
   });
-  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.renderSlot(_ctx.$slots, "default");
   }
-  const I18NProvider = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3]]);
+  const I18NProvider = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$2]]);
+  function usePagination({ currentPage, itemsPerPage = 20, totalItems, rangeLength = 5, update = noop }) {
+    const pageCount = vue.computed(() => Math.ceil(vue.unref(totalItems) / itemsPerPage));
+    const range = vue.computed(() => {
+      const page = vue.unref(currentPage) - 1;
+      const range2 = Array.from({ length: pageCount.value }, (_, i) => i + 1);
+      const minus = Math.floor(rangeLength / 2);
+      let startIndex = Math.max(page - minus, 0);
+      if (startIndex + rangeLength >= pageCount.value) {
+        startIndex = Math.max(pageCount.value - rangeLength, 0);
+      }
+      return range2.slice(startIndex, startIndex + rangeLength);
+    });
+    const pageStep = (v) => {
+      const page = vue.unref(currentPage) + v;
+      if (validPage(page))
+        update(page);
+    };
+    const goTo = (page) => {
+      if (validPage(page))
+        update(page);
+    };
+    const validPage = (page) => {
+      return page <= pageCount.value && page > 0;
+    };
+    return {
+      page: currentPage,
+      range,
+      pageCount,
+      goTo,
+      pageStep
+    };
+  }
   const _sfc_main$3 = {};
   const _hoisted_1$3 = {
     xmlns: "http://www.w3.org/2000/svg",
@@ -2672,10 +2869,10 @@
   const _hoisted_3$2 = [
     _hoisted_2$2
   ];
-  function _sfc_render$2(_ctx, _cache) {
+  function _sfc_render$1(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$3, _hoisted_3$2);
   }
-  const IconLeft = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$2]]);
+  const IconLeft = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$1]]);
   const _sfc_main$2 = {};
   const _hoisted_1$2 = {
     xmlns: "http://www.w3.org/2000/svg",
@@ -2690,16 +2887,29 @@
   const _hoisted_3$1 = [
     _hoisted_2$1
   ];
-  function _sfc_render$1(_ctx, _cache) {
+  function _sfc_render(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$2, _hoisted_3$1);
   }
-  const IconRight = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1]]);
+  const IconRight = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render]]);
+  const _hoisted_1$1 = ["disabled"];
+  const _hoisted_2 = ["disabled"];
+  const _hoisted_3 = {
+    key: 1,
+    class: "is-disabled"
+  };
+  const _hoisted_4 = ["disabled", "onClick"];
+  const _hoisted_5 = {
+    key: 2,
+    class: "is-disabled"
+  };
+  const _hoisted_6 = /* @__PURE__ */ vue.createElementVNode("span", null, "...", -1);
+  const _hoisted_7 = [
+    _hoisted_6
+  ];
+  const _hoisted_8 = ["disabled"];
+  const _hoisted_9 = ["disabled"];
   const _sfc_main$1 = {
-    name: "Paginator",
-    components: {
-      IconLeft,
-      IconRight
-    },
+    __name: "Paginator",
     props: {
       page: {
         type: Number,
@@ -2736,129 +2946,71 @@
         default: false
       }
     },
-    setup() {
+    emits: ["change"],
+    setup(__props, { emit }) {
+      const props = __props;
       const mainClassName = useMainClass("paginator");
-      return {
-        mainClassName
+      const { page, pageCount, range, goTo, pageStep } = usePagination({
+        currentPage: vue.computed(() => props.page),
+        totalItems: vue.computed(() => props.totalItems),
+        itemsPerPage: props.itemsPerPage,
+        rangeLength: props.rangeLength,
+        update: (page2) => emit("change", page2)
+      });
+      return (_ctx, _cache) => {
+        return vue.unref(pageCount) > 1 ? (vue.openBlock(), vue.createElementBlock("div", {
+          key: 0,
+          class: vue.normalizeClass(vue.unref(mainClassName))
+        }, [
+          vue.createElementVNode("button", {
+            type: "button",
+            disabled: vue.unref(page) === 1,
+            onClick: _cache[0] || (_cache[0] = ($event) => vue.unref(pageStep)(-1))
+          }, [
+            vue.renderSlot(_ctx.$slots, "prev", {}, () => [
+              vue.createVNode(IconLeft, { class: "icon paginator-left" })
+            ])
+          ], 8, _hoisted_1$1),
+          !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("button", {
+            key: 0,
+            type: "button",
+            disabled: vue.unref(page) === 1,
+            onClick: _cache[1] || (_cache[1] = ($event) => vue.unref(goTo)(1))
+          }, "1", 8, _hoisted_2)) : vue.createCommentVNode("", true),
+          !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_3, "...")) : vue.createCommentVNode("", true),
+          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(range), (n) => {
+            return vue.openBlock(), vue.createElementBlock("button", {
+              type: "button",
+              key: n,
+              class: vue.normalizeClass({ "is-active": n === vue.unref(page) }),
+              disabled: n === vue.unref(page),
+              onClick: ($event) => vue.unref(goTo)(n)
+            }, vue.toDisplayString(n), 11, _hoisted_4);
+          }), 128)),
+          !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_5, _hoisted_7)) : vue.createCommentVNode("", true),
+          !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("button", {
+            key: 3,
+            type: "button",
+            disabled: vue.unref(page) === vue.unref(pageCount),
+            onClick: _cache[2] || (_cache[2] = ($event) => vue.unref(goTo)(vue.unref(pageCount)))
+          }, vue.toDisplayString(vue.unref(pageCount)), 9, _hoisted_8)) : vue.createCommentVNode("", true),
+          vue.createElementVNode("button", {
+            type: "button",
+            disabled: vue.unref(page) === vue.unref(pageCount),
+            onClick: _cache[3] || (_cache[3] = vue.withModifiers(($event) => vue.unref(pageStep)(1), ["prevent"]))
+          }, [
+            vue.renderSlot(_ctx.$slots, "next", {}, () => [
+              vue.createVNode(IconRight, { class: "icon paginator-left" })
+            ])
+          ], 8, _hoisted_9)
+        ], 2)) : vue.createCommentVNode("", true);
       };
-    },
-    computed: {
-      pageCount() {
-        return Math.ceil(this.totalItems / this.itemsPerPage);
-      },
-      range() {
-        const page = this.page - 1;
-        const range = Array.from({ length: this.pageCount }, (_, i) => i + 1);
-        const minus = Math.floor(this.rangeLength / 2);
-        let startIndex = Math.max(page - minus, 0);
-        if (startIndex + this.rangeLength >= this.pageCount) {
-          startIndex = Math.max(this.pageCount - this.rangeLength, 0);
-        }
-        return range.slice(startIndex, startIndex + this.rangeLength);
-      }
-    },
-    methods: {
-      pageStep(v) {
-        const page = this.page + v;
-        if (this.validPage(page))
-          this.$emit("change", page);
-      },
-      goTo(page) {
-        if (this.validPage(page))
-          this.$emit("change", page);
-      },
-      validPage(page) {
-        return page <= this.pageCount && page > 0;
-      }
     }
   };
-  const _hoisted_1$1 = {
-    key: 1,
-    class: "is-extended"
-  };
-  const _hoisted_2 = /* @__PURE__ */ vue.createElementVNode("span", null, "...", -1);
-  const _hoisted_3 = [
-    _hoisted_2
-  ];
-  const _hoisted_4 = ["onClick"];
-  const _hoisted_5 = {
-    key: 2,
-    class: "is-extended"
-  };
-  const _hoisted_6 = /* @__PURE__ */ vue.createElementVNode("span", null, "...", -1);
-  const _hoisted_7 = [
-    _hoisted_6
-  ];
-  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_IconLeft = vue.resolveComponent("IconLeft");
-    const _component_IconRight = vue.resolveComponent("IconRight");
-    return $options.pageCount > 1 ? (vue.openBlock(), vue.createElementBlock("ul", {
-      key: 0,
-      class: vue.normalizeClass($setup.mainClassName)
-    }, [
-      vue.createElementVNode("li", {
-        class: vue.normalizeClass({ "is-disabled": $props.page === 1 })
-      }, [
-        vue.createElementVNode("a", {
-          href: "#",
-          onClick: _cache[0] || (_cache[0] = vue.withModifiers(($event) => $options.pageStep(-1), ["prevent"]))
-        }, [
-          vue.renderSlot(_ctx.$slots, "prev", {}, () => [
-            vue.createVNode(_component_IconLeft, { class: "icon paginator-left" })
-          ])
-        ])
-      ], 2),
-      !$props.isCompact ? (vue.openBlock(), vue.createElementBlock("li", {
-        key: 0,
-        class: vue.normalizeClass({ "is-disabled": $props.page === 1 })
-      }, [
-        vue.createElementVNode("a", {
-          href: "#",
-          type: "button",
-          onClick: _cache[1] || (_cache[1] = vue.withModifiers(($event) => $options.goTo(1), ["prevent"]))
-        }, " 1 ")
-      ], 2)) : vue.createCommentVNode("", true),
-      !$props.isCompact ? (vue.openBlock(), vue.createElementBlock("li", _hoisted_1$1, _hoisted_3)) : vue.createCommentVNode("", true),
-      (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList($options.range, (n) => {
-        return vue.openBlock(), vue.createElementBlock("li", {
-          key: n,
-          class: vue.normalizeClass({ "is-active": n === $props.page })
-        }, [
-          vue.createElementVNode("a", {
-            href: "#",
-            onClick: vue.withModifiers(($event) => $options.goTo(n), ["prevent"])
-          }, vue.toDisplayString(n), 9, _hoisted_4)
-        ], 2);
-      }), 128)),
-      !$props.isCompact ? (vue.openBlock(), vue.createElementBlock("li", _hoisted_5, _hoisted_7)) : vue.createCommentVNode("", true),
-      !$props.isCompact ? (vue.openBlock(), vue.createElementBlock("li", {
-        key: 3,
-        class: vue.normalizeClass({ "is-disabled": $props.page === $options.pageCount })
-      }, [
-        vue.createElementVNode("a", {
-          href: "#",
-          onClick: _cache[2] || (_cache[2] = vue.withModifiers(($event) => $options.goTo($options.pageCount), ["prevent"]))
-        }, vue.toDisplayString($options.pageCount), 1)
-      ], 2)) : vue.createCommentVNode("", true),
-      vue.createElementVNode("li", {
-        class: vue.normalizeClass({ "is-disabled": $props.page === $options.pageCount })
-      }, [
-        vue.createElementVNode("a", {
-          href: "#",
-          onClick: _cache[3] || (_cache[3] = vue.withModifiers(($event) => $options.pageStep(1), ["prevent"]))
-        }, [
-          vue.renderSlot(_ctx.$slots, "next", {}, () => [
-            vue.createVNode(_component_IconRight, { class: "icon paginator-left" })
-          ])
-        ])
-      ], 2)
-    ], 2)) : vue.createCommentVNode("", true);
-  }
-  const Paginator = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
-  const _style_0 = ":root,\n:host {\n  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;\n  --text-color: red;\n  --bg-color: white;\n\n  --vbr-widget-primary-color-0: #ffffff;\n  --vbr-widget-primary-color-50: #eceff1;\n  --vbr-widget-primary-color-100: #cfd8dc;\n  --vbr-widget-primary-color-200: #b0bec5;\n  --vbr-widget-primary-color-300: #90a4ae;\n  --vbr-widget-primary-color-400: #78909c;\n  --vbr-widget-primary-color-500: #607d8b;\n  --vbr-widget-primary-color-600: #546e7a;\n  --vbr-widget-primary-color-700: #455a64;\n  --vbr-widget-primary-color-800: #37474f;\n  --vbr-widget-primary-color-900: #263238;\n\n  --vbr-widget-secondary-color-100: #dcedc8;\n  --vbr-widget-secondary-color-200: #badb94;\n  --vbr-widget-secondary-color-300: #aed581;\n  --vbr-widget-secondary-color-400: #9ccc65;\n  --vbr-widget-secondary-color-500: #8bc34a;\n  --vbr-widget-secondary-color-700: #689f38;\n  --vbr-widget-secondary-color-800: #558b2f;\n  --vbr-widget-secondary-color-900: #33691e;\n\n  --vbr-widget-danger-color-50: #ffebee;\n  --vbr-widget-danger-color-100: #ffcdd2;\n  --vbr-widget-danger-color-200: #ef9a9a;\n  --vbr-widget-danger-color-300: #e57373;\n  --vbr-widget-danger-color-400: #ef5350;\n  --vbr-widget-danger-color-500: #f44336;\n  --vbr-widget-danger-color-700: #d32f2f;\n  --vbr-widget-danger-color-900: #b71c1c;\n  --vbr-widget-danger-color-a400: #ff1744;\n\n  --vbr-widget-table-header-font-size: 12px;\n  --vbr-widget-table-default-column-width: 30px;\n  --vbr-widget-table-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-neutral-color: var(--vbr-widget-primary-color-300);\n  --vbr-widget-table-header-bg-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-color: var(--vbr-widget-primary-color-200);\n  --vbr-widget-table-table-header-active-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-table-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-hover-bg-color: var(--vbr-widget-secondary-color-100);\n  --vbr-widget-table-active-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-bg-color: var(--vbr-widget-secondary-color-200);\n  --vbr-widget-table-active-even-bg-color: var(--vbr-widget-secondary-color-300);\n  --vbr-widget-table-active-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-hover-bg-color: var(--vbr-widget-secondary-color-400);\n  --vbr-widget-table-portrait-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-table-portrait-bg-color: var(--vbr-widget-primary-color-50);\n  --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-600);\n  --vbr-widget-table-cell-dark-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-table-stripped-bg-color: #f8f9fa;\n  --vbr-widget-table-label-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-table-label-bg-color: var(--vbr-widget-primary-color-50);\n\n  --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-hover-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-paginator-hover-bg-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);\n}\n";
-  const _style_1 = ".mjsz-vbr-table {\n  border-collapse: collapse;\n  border-spacing: 0;\n  color: var(--vbr-widget-table-color);\n}\n.mjsz-vbr-table table,\n.mjsz-vbr-table caption,\n.mjsz-vbr-table tbody,\n.mjsz-vbr-table tfoot,\n.mjsz-vbr-table thead,\n.mjsz-vbr-table tr,\n.mjsz-vbr-table th,\n.mjsz-vbr-table td {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline;\n}\n.mjsz-vbr-table th {\n  width: var(--vbr-widget-table-default-column-width);\n  background-color: var(--vbr-widget-table-header-bg-color);\n  font-size: var(--vbr-widget-table-header-font-size);\n  font-weight: 700;\n  color: var(--vbr-widget-table-header-color);\n  text-align: center;\n}\n.mjsz-vbr-table th:hover {\n  background-color: var(--vbr-widget-table-header-hover-bg-color);\n}\n.mjsz-vbr-table th.mjsz-vbr-is-sortable {\n  position: relative;\n  cursor: pointer;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-sortable .icon-sort {\n  opacity: 0.5;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-active {\n  background-color: var(--vbr-widget-table-table-header-active-bg-color);\n  color: var(--vbr-widget-table-header-active-color);\n}\n.mjsz-vbr-table th.mjsz-vbr-is-active .icon-sort {\n  opacity: 1;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-asc {\n  position: relative;\n}\n.mjsz-vbr-table th.mjsz-vbr-is-desc {\n  position: relative;\n}\n.mjsz-vbr-table th.mjsz-vbr-w-auto {\n  width: auto;\n}\n.mjsz-vbr-table th .icon-sort {\n  width: 11px;\n  height: 11px;\n  margin-left: 5px;\n}\n.mjsz-vbr-table td {\n  text-align: center;\n}\n.mjsz-vbr-table td.mjsz-vbr-is-active {\n  font-weight: 700;\n  color: var(--vbr-widget-table-active-color);\n  background-color: var(--vbr-widget-table-active-bg-color);\n}\n.mjsz-vbr-table td .mjsz-vbr-text-light, .mjsz-vbr-table td.mjsz-vbr-text-light {\n  color: var(--vbr-widget-table-cell-light-color);\n}\n.mjsz-vbr-table td .mjsz-vbr-text-dark, .mjsz-vbr-table td.mjsz-vbr-text-dark {\n  color: var(--vbr-widget-table-cell-dark-color);\n}\n.mjsz-vbr-table td svg {\n  width: 16px;\n  height: 16px;\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button {\n  padding: 3px 3px;\n  line-height: 0;\n  border: none;\n  outline: none;\n  background-color: transparent;\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:hover {\n  background-color: var(--vbr-widget-popover-trigger-hover-bg-color);\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:active, .mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:focus {\n  background-color: var(--vbr-widget-popover-trigger-focus-bg-color);\n}\n.mjsz-vbr-table td a {\n  text-decoration: none;\n}\n.mjsz-vbr-table td .mjsz-vbr-label {\n  padding: 3px 6px;\n  font-size: 11px;\n  font-weight: 700;\n  color: var(--vbr-widget-table-label-color);\n  background-color: var(--vbr-widget-table-label-bg-color);\n  border-radius: 2px;\n}\n.mjsz-vbr-table td .mjsz-vbr-label:not(:last-of-type) {\n  margin-right: 3px;\n}\n.mjsz-vbr-table th,\n.mjsz-vbr-table td {\n  padding: 8px;\n  white-space: nowrap;\n  vertical-align: middle;\n}\n.mjsz-vbr-table th.mjsz-vbr-text-left,\n.mjsz-vbr-table td.mjsz-vbr-text-left {\n  text-align: left;\n}\n.mjsz-vbr-table th.mjsz-vbr-text-right,\n.mjsz-vbr-table td.mjsz-vbr-text-right {\n  text-align: right;\n}\n.mjsz-vbr-table th .mjsz-vbr-is-duplicated,\n.mjsz-vbr-table td .mjsz-vbr-is-duplicated {\n  color: var(--vbr-widget-table-neutral-color);\n}\n.mjsz-vbr-table tr:nth-child(even) {\n  background-color: var(--vbr-widget-table-stripped-bg-color);\n}\n.mjsz-vbr-table tr:nth-child(even) td.mjsz-vbr-is-active {\n  background-color: var(--vbr-widget-table-active-even-bg-color);\n}\n.mjsz-vbr-table tr:focus-within,\n.mjsz-vbr-table tr:hover {\n  color: var(--vbr-widget-table-hover-color);\n  background-color: var(--vbr-widget-table-hover-bg-color);\n}\n.mjsz-vbr-table tr:focus-within td.mjsz-vbr-is-active,\n.mjsz-vbr-table tr:hover td.mjsz-vbr-is-active {\n  color: var(--vbr-widget-table-active-hover-color);\n  background-color: var(--vbr-widget-table-active-hover-bg-color);\n}";
+  const _style_0 = ":root,\n:host {\n  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;\n  --text-color: red;\n  --bg-color: white;\n\n  --vbr-widget-primary-color-0: #ffffff;\n  --vbr-widget-primary-color-50: #eceff1;\n  --vbr-widget-primary-color-100: #cfd8dc;\n  --vbr-widget-primary-color-200: #b0bec5;\n  --vbr-widget-primary-color-300: #90a4ae;\n  --vbr-widget-primary-color-400: #78909c;\n  --vbr-widget-primary-color-500: #607d8b;\n  --vbr-widget-primary-color-600: #546e7a;\n  --vbr-widget-primary-color-700: #455a64;\n  --vbr-widget-primary-color-800: #37474f;\n  --vbr-widget-primary-color-900: #263238;\n\n  --vbr-widget-secondary-color-100: #dcedc8;\n  --vbr-widget-secondary-color-200: #badb94;\n  --vbr-widget-secondary-color-300: #aed581;\n  --vbr-widget-secondary-color-400: #9ccc65;\n  --vbr-widget-secondary-color-500: #8bc34a;\n  --vbr-widget-secondary-color-700: #689f38;\n  --vbr-widget-secondary-color-800: #558b2f;\n  --vbr-widget-secondary-color-900: #33691e;\n\n  --vbr-widget-danger-color-50: #ffebee;\n  --vbr-widget-danger-color-100: #ffcdd2;\n  --vbr-widget-danger-color-200: #ef9a9a;\n  --vbr-widget-danger-color-300: #e57373;\n  --vbr-widget-danger-color-400: #ef5350;\n  --vbr-widget-danger-color-500: #f44336;\n  --vbr-widget-danger-color-700: #d32f2f;\n  --vbr-widget-danger-color-900: #b71c1c;\n  --vbr-widget-danger-color-a400: #ff1744;\n\n  --vbr-widget-table-header-font-size: 12px;\n  --vbr-widget-table-default-column-width: 30px;\n  --vbr-widget-table-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-neutral-color: var(--vbr-widget-primary-color-300);\n  --vbr-widget-table-header-bg-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-color: var(--vbr-widget-primary-color-200);\n  --vbr-widget-table-table-header-active-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-table-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-hover-bg-color: var(--vbr-widget-secondary-color-100);\n  --vbr-widget-table-active-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-bg-color: var(--vbr-widget-secondary-color-200);\n  --vbr-widget-table-active-even-bg-color: var(--vbr-widget-secondary-color-300);\n  --vbr-widget-table-active-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-hover-bg-color: var(--vbr-widget-secondary-color-400);\n  --vbr-widget-table-portrait-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-table-portrait-bg-color: var(--vbr-widget-primary-color-50);\n  --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-600);\n  --vbr-widget-table-cell-dark-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-table-stripped-bg-color: #f8f9fa;\n  --vbr-widget-table-label-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-table-label-bg-color: var(--vbr-widget-primary-color-50);\n  --vbr-widget-table-cell-logo-size: 20px;\n\n  --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-hover-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-paginator-hover-bg-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);\n}\nimg {\n  opacity: 0;\n  transition: opacity 0.5s ease-out;\n}\nimg.is-loaded {\n  opacity: 1;\n}\n";
+  const _style_1 = ".mjsz-vbr-table {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n.mjsz-vbr-table table,\n  .mjsz-vbr-table caption,\n  .mjsz-vbr-table tbody,\n  .mjsz-vbr-table tfoot,\n  .mjsz-vbr-table thead,\n  .mjsz-vbr-table tr,\n  .mjsz-vbr-table th,\n  .mjsz-vbr-table td {\n    margin: 0;\n    padding: 0;\n    border: 0;\n    font-size: 100%;\n    font: inherit;\n    vertical-align: baseline;\n}\n.mjsz-vbr-table {\n  color: var(--vbr-widget-table-color);\n}\n.mjsz-vbr-table th {\n    width: var(--vbr-widget-table-default-column-width);\n    background-color: var(--vbr-widget-table-header-bg-color);\n    font-size: var(--vbr-widget-table-header-font-size);\n    font-weight: 700;\n    color: var(--vbr-widget-table-header-color);\n    text-align: center;\n}\n.mjsz-vbr-table th:hover {\n      background-color: var(--vbr-widget-table-header-hover-bg-color);\n}\n.mjsz-vbr-table th.is-sortable {\n      position: relative;\n      cursor: pointer;\n}\n.mjsz-vbr-table th.is-sortable .icon-sort {\n        opacity: 0.5;\n}\n.mjsz-vbr-table th.is-active {\n      background-color: var(--vbr-widget-table-table-header-active-bg-color);\n      color: var(--vbr-widget-table-header-active-color);\n}\n.mjsz-vbr-table th.is-active .icon-sort {\n        opacity: 1;\n}\n.mjsz-vbr-table th.is-asc {\n      position: relative;\n}\n.mjsz-vbr-table th.is-desc {\n      position: relative;\n}\n.mjsz-vbr-table th.is-w-auto {\n      width: auto;\n}\n.mjsz-vbr-table th .is-icon-sort {\n      width: 11px;\n      height: 11px;\n      margin-left: 5px;\n}\n.mjsz-vbr-table td {\n    text-align: center;\n}\n.mjsz-vbr-table td.is-active {\n      font-weight: 700;\n      color: var(--vbr-widget-table-active-color);\n      background-color: var(--vbr-widget-table-active-bg-color);\n}\n.mjsz-vbr-table td .is-text-light,\n    .mjsz-vbr-table td.is-text-light {\n      color: var(--vbr-widget-table-cell-light-color);\n}\n.mjsz-vbr-table td .is-text-dark,\n    .mjsz-vbr-table td.is-text-dark {\n      color: var(--vbr-widget-table-cell-dark-color);\n}\n.mjsz-vbr-table td.is-has-image {\n      padding: 0 2px;\n}\n.mjsz-vbr-table td .is-logo-image {\n      display: inline-block;\n      vertical-align: middle;\n      width: var(--vbr-widget-table-cell-logo-size);\n      height: var(--vbr-widget-table-cell-logo-size);\n}\n.mjsz-vbr-table td.is-text-bold {\n      font-weight: 700;\n}\n.mjsz-vbr-table td.is-text-xl {\n      font-size: 1.2 rem;\n}\n.mjsz-vbr-table td svg {\n      width: 16px;\n      height: 16px;\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button {\n      padding: 3px 3px;\n      line-height: 0;\n      border: none;\n      outline: none;\n      background-color: transparent;\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:hover {\n        background-color: var(--vbr-widget-popover-trigger-hover-bg-color);\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:active,\n      .mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:focus {\n        background-color: var(--vbr-widget-popover-trigger-focus-bg-color);\n}\n.mjsz-vbr-table td a {\n      text-decoration: none;\n}\n.mjsz-vbr-table td .label {\n      padding: 3px 6px;\n      font-size: 11px;\n      font-weight: 700;\n      color: var(--vbr-widget-table-label-color);\n      background-color: var(--vbr-widget-table-label-bg-color);\n      border-radius: 2px;\n}\n.mjsz-vbr-table td .label:not(:last-of-type) {\n        margin-right: 3px;\n}\n.mjsz-vbr-table th,\n  .mjsz-vbr-table td {\n    padding: 8px;\n    white-space: nowrap;\n    vertical-align: middle;\n}\n.mjsz-vbr-table th.is-text-left, .mjsz-vbr-table td.is-text-left {\n      text-align: left;\n}\n.mjsz-vbr-table th.is-text-right, .mjsz-vbr-table td.is-text-right {\n      text-align: right;\n}\n.mjsz-vbr-table th .is-duplicated, .mjsz-vbr-table td .is-duplicated {\n      color: var(--vbr-widget-table-neutral-color);\n}\n.mjsz-vbr-table tr:nth-child(even) {\n    background-color: var(--vbr-widget-table-stripped-bg-color);\n}\n.mjsz-vbr-table tr:nth-child(even) td.is-active {\n      background-color: var(--vbr-widget-table-active-even-bg-color);\n}\n.mjsz-vbr-table tr:focus-within,\n  .mjsz-vbr-table tr:hover {\n    color: var(--vbr-widget-table-hover-color);\n    background-color: var(--vbr-widget-table-hover-bg-color);\n}\n.mjsz-vbr-table tr:focus-within td.is-active, .mjsz-vbr-table tr:hover td.is-active {\n      color: var(--vbr-widget-table-active-hover-color);\n      background-color: var(--vbr-widget-table-active-hover-bg-color);\n}\n";
   const _style_2 = ".mjsz-vbr-table-responsive {\n  width: 100%;\n  overflow-x: auto;\n}\n.mjsz-vbr-table-responsive table {\n  width: 100%;\n}\n";
-  const _style_3 = ".mjsz-vbr-paginator {\n  display: flex;\n  flex-direction: row;\n  list-style-type: none;\n  margin: 10px 0;\n  padding: 0;\n}\n.mjsz-vbr-paginator li {\n  display: flex;\n}\n.mjsz-vbr-paginator li a,\n.mjsz-vbr-paginator li span {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 6px 12px;\n  text-decoration: none;\n  color: var(--vbr-widget-paginator-color);\n  border: 1px solid var(--vbr-widget-paginator-border-color);\n  background-color: var(--vbr-widget-paginator-bg-color);\n  margin-left: -1px;\n}\n.mjsz-vbr-paginator li a .icon,\n.mjsz-vbr-paginator li span .icon {\n  width: 16px;\n  height: 16px;\n  margin: 0 -4px;\n}\n.mjsz-vbr-paginator li span {\n  border: none;\n  margin-left: 0;\n}\n.mjsz-vbr-paginator li:hover:not(.mjsz-vbr-paginator li.mjsz-vbr-is-disabled) a {\n  color: var(--vbr-widget-paginator-hover-color);\n  background-color: var(--vbr-widget-paginator-hover-bg-color);\n}\n.mjsz-vbr-paginator li.mjsz-vbr-is-disabled a,\n.mjsz-vbr-paginator li.mjsz-vbr-is-disabled span {\n  color: var(--vbr-widget-paginator-disabled-color);\n  background-color: var(--vbr-widget-paginator-bg-color);\n  pointer-events: none;\n  cursor: default;\n}\n.mjsz-vbr-paginator li:focus a, .mjsz-vbr-paginator li.mjsz-vbr-is-active a {\n  color: var(--vbr-widget-paginator-active-color);\n  background-color: var(--vbr-widget-paginator-active-bg-color);\n  border-color: var(--vbr-widget-paginator-active-bg-color);\n  cursor: default;\n}\n.mjsz-vbr-paginator li:focus:hover, .mjsz-vbr-paginator li.mjsz-vbr-is-active:hover {\n  background-color: var(--vbr-widget-paginator-active-bg-color);\n}";
+  const _style_3 = ".mjsz-vbr-paginator {\n  display: flex;\n  flex-direction: row;\n  list-style-type: none;\n  margin: 10px 0;\n  padding: 0;\n}\n.mjsz-vbr-paginator button,\n  .mjsz-vbr-paginator div {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    padding: 6px 12px;\n    text-decoration: none;\n    cursor: pointer;\n    color: var(--vbr-widget-paginator-color);\n    border: 1px solid var(--vbr-widget-paginator-border-color);\n    background-color: var(--vbr-widget-paginator-bg-color);\n    margin-left: -1px;\n}\n.mjsz-vbr-paginator button .icon, .mjsz-vbr-paginator div .icon {\n      width: 16px;\n      height: 16px;\n      margin: 0 -4px;\n}\n.mjsz-vbr-paginator button:hover:not(.mjsz-vbr-paginator button.is-disabled,.mjsz-vbr-paginator button.is-active), .mjsz-vbr-paginator div:hover:not(.mjsz-vbr-paginator div.is-disabled,.mjsz-vbr-paginator div.is-active) {\n      color: var(--vbr-widget-paginator-hover-color);\n      background-color: var(--vbr-widget-paginator-hover-bg-color);\n}\n.mjsz-vbr-paginator button:disabled,\n    .mjsz-vbr-paginator button.is-disabled,\n    .mjsz-vbr-paginator div:disabled,\n    .mjsz-vbr-paginator div.is-disabled {\n      color: var(--vbr-widget-paginator-disabled-color);\n      background-color: var(--vbr-widget-paginator-bg-color);\n      pointer-events: none;\n      cursor: default;\n}\n.mjsz-vbr-paginator button.is-active, .mjsz-vbr-paginator div.is-active {\n      color: var(--vbr-widget-paginator-active-color);\n      background-color: var(--vbr-widget-paginator-active-bg-color);\n      border-color: var(--vbr-widget-paginator-active-bg-color);\n      cursor: default;\n}\n.mjsz-vbr-paginator div {\n    border: none;\n    margin-left: 0;\n}\n";
   const _hoisted_1 = { key: 0 };
   const _sfc_main = {
     __name: "Schedule.ce",
@@ -2925,7 +3077,7 @@
                   rows: vue.unref(convertedRows).rows,
                   "is-loading": vue.unref(isLoading)
                 }, null, 8, ["rows", "is-loading"]),
-                vue.createVNode(Paginator, {
+                vue.createVNode(_sfc_main$1, {
                   page: page.value,
                   "items-per-page": props.limit,
                   "total-items": vue.unref(rows).length,
@@ -2941,5 +3093,6 @@
     }
   };
   const Schedule = /* @__PURE__ */ _export_sfc(_sfc_main, [["styles", [_style_0, _style_1, _style_2, _style_3]]]);
+  alert("I am here");
   customElements.define("vbr-schedule", vue.defineCustomElement(Schedule));
 })(Vue);
