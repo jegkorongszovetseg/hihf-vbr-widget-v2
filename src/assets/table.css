@@ -73,7 +73,10 @@
     }
 
     .is-logo-image {
-      width: var(--vbr-widget-table-cell-logo-size)
+      display: inline-block;
+      vertical-align: middle;
+      width: var(--vbr-widget-table-cell-logo-size);
+      height: var(--vbr-widget-table-cell-logo-size);
     }
 
     svg {

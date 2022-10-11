@@ -60,6 +60,7 @@ const sortBy = (column, prop) => {
               'is-asc': prop === sort.sortTarget && sort.orders[0].direction === SORT_STATE_ASCEND,
             },
           ]"
+          :title="column.tooltip"
           @click="sortBy(column, prop)"
         >
           <slot :name="`header-${prop}`" :column="column">
