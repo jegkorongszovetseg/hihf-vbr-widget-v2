@@ -7,6 +7,7 @@ import ResponsiveTable from '../ResponsiveTable.vue';
 import Image from '../Image.vue';
 import DataTable from '../DataTable.vue';
 import IconBroadcast from '../icons/IconBroadcast.vue';
+import IconMore from '../icons/IconMore.vue';
 
 const props = defineProps({
   rows: {
@@ -62,6 +63,9 @@ const { t } = useI18n();
       <template v-slot:cell-broadcast="{ row }">
         <IconBroadcast v-if="row.broadcast" />
         <span v-else></span>
+      </template>
+      <template v-slot:cell-more="{ row }">
+        <IconMore />
       </template>
     </DataTable>
   </ResponsiveTable>
