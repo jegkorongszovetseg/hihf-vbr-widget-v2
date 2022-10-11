@@ -37,13 +37,11 @@ const { t } = useI18n();
   <div v-if="error">{{ error }}</div>
   <ResponsiveTable>
     <DataTable :columns="columns" :rows="props.rows" :is-loading="isLoading">
-      <template v-slot:cell-homeTeamName="{ row }">
-        {{ row.homeTeamName }}
+      <template v-slot:cell-homeTeamLogo="{ row }">
         <Image class="is-logo-image is-right" :key="row.id" :src="row.homeTeamLogo" />
       </template>
-      <template v-slot:cell-awayTeamName="{ row }">
-        <Image class="is-logo-image" :key="row.id" :src="row.awayTeamLogo" />
-        {{ row.awayTeamName }}
+      <template v-slot:cell-awayTeamLogo="{ row }">
+        <Image class="is-logo-image is-right" :key="row.id" :src="row.awayTeamLogo" />
       </template>
       <template v-slot:cell-gameResult="{ row }">
         <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>

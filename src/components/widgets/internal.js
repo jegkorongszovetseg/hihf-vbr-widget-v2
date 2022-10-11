@@ -19,6 +19,10 @@ export const COLUMNS_SCHEDULE = {
     tooltip: 'table.homeTeam.tooltip',
     class: 'is-text-right is-w-auto is-text-bold',
   },
+  homeTeamLogo: {
+    label: '',
+    class: 'is-has-image',
+  },
   gameResult: {
     label: '',
     class: 'is-text-bold is-text-xl',
@@ -26,6 +30,10 @@ export const COLUMNS_SCHEDULE = {
   gameResultType: {
     label: '',
     tooltip: '',
+  },
+  awayTeamLogo: {
+    label: '',
+    class: 'is-has-image',
   },
   awayTeamName: {
     label: 'table.awayTeam.short',

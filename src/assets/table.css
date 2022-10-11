@@ -72,11 +72,23 @@
       color: var(--vbr-widget-table-cell-dark-color);
     }
 
+    &.is-has-image {
+      padding: 0 2px;
+    }
+
     .is-logo-image {
       display: inline-block;
       vertical-align: middle;
       width: var(--vbr-widget-table-cell-logo-size);
       height: var(--vbr-widget-table-cell-logo-size);
+    }
+
+    &.is-text-bold {
+      font-weight: 700;
+    }
+
+    &.is-text-xl {
+      font-size: 1.2 rem;
     }
 
     svg {
