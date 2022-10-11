@@ -717,7 +717,7 @@
   var hasArgsEnumBug = /* @__PURE__ */ function() {
     return arguments.propertyIsEnumerable("length");
   }();
-  var contains = function contains2(list, item) {
+  var contains$1 = function contains2(list, item) {
     var idx = 0;
     while (idx < list.length) {
       if (list[idx] === item) {
@@ -745,7 +745,7 @@
       nIdx = nonEnumerableProps.length - 1;
       while (nIdx >= 0) {
         prop2 = nonEnumerableProps[nIdx];
-        if (_has(prop2, obj) && !contains(ks, prop2)) {
+        if (_has(prop2, obj) && !contains$1(ks, prop2)) {
           ks[ks.length] = prop2;
         }
         nIdx -= 1;
@@ -1773,7 +1773,7 @@
     const prefix = "mjsz-vbr-";
     return prefix + className;
   };
-  const _sfc_main$c = {
+  const _sfc_main$e = {
     __name: "ResponsiveTable",
     setup(__props) {
       const mainClassName = useMainClass("table-responsive");
@@ -1786,9 +1786,9 @@
       };
     }
   };
-  const _hoisted_1$a = ["src"];
-  const _hoisted_2$9 = ["src", "title"];
-  const _sfc_main$b = {
+  const _hoisted_1$b = ["src"];
+  const _hoisted_2$b = ["src", "title"];
+  const _sfc_main$d = {
     __name: "Image",
     props: {
       src: {
@@ -1815,13 +1815,13 @@
             key: 0,
             src: defaultSrc.value,
             class: vue.normalizeClass(_ctx.$attrs.class)
-          }, null, 10, _hoisted_1$a)) : vue.createCommentVNode("", true),
+          }, null, 10, _hoisted_1$b)) : vue.createCommentVNode("", true),
           !vue.unref(error) ? (vue.openBlock(), vue.createElementBlock("img", {
             key: 1,
             src: imageOptions.value.src,
             class: vue.normalizeClass([_ctx.$attrs.class, { "is-loaded": vue.unref(isReady) }]),
             title: props.title
-          }, null, 10, _hoisted_2$9)) : vue.createCommentVNode("", true)
+          }, null, 10, _hoisted_2$b)) : vue.createCommentVNode("", true)
         ], 64);
       };
     }
@@ -1833,8 +1833,8 @@
     }
     return target;
   };
-  const _sfc_main$a = {};
-  const _hoisted_1$9 = {
+  const _sfc_main$c = {};
+  const _hoisted_1$a = {
     "aria-hidden": "true",
     focusable: "false",
     "data-prefix": "fas",
@@ -1844,19 +1844,19 @@
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 320 512"
   };
-  const _hoisted_2$8 = /* @__PURE__ */ vue.createElementVNode("path", {
+  const _hoisted_2$a = /* @__PURE__ */ vue.createElementVNode("path", {
     fill: "currentColor",
     d: "M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z"
   }, null, -1);
-  const _hoisted_3$8 = [
-    _hoisted_2$8
+  const _hoisted_3$9 = [
+    _hoisted_2$a
   ];
-  function _sfc_render$6(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$9, _hoisted_3$8);
+  function _sfc_render$7(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$a, _hoisted_3$9);
   }
-  const IconSort = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$6]]);
-  const _sfc_main$9 = {};
-  const _hoisted_1$8 = {
+  const IconSort = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$7]]);
+  const _sfc_main$b = {};
+  const _hoisted_1$9 = {
     "aria-hidden": "true",
     focusable: "false",
     "data-prefix": "fas",
@@ -1866,19 +1866,19 @@
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 320 512"
   };
-  const _hoisted_2$7 = /* @__PURE__ */ vue.createElementVNode("path", {
+  const _hoisted_2$9 = /* @__PURE__ */ vue.createElementVNode("path", {
     fill: "currentColor",
     d: "M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"
   }, null, -1);
-  const _hoisted_3$7 = [
-    _hoisted_2$7
+  const _hoisted_3$8 = [
+    _hoisted_2$9
   ];
-  function _sfc_render$5(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$8, _hoisted_3$7);
+  function _sfc_render$6(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$9, _hoisted_3$8);
   }
-  const IconSortAsc = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$5]]);
-  const _sfc_main$8 = {};
-  const _hoisted_1$7 = {
+  const IconSortAsc = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$6]]);
+  const _sfc_main$a = {};
+  const _hoisted_1$8 = {
     "aria-hidden": "true",
     focusable: "false",
     "data-prefix": "fas",
@@ -1888,23 +1888,972 @@
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 320 512"
   };
-  const _hoisted_2$6 = /* @__PURE__ */ vue.createElementVNode("path", {
+  const _hoisted_2$8 = /* @__PURE__ */ vue.createElementVNode("path", {
     fill: "currentColor",
     d: "M279 224H41c-21.4 0-32.1-25.9-17-41L143 64c9.4-9.4 24.6-9.4 33.9 0l119 119c15.2 15.1 4.5 41-16.9 41z"
   }, null, -1);
-  const _hoisted_3$6 = [
-    _hoisted_2$6
+  const _hoisted_3$7 = [
+    _hoisted_2$8
   ];
-  function _sfc_render$4(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$7, _hoisted_3$6);
+  function _sfc_render$5(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$8, _hoisted_3$7);
   }
-  const IconSortDesc = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$4]]);
-  const _hoisted_1$6 = ["title", "onClick"];
-  const _hoisted_2$5 = { key: 0 };
-  const _hoisted_3$5 = ["colspan"];
-  const _hoisted_4$3 = { key: 1 };
-  const _hoisted_5$3 = ["colspan"];
-  const _sfc_main$7 = {
+  const IconSortDesc = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$5]]);
+  function getSide(placement) {
+    return placement.split("-")[0];
+  }
+  function getAlignment(placement) {
+    return placement.split("-")[1];
+  }
+  function getMainAxisFromPlacement(placement) {
+    return ["top", "bottom"].includes(getSide(placement)) ? "x" : "y";
+  }
+  function getLengthFromAxis(axis) {
+    return axis === "y" ? "height" : "width";
+  }
+  function computeCoordsFromPlacement(_ref, placement, rtl) {
+    let {
+      reference,
+      floating
+    } = _ref;
+    const commonX = reference.x + reference.width / 2 - floating.width / 2;
+    const commonY = reference.y + reference.height / 2 - floating.height / 2;
+    const mainAxis = getMainAxisFromPlacement(placement);
+    const length = getLengthFromAxis(mainAxis);
+    const commonAlign = reference[length] / 2 - floating[length] / 2;
+    const side = getSide(placement);
+    const isVertical = mainAxis === "x";
+    let coords;
+    switch (side) {
+      case "top":
+        coords = {
+          x: commonX,
+          y: reference.y - floating.height
+        };
+        break;
+      case "bottom":
+        coords = {
+          x: commonX,
+          y: reference.y + reference.height
+        };
+        break;
+      case "right":
+        coords = {
+          x: reference.x + reference.width,
+          y: commonY
+        };
+        break;
+      case "left":
+        coords = {
+          x: reference.x - floating.width,
+          y: commonY
+        };
+        break;
+      default:
+        coords = {
+          x: reference.x,
+          y: reference.y
+        };
+    }
+    switch (getAlignment(placement)) {
+      case "start":
+        coords[mainAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
+        break;
+      case "end":
+        coords[mainAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
+        break;
+    }
+    return coords;
+  }
+  const computePosition$1 = async (reference, floating, config) => {
+    const {
+      placement = "bottom",
+      strategy = "absolute",
+      middleware = [],
+      platform: platform2
+    } = config;
+    const rtl = await (platform2.isRTL == null ? void 0 : platform2.isRTL(floating));
+    if (process.env.NODE_ENV !== "production") {
+      if (platform2 == null) {
+        console.error(["Floating UI: `platform` property was not passed to config. If you", "want to use Floating UI on the web, install @floating-ui/dom", "instead of the /core package. Otherwise, you can create your own", "`platform`: https://floating-ui.com/docs/platform"].join(" "));
+      }
+      if (middleware.filter((_ref) => {
+        let {
+          name
+        } = _ref;
+        return name === "autoPlacement" || name === "flip";
+      }).length > 1) {
+        throw new Error(["Floating UI: duplicate `flip` and/or `autoPlacement`", "middleware detected. This will lead to an infinite loop. Ensure only", "one of either has been passed to the `middleware` array."].join(" "));
+      }
+    }
+    let rects = await platform2.getElementRects({
+      reference,
+      floating,
+      strategy
+    });
+    let {
+      x,
+      y
+    } = computeCoordsFromPlacement(rects, placement, rtl);
+    let statefulPlacement = placement;
+    let middlewareData = {};
+    let resetCount = 0;
+    for (let i = 0; i < middleware.length; i++) {
+      const {
+        name,
+        fn
+      } = middleware[i];
+      const {
+        x: nextX,
+        y: nextY,
+        data,
+        reset
+      } = await fn({
+        x,
+        y,
+        initialPlacement: placement,
+        placement: statefulPlacement,
+        strategy,
+        middlewareData,
+        rects,
+        platform: platform2,
+        elements: {
+          reference,
+          floating
+        }
+      });
+      x = nextX != null ? nextX : x;
+      y = nextY != null ? nextY : y;
+      middlewareData = {
+        ...middlewareData,
+        [name]: {
+          ...middlewareData[name],
+          ...data
+        }
+      };
+      if (process.env.NODE_ENV !== "production") {
+        if (resetCount > 50) {
+          console.warn(["Floating UI: The middleware lifecycle appears to be running in an", "infinite loop. This is usually caused by a `reset` continually", "being returned without a break condition."].join(" "));
+        }
+      }
+      if (reset && resetCount <= 50) {
+        resetCount++;
+        if (typeof reset === "object") {
+          if (reset.placement) {
+            statefulPlacement = reset.placement;
+          }
+          if (reset.rects) {
+            rects = reset.rects === true ? await platform2.getElementRects({
+              reference,
+              floating,
+              strategy
+            }) : reset.rects;
+          }
+          ({
+            x,
+            y
+          } = computeCoordsFromPlacement(rects, statefulPlacement, rtl));
+        }
+        i = -1;
+        continue;
+      }
+    }
+    return {
+      x,
+      y,
+      placement: statefulPlacement,
+      strategy,
+      middlewareData
+    };
+  };
+  function expandPaddingObject(padding) {
+    return {
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      ...padding
+    };
+  }
+  function getSideObjectFromPadding(padding) {
+    return typeof padding !== "number" ? expandPaddingObject(padding) : {
+      top: padding,
+      right: padding,
+      bottom: padding,
+      left: padding
+    };
+  }
+  function rectToClientRect(rect) {
+    return {
+      ...rect,
+      top: rect.y,
+      left: rect.x,
+      right: rect.x + rect.width,
+      bottom: rect.y + rect.height
+    };
+  }
+  async function detectOverflow(middlewareArguments, options) {
+    var _await$platform$isEle;
+    if (options === void 0) {
+      options = {};
+    }
+    const {
+      x,
+      y,
+      platform: platform2,
+      rects,
+      elements,
+      strategy
+    } = middlewareArguments;
+    const {
+      boundary = "clippingAncestors",
+      rootBoundary = "viewport",
+      elementContext = "floating",
+      altBoundary = false,
+      padding = 0
+    } = options;
+    const paddingObject = getSideObjectFromPadding(padding);
+    const altContext = elementContext === "floating" ? "reference" : "floating";
+    const element = elements[altBoundary ? altContext : elementContext];
+    const clippingClientRect = rectToClientRect(await platform2.getClippingRect({
+      element: ((_await$platform$isEle = await (platform2.isElement == null ? void 0 : platform2.isElement(element))) != null ? _await$platform$isEle : true) ? element : element.contextElement || await (platform2.getDocumentElement == null ? void 0 : platform2.getDocumentElement(elements.floating)),
+      boundary,
+      rootBoundary,
+      strategy
+    }));
+    const elementClientRect = rectToClientRect(platform2.convertOffsetParentRelativeRectToViewportRelativeRect ? await platform2.convertOffsetParentRelativeRectToViewportRelativeRect({
+      rect: elementContext === "floating" ? {
+        ...rects.floating,
+        x,
+        y
+      } : rects.reference,
+      offsetParent: await (platform2.getOffsetParent == null ? void 0 : platform2.getOffsetParent(elements.floating)),
+      strategy
+    }) : rects[elementContext]);
+    return {
+      top: clippingClientRect.top - elementClientRect.top + paddingObject.top,
+      bottom: elementClientRect.bottom - clippingClientRect.bottom + paddingObject.bottom,
+      left: clippingClientRect.left - elementClientRect.left + paddingObject.left,
+      right: elementClientRect.right - clippingClientRect.right + paddingObject.right
+    };
+  }
+  const min$1 = Math.min;
+  const max$1 = Math.max;
+  function within(min$1$1, value, max$1$1) {
+    return max$1(min$1$1, min$1(value, max$1$1));
+  }
+  const hash$1 = {
+    left: "right",
+    right: "left",
+    bottom: "top",
+    top: "bottom"
+  };
+  function getOppositePlacement(placement) {
+    return placement.replace(/left|right|bottom|top/g, (matched) => hash$1[matched]);
+  }
+  function getAlignmentSides(placement, rects, rtl) {
+    if (rtl === void 0) {
+      rtl = false;
+    }
+    const alignment = getAlignment(placement);
+    const mainAxis = getMainAxisFromPlacement(placement);
+    const length = getLengthFromAxis(mainAxis);
+    let mainAlignmentSide = mainAxis === "x" ? alignment === (rtl ? "end" : "start") ? "right" : "left" : alignment === "start" ? "bottom" : "top";
+    if (rects.reference[length] > rects.floating[length]) {
+      mainAlignmentSide = getOppositePlacement(mainAlignmentSide);
+    }
+    return {
+      main: mainAlignmentSide,
+      cross: getOppositePlacement(mainAlignmentSide)
+    };
+  }
+  const hash = {
+    start: "end",
+    end: "start"
+  };
+  function getOppositeAlignmentPlacement(placement) {
+    return placement.replace(/start|end/g, (matched) => hash[matched]);
+  }
+  function getExpandedPlacements(placement) {
+    const oppositePlacement = getOppositePlacement(placement);
+    return [getOppositeAlignmentPlacement(placement), oppositePlacement, getOppositeAlignmentPlacement(oppositePlacement)];
+  }
+  const flip = function(options) {
+    if (options === void 0) {
+      options = {};
+    }
+    return {
+      name: "flip",
+      options,
+      async fn(middlewareArguments) {
+        var _middlewareData$flip;
+        const {
+          placement,
+          middlewareData,
+          rects,
+          initialPlacement,
+          platform: platform2,
+          elements
+        } = middlewareArguments;
+        const {
+          mainAxis: checkMainAxis = true,
+          crossAxis: checkCrossAxis = true,
+          fallbackPlacements: specifiedFallbackPlacements,
+          fallbackStrategy = "bestFit",
+          flipAlignment = true,
+          ...detectOverflowOptions
+        } = options;
+        const side = getSide(placement);
+        const isBasePlacement = side === initialPlacement;
+        const fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipAlignment ? [getOppositePlacement(initialPlacement)] : getExpandedPlacements(initialPlacement));
+        const placements = [initialPlacement, ...fallbackPlacements];
+        const overflow = await detectOverflow(middlewareArguments, detectOverflowOptions);
+        const overflows = [];
+        let overflowsData = ((_middlewareData$flip = middlewareData.flip) == null ? void 0 : _middlewareData$flip.overflows) || [];
+        if (checkMainAxis) {
+          overflows.push(overflow[side]);
+        }
+        if (checkCrossAxis) {
+          const {
+            main,
+            cross
+          } = getAlignmentSides(placement, rects, await (platform2.isRTL == null ? void 0 : platform2.isRTL(elements.floating)));
+          overflows.push(overflow[main], overflow[cross]);
+        }
+        overflowsData = [...overflowsData, {
+          placement,
+          overflows
+        }];
+        if (!overflows.every((side2) => side2 <= 0)) {
+          var _middlewareData$flip$, _middlewareData$flip2;
+          const nextIndex = ((_middlewareData$flip$ = (_middlewareData$flip2 = middlewareData.flip) == null ? void 0 : _middlewareData$flip2.index) != null ? _middlewareData$flip$ : 0) + 1;
+          const nextPlacement = placements[nextIndex];
+          if (nextPlacement) {
+            return {
+              data: {
+                index: nextIndex,
+                overflows: overflowsData
+              },
+              reset: {
+                placement: nextPlacement
+              }
+            };
+          }
+          let resetPlacement = "bottom";
+          switch (fallbackStrategy) {
+            case "bestFit": {
+              var _overflowsData$map$so;
+              const placement2 = (_overflowsData$map$so = overflowsData.map((d) => [d, d.overflows.filter((overflow2) => overflow2 > 0).reduce((acc, overflow2) => acc + overflow2, 0)]).sort((a, b) => a[1] - b[1])[0]) == null ? void 0 : _overflowsData$map$so[0].placement;
+              if (placement2) {
+                resetPlacement = placement2;
+              }
+              break;
+            }
+            case "initialPlacement":
+              resetPlacement = initialPlacement;
+              break;
+          }
+          if (placement !== resetPlacement) {
+            return {
+              reset: {
+                placement: resetPlacement
+              }
+            };
+          }
+        }
+        return {};
+      }
+    };
+  };
+  function getCrossAxis(axis) {
+    return axis === "x" ? "y" : "x";
+  }
+  const shift = function(options) {
+    if (options === void 0) {
+      options = {};
+    }
+    return {
+      name: "shift",
+      options,
+      async fn(middlewareArguments) {
+        const {
+          x,
+          y,
+          placement
+        } = middlewareArguments;
+        const {
+          mainAxis: checkMainAxis = true,
+          crossAxis: checkCrossAxis = false,
+          limiter = {
+            fn: (_ref) => {
+              let {
+                x: x2,
+                y: y2
+              } = _ref;
+              return {
+                x: x2,
+                y: y2
+              };
+            }
+          },
+          ...detectOverflowOptions
+        } = options;
+        const coords = {
+          x,
+          y
+        };
+        const overflow = await detectOverflow(middlewareArguments, detectOverflowOptions);
+        const mainAxis = getMainAxisFromPlacement(getSide(placement));
+        const crossAxis = getCrossAxis(mainAxis);
+        let mainAxisCoord = coords[mainAxis];
+        let crossAxisCoord = coords[crossAxis];
+        if (checkMainAxis) {
+          const minSide = mainAxis === "y" ? "top" : "left";
+          const maxSide = mainAxis === "y" ? "bottom" : "right";
+          const min2 = mainAxisCoord + overflow[minSide];
+          const max2 = mainAxisCoord - overflow[maxSide];
+          mainAxisCoord = within(min2, mainAxisCoord, max2);
+        }
+        if (checkCrossAxis) {
+          const minSide = crossAxis === "y" ? "top" : "left";
+          const maxSide = crossAxis === "y" ? "bottom" : "right";
+          const min2 = crossAxisCoord + overflow[minSide];
+          const max2 = crossAxisCoord - overflow[maxSide];
+          crossAxisCoord = within(min2, crossAxisCoord, max2);
+        }
+        const limitedCoords = limiter.fn({
+          ...middlewareArguments,
+          [mainAxis]: mainAxisCoord,
+          [crossAxis]: crossAxisCoord
+        });
+        return {
+          ...limitedCoords,
+          data: {
+            x: limitedCoords.x - x,
+            y: limitedCoords.y - y
+          }
+        };
+      }
+    };
+  };
+  function isWindow(value) {
+    return value && value.document && value.location && value.alert && value.setInterval;
+  }
+  function getWindow(node) {
+    if (node == null) {
+      return window;
+    }
+    if (!isWindow(node)) {
+      const ownerDocument = node.ownerDocument;
+      return ownerDocument ? ownerDocument.defaultView || window : window;
+    }
+    return node;
+  }
+  function getComputedStyle(element) {
+    return getWindow(element).getComputedStyle(element);
+  }
+  function getNodeName(node) {
+    return isWindow(node) ? "" : node ? (node.nodeName || "").toLowerCase() : "";
+  }
+  function getUAString() {
+    const uaData = navigator.userAgentData;
+    if (uaData != null && uaData.brands) {
+      return uaData.brands.map((item) => item.brand + "/" + item.version).join(" ");
+    }
+    return navigator.userAgent;
+  }
+  function isHTMLElement(value) {
+    return value instanceof getWindow(value).HTMLElement;
+  }
+  function isElement(value) {
+    return value instanceof getWindow(value).Element;
+  }
+  function isNode(value) {
+    return value instanceof getWindow(value).Node;
+  }
+  function isShadowRoot(node) {
+    if (typeof ShadowRoot === "undefined") {
+      return false;
+    }
+    const OwnElement = getWindow(node).ShadowRoot;
+    return node instanceof OwnElement || node instanceof ShadowRoot;
+  }
+  function isOverflowElement(element) {
+    const {
+      overflow,
+      overflowX,
+      overflowY
+    } = getComputedStyle(element);
+    return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
+  }
+  function isTableElement(element) {
+    return ["table", "td", "th"].includes(getNodeName(element));
+  }
+  function isContainingBlock(element) {
+    const isFirefox = /firefox/i.test(getUAString());
+    const css = getComputedStyle(element);
+    return css.transform !== "none" || css.perspective !== "none" || css.contain === "paint" || ["transform", "perspective"].includes(css.willChange) || isFirefox && css.willChange === "filter" || isFirefox && (css.filter ? css.filter !== "none" : false);
+  }
+  function isLayoutViewport() {
+    return !/^((?!chrome|android).)*safari/i.test(getUAString());
+  }
+  const min = Math.min;
+  const max = Math.max;
+  const round = Math.round;
+  function getBoundingClientRect(element, includeScale, isFixedStrategy) {
+    var _win$visualViewport$o, _win$visualViewport, _win$visualViewport$o2, _win$visualViewport2;
+    if (includeScale === void 0) {
+      includeScale = false;
+    }
+    if (isFixedStrategy === void 0) {
+      isFixedStrategy = false;
+    }
+    const clientRect = element.getBoundingClientRect();
+    let scaleX = 1;
+    let scaleY = 1;
+    if (includeScale && isHTMLElement(element)) {
+      scaleX = element.offsetWidth > 0 ? round(clientRect.width) / element.offsetWidth || 1 : 1;
+      scaleY = element.offsetHeight > 0 ? round(clientRect.height) / element.offsetHeight || 1 : 1;
+    }
+    const win = isElement(element) ? getWindow(element) : window;
+    const addVisualOffsets = !isLayoutViewport() && isFixedStrategy;
+    const x = (clientRect.left + (addVisualOffsets ? (_win$visualViewport$o = (_win$visualViewport = win.visualViewport) == null ? void 0 : _win$visualViewport.offsetLeft) != null ? _win$visualViewport$o : 0 : 0)) / scaleX;
+    const y = (clientRect.top + (addVisualOffsets ? (_win$visualViewport$o2 = (_win$visualViewport2 = win.visualViewport) == null ? void 0 : _win$visualViewport2.offsetTop) != null ? _win$visualViewport$o2 : 0 : 0)) / scaleY;
+    const width = clientRect.width / scaleX;
+    const height = clientRect.height / scaleY;
+    return {
+      width,
+      height,
+      top: y,
+      right: x + width,
+      bottom: y + height,
+      left: x,
+      x,
+      y
+    };
+  }
+  function getDocumentElement(node) {
+    return ((isNode(node) ? node.ownerDocument : node.document) || window.document).documentElement;
+  }
+  function getNodeScroll(element) {
+    if (isElement(element)) {
+      return {
+        scrollLeft: element.scrollLeft,
+        scrollTop: element.scrollTop
+      };
+    }
+    return {
+      scrollLeft: element.pageXOffset,
+      scrollTop: element.pageYOffset
+    };
+  }
+  function getWindowScrollBarX(element) {
+    return getBoundingClientRect(getDocumentElement(element)).left + getNodeScroll(element).scrollLeft;
+  }
+  function isScaled(element) {
+    const rect = getBoundingClientRect(element);
+    return round(rect.width) !== element.offsetWidth || round(rect.height) !== element.offsetHeight;
+  }
+  function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
+    const isOffsetParentAnElement = isHTMLElement(offsetParent);
+    const documentElement = getDocumentElement(offsetParent);
+    const rect = getBoundingClientRect(
+      element,
+      isOffsetParentAnElement && isScaled(offsetParent),
+      strategy === "fixed"
+    );
+    let scroll = {
+      scrollLeft: 0,
+      scrollTop: 0
+    };
+    const offsets = {
+      x: 0,
+      y: 0
+    };
+    if (isOffsetParentAnElement || !isOffsetParentAnElement && strategy !== "fixed") {
+      if (getNodeName(offsetParent) !== "body" || isOverflowElement(documentElement)) {
+        scroll = getNodeScroll(offsetParent);
+      }
+      if (isHTMLElement(offsetParent)) {
+        const offsetRect = getBoundingClientRect(offsetParent, true);
+        offsets.x = offsetRect.x + offsetParent.clientLeft;
+        offsets.y = offsetRect.y + offsetParent.clientTop;
+      } else if (documentElement) {
+        offsets.x = getWindowScrollBarX(documentElement);
+      }
+    }
+    return {
+      x: rect.left + scroll.scrollLeft - offsets.x,
+      y: rect.top + scroll.scrollTop - offsets.y,
+      width: rect.width,
+      height: rect.height
+    };
+  }
+  function getParentNode(node) {
+    if (getNodeName(node) === "html") {
+      return node;
+    }
+    return node.assignedSlot || node.parentNode || (isShadowRoot(node) ? node.host : null) || getDocumentElement(node);
+  }
+  function getTrueOffsetParent(element) {
+    if (!isHTMLElement(element) || getComputedStyle(element).position === "fixed") {
+      return null;
+    }
+    return element.offsetParent;
+  }
+  function getContainingBlock(element) {
+    let currentNode = getParentNode(element);
+    if (isShadowRoot(currentNode)) {
+      currentNode = currentNode.host;
+    }
+    while (isHTMLElement(currentNode) && !["html", "body"].includes(getNodeName(currentNode))) {
+      if (isContainingBlock(currentNode)) {
+        return currentNode;
+      } else {
+        const parent = currentNode.parentNode;
+        currentNode = isShadowRoot(parent) ? parent.host : parent;
+      }
+    }
+    return null;
+  }
+  function getOffsetParent(element) {
+    const window2 = getWindow(element);
+    let offsetParent = getTrueOffsetParent(element);
+    while (offsetParent && isTableElement(offsetParent) && getComputedStyle(offsetParent).position === "static") {
+      offsetParent = getTrueOffsetParent(offsetParent);
+    }
+    if (offsetParent && (getNodeName(offsetParent) === "html" || getNodeName(offsetParent) === "body" && getComputedStyle(offsetParent).position === "static" && !isContainingBlock(offsetParent))) {
+      return window2;
+    }
+    return offsetParent || getContainingBlock(element) || window2;
+  }
+  function getDimensions(element) {
+    if (isHTMLElement(element)) {
+      return {
+        width: element.offsetWidth,
+        height: element.offsetHeight
+      };
+    }
+    const rect = getBoundingClientRect(element);
+    return {
+      width: rect.width,
+      height: rect.height
+    };
+  }
+  function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
+    let {
+      rect,
+      offsetParent,
+      strategy
+    } = _ref;
+    const isOffsetParentAnElement = isHTMLElement(offsetParent);
+    const documentElement = getDocumentElement(offsetParent);
+    if (offsetParent === documentElement) {
+      return rect;
+    }
+    let scroll = {
+      scrollLeft: 0,
+      scrollTop: 0
+    };
+    const offsets = {
+      x: 0,
+      y: 0
+    };
+    if (isOffsetParentAnElement || !isOffsetParentAnElement && strategy !== "fixed") {
+      if (getNodeName(offsetParent) !== "body" || isOverflowElement(documentElement)) {
+        scroll = getNodeScroll(offsetParent);
+      }
+      if (isHTMLElement(offsetParent)) {
+        const offsetRect = getBoundingClientRect(offsetParent, true);
+        offsets.x = offsetRect.x + offsetParent.clientLeft;
+        offsets.y = offsetRect.y + offsetParent.clientTop;
+      }
+    }
+    return {
+      ...rect,
+      x: rect.x - scroll.scrollLeft + offsets.x,
+      y: rect.y - scroll.scrollTop + offsets.y
+    };
+  }
+  function getViewportRect(element, strategy) {
+    const win = getWindow(element);
+    const html = getDocumentElement(element);
+    const visualViewport = win.visualViewport;
+    let width = html.clientWidth;
+    let height = html.clientHeight;
+    let x = 0;
+    let y = 0;
+    if (visualViewport) {
+      width = visualViewport.width;
+      height = visualViewport.height;
+      const layoutViewport = isLayoutViewport();
+      if (layoutViewport || !layoutViewport && strategy === "fixed") {
+        x = visualViewport.offsetLeft;
+        y = visualViewport.offsetTop;
+      }
+    }
+    return {
+      width,
+      height,
+      x,
+      y
+    };
+  }
+  function getDocumentRect(element) {
+    var _element$ownerDocumen;
+    const html = getDocumentElement(element);
+    const scroll = getNodeScroll(element);
+    const body = (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body;
+    const width = max(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
+    const height = max(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
+    let x = -scroll.scrollLeft + getWindowScrollBarX(element);
+    const y = -scroll.scrollTop;
+    if (getComputedStyle(body || html).direction === "rtl") {
+      x += max(html.clientWidth, body ? body.clientWidth : 0) - width;
+    }
+    return {
+      width,
+      height,
+      x,
+      y
+    };
+  }
+  function getNearestOverflowAncestor(node) {
+    const parentNode = getParentNode(node);
+    if (["html", "body", "#document"].includes(getNodeName(parentNode))) {
+      return node.ownerDocument.body;
+    }
+    if (isHTMLElement(parentNode) && isOverflowElement(parentNode)) {
+      return parentNode;
+    }
+    return getNearestOverflowAncestor(parentNode);
+  }
+  function getOverflowAncestors(node, list) {
+    var _node$ownerDocument;
+    if (list === void 0) {
+      list = [];
+    }
+    const scrollableAncestor = getNearestOverflowAncestor(node);
+    const isBody = scrollableAncestor === ((_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.body);
+    const win = getWindow(scrollableAncestor);
+    const target = isBody ? [win].concat(win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : []) : scrollableAncestor;
+    const updatedList = list.concat(target);
+    return isBody ? updatedList : updatedList.concat(getOverflowAncestors(target));
+  }
+  function contains(parent, child) {
+    const rootNode = child.getRootNode == null ? void 0 : child.getRootNode();
+    if (parent.contains(child)) {
+      return true;
+    } else if (rootNode && isShadowRoot(rootNode)) {
+      let next = child;
+      do {
+        if (next && parent === next) {
+          return true;
+        }
+        next = next.parentNode || next.host;
+      } while (next);
+    }
+    return false;
+  }
+  function getInnerBoundingClientRect(element, strategy) {
+    const clientRect = getBoundingClientRect(element, false, strategy === "fixed");
+    const top = clientRect.top + element.clientTop;
+    const left = clientRect.left + element.clientLeft;
+    return {
+      top,
+      left,
+      x: left,
+      y: top,
+      right: left + element.clientWidth,
+      bottom: top + element.clientHeight,
+      width: element.clientWidth,
+      height: element.clientHeight
+    };
+  }
+  function getClientRectFromClippingAncestor(element, clippingParent, strategy) {
+    if (clippingParent === "viewport") {
+      return rectToClientRect(getViewportRect(element, strategy));
+    }
+    if (isElement(clippingParent)) {
+      return getInnerBoundingClientRect(clippingParent, strategy);
+    }
+    return rectToClientRect(getDocumentRect(getDocumentElement(element)));
+  }
+  function getClippingAncestors(element) {
+    const clippingAncestors = getOverflowAncestors(element);
+    const canEscapeClipping = ["absolute", "fixed"].includes(getComputedStyle(element).position);
+    const clipperElement = canEscapeClipping && isHTMLElement(element) ? getOffsetParent(element) : element;
+    if (!isElement(clipperElement)) {
+      return [];
+    }
+    return clippingAncestors.filter((clippingAncestors2) => isElement(clippingAncestors2) && contains(clippingAncestors2, clipperElement) && getNodeName(clippingAncestors2) !== "body");
+  }
+  function getClippingRect(_ref) {
+    let {
+      element,
+      boundary,
+      rootBoundary,
+      strategy
+    } = _ref;
+    const mainClippingAncestors = boundary === "clippingAncestors" ? getClippingAncestors(element) : [].concat(boundary);
+    const clippingAncestors = [...mainClippingAncestors, rootBoundary];
+    const firstClippingAncestor = clippingAncestors[0];
+    const clippingRect = clippingAncestors.reduce((accRect, clippingAncestor) => {
+      const rect = getClientRectFromClippingAncestor(element, clippingAncestor, strategy);
+      accRect.top = max(rect.top, accRect.top);
+      accRect.right = min(rect.right, accRect.right);
+      accRect.bottom = min(rect.bottom, accRect.bottom);
+      accRect.left = max(rect.left, accRect.left);
+      return accRect;
+    }, getClientRectFromClippingAncestor(element, firstClippingAncestor, strategy));
+    return {
+      width: clippingRect.right - clippingRect.left,
+      height: clippingRect.bottom - clippingRect.top,
+      x: clippingRect.left,
+      y: clippingRect.top
+    };
+  }
+  const platform = {
+    getClippingRect,
+    convertOffsetParentRelativeRectToViewportRelativeRect,
+    isElement,
+    getDimensions,
+    getOffsetParent,
+    getDocumentElement,
+    getElementRects: (_ref) => {
+      let {
+        reference,
+        floating,
+        strategy
+      } = _ref;
+      return {
+        reference: getRectRelativeToOffsetParent(reference, getOffsetParent(floating), strategy),
+        floating: {
+          ...getDimensions(floating),
+          x: 0,
+          y: 0
+        }
+      };
+    },
+    getClientRects: (element) => Array.from(element.getClientRects()),
+    isRTL: (element) => getComputedStyle(element).direction === "rtl"
+  };
+  const computePosition = (reference, floating, options) => computePosition$1(reference, floating, {
+    platform,
+    ...options
+  });
+  function useFloating({ middleware, placement = null, strategy }) {
+    const reference = vue.ref(null);
+    const floating = vue.ref(null);
+    const x = vue.ref(null);
+    const y = vue.ref(null);
+    const _strategy = vue.ref(strategy != null ? strategy : "absolute");
+    const update = () => {
+      console.log(reference.value, floating.value);
+      if (!reference.value || !floating.value)
+        return;
+      computePosition(reference.value, floating.value, {
+        middleware,
+        placement,
+        strategy
+      }).then((data) => {
+        x.value = data.x;
+        y.value = data.y;
+        _strategy.value = data.strategy;
+      });
+    };
+    vue.watch(
+      () => ({
+        reference: vue.unref(reference),
+        floating: vue.unref(floating)
+      }),
+      () => update,
+      { immediate: true, flush: "post" }
+    );
+    return {
+      x,
+      y,
+      reference,
+      floating,
+      strategy: _strategy,
+      update
+    };
+  }
+  const _sfc_main$9 = {
+    __name: "FloatingPanel",
+    props: {
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      placement: {
+        type: String,
+        default: "bottom"
+      },
+      theme: {
+        type: String,
+        default: "tooltip"
+      },
+      content: {
+        type: String,
+        default: ""
+      }
+    },
+    setup(__props) {
+      const props = __props;
+      const mainClassName = useMainClass("floating-content");
+      const open = vue.ref(false);
+      const { x, y, reference, floating, strategy, update } = useFloating({
+        placement: props.placement,
+        middleware: [flip(), shift({ padding: 5 })]
+      });
+      const show = () => {
+        if (props.disabled)
+          return;
+        open.value = true;
+        update();
+      };
+      const hide = () => {
+        open.value = false;
+      };
+      const setSlotRef = (el) => {
+        reference.value = el;
+      };
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+          vue.renderSlot(_ctx.$slots, "default", {
+            setRef: setSlotRef,
+            show,
+            hide
+          }),
+          vue.createElementVNode("div", {
+            ref_key: "floating",
+            ref: floating,
+            style: vue.normalizeStyle({
+              position: vue.unref(strategy),
+              top: vue.unref(y) ? `${vue.unref(y)}px` : "",
+              left: vue.unref(x) ? `${vue.unref(x)}px` : ""
+            })
+          }, [
+            open.value ? (vue.openBlock(), vue.createElementBlock("div", {
+              key: 0,
+              class: vue.normalizeClass([vue.unref(mainClassName), [`is-${props.theme}`]])
+            }, [
+              vue.renderSlot(_ctx.$slots, "content", {}, () => [
+                vue.createTextVNode(vue.toDisplayString(__props.content), 1)
+              ])
+            ], 2)) : vue.createCommentVNode("", true)
+          ], 4)
+        ], 64);
+      };
+    }
+  };
+  const _hoisted_1$7 = ["title", "onMouseenter", "onMouseleave", "onFocus", "onBlur", "onClick"];
+  const _hoisted_2$7 = { key: 0 };
+  const _hoisted_3$6 = ["colspan"];
+  const _hoisted_4$4 = { key: 1 };
+  const _hoisted_5$4 = ["colspan"];
+  const _sfc_main$8 = {
     __name: "DataTable",
     props: {
       columns: {
@@ -1943,40 +2892,54 @@
           vue.createElementVNode("thead", null, [
             vue.createElementVNode("tr", null, [
               (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(columns), (column, prop2) => {
-                return vue.openBlock(), vue.createElementBlock("th", {
+                return vue.openBlock(), vue.createBlock(_sfc_main$9, {
                   key: prop2,
-                  class: vue.normalizeClass([
-                    [column.class],
-                    {
-                      "is-active": prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction !== vue.unref(SORT_STATE_ORIGINAL),
-                      "is-sortable": column.sortOrders,
-                      "is-desc": prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_DESCEND),
-                      "is-asc": prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ASCEND)
-                    }
+                  placement: "top",
+                  content: column.tooltip
+                }, {
+                  default: vue.withCtx(({ setRef, show, hide }) => [
+                    vue.createElementVNode("th", {
+                      ref_for: true,
+                      ref: (el) => setRef(el),
+                      class: vue.normalizeClass([
+                        [column.class],
+                        {
+                          "is-active": prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction !== vue.unref(SORT_STATE_ORIGINAL),
+                          "is-sortable": column.sortOrders,
+                          "is-desc": prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_DESCEND),
+                          "is-asc": prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ASCEND)
+                        }
+                      ]),
+                      title: column.tooltip,
+                      onMouseenter: show,
+                      onMouseleave: hide,
+                      onFocus: show,
+                      onBlur: hide,
+                      onClick: ($event) => sortBy(column, prop2)
+                    }, [
+                      vue.renderSlot(_ctx.$slots, `header-${prop2}`, { column }, () => [
+                        vue.createTextVNode(vue.toDisplayString(column.label), 1)
+                      ]),
+                      column.sortOrders && prop2 !== __props.sort.sortTarget ? (vue.openBlock(), vue.createBlock(IconSort, {
+                        key: 0,
+                        class: "is-icon-sort"
+                      })) : vue.createCommentVNode("", true),
+                      prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ORIGINAL) ? (vue.openBlock(), vue.createBlock(IconSort, {
+                        key: 1,
+                        class: "is-icon-sort"
+                      })) : vue.createCommentVNode("", true),
+                      prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_DESCEND) ? (vue.openBlock(), vue.createBlock(IconSortAsc, {
+                        key: 2,
+                        class: "is-icon-sort"
+                      })) : vue.createCommentVNode("", true),
+                      prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ASCEND) ? (vue.openBlock(), vue.createBlock(IconSortDesc, {
+                        key: 3,
+                        class: "is-icon-sort"
+                      })) : vue.createCommentVNode("", true)
+                    ], 42, _hoisted_1$7)
                   ]),
-                  title: column.tooltip,
-                  onClick: ($event) => sortBy(column, prop2)
-                }, [
-                  vue.renderSlot(_ctx.$slots, `header-${prop2}`, { column }, () => [
-                    vue.createTextVNode(vue.toDisplayString(column.label), 1)
-                  ]),
-                  column.sortOrders && prop2 !== __props.sort.sortTarget ? (vue.openBlock(), vue.createBlock(IconSort, {
-                    key: 0,
-                    class: "is-icon-sort"
-                  })) : vue.createCommentVNode("", true),
-                  prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ORIGINAL) ? (vue.openBlock(), vue.createBlock(IconSort, {
-                    key: 1,
-                    class: "is-icon-sort"
-                  })) : vue.createCommentVNode("", true),
-                  prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_DESCEND) ? (vue.openBlock(), vue.createBlock(IconSortAsc, {
-                    key: 2,
-                    class: "is-icon-sort"
-                  })) : vue.createCommentVNode("", true),
-                  prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ASCEND) ? (vue.openBlock(), vue.createBlock(IconSortDesc, {
-                    key: 3,
-                    class: "is-icon-sort"
-                  })) : vue.createCommentVNode("", true)
-                ], 10, _hoisted_1$6);
+                  _: 2
+                }, 1032, ["content"]);
               }), 128))
             ])
           ]),
@@ -2005,17 +2968,56 @@
             }), 128))
           ]),
           vue.createElementVNode("tfoot", null, [
-            __props.rows.length === 0 && !__props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_2$5, [
-              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.noData")), 9, _hoisted_3$5)
+            __props.rows.length === 0 && !__props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_2$7, [
+              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.noData")), 9, _hoisted_3$6)
             ])) : vue.createCommentVNode("", true),
-            __props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_4$3, [
-              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.loading")), 9, _hoisted_5$3)
+            __props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_4$4, [
+              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.loading")), 9, _hoisted_5$4)
             ])) : vue.createCommentVNode("", true)
           ])
         ], 2);
       };
     }
   };
+  const _sfc_main$7 = {};
+  const _hoisted_1$6 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    "stroke-width": "2",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round"
+  };
+  const _hoisted_2$6 = /* @__PURE__ */ vue.createElementVNode("rect", {
+    x: "2",
+    y: "3",
+    width: "20",
+    height: "14",
+    rx: "2",
+    ry: "2"
+  }, null, -1);
+  const _hoisted_3$5 = /* @__PURE__ */ vue.createElementVNode("line", {
+    x1: "8",
+    y1: "21",
+    x2: "16",
+    y2: "21"
+  }, null, -1);
+  const _hoisted_4$3 = /* @__PURE__ */ vue.createElementVNode("line", {
+    x1: "12",
+    y1: "17",
+    x2: "12",
+    y2: "21"
+  }, null, -1);
+  const _hoisted_5$3 = [
+    _hoisted_2$6,
+    _hoisted_3$5,
+    _hoisted_4$3
+  ];
+  function _sfc_render$4(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$6, _hoisted_5$3);
+  }
+  const IconBroadcast = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$4]]);
   const _sfc_main$6 = {};
   const _hoisted_1$5 = {
     xmlns: "http://www.w3.org/2000/svg",
@@ -2026,37 +3028,32 @@
     "stroke-linecap": "round",
     "stroke-linejoin": "round"
   };
-  const _hoisted_2$4 = /* @__PURE__ */ vue.createElementVNode("rect", {
-    x: "2",
-    y: "3",
-    width: "20",
-    height: "14",
-    rx: "2",
-    ry: "2"
+  const _hoisted_2$5 = /* @__PURE__ */ vue.createElementVNode("circle", {
+    cx: "12",
+    cy: "12",
+    r: "1"
   }, null, -1);
-  const _hoisted_3$4 = /* @__PURE__ */ vue.createElementVNode("line", {
-    x1: "8",
-    y1: "21",
-    x2: "16",
-    y2: "21"
+  const _hoisted_3$4 = /* @__PURE__ */ vue.createElementVNode("circle", {
+    cx: "12",
+    cy: "5",
+    r: "1"
   }, null, -1);
-  const _hoisted_4$2 = /* @__PURE__ */ vue.createElementVNode("line", {
-    x1: "12",
-    y1: "17",
-    x2: "12",
-    y2: "21"
+  const _hoisted_4$2 = /* @__PURE__ */ vue.createElementVNode("circle", {
+    cx: "12",
+    cy: "19",
+    r: "1"
   }, null, -1);
   const _hoisted_5$2 = [
-    _hoisted_2$4,
+    _hoisted_2$5,
     _hoisted_3$4,
     _hoisted_4$2
   ];
   function _sfc_render$3(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$5, _hoisted_5$2);
   }
-  const IconBroadcast = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$3]]);
+  const IconMore = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$3]]);
   const _hoisted_1$4 = { key: 0 };
-  const _hoisted_2$3 = {
+  const _hoisted_2$4 = {
     key: 0,
     class: "is-text-dark"
   };
@@ -2101,29 +3098,29 @@
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
           vue.unref(error) ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1$4, vue.toDisplayString(vue.unref(error)), 1)) : vue.createCommentVNode("", true),
-          vue.createVNode(_sfc_main$c, null, {
+          vue.createVNode(_sfc_main$e, null, {
             default: vue.withCtx(() => [
-              vue.createVNode(_sfc_main$7, {
+              vue.createVNode(_sfc_main$8, {
                 columns: vue.unref(columns),
                 rows: props.rows,
                 "is-loading": __props.isLoading
               }, {
                 "cell-homeTeamLogo": vue.withCtx(({ row }) => [
-                  (vue.openBlock(), vue.createBlock(_sfc_main$b, {
+                  (vue.openBlock(), vue.createBlock(_sfc_main$d, {
                     class: "is-logo-image is-right",
                     key: row.id,
                     src: row.homeTeamLogo
                   }, null, 8, ["src"]))
                 ]),
                 "cell-awayTeamLogo": vue.withCtx(({ row }) => [
-                  (vue.openBlock(), vue.createBlock(_sfc_main$b, {
+                  (vue.openBlock(), vue.createBlock(_sfc_main$d, {
                     class: "is-logo-image is-right",
                     key: row.id,
                     src: row.awayTeamLogo
                   }, null, 8, ["src"]))
                 ]),
                 "cell-gameResult": vue.withCtx(({ row }) => [
-                  row.gameStatus === 0 ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_2$3, "-:-")) : (vue.openBlock(), vue.createElementBlock("a", {
+                  row.gameStatus === 0 ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_2$4, "-:-")) : (vue.openBlock(), vue.createElementBlock("a", {
                     key: 1,
                     href: __props.externalBaseUrl + row.id,
                     target: "_blank",
@@ -2137,6 +3134,9 @@
                 ]),
                 "cell-broadcast": vue.withCtx(({ row }) => [
                   row.broadcast ? (vue.openBlock(), vue.createBlock(IconBroadcast, { key: 0 })) : (vue.openBlock(), vue.createElementBlock("span", _hoisted_7$1))
+                ]),
+                "cell-more": vue.withCtx(({ row }) => [
+                  vue.createVNode(IconMore)
                 ]),
                 _: 1
               }, 8, ["columns", "rows", "is-loading"])
@@ -2865,9 +3865,9 @@
     "stroke-linecap": "round",
     "stroke-linejoin": "round"
   };
-  const _hoisted_2$2 = /* @__PURE__ */ vue.createElementVNode("polyline", { points: "15 18 9 12 15 6" }, null, -1);
+  const _hoisted_2$3 = /* @__PURE__ */ vue.createElementVNode("polyline", { points: "15 18 9 12 15 6" }, null, -1);
   const _hoisted_3$2 = [
-    _hoisted_2$2
+    _hoisted_2$3
   ];
   function _sfc_render$1(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$3, _hoisted_3$2);
@@ -2883,16 +3883,16 @@
     "stroke-linecap": "round",
     "stroke-linejoin": "round"
   };
-  const _hoisted_2$1 = /* @__PURE__ */ vue.createElementVNode("polyline", { points: "9 18 15 12 9 6" }, null, -1);
+  const _hoisted_2$2 = /* @__PURE__ */ vue.createElementVNode("polyline", { points: "9 18 15 12 9 6" }, null, -1);
   const _hoisted_3$1 = [
-    _hoisted_2$1
+    _hoisted_2$2
   ];
   function _sfc_render(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$2, _hoisted_3$1);
   }
   const IconRight = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render]]);
   const _hoisted_1$1 = ["disabled"];
-  const _hoisted_2 = ["disabled"];
+  const _hoisted_2$1 = ["disabled"];
   const _hoisted_3 = {
     key: 1,
     class: "is-disabled"
@@ -2976,7 +3976,7 @@
             type: "button",
             disabled: vue.unref(page) === 1,
             onClick: _cache[1] || (_cache[1] = ($event) => vue.unref(goTo)(1))
-          }, "1", 8, _hoisted_2)) : vue.createCommentVNode("", true),
+          }, "1", 8, _hoisted_2$1)) : vue.createCommentVNode("", true),
           !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_3, "...")) : vue.createCommentVNode("", true),
           (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(range), (n) => {
             return vue.openBlock(), vue.createElementBlock("button", {
@@ -3007,11 +4007,12 @@
       };
     }
   };
-  const _style_0 = ":root,\n:host {\n  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;\n  --text-color: red;\n  --bg-color: white;\n\n  --vbr-widget-primary-color-0: #ffffff;\n  --vbr-widget-primary-color-50: #eceff1;\n  --vbr-widget-primary-color-100: #cfd8dc;\n  --vbr-widget-primary-color-200: #b0bec5;\n  --vbr-widget-primary-color-300: #90a4ae;\n  --vbr-widget-primary-color-400: #78909c;\n  --vbr-widget-primary-color-500: #607d8b;\n  --vbr-widget-primary-color-600: #546e7a;\n  --vbr-widget-primary-color-700: #455a64;\n  --vbr-widget-primary-color-800: #37474f;\n  --vbr-widget-primary-color-900: #263238;\n\n  --vbr-widget-secondary-color-100: #dcedc8;\n  --vbr-widget-secondary-color-200: #badb94;\n  --vbr-widget-secondary-color-300: #aed581;\n  --vbr-widget-secondary-color-400: #9ccc65;\n  --vbr-widget-secondary-color-500: #8bc34a;\n  --vbr-widget-secondary-color-700: #689f38;\n  --vbr-widget-secondary-color-800: #558b2f;\n  --vbr-widget-secondary-color-900: #33691e;\n\n  --vbr-widget-danger-color-50: #ffebee;\n  --vbr-widget-danger-color-100: #ffcdd2;\n  --vbr-widget-danger-color-200: #ef9a9a;\n  --vbr-widget-danger-color-300: #e57373;\n  --vbr-widget-danger-color-400: #ef5350;\n  --vbr-widget-danger-color-500: #f44336;\n  --vbr-widget-danger-color-700: #d32f2f;\n  --vbr-widget-danger-color-900: #b71c1c;\n  --vbr-widget-danger-color-a400: #ff1744;\n\n  --vbr-widget-table-header-font-size: 12px;\n  --vbr-widget-table-default-column-width: 30px;\n  --vbr-widget-table-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-neutral-color: var(--vbr-widget-primary-color-300);\n  --vbr-widget-table-header-bg-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-color: var(--vbr-widget-primary-color-200);\n  --vbr-widget-table-table-header-active-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-table-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-hover-bg-color: var(--vbr-widget-secondary-color-100);\n  --vbr-widget-table-active-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-bg-color: var(--vbr-widget-secondary-color-200);\n  --vbr-widget-table-active-even-bg-color: var(--vbr-widget-secondary-color-300);\n  --vbr-widget-table-active-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-hover-bg-color: var(--vbr-widget-secondary-color-400);\n  --vbr-widget-table-portrait-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-table-portrait-bg-color: var(--vbr-widget-primary-color-50);\n  --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-600);\n  --vbr-widget-table-cell-dark-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-table-stripped-bg-color: #f8f9fa;\n  --vbr-widget-table-label-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-table-label-bg-color: var(--vbr-widget-primary-color-50);\n  --vbr-widget-table-cell-logo-size: 20px;\n\n  --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-hover-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-paginator-hover-bg-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);\n}\nimg {\n  opacity: 0;\n  transition: opacity 0.5s ease-out;\n}\nimg.is-loaded {\n  opacity: 1;\n}\n";
+  const _style_0 = ":root,\n:host {\n  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;\n  --text-color: red;\n  --bg-color: white;\n\n  --vbr-widget-primary-color-0: #ffffff;\n  --vbr-widget-primary-color-50: #eceff1;\n  --vbr-widget-primary-color-100: #cfd8dc;\n  --vbr-widget-primary-color-200: #b0bec5;\n  --vbr-widget-primary-color-300: #90a4ae;\n  --vbr-widget-primary-color-400: #78909c;\n  --vbr-widget-primary-color-500: #607d8b;\n  --vbr-widget-primary-color-600: #546e7a;\n  --vbr-widget-primary-color-700: #455a64;\n  --vbr-widget-primary-color-800: #37474f;\n  --vbr-widget-primary-color-900: #263238;\n\n  --vbr-widget-secondary-color-100: #dcedc8;\n  --vbr-widget-secondary-color-200: #badb94;\n  --vbr-widget-secondary-color-300: #aed581;\n  --vbr-widget-secondary-color-400: #9ccc65;\n  --vbr-widget-secondary-color-500: #8bc34a;\n  --vbr-widget-secondary-color-700: #689f38;\n  --vbr-widget-secondary-color-800: #558b2f;\n  --vbr-widget-secondary-color-900: #33691e;\n\n  --vbr-widget-danger-color-50: #ffebee;\n  --vbr-widget-danger-color-100: #ffcdd2;\n  --vbr-widget-danger-color-200: #ef9a9a;\n  --vbr-widget-danger-color-300: #e57373;\n  --vbr-widget-danger-color-400: #ef5350;\n  --vbr-widget-danger-color-500: #f44336;\n  --vbr-widget-danger-color-700: #d32f2f;\n  --vbr-widget-danger-color-900: #b71c1c;\n  --vbr-widget-danger-color-a400: #ff1744;\n\n  --vbr-widget-table-header-font-size: 12px;\n  --vbr-widget-table-default-column-width: 30px;\n  --vbr-widget-table-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-neutral-color: var(--vbr-widget-primary-color-300);\n  --vbr-widget-table-header-bg-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-color: var(--vbr-widget-primary-color-200);\n  --vbr-widget-table-table-header-active-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-table-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-hover-bg-color: var(--vbr-widget-secondary-color-100);\n  --vbr-widget-table-active-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-bg-color: var(--vbr-widget-secondary-color-200);\n  --vbr-widget-table-active-even-bg-color: var(--vbr-widget-secondary-color-300);\n  --vbr-widget-table-active-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-hover-bg-color: var(--vbr-widget-secondary-color-400);\n  --vbr-widget-table-portrait-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-table-portrait-bg-color: var(--vbr-widget-primary-color-50);\n  --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-600);\n  --vbr-widget-table-cell-dark-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-table-stripped-bg-color: #f8f9fa;\n  --vbr-widget-table-label-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-table-label-bg-color: var(--vbr-widget-primary-color-50);\n  --vbr-widget-table-cell-logo-size: 20px;\n\n  --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-hover-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-paginator-hover-bg-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);\n\n  --vbr-widget-tooltip-font-size: 12px;\n  --vbr-widget-tooltip-color: #ffffff;\n  --vbr-widget-tooltip-bg-color: #000000;\n}\nimg {\n  opacity: 0;\n  transition: opacity 0.5s ease-out;\n}\nimg.is-loaded {\n  opacity: 1;\n}\n.mjsz-vbr-floating-content.is-tooltip {\n    background: var(--vbr-widget-tooltip-bg-color);\n    color: var(--vbr-widget-tooltip-color);\n    font-weight: bold;\n    padding: 5px;\n    border-radius: 4px;\n    font-size: var(--vbr-widget-tooltip-font-size);\n    pointer-events: none;\n}\n";
   const _style_1 = ".mjsz-vbr-table {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n.mjsz-vbr-table table,\n  .mjsz-vbr-table caption,\n  .mjsz-vbr-table tbody,\n  .mjsz-vbr-table tfoot,\n  .mjsz-vbr-table thead,\n  .mjsz-vbr-table tr,\n  .mjsz-vbr-table th,\n  .mjsz-vbr-table td {\n    margin: 0;\n    padding: 0;\n    border: 0;\n    font-size: 100%;\n    font: inherit;\n    vertical-align: baseline;\n}\n.mjsz-vbr-table {\n  color: var(--vbr-widget-table-color);\n}\n.mjsz-vbr-table th {\n    width: var(--vbr-widget-table-default-column-width);\n    background-color: var(--vbr-widget-table-header-bg-color);\n    font-size: var(--vbr-widget-table-header-font-size);\n    font-weight: 700;\n    color: var(--vbr-widget-table-header-color);\n    text-align: center;\n}\n.mjsz-vbr-table th:hover {\n      background-color: var(--vbr-widget-table-header-hover-bg-color);\n}\n.mjsz-vbr-table th.is-sortable {\n      position: relative;\n      cursor: pointer;\n}\n.mjsz-vbr-table th.is-sortable .icon-sort {\n        opacity: 0.5;\n}\n.mjsz-vbr-table th.is-active {\n      background-color: var(--vbr-widget-table-table-header-active-bg-color);\n      color: var(--vbr-widget-table-header-active-color);\n}\n.mjsz-vbr-table th.is-active .icon-sort {\n        opacity: 1;\n}\n.mjsz-vbr-table th.is-asc {\n      position: relative;\n}\n.mjsz-vbr-table th.is-desc {\n      position: relative;\n}\n.mjsz-vbr-table th.is-w-auto {\n      width: auto;\n}\n.mjsz-vbr-table th .is-icon-sort {\n      width: 11px;\n      height: 11px;\n      margin-left: 5px;\n}\n.mjsz-vbr-table td {\n    text-align: center;\n}\n.mjsz-vbr-table td.is-active {\n      font-weight: 700;\n      color: var(--vbr-widget-table-active-color);\n      background-color: var(--vbr-widget-table-active-bg-color);\n}\n.mjsz-vbr-table td .is-text-light,\n    .mjsz-vbr-table td.is-text-light {\n      color: var(--vbr-widget-table-cell-light-color);\n}\n.mjsz-vbr-table td .is-text-dark,\n    .mjsz-vbr-table td.is-text-dark {\n      color: var(--vbr-widget-table-cell-dark-color);\n}\n.mjsz-vbr-table td.is-has-image {\n      padding: 0 2px;\n}\n.mjsz-vbr-table td .is-logo-image {\n      display: inline-block;\n      vertical-align: middle;\n      width: var(--vbr-widget-table-cell-logo-size);\n      height: var(--vbr-widget-table-cell-logo-size);\n}\n.mjsz-vbr-table td.is-text-bold {\n      font-weight: 700;\n}\n.mjsz-vbr-table td.is-text-xl {\n      font-size: 1.2 rem;\n}\n.mjsz-vbr-table td svg {\n      width: 16px;\n      height: 16px;\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button {\n      padding: 3px 3px;\n      line-height: 0;\n      border: none;\n      outline: none;\n      background-color: transparent;\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:hover {\n        background-color: var(--vbr-widget-popover-trigger-hover-bg-color);\n}\n.mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:active,\n      .mjsz-vbr-table td button.mjsz-vbr-mjsz-vbr-button:focus {\n        background-color: var(--vbr-widget-popover-trigger-focus-bg-color);\n}\n.mjsz-vbr-table td a {\n      text-decoration: none;\n}\n.mjsz-vbr-table td .label {\n      padding: 3px 6px;\n      font-size: 11px;\n      font-weight: 700;\n      color: var(--vbr-widget-table-label-color);\n      background-color: var(--vbr-widget-table-label-bg-color);\n      border-radius: 2px;\n}\n.mjsz-vbr-table td .label:not(:last-of-type) {\n        margin-right: 3px;\n}\n.mjsz-vbr-table th,\n  .mjsz-vbr-table td {\n    padding: 8px;\n    white-space: nowrap;\n    vertical-align: middle;\n}\n.mjsz-vbr-table th.is-text-left, .mjsz-vbr-table td.is-text-left {\n      text-align: left;\n}\n.mjsz-vbr-table th.is-text-right, .mjsz-vbr-table td.is-text-right {\n      text-align: right;\n}\n.mjsz-vbr-table th .is-duplicated, .mjsz-vbr-table td .is-duplicated {\n      color: var(--vbr-widget-table-neutral-color);\n}\n.mjsz-vbr-table tr:nth-child(even) {\n    background-color: var(--vbr-widget-table-stripped-bg-color);\n}\n.mjsz-vbr-table tr:nth-child(even) td.is-active {\n      background-color: var(--vbr-widget-table-active-even-bg-color);\n}\n.mjsz-vbr-table tr:focus-within,\n  .mjsz-vbr-table tr:hover {\n    color: var(--vbr-widget-table-hover-color);\n    background-color: var(--vbr-widget-table-hover-bg-color);\n}\n.mjsz-vbr-table tr:focus-within td.is-active, .mjsz-vbr-table tr:hover td.is-active {\n      color: var(--vbr-widget-table-active-hover-color);\n      background-color: var(--vbr-widget-table-active-hover-bg-color);\n}\n";
   const _style_2 = ".mjsz-vbr-table-responsive {\n  width: 100%;\n  overflow-x: auto;\n}\n.mjsz-vbr-table-responsive table {\n  width: 100%;\n}\n";
   const _style_3 = ".mjsz-vbr-paginator {\n  display: flex;\n  flex-direction: row;\n  list-style-type: none;\n  margin: 10px 0;\n  padding: 0;\n}\n.mjsz-vbr-paginator button,\n  .mjsz-vbr-paginator div {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    padding: 6px 12px;\n    text-decoration: none;\n    cursor: pointer;\n    color: var(--vbr-widget-paginator-color);\n    border: 1px solid var(--vbr-widget-paginator-border-color);\n    background-color: var(--vbr-widget-paginator-bg-color);\n    margin-left: -1px;\n}\n.mjsz-vbr-paginator button .icon, .mjsz-vbr-paginator div .icon {\n      width: 16px;\n      height: 16px;\n      margin: 0 -4px;\n}\n.mjsz-vbr-paginator button:hover:not(.mjsz-vbr-paginator button.is-disabled,.mjsz-vbr-paginator button.is-active), .mjsz-vbr-paginator div:hover:not(.mjsz-vbr-paginator div.is-disabled,.mjsz-vbr-paginator div.is-active) {\n      color: var(--vbr-widget-paginator-hover-color);\n      background-color: var(--vbr-widget-paginator-hover-bg-color);\n}\n.mjsz-vbr-paginator button:disabled,\n    .mjsz-vbr-paginator button.is-disabled,\n    .mjsz-vbr-paginator div:disabled,\n    .mjsz-vbr-paginator div.is-disabled {\n      color: var(--vbr-widget-paginator-disabled-color);\n      background-color: var(--vbr-widget-paginator-bg-color);\n      pointer-events: none;\n      cursor: default;\n}\n.mjsz-vbr-paginator button.is-active, .mjsz-vbr-paginator div.is-active {\n      color: var(--vbr-widget-paginator-active-color);\n      background-color: var(--vbr-widget-paginator-active-bg-color);\n      border-color: var(--vbr-widget-paginator-active-bg-color);\n      cursor: default;\n}\n.mjsz-vbr-paginator div {\n    border: none;\n    margin-left: 0;\n}\n";
   const _hoisted_1 = { key: 0 };
+  const _hoisted_2 = ["onMouseenter", "onMouseleave", "onFocus", "onBlur"];
   const _sfc_main = {
     __name: "Schedule.ce",
     props: {
@@ -3073,6 +4074,21 @@
                   onClick: _cache[0] || (_cache[0] = ($event) => localLocale.value = localLocale.value === "en" ? "hu" : "en")
                 }, vue.toDisplayString(localLocale.value === "en" ? "hu" : "en"), 1),
                 ((_a2 = vue.unref(error)) == null ? void 0 : _a2.error) ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1, vue.toDisplayString(vue.unref(error).message), 1)) : vue.createCommentVNode("", true),
+                vue.createVNode(_sfc_main$9, {
+                  placement: "top",
+                  content: "xxxxxx"
+                }, {
+                  default: vue.withCtx(({ setRef, show, hide }) => [
+                    vue.createElementVNode("button", {
+                      ref: (el) => setRef(el),
+                      onMouseenter: show,
+                      onMouseleave: hide,
+                      onFocus: show,
+                      onBlur: hide
+                    }, " Reference ", 40, _hoisted_2)
+                  ]),
+                  _: 1
+                }),
                 vue.createVNode(_sfc_main$5, {
                   rows: vue.unref(convertedRows).rows,
                   "is-loading": vue.unref(isLoading)
@@ -3093,6 +4109,5 @@
     }
   };
   const Schedule = /* @__PURE__ */ _export_sfc(_sfc_main, [["styles", [_style_0, _style_1, _style_2, _style_3]]]);
-  alert("I am here");
   customElements.define("vbr-schedule", vue.defineCustomElement(Schedule));
 })(Vue);

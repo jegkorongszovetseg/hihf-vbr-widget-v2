@@ -68,6 +68,10 @@
   --vbr-widget-paginator-active-color: var(--vbr-widget-primary-color-0);
   --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);
   --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);
+
+  --vbr-widget-tooltip-font-size: 12px;
+  --vbr-widget-tooltip-color: #ffffff;
+  --vbr-widget-tooltip-bg-color: #000000;
 }
 
 img {
@@ -76,4 +80,17 @@ img {
 }
 img.is-loaded {
   opacity: 1;
+}
+
+.floating-content {
+  &.is-tooltip {
+    background: var(--vbr-widget-tooltip-bg-color);
+    color: var(--vbr-widget-tooltip-color);
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: var(--vbr-widget-tooltip-font-size);
+    white-space: no-wrap;
+    pointer-events: none;
+  }
 }

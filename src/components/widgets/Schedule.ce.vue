@@ -8,6 +8,7 @@ import convert from '../../utils/convert';
 import ScheduleTable from './ScheduleTable.vue';
 import I18NProvider from '../I18NProvider.vue';
 import Paginator from '../Paginator.vue';
+import FloatingPanel from '../FloatingPanel.vue';
 
 const props = defineProps({
   locale: {
@@ -71,8 +72,20 @@ const onPaginatorChange = (value) => {
 <template>
   <div>
     <I18NProvider :locale="localLocale">
-      <button @click="localLocale = localLocale === 'en' ? 'hu' : 'en'">{{ localLocale === 'en' ? 'hu' : 'en' }}</button>
+      <button @click="localLocale = localLocale === 'en' ? 'hu' : 'en'">
+        {{ localLocale === 'en' ? 'hu' : 'en' }}
+      </button>
       <div v-if="error?.error">{{ error.message }}</div>
+
+      <FloatingPanel placement="top">
+        <template v-slot:default="{ setRef, show, hide }">
+          <button :ref="(el) => setRef(el)" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">Reference</button>
+        </template>
+        <template v-slot:content>
+          <div>asdasdasdasd</div>
+        </template>
+      </FloatingPanel>
+
       <ScheduleTable :rows="convertedRows.rows" :is-loading="isLoading"></ScheduleTable>
 
       <Paginator

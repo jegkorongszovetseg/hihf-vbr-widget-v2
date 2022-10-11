@@ -1,11 +1,12 @@
 <script setup>
 import { computed } from 'vue';
+import { useI18n } from '../composables/useI18n';
+import { useMainClass } from '../composables/useMainClass';
+import { SORT_STATE_ASCEND, SORT_STATE_DESCEND, SORT_STATE_ORIGINAL } from '../constants.js';
 import IconSort from './icons/IconSort.vue';
 import IconSortAsc from './icons/IconSortAsc.vue';
 import IconSortDesc from './icons/IconSortDesc.vue';
-import { SORT_STATE_ASCEND, SORT_STATE_DESCEND, SORT_STATE_ORIGINAL } from '../constants.js';
-import { useI18n } from '../composables/useI18n';
-import { useMainClass } from '../composables/useMainClass';
+import FloatingPanel from './FloatingPanel.vue';
 
 const props = defineProps({
   columns: {
@@ -48,38 +49,49 @@ const sortBy = (column, prop) => {
   <table :class="mainClassName">
     <thead>
       <tr>
-        <th
-          v-for="(column, prop) in columns"
-          :key="prop"
-          :class="[
-            [column.class],
-            {
-              'is-active': prop === sort.sortTarget && sort.orders[0].direction !== SORT_STATE_ORIGINAL,
-              'is-sortable': column.sortOrders,
-              'is-desc': prop === sort.sortTarget && sort.orders[0].direction === SORT_STATE_DESCEND,
-              'is-asc': prop === sort.sortTarget && sort.orders[0].direction === SORT_STATE_ASCEND,
-            },
-          ]"
-          :title="column.tooltip"
-          @click="sortBy(column, prop)"
-        >
-          <slot :name="`header-${prop}`" :column="column">
-            {{ column.label }}
-          </slot>
-          <IconSort v-if="column.sortOrders && prop !== sort.sortTarget" class="is-icon-sort"></IconSort>
-          <IconSort
-            v-if="prop === sort.sortTarget && sort.orders[0].direction === SORT_STATE_ORIGINAL"
-            class="is-icon-sort"
-          ></IconSort>
-          <IconSortAsc
-            v-if="prop === sort.sortTarget && sort.orders[0].direction === SORT_STATE_DESCEND"
-            class="is-icon-sort"
-          ></IconSortAsc>
-          <IconSortDesc
-            v-if="prop === sort.sortTarget && sort.orders[0].direction === SORT_STATE_ASCEND"
-            class="is-icon-sort"
-          ></IconSortDesc>
-        </th>
+        <template v-for="(column, prop) in columns" :key="prop">
+          <FloatingPanel
+            placement="top"
+            :content="column.tooltip"
+            :disabled="!column.tooltip"
+            v-slot:default="{ setRef, show, hide }"
+          >
+            <th
+              :ref="(el) => setRef(el)"
+              :class="[
+                [column.class],
+                {
+                  'is-active': prop === sort.sortTarget && sort.orders[0].direction !== SORT_STATE_ORIGINAL,
+                  'is-sortable': column.sortOrders,
+                  'is-desc': prop === sort.sortTarget && sort.orders[0].direction === SORT_STATE_DESCEND,
+                  'is-asc': prop === sort.sortTarget && sort.orders[0].direction === SORT_STATE_ASCEND,
+                },
+              ]"
+              @mouseenter="show"
+              @mouseleave="hide"
+              @focus="show"
+              @blur="hide"
+              @click="sortBy(column, prop)"
+            >
+              <slot :name="`header-${prop}`" :column="column">
+                {{ column.label }}
+              </slot>
+              <IconSort v-if="column.sortOrders && prop !== sort.sortTarget" class="is-icon-sort"></IconSort>
+              <IconSort
+                v-if="prop === sort.sortTarget && sort.orders[0].direction === SORT_STATE_ORIGINAL"
+                class="is-icon-sort"
+              ></IconSort>
+              <IconSortAsc
+                v-if="prop === sort.sortTarget && sort.orders[0].direction === SORT_STATE_DESCEND"
+                class="is-icon-sort"
+              ></IconSortAsc>
+              <IconSortDesc
+                v-if="prop === sort.sortTarget && sort.orders[0].direction === SORT_STATE_ASCEND"
+                class="is-icon-sort"
+              ></IconSortDesc>
+            </th>
+          </FloatingPanel>
+        </template>
       </tr>
     </thead>
     <tbody>
