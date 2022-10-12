@@ -1,5 +1,5 @@
-import { ref, unref, watch } from 'vue';
-import { autoUpdate, computePosition } from '@floating-ui/dom';
+import { isRef, ref, unref, watch } from 'vue';
+import { autoUpdate, computePosition, arrow as arrowCore } from '@floating-ui/dom';
 import { appendTo } from '../utils/dom';
 
 export function useFloating({ middleware, placement = null, strategy, append, enabled }) {
@@ -7,6 +7,9 @@ export function useFloating({ middleware, placement = null, strategy, append, en
   const floating = ref(null);
   const x = ref(null);
   const y = ref(null);
+  const arrowX = ref(null);
+  const arrowY = ref(null);
+  const _placement = ref(null);
   const _strategy = ref(strategy ?? 'absolute');
   const _autoUpdate = ref(null);
 
@@ -18,9 +21,15 @@ export function useFloating({ middleware, placement = null, strategy, append, en
       placement,
       strategy,
     }).then((data) => {
+      console.log(data);
       x.value = data.x;
       y.value = data.y;
       _strategy.value = data.strategy;
+
+      arrowX.value = data.middlewareData.arrow.x;
+      arrowY.value = data.middlewareData.arrow.y;
+
+      _placement.value = data.placement;
     });
   };
 
@@ -55,9 +64,34 @@ export function useFloating({ middleware, placement = null, strategy, append, en
   return {
     x,
     y,
+    arrowX,
+    arrowY,
+    placement: _placement,
     reference,
     floating,
     strategy: _strategy,
     update,
   };
 }
+
+export const arrow = (options) => {
+  const { element, padding } = options;
+
+  return {
+    name: 'arrow',
+    options,
+    fn(args) {
+      if (isRef(element)) {
+        if (element.value != null) {
+          return arrowCore({ element: element.value, padding }).fn(args);
+        }
+
+        return {};
+      } else if (element) {
+        return arrowCore({ element, padding }).fn(args);
+      }
+
+      return {};
+    },
+  };
+};

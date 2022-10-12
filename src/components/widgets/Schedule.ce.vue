@@ -73,14 +73,14 @@ const onPaginatorChange = (value) => {
 <template>
   <div id="widget-schedule">
     <I18NProvider :locale="localLocale">
-      <!-- <button @click="localLocale = localLocale === 'en' ? 'hu' : 'en'">
+      <button @click="localLocale = localLocale === 'en' ? 'hu' : 'en'">
         {{ localLocale === 'en' ? 'hu' : 'en' }}
-      </button> -->
+      </button>
       <div v-if="error?.error">{{ error.message }}</div>
 
-      <FloatingPanel placement="top">
-        <template v-slot:default="{ setRef, show, hide }">
-          <button :ref="(el) => setRef(el)" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">
+      <FloatingPanel placement="bottom-start" :append-to="null" theme="content">
+        <template v-slot:default="{ setRef, show }">
+          <button :ref="setRef" @click.stop="show">
             Reference
           </button>
         </template>

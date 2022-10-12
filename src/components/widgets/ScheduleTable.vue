@@ -8,6 +8,9 @@ import Image from '../Image.vue';
 import DataTable from '../DataTable.vue';
 import IconBroadcast from '../icons/IconBroadcast.vue';
 import IconMore from '../icons/IconMore.vue';
+import FloatingPanel from '../FloatingPanel.vue';
+import IconSheet from '../icons/IconSheet.vue';
+import IconYoutube from '../icons/IconYoutube.vue';
 
 const props = defineProps({
   rows: {
@@ -65,7 +68,29 @@ const { t } = useI18n();
         <span v-else></span>
       </template>
       <template v-slot:cell-more="{ row }">
-        <IconMore />
+        <FloatingPanel :offset="2" placement="left" theme="content">
+          <template v-slot:default="{ setRef, show }">
+            <button :ref="(el) => setRef(el)" @click.stop="show">
+              <IconMore />
+            </button>
+          </template>
+          <template v-slot:content>
+            <ul :class="`dropdown-menu`">
+              <li>
+                <a :href="externalBaseUrl + row.id" :class="`-dropdown-item`" target="_blank">
+                  <IconSheet width="14" />
+                  Jegyzőkönyv
+                </a>
+              </li>
+              <li v-if="row.video">
+                <a :href="row.video" :class="`-dropdown-item`" target="_blank">
+                  <IconYoutube width="14" />
+                  Videó
+                </a>
+              </li>
+            </ul>
+          </template>
+        </FloatingPanel>
       </template>
     </DataTable>
   </ResponsiveTable>

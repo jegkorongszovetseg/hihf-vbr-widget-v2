@@ -1,7 +1,8 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { flip, shift, offset } from '@floating-ui/dom';
-import { useFloating } from '../composables/useFloating';
+import { onClickOutside } from '@vueuse/core';
+import { useFloating, arrow } from '../composables/useFloating';
 import { useMainClass } from '../composables/useMainClass';
 
 const props = defineProps({
@@ -39,10 +40,11 @@ const props = defineProps({
 const mainClassName = useMainClass('floating-content');
 
 const open = ref(false);
+const arrowRef = ref(null);
 
-const { x, y, reference, floating, strategy, update } = useFloating({
+const { x, y, arrowX, arrowY, placement, reference, floating, strategy } = useFloating({
   placement: props.placement,
-  middleware: [flip(), shift({ padding: 5 }), offset(props.offset)],
+  middleware: [flip(), shift({ padding: 5 }), offset(props.offset), arrow({ element: arrowRef, padding: 5 })],
   append: computed(() => props.appendTo),
   enabled: open,
 });
@@ -50,7 +52,6 @@ const { x, y, reference, floating, strategy, update } = useFloating({
 const show = () => {
   if (props.disabled) return;
   open.value = true;
-  update();
 };
 
 const hide = () => {
@@ -60,12 +61,18 @@ const hide = () => {
 const setSlotRef = (el) => {
   reference.value = el;
 };
+
+onClickOutside(floating, (event) => {
+  if (reference.value?.contains(event.target)) return;
+  hide();
+});
 </script>
 
 <template>
   <slot :set-ref="setSlotRef" :show="show" :hide="hide"></slot>
   <div
     ref="floating"
+    :data-placement="placement"
     :style="{
       position: strategy,
       top: y ? `${y}px` : '',
@@ -74,7 +81,16 @@ const setSlotRef = (el) => {
   >
     <transition name="transition-fade" mode="out-in">
       <div v-if="open" :class="[mainClassName, [`is-${props.theme}`]]">
-        <slot name="content">{{ content }}</slot>
+        <slot name="content" :close="hide">{{ content }}</slot>
+        <div
+          ref="arrowRef"
+          class="is-arrow"
+          :style="{
+            position: strategy,
+            top: arrowY ? `${arrowY}px` : '',
+            left: arrowX ? `${arrowX}px` : '',
+          }"
+        ></div>
       </div>
     </transition>
   </div>
