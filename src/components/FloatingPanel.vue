@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue';
-import { flip, shift } from '@floating-ui/dom';
+import { flip, shift, offset } from '@floating-ui/dom';
 import { useFloating } from '../composables/useFloating';
 import { useMainClass } from '../composables/useMainClass';
 
@@ -30,9 +30,9 @@ const props = defineProps({
     default: 'body',
   },
 
-  parent: {
-    type: Object,
-    default: null,
+  offset: {
+    type: Number,
+    default: 2,
   },
 });
 
@@ -42,9 +42,9 @@ const open = ref(false);
 
 const { x, y, reference, floating, strategy, update } = useFloating({
   placement: props.placement,
-  middleware: [flip(), shift({ padding: 5 })],
+  middleware: [flip(), shift({ padding: 5 }), offset(props.offset)],
   append: computed(() => props.appendTo),
-  enabled: open
+  enabled: open,
 });
 
 const show = () => {
@@ -72,8 +72,10 @@ const setSlotRef = (el) => {
       left: x ? `${x}px` : '',
     }"
   >
-    <div v-if="open" :class="[mainClassName, [`is-${props.theme}`]]">
-      <slot name="content">{{ content }}</slot>
-    </div>
+    <transition name="transition-fade" mode="out-in">
+      <div v-if="open" :class="[mainClassName, [`is-${props.theme}`]]">
+        <slot name="content">{{ content }}</slot>
+      </div>
+    </transition>
   </div>
 </template>

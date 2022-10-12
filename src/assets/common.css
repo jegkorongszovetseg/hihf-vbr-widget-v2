@@ -74,6 +74,18 @@
   --vbr-widget-tooltip-bg-color: #000000;
 }
 
+.transition-fade-enter-active,
+.transition-fade-leave-active {
+  transition: all 0.25s ease;
+  
+}
+
+.transition-fade-enter-from,
+.transition-fade-leave-to {
+  opacity: 0;
+  transform: translateY(5px);
+}
+
 img {
   opacity: 0;
   transition: opacity 0.5s ease-out;
@@ -87,7 +99,7 @@ img.is-loaded {
     background: var(--vbr-widget-tooltip-bg-color);
     color: var(--vbr-widget-tooltip-color);
     font-weight: bold;
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 4px;
     font-size: var(--vbr-widget-tooltip-font-size);
     white-space: nowrap;

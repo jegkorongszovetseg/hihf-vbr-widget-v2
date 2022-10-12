@@ -6,7 +6,10 @@ export default ({ mode }) => {
     plugins: {
       'postcss-mixins': {},
       'postcss-nested': {},
-      'postcss-prefixer': { prefix: process.env.VITE_CSS_CLASS_PREFIX, ignore: [/icon/, /is-[a-zA-Z]*/, 'label'] },
+      'postcss-prefixer': {
+        prefix: process.env.VITE_CSS_CLASS_PREFIX,
+        ignore: [/icon/, /is-[a-zA-Z]*/, /transition-[a-zA-Z]*/, 'label'],
+      },
     },
   };
 };

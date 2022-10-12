@@ -38,7 +38,7 @@ export const COLUMNS_SCHEDULE = {
   awayTeamName: {
     label: 'table.awayTeam.short',
     tooltip: 'table.awayTeam.tooltip',
-    class: 'is-text-left is-is-w-auto is-text-bold',
+    class: 'is-text-left is-w-auto is-text-bold',
   },
   location: {
     label: 'table.location.short',

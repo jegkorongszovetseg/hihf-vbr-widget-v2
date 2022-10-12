@@ -73,9 +73,9 @@ const onPaginatorChange = (value) => {
 <template>
   <div id="widget-schedule">
     <I18NProvider :locale="localLocale">
-      <button @click="localLocale = localLocale === 'en' ? 'hu' : 'en'">
+      <!-- <button @click="localLocale = localLocale === 'en' ? 'hu' : 'en'">
         {{ localLocale === 'en' ? 'hu' : 'en' }}
-      </button>
+      </button> -->
       <div v-if="error?.error">{{ error.message }}</div>
 
       <FloatingPanel placement="top">
