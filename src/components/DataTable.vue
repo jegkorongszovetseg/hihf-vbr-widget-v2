@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, toRef } from 'vue';
 import { useI18n } from '../composables/useI18n';
 import { useMainClass } from '../composables/useMainClass';
 import { SORT_STATE_ASCEND, SORT_STATE_DESCEND, SORT_STATE_ORIGINAL } from '../constants.js';
@@ -28,16 +28,21 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+
+  appendTo: {
+    type: [Object, String],
+    default: null,
+  },
 });
 
 const emit = defineEmits(['sort']);
 
 const { t } = useI18n();
-
 const mainClassName = useMainClass('table');
 
 const columns = computed(() => props.columns);
 const columnCount = computed(() => Object.keys(props.columns).length);
+const appendTo = toRef(props, 'appendTo');
 
 const sortBy = (column, prop) => {
   if (!column.sortOrders) return;
@@ -54,6 +59,7 @@ const sortBy = (column, prop) => {
             placement="top"
             :content="column.tooltip"
             :disabled="!column.tooltip"
+            :append-to="appendTo"
             v-slot:default="{ setRef, show, hide }"
           >
             <th

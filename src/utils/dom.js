@@ -5,8 +5,11 @@
  * @param prop
  */
 export const appendTo = (element, targetSelector = 'body') => {
-  console.log({ element });
   if (!element) return;
+  if (typeof targetSelector !== 'string') {
+    targetSelector?.append(element);
+    return;
+  }
   const target = document.querySelector(targetSelector);
   target?.append(element);
 };

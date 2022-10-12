@@ -1,9 +1,11 @@
 <script setup>
+import { ref } from 'vue';
 import { useMainClass } from '../composables/useMainClass';
 
-  const mainClassName = useMainClass('table-responsive');
+const el = ref(null);
+const mainClassName = useMainClass('table-responsive');
 </script>
 
 <template>
-  <div :class="mainClassName"><slot /></div>
+  <div ref="el" :class="mainClassName"><slot :el="el" /></div>
 </template>

@@ -36,8 +36,8 @@ const { t } = useI18n();
 
 <template>
   <div v-if="error">{{ error }}</div>
-  <ResponsiveTable>
-    <DataTable :columns="columns" :rows="props.rows" :is-loading="isLoading">
+  <ResponsiveTable v-slot:default="{ el }">
+    <DataTable :columns="columns" :rows="props.rows" :is-loading="isLoading" :append-to="el">
       <template v-slot:cell-homeTeamLogo="{ row }">
         <Image class="is-logo-image is-right" :key="row.id" :src="row.homeTeamLogo" />
       </template>

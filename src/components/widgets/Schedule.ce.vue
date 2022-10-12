@@ -69,8 +69,9 @@ const onPaginatorChange = (value) => {
   page.value = value;
 };
 </script>
+
 <template>
-  <div>
+  <div id="widget-schedule">
     <I18NProvider :locale="localLocale">
       <button @click="localLocale = localLocale === 'en' ? 'hu' : 'en'">
         {{ localLocale === 'en' ? 'hu' : 'en' }}
@@ -79,7 +80,9 @@ const onPaginatorChange = (value) => {
 
       <FloatingPanel placement="top">
         <template v-slot:default="{ setRef, show, hide }">
-          <button :ref="(el) => setRef(el)" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">Reference</button>
+          <button :ref="(el) => setRef(el)" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">
+            Reference
+          </button>
         </template>
         <template v-slot:content>
           <div>asdasdasdasd</div>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, unref } from 'vue';
+import { computed, ref } from 'vue';
 import { flip, shift } from '@floating-ui/dom';
 import { useFloating } from '../composables/useFloating';
 import { useMainClass } from '../composables/useMainClass';
@@ -26,8 +26,13 @@ const props = defineProps({
   },
 
   appendTo: {
-    type: String,
+    type: [Object, String],
     default: 'body',
+  },
+
+  parent: {
+    type: Object,
+    default: null,
   },
 });
 
@@ -38,7 +43,8 @@ const open = ref(false);
 const { x, y, reference, floating, strategy, update } = useFloating({
   placement: props.placement,
   middleware: [flip(), shift({ padding: 5 })],
-  append: props.appendTo,
+  append: computed(() => props.appendTo),
+  enabled: open
 });
 
 const show = () => {

@@ -90,7 +90,7 @@ img.is-loaded {
     padding: 5px;
     border-radius: 4px;
     font-size: var(--vbr-widget-tooltip-font-size);
-    white-space: no-wrap;
+    white-space: nowrap;
     pointer-events: none;
   }
 }
