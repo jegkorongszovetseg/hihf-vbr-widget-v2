@@ -21,7 +21,7 @@ export function useFloating({ middleware, placement = null, strategy, append, en
       placement,
       strategy,
     }).then((data) => {
-      console.log(data);
+      // console.log(data);
       x.value = data.x;
       y.value = data.y;
       _strategy.value = data.strategy;

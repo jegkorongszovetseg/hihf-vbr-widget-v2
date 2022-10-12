@@ -39,8 +39,8 @@ const { t } = useI18n();
 
 <template>
   <div v-if="error">{{ error }}</div>
-  <ResponsiveTable v-slot:default="{ el }">
-    <DataTable :columns="columns" :rows="props.rows" :is-loading="isLoading" :append-to="el">
+  <ResponsiveTable v-slot:default="{ el: rootElement }">
+    <DataTable :columns="columns" :rows="props.rows" :is-loading="isLoading" :append-to="rootElement">
       <template v-slot:cell-homeTeamLogo="{ row }">
         <Image class="is-logo-image is-right" :key="row.id" :src="row.homeTeamLogo" />
       </template>
@@ -68,9 +68,9 @@ const { t } = useI18n();
         <span v-else></span>
       </template>
       <template v-slot:cell-more="{ row }">
-        <FloatingPanel :offset="2" placement="left" theme="content">
+        <FloatingPanel :offset="2" placement="left" theme="content" :append-to="rootElement">
           <template v-slot:default="{ setRef, show }">
-            <button :ref="(el) => setRef(el)" @click.stop="show">
+            <button :ref="setRef" @click.stop="show">
               <IconMore />
             </button>
           </template>

@@ -63,7 +63,7 @@ const sortBy = (column, prop) => {
             v-slot:default="{ setRef, show, hide }"
           >
             <th
-              :ref="(el) => setRef(el)"
+              :ref="setRef"
               :class="[
                 [column.class],
                 {
