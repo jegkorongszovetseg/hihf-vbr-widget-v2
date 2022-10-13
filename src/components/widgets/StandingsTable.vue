@@ -5,6 +5,7 @@ import { COLUMNS_STANDINGS_P_2, COLUMNS_STANDINGS_P_3 } from './internal';
 import ResponsiveTable from '../ResponsiveTable.vue';
 import Image from '../Image.vue';
 import DataTable from '../DataTable.vue';
+import ErrorNotice from '../ErrorNotice.vue';
 
 const props = defineProps({
   rows: {
@@ -43,7 +44,7 @@ const onSort = (payload) => emit('sort', payload);
 </script>
 
 <template>
-  <div v-if="error">{{ error }}</div>
+  <ErrorNotice v-if="error">{{ error }}</ErrorNotice>
   <ResponsiveTable v-slot:default="{ el: rootElement }">
     <DataTable
       :columns="columns"

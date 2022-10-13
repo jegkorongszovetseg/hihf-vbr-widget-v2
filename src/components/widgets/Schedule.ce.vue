@@ -8,6 +8,7 @@ import convert from '../../utils/convert';
 import ScheduleTable from './ScheduleTable.vue';
 import I18NProvider from '../I18NProvider.vue';
 import Paginator from '../Paginator.vue';
+import ErrorNotice from '../ErrorNotice.vue';
 
 const props = defineProps({
   locale: {
@@ -88,7 +89,7 @@ const onPaginatorChange = (value) => {
         {{ localLocale === 'en' ? 'hu' : 'en' }}
       </button>
 
-      <div v-if="error?.error">{{ error.message }}</div>
+      <ErrorNotice v-if="error?.error" :error="error.message" />
 
       <ScheduleTable
         :rows="convertedRows.rows"

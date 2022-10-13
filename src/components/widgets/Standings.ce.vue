@@ -6,6 +6,7 @@ import useSort from '../../composables/useSort';
 import convert from '../../utils/convert';
 import StandingsTable from './StandingsTable.vue';
 import I18NProvider from '../I18NProvider.vue';
+import ErrorNotice from '../ErrorNotice.vue';
 
 const props = defineProps({
   locale: {
@@ -68,7 +69,7 @@ const onSort = (payload) => {
 <template>
   <div>
     <I18NProvider :locale="locale">
-      <div v-if="error?.error">{{ error.message }}</div>
+      <ErrorNotice v-if="error?.error" :error="error.message" />
 
       <StandingsTable
         :type="props.type"
