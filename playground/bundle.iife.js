@@ -1856,11 +1856,72 @@ var MjszVbrWidget = function(exports, vue) {
       label: ""
     }
   };
+  const COLUMNS_STANDINGS_P_3 = {
+    index: {
+      label: "table.blank",
+      class: "text-left"
+    },
+    teamName: {
+      label: "table.team.short",
+      tooltip: "table.team.tooltip",
+      class: "text-left w-auto text-bold",
+      sortOrders: [{ target: "name", direction: SORT_STATE_ASCEND }]
+    },
+    m: {
+      label: "table.game.short",
+      tooltip: "table.game.tooltip",
+      sortOrders: [{ target: "m", direction: SORT_STATE_DESCEND }]
+    },
+    p3: {
+      label: "table.wins.short",
+      tooltip: "table.wins.tooltip",
+      sortOrders: [
+        { target: "p3", direction: SORT_STATE_DESCEND },
+        { target: "p2", direction: SORT_STATE_DESCEND }
+      ]
+    },
+    p2: {
+      label: "table.otw.short",
+      tooltip: "table.otw.tooltip",
+      sortOrders: [{ target: "p2", direction: SORT_STATE_DESCEND }]
+    },
+    p1: {
+      label: "table.otl.short",
+      tooltip: "table.otl.tooltip",
+      sortOrders: [{ target: "p1", direction: SORT_STATE_ASCEND }]
+    },
+    p0: {
+      label: "table.losses.short",
+      tooltip: "table.losses.tooltip",
+      sortOrders: [{ target: "p0", direction: SORT_STATE_ASCEND }]
+    },
+    plus: {
+      label: "table.goalFor.short",
+      tooltip: "table.goalFor.tooltip",
+      sortOrders: [{ target: "plus", direction: SORT_STATE_DESCEND }]
+    },
+    minus: {
+      label: "table.goalAgainst.short",
+      tooltip: "table.goalAgainst.tooltip",
+      sortOrders: [{ target: "minus", direction: SORT_STATE_ASCEND }]
+    },
+    gk: {
+      label: "table.goalDiff.short",
+      tooltip: "table.goalDiff.tooltip",
+      sortOrders: [{ target: "gk", direction: SORT_STATE_DESCEND }]
+    },
+    p: {
+      label: "table.points.short",
+      tooltip: "table.points.tooltip",
+      class: "text-bold",
+      sortOrders: [{ target: "p", direction: SORT_STATE_DESCEND }]
+    }
+  };
   const useMainClass = (className) => {
     const prefix = "mjsz-vbr-";
     return prefix + className;
   };
-  const _sfc_main$g = {
+  const _sfc_main$i = {
     __name: "ResponsiveTable",
     setup(__props) {
       const el = vue.ref(null);
@@ -1876,9 +1937,9 @@ var MjszVbrWidget = function(exports, vue) {
       };
     }
   };
-  const _hoisted_1$e = ["src"];
+  const _hoisted_1$g = ["src"];
   const _hoisted_2$d = ["src", "title"];
-  const _sfc_main$f = {
+  const _sfc_main$h = {
     __name: "Image",
     props: {
       src: {
@@ -1905,7 +1966,7 @@ var MjszVbrWidget = function(exports, vue) {
             key: 0,
             src: defaultSrc.value,
             class: vue.normalizeClass(_ctx.$attrs.class)
-          }, null, 10, _hoisted_1$e)) : vue.createCommentVNode("", true),
+          }, null, 10, _hoisted_1$g)) : vue.createCommentVNode("", true),
           !vue.unref(error) ? (vue.openBlock(), vue.createElementBlock("img", {
             key: 1,
             src: imageOptions.value.src,
@@ -1923,8 +1984,8 @@ var MjszVbrWidget = function(exports, vue) {
     }
     return target;
   };
-  const _sfc_main$e = {};
-  const _hoisted_1$d = {
+  const _sfc_main$g = {};
+  const _hoisted_1$f = {
     "aria-hidden": "true",
     focusable: "false",
     "data-prefix": "fas",
@@ -1942,11 +2003,11 @@ var MjszVbrWidget = function(exports, vue) {
     _hoisted_2$c
   ];
   function _sfc_render$9(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$d, _hoisted_3$c);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$f, _hoisted_3$c);
   }
-  const IconSort = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$9]]);
-  const _sfc_main$d = {};
-  const _hoisted_1$c = {
+  const IconSort = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$9]]);
+  const _sfc_main$f = {};
+  const _hoisted_1$e = {
     "aria-hidden": "true",
     focusable: "false",
     "data-prefix": "fas",
@@ -1964,11 +2025,11 @@ var MjszVbrWidget = function(exports, vue) {
     _hoisted_2$b
   ];
   function _sfc_render$8(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$c, _hoisted_3$b);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$e, _hoisted_3$b);
   }
-  const IconSortAsc = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$8]]);
-  const _sfc_main$c = {};
-  const _hoisted_1$b = {
+  const IconSortAsc = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$8]]);
+  const _sfc_main$e = {};
+  const _hoisted_1$d = {
     "aria-hidden": "true",
     focusable: "false",
     "data-prefix": "fas",
@@ -1986,9 +2047,9 @@ var MjszVbrWidget = function(exports, vue) {
     _hoisted_2$a
   ];
   function _sfc_render$7(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$b, _hoisted_3$a);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$d, _hoisted_3$a);
   }
-  const IconSortDesc = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$7]]);
+  const IconSortDesc = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$7]]);
   function getSide(placement) {
     return placement.split("-")[0];
   }
@@ -3079,8 +3140,8 @@ var MjszVbrWidget = function(exports, vue) {
       }
     };
   };
-  const _hoisted_1$a = ["data-placement"];
-  const _sfc_main$b = {
+  const _hoisted_1$c = ["data-placement"];
+  const _sfc_main$d = {
     __name: "FloatingPanel",
     props: {
       disabled: {
@@ -3179,17 +3240,17 @@ var MjszVbrWidget = function(exports, vue) {
               ]),
               _: 3
             })
-          ], 12, _hoisted_1$a)
+          ], 12, _hoisted_1$c)
         ], 64);
       };
     }
   };
-  const _hoisted_1$9 = ["onMouseenter", "onMouseleave", "onFocus", "onBlur", "onClick"];
+  const _hoisted_1$b = ["onMouseenter", "onMouseleave", "onFocus", "onBlur", "onClick"];
   const _hoisted_2$9 = { key: 0 };
   const _hoisted_3$9 = ["colspan"];
-  const _hoisted_4$7 = { key: 1 };
+  const _hoisted_4$6 = { key: 1 };
   const _hoisted_5$4 = ["colspan"];
-  const _sfc_main$a = {
+  const _sfc_main$c = {
     __name: "DataTable",
     props: {
       columns: {
@@ -3233,7 +3294,7 @@ var MjszVbrWidget = function(exports, vue) {
           vue.createElementVNode("thead", null, [
             vue.createElementVNode("tr", null, [
               (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(columns), (column, prop2) => {
-                return vue.openBlock(), vue.createBlock(_sfc_main$b, {
+                return vue.openBlock(), vue.createBlock(_sfc_main$d, {
                   key: prop2,
                   placement: "top",
                   content: column.tooltip,
@@ -3278,7 +3339,7 @@ var MjszVbrWidget = function(exports, vue) {
                         key: 3,
                         class: "is-icon-sort"
                       })) : vue.createCommentVNode("", true)
-                    ], 42, _hoisted_1$9)
+                    ], 42, _hoisted_1$b)
                   ]),
                   _: 2
                 }, 1032, ["content", "disabled", "append-to"]);
@@ -3313,7 +3374,7 @@ var MjszVbrWidget = function(exports, vue) {
             __props.rows.length === 0 && !__props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_2$9, [
               vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.noData")), 9, _hoisted_3$9)
             ])) : vue.createCommentVNode("", true),
-            __props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_4$7, [
+            __props.isLoading ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_4$6, [
               vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.loading")), 9, _hoisted_5$4)
             ])) : vue.createCommentVNode("", true)
           ])
@@ -3321,8 +3382,8 @@ var MjszVbrWidget = function(exports, vue) {
       };
     }
   };
-  const _sfc_main$9 = {};
-  const _hoisted_1$8 = {
+  const _sfc_main$b = {};
+  const _hoisted_1$a = {
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 24 24",
     fill: "none",
@@ -3345,7 +3406,7 @@ var MjszVbrWidget = function(exports, vue) {
     x2: "16",
     y2: "21"
   }, null, -1);
-  const _hoisted_4$6 = /* @__PURE__ */ vue.createElementVNode("line", {
+  const _hoisted_4$5 = /* @__PURE__ */ vue.createElementVNode("line", {
     x1: "12",
     y1: "17",
     x2: "12",
@@ -3354,14 +3415,14 @@ var MjszVbrWidget = function(exports, vue) {
   const _hoisted_5$3 = [
     _hoisted_2$8,
     _hoisted_3$8,
-    _hoisted_4$6
+    _hoisted_4$5
   ];
   function _sfc_render$6(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$8, _hoisted_5$3);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$a, _hoisted_5$3);
   }
-  const IconBroadcast = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$6]]);
-  const _sfc_main$8 = {};
-  const _hoisted_1$7 = {
+  const IconBroadcast = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$6]]);
+  const _sfc_main$a = {};
+  const _hoisted_1$9 = {
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 24 24",
     fill: "none",
@@ -3380,7 +3441,7 @@ var MjszVbrWidget = function(exports, vue) {
     cy: "5",
     r: "1"
   }, null, -1);
-  const _hoisted_4$5 = /* @__PURE__ */ vue.createElementVNode("circle", {
+  const _hoisted_4$4 = /* @__PURE__ */ vue.createElementVNode("circle", {
     cx: "12",
     cy: "19",
     r: "1"
@@ -3388,14 +3449,14 @@ var MjszVbrWidget = function(exports, vue) {
   const _hoisted_5$2 = [
     _hoisted_2$7,
     _hoisted_3$7,
-    _hoisted_4$5
+    _hoisted_4$4
   ];
   function _sfc_render$5(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$7, _hoisted_5$2);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$9, _hoisted_5$2);
   }
-  const IconMore = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$5]]);
-  const _sfc_main$7 = {};
-  const _hoisted_1$6 = {
+  const IconMore = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$5]]);
+  const _sfc_main$9 = {};
+  const _hoisted_1$8 = {
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 24 24",
     fill: "none",
@@ -3413,16 +3474,16 @@ var MjszVbrWidget = function(exports, vue) {
     rx: "1",
     ry: "1"
   }, null, -1);
-  const _hoisted_4$4 = [
+  const _hoisted_4$3 = [
     _hoisted_2$6,
     _hoisted_3$6
   ];
   function _sfc_render$4(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$6, _hoisted_4$4);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$8, _hoisted_4$3);
   }
-  const IconSheet = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$4]]);
-  const _sfc_main$6 = {};
-  const _hoisted_1$5 = {
+  const IconSheet = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$4]]);
+  const _sfc_main$8 = {};
+  const _hoisted_1$7 = {
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 24 24",
     fill: "none",
@@ -3433,21 +3494,21 @@ var MjszVbrWidget = function(exports, vue) {
   };
   const _hoisted_2$5 = /* @__PURE__ */ vue.createElementVNode("path", { d: "M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" }, null, -1);
   const _hoisted_3$5 = /* @__PURE__ */ vue.createElementVNode("polygon", { points: "9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" }, null, -1);
-  const _hoisted_4$3 = [
+  const _hoisted_4$2 = [
     _hoisted_2$5,
     _hoisted_3$5
   ];
   function _sfc_render$3(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$5, _hoisted_4$3);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$7, _hoisted_4$2);
   }
-  const IconYoutube = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$3]]);
-  const _hoisted_1$4 = { key: 0 };
+  const IconYoutube = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$3]]);
+  const _hoisted_1$6 = { key: 0 };
   const _hoisted_2$4 = {
     key: 0,
     class: "is-text-dark"
   };
   const _hoisted_3$4 = ["href"];
-  const _hoisted_4$2 = {
+  const _hoisted_4$1 = {
     key: 0,
     class: "label"
   };
@@ -3465,7 +3526,7 @@ var MjszVbrWidget = function(exports, vue) {
   const _hoisted_10 = ["href"];
   const _hoisted_11 = { key: 0 };
   const _hoisted_12 = ["href"];
-  const _sfc_main$5 = {
+  const _sfc_main$7 = {
     __name: "ScheduleTable",
     props: {
       rows: {
@@ -3491,24 +3552,24 @@ var MjszVbrWidget = function(exports, vue) {
       const { t } = useI18n();
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
-          vue.unref(error) ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1$4, vue.toDisplayString(vue.unref(error)), 1)) : vue.createCommentVNode("", true),
-          vue.createVNode(_sfc_main$g, null, {
+          vue.unref(error) ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1$6, vue.toDisplayString(vue.unref(error)), 1)) : vue.createCommentVNode("", true),
+          vue.createVNode(_sfc_main$i, null, {
             default: vue.withCtx(({ el: rootElement }) => [
-              vue.createVNode(_sfc_main$a, {
+              vue.createVNode(_sfc_main$c, {
                 columns: vue.unref(columns),
                 rows: props.rows,
                 "is-loading": __props.isLoading,
                 "append-to": rootElement
               }, {
                 "cell-homeTeamLogo": vue.withCtx(({ row }) => [
-                  (vue.openBlock(), vue.createBlock(_sfc_main$f, {
+                  (vue.openBlock(), vue.createBlock(_sfc_main$h, {
                     class: "is-logo-image is-right",
                     key: row.id,
                     src: row.homeTeamLogo
                   }, null, 8, ["src"]))
                 ]),
                 "cell-awayTeamLogo": vue.withCtx(({ row }) => [
-                  (vue.openBlock(), vue.createBlock(_sfc_main$f, {
+                  (vue.openBlock(), vue.createBlock(_sfc_main$h, {
                     class: "is-logo-image is-right",
                     key: row.id,
                     src: row.awayTeamLogo
@@ -3523,7 +3584,7 @@ var MjszVbrWidget = function(exports, vue) {
                   }, vue.toDisplayString(row.homeTeamScore) + ":" + vue.toDisplayString(row.awayTeamScore), 11, _hoisted_3$4))
                 ]),
                 "cell-gameResultType": vue.withCtx(({ row }) => [
-                  row.isOvertime ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_4$2, vue.toDisplayString(vue.unref(t)("common.overtimeShort")), 1)) : vue.createCommentVNode("", true),
+                  row.isOvertime ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_4$1, vue.toDisplayString(vue.unref(t)("common.overtimeShort")), 1)) : vue.createCommentVNode("", true),
                   row.isShootout ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_5$1, vue.toDisplayString(vue.unref(t)("common.shootoutShort").value), 1)) : vue.createCommentVNode("", true),
                   row.seriesStandings ? (vue.openBlock(), vue.createElementBlock("span", _hoisted_6$1, vue.toDisplayString(row.seriesStandings), 1)) : vue.createCommentVNode("", true)
                 ]),
@@ -3531,7 +3592,7 @@ var MjszVbrWidget = function(exports, vue) {
                   row.broadcast ? (vue.openBlock(), vue.createBlock(IconBroadcast, { key: 0 })) : (vue.openBlock(), vue.createElementBlock("span", _hoisted_7$1))
                 ]),
                 "cell-more": vue.withCtx(({ row }) => [
-                  vue.createVNode(_sfc_main$b, {
+                  vue.createVNode(_sfc_main$d, {
                     offset: 2,
                     placement: "left",
                     theme: "content",
@@ -4236,7 +4297,7 @@ var MjszVbrWidget = function(exports, vue) {
       }
     }
   };
-  const _sfc_main$4 = vue.defineComponent({
+  const _sfc_main$6 = vue.defineComponent({
     props: {
       locale: {
         type: String,
@@ -4256,7 +4317,7 @@ var MjszVbrWidget = function(exports, vue) {
   function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.renderSlot(_ctx.$slots, "default");
   }
-  const I18NProvider = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$2]]);
+  const I18NProvider = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$2]]);
   function usePagination({ currentPage, itemsPerPage = 20, totalItems, rangeLength = 5, update = noop }) {
     const pageCount = vue.computed(() => Math.ceil(vue.unref(totalItems) / itemsPerPage));
     const range = vue.computed(() => {
@@ -4289,8 +4350,8 @@ var MjszVbrWidget = function(exports, vue) {
       pageStep
     };
   }
-  const _sfc_main$3 = {};
-  const _hoisted_1$3 = {
+  const _sfc_main$5 = {};
+  const _hoisted_1$5 = {
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 24 24",
     fill: "none",
@@ -4304,11 +4365,11 @@ var MjszVbrWidget = function(exports, vue) {
     _hoisted_2$3
   ];
   function _sfc_render$1(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$3, _hoisted_3$3);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$5, _hoisted_3$3);
   }
-  const IconLeft = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$1]]);
-  const _sfc_main$2 = {};
-  const _hoisted_1$2 = {
+  const IconLeft = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$1]]);
+  const _sfc_main$4 = {};
+  const _hoisted_1$4 = {
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 24 24",
     fill: "none",
@@ -4322,16 +4383,16 @@ var MjszVbrWidget = function(exports, vue) {
     _hoisted_2$2
   ];
   function _sfc_render(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$2, _hoisted_3$2);
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$4, _hoisted_3$2);
   }
-  const IconRight = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render]]);
-  const _hoisted_1$1 = ["disabled"];
+  const IconRight = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render]]);
+  const _hoisted_1$3 = ["disabled"];
   const _hoisted_2$1 = ["disabled"];
   const _hoisted_3$1 = {
     key: 1,
     class: "is-disabled"
   };
-  const _hoisted_4$1 = ["disabled", "onClick"];
+  const _hoisted_4 = ["disabled", "onClick"];
   const _hoisted_5 = {
     key: 2,
     class: "is-disabled"
@@ -4342,7 +4403,7 @@ var MjszVbrWidget = function(exports, vue) {
   ];
   const _hoisted_8 = ["disabled"];
   const _hoisted_9 = ["disabled"];
-  const _sfc_main$1 = {
+  const _sfc_main$3 = {
     __name: "Paginator",
     props: {
       page: {
@@ -4404,7 +4465,7 @@ var MjszVbrWidget = function(exports, vue) {
             vue.renderSlot(_ctx.$slots, "prev", {}, () => [
               vue.createVNode(IconLeft, { class: "icon paginator-left" })
             ])
-          ], 8, _hoisted_1$1),
+          ], 8, _hoisted_1$3),
           !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("button", {
             key: 0,
             type: "button",
@@ -4419,7 +4480,7 @@ var MjszVbrWidget = function(exports, vue) {
               class: vue.normalizeClass({ "is-active": n === vue.unref(page) }),
               disabled: n === vue.unref(page),
               onClick: ($event) => vue.unref(goTo)(n)
-            }, vue.toDisplayString(n), 11, _hoisted_4$1);
+            }, vue.toDisplayString(n), 11, _hoisted_4);
           }), 128)),
           !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_5, _hoisted_7)) : vue.createCommentVNode("", true),
           !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("button", {
@@ -4446,11 +4507,10 @@ var MjszVbrWidget = function(exports, vue) {
   const _style_2 = ".mjsz-vbr-table-responsive {\n  width: 100%;\n  overflow-x: auto;\n}\n.mjsz-vbr-table-responsive table {\n  width: 100%;\n}\n";
   const _style_3 = ".mjsz-vbr-paginator {\n  display: flex;\n  flex-direction: row;\n  list-style-type: none;\n  margin: 10px 0;\n  padding: 0;\n}\n.mjsz-vbr-paginator button,\n  .mjsz-vbr-paginator div {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    padding: 6px 12px;\n    text-decoration: none;\n    cursor: pointer;\n    color: var(--vbr-widget-paginator-color);\n    border: 1px solid var(--vbr-widget-paginator-border-color);\n    background-color: var(--vbr-widget-paginator-bg-color);\n    margin-left: -1px;\n}\n.mjsz-vbr-paginator button .icon, .mjsz-vbr-paginator div .icon {\n      width: 16px;\n      height: 16px;\n      margin: 0 -4px;\n}\n.mjsz-vbr-paginator button:hover:not(.mjsz-vbr-paginator button.is-disabled,.mjsz-vbr-paginator button.is-active), .mjsz-vbr-paginator div:hover:not(.mjsz-vbr-paginator div.is-disabled,.mjsz-vbr-paginator div.is-active) {\n      color: var(--vbr-widget-paginator-hover-color);\n      background-color: var(--vbr-widget-paginator-hover-bg-color);\n}\n.mjsz-vbr-paginator button:disabled,\n    .mjsz-vbr-paginator button.is-disabled,\n    .mjsz-vbr-paginator div:disabled,\n    .mjsz-vbr-paginator div.is-disabled {\n      color: var(--vbr-widget-paginator-disabled-color);\n      background-color: var(--vbr-widget-paginator-bg-color);\n      pointer-events: none;\n      cursor: default;\n}\n.mjsz-vbr-paginator button.is-active, .mjsz-vbr-paginator div.is-active {\n      color: var(--vbr-widget-paginator-active-color);\n      background-color: var(--vbr-widget-paginator-active-bg-color);\n      border-color: var(--vbr-widget-paginator-active-bg-color);\n      cursor: default;\n}\n.mjsz-vbr-paginator div {\n    border: none;\n    margin-left: 0;\n}\n";
   const _style_4 = ".is-dropdown-menu {\n  padding: 8px 0;\n  margin: 0;\n  min-width: 160px;\n  color: black;\n  list-style: none;\n  background: var(--vbr-widget-popover-bg-color);\n  border-radius: 3px;\n  box-shadow: 0 5px 30px rgba(black, 0.3);\n}\n.is-dropdown-menu .is-dropdown-item {\n    display: flex;\n    align-items: center;\n    padding: .25rem 1rem;\n    font-family: var(--vbr-widget-font-family);\n    line-height: 24px;\n    color: var(--vbr-widget-dropdown-item-color);\n    text-align: inherit;\n    text-decoration: none;\n    white-space: nowrap;\n    background-color: transparent;\n    border: 0;\n}\n.is-dropdown-menu .is-dropdown-item:hover {\n      color: var(--vbr-widget-dropdown-item-hover-color);\n      background-color: var(--vbr-widget-dropdown-item-hover-bg-color);\n}\n.is-dropdown-menu .is-dropdown-item svg {\n      margin-right: 8px;\n}\n";
-  const _hoisted_1 = { id: "widget-schedule" };
-  const _hoisted_2 = { key: 0 };
-  const _hoisted_3 = ["onClick"];
-  const _hoisted_4 = /* @__PURE__ */ vue.createElementVNode("div", null, "asdasdasdasd", -1);
-  const _sfc_main = {
+  const _hoisted_1$2 = { key: 0 };
+  const _hoisted_2 = ["onClick"];
+  const _hoisted_3 = /* @__PURE__ */ vue.createElementVNode("div", null, "asdasdasdasd", -1);
+  const _sfc_main$2 = {
     __name: "Schedule.ce",
     props: {
       locale: {
@@ -4502,7 +4562,7 @@ var MjszVbrWidget = function(exports, vue) {
         page.value = value;
       };
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1, [
+        return vue.openBlock(), vue.createElementBlock("div", null, [
           vue.createVNode(I18NProvider, { locale: localLocale.value }, {
             default: vue.withCtx(() => {
               var _a2;
@@ -4510,8 +4570,8 @@ var MjszVbrWidget = function(exports, vue) {
                 vue.createElementVNode("button", {
                   onClick: _cache[0] || (_cache[0] = ($event) => localLocale.value = localLocale.value === "en" ? "hu" : "en")
                 }, vue.toDisplayString(localLocale.value === "en" ? "hu" : "en"), 1),
-                ((_a2 = vue.unref(error)) == null ? void 0 : _a2.error) ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_2, vue.toDisplayString(vue.unref(error).message), 1)) : vue.createCommentVNode("", true),
-                vue.createVNode(_sfc_main$b, {
+                ((_a2 = vue.unref(error)) == null ? void 0 : _a2.error) ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1$2, vue.toDisplayString(vue.unref(error).message), 1)) : vue.createCommentVNode("", true),
+                vue.createVNode(_sfc_main$d, {
                   placement: "bottom-start",
                   "append-to": null,
                   theme: "content"
@@ -4520,18 +4580,18 @@ var MjszVbrWidget = function(exports, vue) {
                     vue.createElementVNode("button", {
                       ref: setRef,
                       onClick: vue.withModifiers(show, ["stop"])
-                    }, "Reference", 8, _hoisted_3)
+                    }, "Reference", 8, _hoisted_2)
                   ]),
                   content: vue.withCtx(() => [
-                    _hoisted_4
+                    _hoisted_3
                   ]),
                   _: 1
                 }),
-                vue.createVNode(_sfc_main$5, {
+                vue.createVNode(_sfc_main$7, {
                   rows: vue.unref(convertedRows).rows,
                   "is-loading": vue.unref(isLoading)
                 }, null, 8, ["rows", "is-loading"]),
-                vue.createVNode(_sfc_main$1, {
+                vue.createVNode(_sfc_main$3, {
                   page: page.value,
                   "items-per-page": props.limit,
                   "total-items": vue.unref(rows).length,
@@ -4546,13 +4606,122 @@ var MjszVbrWidget = function(exports, vue) {
       };
     }
   };
-  const Schedule = /* @__PURE__ */ _export_sfc(_sfc_main, [["styles", [_style_0, _style_1, _style_2, _style_3, _style_4]]]);
+  const Schedule = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["styles", [_style_0, _style_1, _style_2, _style_3, _style_4]]]);
+  const _hoisted_1$1 = { key: 0 };
+  const _sfc_main$1 = {
+    __name: "StandingsTable",
+    props: {
+      rows: {
+        type: Array,
+        default: () => []
+      },
+      isLoading: {
+        type: Boolean,
+        deafult: false
+      },
+      externalBaseUrl: {
+        type: String,
+        default: DEFAULT_EXTERNAL_BASE_URL
+      },
+      hideColumns: {
+        type: String,
+        default: ""
+      }
+    },
+    setup(__props) {
+      const props = __props;
+      const { columns, error } = useColumns(COLUMNS_STANDINGS_P_3, props.hideColumns);
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock(vue.Fragment, null, [
+          vue.unref(error) ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1$1, vue.toDisplayString(vue.unref(error)), 1)) : vue.createCommentVNode("", true),
+          vue.createVNode(_sfc_main$i, null, {
+            default: vue.withCtx(({ el: rootElement }) => [
+              vue.createVNode(_sfc_main$c, {
+                columns: vue.unref(columns),
+                rows: props.rows,
+                "is-loading": __props.isLoading,
+                "append-to": rootElement
+              }, null, 8, ["columns", "rows", "is-loading", "append-to"])
+            ]),
+            _: 1
+          })
+        ], 64);
+      };
+    }
+  };
+  const _hoisted_1 = { key: 0 };
+  const _sfc_main = {
+    __name: "Standings.ce",
+    props: {
+      locale: {
+        type: String,
+        default: "hu"
+      },
+      championshipId: {
+        type: String,
+        default: "3314"
+      },
+      division: {
+        type: String,
+        default: "Alapszakasz"
+      },
+      apiKey: {
+        type: String,
+        default: ""
+      },
+      pagination: {
+        type: Boolean,
+        default: true
+      },
+      limit: {
+        type: Number,
+        default: 20
+      }
+    },
+    setup(__props) {
+      const props = __props;
+      const locale = vue.computed(() => props.locale);
+      const {
+        state: rows,
+        error,
+        isLoading
+      } = useAsyncState(
+        fetchVBRData("/v1/standings", props.apiKey, {
+          championshipId: Number(props.championshipId),
+          division: props.division
+        }),
+        []
+      );
+      const convertedRows = vue.computed(() => {
+        return convert(vue.unref(rows)).addContinuousIndex().value();
+      });
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", null, [
+          vue.createVNode(I18NProvider, { locale: vue.unref(locale) }, {
+            default: vue.withCtx(() => {
+              var _a2;
+              return [
+                ((_a2 = vue.unref(error)) == null ? void 0 : _a2.error) ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_1, vue.toDisplayString(vue.unref(error).message), 1)) : vue.createCommentVNode("", true),
+                vue.createVNode(_sfc_main$1, {
+                  rows: vue.unref(convertedRows).rows,
+                  "is-loading": vue.unref(isLoading)
+                }, null, 8, ["rows", "is-loading"])
+              ];
+            }),
+            _: 1
+          }, 8, ["locale"])
+        ]);
+      };
+    }
+  };
+  const Standings = /* @__PURE__ */ _export_sfc(_sfc_main, [["styles", [_style_0, _style_1, _style_2]]]);
   const setup = ({ apiKey }) => {
     window.__MJSZ_VBR_WIDGET__ = { apiKey };
     init();
   };
   const init = () => {
     customElements.define("vbr-schedule", vue.defineCustomElement(Schedule));
+    customElements.define("vbr-standings", vue.defineCustomElement(Standings));
   };
   exports.init = init;
   exports.setup = setup;

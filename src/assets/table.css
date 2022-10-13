@@ -72,10 +72,6 @@
       color: var(--vbr-widget-table-cell-dark-color);
     }
 
-    &.is-has-image {
-      padding: 0 2px;
-    }
-
     .is-logo-image {
       display: inline-block;
       vertical-align: middle;
@@ -143,6 +139,10 @@
 
     &.is-text-right {
       text-align: right;
+    }
+
+    &.is-has-image {
+      padding: 0 2px;
     }
 
     .is-duplicated {

@@ -71,7 +71,7 @@ const onPaginatorChange = (value) => {
 </script>
 
 <template>
-  <div id="widget-schedule">
+  <div>
     <I18NProvider :locale="localLocale">
       <button @click="localLocale = localLocale === 'en' ? 'hu' : 'en'">
         {{ localLocale === 'en' ? 'hu' : 'en' }}

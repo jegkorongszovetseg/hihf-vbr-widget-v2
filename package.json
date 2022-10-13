@@ -12,6 +12,7 @@
   "dependencies": {
     "@floating-ui/dom": "^1.0.2",
     "@vueuse/core": "^9.3.0",
+    "@xstate/fsm": "^2.0.0",
     "dayjs": "^1.11.5",
     "ramda": "^0.28.0",
     "vue": "^3.2.37"
