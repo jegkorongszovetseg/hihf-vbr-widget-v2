@@ -74,6 +74,10 @@
   --vbr-widget-popover-trigger-hover-bg-color: var(--vbr-widget-secondary-color-200);
   --vbr-widget-popover-trigger-focus-bg-color: var(--vbr-widget-secondary-color-300);
   --vbr-widget-popover-bg-color: var(--vbr-widget-primary-color-0);
+
+  --vbr-widget-dropdown-item-color: var(--vbr-widget-primary-color-500);
+  --vbr-widget-dropdown-item-hover-color: var(--vbr-widget-primary-color-800);
+  --vbr-widget-dropdown-item-hover-bg-color: var(--vbr-widget-primary-color-50);
 }
 
 .transition-fade-enter-active,
@@ -112,10 +116,8 @@ img.is-loaded {
   }
 
   &.is-content {
-    background-color: var(--vbr-widget-primary-color-50);
-    width: 220px;
+    /* width: 220px; */
     border-radius: 4px;
-    padding: 15px;
     box-shadow: 2px 14px 23px 0px rgba(0, 0, 0, 0.25);
 
     .is-arrow {

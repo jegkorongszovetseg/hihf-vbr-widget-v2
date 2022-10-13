@@ -75,15 +75,15 @@ const { t } = useI18n();
             </button>
           </template>
           <template v-slot:content>
-            <ul :class="`dropdown-menu`">
+            <ul class="is-dropdown-menu">
               <li>
-                <a :href="externalBaseUrl + row.id" :class="`-dropdown-item`" target="_blank">
+                <a :href="externalBaseUrl + row.id" class="is-dropdown-item" target="_blank">
                   <IconSheet width="14" />
                   Jegyzőkönyv
                 </a>
               </li>
               <li v-if="row.video">
-                <a :href="row.video" :class="`-dropdown-item`" target="_blank">
+                <a :href="row.video" class="is-dropdown-item" target="_blank">
                   <IconYoutube width="14" />
                   Videó
                 </a>
