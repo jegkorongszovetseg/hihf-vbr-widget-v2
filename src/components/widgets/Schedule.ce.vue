@@ -3,12 +3,11 @@ import { computed, ref, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import dayjs from 'dayjs';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
-// import { useI18n } from '../../composables/useI18n';
+import { offsetName } from '../../utils/datetime';
 import convert from '../../utils/convert';
 import ScheduleTable from './ScheduleTable.vue';
 import I18NProvider from '../I18NProvider.vue';
 import Paginator from '../Paginator.vue';
-import FloatingPanel from '../FloatingPanel.vue';
 
 const props = defineProps({
   locale: {
@@ -40,6 +39,11 @@ const props = defineProps({
     type: Number,
     default: 20,
   },
+
+  teamFilterByName: {
+    type: String,
+    default: '',
+  },
 });
 
 const locale = computed(() => props.locale);
@@ -58,12 +62,19 @@ const {
 
 const page = ref(1);
 const timezone = dayjs.tz.guess();
+const currentOffsetName = offsetName(new Date(), timezone, props.locale);
 
 const convertedRows = computed(() => {
-  return convert(unref(rows)).schedule(timezone, unref(locale)).pagination(unref(page), props.limit).value();
+  return convert(unref(rows))
+    .teamFilter(props.teamFilterByName, ['homeTeamName', 'awayTeamName'])
+    .schedule(timezone, unref(locale))
+    .pagination(unref(page), props.limit)
+    .value();
 });
 
 const localLocale = ref('en');
+
+const totalItems = computed(() => convertedRows.value?.totalItems);
 
 const onPaginatorChange = (value) => {
   page.value = value;
@@ -76,23 +87,19 @@ const onPaginatorChange = (value) => {
       <button @click="localLocale = localLocale === 'en' ? 'hu' : 'en'">
         {{ localLocale === 'en' ? 'hu' : 'en' }}
       </button>
+
       <div v-if="error?.error">{{ error.message }}</div>
 
-      <FloatingPanel placement="bottom-start" :append-to="null" theme="content">
-        <template v-slot:default="{ setRef, show }">
-          <button :ref="setRef" @click.stop="show">Reference</button>
-        </template>
-        <template v-slot:content>
-          <div>asdasdasdasd</div>
-        </template>
-      </FloatingPanel>
-
-      <ScheduleTable :rows="convertedRows.rows" :is-loading="isLoading"></ScheduleTable>
+      <ScheduleTable
+        :rows="convertedRows.rows"
+        :is-loading="isLoading"
+        :offset-name="currentOffsetName"
+      />
 
       <Paginator
         :page="page"
         :items-per-page="props.limit"
-        :total-items="rows.length"
+        :total-items="totalItems"
         :range-length="5"
         @change="onPaginatorChange"
       />

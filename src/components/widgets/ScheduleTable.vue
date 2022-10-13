@@ -32,8 +32,13 @@ const props = defineProps({
     type: String,
     default: '',
   },
+
+  offsetName: {
+    type: String,
+    default: ''
+  }
 });
-const { columns, error } = useColumns(COLUMNS_SCHEDULE, props.hideColumns, { offsetName: 'CET' });
+const { columns, error } = useColumns(COLUMNS_SCHEDULE, props.hideColumns, { offsetName: props.offsetName });
 const { t } = useI18n();
 </script>
 

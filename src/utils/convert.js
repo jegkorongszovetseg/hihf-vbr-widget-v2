@@ -1,4 +1,4 @@
-import { always, ascend, compose, descend, equals, filter, ifElse, prop, propEq, sortWith } from 'ramda';
+import { always, anyPass, ascend, compose, descend, equals, filter, ifElse, prop, propEq, sortWith } from 'ramda';
 import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../constants.js';
 import { format, convertMinToSec } from './datetime.js';
 
@@ -14,9 +14,10 @@ const convert = (data = []) => {
       };
     },
 
-    teamFilter(name) {
+    teamFilter(name, condition = []) {
       if (name) {
-        const filteredRows = filter(propEq('teamName', name), this.result);
+        const predicate = condition.map((prop) => propEq(prop, name));
+        const filteredRows = filter(anyPass([...predicate]), this.result);
         this.filteredRowsLength = filteredRows.length;
         this.result = filteredRows;
       }
