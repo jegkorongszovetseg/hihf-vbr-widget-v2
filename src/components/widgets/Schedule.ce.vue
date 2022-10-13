@@ -28,7 +28,7 @@ const props = defineProps({
 
   apiKey: {
     type: String,
-    default: '7b4f4d1b466b5a3572990ae24452abf2a086e7ee',
+    default: '',
   },
 
   pagination: {
@@ -80,9 +80,7 @@ const onPaginatorChange = (value) => {
 
       <FloatingPanel placement="bottom-start" :append-to="null" theme="content">
         <template v-slot:default="{ setRef, show }">
-          <button :ref="setRef" @click.stop="show">
-            Reference
-          </button>
+          <button :ref="setRef" @click.stop="show">Reference</button>
         </template>
         <template v-slot:content>
           <div>asdasdasdasd</div>

@@ -458,12 +458,13 @@ var MjszVbrWidget = function(exports, vue) {
   const fetchVBRData = async (route, apiKey, data) => {
     const url = `${"https://api.icehockey.hu/vbr"}${route}?${objectToQueryString(data)}`;
     return new Promise((resolve2, reject2) => {
+      var _a2;
       fetch(url, {
         method: "GET",
         cache: "no-cache",
         headers: {
           "Content-Type": "application/json",
-          "X-API-KEY": apiKey || window.__MJSZ_VBR_WIDGET__.apiKey
+          "X-API-KEY": apiKey || ((_a2 = window.__MJSZ_VBR_WIDGET__) == null ? void 0 : _a2.apiKey) || ""
         }
       }).then((response) => {
         return response.json();
@@ -4467,7 +4468,7 @@ var MjszVbrWidget = function(exports, vue) {
       },
       apiKey: {
         type: String,
-        default: "7b4f4d1b466b5a3572990ae24452abf2a086e7ee"
+        default: ""
       },
       pagination: {
         type: Boolean,
@@ -4520,7 +4521,7 @@ var MjszVbrWidget = function(exports, vue) {
                     vue.createElementVNode("button", {
                       ref: setRef,
                       onClick: vue.withModifiers(show, ["stop"])
-                    }, " Reference ", 8, _hoisted_3)
+                    }, "Reference", 8, _hoisted_3)
                   ]),
                   content: vue.withCtx(() => [
                     _hoisted_4
@@ -4549,8 +4550,12 @@ var MjszVbrWidget = function(exports, vue) {
   const Schedule = /* @__PURE__ */ _export_sfc(_sfc_main, [["styles", [_style_0, _style_1, _style_2, _style_3]]]);
   const setup = ({ apiKey }) => {
     window.__MJSZ_VBR_WIDGET__ = { apiKey };
+    init();
   };
-  customElements.define("vbr-schedule", vue.defineCustomElement(Schedule));
+  const init = () => {
+    customElements.define("vbr-schedule", vue.defineCustomElement(Schedule));
+  };
+  exports.init = init;
   exports.setup = setup;
   Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
   return exports;

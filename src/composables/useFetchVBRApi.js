@@ -6,7 +6,7 @@ export const fetchVBRData = async (route, apiKey, data) => {
       cache: 'no-cache',
       headers: {
         'Content-Type': 'application/json',
-        'X-API-KEY': apiKey || window.__MJSZ_VBR_WIDGET__.apiKey,
+        'X-API-KEY': apiKey || window.__MJSZ_VBR_WIDGET__?.apiKey || import.meta.env.VITE_VBR_API_KEY,
       },
     })
       .then((response) => {

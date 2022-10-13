@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Vue</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.prod.min.js"></script>
-    <script crossorigin src="/bundle.iife.js"></script>
-    <!-- <script crossorigin src="/bundle.umd.js"></script> -->
-    <!-- <link rel="stylesheet" href="/style.css"> -->
-    <style>
-      vbr-schedule {
-        --text-color: green;
-        --bg-color: red;
 
-        --vbr-widget-table-header-font-size: 22px;
-      }
-    </style>
-  </head>
-  <body>
-    <vbr-schedule locale="en"></vbr-schedule>
-    <!-- <script crossorigin src="/bundle.umd.cjs"></script> -->
-    <!-- <script crossorigin src="/bundle.iife.js"></script> -->
-    <script>
-      console.log(MjszVbrWidget);
-      MjszVbrWidget.setup({
-        apiKey: 'xxxxxxxx'
-      })
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + Vue</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.prod.min.js"></script>
+  <script crossorigin src="/bundle.iife.js"></script>
+  <!-- <script crossorigin src="/bundle.umd.js"></script> -->
+  <!-- <link rel="stylesheet" href="/style.css"> -->
+  <style>
+    vbr-schedule {
+      --text-color: green;
+      --bg-color: red;
+
+      --vbr-widget-table-header-font-size: 22px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <vbr-schedule locale="en"></vbr-schedule>
+  <!-- <script crossorigin src="/bundle.umd.cjs"></script> -->
+  <script>
+    // window.__MJSZ_VBR_WIDGET__ = { apiKey: '7b4f4d1b466b5a3572990ae24452abf2a086e7ee' };
+    console.log(MjszVbrWidget);
+    MjszVbrWidget.setup({
+      apiKey: '7b4f4d1b466b5a3572990ae24452abf2a086e7ee'
+    })
+  </script>
+  <!-- <script crossorigin src="/bundle.iife.js"></script> -->
+</body>
+
 </html>
