@@ -1,3 +1,4 @@
+// XXX [VI]{version} - {date}[/VI]
 import { defineCustomElement } from 'vue';
 import Schedule from './components/widgets/Schedule.ce.vue';
 import Standings from './components/widgets/Standings.ce.vue';

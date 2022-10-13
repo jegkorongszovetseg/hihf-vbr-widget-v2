@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import versionInjector from 'rollup-plugin-version-injector';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,10 +21,11 @@ export default defineConfig({
           vue: 'Vue',
         },
       },
+      plugins: [versionInjector()],
     },
     sourcemap: false,
     target: 'modules',
-    minify: false,
+    minify: true,
   },
   plugins: [
     vue({
