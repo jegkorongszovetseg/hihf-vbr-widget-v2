@@ -1,4 +1,6 @@
-var MjszVbrWidget = function(exports, vue) {
+(function(global2, factory) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(require("vue")) : typeof define === "function" && define.amd ? define(["vue"], factory) : (global2 = typeof globalThis !== "undefined" ? globalThis : global2 || self, factory(global2.Vue));
+})(this, function(vue) {
   "use strict";
   var _a;
   const isClient = typeof window !== "undefined";
@@ -250,9 +252,9 @@ var MjszVbrWidget = function(exports, vue) {
   }, _TransitionPresets);
   var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
   var dayjs_min = { exports: {} };
-  (function(module, exports2) {
+  (function(module2, exports2) {
     !function(t, e) {
-      module.exports = e();
+      module2.exports = e();
     }(commonjsGlobal, function() {
       var t = 1e3, e = 6e4, n = 36e5, r = "millisecond", i = "second", s = "minute", u = "hour", a = "day", o = "week", f = "month", h = "quarter", c = "year", d = "date", $ = "Invalid Date", l = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_") }, m = function(t2, e2, n2) {
         var r2 = String(t2);
@@ -1348,9 +1350,9 @@ var MjszVbrWidget = function(exports, vue) {
   (/* @__PURE__ */ new Map()).set("hu", "hu-hu").set("en", "hu-gb");
   (/* @__PURE__ */ new Map()).set("Europe/Budapest", { countryLabelKey: "hungary", timezone: "Europe/Budapest" }).set("Europe/Bucharest", { countryLabelKey: "romania", timezone: "Europe/Bucharest" });
   var utc$1 = { exports: {} };
-  (function(module, exports2) {
+  (function(module2, exports2) {
     !function(t, i) {
-      module.exports = i();
+      module2.exports = i();
     }(commonjsGlobal, function() {
       var t = "minute", i = /[+-]\d\d(?::?\d\d)?/g, e = /([+-]|\d\d)/g;
       return function(s, f, n) {
@@ -1430,9 +1432,9 @@ var MjszVbrWidget = function(exports, vue) {
   })(utc$1);
   const utc = utc$1.exports;
   var timezone$1 = { exports: {} };
-  (function(module, exports2) {
+  (function(module2, exports2) {
     !function(t, e) {
-      module.exports = e();
+      module2.exports = e();
     }(commonjsGlobal, function() {
       var t = { year: 0, month: 1, day: 2, hour: 3, minute: 4, second: 5 }, e = {};
       return function(n, i, o) {
@@ -1494,9 +1496,9 @@ var MjszVbrWidget = function(exports, vue) {
   })(timezone$1);
   const timezone = timezone$1.exports;
   var advancedFormat$1 = { exports: {} };
-  (function(module, exports2) {
+  (function(module2, exports2) {
     !function(e, t) {
-      module.exports = t();
+      module2.exports = t();
     }(commonjsGlobal, function() {
       return function(e, t, r) {
         var n = t.prototype, s = n.format;
@@ -1547,9 +1549,9 @@ var MjszVbrWidget = function(exports, vue) {
   })(advancedFormat$1);
   const advancedFormat = advancedFormat$1.exports;
   var localizedFormat$1 = { exports: {} };
-  (function(module, exports2) {
+  (function(module2, exports2) {
     !function(e, t) {
-      module.exports = t();
+      module2.exports = t();
     }(commonjsGlobal, function() {
       var e = { LTS: "h:mm:ss A", LT: "h:mm A", L: "MM/DD/YYYY", LL: "MMMM D, YYYY", LLL: "MMMM D, YYYY h:mm A", LLLL: "dddd, MMMM D, YYYY h:mm A" };
       return function(t, o, n) {
@@ -1571,9 +1573,9 @@ var MjszVbrWidget = function(exports, vue) {
   })(localizedFormat$1);
   const localizedFormat = localizedFormat$1.exports;
   var hu$1 = { exports: {} };
-  (function(module, exports2) {
+  (function(module2, exports2) {
     !function(e, n) {
-      module.exports = n(dayjs_min.exports);
+      module2.exports = n(dayjs_min.exports);
     }(commonjsGlobal, function(e) {
       function n(e2) {
         return e2 && "object" == typeof e2 && "default" in e2 ? e2 : { default: e2 };
@@ -4547,11 +4549,5 @@ var MjszVbrWidget = function(exports, vue) {
     }
   };
   const Schedule = /* @__PURE__ */ _export_sfc(_sfc_main, [["styles", [_style_0, _style_1, _style_2, _style_3]]]);
-  const setup = ({ apiKey }) => {
-    window.__MJSZ_VBR_WIDGET__ = { apiKey };
-  };
   customElements.define("vbr-schedule", vue.defineCustomElement(Schedule));
-  exports.setup = setup;
-  Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
-  return exports;
-}({}, Vue);
+});

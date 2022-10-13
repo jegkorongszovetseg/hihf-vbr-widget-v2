@@ -6,19 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + Vue</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.prod.min.js"></script>
+    <script crossorigin src="/bundle.iife.js"></script>
+    <!-- <script crossorigin src="/bundle.umd.js"></script> -->
     <!-- <link rel="stylesheet" href="/style.css"> -->
     <style>
-      vbr-test-vue {
+      vbr-schedule {
         --text-color: green;
         --bg-color: red;
+
+        --vbr-widget-table-header-font-size: 22px;
       }
     </style>
   </head>
   <body>
     <vbr-schedule locale="en"></vbr-schedule>
-    <script crossorigin src="/bundle.iife.js"></script>
+    <!-- <script crossorigin src="/bundle.umd.cjs"></script> -->
+    <!-- <script crossorigin src="/bundle.iife.js"></script> -->
     <script>
-      (function () { initWidget('sadasdasdad')})();
+      console.log(MjszVbrWidget);
+      MjszVbrWidget.setup({
+        apiKey: 'xxxxxxxx'
+      })
     </script>
   </body>
 </html>

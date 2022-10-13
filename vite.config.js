@@ -9,7 +9,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/bundle.js',
-      name: 'bundle',
+      name: 'MjszVbrWidget',
       fileName: 'bundle',
       formats: ['es', 'umd', 'iife'],
     },
