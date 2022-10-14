@@ -2,7 +2,7 @@ import { ref, unref, watch } from 'vue';
 import { findIndex, propSatisfies } from 'ramda';
 import { isSameOrBefore } from '../utils/datetime';
 
-export const usePage = ({ initial, items, limit, auto = false }) => {
+export const usePage = ({ initial = 1, items, limit, auto = false }) => {
   const page = ref(initial);
 
   const condition = (date) => {

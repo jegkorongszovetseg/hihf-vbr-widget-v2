@@ -185,3 +185,71 @@ export const COLUMNS_STANDINGS_P_2 = {
     sortOrders: [{ target: 'p', direction: SORT_STATE_DESCEND }],
   },
 };
+
+export const COLUMNS_FIELD_PLAYERS = {
+  index: {
+    label: '#',
+    class: 'is-text-left',
+  },
+  playerPortrait: {
+    label: '',
+    class: 'is-has-image',
+  },
+  name: {
+    label: 'table.name.short',
+    tooltip: 'table.name.tooltip',
+    class: 'is-text-left is-w-auto is-text-bold',
+    sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
+  },
+  teamLogo: {
+    label: '',
+    class: 'is-has-image',
+  },
+  teamName: {
+    label: 'table.team.short',
+    tooltip: 'table.team.tooltip',
+    class: 'is-text-left is-w-auto',
+    sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
+  },
+  gp: {
+    label: 'table.game.short',
+    tooltip: 'table.game.tooltip',
+    sortOrders: [{ target: 'gp', direction: SORT_STATE_DESCEND }],
+  },
+  g: {
+    label: 'table.goals.short',
+    tooltip: 'table.goals.tooltip',
+    sortOrders: [
+      { target: 'g', direction: SORT_STATE_DESCEND },
+      { target: 'a', direction: SORT_STATE_DESCEND },
+    ],
+  },
+  a: {
+    label: 'table.assists.short',
+    tooltip: 'table.assists.tooltip',
+    sortOrders: [
+      { target: 'a', direction: SORT_STATE_DESCEND },
+      { target: 'g', direction: SORT_STATE_DESCEND },
+    ],
+  },
+  point: {
+    label: 'table.points.short',
+    tooltip: 'table.points.tooltip',
+    sortOrders: [{ target: 'point', direction: SORT_STATE_DESCEND }],
+  },
+  plusMinus: {
+    label: 'table.plusMinus.short',
+    tooltip: 'table.plusMinus.tooltip',
+    sortOrders: [{ target: 'plusMinus', direction: SORT_STATE_DESCEND }],
+  },
+  shoot: {
+    label: 'table.sog.short',
+    tooltip: 'table.sog.tooltip',
+    sortOrders: [{ target: 'shoot', direction: SORT_STATE_DESCEND }],
+  },
+  shootPercent: {
+    label: 'table.sogPercent.short',
+    tooltip: 'table.sogPercent.tooltip',
+    sortOrders: [{ target: 'shootPercent', direction: SORT_STATE_DESCEND }],
+  },
+};
