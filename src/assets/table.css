@@ -87,6 +87,10 @@
       font-size: 1.2 rem;
     }
 
+    .is-text-accent {
+      color: var(--vbr-widget-secondary-color-500);
+    }
+
     svg {
       width: 16px;
       height: 16px;
