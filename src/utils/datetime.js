@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
+import _isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import 'dayjs/locale/hu';
 import { LOCALE_FOR_LANG } from '../constants.js';
@@ -10,6 +11,7 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(advancedFormat);
 dayjs.extend(localizedFormat);
+dayjs.extend(_isSameOrBefore);
 
 export const format = (datetime = '', format = '', timezone = '', locale = 'hu') => {
   timezone = timezone ? timezone : dayjs.tz.guess();
@@ -34,4 +36,8 @@ const getLocaleForLang = (lang) => {
 export const convertMinToSec = (minutes) => {
   const splitted = minutes.split(':');
   return parseInt(splitted[0], 10) * 60 + parseInt(splitted[1], 10);
+};
+
+export const isSameOrBefore = (date, unit = 'day') => {
+  return dayjs().isSameOrBefore(dayjs(date), unit);
 };

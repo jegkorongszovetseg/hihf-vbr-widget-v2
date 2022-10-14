@@ -69,7 +69,7 @@ export const COLUMNS_STANDINGS_P_3 = {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
     class: 'is-text-left is-w-auto is-text-bold',
-    sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
+    sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   m: {
     label: 'table.game.short',
@@ -135,7 +135,7 @@ export const COLUMNS_STANDINGS_P_2 = {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
     class: 'is-text-left is-w-auto is-text-bold',
-    sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
+    sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   m: {
     label: 'table.game.short',

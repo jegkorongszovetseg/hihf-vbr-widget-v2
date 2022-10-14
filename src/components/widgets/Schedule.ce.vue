@@ -3,6 +3,7 @@ import { computed, ref, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import dayjs from 'dayjs';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
+import { usePage } from '../../composables/usePage';
 import { offsetName } from '../../utils/datetime';
 import convert from '../../utils/convert';
 import ScheduleTable from './ScheduleTable.vue';
@@ -45,6 +46,17 @@ const props = defineProps({
     type: String,
     default: '',
   },
+
+  initialPage: {
+    type: Number,
+    default: 1,
+    validator: (value) => value >= 1,
+  },
+
+  autoInitialPage: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const locale = computed(() => props.locale);
@@ -61,7 +73,7 @@ const {
   []
 );
 
-const page = ref(1);
+const page = usePage({ initial: props.initialPage, items: rows, limit: props.limit, auto: props.autoInitialPage });
 const timezone = dayjs.tz.guess();
 const currentOffsetName = offsetName(new Date(), timezone, props.locale);
 
@@ -91,11 +103,7 @@ const onPaginatorChange = (value) => {
 
       <ErrorNotice v-if="error?.error" :error="error.message" />
 
-      <ScheduleTable
-        :rows="convertedRows.rows"
-        :is-loading="isLoading"
-        :offset-name="currentOffsetName"
-      />
+      <ScheduleTable :rows="convertedRows.rows" :is-loading="isLoading" :offset-name="currentOffsetName" />
 
       <Paginator
         :page="page"
