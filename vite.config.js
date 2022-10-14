@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import versionInjector from 'rollup-plugin-version-injector';
+import viteCompression from 'vite-plugin-compression';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,14 +21,15 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
         },
+        // plugins: [versionInjector()],
       },
-      plugins: [versionInjector()],
     },
     sourcemap: false,
     target: 'modules',
     minify: true,
   },
   plugins: [
+    versionInjector(),
     vue({
       reactivityTransform: true,
       template: {
@@ -37,6 +39,10 @@ export default defineConfig({
           },
         },
       },
+    }),
+
+    viteCompression({
+      algorithm: 'brotliCompress',
     }),
   ],
 });
