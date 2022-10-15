@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "playground": "npx serve -s playground"
+    "playground": "npx serve -s playground",
+    "docs:dev": "vitepress dev docs --port 5555",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.0.2",
@@ -25,6 +28,7 @@
     "rollup-plugin-version-injector": "^1.3.3",
     "sass": "^1.55.0",
     "vite": "^3.1.0",
-    "vite-plugin-compression": "^0.5.1"
+    "vite-plugin-compression": "^0.5.1",
+    "vitepress": "^1.0.0-alpha.21"
   }
 }
