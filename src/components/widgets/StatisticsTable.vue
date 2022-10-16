@@ -26,12 +26,6 @@ const props = defineProps({
     default: '',
   },
 
-  type: {
-    type: String,
-    default: '3',
-    validator: (value) => ['2', '3'].includes(value),
-  },
-
   sort: {
     type: Object,
     default: () => ({}),

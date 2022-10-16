@@ -1,7 +1,8 @@
 <script setup>
 import { reactive } from 'vue';
-import { descend, compose, map, pick, prop, sort, head, curry } from 'ramda';
+import { head, isEmpty } from 'ramda';
 import { fetchVBRData } from '../../../composables/useFetchVBRApi';
+import { convertSeasons, REPORTS_MAP, REPORTS_SELECT } from './statistics.internal.js';
 
 const props = defineProps({
   championshipName: {
@@ -16,18 +17,23 @@ const state = reactive({
   championshipId: null,
   sections: [],
   section: null,
+  reports: REPORTS_SELECT,
+  currentReport: 'fieldplayers',
+  rows: [],
+  component: null,
+  columns: null,
 });
+
+const initialReport = REPORTS_MAP.get('fieldplayers');
+state.component = initialReport.component;
+state.columns = initialReport.columns;
 
 const fetchSeasons = async () => {
   try {
     const seasons = await fetchVBRData('/v1/championshipSeasons', props.apiKey, {
       championshipName: props.championshipName,
     });
-    const converted = compose(
-      sort(descend(prop('championshipId'))),
-      map(pick(['championshipId', 'seasonName']))
-    )(seasons);
-    state.seasons = converted;
+    state.seasons = convertSeasons(seasons);
     if (!state.championshipId) state.championshipId = head(state.seasons).championshipId;
     fetchSection();
   } catch (error) {
@@ -36,8 +42,6 @@ const fetchSeasons = async () => {
   }
 };
 
-fetchSeasons();
-
 const fetchSection = async () => {
   try {
     const sections = await fetchVBRData('/v1/championshipSections', props.apiKey, {
@@ -45,11 +49,24 @@ const fetchSection = async () => {
     });
     state.sections = sections.sectionName;
     state.section = head(state.sections);
+    // if (isEmpty(state.rows)) fetchStatistic();
+    fetchStatistic();
   } catch (error) {
     console.log(error);
     state.error = error.message;
   }
 };
+
+const fetchStatistic = async () => {
+  const rows = await fetchVBRData('/v1/playersStatsPeriod', props.apiKey, {
+    championshipId: Number(state.championshipId),
+    division: state.section,
+  });
+  console.log(rows);
+  state.rows = rows;
+};
+
+fetchSeasons();
 
 const onSeasonChange = (event) => {
   console.log(event.target.value);
@@ -63,6 +80,7 @@ const onSectionChange = (event) => {
 
 const onReportChange = (event) => {
   console.log(event.target.value);
+  fetchStatistic();
 };
 </script>
 
