@@ -52,7 +52,7 @@ export default defineConfig(({ mode }) => {
         template: {
           compilerOptions: {
             isCustomElement: (tag) => {
-              return tag.includes('vbr-');
+              return tag.includes('mjsz-vbr-');
             },
           },
         },

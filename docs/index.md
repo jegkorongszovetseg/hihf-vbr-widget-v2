@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: MJSZ VBR Widgetek
-  text: Adat megjelenítés
+  name: MJSZ Widgetek
+  text: VBR adat megjelenítés
   tagline: Magyar Jégkorong Szövetség versenybírósági rendszerének adat megjelenítése
   actions:
     - theme: brand

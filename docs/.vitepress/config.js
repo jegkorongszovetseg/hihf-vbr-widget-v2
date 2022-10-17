@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress';
+import { fileURLToPath } from 'node:url';
 
 export default defineConfig({
   lang: 'hu-HU',
@@ -26,12 +27,21 @@ export default defineConfig({
         {
           text: 'Widgetek',
           items: [
-            { text: 'Standings', link: '/widget/standings' },
+            { text: 'Tabella', link: '/widget/standings' },
             { text: 'Schedule', link: '/getting-started' },
             { text: 'FieldPlayers', link: '/getting-started' },
           ],
         },
       ],
+    },
+  },
+  vue: {
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag) => {
+          return tag.includes('mjsz-vbr-');
+        },
+      },
     },
   },
 });
