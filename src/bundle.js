@@ -8,8 +8,21 @@ export const setup = ({ apiKey }) => {
   init();
 };
 
+const FieldPlayersLeaderCE = defineCustomElement(FieldPlayersLeader);
+const ScheduleCE = defineCustomElement(Schedule);
+const StandingsCE = defineCustomElement(Standings);
+
+// export individual elements
+export { FieldPlayersLeaderCE, ScheduleCE, StandingsCE };
+
+// export function register() {
+//   customElements.define('mjsz-vbr-fielad-players-leader', FieldPlayersLeaderCE);
+//   customElements.define('mjsz-vbr-schedule', ScheduleCE);
+//   customElements.define('mjsz-vbr-standings', StandingsCE);
+// }
+
 export const init = () => {
-  customElements.define('vbr-fielad-players-leader', defineCustomElement(FieldPlayersLeader));
-  customElements.define('vbr-schedule', defineCustomElement(Schedule));
-  customElements.define('vbr-standings', defineCustomElement(Standings));
+  customElements.define('mjsz-vbr-fielad-players-leader', FieldPlayersLeaderCE);
+  customElements.define('mjsz-vbr-schedule', ScheduleCE);
+  customElements.define('mjsz-vbr-standings', StandingsCE);
 };

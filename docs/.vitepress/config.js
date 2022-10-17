@@ -19,6 +19,7 @@ export default defineConfig({
           items: [
             { text: 'Bemutatás', link: '/widget/' },
             { text: 'Widgetek használata', link: '/widget/using-widget' },
+            { text: 'Elérhető nyelvek', link: '/widget/available-languages' },
             { text: 'Elérhető widgetek', link: '/widget/available-widgets' },
           ],
         },
