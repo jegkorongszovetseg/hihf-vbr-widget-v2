@@ -4,6 +4,7 @@ import { COLUMNS_FIELD_PLAYERS } from '../internal';
 export const REPORTS_MAP = new Map().set('fieldplayers', {
   api: '/v1/playersStatsPeriod',
   columns: COLUMNS_FIELD_PLAYERS,
+  sort: {}, // Todo
 });
 
 export const REPORTS_SELECT = [

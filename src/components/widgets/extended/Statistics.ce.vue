@@ -27,8 +27,10 @@ const props = defineProps({
           columns,
           rows,
           page,
+          currentReport,
           onSort,
           onSeasonChange,
+          onReportChange,
           onSectionChange,
           onPaginatorChange,
         }"
@@ -50,7 +52,7 @@ const props = defineProps({
           </div>
           <div>
             <label>Riport</label>
-            <select>
+            <select :value="currentReport" @change="onReportChange">
               <option v-for="{ name, value } in reports" :key="value" :value="value">{{ name }}</option>
             </select>
           </div>

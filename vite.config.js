@@ -38,7 +38,7 @@ export default defineConfig(({ mode }) => {
           globals: {
             vue: 'Vue',
           },
-          // plugins: [versionInjector()],
+          plugins: [versionInjector({ logLevel: 'debug' })],
         },
       },
       sourcemap: false,
@@ -46,7 +46,6 @@ export default defineConfig(({ mode }) => {
       minify: true,
     },
     plugins: [
-      versionInjector(),
       vue({
         reactivityTransform: true,
         template: {
@@ -57,7 +56,7 @@ export default defineConfig(({ mode }) => {
           },
         },
       }),
-
+      // versionInjector({ logLevel: 'debug' }),
       viteCompression({
         algorithm: 'brotliCompress',
       }),
