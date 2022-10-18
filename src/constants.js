@@ -3,6 +3,9 @@ export const DEFAULT_EXTERNAL_BASE_URL = 'https://www.jegkorongszovetseg.hu/even
 export const DEFAULT_PORTRAIT_IMAGE_URL =
   window.__MJSZ_VBR_WIDGET__?.portraitUrl || 'https://jegkorongszovetseg.hu/assets/images/player_blank.png';
 
+export const DEFAULT_EXTERNAL_PLAYER_URL = '';
+export const DEFAULT_EXTERNAL_TEAM_URL = '';
+
 export const SORT_STATE_ORIGINAL = 'original';
 export const SORT_STATE_DESCEND = 'descend';
 export const SORT_STATE_ASCEND = 'ascend';

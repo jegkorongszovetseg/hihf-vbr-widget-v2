@@ -10,6 +10,7 @@ import ScheduleTable from './ScheduleTable.vue';
 import I18NProvider from '../I18NProvider.vue';
 import Paginator from '../Paginator.vue';
 import ErrorNotice from '../ErrorNotice.vue';
+import TimezoneSelector from '../TimezoneSelector.vue';
 
 const props = defineProps({
   locale: {
@@ -73,35 +74,31 @@ const {
   []
 );
 
-const { page } = usePage({ initial: props.initialPage, items: rows, limit: props.limit, auto: props.autoInitialPage });
-const timezone = dayjs.tz.guess();
-const currentOffsetName = offsetName(new Date(), timezone, props.locale);
+const { page, change: onPaginatorChange } = usePage({ initial: props.initialPage, items: rows, limit: props.limit, auto: props.autoInitialPage });
+const timezone = ref(dayjs.tz.guess());
+const currentOffsetName = offsetName(new Date(), unref(timezone), props.locale);
 
 const convertedRows = computed(() => {
   return convert(unref(rows))
     .teamFilter(props.teamFilterByName, ['homeTeamName', 'awayTeamName'])
-    .schedule(timezone, unref(locale))
+    .schedule(unref(timezone), unref(locale))
     .pagination(unref(page), props.limit)
     .value();
 });
 
-const localLocale = ref('en');
-
 const totalItems = computed(() => convertedRows.value?.totalItems);
 
-const onPaginatorChange = (value) => {
-  page.value = value;
+const onTimezoneChange = (tz) => {
+  timezone.value = tz;
 };
 </script>
 
 <template>
   <div>
-    <I18NProvider :locale="localLocale">
-      <button @click="localLocale = localLocale === 'en' ? 'hu' : 'en'">
-        {{ localLocale === 'en' ? 'hu' : 'en' }}
-      </button>
-
+    <I18NProvider :locale="props.locale">
       <ErrorNotice v-if="error?.error" :error="error.message" />
+
+      <TimezoneSelector :locale="props.locale" @change="onTimezoneChange" />
 
       <ScheduleTable :rows="convertedRows.rows" :is-loading="isLoading" :offset-name="currentOffsetName" />
 
