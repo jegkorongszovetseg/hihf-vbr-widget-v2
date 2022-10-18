@@ -1,5 +1,5 @@
 import DefaultTheme from 'vitepress/theme';
-import { setup } from '../../../dist/bundle';
+import { setup } from '../../../dist/bundle.es';
 
 export default {
   ...DefaultTheme,
