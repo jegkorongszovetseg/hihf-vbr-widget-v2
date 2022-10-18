@@ -30,8 +30,9 @@ const {
   []
 );
 
-const page = usePage({});
-const { sort, update } = useSort({
+const { page, change: onPaginatorChange } = usePage({});
+
+const { sort, update: onSort } = useSort({
   sortTarget: 'point',
   orders: [{ target: 'point', direction: SORT_STATE_DESCEND }],
 });
@@ -47,14 +48,6 @@ const convertedRows = computed(() => {
 });
 
 const totalItems = computed(() => convertedRows.value?.totalItems);
-
-const onSort = (payload) => {
-  update(payload);
-};
-
-const onPaginatorChange = (value) => {
-  page.value = value;
-};
 </script>
 
 <template>

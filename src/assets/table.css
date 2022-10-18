@@ -79,6 +79,23 @@
       height: var(--vbr-widget-table-cell-logo-size);
     }
 
+    .is-portrait-image {
+      display: inline-block;
+      vertical-align: middle;
+      width: var(--vbr-widget-table-cell-portrait-size);
+      height: var(--vbr-widget-table-cell-portrait-size);
+      object-fit: cover;
+      object-position: top;
+      overflow: hidden;
+      border-radius: 100%;
+      border: 1px solid var(--vbr-widget-primary-color-100);
+
+      img {
+        width: var(--vbr-widget-table-cell-portrait-size);
+        height: auto;
+      }
+    }
+
     &.is-text-bold {
       font-weight: 700;
     }

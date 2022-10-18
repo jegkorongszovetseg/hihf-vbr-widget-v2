@@ -2,6 +2,14 @@
 import StatisticsProvider from './StatisticsProvider.vue';
 import I18NProvider from '../../I18NProvider.vue';
 import StatisticsTable from '../StatisticsTable.vue';
+import Paginator from '../../Paginator.vue';
+
+const props = defineProps({
+  limit: {
+    type: Number,
+    default: 20,
+  },
+});
 </script>
 
 <template>
@@ -9,16 +17,20 @@ import StatisticsTable from '../StatisticsTable.vue';
     <I18NProvider locale="hu">
       <StatisticsProvider
         championship-name="Erste Liga"
+        :limit="props.limit"
         v-slot:default="{
+          sort,
           seasons,
           sections,
           championshipId,
           reports,
           columns,
           rows,
-          component,
+          page,
+          onSort,
           onSeasonChange,
           onSectionChange,
+          onPaginatorChange,
         }"
       >
         <div>
@@ -44,9 +56,15 @@ import StatisticsTable from '../StatisticsTable.vue';
           </div>
         </div>
 
-        <div>Table</div>
+        <StatisticsTable :columns="columns" :rows="rows.rows" :sort="sort" @sort="onSort" />
 
-        <StatisticsTable :columns="columns" :rows="rows" />
+        <Paginator
+          :page="page"
+          :items-per-page="props.limit"
+          :total-items="rows.totalItems"
+          :range-length="5"
+          @change="onPaginatorChange"
+        />
       </StatisticsProvider>
     </I18NProvider>
   </div>

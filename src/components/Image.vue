@@ -19,11 +19,11 @@ const props = defineProps({
   },
 });
 const imageOptions = ref({ src: props.src });
-const defaultSrc = ref({ src: props.defaultSrc })
+const defaultSrc = ref({ src: props.defaultSrc });
 const { error, isReady } = useImage(imageOptions);
 </script>
 
 <template>
-  <img v-if="error && defaultSrc" :src="defaultSrc" :class="$attrs.class" />
-  <img v-if="!error" :src="imageOptions.src" :class="[$attrs.class, { 'is-loaded': isReady }]" :title="props.title"/>
+  <img v-if="error && defaultSrc" :src="defaultSrc.src" :class="['is-loaded', $attrs.class]" />
+  <img v-if="!error" :src="imageOptions.src" :class="[$attrs.class, { 'is-loaded': isReady }]" :title="props.title" />
 </template>

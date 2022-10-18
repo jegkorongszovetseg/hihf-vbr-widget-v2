@@ -57,6 +57,7 @@
   --vbr-widget-table-label-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-table-label-bg-color: var(--vbr-widget-primary-color-50);
   --vbr-widget-table-cell-logo-size: 20px;
+  --vbr-widget-table-cell-portrait-size: 26px;
 
   --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);

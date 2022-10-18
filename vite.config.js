@@ -29,7 +29,7 @@ export default defineConfig(({ mode }) => {
       lib: {
         entry: 'src/bundle.js',
         name: 'MjszVbrWidget',
-        fileName: 'bundle',
+        fileName: (format) => `bundle.${format}.js`,
         formats: ['es', 'umd', 'iife'],
       },
       rollupOptions: {

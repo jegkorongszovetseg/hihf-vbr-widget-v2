@@ -73,7 +73,7 @@ const {
   []
 );
 
-const page = usePage({ initial: props.initialPage, items: rows, limit: props.limit, auto: props.autoInitialPage });
+const { page } = usePage({ initial: props.initialPage, items: rows, limit: props.limit, auto: props.autoInitialPage });
 const timezone = dayjs.tz.guess();
 const currentOffsetName = offsetName(new Date(), timezone, props.locale);
 

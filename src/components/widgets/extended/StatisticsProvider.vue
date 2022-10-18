@@ -1,13 +1,22 @@
 <script setup>
-import { reactive } from 'vue';
-import { head, isEmpty } from 'ramda';
+import { computed, reactive, unref } from 'vue';
+import { head } from 'ramda';
 import { fetchVBRData } from '../../../composables/useFetchVBRApi';
 import { convertSeasons, REPORTS_MAP, REPORTS_SELECT } from './statistics.internal.js';
+import convert from '../../../utils/convert';
+import { usePage } from '../../../composables/usePage';
+import { SORT_STATE_DESCEND } from '../../../constants';
+import useSort from '../../../composables/useSort';
 
 const props = defineProps({
   championshipName: {
     type: String,
     default: '',
+  },
+
+  limit: {
+    type: Number,
+    default: 20,
   },
 });
 
@@ -20,13 +29,18 @@ const state = reactive({
   reports: REPORTS_SELECT,
   currentReport: 'fieldplayers',
   rows: [],
-  component: null,
   columns: null,
 });
 
 const initialReport = REPORTS_MAP.get('fieldplayers');
-state.component = initialReport.component;
 state.columns = initialReport.columns;
+
+const { page, change: onPaginatorChange } = usePage({});
+
+const { sort, update: onSort } = useSort({
+  sortTarget: 'point',
+  orders: [{ target: 'point', direction: SORT_STATE_DESCEND }],
+});
 
 const fetchSeasons = async () => {
   try {
@@ -62,11 +76,21 @@ const fetchStatistic = async () => {
     championshipId: Number(state.championshipId),
     division: state.section,
   });
-  console.log(rows);
+  // console.log(rows);
   state.rows = rows;
 };
 
 fetchSeasons();
+
+const convertedRows = computed(() =>
+  convert(state.rows)
+    // .teamFilter(props.teamFilterByName, ['teamName'])
+    .playerName()
+    .sorted(sort)
+    .addIndex(sort.sortTarget)
+    .pagination(unref(page), props.limit)
+    .value()
+);
 
 const onSeasonChange = (event) => {
   console.log(event.target.value);
@@ -85,5 +109,5 @@ const onReportChange = (event) => {
 </script>
 
 <template>
-  <slot v-bind="{ ...state, onSeasonChange, onSectionChange, onReportChange }" />
+  <slot v-bind="{ ...state, rows: convertedRows, sort, page, onSeasonChange, onSectionChange, onReportChange, onPaginatorChange, onSort }" />
 </template>

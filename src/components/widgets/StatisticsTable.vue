@@ -5,6 +5,7 @@ import ResponsiveTable from '../ResponsiveTable.vue';
 import Image from '../Image.vue';
 import DataTable from '../DataTable.vue';
 import ErrorNotice from '../ErrorNotice.vue';
+import { DEFAULT_PORTRAIT_IMAGE_URL } from '../../constants';
 
 const props = defineProps({
   columns: {
@@ -57,7 +58,9 @@ const onSort = (payload) => emit('sort', payload);
         </span>
       </template>
       <template v-slot:cell-playerPortrait="{ row }">
-        <Image class="is-logo-image" :key="row.id" :src="row.playerPortrait" :default-image="DEFAULT_PORTRAIT_IMAGE_URL" />
+        <div class="is-portrait-image">
+          <Image :key="row.id" :src="row.playerPortrait" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
+        </div>
       </template>
       <template v-slot:cell-teamLogo="{ row }">
         <Image class="is-logo-image" :key="row.teamId" :src="row.teamLogo" />
