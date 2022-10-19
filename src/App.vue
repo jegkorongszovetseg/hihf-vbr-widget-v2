@@ -4,6 +4,7 @@ import Schedule from './components/widgets/Schedule.ce.vue';
 import Standings from './components/widgets/Standings.ce.vue';
 import FieldPlayersLeader from './components/widgets/FieldPlayersLeader.ce.vue';
 import Statistics from './components/widgets/extended/Statistics.ce.vue';
+import FieldPlayersPenalties from './components/widgets/FieldPlayersPenalties.ce.vue';
 
 const locale = ref('hu');
 const change = () => {
@@ -15,8 +16,9 @@ const change = () => {
   <div>
     <button type="button" @click="change">{{ locale }}</button>
     <!-- <Statistics /> -->
+    <FieldPlayersPenalties locale="hu" championship-id="3314" division="Alapszakasz" />
     <!-- <FieldPlayersLeader locale="hu" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <Standings locale="hu" championship-id="3314" division="Alapszakasz" type="3" /> -->
-    <Schedule :locale="locale" championship-id="3314" division="Alapszakasz" auto-initial-page />
+    <!-- <Schedule :locale="locale" championship-id="3314" division="Alapszakasz" auto-initial-page /> -->
   </div>
 </template>

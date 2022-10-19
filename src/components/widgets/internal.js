@@ -253,3 +253,80 @@ export const COLUMNS_FIELD_PLAYERS = {
     sortOrders: [{ target: 'shootPercent', direction: SORT_STATE_DESCEND }],
   },
 };
+
+export const COLUMNS_FIELD_PLAYERS_PENALTY = {
+  index: {
+    label: 'table.blank',
+    class: 'is-text-left',
+  },
+  playerPortrait: {
+    label: '',
+    class: 'is-has-image',
+  },
+  name: {
+    label: 'table.name.short',
+    tooltip: 'table.name.tooltip',
+    class: 'is-text-left is-w-auto is-text-bold',
+    sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
+  },
+  teamLogo: {
+    label: '',
+    class: 'is-has-image',
+  },
+  teamName: {
+    label: 'table.team.short',
+    tooltip: 'table.team.tooltip',
+    class: 'is-text-left is-w-auto',
+    sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
+  },
+  gp: {
+    label: 'table.game.short',
+    tooltip: 'table.game.tooltip',
+    sortOrders: [{ target: 'gp', direction: SORT_STATE_DESCEND }],
+  },
+  p2: {
+    label: 'table.minorPenalties.short',
+    tooltip: 'table.minorPenalties.tooltip',
+    sortOrders: [
+      { target: 'p2', direction: SORT_STATE_DESCEND },
+      { target: 'pim', direction: SORT_STATE_DESCEND },
+    ],
+  },
+  p5: {
+    label: 'table.majorPenalties.short',
+    tooltip: 'table.majorPenalties.tooltip',
+    sortOrders: [
+      { target: 'p5', direction: SORT_STATE_DESCEND },
+      { target: 'pim', direction: SORT_STATE_DESCEND },
+    ],
+  },
+  p10: {
+    label: 'table.misconducts.short',
+    tooltip: 'table.misconducts.tooltip',
+    sortOrders: [
+      { target: 'p10', direction: SORT_STATE_DESCEND },
+      { target: 'pim', direction: SORT_STATE_DESCEND },
+    ],
+  },
+  p20: {
+    label: 'table.gameMisconducts.short',
+    tooltip: 'table.gameMisconducts.tooltip',
+    sortOrders: [
+      { target: 'p20', direction: SORT_STATE_DESCEND },
+      { target: 'pim', direction: SORT_STATE_DESCEND },
+    ],
+  },
+  p25: {
+    label: 'table.matchPenalties.short',
+    tooltip: 'table.matchPenalties.tooltip',
+    sortOrders: [
+      { target: 'p25', direction: SORT_STATE_DESCEND },
+      { target: 'pim', direction: SORT_STATE_DESCEND },
+    ],
+  },
+  pim: {
+    label: 'table.pim.short',
+    tooltip: 'table.pim.tooltip',
+    sortOrders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
+  },
+};
