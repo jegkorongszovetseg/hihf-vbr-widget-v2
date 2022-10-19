@@ -35,7 +35,7 @@ const transitionOrderState = (originalSortState, sortState) => {
 export default function useSort({ sortTarget = null, orders = [] }) {
   const sort = reactive({ sortTarget, orders });
 
-  const update = ({ target, orders }) => {
+  const change = ({ target, orders }) => {
     if (sort.sortTarget !== target) {
       sort.sortTarget = target;
       sort.orders = orders;
@@ -52,6 +52,6 @@ export default function useSort({ sortTarget = null, orders = [] }) {
 
   return {
     sort,
-    update,
+    change,
   };
 }

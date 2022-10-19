@@ -55,14 +55,14 @@ const {
   []
 );
 
-const { sort, update } = useSort({});
+const { sort, change } = useSort({});
 
 const convertedRows = computed(() => {
   return convert(unref(rows)).sorted(sort).addContinuousIndex().value();
 });
 
 const onSort = (payload) => {
-  update(payload);
+  change(payload);
 };
 </script>
 

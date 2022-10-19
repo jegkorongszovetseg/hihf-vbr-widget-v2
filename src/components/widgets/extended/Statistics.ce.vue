@@ -32,6 +32,7 @@ const props = defineProps({
           columns,
           rows,
           page,
+          loading,
           currentReport,
           onSort,
           onSeasonChange,
@@ -63,7 +64,7 @@ const props = defineProps({
           </div>
         </div>
 
-        <StatisticsTable :columns="columns" :rows="rows.rows" :sort="sort" @sort="onSort" />
+        <StatisticsTable :columns="columns" :rows="rows.rows" :sort="sort" :is-loading="loading" @sort="onSort" />
 
         <Paginator
           :page="page"

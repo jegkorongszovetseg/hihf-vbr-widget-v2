@@ -32,7 +32,7 @@ const {
 
 const { page, change: onPaginatorChange } = usePage({});
 
-const { sort, update: onSort } = useSort({
+const { sort, change: onSort } = useSort({
   sortTarget: 'pim',
   orders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
 });
