@@ -330,3 +330,75 @@ export const COLUMNS_FIELD_PLAYERS_PENALTY = {
     sortOrders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
   },
 };
+
+export const COLUMNS_GOALIES = {
+  index: {
+    label: 'table.blank',
+    class: 'is-text-left',
+  },
+  playerPortrait: {
+    label: '',
+    class: 'is-has-image',
+  },
+  name: {
+    label: 'table.name.short',
+    tooltip: 'table.name.tooltip',
+    class: 'is-text-left is-w-auto is-text-bold',
+    sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
+  },
+  teamLogo: {
+    label: '',
+    class: 'is-has-image',
+  },
+  teamName: {
+    label: 'table.team.short',
+    tooltip: 'table.team.tooltip',
+    class: 'is-text-left is-w-auto',
+    sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
+  },
+  gkd: {
+    label: 'table.gpgk.short',
+    tooltip: 'table.gpgk.tooltip',
+    sortOrders: [{ target: 'gkd', direction: SORT_STATE_DESCEND }],
+  },
+  gpi: {
+    label: 'table.gpi.short',
+    tooltip: 'table.gpi.tooltip',
+    sortOrders: [{ target: 'gpi', direction: SORT_STATE_DESCEND }],
+  },
+  mip: {
+    label: 'table.toi.short',
+    tooltip: 'table.toi.tooltip',
+    sortOrders: [{ target: 'mipSec', direction: SORT_STATE_DESCEND }],
+  },
+  mipPercent: {
+    label: 'table.toiPercent.short',
+    tooltip: 'table.toiPercent.tooltip',
+    sortOrders: [{ target: 'mipPercent', direction: SORT_STATE_DESCEND }],
+  },
+  ga: {
+    label: 'table.ga.short',
+    tooltip: 'table.ga.tooltip',
+    sortOrders: [{ target: 'ga', direction: SORT_STATE_DESCEND }],
+  },
+  gaa: {
+    label: 'table.gaa.short',
+    tooltip: 'table.gaa.tooltip',
+    sortOrders: [{ target: 'gaa', direction: SORT_STATE_DESCEND }],
+  },
+  sa: {
+    label: 'table.sa.short',
+    tooltip: 'table.sa.tooltip',
+    sortOrders: [{ target: 'sa', direction: SORT_STATE_DESCEND }],
+  },
+  svs: {
+    label: 'table.svs.short',
+    tooltip: 'table.svs.tooltip',
+    sortOrders: [{ target: 'svs', direction: SORT_STATE_DESCEND }],
+  },
+  svsPercent: {
+    label: 'table.svsPercent.short',
+    tooltip: 'table.svsPercent.tooltip',
+    sortOrders: [{ target: 'svsPercent', direction: SORT_STATE_DESCEND }],
+  },
+};

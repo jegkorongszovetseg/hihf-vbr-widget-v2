@@ -59,7 +59,7 @@ const onSort = (payload) => emit('sort', payload);
       </template>
       <template v-slot:cell-playerPortrait="{ row }">
         <div class="is-portrait-image">
-          <Image :key="row.id" :src="row.playerPortrait" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
+          <Image :key="row.id || row.playerId" :src="row.playerPortrait" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
         </div>
       </template>
       <template v-slot:cell-teamLogo="{ row }">
