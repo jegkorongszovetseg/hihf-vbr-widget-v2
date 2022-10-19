@@ -98,7 +98,7 @@ const onTimezoneChange = (tz) => {
     <I18NProvider :locale="props.locale">
       <ErrorNotice v-if="error?.error" :error="error.message" />
 
-      <TimezoneSelector :locale="props.locale" @change="onTimezoneChange" />
+      <TimezoneSelector :locale="props.locale" :current-zone="timezone" @change="onTimezoneChange" />
 
       <ScheduleTable :rows="convertedRows.rows" :is-loading="isLoading" :offset-name="currentOffsetName" />
 
