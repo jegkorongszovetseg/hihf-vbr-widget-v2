@@ -29,7 +29,7 @@ export default defineConfig(({ mode }) => {
       lib: {
         entry: 'src/bundle.js',
         name: 'MjszVbrWidget',
-        fileName: (format) => `bundle.${format}.js`,
+        fileName: (format) => `mjsz-vbr-widget.${format}.js`,
         formats: ['es', 'umd', 'iife'],
       },
       rollupOptions: {
@@ -38,12 +38,12 @@ export default defineConfig(({ mode }) => {
           globals: {
             vue: 'Vue',
           },
-          plugins: [versionInjector({ logLevel: 'debug' })],
+          // plugins: [versionInjector({ logLevel: 'debug' })],
         },
       },
       sourcemap: false,
       target: 'modules',
-      minify: true,
+      minify: false,
     },
     plugins: [
       vue({
@@ -56,10 +56,15 @@ export default defineConfig(({ mode }) => {
           },
         },
       }),
-      // versionInjector({ logLevel: 'debug' }),
+
       viteCompression({
         algorithm: 'brotliCompress',
       }),
+      {
+        ...versionInjector({ injectInTags: false, logLevel: 'debug' }),
+        enforce: 'post',
+        apply: 'build',
+      },
     ],
   };
 });
