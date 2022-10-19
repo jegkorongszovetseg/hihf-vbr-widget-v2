@@ -30,10 +30,12 @@ const state = reactive({
   currentReport: 'fieldplayers',
   rows: [],
   columns: null,
+  api: null
 });
 
 const initialReport = REPORTS_MAP.get('fieldplayers');
 state.columns = initialReport.columns;
+state.api = initialReport.api;
 
 const { page, change: onPaginatorChange } = usePage({});
 
@@ -72,11 +74,10 @@ const fetchSection = async () => {
 };
 
 const fetchStatistic = async () => {
-  const rows = await fetchVBRData('/v1/playersStatsPeriod', props.apiKey, {
+  const rows = await fetchVBRData(state.api, props.apiKey, {
     championshipId: Number(state.championshipId),
     division: state.section,
   });
-  // console.log(rows);
   state.rows = rows;
 };
 
@@ -104,10 +105,27 @@ const onSectionChange = (event) => {
 
 const onReportChange = (event) => {
   console.log(event.target.value);
+  state.currentReport = event.target.value;
+  const report = REPORTS_MAP.get(event.target.value);
+  // console.log(report);
+  state.columns = report.columns;
+  state.api = report.api;
   fetchStatistic();
 };
 </script>
 
 <template>
-  <slot v-bind="{ ...state, rows: convertedRows, sort, page, onSeasonChange, onSectionChange, onReportChange, onPaginatorChange, onSort }" />
+  <slot
+    v-bind="{
+      ...state,
+      rows: convertedRows,
+      sort,
+      page,
+      onSeasonChange,
+      onSectionChange,
+      onReportChange,
+      onPaginatorChange,
+      onSort,
+    }"
+  />
 </template>

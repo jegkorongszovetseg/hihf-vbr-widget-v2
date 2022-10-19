@@ -5,6 +5,11 @@ import StatisticsTable from '../StatisticsTable.vue';
 import Paginator from '../../Paginator.vue';
 
 const props = defineProps({
+  locale: {
+    type: String,
+    default: 'hu',
+  },
+
   limit: {
     type: Number,
     default: 20,
@@ -14,7 +19,7 @@ const props = defineProps({
 
 <template>
   <div>
-    <I18NProvider locale="hu">
+    <I18NProvider :locale="props.locale">
       <StatisticsProvider
         championship-name="Erste Liga"
         :limit="props.limit"

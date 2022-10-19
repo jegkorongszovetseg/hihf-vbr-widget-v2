@@ -36,7 +36,7 @@ const props = defineProps({
 const emit = defineEmits(['sort']);
 
 const currentColumns = computed(() => props.columns);
-const { columns, error } = useColumns(currentColumns.value, props.hideColumns);
+const { columns, error } = useColumns(currentColumns, props.hideColumns);
 
 const onSort = (payload) => emit('sort', payload);
 </script>
