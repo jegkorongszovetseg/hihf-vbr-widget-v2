@@ -1,5 +1,7 @@
+import { unref } from 'vue';
+
 export const fetchVBRData = async (route, apiKey, data) => {
-  const url = `${import.meta.env.VITE_API_URL}${route}?${objectToQueryString(data)}`;
+  const url = `${import.meta.env.VITE_API_URL}${unref(route)}?${objectToQueryString(data)}`;
   return new Promise((resolve, reject) => {
     fetch(url, {
       method: 'GET',

@@ -11,19 +11,27 @@ import I18NProvider from '../I18NProvider.vue';
 import ErrorNotice from '../ErrorNotice.vue';
 import StatisticsTable from './StatisticsTable.vue';
 import Paginator from '../Paginator.vue';
-import { SORT_STATE_DESCEND } from '../../constants';
+import { SORT_STATE_DESCEND, VBR_API_GOALIE_PATH, VBR_API_GOALIE_UNDER_PATH } from '../../constants';
 
-const props = defineProps(commonProps);
+const props = defineProps({
+  ...commonProps,
+
+  underLimit: {
+    type: Boolean,
+    default: false,
+  },
+});
 
 const columns = COLUMNS_GOALIES;
 const locale = computed(() => props.locale);
+const apiPath = computed(() => (props.underLimit ? VBR_API_GOALIE_UNDER_PATH : VBR_API_GOALIE_PATH));
 
 const {
   state: rows,
   error,
   isLoading,
 } = useAsyncState(
-  fetchVBRData('/v1/playersGoaliePeriod', props.apiKey, {
+  fetchVBRData(apiPath, props.apiKey, {
     championshipId: Number(props.championshipId),
     division: props.division,
   }),
@@ -57,7 +65,6 @@ const totalItems = computed(() => convertedRows.value?.totalItems);
 
       <StatisticsTable
         :columns="columns"
-        :type="props.type"
         :rows="convertedRows.rows"
         :is-loading="isLoading"
         :hide-columns="props.hideColumns"

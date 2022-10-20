@@ -14,3 +14,6 @@ export const LOCALE_FOR_LANG = new Map().set('hu', 'hu-hu').set('en', 'hu-gb');
 export const AVAILABLE_TIMEZONES_BY_COUNTRY = new Map()
   .set('Europe/Budapest', { countryLabelKey: 'hungary', timezone: 'Europe/Budapest' })
   .set('Europe/Bucharest', { countryLabelKey: 'romania', timezone: 'Europe/Bucharest' });
+
+export const VBR_API_GOALIE_PATH = '/v1/playersGoaliePeriod';
+export const VBR_API_GOALIE_UNDER_PATH = '/v1/playersGoalieUnderPeriod';

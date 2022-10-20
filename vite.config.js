@@ -38,7 +38,7 @@ export default defineConfig(({ mode }) => {
           globals: {
             vue: 'Vue',
           },
-          // plugins: [versionInjector({ logLevel: 'debug' })],
+          plugins: [versionInjector({ logLevel: 'debug' })],
         },
       },
       sourcemap: false,
@@ -60,11 +60,11 @@ export default defineConfig(({ mode }) => {
       viteCompression({
         algorithm: 'brotliCompress',
       }),
-      {
-        ...versionInjector({ injectInTags: false, logLevel: 'debug' }),
-        enforce: 'post',
-        apply: 'build',
-      },
+      // {
+      //   ...versionInjector({ injectInTags: false, logLevel: 'debug' }),
+      //   enforce: 'post',
+      //   apply: 'build',
+      // },
     ],
   };
 });

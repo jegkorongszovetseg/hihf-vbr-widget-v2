@@ -17,7 +17,7 @@ const change = () => {
   <div>
     <button type="button" @click="change">{{ locale }}</button>
     <!-- <Statistics :locale="locale"  /> -->
-    <GoaliesLeader :locale="locale" championship-id="3314" division="Alapszakasz" />
+    <GoaliesLeader :locale="locale" championship-id="3314" division="Alapszakasz" :under-limit="false" />
     <!-- <FieldPlayersPenalties :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <FieldPlayersLeader :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <Standings :locale="locale" championship-id="3314" division="Alapszakasz" type="3" /> -->
