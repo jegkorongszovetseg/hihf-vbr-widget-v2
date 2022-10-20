@@ -3,19 +3,17 @@ import { computed, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
-import { usePage } from '../../composables/usePage';
 import convert from '../../utils/convert';
-import { COLUMNS_FIELD_PLAYERS } from './internal';
+import { COLUMNS_TEAMS_FAIRPLAY } from './internal';
 import { commonProps } from './statistics.internal';
 import I18NProvider from '../I18NProvider.vue';
 import ErrorNotice from '../ErrorNotice.vue';
 import StatisticsTable from './StatisticsTable.vue';
-import Paginator from '../Paginator.vue';
 import { SORT_STATE_DESCEND } from '../../constants';
 
 const props = defineProps(commonProps);
 
-const columns = COLUMNS_FIELD_PLAYERS;
+const columns = COLUMNS_TEAMS_FAIRPLAY;
 const locale = computed(() => props.locale);
 
 const {
@@ -23,28 +21,20 @@ const {
   error,
   isLoading,
 } = useAsyncState(
-  fetchVBRData('/v1/playersStatsPeriod', props.apiKey, {
+  fetchVBRData('/v1/teamFairplayPeriod', props.apiKey, {
     championshipId: Number(props.championshipId),
     division: props.division,
   }),
   []
 );
 
-const { page, change: onPaginatorChange } = usePage({});
-
 const { sort, change: onSort } = useSort({
-  sortTarget: 'point',
-  orders: [{ target: 'point', direction: SORT_STATE_DESCEND }],
+  sortTarget: 'pim',
+  orders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
 });
 
 const convertedRows = computed(() => {
-  return convert(unref(rows))
-    .teamFilter(props.teamFilterByName, ['teamName'])
-    .playerName()
-    .sorted(sort)
-    .addIndex(sort.sortTarget)
-    .pagination(unref(page), props.limit)
-    .value();
+  return convert(unref(rows)).sorted(sort).addIndex(sort.sortTarget).value();
 });
 
 const totalItems = computed(() => convertedRows.value?.totalItems);
@@ -62,14 +52,6 @@ const totalItems = computed(() => convertedRows.value?.totalItems);
         :hide-columns="props.hideColumns"
         :sort="sort"
         @sort="onSort"
-      />
-
-      <Paginator
-        :page="page"
-        :items-per-page="props.limit"
-        :total-items="totalItems"
-        :range-length="5"
-        @change="onPaginatorChange"
       />
     </I18NProvider>
   </div>
