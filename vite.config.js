@@ -1,10 +1,18 @@
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import versionInjector from 'rollup-plugin-version-injector';
 import viteCompression from 'vite-plugin-compression';
 import postcssMixins from 'postcss-mixins';
 import postcssNested from 'postcss-nested';
 import postcssPrefixer from 'postcss-prefixer';
+
+import { version, author, license } from './package.json';
+
+const banner = `/*!
+  * MJSZ VBR Widgets v${version}
+  * (c) ${new Date().getFullYear()} ${author.name}
+  * Released: ${new Date().toLocaleString('en-GB')}
+  * Released under the ${license} License.
+  */`;
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -35,15 +43,15 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         external: ['vue'],
         output: {
+          banner: banner,
           globals: {
             vue: 'Vue',
           },
-          plugins: [versionInjector({ logLevel: 'debug' })],
         },
       },
       sourcemap: false,
       target: 'modules',
-      minify: false,
+      minify: true,
     },
     plugins: [
       vue({
@@ -60,11 +68,6 @@ export default defineConfig(({ mode }) => {
       viteCompression({
         algorithm: 'brotliCompress',
       }),
-      // {
-      //   ...versionInjector({ injectInTags: false, logLevel: 'debug' }),
-      //   enforce: 'post',
-      //   apply: 'build',
-      // },
     ],
   };
 });

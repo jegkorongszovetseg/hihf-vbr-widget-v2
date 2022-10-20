@@ -1,7 +1,11 @@
 {
   "name": "vbr-widget-v2",
-  "private": true,
-  "version": "0.0.1",
+  "version": "2.0.0-alpha.1",
+  "license": "MIT",
+  "author": {
+    "name": "Akos Stegner",
+    "email": "akos.stegner@gmail.com"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -25,7 +29,6 @@
     "postcss-mixins": "^9.0.4",
     "postcss-nested": "^6.0.0",
     "postcss-prefixer": "^2.1.3",
-    "rollup-plugin-version-injector": "^1.3.3",
     "sass": "^1.55.0",
     "vite": "^3.1.8",
     "vite-plugin-compression": "^0.5.1",
