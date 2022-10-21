@@ -33,12 +33,13 @@ export default defineConfig(({ mode }) => {
         ],
       },
     },
+
     build: {
       lib: {
         entry: 'src/bundle.js',
         name: 'MjszVbrWidget',
         fileName: (format) => `mjsz-vbr-widget.${format}.js`,
-        formats: ['es', 'umd', 'iife'],
+        formats: ['esm', 'umd', 'iife'],
       },
       rollupOptions: {
         external: ['vue'],
@@ -49,6 +50,11 @@ export default defineConfig(({ mode }) => {
           },
         },
       },
+      // terserOptions: {
+      //   compress: {
+      //     ecma: 2017,
+      //   },
+      // },
       sourcemap: false,
       target: 'modules',
       minify: true,
