@@ -34,7 +34,7 @@ const { sort, change: onSort } = useSort({
 });
 
 const convertedRows = computed(() => {
-  return convert(unref(rows)).sorted(sort).addContinuousIndex(sort.sortTarget).value();
+  return convert(unref(rows)).sorted(sort).addIndex(sort.sortTarget).value();
 });
 </script>
 

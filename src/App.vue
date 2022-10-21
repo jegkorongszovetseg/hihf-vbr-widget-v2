@@ -7,7 +7,7 @@ import Statistics from './components/widgets/extended/Statistics.ce.vue';
 import FieldPlayersPenalties from './components/widgets/FieldPlayersPenalties.ce.vue';
 import GoaliesLeader from './components/widgets/GoaliesLeader.ce.vue';
 import TeamFairplay from './components/widgets/TeamFairplay.ce.vue';
-import TeamAttandance from './components/widgets/TeamAttandance.ce.vue';
+import TeamAttendance from './components/widgets/TeamAttendance.ce.vue';
 
 const locale = ref('hu');
 const change = () => {
@@ -18,7 +18,7 @@ const change = () => {
 <template>
   <div>
     <button type="button" @click="change">{{ locale }}</button>
-    <TeamAttandance :locale="locale" championship-id="3314" division="Alapszakasz" />
+    <TeamAttendance :locale="locale" championship-id="3314" division="Alapszakasz" />
     <Statistics :locale="locale"  />
     <!-- <TeamFairplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <GoaliesLeader :locale="locale" championship-id="3314" division="Alapszakasz" :under-limit="false" /> -->
