@@ -545,3 +545,60 @@ export const COLUMNS_TEAMS_FAIRPLAY = {
     sortOrders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
   },
 };
+
+export const COLUMNS_TEAMS_PENALTY_KILLING = {
+  index: {
+    label: 'table.blank',
+    class: 'is-text-left',
+  },
+  teamLogo: {
+    label: '',
+    class: 'is-has-image',
+  },
+  teamName: {
+    label: 'table.team.short',
+    tooltip: 'table.team.tooltip',
+    class: 'is-text-left is-w-auto',
+    sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
+  },
+  gp: {
+    label: 'table.game.short',
+    tooltip: 'table.game.tooltip',
+    sortOrders: [{ target: 'gp', direction: SORT_STATE_DESCEND }],
+  },
+  dvg: {
+    label: 'table.powerplayDisadvantages.short',
+    tooltip: 'table.powerplayDisadvantages.tooltip',
+    sortOrders: [{ target: 'dvg', direction: SORT_STATE_DESCEND }],
+  },
+  dvgTime: {
+    label: 'table.dvgTime.short',
+    tooltip: 'table.dvgTime.tooltip',
+    sortOrders: [{ target: 'dvgTimeSec', direction: SORT_STATE_DESCEND }],
+  },
+  dvgTimePP1: {
+    label: 'table.dvgTimePP1.short',
+    tooltip: 'table.dvgTimePP1.tooltip',
+    sortOrders: [{ target: 'dvgTimePP1Sec', direction: SORT_STATE_DESCEND }],
+  },
+  dvgTimePP2: {
+    label: 'table.dvgTimePP2.short',
+    tooltip: 'table.dvgTimePP2.tooltip',
+    sortOrders: [{ target: 'dvgTimePP2', direction: SORT_STATE_DESCEND }],
+  },
+  ppga: {
+    label: 'table.ppga.short',
+    tooltip: 'table.ppga.tooltip',
+    sortOrders: [{ target: 'ppga', direction: SORT_STATE_DESCEND }],
+  },
+  shgf: {
+    label: 'table.shgf.short',
+    tooltip: 'table.shgf.tooltip',
+    sortOrders: [{ target: 'shgf', direction: SORT_STATE_DESCEND }],
+  },
+  pkPercent: {
+    label: 'table.pkPercent.short',
+    tooltip: 'table.pkPercent.tooltip',
+    sortOrders: [{ target: 'pkPercent', direction: SORT_STATE_DESCEND }],
+  },
+};
