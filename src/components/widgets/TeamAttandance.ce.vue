@@ -4,7 +4,7 @@ import { useAsyncState } from '@vueuse/core';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
 import convert from '../../utils/convert';
-import { COLUMNS_TEAMS_FAIRPLAY } from './internal';
+import { COLUMNS_TEAM_ATTENDANCE } from './internal';
 import { commonProps } from './statistics.internal';
 import I18NProvider from '../I18NProvider.vue';
 import ErrorNotice from '../ErrorNotice.vue';
@@ -13,7 +13,7 @@ import { SORT_STATE_DESCEND } from '../../constants';
 
 const props = defineProps(commonProps);
 
-const columns = COLUMNS_TEAMS_FAIRPLAY;
+const columns = COLUMNS_TEAM_ATTENDANCE;
 const locale = computed(() => props.locale);
 
 const {
@@ -21,7 +21,7 @@ const {
   error,
   isLoading,
 } = useAsyncState(
-  fetchVBRData('/v1/teamFairplayPeriod', props.apiKey, {
+  fetchVBRData('/v1/teamAttendancePeriod', props.apiKey, {
     championshipId: Number(props.championshipId),
     division: props.division,
   }),
@@ -29,12 +29,12 @@ const {
 );
 
 const { sort, change: onSort } = useSort({
-  sortTarget: 'pim',
-  orders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
+  sortTarget: 'totalAttendanceAvg',
+  orders: [{ target: 'totalAttendanceAvg', direction: SORT_STATE_DESCEND }],
 });
 
 const convertedRows = computed(() => {
-  return convert(unref(rows)).sorted(sort).addIndex(sort.sortTarget).value();
+  return convert(unref(rows)).sorted(sort).addContinuousIndex(sort.sortTarget).value();
 });
 </script>
 

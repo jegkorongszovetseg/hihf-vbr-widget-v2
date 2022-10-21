@@ -403,6 +403,77 @@ export const COLUMNS_GOALIES = {
   },
 };
 
+export const COLUMNS_TEAM_ATTENDANCE = {
+  index: {
+    label: 'table.blank',
+    class: 'is-text-left',
+  },
+  teamLogo: {
+    label: '',
+    class: 'is-has-image',
+  },
+  teamName: {
+    label: 'table.team.short',
+    tooltip: 'table.team.tooltip',
+    class: 'is-text-left is-w-auto',
+    sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
+  },
+  home: {
+    label: 'table.homeHeader.short',
+  },
+  homeGame: {
+    label: 'table.homeGame.short',
+    tooltip: 'table.homeGame.tooltip',
+    sortOrders: [{ target: 'homeGame', direction: SORT_STATE_DESCEND }],
+  },
+  homeAttendance: {
+    label: 'table.homeAttendance.short',
+    tooltip: 'table.homeAttendance.tooltip',
+    sortOrders: [{ target: 'homeAttendance', direction: SORT_STATE_DESCEND }],
+  },
+  homeAttendanceAvg: {
+    label: 'table.homeAttendanceAvg.short',
+    tooltip: 'table.homeAttendanceAvg.tooltip',
+    sortOrders: [{ target: 'homeAttendanceAvg', direction: SORT_STATE_DESCEND }],
+  },
+  away: {
+    label: 'table.awayHeader.short',
+  },
+  awayGame: {
+    label: 'table.awayGame.short',
+    tooltip: 'table.awayGame.tooltip',
+    sortOrders: [{ target: 'awayGame', direction: SORT_STATE_DESCEND }],
+  },
+  awayAttendance: {
+    label: 'table.awayAttendance.short',
+    tooltip: 'table.awayAttendance.tooltip',
+    sortOrders: [{ target: 'awayAttendance', direction: SORT_STATE_DESCEND }],
+  },
+  awayAttendanceAvg: {
+    label: 'table.awayAttendanceAvg.short',
+    tooltip: 'table.awayAttendanceAvg.tooltip',
+    sortOrders: [{ target: 'awayAttendanceAvg', direction: SORT_STATE_DESCEND }],
+  },
+  total: {
+    label: 'table.totalHeader.short',
+  },
+  totalGame: {
+    label: 'table.totalGame.short',
+    tooltip: 'table.totalGame.tooltip',
+    sortOrders: [{ target: 'totalGame', direction: SORT_STATE_DESCEND }],
+  },
+  totalAttendance: {
+    label: 'table.totalAttendance.short',
+    tooltip: 'table.totalAttendance.tooltip',
+    sortOrders: [{ target: 'totalAttendance', direction: SORT_STATE_DESCEND }],
+  },
+  totalAttendanceAvg: {
+    label: 'table.totalAttendanceAvg.short',
+    tooltip: 'table.totalAttendanceAvg.tooltip',
+    sortOrders: [{ target: 'totalAttendanceAvg', direction: SORT_STATE_DESCEND }],
+  },
+};
+
 export const COLUMNS_TEAMS_FAIRPLAY = {
   index: {
     label: 'table.blank',
