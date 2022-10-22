@@ -10,6 +10,7 @@ import TeamFairplay from './components/widgets/TeamFairplay.ce.vue';
 import TeamAttendance from './components/widgets/TeamAttendance.ce.vue';
 import TeamPenaltyKilling from './components/widgets/TeamPenaltyKilling.ce.vue';
 import TeamPowerplay from './components/widgets/TeamPowerplay.ce.vue';
+import TeamScoringEfficiency from './components/widgets/TeamScoringEfficiency.ce.vue';
 
 const locale = ref('hu');
 const change = () => {
@@ -20,6 +21,7 @@ const change = () => {
 <template>
   <div>
     <button type="button" @click="change">{{ locale }}</button>
+    <TeamScoringEfficiency :locale="locale" championship-id="3314" division="Alapszakasz" />
     <TeamPowerplay :locale="locale" championship-id="3314" division="Alapszakasz" />
     <TeamPenaltyKilling :locale="locale" championship-id="3314" division="Alapszakasz" />
     <!-- <TeamAttendance :locale="locale" championship-id="3314" division="Alapszakasz" /> -->

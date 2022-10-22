@@ -659,3 +659,75 @@ export const COLUMNS_TEAMS_POWERPLAY = {
     sortOrders: [{ target: 'ppPercent', direction: SORT_STATE_DESCEND }],
   },
 };
+
+export const COLUMNS_SCORING_EFFICIENCY = {
+  index: {
+    label: 'table.blank',
+    class: 'is-text-left',
+  },
+  teamLogo: {
+    label: '',
+    class: 'is-has-image',
+  },
+  teamName: {
+    label: 'table.team.short',
+    tooltip: 'table.team.tooltip',
+    class: 'is-text-left is-w-auto',
+    sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
+  },
+  m: {
+    label: 'table.game.short',
+    tooltip: 'table.game.tooltip',
+    sortOrders: [{ target: 'gp', direction: SORT_STATE_DESCEND }],
+  },
+  plus: {
+    label: 'table.goalFor.short',
+    tooltip: 'table.goalFor.tooltip',
+    sortOrders: [{ target: 'plus', direction: SORT_STATE_DESCEND }],
+  },
+  minus: {
+    label: 'table.goalAgainst.short',
+    tooltip: 'table.goalAgainst.tooltip',
+    sortOrders: [{ target: 'minus', direction: SORT_STATE_ASCEND }],
+  },
+  gk: {
+    label: 'table.goalDiff.short',
+    tooltip: 'table.goalDiff.tooltip',
+    sortOrders: [{ target: 'gk', direction: SORT_STATE_DESCEND }],
+  },
+  GFGP: {
+    label: 'table.gfgp.short',
+    tooltip: 'table.gfgp.tooltip',
+    sortOrders: [{ target: 'GFGP', direction: SORT_STATE_DESCEND }],
+  },
+  GAGP: {
+    label: 'table.gagp.short',
+    tooltip: 'table.gagp.tooltip',
+    sortOrders: [{ target: 'GAGP', direction: SORT_STATE_ASCEND }],
+  },
+  Shots: {
+    label: 'table.sog.short',
+    tooltip: 'table.sog.tooltip',
+    sortOrders: [{ target: 'Shots', direction: SORT_STATE_DESCEND }],
+  },
+  SA: {
+    label: 'table.sa.short',
+    tooltip: 'table.sa.tooltip',
+    sortOrders: [{ target: 'SA', direction: SORT_STATE_ASCEND }],
+  },
+  ShotsGP: {
+    label: 'table.sogp.short',
+    tooltip: 'table.sogp.tooltip',
+    sortOrders: [{ target: 'ShotsGP', direction: SORT_STATE_DESCEND }],
+  },
+  SAGP: {
+    label: 'table.sagp.short',
+    tooltip: 'table.sagp.tooltip',
+    sortOrders: [{ target: 'SAGP', direction: SORT_STATE_ASCEND }],
+  },
+  GFShots: {
+    label: 'table.sogPercent.short',
+    tooltip: 'table.sogPercent.tooltip',
+    sortOrders: [{ target: 'GFShots', direction: SORT_STATE_DESCEND }],
+  },
+};

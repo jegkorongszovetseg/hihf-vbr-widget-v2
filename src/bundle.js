@@ -7,6 +7,7 @@ import GoaliesLeader from './components/widgets/GoaliesLeader.ce.vue';
 import TeamAttendance from './components/widgets/TeamAttendance.ce.vue';
 import TeamFairplay from './components/widgets/TeamFairplay.ce.vue';
 import Statistics from './components/widgets/extended/Statistics.ce.vue';
+import TeamPowerplay from './components/widgets//TeamPowerplay.ce.vue';
 
 export const setup = ({ apiKey }) => {
   window.__MJSZ_VBR_WIDGET__ = { apiKey };
@@ -20,6 +21,7 @@ const FieldPlayersPenaltiesCE = defineCustomElement(FieldPlayersPenalties);
 const GoaliesLeaderCE = defineCustomElement(GoaliesLeader);
 const TeamAttendanceCE = defineCustomElement(TeamAttendance);
 const TeamFairplayCE = defineCustomElement(TeamFairplay);
+const TeamPowerplayCE = defineCustomElement(TeamPowerplay);
 const StatisticsCE = defineCustomElement(Statistics);
 
 export {
@@ -30,6 +32,7 @@ export {
   GoaliesLeaderCE,
   TeamAttendanceCE,
   TeamFairplayCE,
+  TeamPowerplayCE,
   StatisticsCE,
 };
 
@@ -41,5 +44,6 @@ export function register() {
   customElements.define('mjsz-vbr-goalies', GoaliesLeaderCE);
   customElements.define('mjsz-vbr-team-attendance', TeamAttendanceCE);
   customElements.define('mjsz-vbr-team-fairplay', TeamFairplayCE);
+  customElements.define('mjsz-vbr-team-powerplay', TeamPowerplayCE);
   customElements.define('mjsz-vbr-statistics', StatisticsCE);
 }
