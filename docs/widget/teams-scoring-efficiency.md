@@ -1,9 +1,9 @@
-# Csapat büntetések
+# Csapat hatékonyság
 
 ## Példa
 
 <ClientOnly>
-  <mjsz-vbr-team-fairplay
+  <mjsz-vbr-team-scoring
     locale="hu"
     championship-id="3314"
     division="Alapszakasz" 

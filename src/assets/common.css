@@ -35,6 +35,7 @@
 
   --vbr-widget-table-header-font-size: 12px;
   --vbr-widget-table-default-column-width: 30px;
+  --vbr-widget-table-default-bg-color: var(--vbr-widget-primary-color-0);
   --vbr-widget-table-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-table-neutral-color: var(--vbr-widget-primary-color-300);
   --vbr-widget-table-header-bg-color: var(--vbr-widget-primary-color-800);

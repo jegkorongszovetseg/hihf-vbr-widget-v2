@@ -3,6 +3,7 @@
 .table {
   @add-mixin ResetTable;
   color: var(--vbr-widget-table-color);
+  background-color: var(--vbr-widget-table-default-bg-color);
 
   th {
     width: var(--vbr-widget-table-default-column-width);

@@ -3,9 +3,9 @@
 ## Példa
 
 <ClientOnly>
-  <mjsz-vbr-team-penalty-killing
+  <mjsz-vbr-team-scoring
     locale="hu"
-    championship-id="2051"
+    championship-id="3314"
     division="Alapszakasz" 
   />
 </ClientOnly>

@@ -1,9 +1,9 @@
-# Csapat büntetések
+# Csapat emberelőnyök
 
 ## Példa
 
 <ClientOnly>
-  <mjsz-vbr-team-fairplay
+  <mjsz-vbr-team-powerplay
     locale="hu"
     championship-id="3314"
     division="Alapszakasz" 
