@@ -35,7 +35,7 @@ const { sort, change: onSort } = useSort({
 
 const convertedRows = computed(() => {
   return convert(unref(rows))
-    .convertTimes(['dvgTime', 'dvgTimePP1', 'dvgTimePP2'])
+    .convertTimes(['advTime', 'advTimePP1', 'advTimePP2'])
     .sorted(sort)
     .addIndex(sort.sortTarget)
     .value();
