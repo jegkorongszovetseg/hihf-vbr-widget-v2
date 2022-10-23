@@ -8,7 +8,7 @@ export const fetchVBRData = async (route, apiKey, data) => {
       cache: 'no-cache',
       headers: {
         'Content-Type': 'application/json',
-        'X-API-KEY': apiKey || window.__MJSZ_VBR_WIDGET__?.apiKey || import.meta.env.VITE_VBR_API_KEY,
+        'X-API-KEY': resolveApiKey(apiKey),
       },
     })
       .then((response) => {
@@ -28,4 +28,11 @@ const objectToQueryString = (obj) => {
   return Object.keys(obj)
     .map((key) => key + '=' + obj[key])
     .join('&');
+};
+
+const resolveApiKey = (apiKey) => {
+  if (apiKey) return apiKey;
+  if (window.__MJSZ_VBR_WIDGET__?.apiKey) return window.__MJSZ_VBR_WIDGET__.apiKey;
+  if (import.meta.env.NODE_ENV !== 'production') return import.meta.env.VITE_VBR_API_KEY;
+  return '';
 };
