@@ -415,7 +415,7 @@ export const COLUMNS_TEAM_ATTENDANCE = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto',
+    class: 'is-text-left is-w-auto is-text-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   home: {
@@ -486,7 +486,7 @@ export const COLUMNS_TEAMS_FAIRPLAY = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto',
+    class: 'is-text-left is-w-auto is-text-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   gp: {
@@ -558,7 +558,7 @@ export const COLUMNS_TEAMS_PENALTY_KILLING = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto',
+    class: 'is-text-left is-w-auto is-text-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   gp: {
@@ -615,7 +615,7 @@ export const COLUMNS_TEAMS_POWERPLAY = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto',
+    class: 'is-text-left is-w-auto is-text-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   gp: {
@@ -672,7 +672,7 @@ export const COLUMNS_SCORING_EFFICIENCY = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto',
+    class: 'is-text-left is-w-auto is-text-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   m: {

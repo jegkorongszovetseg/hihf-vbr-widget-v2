@@ -21,16 +21,16 @@ const change = () => {
 <template>
   <div>
     <button type="button" @click="change">{{ locale }}</button>
-    <TeamScoringEfficiency :locale="locale" championship-id="3314" division="Alapszakasz" />
-    <TeamPowerplay :locale="locale" championship-id="3314" division="Alapszakasz" />
-    <TeamPenaltyKilling :locale="locale" championship-id="3314" division="Alapszakasz" />
+    <!-- <TeamScoringEfficiency :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
+    <!-- <TeamPowerplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
+    <!-- <TeamPenaltyKilling :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamAttendance :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
-    <Statistics :locale="locale"  />
+    <!-- <Statistics :locale="locale"  /> -->
     <!-- <TeamFairplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <GoaliesLeader :locale="locale" championship-id="3314" division="Alapszakasz" :under-limit="false" /> -->
     <!-- <FieldPlayersPenalties :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <FieldPlayersLeader :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
-    <!-- <Standings :locale="locale" championship-id="3314" division="Alapszakasz" type="3" /> -->
+    <Standings :locale="locale" championship-id="3314" division="Alapszakasz" type="3" />
     <!-- <Schedule :locale="locale" championship-id="3314" division="Alapszakasz" auto-initial-page /> -->
   </div>
 </template>

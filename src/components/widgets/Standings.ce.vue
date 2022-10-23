@@ -4,40 +4,19 @@ import { useAsyncState } from '@vueuse/core';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
 import convert from '../../utils/convert';
-import StandingsTable from './StandingsTable.vue';
+import { COLUMNS_STANDINGS_P_2, COLUMNS_STANDINGS_P_3 } from './internal';
 import I18NProvider from '../I18NProvider.vue';
 import ErrorNotice from '../ErrorNotice.vue';
+import StatisticsTable from './StatisticsTable.vue';
+import { baseProps } from './internal.props';
 
 const props = defineProps({
-  locale: {
-    type: String,
-    default: 'hu',
-  },
-
-  championshipId: {
-    type: String,
-    default: '',
-  },
-
-  division: {
-    type: String,
-    default: '',
-  },
-
-  apiKey: {
-    type: String,
-    default: '',
-  },
+  ...baseProps,
 
   type: {
     type: String,
     default: '3',
     validator: (value) => ['2', '3'].includes(value),
-  },
-
-  hideColumns: {
-    type: String,
-    default: '',
   },
 });
 
@@ -55,11 +34,13 @@ const {
   []
 );
 
-const { sort, change } = useSort({});
+const { sort, change } = useSort();
 
 const convertedRows = computed(() => {
   return convert(unref(rows)).sorted(sort).addContinuousIndex().value();
 });
+
+const currentColumns = computed(() => (props.type === '3' ? COLUMNS_STANDINGS_P_3 : COLUMNS_STANDINGS_P_2));
 
 const onSort = (payload) => {
   change(payload);
@@ -71,8 +52,8 @@ const onSort = (payload) => {
     <I18NProvider :locale="locale">
       <ErrorNotice v-if="error?.error" :error="error.message" />
 
-      <StandingsTable
-        :type="props.type"
+      <StatisticsTable
+        :columns="currentColumns"
         :rows="convertedRows.rows"
         :is-loading="isLoading"
         :hide-columns="hideColumns"
