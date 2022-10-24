@@ -36,6 +36,11 @@ const props = defineProps({
   offsetName: {
     type: String,
     default: ''
+  },
+
+  externalGameResolver: {
+    type: Function,
+    required: true,
   }
 });
 const { columns, error } = useColumns(COLUMNS_SCHEDULE, props.hideColumns, { offsetName: props.offsetName });
@@ -56,7 +61,7 @@ const { t } = useI18n();
         <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>
         <a
           v-else
-          :href="externalBaseUrl + row.id"
+          :href="externalGameResolver(row.id)"
           target="_blank"
           :class="{ 'is-text-dark': row.gameStatus !== 1, 'is-text-accent': row.gameStatus === 1 }"
         >

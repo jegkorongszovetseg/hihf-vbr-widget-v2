@@ -6,32 +6,16 @@ import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import { usePage } from '../../composables/usePage';
 import { offsetName } from '../../utils/datetime';
 import convert from '../../utils/convert';
+import { baseProps } from './internal.props';
 import ScheduleTable from './ScheduleTable.vue';
 import I18NProvider from '../I18NProvider.vue';
 import Paginator from '../Paginator.vue';
 import ErrorNotice from '../ErrorNotice.vue';
 import TimezoneSelector from '../TimezoneSelector.vue';
+import { externalGameLinkResolver } from '../../utils/resolvers';
 
 const props = defineProps({
-  locale: {
-    type: String,
-    default: 'hu',
-  },
-
-  championshipId: {
-    type: String,
-    default: '3314',
-  },
-
-  division: {
-    type: String,
-    default: 'Alapszakasz',
-  },
-
-  apiKey: {
-    type: String,
-    default: '',
-  },
+  ...baseProps,
 
   pagination: {
     type: Boolean,
@@ -58,6 +42,11 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+
+  externalGameLink: {
+    type: [String, Function],
+    default: '',
+  },
 });
 
 const locale = computed(() => props.locale);
@@ -68,13 +57,18 @@ const {
   isLoading,
 } = useAsyncState(
   fetchVBRData('/v1/gamesList', props.apiKey, {
-    championshipId: Number(props.championshipId),
+    championshipId: props.championshipId,
     division: props.division,
   }),
   []
 );
 
-const { page, change: onPaginatorChange } = usePage({ initial: props.initialPage, items: rows, limit: props.limit, auto: props.autoInitialPage });
+const { page, change: onPaginatorChange } = usePage({
+  initial: props.initialPage,
+  items: rows,
+  limit: props.limit,
+  auto: props.autoInitialPage,
+});
 const timezone = ref(dayjs.tz.guess());
 const currentOffsetName = offsetName(new Date(), unref(timezone), props.locale);
 
@@ -91,6 +85,8 @@ const totalItems = computed(() => convertedRows.value?.totalItems);
 const onTimezoneChange = (tz) => {
   timezone.value = tz;
 };
+
+const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
 </script>
 
 <template>
@@ -100,7 +96,13 @@ const onTimezoneChange = (tz) => {
 
       <TimezoneSelector :locale="props.locale" :current-zone="timezone" @change="onTimezoneChange" />
 
-      <ScheduleTable :rows="convertedRows.rows" :is-loading="isLoading" :offset-name="currentOffsetName" />
+      <ScheduleTable
+        :rows="convertedRows.rows"
+        :is-loading="isLoading"
+        :offset-name="currentOffsetName"
+        :hide-columns="props.hideColumns"
+        :external-game-resolver="resolveExternalGameLink"
+      />
 
       <Paginator
         :page="page"
