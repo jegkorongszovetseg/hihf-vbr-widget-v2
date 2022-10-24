@@ -24,13 +24,13 @@ const change = () => {
     <!-- <TeamScoringEfficiency :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamPowerplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamPenaltyKilling :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
-    <!-- <TeamAttendance :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
-    <!-- <Statistics :locale="locale"  /> -->
     <!-- <TeamFairplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
+    <TeamAttendance :locale="locale" championship-id="3314" division="Alapszakasz" :is-team-linked="true" />
+    <!-- <Statistics :locale="locale"  /> -->
     <!-- <GoaliesLeader :locale="locale" championship-id="3314" division="Alapszakasz" :under-limit="false" /> -->
-    <!-- <FieldPlayersPenalties :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
-    <!-- <FieldPlayersLeader :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
+    <FieldPlayersPenalties :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="true" :is-team-linked="true" />
+    <FieldPlayersLeader :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="true" :is-team-linked="true" />
     <!-- <Standings :locale="locale" championship-id="3314" division="Alapszakasz" type="3" /> -->
-    <Schedule :locale="locale" championship-id="3314" division="Alapszakasz" auto-initial-page hide-columns="broadcast" />
+    <!-- <Schedule :locale="locale" championship-id="3314" division="Alapszakasz" auto-initial-page hide-columns="broadcast" /> -->
   </div>
 </template>

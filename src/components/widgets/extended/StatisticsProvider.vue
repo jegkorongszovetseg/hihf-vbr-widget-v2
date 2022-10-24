@@ -38,7 +38,7 @@ const initialReport = REPORTS_MAP.get('fieldplayers');
 state.columns = initialReport.columns;
 state.api = initialReport.api;
 
-const { page, change: onPaginatorChange } = usePage({});
+const { page, change: onPaginatorChange } = usePage();
 
 const { sort, change: onSort } = useSort({
   sortTarget: 'point',

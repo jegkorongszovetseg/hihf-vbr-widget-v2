@@ -5,13 +5,17 @@ import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
 import convert from '../../utils/convert';
 import { COLUMNS_TEAM_ATTENDANCE } from './internal';
-import { commonProps } from './statistics.internal';
 import I18NProvider from '../I18NProvider.vue';
 import ErrorNotice from '../ErrorNotice.vue';
 import StatisticsTable from './StatisticsTable.vue';
 import { SORT_STATE_DESCEND } from '../../constants';
+import { baseProps, teamStatsProps } from './internal.props';
+import { externalTeamLinkResolver } from '../../utils/resolvers';
 
-const props = defineProps(commonProps);
+const props = defineProps({
+  ...baseProps,
+  ...teamStatsProps,
+});
 
 const columns = COLUMNS_TEAM_ATTENDANCE;
 const locale = computed(() => props.locale);
@@ -36,6 +40,8 @@ const { sort, change: onSort } = useSort({
 const convertedRows = computed(() => {
   return convert(unref(rows)).sorted(sort).addIndex(sort.sortTarget).value();
 });
+
+const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamLink, teamName);
 </script>
 
 <template>
@@ -49,6 +55,8 @@ const convertedRows = computed(() => {
         :is-loading="isLoading"
         :hide-columns="props.hideColumns"
         :sort="sort"
+        :external-team-resolver="resolveExternalTeamLink"
+        :is-team-linked="isTeamLinked"
         @sort="onSort"
       />
     </I18NProvider>

@@ -24,3 +24,47 @@ export const baseProps = {
     default: '',
   },
 };
+
+export const playerStatsProps = {
+  limit: {
+    type: Number,
+    default: 20,
+  },
+
+  teamFilterByName: {
+    type: String,
+    default: '',
+  },
+
+  externalTeamLink: {
+    type: [String, Function],
+    default: '',
+  },
+
+  isTeamLinked: {
+    type: Boolean,
+    default: false,
+  },
+
+  externalPlayerLink: {
+    type: [String, Function],
+    default: '',
+  },
+
+  isPlayerLinked: {
+    type: Boolean,
+    default: false,
+  },
+};
+
+export const teamStatsProps = {
+  externalTeamLink: {
+    type: [String, Function],
+    default: '',
+  },
+
+  isTeamLinked: {
+    type: Boolean,
+    default: false,
+  },
+};

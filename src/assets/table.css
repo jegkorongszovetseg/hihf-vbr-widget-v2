@@ -147,6 +147,13 @@
         margin-right: 3px;
       }
     }
+
+    a {
+      color: var(--vbr-widget-link-color);
+    }
+    a:hover {
+      color: var(--vbr-widget-hover-color);
+    }
   }
 
   th,

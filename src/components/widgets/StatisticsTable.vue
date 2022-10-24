@@ -12,6 +12,7 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+
   rows: {
     type: Array,
     default: () => [],
@@ -30,6 +31,26 @@ const props = defineProps({
   sort: {
     type: Object,
     default: () => ({}),
+  },
+
+  externalTeamResolver: {
+    type: Function,
+    required: true,
+  },
+
+  externalPlayerResolver: {
+    type: Function,
+    required: true,
+  },
+
+  isTeamLinked: {
+    type: Boolean,
+    default: false,
+  },
+
+  isPlayerLinked: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -64,6 +85,12 @@ const onSort = (payload) => emit('sort', payload);
       </template>
       <template v-slot:cell-teamLogo="{ row }">
         <Image class="is-logo-image" :key="row.teamId" :src="row.teamLogo" />
+      </template>
+      <template v-if="isTeamLinked" v-slot:cell-teamName="{ row }">
+        <a :href="externalTeamResolver(row.teamName)" target="_blank">{{ row.teamName }}</a>
+      </template>
+      <template v-if="isPlayerLinked" v-slot:cell-name="{ row }">
+        <a :href="externalPlayerResolver(row.id)" target="_blank">{{ row.name }}</a>
       </template>
     </DataTable>
   </ResponsiveTable>
