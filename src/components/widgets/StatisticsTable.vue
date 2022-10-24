@@ -40,7 +40,7 @@ const props = defineProps({
 
   externalPlayerResolver: {
     type: Function,
-    required: true,
+    default: () => {},
   },
 
   isTeamLinked: {
