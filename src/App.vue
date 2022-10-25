@@ -21,12 +21,12 @@ const change = () => {
 <template>
   <div>
     <button type="button" @click="change">{{ locale }}</button>
-    <TeamScoringEfficiency :locale="locale" championship-id="3314" division="Alapszakasz" />
+    <!-- <TeamScoringEfficiency :locale="locale" championship-id="3314" division="Alapszakasz" />
     <TeamPowerplay :locale="locale" championship-id="3314" division="Alapszakasz" />
     <TeamPenaltyKilling :locale="locale" championship-id="3314" division="Alapszakasz" />
-    <TeamFairplay :locale="locale" championship-id="3314" division="Alapszakasz" />
+    <TeamFairplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamAttendance :locale="locale" championship-id="3314" division="Alapszakasz" :is-team-linked="true" /> -->
-    <!-- <Statistics :locale="locale"  /> -->
+    <Statistics :locale="locale"  />
     <!-- <GoaliesLeader :locale="locale" championship-id="3314" division="Alapszakasz" :under-limit="false" /> -->
     <!-- <FieldPlayersPenalties :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="true" :is-team-linked="true" />
     <FieldPlayersLeader :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="true" :is-team-linked="true" /> -->

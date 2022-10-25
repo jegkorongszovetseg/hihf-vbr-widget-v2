@@ -1,12 +1,13 @@
 <script setup>
-import { computed, reactive, unref } from 'vue';
+import { computed, reactive, unref, watch } from 'vue';
 import { head } from 'ramda';
 import { fetchVBRData } from '../../../composables/useFetchVBRApi';
-import { convertSeasons, REPORTS_MAP, REPORTS_SELECT } from './statistics.internal.js';
+import { convertSeasons, convertTeams, REPORTS_MAP, REPORTS_SELECT } from './statistics.internal.js';
 import convert from '../../../utils/convert';
 import { usePage } from '../../../composables/usePage';
 import { SORT_STATE_DESCEND } from '../../../constants';
 import useSort from '../../../composables/useSort';
+import { useUrlSearchParams } from '@vueuse/core';
 
 const props = defineProps({
   championshipName: {
@@ -18,17 +19,26 @@ const props = defineProps({
     type: Number,
     default: 20,
   },
+
+  apiKey: {
+    type: String,
+    default: '',
+  },
 });
+
+const params = useUrlSearchParams('history');
 
 const state = reactive({
   error: '',
   loading: false,
   seasons: [],
-  championshipId: null,
+  championshipId: params.championshipId || null,
   sections: [],
-  section: null,
+  section: params.section || null,
   reports: REPORTS_SELECT,
-  currentReport: 'fieldplayers',
+  currentReport: params.report || 'fieldplayers',
+  teams: [],
+  teamFilter: '',
   rows: [],
   columns: null,
   api: null,
@@ -53,7 +63,6 @@ const fetchSeasons = async () => {
     });
     state.seasons = convertSeasons(seasons);
     if (!state.championshipId) state.championshipId = head(state.seasons).championshipId;
-    fetchSection();
   } catch (error) {
     console.log(error);
     state.error = error.message;
@@ -65,11 +74,13 @@ const fetchSeasons = async () => {
 const fetchSection = async () => {
   try {
     const sections = await fetchVBRData('/v1/championshipSections', props.apiKey, {
-      championshipId: Number(state.championshipId),
+      championshipId: state.championshipId,
     });
     state.sections = sections.sectionName;
-    state.section = head(state.sections);
-    fetchStatistic();
+    if (!state.section) {
+      state.section = head(state.sections);
+      params.section = state.section;
+    }
   } catch (error) {
     console.log(error);
     state.error = error.message;
@@ -82,7 +93,7 @@ const fetchStatistic = async () => {
     state.rows = [];
     onPaginatorChange(1);
     const rows = await fetchVBRData(state.api, props.apiKey, {
-      championshipId: Number(state.championshipId),
+      championshipId: state.championshipId,
       division: state.section,
     });
     state.rows = rows;
@@ -94,11 +105,38 @@ const fetchStatistic = async () => {
   }
 };
 
-fetchSeasons();
+const fetchTeams = async () => {
+  try {
+    state.loading = true;
+    state.rows = [];
+    const teams = await fetchVBRData('/v1/championshipTeams', props.apiKey, {
+      championshipId: state.championshipId,
+    });
+    console.log(teams);
+    state.teams = convertTeams(teams);
+  } catch (error) {
+    state.error = error.message;
+  } finally {
+    state.loading = false;
+  }
+};
+
+const init = async () => {
+  try {
+    await fetchSeasons();
+    await fetchSection();
+    await fetchTeams();
+    setTableData();
+    await fetchStatistic();
+  } catch (error) {
+    state.error = error.message;
+  }
+};
+init();
 
 const convertedRows = computed(() =>
   convert(state.rows)
-    // .teamFilter(props.teamFilterByName, ['teamName'])
+    .teamFilter(state.teamFilter, ['teamId'])
     .playerName()
     .sorted(sort)
     .addIndex(sort.sortTarget)
@@ -106,25 +144,58 @@ const convertedRows = computed(() =>
     .value()
 );
 
-const onSeasonChange = (event) => {
-  state.championshipId = event.target.value;
-  fetchSeasons();
-};
-
-const onSectionChange = (event) => {
-  state.section = event.target.value;
-  fetchStatistic();
-};
-
-const onReportChange = (event) => {
-  state.currentReport = event.target.value;
-  const report = REPORTS_MAP.get(event.target.value);
+const setTableData = () => {
+  const report = REPORTS_MAP.get(state.currentReport);
   state.columns = report.columns;
   state.api = report.api;
   sort.sortTarget = report.sort.sortTarget;
   sort.orders = report.sort.orders;
-  fetchStatistic();
 };
+
+const onSeasonChange = (event) => {
+  state.section = null;
+  params.report = null;
+  params.championshipId = event.target.value;
+};
+
+const onSectionChange = (event) => {
+  params.section = event.target.value;
+};
+
+const onReportChange = (event) => {
+  params.report = event.target.value;
+};
+
+const onTeamChange = (event) => {
+  state.teamFilter = Number(event.target.value) || '';
+};
+
+watch(
+  () => params.report,
+  (reportId) => {
+    state.currentReport = reportId;
+    setTableData();
+    fetchStatistic();
+  }
+);
+
+watch(
+  () => params.section,
+  (section) => {
+    state.section = section;
+    fetchStatistic();
+  }
+);
+
+watch(
+  () => params.championshipId,
+  async (championshipId) => {
+    state.championshipId = championshipId;
+    await fetchSection();
+    await fetchTeams();
+    // await fetchStatistic();
+  }
+);
 </script>
 
 <template>
@@ -138,6 +209,7 @@ const onReportChange = (event) => {
       onSectionChange,
       onReportChange,
       onPaginatorChange,
+      onTeamChange,
       onSort,
     }"
   />

@@ -1,4 +1,4 @@
-import { compose, descend, map, pick, prop, sort } from 'ramda';
+import { ascend, compose, descend, map, pick, prop, sort } from 'ramda';
 import { SORT_STATE_DESCEND } from '../../../constants';
 import {
   COLUMNS_FIELD_PLAYERS,
@@ -99,3 +99,5 @@ export const REPORTS_SELECT = [
 
 export const convertSeasons = (seasons) =>
   compose(sort(descend(prop('championshipId'))), map(pick(['championshipId', 'seasonName'])))(seasons);
+
+export const convertTeams = (teams) => sort(ascend(prop('teamName')), teams);
