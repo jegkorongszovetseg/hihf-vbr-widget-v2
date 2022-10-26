@@ -66,7 +66,7 @@ export const REPORTS_MAP = new Map()
     },
   });
 
-export const REPORTS_SELECT = [
+export const PLAYERS_REPORTS_SELECT = [
   {
     name: 'Points',
     value: 'points',
@@ -87,6 +87,17 @@ export const REPORTS_SELECT = [
     name: 'Goalies under 40%',
     value: 'goaliesunderlimit',
   },
+  // {
+  //   name: 'Team Attendance',
+  //   value: 'teamattandance',
+  // },
+  // {
+  //   name: 'Team Fairplay',
+  //   value: 'teamFairplay',
+  // },
+];
+
+export const TEAMS_REPORTS_SELECT = [
   {
     name: 'Team Attendance',
     value: 'teamattandance',

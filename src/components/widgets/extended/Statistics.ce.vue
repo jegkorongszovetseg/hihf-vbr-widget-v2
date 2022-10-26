@@ -44,6 +44,7 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
           teams,
           teamFilter,
           playerFilter,
+          reportType,
           onSort,
           onSeasonChange,
           onReportChange,
@@ -51,9 +52,14 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
           onPaginatorChange,
           onTeamChange,
           onPlayerInput,
+          onStatTypeChange,
         }"
       >
         <div>
+          <div>
+            <button type="button" @click="onStatTypeChange('players')">Players</button>
+            <button type="button" @click="onStatTypeChange('teams')">Teams</button>
+          </div>
           <div>
             <label>Szezon</label>
             <select :value="championshipId" @change="onSeasonChange">
@@ -76,7 +82,7 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
           </div>
           <div>
             <label>Teams</label>
-            <select :value="teamFilter" @change="onTeamChange">
+            <select :value="teamFilter" @change="onTeamChange" :disabled="reportType !== 'players'">
               <option value="">All</option>
               <option v-for="{ teamId, teamName } in teams" :key="teamId" :value="teamId">{{ teamName }}</option>
             </select>

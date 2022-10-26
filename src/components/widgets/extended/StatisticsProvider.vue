@@ -2,7 +2,13 @@
 import { computed, reactive, unref, watch } from 'vue';
 import { head } from 'ramda';
 import { fetchVBRData } from '../../../composables/useFetchVBRApi';
-import { convertSeasons, convertTeams, REPORTS_MAP, REPORTS_SELECT } from './statistics.internal.js';
+import {
+  convertSeasons,
+  convertTeams,
+  REPORTS_MAP,
+  PLAYERS_REPORTS_SELECT,
+  TEAMS_REPORTS_SELECT,
+} from './statistics.internal.js';
 import convert from '../../../utils/convert';
 import { usePage } from '../../../composables/usePage';
 import { SORT_STATE_DESCEND } from '../../../constants';
@@ -35,11 +41,12 @@ const state = reactive({
   championshipId: params.championshipId || null,
   sections: [],
   section: params.section || null,
-  reports: REPORTS_SELECT,
+  reports: PLAYERS_REPORTS_SELECT,
   currentReport: params.report || 'fieldplayers',
   teams: [],
   teamFilter: '',
   playerFilter: '',
+  reportType: 'players',
   rows: [],
   columns: null,
   api: null,
@@ -48,6 +55,10 @@ const state = reactive({
 const initialReport = REPORTS_MAP.get('fieldplayers');
 state.columns = initialReport.columns;
 state.api = initialReport.api;
+
+const currentReportList = computed(() =>
+  state.reportType === 'players' ? PLAYERS_REPORTS_SELECT : TEAMS_REPORTS_SELECT
+);
 
 const { page, change: onPaginatorChange } = usePage();
 
@@ -80,7 +91,7 @@ const fetchSection = async () => {
     state.sections = sections.sectionName;
     if (!state.section) {
       state.section = head(state.sections);
-      params.section = state.section;
+      // params.section = state.section;
     }
   } catch (error) {
     console.log(error);
@@ -178,6 +189,11 @@ const onPlayerInput = (event) => {
   state.playerFilter = event.target.value;
 };
 
+const onStatTypeChange = (value) => {
+  state.reportType = value;
+  state.currentReport = head(currentReportList.value).value;
+};
+
 watch(
   () => params.report,
   (reportId) => {
@@ -213,6 +229,7 @@ watch(
       rows: convertedRows,
       sort,
       page,
+      reports: currentReportList,
       onSeasonChange,
       onSectionChange,
       onReportChange,
@@ -220,6 +237,7 @@ watch(
       onTeamChange,
       onPlayerInput,
       onSort,
+      onStatTypeChange,
     }"
   />
 </template>

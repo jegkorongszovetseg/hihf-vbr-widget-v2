@@ -21,11 +21,13 @@ const convert = (data = []) => {
   return {
     result: [...data],
     filteredRowsLength: 0,
+    isFiltered: false,
 
     value() {
       return {
         rows: this.result,
-        totalItems: this.filteredRowsLength ? this.filteredRowsLength : data.length,
+        totalItems: this.filteredRowsLength,
+        totalItems: this.isFiltered ? this.filteredRowsLength : data.length,
       };
     },
 
@@ -35,6 +37,7 @@ const convert = (data = []) => {
           exact ? propEq(key, name) : pipe(prop(key), toLower, includes(name))
         );
         const filteredRows = filter(anyPass([...predicate]), this.result);
+        this.isFiltered = true;
         this.filteredRowsLength = filteredRows.length;
         this.result = filteredRows;
       }
