@@ -43,12 +43,14 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
           currentReport,
           teams,
           teamFilter,
+          playerFilter,
           onSort,
           onSeasonChange,
           onReportChange,
           onSectionChange,
           onPaginatorChange,
           onTeamChange,
+          onPlayerInput,
         }"
       >
         <div>
@@ -79,7 +81,9 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
               <option v-for="{ teamId, teamName } in teams" :key="teamId" :value="teamId">{{ teamName }}</option>
             </select>
           </div>
-          <div>Input</div>
+          <div>
+            <input type="text" :value="playerFilter" @input="onPlayerInput" />
+          </div>
         </div>
 
         <StatisticsTable

@@ -39,6 +39,7 @@ const state = reactive({
   currentReport: params.report || 'fieldplayers',
   teams: [],
   teamFilter: '',
+  playerFilter: '',
   rows: [],
   columns: null,
   api: null,
@@ -136,8 +137,9 @@ init();
 
 const convertedRows = computed(() =>
   convert(state.rows)
-    .teamFilter(state.teamFilter, ['teamId'])
     .playerName()
+    .filter(state.teamFilter, ['teamId'], true)
+    .filter(state.playerFilter, ['name'])
     .sorted(sort)
     .addIndex(sort.sortTarget)
     .pagination(unref(page), props.limit)
@@ -154,7 +156,7 @@ const setTableData = () => {
 
 const onSeasonChange = (event) => {
   state.section = null;
-  params.report = null;
+  state.report = null;
   params.championshipId = event.target.value;
 };
 
@@ -167,7 +169,13 @@ const onReportChange = (event) => {
 };
 
 const onTeamChange = (event) => {
+  onPaginatorChange(1);
   state.teamFilter = Number(event.target.value) || '';
+};
+
+const onPlayerInput = (event) => {
+  onPaginatorChange(1);
+  state.playerFilter = event.target.value;
 };
 
 watch(
@@ -210,6 +218,7 @@ watch(
       onReportChange,
       onPaginatorChange,
       onTeamChange,
+      onPlayerInput,
       onSort,
     }"
   />

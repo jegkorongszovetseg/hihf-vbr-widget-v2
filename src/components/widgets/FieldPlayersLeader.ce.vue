@@ -43,7 +43,7 @@ const { sort, change: onSort } = useSort({
 
 const convertedRows = computed(() => {
   return convert(unref(rows))
-    .teamFilter(props.teamFilterByName, ['teamName'])
+    .filter(props.teamFilterByName, ['teamName'])
     .playerName()
     .sorted(sort)
     .addIndex(sort.sortTarget)

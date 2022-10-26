@@ -74,7 +74,7 @@ const currentOffsetName = offsetName(new Date(), unref(timezone), props.locale);
 
 const convertedRows = computed(() => {
   return convert(unref(rows))
-    .teamFilter(props.teamFilterByName, ['homeTeamName', 'awayTeamName'])
+    .filter(props.teamFilterByName, ['homeTeamName', 'awayTeamName'])
     .schedule(unref(timezone), unref(locale))
     .pagination(unref(page), props.limit)
     .value();
