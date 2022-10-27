@@ -4,7 +4,7 @@ import { useAsyncState } from '@vueuse/core';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
 import { usePage } from '../../composables/usePage';
-import convert from '../../utils/convert';
+import convert, { playerName, rawConvert } from '../../utils/convert';
 import { COLUMNS_GOALIES } from './internal';
 import { SORT_STATE_DESCEND, VBR_API_GOALIE_PATH, VBR_API_GOALIE_UNDER_PATH } from '../../constants';
 import { baseProps, playerStatsProps } from './internal.props';
@@ -29,7 +29,7 @@ const locale = computed(() => props.locale);
 const apiPath = computed(() => (props.underLimit ? VBR_API_GOALIE_UNDER_PATH : VBR_API_GOALIE_PATH));
 
 const {
-  state: rows,
+  state: rawRows,
   error,
   isLoading,
 } = useAsyncState(
@@ -46,6 +46,8 @@ const { sort, change: onSort } = useSort({
   sortTarget: 'svsPercent',
   orders: [{ target: 'svsPercent', direction: SORT_STATE_DESCEND }],
 });
+
+const rows = computed(() => rawConvert(unref(rawRows), playerName));
 
 const convertedRows = computed(() => {
   return convert(unref(rows))

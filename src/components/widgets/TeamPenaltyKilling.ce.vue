@@ -3,7 +3,7 @@ import { computed, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
-import convert from '../../utils/convert';
+import convert, { convertTimes, rawConvert } from '../../utils/convert';
 import { COLUMNS_TEAMS_PENALTY_KILLING } from './internal';
 import { SORT_STATE_DESCEND } from '../../constants';
 import { baseProps, teamStatsProps } from './internal.props';
@@ -21,7 +21,7 @@ const columns = COLUMNS_TEAMS_PENALTY_KILLING;
 const locale = computed(() => props.locale);
 
 const {
-  state: rows,
+  state: rawRows,
   error,
   isLoading,
 } = useAsyncState(
@@ -37,9 +37,10 @@ const { sort, change: onSort } = useSort({
   orders: [{ target: 'pkPercent', direction: SORT_STATE_DESCEND }],
 });
 
+const rows = computed(() => rawConvert(unref(rawRows), convertTimes(['dvgTime', 'dvgTimePP1', 'dvgTimePP2'])));
+
 const convertedRows = computed(() => {
   return convert(unref(rows))
-    .convertTimes(['dvgTime', 'dvgTimePP1', 'dvgTimePP2'])
     .sorted(sort)
     .addIndex(sort.sortTarget)
     .value();

@@ -3,7 +3,7 @@ import { computed, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
-import convert from '../../utils/convert';
+import convert, { convertTimes, rawConvert } from '../../utils/convert';
 import { COLUMNS_TEAMS_POWERPLAY } from './internal';
 import { SORT_STATE_DESCEND } from '../../constants';
 import { baseProps, teamStatsProps } from './internal.props';
@@ -21,7 +21,7 @@ const columns = COLUMNS_TEAMS_POWERPLAY;
 const locale = computed(() => props.locale);
 
 const {
-  state: rows,
+  state: rawRows,
   error,
   isLoading,
 } = useAsyncState(
@@ -36,6 +36,8 @@ const { sort, change: onSort } = useSort({
   sortTarget: 'ppPercent',
   orders: [{ target: 'ppPercent', direction: SORT_STATE_DESCEND }],
 });
+
+const rows = computed(() => rawConvert(unref(rawRows), convertTimes(['advTime', 'advTimePP1', 'advTimePP2'])));
 
 const convertedRows = computed(() => {
   return convert(unref(rows))
