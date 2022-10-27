@@ -4,7 +4,7 @@ import { useAsyncState } from '@vueuse/core';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
 import { usePage } from '../../composables/usePage';
-import convert from '../../utils/convert';
+import convert, { playerName, rawConvert } from '../../utils/convert';
 import { COLUMNS_FIELD_PLAYERS_PENALTY } from './internal';
 import { SORT_STATE_DESCEND } from '../../constants';
 import { baseProps, playerStatsProps } from './internal.props';
@@ -23,7 +23,7 @@ const columns = COLUMNS_FIELD_PLAYERS_PENALTY;
 const locale = computed(() => props.locale);
 
 const {
-  state: rows,
+  state: rawRows,
   error,
   isLoading,
 } = useAsyncState(
@@ -41,10 +41,11 @@ const { sort, change: onSort } = useSort({
   orders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
 });
 
+const rows = computed(() => rawConvert(unref(rawRows), playerName));
+
 const convertedRows = computed(() => {
   return convert(unref(rows))
     .filter(props.teamFilterByName, ['teamName'])
-    .playerName()
     .sorted(sort)
     .addIndex(sort.sortTarget)
     .pagination(unref(page), props.limit)

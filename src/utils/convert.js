@@ -8,6 +8,7 @@ import {
   filter,
   ifElse,
   includes,
+  map,
   pipe,
   prop,
   propEq,
@@ -101,7 +102,10 @@ const convert = (data = []) => {
 
     convertTimes(targets = []) {
       this.result = this.result.map((row) => {
-        targets.map((key) => (row[`${key}Sec`] = convertMinToSec(row[key])));
+        targets.map((key) => {
+          if (!row[key]) return row;
+          return (row[`${key}Sec`] = convertMinToSec(row[key]));
+        });
         return row;
       });
       return this;
@@ -110,3 +114,20 @@ const convert = (data = []) => {
 };
 
 export default convert;
+
+export const rawConvert = (data, ...fn) => map(compose(...fn))(data);
+
+export const playerName = (row) => ({
+  ...row,
+  name: `${row.lastName} ${row.firstName}`,
+});
+
+export const convertTimes =
+  (targets = []) =>
+  (row) => {
+    targets.map((key) => {
+      if (!row[key]) return row;
+      return (row[`${key}Sec`] = convertMinToSec(row[key]));
+    });
+    return row;
+  };
