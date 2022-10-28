@@ -76,7 +76,6 @@ const fetchSeasons = async () => {
     state.seasons = convertSeasons(seasons);
     if (!state.championshipId) state.championshipId = head(state.seasons).championshipId;
   } catch (error) {
-    console.log(error);
     state.error = error.message;
   } finally {
     state.loading = false;
@@ -93,7 +92,6 @@ const fetchSection = async () => {
       state.section = head(state.sections);
     }
   } catch (error) {
-    console.log(error);
     state.error = error.message;
   }
 };
@@ -110,10 +108,9 @@ const fetchStatistic = async () => {
     state.rows = rawConvert(
       rows,
       playerName,
-      convertTimes(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2'])
+      convertTimes(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2', 'mip'])
     );
   } catch (error) {
-    console.log(error);
     state.error = error.message;
   } finally {
     state.loading = false;
