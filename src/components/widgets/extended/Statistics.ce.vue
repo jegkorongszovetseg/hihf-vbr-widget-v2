@@ -1,9 +1,10 @@
 <script setup>
+import { playerStatsProps } from '../internal.props';
 import StatisticsProvider from './StatisticsProvider.vue';
 import I18NProvider from '../../I18NProvider.vue';
 import StatisticsTable from '../StatisticsTable.vue';
 import Paginator from '../../Paginator.vue';
-import { playerStatsProps } from '../internal.props';
+import ErrorNotice from '../../ErrorNotice.vue';
 
 const props = defineProps({
   locale: {
@@ -31,6 +32,7 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
         :limit="props.limit"
         v-slot:default="{
           sort,
+          error,
           seasons,
           section,
           sections,
@@ -91,6 +93,8 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
             <input type="text" :value="playerFilter" @input="onPlayerInput" />
           </div>
         </div>
+
+        <ErrorNotice v-if="error" :error="error" />
 
         <StatisticsTable
           :columns="columns"

@@ -119,7 +119,7 @@ export const rawConvert = (data, ...fn) => map(compose(...fn))(data);
 
 export const playerName = (row) => ({
   ...row,
-  name: `${row.lastName} ${row.firstName}`,
+  ...(row.lastName && { name: `${row.lastName} ${row.firstName}` }),
 });
 
 export const convertTimes =

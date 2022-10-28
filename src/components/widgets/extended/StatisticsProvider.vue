@@ -1,5 +1,6 @@
 <script setup>
-import { computed, reactive, unref, watch } from 'vue';
+import { computed, reactive, unref } from 'vue';
+import { useUrlSearchParams } from '@vueuse/core';
 import { head } from 'ramda';
 import { fetchVBRData } from '../../../composables/useFetchVBRApi';
 import {
@@ -9,11 +10,10 @@ import {
   PLAYERS_REPORTS_SELECT,
   TEAMS_REPORTS_SELECT,
 } from './statistics.internal.js';
-import convert from '../../../utils/convert';
+import convert, { convertTimes, playerName, rawConvert } from '../../../utils/convert';
 import { usePage } from '../../../composables/usePage';
 import { SORT_STATE_DESCEND } from '../../../constants';
 import useSort from '../../../composables/useSort';
-import { useUrlSearchParams } from '@vueuse/core';
 
 const props = defineProps({
   championshipName: {
@@ -42,17 +42,17 @@ const state = reactive({
   sections: [],
   section: params.section || null,
   reports: PLAYERS_REPORTS_SELECT,
-  currentReport: params.report || 'fieldplayers',
+  currentReport: params.report || 'points',
   teams: [],
-  teamFilter: '',
+  teamFilter: Number(params.teamFilter) || '',
   playerFilter: '',
-  reportType: 'players',
+  reportType: params.type || 'players',
   rows: [],
   columns: null,
   api: null,
 });
 
-const initialReport = REPORTS_MAP.get('fieldplayers');
+const initialReport = REPORTS_MAP.get('points');
 state.columns = initialReport.columns;
 state.api = initialReport.api;
 
@@ -89,9 +89,8 @@ const fetchSection = async () => {
       championshipId: state.championshipId,
     });
     state.sections = sections.sectionName;
-    if (!state.section) {
+    if (!state.sections.includes(state.section)) {
       state.section = head(state.sections);
-      // params.section = state.section;
     }
   } catch (error) {
     console.log(error);
@@ -108,7 +107,11 @@ const fetchStatistic = async () => {
       championshipId: state.championshipId,
       division: state.section,
     });
-    state.rows = rows;
+    state.rows = rawConvert(
+      rows,
+      playerName,
+      convertTimes(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2'])
+    );
   } catch (error) {
     console.log(error);
     state.error = error.message;
@@ -124,7 +127,6 @@ const fetchTeams = async () => {
     const teams = await fetchVBRData('/v1/championshipTeams', props.apiKey, {
       championshipId: state.championshipId,
     });
-    console.log(teams);
     state.teams = convertTeams(teams);
   } catch (error) {
     state.error = error.message;
@@ -148,7 +150,6 @@ init();
 
 const convertedRows = computed(() =>
   convert(state.rows)
-    .playerName()
     .filter(state.teamFilter, ['teamId'], true)
     .filter(state.playerFilter, ['name'])
     .sorted(sort)
@@ -165,23 +166,36 @@ const setTableData = () => {
   sort.orders = report.sort.orders;
 };
 
-const onSeasonChange = (event) => {
-  state.section = null;
-  state.report = null;
-  params.championshipId = event.target.value;
+const onSeasonChange = async (event) => {
+  const { value } = event.target;
+  state.championshipId = value;
+  params.championshipId = value;
+  await fetchSection();
+  params.section = state.section;
+  await fetchTeams();
+  await fetchStatistic();
 };
 
-const onSectionChange = (event) => {
-  params.section = event.target.value;
+const onSectionChange = async (event) => {
+  const { value } = event.target;
+  state.section = value;
+  params.section = value;
+  await fetchStatistic();
 };
 
 const onReportChange = (event) => {
-  params.report = event.target.value;
+  const { value } = event.target;
+  state.currentReport = value;
+  params.report = value;
+  setTableData();
+  fetchStatistic();
 };
 
 const onTeamChange = (event) => {
   onPaginatorChange(1);
-  state.teamFilter = Number(event.target.value) || '';
+  const { value } = event.target;
+  state.teamFilter = Number(value) || '';
+  params.teamFilter = value || null;
 };
 
 const onPlayerInput = (event) => {
@@ -192,34 +206,10 @@ const onPlayerInput = (event) => {
 const onStatTypeChange = (value) => {
   state.reportType = value;
   state.currentReport = head(currentReportList.value).value;
+  params.type = value;
+  setTableData();
+  fetchStatistic();
 };
-
-watch(
-  () => params.report,
-  (reportId) => {
-    state.currentReport = reportId;
-    setTableData();
-    fetchStatistic();
-  }
-);
-
-watch(
-  () => params.section,
-  (section) => {
-    state.section = section;
-    fetchStatistic();
-  }
-);
-
-watch(
-  () => params.championshipId,
-  async (championshipId) => {
-    state.championshipId = championshipId;
-    await fetchSection();
-    await fetchTeams();
-    // await fetchStatistic();
-  }
-);
 </script>
 
 <template>

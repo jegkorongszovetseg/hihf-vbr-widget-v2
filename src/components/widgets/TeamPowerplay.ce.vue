@@ -41,7 +41,6 @@ const rows = computed(() => rawConvert(unref(rawRows), convertTimes(['advTime', 
 
 const convertedRows = computed(() => {
   return convert(unref(rows))
-    .convertTimes(['advTime', 'advTimePP1', 'advTimePP2'])
     .sorted(sort)
     .addIndex(sort.sortTarget)
     .value();

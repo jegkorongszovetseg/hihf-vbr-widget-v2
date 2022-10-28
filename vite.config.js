@@ -14,7 +14,6 @@ const banner = `/*!
   * Released under the ${license} License.
   */`;
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   return {
@@ -39,7 +38,7 @@ export default defineConfig(({ mode }) => {
         entry: 'src/bundle.js',
         name: 'MjszVbrWidget',
         fileName: (format) => `mjsz-vbr-widget.${format}.js`,
-        formats: ['esm', 'umd', 'iife'],
+        formats: ['es', 'iife'],
       },
       rollupOptions: {
         external: ['vue'],
