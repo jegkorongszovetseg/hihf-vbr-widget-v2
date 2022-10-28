@@ -17,6 +17,16 @@ const props = defineProps({
     default: '',
   },
 
+  championshipName: {
+    type: String,
+    default: '',
+  },
+
+  championshipId: {
+    type: Number,
+    default: 0,
+  },
+
   ...playerStatsProps,
 });
 
@@ -28,7 +38,8 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
   <div>
     <I18NProvider :locale="props.locale">
       <StatisticsProvider
-        championship-name="Erste Liga"
+        :championship-name="championshipName"
+        :championship-id="championshipId"
         :limit="props.limit"
         v-slot:default="{
           sort,

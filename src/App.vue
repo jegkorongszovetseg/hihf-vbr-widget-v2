@@ -26,7 +26,8 @@ const change = () => {
     <!-- <TeamPenaltyKilling :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamFairplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamAttendance :locale="locale" championship-id="3314" division="Alapszakasz" :is-team-linked="true" /> -->
-    <Statistics :locale="locale"  />
+    <Statistics :locale="locale" championship-name="U-18" :championship-id="1967" />
+    <!-- <Statistics :locale="locale" championship-name="Erste Liga"  /> -->
     <GoaliesLeader :locale="locale" championship-id="3314" division="Alapszakasz" :under-limit="false" />
     <!-- <FieldPlayersPenalties :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="true" :is-team-linked="true" /> -->
     <!-- <FieldPlayersLeader :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="true" :is-team-linked="true" /> -->

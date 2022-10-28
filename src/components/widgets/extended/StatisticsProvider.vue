@@ -21,6 +21,11 @@ const props = defineProps({
     default: '',
   },
 
+  championshipId: {
+    type: Number,
+    default: 0,
+  },
+
   limit: {
     type: Number,
     default: 20,
@@ -38,7 +43,7 @@ const state = reactive({
   error: '',
   loading: false,
   seasons: [],
-  championshipId: params.championshipId || null,
+  championshipId: params.championshipId || props.championshipId,
   sections: [],
   section: params.section || null,
   reports: PLAYERS_REPORTS_SELECT,
@@ -69,14 +74,17 @@ const { sort, change: onSort } = useSort({
 
 const fetchSeasons = async () => {
   try {
+    state.error = '';
     state.loading = true;
     const seasons = await fetchVBRData('/v1/championshipSeasons', props.apiKey, {
       championshipName: props.championshipName,
     });
+    if (seasons.length === 0) throw new Error('Invalid season name');
     state.seasons = convertSeasons(seasons);
     if (!state.championshipId) state.championshipId = head(state.seasons).championshipId;
   } catch (error) {
     state.error = error.message;
+    throw error;
   } finally {
     state.loading = false;
   }
@@ -84,6 +92,8 @@ const fetchSeasons = async () => {
 
 const fetchSection = async () => {
   try {
+    state.error = '';
+    state.loading = true;
     const sections = await fetchVBRData('/v1/championshipSections', props.apiKey, {
       championshipId: state.championshipId,
     });
@@ -93,11 +103,14 @@ const fetchSection = async () => {
     }
   } catch (error) {
     state.error = error.message;
+  } finally {
+    state.loading = false;
   }
 };
 
 const fetchStatistic = async () => {
   try {
+    state.error = '';
     state.loading = true;
     state.rows = [];
     onPaginatorChange(1);
@@ -119,6 +132,7 @@ const fetchStatistic = async () => {
 
 const fetchTeams = async () => {
   try {
+    state.error = '';
     state.loading = true;
     state.rows = [];
     const teams = await fetchVBRData('/v1/championshipTeams', props.apiKey, {
