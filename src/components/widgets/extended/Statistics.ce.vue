@@ -6,6 +6,7 @@ import StatisticsTable from '../StatisticsTable.vue';
 import Paginator from '../../Paginator.vue';
 import ErrorNotice from '../../ErrorNotice.vue';
 import StatisticSelector from './StatisticSelector.vue';
+import ErrorBoundary from '../../ErrorBoundary.vue';
 
 const props = defineProps({
   locale: {
@@ -43,99 +44,121 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
 <template>
   <div>
     <I18NProvider :locale="props.locale">
-      <StatisticsProvider
-        :championship-name="championshipName"
-        :championship-id="championshipId"
-        :limit="props.limit"
-        v-slot:default="{
-          sort,
-          error,
-          seasons,
-          section,
-          sections,
-          championshipId,
-          reports,
-          columns,
-          rows,
-          page,
-          loading,
-          currentReport,
-          teams,
-          teamFilter,
-          playerFilter,
-          reportType,
-          onSort,
-          onSeasonChange,
-          onReportChange,
-          onSectionChange,
-          onPaginatorChange,
-          onTeamChange,
-          onPlayerInput,
-          onStatTypeChange,
-        }"
-      >
-        <div>
+      <ErrorBoundary v-slot:default="{ error: captureError }">
+        <div>Error: {{ captureError }}</div>
+        <StatisticsProvider
+          :championship-name="championshipName"
+          :championship-id="championshipId"
+          :limit="props.limit"
+          v-slot:default="{
+            sort,
+            error,
+            seasons,
+            section,
+            sections,
+            championshipId,
+            reports,
+            columns,
+            rows,
+            page,
+            loading,
+            currentReport,
+            teams,
+            teamFilter,
+            playerFilter,
+            reportType,
+            onSort,
+            onSeasonChange,
+            onReportChange,
+            onSectionChange,
+            onPaginatorChange,
+            onTeamChange,
+            onPlayerInput,
+            onStatTypeChange,
+          }"
+        >
           <div>
-            <button type="button" @click="onStatTypeChange('players')">Players</button>
-            <button type="button" @click="onStatTypeChange('teams')">Teams</button>
+            <div>
+              <button type="button" @click="onStatTypeChange('players')">Players</button>
+              <button type="button" @click="onStatTypeChange('teams')">Teams</button>
+            </div>
+            <div>
+              <label>Szezon</label>
+              <select :value="championshipId" @change="onSeasonChange">
+                <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">
+                  {{ season.seasonName }}
+                </option>
+              </select>
+            </div>
+            <div>
+              <label>Szakasz</label>
+              <select :value="section" @change="onSectionChange">
+                <option v-for="sectionName in sections" :key="sectionName" :value="sectionName">
+                  {{ sectionName }}
+                </option>
+              </select>
+            </div>
+            <div>
+              <label>Riport</label>
+              <select :value="currentReport" @change="onReportChange">
+                <option v-for="{ name, value } in reports" :key="value" :value="value">{{ name }}</option>
+              </select>
+            </div>
+            <div>
+              <label>Teams</label>
+              <select :value="teamFilter" @change="onTeamChange" :disabled="reportType !== 'players'">
+                <option value="">All</option>
+                <option v-for="{ teamId, teamName } in teams" :key="teamId" :value="teamId">{{ teamName }}</option>
+              </select>
+            </div>
+            <div>
+              <input type="text" :value="playerFilter" @input="onPlayerInput" />
+            </div>
           </div>
-          <div>
-            <label>Szezon</label>
-            <select :value="championshipId" @change="onSeasonChange">
-              <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">
-                {{ season.seasonName }}
-              </option>
-            </select>
-          </div>
-          <div>
-            <label>Szakasz</label>
-            <select :value="section" @change="onSectionChange">
-              <option v-for="sectionName in sections" :key="sectionName" :value="sectionName">{{ sectionName }}</option>
-            </select>
-          </div>
-          <div>
-            <label>Riport</label>
-            <select :value="currentReport" @change="onReportChange">
-              <option v-for="{ name, value } in reports" :key="value" :value="value">{{ name }}</option>
-            </select>
-          </div>
-          <div>
-            <label>Teams</label>
-            <select :value="teamFilter" @change="onTeamChange" :disabled="reportType !== 'players'">
-              <option value="">All</option>
-              <option v-for="{ teamId, teamName } in teams" :key="teamId" :value="teamId">{{ teamName }}</option>
-            </select>
-          </div>
-          <div>
-            <input type="text" :value="playerFilter" @input="onPlayerInput" />
-          </div>
-        </div>
 
-        <StatisticSelector></StatisticSelector>
+          <StatisticSelector
+            :seasons="seasons"
+            :championship-id="championshipId"
+            :sections="sections"
+            :section="section"
+            :reports="reports"
+            :current-report="currentReport"
+            :report-type="reportType"
+            :teams="teams"
+            :team-filter="teamFilter"
+            :player-filter="playerFilter"
+            @onSeasonChange="onSeasonChange"
+            @onSectionChange="onSectionChange"
+            @onReportChange="onReportChange"
+            @onTeamChange="onTeamChange"
+            @onPlayerInput="onPlayerInput"
+            @onStatTypeChange="onStatTypeChange"
+          ></StatisticSelector>
 
-        <ErrorNotice v-if="error" :error="error" />
+          <ErrorNotice v-if="error" :error="error" />
 
-        <StatisticsTable
-          :columns="columns"
-          :rows="rows.rows"
-          :sort="sort"
-          :is-loading="loading"
-          :external-team-resolver="resolveExternalTeamLink"
-          :external-player-resolver="resolveExternalPlayerLink"
-          :is-team-linked="isTeamLinked"
-          :is-player-linked="isPlayerLinked"
-          :hide-columns="hideColumns"
-          @sort="onSort"
-        />
+          <StatisticsTable
+            :columns="columns"
+            :rows="rows.rows"
+            :sort="sort"
+            :is-loading="loading"
+            :external-team-resolver="resolveExternalTeamLink"
+            :external-player-resolver="resolveExternalPlayerLink"
+            :is-team-linked="isTeamLinked"
+            :is-player-linked="isPlayerLinked"
+            :hide-columns="hideColumns"
+            @sort="onSort"
+          />
 
-        <Paginator
-          :page="page"
-          :items-per-page="props.limit"
-          :total-items="rows.totalItems"
-          :range-length="5"
-          @change="onPaginatorChange"
-        />
-      </StatisticsProvider>
+          <Paginator
+            :page="page"
+            :items-per-page="props.limit"
+            :total-items="rows.totalItems"
+            :range-length="5"
+            @change="onPaginatorChange"
+          />
+        </StatisticsProvider>
+      </ErrorBoundary>
     </I18NProvider>
   </div>
 </template>

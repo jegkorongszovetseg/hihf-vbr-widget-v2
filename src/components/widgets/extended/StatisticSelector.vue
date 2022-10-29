@@ -1,4 +1,7 @@
 <script setup>
+import { computed } from 'vue';
+import { useI18n } from '../../../composables/useI18n';
+
 const props = defineProps({
   seasons: {
     type: Array,
@@ -7,7 +10,7 @@ const props = defineProps({
 
   championshipId: {
     type: Number,
-    default: null,
+    default: 0,
   },
 
   sections: {
@@ -29,7 +32,7 @@ const props = defineProps({
     type: String,
     default: '',
   },
-  
+
   teams: {
     type: Array,
     defauét: () => [],
@@ -51,12 +54,43 @@ const props = defineProps({
   },
 });
 
-const onStatTypeChange = () => {};
-const onSeasonChange = () => {};
-const onSectionChange = () => {};
-const onReportChange = () => {};
-const onTeamChange = () => {};
-const onPlayerInput = () => {};
+const emit = defineEmits([
+  'onPlayerInput',
+  'onSeasonChange',
+  'onSectionChange',
+  'onReportChange',
+  'onTeamChange',
+  'onStatTypeChange',
+]);
+
+const { t } = useI18n();
+
+const seasonSelect = computed({
+  get: () => props.championshipId,
+  set: (value) => emit('onSeasonChange', value),
+});
+
+const sectionSelect = computed({
+  get: () => props.section,
+  set: (value) => emit('onSectionChange', value),
+});
+
+const reportSelect = computed({
+  get: () => props.currentReport,
+  set: (value) => emit('onReportChange', value),
+});
+
+const teamSelect = computed({
+  get: () => props.teamFilter,
+  set: (value) => emit('onTeamChange', value),
+});
+
+const playerName = computed({
+  get: () => props.playerFilter,
+  set: (value) => emit('onPlayerInput', value),
+});
+
+const onStatTypeChange = (value) => emit('onStatTypeChange', value);
 </script>
 
 <template>
@@ -66,34 +100,34 @@ const onPlayerInput = () => {};
       <button type="button" @click="onStatTypeChange('teams')">Teams</button>
     </div>
     <div>
-      <label>Szezon</label>
-      <select :value="championshipId" @change="onSeasonChange">
+      <label for="season">Szezon</label>
+      <select id="season" v-model="seasonSelect">
         <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">
           {{ season.seasonName }}
         </option>
       </select>
     </div>
     <div>
-      <label>Szakasz</label>
-      <select :value="section" @change="onSectionChange">
+      <label for="section">Szakasz</label>
+      <select id="section" v-model="sectionSelect">
         <option v-for="sectionName in sections" :key="sectionName" :value="sectionName">{{ sectionName }}</option>
       </select>
     </div>
     <div>
-      <label>Riport</label>
-      <select :value="currentReport" @change="onReportChange">
+      <label for="report">Riport</label>
+      <select id="report" v-model="reportSelect">
         <option v-for="{ name, value } in reports" :key="value" :value="value">{{ name }}</option>
       </select>
     </div>
     <div>
-      <label>Teams</label>
-      <select :value="teamFilter" @change="onTeamChange" :disabled="reportType !== 'players'">
-        <option value="">All</option>
+      <label for="teams">Teams</label>
+      <select id="teams" v-model="teamSelect" :disabled="reportType !== 'players'">
+        <option value="">{{ t('common.all') }}</option>
         <option v-for="{ teamId, teamName } in teams" :key="teamId" :value="teamId">{{ teamName }}</option>
       </select>
     </div>
     <div>
-      <input type="text" :value="playerFilter" @input="onPlayerInput" />
+      <input type="text" v-model="playerName" :disabled="reportType !== 'players'" />
     </div>
   </div>
 </template>

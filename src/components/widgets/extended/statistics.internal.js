@@ -110,9 +110,7 @@ export const REPORTS_MAP = new Map()
     },
   });
 
-export const PLAYERS_REPORTS_SELECT = () => {
-  const { t } = useI18n();
-
+export const PLAYERS_REPORTS_SELECT = (t) => {
   return [
     {
       name: t('report.points'),

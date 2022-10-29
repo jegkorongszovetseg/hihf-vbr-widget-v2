@@ -14,6 +14,7 @@ import convert, { convertTimes, playerName, rawConvert } from '../../../utils/co
 import { usePage } from '../../../composables/usePage';
 import { SORT_STATE_DESCEND } from '../../../constants';
 import useSort from '../../../composables/useSort';
+import { useI18n } from '../../../composables/useI18n';
 
 const props = defineProps({
   championshipName: {
@@ -37,13 +38,15 @@ const props = defineProps({
   },
 });
 
+const { t } = useI18n();
+
 const params = useUrlSearchParams('history');
 
 const state = reactive({
   error: '',
   loading: false,
   seasons: [],
-  championshipId: params.championshipId || props.championshipId,
+  championshipId: Number(params.championshipId) || props.championshipId,
   sections: [],
   section: params.section || null,
   reports: null,
@@ -62,7 +65,7 @@ state.columns = initialReport.columns;
 state.api = initialReport.api;
 
 const currentReportList = computed(() =>
-  state.reportType === 'players' ? PLAYERS_REPORTS_SELECT() : TEAMS_REPORTS_SELECT
+  state.reportType === 'players' ? PLAYERS_REPORTS_SELECT(t) : TEAMS_REPORTS_SELECT
 );
 
 const { page, change: onPaginatorChange } = usePage();
@@ -177,8 +180,8 @@ const setTableData = () => {
   sort.orders = report.sort.orders;
 };
 
-const onSeasonChange = async (event) => {
-  const { value } = event.target;
+const onSeasonChange = async (value) => {
+  // const { value } = event.target;
   state.championshipId = value;
   params.championshipId = value;
   await fetchSection();
@@ -187,31 +190,32 @@ const onSeasonChange = async (event) => {
   await fetchStatistic();
 };
 
-const onSectionChange = async (event) => {
-  const { value } = event.target;
+const onSectionChange = async (value) => {
+  // const { value } = event.target;
   state.section = value;
   params.section = value;
   await fetchStatistic();
 };
 
-const onReportChange = (event) => {
-  const { value } = event.target;
+const onReportChange = (value) => {
+  // const { value } = event.target;
   state.currentReport = value;
   params.report = value;
   setTableData();
   fetchStatistic();
 };
 
-const onTeamChange = (event) => {
+const onTeamChange = (value) => {
   onPaginatorChange(1);
-  const { value } = event.target;
+  // const { value } = event.target;
   state.teamFilter = Number(value) || '';
   params.teamFilter = value || null;
 };
 
 const onPlayerInput = (event) => {
   onPaginatorChange(1);
-  state.playerFilter = event.target.value;
+  if (event instanceof Event) event = event.target.value
+  state.playerFilter = event;
 };
 
 const onStatTypeChange = (value) => {
