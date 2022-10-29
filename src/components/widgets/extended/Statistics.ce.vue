@@ -5,6 +5,7 @@ import I18NProvider from '../../I18NProvider.vue';
 import StatisticsTable from '../StatisticsTable.vue';
 import Paginator from '../../Paginator.vue';
 import ErrorNotice from '../../ErrorNotice.vue';
+import StatisticSelector from './StatisticSelector.vue';
 
 const props = defineProps({
   locale: {
@@ -25,6 +26,11 @@ const props = defineProps({
   championshipId: {
     type: Number,
     default: 0,
+  },
+
+  hideColumns: {
+    type: String,
+    default: '',
   },
 
   ...playerStatsProps,
@@ -105,6 +111,8 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
           </div>
         </div>
 
+        <StatisticSelector></StatisticSelector>
+
         <ErrorNotice v-if="error" :error="error" />
 
         <StatisticsTable
@@ -116,6 +124,7 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
           :external-player-resolver="resolveExternalPlayerLink"
           :is-team-linked="isTeamLinked"
           :is-player-linked="isPlayerLinked"
+          :hide-columns="hideColumns"
           @sort="onSort"
         />
 

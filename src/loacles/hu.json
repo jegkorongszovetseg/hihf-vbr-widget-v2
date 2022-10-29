@@ -11,6 +11,14 @@
     "shootoutShort": "SzU.",
     "overtimeShort": "HU."
   },
+  "report": {
+    "points": "Pontok",
+    "goals": "Gólok",
+    "assists": "Gólpasszok",
+    "penalties": "Büntetések",
+    "goalies": "Kapusok",
+    "goaliesLimit": "Kapusok 40% jégidő alatt"
+  },
   "table": {
     "blank": "#",
     "team": {

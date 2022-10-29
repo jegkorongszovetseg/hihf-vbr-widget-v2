@@ -1,4 +1,5 @@
-import { ascend, compose, curry, descend, map, pick, prop, sort } from 'ramda';
+import { ascend, compose, descend, map, pick, prop, sort } from 'ramda';
+import { useI18n } from '../../../composables/useI18n';
 import { SORT_STATE_DESCEND } from '../../../constants';
 import {
   COLUMNS_FIELD_PLAYERS,
@@ -109,36 +110,40 @@ export const REPORTS_MAP = new Map()
     },
   });
 
-export const PLAYERS_REPORTS_SELECT = [
-  {
-    name: 'Points',
-    value: 'points',
-  },
-  {
-    name: 'Goals',
-    value: 'goals',
-  },
-  {
-    name: 'Assists',
-    value: 'assists',
-  },
-  {
-    name: '+/-',
-    value: 'plusminus',
-  },
-  {
-    name: 'Field Players Penalties',
-    value: 'playerspenalties',
-  },
-  {
-    name: 'Goalies',
-    value: 'goalies',
-  },
-  {
-    name: 'Goalies under 40%',
-    value: 'goaliesunderlimit',
-  },
-];
+export const PLAYERS_REPORTS_SELECT = () => {
+  const { t } = useI18n();
+
+  return [
+    {
+      name: t('report.points'),
+      value: 'points',
+    },
+    {
+      name: t('report.goals'),
+      value: 'goals',
+    },
+    {
+      name: t('report.assists'),
+      value: 'assists',
+    },
+    {
+      name: '+/-',
+      value: 'plusminus',
+    },
+    {
+      name: t('report.penalties'),
+      value: 'playerspenalties',
+    },
+    {
+      name: t('report.goalies'),
+      value: 'goalies',
+    },
+    {
+      name: t('report.goaliesLimit'),
+      value: 'goaliesunderlimit',
+    },
+  ];
+};
 
 export const TEAMS_REPORTS_SELECT = [
   {

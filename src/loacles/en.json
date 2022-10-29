@@ -11,6 +11,14 @@
     "shootoutShort": "SO",
     "overtimeShort": "OT"
   },
+  "report": {
+    "points": "Points",
+    "goals": "Goals",
+    "assists": "Assists",
+    "penalties": "Penalties",
+    "goalies": "Goalies",
+    "goaliesLimit": "Goalies under 40%"
+  },
   "table": {
     "blank": "#",
     "team": {

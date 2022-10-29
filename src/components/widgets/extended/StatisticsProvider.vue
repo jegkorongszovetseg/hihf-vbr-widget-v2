@@ -46,7 +46,7 @@ const state = reactive({
   championshipId: params.championshipId || props.championshipId,
   sections: [],
   section: params.section || null,
-  reports: PLAYERS_REPORTS_SELECT,
+  reports: null,
   currentReport: params.report || 'points',
   teams: [],
   teamFilter: Number(params.teamFilter) || '',
@@ -62,7 +62,7 @@ state.columns = initialReport.columns;
 state.api = initialReport.api;
 
 const currentReportList = computed(() =>
-  state.reportType === 'players' ? PLAYERS_REPORTS_SELECT : TEAMS_REPORTS_SELECT
+  state.reportType === 'players' ? PLAYERS_REPORTS_SELECT() : TEAMS_REPORTS_SELECT
 );
 
 const { page, change: onPaginatorChange } = usePage();
