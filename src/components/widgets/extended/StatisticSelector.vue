@@ -44,8 +44,8 @@ const props = defineProps({
   },
 
   teamFilter: {
-    type: String,
-    default: '',
+    type: Number,
+    default: null,
   },
 
   playerFilter: {
@@ -90,7 +90,9 @@ const playerName = computed({
   set: (value) => emit('onPlayerInput', value),
 });
 
-const onStatTypeChange = (value) => emit('onStatTypeChange', value);
+const onStatTypeChange = (value) => {
+  emit('onStatTypeChange', value);
+};
 </script>
 
 <template>

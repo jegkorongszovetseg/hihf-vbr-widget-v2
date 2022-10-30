@@ -3,7 +3,7 @@ import { map, keys, trim, omit, split } from 'ramda';
 import { useI18n } from './useI18n';
 
 export const useColumns = (columns, hiddenColumns = '', variables = {}) => {
-  const error = ref('');
+  const errorRef = ref('');
   const { t } = useI18n();
 
   if (hiddenColumns) {
@@ -11,7 +11,7 @@ export const useColumns = (columns, hiddenColumns = '', variables = {}) => {
       const columnsToHide = validateColumnsName(unref(columns), hiddenColumns);
       columns = omit(columnsToHide, unref(columns));
     } catch (err) {
-      error.value = t('errors.undefinedColumn', { column: err });
+      errorRef.value = err;
     }
   }
 
@@ -23,7 +23,7 @@ export const useColumns = (columns, hiddenColumns = '', variables = {}) => {
   const converted = computed(() => map(convert, unref(columns)));
   return {
     columns: converted,
-    error,
+    error: errorRef,
   };
 };
 

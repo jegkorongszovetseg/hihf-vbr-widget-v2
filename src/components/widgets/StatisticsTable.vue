@@ -2,10 +2,11 @@
 import { computed } from 'vue';
 import { useColumns } from '../../composables/useColumns.js';
 import ResponsiveTable from '../ResponsiveTable.vue';
-import Image from '../Image.vue';
-import DataTable from '../DataTable.vue';
-import ErrorNotice from '../ErrorNotice.vue';
+import { useError } from '../../composables/useErrors';
+import * as Errors from '../../utils/errors';
 import { DEFAULT_PORTRAIT_IMAGE_URL } from '../../constants';
+import DataTable from '../DataTable.vue';
+import Image from '../Image.vue';
 
 const props = defineProps({
   columns: {
@@ -56,14 +57,22 @@ const props = defineProps({
 
 const emit = defineEmits(['sort']);
 
+const { onError } = useError();
+
 const currentColumns = computed(() => props.columns);
 const { columns, error } = useColumns(currentColumns, props.hideColumns);
+if (error.value)
+  onError(
+    new Errors.WidgetError(Errors.UndefinedColumn.message, {
+      ...Errors.UndefinedColumn.options,
+      cause: { column: error.value },
+    })
+  );
 
 const onSort = (payload) => emit('sort', payload);
 </script>
 
 <template>
-  <ErrorNotice v-if="error">{{ error }}</ErrorNotice>
   <ResponsiveTable v-slot:default="{ el: rootElement }">
     <DataTable
       :columns="columns"

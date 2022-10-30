@@ -7,6 +7,7 @@ import Paginator from '../../Paginator.vue';
 import ErrorNotice from '../../ErrorNotice.vue';
 import StatisticSelector from './StatisticSelector.vue';
 import ErrorBoundary from '../../ErrorBoundary.vue';
+import ErrorProvider from '../../ErrorProvider.vue';
 
 const props = defineProps({
   locale: {
@@ -46,38 +47,41 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
     <I18NProvider :locale="props.locale">
       <ErrorBoundary v-slot:default="{ error: captureError }">
         <div>Error: {{ captureError }}</div>
-        <StatisticsProvider
-          :championship-name="championshipName"
-          :championship-id="championshipId"
-          :limit="props.limit"
-          v-slot:default="{
-            sort,
-            error,
-            seasons,
-            section,
-            sections,
-            championshipId,
-            reports,
-            columns,
-            rows,
-            page,
-            loading,
-            currentReport,
-            teams,
-            teamFilter,
-            playerFilter,
-            reportType,
-            onSort,
-            onSeasonChange,
-            onReportChange,
-            onSectionChange,
-            onPaginatorChange,
-            onTeamChange,
-            onPlayerInput,
-            onStatTypeChange,
-          }"
-        >
-          <div>
+
+        <ErrorProvider v-slot:default="{ message, hasError, errorObj }">
+          Provider: {{ message }}
+          <StatisticsProvider
+            :championship-name="championshipName"
+            :championship-id="championshipId"
+            :limit="props.limit"
+            :api-key="apiKey"
+            v-slot:default="{
+              sort,
+              seasons,
+              section,
+              sections,
+              championshipId,
+              reports,
+              columns,
+              rows,
+              page,
+              loading,
+              currentReport,
+              teams,
+              teamFilter,
+              playerFilter,
+              reportType,
+              onSeasonChange,
+              onReportChange,
+              onSectionChange,
+              onTeamChange,
+              onPlayerInput,
+              onStatTypeChange,
+              onPaginatorChange,
+              onSort,
+            }"
+          >
+            <!-- <div>
             <div>
               <button type="button" @click="onStatTypeChange('players')">Players</button>
               <button type="button" @click="onStatTypeChange('teams')">Teams</button>
@@ -114,50 +118,51 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
             <div>
               <input type="text" :value="playerFilter" @input="onPlayerInput" />
             </div>
-          </div>
+          </div> -->
+            <ErrorNotice v-if="hasError" :error-object="errorObj" />
 
-          <StatisticSelector
-            :seasons="seasons"
-            :championship-id="championshipId"
-            :sections="sections"
-            :section="section"
-            :reports="reports"
-            :current-report="currentReport"
-            :report-type="reportType"
-            :teams="teams"
-            :team-filter="teamFilter"
-            :player-filter="playerFilter"
-            @onSeasonChange="onSeasonChange"
-            @onSectionChange="onSectionChange"
-            @onReportChange="onReportChange"
-            @onTeamChange="onTeamChange"
-            @onPlayerInput="onPlayerInput"
-            @onStatTypeChange="onStatTypeChange"
-          ></StatisticSelector>
+            <StatisticSelector
+              v-else
+              :seasons="seasons"
+              :championship-id="championshipId"
+              :sections="sections"
+              :section="section"
+              :reports="reports"
+              :current-report="currentReport"
+              :report-type="reportType"
+              :teams="teams"
+              :team-filter="teamFilter"
+              :player-filter="playerFilter"
+              @onSeasonChange="onSeasonChange"
+              @onSectionChange="onSectionChange"
+              @onReportChange="onReportChange"
+              @onTeamChange="onTeamChange"
+              @onPlayerInput="onPlayerInput"
+              @onStatTypeChange="onStatTypeChange"
+            />
 
-          <ErrorNotice v-if="error" :error="error" />
+            <StatisticsTable
+              :columns="columns"
+              :rows="rows.rows"
+              :sort="sort"
+              :is-loading="loading"
+              :external-team-resolver="resolveExternalTeamLink"
+              :external-player-resolver="resolveExternalPlayerLink"
+              :is-team-linked="isTeamLinked"
+              :is-player-linked="isPlayerLinked"
+              :hide-columns="hideColumns"
+              @sort="onSort"
+            />
 
-          <StatisticsTable
-            :columns="columns"
-            :rows="rows.rows"
-            :sort="sort"
-            :is-loading="loading"
-            :external-team-resolver="resolveExternalTeamLink"
-            :external-player-resolver="resolveExternalPlayerLink"
-            :is-team-linked="isTeamLinked"
-            :is-player-linked="isPlayerLinked"
-            :hide-columns="hideColumns"
-            @sort="onSort"
-          />
-
-          <Paginator
-            :page="page"
-            :items-per-page="props.limit"
-            :total-items="rows.totalItems"
-            :range-length="5"
-            @change="onPaginatorChange"
-          />
-        </StatisticsProvider>
+            <Paginator
+              :page="page"
+              :items-per-page="props.limit"
+              :total-items="rows.totalItems"
+              :range-length="5"
+              @change="onPaginatorChange"
+            />
+          </StatisticsProvider>
+        </ErrorProvider>
       </ErrorBoundary>
     </I18NProvider>
   </div>

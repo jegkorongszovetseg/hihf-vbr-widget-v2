@@ -1,6 +1,7 @@
 {
   "errors": {
-    "undefinedColumn": "The {column} column is not exists!"
+    "undefined-column": "The {column} column is not exists!",
+    "invalid-season-name": "Invalid season name"
   },
   "common": {
     "loading": "Loading...",

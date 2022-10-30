@@ -26,7 +26,7 @@ const change = () => {
     <!-- <TeamPenaltyKilling :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamFairplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamAttendance :locale="locale" championship-id="3314" division="Alapszakasz" :is-team-linked="true" /> -->
-    <Statistics :locale="locale" championship-name="Erste Liga" hide-columns="xxx" />
+    <Statistics api-key="x" :locale="locale" championship-name="Erste Liga" />
     <!-- <Statistics :locale="locale" championship-name="Erste Liga"  /> -->
     <!-- <GoaliesLeader :locale="locale" championship-id="3314" division="Alapszakasz" :under-limit="false" /> -->
     <!-- <FieldPlayersPenalties :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="true" :is-team-linked="true" /> -->

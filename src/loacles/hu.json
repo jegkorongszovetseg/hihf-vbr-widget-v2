@@ -1,6 +1,7 @@
 {
   "errors": {
-    "undefinedColumn": "A(z) {column} oszlop nem létezik!"
+    "undefined-column": "A(z) {column} oszlop nem létezik!",
+    "invalid-season-name": "Érvénytelen szezon név"
   },
   "common": {
     "loading": "Töltődés...",

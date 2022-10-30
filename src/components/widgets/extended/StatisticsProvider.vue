@@ -15,6 +15,8 @@ import { usePage } from '../../../composables/usePage';
 import { SORT_STATE_DESCEND } from '../../../constants';
 import useSort from '../../../composables/useSort';
 import { useI18n } from '../../../composables/useI18n';
+import { useError } from '../../../composables/useErrors';
+import { InvalidSeasonName, WidgetError } from '../../../utils/errors';
 
 const props = defineProps({
   championshipName: {
@@ -39,6 +41,7 @@ const props = defineProps({
 });
 
 const { t } = useI18n();
+const { onError, error: useErrorError } = useError();
 
 const params = useUrlSearchParams('history');
 
@@ -52,7 +55,7 @@ const state = reactive({
   reports: null,
   currentReport: params.report || 'points',
   teams: [],
-  teamFilter: Number(params.teamFilter) || '',
+  teamFilter: Number(params.teamFilter) || null,
   playerFilter: '',
   reportType: params.type || 'players',
   rows: [],
@@ -82,12 +85,12 @@ const fetchSeasons = async () => {
     const seasons = await fetchVBRData('/v1/championshipSeasons', props.apiKey, {
       championshipName: props.championshipName,
     });
-    if (seasons.length === 0) throw new Error('Invalid season name');
+    if (seasons.length === 0) throw new WidgetError(InvalidSeasonName.message, InvalidSeasonName.options);
     state.seasons = convertSeasons(seasons);
     if (!state.championshipId) state.championshipId = head(state.seasons).championshipId;
   } catch (error) {
     state.error = error.message;
-    throw error;
+    onError(error);
   } finally {
     state.loading = false;
   }
@@ -149,19 +152,6 @@ const fetchTeams = async () => {
   }
 };
 
-const init = async () => {
-  try {
-    await fetchSeasons();
-    await fetchSection();
-    await fetchTeams();
-    setTableData();
-    await fetchStatistic();
-  } catch (error) {
-    state.error = error.message;
-  }
-};
-init();
-
 const convertedRows = computed(() =>
   convert(state.rows)
     .filter(state.teamFilter, ['teamId'], true)
@@ -214,7 +204,7 @@ const onTeamChange = (value) => {
 
 const onPlayerInput = (event) => {
   onPaginatorChange(1);
-  if (event instanceof Event) event = event.target.value
+  if (event instanceof Event) event = event.target.value;
   state.playerFilter = event;
 };
 
@@ -224,7 +214,23 @@ const onStatTypeChange = (value) => {
   params.type = value;
   setTableData();
   fetchStatistic();
+  // onError(new Error('testP'));
+  // throw new Error('test');
 };
+
+const init = async () => {
+  try {
+    await fetchSeasons();
+    await fetchSection();
+    await fetchTeams();
+    setTableData();
+    await fetchStatistic();
+  } catch (error) {
+    state.error = error.message;
+    onError(error);
+  }
+};
+init();
 </script>
 
 <template>
@@ -238,11 +244,11 @@ const onStatTypeChange = (value) => {
       onSeasonChange,
       onSectionChange,
       onReportChange,
-      onPaginatorChange,
+      onStatTypeChange,
       onTeamChange,
       onPlayerInput,
+      onPaginatorChange,
       onSort,
-      onStatTypeChange,
     }"
   />
 </template>
