@@ -1,8 +1,9 @@
 <script setup>
-import { computed, unref } from 'vue';
+import { computed, unref, watch } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
+import { useErrorProvider } from '../../composables/useErrors';
 import convert from '../../utils/convert';
 import { COLUMNS_TEAMS_FAIRPLAY } from './internal';
 import { baseProps, teamStatsProps } from './internal.props';
@@ -16,12 +17,14 @@ const props = defineProps({
   ...teamStatsProps,
 });
 
+const { onError, error, hasError } = useErrorProvider();
+
 const columns = COLUMNS_TEAMS_FAIRPLAY;
 const locale = computed(() => props.locale);
 
 const {
   state: rows,
-  error,
+  error: apiError,
   isLoading,
 } = useAsyncState(
   fetchVBRData('/v1/teamFairplayPeriod', props.apiKey, {
@@ -30,6 +33,7 @@ const {
   }),
   []
 );
+watch(apiError, (error) => onError(error));
 
 const { sort, change: onSort } = useSort({
   sortTarget: 'pim',
@@ -45,7 +49,7 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
 <template>
   <div>
     <I18NProvider :locale="locale">
-      <ErrorNotice v-if="error?.error" :error="error.message" />
+      <ErrorNotice v-if="hasError" :error="error" />
 
       <StatisticsTable
         :columns="columns"

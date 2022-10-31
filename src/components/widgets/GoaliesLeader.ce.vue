@@ -1,5 +1,5 @@
 <script setup>
-import { computed, unref } from 'vue';
+import { computed, unref, watch } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
@@ -13,6 +13,7 @@ import I18NProvider from '../I18NProvider.vue';
 import ErrorNotice from '../ErrorNotice.vue';
 import StatisticsTable from './StatisticsTable.vue';
 import Paginator from '../Paginator.vue';
+import { useErrorProvider } from '../../composables/useErrors';
 
 const props = defineProps({
   ...baseProps,
@@ -24,13 +25,15 @@ const props = defineProps({
   },
 });
 
+const { onError, error, hasError } = useErrorProvider();
+
 const columns = COLUMNS_GOALIES;
 const locale = computed(() => props.locale);
 const apiPath = computed(() => (props.underLimit ? VBR_API_GOALIE_UNDER_PATH : VBR_API_GOALIE_PATH));
 
 const {
   state: rawRows,
-  error,
+  error: apiError,
   isLoading,
 } = useAsyncState(
   fetchVBRData(apiPath, props.apiKey, {
@@ -39,6 +42,7 @@ const {
   }),
   []
 );
+watch(apiError, (error) => onError(error));
 
 const { page, change: onPaginatorChange } = usePage();
 
@@ -68,7 +72,7 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
 <template>
   <div>
     <I18NProvider :locale="locale">
-      <ErrorNotice v-if="error?.error" :error="error.message" />
+      <ErrorNotice v-if="hasError" :error="error" />
 
       <StatisticsTable
         :columns="columns"

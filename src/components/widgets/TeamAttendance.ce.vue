@@ -1,5 +1,5 @@
 <script setup>
-import { computed, unref } from 'vue';
+import { computed, unref, watch } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
@@ -11,18 +11,21 @@ import StatisticsTable from './StatisticsTable.vue';
 import { SORT_STATE_DESCEND } from '../../constants';
 import { baseProps, teamStatsProps } from './internal.props';
 import { externalTeamLinkResolver } from '../../utils/resolvers';
+import { useErrorProvider } from '../../composables/useErrors';
 
 const props = defineProps({
   ...baseProps,
   ...teamStatsProps,
 });
 
+const { onError, error, hasError } = useErrorProvider();
+
 const columns = COLUMNS_TEAM_ATTENDANCE;
 const locale = computed(() => props.locale);
 
 const {
   state: rows,
-  error,
+  error: apiError,
   isLoading,
 } = useAsyncState(
   fetchVBRData('/v1/teamAttendancePeriod', props.apiKey, {
@@ -31,6 +34,7 @@ const {
   }),
   []
 );
+watch(apiError, (error) => onError(error));
 
 const { sort, change: onSort } = useSort({
   sortTarget: 'totalAttendanceAvg',
@@ -47,7 +51,7 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
 <template>
   <div>
     <I18NProvider :locale="locale">
-      <ErrorNotice v-if="error?.error" :error="error.message" />
+      <ErrorNotice v-if="hasError" :error="error" />
 
       <StatisticsTable
         :columns="columns"
