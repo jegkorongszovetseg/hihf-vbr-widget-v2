@@ -109,6 +109,7 @@ const fetchSection = async () => {
     }
   } catch (error) {
     state.error = error.message;
+    onError(error);
   } finally {
     state.loading = false;
   }
@@ -131,6 +132,7 @@ const fetchStatistic = async () => {
     );
   } catch (error) {
     state.error = error.message;
+    onError(error);
   } finally {
     state.loading = false;
   }
@@ -147,6 +149,7 @@ const fetchTeams = async () => {
     state.teams = convertTeams(teams);
   } catch (error) {
     state.error = error.message;
+    onError(error);
   } finally {
     state.loading = false;
   }

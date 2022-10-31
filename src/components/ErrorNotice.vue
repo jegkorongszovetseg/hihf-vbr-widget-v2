@@ -6,11 +6,6 @@ import IconWarning from './icons/IconWarning.vue';
 
 const props = defineProps({
   error: {
-    type: String,
-    default: '',
-  },
-
-  errorObject: {
     type: Object,
     default: () => ({}),
   },
@@ -19,15 +14,16 @@ const props = defineProps({
 const { t } = useI18n();
 
 const mainClass = useMainClass('error-notice');
-// const error = computed(() => props.error);
+
 const errorMessage = computed(() => {
-  return t(`errors.${props.errorObject.value.key}`, props.errorObject.value.cause );
+  if (!props.error?.key) return props.error?.message;
+  return t(`errors.${props.error.key}`, props.error.cause );
 });
 </script>
 
 <template>
   <div :class="mainClass">
-    <IconWarning class="icon" width="20" height="20"></IconWarning>
+    <IconWarning class="icon" width="20" height="20" />
     <span>{{ errorMessage }}</span>
   </div>
 </template>

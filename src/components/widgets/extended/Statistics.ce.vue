@@ -48,8 +48,8 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
       <ErrorBoundary v-slot:default="{ error: captureError }">
         <div>Error: {{ captureError }}</div>
 
-        <ErrorProvider v-slot:default="{ message, hasError, errorObj }">
-          Provider: {{ message }}
+        <ErrorProvider v-slot:default="{ message, hasError, error }">
+          Provider: {{ message }} hasError: {{ hasError }}
           <StatisticsProvider
             :championship-name="championshipName"
             :championship-id="championshipId"
@@ -119,7 +119,7 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
               <input type="text" :value="playerFilter" @input="onPlayerInput" />
             </div>
           </div> -->
-            <ErrorNotice v-if="hasError" :error-object="errorObj" />
+            <ErrorNotice v-if="hasError" :error="error" />
 
             <StatisticSelector
               v-else

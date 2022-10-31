@@ -1,9 +1,9 @@
 <script setup>
 import { useErrorProvider } from '../composables/useErrors';
 
-const { message, errorObj } = useErrorProvider();
+const { message, hasError, error } = useErrorProvider();
 </script>
 
 <template>
-  <slot :message="message" :error-obj="errorObj"></slot>
+  <slot :message="message" :error="error" :has-error="hasError"></slot>
 </template>

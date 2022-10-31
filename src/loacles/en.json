@@ -1,7 +1,8 @@
 {
   "errors": {
     "undefined-column": "The {column} column is not exists!",
-    "invalid-season-name": "Invalid season name"
+    "invalid-season-name": "Invalid season name",
+    "api-key-not-found": "API Key not found"
   },
   "common": {
     "loading": "Loading...",

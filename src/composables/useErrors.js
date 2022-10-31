@@ -1,4 +1,5 @@
 import { inject, provide, ref, computed } from 'vue';
+import { toKebabCase } from '../utils/string';
 
 const ErrorProviderContext = Symbol('ErrorProviderContext');
 
@@ -7,11 +8,11 @@ export const useErrorProvider = () => {
   const errorObject = ref({});
 
   const onError = (error) => {
-    console.log({ error });
+    // console.log({ error });
     errorMessage.value = error.message;
     errorObject.value = {
       message: error.message,
-      key: error.key,
+      key: error.key || toKebabCase(error.message),
       cause: error.cause,
     };
   };
@@ -22,7 +23,6 @@ export const useErrorProvider = () => {
   };
 
   const api = {
-    message: errorMessage,
     onError,
     reset,
   };
@@ -30,21 +30,21 @@ export const useErrorProvider = () => {
   provide(ErrorProviderContext, api);
 
   window.onerror = (e) => {
-    console.log('window-error:', e);
+    console.log('WINDOW_ONERROR:', e);
   };
 
   return {
-    hasError: computed(() => Boolean(errorMessage.value)),
+    hasError: computed(() => errorMessage.value.length > 0),
     message: errorMessage,
-    errorObj: errorObject,
+    error: errorObject,
   };
 };
 
 export const useError = () => {
   const api = useErrorProviderContext();
   return {
-    message: api.message,
     onError: api.onError,
+    reset: api.reset,
   };
 };
 
