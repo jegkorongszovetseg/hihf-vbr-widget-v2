@@ -104,7 +104,7 @@ const onStatTypeChange = (value) => {
     </div>
     <div>
       <label for="season">Szezon</label>
-      <select id="season" v-model="seasonSelect">
+      <select id="season" v-model="seasonSelect" class="mjsz-vbr-input">
         <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">
           {{ season.seasonName }}
         </option>

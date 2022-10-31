@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite + Vue</title>
   <!-- <script type="module" src="https://unpkg.com/vue@3/dist/vue.esm-browser.js"></script> -->
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.prod.min.js"></script> -->
-  <script src="https://unpkg.com/petite-vue@0.2.2/dist/petite-vue.iife.js" defer init></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.prod.min.js"></script>
+  <!-- <script src="https://unpkg.com/petite-vue@0.2.2/dist/petite-vue.iife.js" defer init></script> -->
 
   <script crossorigin src="/mjsz-vbr-widget.iife.js"></script>
   <!-- <script type="module" src="./mjsz-vbr-widget.esm.js"></script> -->
@@ -25,9 +25,10 @@
 </head>
 
 <body>
-  <mjsz-vbr-fielad-players-leader locale="hu" championship-id="3314" division="Alapszakasz"></mjsz-vbr-fielad-players-leader>
-  <mjsz-vbr-standings locale="hu" championship-id="3314" division="Alapszakasz"></mjsz-vbr-standings>
-  <mjsz-vbr-schedule locale="en"></mjsz-vbr-schedule>
+  <!-- <Statistics :locale="locale" championship-name="Erste Liga"  /> -->
+  <mjsz-vbr-players-leader locale="hu" championship-id="3314" division="Alapszakasz"></mjsz-vbr-players-leader>
+  <!-- <mjsz-vbr-standings locale="hu" championship-id="3314" division="Alapszakasz"></mjsz-vbr-standings> -->
+  <!-- <mjsz-vbr-schedule locale="en"></mjsz-vbr-schedule> -->
   <!-- <script crossorigin src="/bundle.umd.cjs"></script> -->
   <script>
     // import { setup } from './mjsz-vbr-widget.esm.js';

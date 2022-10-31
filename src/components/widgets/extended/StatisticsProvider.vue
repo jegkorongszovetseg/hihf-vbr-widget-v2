@@ -1,7 +1,7 @@
 <script setup>
 import { computed, reactive, unref } from 'vue';
 import { useUrlSearchParams } from '@vueuse/core';
-import { head } from 'ramda';
+import { head, pick } from 'ramda';
 import { fetchVBRData } from '../../../composables/useFetchVBRApi';
 import {
   convertSeasons,
@@ -191,7 +191,7 @@ const onReportChange = (value) => {
 
 const onTeamChange = (value) => {
   onPaginatorChange(1);
-  state.teamFilter = Number(value) || '';
+  state.teamFilter = Number(value) || null;
   params.teamFilter = value || null;
 };
 
@@ -205,6 +205,8 @@ const onStatTypeChange = (value) => {
   state.reportType = value;
   state.currentReport = head(currentReportList.value).value;
   state.teamFilter = null;
+  state.playerFilter = '';
+  params.report = state.currentReport;
   params.teamFilter = null;
   params.type = value;
   setTableData();
@@ -228,13 +230,31 @@ init();
       rows: convertedRows,
       sort,
       page,
-      reports: currentReportList,
-      onSeasonChange,
-      onSectionChange,
-      onReportChange,
-      onStatTypeChange,
-      onTeamChange,
-      onPlayerInput,
+      selectorProps: {
+        reports: currentReportList,
+        ...pick(
+          [
+            'seasons',
+            'championshipId',
+            'sections',
+            'section',
+            'currentReport',
+            'reportType',
+            'teams',
+            'teamFilter',
+            'playerFilter',
+          ],
+          state
+        ),
+      },
+      selectorListeners: {
+        onSeasonChange,
+        onSectionChange,
+        onReportChange,
+        onStatTypeChange,
+        onTeamChange,
+        onPlayerInput,
+      },
       onPaginatorChange,
       onSort,
     }"
