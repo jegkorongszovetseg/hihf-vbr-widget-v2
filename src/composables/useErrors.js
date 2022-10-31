@@ -8,7 +8,7 @@ export const useErrorProvider = () => {
   const errorObject = ref({});
 
   const onError = (error) => {
-    // console.log({ error });
+    console.log({ error });
     errorMessage.value = error.message;
     errorObject.value = {
       message: error.message,
@@ -37,6 +37,7 @@ export const useErrorProvider = () => {
     hasError: computed(() => errorMessage.value.length > 0),
     message: errorMessage,
     error: errorObject,
+    onError,
   };
 };
 

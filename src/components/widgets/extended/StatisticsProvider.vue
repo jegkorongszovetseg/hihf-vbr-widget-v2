@@ -46,7 +46,7 @@ const { onError, error: useErrorError } = useError();
 const params = useUrlSearchParams('history');
 
 const state = reactive({
-  error: '',
+  // error: '',
   loading: false,
   seasons: [],
   championshipId: Number(params.championshipId) || props.championshipId,
@@ -89,7 +89,7 @@ const fetchSeasons = async () => {
     state.seasons = convertSeasons(seasons);
     if (!state.championshipId) state.championshipId = head(state.seasons).championshipId;
   } catch (error) {
-    state.error = error.message;
+    // state.error = error.message;
     onError(error);
   } finally {
     state.loading = false;
@@ -98,7 +98,7 @@ const fetchSeasons = async () => {
 
 const fetchSection = async () => {
   try {
-    state.error = '';
+    // state.error = '';
     state.loading = true;
     const sections = await fetchVBRData('/v1/championshipSections', props.apiKey, {
       championshipId: state.championshipId,
@@ -108,7 +108,7 @@ const fetchSection = async () => {
       state.section = head(state.sections);
     }
   } catch (error) {
-    state.error = error.message;
+    // state.error = error.message;
     onError(error);
   } finally {
     state.loading = false;
@@ -117,7 +117,7 @@ const fetchSection = async () => {
 
 const fetchStatistic = async () => {
   try {
-    state.error = '';
+    // state.error = '';
     state.loading = true;
     state.rows = [];
     onPaginatorChange(1);
@@ -131,7 +131,7 @@ const fetchStatistic = async () => {
       convertTimes(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2', 'mip'])
     );
   } catch (error) {
-    state.error = error.message;
+    // state.error = error.message;
     onError(error);
   } finally {
     state.loading = false;
@@ -140,7 +140,7 @@ const fetchStatistic = async () => {
 
 const fetchTeams = async () => {
   try {
-    state.error = '';
+    // state.error = '';
     state.loading = true;
     state.rows = [];
     const teams = await fetchVBRData('/v1/championshipTeams', props.apiKey, {
@@ -148,7 +148,7 @@ const fetchTeams = async () => {
     });
     state.teams = convertTeams(teams);
   } catch (error) {
-    state.error = error.message;
+    // state.error = error.message;
     onError(error);
   } finally {
     state.loading = false;
@@ -217,8 +217,6 @@ const onStatTypeChange = (value) => {
   params.type = value;
   setTableData();
   fetchStatistic();
-  // onError(new Error('testP'));
-  // throw new Error('test');
 };
 
 const init = async () => {
@@ -229,7 +227,7 @@ const init = async () => {
     setTableData();
     await fetchStatistic();
   } catch (error) {
-    state.error = error.message;
+    // state.error = error.message;
     onError(error);
   }
 };
