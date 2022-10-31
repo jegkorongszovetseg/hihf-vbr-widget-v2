@@ -104,7 +104,7 @@ const fetchSection = async () => {
       championshipId: state.championshipId,
     });
     state.sections = sections.sectionName;
-    if (!state.sections.includes(state.section)) {
+    if (state.sections && !state.sections.includes(state.section)) {
       state.section = head(state.sections);
     }
   } catch (error) {

@@ -29,6 +29,11 @@ export const createI18n = ({ messages = {}, locale = '', fallbackLocale = '' }) 
     return translation;
   };
 
+  const hasTranlation = (key) => {
+    const keyArray = map(trim, split('.', key));
+    return Boolean(getTranslation(state.locale, keyArray, state.messages));
+  };
+
   function getTranslation(locale, keys, messages) {
     return path([locale, ...keys], messages);
   }
@@ -50,6 +55,7 @@ export const createI18n = ({ messages = {}, locale = '', fallbackLocale = '' }) 
     locale: reactiveLocale,
     setLocale,
     translate,
+    hasTranlation,
   };
 
   provide(I18nContext, api);
@@ -68,6 +74,7 @@ export const useI18n = (settings) => {
     locale: api.locale,
     t: api.translate,
     setLocale: api.setLocale,
+    hasTranlation: api.hasTranlation,
   };
 };
 
