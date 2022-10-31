@@ -6,9 +6,11 @@ import { fetchVBRData } from '../../../composables/useFetchVBRApi';
 import {
   convertSeasons,
   convertTeams,
+  setDefaultReport,
   REPORTS_MAP,
   PLAYERS_REPORTS_SELECT,
   TEAMS_REPORTS_SELECT,
+  REPORT_TYPE_PLAYERS,
 } from './statistics.internal.js';
 import convert, { convertTimes, playerName, rawConvert } from '../../../utils/convert';
 import { usePage } from '../../../composables/usePage';
@@ -46,18 +48,17 @@ const { onError, error: useErrorError } = useError();
 const params = useUrlSearchParams('history');
 
 const state = reactive({
-  // error: '',
   loading: false,
   seasons: [],
   championshipId: Number(params.championshipId) || props.championshipId,
   sections: [],
   section: params.section || null,
-  reports: null,
-  currentReport: params.report || 'points',
   teams: [],
   teamFilter: Number(params.teamFilter) || null,
   playerFilter: '',
-  reportType: params.type || 'players',
+  reportType: params.type || REPORT_TYPE_PLAYERS,
+  reports: null,
+  currentReport: setDefaultReport(params),
   rows: [],
   columns: null,
   api: null,
@@ -68,7 +69,7 @@ state.columns = initialReport.columns;
 state.api = initialReport.api;
 
 const currentReportList = computed(() =>
-  state.reportType === 'players' ? PLAYERS_REPORTS_SELECT(t) : TEAMS_REPORTS_SELECT
+  state.reportType === REPORT_TYPE_PLAYERS ? PLAYERS_REPORTS_SELECT(t) : TEAMS_REPORTS_SELECT
 );
 
 const { page, change: onPaginatorChange } = usePage();
@@ -89,7 +90,6 @@ const fetchSeasons = async () => {
     state.seasons = convertSeasons(seasons);
     if (!state.championshipId) state.championshipId = head(state.seasons).championshipId;
   } catch (error) {
-    // state.error = error.message;
     onError(error);
   } finally {
     state.loading = false;
@@ -98,7 +98,6 @@ const fetchSeasons = async () => {
 
 const fetchSection = async () => {
   try {
-    // state.error = '';
     state.loading = true;
     const sections = await fetchVBRData('/v1/championshipSections', props.apiKey, {
       championshipId: state.championshipId,
@@ -108,7 +107,6 @@ const fetchSection = async () => {
       state.section = head(state.sections);
     }
   } catch (error) {
-    // state.error = error.message;
     onError(error);
   } finally {
     state.loading = false;
@@ -117,7 +115,6 @@ const fetchSection = async () => {
 
 const fetchStatistic = async () => {
   try {
-    // state.error = '';
     state.loading = true;
     state.rows = [];
     onPaginatorChange(1);
@@ -131,7 +128,6 @@ const fetchStatistic = async () => {
       convertTimes(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2', 'mip'])
     );
   } catch (error) {
-    // state.error = error.message;
     onError(error);
   } finally {
     state.loading = false;
@@ -140,7 +136,6 @@ const fetchStatistic = async () => {
 
 const fetchTeams = async () => {
   try {
-    // state.error = '';
     state.loading = true;
     state.rows = [];
     const teams = await fetchVBRData('/v1/championshipTeams', props.apiKey, {
@@ -148,7 +143,6 @@ const fetchTeams = async () => {
     });
     state.teams = convertTeams(teams);
   } catch (error) {
-    // state.error = error.message;
     onError(error);
   } finally {
     state.loading = false;
@@ -174,7 +168,6 @@ const setTableData = () => {
 };
 
 const onSeasonChange = async (value) => {
-  // const { value } = event.target;
   state.championshipId = value;
   params.championshipId = value;
   await fetchSection();
@@ -184,14 +177,12 @@ const onSeasonChange = async (value) => {
 };
 
 const onSectionChange = async (value) => {
-  // const { value } = event.target;
   state.section = value;
   params.section = value;
   await fetchStatistic();
 };
 
 const onReportChange = (value) => {
-  // const { value } = event.target;
   state.currentReport = value;
   params.report = value;
   setTableData();
@@ -200,7 +191,6 @@ const onReportChange = (value) => {
 
 const onTeamChange = (value) => {
   onPaginatorChange(1);
-  // const { value } = event.target;
   state.teamFilter = Number(value) || '';
   params.teamFilter = value || null;
 };
@@ -214,22 +204,19 @@ const onPlayerInput = (event) => {
 const onStatTypeChange = (value) => {
   state.reportType = value;
   state.currentReport = head(currentReportList.value).value;
+  state.teamFilter = null;
+  params.teamFilter = null;
   params.type = value;
   setTableData();
   fetchStatistic();
 };
 
 const init = async () => {
-  try {
-    await fetchSeasons();
-    await fetchSection();
-    await fetchTeams();
-    setTableData();
-    await fetchStatistic();
-  } catch (error) {
-    // state.error = error.message;
-    onError(error);
-  }
+  await fetchSeasons();
+  await fetchSection();
+  await fetchTeams();
+  setTableData();
+  await fetchStatistic();
 };
 init();
 </script>

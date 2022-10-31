@@ -1,4 +1,4 @@
-import { inject, provide, ref, computed } from 'vue';
+import { inject, provide, ref, computed, onErrorCaptured } from 'vue';
 import { toKebabCase } from '../utils/string';
 
 const ErrorProviderContext = Symbol('ErrorProviderContext');
@@ -32,6 +32,10 @@ export const useErrorProvider = () => {
   window.onerror = (e) => {
     console.log('WINDOW_ONERROR:', e);
   };
+
+  onErrorCaptured((error, vm, info) => {
+    console.log('onErrorCaptured:', error, vm, info);
+  });
 
   return {
     hasError: computed(() => errorMessage.value.length > 0),

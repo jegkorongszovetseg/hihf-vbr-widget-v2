@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { useI18n } from '../../../composables/useI18n';
+import { REPORT_TYPE_PLAYERS, REPORT_TYPE_TEAMS } from './statistics.internal';
 
 const props = defineProps({
   seasons: {
@@ -98,8 +99,8 @@ const onStatTypeChange = (value) => {
 <template>
   <div>
     <div>
-      <button type="button" @click="onStatTypeChange('players')">Players</button>
-      <button type="button" @click="onStatTypeChange('teams')">Teams</button>
+      <button type="button" @click="onStatTypeChange(REPORT_TYPE_PLAYERS)">Players</button>
+      <button type="button" @click="onStatTypeChange(REPORT_TYPE_TEAMS)">Teams</button>
     </div>
     <div>
       <label for="season">Szezon</label>
@@ -124,7 +125,7 @@ const onStatTypeChange = (value) => {
     <div>
       <label for="teams">Teams</label>
       <select id="teams" v-model="teamSelect" :disabled="reportType !== 'players'">
-        <option value="">{{ t('common.all') }}</option>
+        <option :value="null">{{ t('common.all') }}</option>
         <option v-for="{ teamId, teamName } in teams" :key="teamId" :value="teamId">{{ teamName }}</option>
       </select>
     </div>

@@ -1,5 +1,4 @@
 import { ascend, compose, descend, map, pick, prop, sort } from 'ramda';
-import { useI18n } from '../../../composables/useI18n';
 import { SORT_STATE_DESCEND } from '../../../constants';
 import {
   COLUMNS_FIELD_PLAYERS,
@@ -11,6 +10,9 @@ import {
   COLUMNS_TEAMS_POWERPLAY,
   COLUMNS_TEAM_ATTENDANCE,
 } from '../internal';
+
+export const REPORT_TYPE_PLAYERS = 'players';
+export const REPORT_TYPE_TEAMS = 'teams';
 
 export const REPORTS_MAP = new Map()
   .set('points', {
@@ -171,13 +173,10 @@ export const convertSeasons = (seasons) =>
 
 export const convertTeams = (teams) => sort(ascend(prop('teamName')), teams);
 
-// export const convertTimes = (data, targets = []) => {
-//   data = data.map((row) => {
-//     targets.map((key) => {
-//       if (!row[key]) return row;
-//       return (row[`${key}Sec`] = convertMinToSec(row[key]));
-//     });
-//     return row;
-//   });
-//   return data;
-// };
+export const setDefaultReport = (params) => {
+  if (params.report) return params.report;
+  if (params.type) {
+    return params.type === REPORT_TYPE_PLAYERS ? 'points' : 'teamAttandance';
+  }
+  return 'points';
+};
