@@ -42,6 +42,10 @@ export default defineConfig(({ mode }) => {
               { text: 'Csapat hatékonyság', link: '/widget/teams-scoring-efficiency' },
             ],
           },
+          {
+            text: 'Kibővített Widgetek',
+            items: [{ text: 'Statisztikák', link: '/widget/statistics' }],
+          },
         ],
       },
     },

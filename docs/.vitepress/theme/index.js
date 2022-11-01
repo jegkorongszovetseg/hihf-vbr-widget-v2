@@ -1,5 +1,5 @@
 import DefaultTheme from 'vitepress/theme';
-import { setup } from '../../../dist/mjsz-vbr-widget.esm';
+import { setup } from '../../../dist/mjsz-vbr-widget.es';
 
 export default {
   ...DefaultTheme,
