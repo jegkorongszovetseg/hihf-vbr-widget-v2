@@ -1,18 +1,19 @@
 <script setup>
-import { computed, ref, unref } from 'vue';
+import { computed, ref, unref, watch } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import dayjs from 'dayjs';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import { usePage } from '../../composables/usePage';
+import { useErrorProvider } from '../../composables/useErrors';
 import { offsetName } from '../../utils/datetime';
 import convert from '../../utils/convert';
 import { baseProps } from './internal.props';
+import { externalGameLinkResolver } from '../../utils/resolvers';
 import ScheduleTable from './ScheduleTable.vue';
 import I18NProvider from '../I18NProvider.vue';
 import Paginator from '../Paginator.vue';
 import ErrorNotice from '../ErrorNotice.vue';
 import TimezoneSelector from '../TimezoneSelector.vue';
-import { externalGameLinkResolver } from '../../utils/resolvers';
 
 const props = defineProps({
   ...baseProps,
@@ -49,11 +50,13 @@ const props = defineProps({
   },
 });
 
+const { onError, error, hasError } = useErrorProvider();
+
 const locale = computed(() => props.locale);
 
 const {
   state: rows,
-  error,
+  error: apiError,
   isLoading,
 } = useAsyncState(
   fetchVBRData('/v1/gamesList', props.apiKey, {
@@ -62,6 +65,7 @@ const {
   }),
   []
 );
+watch(apiError, (error) => onError(error));
 
 const { page, change: onPaginatorChange } = usePage({
   initial: props.initialPage,
@@ -92,7 +96,7 @@ const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.exter
 <template>
   <div>
     <I18NProvider :locale="props.locale">
-      <ErrorNotice v-if="error?.error" :error="error.message" />
+      <ErrorNotice v-if="hasError" :error="error" />
 
       <TimezoneSelector :locale="props.locale" :current-zone="timezone" @change="onTimezoneChange" />
 

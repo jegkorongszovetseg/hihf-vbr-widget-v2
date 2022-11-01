@@ -1,8 +1,10 @@
 <script setup>
 import { useColumns } from '../../composables/useColumns.js';
 import { useI18n } from '../../composables/useI18n';
+import { useError } from '../../composables/useErrors';
 import { COLUMNS_SCHEDULE } from './internal';
 import { DEFAULT_EXTERNAL_BASE_URL } from '../../constants.js';
+import * as Errors from '../../utils/errors';
 import ResponsiveTable from '../ResponsiveTable.vue';
 import Image from '../Image.vue';
 import DataTable from '../DataTable.vue';
@@ -43,12 +45,21 @@ const props = defineProps({
     required: true,
   }
 });
+
+const { onError } = useError();
+
 const { columns, error } = useColumns(COLUMNS_SCHEDULE, props.hideColumns, { offsetName: props.offsetName });
+if (error.value)
+  onError(
+    new Errors.WidgetError(Errors.UndefinedColumn.message, {
+      ...Errors.UndefinedColumn.options,
+      cause: { column: error.value },
+    })
+  );
 const { t } = useI18n();
 </script>
 
 <template>
-  <div v-if="error">{{ error }}</div>
   <ResponsiveTable v-slot:default="{ el: rootElement }">
     <DataTable :columns="columns" :rows="props.rows" :is-loading="isLoading" :append-to="rootElement">
       <template v-slot:cell-homeTeamLogo="{ row }">
