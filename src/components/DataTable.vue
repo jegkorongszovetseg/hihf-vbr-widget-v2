@@ -78,6 +78,10 @@ const sortBy = (column, prop) => {
               @focus="show"
               @blur="hide"
               @click="sortBy(column, prop)"
+              @keydown.space.prevent="sortBy(column, prop)"
+              @keydown.enter.prevent="sortBy(column, prop)"
+              :tabindex="column.sortOrders ? 0 : -1"
+              role="button"
             >
               <slot :name="`header-${prop}`" :column="column">
                 {{ column.label }}

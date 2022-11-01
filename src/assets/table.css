@@ -13,8 +13,10 @@
     color: var(--vbr-widget-table-header-color);
     text-align: center;
 
+    &:focus-visible,
     &:hover {
       background-color: var(--vbr-widget-table-header-hover-bg-color);
+      outline: none;
     }
 
     &.is-sortable {
