@@ -20,7 +20,12 @@
     "assists": "Assists",
     "penalties": "Penalties",
     "goalies": "Goalies",
-    "goaliesLimit": "Goalies under 40%"
+    "goaliesLimit": "Goalies under 40%",
+    "teamAttendance": "Attendance",
+    "teamFairplay": "Fairplay",
+    "teamPenaltyKilling": "Penalty Killing",
+    "teamPowerplay": "Powerplay",
+    "teamScoringEfficiency": "Scoring Efficiency"
   },
   "table": {
     "blank": "#",

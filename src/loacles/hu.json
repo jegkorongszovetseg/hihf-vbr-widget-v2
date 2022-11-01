@@ -20,7 +20,12 @@
     "assists": "Gólpasszok",
     "penalties": "Büntetések",
     "goalies": "Kapusok",
-    "goaliesLimit": "Kapusok 40% jégidő alatt"
+    "goaliesLimit": "Kapusok 40% jégidő alatt",
+    "teamAttendance": "Nézőszám",
+    "teamFairplay": "Büntetések",
+    "teamPenaltyKilling": "Emberhátrányok",
+    "teamPowerplay": "Emberelőnyök",
+    "teamScoringEfficiency": "Hatékonyság"
   },
   "table": {
     "blank": "#",

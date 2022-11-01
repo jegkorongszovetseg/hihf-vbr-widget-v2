@@ -145,28 +145,30 @@ export const PLAYERS_REPORTS_SELECT = (t) => {
   ];
 };
 
-export const TEAMS_REPORTS_SELECT = [
-  {
-    name: 'Team Attendance',
-    value: 'teamAttandance',
-  },
-  {
-    name: 'Team Fairplay',
-    value: 'teamFairplay',
-  },
-  {
-    name: 'Team Penalty Killing',
-    value: 'teamPenaltiKilling',
-  },
-  {
-    name: 'Team Powerplay',
-    value: 'teamPowerplay',
-  },
-  {
-    name: 'Team Scoring Efficiency',
-    value: 'teamScoringEfficiency',
-  },
-];
+export const TEAMS_REPORTS_SELECT = (t) => {
+  return [
+    {
+      name: t('report.teamAttendance'),
+      value: 'teamAttandance',
+    },
+    {
+      name: t('report.teamFairplay'),
+      value: 'teamFairplay',
+    },
+    {
+      name: t('report.teamPenaltyKilling'),
+      value: 'teamPenaltiKilling',
+    },
+    {
+      name: t('report.teamPowerplay'),
+      value: 'teamPowerplay',
+    },
+    {
+      name: t('report.teamScoringEfficiency'),
+      value: 'teamScoringEfficiency',
+    },
+  ];
+};
 
 export const convertSeasons = (seasons) =>
   compose(sort(descend(prop('championshipId'))), map(pick(['championshipId', 'seasonName'])))(seasons);

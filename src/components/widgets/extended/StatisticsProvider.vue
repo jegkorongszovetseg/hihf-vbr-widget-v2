@@ -69,7 +69,7 @@ state.columns = initialReport.columns;
 state.api = initialReport.api;
 
 const currentReportList = computed(() =>
-  state.reportType === REPORT_TYPE_PLAYERS ? PLAYERS_REPORTS_SELECT(t) : TEAMS_REPORTS_SELECT
+  state.reportType === REPORT_TYPE_PLAYERS ? PLAYERS_REPORTS_SELECT(t) : TEAMS_REPORTS_SELECT(t)
 );
 
 const { page, change: onPaginatorChange } = usePage();
