@@ -7,7 +7,7 @@
   "common": {
     "loading": "Töltődés...",
     "noData": "Nincs megjeleníthető adat",
-    "selectTimezone": "*Minden időpont a számítógép időzónája szerint jelenik meg ({0}). Váltás:",
+    "selectTimezone": "*Minden időpont a számítógép időzónája szerint jelenik meg ({timezone}). Váltás: ",
     "hungary": "Magyarország",
     "romania": "Románia",
     "shootoutShort": "SzU.",

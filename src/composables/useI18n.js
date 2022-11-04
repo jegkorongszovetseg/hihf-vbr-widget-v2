@@ -1,4 +1,4 @@
-import { computed, inject, provide, reactive } from 'vue';
+import { computed, defineComponent, h, inject, onMounted, provide, reactive } from 'vue';
 import { $computed } from 'vue/macros';
 import { path, isEmpty, trim, map, split } from 'ramda';
 
@@ -91,3 +91,31 @@ const replacer = function (tpl, data) {
     return data[$2];
   });
 };
+
+export const i18n = defineComponent({
+  props: {
+    tag: {
+      type: String,
+      default: 'div',
+    },
+
+    path: {
+      type: String,
+      defult: '',
+    },
+  },
+
+  setup(props, { slots }) {
+    const keys = map(trim, split('.', props.path));
+    const string = path([state.locale, ...keys], state.messages);
+    const items = split(/{|}/, string);
+
+    const rend = Object.keys(slots).map((item) => {
+      const index = items.indexOf(item.toString());
+      items[index] = slots[item]()[0];
+      return items;
+    });
+
+    return () => h(props.tag, rend);
+  },
+});

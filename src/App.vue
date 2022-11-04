@@ -21,7 +21,7 @@ const change = () => {
 <template>
   <div>
     <button type="button" @click="change">{{ locale }}</button>
-    <Statistics :locale="locale" championship-name="Erste Liga"  />
+    <!-- <Statistics :locale="locale" championship-name="Erste Liga"  /> -->
     <!-- <TeamScoringEfficiency :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamPowerplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamPenaltyKilling :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
@@ -31,6 +31,6 @@ const change = () => {
     <!-- <FieldPlayersPenalties api-key="xxx" :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="true" :is-team-linked="true" /> -->
     <!-- <FieldPlayersLeader :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="true" :is-team-linked="true" /> -->
     <!-- <Standings :locale="locale" championship-id="3314" division="Alapszakasz" type="3" /> -->
-    <!-- <Schedule :locale="locale" championship-id="3314" division="Alapszakasz" auto-initial-page hide-columns="broadcast" /> -->
+    <Schedule :locale="locale" championship-id="3314" division="Alapszakasz" auto-initial-page hide-columns="broadcast" />
   </div>
 </template>

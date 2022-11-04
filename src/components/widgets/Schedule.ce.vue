@@ -98,7 +98,12 @@ const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.exter
     <I18NProvider :locale="props.locale">
       <ErrorNotice v-if="hasError" :error="error" />
 
-      <TimezoneSelector :locale="props.locale" :current-zone="timezone" @change="onTimezoneChange" />
+      <TimezoneSelector
+        :key="props.locale"
+        :locale="props.locale"
+        :current-zone="timezone"
+        @change="onTimezoneChange"
+      />
 
       <ScheduleTable
         :rows="convertedRows.rows"
@@ -120,7 +125,7 @@ const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.exter
 </template>
 
 <style src="../../assets/common.css"></style>
-<style lang="scss" src="../../assets/table.css"></style>
-<style lang="scss" src="../../assets/responsive-table.css"></style>
-<style lang="scss" src="../../assets/paginator.css"></style>
-<style lang="scss" src="../../assets/dropdown.css"></style>
+<style lang="postcss" src="../../assets/table.css"></style>
+<style lang="postcss" src="../../assets/responsive-table.css"></style>
+<style lang="postcss" src="../../assets/paginator.css"></style>
+<style lang="postcss" src="../../assets/dropdown.css"></style>
