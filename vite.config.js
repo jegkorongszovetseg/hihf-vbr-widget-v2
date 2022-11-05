@@ -54,7 +54,7 @@ export default defineConfig(({ mode }) => {
       //     ecma: 2017,
       //   },
       // },
-      sourcemap: true,
+      sourcemap: false,
       target: 'modules',
       minify: true,
     },

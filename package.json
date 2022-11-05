@@ -14,7 +14,8 @@
     "playground": "npx serve -s playground",
     "docs:dev": "vitepress dev docs --port 5555",
     "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "docs:serve": "vitepress serve docs",
+    "build:external": "node scripts/build.js "
   },
   "dependencies": {
     "@floating-ui/dom": "^1.0.2",
@@ -29,9 +30,8 @@
     "postcss-mixins": "^9.0.4",
     "postcss-nested": "^6.0.0",
     "postcss-prefixer": "^2.1.3",
-    "sass": "^1.55.0",
     "terser": "^5.15.1",
-    "vite": "^3.2.0",
+    "vite": "^3.2.2",
     "vite-plugin-compression": "^0.5.1",
     "vitepress": "^1.0.0-alpha.21"
   }
