@@ -128,4 +128,4 @@ const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.exter
 <style lang="postcss" src="../../assets/table.css"></style>
 <style lang="postcss" src="../../assets/responsive-table.css"></style>
 <style lang="postcss" src="../../assets/paginator.css"></style>
-<style lang="postcss" src="../../assets/dropdown.css"></style>
+<style lang="css" src="../../assets/dropdown.css"></style>
