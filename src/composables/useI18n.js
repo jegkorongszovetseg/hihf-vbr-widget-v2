@@ -1,4 +1,4 @@
-import { computed, defineComponent, h, inject, onMounted, provide, reactive } from 'vue';
+import { computed, defineComponent, h, inject, provide, reactive } from 'vue';
 import { $computed } from 'vue/macros';
 import { path, isEmpty, trim, map, split } from 'ramda';
 
@@ -20,10 +20,7 @@ export const createI18n = ({ messages = {}, locale = '', fallbackLocale = '' }) 
     const keyArray = map(trim, split('.', key));
 
     const translation = $computed(() => {
-      let rawTransition = getTranslation(state.locale, keyArray, state.messages);
-      if (!rawTransition && state.fallbackLocale) {
-        rawTransition = getTranslation(state.fallbackLocale, keyArray, state.messages);
-      }
+      const rawTransition = resolveTransition(keyArray);
       return hasInterpolation ? replacer(rawTransition, data) : rawTransition;
     });
     return translation;
@@ -33,10 +30,6 @@ export const createI18n = ({ messages = {}, locale = '', fallbackLocale = '' }) 
     const keyArray = map(trim, split('.', key));
     return Boolean(getTranslation(state.locale, keyArray, state.messages));
   };
-
-  function getTranslation(locale, keys, messages) {
-    return path([locale, ...keys], messages);
-  }
 
   const setLocale = (locale) => {
     state.locale = locale;
@@ -86,6 +79,19 @@ const useI18nContext = () => {
   return api;
 };
 
+const resolveTransition = (keys = []) => {
+  let rawTransition = getTranslation(state.locale, keys, state.messages);
+  if (!rawTransition && state.fallbackLocale) {
+    rawTransition = getTranslation(state.fallbackLocale, keys, state.messages);
+  }
+  if (!rawTransition) return keys.join('.');
+  return rawTransition;
+};
+
+function getTranslation(locale, keys, messages) {
+  return path([locale, ...keys], messages);
+}
+
 const replacer = function (tpl, data) {
   return tpl.replace(/\{(\w+)\}/g, function ($1, $2) {
     return data[$2];
@@ -107,15 +113,15 @@ export const i18n = defineComponent({
 
   setup(props, { slots }) {
     const keys = map(trim, split('.', props.path));
-    const string = path([state.locale, ...keys], state.messages);
-    const items = split(/{|}/, string);
+    const transition = resolveTransition(keys);
+    const interpolationItems = split(/{|}/, transition);
 
-    const rend = Object.keys(slots).map((item) => {
-      const index = items.indexOf(item.toString());
-      items[index] = slots[item]()[0];
-      return items;
+    const children = Object.keys(slots).map((item) => {
+      const index = interpolationItems.indexOf(item);
+      if (index > -1) interpolationItems[index] = slots[item]()[0];
+      return interpolationItems;
     });
 
-    return () => h(props.tag, rend);
+    return () => h(props.tag, children);
   },
 });

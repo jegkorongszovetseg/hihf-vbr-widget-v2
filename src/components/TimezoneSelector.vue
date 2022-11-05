@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 import { offsetName } from '../utils/datetime';
 import { useI18n, i18n } from '../composables/useI18n';
 import { AVAILABLE_TIMEZONES_BY_COUNTRY } from '../constants.js';
+import { useMainClass } from '../composables/useMainClass';
 
 const props = defineProps({
   locale: {
@@ -19,6 +20,7 @@ const props = defineProps({
 const emit = defineEmits(['change']);
 
 const { t } = useI18n();
+const mainClass = useMainClass('timezone-selector');
 
 const localZoneName = computed(() => offsetName(new Date(), null, props.locale));
 const localTimeZone = dayjs.tz.guess();
@@ -36,7 +38,7 @@ const onChangeTimezone = (tz) => emit('change', tz);
 </script>
 
 <template>
-  <div>
+  <div :class="mainClass">
     <i18n path="common.selectTimezone" tag="span">
       <template #timezone>
         <a href="#" @click.prevent="onChangeTimezone(localTimeZone)">{{ localZoneName }}</a>
