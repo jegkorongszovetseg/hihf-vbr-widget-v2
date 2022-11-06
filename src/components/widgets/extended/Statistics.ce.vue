@@ -97,4 +97,11 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
 <style lang="css" src="../../../assets/forms.css"></style>
 <style lang="css" src="../../../assets/table.css"></style>
 <style lang="css" src="../../../assets/responsive-table.css"></style>
-<style lang="css" src="../../../assets/paginator.css"></style>
+<style src="@/assets/paginator.css"></style>
+<!-- <style>
+@import '@/assets/common.css';
+@import '@/assets/table.css';
+@import '@/assets/responsive-table.css';
+@import '@/assets/paginator.css';
+@import '@/assets/forms.css';
+</style> -->

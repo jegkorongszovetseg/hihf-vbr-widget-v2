@@ -48,6 +48,11 @@ const props = defineProps({
     type: [String, Function],
     default: '',
   },
+
+  timezoneSelector: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const { onError, error, hasError } = useErrorProvider();
@@ -97,8 +102,9 @@ const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.exter
   <div>
     <I18NProvider :locale="props.locale">
       <ErrorNotice v-if="hasError" :error="error" />
-
+      {{ typeof timezoneSelector }}
       <TimezoneSelector
+        v-if="timezoneSelector"
         :key="props.locale"
         :locale="props.locale"
         :current-zone="timezone"
@@ -124,8 +130,8 @@ const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.exter
   </div>
 </template>
 
-<style src="../../assets/common.css"></style>
-<style lang="postcss" src="../../assets/table.css"></style>
-<style lang="postcss" src="../../assets/responsive-table.css"></style>
-<style src="../../assets/paginator.css"></style>
-<style lang="css" src="../../assets/dropdown.css"></style>
+<style src="@/assets/common.css"></style>
+<style src="@/assets/table.css"></style>
+<style src="@/assets/responsive-table.css"></style>
+<style src="@/assets/paginator.css"></style>
+<style src="@/assets/dropdown.css"></style>

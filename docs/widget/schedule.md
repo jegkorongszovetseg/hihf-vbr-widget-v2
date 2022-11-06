@@ -5,7 +5,7 @@ Csapatok mérkőzései a bajnokságban
 ## Használat
 
 ```html
-<mjsz-vbr-schedule locale="hu" championship-id="2051" division="Alapszakasz" />
+<mjsz-vbr-schedule locale="hu" championship-id="2051" division="Alapszakasz" timezone-selector />
 ```
 
 ## Példa
@@ -14,7 +14,9 @@ Csapatok mérkőzései a bajnokságban
   <mjsz-vbr-schedule
     locale="hu"
     championship-id="2051"
-    division="Alapszakasz" 
+    division="Alapszakasz"
+    timezone-selector
+    auto-initial-page
   />
 </ClientOnly>
 

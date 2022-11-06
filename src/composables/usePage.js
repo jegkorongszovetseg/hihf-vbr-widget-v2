@@ -13,7 +13,7 @@ export const usePage = (options = {}) => {
   const calculatePage = () => {
     if (!auto) return;
     const index = findIndex(propSatisfies(condition, 'gameDate'))(unref(items));
-    page.value = Math.floor(index / limit) + 1;
+    page.value = index === -1 ? 1 : Math.floor(index / limit) + 1;
   };
 
   watch(items, calculatePage);

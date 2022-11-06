@@ -1,5 +1,6 @@
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import path from 'path';
 import viteCompression from 'vite-plugin-compression';
 import postcssMixins from 'postcss-mixins';
 import postcssNested from 'postcss-nested';
@@ -19,6 +20,11 @@ export default defineConfig(({ mode }) => {
   return {
     define: {
       'process.env': process.env,
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
     },
     css: {
       postcss: {
