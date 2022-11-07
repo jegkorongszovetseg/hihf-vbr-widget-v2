@@ -131,3 +131,6 @@ export const convertTimes =
     });
     return row;
   };
+
+const dateDiff = (a, b) => new Date(a.gameDate).getTime() - new Date(b.gameDate).getTime();
+export const sortGames = sortWith([dateDiff, ascend(prop('id'))]);

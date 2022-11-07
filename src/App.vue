@@ -30,7 +30,7 @@ const change = () => {
     <!-- <GoaliesLeader :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <FieldPlayersPenalties api-key="xxx" :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="true" :is-team-linked="true" /> -->
     <!-- <FieldPlayersLeader :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="true" :is-team-linked="true" /> -->
-    <Standings :locale="locale" championship-id="3314" division="Alapszakasz" type="3" />
+    <!-- <Standings :locale="locale" championship-id="3314" division="Alapszakasz" type="3" /> -->
     <Schedule
       :locale="locale"
       championship-id="3314"

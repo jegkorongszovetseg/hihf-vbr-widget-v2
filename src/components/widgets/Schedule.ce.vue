@@ -6,7 +6,7 @@ import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import { usePage } from '../../composables/usePage';
 import { useErrorProvider } from '../../composables/useErrors';
 import { offsetName } from '../../utils/datetime';
-import convert from '../../utils/convert';
+import convert, { sortGames } from '../../utils/convert';
 import { baseProps } from './internal.props';
 import { externalGameLinkResolver } from '../../utils/resolvers';
 import { REFRESH_DELAY } from '../../constants';
@@ -66,7 +66,7 @@ const { onError, error, hasError } = useErrorProvider();
 const locale = computed(() => props.locale);
 
 const {
-  state: rows,
+  state: rawRows,
   isLoading,
   execute,
 } = useAsyncState(
@@ -85,6 +85,8 @@ const {
     },
   }
 );
+
+const rows = computed(() => sortGames(rawRows.value));
 
 const { pause, resume } = useTimeoutPoll(execute, REFRESH_DELAY, { immediate: false });
 
