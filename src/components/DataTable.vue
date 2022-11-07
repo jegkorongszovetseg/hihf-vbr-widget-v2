@@ -1,5 +1,5 @@
 <script setup>
-import { computed, toRef } from 'vue';
+import { computed, toRef, toRefs } from 'vue';
 import { useI18n } from '../composables/useI18n';
 import { useMainClass } from '../composables/useMainClass';
 import { SORT_STATE_ASCEND, SORT_STATE_DESCEND, SORT_STATE_ORIGINAL } from '../constants.js';
@@ -7,6 +7,7 @@ import IconSort from './icons/IconSort.vue';
 import IconSortAsc from './icons/IconSortAsc.vue';
 import IconSortDesc from './icons/IconSortDesc.vue';
 import FloatingPanel from './FloatingPanel.vue';
+import { refDebounced } from '@vueuse/shared';
 
 const props = defineProps({
   columns: {
@@ -35,6 +36,9 @@ const props = defineProps({
   },
 });
 
+
+const { isLoading, appendTo } = toRefs(props);
+
 const emit = defineEmits(['sort']);
 
 const { t } = useI18n();
@@ -42,7 +46,7 @@ const mainClassName = useMainClass('table');
 
 const columns = computed(() => props.columns);
 const columnCount = computed(() => Object.keys(props.columns).length);
-const appendTo = toRef(props, 'appendTo');
+const isLoadingDebounced = refDebounced(isLoading, 300);
 
 const sortBy = (column, prop) => {
   if (!column.sortOrders) return;
@@ -126,7 +130,7 @@ const sortBy = (column, prop) => {
       <tr v-if="rows.length === 0 && !isLoading">
         <td :colspan="columnCount">{{ t('common.noData') }}</td>
       </tr>
-      <tr v-if="isLoading">
+      <tr v-if="isLoadingDebounced">
         <td :colspan="columnCount">{{ t('common.loading') }}</td>
       </tr>
     </tfoot>

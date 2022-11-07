@@ -37,13 +37,13 @@ const props = defineProps({
 
   offsetName: {
     type: String,
-    default: ''
+    default: '',
   },
 
   externalGameResolver: {
     type: Function,
     required: true,
-  }
+  },
 });
 
 const { onError } = useError();
@@ -81,7 +81,7 @@ const { t } = useI18n();
       </template>
       <template v-slot:cell-gameResultType="{ row }">
         <span v-if="row.isOvertime" class="label">{{ t('common.overtimeShort') }}</span>
-        <span v-if="row.isShootout" class="label">{{ t('common.shootoutShort').value }}</span>
+        <span v-if="row.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
         <span v-if="row.seriesStandings" class="label">{{ row.seriesStandings }}</span>
       </template>
       <template v-slot:cell-broadcast="{ row }">

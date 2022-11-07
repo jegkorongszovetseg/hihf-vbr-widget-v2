@@ -20,7 +20,7 @@ const props = defineProps({
 });
 const imageOptions = ref({ src: props.src });
 const defaultSrc = ref({ src: props.defaultSrc });
-const { error, isReady } = useImage(imageOptions);
+const { error, isReady } = useImage(imageOptions, { resetOnExecute: false, shallow: false });
 </script>
 
 <template>

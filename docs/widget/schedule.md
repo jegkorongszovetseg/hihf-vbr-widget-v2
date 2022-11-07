@@ -13,7 +13,7 @@ Csapatok mérkőzései a bajnokságban
 <ClientOnly>
   <mjsz-vbr-schedule
     locale="hu"
-    championship-id="2051"
+    championship-id="3314"
     division="Alapszakasz"
     timezone-selector
     auto-initial-page

@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref, unref, watch } from 'vue';
-import { useAsyncState } from '@vueuse/core';
+import { promiseTimeout, useAsyncState, useDocumentVisibility, useTimeoutPoll } from '@vueuse/core';
 import dayjs from 'dayjs';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import { usePage } from '../../composables/usePage';
@@ -53,6 +53,11 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+
+  autoRefresh: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const { onError, error, hasError } = useErrorProvider();
@@ -61,16 +66,25 @@ const locale = computed(() => props.locale);
 
 const {
   state: rows,
-  error: apiError,
   isLoading,
+  execute,
 } = useAsyncState(
-  fetchVBRData('/v1/gamesList', props.apiKey, {
+  () => fetchVBRData('/v1/gamesList', props.apiKey, {
     championshipId: props.championshipId,
     division: props.division,
   }),
-  []
+  [],
+  {
+    resetOnExecute: false,
+    immediate: !props.autoRefresh,
+    onError: (error) => {
+      onError(error);
+      pause?.();
+    },
+  }
 );
-watch(apiError, (error) => onError(error));
+
+const { pause, resume } = useTimeoutPoll(execute, 5000, { immediate: false });
 
 const { page, change: onPaginatorChange } = usePage({
   initial: props.initialPage,
@@ -89,6 +103,16 @@ const convertedRows = computed(() => {
     .value();
 });
 
+if (props.autoRefresh) {
+  resume();
+  const visibility = useDocumentVisibility();
+  watch(visibility, (visible) => {
+    console.log('visible:', visible);
+    if (visible === 'visible') return resume();
+    pause();
+  });
+}
+
 const totalItems = computed(() => convertedRows.value?.totalItems);
 
 const onTimezoneChange = (tz) => {
@@ -102,7 +126,7 @@ const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.exter
   <div>
     <I18NProvider :locale="props.locale">
       <ErrorNotice v-if="hasError" :error="error" />
-      {{ typeof timezoneSelector }}
+
       <TimezoneSelector
         v-if="timezoneSelector"
         :key="props.locale"
@@ -113,7 +137,7 @@ const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.exter
 
       <ScheduleTable
         :rows="convertedRows.rows"
-        :is-loading="isLoading"
+        :is-loading="isLoading && convertedRows.rows.length > 0"
         :offset-name="currentOffsetName"
         :hide-columns="props.hideColumns"
         :external-game-resolver="resolveExternalGameLink"

@@ -1,6 +1,7 @@
-import { ref, unref, watch } from 'vue';
+import { ref, unref } from 'vue';
 import { findIndex, propSatisfies } from 'ramda';
 import { isSameOrBefore } from '../utils/datetime';
+import { watchOnce } from '@vueuse/core';
 
 export const usePage = (options = {}) => {
   const { initial = 1, items = [], limit, auto = false } = options;
@@ -16,7 +17,7 @@ export const usePage = (options = {}) => {
     page.value = index === -1 ? 1 : Math.floor(index / limit) + 1;
   };
 
-  watch(items, calculatePage);
+  watchOnce(items, calculatePage);
 
   const change = (value) => {
     page.value = value;
