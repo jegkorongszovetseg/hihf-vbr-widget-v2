@@ -1,5 +1,5 @@
 <script setup>
-import { computed, toRef, toRefs } from 'vue';
+import { computed, toRefs } from 'vue';
 import { useI18n } from '../composables/useI18n';
 import { useMainClass } from '../composables/useMainClass';
 import { SORT_STATE_ASCEND, SORT_STATE_DESCEND, SORT_STATE_ORIGINAL } from '../constants.js';
@@ -35,7 +35,6 @@ const props = defineProps({
     default: null,
   },
 });
-
 
 const { isLoading, appendTo } = toRefs(props);
 

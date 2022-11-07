@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref, unref, watch } from 'vue';
-import { promiseTimeout, useAsyncState, useDocumentVisibility, useTimeoutPoll } from '@vueuse/core';
+import { useAsyncState, useDocumentVisibility, useTimeoutPoll } from '@vueuse/core';
 import dayjs from 'dayjs';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import { usePage } from '../../composables/usePage';
@@ -9,6 +9,7 @@ import { offsetName } from '../../utils/datetime';
 import convert from '../../utils/convert';
 import { baseProps } from './internal.props';
 import { externalGameLinkResolver } from '../../utils/resolvers';
+import { REFRESH_DELAY } from '../../constants';
 import ScheduleTable from './ScheduleTable.vue';
 import I18NProvider from '../I18NProvider.vue';
 import Paginator from '../Paginator.vue';
@@ -69,10 +70,11 @@ const {
   isLoading,
   execute,
 } = useAsyncState(
-  () => fetchVBRData('/v1/gamesList', props.apiKey, {
-    championshipId: props.championshipId,
-    division: props.division,
-  }),
+  () =>
+    fetchVBRData('/v1/gamesList', props.apiKey, {
+      championshipId: props.championshipId,
+      division: props.division,
+    }),
   [],
   {
     resetOnExecute: false,
@@ -84,7 +86,7 @@ const {
   }
 );
 
-const { pause, resume } = useTimeoutPoll(execute, 5000, { immediate: false });
+const { pause, resume } = useTimeoutPoll(execute, REFRESH_DELAY, { immediate: false });
 
 const { page, change: onPaginatorChange } = usePage({
   initial: props.initialPage,
@@ -107,7 +109,6 @@ if (props.autoRefresh) {
   resume();
   const visibility = useDocumentVisibility();
   watch(visibility, (visible) => {
-    console.log('visible:', visible);
     if (visible === 'visible') return resume();
     pause();
   });

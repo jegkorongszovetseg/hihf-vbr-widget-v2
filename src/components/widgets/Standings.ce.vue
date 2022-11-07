@@ -1,5 +1,5 @@
 <script setup>
-import { computed, unref, watch } from 'vue';
+import { computed, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import { useErrorProvider } from '../../composables/useErrors';
@@ -32,13 +32,16 @@ const {
   error: apiError,
   isLoading,
 } = useAsyncState(
-  fetchVBRData('/v1/standings', props.apiKey, {
-    championshipId: Number(props.championshipId),
-    division: props.division,
-  }),
-  []
+  () =>
+    fetchVBRData('/v1/standings', props.apiKey, {
+      championshipId: Number(props.championshipId),
+      division: props.division,
+    }),
+  [],
+  {
+    onError: (error) => onError(error),
+  }
 );
-watch(apiError, (error) => onError(error));
 
 const { sort, change } = useSort();
 
@@ -48,9 +51,7 @@ const convertedRows = computed(() => {
 
 const currentColumns = computed(() => (props.type === '3' ? COLUMNS_STANDINGS_P_3 : COLUMNS_STANDINGS_P_2));
 
-const onSort = (payload) => {
-  change(payload);
-};
+const onSort = (payload) => change(payload);
 
 const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamLink, teamName);
 </script>
