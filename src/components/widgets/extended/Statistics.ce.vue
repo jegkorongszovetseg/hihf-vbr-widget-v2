@@ -56,6 +56,7 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
             columns,
             rows,
             page,
+            range,
             loading,
             selectorProps,
             selectorListeners,
@@ -80,28 +81,24 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
             @sort="onSort"
           />
 
-          <Paginator
-            :page="page"
-            :items-per-page="props.limit"
-            :total-items="rows.totalItems"
-            :range-length="5"
-            @change="onPaginatorChange"
-          />
+          <div style="display: flex; align-items: center">
+            <Paginator
+              :page="page"
+              :items-per-page="props.limit"
+              :total-items="rows.totalItems"
+              :range-length="5"
+              @change="onPaginatorChange"
+            />
+            <div style="flex-grow: 1; text-align: right">{{ range.join('-') }} / {{ rows.totalItems }} db</div>
+          </div>
         </StatisticsProvider>
       </ErrorProvider>
     </I18NProvider>
   </div>
 </template>
 
-<style lang="css" src="../../../assets/common.css"></style>
-<style lang="css" src="../../../assets/forms.css"></style>
-<style lang="css" src="../../../assets/table.css"></style>
-<style lang="css" src="../../../assets/responsive-table.css"></style>
+<style src="@/assets/common.css"></style>
+<style src="@/assets/forms.css"></style>
+<style src="@/assets/table.css"></style>
+<style src="@/assets/responsive-table.css"></style>
 <style src="@/assets/paginator.css"></style>
-<!-- <style>
-@import '@/assets/common.css';
-@import '@/assets/table.css';
-@import '@/assets/responsive-table.css';
-@import '@/assets/paginator.css';
-@import '@/assets/forms.css';
-</style> -->

@@ -159,6 +159,10 @@ const convertedRows = computed(() =>
     .value()
 );
 
+const range = computed(() => {
+  return [(page.value - 1) * props.limit + 1, Math.min(page.value * props.limit, convertedRows.value.totalItems)];
+});
+
 const setTableData = () => {
   const report = REPORTS_MAP.get(state.currentReport);
   state.columns = report.columns;
@@ -230,6 +234,7 @@ init();
       rows: convertedRows,
       sort,
       page,
+      range,
       selectorProps: {
         reports: currentReportList,
         ...pick(
