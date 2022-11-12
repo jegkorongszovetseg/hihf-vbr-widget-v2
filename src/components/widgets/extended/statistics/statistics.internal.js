@@ -1,5 +1,5 @@
 import { ascend, compose, descend, map, pick, prop, sort } from 'ramda';
-import { SORT_STATE_DESCEND } from '../../../constants';
+import { SORT_STATE_DESCEND } from '../../../../constants';
 import {
   COLUMNS_FIELD_PLAYERS,
   COLUMNS_FIELD_PLAYERS_PENALTY,
@@ -9,7 +9,7 @@ import {
   COLUMNS_TEAMS_PENALTY_KILLING,
   COLUMNS_TEAMS_POWERPLAY,
   COLUMNS_TEAM_ATTENDANCE,
-} from '../internal';
+} from '../../internal';
 
 export const REPORT_TYPE_PLAYERS = 'players';
 export const REPORT_TYPE_TEAMS = 'teams';
