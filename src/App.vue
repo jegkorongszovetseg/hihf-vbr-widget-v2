@@ -1,16 +1,17 @@
 <script setup>
 import { ref } from 'vue';
-import Schedule from './components/widgets/Schedule.ce.vue';
-import Standings from './components/widgets/Standings.ce.vue';
-import FieldPlayersLeader from './components/widgets/FieldPlayersLeader.ce.vue';
-import Statistics from './components/widgets/extended/Statistics.ce.vue';
-import FieldPlayersPenalties from './components/widgets/FieldPlayersPenalties.ce.vue';
-import GoaliesLeader from './components/widgets/GoaliesLeader.ce.vue';
-import TeamFairplay from './components/widgets/TeamFairplay.ce.vue';
-import TeamAttendance from './components/widgets/TeamAttendance.ce.vue';
-import TeamPenaltyKilling from './components/widgets/TeamPenaltyKilling.ce.vue';
-import TeamPowerplay from './components/widgets/TeamPowerplay.ce.vue';
-import TeamScoringEfficiency from './components/widgets/TeamScoringEfficiency.ce.vue';
+// import Schedule from './components/widgets/Schedule.ce.vue';
+// import Standings from './components/widgets/Standings.ce.vue';
+// import FieldPlayersLeader from './components/widgets/FieldPlayersLeader.ce.vue';
+// import Statistics from './components/widgets/extended/Statistics.ce.vue';
+// import FieldPlayersPenalties from './components/widgets/FieldPlayersPenalties.ce.vue';
+// import GoaliesLeader from './components/widgets/GoaliesLeader.ce.vue';
+// import TeamFairplay from './components/widgets/TeamFairplay.ce.vue';
+// import TeamAttendance from './components/widgets/TeamAttendance.ce.vue';
+// import TeamPenaltyKilling from './components/widgets/TeamPenaltyKilling.ce.vue';
+// import TeamPowerplay from './components/widgets/TeamPowerplay.ce.vue';
+// import TeamScoringEfficiency from './components/widgets/TeamScoringEfficiency.ce.vue';
+import ScheduleLiga from './components/widgets/extended/schedule/ScheduleLiga.ce.vue';
 
 const locale = ref('hu');
 const change = () => {
@@ -21,7 +22,8 @@ const change = () => {
 <template>
   <div>
     <button type="button" @click="change">{{ locale }}</button>
-    <Statistics :locale="locale" championship-name="Erste Liga" />
+    <ScheduleLiga />
+    <!-- <Statistics :locale="locale" championship-name="Erste Liga" /> -->
     <!-- <TeamScoringEfficiency :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamPowerplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamPenaltyKilling :locale="locale" championship-id="3314" division="Alapszakasz" /> -->

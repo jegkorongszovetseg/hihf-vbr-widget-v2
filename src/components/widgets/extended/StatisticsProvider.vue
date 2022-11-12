@@ -43,7 +43,7 @@ const props = defineProps({
 });
 
 const { t } = useI18n();
-const { onError, error: useErrorError } = useError();
+const { onError } = useError();
 
 const params = useUrlSearchParams('history');
 
@@ -81,7 +81,6 @@ const { sort, change: onSort } = useSort({
 
 const fetchSeasons = async () => {
   try {
-    state.error = '';
     state.loading = true;
     const seasons = await fetchVBRData('/v1/championshipSeasons', props.apiKey, {
       championshipName: props.championshipName,
