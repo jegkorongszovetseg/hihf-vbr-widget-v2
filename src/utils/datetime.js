@@ -3,6 +3,7 @@ import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import _isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
+import _isBetween from 'dayjs/plugin/isBetween';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import 'dayjs/locale/hu';
 import { LOCALE_FOR_LANG } from '../constants.js';
@@ -12,6 +13,7 @@ dayjs.extend(timezone);
 dayjs.extend(advancedFormat);
 dayjs.extend(localizedFormat);
 dayjs.extend(_isSameOrBefore);
+dayjs.extend(_isBetween);
 
 export const format = (datetime = '', format = '', timezone = '', locale = 'hu') => {
   timezone = timezone ? timezone : dayjs.tz.guess();
@@ -40,4 +42,8 @@ export const convertMinToSec = (minutes) => {
 
 export const isSameOrBefore = (date, unit = 'day') => {
   return dayjs().isSameOrBefore(dayjs(date), unit);
+};
+
+export const isBetween = (date, startDate, endDate) => {
+  return dayjs(date).isBetween(startDate, dayjs(endDate));
 };

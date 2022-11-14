@@ -45,7 +45,6 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
   <div>
     <I18NProvider :locale="props.locale">
       <ErrorProvider v-slot:default="{ message, hasError, error }">
-        Provider: {{ message }} hasError: {{ hasError }}
         <StatisticsProvider
           :championship-name="championshipName"
           :championship-id="championshipId"

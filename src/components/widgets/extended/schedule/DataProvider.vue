@@ -1,9 +1,12 @@
 <script setup>
-import { reactive, computed } from 'vue';
+import { reactive, computed, unref, ref, toRef } from 'vue';
 import { useAsyncQueue } from '@vueuse/core';
+import dayjs from 'dayjs';
 import { useServices } from '@/composables/useServices';
 import { useError } from '@/composables/useErrors';
 import { transformSeasons, transformSections, transformTeams } from '@/components/widgets/extended/internal';
+import convert from '@/utils/convert';
+import { useCollectMonths } from './schedule.internal.js';
 
 const props = defineProps({
   championshipName: {
@@ -25,6 +28,11 @@ const props = defineProps({
     type: String,
     default: '',
   },
+
+  locale: {
+    type: String,
+    default: 'hu',
+  },
 });
 
 const state = reactive({
@@ -35,8 +43,9 @@ const state = reactive({
   sections: [],
   section: null,
   teams: [],
+  selectedMonth: null,
 });
-
+const timezone = ref(dayjs.tz.guess());
 const { onError } = useError();
 
 const { execute: fetchSeasons } = useServices({
@@ -69,9 +78,38 @@ const { execute: fetchTeams } = useServices({
   onError,
 });
 
-useAsyncQueue([fetchSeasons, fetchSection, fetchTeams]);
+const { state: rows, execute: fetchSchedule } = useServices({
+  options: {
+    path: '/v1/gamesList',
+    apiKey: props.apiKey,
+    params: computed(() => ({ championshipId: state.championshipId, division: state.section })),
+  },
+  // transform: (res) => res,
+  onError,
+});
+
+const { months, selectedMonth } = useCollectMonths(rows, toRef(props, 'locale'));
+
+// Filter: Month, Teams, Home and Away
+// Group: gameDate
+const convertedRows = computed(() => {
+  return (
+    convert(unref(rows))
+      // .filter(props.teamFilterByName, ['homeTeamName', 'awayTeamName'])
+      .schedule(unref(timezone), unref(props.locale))
+      .groupByDays()
+      .value()
+  );
+});
+
+useAsyncQueue([fetchSeasons, fetchSection, fetchTeams, fetchSchedule]);
+
+const changeSeason = (value) => {
+  state.championshipId = value.target.value;
+  useAsyncQueue([fetchSection, fetchTeams, fetchSchedule]);
+};
 </script>
 
 <template>
-  <slot v-bind="{ ...state }"></slot>
+  <slot v-bind="{ ...state, games: convertedRows, months, selectedMonth, changeSeason }"></slot>
 </template>

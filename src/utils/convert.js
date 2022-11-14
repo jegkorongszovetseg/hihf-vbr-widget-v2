@@ -14,6 +14,7 @@ import {
   propEq,
   sortWith,
   toLower,
+  groupBy,
 } from 'ramda';
 import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../constants.js';
 import { format, convertMinToSec } from './datetime.js';
@@ -108,6 +109,13 @@ const convert = (data = []) => {
         });
         return row;
       });
+      return this;
+    },
+
+    groupByDays() {
+      this.result = groupBy((row) => {
+        return format(row.gameDate, 'YYYY-MM-DD');
+      })(this.result);
       return this;
     },
   };

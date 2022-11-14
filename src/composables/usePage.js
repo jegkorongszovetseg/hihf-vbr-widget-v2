@@ -1,7 +1,7 @@
 import { ref, unref } from 'vue';
 import { findIndex, propSatisfies } from 'ramda';
-import { isSameOrBefore } from '../utils/datetime';
 import { watchOnce } from '@vueuse/core';
+import { isSameOrBefore } from '../utils/datetime';
 
 export const usePage = (options = {}) => {
   const { initial = 1, items = [], limit, auto = false } = options;
