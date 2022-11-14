@@ -47,3 +47,7 @@ export const isSameOrBefore = (date, unit = 'day') => {
 export const isBetween = (date, startDate, endDate) => {
   return dayjs(date).isBetween(startDate, dayjs(endDate));
 };
+
+export const isSame = (date, compareDate, unit = 'month') => {
+  return dayjs(date).isSame(compareDate, unit);
+};

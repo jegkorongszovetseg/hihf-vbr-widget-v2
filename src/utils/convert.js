@@ -101,6 +101,14 @@ const convert = (data = []) => {
       return this;
     },
 
+    gameDateFilter(month) {
+      if (month === '') return this;
+      this.result = this.result.filter((game) => {
+        return new Date(game.gameDate).getMonth() == month;
+      });
+      return this;
+    },
+
     convertTimes(targets = []) {
       this.result = this.result.map((row) => {
         targets.map((key) => {

@@ -1,7 +1,6 @@
 <script setup>
-import { reactive, computed, unref, ref, toRef } from 'vue';
+import { reactive, computed, unref, toRef } from 'vue';
 import { useAsyncQueue } from '@vueuse/core';
-import dayjs from 'dayjs';
 import { useServices } from '@/composables/useServices';
 import { useError } from '@/composables/useErrors';
 import { transformSeasons, transformSections, transformTeams } from '@/components/widgets/extended/internal';
@@ -33,6 +32,11 @@ const props = defineProps({
     type: String,
     default: 'hu',
   },
+
+  timezone: {
+    type: String,
+    default: '',
+  },
 });
 
 const state = reactive({
@@ -44,9 +48,22 @@ const state = reactive({
   section: null,
   teams: [],
   selectedMonth: null,
+  selectedTeam: null,
+  selectedTeamGameType: 'all',
 });
-const timezone = ref(dayjs.tz.guess());
+const timezone = toRef(props, 'timezone');
 const { onError } = useError();
+
+const teamFilterTypes = computed(() => {
+  switch (state.selectedTeamGameType) {
+    case 'all':
+      return ['homeTeamId', 'awayTeamId'];
+    case 'home':
+      return ['homeTeamId'];
+    default:
+      return ['awayTeamId'];
+  }
+});
 
 const { execute: fetchSeasons } = useServices({
   options: {
@@ -90,26 +107,52 @@ const { state: rows, execute: fetchSchedule } = useServices({
 
 const { months, selectedMonth } = useCollectMonths(rows, toRef(props, 'locale'));
 
-// Filter: Month, Teams, Home and Away
-// Group: gameDate
 const convertedRows = computed(() => {
-  return (
-    convert(unref(rows))
-      // .filter(props.teamFilterByName, ['homeTeamName', 'awayTeamName'])
-      .schedule(unref(timezone), unref(props.locale))
-      .groupByDays()
-      .value()
-  );
+  return convert(unref(rows))
+    .filter(state.selectedTeam, teamFilterTypes.value, true)
+    .schedule(unref(timezone), unref(props.locale))
+    .gameDateFilter(unref(selectedMonth))
+    .groupByDays()
+    .value();
 });
 
 useAsyncQueue([fetchSeasons, fetchSection, fetchTeams, fetchSchedule]);
 
 const changeSeason = (value) => {
-  state.championshipId = value.target.value;
+  state.championshipId = value;
   useAsyncQueue([fetchSection, fetchTeams, fetchSchedule]);
+};
+
+const changeMonth = (value) => {
+  selectedMonth.value = value;
+};
+
+const changeSection = (value) => {
+  state.section = value;
+  fetchSchedule();
+};
+
+const changeTeam = (value) => {
+  state.selectedTeam = value;
+};
+
+const changeTeamType = (value) => {
+  state.selectedTeamGameType = value;
 };
 </script>
 
 <template>
-  <slot v-bind="{ ...state, games: convertedRows, months, selectedMonth, changeSeason }"></slot>
+  <slot
+    v-bind="{
+      ...state,
+      games: convertedRows,
+      months,
+      selectedMonth,
+      changeSeason,
+      changeMonth,
+      changeSection,
+      changeTeam,
+      changeTeamType,
+    }"
+  ></slot>
 </template>
