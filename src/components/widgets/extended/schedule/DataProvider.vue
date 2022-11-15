@@ -1,10 +1,11 @@
 <script setup>
 import { reactive, computed, unref, toRef } from 'vue';
-import { useAsyncQueue } from '@vueuse/core';
+import { useAsyncQueue, useTimeoutFn, useTimeoutPoll, useUrlSearchParams } from '@vueuse/core';
 import { useServices } from '@/composables/useServices';
 import { useError } from '@/composables/useErrors';
 import { transformSeasons, transformSections, transformTeams } from '@/components/widgets/extended/internal';
-import convert from '@/utils/convert';
+import convert, { sortGames } from '@/utils/convert';
+// import { REFRESH_DELAY } from '@/constants';
 import { useCollectMonths } from './schedule.internal.js';
 
 const props = defineProps({
@@ -37,7 +38,14 @@ const props = defineProps({
     type: String,
     default: '',
   },
+
+  autoRefresh: {
+    type: Boolean,
+    default: false,
+  },
 });
+
+const params = useUrlSearchParams('history');
 
 const state = reactive({
   championshipName: props.championshipName,
@@ -47,7 +55,7 @@ const state = reactive({
   sections: [],
   section: null,
   teams: [],
-  selectedMonth: null,
+  selectedMonth: Number(params.selectedMonth) || null,
   selectedTeam: null,
   selectedTeamGameType: 'all',
 });
@@ -101,39 +109,58 @@ const { state: rows, execute: fetchSchedule } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId, division: state.section })),
   },
-  // transform: (res) => res,
+  transform: (data) => sortGames(data),
   onError,
 });
+const { pause, resume } = useTimeoutPoll(fetchSchedule, 10000, { immediate: false });
 
-const { months, selectedMonth } = useCollectMonths(rows, toRef(props, 'locale'));
+const { months } = useCollectMonths(rows, toRef(props, 'locale'), (month) => {
+  state.selectedMonth = month;
+});
 
 const convertedRows = computed(() => {
   return convert(unref(rows))
     .filter(state.selectedTeam, teamFilterTypes.value, true)
     .schedule(unref(timezone), unref(props.locale))
-    .gameDateFilter(unref(selectedMonth))
+    .gameDateFilter(unref(state.selectedMonth))
     .groupByDays()
     .value();
 });
 
-useAsyncQueue([fetchSeasons, fetchSection, fetchTeams, fetchSchedule]);
+useAsyncQueue([fetchSeasons, fetchSection, fetchTeams, fetchSchedule], {
+  onFinished: () => {
+    if (props.autoRefresh) useTimeoutFn(resume, 5000);
+  },
+});
 
 const changeSeason = (value) => {
   state.championshipId = value;
+  // resets
+  state.selectedTeam = null;
+  params.selectedTeam = null;
+  state.selectedMonth = null;
+  params.selectedMonth = null;
+  state.selectedTeamGameType = 'all';
   useAsyncQueue([fetchSection, fetchTeams, fetchSchedule]);
 };
 
 const changeMonth = (value) => {
-  selectedMonth.value = value;
+  state.selectedMonth = value;
+  params.selectedMonth = value;
 };
 
 const changeSection = (value) => {
   state.section = value;
+  // resets
+  state.selectedMonth = null;
+  params.selectedMonth = null;
   fetchSchedule();
 };
 
 const changeTeam = (value) => {
   state.selectedTeam = value;
+  // resets
+  if (!value) state.selectedTeamGameType = 'all';
 };
 
 const changeTeamType = (value) => {
@@ -147,7 +174,6 @@ const changeTeamType = (value) => {
       ...state,
       games: convertedRows,
       months,
-      selectedMonth,
       changeSeason,
       changeMonth,
       changeSection,

@@ -28,6 +28,11 @@ const props = defineProps({
     type: Number,
     default: 0,
   },
+
+  autoRefresh: {
+    type: Boolean,
+    default: false,
+  },
 });
 const timezone = ref(dayjs.tz.guess());
 </script>
@@ -35,14 +40,14 @@ const timezone = ref(dayjs.tz.guess());
 <template>
   <div>
     <I18NProvider :locale="props.locale">
-      <ErrorProvider v-slot:default="{ message, hasError }">
-        Provider: {{ message }} hasError: {{ hasError }}
+      <ErrorProvider v-slot:default="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
 
         <DataProvider
           :locale="locale"
           :timezone="timezone"
           :championship-name="championshipName"
+          :auto-refresh="props.autoRefresh"
           v-slot="{
             seasons,
             championshipId,
@@ -73,30 +78,7 @@ const timezone = ref(dayjs.tz.guess());
             @update:selected-team="changeTeam"
             @update:selected-team-game-type="changeTeamType"
           />
-          <!-- <div>
-            <select :value="championshipId" @change="changeSeason">
-              <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">
-                {{ season.seasonName }}
-              </option>
-            </select>
-
-            <select :value="selectedMonth" @change="changeMonth">
-              <option value="">Mind</option>
-              <option v-for="month in months" :key="month.value" :value="month.value">{{ month.name }}</option>
-            </select>
-
-            <select @change="changeTeam">
-              <option value="">Mind</option>
-              <option v-for="team in teams" :key="team.teamId" :value="team.teamId">{{ team.teamName }}</option>
-            </select>
-            <select @change="changeTeamType">
-              <option value="all">Mind</option>
-              <option value="home">Home</option>
-              <option value="away">Away</option>
-            </select>
-          </div> -->
-          <!-- <pre>{{ sections }}</pre> -->
-          <div style="display: flex">
+          <div class="g-row">
             <button v-for="section in sections" :key="section" @click="changeSection(section)">
               {{ section }}
             </button>
@@ -104,9 +86,22 @@ const timezone = ref(dayjs.tz.guess());
 
           <div v-for="(gameDay, key) in games.rows" :key="key">
             {{ format(key, 'L dddd', timezone, locale) }}
-            <div v-for="game in gameDay" :key="game.id">
-              <div>{{ game.homeTeamName }}-{{ game.awayTeamName }}</div>
-              <div>{{ game.name }}-{{ game.gameDate }}</div>
+            <div class="is-card">
+              <div v-for="game in gameDay" :key="game.id" class="g-row">
+                <div class="g-col is-text-right">{{ game.homeTeamName }}</div>
+
+                <div class="g-col is-text-center">
+                  <template v-if="game.gameStatus > 0">
+                    <div>{{ game.homeTeamScore }} - {{ game.awayTeamScore }}</div>
+                    <div>{{ game.periodResults }}</div>
+                  </template>
+                  <span v-else>
+                    {{ game.gameDateTime }}
+                  </span>
+                </div>
+                <div class="g-col">{{ game.awayTeamName }}</div>
+                <div class="g-col-3">{{ game.name }}</div>
+              </div>
             </div>
           </div>
         </DataProvider>
@@ -114,3 +109,5 @@ const timezone = ref(dayjs.tz.guess());
     </I18NProvider>
   </div>
 </template>
+
+<style src="@/assets/grid.css"></style>

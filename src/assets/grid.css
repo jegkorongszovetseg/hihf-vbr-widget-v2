@@ -1,0 +1,22 @@
+.g-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.g-col {
+  flex: 1 0 0%;
+}
+
+[class^='g-col-'] {
+  flex: 0 0 auto;
+}
+
+.g-col-6 {
+  width: 50%;
+}
+.g-col-5 {
+  width: 41.66666667%;
+}
+.g-col-3 {
+  width: 25%;
+}

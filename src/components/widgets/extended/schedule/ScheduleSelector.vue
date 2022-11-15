@@ -68,7 +68,7 @@ const baseLabelClass = useMainClass('label');
     <div>
       <label for="months" :class="baseLabelClass">Month</label>
       <BaseSelect id="months" v-model="selectedMonth">
-        <option value="">Mind</option>
+        <option :value="null">Mind</option>
         <option v-for="month in months" :key="month.value" :value="month.value">{{ month.name }}</option>
       </BaseSelect>
     </div>

@@ -102,7 +102,7 @@ const convert = (data = []) => {
     },
 
     gameDateFilter(month) {
-      if (month === '') return this;
+      if (month === null) return this;
       this.result = this.result.filter((game) => {
         return new Date(game.gameDate).getMonth() == month;
       });

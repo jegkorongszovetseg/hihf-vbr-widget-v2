@@ -1,12 +1,12 @@
 <script setup>
-import { playerStatsProps } from '../internal.props';
+import { playerStatsProps } from '@/components/internal.props';
 import StatisticsProvider from './StatisticsProvider.vue';
-import I18NProvider from '../../I18NProvider.vue';
-import StatisticsTable from '../StatisticsTable.vue';
-import Paginator from '../../Paginator.vue';
-import ErrorNotice from '../../ErrorNotice.vue';
+import I18NProvider from '../../../I18NProvider.vue';
+import StatisticsTable from '../../StatisticsTable.vue';
+import Paginator from '../../../Paginator.vue';
+import ErrorNotice from '../../../ErrorNotice.vue';
 import StatisticSelector from './StatisticSelector.vue';
-import ErrorProvider from '../../ErrorProvider.vue';
+import ErrorProvider from '../../../ErrorProvider.vue';
 
 const props = defineProps({
   locale: {

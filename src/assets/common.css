@@ -1,6 +1,6 @@
 :root,
 :host {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Condensed', Avenir, Helvetica, Arial, sans-serif;
 
   --vbr-widget-primary-color-0: #ffffff;
   --vbr-widget-primary-color-50: #eceff1;
@@ -197,4 +197,11 @@ a {
   padding: 3px 0;
   color: var(--vbr-widget-timezone-selector-color);
   font-size: var(--vbr-widget-timezone-selector-font-size);
+}
+
+.is-card {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10), 0 2px 2px 0 rgba(0, 0, 0, 0.10);
 }

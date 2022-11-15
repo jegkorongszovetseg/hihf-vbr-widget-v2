@@ -33,7 +33,7 @@ export default defineConfig(({ mode }) => {
           postcssNested,
           postcssPrefixer({
             prefix: env.VITE_CSS_CLASS_PREFIX,
-            ignore: [/icon/, /is-[a-zA-Z]*/, /transition-[a-zA-Z]*/, 'label'],
+            ignore: [/icon/, /is-[a-zA-Z]*/, /transition-[a-zA-Z]*/, /g-[a-zA-Z]*/, 'label'],
           }),
         ],
       },
