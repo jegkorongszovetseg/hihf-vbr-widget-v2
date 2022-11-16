@@ -20,3 +20,6 @@
 .g-col-3 {
   width: 25%;
 }
+.g-col-auto {
+  width: auto;
+}

@@ -8,6 +8,7 @@ import convert, { sortGames } from '@/utils/convert';
 import { REFRESH_DELAY } from '@/constants';
 import { useCollectMonths } from './schedule.internal.js';
 import { useVisibilityChange } from '@/composables/useVisibilityChange';
+import { useLazyLoadingState } from '@/composables/useLazyLoadingState';
 
 const props = defineProps({
   championshipName: {
@@ -74,7 +75,7 @@ const teamFilterTypes = computed(() => {
   }
 });
 
-const { execute: fetchSeasons } = useServices({
+const { isLoading: seasonsLoading, execute: fetchSeasons } = useServices({
   options: {
     path: '/v1/championshipSeasons',
     apiKey: props.apiKey,
@@ -84,7 +85,7 @@ const { execute: fetchSeasons } = useServices({
   onError,
 });
 
-const { execute: fetchSection } = useServices({
+const { isLoading: sectionLoading, execute: fetchSection } = useServices({
   options: {
     path: '/v1/championshipSections',
     apiKey: props.apiKey,
@@ -94,7 +95,7 @@ const { execute: fetchSection } = useServices({
   onError,
 });
 
-const { execute: fetchTeams } = useServices({
+const { isLoading: teamsLoading, execute: fetchTeams } = useServices({
   options: {
     path: '/v1/championshipTeams',
     apiKey: props.apiKey,
@@ -104,7 +105,11 @@ const { execute: fetchTeams } = useServices({
   onError,
 });
 
-const { state: rows, execute: fetchSchedule } = useServices({
+const {
+  isLoading: gamesLoading,
+  state: rows,
+  execute: fetchSchedule,
+} = useServices({
   options: {
     path: '/v1/gamesList',
     apiKey: props.apiKey,
@@ -113,6 +118,8 @@ const { state: rows, execute: fetchSchedule } = useServices({
   transform: (data) => sortGames(data),
   onError,
 });
+
+const isLoading = useLazyLoadingState([sectionLoading, seasonsLoading, teamsLoading, gamesLoading], { delay: 1000 });
 
 const { months } = useCollectMonths(rows, toRef(props, 'locale'), (month) => {
   state.selectedMonth = month;
@@ -179,6 +186,7 @@ const changeTeamType = (value) => {
       ...state,
       games: convertedRows,
       months,
+      isLoading,
       changeSeason,
       changeMonth,
       changeSection,

@@ -55,6 +55,7 @@ const timezone = ref(dayjs.tz.guess());
             teams,
             games,
             months,
+            isLoading,
             selectedMonth,
             selectedTeam,
             selectedTeamGameType,
@@ -84,26 +85,30 @@ const timezone = ref(dayjs.tz.guess());
             </button>
           </div>
 
-          <div v-for="(gameDay, key) in games.rows" :key="key">
-            {{ format(key, 'L dddd', timezone, locale) }}
-            <div class="is-card">
-              <div v-for="game in gameDay" :key="game.id" class="g-row">
-                <div class="g-col is-text-right">{{ game.homeTeamName }}</div>
+          <div v-if="isLoading">Loading...</div>
 
-                <div class="g-col is-text-center">
-                  <template v-if="game.gameStatus > 0">
-                    <div>{{ game.homeTeamScore }} - {{ game.awayTeamScore }}</div>
-                    <div>{{ game.periodResults }}</div>
-                  </template>
-                  <span v-else>
-                    {{ game.gameDateTime }}
-                  </span>
+          <template v-else>
+            <div v-for="(gameDay, key) in games.rows" :key="key">
+              {{ format(key, 'L dddd', timezone, locale) }}
+              <div class="is-card">
+                <div v-for="game in gameDay" :key="game.id" class="g-row">
+                  <div class="g-col is-text-right is-text-bold">{{ game.homeTeamName }}</div>
+
+                  <div class="g-col-3 is-text-center">
+                    <template v-if="game.gameStatus > 0">
+                      <div class="is-text-xl is-text-bold">{{ game.homeTeamScore }} - {{ game.awayTeamScore }}</div>
+                      <div class="is-text-sm">{{ game.periodResults }}</div>
+                    </template>
+                    <span v-else>
+                      {{ game.gameDateTime }}
+                    </span>
+                  </div>
+                  <div class="g-col is-text-bold">{{ game.awayTeamName }}</div>
+                  <div class="g-col-3">{{ game.name }}</div>
                 </div>
-                <div class="g-col">{{ game.awayTeamName }}</div>
-                <div class="g-col-3">{{ game.name }}</div>
               </div>
             </div>
-          </div>
+          </template>
         </DataProvider>
       </ErrorProvider>
     </I18NProvider>
