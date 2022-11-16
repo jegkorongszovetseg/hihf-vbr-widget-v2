@@ -19,6 +19,6 @@ export const transformTeams = (teams, state) => {
 };
 
 export const convertSeasons = (seasons) =>
-  compose(sort(descend(prop('championshipId'))), map(pick(['championshipId', 'seasonName'])))(seasons);
+  compose(sort(descend(prop('seasonName'))), map(pick(['championshipId', 'seasonName'])))(seasons);
 
 export const convertTeams = (teams) => sort(ascend(prop('teamName')), teams);

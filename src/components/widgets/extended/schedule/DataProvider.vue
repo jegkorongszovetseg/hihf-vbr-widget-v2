@@ -5,8 +5,9 @@ import { useServices } from '@/composables/useServices';
 import { useError } from '@/composables/useErrors';
 import { transformSeasons, transformSections, transformTeams } from '@/components/widgets/extended/internal';
 import convert, { sortGames } from '@/utils/convert';
-// import { REFRESH_DELAY } from '@/constants';
+import { REFRESH_DELAY } from '@/constants';
 import { useCollectMonths } from './schedule.internal.js';
+import { useVisibilityChange } from '@/composables/useVisibilityChange';
 
 const props = defineProps({
   championshipName: {
@@ -112,11 +113,13 @@ const { state: rows, execute: fetchSchedule } = useServices({
   transform: (data) => sortGames(data),
   onError,
 });
-const { pause, resume } = useTimeoutPoll(fetchSchedule, 10000, { immediate: false });
 
 const { months } = useCollectMonths(rows, toRef(props, 'locale'), (month) => {
   state.selectedMonth = month;
 });
+
+const { pause, resume } = useTimeoutPoll(fetchSchedule, REFRESH_DELAY, { immediate: false });
+useVisibilityChange(props.autoRefresh, resume, pause);
 
 const convertedRows = computed(() => {
   return convert(unref(rows))
@@ -129,19 +132,21 @@ const convertedRows = computed(() => {
 
 useAsyncQueue([fetchSeasons, fetchSection, fetchTeams, fetchSchedule], {
   onFinished: () => {
-    if (props.autoRefresh) useTimeoutFn(resume, 5000);
+    if (props.autoRefresh) useTimeoutFn(resume, REFRESH_DELAY);
   },
 });
 
 const changeSeason = (value) => {
   state.championshipId = value;
   // resets
+  if (props.autoRefresh) resume();
   state.selectedTeam = null;
   params.selectedTeam = null;
   state.selectedMonth = null;
   params.selectedMonth = null;
   state.selectedTeamGameType = 'all';
   useAsyncQueue([fetchSection, fetchTeams, fetchSchedule]);
+  if (props.autoRefresh) resume();
 };
 
 const changeMonth = (value) => {
