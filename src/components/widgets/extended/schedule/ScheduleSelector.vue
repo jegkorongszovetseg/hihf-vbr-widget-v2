@@ -56,7 +56,7 @@ const baseLabelClass = useMainClass('label');
 </script>
 
 <template>
-  <div style="display: flex; column-gap: 8px">
+  <div class="g-row" style="column-gap: 8px;">
     <div>
       <label for="season" :class="baseLabelClass">Szezon</label>
       <BaseSelect id="season" v-model="championshipId">
@@ -74,7 +74,7 @@ const baseLabelClass = useMainClass('label');
     </div>
     <div>
       <label for="teams" :class="baseLabelClass">Teams</label>
-      <BaseSelect id="teams" v-model="selectedTeam">
+      <BaseSelect id="teams" v-model="selectedTeam" style="max-width: 200px;">
         <option :value="null">Mind</option>
         <option v-for="team in teams" :key="team.teamId" :value="team.teamId">{{ team.teamName }}</option>
       </BaseSelect>

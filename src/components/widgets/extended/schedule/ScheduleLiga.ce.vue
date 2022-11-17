@@ -7,6 +7,8 @@ import ErrorProvider from '@/components/ErrorProvider.vue';
 import I18NProvider from '@/components/I18NProvider.vue';
 import DataProvider from './DataProvider.vue';
 import ScheduleSelector from './ScheduleSelector.vue';
+import LoadingIndicator from '@/components/LoadingIndicator.vue';
+import GameItem from './Item.vue';
 
 const props = defineProps({
   locale: {
@@ -85,27 +87,15 @@ const timezone = ref(dayjs.tz.guess());
             </button>
           </div>
 
-          <div v-if="isLoading">Loading...</div>
+          <LoadingIndicator v-if="isLoading" />
 
           <template v-else>
             <div v-for="(gameDay, key) in games.rows" :key="key">
               {{ format(key, 'L dddd', timezone, locale) }}
               <div class="is-card">
-                <div v-for="game in gameDay" :key="game.id" class="g-row">
-                  <div class="g-col is-text-right is-text-bold">{{ game.homeTeamName }}</div>
-
-                  <div class="g-col-3 is-text-center">
-                    <template v-if="game.gameStatus > 0">
-                      <div class="is-text-xl is-text-bold">{{ game.homeTeamScore }} - {{ game.awayTeamScore }}</div>
-                      <div class="is-text-sm">{{ game.periodResults }}</div>
-                    </template>
-                    <span v-else>
-                      {{ game.gameDateTime }}
-                    </span>
-                  </div>
-                  <div class="g-col is-text-bold">{{ game.awayTeamName }}</div>
-                  <div class="g-col-3">{{ game.name }}</div>
-                </div>
+                <template v-for="game in gameDay" :key="game.id">
+                  <GameItem :game="game" />
+                </template>
               </div>
             </div>
           </template>
@@ -115,4 +105,10 @@ const timezone = ref(dayjs.tz.guess());
   </div>
 </template>
 
-<style src="@/assets/grid.css"></style>
+<style>
+.is-card > div {
+  border-bottom: 1px solid var(--vbr-widget-primary-color-300);
+}
+</style>
+
+<!-- <style src="@/assets/grid.css"></style> -->
