@@ -39,31 +39,31 @@ export default defineConfig(({ mode }) => {
       },
     },
 
-    build: {
-      lib: {
-        entry: 'src/bundle.js',
-        name: 'MjszVbrWidget',
-        fileName: (format) => `mjsz-vbr-widget.${format}.js`,
-        formats: ['es', 'iife'],
-      },
-      rollupOptions: {
-        external: ['vue'],
-        output: {
-          banner: banner,
-          globals: {
-            vue: 'Vue',
-          },
-        },
-      },
-      // terserOptions: {
-      //   compress: {
-      //     ecma: 2017,
-      //   },
-      // },
-      sourcemap: false,
-      target: 'modules',
-      minify: true,
-    },
+    // build: {
+    //   // lib: {
+    //   //   entry: 'src/bundle.js',
+    //   //   name: 'MjszVbrWidget',
+    //   //   // fileName: (format) => `mjsz-vbr-widget.${format}.js`,
+    //   //   formats: ['es', 'iife'],
+    //   // },
+    //   // rollupOptions: {
+    //   //   external: ['vue'],
+    //   //   output: {
+    //   //     banner: banner,
+    //   //     globals: {
+    //   //       vue: 'Vue',
+    //   //     },
+    //   //   },
+    //   // },
+    //   // terserOptions: {
+    //   //   compress: {
+    //   //     ecma: 2017,
+    //   //   },
+    //   // },
+    //   // sourcemap: false,
+    //   // target: 'modules',
+    //   // minify: true,
+    // },
     plugins: [
       vue({
         reactivityTransform: true,
@@ -76,12 +76,12 @@ export default defineConfig(({ mode }) => {
         },
       }),
 
-      viteCompression({
-        algorithm: 'gzip',
-      }),
-      viteCompression({
-        algorithm: 'brotliCompress',
-      }),
+      // viteCompression({
+      //   algorithm: 'gzip',
+      // }),
+      // viteCompression({
+      //   algorithm: 'brotliCompress',
+      // }),
     ],
   };
 });
