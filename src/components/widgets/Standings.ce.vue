@@ -6,9 +6,9 @@ import { useErrorProvider } from '../../composables/useErrors';
 import useSort from '../../composables/useSort';
 import convert from '../../utils/convert';
 import { COLUMNS_STANDINGS_P_2, COLUMNS_STANDINGS_P_3 } from './internal';
-import I18NProvider from '../I18NProvider.vue';
-import ErrorNotice from '../ErrorNotice.vue';
-import StatisticsTable from './StatisticsTable.vue';
+import { I18NProvider } from '@shared';
+import { ErrorNotice } from '@shared';
+import { StatisticsTable } from '@shared';
 import { baseProps, teamStatsProps } from './internal.props';
 import { externalTeamLinkResolver } from '../../utils/resolvers';
 
