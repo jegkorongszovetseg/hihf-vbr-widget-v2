@@ -14,7 +14,7 @@ const banner = `/*!
 
 const builds = [
   {
-    entry: path.resolve(__dirname, '../../src/components/shared/index.js'),
+    entry: path.resolve(__dirname, '../../src/@shared/index.js'),
     name: 'Shared',
     fileName: (format) => `mjsz-vbr-shared.${format}.js`,
     external: [],
