@@ -1,8 +1,16 @@
 import { build } from 'vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import pack from '../../package.json' assert { type: 'json' };
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const banner = `/*!
+  * MJSZ VBR Widgets v${pack.version}
+  * (c) ${new Date().getFullYear()} ${pack.author.name}
+  * Released: ${new Date().toLocaleString('en-GB')}
+  * Released under the ${pack.license} License.
+  */`;
 
 const builds = [
   {
@@ -35,6 +43,7 @@ builds.forEach(async (settings) => {
         external: ['vue', ...external],
         output: {
           dir: 'build',
+          banner: banner,
           globals: {
             vue: 'Vue',
             ...globals,

@@ -1,3 +1,9 @@
+/*!
+  * MJSZ VBR Widgets v2.0.0-alpha.1
+  * (c) 2022 Akos Stegner
+  * Released: 19/11/2022, 23:40:48
+  * Released under the MIT License.
+  */
 var Shared = function(exports, vue) {
   "use strict";
   const useMainClass = (className) => {
