@@ -2,7 +2,7 @@
 import { computed, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
-import { useErrorProvider } from '../../composables/useErrors';
+import { useErrorProvider } from '@shared';
 import useSort from '../../composables/useSort';
 import convert from '../../utils/convert';
 import { COLUMNS_STANDINGS_P_2, COLUMNS_STANDINGS_P_3 } from './internal';

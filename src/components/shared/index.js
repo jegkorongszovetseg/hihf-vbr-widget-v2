@@ -1,7 +1,31 @@
+import BaseSelect from '../BaseSelect.vue';
 import DataTable from '../DataTable.vue';
-import ErrorProvider from '../ErrorProvider.vue';
-import I18NProvider from '../I18NProvider.vue';
-import StatisticsTable from '../widgets/StatisticsTable.vue';
 import ErrorNotice from '../ErrorNotice.vue';
+import ErrorProvider from '../ErrorProvider.vue';
+import FloatingPanel from '../FloatingPanel.vue';
+import I18NProvider from '../I18NProvider.vue';
+import Image from '../Image.vue';
+import LoadingIndicator from '../LoadingIndicator.vue';
+import Paginator from '../Paginator.vue';
+import ResponsiveTable from '../ResponsiveTable.vue';
+import TimezoneSelector from '../TimezoneSelector.vue';
+import StatisticsTable from '../widgets/StatisticsTable.vue';
 
-export { DataTable, ErrorProvider, I18NProvider, StatisticsTable, ErrorNotice };
+import { useErrorProvider, useError } from '../../composables/useErrors';
+
+export {
+  BaseSelect,
+  DataTable,
+  ErrorNotice,
+  ErrorProvider,
+  FloatingPanel,
+  I18NProvider,
+  Image,
+  LoadingIndicator,
+  Paginator,
+  ResponsiveTable,
+  TimezoneSelector,
+  StatisticsTable,
+  useErrorProvider,
+  useError,
+};
