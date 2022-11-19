@@ -1,16 +1,16 @@
 <script setup>
 import { computed, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
-import { fetchVBRData } from '../../composables/useFetchVBRApi';
+import { fetchVBRData } from '@shared';
 import { useErrorProvider } from '@shared';
-import useSort from '../../composables/useSort';
+import { useSort } from '@shared';
 import convert from '../../utils/convert';
+import { externalTeamLinkResolver } from '../../utils/resolvers';
 import { COLUMNS_STANDINGS_P_2, COLUMNS_STANDINGS_P_3 } from './internal';
+import { baseProps, teamStatsProps } from './internal.props';
 import { I18NProvider } from '@shared';
 import { ErrorNotice } from '@shared';
 import { StatisticsTable } from '@shared';
-import { baseProps, teamStatsProps } from './internal.props';
-import { externalTeamLinkResolver } from '../../utils/resolvers';
 
 const props = defineProps({
   ...baseProps,

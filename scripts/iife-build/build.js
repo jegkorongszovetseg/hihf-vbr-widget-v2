@@ -29,7 +29,7 @@ builds.forEach(async (settings) => {
         entry,
         name,
         fileName,
-        formats: ['iife'],
+        formats: ['es', 'iife'],
       },
       rollupOptions: {
         external: ['vue', ...external],

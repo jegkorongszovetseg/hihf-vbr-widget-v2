@@ -11,7 +11,9 @@ import ResponsiveTable from '../ResponsiveTable.vue';
 import TimezoneSelector from '../TimezoneSelector.vue';
 import StatisticsTable from '../widgets/StatisticsTable.vue';
 
-import { useErrorProvider, useError } from '../../composables/useErrors';
+export * from '../../composables/useErrors';
+import { fetchVBRData } from '../../composables/useFetchVBRApi';
+export * from '../../composables/useSort';
 
 export {
   BaseSelect,
@@ -26,6 +28,8 @@ export {
   ResponsiveTable,
   TimezoneSelector,
   StatisticsTable,
-  useErrorProvider,
-  useError,
+  // useErrorProvider,
+  // useError,
+  fetchVBRData,
+  // useSort,
 };

@@ -29,12 +29,12 @@ var Shared = function(exports, vue) {
       };
     }
   };
-  function _isPlaceholder(a) {
-    return a != null && typeof a === "object" && a["@@functional/placeholder"] === true;
+  function _isPlaceholder(a2) {
+    return a2 != null && typeof a2 === "object" && a2["@@functional/placeholder"] === true;
   }
   function _curry1(fn) {
-    return function f1(a) {
-      if (arguments.length === 0 || _isPlaceholder(a)) {
+    return function f1(a2) {
+      if (arguments.length === 0 || _isPlaceholder(a2)) {
         return f1;
       } else {
         return fn.apply(this, arguments);
@@ -42,25 +42,25 @@ var Shared = function(exports, vue) {
     };
   }
   function _curry2(fn) {
-    return function f2(a, b) {
+    return function f2(a2, b) {
       switch (arguments.length) {
         case 0:
           return f2;
         case 1:
-          return _isPlaceholder(a) ? f2 : _curry1(function(_b) {
-            return fn(a, _b);
+          return _isPlaceholder(a2) ? f2 : _curry1(function(_b) {
+            return fn(a2, _b);
           });
         default:
-          return _isPlaceholder(a) && _isPlaceholder(b) ? f2 : _isPlaceholder(a) ? _curry1(function(_a2) {
+          return _isPlaceholder(a2) && _isPlaceholder(b) ? f2 : _isPlaceholder(a2) ? _curry1(function(_a2) {
             return fn(_a2, b);
           }) : _isPlaceholder(b) ? _curry1(function(_b) {
-            return fn(a, _b);
-          }) : fn(a, b);
+            return fn(a2, _b);
+          }) : fn(a2, b);
       }
     };
   }
-  function _arity(n, fn) {
-    switch (n) {
+  function _arity(n2, fn) {
+    switch (n2) {
       case 0:
         return function() {
           return fn.apply(this, arguments);
@@ -285,9 +285,9 @@ var Shared = function(exports, vue) {
     throw new TypeError("reduce: list must be array or iterable");
   }
   var XMap = /* @__PURE__ */ function() {
-    function XMap2(f, xf) {
+    function XMap2(f2, xf) {
       this.xf = xf;
-      this.f = f;
+      this.f = f2;
     }
     XMap2.prototype["@@transducer/init"] = _xfBase.init;
     XMap2.prototype["@@transducer/result"] = _xfBase.result;
@@ -296,8 +296,8 @@ var Shared = function(exports, vue) {
     };
     return XMap2;
   }();
-  var _xmap = /* @__PURE__ */ _curry2(function _xmap2(f, xf) {
-    return new XMap(f, xf);
+  var _xmap = /* @__PURE__ */ _curry2(function _xmap2(f2, xf) {
+    return new XMap(f2, xf);
   });
   const _xmap$1 = _xmap;
   function _has(prop, obj) {
@@ -374,8 +374,8 @@ var Shared = function(exports, vue) {
     })
   );
   const map$1 = map;
-  const _isInteger = Number.isInteger || function _isInteger2(n) {
-    return n << 0 === n;
+  const _isInteger = Number.isInteger || function _isInteger2(n2) {
+    return n2 << 0 === n2;
   };
   var nth = /* @__PURE__ */ _curry2(function nth2(offset2, list) {
     var idx = offset2 < 0 ? list.length + offset2 : offset2;
@@ -409,88 +409,88 @@ var Shared = function(exports, vue) {
     }
     return false;
   }
-  function _functionName(f) {
-    var match = String(f).match(/^function (\w*)/);
+  function _functionName(f2) {
+    var match = String(f2).match(/^function (\w*)/);
     return match == null ? "" : match[1];
   }
-  function _objectIs(a, b) {
-    if (a === b) {
-      return a !== 0 || 1 / a === 1 / b;
+  function _objectIs(a2, b) {
+    if (a2 === b) {
+      return a2 !== 0 || 1 / a2 === 1 / b;
     } else {
-      return a !== a && b !== b;
+      return a2 !== a2 && b !== b;
     }
   }
   const _objectIs$1 = typeof Object.is === "function" ? Object.is : _objectIs;
   function _uniqContentEquals(aIterator, bIterator, stackA, stackB) {
-    var a = _arrayFromIterator(aIterator);
+    var a2 = _arrayFromIterator(aIterator);
     var b = _arrayFromIterator(bIterator);
     function eq(_a2, _b) {
       return _equals(_a2, _b, stackA.slice(), stackB.slice());
     }
     return !_includesWith(function(b2, aItem) {
       return !_includesWith(eq, aItem, b2);
-    }, b, a);
+    }, b, a2);
   }
-  function _equals(a, b, stackA, stackB) {
-    if (_objectIs$1(a, b)) {
+  function _equals(a2, b, stackA, stackB) {
+    if (_objectIs$1(a2, b)) {
       return true;
     }
-    var typeA = type$1(a);
+    var typeA = type$1(a2);
     if (typeA !== type$1(b)) {
       return false;
     }
-    if (typeof a["fantasy-land/equals"] === "function" || typeof b["fantasy-land/equals"] === "function") {
-      return typeof a["fantasy-land/equals"] === "function" && a["fantasy-land/equals"](b) && typeof b["fantasy-land/equals"] === "function" && b["fantasy-land/equals"](a);
+    if (typeof a2["fantasy-land/equals"] === "function" || typeof b["fantasy-land/equals"] === "function") {
+      return typeof a2["fantasy-land/equals"] === "function" && a2["fantasy-land/equals"](b) && typeof b["fantasy-land/equals"] === "function" && b["fantasy-land/equals"](a2);
     }
-    if (typeof a.equals === "function" || typeof b.equals === "function") {
-      return typeof a.equals === "function" && a.equals(b) && typeof b.equals === "function" && b.equals(a);
+    if (typeof a2.equals === "function" || typeof b.equals === "function") {
+      return typeof a2.equals === "function" && a2.equals(b) && typeof b.equals === "function" && b.equals(a2);
     }
     switch (typeA) {
       case "Arguments":
       case "Array":
       case "Object":
-        if (typeof a.constructor === "function" && _functionName(a.constructor) === "Promise") {
-          return a === b;
+        if (typeof a2.constructor === "function" && _functionName(a2.constructor) === "Promise") {
+          return a2 === b;
         }
         break;
       case "Boolean":
       case "Number":
       case "String":
-        if (!(typeof a === typeof b && _objectIs$1(a.valueOf(), b.valueOf()))) {
+        if (!(typeof a2 === typeof b && _objectIs$1(a2.valueOf(), b.valueOf()))) {
           return false;
         }
         break;
       case "Date":
-        if (!_objectIs$1(a.valueOf(), b.valueOf())) {
+        if (!_objectIs$1(a2.valueOf(), b.valueOf())) {
           return false;
         }
         break;
       case "Error":
-        return a.name === b.name && a.message === b.message;
+        return a2.name === b.name && a2.message === b.message;
       case "RegExp":
-        if (!(a.source === b.source && a.global === b.global && a.ignoreCase === b.ignoreCase && a.multiline === b.multiline && a.sticky === b.sticky && a.unicode === b.unicode)) {
+        if (!(a2.source === b.source && a2.global === b.global && a2.ignoreCase === b.ignoreCase && a2.multiline === b.multiline && a2.sticky === b.sticky && a2.unicode === b.unicode)) {
           return false;
         }
         break;
     }
     var idx = stackA.length - 1;
     while (idx >= 0) {
-      if (stackA[idx] === a) {
+      if (stackA[idx] === a2) {
         return stackB[idx] === b;
       }
       idx -= 1;
     }
     switch (typeA) {
       case "Map":
-        if (a.size !== b.size) {
+        if (a2.size !== b.size) {
           return false;
         }
-        return _uniqContentEquals(a.entries(), b.entries(), stackA.concat([a]), stackB.concat([b]));
+        return _uniqContentEquals(a2.entries(), b.entries(), stackA.concat([a2]), stackB.concat([b]));
       case "Set":
-        if (a.size !== b.size) {
+        if (a2.size !== b.size) {
           return false;
         }
-        return _uniqContentEquals(a.values(), b.values(), stackA.concat([a]), stackB.concat([b]));
+        return _uniqContentEquals(a2.values(), b.values(), stackA.concat([a2]), stackB.concat([b]));
       case "Arguments":
       case "Array":
       case "Object":
@@ -514,33 +514,33 @@ var Shared = function(exports, vue) {
       default:
         return false;
     }
-    var keysA = keys$1(a);
+    var keysA = keys$1(a2);
     if (keysA.length !== keys$1(b).length) {
       return false;
     }
-    var extendedStackA = stackA.concat([a]);
+    var extendedStackA = stackA.concat([a2]);
     var extendedStackB = stackB.concat([b]);
     idx = keysA.length - 1;
     while (idx >= 0) {
       var key = keysA[idx];
-      if (!(_has(key, b) && _equals(b[key], a[key], extendedStackA, extendedStackB))) {
+      if (!(_has(key, b) && _equals(b[key], a2[key], extendedStackA, extendedStackB))) {
         return false;
       }
       idx -= 1;
     }
     return true;
   }
-  var equals = /* @__PURE__ */ _curry2(function equals2(a, b) {
-    return _equals(a, b, [], []);
+  var equals = /* @__PURE__ */ _curry2(function equals2(a2, b) {
+    return _equals(a2, b, [], []);
   });
   const equals$1 = equals;
-  function _indexOf(list, a, idx) {
+  function _indexOf(list, a2, idx) {
     var inf, item;
     if (typeof list.indexOf === "function") {
-      switch (typeof a) {
+      switch (typeof a2) {
         case "number":
-          if (a === 0) {
-            inf = 1 / a;
+          if (a2 === 0) {
+            inf = 1 / a2;
             while (idx < list.length) {
               item = list[idx];
               if (item === 0 && 1 / item === inf) {
@@ -549,7 +549,7 @@ var Shared = function(exports, vue) {
               idx += 1;
             }
             return -1;
-          } else if (a !== a) {
+          } else if (a2 !== a2) {
             while (idx < list.length) {
               item = list[idx];
               if (typeof item === "number" && item !== item) {
@@ -559,35 +559,35 @@ var Shared = function(exports, vue) {
             }
             return -1;
           }
-          return list.indexOf(a, idx);
+          return list.indexOf(a2, idx);
         case "string":
         case "boolean":
         case "function":
         case "undefined":
-          return list.indexOf(a, idx);
+          return list.indexOf(a2, idx);
         case "object":
-          if (a === null) {
-            return list.indexOf(a, idx);
+          if (a2 === null) {
+            return list.indexOf(a2, idx);
           }
       }
     }
     while (idx < list.length) {
-      if (equals$1(list[idx], a)) {
+      if (equals$1(list[idx], a2)) {
         return idx;
       }
       idx += 1;
     }
     return -1;
   }
-  function _includes(a, list) {
-    return _indexOf(list, a, 0) >= 0;
+  function _includes(a2, list) {
+    return _indexOf(list, a2, 0) >= 0;
   }
-  function _quote(s) {
-    var escaped = s.replace(/\\/g, "\\\\").replace(/[\b]/g, "\\b").replace(/\f/g, "\\f").replace(/\n/g, "\\n").replace(/\r/g, "\\r").replace(/\t/g, "\\t").replace(/\v/g, "\\v").replace(/\0/g, "\\0");
+  function _quote(s2) {
+    var escaped = s2.replace(/\\/g, "\\\\").replace(/[\b]/g, "\\b").replace(/\f/g, "\\f").replace(/\n/g, "\\n").replace(/\r/g, "\\r").replace(/\t/g, "\\t").replace(/\v/g, "\\v").replace(/\0/g, "\\0");
     return '"' + escaped.replace(/"/g, '\\"') + '"';
   }
-  var pad = function pad2(n) {
-    return (n < 10 ? "0" : "") + n;
+  var pad = function pad2(n2) {
+    return (n2 < 10 ? "0" : "") + n2;
   };
   var _toISOString = typeof Date.prototype.toISOString === "function" ? function _toISOString2(d) {
     return d.toISOString();
@@ -595,9 +595,9 @@ var Shared = function(exports, vue) {
     return d.getUTCFullYear() + "-" + pad(d.getUTCMonth() + 1) + "-" + pad(d.getUTCDate()) + "T" + pad(d.getUTCHours()) + ":" + pad(d.getUTCMinutes()) + ":" + pad(d.getUTCSeconds()) + "." + (d.getUTCMilliseconds() / 1e3).toFixed(3).slice(2, 5) + "Z";
   };
   const _toISOString$1 = _toISOString;
-  function _complement(f) {
+  function _complement(f2) {
     return function() {
-      return !f.apply(this, arguments);
+      return !f2.apply(this, arguments);
     };
   }
   function _filter(fn, list) {
@@ -616,9 +616,9 @@ var Shared = function(exports, vue) {
     return Object.prototype.toString.call(x) === "[object Object]";
   }
   var XFilter = /* @__PURE__ */ function() {
-    function XFilter2(f, xf) {
+    function XFilter2(f2, xf) {
       this.xf = xf;
-      this.f = f;
+      this.f = f2;
     }
     XFilter2.prototype["@@transducer/init"] = _xfBase.init;
     XFilter2.prototype["@@transducer/result"] = _xfBase.result;
@@ -627,8 +627,8 @@ var Shared = function(exports, vue) {
     };
     return XFilter2;
   }();
-  var _xfilter = /* @__PURE__ */ _curry2(function _xfilter2(f, xf) {
-    return new XFilter(f, xf);
+  var _xfilter = /* @__PURE__ */ _curry2(function _xfilter2(f2, xf) {
+    return new XFilter(f2, xf);
   });
   const _xfilter$1 = _xfilter;
   var filter = /* @__PURE__ */ _curry2(
@@ -1326,7 +1326,7 @@ var Shared = function(exports, vue) {
           switch (fallbackStrategy) {
             case "bestFit": {
               var _overflowsData$map$so;
-              const placement2 = (_overflowsData$map$so = overflowsData.map((d) => [d, d.overflows.filter((overflow2) => overflow2 > 0).reduce((acc, overflow2) => acc + overflow2, 0)]).sort((a, b) => a[1] - b[1])[0]) == null ? void 0 : _overflowsData$map$so[0].placement;
+              const placement2 = (_overflowsData$map$so = overflowsData.map((d) => [d, d.overflows.filter((overflow2) => overflow2 > 0).reduce((acc, overflow2) => acc + overflow2, 0)]).sort((a2, b) => a2[1] - b[1])[0]) == null ? void 0 : _overflowsData$map$so[0].placement;
               if (placement2) {
                 resetPlacement = placement2;
               }
@@ -1948,8 +1948,8 @@ var Shared = function(exports, vue) {
   const noop = () => {
   };
   isClient && ((_a = window == null ? void 0 : window.navigator) == null ? void 0 : _a.userAgent) && /iP(ad|hone|od)/.test(window.navigator.userAgent);
-  function resolveUnref(r) {
-    return typeof r === "function" ? r() : vue.unref(r);
+  function resolveUnref(r2) {
+    return typeof r2 === "function" ? r2() : vue.unref(r2);
   }
   function createFilterWrapper(filter2, fn) {
     function wrapper(...args) {
@@ -2078,15 +2078,15 @@ var Shared = function(exports, vue) {
     };
     const cleanup = [
       useEventListener(window2, "click", listener, { passive: true, capture }),
-      useEventListener(window2, "pointerdown", (e) => {
+      useEventListener(window2, "pointerdown", (e2) => {
         const el = unrefElement(target);
-        shouldListen.value = !!el && !e.composedPath().includes(el) && !shouldIgnore(e);
+        shouldListen.value = !!el && !e2.composedPath().includes(el) && !shouldIgnore(e2);
       }, { passive: true }),
-      useEventListener(window2, "pointerup", (e) => {
-        if (e.button === 0) {
-          const path2 = e.composedPath();
-          e.composedPath = () => path2;
-          fallback = window2.setTimeout(() => listener(e), 50);
+      useEventListener(window2, "pointerup", (e2) => {
+        if (e2.button === 0) {
+          const path2 = e2.composedPath();
+          e2.composedPath = () => path2;
+          fallback = window2.setTimeout(() => listener(e2), 50);
         }
       }, { passive: true }),
       detectIframe && useEventListener(window2, "blur", (event) => {
@@ -2125,9 +2125,9 @@ var Shared = function(exports, vue) {
         const data = await _promise;
         state2.value = data;
         isReady.value = true;
-      } catch (e) {
-        error.value = e;
-        onError(e);
+      } catch (e2) {
+        error.value = e2;
+        onError(e2);
         if (throwError)
           throw error;
       } finally {
@@ -2154,16 +2154,16 @@ var Shared = function(exports, vue) {
   var __hasOwnProp$a = Object.prototype.hasOwnProperty;
   var __propIsEnum$a = Object.prototype.propertyIsEnumerable;
   var __defNormalProp$9 = (obj, key, value) => key in obj ? __defProp$9(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-  var __spreadValues$9 = (a, b) => {
+  var __spreadValues$9 = (a2, b) => {
     for (var prop in b || (b = {}))
       if (__hasOwnProp$a.call(b, prop))
-        __defNormalProp$9(a, prop, b[prop]);
+        __defNormalProp$9(a2, prop, b[prop]);
     if (__getOwnPropSymbols$a)
       for (var prop of __getOwnPropSymbols$a(b)) {
         if (__propIsEnum$a.call(b, prop))
-          __defNormalProp$9(a, prop, b[prop]);
+          __defNormalProp$9(a2, prop, b[prop]);
       }
-    return a;
+    return a2;
   };
   async function loadImage(options) {
     return new Promise((resolve2, reject2) => {
@@ -2198,16 +2198,16 @@ var Shared = function(exports, vue) {
   var __hasOwnProp = Object.prototype.hasOwnProperty;
   var __propIsEnum = Object.prototype.propertyIsEnumerable;
   var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-  var __spreadValues = (a, b) => {
+  var __spreadValues = (a2, b) => {
     for (var prop in b || (b = {}))
       if (__hasOwnProp.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
+        __defNormalProp(a2, prop, b[prop]);
     if (__getOwnPropSymbols)
       for (var prop of __getOwnPropSymbols(b)) {
         if (__propIsEnum.call(b, prop))
-          __defNormalProp(a, prop, b[prop]);
+          __defNormalProp(a2, prop, b[prop]);
       }
-    return a;
+    return a2;
   };
   const _TransitionPresets = {
     easeInSine: [0.12, 0, 0.39, 0],
@@ -2471,7 +2471,7 @@ var Shared = function(exports, vue) {
     setup(__props, { emit }) {
       const props = __props;
       const { isLoading, appendTo: appendTo2 } = vue.toRefs(props);
-      const { t } = useI18n();
+      const { t: t2 } = useI18n();
       const mainClassName = useMainClass("table");
       const columns = vue.computed(() => props.columns);
       const columnCount = vue.computed(() => Object.keys(props.columns).length);
@@ -2572,10 +2572,10 @@ var Shared = function(exports, vue) {
           ]),
           vue.createElementVNode("tfoot", null, [
             __props.rows.length === 0 && !vue.unref(isLoading) ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_2$6, [
-              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.noData")), 9, _hoisted_3$5)
+              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t2)("common.noData")), 9, _hoisted_3$5)
             ])) : vue.createCommentVNode("", true),
             vue.unref(isLoadingDebounced) ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_4$2, [
-              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t)("common.loading")), 9, _hoisted_5$2)
+              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t2)("common.loading")), 9, _hoisted_5$2)
             ])) : vue.createCommentVNode("", true)
           ])
         ], 2);
@@ -2624,13 +2624,13 @@ var Shared = function(exports, vue) {
     },
     setup(__props) {
       const props = __props;
-      const { t, hasTranlation } = useI18n();
+      const { t: t2, hasTranlation } = useI18n();
       const mainClass = useMainClass("error-notice");
       const errorMessage = vue.computed(() => {
         var _a2;
         if (!hasTranlation(`errors.${props.error.key}`))
           return (_a2 = props.error) == null ? void 0 : _a2.message;
-        return t(`errors.${props.error.key}`, props.error.cause);
+        return t2(`errors.${props.error.key}`, props.error.cause);
       });
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", {
@@ -2671,8 +2671,8 @@ var Shared = function(exports, vue) {
       reset
     };
     vue.provide(ErrorProviderContext, api);
-    window.onerror = (e) => {
-      console.log("WINDOW_ONERROR:", e);
+    window.onerror = (e2) => {
+      console.log("WINDOW_ONERROR:", e2);
     };
     vue.onErrorCaptured((error, vm, info) => {
       console.log("onErrorCaptured:", error, vm, info);
@@ -3465,9 +3465,9 @@ var Shared = function(exports, vue) {
   const _sfc_main$6 = {
     __name: "LoadingIndicator",
     setup(__props) {
-      const { t } = useI18n();
+      const { t: t2 } = useI18n();
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$5, vue.toDisplayString(vue.unref(t)("common.loading")), 1);
+        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$5, vue.toDisplayString(vue.unref(t2)("common.loading")), 1);
       };
     }
   };
@@ -3626,14 +3626,14 @@ var Shared = function(exports, vue) {
             onClick: _cache[1] || (_cache[1] = ($event) => vue.unref(goTo)(1))
           }, "1", 8, _hoisted_2$1)) : vue.createCommentVNode("", true),
           !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_3$1, "...")) : vue.createCommentVNode("", true),
-          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(range), (n) => {
+          (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(range), (n2) => {
             return vue.openBlock(), vue.createElementBlock("button", {
               type: "button",
-              key: n,
-              class: vue.normalizeClass({ "is-active": n === vue.unref(page) }),
-              disabled: n === vue.unref(page),
-              onClick: ($event) => vue.unref(goTo)(n)
-            }, vue.toDisplayString(n), 11, _hoisted_4);
+              key: n2,
+              class: vue.normalizeClass({ "is-active": n2 === vue.unref(page) }),
+              disabled: n2 === vue.unref(page),
+              onClick: ($event) => vue.unref(goTo)(n2)
+            }, vue.toDisplayString(n2), 11, _hoisted_4);
           }), 128)),
           !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_5, _hoisted_7)) : vue.createCommentVNode("", true),
           !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("button", {
@@ -3674,186 +3674,186 @@ var Shared = function(exports, vue) {
   var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
   var dayjs_min = { exports: {} };
   (function(module, exports2) {
-    !function(t, e) {
-      module.exports = e();
+    !function(t2, e2) {
+      module.exports = e2();
     }(commonjsGlobal, function() {
-      var t = 1e3, e = 6e4, n = 36e5, r = "millisecond", i = "second", s = "minute", u = "hour", a = "day", o = "week", f = "month", h = "quarter", c = "year", d = "date", $ = "Invalid Date", l = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_") }, m = function(t2, e2, n2) {
-        var r2 = String(t2);
-        return !r2 || r2.length >= e2 ? t2 : "" + Array(e2 + 1 - r2.length).join(n2) + t2;
-      }, g = { s: m, z: function(t2) {
-        var e2 = -t2.utcOffset(), n2 = Math.abs(e2), r2 = Math.floor(n2 / 60), i2 = n2 % 60;
-        return (e2 <= 0 ? "+" : "-") + m(r2, 2, "0") + ":" + m(i2, 2, "0");
-      }, m: function t2(e2, n2) {
-        if (e2.date() < n2.date())
-          return -t2(n2, e2);
-        var r2 = 12 * (n2.year() - e2.year()) + (n2.month() - e2.month()), i2 = e2.clone().add(r2, f), s2 = n2 - i2 < 0, u2 = e2.clone().add(r2 + (s2 ? -1 : 1), f);
-        return +(-(r2 + (n2 - i2) / (s2 ? i2 - u2 : u2 - i2)) || 0);
-      }, a: function(t2) {
-        return t2 < 0 ? Math.ceil(t2) || 0 : Math.floor(t2);
-      }, p: function(t2) {
-        return { M: f, y: c, w: o, d: a, D: d, h: u, m: s, s: i, ms: r, Q: h }[t2] || String(t2 || "").toLowerCase().replace(/s$/, "");
-      }, u: function(t2) {
-        return void 0 === t2;
+      var t2 = 1e3, e2 = 6e4, n2 = 36e5, r2 = "millisecond", i = "second", s2 = "minute", u2 = "hour", a2 = "day", o2 = "week", f2 = "month", h = "quarter", c2 = "year", d = "date", $ = "Invalid Date", l = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_") }, m = function(t3, e3, n3) {
+        var r3 = String(t3);
+        return !r3 || r3.length >= e3 ? t3 : "" + Array(e3 + 1 - r3.length).join(n3) + t3;
+      }, g = { s: m, z: function(t3) {
+        var e3 = -t3.utcOffset(), n3 = Math.abs(e3), r3 = Math.floor(n3 / 60), i2 = n3 % 60;
+        return (e3 <= 0 ? "+" : "-") + m(r3, 2, "0") + ":" + m(i2, 2, "0");
+      }, m: function t3(e3, n3) {
+        if (e3.date() < n3.date())
+          return -t3(n3, e3);
+        var r3 = 12 * (n3.year() - e3.year()) + (n3.month() - e3.month()), i2 = e3.clone().add(r3, f2), s3 = n3 - i2 < 0, u3 = e3.clone().add(r3 + (s3 ? -1 : 1), f2);
+        return +(-(r3 + (n3 - i2) / (s3 ? i2 - u3 : u3 - i2)) || 0);
+      }, a: function(t3) {
+        return t3 < 0 ? Math.ceil(t3) || 0 : Math.floor(t3);
+      }, p: function(t3) {
+        return { M: f2, y: c2, w: o2, d: a2, D: d, h: u2, m: s2, s: i, ms: r2, Q: h }[t3] || String(t3 || "").toLowerCase().replace(/s$/, "");
+      }, u: function(t3) {
+        return void 0 === t3;
       } }, v = "en", D = {};
       D[v] = M;
-      var p = function(t2) {
-        return t2 instanceof _;
-      }, S = function t2(e2, n2, r2) {
+      var p = function(t3) {
+        return t3 instanceof _;
+      }, S = function t3(e3, n3, r3) {
         var i2;
-        if (!e2)
+        if (!e3)
           return v;
-        if ("string" == typeof e2) {
-          var s2 = e2.toLowerCase();
-          D[s2] && (i2 = s2), n2 && (D[s2] = n2, i2 = s2);
-          var u2 = e2.split("-");
-          if (!i2 && u2.length > 1)
-            return t2(u2[0]);
+        if ("string" == typeof e3) {
+          var s3 = e3.toLowerCase();
+          D[s3] && (i2 = s3), n3 && (D[s3] = n3, i2 = s3);
+          var u3 = e3.split("-");
+          if (!i2 && u3.length > 1)
+            return t3(u3[0]);
         } else {
-          var a2 = e2.name;
-          D[a2] = e2, i2 = a2;
+          var a3 = e3.name;
+          D[a3] = e3, i2 = a3;
         }
-        return !r2 && i2 && (v = i2), i2 || !r2 && v;
-      }, w = function(t2, e2) {
-        if (p(t2))
-          return t2.clone();
-        var n2 = "object" == typeof e2 ? e2 : {};
-        return n2.date = t2, n2.args = arguments, new _(n2);
+        return !r3 && i2 && (v = i2), i2 || !r3 && v;
+      }, w = function(t3, e3) {
+        if (p(t3))
+          return t3.clone();
+        var n3 = "object" == typeof e3 ? e3 : {};
+        return n3.date = t3, n3.args = arguments, new _(n3);
       }, O = g;
-      O.l = S, O.i = p, O.w = function(t2, e2) {
-        return w(t2, { locale: e2.$L, utc: e2.$u, x: e2.$x, $offset: e2.$offset });
+      O.l = S, O.i = p, O.w = function(t3, e3) {
+        return w(t3, { locale: e3.$L, utc: e3.$u, x: e3.$x, $offset: e3.$offset });
       };
       var _ = function() {
-        function M2(t2) {
-          this.$L = S(t2.locale, null, true), this.parse(t2);
+        function M2(t3) {
+          this.$L = S(t3.locale, null, true), this.parse(t3);
         }
         var m2 = M2.prototype;
-        return m2.parse = function(t2) {
-          this.$d = function(t3) {
-            var e2 = t3.date, n2 = t3.utc;
-            if (null === e2)
+        return m2.parse = function(t3) {
+          this.$d = function(t4) {
+            var e3 = t4.date, n3 = t4.utc;
+            if (null === e3)
               return new Date(NaN);
-            if (O.u(e2))
+            if (O.u(e3))
               return new Date();
-            if (e2 instanceof Date)
-              return new Date(e2);
-            if ("string" == typeof e2 && !/Z$/i.test(e2)) {
-              var r2 = e2.match(l);
-              if (r2) {
-                var i2 = r2[2] - 1 || 0, s2 = (r2[7] || "0").substring(0, 3);
-                return n2 ? new Date(Date.UTC(r2[1], i2, r2[3] || 1, r2[4] || 0, r2[5] || 0, r2[6] || 0, s2)) : new Date(r2[1], i2, r2[3] || 1, r2[4] || 0, r2[5] || 0, r2[6] || 0, s2);
+            if (e3 instanceof Date)
+              return new Date(e3);
+            if ("string" == typeof e3 && !/Z$/i.test(e3)) {
+              var r3 = e3.match(l);
+              if (r3) {
+                var i2 = r3[2] - 1 || 0, s3 = (r3[7] || "0").substring(0, 3);
+                return n3 ? new Date(Date.UTC(r3[1], i2, r3[3] || 1, r3[4] || 0, r3[5] || 0, r3[6] || 0, s3)) : new Date(r3[1], i2, r3[3] || 1, r3[4] || 0, r3[5] || 0, r3[6] || 0, s3);
               }
             }
-            return new Date(e2);
-          }(t2), this.$x = t2.x || {}, this.init();
+            return new Date(e3);
+          }(t3), this.$x = t3.x || {}, this.init();
         }, m2.init = function() {
-          var t2 = this.$d;
-          this.$y = t2.getFullYear(), this.$M = t2.getMonth(), this.$D = t2.getDate(), this.$W = t2.getDay(), this.$H = t2.getHours(), this.$m = t2.getMinutes(), this.$s = t2.getSeconds(), this.$ms = t2.getMilliseconds();
+          var t3 = this.$d;
+          this.$y = t3.getFullYear(), this.$M = t3.getMonth(), this.$D = t3.getDate(), this.$W = t3.getDay(), this.$H = t3.getHours(), this.$m = t3.getMinutes(), this.$s = t3.getSeconds(), this.$ms = t3.getMilliseconds();
         }, m2.$utils = function() {
           return O;
         }, m2.isValid = function() {
           return !(this.$d.toString() === $);
-        }, m2.isSame = function(t2, e2) {
-          var n2 = w(t2);
-          return this.startOf(e2) <= n2 && n2 <= this.endOf(e2);
-        }, m2.isAfter = function(t2, e2) {
-          return w(t2) < this.startOf(e2);
-        }, m2.isBefore = function(t2, e2) {
-          return this.endOf(e2) < w(t2);
-        }, m2.$g = function(t2, e2, n2) {
-          return O.u(t2) ? this[e2] : this.set(n2, t2);
+        }, m2.isSame = function(t3, e3) {
+          var n3 = w(t3);
+          return this.startOf(e3) <= n3 && n3 <= this.endOf(e3);
+        }, m2.isAfter = function(t3, e3) {
+          return w(t3) < this.startOf(e3);
+        }, m2.isBefore = function(t3, e3) {
+          return this.endOf(e3) < w(t3);
+        }, m2.$g = function(t3, e3, n3) {
+          return O.u(t3) ? this[e3] : this.set(n3, t3);
         }, m2.unix = function() {
           return Math.floor(this.valueOf() / 1e3);
         }, m2.valueOf = function() {
           return this.$d.getTime();
-        }, m2.startOf = function(t2, e2) {
-          var n2 = this, r2 = !!O.u(e2) || e2, h2 = O.p(t2), $2 = function(t3, e3) {
-            var i2 = O.w(n2.$u ? Date.UTC(n2.$y, e3, t3) : new Date(n2.$y, e3, t3), n2);
-            return r2 ? i2 : i2.endOf(a);
-          }, l2 = function(t3, e3) {
-            return O.w(n2.toDate()[t3].apply(n2.toDate("s"), (r2 ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(e3)), n2);
+        }, m2.startOf = function(t3, e3) {
+          var n3 = this, r3 = !!O.u(e3) || e3, h2 = O.p(t3), $2 = function(t4, e4) {
+            var i2 = O.w(n3.$u ? Date.UTC(n3.$y, e4, t4) : new Date(n3.$y, e4, t4), n3);
+            return r3 ? i2 : i2.endOf(a2);
+          }, l2 = function(t4, e4) {
+            return O.w(n3.toDate()[t4].apply(n3.toDate("s"), (r3 ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(e4)), n3);
           }, y2 = this.$W, M3 = this.$M, m3 = this.$D, g2 = "set" + (this.$u ? "UTC" : "");
           switch (h2) {
-            case c:
-              return r2 ? $2(1, 0) : $2(31, 11);
-            case f:
-              return r2 ? $2(1, M3) : $2(0, M3 + 1);
-            case o:
+            case c2:
+              return r3 ? $2(1, 0) : $2(31, 11);
+            case f2:
+              return r3 ? $2(1, M3) : $2(0, M3 + 1);
+            case o2:
               var v2 = this.$locale().weekStart || 0, D2 = (y2 < v2 ? y2 + 7 : y2) - v2;
-              return $2(r2 ? m3 - D2 : m3 + (6 - D2), M3);
-            case a:
+              return $2(r3 ? m3 - D2 : m3 + (6 - D2), M3);
+            case a2:
             case d:
               return l2(g2 + "Hours", 0);
-            case u:
+            case u2:
               return l2(g2 + "Minutes", 1);
-            case s:
+            case s2:
               return l2(g2 + "Seconds", 2);
             case i:
               return l2(g2 + "Milliseconds", 3);
             default:
               return this.clone();
           }
-        }, m2.endOf = function(t2) {
-          return this.startOf(t2, false);
-        }, m2.$set = function(t2, e2) {
-          var n2, o2 = O.p(t2), h2 = "set" + (this.$u ? "UTC" : ""), $2 = (n2 = {}, n2[a] = h2 + "Date", n2[d] = h2 + "Date", n2[f] = h2 + "Month", n2[c] = h2 + "FullYear", n2[u] = h2 + "Hours", n2[s] = h2 + "Minutes", n2[i] = h2 + "Seconds", n2[r] = h2 + "Milliseconds", n2)[o2], l2 = o2 === a ? this.$D + (e2 - this.$W) : e2;
-          if (o2 === f || o2 === c) {
+        }, m2.endOf = function(t3) {
+          return this.startOf(t3, false);
+        }, m2.$set = function(t3, e3) {
+          var n3, o3 = O.p(t3), h2 = "set" + (this.$u ? "UTC" : ""), $2 = (n3 = {}, n3[a2] = h2 + "Date", n3[d] = h2 + "Date", n3[f2] = h2 + "Month", n3[c2] = h2 + "FullYear", n3[u2] = h2 + "Hours", n3[s2] = h2 + "Minutes", n3[i] = h2 + "Seconds", n3[r2] = h2 + "Milliseconds", n3)[o3], l2 = o3 === a2 ? this.$D + (e3 - this.$W) : e3;
+          if (o3 === f2 || o3 === c2) {
             var y2 = this.clone().set(d, 1);
             y2.$d[$2](l2), y2.init(), this.$d = y2.set(d, Math.min(this.$D, y2.daysInMonth())).$d;
           } else
             $2 && this.$d[$2](l2);
           return this.init(), this;
-        }, m2.set = function(t2, e2) {
-          return this.clone().$set(t2, e2);
-        }, m2.get = function(t2) {
-          return this[O.p(t2)]();
-        }, m2.add = function(r2, h2) {
+        }, m2.set = function(t3, e3) {
+          return this.clone().$set(t3, e3);
+        }, m2.get = function(t3) {
+          return this[O.p(t3)]();
+        }, m2.add = function(r3, h2) {
           var d2, $2 = this;
-          r2 = Number(r2);
-          var l2 = O.p(h2), y2 = function(t2) {
-            var e2 = w($2);
-            return O.w(e2.date(e2.date() + Math.round(t2 * r2)), $2);
+          r3 = Number(r3);
+          var l2 = O.p(h2), y2 = function(t3) {
+            var e3 = w($2);
+            return O.w(e3.date(e3.date() + Math.round(t3 * r3)), $2);
           };
-          if (l2 === f)
-            return this.set(f, this.$M + r2);
-          if (l2 === c)
-            return this.set(c, this.$y + r2);
-          if (l2 === a)
+          if (l2 === f2)
+            return this.set(f2, this.$M + r3);
+          if (l2 === c2)
+            return this.set(c2, this.$y + r3);
+          if (l2 === a2)
             return y2(1);
-          if (l2 === o)
+          if (l2 === o2)
             return y2(7);
-          var M3 = (d2 = {}, d2[s] = e, d2[u] = n, d2[i] = t, d2)[l2] || 1, m3 = this.$d.getTime() + r2 * M3;
+          var M3 = (d2 = {}, d2[s2] = e2, d2[u2] = n2, d2[i] = t2, d2)[l2] || 1, m3 = this.$d.getTime() + r3 * M3;
           return O.w(m3, this);
-        }, m2.subtract = function(t2, e2) {
-          return this.add(-1 * t2, e2);
-        }, m2.format = function(t2) {
-          var e2 = this, n2 = this.$locale();
+        }, m2.subtract = function(t3, e3) {
+          return this.add(-1 * t3, e3);
+        }, m2.format = function(t3) {
+          var e3 = this, n3 = this.$locale();
           if (!this.isValid())
-            return n2.invalidDate || $;
-          var r2 = t2 || "YYYY-MM-DDTHH:mm:ssZ", i2 = O.z(this), s2 = this.$H, u2 = this.$m, a2 = this.$M, o2 = n2.weekdays, f2 = n2.months, h2 = function(t3, n3, i3, s3) {
-            return t3 && (t3[n3] || t3(e2, r2)) || i3[n3].slice(0, s3);
-          }, c2 = function(t3) {
-            return O.s(s2 % 12 || 12, t3, "0");
-          }, d2 = n2.meridiem || function(t3, e3, n3) {
-            var r3 = t3 < 12 ? "AM" : "PM";
-            return n3 ? r3.toLowerCase() : r3;
-          }, l2 = { YY: String(this.$y).slice(-2), YYYY: this.$y, M: a2 + 1, MM: O.s(a2 + 1, 2, "0"), MMM: h2(n2.monthsShort, a2, f2, 3), MMMM: h2(f2, a2), D: this.$D, DD: O.s(this.$D, 2, "0"), d: String(this.$W), dd: h2(n2.weekdaysMin, this.$W, o2, 2), ddd: h2(n2.weekdaysShort, this.$W, o2, 3), dddd: o2[this.$W], H: String(s2), HH: O.s(s2, 2, "0"), h: c2(1), hh: c2(2), a: d2(s2, u2, true), A: d2(s2, u2, false), m: String(u2), mm: O.s(u2, 2, "0"), s: String(this.$s), ss: O.s(this.$s, 2, "0"), SSS: O.s(this.$ms, 3, "0"), Z: i2 };
-          return r2.replace(y, function(t3, e3) {
-            return e3 || l2[t3] || i2.replace(":", "");
+            return n3.invalidDate || $;
+          var r3 = t3 || "YYYY-MM-DDTHH:mm:ssZ", i2 = O.z(this), s3 = this.$H, u3 = this.$m, a3 = this.$M, o3 = n3.weekdays, f3 = n3.months, h2 = function(t4, n4, i3, s4) {
+            return t4 && (t4[n4] || t4(e3, r3)) || i3[n4].slice(0, s4);
+          }, c3 = function(t4) {
+            return O.s(s3 % 12 || 12, t4, "0");
+          }, d2 = n3.meridiem || function(t4, e4, n4) {
+            var r4 = t4 < 12 ? "AM" : "PM";
+            return n4 ? r4.toLowerCase() : r4;
+          }, l2 = { YY: String(this.$y).slice(-2), YYYY: this.$y, M: a3 + 1, MM: O.s(a3 + 1, 2, "0"), MMM: h2(n3.monthsShort, a3, f3, 3), MMMM: h2(f3, a3), D: this.$D, DD: O.s(this.$D, 2, "0"), d: String(this.$W), dd: h2(n3.weekdaysMin, this.$W, o3, 2), ddd: h2(n3.weekdaysShort, this.$W, o3, 3), dddd: o3[this.$W], H: String(s3), HH: O.s(s3, 2, "0"), h: c3(1), hh: c3(2), a: d2(s3, u3, true), A: d2(s3, u3, false), m: String(u3), mm: O.s(u3, 2, "0"), s: String(this.$s), ss: O.s(this.$s, 2, "0"), SSS: O.s(this.$ms, 3, "0"), Z: i2 };
+          return r3.replace(y, function(t4, e4) {
+            return e4 || l2[t4] || i2.replace(":", "");
           });
         }, m2.utcOffset = function() {
           return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
-        }, m2.diff = function(r2, d2, $2) {
-          var l2, y2 = O.p(d2), M3 = w(r2), m3 = (M3.utcOffset() - this.utcOffset()) * e, g2 = this - M3, v2 = O.m(this, M3);
-          return v2 = (l2 = {}, l2[c] = v2 / 12, l2[f] = v2, l2[h] = v2 / 3, l2[o] = (g2 - m3) / 6048e5, l2[a] = (g2 - m3) / 864e5, l2[u] = g2 / n, l2[s] = g2 / e, l2[i] = g2 / t, l2)[y2] || g2, $2 ? v2 : O.a(v2);
+        }, m2.diff = function(r3, d2, $2) {
+          var l2, y2 = O.p(d2), M3 = w(r3), m3 = (M3.utcOffset() - this.utcOffset()) * e2, g2 = this - M3, v2 = O.m(this, M3);
+          return v2 = (l2 = {}, l2[c2] = v2 / 12, l2[f2] = v2, l2[h] = v2 / 3, l2[o2] = (g2 - m3) / 6048e5, l2[a2] = (g2 - m3) / 864e5, l2[u2] = g2 / n2, l2[s2] = g2 / e2, l2[i] = g2 / t2, l2)[y2] || g2, $2 ? v2 : O.a(v2);
         }, m2.daysInMonth = function() {
-          return this.endOf(f).$D;
+          return this.endOf(f2).$D;
         }, m2.$locale = function() {
           return D[this.$L];
-        }, m2.locale = function(t2, e2) {
-          if (!t2)
+        }, m2.locale = function(t3, e3) {
+          if (!t3)
             return this.$L;
-          var n2 = this.clone(), r2 = S(t2, e2, true);
-          return r2 && (n2.$L = r2), n2;
+          var n3 = this.clone(), r3 = S(t3, e3, true);
+          return r3 && (n3.$L = r3), n3;
         }, m2.clone = function() {
           return O.w(this.$d, this);
         }, m2.toDate = function() {
@@ -3866,95 +3866,95 @@ var Shared = function(exports, vue) {
           return this.$d.toUTCString();
         }, M2;
       }(), T = _.prototype;
-      return w.prototype = T, [["$ms", r], ["$s", i], ["$m", s], ["$H", u], ["$W", a], ["$M", f], ["$y", c], ["$D", d]].forEach(function(t2) {
-        T[t2[1]] = function(e2) {
-          return this.$g(e2, t2[0], t2[1]);
+      return w.prototype = T, [["$ms", r2], ["$s", i], ["$m", s2], ["$H", u2], ["$W", a2], ["$M", f2], ["$y", c2], ["$D", d]].forEach(function(t3) {
+        T[t3[1]] = function(e3) {
+          return this.$g(e3, t3[0], t3[1]);
         };
-      }), w.extend = function(t2, e2) {
-        return t2.$i || (t2(e2, _, w), t2.$i = true), w;
-      }, w.locale = S, w.isDayjs = p, w.unix = function(t2) {
-        return w(1e3 * t2);
+      }), w.extend = function(t3, e3) {
+        return t3.$i || (t3(e3, _, w), t3.$i = true), w;
+      }, w.locale = S, w.isDayjs = p, w.unix = function(t3) {
+        return w(1e3 * t3);
       }, w.en = D[v], w.Ls = D, w.p = {}, w;
     });
   })(dayjs_min);
   const dayjs = dayjs_min.exports;
   var utc$1 = { exports: {} };
   (function(module, exports2) {
-    !function(t, i) {
+    !function(t2, i) {
       module.exports = i();
     }(commonjsGlobal, function() {
-      var t = "minute", i = /[+-]\d\d(?::?\d\d)?/g, e = /([+-]|\d\d)/g;
-      return function(s, f, n) {
-        var u = f.prototype;
-        n.utc = function(t2) {
-          var i2 = { date: t2, utc: true, args: arguments };
-          return new f(i2);
-        }, u.utc = function(i2) {
-          var e2 = n(this.toDate(), { locale: this.$L, utc: true });
-          return i2 ? e2.add(this.utcOffset(), t) : e2;
-        }, u.local = function() {
-          return n(this.toDate(), { locale: this.$L, utc: false });
+      var t2 = "minute", i = /[+-]\d\d(?::?\d\d)?/g, e2 = /([+-]|\d\d)/g;
+      return function(s2, f2, n2) {
+        var u2 = f2.prototype;
+        n2.utc = function(t3) {
+          var i2 = { date: t3, utc: true, args: arguments };
+          return new f2(i2);
+        }, u2.utc = function(i2) {
+          var e3 = n2(this.toDate(), { locale: this.$L, utc: true });
+          return i2 ? e3.add(this.utcOffset(), t2) : e3;
+        }, u2.local = function() {
+          return n2(this.toDate(), { locale: this.$L, utc: false });
         };
-        var o = u.parse;
-        u.parse = function(t2) {
-          t2.utc && (this.$u = true), this.$utils().u(t2.$offset) || (this.$offset = t2.$offset), o.call(this, t2);
+        var o2 = u2.parse;
+        u2.parse = function(t3) {
+          t3.utc && (this.$u = true), this.$utils().u(t3.$offset) || (this.$offset = t3.$offset), o2.call(this, t3);
         };
-        var r = u.init;
-        u.init = function() {
+        var r2 = u2.init;
+        u2.init = function() {
           if (this.$u) {
-            var t2 = this.$d;
-            this.$y = t2.getUTCFullYear(), this.$M = t2.getUTCMonth(), this.$D = t2.getUTCDate(), this.$W = t2.getUTCDay(), this.$H = t2.getUTCHours(), this.$m = t2.getUTCMinutes(), this.$s = t2.getUTCSeconds(), this.$ms = t2.getUTCMilliseconds();
+            var t3 = this.$d;
+            this.$y = t3.getUTCFullYear(), this.$M = t3.getUTCMonth(), this.$D = t3.getUTCDate(), this.$W = t3.getUTCDay(), this.$H = t3.getUTCHours(), this.$m = t3.getUTCMinutes(), this.$s = t3.getUTCSeconds(), this.$ms = t3.getUTCMilliseconds();
           } else
-            r.call(this);
+            r2.call(this);
         };
-        var a = u.utcOffset;
-        u.utcOffset = function(s2, f2) {
-          var n2 = this.$utils().u;
-          if (n2(s2))
-            return this.$u ? 0 : n2(this.$offset) ? a.call(this) : this.$offset;
-          if ("string" == typeof s2 && (s2 = function(t2) {
-            void 0 === t2 && (t2 = "");
-            var s3 = t2.match(i);
-            if (!s3)
+        var a2 = u2.utcOffset;
+        u2.utcOffset = function(s3, f3) {
+          var n3 = this.$utils().u;
+          if (n3(s3))
+            return this.$u ? 0 : n3(this.$offset) ? a2.call(this) : this.$offset;
+          if ("string" == typeof s3 && (s3 = function(t3) {
+            void 0 === t3 && (t3 = "");
+            var s4 = t3.match(i);
+            if (!s4)
               return null;
-            var f3 = ("" + s3[0]).match(e) || ["-", 0, 0], n3 = f3[0], u3 = 60 * +f3[1] + +f3[2];
-            return 0 === u3 ? 0 : "+" === n3 ? u3 : -u3;
-          }(s2), null === s2))
+            var f4 = ("" + s4[0]).match(e2) || ["-", 0, 0], n4 = f4[0], u4 = 60 * +f4[1] + +f4[2];
+            return 0 === u4 ? 0 : "+" === n4 ? u4 : -u4;
+          }(s3), null === s3))
             return this;
-          var u2 = Math.abs(s2) <= 16 ? 60 * s2 : s2, o2 = this;
-          if (f2)
-            return o2.$offset = u2, o2.$u = 0 === s2, o2;
-          if (0 !== s2) {
-            var r2 = this.$u ? this.toDate().getTimezoneOffset() : -1 * this.utcOffset();
-            (o2 = this.local().add(u2 + r2, t)).$offset = u2, o2.$x.$localOffset = r2;
+          var u3 = Math.abs(s3) <= 16 ? 60 * s3 : s3, o3 = this;
+          if (f3)
+            return o3.$offset = u3, o3.$u = 0 === s3, o3;
+          if (0 !== s3) {
+            var r3 = this.$u ? this.toDate().getTimezoneOffset() : -1 * this.utcOffset();
+            (o3 = this.local().add(u3 + r3, t2)).$offset = u3, o3.$x.$localOffset = r3;
           } else
-            o2 = this.utc();
-          return o2;
+            o3 = this.utc();
+          return o3;
         };
-        var h = u.format;
-        u.format = function(t2) {
-          var i2 = t2 || (this.$u ? "YYYY-MM-DDTHH:mm:ss[Z]" : "");
+        var h = u2.format;
+        u2.format = function(t3) {
+          var i2 = t3 || (this.$u ? "YYYY-MM-DDTHH:mm:ss[Z]" : "");
           return h.call(this, i2);
-        }, u.valueOf = function() {
-          var t2 = this.$utils().u(this.$offset) ? 0 : this.$offset + (this.$x.$localOffset || this.$d.getTimezoneOffset());
-          return this.$d.valueOf() - 6e4 * t2;
-        }, u.isUTC = function() {
+        }, u2.valueOf = function() {
+          var t3 = this.$utils().u(this.$offset) ? 0 : this.$offset + (this.$x.$localOffset || this.$d.getTimezoneOffset());
+          return this.$d.valueOf() - 6e4 * t3;
+        }, u2.isUTC = function() {
           return !!this.$u;
-        }, u.toISOString = function() {
+        }, u2.toISOString = function() {
           return this.toDate().toISOString();
-        }, u.toString = function() {
+        }, u2.toString = function() {
           return this.toDate().toUTCString();
         };
-        var l = u.toDate;
-        u.toDate = function(t2) {
-          return "s" === t2 && this.$offset ? n(this.format("YYYY-MM-DD HH:mm:ss:SSS")).toDate() : l.call(this);
+        var l = u2.toDate;
+        u2.toDate = function(t3) {
+          return "s" === t3 && this.$offset ? n2(this.format("YYYY-MM-DD HH:mm:ss:SSS")).toDate() : l.call(this);
         };
-        var c = u.diff;
-        u.diff = function(t2, i2, e2) {
-          if (t2 && this.$u === t2.$u)
-            return c.call(this, t2, i2, e2);
-          var s2 = this.local(), f2 = n(t2).local();
-          return c.call(s2, f2, i2, e2);
+        var c2 = u2.diff;
+        u2.diff = function(t3, i2, e3) {
+          if (t3 && this.$u === t3.$u)
+            return c2.call(this, t3, i2, e3);
+          var s3 = this.local(), f3 = n2(t3).local();
+          return c2.call(s3, f3, i2, e3);
         };
       };
     });
@@ -3962,63 +3962,63 @@ var Shared = function(exports, vue) {
   const utc = utc$1.exports;
   var timezone$1 = { exports: {} };
   (function(module, exports2) {
-    !function(t, e) {
-      module.exports = e();
+    !function(t2, e2) {
+      module.exports = e2();
     }(commonjsGlobal, function() {
-      var t = { year: 0, month: 1, day: 2, hour: 3, minute: 4, second: 5 }, e = {};
-      return function(n, i, o) {
-        var r, a = function(t2, n2, i2) {
+      var t2 = { year: 0, month: 1, day: 2, hour: 3, minute: 4, second: 5 }, e2 = {};
+      return function(n2, i, o2) {
+        var r2, a2 = function(t3, n3, i2) {
           void 0 === i2 && (i2 = {});
-          var o2 = new Date(t2), r2 = function(t3, n3) {
-            void 0 === n3 && (n3 = {});
-            var i3 = n3.timeZoneName || "short", o3 = t3 + "|" + i3, r3 = e[o3];
-            return r3 || (r3 = new Intl.DateTimeFormat("en-US", { hour12: false, timeZone: t3, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", timeZoneName: i3 }), e[o3] = r3), r3;
-          }(n2, i2);
-          return r2.formatToParts(o2);
-        }, u = function(e2, n2) {
-          for (var i2 = a(e2, n2), r2 = [], u2 = 0; u2 < i2.length; u2 += 1) {
-            var f2 = i2[u2], s2 = f2.type, m = f2.value, c = t[s2];
-            c >= 0 && (r2[c] = parseInt(m, 10));
+          var o3 = new Date(t3), r3 = function(t4, n4) {
+            void 0 === n4 && (n4 = {});
+            var i3 = n4.timeZoneName || "short", o4 = t4 + "|" + i3, r4 = e2[o4];
+            return r4 || (r4 = new Intl.DateTimeFormat("en-US", { hour12: false, timeZone: t4, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", timeZoneName: i3 }), e2[o4] = r4), r4;
+          }(n3, i2);
+          return r3.formatToParts(o3);
+        }, u2 = function(e3, n3) {
+          for (var i2 = a2(e3, n3), r3 = [], u3 = 0; u3 < i2.length; u3 += 1) {
+            var f3 = i2[u3], s3 = f3.type, m = f3.value, c2 = t2[s3];
+            c2 >= 0 && (r3[c2] = parseInt(m, 10));
           }
-          var d = r2[3], l = 24 === d ? 0 : d, v = r2[0] + "-" + r2[1] + "-" + r2[2] + " " + l + ":" + r2[4] + ":" + r2[5] + ":000", h = +e2;
-          return (o.utc(v).valueOf() - (h -= h % 1e3)) / 6e4;
-        }, f = i.prototype;
-        f.tz = function(t2, e2) {
-          void 0 === t2 && (t2 = r);
-          var n2 = this.utcOffset(), i2 = this.toDate(), a2 = i2.toLocaleString("en-US", { timeZone: t2 }), u2 = Math.round((i2 - new Date(a2)) / 1e3 / 60), f2 = o(a2).$set("millisecond", this.$ms).utcOffset(15 * -Math.round(i2.getTimezoneOffset() / 15) - u2, true);
-          if (e2) {
-            var s2 = f2.utcOffset();
-            f2 = f2.add(n2 - s2, "minute");
+          var d = r3[3], l = 24 === d ? 0 : d, v = r3[0] + "-" + r3[1] + "-" + r3[2] + " " + l + ":" + r3[4] + ":" + r3[5] + ":000", h = +e3;
+          return (o2.utc(v).valueOf() - (h -= h % 1e3)) / 6e4;
+        }, f2 = i.prototype;
+        f2.tz = function(t3, e3) {
+          void 0 === t3 && (t3 = r2);
+          var n3 = this.utcOffset(), i2 = this.toDate(), a3 = i2.toLocaleString("en-US", { timeZone: t3 }), u3 = Math.round((i2 - new Date(a3)) / 1e3 / 60), f3 = o2(a3).$set("millisecond", this.$ms).utcOffset(15 * -Math.round(i2.getTimezoneOffset() / 15) - u3, true);
+          if (e3) {
+            var s3 = f3.utcOffset();
+            f3 = f3.add(n3 - s3, "minute");
           }
-          return f2.$x.$timezone = t2, f2;
-        }, f.offsetName = function(t2) {
-          var e2 = this.$x.$timezone || o.tz.guess(), n2 = a(this.valueOf(), e2, { timeZoneName: t2 }).find(function(t3) {
-            return "timezonename" === t3.type.toLowerCase();
+          return f3.$x.$timezone = t3, f3;
+        }, f2.offsetName = function(t3) {
+          var e3 = this.$x.$timezone || o2.tz.guess(), n3 = a2(this.valueOf(), e3, { timeZoneName: t3 }).find(function(t4) {
+            return "timezonename" === t4.type.toLowerCase();
           });
-          return n2 && n2.value;
+          return n3 && n3.value;
         };
-        var s = f.startOf;
-        f.startOf = function(t2, e2) {
+        var s2 = f2.startOf;
+        f2.startOf = function(t3, e3) {
           if (!this.$x || !this.$x.$timezone)
-            return s.call(this, t2, e2);
-          var n2 = o(this.format("YYYY-MM-DD HH:mm:ss:SSS"));
-          return s.call(n2, t2, e2).tz(this.$x.$timezone, true);
-        }, o.tz = function(t2, e2, n2) {
-          var i2 = n2 && e2, a2 = n2 || e2 || r, f2 = u(+o(), a2);
-          if ("string" != typeof t2)
-            return o(t2).tz(a2);
-          var s2 = function(t3, e3, n3) {
-            var i3 = t3 - 60 * e3 * 1e3, o2 = u(i3, n3);
-            if (e3 === o2)
-              return [i3, e3];
-            var r2 = u(i3 -= 60 * (o2 - e3) * 1e3, n3);
-            return o2 === r2 ? [i3, o2] : [t3 - 60 * Math.min(o2, r2) * 1e3, Math.max(o2, r2)];
-          }(o.utc(t2, i2).valueOf(), f2, a2), m = s2[0], c = s2[1], d = o(m).utcOffset(c);
-          return d.$x.$timezone = a2, d;
-        }, o.tz.guess = function() {
+            return s2.call(this, t3, e3);
+          var n3 = o2(this.format("YYYY-MM-DD HH:mm:ss:SSS"));
+          return s2.call(n3, t3, e3).tz(this.$x.$timezone, true);
+        }, o2.tz = function(t3, e3, n3) {
+          var i2 = n3 && e3, a3 = n3 || e3 || r2, f3 = u2(+o2(), a3);
+          if ("string" != typeof t3)
+            return o2(t3).tz(a3);
+          var s3 = function(t4, e4, n4) {
+            var i3 = t4 - 60 * e4 * 1e3, o3 = u2(i3, n4);
+            if (e4 === o3)
+              return [i3, e4];
+            var r3 = u2(i3 -= 60 * (o3 - e4) * 1e3, n4);
+            return o3 === r3 ? [i3, o3] : [t4 - 60 * Math.min(o3, r3) * 1e3, Math.max(o3, r3)];
+          }(o2.utc(t3, i2).valueOf(), f3, a3), m = s3[0], c2 = s3[1], d = o2(m).utcOffset(c2);
+          return d.$x.$timezone = a3, d;
+        }, o2.tz.guess = function() {
           return Intl.DateTimeFormat().resolvedOptions().timeZone;
-        }, o.tz.setDefault = function(t2) {
-          r = t2;
+        }, o2.tz.setDefault = function(t3) {
+          r2 = t3;
         };
       };
     });
@@ -4026,52 +4026,52 @@ var Shared = function(exports, vue) {
   const timezone = timezone$1.exports;
   var advancedFormat$1 = { exports: {} };
   (function(module, exports2) {
-    !function(e, t) {
-      module.exports = t();
+    !function(e2, t2) {
+      module.exports = t2();
     }(commonjsGlobal, function() {
-      return function(e, t, r) {
-        var n = t.prototype, s = n.format;
-        r.en.ordinal = function(e2) {
-          var t2 = ["th", "st", "nd", "rd"], r2 = e2 % 100;
-          return "[" + e2 + (t2[(r2 - 20) % 10] || t2[r2] || t2[0]) + "]";
-        }, n.format = function(e2) {
-          var t2 = this, r2 = this.$locale();
+      return function(e2, t2, r2) {
+        var n2 = t2.prototype, s2 = n2.format;
+        r2.en.ordinal = function(e3) {
+          var t3 = ["th", "st", "nd", "rd"], r3 = e3 % 100;
+          return "[" + e3 + (t3[(r3 - 20) % 10] || t3[r3] || t3[0]) + "]";
+        }, n2.format = function(e3) {
+          var t3 = this, r3 = this.$locale();
           if (!this.isValid())
-            return s.bind(this)(e2);
-          var n2 = this.$utils(), a = (e2 || "YYYY-MM-DDTHH:mm:ssZ").replace(/\[([^\]]+)]|Q|wo|ww|w|WW|W|zzz|z|gggg|GGGG|Do|X|x|k{1,2}|S/g, function(e3) {
-            switch (e3) {
+            return s2.bind(this)(e3);
+          var n3 = this.$utils(), a2 = (e3 || "YYYY-MM-DDTHH:mm:ssZ").replace(/\[([^\]]+)]|Q|wo|ww|w|WW|W|zzz|z|gggg|GGGG|Do|X|x|k{1,2}|S/g, function(e4) {
+            switch (e4) {
               case "Q":
-                return Math.ceil((t2.$M + 1) / 3);
+                return Math.ceil((t3.$M + 1) / 3);
               case "Do":
-                return r2.ordinal(t2.$D);
+                return r3.ordinal(t3.$D);
               case "gggg":
-                return t2.weekYear();
+                return t3.weekYear();
               case "GGGG":
-                return t2.isoWeekYear();
+                return t3.isoWeekYear();
               case "wo":
-                return r2.ordinal(t2.week(), "W");
+                return r3.ordinal(t3.week(), "W");
               case "w":
               case "ww":
-                return n2.s(t2.week(), "w" === e3 ? 1 : 2, "0");
+                return n3.s(t3.week(), "w" === e4 ? 1 : 2, "0");
               case "W":
               case "WW":
-                return n2.s(t2.isoWeek(), "W" === e3 ? 1 : 2, "0");
+                return n3.s(t3.isoWeek(), "W" === e4 ? 1 : 2, "0");
               case "k":
               case "kk":
-                return n2.s(String(0 === t2.$H ? 24 : t2.$H), "k" === e3 ? 1 : 2, "0");
+                return n3.s(String(0 === t3.$H ? 24 : t3.$H), "k" === e4 ? 1 : 2, "0");
               case "X":
-                return Math.floor(t2.$d.getTime() / 1e3);
+                return Math.floor(t3.$d.getTime() / 1e3);
               case "x":
-                return t2.$d.getTime();
+                return t3.$d.getTime();
               case "z":
-                return "[" + t2.offsetName() + "]";
+                return "[" + t3.offsetName() + "]";
               case "zzz":
-                return "[" + t2.offsetName("long") + "]";
+                return "[" + t3.offsetName("long") + "]";
               default:
-                return e3;
+                return e4;
             }
           });
-          return s.bind(this)(a);
+          return s2.bind(this)(a2);
         };
       };
     });
@@ -4079,12 +4079,12 @@ var Shared = function(exports, vue) {
   const advancedFormat = advancedFormat$1.exports;
   var isSameOrBefore = { exports: {} };
   (function(module, exports2) {
-    !function(e, i) {
+    !function(e2, i) {
       module.exports = i();
     }(commonjsGlobal, function() {
-      return function(e, i) {
-        i.prototype.isSameOrBefore = function(e2, i2) {
-          return this.isSame(e2, i2) || this.isBefore(e2, i2);
+      return function(e2, i) {
+        i.prototype.isSameOrBefore = function(e3, i2) {
+          return this.isSame(e3, i2) || this.isBefore(e3, i2);
         };
       };
     });
@@ -4092,13 +4092,13 @@ var Shared = function(exports, vue) {
   const _isSameOrBefore = isSameOrBefore.exports;
   var isBetween = { exports: {} };
   (function(module, exports2) {
-    !function(e, i) {
+    !function(e2, i) {
       module.exports = i();
     }(commonjsGlobal, function() {
-      return function(e, i, t) {
-        i.prototype.isBetween = function(e2, i2, s, f) {
-          var n = t(e2), o = t(i2), r = "(" === (f = f || "()")[0], u = ")" === f[1];
-          return (r ? this.isAfter(n, s) : !this.isBefore(n, s)) && (u ? this.isBefore(o, s) : !this.isAfter(o, s)) || (r ? this.isBefore(n, s) : !this.isAfter(n, s)) && (u ? this.isAfter(o, s) : !this.isBefore(o, s));
+      return function(e2, i, t2) {
+        i.prototype.isBetween = function(e3, i2, s2, f2) {
+          var n2 = t2(e3), o2 = t2(i2), r2 = "(" === (f2 = f2 || "()")[0], u2 = ")" === f2[1];
+          return (r2 ? this.isAfter(n2, s2) : !this.isBefore(n2, s2)) && (u2 ? this.isBefore(o2, s2) : !this.isAfter(o2, s2)) || (r2 ? this.isBefore(n2, s2) : !this.isAfter(n2, s2)) && (u2 ? this.isAfter(o2, s2) : !this.isBefore(o2, s2));
         };
       };
     });
@@ -4106,23 +4106,23 @@ var Shared = function(exports, vue) {
   const _isBetween = isBetween.exports;
   var localizedFormat$1 = { exports: {} };
   (function(module, exports2) {
-    !function(e, t) {
-      module.exports = t();
+    !function(e2, t2) {
+      module.exports = t2();
     }(commonjsGlobal, function() {
-      var e = { LTS: "h:mm:ss A", LT: "h:mm A", L: "MM/DD/YYYY", LL: "MMMM D, YYYY", LLL: "MMMM D, YYYY h:mm A", LLLL: "dddd, MMMM D, YYYY h:mm A" };
-      return function(t, o, n) {
-        var r = o.prototype, i = r.format;
-        n.en.formats = e, r.format = function(t2) {
-          void 0 === t2 && (t2 = "YYYY-MM-DDTHH:mm:ssZ");
-          var o2 = this.$locale().formats, n2 = function(t3, o3) {
-            return t3.replace(/(\[[^\]]+])|(LTS?|l{1,4}|L{1,4})/g, function(t4, n3, r2) {
-              var i2 = r2 && r2.toUpperCase();
-              return n3 || o3[r2] || e[r2] || o3[i2].replace(/(\[[^\]]+])|(MMMM|MM|DD|dddd)/g, function(e2, t5, o4) {
-                return t5 || o4.slice(1);
+      var e2 = { LTS: "h:mm:ss A", LT: "h:mm A", L: "MM/DD/YYYY", LL: "MMMM D, YYYY", LLL: "MMMM D, YYYY h:mm A", LLLL: "dddd, MMMM D, YYYY h:mm A" };
+      return function(t2, o2, n2) {
+        var r2 = o2.prototype, i = r2.format;
+        n2.en.formats = e2, r2.format = function(t3) {
+          void 0 === t3 && (t3 = "YYYY-MM-DDTHH:mm:ssZ");
+          var o3 = this.$locale().formats, n3 = function(t4, o4) {
+            return t4.replace(/(\[[^\]]+])|(LTS?|l{1,4}|L{1,4})/g, function(t5, n4, r3) {
+              var i2 = r3 && r3.toUpperCase();
+              return n4 || o4[r3] || e2[r3] || o4[i2].replace(/(\[[^\]]+])|(MMMM|MM|DD|dddd)/g, function(e3, t6, o5) {
+                return t6 || o5.slice(1);
               });
             });
-          }(t2, void 0 === o2 ? {} : o2);
-          return i.call(this, n2);
+          }(t3, void 0 === o3 ? {} : o3);
+          return i.call(this, n3);
         };
       };
     });
@@ -4130,38 +4130,38 @@ var Shared = function(exports, vue) {
   const localizedFormat = localizedFormat$1.exports;
   var hu = { exports: {} };
   (function(module, exports2) {
-    !function(e, n) {
-      module.exports = n(dayjs_min.exports);
-    }(commonjsGlobal, function(e) {
-      function n(e2) {
-        return e2 && "object" == typeof e2 && "default" in e2 ? e2 : { default: e2 };
+    !function(e2, n2) {
+      module.exports = n2(dayjs_min.exports);
+    }(commonjsGlobal, function(e2) {
+      function n2(e3) {
+        return e3 && "object" == typeof e3 && "default" in e3 ? e3 : { default: e3 };
       }
-      var t = n(e), r = { name: "hu", weekdays: "vas\xE1rnap_h\xE9tf\u0151_kedd_szerda_cs\xFCt\xF6rt\xF6k_p\xE9ntek_szombat".split("_"), weekdaysShort: "vas_h\xE9t_kedd_sze_cs\xFCt_p\xE9n_szo".split("_"), weekdaysMin: "v_h_k_sze_cs_p_szo".split("_"), months: "janu\xE1r_febru\xE1r_m\xE1rcius_\xE1prilis_m\xE1jus_j\xFAnius_j\xFAlius_augusztus_szeptember_okt\xF3ber_november_december".split("_"), monthsShort: "jan_feb_m\xE1rc_\xE1pr_m\xE1j_j\xFAn_j\xFAl_aug_szept_okt_nov_dec".split("_"), ordinal: function(e2) {
-        return e2 + ".";
-      }, weekStart: 1, relativeTime: { future: "%s m\xFAlva", past: "%s", s: function(e2, n2, t2, r2) {
-        return "n\xE9h\xE1ny m\xE1sodperc" + (r2 || n2 ? "" : "e");
-      }, m: function(e2, n2, t2, r2) {
-        return "egy perc" + (r2 || n2 ? "" : "e");
-      }, mm: function(e2, n2, t2, r2) {
-        return e2 + " perc" + (r2 || n2 ? "" : "e");
-      }, h: function(e2, n2, t2, r2) {
-        return "egy " + (r2 || n2 ? "\xF3ra" : "\xF3r\xE1ja");
-      }, hh: function(e2, n2, t2, r2) {
-        return e2 + " " + (r2 || n2 ? "\xF3ra" : "\xF3r\xE1ja");
-      }, d: function(e2, n2, t2, r2) {
-        return "egy " + (r2 || n2 ? "nap" : "napja");
-      }, dd: function(e2, n2, t2, r2) {
-        return e2 + " " + (r2 || n2 ? "nap" : "napja");
-      }, M: function(e2, n2, t2, r2) {
-        return "egy " + (r2 || n2 ? "h\xF3nap" : "h\xF3napja");
-      }, MM: function(e2, n2, t2, r2) {
-        return e2 + " " + (r2 || n2 ? "h\xF3nap" : "h\xF3napja");
-      }, y: function(e2, n2, t2, r2) {
-        return "egy " + (r2 || n2 ? "\xE9v" : "\xE9ve");
-      }, yy: function(e2, n2, t2, r2) {
-        return e2 + " " + (r2 || n2 ? "\xE9v" : "\xE9ve");
+      var t2 = n2(e2), r2 = { name: "hu", weekdays: "vas\xE1rnap_h\xE9tf\u0151_kedd_szerda_cs\xFCt\xF6rt\xF6k_p\xE9ntek_szombat".split("_"), weekdaysShort: "vas_h\xE9t_kedd_sze_cs\xFCt_p\xE9n_szo".split("_"), weekdaysMin: "v_h_k_sze_cs_p_szo".split("_"), months: "janu\xE1r_febru\xE1r_m\xE1rcius_\xE1prilis_m\xE1jus_j\xFAnius_j\xFAlius_augusztus_szeptember_okt\xF3ber_november_december".split("_"), monthsShort: "jan_feb_m\xE1rc_\xE1pr_m\xE1j_j\xFAn_j\xFAl_aug_szept_okt_nov_dec".split("_"), ordinal: function(e3) {
+        return e3 + ".";
+      }, weekStart: 1, relativeTime: { future: "%s m\xFAlva", past: "%s", s: function(e3, n3, t3, r3) {
+        return "n\xE9h\xE1ny m\xE1sodperc" + (r3 || n3 ? "" : "e");
+      }, m: function(e3, n3, t3, r3) {
+        return "egy perc" + (r3 || n3 ? "" : "e");
+      }, mm: function(e3, n3, t3, r3) {
+        return e3 + " perc" + (r3 || n3 ? "" : "e");
+      }, h: function(e3, n3, t3, r3) {
+        return "egy " + (r3 || n3 ? "\xF3ra" : "\xF3r\xE1ja");
+      }, hh: function(e3, n3, t3, r3) {
+        return e3 + " " + (r3 || n3 ? "\xF3ra" : "\xF3r\xE1ja");
+      }, d: function(e3, n3, t3, r3) {
+        return "egy " + (r3 || n3 ? "nap" : "napja");
+      }, dd: function(e3, n3, t3, r3) {
+        return e3 + " " + (r3 || n3 ? "nap" : "napja");
+      }, M: function(e3, n3, t3, r3) {
+        return "egy " + (r3 || n3 ? "h\xF3nap" : "h\xF3napja");
+      }, MM: function(e3, n3, t3, r3) {
+        return e3 + " " + (r3 || n3 ? "h\xF3nap" : "h\xF3napja");
+      }, y: function(e3, n3, t3, r3) {
+        return "egy " + (r3 || n3 ? "\xE9v" : "\xE9ve");
+      }, yy: function(e3, n3, t3, r3) {
+        return e3 + " " + (r3 || n3 ? "\xE9v" : "\xE9ve");
       } }, formats: { LT: "H:mm", LTS: "H:mm:ss", L: "YYYY.MM.DD.", LL: "YYYY. MMMM D.", LLL: "YYYY. MMMM D. H:mm", LLLL: "YYYY. MMMM D., dddd H:mm" } };
-      return t.default.locale(r, null, true), r;
+      return t2.default.locale(r2, null, true), r2;
     });
   })(hu);
   dayjs.extend(utc);
@@ -4178,7 +4178,7 @@ var Shared = function(exports, vue) {
       timeZone: timezone2,
       timeZoneName: "short"
     });
-    const result = dtf.formatToParts(new Date(datetime)).find((o) => o.type === "timeZoneName");
+    const result = dtf.formatToParts(new Date(datetime)).find((o2) => o2.type === "timeZoneName");
     return result && result.value;
   };
   const getLocaleForLang = (lang) => {
@@ -4200,7 +4200,7 @@ var Shared = function(exports, vue) {
     emits: ["change"],
     setup(__props, { emit }) {
       const props = __props;
-      const { t } = useI18n();
+      const { t: t2 } = useI18n();
       const mainClass = useMainClass("timezone-selector");
       const localZoneName = vue.computed(() => offsetName(new Date(), null, props.locale));
       const localTimeZone = dayjs.tz.guess();
@@ -4234,7 +4234,7 @@ var Shared = function(exports, vue) {
               href: "#",
               class: vue.normalizeClass({ "is-active": country.isActive }),
               onClick: vue.withModifiers(($event) => onChangeTimezone(country.timezone), ["prevent"])
-            }, vue.toDisplayString(vue.unref(t)(`common.${country.countryLabelKey}`)) + " (" + vue.toDisplayString(country.zoneOffsetName) + ") ", 11, _hoisted_1$1);
+            }, vue.toDisplayString(vue.unref(t2)(`common.${country.countryLabelKey}`)) + " (" + vue.toDisplayString(country.zoneOffsetName) + ") ", 11, _hoisted_1$1);
           }), 128))
         ], 2);
       };
@@ -4242,7 +4242,7 @@ var Shared = function(exports, vue) {
   };
   const useColumns = (columns, hiddenColumns = "", variables = {}) => {
     const errorRef = vue.ref("");
-    const { t } = useI18n();
+    const { t: t2 } = useI18n();
     if (hiddenColumns) {
       try {
         const columnsToHide = validateColumnsName(vue.unref(columns), hiddenColumns);
@@ -4255,8 +4255,8 @@ var Shared = function(exports, vue) {
       var _a2, _b;
       return {
         ...column,
-        ...column.label && { label: t((_a2 = column.label) != null ? _a2 : "", variables) },
-        ...column.tooltip && { tooltip: t((_b = column.tooltip) != null ? _b : "") }
+        ...column.label && { label: t2((_a2 = column.label) != null ? _a2 : "", variables) },
+        ...column.tooltip && { tooltip: t2((_b = column.tooltip) != null ? _b : "") }
       };
     };
     const converted = vue.computed(() => map$1(convert, vue.unref(columns)));
@@ -4411,6 +4411,207 @@ var Shared = function(exports, vue) {
       };
     }
   };
+  const fetchVBRData = async (route, apiKey, data) => {
+    const url = `${"https://api.icehockey.hu/vbr"}${vue.unref(route)}?${objectToQueryString(data)}`;
+    return new Promise((resolve2, reject2) => {
+      fetch(url, {
+        method: "GET",
+        cache: "no-cache",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-KEY": resolveApiKey(apiKey)
+        }
+      }).then((response) => {
+        return response.json();
+      }).then((response) => {
+        if (response.error)
+          return reject2(response);
+        resolve2(response.data);
+      }).catch((error) => {
+        reject2(error);
+      });
+    });
+  };
+  const objectToQueryString = (obj) => {
+    return Object.keys(obj).map((key) => key + "=" + obj[key]).join("&");
+  };
+  const resolveApiKey = (apiKey) => {
+    var _a2;
+    if (apiKey)
+      return apiKey;
+    if ((_a2 = window.__MJSZ_VBR_WIDGET__) == null ? void 0 : _a2.apiKey)
+      return window.__MJSZ_VBR_WIDGET__.apiKey;
+    if ({ "VITE_API_URL": "https://api.icehockey.hu/vbr", "VITE_CSS_CLASS_PREFIX": "mjsz-vbr-", "VITE_VBR_API_KEY": "dd8adf5fdb738b3741fa579b5ede5ce69b681f62", "VITE_DOCS_BASE": "/widgets/docs/v2/", "VITE_USER_NODE_ENV": "production", "BASE_URL": "/", "MODE": "production", "DEV": false, "PROD": true }.NODE_ENV !== "production")
+      return "dd8adf5fdb738b3741fa579b5ede5ce69b681f62";
+    return "";
+  };
+  /*! *****************************************************************************
+    Copyright (c) Microsoft Corporation.
+  
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
+  
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
+    ***************************************************************************** */
+  function t(t2, n2) {
+    var e2 = "function" == typeof Symbol && t2[Symbol.iterator];
+    if (!e2)
+      return t2;
+    var r2, i, o2 = e2.call(t2), a2 = [];
+    try {
+      for (; (void 0 === n2 || n2-- > 0) && !(r2 = o2.next()).done; )
+        a2.push(r2.value);
+    } catch (t3) {
+      i = { error: t3 };
+    } finally {
+      try {
+        r2 && !r2.done && (e2 = o2.return) && e2.call(o2);
+      } finally {
+        if (i)
+          throw i.error;
+      }
+    }
+    return a2;
+  }
+  var n;
+  !function(t2) {
+    t2[t2.NotStarted = 0] = "NotStarted", t2[t2.Running = 1] = "Running", t2[t2.Stopped = 2] = "Stopped";
+  }(n || (n = {}));
+  var e = { type: "xstate.init" };
+  function r(t2) {
+    return void 0 === t2 ? [] : [].concat(t2);
+  }
+  function o(t2, n2) {
+    return "string" == typeof (t2 = "string" == typeof t2 && n2 && n2[t2] ? n2[t2] : t2) ? { type: t2 } : "function" == typeof t2 ? { type: t2.name, exec: t2 } : t2;
+  }
+  function a(t2) {
+    return function(n2) {
+      return t2 === n2;
+    };
+  }
+  function u(t2) {
+    return "string" == typeof t2 ? { type: t2 } : t2;
+  }
+  function c(t2, n2) {
+    return { value: t2, context: n2, actions: [], changed: false, matches: a(t2) };
+  }
+  function f(t2, n2, e2) {
+    var r2 = n2, i = false;
+    return [t2.filter(function(t3) {
+      if ("xstate.assign" === t3.type) {
+        i = true;
+        var n3 = Object.assign({}, r2);
+        return "function" == typeof t3.assignment ? n3 = t3.assignment(r2, e2) : Object.keys(t3.assignment).forEach(function(i2) {
+          n3[i2] = "function" == typeof t3.assignment[i2] ? t3.assignment[i2](r2, e2) : t3.assignment[i2];
+        }), r2 = n3, false;
+      }
+      return true;
+    }), r2, i];
+  }
+  function s(n2, i) {
+    void 0 === i && (i = {});
+    var s2 = t(f(r(n2.states[n2.initial].entry).map(function(t2) {
+      return o(t2, i.actions);
+    }), n2.context, e), 2), l = s2[0], v = s2[1], y = { config: n2, _options: i, initialState: { value: n2.initial, actions: l, context: v, matches: a(n2.initial) }, transition: function(e2, i2) {
+      var s3, l2, v2 = "string" == typeof e2 ? { value: e2, context: n2.context } : e2, p = v2.value, g = v2.context, d = u(i2), x = n2.states[p];
+      if (x.on) {
+        var m = r(x.on[d.type]);
+        try {
+          for (var h = function(t2) {
+            var n3 = "function" == typeof Symbol && Symbol.iterator, e3 = n3 && t2[n3], r2 = 0;
+            if (e3)
+              return e3.call(t2);
+            if (t2 && "number" == typeof t2.length)
+              return { next: function() {
+                return t2 && r2 >= t2.length && (t2 = void 0), { value: t2 && t2[r2++], done: !t2 };
+              } };
+            throw new TypeError(n3 ? "Object is not iterable." : "Symbol.iterator is not defined.");
+          }(m), b = h.next(); !b.done; b = h.next()) {
+            var S = b.value;
+            if (void 0 === S)
+              return c(p, g);
+            var w = "string" == typeof S ? { target: S } : S, j = w.target, E = w.actions, R = void 0 === E ? [] : E, N = w.cond, O = void 0 === N ? function() {
+              return true;
+            } : N, _ = void 0 === j, k = null != j ? j : p, T = n2.states[k];
+            if (O(g, d)) {
+              var q = t(f((_ ? r(R) : [].concat(x.exit, R, T.entry).filter(function(t2) {
+                return t2;
+              })).map(function(t2) {
+                return o(t2, y._options.actions);
+              }), g, d), 3), z = q[0], A = q[1], B = q[2], C = null != j ? j : p;
+              return { value: C, context: A, actions: z, changed: j !== p || z.length > 0 || B, matches: a(C) };
+            }
+          }
+        } catch (t2) {
+          s3 = { error: t2 };
+        } finally {
+          try {
+            b && !b.done && (l2 = h.return) && l2.call(h);
+          } finally {
+            if (s3)
+              throw s3.error;
+          }
+        }
+      }
+      return c(p, g);
+    } };
+    return y;
+  }
+  const sortMachine = s({
+    id: "sort",
+    initial: SORT_STATE_ORIGINAL,
+    states: {
+      [SORT_STATE_ORIGINAL]: {
+        on: {
+          DIRECTION1: SORT_STATE_DESCEND,
+          DIRECTION2: SORT_STATE_ASCEND
+        }
+      },
+      [SORT_STATE_DESCEND]: {
+        on: {
+          DIRECTION1: SORT_STATE_ASCEND,
+          DIRECTION2: SORT_STATE_ORIGINAL
+        }
+      },
+      [SORT_STATE_ASCEND]: {
+        on: {
+          DIRECTION1: SORT_STATE_ORIGINAL,
+          DIRECTION2: SORT_STATE_DESCEND
+        }
+      }
+    }
+  });
+  const transitionOrderState = (originalSortState, sortState) => {
+    const direction = sortState === SORT_STATE_ASCEND ? "DIRECTION2" : "DIRECTION1";
+    return sortMachine.transition(originalSortState, direction).value;
+  };
+  function useSort(sortParams = {}) {
+    const { sortTarget = null, orders = [] } = sortParams;
+    const sort = vue.reactive({ sortTarget, orders });
+    const change = ({ target, orders: orders2 }) => {
+      if (sort.sortTarget !== target) {
+        sort.sortTarget = target;
+        sort.orders = orders2;
+        return;
+      }
+      const nextOrders = orders2.map((order, index) => ({
+        ...order,
+        direction: transitionOrderState(sort.orders[index].direction, order.direction)
+      }));
+      sort.sortTarget = target;
+      sort.orders = nextOrders;
+    };
+    return {
+      sort,
+      change
+    };
+  }
   exports.BaseSelect = _sfc_main$h;
   exports.DataTable = _sfc_main$c;
   exports.ErrorNotice = _sfc_main$a;
@@ -4423,8 +4624,10 @@ var Shared = function(exports, vue) {
   exports.ResponsiveTable = _sfc_main$2;
   exports.StatisticsTable = _sfc_main;
   exports.TimezoneSelector = _sfc_main$1;
+  exports.fetchVBRData = fetchVBRData;
   exports.useError = useError;
   exports.useErrorProvider = useErrorProvider;
+  exports.useSort = useSort;
   Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
   return exports;
 }({}, Vue);

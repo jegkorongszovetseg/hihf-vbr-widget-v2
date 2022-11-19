@@ -32,7 +32,7 @@ const transitionOrderState = (originalSortState, sortState) => {
   return sortMachine.transition(originalSortState, direction).value;
 };
 
-export default function useSort(sortParams = {}) {
+export function useSort(sortParams = {}) {
   const { sortTarget = null, orders = [] } = sortParams;
   const sort = reactive({ sortTarget, orders });
 
