@@ -1,7 +1,7 @@
 import { defineCustomElement } from 'vue';
 
 // import Schedule from '../../../src/components/widgets/Schedule.ce.vue';
-import Standings from '../../src/components/widgets/Standings.ce.vue';
+import Standings from '../src/components/widgets/Standings.ce.vue';
 
 export const setup = ({ apiKey }) => {
   window.__MJSZ_VBR_WIDGET__ = { apiKey };
