@@ -6,7 +6,7 @@ import useSort from '../../composables/useSort';
 import { useErrorProvider } from '../../composables/useErrors';
 import convert, { convertTimes, rawConvert } from '../../utils/convert';
 import { COLUMNS_TEAMS_PENALTY_KILLING } from './internal';
-import { SORT_STATE_DESCEND } from '../../constants';
+import { SORT_STATE_DESCEND } from '../../@shared/constantsonstants';
 import { baseProps, teamStatsProps } from './internal.props';
 import { externalTeamLinkResolver } from '../../utils/resolvers';
 import I18NProvider from '../I18NProvider.vue';

@@ -3,7 +3,7 @@ import { useColumns } from '../../composables/useColumns.js';
 import { useI18n } from '../../composables/useI18n';
 import { useError } from '../../composables/useErrors';
 import { COLUMNS_SCHEDULE } from './internal';
-import { DEFAULT_EXTERNAL_BASE_URL } from '../../constants.js';
+import { DEFAULT_EXTERNAL_BASE_URL } from '../../@shared/constants.jstants.js';
 import * as Errors from '../../utils/errors';
 import ResponsiveTable from '../ResponsiveTable.vue';
 import Image from '../Image.vue';

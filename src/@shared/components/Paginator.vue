@@ -1,41 +1,9 @@
-<template>
-  <div :class="mainClassName" v-if="pageCount > 1">
-    <button type="button" :disabled="page === 1" @click="pageStep(-1)">
-      <slot name="prev">
-        <IconLeft class="icon paginator-left"></IconLeft>
-      </slot>
-    </button>
-    <button type="button" v-if="!isCompact" :disabled="page === 1" @click="goTo(1)">1</button>
-    <div v-if="!isCompact" class="is-disabled">...</div>
-    <button
-      type="button"
-      v-for="n in range"
-      :key="n"
-      :class="{ 'is-active': n === page }"
-      :disabled="n === page"
-      @click="goTo(n)"
-    >
-      {{ n }}
-    </button>
-    <div v-if="!isCompact" class="is-disabled">
-      <span>...</span>
-    </div>
-    <button type="button" v-if="!isCompact" :disabled="page === pageCount" @click="goTo(pageCount)">
-      {{ pageCount }}
-    </button>
-    <button type="button" :disabled="page === pageCount" @click.prevent="pageStep(1)">
-      <slot name="next">
-        <IconRight class="icon paginator-left"></IconRight>
-      </slot>
-    </button>
-  </div>
-</template>
 <script setup>
 import { computed } from 'vue';
 import { useMainClass } from '../composables/useMainClass';
 import usePagination from '../composables/usePagination';
-import IconLeft from './icons/IconLeft.vue';
-import IconRight from './icons/IconRight.vue';
+import IconLeft from '../icons/IconLeft.vue';
+import IconRight from '../icons/IconRight.vue';
 
 const props = defineProps({
   page: {
@@ -90,3 +58,36 @@ const { page, pageCount, range, goTo, pageStep } = usePagination({
   update: (page) => emit('change', page),
 });
 </script>
+
+<template>
+  <div :class="mainClassName" v-if="pageCount > 1">
+    <button type="button" :disabled="page === 1" @click="pageStep(-1)">
+      <slot name="prev">
+        <IconLeft class="icon paginator-left"></IconLeft>
+      </slot>
+    </button>
+    <button type="button" v-if="!isCompact" :disabled="page === 1" @click="goTo(1)">1</button>
+    <div v-if="!isCompact" class="is-disabled">...</div>
+    <button
+      type="button"
+      v-for="n in range"
+      :key="n"
+      :class="{ 'is-active': n === page }"
+      :disabled="n === page"
+      @click="goTo(n)"
+    >
+      {{ n }}
+    </button>
+    <div v-if="!isCompact" class="is-disabled">
+      <span>...</span>
+    </div>
+    <button type="button" v-if="!isCompact" :disabled="page === pageCount" @click="goTo(pageCount)">
+      {{ pageCount }}
+    </button>
+    <button type="button" :disabled="page === pageCount" @click.prevent="pageStep(1)">
+      <slot name="next">
+        <IconRight class="icon paginator-left"></IconRight>
+      </slot>
+    </button>
+  </div>
+</template>

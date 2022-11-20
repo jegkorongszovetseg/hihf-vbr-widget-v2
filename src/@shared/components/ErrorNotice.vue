@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useI18n } from '../composables/useI18n';
 import { useMainClass } from '../composables/useMainClass.js';
-import IconWarning from './icons/IconWarning.vue';
+import IconWarning from '../icons/IconWarning.vue';
 
 const props = defineProps({
   error: {

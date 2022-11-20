@@ -4,7 +4,7 @@ import { useColumns } from '../../composables/useColumns.js';
 import ResponsiveTable from '../ResponsiveTable.vue';
 import { useError } from '../../composables/useErrors';
 import * as Errors from '../../utils/errors';
-import { DEFAULT_PORTRAIT_IMAGE_URL } from '../../constants';
+import { DEFAULT_PORTRAIT_IMAGE_URL } from '../../@shared/constantsonstants';
 import DataTable from '../DataTable.vue';
 import Image from '../Image.vue';
 

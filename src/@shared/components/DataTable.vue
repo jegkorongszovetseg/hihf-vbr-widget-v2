@@ -1,13 +1,13 @@
 <script setup>
 import { computed, toRefs } from 'vue';
+import { refDebounced } from '@vueuse/shared';
 import { useI18n } from '../composables/useI18n';
 import { useMainClass } from '../composables/useMainClass';
 import { SORT_STATE_ASCEND, SORT_STATE_DESCEND, SORT_STATE_ORIGINAL } from '../constants.js';
-import IconSort from './icons/IconSort.vue';
-import IconSortAsc from './icons/IconSortAsc.vue';
-import IconSortDesc from './icons/IconSortDesc.vue';
+import IconSort from '../icons/IconSort.vue';
+import IconSortAsc from '../icons/IconSortAsc.vue';
+import IconSortDesc from '../icons/IconSortDesc.vue';
 import FloatingPanel from './FloatingPanel.vue';
-import { refDebounced } from '@vueuse/shared';
 
 const props = defineProps({
   columns: {

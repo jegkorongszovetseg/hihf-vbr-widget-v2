@@ -9,7 +9,7 @@ import { offsetName } from '../../utils/datetime';
 import convert, { sortGames } from '../../utils/convert';
 import { baseProps } from './internal.props';
 import { externalGameLinkResolver } from '../../utils/resolvers';
-import { REFRESH_DELAY } from '../../constants';
+import { REFRESH_DELAY } from '../../@shared/constantsonstants';
 import ScheduleTable from './ScheduleTable.vue';
 import I18NProvider from '../I18NProvider.vue';
 import Paginator from '../Paginator.vue';

@@ -6,7 +6,7 @@ import useSort from '../../composables/useSort';
 import { usePage } from '../../composables/usePage';
 import convert, { playerName, rawConvert } from '../../utils/convert';
 import { COLUMNS_FIELD_PLAYERS_PENALTY } from './internal';
-import { SORT_STATE_DESCEND } from '../../constants';
+import { SORT_STATE_DESCEND } from '../../@shared/constantsonstants';
 import { baseProps, playerStatsProps } from './internal.props';
 import { externalPlayerLinkResolver, externalTeamLinkResolver } from '../../utils/resolvers';
 import I18NProvider from '../I18NProvider.vue';

@@ -1,5 +1,5 @@
 import { ascend, compose, descend, map, pick, prop, sort } from 'ramda';
-import { SORT_STATE_DESCEND } from '../../../../constants';
+import { SORT_STATE_DESCEND } from '../../../../@shared/constants';
 import {
   COLUMNS_FIELD_PLAYERS,
   COLUMNS_FIELD_PLAYERS_PENALTY,

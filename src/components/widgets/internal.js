@@ -1,4 +1,4 @@
-import { SORT_STATE_ASCEND, SORT_STATE_DESCEND } from '../../constants';
+import { SORT_STATE_ASCEND, SORT_STATE_DESCEND } from '../../@shared/constants';
 
 export const COLUMNS_SCHEDULE = {
   name: {

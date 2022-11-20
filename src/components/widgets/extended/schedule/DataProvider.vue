@@ -5,7 +5,7 @@ import { useServices } from '@/composables/useServices';
 import { useError } from '@/composables/useErrors';
 import { transformSeasons, transformSections, transformTeams } from '@/components/widgets/extended/internal';
 import convert, { sortGames } from '@/utils/convert';
-import { REFRESH_DELAY } from '@/constants';
+import { REFRESH_DELAY } from '@/@shared/constantsonstants';
 import { useCollectMonths } from './schedule.internal.js';
 import { useVisibilityChange } from '@/composables/useVisibilityChange';
 import { useLazyLoadingState } from '@/composables/useLazyLoadingState';

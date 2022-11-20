@@ -8,7 +8,7 @@ import { COLUMNS_TEAM_ATTENDANCE } from './internal';
 import I18NProvider from '../I18NProvider.vue';
 import ErrorNotice from '../ErrorNotice.vue';
 import StatisticsTable from './StatisticsTable.vue';
-import { SORT_STATE_DESCEND } from '../../constants';
+import { SORT_STATE_DESCEND } from '../../@shared/constantsonstants';
 import { baseProps, teamStatsProps } from './internal.props';
 import { externalTeamLinkResolver } from '../../utils/resolvers';
 import { useErrorProvider } from '../../composables/useErrors';
