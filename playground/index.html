@@ -16,11 +16,11 @@
   <!-- <script type="module" src="./mjsz-vbr-widget.esm.js"></script> -->
   <!-- <link rel="stylesheet" href="/style.css"> -->
   <style>
-    vbr-schedule {
+    mjsz-vbr-schedule {
       --text-color: green;
       --bg-color: red;
 
-      --vbr-widget-table-header-font-size: 22px;
+      --vbr-widget-table-header-font-size: 8px;
     }
 
   </style>
@@ -30,7 +30,7 @@
   <!-- <Statistics :locale="locale" championship-name="Erste Liga"  /> -->
   <!-- <mjsz-vbr-players-leader locale="hu" championship-id="3314" division="Alapszakasz"></mjsz-vbr-players-leader> -->
   <mjsz-vbr-standings locale="hu" championship-id="3314" division="Alapszakasz"></mjsz-vbr-standings>
-  <!-- <mjsz-vbr-schedule locale="en"></mjsz-vbr-schedule> -->
+  <mjsz-vbr-schedule locale="en" championship-id="3314" division="Alapszakasz" auto-initial-page auto-refresh ></mjsz-vbr-schedule>
   <!-- <script crossorigin src="/bundle.umd.cjs"></script> -->
   <script>
     // import { setup } from './mjsz-vbr-widget.esm.js';
@@ -38,8 +38,6 @@
     // MjszVbrWidget.setup({
     //   apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62'
     // })
-    console.log(Shared)
-    console.log(Widgets)
     Widgets.setup({
       apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62'
     })

@@ -1,20 +1,13 @@
 <script setup>
 import { computed, ref, unref, watch } from 'vue';
 import { useAsyncState, useDocumentVisibility, useTimeoutPoll } from '@vueuse/core';
-import dayjs from 'dayjs';
-import { fetchVBRData } from '../../composables/useFetchVBRApi';
-import { usePage } from '../../composables/usePage';
-import { useErrorProvider } from '../../composables/useErrors';
-import { offsetName } from '../../utils/datetime';
-import convert, { sortGames } from '../../utils/convert';
+import { getLocalTimezone } from '@shared';
+import { offsetName, useErrorProvider, usePage, fetchVBRData } from '@shared';
+import { convert, sortGames } from '@shared';
 import { baseProps } from './internal.props';
-import { externalGameLinkResolver } from '../../utils/resolvers';
-import { REFRESH_DELAY } from '../../@shared/constantsonstants';
+import { REFRESH_DELAY, externalGameLinkResolver } from '@shared';
+import { I18NProvider, Paginator, ErrorNotice, TimezoneSelector } from '@shared';
 import ScheduleTable from './ScheduleTable.vue';
-import I18NProvider from '../I18NProvider.vue';
-import Paginator from '../Paginator.vue';
-import ErrorNotice from '../ErrorNotice.vue';
-import TimezoneSelector from '../TimezoneSelector.vue';
 
 const props = defineProps({
   ...baseProps,
@@ -96,7 +89,8 @@ const { page, change: onPaginatorChange } = usePage({
   limit: props.limit,
   auto: props.autoInitialPage,
 });
-const timezone = ref(dayjs.tz.guess());
+
+const timezone = ref(getLocalTimezone());
 const currentOffsetName = offsetName(new Date(), unref(timezone), props.locale);
 
 const convertedRows = computed(() => {
@@ -157,8 +151,8 @@ const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.exter
   </div>
 </template>
 
-<style src="@/assets/common.css"></style>
-<style src="@/assets/table.css"></style>
-<style src="@/assets/responsive-table.css"></style>
-<style src="@/assets/paginator.css"></style>
-<style src="@/assets/dropdown.css"></style>
+<style src="../assets/common.css"></style>
+<style src="../assets/table.css"></style>
+<style src="../assets/responsive-table.css"></style>
+<style src="../assets/paginator.css"></style>
+<style src="../assets/dropdown.css"></style>

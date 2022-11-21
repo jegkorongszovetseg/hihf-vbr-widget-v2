@@ -1,18 +1,14 @@
 <script setup>
-import { useColumns } from '../../composables/useColumns.js';
-import { useI18n } from '../../composables/useI18n';
-import { useError } from '../../composables/useErrors';
+import { useColumns, useI18n, useError } from '@shared';
 import { COLUMNS_SCHEDULE } from './internal';
-import { DEFAULT_EXTERNAL_BASE_URL } from '../../@shared/constants.jstants.js';
-import * as Errors from '../../utils/errors';
-import ResponsiveTable from '../ResponsiveTable.vue';
-import Image from '../Image.vue';
-import DataTable from '../DataTable.vue';
-import IconBroadcast from '../icons/IconBroadcast.vue';
-import IconMore from '../icons/IconMore.vue';
-import FloatingPanel from '../FloatingPanel.vue';
-import IconSheet from '../icons/IconSheet.vue';
-import IconYoutube from '../icons/IconYoutube.vue';
+import { DEFAULT_EXTERNAL_BASE_URL } from '@shared';
+import { WidgetError, UndefinedColumn } from '@shared';
+import { ResponsiveTable, Image, DataTable } from '@shared';
+import { FloatingPanel } from '@shared';
+import IconBroadcast from '../@shared/icons/IconBroadcast.vue';
+import IconMore from '../@shared/icons/IconMore.vue';
+import IconSheet from '../@shared/icons/IconSheet.vue';
+import IconYoutube from '../@shared/icons/IconYoutube.vue';
 
 const props = defineProps({
   rows: {
@@ -51,8 +47,8 @@ const { onError } = useError();
 const { columns, error } = useColumns(COLUMNS_SCHEDULE, props.hideColumns, { offsetName: props.offsetName });
 if (error.value)
   onError(
-    new Errors.WidgetError(Errors.UndefinedColumn.message, {
-      ...Errors.UndefinedColumn.options,
+    new WidgetError(UndefinedColumn.message, {
+      ...UndefinedColumn.options,
       cause: { column: error.value },
     })
   );

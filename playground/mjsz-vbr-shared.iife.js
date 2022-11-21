@@ -1,7 +1,7 @@
 /*!
   * MJSZ VBR Widgets v2.0.0-alpha.1
   * (c) 2022 Akos Stegner
-  * Released: 21/11/2022, 11:26:21
+  * Released: 21/11/2022, 14:14:22
   * Released under the MIT License.
   */
 var Shared = function(exports, vue) {
@@ -112,6 +112,12 @@ var Shared = function(exports, vue) {
     }, ms, options);
     vue.watch(value, () => updater());
     return debounced;
+  }
+  function watchOnce(source, cb, options) {
+    const stop = vue.watch(source, (...args) => {
+      vue.nextTick(() => stop());
+      return cb(...args);
+    }, options);
   }
   function _isPlaceholder(a2) {
     return a2 != null && typeof a2 === "object" && a2["@@functional/placeholder"] === true;
@@ -1014,6 +1020,48 @@ var Shared = function(exports, vue) {
     }() : _isTypedArray(x) ? x.constructor.from("") : void 0;
   });
   const empty$1 = empty;
+  var XFindIndex = /* @__PURE__ */ function() {
+    function XFindIndex2(f2, xf) {
+      this.xf = xf;
+      this.f = f2;
+      this.idx = -1;
+      this.found = false;
+    }
+    XFindIndex2.prototype["@@transducer/init"] = _xfBase.init;
+    XFindIndex2.prototype["@@transducer/result"] = function(result) {
+      if (!this.found) {
+        result = this.xf["@@transducer/step"](result, -1);
+      }
+      return this.xf["@@transducer/result"](result);
+    };
+    XFindIndex2.prototype["@@transducer/step"] = function(result, input) {
+      this.idx += 1;
+      if (this.f(input)) {
+        this.found = true;
+        result = _reduced(this.xf["@@transducer/step"](result, this.idx));
+      }
+      return result;
+    };
+    return XFindIndex2;
+  }();
+  var _xfindIndex = /* @__PURE__ */ _curry2(function _xfindIndex2(f2, xf) {
+    return new XFindIndex(f2, xf);
+  });
+  const _xfindIndex$1 = _xfindIndex;
+  var findIndex = /* @__PURE__ */ _curry2(
+    /* @__PURE__ */ _dispatchable([], _xfindIndex$1, function findIndex2(fn, list) {
+      var idx = 0;
+      var len = list.length;
+      while (idx < len) {
+        if (fn(list[idx])) {
+          return idx;
+        }
+        idx += 1;
+      }
+      return -1;
+    })
+  );
+  const findIndex$1 = findIndex;
   var groupBy = /* @__PURE__ */ _curry2(
     /* @__PURE__ */ _checkForMethod(
       "groupBy",
@@ -1088,6 +1136,10 @@ var Shared = function(exports, vue) {
     return equals$1(val, prop$1(name, obj));
   });
   const propEq$1 = propEq;
+  var propSatisfies = /* @__PURE__ */ _curry3(function propSatisfies2(pred, name, obj) {
+    return pred(prop$1(name, obj));
+  });
+  const propSatisfies$1 = propSatisfies;
   var sortWith = /* @__PURE__ */ _curry2(function sortWith2(fns, list) {
     return Array.prototype.slice.call(list, 0).sort(function(a2, b) {
       var result = 0;
@@ -4448,6 +4500,7 @@ var Shared = function(exports, vue) {
   dayjs.extend(localizedFormat);
   dayjs.extend(_isSameOrBefore);
   dayjs.extend(_isBetween);
+  const getLocalTimezone = () => dayjs.tz.guess();
   const format = (datetime = "", format2 = "", timezone2 = "", locale = "hu") => {
     timezone2 = timezone2 ? timezone2 : dayjs.tz.guess();
     return dayjs(datetime).isValid() ? dayjs(datetime).tz(timezone2).locale(locale).format(format2) : "";
@@ -4914,6 +4967,27 @@ var Shared = function(exports, vue) {
       change
     };
   }
+  const usePage = (options = {}) => {
+    const { initial = 1, items = [], limit, auto = false } = options;
+    const page = vue.ref(initial);
+    const condition = (date) => {
+      return isSameOrBefore(date, "day");
+    };
+    const calculatePage = () => {
+      if (!auto)
+        return;
+      const index = findIndex$1(propSatisfies$1(condition, "gameDate"))(vue.unref(items));
+      page.value = index === -1 ? 1 : Math.floor(index / limit) + 1;
+    };
+    watchOnce(items, calculatePage);
+    const change = (value) => {
+      page.value = value;
+    };
+    return {
+      page,
+      change
+    };
+  };
   const convert = (data = []) => {
     return {
       result: [...data],
@@ -5092,11 +5166,14 @@ var Shared = function(exports, vue) {
   exports.convert = convert;
   exports.convertMinToSec = convertMinToSec;
   exports.convertTimes = convertTimes;
+  exports.createI18n = createI18n;
   exports.externalGameLinkResolver = externalGameLinkResolver;
   exports.externalPlayerLinkResolver = externalPlayerLinkResolver;
   exports.externalTeamLinkResolver = externalTeamLinkResolver;
   exports.fetchVBRData = fetchVBRData;
   exports.format = format;
+  exports.getLocalTimezone = getLocalTimezone;
+  exports.i18n = i18n;
   exports.isBetween = isBetween;
   exports.isSame = isSame;
   exports.isSameOrBefore = isSameOrBefore;
@@ -5105,9 +5182,13 @@ var Shared = function(exports, vue) {
   exports.rawConvert = rawConvert;
   exports.sortGames = sortGames;
   exports.toKebabCase = toKebabCase;
+  exports.useColumns = useColumns;
   exports.useError = useError;
   exports.useErrorProvider = useErrorProvider;
+  exports.useI18n = useI18n;
+  exports.usePage = usePage;
   exports.useSort = useSort;
+  exports.validateColumnsName = validateColumnsName;
   Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
   return exports;
 }({}, Vue);

@@ -15,6 +15,8 @@ dayjs.extend(localizedFormat);
 dayjs.extend(_isSameOrBefore);
 dayjs.extend(_isBetween);
 
+export const getLocalTimezone = () => dayjs.tz.guess();
+
 export const format = (datetime = '', format = '', timezone = '', locale = 'hu') => {
   timezone = timezone ? timezone : dayjs.tz.guess();
   return dayjs(datetime).isValid() ? dayjs(datetime).tz(timezone).locale(locale).format(format) : '';
