@@ -21,7 +21,7 @@ const builds = [
     globals: {},
   },
   {
-    entry: path.resolve(__dirname, './base.js'),
+    entry: path.resolve(__dirname, '../src/@widgets/bundle.js'),
     name: 'Widgets',
     fileName: (format) => `mjsz-vbr-widgets.${format}.js`,
     external: ['@shared'],
@@ -49,7 +49,7 @@ builds.forEach(async (settings) => {
           },
         },
       },
-      emptyOutDir: name !== 'Widgets',
+      emptyOutDir: false,
       sourcemap: false,
       target: 'modules',
       minify: false,

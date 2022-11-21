@@ -3,7 +3,7 @@ import { computed, ref } from 'vue';
 import { flip, shift, offset } from '@floating-ui/dom';
 import { onClickOutside } from '@vueuse/core';
 import { useFloating, arrow } from '../composables/useFloating';
-import { useMainClass } from '../composables/useMainClass';
+// import { useMainClass } from '../composables/useMainClass';
 
 const props = defineProps({
   disabled: {
@@ -37,7 +37,7 @@ const props = defineProps({
   },
 });
 
-const mainClassName = useMainClass('floating-content');
+// const mainClassName = useMainClass('floating-content');
 
 const open = ref(false);
 const arrowRef = ref(null);
@@ -80,7 +80,7 @@ onClickOutside(floating, (event) => {
     }"
   >
     <transition name="transition-fade" mode="out-in">
-      <div v-if="open" :class="[mainClassName, [`is-${props.theme}`]]">
+      <div v-if="open" :class="['floating-content', [`is-${props.theme}`]]">
         <slot name="content" :close="hide">{{ content }}</slot>
         <div
           ref="arrowRef"

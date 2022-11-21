@@ -4,8 +4,8 @@ import { useAsyncState } from '@vueuse/core';
 import { fetchVBRData } from '@shared';
 import { useErrorProvider } from '@shared';
 import { useSort } from '@shared';
-import convert from '../../utils/convert';
-import { externalTeamLinkResolver } from '../../utils/resolvers';
+import { convert } from '@shared';
+import { externalTeamLinkResolver } from '@shared';
 import { COLUMNS_STANDINGS_P_2, COLUMNS_STANDINGS_P_3 } from './internal';
 import { baseProps, teamStatsProps } from './internal.props';
 import { I18NProvider } from '@shared';
@@ -75,6 +75,6 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
   </div>
 </template>
 
-<style src="../../assets/common.css"></style>
-<style lang="scss" src="../../assets/table.css"></style>
-<style lang="scss" src="../../assets/responsive-table.css"></style>
+<style lang="postcss" src="../assets/common.css"></style>
+<style lang="postcss" src="../assets/table.css"></style>
+<style lang="postcss" src="../assets/responsive-table.css"></style>

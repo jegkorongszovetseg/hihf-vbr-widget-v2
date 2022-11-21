@@ -1,8 +1,4 @@
-import {
-  DEFAULT_EXTERNAL_BASE_URL,
-  DEFAULT_EXTERNAL_PLAYER_URL,
-  DEFAULT_EXTERNAL_TEAM_URL,
-} from '../@shared/constants';
+import { DEFAULT_EXTERNAL_BASE_URL, DEFAULT_EXTERNAL_PLAYER_URL, DEFAULT_EXTERNAL_TEAM_URL } from '../constants';
 
 export const externalGameLinkResolver = (resolver, gameId) => {
   if (typeof resolver === 'function') return resolver(gameId);

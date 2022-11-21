@@ -6,7 +6,7 @@ import _isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import _isBetween from 'dayjs/plugin/isBetween';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import 'dayjs/locale/hu';
-import { LOCALE_FOR_LANG } from '../@shared/constants.js';
+import { LOCALE_FOR_LANG } from '../constants.js';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);

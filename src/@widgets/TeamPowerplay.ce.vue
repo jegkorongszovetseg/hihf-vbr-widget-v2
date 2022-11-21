@@ -11,7 +11,7 @@ import { baseProps, teamStatsProps } from './internal.props';
 import { externalTeamLinkResolver } from '../../utils/resolvers';
 import I18NProvider from '../I18NProvider.vue';
 import ErrorNotice from '../ErrorNotice.vue';
-import StatisticsTable from './StatisticsTable.vue';
+import StatisticsTable from '../@shared/components/StatisticsTable.vue';
 
 const props = defineProps({
   ...baseProps,

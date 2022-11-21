@@ -1,3 +1,9 @@
+/*!
+  * MJSZ VBR Widgets v2.0.0-alpha.1
+  * (c) 2022 Akos Stegner
+  * Released: 21/11/2022, 11:26:21
+  * Released under the MIT License.
+  */
 var Shared = function(exports, vue) {
   "use strict";
   const useMainClass = (className) => {
@@ -29,6 +35,84 @@ var Shared = function(exports, vue) {
       };
     }
   };
+  var _a;
+  const isClient = typeof window !== "undefined";
+  const isString = (val) => typeof val === "string";
+  const noop = () => {
+  };
+  isClient && ((_a = window == null ? void 0 : window.navigator) == null ? void 0 : _a.userAgent) && /iP(ad|hone|od)/.test(window.navigator.userAgent);
+  function resolveUnref(r2) {
+    return typeof r2 === "function" ? r2() : vue.unref(r2);
+  }
+  function createFilterWrapper(filter2, fn) {
+    function wrapper(...args) {
+      filter2(() => fn.apply(this, args), { fn, thisArg: this, args });
+    }
+    return wrapper;
+  }
+  function debounceFilter(ms, options = {}) {
+    let timer;
+    let maxTimer;
+    const filter2 = (invoke) => {
+      const duration = resolveUnref(ms);
+      const maxDuration = resolveUnref(options.maxWait);
+      if (timer)
+        clearTimeout(timer);
+      if (duration <= 0 || maxDuration !== void 0 && maxDuration <= 0) {
+        if (maxTimer) {
+          clearTimeout(maxTimer);
+          maxTimer = null;
+        }
+        return invoke();
+      }
+      if (maxDuration && !maxTimer) {
+        maxTimer = setTimeout(() => {
+          if (timer)
+            clearTimeout(timer);
+          maxTimer = null;
+          invoke();
+        }, maxDuration);
+      }
+      timer = setTimeout(() => {
+        if (maxTimer)
+          clearTimeout(maxTimer);
+        maxTimer = null;
+        invoke();
+      }, duration);
+    };
+    return filter2;
+  }
+  function promiseTimeout(ms, throwOnTimeout = false, reason = "Timeout") {
+    return new Promise((resolve2, reject2) => {
+      if (throwOnTimeout)
+        setTimeout(() => reject2(reason), ms);
+      else
+        setTimeout(resolve2, ms);
+    });
+  }
+  function identity(arg) {
+    return arg;
+  }
+  function tryOnScopeDispose(fn) {
+    if (vue.getCurrentScope()) {
+      vue.onScopeDispose(fn);
+      return true;
+    }
+    return false;
+  }
+  function useDebounceFn(fn, ms = 200, options = {}) {
+    return createFilterWrapper(debounceFilter(ms, options), fn);
+  }
+  function refDebounced(value, ms = 200, options = {}) {
+    if (ms <= 0)
+      return value;
+    const debounced = vue.ref(value.value);
+    const updater = useDebounceFn(() => {
+      debounced.value = value.value;
+    }, ms, options);
+    vue.watch(value, () => updater());
+    return debounced;
+  }
   function _isPlaceholder(a2) {
     return a2 != null && typeof a2 === "object" && a2["@@functional/placeholder"] === true;
   }
@@ -139,6 +223,40 @@ var Shared = function(exports, vue) {
     return _arity(length, _curryN(length, [], fn));
   });
   const curryN$1 = curryN;
+  function _curry3(fn) {
+    return function f3(a2, b, c2) {
+      switch (arguments.length) {
+        case 0:
+          return f3;
+        case 1:
+          return _isPlaceholder(a2) ? f3 : _curry2(function(_b, _c) {
+            return fn(a2, _b, _c);
+          });
+        case 2:
+          return _isPlaceholder(a2) && _isPlaceholder(b) ? f3 : _isPlaceholder(a2) ? _curry2(function(_a2, _c) {
+            return fn(_a2, b, _c);
+          }) : _isPlaceholder(b) ? _curry2(function(_b, _c) {
+            return fn(a2, _b, _c);
+          }) : _curry1(function(_c) {
+            return fn(a2, b, _c);
+          });
+        default:
+          return _isPlaceholder(a2) && _isPlaceholder(b) && _isPlaceholder(c2) ? f3 : _isPlaceholder(a2) && _isPlaceholder(b) ? _curry2(function(_a2, _b) {
+            return fn(_a2, _b, c2);
+          }) : _isPlaceholder(a2) && _isPlaceholder(c2) ? _curry2(function(_a2, _c) {
+            return fn(_a2, b, _c);
+          }) : _isPlaceholder(b) && _isPlaceholder(c2) ? _curry2(function(_b, _c) {
+            return fn(a2, _b, _c);
+          }) : _isPlaceholder(a2) ? _curry1(function(_a2) {
+            return fn(_a2, b, c2);
+          }) : _isPlaceholder(b) ? _curry1(function(_b) {
+            return fn(a2, _b, c2);
+          }) : _isPlaceholder(c2) ? _curry1(function(_c) {
+            return fn(a2, b, _c);
+          }) : fn(a2, b, c2);
+      }
+    };
+  }
   const _isArray = Array.isArray || function _isArray2(val) {
     return val != null && val.length >= 0 && Object.prototype.toString.call(val) === "[object Array]";
   };
@@ -167,6 +285,12 @@ var Shared = function(exports, vue) {
       return fn.apply(this, arguments);
     };
   }
+  function _reduced(x) {
+    return x && x["@@transducer/reduced"] ? x : {
+      "@@transducer/value": x,
+      "@@transducer/reduced": true
+    };
+  }
   const _xfBase = {
     init: function() {
       return this.xf["@@transducer/init"]();
@@ -175,6 +299,10 @@ var Shared = function(exports, vue) {
       return this.xf["@@transducer/result"](result);
     }
   };
+  var max$2 = /* @__PURE__ */ _curry2(function max2(a2, b) {
+    return b > a2 ? b : a2;
+  });
+  const max$3 = max$2;
   function _map(fn, functor) {
     var idx = 0;
     var len = functor.length;
@@ -300,8 +428,8 @@ var Shared = function(exports, vue) {
     return new XMap(f2, xf);
   });
   const _xmap$1 = _xmap;
-  function _has(prop, obj) {
-    return Object.prototype.hasOwnProperty.call(obj, prop);
+  function _has(prop2, obj) {
+    return Object.prototype.hasOwnProperty.call(obj, prop2);
   }
   var toString$2 = Object.prototype.toString;
   var _isArguments = /* @__PURE__ */ function() {
@@ -335,20 +463,20 @@ var Shared = function(exports, vue) {
     if (Object(obj) !== obj) {
       return [];
     }
-    var prop, nIdx;
+    var prop2, nIdx;
     var ks = [];
     var checkArgsLength = hasArgsEnumBug && _isArguments$1(obj);
-    for (prop in obj) {
-      if (_has(prop, obj) && (!checkArgsLength || prop !== "length")) {
-        ks[ks.length] = prop;
+    for (prop2 in obj) {
+      if (_has(prop2, obj) && (!checkArgsLength || prop2 !== "length")) {
+        ks[ks.length] = prop2;
       }
     }
     if (hasEnumBug) {
       nIdx = nonEnumerableProps.length - 1;
       while (nIdx >= 0) {
-        prop = nonEnumerableProps[nIdx];
-        if (_has(prop, obj) && !contains$1(ks, prop)) {
-          ks[ks.length] = prop;
+        prop2 = nonEnumerableProps[nIdx];
+        if (_has(prop2, obj) && !contains$1(ks, prop2)) {
+          ks[ks.length] = prop2;
         }
         nIdx -= 1;
       }
@@ -382,14 +510,144 @@ var Shared = function(exports, vue) {
     return _isString(list) ? list.charAt(idx) : list[idx];
   });
   const nth$1 = nth;
+  var prop = /* @__PURE__ */ _curry2(function prop2(p, obj) {
+    if (obj == null) {
+      return;
+    }
+    return _isInteger(p) ? nth$1(p, obj) : obj[p];
+  });
+  const prop$1 = prop;
+  var pluck = /* @__PURE__ */ _curry2(function pluck2(p, list) {
+    return map$1(prop$1(p), list);
+  });
+  const pluck$1 = pluck;
+  var reduce = /* @__PURE__ */ _curry3(_reduce);
+  const reduce$1 = reduce;
+  var always = /* @__PURE__ */ _curry1(function always2(val) {
+    return function() {
+      return val;
+    };
+  });
+  const always$1 = always;
+  var anyPass = /* @__PURE__ */ _curry1(function anyPass2(preds) {
+    return curryN$1(reduce$1(max$3, 0, pluck$1("length", preds)), function() {
+      var idx = 0;
+      var len = preds.length;
+      while (idx < len) {
+        if (preds[idx].apply(this, arguments)) {
+          return true;
+        }
+        idx += 1;
+      }
+      return false;
+    });
+  });
+  const anyPass$1 = anyPass;
+  var ascend = /* @__PURE__ */ _curry3(function ascend2(fn, a2, b) {
+    var aa = fn(a2);
+    var bb = fn(b);
+    return aa < bb ? -1 : aa > bb ? 1 : 0;
+  });
+  const ascend$1 = ascend;
   function _isFunction(x) {
     var type2 = Object.prototype.toString.call(x);
     return type2 === "[object Function]" || type2 === "[object AsyncFunction]" || type2 === "[object GeneratorFunction]" || type2 === "[object AsyncGeneratorFunction]";
+  }
+  function _cloneRegExp(pattern) {
+    return new RegExp(pattern.source, (pattern.global ? "g" : "") + (pattern.ignoreCase ? "i" : "") + (pattern.multiline ? "m" : "") + (pattern.sticky ? "y" : "") + (pattern.unicode ? "u" : ""));
   }
   var type = /* @__PURE__ */ _curry1(function type2(val) {
     return val === null ? "Null" : val === void 0 ? "Undefined" : Object.prototype.toString.call(val).slice(8, -1);
   });
   const type$1 = type;
+  function _clone(value, refFrom, refTo, deep) {
+    var copy = function copy2(copiedValue) {
+      var len = refFrom.length;
+      var idx = 0;
+      while (idx < len) {
+        if (value === refFrom[idx]) {
+          return refTo[idx];
+        }
+        idx += 1;
+      }
+      refFrom[idx] = value;
+      refTo[idx] = copiedValue;
+      for (var key in value) {
+        if (value.hasOwnProperty(key)) {
+          copiedValue[key] = deep ? _clone(value[key], refFrom, refTo, true) : value[key];
+        }
+      }
+      return copiedValue;
+    };
+    switch (type$1(value)) {
+      case "Object":
+        return copy(Object.create(Object.getPrototypeOf(value)));
+      case "Array":
+        return copy([]);
+      case "Date":
+        return new Date(value.valueOf());
+      case "RegExp":
+        return _cloneRegExp(value);
+      case "Int8Array":
+      case "Uint8Array":
+      case "Uint8ClampedArray":
+      case "Int16Array":
+      case "Uint16Array":
+      case "Int32Array":
+      case "Uint32Array":
+      case "Float32Array":
+      case "Float64Array":
+      case "BigInt64Array":
+      case "BigUint64Array":
+        return value.slice();
+      default:
+        return value;
+    }
+  }
+  function _pipe(f2, g) {
+    return function() {
+      return g.call(this, f2.apply(this, arguments));
+    };
+  }
+  function _checkForMethod(methodname, fn) {
+    return function() {
+      var length = arguments.length;
+      if (length === 0) {
+        return fn();
+      }
+      var obj = arguments[length - 1];
+      return _isArray(obj) || typeof obj[methodname] !== "function" ? fn.apply(this, arguments) : obj[methodname].apply(obj, Array.prototype.slice.call(arguments, 0, length - 1));
+    };
+  }
+  var slice = /* @__PURE__ */ _curry3(
+    /* @__PURE__ */ _checkForMethod("slice", function slice2(fromIndex, toIndex, list) {
+      return Array.prototype.slice.call(list, fromIndex, toIndex);
+    })
+  );
+  const slice$1 = slice;
+  var tail = /* @__PURE__ */ _curry1(
+    /* @__PURE__ */ _checkForMethod(
+      "tail",
+      /* @__PURE__ */ slice$1(1, Infinity)
+    )
+  );
+  const tail$1 = tail;
+  function pipe() {
+    if (arguments.length === 0) {
+      throw new Error("pipe requires at least one argument");
+    }
+    return _arity(arguments[0].length, reduce$1(_pipe, arguments[0], tail$1(arguments)));
+  }
+  var reverse = /* @__PURE__ */ _curry1(function reverse2(list) {
+    return _isString(list) ? list.split("").reverse().join("") : Array.prototype.slice.call(list, 0).reverse();
+  });
+  const reverse$1 = reverse;
+  function compose() {
+    if (arguments.length === 0) {
+      throw new Error("compose requires at least one argument");
+    }
+    return pipe.apply(this, reverse$1(arguments));
+  }
   function _arrayFromIterator(iter) {
     var list = [];
     var next;
@@ -689,6 +947,63 @@ var Shared = function(exports, vue) {
     return _toString(val, []);
   });
   const toString$1 = toString;
+  var XReduceBy = /* @__PURE__ */ function() {
+    function XReduceBy2(valueFn, valueAcc, keyFn, xf) {
+      this.valueFn = valueFn;
+      this.valueAcc = valueAcc;
+      this.keyFn = keyFn;
+      this.xf = xf;
+      this.inputs = {};
+    }
+    XReduceBy2.prototype["@@transducer/init"] = _xfBase.init;
+    XReduceBy2.prototype["@@transducer/result"] = function(result) {
+      var key;
+      for (key in this.inputs) {
+        if (_has(key, this.inputs)) {
+          result = this.xf["@@transducer/step"](result, this.inputs[key]);
+          if (result["@@transducer/reduced"]) {
+            result = result["@@transducer/value"];
+            break;
+          }
+        }
+      }
+      this.inputs = null;
+      return this.xf["@@transducer/result"](result);
+    };
+    XReduceBy2.prototype["@@transducer/step"] = function(result, input) {
+      var key = this.keyFn(input);
+      this.inputs[key] = this.inputs[key] || [key, this.valueAcc];
+      this.inputs[key][1] = this.valueFn(this.inputs[key][1], input);
+      return result;
+    };
+    return XReduceBy2;
+  }();
+  var _xreduceBy = /* @__PURE__ */ _curryN(4, [], function _xreduceBy2(valueFn, valueAcc, keyFn, xf) {
+    return new XReduceBy(valueFn, valueAcc, keyFn, xf);
+  });
+  const _xreduceBy$1 = _xreduceBy;
+  var reduceBy = /* @__PURE__ */ _curryN(
+    4,
+    [],
+    /* @__PURE__ */ _dispatchable([], _xreduceBy$1, function reduceBy2(valueFn, valueAcc, keyFn, list) {
+      return _reduce(function(acc, elt) {
+        var key = keyFn(elt);
+        var value = valueFn(_has(key, acc) ? acc[key] : _clone(valueAcc, [], [], false), elt);
+        if (value && value["@@transducer/reduced"]) {
+          return _reduced(acc);
+        }
+        acc[key] = value;
+        return acc;
+      }, {}, list);
+    })
+  );
+  const reduceBy$1 = reduceBy;
+  var descend = /* @__PURE__ */ _curry3(function descend2(fn, a2, b) {
+    var aa = fn(a2);
+    var bb = fn(b);
+    return aa > bb ? -1 : aa < bb ? 1 : 0;
+  });
+  const descend$1 = descend;
   function _isTypedArray(val) {
     var type2 = Object.prototype.toString.call(val);
     return type2 === "[object Uint8ClampedArray]" || type2 === "[object Int8Array]" || type2 === "[object Uint8Array]" || type2 === "[object Int16Array]" || type2 === "[object Uint16Array]" || type2 === "[object Int32Array]" || type2 === "[object Uint32Array]" || type2 === "[object Float32Array]" || type2 === "[object Float64Array]" || type2 === "[object BigInt64Array]" || type2 === "[object BigUint64Array]";
@@ -699,6 +1014,24 @@ var Shared = function(exports, vue) {
     }() : _isTypedArray(x) ? x.constructor.from("") : void 0;
   });
   const empty$1 = empty;
+  var groupBy = /* @__PURE__ */ _curry2(
+    /* @__PURE__ */ _checkForMethod(
+      "groupBy",
+      /* @__PURE__ */ reduceBy$1(function(acc, item) {
+        acc.push(item);
+        return acc;
+      }, [])
+    )
+  );
+  const groupBy$1 = groupBy;
+  var ifElse = /* @__PURE__ */ _curry3(function ifElse2(condition, onTrue, onFalse) {
+    return curryN$1(Math.max(condition.length, onTrue.length, onFalse.length), function _ifElse() {
+      return condition.apply(this, arguments) ? onTrue.apply(this, arguments) : onFalse.apply(this, arguments);
+    });
+  });
+  const ifElse$1 = ifElse;
+  var includes = /* @__PURE__ */ _curry2(_includes);
+  const includes$1 = includes;
   var invoker = /* @__PURE__ */ _curry2(function invoker2(arity, method) {
     return curryN$1(arity + 1, function() {
       var target = arguments[arity];
@@ -743,16 +1076,34 @@ var Shared = function(exports, vue) {
       index[names[idx]] = 1;
       idx += 1;
     }
-    for (var prop in obj) {
-      if (!index.hasOwnProperty(prop)) {
-        result[prop] = obj[prop];
+    for (var prop2 in obj) {
+      if (!index.hasOwnProperty(prop2)) {
+        result[prop2] = obj[prop2];
       }
     }
     return result;
   });
   const omit$1 = omit;
+  var propEq = /* @__PURE__ */ _curry3(function propEq2(name, val, obj) {
+    return equals$1(val, prop$1(name, obj));
+  });
+  const propEq$1 = propEq;
+  var sortWith = /* @__PURE__ */ _curry2(function sortWith2(fns, list) {
+    return Array.prototype.slice.call(list, 0).sort(function(a2, b) {
+      var result = 0;
+      var i = 0;
+      while (result === 0 && i < fns.length) {
+        result = fns[i](a2, b);
+        i += 1;
+      }
+      return result;
+    });
+  });
+  const sortWith$1 = sortWith;
   var split = /* @__PURE__ */ invoker$1(1, "split");
   const split$1 = split;
+  var toLower = /* @__PURE__ */ invoker$1(0, "toLowerCase");
+  const toLower$1 = toLower;
   var ws = "	\n\v\f\r \xA0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF";
   var zeroWidth = "\u200B";
   var hasProtoTrim = typeof String.prototype.trim === "function";
@@ -868,12 +1219,18 @@ var Shared = function(exports, vue) {
       return () => vue.h(props.tag, children);
     }
   });
+  const DEFAULT_EXTERNAL_BASE_URL = "https://www.jegkorongszovetseg.hu/event/game/";
   const DEFAULT_PORTRAIT_IMAGE_URL = "https://jegkorongszovetseg.hu/assets/images/player_blank.png";
+  const DEFAULT_EXTERNAL_PLAYER_URL = "https://www.ersteliga.hu/stats/players#/player/3314/";
+  const DEFAULT_EXTERNAL_TEAM_URL = "https://www.ersteliga.hu/stats/teams#/team/3314/21096?name=";
   const SORT_STATE_ORIGINAL = "original";
   const SORT_STATE_DESCEND = "descend";
   const SORT_STATE_ASCEND = "ascend";
   const LOCALE_FOR_LANG = (/* @__PURE__ */ new Map()).set("hu", "hu-hu").set("en", "hu-gb");
   const AVAILABLE_TIMEZONES_BY_COUNTRY = (/* @__PURE__ */ new Map()).set("Europe/Budapest", { countryLabelKey: "hungary", timezone: "Europe/Budapest" }).set("Europe/Bucharest", { countryLabelKey: "romania", timezone: "Europe/Bucharest" });
+  const VBR_API_GOALIE_PATH = "/v1/playersGoaliePeriod";
+  const VBR_API_GOALIE_UNDER_PATH = "/v1/playersGoalieUnderPeriod";
+  const REFRESH_DELAY = 1e3 * 60 * 5;
   const _export_sfc = (sfc, props) => {
     const target = sfc.__vccOpts || sfc;
     for (const [key, val] of props) {
@@ -1942,84 +2299,6 @@ var Shared = function(exports, vue) {
     platform,
     ...options
   });
-  var _a;
-  const isClient = typeof window !== "undefined";
-  const isString = (val) => typeof val === "string";
-  const noop = () => {
-  };
-  isClient && ((_a = window == null ? void 0 : window.navigator) == null ? void 0 : _a.userAgent) && /iP(ad|hone|od)/.test(window.navigator.userAgent);
-  function resolveUnref(r2) {
-    return typeof r2 === "function" ? r2() : vue.unref(r2);
-  }
-  function createFilterWrapper(filter2, fn) {
-    function wrapper(...args) {
-      filter2(() => fn.apply(this, args), { fn, thisArg: this, args });
-    }
-    return wrapper;
-  }
-  function debounceFilter(ms, options = {}) {
-    let timer;
-    let maxTimer;
-    const filter2 = (invoke) => {
-      const duration = resolveUnref(ms);
-      const maxDuration = resolveUnref(options.maxWait);
-      if (timer)
-        clearTimeout(timer);
-      if (duration <= 0 || maxDuration !== void 0 && maxDuration <= 0) {
-        if (maxTimer) {
-          clearTimeout(maxTimer);
-          maxTimer = null;
-        }
-        return invoke();
-      }
-      if (maxDuration && !maxTimer) {
-        maxTimer = setTimeout(() => {
-          if (timer)
-            clearTimeout(timer);
-          maxTimer = null;
-          invoke();
-        }, maxDuration);
-      }
-      timer = setTimeout(() => {
-        if (maxTimer)
-          clearTimeout(maxTimer);
-        maxTimer = null;
-        invoke();
-      }, duration);
-    };
-    return filter2;
-  }
-  function promiseTimeout(ms, throwOnTimeout = false, reason = "Timeout") {
-    return new Promise((resolve2, reject2) => {
-      if (throwOnTimeout)
-        setTimeout(() => reject2(reason), ms);
-      else
-        setTimeout(resolve2, ms);
-    });
-  }
-  function identity(arg) {
-    return arg;
-  }
-  function tryOnScopeDispose(fn) {
-    if (vue.getCurrentScope()) {
-      vue.onScopeDispose(fn);
-      return true;
-    }
-    return false;
-  }
-  function useDebounceFn(fn, ms = 200, options = {}) {
-    return createFilterWrapper(debounceFilter(ms, options), fn);
-  }
-  function refDebounced(value, ms = 200, options = {}) {
-    if (ms <= 0)
-      return value;
-    const debounced = vue.ref(value.value);
-    const updater = useDebounceFn(() => {
-      debounced.value = value.value;
-    }, ms, options);
-    vue.watch(value, () => updater());
-    return debounced;
-  }
   function unrefElement(elRef) {
     var _a2;
     const plain = resolveUnref(elRef);
@@ -2155,13 +2434,13 @@ var Shared = function(exports, vue) {
   var __propIsEnum$a = Object.prototype.propertyIsEnumerable;
   var __defNormalProp$9 = (obj, key, value) => key in obj ? __defProp$9(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
   var __spreadValues$9 = (a2, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp$a.call(b, prop))
-        __defNormalProp$9(a2, prop, b[prop]);
+    for (var prop2 in b || (b = {}))
+      if (__hasOwnProp$a.call(b, prop2))
+        __defNormalProp$9(a2, prop2, b[prop2]);
     if (__getOwnPropSymbols$a)
-      for (var prop of __getOwnPropSymbols$a(b)) {
-        if (__propIsEnum$a.call(b, prop))
-          __defNormalProp$9(a2, prop, b[prop]);
+      for (var prop2 of __getOwnPropSymbols$a(b)) {
+        if (__propIsEnum$a.call(b, prop2))
+          __defNormalProp$9(a2, prop2, b[prop2]);
       }
     return a2;
   };
@@ -2199,13 +2478,13 @@ var Shared = function(exports, vue) {
   var __propIsEnum = Object.prototype.propertyIsEnumerable;
   var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
   var __spreadValues = (a2, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp.call(b, prop))
-        __defNormalProp(a2, prop, b[prop]);
+    for (var prop2 in b || (b = {}))
+      if (__hasOwnProp.call(b, prop2))
+        __defNormalProp(a2, prop2, b[prop2]);
     if (__getOwnPropSymbols)
-      for (var prop of __getOwnPropSymbols(b)) {
-        if (__propIsEnum.call(b, prop))
-          __defNormalProp(a2, prop, b[prop]);
+      for (var prop2 of __getOwnPropSymbols(b)) {
+        if (__propIsEnum.call(b, prop2))
+          __defNormalProp(a2, prop2, b[prop2]);
       }
     return a2;
   };
@@ -2364,7 +2643,6 @@ var Shared = function(exports, vue) {
     },
     setup(__props) {
       const props = __props;
-      const mainClassName = useMainClass("floating-content");
       const open = vue.ref(false);
       const arrowRef = vue.ref(null);
       const { x, y, arrowX, arrowY, placement, reference, floating, strategy } = useFloating({
@@ -2414,7 +2692,7 @@ var Shared = function(exports, vue) {
               default: vue.withCtx(() => [
                 open.value ? (vue.openBlock(), vue.createElementBlock("div", {
                   key: 0,
-                  class: vue.normalizeClass([vue.unref(mainClassName), [`is-${props.theme}`]])
+                  class: vue.normalizeClass(["floating-content", [`is-${props.theme}`]])
                 }, [
                   vue.renderSlot(_ctx.$slots, "content", { close: hide }, () => [
                     vue.createTextVNode(vue.toDisplayString(__props.content), 1)
@@ -2476,10 +2754,10 @@ var Shared = function(exports, vue) {
       const columns = vue.computed(() => props.columns);
       const columnCount = vue.computed(() => Object.keys(props.columns).length);
       const isLoadingDebounced = refDebounced(isLoading, 300);
-      const sortBy = (column, prop) => {
+      const sortBy = (column, prop2) => {
         if (!column.sortOrders)
           return;
-        emit("sort", { target: prop, orders: column.sortOrders });
+        emit("sort", { target: prop2, orders: column.sortOrders });
       };
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("table", {
@@ -2487,9 +2765,9 @@ var Shared = function(exports, vue) {
         }, [
           vue.createElementVNode("thead", null, [
             vue.createElementVNode("tr", null, [
-              (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(columns), (column, prop) => {
+              (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(columns), (column, prop2) => {
                 return vue.openBlock(), vue.createBlock(_sfc_main$d, {
-                  key: prop,
+                  key: prop2,
                   placement: "top",
                   content: column.tooltip,
                   disabled: !column.tooltip,
@@ -2502,40 +2780,40 @@ var Shared = function(exports, vue) {
                       class: vue.normalizeClass([
                         [column.class],
                         {
-                          "is-active": prop === __props.sort.sortTarget && __props.sort.orders[0].direction !== vue.unref(SORT_STATE_ORIGINAL),
+                          "is-active": prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction !== vue.unref(SORT_STATE_ORIGINAL),
                           "is-sortable": column.sortOrders,
-                          "is-desc": prop === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_DESCEND),
-                          "is-asc": prop === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ASCEND)
+                          "is-desc": prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_DESCEND),
+                          "is-asc": prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ASCEND)
                         }
                       ]),
                       onMouseenter: show,
                       onMouseleave: hide,
                       onFocus: show,
                       onBlur: hide,
-                      onClick: ($event) => sortBy(column, prop),
+                      onClick: ($event) => sortBy(column, prop2),
                       onKeydown: [
-                        vue.withKeys(vue.withModifiers(($event) => sortBy(column, prop), ["prevent"]), ["space"]),
-                        vue.withKeys(vue.withModifiers(($event) => sortBy(column, prop), ["prevent"]), ["enter"])
+                        vue.withKeys(vue.withModifiers(($event) => sortBy(column, prop2), ["prevent"]), ["space"]),
+                        vue.withKeys(vue.withModifiers(($event) => sortBy(column, prop2), ["prevent"]), ["enter"])
                       ],
                       tabindex: column.sortOrders ? 0 : -1,
                       role: "button"
                     }, [
-                      vue.renderSlot(_ctx.$slots, `header-${prop}`, { column }, () => [
+                      vue.renderSlot(_ctx.$slots, `header-${prop2}`, { column }, () => [
                         vue.createTextVNode(vue.toDisplayString(column.label), 1)
                       ]),
-                      column.sortOrders && prop !== __props.sort.sortTarget ? (vue.openBlock(), vue.createBlock(IconSort, {
+                      column.sortOrders && prop2 !== __props.sort.sortTarget ? (vue.openBlock(), vue.createBlock(IconSort, {
                         key: 0,
                         class: "is-icon-sort"
                       })) : vue.createCommentVNode("", true),
-                      prop === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ORIGINAL) ? (vue.openBlock(), vue.createBlock(IconSort, {
+                      prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ORIGINAL) ? (vue.openBlock(), vue.createBlock(IconSort, {
                         key: 1,
                         class: "is-icon-sort"
                       })) : vue.createCommentVNode("", true),
-                      prop === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_DESCEND) ? (vue.openBlock(), vue.createBlock(IconSortAsc, {
+                      prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_DESCEND) ? (vue.openBlock(), vue.createBlock(IconSortAsc, {
                         key: 2,
                         class: "is-icon-sort"
                       })) : vue.createCommentVNode("", true),
-                      prop === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ASCEND) ? (vue.openBlock(), vue.createBlock(IconSortDesc, {
+                      prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction === vue.unref(SORT_STATE_ASCEND) ? (vue.openBlock(), vue.createBlock(IconSortDesc, {
                         key: 3,
                         class: "is-icon-sort"
                       })) : vue.createCommentVNode("", true)
@@ -2549,21 +2827,21 @@ var Shared = function(exports, vue) {
           vue.createElementVNode("tbody", null, [
             (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(props.rows, (row, index) => {
               return vue.openBlock(), vue.createElementBlock("tr", { key: index }, [
-                (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(columns), (_, prop) => {
+                (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(columns), (_, prop2) => {
                   return vue.openBlock(), vue.createElementBlock("td", {
-                    key: prop,
+                    key: prop2,
                     class: vue.normalizeClass([
                       [_.class],
                       {
-                        "is-active": prop === __props.sort.sortTarget && __props.sort.orders[0].direction !== vue.unref(SORT_STATE_ORIGINAL)
+                        "is-active": prop2 === __props.sort.sortTarget && __props.sort.orders[0].direction !== vue.unref(SORT_STATE_ORIGINAL)
                       }
                     ])
                   }, [
-                    vue.renderSlot(_ctx.$slots, `cell-${prop}`, {
+                    vue.renderSlot(_ctx.$slots, `cell-${prop2}`, {
                       row,
-                      prop
+                      prop: prop2
                     }, () => [
-                      vue.createTextVNode(vue.toDisplayString(row[prop]), 1)
+                      vue.createTextVNode(vue.toDisplayString(row[prop2]), 1)
                     ])
                   ], 2);
                 }), 128))
@@ -4077,7 +4355,7 @@ var Shared = function(exports, vue) {
     });
   })(advancedFormat$1);
   const advancedFormat = advancedFormat$1.exports;
-  var isSameOrBefore = { exports: {} };
+  var isSameOrBefore$1 = { exports: {} };
   (function(module, exports2) {
     !function(e2, i) {
       module.exports = i();
@@ -4088,9 +4366,9 @@ var Shared = function(exports, vue) {
         };
       };
     });
-  })(isSameOrBefore);
-  const _isSameOrBefore = isSameOrBefore.exports;
-  var isBetween = { exports: {} };
+  })(isSameOrBefore$1);
+  const _isSameOrBefore = isSameOrBefore$1.exports;
+  var isBetween$1 = { exports: {} };
   (function(module, exports2) {
     !function(e2, i) {
       module.exports = i();
@@ -4102,8 +4380,8 @@ var Shared = function(exports, vue) {
         };
       };
     });
-  })(isBetween);
-  const _isBetween = isBetween.exports;
+  })(isBetween$1);
+  const _isBetween = isBetween$1.exports;
   var localizedFormat$1 = { exports: {} };
   (function(module, exports2) {
     !function(e2, t2) {
@@ -4170,6 +4448,10 @@ var Shared = function(exports, vue) {
   dayjs.extend(localizedFormat);
   dayjs.extend(_isSameOrBefore);
   dayjs.extend(_isBetween);
+  const format = (datetime = "", format2 = "", timezone2 = "", locale = "hu") => {
+    timezone2 = timezone2 ? timezone2 : dayjs.tz.guess();
+    return dayjs(datetime).isValid() ? dayjs(datetime).tz(timezone2).locale(locale).format(format2) : "";
+  };
   const offsetName = (datetime = "", timezone2 = "", lang = "hu") => {
     if (!dayjs(datetime).isValid())
       return "";
@@ -4183,6 +4465,19 @@ var Shared = function(exports, vue) {
   };
   const getLocaleForLang = (lang) => {
     return LOCALE_FOR_LANG.get(lang);
+  };
+  const convertMinToSec = (minutes) => {
+    const splitted = minutes.split(":");
+    return parseInt(splitted[0], 10) * 60 + parseInt(splitted[1], 10);
+  };
+  const isSameOrBefore = (date, unit = "day") => {
+    return dayjs().isSameOrBefore(dayjs(date), unit);
+  };
+  const isBetween = (date, startDate, endDate) => {
+    return dayjs(date).isBetween(startDate, dayjs(endDate));
+  };
+  const isSame = (date, compareDate, unit = "month") => {
+    return dayjs(date).isSame(compareDate, unit);
   };
   const _hoisted_1$1 = ["onClick"];
   const _sfc_main$1 = {
@@ -4251,7 +4546,7 @@ var Shared = function(exports, vue) {
         errorRef.value = err;
       }
     }
-    const convert = (column) => {
+    const convert2 = (column) => {
       var _a2, _b;
       return {
         ...column,
@@ -4259,7 +4554,7 @@ var Shared = function(exports, vue) {
         ...column.tooltip && { tooltip: t2((_b = column.tooltip) != null ? _b : "") }
       };
     };
-    const converted = vue.computed(() => map$1(convert, vue.unref(columns)));
+    const converted = vue.computed(() => map$1(convert2, vue.unref(columns)));
     return {
       columns: converted,
       error: errorRef
@@ -4289,6 +4584,13 @@ var Shared = function(exports, vue) {
     message: "Undefined Column name Message",
     options: {
       key: "undefined-column",
+      cause: {}
+    }
+  };
+  const InvalidSeasonName = {
+    message: "Invalid season name",
+    options: {
+      key: "invalid-season-name",
       cause: {}
     }
   };
@@ -4378,7 +4680,7 @@ var Shared = function(exports, vue) {
               "cell-teamLogo": vue.withCtx(({ row }) => [
                 (vue.openBlock(), vue.createBlock(_sfc_main$7, {
                   class: "is-logo-image",
-                  key: row.teamId,
+                  key: row.teamId || row.id,
                   src: row.teamLogo
                 }, null, 8, ["src"]))
               ]),
@@ -4612,19 +4914,197 @@ var Shared = function(exports, vue) {
       change
     };
   }
+  const convert = (data = []) => {
+    return {
+      result: [...data],
+      filteredRowsLength: 0,
+      isFiltered: false,
+      value() {
+        return {
+          rows: this.result,
+          totalItems: this.filteredRowsLength,
+          totalItems: this.isFiltered ? this.filteredRowsLength : data.length
+        };
+      },
+      filter(name, condition = [], exact = false) {
+        if (name) {
+          const predicate = condition.map(
+            (key) => exact ? propEq$1(key, name) : pipe(prop$1(key), toLower$1, includes$1(name))
+          );
+          const filteredRows = filter$1(anyPass$1([...predicate]), this.result);
+          this.isFiltered = true;
+          this.filteredRowsLength = filteredRows.length;
+          this.result = filteredRows;
+        }
+        return this;
+      },
+      sorted(sort) {
+        if (!sort.sortTarget)
+          return this;
+        if (sort.orders[0].direction === SORT_STATE_ORIGINAL)
+          return this;
+        const sortDirection = ifElse$1(equals$1(SORT_STATE_ASCEND), always$1(ascend$1), always$1(descend$1));
+        this.result = sortWith$1(sort.orders.map((s2) => compose(sortDirection(s2.direction), prop$1)(s2.target)))(this.result);
+        return this;
+      },
+      addIndex(target = null) {
+        this.result.reduce((rows, row, index) => {
+          const lastRow = rows[rows.length - 1] || [];
+          const isSameRow = target && lastRow[target] === row[target];
+          row.index = isSameRow ? lastRow.index : index + 1;
+          row.indexClass = isSameRow ? "is-duplicated" : null;
+          rows.push(row);
+          return rows;
+        }, []);
+        return this;
+      },
+      addContinuousIndex() {
+        this.result = this.result.map((row, index) => ({
+          ...row,
+          index: index + 1
+        }));
+        return this;
+      },
+      pagination(page, limit) {
+        page = Number(page);
+        limit = Number(limit);
+        const startIndex = (page - 1) * limit;
+        const endIndex = startIndex + limit;
+        this.result = this.result.slice(startIndex, endIndex);
+        return this;
+      },
+      playerName() {
+        this.result = this.result.map((row) => ({
+          ...row,
+          name: `${row.lastName} ${row.firstName}`
+        }));
+        return this;
+      },
+      schedule(timezone2 = "", locale = "hu") {
+        this.result = this.result.map((row) => ({
+          ...row,
+          gameResult: `${row.homeTeamScore}-${row.awayTeamScore}`,
+          gameDateDate: format(row.gameDate, "L dddd", timezone2, locale),
+          gameDateTime: format(row.gameDate, "HH:mm", timezone2, locale)
+        }));
+        return this;
+      },
+      gameDateFilter(month) {
+        if (month === null)
+          return this;
+        this.result = this.result.filter((game2) => {
+          return new Date(game2.gameDate).getMonth() == month;
+        });
+        return this;
+      },
+      convertTimes(targets = []) {
+        this.result = this.result.map((row) => {
+          targets.map((key) => {
+            if (!row[key])
+              return row;
+            return row[`${key}Sec`] = convertMinToSec(row[key]);
+          });
+          return row;
+        });
+        return this;
+      },
+      groupByDays() {
+        this.result = groupBy$1((row) => {
+          return format(row.gameDate, "YYYY-MM-DD");
+        })(this.result);
+        return this;
+      }
+    };
+  };
+  const rawConvert = (data, ...fn) => map$1(compose(...fn))(data);
+  const playerName = (row) => ({
+    ...row,
+    ...row.lastName && { name: `${row.lastName} ${row.firstName}` }
+  });
+  const convertTimes = (targets = []) => (row) => {
+    targets.map((key) => {
+      if (!row[key])
+        return row;
+      return row[`${key}Sec`] = convertMinToSec(row[key]);
+    });
+    return row;
+  };
+  const dateDiff = (a2, b) => new Date(a2.gameDate).getTime() - new Date(b.gameDate).getTime();
+  const sortGames = sortWith$1([dateDiff, ascend$1(prop$1("id"))]);
+  const externalGameLinkResolver = (resolver, gameId) => {
+    var _a2;
+    if (typeof resolver === "function")
+      return resolver(gameId);
+    if (resolver)
+      return resolver + gameId;
+    if ((_a2 = window == null ? void 0 : window.__MJSZ_VBR_WIDGET__) == null ? void 0 : _a2.gameUrl)
+      return window.__MJSZ_VBR_WIDGET__.gameUrl + gameId;
+    return DEFAULT_EXTERNAL_BASE_URL + gameId;
+  };
+  const externalTeamLinkResolver = (resolver, teamName) => {
+    var _a2;
+    if (typeof resolver === "function")
+      return resolver(teamName);
+    if (resolver)
+      return encodeURI(resolver + teamName);
+    if ((_a2 = window == null ? void 0 : window.__MJSZ_VBR_WIDGET__) == null ? void 0 : _a2.gameUrl)
+      return encodeURI(window.__MJSZ_VBR_WIDGET__.teamUrl + teamName);
+    return encodeURI(DEFAULT_EXTERNAL_TEAM_URL + teamName);
+  };
+  const externalPlayerLinkResolver = (resolver, playerId) => {
+    var _a2;
+    if (typeof resolver === "function")
+      return resolver(playerId);
+    if (resolver)
+      return encodeURI(resolver + playerId);
+    if ((_a2 = window == null ? void 0 : window.__MJSZ_VBR_WIDGET__) == null ? void 0 : _a2.gameUrl)
+      return encodeURI(window.__MJSZ_VBR_WIDGET__.playerUrl + playerId);
+    return encodeURI(DEFAULT_EXTERNAL_PLAYER_URL + playerId);
+  };
+  exports.AVAILABLE_TIMEZONES_BY_COUNTRY = AVAILABLE_TIMEZONES_BY_COUNTRY;
   exports.BaseSelect = _sfc_main$h;
+  exports.DEFAULT_EXTERNAL_BASE_URL = DEFAULT_EXTERNAL_BASE_URL;
+  exports.DEFAULT_EXTERNAL_PLAYER_URL = DEFAULT_EXTERNAL_PLAYER_URL;
+  exports.DEFAULT_EXTERNAL_TEAM_URL = DEFAULT_EXTERNAL_TEAM_URL;
+  exports.DEFAULT_PORTRAIT_IMAGE_URL = DEFAULT_PORTRAIT_IMAGE_URL;
   exports.DataTable = _sfc_main$c;
   exports.ErrorNotice = _sfc_main$a;
   exports.ErrorProvider = _sfc_main$9;
   exports.FloatingPanel = _sfc_main$d;
   exports.I18NProvider = I18NProvider;
   exports.Image = _sfc_main$7;
+  exports.InvalidSeasonName = InvalidSeasonName;
+  exports.LOCALE_FOR_LANG = LOCALE_FOR_LANG;
   exports.LoadingIndicator = _sfc_main$6;
   exports.Paginator = _sfc_main$3;
+  exports.REFRESH_DELAY = REFRESH_DELAY;
   exports.ResponsiveTable = _sfc_main$2;
+  exports.SORT_STATE_ASCEND = SORT_STATE_ASCEND;
+  exports.SORT_STATE_DESCEND = SORT_STATE_DESCEND;
+  exports.SORT_STATE_ORIGINAL = SORT_STATE_ORIGINAL;
   exports.StatisticsTable = _sfc_main;
   exports.TimezoneSelector = _sfc_main$1;
+  exports.UndefinedColumn = UndefinedColumn;
+  exports.VBR_API_GOALIE_PATH = VBR_API_GOALIE_PATH;
+  exports.VBR_API_GOALIE_UNDER_PATH = VBR_API_GOALIE_UNDER_PATH;
+  exports.WidgetError = WidgetError;
+  exports.appendTo = appendTo;
+  exports.convert = convert;
+  exports.convertMinToSec = convertMinToSec;
+  exports.convertTimes = convertTimes;
+  exports.externalGameLinkResolver = externalGameLinkResolver;
+  exports.externalPlayerLinkResolver = externalPlayerLinkResolver;
+  exports.externalTeamLinkResolver = externalTeamLinkResolver;
   exports.fetchVBRData = fetchVBRData;
+  exports.format = format;
+  exports.isBetween = isBetween;
+  exports.isSame = isSame;
+  exports.isSameOrBefore = isSameOrBefore;
+  exports.offsetName = offsetName;
+  exports.playerName = playerName;
+  exports.rawConvert = rawConvert;
+  exports.sortGames = sortGames;
+  exports.toKebabCase = toKebabCase;
   exports.useError = useError;
   exports.useErrorProvider = useErrorProvider;
   exports.useSort = useSort;

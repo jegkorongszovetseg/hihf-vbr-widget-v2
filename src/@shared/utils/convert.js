@@ -16,10 +16,10 @@ import {
   toLower,
   groupBy,
 } from 'ramda';
-import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../@shared/constants.js';
+import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../constants.js';
 import { format, convertMinToSec } from './datetime.js';
 
-const convert = (data = []) => {
+export const convert = (data = []) => {
   return {
     result: [...data],
     filteredRowsLength: 0,
@@ -128,8 +128,6 @@ const convert = (data = []) => {
     },
   };
 };
-
-export default convert;
 
 export const rawConvert = (data, ...fn) => map(compose(...fn))(data);
 

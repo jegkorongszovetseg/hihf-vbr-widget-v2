@@ -1,12 +1,12 @@
 <script setup>
 import { computed } from 'vue';
-import { useColumns } from '../../composables/useColumns.js';
-import ResponsiveTable from '../ResponsiveTable.vue';
-import { useError } from '../../composables/useErrors';
-import * as Errors from '../../utils/errors';
-import { DEFAULT_PORTRAIT_IMAGE_URL } from '../../@shared/constantsonstants';
-import DataTable from '../DataTable.vue';
-import Image from '../Image.vue';
+import { useColumns } from '../composables/useColumns.js';
+import { useError } from '../composables/useErrors';
+import * as Errors from '../utils/errors';
+import { DEFAULT_PORTRAIT_IMAGE_URL } from '../constants';
+import ResponsiveTable from './ResponsiveTable.vue';
+import DataTable from './DataTable.vue';
+import Image from './Image.vue';
 
 const props = defineProps({
   columns: {
@@ -93,7 +93,7 @@ const onSort = (payload) => emit('sort', payload);
         </div>
       </template>
       <template v-slot:cell-teamLogo="{ row }">
-        <Image class="is-logo-image" :key="row.teamId" :src="row.teamLogo" />
+        <Image class="is-logo-image" :key="row.teamId || row.id" :src="row.teamLogo" />
       </template>
       <template v-if="isTeamLinked" v-slot:cell-teamName="{ row }">
         <a :href="externalTeamResolver(row.teamName)" target="_blank">{{ row.teamName }}</a>

@@ -10,7 +10,7 @@ import { baseProps, teamStatsProps } from './internal.props';
 import { SORT_STATE_DESCEND } from '../../@shared/constantsonstants';
 import I18NProvider from '../I18NProvider.vue';
 import ErrorNotice from '../ErrorNotice.vue';
-import StatisticsTable from './StatisticsTable.vue';
+import StatisticsTable from '../@shared/components/StatisticsTable.vue';
 
 const props = defineProps({
   ...baseProps,

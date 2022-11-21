@@ -11,7 +11,7 @@ import { baseProps, playerStatsProps } from './internal.props';
 import { externalPlayerLinkResolver, externalTeamLinkResolver } from '../../utils/resolvers';
 import I18NProvider from '../I18NProvider.vue';
 import ErrorNotice from '../ErrorNotice.vue';
-import StatisticsTable from './StatisticsTable.vue';
+import StatisticsTable from '../@shared/components/StatisticsTable.vue';
 import Paginator from '../Paginator.vue';
 import { useErrorProvider } from '../../composables/useErrors';
 
