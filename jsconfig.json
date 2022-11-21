@@ -4,10 +4,10 @@
     "module": "ES6",
     "baseUrl": "./",
     "paths": {
-      "@VbrWidget/core/*": ["src/@core/*"],
-      "@VbrWidget/core/components/*": ["src/@core/components/*"],
-      "@VbrWidget/core/composables/*": ["src/@core/composables/*"],
-      "@VbrWidget/core/utils/*": ["src/@core/utils/*"],
+      "@VbrWidget/core": ["src/@core/index.js"],
+      "@VbrWidget/components": ["src/@core/components/index.js"],
+      "@VbrWidget/composables": ["src/@core/composables/index.js"],
+      "@VbrWidget/utils": ["src/@core/utils/index.js"],
       "vue": ["node_modules/vue/*"],
       "@vueuse/core": ["node_modules/@vueuse/core/*"]
     }

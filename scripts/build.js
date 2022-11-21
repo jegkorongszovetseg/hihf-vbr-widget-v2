@@ -27,9 +27,9 @@ const builds = [
     external: ['@VbrWidget/core', '@VbrWidget/core/components', '@VbrWidget/core/composables', '@VbrWidget/core/utils'],
     globals: {
       '@VbrWidget/core': 'MjszWidgetCore',
-      '@VbrWidget/core/components': 'MjszWidgetCore',
-      '@VbrWidget/core/composables': 'MjszWidgetCore',
-      '@VbrWidget/core/utils': 'MjszWidgetCore',
+      '@VbrWidget/components': 'MjszWidgetCore',
+      '@VbrWidget/composables': 'MjszWidgetCore',
+      '@VbrWidget/utils': 'MjszWidgetCore',
     },
   },
 ];
