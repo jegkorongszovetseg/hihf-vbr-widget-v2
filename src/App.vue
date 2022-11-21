@@ -11,7 +11,7 @@ import { ref } from 'vue';
 // import TeamPenaltyKilling from './components/widgets/TeamPenaltyKilling.ce.vue';
 // import TeamPowerplay from './components/widgets/TeamPowerplay.ce.vue';
 // import TeamScoringEfficiency from './components/widgets/TeamScoringEfficiency.ce.vue';
-import ScheduleLiga from './components/widgets/extended/schedule/ScheduleLiga.ce.vue';
+import ScheduleLiga from './@widgets-extended/schedule/ScheduleLiga.ce.vue';
 
 const locale = ref('hu');
 const change = () => {

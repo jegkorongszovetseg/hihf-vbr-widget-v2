@@ -3,7 +3,7 @@ import { reactive, computed, unref, toRef } from 'vue';
 import { useAsyncQueue, useTimeoutFn, useTimeoutPoll, useUrlSearchParams } from '@vueuse/core';
 import { useServices } from '@/composables/useServices';
 import { useError } from '@/composables/useErrors';
-import { transformSeasons, transformSections, transformTeams } from '@/components/widgets/extended/internal';
+import { transformSeasons, transformSections, transformTeams } from '@/@extended/internal';
 import convert, { sortGames } from '@/utils/convert';
 import { REFRESH_DELAY } from '@/@shared/constantsonstants';
 import { useCollectMonths } from './schedule.internal.js';
