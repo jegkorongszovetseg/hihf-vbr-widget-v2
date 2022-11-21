@@ -1,10 +1,10 @@
 /*!
   * MJSZ VBR Widgets v2.0.0-alpha.1
   * (c) 2022 Akos Stegner
-  * Released: 21/11/2022, 19:40:48
+  * Released: 21/11/2022, 20:30:17
   * Released under the MIT License.
   */
-var Widgets = function(exports, vue, _shared, components, _columns) {
+var MjszWidgetElements = function(exports, vue, composables, utils, core, components) {
   "use strict";
   var _a;
   const isClient = typeof window !== "undefined";
@@ -304,14 +304,14 @@ var Widgets = function(exports, vue, _shared, components, _columns) {
     },
     setup(__props) {
       const props = __props;
-      const { onError, error, hasError } = _shared.useErrorProvider();
+      const { onError, error, hasError } = composables.useErrorProvider();
       const locale = vue.computed(() => props.locale);
       const {
         state: rows,
         error: apiError,
         isLoading
       } = useAsyncState(
-        () => _shared.fetchVBRData("/v1/standings", props.apiKey, {
+        () => composables.fetchVBRData("/v1/standings", props.apiKey, {
           championshipId: Number(props.championshipId),
           division: props.division
         }),
@@ -320,13 +320,13 @@ var Widgets = function(exports, vue, _shared, components, _columns) {
           onError: (error2) => onError(error2)
         }
       );
-      const { sort, change } = _shared.useSort();
+      const { sort, change } = composables.useSort();
       const convertedRows = vue.computed(() => {
-        return _shared.convert(vue.unref(rows)).sorted(sort).addContinuousIndex().value();
+        return utils.convert(vue.unref(rows)).sorted(sort).addContinuousIndex().value();
       });
-      const currentColumns = vue.computed(() => props.type === "3" ? _shared.COLUMNS_STANDINGS_P_3 : _shared.COLUMNS_STANDINGS_P_2);
+      const currentColumns = vue.computed(() => props.type === "3" ? core.COLUMNS_STANDINGS_P_3 : core.COLUMNS_STANDINGS_P_2);
       const onSort = (payload) => change(payload);
-      const resolveExternalTeamLink = (teamName) => _shared.externalTeamLinkResolver(props.externalTeamLink, teamName);
+      const resolveExternalTeamLink = (teamName) => utils.externalTeamLinkResolver(props.externalTeamLink, teamName);
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", null, [
           vue.createVNode(vue.unref(components.I18NProvider), { locale: vue.unref(locale) }, {
@@ -509,7 +509,7 @@ var Widgets = function(exports, vue, _shared, components, _columns) {
       },
       externalBaseUrl: {
         type: String,
-        default: _shared.DEFAULT_EXTERNAL_BASE_URL
+        default: core.DEFAULT_EXTERNAL_BASE_URL
       },
       hideColumns: {
         type: String,
@@ -526,34 +526,34 @@ var Widgets = function(exports, vue, _shared, components, _columns) {
     },
     setup(__props) {
       const props = __props;
-      const { onError } = _shared.useError();
-      const { columns, error } = _shared.useColumns(_columns.COLUMNS_SCHEDULE, props.hideColumns, { offsetName: props.offsetName });
+      const { onError } = composables.useError();
+      const { columns, error } = composables.useColumns(core.COLUMNS_SCHEDULE, props.hideColumns, { offsetName: props.offsetName });
       if (error.value)
         onError(
-          new _shared.WidgetError(_shared.UndefinedColumn.message, {
-            ..._shared.UndefinedColumn.options,
+          new utils.WidgetError(utils.UndefinedColumn.message, {
+            ...utils.UndefinedColumn.options,
             cause: { column: error.value }
           })
         );
-      const { t } = _shared.useI18n();
+      const { t } = composables.useI18n();
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createBlock(vue.unref(_shared.ResponsiveTable), null, {
+        return vue.openBlock(), vue.createBlock(vue.unref(components.ResponsiveTable), null, {
           default: vue.withCtx(({ el: rootElement }) => [
-            vue.createVNode(vue.unref(_shared.DataTable), {
+            vue.createVNode(vue.unref(components.DataTable), {
               columns: vue.unref(columns),
               rows: props.rows,
               "is-loading": __props.isLoading,
               "append-to": rootElement
             }, {
               "cell-homeTeamLogo": vue.withCtx(({ row }) => [
-                (vue.openBlock(), vue.createBlock(vue.unref(_shared.Image), {
+                (vue.openBlock(), vue.createBlock(vue.unref(components.Image), {
                   class: "is-logo-image is-right",
                   key: row.id,
                   src: row.homeTeamLogo
                 }, null, 8, ["src"]))
               ]),
               "cell-awayTeamLogo": vue.withCtx(({ row }) => [
-                (vue.openBlock(), vue.createBlock(vue.unref(_shared.Image), {
+                (vue.openBlock(), vue.createBlock(vue.unref(components.Image), {
                   class: "is-logo-image is-right",
                   key: row.id,
                   src: row.awayTeamLogo
@@ -576,7 +576,7 @@ var Widgets = function(exports, vue, _shared, components, _columns) {
                 row.broadcast ? (vue.openBlock(), vue.createBlock(IconBroadcast, { key: 0 })) : (vue.openBlock(), vue.createElementBlock("span", _hoisted_6))
               ]),
               "cell-more": vue.withCtx(({ row }) => [
-                vue.createVNode(vue.unref(_shared.FloatingPanel), {
+                vue.createVNode(vue.unref(components.FloatingPanel), {
                   offset: 2,
                   placement: "left",
                   theme: "content",
@@ -670,14 +670,14 @@ var Widgets = function(exports, vue, _shared, components, _columns) {
     },
     setup(__props) {
       const props = __props;
-      const { onError, error, hasError } = _shared.useErrorProvider();
+      const { onError, error, hasError } = composables.useErrorProvider();
       const locale = vue.computed(() => props.locale);
       const {
         state: rawRows,
         isLoading,
         execute
       } = useAsyncState(
-        () => _shared.fetchVBRData("/v1/gamesList", props.apiKey, {
+        () => composables.fetchVBRData("/v1/gamesList", props.apiKey, {
           championshipId: props.championshipId,
           division: props.division
         }),
@@ -691,18 +691,18 @@ var Widgets = function(exports, vue, _shared, components, _columns) {
           }
         }
       );
-      const rows = vue.computed(() => _shared.sortGames(rawRows.value));
-      const { pause, resume } = useTimeoutPoll(execute, _shared.REFRESH_DELAY, { immediate: false });
-      const { page, change: onPaginatorChange } = _shared.usePage({
+      const rows = vue.computed(() => utils.sortGames(rawRows.value));
+      const { pause, resume } = useTimeoutPoll(execute, core.REFRESH_DELAY, { immediate: false });
+      const { page, change: onPaginatorChange } = composables.usePage({
         initial: props.initialPage,
         items: rows,
         limit: props.limit,
         auto: props.autoInitialPage
       });
-      const timezone = vue.ref(_shared.getLocalTimezone());
-      const currentOffsetName = _shared.offsetName(new Date(), vue.unref(timezone), props.locale);
+      const timezone = vue.ref(utils.getLocalTimezone());
+      const currentOffsetName = composables.offsetName(new Date(), vue.unref(timezone), props.locale);
       const convertedRows = vue.computed(() => {
-        return _shared.convert(vue.unref(rows)).filter(props.teamFilterByName, ["homeTeamName", "awayTeamName"]).schedule(vue.unref(timezone), vue.unref(locale)).pagination(vue.unref(page), props.limit).value();
+        return utils.convert(vue.unref(rows)).filter(props.teamFilterByName, ["homeTeamName", "awayTeamName"]).schedule(vue.unref(timezone), vue.unref(locale)).pagination(vue.unref(page), props.limit).value();
       });
       if (props.autoRefresh) {
         resume();
@@ -720,18 +720,18 @@ var Widgets = function(exports, vue, _shared, components, _columns) {
       const onTimezoneChange = (tz) => {
         timezone.value = tz;
       };
-      const resolveExternalGameLink = (gameId) => _shared.externalGameLinkResolver(props.externalGameLink, gameId);
+      const resolveExternalGameLink = (gameId) => core.externalGameLinkResolver(props.externalGameLink, gameId);
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", null, [
-          vue.createVNode(vue.unref(_shared.I18NProvider), {
+          vue.createVNode(vue.unref(components.I18NProvider), {
             locale: props.locale
           }, {
             default: vue.withCtx(() => [
-              vue.unref(hasError) ? (vue.openBlock(), vue.createBlock(vue.unref(_shared.ErrorNotice), {
+              vue.unref(hasError) ? (vue.openBlock(), vue.createBlock(vue.unref(components.ErrorNotice), {
                 key: 0,
                 error: vue.unref(error)
               }, null, 8, ["error"])) : vue.createCommentVNode("", true),
-              __props.timezoneSelector ? (vue.openBlock(), vue.createBlock(vue.unref(_shared.TimezoneSelector), {
+              __props.timezoneSelector ? (vue.openBlock(), vue.createBlock(vue.unref(components.TimezoneSelector), {
                 key: props.locale,
                 locale: props.locale,
                 "current-zone": timezone.value,
@@ -744,7 +744,7 @@ var Widgets = function(exports, vue, _shared, components, _columns) {
                 "hide-columns": props.hideColumns,
                 "external-game-resolver": resolveExternalGameLink
               }, null, 8, ["rows", "is-loading", "offset-name", "hide-columns"]),
-              vue.createVNode(vue.unref(_shared.Paginator), {
+              vue.createVNode(vue.unref(components.Paginator), {
                 page: vue.unref(page),
                 "items-per-page": props.limit,
                 "total-items": vue.unref(totalItems),
@@ -769,10 +769,9 @@ var Widgets = function(exports, vue, _shared, components, _columns) {
     customElements.define("mjsz-vbr-standings", StandingsCE);
     customElements.define("mjsz-vbr-schedule", ScheduleCE);
   }
-  exports.ScheduleCE = ScheduleCE;
   exports.StandingsCE = StandingsCE;
   exports.register = register;
   exports.setup = setup;
   Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
   return exports;
-}({}, Vue, Shared, Shared, Shared);
+}({}, Vue, MjszWidgetCore, MjszWidgetCore, MjszWidgetCore, MjszWidgetCore);

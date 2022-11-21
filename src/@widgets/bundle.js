@@ -11,7 +11,7 @@ export const setup = ({ apiKey }) => {
 const StandingsCE = defineCustomElement(Standings);
 const ScheduleCE = defineCustomElement(Schedule);
 
-export { StandingsCE, ScheduleCE };
+export { StandingsCE };
 
 export function register() {
   customElements.define('mjsz-vbr-standings', StandingsCE);

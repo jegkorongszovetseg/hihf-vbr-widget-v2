@@ -1,12 +1,11 @@
 <script setup>
 import { computed, ref, unref, watch } from 'vue';
 import { useAsyncState, useDocumentVisibility, useTimeoutPoll } from '@vueuse/core';
-import { getLocalTimezone } from '@shared';
-import { offsetName, useErrorProvider, usePage, fetchVBRData } from '@shared';
-import { convert, sortGames } from '@shared';
+import { offsetName, useErrorProvider, usePage, fetchVBRData } from '@VbrWidget/core/composables';
+import { convert, sortGames, getLocalTimezone } from '@VbrWidget/core/utils';
+import { REFRESH_DELAY, externalGameLinkResolver } from '@VbrWidget/core';
+import { I18NProvider, Paginator, ErrorNotice, TimezoneSelector } from '@VbrWidget/core/components';
 import { baseProps } from './internal.props';
-import { REFRESH_DELAY, externalGameLinkResolver } from '@shared';
-import { I18NProvider, Paginator, ErrorNotice, TimezoneSelector } from '@shared';
 import ScheduleTable from './ScheduleTable.vue';
 
 const props = defineProps({

@@ -11,8 +11,8 @@
   <!-- <script src="https://unpkg.com/petite-vue@0.2.2/dist/petite-vue.iife.js" defer init></script> -->
 
   <!-- <script crossorigin src="/mjsz-vbr-widget.iife.js"></script> -->
-  <script src="/mjsz-vbr-shared.iife.js"></script>
-  <script src="/mjsz-vbr-widgets.iife.js"></script>
+  <script src="/mjsz-vbr-core.iife.js"></script>
+  <script src="/mjsz-vbr-elements.iife.js"></script>
   <!-- <script type="module" src="./mjsz-vbr-widget.esm.js"></script> -->
   <!-- <link rel="stylesheet" href="/style.css"> -->
   <style>
@@ -38,7 +38,7 @@
     // MjszVbrWidget.setup({
     //   apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62'
     // })
-    Shared.createConfig({ modules: [Widgets], apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62'})
+    MjszWidgetCore.createConfig({ modules: [MjszWidgetElements], apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62'})
     // Widgets.setup({
     //   apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62'
     // })

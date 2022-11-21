@@ -1,16 +1,14 @@
 <script setup>
 import { computed, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
-import { fetchVBRData } from '@shared';
-import { useErrorProvider } from '@shared';
-import { useSort } from '@shared';
-import { convert } from '@shared';
-import { externalTeamLinkResolver } from '@shared';
-import { COLUMNS_STANDINGS_P_2, COLUMNS_STANDINGS_P_3 } from '@shared';
-import { baseProps, teamStatsProps } from './internal.props';
+// import { fetchVBRData } from '@shared';
+// import { useErrorProvider } from '@shared';
+import { useSort, useErrorProvider, fetchVBRData } from '@VbrWidget/core/composables';
+// import { convert } from '@shared';
+import { externalTeamLinkResolver, convert } from '@VbrWidget/core/utils';
+import { COLUMNS_STANDINGS_P_2, COLUMNS_STANDINGS_P_3 } from '@VbrWidget/core';
 import { I18NProvider, ErrorNotice, StatisticsTable } from '@VbrWidget/core/components';
-// import { ErrorNotice } from '@shared';
-// import { StatisticsTable } from '@shared';
+import { baseProps, teamStatsProps } from './internal.props';
 
 const props = defineProps({
   ...baseProps,

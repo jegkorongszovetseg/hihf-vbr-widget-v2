@@ -1,10 +1,10 @@
 /*!
   * MJSZ VBR Widgets v2.0.0-alpha.1
   * (c) 2022 Akos Stegner
-  * Released: 21/11/2022, 19:40:48
+  * Released: 21/11/2022, 20:30:17
   * Released under the MIT License.
   */
-var Shared = function(exports, vue) {
+var MjszWidgetCore = function(exports, vue) {
   "use strict";
   const useMainClass = (className) => {
     const prefix = "mjsz-vbr-";
@@ -5859,7 +5859,7 @@ var Shared = function(exports, vue) {
   const createConfig = ({ apiKey, modules = [] }) => {
     window.__MJSZ_VBR_WIDGET__ = { apiKey };
     if (modules.length === 0)
-      throw new Error("Hi\xE1nyzik legal\xE1bb egy Widget modul");
+      throw new Error("At least one module must be set");
     modules.forEach((item) => {
       item == null ? void 0 : item.register();
     });

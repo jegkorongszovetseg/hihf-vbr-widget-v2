@@ -14,18 +14,23 @@ const banner = `/*!
 
 const builds = [
   {
-    entry: path.resolve(__dirname, '../src/@shared/index.js'),
-    name: 'Shared',
-    fileName: (format) => `mjsz-vbr-shared.${format}.js`,
+    entry: path.resolve(__dirname, '../src/@core/index.js'),
+    name: 'MjszWidgetCore',
+    fileName: (format) => `mjsz-vbr-core.${format}.js`,
     external: [],
     globals: {},
   },
   {
     entry: path.resolve(__dirname, '../src/@widgets/bundle.js'),
-    name: 'Widgets',
-    fileName: (format) => `mjsz-vbr-widgets.${format}.js`,
-    external: ['@shared', '@columns', '@VbrWidget/core/components'],
-    globals: { '@shared': 'Shared', '@columns': 'Shared', '@VbrWidget/core/components': 'Shared' },
+    name: 'MjszWidgetElements',
+    fileName: (format) => `mjsz-vbr-elements.${format}.js`,
+    external: ['@VbrWidget/core', '@VbrWidget/core/components', '@VbrWidget/core/composables', '@VbrWidget/core/utils'],
+    globals: {
+      '@VbrWidget/core': 'MjszWidgetCore',
+      '@VbrWidget/core/components': 'MjszWidgetCore',
+      '@VbrWidget/core/composables': 'MjszWidgetCore',
+      '@VbrWidget/core/utils': 'MjszWidgetCore',
+    },
   },
 ];
 

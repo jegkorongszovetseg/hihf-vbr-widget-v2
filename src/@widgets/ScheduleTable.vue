@@ -1,10 +1,8 @@
 <script setup>
-import { useColumns, useI18n, useError } from '@shared';
-import { COLUMNS_SCHEDULE } from '@columns';
-import { DEFAULT_EXTERNAL_BASE_URL } from '@shared';
-import { WidgetError, UndefinedColumn } from '@shared';
-import { ResponsiveTable, Image, DataTable } from '@shared';
-import { FloatingPanel } from '@shared';
+import { useColumns, useI18n, useError } from '@VbrWidget/core/composables';
+import { COLUMNS_SCHEDULE, DEFAULT_EXTERNAL_BASE_URL } from '@VbrWidget/core';
+import { WidgetError, UndefinedColumn } from '@VbrWidget/core/utils';
+import { FloatingPanel, ResponsiveTable, Image, DataTable } from '@VbrWidget/core/components';
 import IconBroadcast from '../@core/icons/IconBroadcast.vue';
 import IconMore from '../@core/icons/IconMore.vue';
 import IconSheet from '../@core/icons/IconSheet.vue';
