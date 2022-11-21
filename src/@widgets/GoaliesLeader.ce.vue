@@ -5,7 +5,7 @@ import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
 import { usePage } from '../../composables/usePage';
 import convert, { convertTimes, playerName, rawConvert } from '../../utils/convert';
-import { COLUMNS_GOALIES } from './internal';
+import { COLUMNS_GOALIES } from '../@shared/columns';
 import { SORT_STATE_DESCEND, VBR_API_GOALIE_PATH, VBR_API_GOALIE_UNDER_PATH } from '../../@shared/constantsonstants';
 import { baseProps, playerStatsProps } from './internal.props';
 import { externalPlayerLinkResolver, externalTeamLinkResolver } from '../../utils/resolvers';

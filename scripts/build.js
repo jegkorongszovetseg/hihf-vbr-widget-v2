@@ -24,8 +24,8 @@ const builds = [
     entry: path.resolve(__dirname, '../src/@widgets/bundle.js'),
     name: 'Widgets',
     fileName: (format) => `mjsz-vbr-widgets.${format}.js`,
-    external: ['@shared'],
-    globals: { ['@shared']: 'Shared' },
+    external: ['@shared', '@columns', '@VbrWidget/core/components'],
+    globals: { '@shared': 'Shared', '@columns': 'Shared', '@VbrWidget/core/components': 'Shared' },
   },
 ];
 

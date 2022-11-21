@@ -24,6 +24,8 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@shared': path.resolve(__dirname, './src/@shared/'),
+        '@columns': path.resolve(__dirname, './src/@shared/columns'),
+        '@VbrWidget/core/components': path.resolve(__dirname, './src/@shared/components/index.js'),
       },
     },
     css: {

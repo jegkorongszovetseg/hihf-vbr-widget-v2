@@ -1,6 +1,6 @@
 <script setup>
 import { useColumns, useI18n, useError } from '@shared';
-import { COLUMNS_SCHEDULE } from './internal';
+import { COLUMNS_SCHEDULE } from '@columns';
 import { DEFAULT_EXTERNAL_BASE_URL } from '@shared';
 import { WidgetError, UndefinedColumn } from '@shared';
 import { ResponsiveTable, Image, DataTable } from '@shared';

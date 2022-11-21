@@ -5,7 +5,7 @@ import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
 import { useErrorProvider } from '../../composables/useErrors';
 import convert from '../../utils/convert';
-import { COLUMNS_TEAMS_FAIRPLAY } from './internal';
+import { COLUMNS_TEAMS_FAIRPLAY } from '../@shared/columns';
 import { baseProps, teamStatsProps } from './internal.props';
 import { SORT_STATE_DESCEND } from '../../@shared/constantsonstants';
 import I18NProvider from '../I18NProvider.vue';

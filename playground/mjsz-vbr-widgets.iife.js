@@ -1,10 +1,10 @@
 /*!
   * MJSZ VBR Widgets v2.0.0-alpha.1
   * (c) 2022 Akos Stegner
-  * Released: 21/11/2022, 14:14:22
+  * Released: 21/11/2022, 17:59:26
   * Released under the MIT License.
   */
-var Widgets = function(exports, vue, _shared) {
+var Widgets = function(exports, vue, _shared, components, _columns) {
   "use strict";
   var _a;
   const isClient = typeof window !== "undefined";
@@ -249,189 +249,6 @@ var Widgets = function(exports, vue, _shared) {
   __spreadValues({
     linear: identity
   }, _TransitionPresets);
-  const COLUMNS_SCHEDULE = {
-    name: {
-      label: "table.gameName.short",
-      tooltip: "table.gameName.tooltip",
-      class: "is-text-left is-text-light"
-    },
-    gameDateDate: {
-      label: "table.gameDate.short",
-      tooltip: "table.gameDate.tooltip",
-      class: "is-text-left"
-    },
-    gameDateTime: {
-      label: "table.gameDateTime.short",
-      tooltip: "table.gameDateTime.tooltip",
-      class: "is-text-left"
-    },
-    homeTeamName: {
-      label: "table.homeTeam.short",
-      tooltip: "table.homeTeam.tooltip",
-      class: "is-text-right is-w-auto is-text-bold"
-    },
-    homeTeamLogo: {
-      label: "",
-      class: "is-has-image"
-    },
-    gameResult: {
-      label: "",
-      class: "is-text-bold is-text-xl"
-    },
-    gameResultType: {
-      label: "",
-      tooltip: ""
-    },
-    awayTeamLogo: {
-      label: "",
-      class: "is-has-image"
-    },
-    awayTeamName: {
-      label: "table.awayTeam.short",
-      tooltip: "table.awayTeam.tooltip",
-      class: "is-text-left is-w-auto is-text-bold"
-    },
-    location: {
-      label: "table.location.short",
-      tooltip: "table.location.tooltip",
-      class: "is-text-left"
-    },
-    broadcast: {
-      label: "table.broadcast.short",
-      tooltip: "table.broadcast.tooltip"
-    },
-    more: {
-      label: ""
-    }
-  };
-  const COLUMNS_STANDINGS_P_3 = {
-    index: {
-      label: "table.blank",
-      class: "is-text-left"
-    },
-    teamLogo: {
-      label: "",
-      class: "is-has-image"
-    },
-    teamName: {
-      label: "table.team.short",
-      tooltip: "table.team.tooltip",
-      class: "is-text-left is-w-auto is-text-bold",
-      sortOrders: [{ target: "teamName", direction: _shared.SORT_STATE_ASCEND }]
-    },
-    m: {
-      label: "table.game.short",
-      tooltip: "table.game.tooltip",
-      sortOrders: [{ target: "m", direction: _shared.SORT_STATE_DESCEND }]
-    },
-    p3: {
-      label: "table.wins.short",
-      tooltip: "table.wins.tooltip",
-      sortOrders: [
-        { target: "p3", direction: _shared.SORT_STATE_DESCEND },
-        { target: "p2", direction: _shared.SORT_STATE_DESCEND }
-      ]
-    },
-    p2: {
-      label: "table.otw.short",
-      tooltip: "table.otw.tooltip",
-      sortOrders: [{ target: "p2", direction: _shared.SORT_STATE_DESCEND }]
-    },
-    p1: {
-      label: "table.otl.short",
-      tooltip: "table.otl.tooltip",
-      sortOrders: [{ target: "p1", direction: _shared.SORT_STATE_ASCEND }]
-    },
-    p0: {
-      label: "table.losses.short",
-      tooltip: "table.losses.tooltip",
-      sortOrders: [{ target: "p0", direction: _shared.SORT_STATE_ASCEND }]
-    },
-    plus: {
-      label: "table.goalFor.short",
-      tooltip: "table.goalFor.tooltip",
-      sortOrders: [{ target: "plus", direction: _shared.SORT_STATE_DESCEND }]
-    },
-    minus: {
-      label: "table.goalAgainst.short",
-      tooltip: "table.goalAgainst.tooltip",
-      sortOrders: [{ target: "minus", direction: _shared.SORT_STATE_ASCEND }]
-    },
-    gk: {
-      label: "table.goalDiff.short",
-      tooltip: "table.goalDiff.tooltip",
-      sortOrders: [{ target: "gk", direction: _shared.SORT_STATE_DESCEND }]
-    },
-    p: {
-      label: "table.points.short",
-      tooltip: "table.points.tooltip",
-      class: "is-text-bold",
-      sortOrders: [{ target: "p", direction: _shared.SORT_STATE_DESCEND }]
-    }
-  };
-  const COLUMNS_STANDINGS_P_2 = {
-    index: {
-      label: "#",
-      class: "is-text-left"
-    },
-    teamLogo: {
-      label: "",
-      class: "is-has-image"
-    },
-    teamName: {
-      label: "table.team.short",
-      tooltip: "table.team.tooltip",
-      class: "is-text-left is-w-auto is-text-bold",
-      sortOrders: [{ target: "teamName", direction: _shared.SORT_STATE_ASCEND }]
-    },
-    m: {
-      label: "table.game.short",
-      tooltip: "table.game.tooltip",
-      sortOrders: [{ target: "m", direction: _shared.SORT_STATE_DESCEND }]
-    },
-    p2: {
-      label: "table.wins.short",
-      tooltip: "table.wins.tooltip",
-      sortOrders: [
-        { target: "p2", direction: _shared.SORT_STATE_DESCEND },
-        { target: "p1", direction: _shared.SORT_STATE_DESCEND }
-      ]
-    },
-    p1: {
-      label: "table.draw.short",
-      tooltip: "table.draw.tooltip",
-      sortOrders: [
-        { target: "p1", direction: _shared.SORT_STATE_DESCEND },
-        { target: "p2", direction: _shared.SORT_STATE_DESCEND }
-      ]
-    },
-    p0: {
-      label: "table.losses.short",
-      tooltip: "table.losses.tooltip",
-      sortOrders: [{ target: "p0", direction: _shared.SORT_STATE_ASCEND }]
-    },
-    plus: {
-      label: "table.goalFor.short",
-      tooltip: "table.goalFor.tooltip",
-      sortOrders: [{ target: "plus", direction: _shared.SORT_STATE_DESCEND }]
-    },
-    minus: {
-      label: "table.goalAgainst.short",
-      tooltip: "table.goalAgainst.tooltip",
-      sortOrders: [{ target: "minus", direction: _shared.SORT_STATE_ASCEND }]
-    },
-    gk: {
-      label: "table.goalDiff.short",
-      tooltip: "table.goalDiff.tooltip",
-      sortOrders: [{ target: "gk", direction: _shared.SORT_STATE_DESCEND }]
-    },
-    p: {
-      label: "table.points.short",
-      tooltip: "table.points.tooltip",
-      class: "is-text-bold",
-      sortOrders: [{ target: "p", direction: _shared.SORT_STATE_DESCEND }]
-    }
-  };
   const baseProps = {
     locale: {
       type: String,
@@ -507,18 +324,18 @@ var Widgets = function(exports, vue, _shared) {
       const convertedRows = vue.computed(() => {
         return _shared.convert(vue.unref(rows)).sorted(sort).addContinuousIndex().value();
       });
-      const currentColumns = vue.computed(() => props.type === "3" ? COLUMNS_STANDINGS_P_3 : COLUMNS_STANDINGS_P_2);
+      const currentColumns = vue.computed(() => props.type === "3" ? _shared.COLUMNS_STANDINGS_P_3 : _shared.COLUMNS_STANDINGS_P_2);
       const onSort = (payload) => change(payload);
       const resolveExternalTeamLink = (teamName) => _shared.externalTeamLinkResolver(props.externalTeamLink, teamName);
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", null, [
-          vue.createVNode(vue.unref(_shared.I18NProvider), { locale: vue.unref(locale) }, {
+          vue.createVNode(vue.unref(components.I18NProvider), { locale: vue.unref(locale) }, {
             default: vue.withCtx(() => [
-              vue.unref(hasError) ? (vue.openBlock(), vue.createBlock(vue.unref(_shared.ErrorNotice), {
+              vue.unref(hasError) ? (vue.openBlock(), vue.createBlock(vue.unref(components.ErrorNotice), {
                 key: 0,
                 error: vue.unref(error)
               }, null, 8, ["error"])) : vue.createCommentVNode("", true),
-              vue.createVNode(vue.unref(_shared.StatisticsTable), {
+              vue.createVNode(vue.unref(components.StatisticsTable), {
                 columns: vue.unref(currentColumns),
                 rows: vue.unref(convertedRows).rows,
                 "is-loading": vue.unref(isLoading),
@@ -710,7 +527,7 @@ var Widgets = function(exports, vue, _shared) {
     setup(__props) {
       const props = __props;
       const { onError } = _shared.useError();
-      const { columns, error } = _shared.useColumns(COLUMNS_SCHEDULE, props.hideColumns, { offsetName: props.offsetName });
+      const { columns, error } = _shared.useColumns(_columns.COLUMNS_SCHEDULE, props.hideColumns, { offsetName: props.offsetName });
       if (error.value)
         onError(
           new _shared.WidgetError(_shared.UndefinedColumn.message, {
@@ -882,8 +699,7 @@ var Widgets = function(exports, vue, _shared) {
         limit: props.limit,
         auto: props.autoInitialPage
       });
-      const tz = _shared.getLocalTimezone();
-      const timezone = vue.ref(tz);
+      const timezone = vue.ref(_shared.getLocalTimezone());
       const currentOffsetName = _shared.offsetName(new Date(), vue.unref(timezone), props.locale);
       const convertedRows = vue.computed(() => {
         return _shared.convert(vue.unref(rows)).filter(props.teamFilterByName, ["homeTeamName", "awayTeamName"]).schedule(vue.unref(timezone), vue.unref(locale)).pagination(vue.unref(page), props.limit).value();
@@ -901,8 +717,8 @@ var Widgets = function(exports, vue, _shared) {
         var _a2;
         return (_a2 = convertedRows.value) == null ? void 0 : _a2.totalItems;
       });
-      const onTimezoneChange = (tz2) => {
-        timezone.value = tz2;
+      const onTimezoneChange = (tz) => {
+        timezone.value = tz;
       };
       const resolveExternalGameLink = (gameId) => _shared.externalGameLinkResolver(props.externalGameLink, gameId);
       return (_ctx, _cache) => {
@@ -959,4 +775,4 @@ var Widgets = function(exports, vue, _shared) {
   exports.setup = setup;
   Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
   return exports;
-}({}, Vue, Shared);
+}({}, Vue, Shared, Shared, Shared);

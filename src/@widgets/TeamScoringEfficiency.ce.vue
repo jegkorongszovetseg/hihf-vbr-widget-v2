@@ -5,7 +5,7 @@ import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import { useErrorProvider } from '../../composables/useErrors';
 import useSort from '../../composables/useSort';
 import convert from '../../utils/convert';
-import { COLUMNS_SCORING_EFFICIENCY } from './internal';
+import { COLUMNS_SCORING_EFFICIENCY } from '../@shared/internal';
 import { SORT_STATE_DESCEND } from '../../@shared/constantsonstants';
 import { baseProps, teamStatsProps } from './internal.props';
 import { externalTeamLinkResolver } from '../../utils/resolvers';

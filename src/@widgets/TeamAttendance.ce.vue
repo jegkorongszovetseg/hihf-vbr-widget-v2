@@ -4,7 +4,7 @@ import { useAsyncState } from '@vueuse/core';
 import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
 import convert from '../../utils/convert';
-import { COLUMNS_TEAM_ATTENDANCE } from './internal';
+import { COLUMNS_TEAM_ATTENDANCE } from '../@shared/columns';
 import I18NProvider from '../I18NProvider.vue';
 import ErrorNotice from '../ErrorNotice.vue';
 import StatisticsTable from '../@shared/components/StatisticsTable.vue';

@@ -6,11 +6,11 @@ import { useErrorProvider } from '@shared';
 import { useSort } from '@shared';
 import { convert } from '@shared';
 import { externalTeamLinkResolver } from '@shared';
-import { COLUMNS_STANDINGS_P_2, COLUMNS_STANDINGS_P_3 } from './internal';
+import { COLUMNS_STANDINGS_P_2, COLUMNS_STANDINGS_P_3 } from '@shared';
 import { baseProps, teamStatsProps } from './internal.props';
-import { I18NProvider } from '@shared';
-import { ErrorNotice } from '@shared';
-import { StatisticsTable } from '@shared';
+import { I18NProvider, ErrorNotice, StatisticsTable } from '@VbrWidget/core/components';
+// import { ErrorNotice } from '@shared';
+// import { StatisticsTable } from '@shared';
 
 const props = defineProps({
   ...baseProps,
