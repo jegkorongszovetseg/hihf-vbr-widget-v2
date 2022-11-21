@@ -24,7 +24,7 @@ const builds = [
     entry: path.resolve(__dirname, '../src/@widgets/bundle.js'),
     name: 'MjszWidgetElements',
     fileName: (format) => `mjsz-vbr-elements.${format}.js`,
-    external: ['@VbrWidget/core', '@VbrWidget/core/components', '@VbrWidget/core/composables', '@VbrWidget/core/utils'],
+    external: ['@VbrWidget/core', '@VbrWidget/components', '@VbrWidget/composables', '@VbrWidget/utils'],
     globals: {
       '@VbrWidget/core': 'MjszWidgetCore',
       '@VbrWidget/components': 'MjszWidgetCore',
