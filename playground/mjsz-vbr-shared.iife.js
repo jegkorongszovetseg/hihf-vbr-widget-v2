@@ -1,7 +1,7 @@
 /*!
   * MJSZ VBR Widgets v2.0.0-alpha.1
   * (c) 2022 Akos Stegner
-  * Released: 21/11/2022, 17:59:26
+  * Released: 21/11/2022, 19:40:48
   * Released under the MIT License.
   */
 var Shared = function(exports, vue) {
@@ -5856,6 +5856,14 @@ var Shared = function(exports, vue) {
       sortOrders: [{ target: "GFShots", direction: SORT_STATE_DESCEND }]
     }
   };
+  const createConfig = ({ apiKey, modules = [] }) => {
+    window.__MJSZ_VBR_WIDGET__ = { apiKey };
+    if (modules.length === 0)
+      throw new Error("Hi\xE1nyzik legal\xE1bb egy Widget modul");
+    modules.forEach((item) => {
+      item == null ? void 0 : item.register();
+    });
+  };
   exports.AVAILABLE_TIMEZONES_BY_COUNTRY = AVAILABLE_TIMEZONES_BY_COUNTRY;
   exports.BaseSelect = _sfc_main$h;
   exports.COLUMNS_FIELD_PLAYERS = COLUMNS_FIELD_PLAYERS;
@@ -5898,6 +5906,7 @@ var Shared = function(exports, vue) {
   exports.convert = convert;
   exports.convertMinToSec = convertMinToSec;
   exports.convertTimes = convertTimes;
+  exports.createConfig = createConfig;
   exports.createI18n = createI18n;
   exports.externalGameLinkResolver = externalGameLinkResolver;
   exports.externalPlayerLinkResolver = externalPlayerLinkResolver;

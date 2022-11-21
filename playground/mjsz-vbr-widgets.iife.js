@@ -1,7 +1,7 @@
 /*!
   * MJSZ VBR Widgets v2.0.0-alpha.1
   * (c) 2022 Akos Stegner
-  * Released: 21/11/2022, 17:59:26
+  * Released: 21/11/2022, 19:40:48
   * Released under the MIT License.
   */
 var Widgets = function(exports, vue, _shared, components, _columns) {
