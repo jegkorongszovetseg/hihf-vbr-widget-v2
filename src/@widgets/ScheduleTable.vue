@@ -5,10 +5,10 @@ import { DEFAULT_EXTERNAL_BASE_URL } from '@shared';
 import { WidgetError, UndefinedColumn } from '@shared';
 import { ResponsiveTable, Image, DataTable } from '@shared';
 import { FloatingPanel } from '@shared';
-import IconBroadcast from '../@shared/icons/IconBroadcast.vue';
-import IconMore from '../@shared/icons/IconMore.vue';
-import IconSheet from '../@shared/icons/IconSheet.vue';
-import IconYoutube from '../@shared/icons/IconYoutube.vue';
+import IconBroadcast from '../@core/icons/IconBroadcast.vue';
+import IconMore from '../@core/icons/IconMore.vue';
+import IconSheet from '../@core/icons/IconSheet.vue';
+import IconYoutube from '../@core/icons/IconYoutube.vue';
 
 const props = defineProps({
   rows: {

@@ -5,12 +5,12 @@ import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
 import { useErrorProvider } from '../../composables/useErrors';
 import convert from '../../utils/convert';
-import { COLUMNS_TEAMS_FAIRPLAY } from '../@shared/columns';
+import { COLUMNS_TEAMS_FAIRPLAY } from '../@core/columns';
 import { baseProps, teamStatsProps } from './internal.props';
 import { SORT_STATE_DESCEND } from '../../@shared/constantsonstants';
 import I18NProvider from '../I18NProvider.vue';
 import ErrorNotice from '../ErrorNotice.vue';
-import StatisticsTable from '../@shared/components/StatisticsTable.vue';
+import StatisticsTable from '../@core/components/StatisticsTable.vue';
 
 const props = defineProps({
   ...baseProps,

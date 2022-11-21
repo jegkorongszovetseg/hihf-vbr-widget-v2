@@ -5,13 +5,13 @@ import { fetchVBRData } from '../../composables/useFetchVBRApi';
 import useSort from '../../composables/useSort';
 import { usePage } from '../../composables/usePage';
 import convert, { playerName, rawConvert } from '../../utils/convert';
-import { COLUMNS_FIELD_PLAYERS } from '../@shared/internal/internal';
+import { COLUMNS_FIELD_PLAYERS } from '../@core/internal/internal';
 import { externalTeamLinkResolver, externalPlayerLinkResolver } from '../../utils/resolvers';
 import { SORT_STATE_DESCEND } from '../../@shared/constantsonstants';
 import { baseProps, playerStatsProps } from './internal.props';
 import I18NProvider from '../I18NProvider.vue';
 import ErrorNotice from '../ErrorNotice.vue';
-import StatisticsTable from '../@shared/components/StatisticsTable.vue';
+import StatisticsTable from '../@core/components/StatisticsTable.vue';
 import Paginator from '../Paginator.vue';
 import { useErrorProvider } from '../../composables/useErrors';
 
