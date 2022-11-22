@@ -3,10 +3,10 @@ import { COLUMNS_SCHEDULE, DEFAULT_EXTERNAL_BASE_URL } from '@VbrWidget/core';
 import { useColumns, useI18n, useError } from '@VbrWidget/composables';
 import { WidgetError, UndefinedColumn } from '@VbrWidget/utils';
 import { FloatingPanel, ResponsiveTable, Image, DataTable } from '@VbrWidget/components';
-import IconBroadcast from '../@core/icons/IconBroadcast.vue';
-import IconMore from '../@core/icons/IconMore.vue';
-import IconSheet from '../@core/icons/IconSheet.vue';
-import IconYoutube from '../@core/icons/IconYoutube.vue';
+import { IconBroadcast } from '@VbrWidget/icons';
+import { IconMore } from '@VbrWidget/icons';
+import { IconSheet } from '@VbrWidget/icons';
+import { IconYoutube } from '@VbrWidget/icons';
 
 const props = defineProps({
   rows: {

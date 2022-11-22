@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => {
         '@VbrWidget/components': path.resolve(__dirname, './src/@core/components/index.js'),
         '@VbrWidget/composables': path.resolve(__dirname, './src/@core/composables/index.js'),
         '@VbrWidget/utils': path.resolve(__dirname, './src/@core/utils/index.js'),
+        '@VbrWidget/icons': path.resolve(__dirname, './src/@core/icons/index.js'),
       },
     },
     css: {

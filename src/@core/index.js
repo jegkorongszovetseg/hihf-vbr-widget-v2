@@ -5,6 +5,8 @@ export * from './utils/index.js';
 export * from './columns';
 export * from './constants';
 
+export * from './icons/index';
+
 export const createConfig = ({ apiKey, modules = [] }) => {
   window.__MJSZ_VBR_WIDGET__ = { apiKey };
 

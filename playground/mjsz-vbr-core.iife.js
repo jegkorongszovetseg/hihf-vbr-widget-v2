@@ -1,7 +1,7 @@
 /*!
   * MJSZ VBR Widgets v2.0.0-alpha.1
   * (c) 2022 Akos Stegner
-  * Released: 21/11/2022, 21:22:28
+  * Released: 22/11/2022, 09:04:56
   * Released under the MIT License.
   */
 var MjszWidgetCore = function(exports, vue) {
@@ -10,7 +10,7 @@ var MjszWidgetCore = function(exports, vue) {
     const prefix = "mjsz-vbr-";
     return prefix + className;
   };
-  const _sfc_main$h = {
+  const _sfc_main$l = {
     __name: "BaseSelect",
     props: {
       modelValue: {
@@ -1290,8 +1290,8 @@ var MjszWidgetCore = function(exports, vue) {
     }
     return target;
   };
-  const _sfc_main$g = {};
-  const _hoisted_1$c = {
+  const _sfc_main$k = {};
+  const _hoisted_1$g = {
     "aria-hidden": "true",
     focusable: "false",
     "data-prefix": "fas",
@@ -1301,19 +1301,19 @@ var MjszWidgetCore = function(exports, vue) {
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 320 512"
   };
-  const _hoisted_2$9 = /* @__PURE__ */ vue.createElementVNode("path", {
+  const _hoisted_2$d = /* @__PURE__ */ vue.createElementVNode("path", {
     fill: "currentColor",
     d: "M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z"
   }, null, -1);
-  const _hoisted_3$8 = [
-    _hoisted_2$9
+  const _hoisted_3$c = [
+    _hoisted_2$d
   ];
-  function _sfc_render$6(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$c, _hoisted_3$8);
+  function _sfc_render$a(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$g, _hoisted_3$c);
   }
-  const IconSort = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$6]]);
-  const _sfc_main$f = {};
-  const _hoisted_1$b = {
+  const IconSort = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$a]]);
+  const _sfc_main$j = {};
+  const _hoisted_1$f = {
     "aria-hidden": "true",
     focusable: "false",
     "data-prefix": "fas",
@@ -1323,19 +1323,19 @@ var MjszWidgetCore = function(exports, vue) {
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 320 512"
   };
-  const _hoisted_2$8 = /* @__PURE__ */ vue.createElementVNode("path", {
+  const _hoisted_2$c = /* @__PURE__ */ vue.createElementVNode("path", {
     fill: "currentColor",
     d: "M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"
   }, null, -1);
-  const _hoisted_3$7 = [
-    _hoisted_2$8
+  const _hoisted_3$b = [
+    _hoisted_2$c
   ];
-  function _sfc_render$5(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$b, _hoisted_3$7);
+  function _sfc_render$9(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$f, _hoisted_3$b);
   }
-  const IconSortAsc = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$5]]);
-  const _sfc_main$e = {};
-  const _hoisted_1$a = {
+  const IconSortAsc = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$9]]);
+  const _sfc_main$i = {};
+  const _hoisted_1$e = {
     "aria-hidden": "true",
     focusable: "false",
     "data-prefix": "fas",
@@ -1345,17 +1345,17 @@ var MjszWidgetCore = function(exports, vue) {
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 320 512"
   };
-  const _hoisted_2$7 = /* @__PURE__ */ vue.createElementVNode("path", {
+  const _hoisted_2$b = /* @__PURE__ */ vue.createElementVNode("path", {
     fill: "currentColor",
     d: "M279 224H41c-21.4 0-32.1-25.9-17-41L143 64c9.4-9.4 24.6-9.4 33.9 0l119 119c15.2 15.1 4.5 41-16.9 41z"
   }, null, -1);
-  const _hoisted_3$6 = [
-    _hoisted_2$7
+  const _hoisted_3$a = [
+    _hoisted_2$b
   ];
-  function _sfc_render$4(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$a, _hoisted_3$6);
+  function _sfc_render$8(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$e, _hoisted_3$a);
   }
-  const IconSortDesc = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$4]]);
+  const IconSortDesc = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$8]]);
   function getSide(placement) {
     return placement.split("-")[0];
   }
@@ -2664,8 +2664,8 @@ var MjszWidgetCore = function(exports, vue) {
       }
     };
   };
-  const _hoisted_1$9 = ["data-placement"];
-  const _sfc_main$d = {
+  const _hoisted_1$d = ["data-placement"];
+  const _sfc_main$h = {
     __name: "FloatingPanel",
     props: {
       disabled: {
@@ -2763,17 +2763,17 @@ var MjszWidgetCore = function(exports, vue) {
               ]),
               _: 3
             })
-          ], 12, _hoisted_1$9)
+          ], 12, _hoisted_1$d)
         ], 64);
       };
     }
   };
-  const _hoisted_1$8 = ["onMouseenter", "onMouseleave", "onFocus", "onBlur", "onClick", "onKeydown", "tabindex"];
-  const _hoisted_2$6 = { key: 0 };
-  const _hoisted_3$5 = ["colspan"];
-  const _hoisted_4$2 = { key: 1 };
-  const _hoisted_5$2 = ["colspan"];
-  const _sfc_main$c = {
+  const _hoisted_1$c = ["onMouseenter", "onMouseleave", "onFocus", "onBlur", "onClick", "onKeydown", "tabindex"];
+  const _hoisted_2$a = { key: 0 };
+  const _hoisted_3$9 = ["colspan"];
+  const _hoisted_4$6 = { key: 1 };
+  const _hoisted_5$4 = ["colspan"];
+  const _sfc_main$g = {
     __name: "DataTable",
     props: {
       columns: {
@@ -2818,7 +2818,7 @@ var MjszWidgetCore = function(exports, vue) {
           vue.createElementVNode("thead", null, [
             vue.createElementVNode("tr", null, [
               (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(columns), (column, prop2) => {
-                return vue.openBlock(), vue.createBlock(_sfc_main$d, {
+                return vue.openBlock(), vue.createBlock(_sfc_main$h, {
                   key: prop2,
                   placement: "top",
                   content: column.tooltip,
@@ -2869,7 +2869,7 @@ var MjszWidgetCore = function(exports, vue) {
                         key: 3,
                         class: "is-icon-sort"
                       })) : vue.createCommentVNode("", true)
-                    ], 42, _hoisted_1$8)
+                    ], 42, _hoisted_1$c)
                   ]),
                   _: 2
                 }, 1032, ["content", "disabled", "append-to"]);
@@ -2901,19 +2901,19 @@ var MjszWidgetCore = function(exports, vue) {
             }), 128))
           ]),
           vue.createElementVNode("tfoot", null, [
-            __props.rows.length === 0 && !vue.unref(isLoading) ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_2$6, [
-              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t2)("common.noData")), 9, _hoisted_3$5)
+            __props.rows.length === 0 && !vue.unref(isLoading) ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_2$a, [
+              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t2)("common.noData")), 9, _hoisted_3$9)
             ])) : vue.createCommentVNode("", true),
-            vue.unref(isLoadingDebounced) ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_4$2, [
-              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t2)("common.loading")), 9, _hoisted_5$2)
+            vue.unref(isLoadingDebounced) ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_4$6, [
+              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t2)("common.loading")), 9, _hoisted_5$4)
             ])) : vue.createCommentVNode("", true)
           ])
         ], 2);
       };
     }
   };
-  const _sfc_main$b = {};
-  const _hoisted_1$7 = {
+  const _sfc_main$f = {};
+  const _hoisted_1$b = {
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 24 24",
     fill: "none",
@@ -2922,29 +2922,29 @@ var MjszWidgetCore = function(exports, vue) {
     "stroke-linecap": "round",
     "stroke-linejoin": "round"
   };
-  const _hoisted_2$5 = /* @__PURE__ */ vue.createElementVNode("path", { d: "M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" }, null, -1);
-  const _hoisted_3$4 = /* @__PURE__ */ vue.createElementVNode("line", {
+  const _hoisted_2$9 = /* @__PURE__ */ vue.createElementVNode("path", { d: "M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" }, null, -1);
+  const _hoisted_3$8 = /* @__PURE__ */ vue.createElementVNode("line", {
     x1: "12",
     y1: "9",
     x2: "12",
     y2: "13"
   }, null, -1);
-  const _hoisted_4$1 = /* @__PURE__ */ vue.createElementVNode("line", {
+  const _hoisted_4$5 = /* @__PURE__ */ vue.createElementVNode("line", {
     x1: "12",
     y1: "17",
     x2: "12.01",
     y2: "17"
   }, null, -1);
-  const _hoisted_5$1 = [
-    _hoisted_2$5,
-    _hoisted_3$4,
-    _hoisted_4$1
+  const _hoisted_5$3 = [
+    _hoisted_2$9,
+    _hoisted_3$8,
+    _hoisted_4$5
   ];
-  function _sfc_render$3(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$7, _hoisted_5$1);
+  function _sfc_render$7(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$b, _hoisted_5$3);
   }
-  const IconWarning = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$3]]);
-  const _sfc_main$a = {
+  const IconWarning = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$7]]);
+  const _sfc_main$e = {
     __name: "ErrorNotice",
     props: {
       error: {
@@ -3028,7 +3028,7 @@ var MjszWidgetCore = function(exports, vue) {
     }
     return api;
   };
-  const _sfc_main$9 = {
+  const _sfc_main$d = {
     __name: "ErrorProvider",
     setup(__props) {
       const { message, hasError, error } = useErrorProvider();
@@ -3730,7 +3730,7 @@ var MjszWidgetCore = function(exports, vue) {
     table,
     game
   };
-  const _sfc_main$8 = vue.defineComponent({
+  const _sfc_main$c = vue.defineComponent({
     props: {
       locale: {
         type: String,
@@ -3747,13 +3747,13 @@ var MjszWidgetCore = function(exports, vue) {
       });
     }
   });
-  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.renderSlot(_ctx.$slots, "default");
   }
-  const I18NProvider = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$2]]);
-  const _hoisted_1$6 = ["src"];
-  const _hoisted_2$4 = ["src", "title"];
-  const _sfc_main$7 = {
+  const I18NProvider = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$6]]);
+  const _hoisted_1$a = ["src"];
+  const _hoisted_2$8 = ["src", "title"];
+  const _sfc_main$b = {
     __name: "Image",
     props: {
       src: {
@@ -3780,24 +3780,24 @@ var MjszWidgetCore = function(exports, vue) {
             key: 0,
             src: vue.unref(defaultSrc),
             class: vue.normalizeClass(["is-loaded", _ctx.$attrs.class])
-          }, null, 10, _hoisted_1$6)) : vue.createCommentVNode("", true),
+          }, null, 10, _hoisted_1$a)) : vue.createCommentVNode("", true),
           !vue.unref(error) ? (vue.openBlock(), vue.createElementBlock("img", {
             key: 1,
             src: imageOptions.value.src,
             class: vue.normalizeClass([_ctx.$attrs.class, { "is-loaded": vue.unref(isReady) }]),
             title: props.title
-          }, null, 10, _hoisted_2$4)) : vue.createCommentVNode("", true)
+          }, null, 10, _hoisted_2$8)) : vue.createCommentVNode("", true)
         ], 64);
       };
     }
   };
-  const _hoisted_1$5 = { style: { "text-align": "center" } };
-  const _sfc_main$6 = {
+  const _hoisted_1$9 = { style: { "text-align": "center" } };
+  const _sfc_main$a = {
     __name: "LoadingIndicator",
     setup(__props) {
       const { t: t2 } = useI18n();
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$5, vue.toDisplayString(vue.unref(t2)("common.loading")), 1);
+        return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$9, vue.toDisplayString(vue.unref(t2)("common.loading")), 1);
       };
     }
   };
@@ -3833,8 +3833,8 @@ var MjszWidgetCore = function(exports, vue) {
       pageStep
     };
   }
-  const _sfc_main$5 = {};
-  const _hoisted_1$4 = {
+  const _sfc_main$9 = {};
+  const _hoisted_1$8 = {
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 24 24",
     fill: "none",
@@ -3843,16 +3843,16 @@ var MjszWidgetCore = function(exports, vue) {
     "stroke-linecap": "round",
     "stroke-linejoin": "round"
   };
-  const _hoisted_2$3 = /* @__PURE__ */ vue.createElementVNode("polyline", { points: "15 18 9 12 15 6" }, null, -1);
-  const _hoisted_3$3 = [
-    _hoisted_2$3
+  const _hoisted_2$7 = /* @__PURE__ */ vue.createElementVNode("polyline", { points: "15 18 9 12 15 6" }, null, -1);
+  const _hoisted_3$7 = [
+    _hoisted_2$7
   ];
-  function _sfc_render$1(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$4, _hoisted_3$3);
+  function _sfc_render$5(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$8, _hoisted_3$7);
   }
-  const IconLeft = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$1]]);
-  const _sfc_main$4 = {};
-  const _hoisted_1$3 = {
+  const IconLeft = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$5]]);
+  const _sfc_main$8 = {};
+  const _hoisted_1$7 = {
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 24 24",
     fill: "none",
@@ -3861,22 +3861,22 @@ var MjszWidgetCore = function(exports, vue) {
     "stroke-linecap": "round",
     "stroke-linejoin": "round"
   };
-  const _hoisted_2$2 = /* @__PURE__ */ vue.createElementVNode("polyline", { points: "9 18 15 12 9 6" }, null, -1);
-  const _hoisted_3$2 = [
-    _hoisted_2$2
+  const _hoisted_2$6 = /* @__PURE__ */ vue.createElementVNode("polyline", { points: "9 18 15 12 9 6" }, null, -1);
+  const _hoisted_3$6 = [
+    _hoisted_2$6
   ];
-  function _sfc_render(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$3, _hoisted_3$2);
+  function _sfc_render$4(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$7, _hoisted_3$6);
   }
-  const IconRight = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render]]);
-  const _hoisted_1$2 = ["disabled"];
-  const _hoisted_2$1 = ["disabled"];
-  const _hoisted_3$1 = {
+  const IconRight = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$4]]);
+  const _hoisted_1$6 = ["disabled"];
+  const _hoisted_2$5 = ["disabled"];
+  const _hoisted_3$5 = {
     key: 1,
     class: "is-disabled"
   };
-  const _hoisted_4 = ["disabled", "onClick"];
-  const _hoisted_5 = {
+  const _hoisted_4$4 = ["disabled", "onClick"];
+  const _hoisted_5$2 = {
     key: 2,
     class: "is-disabled"
   };
@@ -3886,7 +3886,7 @@ var MjszWidgetCore = function(exports, vue) {
   ];
   const _hoisted_8 = ["disabled"];
   const _hoisted_9 = ["disabled"];
-  const _sfc_main$3 = {
+  const _sfc_main$7 = {
     __name: "Paginator",
     props: {
       page: {
@@ -3948,14 +3948,14 @@ var MjszWidgetCore = function(exports, vue) {
             vue.renderSlot(_ctx.$slots, "prev", {}, () => [
               vue.createVNode(IconLeft, { class: "icon paginator-left" })
             ])
-          ], 8, _hoisted_1$2),
+          ], 8, _hoisted_1$6),
           !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("button", {
             key: 0,
             type: "button",
             disabled: vue.unref(page) === 1,
             onClick: _cache[1] || (_cache[1] = ($event) => vue.unref(goTo)(1))
-          }, "1", 8, _hoisted_2$1)) : vue.createCommentVNode("", true),
-          !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_3$1, "...")) : vue.createCommentVNode("", true),
+          }, "1", 8, _hoisted_2$5)) : vue.createCommentVNode("", true),
+          !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_3$5, "...")) : vue.createCommentVNode("", true),
           (vue.openBlock(true), vue.createElementBlock(vue.Fragment, null, vue.renderList(vue.unref(range), (n2) => {
             return vue.openBlock(), vue.createElementBlock("button", {
               type: "button",
@@ -3963,9 +3963,9 @@ var MjszWidgetCore = function(exports, vue) {
               class: vue.normalizeClass({ "is-active": n2 === vue.unref(page) }),
               disabled: n2 === vue.unref(page),
               onClick: ($event) => vue.unref(goTo)(n2)
-            }, vue.toDisplayString(n2), 11, _hoisted_4);
+            }, vue.toDisplayString(n2), 11, _hoisted_4$4);
           }), 128)),
-          !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_5, _hoisted_7)) : vue.createCommentVNode("", true),
+          !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_5$2, _hoisted_7)) : vue.createCommentVNode("", true),
           !__props.isCompact ? (vue.openBlock(), vue.createElementBlock("button", {
             key: 3,
             type: "button",
@@ -3985,7 +3985,7 @@ var MjszWidgetCore = function(exports, vue) {
       };
     }
   };
-  const _sfc_main$2 = {
+  const _sfc_main$6 = {
     __name: "ResponsiveTable",
     setup(__props) {
       const el = vue.ref(null);
@@ -4532,8 +4532,8 @@ var MjszWidgetCore = function(exports, vue) {
   const isSame = (date, compareDate, unit = "month") => {
     return dayjs(date).isSame(compareDate, unit);
   };
-  const _hoisted_1$1 = ["onClick"];
-  const _sfc_main$1 = {
+  const _hoisted_1$5 = ["onClick"];
+  const _sfc_main$5 = {
     __name: "TimezoneSelector",
     props: {
       locale: {
@@ -4582,7 +4582,7 @@ var MjszWidgetCore = function(exports, vue) {
               href: "#",
               class: vue.normalizeClass({ "is-active": country.isActive }),
               onClick: vue.withModifiers(($event) => onChangeTimezone(country.timezone), ["prevent"])
-            }, vue.toDisplayString(vue.unref(t2)(`common.${country.countryLabelKey}`)) + " (" + vue.toDisplayString(country.zoneOffsetName) + ") ", 11, _hoisted_1$1);
+            }, vue.toDisplayString(vue.unref(t2)(`common.${country.countryLabelKey}`)) + " (" + vue.toDisplayString(country.zoneOffsetName) + ") ", 11, _hoisted_1$5);
           }), 128))
         ], 2);
       };
@@ -4647,10 +4647,10 @@ var MjszWidgetCore = function(exports, vue) {
       cause: {}
     }
   };
-  const _hoisted_1 = { class: "is-portrait-image" };
-  const _hoisted_2 = ["href"];
-  const _hoisted_3 = ["href"];
-  const _sfc_main = {
+  const _hoisted_1$4 = { class: "is-portrait-image" };
+  const _hoisted_2$4 = ["href"];
+  const _hoisted_3$4 = ["href"];
+  const _sfc_main$4 = {
     __name: "StatisticsTable",
     props: {
       columns: {
@@ -4706,9 +4706,9 @@ var MjszWidgetCore = function(exports, vue) {
         );
       const onSort = (payload) => emit("sort", payload);
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createBlock(_sfc_main$2, null, {
+        return vue.openBlock(), vue.createBlock(_sfc_main$6, null, {
           default: vue.withCtx(({ el: rootElement }) => [
-            vue.createVNode(_sfc_main$c, {
+            vue.createVNode(_sfc_main$g, {
               columns: vue.unref(columns),
               sort: props.sort,
               rows: props.rows,
@@ -4722,8 +4722,8 @@ var MjszWidgetCore = function(exports, vue) {
                 }, vue.toDisplayString(row.index), 3)
               ]),
               "cell-playerPortrait": vue.withCtx(({ row }) => [
-                vue.createElementVNode("div", _hoisted_1, [
-                  (vue.openBlock(), vue.createBlock(_sfc_main$7, {
+                vue.createElementVNode("div", _hoisted_1$4, [
+                  (vue.openBlock(), vue.createBlock(_sfc_main$b, {
                     key: row.id || row.playerId,
                     src: row.playerPortrait,
                     "default-src": vue.unref(DEFAULT_PORTRAIT_IMAGE_URL)
@@ -4731,7 +4731,7 @@ var MjszWidgetCore = function(exports, vue) {
                 ])
               ]),
               "cell-teamLogo": vue.withCtx(({ row }) => [
-                (vue.openBlock(), vue.createBlock(_sfc_main$7, {
+                (vue.openBlock(), vue.createBlock(_sfc_main$b, {
                   class: "is-logo-image",
                   key: row.teamId || row.id,
                   src: row.teamLogo
@@ -4745,7 +4745,7 @@ var MjszWidgetCore = function(exports, vue) {
                   vue.createElementVNode("a", {
                     href: __props.externalTeamResolver(row.teamName),
                     target: "_blank"
-                  }, vue.toDisplayString(row.teamName), 9, _hoisted_2)
+                  }, vue.toDisplayString(row.teamName), 9, _hoisted_2$4)
                 ]),
                 key: "0"
               } : void 0,
@@ -4755,7 +4755,7 @@ var MjszWidgetCore = function(exports, vue) {
                   vue.createElementVNode("a", {
                     href: __props.externalPlayerResolver(row.id),
                     target: "_blank"
-                  }, vue.toDisplayString(row.name), 9, _hoisted_3)
+                  }, vue.toDisplayString(row.name), 9, _hoisted_3$4)
                 ]),
                 key: "1"
               } : void 0
@@ -5856,6 +5856,126 @@ var MjszWidgetCore = function(exports, vue) {
       sortOrders: [{ target: "GFShots", direction: SORT_STATE_DESCEND }]
     }
   };
+  const _sfc_main$3 = {};
+  const _hoisted_1$3 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    "stroke-width": "2",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round"
+  };
+  const _hoisted_2$3 = /* @__PURE__ */ vue.createElementVNode("rect", {
+    x: "2",
+    y: "3",
+    width: "20",
+    height: "14",
+    rx: "2",
+    ry: "2"
+  }, null, -1);
+  const _hoisted_3$3 = /* @__PURE__ */ vue.createElementVNode("line", {
+    x1: "8",
+    y1: "21",
+    x2: "16",
+    y2: "21"
+  }, null, -1);
+  const _hoisted_4$3 = /* @__PURE__ */ vue.createElementVNode("line", {
+    x1: "12",
+    y1: "17",
+    x2: "12",
+    y2: "21"
+  }, null, -1);
+  const _hoisted_5$1 = [
+    _hoisted_2$3,
+    _hoisted_3$3,
+    _hoisted_4$3
+  ];
+  function _sfc_render$3(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$3, _hoisted_5$1);
+  }
+  const IconBroadcast = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$3]]);
+  const _sfc_main$2 = {};
+  const _hoisted_1$2 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    "stroke-width": "2",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round"
+  };
+  const _hoisted_2$2 = /* @__PURE__ */ vue.createElementVNode("circle", {
+    cx: "12",
+    cy: "12",
+    r: "1"
+  }, null, -1);
+  const _hoisted_3$2 = /* @__PURE__ */ vue.createElementVNode("circle", {
+    cx: "12",
+    cy: "5",
+    r: "1"
+  }, null, -1);
+  const _hoisted_4$2 = /* @__PURE__ */ vue.createElementVNode("circle", {
+    cx: "12",
+    cy: "19",
+    r: "1"
+  }, null, -1);
+  const _hoisted_5 = [
+    _hoisted_2$2,
+    _hoisted_3$2,
+    _hoisted_4$2
+  ];
+  function _sfc_render$2(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$2, _hoisted_5);
+  }
+  const IconMore = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
+  const _sfc_main$1 = {};
+  const _hoisted_1$1 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    "stroke-width": "2",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round"
+  };
+  const _hoisted_2$1 = /* @__PURE__ */ vue.createElementVNode("path", { d: "M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" }, null, -1);
+  const _hoisted_3$1 = /* @__PURE__ */ vue.createElementVNode("rect", {
+    x: "8",
+    y: "2",
+    width: "8",
+    height: "4",
+    rx: "1",
+    ry: "1"
+  }, null, -1);
+  const _hoisted_4$1 = [
+    _hoisted_2$1,
+    _hoisted_3$1
+  ];
+  function _sfc_render$1(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1$1, _hoisted_4$1);
+  }
+  const IconSheet = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
+  const _sfc_main = {};
+  const _hoisted_1 = {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    "stroke-width": "2",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round"
+  };
+  const _hoisted_2 = /* @__PURE__ */ vue.createElementVNode("path", { d: "M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" }, null, -1);
+  const _hoisted_3 = /* @__PURE__ */ vue.createElementVNode("polygon", { points: "9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" }, null, -1);
+  const _hoisted_4 = [
+    _hoisted_2,
+    _hoisted_3
+  ];
+  function _sfc_render(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock("svg", _hoisted_1, _hoisted_4);
+  }
+  const IconYoutube = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
   const createConfig = ({ apiKey, modules = [] }) => {
     window.__MJSZ_VBR_WIDGET__ = { apiKey };
     if (modules.length === 0)
@@ -5865,7 +5985,7 @@ var MjszWidgetCore = function(exports, vue) {
     });
   };
   exports.AVAILABLE_TIMEZONES_BY_COUNTRY = AVAILABLE_TIMEZONES_BY_COUNTRY;
-  exports.BaseSelect = _sfc_main$h;
+  exports.BaseSelect = _sfc_main$l;
   exports.COLUMNS_FIELD_PLAYERS = COLUMNS_FIELD_PLAYERS;
   exports.COLUMNS_FIELD_PLAYERS_PENALTY = COLUMNS_FIELD_PLAYERS_PENALTY;
   exports.COLUMNS_GOALIES = COLUMNS_GOALIES;
@@ -5881,23 +6001,33 @@ var MjszWidgetCore = function(exports, vue) {
   exports.DEFAULT_EXTERNAL_PLAYER_URL = DEFAULT_EXTERNAL_PLAYER_URL;
   exports.DEFAULT_EXTERNAL_TEAM_URL = DEFAULT_EXTERNAL_TEAM_URL;
   exports.DEFAULT_PORTRAIT_IMAGE_URL = DEFAULT_PORTRAIT_IMAGE_URL;
-  exports.DataTable = _sfc_main$c;
-  exports.ErrorNotice = _sfc_main$a;
-  exports.ErrorProvider = _sfc_main$9;
-  exports.FloatingPanel = _sfc_main$d;
+  exports.DataTable = _sfc_main$g;
+  exports.ErrorNotice = _sfc_main$e;
+  exports.ErrorProvider = _sfc_main$d;
+  exports.FloatingPanel = _sfc_main$h;
   exports.I18NProvider = I18NProvider;
-  exports.Image = _sfc_main$7;
+  exports.IconBroadcast = IconBroadcast;
+  exports.IconLeft = IconLeft;
+  exports.IconMore = IconMore;
+  exports.IconRight = IconRight;
+  exports.IconSheet = IconSheet;
+  exports.IconSort = IconSort;
+  exports.IconSortAsc = IconSortAsc;
+  exports.IconSortDesc = IconSortDesc;
+  exports.IconWarning = IconWarning;
+  exports.IconYoutube = IconYoutube;
+  exports.Image = _sfc_main$b;
   exports.InvalidSeasonName = InvalidSeasonName;
   exports.LOCALE_FOR_LANG = LOCALE_FOR_LANG;
-  exports.LoadingIndicator = _sfc_main$6;
-  exports.Paginator = _sfc_main$3;
+  exports.LoadingIndicator = _sfc_main$a;
+  exports.Paginator = _sfc_main$7;
   exports.REFRESH_DELAY = REFRESH_DELAY;
-  exports.ResponsiveTable = _sfc_main$2;
+  exports.ResponsiveTable = _sfc_main$6;
   exports.SORT_STATE_ASCEND = SORT_STATE_ASCEND;
   exports.SORT_STATE_DESCEND = SORT_STATE_DESCEND;
   exports.SORT_STATE_ORIGINAL = SORT_STATE_ORIGINAL;
-  exports.StatisticsTable = _sfc_main;
-  exports.TimezoneSelector = _sfc_main$1;
+  exports.StatisticsTable = _sfc_main$4;
+  exports.TimezoneSelector = _sfc_main$5;
   exports.UndefinedColumn = UndefinedColumn;
   exports.VBR_API_GOALIE_PATH = VBR_API_GOALIE_PATH;
   exports.VBR_API_GOALIE_UNDER_PATH = VBR_API_GOALIE_UNDER_PATH;
