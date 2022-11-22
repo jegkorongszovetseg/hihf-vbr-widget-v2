@@ -107,7 +107,7 @@ const sortBy = (column, prop) => {
         </template>
       </tr>
     </thead>
-    <tbody v-if="!isLazyLoadingState">
+    <tbody>
       <tr v-for="(row, index) in props.rows" :key="index">
         <td
           v-for="(_, prop) in columns"
@@ -125,7 +125,7 @@ const sortBy = (column, prop) => {
         </td>
       </tr>
     </tbody>
-    <tfoot v-else>
+    <tfoot v-if="isLazyLoadingState && rows.length === 0">
       <tr>
         <td :colspan="columnCount">
           <slot name="loading">

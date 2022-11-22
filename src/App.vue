@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import Schedule from './@widgets/Schedule.ce.vue';
 import Standings from './@widgets/Standings.ce.vue';
-// import FieldPlayersLeader from './components/widgets/FieldPlayersLeader.ce.vue';
+import FieldPlayersLeader from './@widgets/FieldPlayersLeader.ce.vue';
 // import Statistics from './components/widgets/extended/Statistics.ce.vue';
 // import FieldPlayersPenalties from './components/widgets/FieldPlayersPenalties.ce.vue';
 // import GoaliesLeader from './components/widgets/GoaliesLeader.ce.vue';
@@ -32,7 +32,7 @@ const change = () => {
     <!-- <GoaliesLeader :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <FieldPlayersPenalties api-key="xxx" :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="true" :is-team-linked="true" /> -->
     <!-- <FieldPlayersLeader :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="true" :is-team-linked="true" /> -->
-    <Standings :locale="locale" championship-id="3314" division="Alapszakasz" type="3" />
+    <!-- <Standings :locale="locale" championship-id="3314" division="Alapszakasz" type="3" /> -->
     <Schedule
       :locale="locale"
       championship-id="3314"
