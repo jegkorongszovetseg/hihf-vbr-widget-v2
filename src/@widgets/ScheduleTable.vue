@@ -2,7 +2,7 @@
 import { COLUMNS_SCHEDULE, DEFAULT_EXTERNAL_BASE_URL } from '@VbrWidget/core';
 import { useColumns, useI18n, useError } from '@VbrWidget/composables';
 import { WidgetError, UndefinedColumn } from '@VbrWidget/utils';
-import { FloatingPanel, ResponsiveTable, Image, DataTable } from '@VbrWidget/components';
+import { FloatingPanel, ResponsiveTable, Image, DataTable, LoadingIndicator } from '@VbrWidget/components';
 import { IconBroadcast } from '@VbrWidget/icons';
 import { IconMore } from '@VbrWidget/icons';
 import { IconSheet } from '@VbrWidget/icons';
@@ -106,6 +106,10 @@ const { t } = useI18n();
             </ul>
           </template>
         </FloatingPanel>
+      </template>
+
+      <template v-slot:loading>
+        <LoadingIndicator />
       </template>
     </DataTable>
   </ResponsiveTable>

@@ -19,3 +19,4 @@ export const VBR_API_GOALIE_PATH = '/v1/playersGoaliePeriod';
 export const VBR_API_GOALIE_UNDER_PATH = '/v1/playersGoalieUnderPeriod';
 
 export const REFRESH_DELAY = 1000 * 60 * 5;
+export const LAZY_LOADING_STATE_DELAY = 1000;

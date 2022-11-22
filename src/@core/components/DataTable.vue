@@ -1,9 +1,9 @@
 <script setup>
 import { computed, toRefs } from 'vue';
-import { refDebounced } from '@vueuse/shared';
+import { useLazyLoadingState } from '../composables/useLazyLoadingState';
 import { useI18n } from '../composables/useI18n';
 import { useMainClass } from '../composables/useMainClass';
-import { SORT_STATE_ASCEND, SORT_STATE_DESCEND, SORT_STATE_ORIGINAL } from '../constants.js';
+import { SORT_STATE_ASCEND, SORT_STATE_DESCEND, SORT_STATE_ORIGINAL, LAZY_LOADING_STATE_DELAY } from '../constants.js';
 import IconSort from '../icons/IconSort.vue';
 import IconSortAsc from '../icons/IconSortAsc.vue';
 import IconSortDesc from '../icons/IconSortDesc.vue';
@@ -37,6 +37,7 @@ const props = defineProps({
 });
 
 const { isLoading, appendTo } = toRefs(props);
+const isLazyLoadingState = useLazyLoadingState(isLoading, { delay: LAZY_LOADING_STATE_DELAY });
 
 const emit = defineEmits(['sort']);
 
@@ -45,7 +46,6 @@ const mainClassName = useMainClass('table');
 
 const columns = computed(() => props.columns);
 const columnCount = computed(() => Object.keys(props.columns).length);
-const isLoadingDebounced = refDebounced(isLoading, 300);
 
 const sortBy = (column, prop) => {
   if (!column.sortOrders) return;
@@ -107,7 +107,7 @@ const sortBy = (column, prop) => {
         </template>
       </tr>
     </thead>
-    <tbody>
+    <tbody v-if="!isLazyLoadingState">
       <tr v-for="(row, index) in props.rows" :key="index">
         <td
           v-for="(_, prop) in columns"
@@ -125,12 +125,22 @@ const sortBy = (column, prop) => {
         </td>
       </tr>
     </tbody>
-    <tfoot>
-      <tr v-if="rows.length === 0 && !isLoading">
-        <td :colspan="columnCount">{{ t('common.noData') }}</td>
+    <tfoot v-else>
+      <tr>
+        <td :colspan="columnCount">
+          <slot name="loading">
+            {{ t('common.loading') }}
+          </slot>
+        </td>
       </tr>
-      <tr v-if="isLoadingDebounced">
-        <td :colspan="columnCount">{{ t('common.loading') }}</td>
+    </tfoot>
+    <tfoot v-if="rows.length === 0 && !isLoading && !isLazyLoadingState">
+      <tr>
+        <td :colspan="columnCount">
+          <slot name="empty">
+            {{ t('common.noData') }}
+          </slot>
+        </td>
       </tr>
     </tfoot>
   </table>

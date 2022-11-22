@@ -133,7 +133,7 @@ const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.exter
 
       <ScheduleTable
         :rows="convertedRows.rows"
-        :is-loading="isLoading && convertedRows.rows.length > 0"
+        :is-loading="isLoading"
         :offset-name="currentOffsetName"
         :hide-columns="props.hideColumns"
         :external-game-resolver="resolveExternalGameLink"

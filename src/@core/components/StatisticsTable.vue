@@ -7,6 +7,7 @@ import { DEFAULT_PORTRAIT_IMAGE_URL } from '../constants';
 import ResponsiveTable from './ResponsiveTable.vue';
 import DataTable from './DataTable.vue';
 import Image from './Image.vue';
+import LoadingIndicator from './LoadingIndicator.vue';
 
 const props = defineProps({
   columns: {
@@ -100,6 +101,10 @@ const onSort = (payload) => emit('sort', payload);
       </template>
       <template v-if="isPlayerLinked" v-slot:cell-name="{ row }">
         <a :href="externalPlayerResolver(row.id)" target="_blank">{{ row.name }}</a>
+      </template>
+
+      <template v-slot:loading>
+        <LoadingIndicator />
       </template>
     </DataTable>
   </ResponsiveTable>

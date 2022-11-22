@@ -22,11 +22,7 @@ const { onError, error, hasError } = useErrorProvider();
 
 const locale = computed(() => props.locale);
 
-const {
-  state: rows,
-  error: apiError,
-  isLoading,
-} = useAsyncState(
+const { state: rows, isLoading } = useAsyncState(
   () =>
     fetchVBRData('/v1/standings', props.apiKey, {
       championshipId: Number(props.championshipId),

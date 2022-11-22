@@ -9,7 +9,7 @@ export const useErrorProvider = () => {
 
   const onError = (error) => {
     console.log({ error });
-    errorMessage.value = error.message;
+    errorMessage.value = error.message || error.error.message;
     errorObject.value = {
       message: error.message,
       key: error.key || toKebabCase(error.message),
