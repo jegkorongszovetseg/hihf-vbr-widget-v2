@@ -1,12 +1,11 @@
 <script setup>
+import { computed } from 'vue';
+import { whenever } from '@vueuse/core';
 import { COLUMNS_SCHEDULE, DEFAULT_EXTERNAL_BASE_URL } from '@vbr-widget/core';
 import { useColumns, useI18n, useError } from '@vbr-widget/composables';
 import { WidgetError, UndefinedColumn } from '@vbr-widget/utils';
 import { FloatingPanel, ResponsiveTable, Image, DataTable, LoadingIndicator } from '@vbr-widget/components';
-import { IconBroadcast } from '@vbr-widget/icons';
-import { IconMore } from '@vbr-widget/icons';
-import { IconSheet } from '@vbr-widget/icons';
-import { IconYoutube } from '@vbr-widget/icons';
+import { IconBroadcast, IconMore, IconSheet, IconYoutube } from '@vbr-widget/icons';
 
 const props = defineProps({
   rows: {
@@ -42,14 +41,27 @@ const props = defineProps({
 
 const { onError } = useError();
 
-const { columns, error } = useColumns(COLUMNS_SCHEDULE, props.hideColumns, { offsetName: props.offsetName });
-if (error.value)
-  onError(
-    new WidgetError(UndefinedColumn.message, {
-      ...UndefinedColumn.options,
-      cause: { column: error.value },
-    })
-  );
+const { columns, error } = useColumns(
+  COLUMNS_SCHEDULE,
+  props.hideColumns,
+  computed(() => ({
+    offsetName: props.offsetName,
+  }))
+);
+
+whenever(
+  error,
+  () =>
+    onError(
+      new WidgetError(UndefinedColumn.message, {
+        ...UndefinedColumn.options,
+        cause: { column: error.value },
+      })
+    ),
+  {
+    immediate: true,
+  }
+);
 const { t } = useI18n();
 </script>
 
@@ -94,13 +106,13 @@ const { t } = useI18n();
               <li>
                 <a :href="externalBaseUrl + row.id" class="is-dropdown-item" target="_blank">
                   <IconSheet width="14" />
-                  Jegyzőkönyv
+                  {{ t('common.report') }}
                 </a>
               </li>
               <li v-if="row.video">
                 <a :href="row.video" class="is-dropdown-item" target="_blank">
                   <IconYoutube width="14" />
-                  Videó
+                  {{ t('common.video') }}
                 </a>
               </li>
             </ul>

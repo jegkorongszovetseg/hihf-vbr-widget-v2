@@ -12,7 +12,9 @@
     "romania": "Romania",
     "shootoutShort": "SO",
     "overtimeShort": "OT",
-    "all": "All"
+    "all": "All",
+    "report": "Report Sheet",
+    "video": "Video"
   },
   "report": {
     "points": "Points",

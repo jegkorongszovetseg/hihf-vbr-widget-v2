@@ -30,15 +30,16 @@ const change = () => {
     <!-- <TeamFairplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamAttendance :locale="locale" championship-id="3314" division="Alapszakasz" :is-team-linked="true" /> -->
     <!-- <GoaliesLeader :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
-    <FieldPlayersPenalties :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="false" :is-team-linked="true" />
+    <!-- <FieldPlayersPenalties :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="false" :is-team-linked="true" /> -->
     <!-- <FieldPlayersLeader :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="true" :is-team-linked="true" /> -->
     <!-- <Standings :locale="locale" championship-id="3314" division="Alapszakasz" type="3" /> -->
-    <!-- <Schedule
+    <Schedule
       :locale="locale"
       championship-id="3314"
       division="Alapszakasz"
       auto-initial-page
       auto-refresh
-    /> -->
+      timezone-selector
+    />
   </div>
 </template>

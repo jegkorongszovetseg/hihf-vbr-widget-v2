@@ -17,7 +17,7 @@ export const useColumns = (columns, hiddenColumns = '', variables = {}) => {
 
   const convert = (column) => ({
     ...column,
-    ...(column.label && { label: t(column.label ?? '', variables) }),
+    ...(column.label && { label: t(column.label ?? '', unref(variables)) }),
     ...(column.tooltip && { tooltip: t(column.tooltip ?? '') }),
   });
   const converted = computed(() => map(convert, unref(columns)));

@@ -90,7 +90,7 @@ const { page, change: onPaginatorChange } = usePage({
 });
 
 const timezone = ref(getLocalTimezone());
-const currentOffsetName = offsetName(new Date(), unref(timezone), props.locale);
+const currentOffsetName = computed(() => offsetName(new Date(), unref(timezone), props.locale));
 
 const convertedRows = computed(() => {
   return convert(unref(rows))
