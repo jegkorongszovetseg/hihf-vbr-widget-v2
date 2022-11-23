@@ -7,6 +7,7 @@ import FieldPlayersPenalties from './FieldPlayersPenalties.ce.vue';
 import GoaliesLeader from './GoaliesLeader.ce.vue';
 import TeamAttendance from './TeamAttendance.ce.vue';
 import TeamFairplay from './TeamFairplay.ce.vue';
+import TeamPenaltyKilling from './TeamPenaltyKilling.ce.vue';
 
 const StandingsCE = defineCustomElement(Standings);
 const ScheduleCE = defineCustomElement(Schedule);
@@ -15,6 +16,7 @@ const FieldPlayersPenaltiesCE = defineCustomElement(FieldPlayersPenalties);
 const GoaliesLeaderCE = defineCustomElement(GoaliesLeader);
 const TeamAttendanceCE = defineCustomElement(TeamAttendance);
 const TeamFairplayCE = defineCustomElement(TeamFairplay);
+const TeamPenaltyKillingCE = defineCustomElement(TeamPenaltyKilling);
 
 export {
   StandingsCE,
@@ -24,6 +26,7 @@ export {
   GoaliesLeaderCE,
   TeamAttendanceCE,
   TeamFairplayCE,
+  TeamPenaltyKillingCE,
 };
 
 export function register() {
@@ -34,6 +37,7 @@ export function register() {
   customElements.define('mjsz-vbr-goalies', GoaliesLeaderCE);
   customElements.define('mjsz-vbr-team-attendance', TeamAttendanceCE);
   customElements.define('mjsz-vbr-team-fairplay', TeamFairplayCE);
+  customElements.define('mjsz-vbr-team-penalty-killing', TeamPenaltyKillingCE);
 }
 
 export default register;

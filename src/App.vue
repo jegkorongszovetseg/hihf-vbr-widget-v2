@@ -8,7 +8,7 @@ import FieldPlayersPenalties from './@widgets/FieldPlayersPenalties.ce.vue';
 import GoaliesLeader from './@widgets/GoaliesLeader.ce.vue';
 import TeamAttendance from './@widgets/TeamAttendance.ce.vue';
 import TeamFairplay from './@widgets/TeamFairplay.ce.vue';
-// import TeamPenaltyKilling from './components/widgets/TeamPenaltyKilling.ce.vue';
+import TeamPenaltyKilling from './@widgets/TeamPenaltyKilling.ce.vue';
 // import TeamPowerplay from './components/widgets/TeamPowerplay.ce.vue';
 // import TeamScoringEfficiency from './components/widgets/TeamScoringEfficiency.ce.vue';
 // import ScheduleLiga from './@widgets-extended/schedule/ScheduleLiga.ce.vue';
@@ -26,8 +26,8 @@ const change = () => {
     <!-- <Statistics :locale="locale" championship-name="Erste Liga" /> -->
     <!-- <TeamScoringEfficiency :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamPowerplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
-    <!-- <TeamPenaltyKilling :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
-    <TeamFairplay :locale="locale" championship-id="3314" division="Alapszakasz" />
+    <TeamPenaltyKilling :locale="locale" championship-id="3314" division="Alapszakasz" />
+    <!-- <TeamFairplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamAttendance :locale="locale" championship-id="3314" division="Alapszakasz" :is-team-linked="true" /> -->
     <!-- <GoaliesLeader :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <FieldPlayersPenalties :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="false" :is-team-linked="true" /> -->
