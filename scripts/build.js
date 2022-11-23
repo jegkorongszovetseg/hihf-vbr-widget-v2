@@ -21,7 +21,7 @@ const builds = [
     globals: {},
   },
   {
-    entry: path.resolve(__dirname, '../src/@widgets/bundle.js'),
+    entry: path.resolve(__dirname, '../src/@widgets/index.js'),
     name: 'MjszWidgetElements',
     fileName: (format) => `mjsz-vbr-elements.${format}.js`,
     external: [
@@ -40,8 +40,8 @@ const builds = [
     },
   },
   {
-    entry: path.resolve(__dirname, '../src/@widgets/bundle.js'),
-    name: 'MjszWidgetElementsBundle',
+    entry: path.resolve(__dirname, '../src/bundle.js'),
+    name: 'MjszWidgetBundle',
     fileName: (format) => `mjsz-vbr-bundle.${format}.js`,
     external: [],
     globals: {},
