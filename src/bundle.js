@@ -7,7 +7,7 @@ import GoaliesLeader from './@widgets/GoaliesLeader.ce.vue';
 import TeamAttendance from './@widgets/TeamAttendance.ce.vue';
 import TeamFairplay from './@widgets/TeamFairplay.ce.vue';
 import TeamPenaltyKilling from './@widgets/TeamPenaltyKilling.ce.vue';
-// import TeamPowerplay from './components/widgets/TeamPowerplay.ce.vue';
+import TeamPowerplay from './@widgets/TeamPowerplay.ce.vue';
 // import TeamScoringEfficiency from './components/widgets/TeamScoringEfficiency.ce.vue';
 // import Statistics from './components/widgets/extended/statistics/Statistics.ce.vue';
 
@@ -19,7 +19,7 @@ const GoaliesLeaderCE = defineCustomElement(GoaliesLeader);
 const TeamAttendanceCE = defineCustomElement(TeamAttendance);
 const TeamFairplayCE = defineCustomElement(TeamFairplay);
 const TeamPenaltyKillingCE = defineCustomElement(TeamPenaltyKilling);
-// const TeamPowerplayCE = defineCustomElement(TeamPowerplay);
+const TeamPowerplayCE = defineCustomElement(TeamPowerplay);
 // const TeamScoringEfficiencyCE = defineCustomElement(TeamScoringEfficiency);
 // const StatisticsCE = defineCustomElement(Statistics);
 
@@ -32,7 +32,7 @@ export {
   TeamAttendanceCE,
   TeamFairplayCE,
   TeamPenaltyKillingCE,
-  // TeamPowerplayCE,
+  TeamPowerplayCE,
   // TeamScoringEfficiencyCE,
   // StatisticsCE,
 };
@@ -46,7 +46,7 @@ export function register() {
   customElements.define('mjsz-vbr-team-attendance', TeamAttendanceCE);
   customElements.define('mjsz-vbr-team-fairplay', TeamFairplayCE);
   customElements.define('mjsz-vbr-team-penalty-killing', TeamPenaltyKillingCE);
-  // customElements.define('mjsz-vbr-team-powerplay', TeamPowerplayCE);
+  customElements.define('mjsz-vbr-team-powerplay', TeamPowerplayCE);
   // customElements.define('mjsz-vbr-team-scoring', TeamScoringEfficiencyCE);
   // customElements.define('mjsz-vbr-statistics', StatisticsCE);
 }
