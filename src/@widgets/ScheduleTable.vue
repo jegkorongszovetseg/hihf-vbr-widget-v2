@@ -1,12 +1,12 @@
 <script setup>
-import { COLUMNS_SCHEDULE, DEFAULT_EXTERNAL_BASE_URL } from '@VbrWidget/core';
-import { useColumns, useI18n, useError } from '@VbrWidget/composables';
-import { WidgetError, UndefinedColumn } from '@VbrWidget/utils';
-import { FloatingPanel, ResponsiveTable, Image, DataTable, LoadingIndicator } from '@VbrWidget/components';
-import { IconBroadcast } from '@VbrWidget/icons';
-import { IconMore } from '@VbrWidget/icons';
-import { IconSheet } from '@VbrWidget/icons';
-import { IconYoutube } from '@VbrWidget/icons';
+import { COLUMNS_SCHEDULE, DEFAULT_EXTERNAL_BASE_URL } from '@vbr-widget/core';
+import { useColumns, useI18n, useError } from '@vbr-widget/composables';
+import { WidgetError, UndefinedColumn } from '@vbr-widget/utils';
+import { FloatingPanel, ResponsiveTable, Image, DataTable, LoadingIndicator } from '@vbr-widget/components';
+import { IconBroadcast } from '@vbr-widget/icons';
+import { IconMore } from '@vbr-widget/icons';
+import { IconSheet } from '@vbr-widget/icons';
+import { IconYoutube } from '@vbr-widget/icons';
 
 const props = defineProps({
   rows: {

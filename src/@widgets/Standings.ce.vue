@@ -1,10 +1,10 @@
 <script setup>
 import { computed, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
-import { useSort, useErrorProvider, fetchVBRData } from '@VbrWidget/composables';
-import { externalTeamLinkResolver, convert } from '@VbrWidget/utils';
-import { COLUMNS_STANDINGS_P_2, COLUMNS_STANDINGS_P_3 } from '@VbrWidget/core';
-import { I18NProvider, ErrorNotice, StatisticsTable } from '@VbrWidget/components';
+import { useSort, useErrorProvider, fetchVBRData } from '@vbr-widget/composables';
+import { externalTeamLinkResolver, convert } from '@vbr-widget/utils';
+import { COLUMNS_STANDINGS_P_2, COLUMNS_STANDINGS_P_3 } from '@vbr-widget/core';
+import { I18NProvider, ErrorNotice, StatisticsTable } from '@vbr-widget/components';
 import { baseProps, teamStatsProps } from './internal.props';
 
 const props = defineProps({

@@ -2,10 +2,10 @@
 import { computed, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { baseProps, playerStatsProps } from './internal.props';
-import { SORT_STATE_DESCEND, COLUMNS_FIELD_PLAYERS_PENALTY } from '@VbrWidget/core';
-import { convert, playerName, rawConvert, externalPlayerLinkResolver, externalTeamLinkResolver } from '@VbrWidget/utils';
-import { useErrorProvider, usePage, useSort, fetchVBRData } from '@VbrWidget/composables';
-import { I18NProvider, ErrorNotice, StatisticsTable, Paginator}  from '@VbrWidget/components';
+import { SORT_STATE_DESCEND, COLUMNS_FIELD_PLAYERS_PENALTY } from '@vbr-widget/core';
+import { convert, playerName, rawConvert, externalPlayerLinkResolver, externalTeamLinkResolver } from '@vbr-widget/utils';
+import { useErrorProvider, usePage, useSort, fetchVBRData } from '@vbr-widget/composables';
+import { I18NProvider, ErrorNotice, StatisticsTable, Paginator}  from '@vbr-widget/components';
 
 const props = defineProps({
   ...baseProps,

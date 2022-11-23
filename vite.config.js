@@ -14,11 +14,11 @@ export default defineConfig(({ mode }) => {
     },
     resolve: {
       alias: {
-        '@VbrWidget/core': path.resolve(__dirname, './src/@core/'),
-        '@VbrWidget/components': path.resolve(__dirname, './src/@core/components/index.js'),
-        '@VbrWidget/composables': path.resolve(__dirname, './src/@core/composables/index.js'),
-        '@VbrWidget/utils': path.resolve(__dirname, './src/@core/utils/index.js'),
-        '@VbrWidget/icons': path.resolve(__dirname, './src/@core/icons/index.js'),
+        '@vbr-widget/core': path.resolve(__dirname, './src/@core/'),
+        '@vbr-widget/components': path.resolve(__dirname, './src/@core/components/index.js'),
+        '@vbr-widget/composables': path.resolve(__dirname, './src/@core/composables/index.js'),
+        '@vbr-widget/utils': path.resolve(__dirname, './src/@core/utils/index.js'),
+        '@vbr-widget/icons': path.resolve(__dirname, './src/@core/icons/index.js'),
       },
     },
     css: {
