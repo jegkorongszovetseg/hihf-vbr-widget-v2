@@ -1,19 +1,18 @@
 <script setup>
-import { computed, unref, watch } from 'vue';
+import { computed, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
-import { fetchVBRData } from '../../composables/useFetchVBRApi';
-import useSort from '../../composables/useSort';
-import { usePage } from '../../composables/usePage';
-import convert, { convertTimes, playerName, rawConvert } from '../../utils/convert';
-import { COLUMNS_GOALIES } from '../@core/columns';
-import { SORT_STATE_DESCEND, VBR_API_GOALIE_PATH, VBR_API_GOALIE_UNDER_PATH } from '../../@shared/constantsonstants';
 import { baseProps, playerStatsProps } from './internal.props';
-import { externalPlayerLinkResolver, externalTeamLinkResolver } from '../../utils/resolvers';
-import I18NProvider from '../I18NProvider.vue';
-import ErrorNotice from '../ErrorNotice.vue';
-import StatisticsTable from '../@core/components/StatisticsTable.vue';
-import Paginator from '../Paginator.vue';
-import { useErrorProvider } from '../../composables/useErrors';
+import { fetchVBRData, useSort, usePage, useErrorProvider } from '@vbr-widget/composables';
+import {
+  convert,
+  convertTimes,
+  playerName,
+  rawConvert,
+  externalPlayerLinkResolver,
+  externalTeamLinkResolver,
+} from '@vbr-widget/utils';
+import { COLUMNS_GOALIES, SORT_STATE_DESCEND, VBR_API_GOALIE_PATH, VBR_API_GOALIE_UNDER_PATH } from '@vbr-widget/core';
+import { I18NProvider, ErrorNotice, StatisticsTable, Paginator } from '@vbr-widget/components';
 
 const props = defineProps({
   ...baseProps,
@@ -31,18 +30,17 @@ const columns = COLUMNS_GOALIES;
 const locale = computed(() => props.locale);
 const apiPath = computed(() => (props.underLimit ? VBR_API_GOALIE_UNDER_PATH : VBR_API_GOALIE_PATH));
 
-const {
-  state: rawRows,
-  error: apiError,
-  isLoading,
-} = useAsyncState(
-  fetchVBRData(apiPath, props.apiKey, {
-    championshipId: Number(props.championshipId),
-    division: props.division,
-  }),
-  []
+const { state: rawRows, isLoading } = useAsyncState(
+  () =>
+    fetchVBRData(apiPath, props.apiKey, {
+      championshipId: Number(props.championshipId),
+      division: props.division,
+    }),
+  [],
+  {
+    onError: (error) => onError(error),
+  }
 );
-watch(apiError, (error) => onError(error));
 
 const { page, change: onPaginatorChange } = usePage();
 
@@ -98,7 +96,7 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
   </div>
 </template>
 
-<style src="../../assets/common.css"></style>
-<style lang="scss" src="../../assets/table.css"></style>
-<style lang="scss" src="../../assets/responsive-table.css"></style>
-<style lang="css" src="../../assets/paginator.css"></style>
+<style lang="postcss" src="../assets/common.css"></style>
+<style lang="postcss" src="../assets/table.css"></style>
+<style lang="postcss" src="../assets/responsive-table.css"></style>
+<style lang="postcss" src="../assets/paginator.css"></style>
