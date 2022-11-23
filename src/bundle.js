@@ -4,7 +4,7 @@ import Standings from './@widgets/Standings.ce.vue';
 import FieldPlayersLeader from './@widgets/FieldPlayersLeader.ce.vue';
 import FieldPlayersPenalties from './@widgets/FieldPlayersPenalties.ce.vue';
 import GoaliesLeader from './@widgets/GoaliesLeader.ce.vue';
-// import TeamAttendance from './components/widgets/TeamAttendance.ce.vue';
+import TeamAttendance from './@widgets/TeamAttendance.ce.vue';
 // import TeamFairplay from './components/widgets/TeamFairplay.ce.vue';
 // import TeamPenaltyKilling from './components/widgets/TeamPenaltyKilling.ce.vue';
 // import TeamPowerplay from './components/widgets/TeamPowerplay.ce.vue';
@@ -16,7 +16,7 @@ const StandingsCE = defineCustomElement(Standings);
 const FieldPlayersLeaderCE = defineCustomElement(FieldPlayersLeader);
 const FieldPlayersPenaltiesCE = defineCustomElement(FieldPlayersPenalties);
 const GoaliesLeaderCE = defineCustomElement(GoaliesLeader);
-// const TeamAttendanceCE = defineCustomElement(TeamAttendance);
+const TeamAttendanceCE = defineCustomElement(TeamAttendance);
 // const TeamFairplayCE = defineCustomElement(TeamFairplay);
 // const TeamPenaltyKillingCE = defineCustomElement(TeamPenaltyKilling);
 // const TeamPowerplayCE = defineCustomElement(TeamPowerplay);
@@ -29,7 +29,7 @@ export {
   FieldPlayersLeaderCE,
   FieldPlayersPenaltiesCE,
   GoaliesLeaderCE,
-  // TeamAttendanceCE,
+  TeamAttendanceCE,
   // TeamFairplayCE,
   // TeamPenaltyKillingCE,
   // TeamPowerplayCE,
@@ -43,7 +43,7 @@ export function register() {
   customElements.define('mjsz-vbr-players-leader', FieldPlayersLeaderCE);
   customElements.define('mjsz-vbr-players-penalties', FieldPlayersPenaltiesCE);
   customElements.define('mjsz-vbr-goalies', GoaliesLeaderCE);
-  // customElements.define('mjsz-vbr-team-attendance', TeamAttendanceCE);
+  customElements.define('mjsz-vbr-team-attendance', TeamAttendanceCE);
   // customElements.define('mjsz-vbr-team-fairplay', TeamFairplayCE);
   // customElements.define('mjsz-vbr-team-penalty-killing', TeamPenaltyKillingCE);
   // customElements.define('mjsz-vbr-team-powerplay', TeamPowerplayCE);
