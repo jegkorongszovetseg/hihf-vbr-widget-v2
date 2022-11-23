@@ -1,7 +1,7 @@
 /*!
   * MJSZ VBR Widgets v2.0.0-alpha.1
   * (c) 2022 Akos Stegner
-  * Released: 22/11/2022, 09:04:56
+  * Released: 22/11/2022, 22:01:33
   * Released under the MIT License.
   */
 var MjszWidgetElements = function(exports, vue, composables, utils, core, components, icons) {
@@ -281,6 +281,25 @@ var MjszWidgetElements = function(exports, vue, composables, utils, core, compon
       default: false
     }
   };
+  const playerStatsProps = {
+    limit: {
+      type: Number,
+      default: 20
+    },
+    teamFilterByName: {
+      type: String,
+      default: ""
+    },
+    externalPlayerLink: {
+      type: [String, Function],
+      default: ""
+    },
+    isPlayerLinked: {
+      type: Boolean,
+      default: false
+    },
+    ...teamStatsProps
+  };
   const _style_0$1 = ":root,\n:host {\n  font-family: 'Roboto Condensed', Avenir, Helvetica, Arial, sans-serif;\n\n  --vbr-widget-primary-color-0: #ffffff;\n  --vbr-widget-primary-color-50: #eceff1;\n  --vbr-widget-primary-color-100: #cfd8dc;\n  --vbr-widget-primary-color-200: #b0bec5;\n  --vbr-widget-primary-color-300: #90a4ae;\n  --vbr-widget-primary-color-400: #78909c;\n  --vbr-widget-primary-color-500: #607d8b;\n  --vbr-widget-primary-color-600: #546e7a;\n  --vbr-widget-primary-color-700: #455a64;\n  --vbr-widget-primary-color-800: #37474f;\n  --vbr-widget-primary-color-900: #263238;\n\n  --vbr-widget-secondary-color-100: #dcedc8;\n  --vbr-widget-secondary-color-200: #badb94;\n  --vbr-widget-secondary-color-300: #aed581;\n  --vbr-widget-secondary-color-400: #9ccc65;\n  --vbr-widget-secondary-color-500: #8bc34a;\n  --vbr-widget-secondary-color-700: #689f38;\n  --vbr-widget-secondary-color-800: #558b2f;\n  --vbr-widget-secondary-color-900: #33691e;\n\n  --vbr-widget-danger-color-50: #ffebee;\n  --vbr-widget-danger-color-100: #ffcdd2;\n  --vbr-widget-danger-color-200: #ef9a9a;\n  --vbr-widget-danger-color-300: #e57373;\n  --vbr-widget-danger-color-400: #ef5350;\n  --vbr-widget-danger-color-500: #f44336;\n  --vbr-widget-danger-color-700: #d32f2f;\n  --vbr-widget-danger-color-900: #b71c1c;\n  --vbr-widget-danger-color-a400: #ff1744;\n\n  --vbr-widget-table-header-font-size: 12px;\n  --vbr-widget-table-default-column-width: 30px;\n  --vbr-widget-table-default-bg-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-table-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-neutral-color: var(--vbr-widget-primary-color-300);\n  --vbr-widget-table-header-bg-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-color: var(--vbr-widget-primary-color-200);\n  --vbr-widget-table-table-header-active-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-table-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-hover-bg-color: var(--vbr-widget-secondary-color-100);\n  --vbr-widget-table-active-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-bg-color: var(--vbr-widget-secondary-color-200);\n  --vbr-widget-table-active-even-bg-color: var(--vbr-widget-secondary-color-300);\n  --vbr-widget-table-active-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-hover-bg-color: var(--vbr-widget-secondary-color-400);\n  --vbr-widget-table-portrait-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-table-portrait-bg-color: var(--vbr-widget-primary-color-50);\n  --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-600);\n  --vbr-widget-table-cell-dark-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-table-stripped-bg-color: #f8f9fa;\n  --vbr-widget-table-label-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-table-label-bg-color: var(--vbr-widget-primary-color-50);\n  --vbr-widget-table-cell-logo-size: 20px;\n  --vbr-widget-table-cell-portrait-size: 26px;\n\n  --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-hover-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-paginator-hover-bg-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);\n\n  --vbr-widget-tooltip-font-size: 12px;\n  --vbr-widget-tooltip-color: #ffffff;\n  --vbr-widget-tooltip-bg-color: #000000;\n\n  --vbr-widget-popover-trigger-hover-bg-color: var(--vbr-widget-secondary-color-200);\n  --vbr-widget-popover-trigger-focus-bg-color: var(--vbr-widget-secondary-color-300);\n  --vbr-widget-popover-bg-color: var(--vbr-widget-primary-color-0);\n\n  --vbr-widget-dropdown-item-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-dropdown-item-hover-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-dropdown-item-hover-bg-color: var(--vbr-widget-primary-color-50);\n\n  --vbr-widget-error-notice-bg-color: var(--vbr-widget-danger-color-50);\n  --vbr-widget-error-notice-border-color: var(--vbr-widget-danger-color-100);\n  --vbr-widget-error-notice-color: var(--vbr-widget-danger-color-700);\n\n  --vbr-widget-link-color: var(--vbr-widget-secondary-color-700);\n  --vbr-widget-hover-color: var(--vbr-widget-secondary-color-900);\n\n  --vbr-widget-base-input-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-base-input-font-size: 0.875rem;\n  --vbr-widget-base-input-border-color: var(--vbr-widget-primary-color-300);\n  --vbr-widget-base-input-border-radius: 3px;\n\n  --vbr-widget-form-label-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-form-label-font-size: 0.75rem;\n\n  --vbr-widget-timezone-selector-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-timezone-selector-font-size: 0.8125rem;\n}\n.transition-fade-enter-active,\n.transition-fade-leave-active {\n  transition: all 0.25s ease;\n}\n.transition-fade-enter-from,\n.transition-fade-leave-to {\n  opacity: 0;\n  transform: translateY(5px);\n}\nimg {\n  opacity: 0;\n  transition: opacity 0.5s ease-out;\n}\nimg.is-loaded {\n  opacity: 1;\n}\na {\n  color: var(--vbr-widget-link-color);\n  text-decoration: none;\n}\na:hover {\n    color: var(--vbr-widget-hover-color);\n}\n.floating-content.is-tooltip {\n    background-color: var(--vbr-widget-tooltip-bg-color);\n    color: var(--vbr-widget-tooltip-color);\n    font-weight: bold;\n    padding: 5px 10px;\n    border-radius: 4px;\n    font-size: var(--vbr-widget-tooltip-font-size);\n    white-space: nowrap;\n    pointer-events: none;\n}\n.floating-content.is-tooltip .is-arrow {\n      background-color: var(--vbr-widget-tooltip-bg-color);\n}\n.floating-content.is-content {\n    /* width: 220px; */\n    border-radius: 4px;\n    box-shadow: 2px 14px 23px 0px rgba(0, 0, 0, 0.25);\n}\n.floating-content.is-content .is-arrow {\n      background-color: var(--vbr-widget-primary-color-50);\n}\n.floating-content .is-arrow {\n    position: absolute;\n    width: 8px;\n    height: 8px;\n    transform: rotate(45deg);\n}\n[data-placement^='top'] .floating-content .is-arrow {\n      bottom: -4px;\n}\n[data-placement^='bottom'] .floating-content .is-arrow {\n      top: -4px;\n}\n[data-placement^='left'] .floating-content .is-arrow {\n      right: -4px;\n}\n[data-placement^='right'] .floating-content .is-arrow {\n      left: -4px;\n}\n.mjsz-vbr-error-notice {\n  display: flex;\n  align-items: center;\n  justify-items: flex-start;\n  margin: 10px 0;\n  padding: 10px 20px;\n  background-color: var(--vbr-widget-error-notice-bg-color);\n  color: var(--vbr-widget-error-notice-color);\n  border: 1px solid var(--vbr-widget-error-notice-border-color);\n}\n.mjsz-vbr-error-notice .icon {\n    margin-right: 15px;\n}\n.mjsz-vbr-timezone-selector {\n  padding: 3px 0;\n  color: var(--vbr-widget-timezone-selector-color);\n  font-size: var(--vbr-widget-timezone-selector-font-size);\n}\n.is-card {\n  background-color: #fff;\n  padding: 15px;\n  margin-bottom: 20px;\n  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10), 0 2px 2px 0 rgba(0, 0, 0, 0.10);\n}\n";
   const _style_1$1 = ".mjsz-vbr-table {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n.mjsz-vbr-table table,\n  .mjsz-vbr-table caption,\n  .mjsz-vbr-table tbody,\n  .mjsz-vbr-table tfoot,\n  .mjsz-vbr-table thead,\n  .mjsz-vbr-table tr,\n  .mjsz-vbr-table th,\n  .mjsz-vbr-table td {\n    margin: 0;\n    padding: 0;\n    border: 0;\n    font-size: 100%;\n    font: inherit;\n    vertical-align: baseline;\n}\n.mjsz-vbr-table {\n  color: var(--vbr-widget-table-color);\n  background-color: var(--vbr-widget-table-default-bg-color);\n}\n.mjsz-vbr-table th {\n    width: var(--vbr-widget-table-default-column-width);\n    background-color: var(--vbr-widget-table-header-bg-color);\n    font-size: var(--vbr-widget-table-header-font-size);\n    font-weight: 700;\n    color: var(--vbr-widget-table-header-color);\n    text-align: center;\n}\n.mjsz-vbr-table th:focus-visible,\n    .mjsz-vbr-table th:hover {\n      background-color: var(--vbr-widget-table-header-hover-bg-color);\n      outline: none;\n}\n.mjsz-vbr-table th.is-sortable {\n      position: relative;\n      cursor: pointer;\n}\n.mjsz-vbr-table th.is-sortable .icon-sort {\n        opacity: 0.5;\n}\n.mjsz-vbr-table th.is-active {\n      background-color: var(--vbr-widget-table-table-header-active-bg-color);\n      color: var(--vbr-widget-table-header-active-color);\n}\n.mjsz-vbr-table th.is-active .icon-sort {\n        opacity: 1;\n}\n.mjsz-vbr-table th.is-asc {\n      position: relative;\n}\n.mjsz-vbr-table th.is-desc {\n      position: relative;\n}\n.mjsz-vbr-table th.is-w-auto {\n      width: auto;\n}\n.mjsz-vbr-table th .is-icon-sort {\n      width: 11px;\n      height: 11px;\n      margin-left: 5px;\n}\n.mjsz-vbr-table td {\n    text-align: center;\n}\n.mjsz-vbr-table td.is-active {\n      font-weight: 700;\n      color: var(--vbr-widget-table-active-color);\n      background-color: var(--vbr-widget-table-active-bg-color);\n}\n.mjsz-vbr-table td .is-text-light,\n    .mjsz-vbr-table td.is-text-light {\n      color: var(--vbr-widget-table-cell-light-color);\n}\n.mjsz-vbr-table td .is-text-dark,\n    .mjsz-vbr-table td.is-text-dark {\n      color: var(--vbr-widget-table-cell-dark-color);\n}\n.mjsz-vbr-table td .is-logo-image {\n      display: inline-block;\n      vertical-align: middle;\n      width: var(--vbr-widget-table-cell-logo-size);\n      height: var(--vbr-widget-table-cell-logo-size);\n}\n.mjsz-vbr-table td .is-portrait-image {\n      display: inline-block;\n      vertical-align: middle;\n      width: var(--vbr-widget-table-cell-portrait-size);\n      height: var(--vbr-widget-table-cell-portrait-size);\n      object-fit: cover;\n      object-position: top;\n      overflow: hidden;\n      border-radius: 100%;\n      border: 1px solid var(--vbr-widget-primary-color-100);\n}\n.mjsz-vbr-table td .is-portrait-image img {\n        width: var(--vbr-widget-table-cell-portrait-size);\n        height: auto;\n}\n.mjsz-vbr-table td.is-text-bold {\n      font-weight: 700;\n}\n.mjsz-vbr-table td.is-text-xl {\n      font-size: 1.2 rem;\n}\n.mjsz-vbr-table td .is-text-accent {\n      color: var(--vbr-widget-secondary-color-500);\n}\n.mjsz-vbr-table td svg {\n      width: 16px;\n      height: 16px;\n}\n.mjsz-vbr-table td button {\n      padding: 3px 3px;\n      line-height: 0;\n      border: none;\n      outline: none;\n      background-color: transparent;\n}\n.mjsz-vbr-table td button:hover {\n        background-color: var(--vbr-widget-popover-trigger-hover-bg-color);\n}\n.mjsz-vbr-table td button:active,\n      .mjsz-vbr-table td button:focus {\n        background-color: var(--vbr-widget-popover-trigger-focus-bg-color);\n}\n.mjsz-vbr-table td a {\n      text-decoration: none;\n}\n.mjsz-vbr-table td .label {\n      padding: 3px 6px;\n      font-size: 11px;\n      font-weight: 700;\n      color: var(--vbr-widget-table-label-color);\n      background-color: var(--vbr-widget-table-label-bg-color);\n      border-radius: 2px;\n}\n.mjsz-vbr-table td .label:not(:last-of-type) {\n        margin-right: 3px;\n}\n.mjsz-vbr-table td a {\n      color: var(--vbr-widget-link-color);\n}\n.mjsz-vbr-table td a:hover {\n      color: var(--vbr-widget-hover-color);\n}\n.mjsz-vbr-table th,\n  .mjsz-vbr-table td {\n    padding: 8px;\n    white-space: nowrap;\n    vertical-align: middle;\n}\n.mjsz-vbr-table th.is-text-left, .mjsz-vbr-table td.is-text-left {\n      text-align: left;\n}\n.mjsz-vbr-table th.is-text-right, .mjsz-vbr-table td.is-text-right {\n      text-align: right;\n}\n.mjsz-vbr-table th.is-has-image, .mjsz-vbr-table td.is-has-image {\n      padding: 0 2px;\n}\n.mjsz-vbr-table th .is-duplicated, .mjsz-vbr-table td .is-duplicated {\n      color: var(--vbr-widget-table-neutral-color);\n}\n.mjsz-vbr-table tr:nth-child(even) {\n    background-color: var(--vbr-widget-table-stripped-bg-color);\n}\n.mjsz-vbr-table tr:nth-child(even) td.is-active {\n      background-color: var(--vbr-widget-table-active-even-bg-color);\n}\n.mjsz-vbr-table tr:focus-within,\n  .mjsz-vbr-table tr:hover {\n    color: var(--vbr-widget-table-hover-color);\n    background-color: var(--vbr-widget-table-hover-bg-color);\n}\n.mjsz-vbr-table tr:focus-within td.is-active, .mjsz-vbr-table tr:hover td.is-active {\n      color: var(--vbr-widget-table-active-hover-color);\n      background-color: var(--vbr-widget-table-active-hover-bg-color);\n}\n";
   const _style_2$1 = ".mjsz-vbr-table-responsive {\n  width: 100%;\n  overflow-x: auto;\n}\n.mjsz-vbr-table-responsive table {\n  width: 100%;\n}\n";
@@ -291,7 +310,7 @@ var MjszWidgetElements = function(exports, vue, composables, utils, core, compon
     }
     return target;
   };
-  const _sfc_main$2 = {
+  const _sfc_main$3 = {
     __name: "Standings.ce",
     props: {
       ...baseProps,
@@ -306,11 +325,7 @@ var MjszWidgetElements = function(exports, vue, composables, utils, core, compon
       const props = __props;
       const { onError, error, hasError } = composables.useErrorProvider();
       const locale = vue.computed(() => props.locale);
-      const {
-        state: rows,
-        error: apiError,
-        isLoading
-      } = useAsyncState(
+      const { state: rows, isLoading } = useAsyncState(
         () => composables.fetchVBRData("/v1/standings", props.apiKey, {
           championshipId: Number(props.championshipId),
           division: props.division
@@ -352,7 +367,7 @@ var MjszWidgetElements = function(exports, vue, composables, utils, core, compon
       };
     }
   };
-  const Standings = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["styles", [_style_0$1, _style_1$1, _style_2$1]]]);
+  const Standings = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["styles", [_style_0$1, _style_1$1, _style_2$1]]]);
   const _hoisted_1 = {
     key: 0,
     class: "is-text-dark"
@@ -376,7 +391,7 @@ var MjszWidgetElements = function(exports, vue, composables, utils, core, compon
   const _hoisted_9 = ["href"];
   const _hoisted_10 = { key: 0 };
   const _hoisted_11 = ["href"];
-  const _sfc_main$1 = {
+  const _sfc_main$2 = {
     __name: "ScheduleTable",
     props: {
       rows: {
@@ -497,6 +512,9 @@ var MjszWidgetElements = function(exports, vue, composables, utils, core, compon
                   _: 2
                 }, 1032, ["append-to"])
               ]),
+              loading: vue.withCtx(() => [
+                vue.createVNode(vue.unref(components.LoadingIndicator))
+              ]),
               _: 2
             }, 1032, ["columns", "rows", "is-loading", "append-to"])
           ]),
@@ -508,9 +526,9 @@ var MjszWidgetElements = function(exports, vue, composables, utils, core, compon
   const _style_0 = ":root,\n:host {\n  font-family: 'Roboto Condensed', Avenir, Helvetica, Arial, sans-serif;\n\n  --vbr-widget-primary-color-0: #ffffff;\n  --vbr-widget-primary-color-50: #eceff1;\n  --vbr-widget-primary-color-100: #cfd8dc;\n  --vbr-widget-primary-color-200: #b0bec5;\n  --vbr-widget-primary-color-300: #90a4ae;\n  --vbr-widget-primary-color-400: #78909c;\n  --vbr-widget-primary-color-500: #607d8b;\n  --vbr-widget-primary-color-600: #546e7a;\n  --vbr-widget-primary-color-700: #455a64;\n  --vbr-widget-primary-color-800: #37474f;\n  --vbr-widget-primary-color-900: #263238;\n\n  --vbr-widget-secondary-color-100: #dcedc8;\n  --vbr-widget-secondary-color-200: #badb94;\n  --vbr-widget-secondary-color-300: #aed581;\n  --vbr-widget-secondary-color-400: #9ccc65;\n  --vbr-widget-secondary-color-500: #8bc34a;\n  --vbr-widget-secondary-color-700: #689f38;\n  --vbr-widget-secondary-color-800: #558b2f;\n  --vbr-widget-secondary-color-900: #33691e;\n\n  --vbr-widget-danger-color-50: #ffebee;\n  --vbr-widget-danger-color-100: #ffcdd2;\n  --vbr-widget-danger-color-200: #ef9a9a;\n  --vbr-widget-danger-color-300: #e57373;\n  --vbr-widget-danger-color-400: #ef5350;\n  --vbr-widget-danger-color-500: #f44336;\n  --vbr-widget-danger-color-700: #d32f2f;\n  --vbr-widget-danger-color-900: #b71c1c;\n  --vbr-widget-danger-color-a400: #ff1744;\n\n  --vbr-widget-table-header-font-size: 12px;\n  --vbr-widget-table-default-column-width: 30px;\n  --vbr-widget-table-default-bg-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-table-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-neutral-color: var(--vbr-widget-primary-color-300);\n  --vbr-widget-table-header-bg-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-color: var(--vbr-widget-primary-color-200);\n  --vbr-widget-table-table-header-active-bg-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-table-header-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-table-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-hover-bg-color: var(--vbr-widget-secondary-color-100);\n  --vbr-widget-table-active-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-bg-color: var(--vbr-widget-secondary-color-200);\n  --vbr-widget-table-active-even-bg-color: var(--vbr-widget-secondary-color-300);\n  --vbr-widget-table-active-hover-color: var(--vbr-widget-secondary-color-900);\n  --vbr-widget-table-active-hover-bg-color: var(--vbr-widget-secondary-color-400);\n  --vbr-widget-table-portrait-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-table-portrait-bg-color: var(--vbr-widget-primary-color-50);\n  --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-600);\n  --vbr-widget-table-cell-dark-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-table-stripped-bg-color: #f8f9fa;\n  --vbr-widget-table-label-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-table-label-bg-color: var(--vbr-widget-primary-color-50);\n  --vbr-widget-table-cell-logo-size: 20px;\n  --vbr-widget-table-cell-portrait-size: 26px;\n\n  --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-hover-color: var(--vbr-widget-primary-color-700);\n  --vbr-widget-paginator-hover-bg-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-border-color: var(--vbr-widget-primary-color-100);\n  --vbr-widget-paginator-active-color: var(--vbr-widget-primary-color-0);\n  --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);\n  --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);\n\n  --vbr-widget-tooltip-font-size: 12px;\n  --vbr-widget-tooltip-color: #ffffff;\n  --vbr-widget-tooltip-bg-color: #000000;\n\n  --vbr-widget-popover-trigger-hover-bg-color: var(--vbr-widget-secondary-color-200);\n  --vbr-widget-popover-trigger-focus-bg-color: var(--vbr-widget-secondary-color-300);\n  --vbr-widget-popover-bg-color: var(--vbr-widget-primary-color-0);\n\n  --vbr-widget-dropdown-item-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-dropdown-item-hover-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-dropdown-item-hover-bg-color: var(--vbr-widget-primary-color-50);\n\n  --vbr-widget-error-notice-bg-color: var(--vbr-widget-danger-color-50);\n  --vbr-widget-error-notice-border-color: var(--vbr-widget-danger-color-100);\n  --vbr-widget-error-notice-color: var(--vbr-widget-danger-color-700);\n\n  --vbr-widget-link-color: var(--vbr-widget-secondary-color-700);\n  --vbr-widget-hover-color: var(--vbr-widget-secondary-color-900);\n\n  --vbr-widget-base-input-color: var(--vbr-widget-primary-color-800);\n  --vbr-widget-base-input-font-size: 0.875rem;\n  --vbr-widget-base-input-border-color: var(--vbr-widget-primary-color-300);\n  --vbr-widget-base-input-border-radius: 3px;\n\n  --vbr-widget-form-label-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-form-label-font-size: 0.75rem;\n\n  --vbr-widget-timezone-selector-color: var(--vbr-widget-primary-color-500);\n  --vbr-widget-timezone-selector-font-size: 0.8125rem;\n}\n.transition-fade-enter-active,\n.transition-fade-leave-active {\n  transition: all 0.25s ease;\n}\n.transition-fade-enter-from,\n.transition-fade-leave-to {\n  opacity: 0;\n  transform: translateY(5px);\n}\nimg {\n  opacity: 0;\n  transition: opacity 0.5s ease-out;\n}\nimg.is-loaded {\n  opacity: 1;\n}\na {\n  color: var(--vbr-widget-link-color);\n  text-decoration: none;\n}\na:hover {\n    color: var(--vbr-widget-hover-color);\n}\n.floating-content.is-tooltip {\n    background-color: var(--vbr-widget-tooltip-bg-color);\n    color: var(--vbr-widget-tooltip-color);\n    font-weight: bold;\n    padding: 5px 10px;\n    border-radius: 4px;\n    font-size: var(--vbr-widget-tooltip-font-size);\n    white-space: nowrap;\n    pointer-events: none;\n}\n.floating-content.is-tooltip .is-arrow {\n      background-color: var(--vbr-widget-tooltip-bg-color);\n}\n.floating-content.is-content {\n    /* width: 220px; */\n    border-radius: 4px;\n    box-shadow: 2px 14px 23px 0px rgba(0, 0, 0, 0.25);\n}\n.floating-content.is-content .is-arrow {\n      background-color: var(--vbr-widget-primary-color-50);\n}\n.floating-content .is-arrow {\n    position: absolute;\n    width: 8px;\n    height: 8px;\n    transform: rotate(45deg);\n}\n[data-placement^='top'] .floating-content .is-arrow {\n      bottom: -4px;\n}\n[data-placement^='bottom'] .floating-content .is-arrow {\n      top: -4px;\n}\n[data-placement^='left'] .floating-content .is-arrow {\n      right: -4px;\n}\n[data-placement^='right'] .floating-content .is-arrow {\n      left: -4px;\n}\n.mjsz-vbr-error-notice {\n  display: flex;\n  align-items: center;\n  justify-items: flex-start;\n  margin: 10px 0;\n  padding: 10px 20px;\n  background-color: var(--vbr-widget-error-notice-bg-color);\n  color: var(--vbr-widget-error-notice-color);\n  border: 1px solid var(--vbr-widget-error-notice-border-color);\n}\n.mjsz-vbr-error-notice .icon {\n    margin-right: 15px;\n}\n.mjsz-vbr-timezone-selector {\n  padding: 3px 0;\n  color: var(--vbr-widget-timezone-selector-color);\n  font-size: var(--vbr-widget-timezone-selector-font-size);\n}\n.is-card {\n  background-color: #fff;\n  padding: 15px;\n  margin-bottom: 20px;\n  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10), 0 2px 2px 0 rgba(0, 0, 0, 0.10);\n}\n";
   const _style_1 = ".mjsz-vbr-table {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\n.mjsz-vbr-table table,\n  .mjsz-vbr-table caption,\n  .mjsz-vbr-table tbody,\n  .mjsz-vbr-table tfoot,\n  .mjsz-vbr-table thead,\n  .mjsz-vbr-table tr,\n  .mjsz-vbr-table th,\n  .mjsz-vbr-table td {\n    margin: 0;\n    padding: 0;\n    border: 0;\n    font-size: 100%;\n    font: inherit;\n    vertical-align: baseline;\n}\n.mjsz-vbr-table {\n  color: var(--vbr-widget-table-color);\n  background-color: var(--vbr-widget-table-default-bg-color);\n}\n.mjsz-vbr-table th {\n    width: var(--vbr-widget-table-default-column-width);\n    background-color: var(--vbr-widget-table-header-bg-color);\n    font-size: var(--vbr-widget-table-header-font-size);\n    font-weight: 700;\n    color: var(--vbr-widget-table-header-color);\n    text-align: center;\n}\n.mjsz-vbr-table th:focus-visible,\n    .mjsz-vbr-table th:hover {\n      background-color: var(--vbr-widget-table-header-hover-bg-color);\n      outline: none;\n}\n.mjsz-vbr-table th.is-sortable {\n      position: relative;\n      cursor: pointer;\n}\n.mjsz-vbr-table th.is-sortable .icon-sort {\n        opacity: 0.5;\n}\n.mjsz-vbr-table th.is-active {\n      background-color: var(--vbr-widget-table-table-header-active-bg-color);\n      color: var(--vbr-widget-table-header-active-color);\n}\n.mjsz-vbr-table th.is-active .icon-sort {\n        opacity: 1;\n}\n.mjsz-vbr-table th.is-asc {\n      position: relative;\n}\n.mjsz-vbr-table th.is-desc {\n      position: relative;\n}\n.mjsz-vbr-table th.is-w-auto {\n      width: auto;\n}\n.mjsz-vbr-table th .is-icon-sort {\n      width: 11px;\n      height: 11px;\n      margin-left: 5px;\n}\n.mjsz-vbr-table td {\n    text-align: center;\n}\n.mjsz-vbr-table td.is-active {\n      font-weight: 700;\n      color: var(--vbr-widget-table-active-color);\n      background-color: var(--vbr-widget-table-active-bg-color);\n}\n.mjsz-vbr-table td .is-text-light,\n    .mjsz-vbr-table td.is-text-light {\n      color: var(--vbr-widget-table-cell-light-color);\n}\n.mjsz-vbr-table td .is-text-dark,\n    .mjsz-vbr-table td.is-text-dark {\n      color: var(--vbr-widget-table-cell-dark-color);\n}\n.mjsz-vbr-table td .is-logo-image {\n      display: inline-block;\n      vertical-align: middle;\n      width: var(--vbr-widget-table-cell-logo-size);\n      height: var(--vbr-widget-table-cell-logo-size);\n}\n.mjsz-vbr-table td .is-portrait-image {\n      display: inline-block;\n      vertical-align: middle;\n      width: var(--vbr-widget-table-cell-portrait-size);\n      height: var(--vbr-widget-table-cell-portrait-size);\n      object-fit: cover;\n      object-position: top;\n      overflow: hidden;\n      border-radius: 100%;\n      border: 1px solid var(--vbr-widget-primary-color-100);\n}\n.mjsz-vbr-table td .is-portrait-image img {\n        width: var(--vbr-widget-table-cell-portrait-size);\n        height: auto;\n}\n.mjsz-vbr-table td.is-text-bold {\n      font-weight: 700;\n}\n.mjsz-vbr-table td.is-text-xl {\n      font-size: 1.2 rem;\n}\n.mjsz-vbr-table td .is-text-accent {\n      color: var(--vbr-widget-secondary-color-500);\n}\n.mjsz-vbr-table td svg {\n      width: 16px;\n      height: 16px;\n}\n.mjsz-vbr-table td button {\n      padding: 3px 3px;\n      line-height: 0;\n      border: none;\n      outline: none;\n      background-color: transparent;\n}\n.mjsz-vbr-table td button:hover {\n        background-color: var(--vbr-widget-popover-trigger-hover-bg-color);\n}\n.mjsz-vbr-table td button:active,\n      .mjsz-vbr-table td button:focus {\n        background-color: var(--vbr-widget-popover-trigger-focus-bg-color);\n}\n.mjsz-vbr-table td a {\n      text-decoration: none;\n}\n.mjsz-vbr-table td .label {\n      padding: 3px 6px;\n      font-size: 11px;\n      font-weight: 700;\n      color: var(--vbr-widget-table-label-color);\n      background-color: var(--vbr-widget-table-label-bg-color);\n      border-radius: 2px;\n}\n.mjsz-vbr-table td .label:not(:last-of-type) {\n        margin-right: 3px;\n}\n.mjsz-vbr-table td a {\n      color: var(--vbr-widget-link-color);\n}\n.mjsz-vbr-table td a:hover {\n      color: var(--vbr-widget-hover-color);\n}\n.mjsz-vbr-table th,\n  .mjsz-vbr-table td {\n    padding: 8px;\n    white-space: nowrap;\n    vertical-align: middle;\n}\n.mjsz-vbr-table th.is-text-left, .mjsz-vbr-table td.is-text-left {\n      text-align: left;\n}\n.mjsz-vbr-table th.is-text-right, .mjsz-vbr-table td.is-text-right {\n      text-align: right;\n}\n.mjsz-vbr-table th.is-has-image, .mjsz-vbr-table td.is-has-image {\n      padding: 0 2px;\n}\n.mjsz-vbr-table th .is-duplicated, .mjsz-vbr-table td .is-duplicated {\n      color: var(--vbr-widget-table-neutral-color);\n}\n.mjsz-vbr-table tr:nth-child(even) {\n    background-color: var(--vbr-widget-table-stripped-bg-color);\n}\n.mjsz-vbr-table tr:nth-child(even) td.is-active {\n      background-color: var(--vbr-widget-table-active-even-bg-color);\n}\n.mjsz-vbr-table tr:focus-within,\n  .mjsz-vbr-table tr:hover {\n    color: var(--vbr-widget-table-hover-color);\n    background-color: var(--vbr-widget-table-hover-bg-color);\n}\n.mjsz-vbr-table tr:focus-within td.is-active, .mjsz-vbr-table tr:hover td.is-active {\n      color: var(--vbr-widget-table-active-hover-color);\n      background-color: var(--vbr-widget-table-active-hover-bg-color);\n}\n";
   const _style_2 = ".mjsz-vbr-table-responsive {\n  width: 100%;\n  overflow-x: auto;\n}\n.mjsz-vbr-table-responsive table {\n  width: 100%;\n}\n";
-  const _style_3 = ".mjsz-vbr-paginator {\n  display: flex;\n  flex-direction: row;\n  list-style-type: none;\n  margin: 10px 0;\n  padding: 0;\n}\n.mjsz-vbr-paginator button,\n  .mjsz-vbr-paginator div {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    padding: 6px 12px;\n    text-decoration: none;\n    cursor: pointer;\n    color: var(--vbr-widget-paginator-color);\n    border: 1px solid var(--vbr-widget-paginator-border-color);\n    background-color: var(--vbr-widget-paginator-bg-color);\n    margin-left: -1px;\n}\n.mjsz-vbr-paginator button .icon, .mjsz-vbr-paginator div .icon {\n      width: 16px;\n      height: 16px;\n      margin: 0 -4px;\n}\n.mjsz-vbr-paginator button:hover:not(.mjsz-vbr-paginator button.is-disabled,.mjsz-vbr-paginator button.is-active), .mjsz-vbr-paginator div:hover:not(.mjsz-vbr-paginator div.is-disabled,.mjsz-vbr-paginator div.is-active) {\n      color: var(--vbr-widget-paginator-hover-color);\n      background-color: var(--vbr-widget-paginator-hover-bg-color);\n}\n.mjsz-vbr-paginator button:disabled,\n    .mjsz-vbr-paginator button.is-disabled,\n    .mjsz-vbr-paginator div:disabled,\n    .mjsz-vbr-paginator div.is-disabled {\n      color: var(--vbr-widget-paginator-disabled-color);\n      background-color: var(--vbr-widget-paginator-bg-color);\n      pointer-events: none;\n      cursor: default;\n}\n.mjsz-vbr-paginator button.is-active, .mjsz-vbr-paginator div.is-active {\n      color: var(--vbr-widget-paginator-active-color);\n      background-color: var(--vbr-widget-paginator-active-bg-color);\n      border-color: var(--vbr-widget-paginator-active-bg-color);\n      cursor: default;\n}\n";
+  const _style_3$1 = ".mjsz-vbr-paginator {\n  display: flex;\n  flex-direction: row;\n  list-style-type: none;\n  margin: 10px 0;\n  padding: 0;\n}\n.mjsz-vbr-paginator button,\n  .mjsz-vbr-paginator div {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    padding: 6px 12px;\n    text-decoration: none;\n    cursor: pointer;\n    color: var(--vbr-widget-paginator-color);\n    border: 1px solid var(--vbr-widget-paginator-border-color);\n    background-color: var(--vbr-widget-paginator-bg-color);\n    margin-left: -1px;\n}\n.mjsz-vbr-paginator button .icon, .mjsz-vbr-paginator div .icon {\n      width: 16px;\n      height: 16px;\n      margin: 0 -4px;\n}\n.mjsz-vbr-paginator button:hover:not(.mjsz-vbr-paginator button.is-disabled,.mjsz-vbr-paginator button.is-active), .mjsz-vbr-paginator div:hover:not(.mjsz-vbr-paginator div.is-disabled,.mjsz-vbr-paginator div.is-active) {\n      color: var(--vbr-widget-paginator-hover-color);\n      background-color: var(--vbr-widget-paginator-hover-bg-color);\n}\n.mjsz-vbr-paginator button:disabled,\n    .mjsz-vbr-paginator button.is-disabled,\n    .mjsz-vbr-paginator div:disabled,\n    .mjsz-vbr-paginator div.is-disabled {\n      color: var(--vbr-widget-paginator-disabled-color);\n      background-color: var(--vbr-widget-paginator-bg-color);\n      pointer-events: none;\n      cursor: default;\n}\n.mjsz-vbr-paginator button.is-active, .mjsz-vbr-paginator div.is-active {\n      color: var(--vbr-widget-paginator-active-color);\n      background-color: var(--vbr-widget-paginator-active-bg-color);\n      border-color: var(--vbr-widget-paginator-active-bg-color);\n      cursor: default;\n}\n";
   const _style_4 = ".is-dropdown-menu {\n  padding: 8px 0;\n  margin: 0;\n  min-width: 160px;\n  color: black;\n  list-style: none;\n  background: var(--vbr-widget-popover-bg-color);\n  border-radius: 3px;\n  box-shadow: 0 5px 30px rgba(black, 0.3);\n}\n.is-dropdown-menu .is-dropdown-item {\n    display: flex;\n    align-items: center;\n    padding: .25rem 1rem;\n    font-family: var(--vbr-widget-font-family);\n    line-height: 24px;\n    color: var(--vbr-widget-dropdown-item-color);\n    text-align: inherit;\n    text-decoration: none;\n    white-space: nowrap;\n    background-color: transparent;\n    border: 0;\n}\n.is-dropdown-menu .is-dropdown-item:hover {\n      color: var(--vbr-widget-dropdown-item-hover-color);\n      background-color: var(--vbr-widget-dropdown-item-hover-bg-color);\n}\n.is-dropdown-menu .is-dropdown-item svg {\n      margin-right: 8px;\n}\n";
-  const _sfc_main = {
+  const _sfc_main$1 = {
     __name: "Schedule.ce",
     props: {
       ...baseProps,
@@ -617,9 +635,9 @@ var MjszWidgetElements = function(exports, vue, composables, utils, core, compon
                 "current-zone": timezone.value,
                 onChange: onTimezoneChange
               }, null, 8, ["locale", "current-zone"])) : vue.createCommentVNode("", true),
-              vue.createVNode(_sfc_main$1, {
+              vue.createVNode(_sfc_main$2, {
                 rows: vue.unref(convertedRows).rows,
-                "is-loading": vue.unref(isLoading) && vue.unref(convertedRows).rows.length > 0,
+                "is-loading": vue.unref(isLoading),
                 "offset-name": vue.unref(currentOffsetName),
                 "hide-columns": props.hideColumns,
                 "external-game-resolver": resolveExternalGameLink
@@ -638,20 +656,92 @@ var MjszWidgetElements = function(exports, vue, composables, utils, core, compon
       };
     }
   };
-  const Schedule = /* @__PURE__ */ _export_sfc(_sfc_main, [["styles", [_style_0, _style_1, _style_2, _style_3, _style_4]]]);
-  const setup = ({ apiKey }) => {
-    window.__MJSZ_VBR_WIDGET__ = { apiKey };
-    register();
+  const Schedule = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["styles", [_style_0, _style_1, _style_2, _style_3$1, _style_4]]]);
+  const _style_3 = ".mjsz-vbr-paginator {\n  display: flex;\n  flex-direction: row;\n  list-style-type: none;\n  margin: 10px 0;\n  padding: 0;\n}\n.mjsz-vbr-paginator button,\n  .mjsz-vbr-paginator div {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    padding: 6px 12px;\n    text-decoration: none;\n    cursor: pointer;\n    color: var(--vbr-widget-paginator-color);\n    border: 1px solid var(--vbr-widget-paginator-border-color);\n    background-color: var(--vbr-widget-paginator-bg-color);\n    margin-left: -1px;\n}\n.mjsz-vbr-paginator button .icon, .mjsz-vbr-paginator div .icon {\n      width: 16px;\n      height: 16px;\n      margin: 0 -4px;\n}\n.mjsz-vbr-paginator button:hover:not(.mjsz-vbr-paginator button.is-disabled,.mjsz-vbr-paginator button.is-active), .mjsz-vbr-paginator div:hover:not(.mjsz-vbr-paginator div.is-disabled,.mjsz-vbr-paginator div.is-active) {\n      color: var(--vbr-widget-paginator-hover-color);\n      background-color: var(--vbr-widget-paginator-hover-bg-color);\n}\n.mjsz-vbr-paginator button:disabled,\n    .mjsz-vbr-paginator button.is-disabled,\n    .mjsz-vbr-paginator div:disabled,\n    .mjsz-vbr-paginator div.is-disabled {\n      color: var(--vbr-widget-paginator-disabled-color);\n      background-color: var(--vbr-widget-paginator-bg-color);\n      pointer-events: none;\n      cursor: default;\n}\n.mjsz-vbr-paginator button.is-active, .mjsz-vbr-paginator div.is-active {\n      color: var(--vbr-widget-paginator-active-color);\n      background-color: var(--vbr-widget-paginator-active-bg-color);\n      border-color: var(--vbr-widget-paginator-active-bg-color);\n      cursor: default;\n}\n";
+  const _sfc_main = {
+    __name: "FieldPlayersLeader.ce",
+    props: {
+      ...baseProps,
+      ...playerStatsProps
+    },
+    setup(__props) {
+      const props = __props;
+      const columns = core.COLUMNS_FIELD_PLAYERS;
+      const locale = vue.computed(() => props.locale);
+      const { onError, error, hasError } = composables.useErrorProvider();
+      const { state: rawRows, isLoading } = useAsyncState(
+        () => composables.fetchVBRData("/v1/playersStatsPeriod", props.apiKey, {
+          championshipId: Number(props.championshipId),
+          division: props.division
+        }),
+        [],
+        {
+          onError: (error2) => onError(error2)
+        }
+      );
+      const { page, change: onPaginatorChange } = composables.usePage();
+      const { sort, change: onSort } = composables.useSort({
+        sortTarget: "point",
+        orders: [{ target: "point", direction: core.SORT_STATE_DESCEND }]
+      });
+      const rows = vue.computed(() => utils.rawConvert(vue.unref(rawRows), utils.playerName));
+      const convertedRows = vue.computed(() => {
+        return utils.convert(vue.unref(rows)).filter(props.teamFilterByName, ["teamName"]).sorted(sort).addIndex(sort.sortTarget).pagination(vue.unref(page), props.limit).value();
+      });
+      const totalItems = vue.computed(() => {
+        var _a2;
+        return (_a2 = convertedRows.value) == null ? void 0 : _a2.totalItems;
+      });
+      const resolveExternalTeamLink = (teamName) => utils.externalTeamLinkResolver(props.externalTeamLink, teamName);
+      const resolveExternalPlayerLink = (playerId) => utils.externalPlayerLinkResolver(props.externalPlayerLink, playerId);
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("div", null, [
+          vue.createVNode(vue.unref(components.I18NProvider), { locale: vue.unref(locale) }, {
+            default: vue.withCtx(() => [
+              vue.unref(hasError) ? (vue.openBlock(), vue.createBlock(vue.unref(components.ErrorNotice), {
+                key: 0,
+                error: vue.unref(error)
+              }, null, 8, ["error"])) : vue.createCommentVNode("", true),
+              vue.createVNode(vue.unref(components.StatisticsTable), {
+                columns: vue.unref(columns),
+                rows: vue.unref(convertedRows).rows,
+                "is-loading": vue.unref(isLoading),
+                "hide-columns": props.hideColumns,
+                sort: vue.unref(sort),
+                "external-team-resolver": resolveExternalTeamLink,
+                "external-player-resolver": resolveExternalPlayerLink,
+                "is-team-linked": _ctx.isTeamLinked,
+                "is-player-linked": _ctx.isPlayerLinked,
+                onSort: vue.unref(onSort)
+              }, null, 8, ["columns", "rows", "is-loading", "hide-columns", "sort", "is-team-linked", "is-player-linked", "onSort"]),
+              vue.createVNode(vue.unref(components.Paginator), {
+                page: vue.unref(page),
+                "items-per-page": props.limit,
+                "total-items": vue.unref(totalItems),
+                "range-length": 5,
+                onChange: vue.unref(onPaginatorChange)
+              }, null, 8, ["page", "items-per-page", "total-items", "onChange"])
+            ]),
+            _: 1
+          }, 8, ["locale"])
+        ]);
+      };
+    }
   };
+  const FieldPlayersLeader = /* @__PURE__ */ _export_sfc(_sfc_main, [["styles", [_style_0$1, _style_1$1, _style_2$1, _style_3]]]);
   const StandingsCE = vue.defineCustomElement(Standings);
   const ScheduleCE = vue.defineCustomElement(Schedule);
+  const FieldPlayersLeaderCE = vue.defineCustomElement(FieldPlayersLeader);
   function register() {
     customElements.define("mjsz-vbr-standings", StandingsCE);
     customElements.define("mjsz-vbr-schedule", ScheduleCE);
+    customElements.define("mjsz-vbr-players-leader", FieldPlayersLeaderCE);
   }
+  exports.FieldPlayersLeaderCE = FieldPlayersLeaderCE;
+  exports.ScheduleCE = ScheduleCE;
   exports.StandingsCE = StandingsCE;
+  exports.default = register;
   exports.register = register;
-  exports.setup = setup;
   Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
   return exports;
 }({}, Vue, MjszWidgetCore, MjszWidgetCore, MjszWidgetCore, MjszWidgetCore, MjszWidgetCore);

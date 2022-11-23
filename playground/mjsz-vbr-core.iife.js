@@ -1,7 +1,7 @@
 /*!
   * MJSZ VBR Widgets v2.0.0-alpha.1
   * (c) 2022 Akos Stegner
-  * Released: 22/11/2022, 09:04:56
+  * Released: 22/11/2022, 22:01:33
   * Released under the MIT License.
   */
 var MjszWidgetCore = function(exports, vue) {
@@ -44,44 +44,6 @@ var MjszWidgetCore = function(exports, vue) {
   function resolveUnref(r2) {
     return typeof r2 === "function" ? r2() : vue.unref(r2);
   }
-  function createFilterWrapper(filter2, fn) {
-    function wrapper(...args) {
-      filter2(() => fn.apply(this, args), { fn, thisArg: this, args });
-    }
-    return wrapper;
-  }
-  function debounceFilter(ms, options = {}) {
-    let timer;
-    let maxTimer;
-    const filter2 = (invoke) => {
-      const duration = resolveUnref(ms);
-      const maxDuration = resolveUnref(options.maxWait);
-      if (timer)
-        clearTimeout(timer);
-      if (duration <= 0 || maxDuration !== void 0 && maxDuration <= 0) {
-        if (maxTimer) {
-          clearTimeout(maxTimer);
-          maxTimer = null;
-        }
-        return invoke();
-      }
-      if (maxDuration && !maxTimer) {
-        maxTimer = setTimeout(() => {
-          if (timer)
-            clearTimeout(timer);
-          maxTimer = null;
-          invoke();
-        }, maxDuration);
-      }
-      timer = setTimeout(() => {
-        if (maxTimer)
-          clearTimeout(maxTimer);
-        maxTimer = null;
-        invoke();
-      }, duration);
-    };
-    return filter2;
-  }
   function promiseTimeout(ms, throwOnTimeout = false, reason = "Timeout") {
     return new Promise((resolve2, reject2) => {
       if (throwOnTimeout)
@@ -100,24 +62,73 @@ var MjszWidgetCore = function(exports, vue) {
     }
     return false;
   }
-  function useDebounceFn(fn, ms = 200, options = {}) {
-    return createFilterWrapper(debounceFilter(ms, options), fn);
-  }
-  function refDebounced(value, ms = 200, options = {}) {
-    if (ms <= 0)
-      return value;
-    const debounced = vue.ref(value.value);
-    const updater = useDebounceFn(() => {
-      debounced.value = value.value;
-    }, ms, options);
-    vue.watch(value, () => updater());
-    return debounced;
+  function useTimeoutFn(cb, interval, options = {}) {
+    const {
+      immediate = true
+    } = options;
+    const isPending = vue.ref(false);
+    let timer = null;
+    function clear() {
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+    }
+    function stop() {
+      isPending.value = false;
+      clear();
+    }
+    function start(...args) {
+      clear();
+      isPending.value = true;
+      timer = setTimeout(() => {
+        isPending.value = false;
+        timer = null;
+        cb(...args);
+      }, resolveUnref(interval));
+    }
+    if (immediate) {
+      isPending.value = true;
+      if (isClient)
+        start();
+    }
+    tryOnScopeDispose(stop);
+    return {
+      isPending,
+      start,
+      stop
+    };
   }
   function watchOnce(source, cb, options) {
     const stop = vue.watch(source, (...args) => {
       vue.nextTick(() => stop());
       return cb(...args);
     }, options);
+  }
+  function useLazyLoadingState(task = [], options = {}) {
+    const { delay = 0 } = options;
+    const isLoding = vue.ref(false);
+    const state2 = vue.computed(() => {
+      const _task = vue.unref(task);
+      if (Array.isArray(_task)) {
+        return _task.map((item) => vue.unref(item)).some(Boolean);
+      }
+      return _task;
+    });
+    const { start, stop } = useTimeoutFn(() => {
+      isLoding.value = true;
+    }, delay);
+    vue.watch(
+      state2,
+      (_state) => {
+        if (_state)
+          return start();
+        stop();
+        isLoding.value = false;
+      },
+      { immediate: true, deep: true }
+    );
+    return isLoding;
   }
   function _isPlaceholder(a2) {
     return a2 != null && typeof a2 === "object" && a2["@@functional/placeholder"] === true;
@@ -1283,6 +1294,7 @@ var MjszWidgetCore = function(exports, vue) {
   const VBR_API_GOALIE_PATH = "/v1/playersGoaliePeriod";
   const VBR_API_GOALIE_UNDER_PATH = "/v1/playersGoalieUnderPeriod";
   const REFRESH_DELAY = 1e3 * 60 * 5;
+  const LAZY_LOADING_STATE_DELAY = 1e3;
   const _export_sfc = (sfc, props) => {
     const target = sfc.__vccOpts || sfc;
     for (const [key, val] of props) {
@@ -2357,6 +2369,7 @@ var MjszWidgetCore = function(exports, vue) {
     return (_a2 = plain == null ? void 0 : plain.$el) != null ? _a2 : plain;
   }
   const defaultWindow = isClient ? window : void 0;
+  const defaultDocument = isClient ? window.document : void 0;
   function useEventListener(...args) {
     let target;
     let event;
@@ -2480,6 +2493,15 @@ var MjszWidgetCore = function(exports, vue) {
   const globalKey = "__vueuse_ssr_handlers__";
   _global[globalKey] = _global[globalKey] || {};
   _global[globalKey];
+  function useDocumentVisibility({ document: document2 = defaultDocument } = {}) {
+    if (!document2)
+      return vue.ref("visible");
+    const visibility = vue.ref(document2.visibilityState);
+    useEventListener(document2, "visibilitychange", () => {
+      visibility.value = document2.visibilityState;
+    });
+    return visibility;
+  }
   var __defProp$9 = Object.defineProperty;
   var __getOwnPropSymbols$a = Object.getOwnPropertySymbols;
   var __hasOwnProp$a = Object.prototype.hasOwnProperty;
@@ -2801,11 +2823,11 @@ var MjszWidgetCore = function(exports, vue) {
     setup(__props, { emit }) {
       const props = __props;
       const { isLoading, appendTo: appendTo2 } = vue.toRefs(props);
+      const isLazyLoadingState = useLazyLoadingState(isLoading, { delay: LAZY_LOADING_STATE_DELAY });
       const { t: t2 } = useI18n();
       const mainClassName = useMainClass("table");
       const columns = vue.computed(() => props.columns);
       const columnCount = vue.computed(() => Object.keys(props.columns).length);
-      const isLoadingDebounced = refDebounced(isLoading, 300);
       const sortBy = (column, prop2) => {
         if (!column.sortOrders)
           return;
@@ -2900,14 +2922,24 @@ var MjszWidgetCore = function(exports, vue) {
               ]);
             }), 128))
           ]),
-          vue.createElementVNode("tfoot", null, [
-            __props.rows.length === 0 && !vue.unref(isLoading) ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_2$a, [
-              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t2)("common.noData")), 9, _hoisted_3$9)
-            ])) : vue.createCommentVNode("", true),
-            vue.unref(isLoadingDebounced) ? (vue.openBlock(), vue.createElementBlock("tr", _hoisted_4$6, [
-              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, vue.toDisplayString(vue.unref(t2)("common.loading")), 9, _hoisted_5$4)
-            ])) : vue.createCommentVNode("", true)
-          ])
+          vue.unref(isLazyLoadingState) && __props.rows.length === 0 ? (vue.openBlock(), vue.createElementBlock("tfoot", _hoisted_2$a, [
+            vue.createElementVNode("tr", null, [
+              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, [
+                vue.renderSlot(_ctx.$slots, "loading", {}, () => [
+                  vue.createTextVNode(vue.toDisplayString(vue.unref(t2)("common.loading")), 1)
+                ])
+              ], 8, _hoisted_3$9)
+            ])
+          ])) : vue.createCommentVNode("", true),
+          __props.rows.length === 0 && !vue.unref(isLoading) && !vue.unref(isLazyLoadingState) ? (vue.openBlock(), vue.createElementBlock("tfoot", _hoisted_4$6, [
+            vue.createElementVNode("tr", null, [
+              vue.createElementVNode("td", { colspan: vue.unref(columnCount) }, [
+                vue.renderSlot(_ctx.$slots, "empty", {}, () => [
+                  vue.createTextVNode(vue.toDisplayString(vue.unref(t2)("common.noData")), 1)
+                ])
+              ], 8, _hoisted_5$4)
+            ])
+          ])) : vue.createCommentVNode("", true)
         ], 2);
       };
     }
@@ -2985,7 +3017,7 @@ var MjszWidgetCore = function(exports, vue) {
     const errorObject = vue.ref({});
     const onError = (error) => {
       console.log({ error });
-      errorMessage.value = error.message;
+      errorMessage.value = error.message || error.error.message;
       errorObject.value = {
         message: error.message,
         key: error.key || toKebabCase(error.message),
@@ -4737,6 +4769,9 @@ var MjszWidgetCore = function(exports, vue) {
                   src: row.teamLogo
                 }, null, 8, ["src"]))
               ]),
+              loading: vue.withCtx(() => [
+                vue.createVNode(_sfc_main$a)
+              ]),
               _: 2
             }, [
               __props.isTeamLinked ? {
@@ -4799,6 +4834,46 @@ var MjszWidgetCore = function(exports, vue) {
     if ({ "VITE_API_URL": "https://api.icehockey.hu/vbr", "VITE_CSS_CLASS_PREFIX": "mjsz-vbr-", "VITE_VBR_API_KEY": "dd8adf5fdb738b3741fa579b5ede5ce69b681f62", "VITE_DOCS_BASE": "/widgets/docs/v2/", "VITE_USER_NODE_ENV": "production", "BASE_URL": "/", "MODE": "production", "DEV": false, "PROD": true }.NODE_ENV !== "production")
       return "dd8adf5fdb738b3741fa579b5ede5ce69b681f62";
     return "";
+  };
+  const usePage = (options = {}) => {
+    const { initial = 1, items = [], limit, auto = false } = options;
+    const page = vue.ref(initial);
+    const condition = (date) => {
+      return isSameOrBefore(date, "day");
+    };
+    const calculatePage = () => {
+      if (!auto)
+        return;
+      const index = findIndex$1(propSatisfies$1(condition, "gameDate"))(vue.unref(items));
+      page.value = index === -1 ? 1 : Math.floor(index / limit) + 1;
+    };
+    watchOnce(items, calculatePage);
+    const change = (value) => {
+      page.value = value;
+    };
+    return {
+      page,
+      change
+    };
+  };
+  const useServices = ({ options = {}, transform = (v) => v, onError = noop }) => {
+    const { path: path2, apiKey, params } = options;
+    const {
+      state: apiState,
+      error,
+      isLoading,
+      execute
+    } = useAsyncState(() => fetchVBRData(path2, apiKey, vue.unref(params)).then((response) => transform(response)), [], {
+      immediate: false,
+      resetOnExecute: false,
+      onError
+    });
+    return {
+      state: apiState,
+      error,
+      isLoading,
+      execute
+    };
   };
   /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
@@ -4967,27 +5042,16 @@ var MjszWidgetCore = function(exports, vue) {
       change
     };
   }
-  const usePage = (options = {}) => {
-    const { initial = 1, items = [], limit, auto = false } = options;
-    const page = vue.ref(initial);
-    const condition = (date) => {
-      return isSameOrBefore(date, "day");
-    };
-    const calculatePage = () => {
-      if (!auto)
-        return;
-      const index = findIndex$1(propSatisfies$1(condition, "gameDate"))(vue.unref(items));
-      page.value = index === -1 ? 1 : Math.floor(index / limit) + 1;
-    };
-    watchOnce(items, calculatePage);
-    const change = (value) => {
-      page.value = value;
-    };
-    return {
-      page,
-      change
-    };
-  };
+  function useVisibilityChange(enabled = false, onVisible = noop, onHidden = noop) {
+    if (!vue.unref(enabled))
+      return;
+    const visibility = useDocumentVisibility();
+    vue.watch(visibility, (visible) => {
+      if (visible === "visible")
+        return onVisible();
+      onHidden();
+    });
+  }
   const convert = (data = []) => {
     return {
       result: [...data],
@@ -6018,6 +6082,7 @@ var MjszWidgetCore = function(exports, vue) {
   exports.IconYoutube = IconYoutube;
   exports.Image = _sfc_main$b;
   exports.InvalidSeasonName = InvalidSeasonName;
+  exports.LAZY_LOADING_STATE_DELAY = LAZY_LOADING_STATE_DELAY;
   exports.LOCALE_FOR_LANG = LOCALE_FOR_LANG;
   exports.LoadingIndicator = _sfc_main$a;
   exports.Paginator = _sfc_main$7;
@@ -6057,8 +6122,12 @@ var MjszWidgetCore = function(exports, vue) {
   exports.useError = useError;
   exports.useErrorProvider = useErrorProvider;
   exports.useI18n = useI18n;
+  exports.useLazyLoadingState = useLazyLoadingState;
+  exports.useMainClass = useMainClass;
   exports.usePage = usePage;
+  exports.useServices = useServices;
   exports.useSort = useSort;
+  exports.useVisibilityChange = useVisibilityChange;
   exports.validateColumnsName = validateColumnsName;
   Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
   return exports;
