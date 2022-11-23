@@ -1,19 +1,11 @@
 <script setup>
-import { computed, unref, watch } from 'vue';
+import { computed, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
-import { fetchVBRData } from '../../composables/useFetchVBRApi';
-import useSort from '../../composables/useSort';
-import { usePage } from '../../composables/usePage';
-import convert, { playerName, rawConvert } from '../../utils/convert';
-import { COLUMNS_FIELD_PLAYERS_PENALTY } from '../@core/columns';
-import { SORT_STATE_DESCEND } from '../../@shared/constantsonstants';
 import { baseProps, playerStatsProps } from './internal.props';
-import { externalPlayerLinkResolver, externalTeamLinkResolver } from '../../utils/resolvers';
-import I18NProvider from '../I18NProvider.vue';
-import ErrorNotice from '../ErrorNotice.vue';
-import StatisticsTable from '../@core/components/StatisticsTable.vue';
-import Paginator from '../Paginator.vue';
-import { useErrorProvider } from '../../composables/useErrors';
+import { SORT_STATE_DESCEND, COLUMNS_FIELD_PLAYERS_PENALTY } from '@VbrWidget/core';
+import { convert, playerName, rawConvert, externalPlayerLinkResolver, externalTeamLinkResolver } from '@VbrWidget/utils';
+import { useErrorProvider, usePage, useSort, fetchVBRData } from '@VbrWidget/composables';
+import { I18NProvider, ErrorNotice, StatisticsTable, Paginator}  from '@VbrWidget/components';
 
 const props = defineProps({
   ...baseProps,
@@ -25,18 +17,17 @@ const locale = computed(() => props.locale);
 
 const { onError, error, hasError } = useErrorProvider();
 
-const {
-  state: rawRows,
-  error: apiError,
-  isLoading,
-} = useAsyncState(
-  fetchVBRData('/v1/playersPenaltyPeriod', props.apiKey, {
-    championshipId: Number(props.championshipId),
-    division: props.division,
-  }),
-  []
+const { state: rawRows, isLoading } = useAsyncState(
+  () =>
+    fetchVBRData('/v1/playersPenaltyPeriod', props.apiKey, {
+      championshipId: Number(props.championshipId),
+      division: props.division,
+    }),
+  [],
+  {
+    onError: (error) => onError(error),
+  }
 );
-watch(apiError, (error) => onError(error));
 
 const { page, change: onPaginatorChange } = usePage();
 
@@ -91,7 +82,7 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
   </div>
 </template>
 
-<style src="../../assets/common.css"></style>
-<style lang="scss" src="../../assets/table.css"></style>
-<style lang="scss" src="../../assets/responsive-table.css"></style>
-<style lang="css" src="../../assets/paginator.css"></style>
+<style lang="postcss" src="../assets/common.css"></style>
+<style lang="postcss" src="../assets/table.css"></style>
+<style lang="postcss" src="../assets/responsive-table.css"></style>
+<style lang="postcss" src="../assets/paginator.css"></style>

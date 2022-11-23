@@ -39,6 +39,13 @@ const builds = [
       '@VbrWidget/icons': 'MjszWidgetCore',
     },
   },
+  {
+    entry: path.resolve(__dirname, '../src/@widgets/bundle.js'),
+    name: 'MjszWidgetElementsBundle',
+    fileName: (format) => `mjsz-vbr-bundle.${format}.js`,
+    external: [],
+    globals: {},
+  },
 ];
 
 builds.forEach(async (settings) => {
