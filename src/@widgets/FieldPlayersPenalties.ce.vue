@@ -1,7 +1,7 @@
 <script setup>
 import { computed, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
-import { baseProps, playerStatsProps } from './internal.props';
+import { baseProps, playerStatsProps } from '@vbr-widget/core';
 import { SORT_STATE_DESCEND, COLUMNS_FIELD_PLAYERS_PENALTY } from '@vbr-widget/core';
 import { convert, playerName, rawConvert, externalPlayerLinkResolver, externalTeamLinkResolver } from '@vbr-widget/utils';
 import { useErrorProvider, usePage, useSort, fetchVBRData } from '@vbr-widget/composables';

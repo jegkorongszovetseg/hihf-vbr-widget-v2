@@ -10,7 +10,7 @@ import {
   externalPlayerLinkResolver,
 } from '@vbr-widget/utils';
 import { COLUMNS_FIELD_PLAYERS, SORT_STATE_DESCEND } from '@vbr-widget/core';
-import { baseProps, playerStatsProps } from './internal.props';
+import { baseProps, playerStatsProps } from '@vbr-widget/core';
 import { I18NProvider, ErrorNotice, StatisticsTable, Paginator } from '@vbr-widget/components';
 
 const props = defineProps({

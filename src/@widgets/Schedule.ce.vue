@@ -5,7 +5,7 @@ import { useErrorProvider, usePage, fetchVBRData } from '@vbr-widget/composables
 import { convert, sortGames, getLocalTimezone, offsetName, externalGameLinkResolver } from '@vbr-widget/utils';
 import { REFRESH_DELAY } from '@vbr-widget/core';
 import { I18NProvider, Paginator, ErrorNotice, TimezoneSelector } from '@vbr-widget/components';
-import { baseProps } from './internal.props';
+import { baseProps } from '@vbr-widget/core';
 import ScheduleTable from './ScheduleTable.vue';
 
 const props = defineProps({
