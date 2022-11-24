@@ -1,3 +1,6 @@
+---
+outline: false
+---
 # Statiszkikák
 
 ## Példa
