@@ -10,7 +10,7 @@ import TeamFairplay from './@widgets/TeamFairplay.ce.vue';
 import TeamPenaltyKilling from './@widgets/TeamPenaltyKilling.ce.vue';
 import TeamPowerplay from './@widgets/TeamPowerplay.ce.vue';
 import TeamScoringEfficiency from './@widgets/TeamScoringEfficiency.ce.vue';
-// import Statistics from './components/widgets/extended/Statistics.ce.vue';
+import Statistics from './@widgets-extended/statistics/Statistics.ce.vue';
 // import ScheduleLiga from './@widgets-extended/schedule/ScheduleLiga.ce.vue';
 
 const locale = ref('hu');
@@ -23,8 +23,8 @@ const change = () => {
   <div>
     <button type="button" @click="change">{{ locale }}</button>
     <!-- <ScheduleLiga :locale="locale" championship-name="Erste Liga" :auto-refresh="true" /> -->
-    <!-- <Statistics :locale="locale" championship-name="Erste Liga" /> -->
-    <TeamScoringEfficiency :locale="locale" championship-id="3314" division="Alapszakasz" />
+    <Statistics :locale="locale" championship-name="Erste Liga" />
+    <!-- <TeamScoringEfficiency :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamPowerplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamPenaltyKilling :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamFairplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->

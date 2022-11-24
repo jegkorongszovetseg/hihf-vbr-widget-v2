@@ -2,7 +2,6 @@
 import { computed, reactive, unref } from 'vue';
 import { useUrlSearchParams } from '@vueuse/core';
 import { head, pick } from 'ramda';
-import { fetchVBRData } from '../../../composables/useFetchVBRApi';
 import {
   convertSeasons,
   convertTeams,
@@ -12,13 +11,9 @@ import {
   TEAMS_REPORTS_SELECT,
   REPORT_TYPE_PLAYERS,
 } from './statistics.internal.js';
-import convert, { convertTimes, playerName, rawConvert } from '../../../utils/convert';
-import { usePage } from '../../../composables/usePage';
-import { SORT_STATE_DESCEND } from '../../../constants';
-import useSort from '../../../composables/useSort';
-import { useI18n } from '../../../composables/useI18n';
-import { useError } from '../../../composables/useErrors';
-import { InvalidSeasonName, WidgetError } from '../../../utils/errors';
+import { convert, convertTimes, playerName, rawConvert, InvalidSeasonName, WidgetError } from '@vbr-widget/utils';
+import { SORT_STATE_DESCEND } from '@vbr-widget/core';
+import { useError, useI18n, useSort, usePage, fetchVBRData } from '@vbr-widget/composables';
 
 const props = defineProps({
   championshipName: {

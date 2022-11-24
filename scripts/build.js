@@ -40,6 +40,25 @@ const builds = [
     },
   },
   {
+    entry: path.resolve(__dirname, '../src/@widgets-extended/index.js'),
+    name: 'MjszWidgetExtendedElements',
+    fileName: (format) => `mjsz-vbr-extended.${format}.js`,
+    external: [
+      '@vbr-widget/core',
+      '@vbr-widget/components',
+      '@vbr-widget/composables',
+      '@vbr-widget/utils',
+      '@vbr-widget/icons',
+    ],
+    globals: {
+      '@vbr-widget/core': 'MjszWidgetCore',
+      '@vbr-widget/components': 'MjszWidgetCore',
+      '@vbr-widget/composables': 'MjszWidgetCore',
+      '@vbr-widget/utils': 'MjszWidgetCore',
+      '@vbr-widget/icons': 'MjszWidgetCore',
+    },
+  },
+  {
     entry: path.resolve(__dirname, '../src/bundle.js'),
     name: 'MjszWidgetBundle',
     fileName: (format) => `mjsz-vbr-bundle.${format}.js`,

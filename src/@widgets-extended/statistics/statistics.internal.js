@@ -1,6 +1,7 @@
 import { ascend, compose, descend, map, pick, prop, sort } from 'ramda';
-import { SORT_STATE_DESCEND } from '../../../../@shared/constants';
+// import { SORT_STATE_DESCEND } from '@vbr-widget/core';
 import {
+  SORT_STATE_DESCEND,
   COLUMNS_FIELD_PLAYERS,
   COLUMNS_FIELD_PLAYERS_PENALTY,
   COLUMNS_GOALIES,
@@ -9,7 +10,7 @@ import {
   COLUMNS_TEAMS_PENALTY_KILLING,
   COLUMNS_TEAMS_POWERPLAY,
   COLUMNS_TEAM_ATTENDANCE,
-} from '../../internal';
+} from '@vbr-widget/core';
 
 export const REPORT_TYPE_PLAYERS = 'players';
 export const REPORT_TYPE_TEAMS = 'teams';

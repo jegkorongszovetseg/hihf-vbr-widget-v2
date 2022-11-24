@@ -1,12 +1,12 @@
 <script setup>
-import { playerStatsProps } from '@/components/internal.props';
+import { playerStatsProps } from '@vbr-widget/core';
+import { ErrorProvider, ErrorNotice, Paginator, StatisticsTable, I18NProvider } from '@vbr-widget/components';
+// import I18NProvider from '../../../I18NProvider.vue';
+// import StatisticsTable from '../../StatisticsTable.vue';
+// import Paginator from '../../../Paginator.vue';
+// import ErrorNotice from '../../../ErrorNotice.vue';
 import StatisticsProvider from './StatisticsProvider.vue';
-import I18NProvider from '../../../I18NProvider.vue';
-import StatisticsTable from '../../StatisticsTable.vue';
-import Paginator from '../../../Paginator.vue';
-import ErrorNotice from '../../../ErrorNotice.vue';
 import StatisticSelector from './StatisticSelector.vue';
-import ErrorProvider from '../../../ErrorProvider.vue';
 
 const props = defineProps({
   locale: {
@@ -96,8 +96,8 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
   </div>
 </template>
 
-<style src="@/assets/common.css"></style>
-<style src="@/assets/forms.css"></style>
-<style src="@/assets/table.css"></style>
-<style src="@/assets/responsive-table.css"></style>
-<style src="@/assets/paginator.css"></style>
+<style lang="postcss" src="../../assets/common.css"></style>
+<style lang="postcss" src="../../assets/forms.css"></style>
+<style lang="postcss" src="../../assets/table.css"></style>
+<style lang="postcss" src="../../assets/responsive-table.css"></style>
+<style lang="postcss" src="../../assets/paginator.css"></style>
