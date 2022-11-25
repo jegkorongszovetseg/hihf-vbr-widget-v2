@@ -11,7 +11,7 @@ import TeamPenaltyKilling from './@widgets/TeamPenaltyKilling.ce.vue';
 import TeamPowerplay from './@widgets/TeamPowerplay.ce.vue';
 import TeamScoringEfficiency from './@widgets/TeamScoringEfficiency.ce.vue';
 import Statistics from './@widgets-extended/statistics/Statistics.ce.vue';
-// import ScheduleLiga from './@widgets-extended/schedule/ScheduleLiga.ce.vue';
+import ScheduleLiga from './@widgets-extended/schedule/ScheduleLiga.ce.vue';
 
 const locale = ref('hu');
 const change = () => {
@@ -22,7 +22,7 @@ const change = () => {
 <template>
   <div>
     <button type="button" @click="change">{{ locale }}</button>
-    <!-- <ScheduleLiga :locale="locale" championship-name="Erste Liga" :auto-refresh="true" /> -->
+    <ScheduleLiga :locale="locale" championship-name="Erste Liga" :auto-refresh="true" />
     <!-- <Statistics :locale="locale" championship-name="Erste Liga" /> -->
     <!-- <TeamScoringEfficiency :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamPowerplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
@@ -32,7 +32,7 @@ const change = () => {
     <!-- <GoaliesLeader :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <FieldPlayersPenalties :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="false" :is-team-linked="true" /> -->
     <!-- <FieldPlayersLeader :locale="locale" championship-id="3314" division="Alapszakasz" :is-player-linked="true" :is-team-linked="true" /> -->
-    <Standings :locale="locale" championship-id="3314" division="Alapszakasz" type="3" />
+    <!-- <Standings :locale="locale" championship-id="3314" division="Alapszakasz" type="3" /> -->
     <!-- <Schedule
       :locale="locale"
       championship-id="3314"

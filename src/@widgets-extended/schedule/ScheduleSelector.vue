@@ -1,8 +1,8 @@
 <script setup>
 import { computed } from 'vue';
 import { useVModels } from '@vueuse/core';
-import BaseSelect from '@/components/BaseSelect.vue';
-import { useMainClass } from '@/composables/useMainClass';
+import { useMainClass } from '@vbr-widget/composables';
+import { BaseSelect } from '@vbr-widget/components';
 
 const props = defineProps({
   seasons: {

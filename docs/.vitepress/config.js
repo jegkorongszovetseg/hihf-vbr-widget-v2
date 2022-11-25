@@ -44,7 +44,10 @@ export default defineConfig(({ mode }) => {
           },
           {
             text: 'Kibővített Widgetek',
-            items: [{ text: 'Statisztikák', link: '/widget/statistics' }],
+            items: [
+              { text: 'Statisztikák', link: '/widget/statistics' },
+              { text: 'Liga Menetrend', link: '/widget/schedule-liga' },
+            ],
           },
         ],
       },

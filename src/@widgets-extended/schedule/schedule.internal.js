@@ -1,7 +1,7 @@
 import { ref, watch } from 'vue';
 import { noop, watchOnce } from '@vueuse/core';
 import { pick, head, last } from 'ramda';
-import { isBetween } from '@/utils/datetime';
+import { isBetween } from '@vbr-widget/utils';
 
 export const useCollectMonths = (rows = [], locale = 'hu', onUpdated = noop) => {
   const months = ref([]);

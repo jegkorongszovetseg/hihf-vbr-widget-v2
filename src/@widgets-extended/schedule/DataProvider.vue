@@ -1,14 +1,11 @@
 <script setup>
 import { reactive, computed, unref, toRef } from 'vue';
 import { useAsyncQueue, useTimeoutFn, useTimeoutPoll, useUrlSearchParams } from '@vueuse/core';
-import { useServices } from '@/composables/useServices';
-import { useError } from '@/composables/useErrors';
-import { transformSeasons, transformSections, transformTeams } from '@/@extended/internal';
-import convert, { sortGames } from '@/utils/convert';
-import { REFRESH_DELAY } from '@/@shared/constantsonstants';
+import { useLazyLoadingState, useVisibilityChange, useError, useServices } from '@vbr-widget/composables';
+import { convert, sortGames } from '@vbr-widget/utils';
+import { REFRESH_DELAY } from '@vbr-widget/core';
+import { transformSeasons, transformSections, transformTeams } from '../internal';
 import { useCollectMonths } from './schedule.internal.js';
-import { useVisibilityChange } from '@/composables/useVisibilityChange';
-import { useLazyLoadingState } from '@/composables/useLazyLoadingState';
 
 const props = defineProps({
   championshipName: {

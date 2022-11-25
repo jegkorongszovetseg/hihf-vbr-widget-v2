@@ -1,13 +1,13 @@
 <script setup>
 import { ref } from 'vue';
 import dayjs from 'dayjs';
-import { format } from '@/utils/datetime';
-import ErrorNotice from '@/components/ErrorNotice.vue';
-import ErrorProvider from '@/components/ErrorProvider.vue';
-import I18NProvider from '@/components/I18NProvider.vue';
+import { format, getLocalTimezone } from '@vbr-widget/utils';
+import { ErrorNotice, ErrorProvider, I18NProvider, LoadingIndicator } from '@vbr-widget/components';
+// import ErrorProvider from '@/components/ErrorProvider.vue';
+// import I18NProvider from '@/components/I18NProvider.vue';
+// import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import DataProvider from './DataProvider.vue';
 import ScheduleSelector from './ScheduleSelector.vue';
-import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import GameItem from './Item.vue';
 
 const props = defineProps({
@@ -36,7 +36,7 @@ const props = defineProps({
     default: false,
   },
 });
-const timezone = ref(dayjs.tz.guess());
+const timezone = getLocalTimezone();
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 import { head, compose, ascend, descend, map, pick, prop, sort } from 'ramda';
-import { InvalidSeasonName, WidgetError } from '@/utils/errors';
+import { InvalidSeasonName, WidgetError } from '@vbr-widget/utils';
 
 export const transformSeasons = (seasons, state) => {
   if (seasons.length === 0) throw new WidgetError(InvalidSeasonName.message, InvalidSeasonName.options);

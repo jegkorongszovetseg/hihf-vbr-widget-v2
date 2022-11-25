@@ -1,7 +1,6 @@
 <script setup>
-import IconBroadcast from '@/components/icons/IconBroadcast.vue';
-import IconYoutube from '@/components/icons/IconYoutube.vue';
-import Image from '@/components/Image.vue';
+import { Image } from '@vbr-widget/components';
+import { IconYoutube, IconBroadcast } from '@vbr-widget/icons';
 
 defineProps({
   game: {
@@ -15,7 +14,9 @@ defineProps({
     <div class="is-info is-text-sm">
       {{ game.name }} - {{ game.divisionName }} - {{ game.location }}
       <template v-if="game.broadcast">-&nbsp;<IconBroadcast height="16" />&nbsp;</template>
-      <template v-if="game.video">-&nbsp;<a href="#"><IconYoutube height="18" /></a></template>
+      <template v-if="game.video"
+        >-&nbsp;<a href="#"><IconYoutube height="18" /></a
+      ></template>
     </div>
 
     <div class="is-text-right is-text-bold">
