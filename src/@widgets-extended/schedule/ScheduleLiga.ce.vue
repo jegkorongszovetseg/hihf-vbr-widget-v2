@@ -1,11 +1,6 @@
 <script setup>
-import { ref } from 'vue';
-import dayjs from 'dayjs';
 import { format, getLocalTimezone } from '@vbr-widget/utils';
 import { ErrorNotice, ErrorProvider, I18NProvider, LoadingIndicator } from '@vbr-widget/components';
-// import ErrorProvider from '@/components/ErrorProvider.vue';
-// import I18NProvider from '@/components/I18NProvider.vue';
-// import LoadingIndicator from '@/components/LoadingIndicator.vue';
 import DataProvider from './DataProvider.vue';
 import ScheduleSelector from './ScheduleSelector.vue';
 import GameItem from './Item.vue';
@@ -105,10 +100,8 @@ const timezone = getLocalTimezone();
   </div>
 </template>
 
-<style>
-.is-card > div {
-  border-bottom: 1px solid var(--vbr-widget-primary-color-300);
-}
-</style>
-
-<!-- <style src="@/assets/grid.css"></style> -->
+<style lang="postcss" src="@vbr-widget/assets/common.css"></style>
+<style lang="postcss" src="@vbr-widget/assets/typography.css"></style>
+<style lang="postcss" src="@vbr-widget/assets/forms.css"></style>
+<style lang="postcss" src="@vbr-widget/assets/grid.css"></style>
+<style lang="postcss" src="@vbr-widget/assets/cards.css"></style>

@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
     },
     resolve: {
       alias: {
+        '@vbr-widget/assets': path.resolve(__dirname, './src/assets/'),
         '@vbr-widget/core': path.resolve(__dirname, './src/@core/'),
         '@vbr-widget/components': path.resolve(__dirname, './src/@core/components/index.js'),
         '@vbr-widget/composables': path.resolve(__dirname, './src/@core/composables/index.js'),
