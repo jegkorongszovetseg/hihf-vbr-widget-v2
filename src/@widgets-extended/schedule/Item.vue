@@ -28,11 +28,11 @@ const mainClasses = useMainClass('card-item');
       <Image class="is-logo-image" :src="game.homeTeamLogo" />
     </div>
 
-    <div class="is-text-center">
-      <div>
-        <span v-if="game.isOvertime">{{ t('common.overtimeShort') }}</span>
-        <span v-if="game.isShootout">{{ t('common.shootoutShort') }}</span>
-        <span v-if="game.seriesStandings">{{ game.seriesStandings }}</span>
+    <div class="is-game-data">
+      <div class="g-row">
+        <span v-if="game.isOvertime" class="is-badge is-invert">{{ t('common.overtimeShort') }}</span>
+        <span v-if="game.isShootout" class="is-badge is-invert">{{ t('common.shootoutShort') }}</span>
+        <span v-if="game.seriesStandings" class="is-badge">{{ game.seriesStandings }}</span>
       </div>
       <a href="#">
         <span v-if="game.gameStatus > 0 && game.gameStatus < 3" class="is-text-xl is-text-bold">

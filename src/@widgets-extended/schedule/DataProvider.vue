@@ -50,13 +50,13 @@ const state = reactive({
   championshipName: props.championshipName,
   loading: false,
   seasons: [],
-  championshipId: 0,
+  championshipId: Number(params.championshipId) || 0,
   sections: [],
   section: null,
   teams: [],
   selectedMonth: Number(params.selectedMonth) || null,
-  selectedTeam: null,
-  selectedTeamGameType: 'all',
+  selectedTeam: Number(params.selectedTeam) || null,
+  selectedTeamGameType: params.selectedTeamGameType || 'all',
 });
 const timezone = toRef(props, 'timezone');
 const { onError } = useError();
@@ -142,6 +142,7 @@ useAsyncQueue([fetchSeasons, fetchSection, fetchTeams, fetchSchedule], {
 
 const changeSeason = (value) => {
   state.championshipId = value;
+  params.championshipId = value;
   // resets
   if (props.autoRefresh) resume();
   state.selectedTeam = null;
@@ -149,6 +150,7 @@ const changeSeason = (value) => {
   state.selectedMonth = null;
   params.selectedMonth = null;
   state.selectedTeamGameType = 'all';
+  params.selectedTeamGameType = null;
   useAsyncQueue([fetchSection, fetchTeams, fetchSchedule]);
   if (props.autoRefresh) resume();
 };
@@ -168,12 +170,17 @@ const changeSection = (value) => {
 
 const changeTeam = (value) => {
   state.selectedTeam = value;
+  params.selectedTeam = value;
   // resets
-  if (!value) state.selectedTeamGameType = 'all';
+  if (!value) {
+    state.selectedTeamGameType = 'all';
+    params.selectedTeamGameType = null;
+  } 
 };
 
 const changeTeamType = (value) => {
   state.selectedTeamGameType = value;
+  params.selectedTeamGameType = value;
 };
 </script>
 

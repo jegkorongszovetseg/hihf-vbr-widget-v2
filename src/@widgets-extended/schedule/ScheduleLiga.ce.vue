@@ -4,6 +4,7 @@ import { ErrorNotice, ErrorProvider, I18NProvider, LoadingIndicator } from '@vbr
 import DataProvider from './DataProvider.vue';
 import ScheduleSelector from './ScheduleSelector.vue';
 import GameItem from './Item.vue';
+import { useMainClass } from '@vbr-widget/composables';
 
 const props = defineProps({
   locale: {
@@ -32,6 +33,8 @@ const props = defineProps({
   },
 });
 const timezone = getLocalTimezone();
+const tabButtonClasses = useMainClass('tab-button');
+const sectionSelectorMainClass = useMainClass('section-selector');
 </script>
 
 <template>
@@ -49,6 +52,7 @@ const timezone = getLocalTimezone();
             seasons,
             championshipId,
             sections,
+            section,
             teams,
             games,
             months,
@@ -76,9 +80,14 @@ const timezone = getLocalTimezone();
             @update:selected-team="changeTeam"
             @update:selected-team-game-type="changeTeamType"
           />
-          <div class="g-row">
-            <button v-for="section in sections" :key="section" @click="changeSection(section)">
-              {{ section }}
+          <div :class="sectionSelectorMainClass">
+            <button
+              v-for="rawSection in sections"
+              :key="rawSection"
+              @click="changeSection(rawSection)"
+              :class="[tabButtonClasses, { 'is-active': rawSection === section }]"
+            >
+              {{ rawSection }}
             </button>
           </div>
 
