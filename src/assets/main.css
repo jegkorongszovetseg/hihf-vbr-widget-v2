@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;700&display=swap');
 
 @import './common.css';
 @import './table.css';
@@ -8,3 +8,4 @@
 @import './forms.css';
 @import './grid.css';
 @import './typography.css';
+@import './cards.css';

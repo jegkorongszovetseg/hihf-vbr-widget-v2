@@ -1,19 +1,18 @@
 import { defineCustomElement } from 'vue';
-import Schedule from './@widgets/Schedule.ce.vue';
-import Standings from './@widgets/Standings.ce.vue';
-import FieldPlayersLeader from './@widgets/FieldPlayersLeader.ce.vue';
-import FieldPlayersPenalties from './@widgets/FieldPlayersPenalties.ce.vue';
-import GoaliesLeader from './@widgets/GoaliesLeader.ce.vue';
-import TeamAttendance from './@widgets/TeamAttendance.ce.vue';
-import TeamFairplay from './@widgets/TeamFairplay.ce.vue';
-import TeamPenaltyKilling from './@widgets/TeamPenaltyKilling.ce.vue';
-import TeamPowerplay from './@widgets/TeamPowerplay.ce.vue';
-import TeamScoringEfficiency from './@widgets/TeamScoringEfficiency.ce.vue';
-import Statistics from './@widgets-extended/statistics/Statistics.ce.vue';
-import ScheduleLiga from './@widgets-extended/schedule/ScheduleLiga.ce.vue';
 
-const ScheduleCE = defineCustomElement(Schedule);
+import Standings from './Standings.ce.vue';
+import Schedule from './Schedule.ce.vue';
+import FieldPlayersLeader from './FieldPlayersLeader.ce.vue';
+import FieldPlayersPenalties from './FieldPlayersPenalties.ce.vue';
+import GoaliesLeader from './GoaliesLeader.ce.vue';
+import TeamAttendance from './TeamAttendance.ce.vue';
+import TeamFairplay from './TeamFairplay.ce.vue';
+import TeamPenaltyKilling from './TeamPenaltyKilling.ce.vue';
+import TeamPowerplay from './TeamPowerplay.ce.vue';
+import TeamScoringEfficiency from './TeamScoringEfficiency.ce.vue';
+
 const StandingsCE = defineCustomElement(Standings);
+const ScheduleCE = defineCustomElement(Schedule);
 const FieldPlayersLeaderCE = defineCustomElement(FieldPlayersLeader);
 const FieldPlayersPenaltiesCE = defineCustomElement(FieldPlayersPenalties);
 const GoaliesLeaderCE = defineCustomElement(GoaliesLeader);
@@ -22,12 +21,10 @@ const TeamFairplayCE = defineCustomElement(TeamFairplay);
 const TeamPenaltyKillingCE = defineCustomElement(TeamPenaltyKilling);
 const TeamPowerplayCE = defineCustomElement(TeamPowerplay);
 const TeamScoringEfficiencyCE = defineCustomElement(TeamScoringEfficiency);
-const StatisticsCE = defineCustomElement(Statistics);
-const ScheduleLigaCE = defineCustomElement(ScheduleLiga);
 
 export {
-  ScheduleCE,
   StandingsCE,
+  ScheduleCE,
   FieldPlayersLeaderCE,
   FieldPlayersPenaltiesCE,
   GoaliesLeaderCE,
@@ -36,13 +33,11 @@ export {
   TeamPenaltyKillingCE,
   TeamPowerplayCE,
   TeamScoringEfficiencyCE,
-  StatisticsCE,
-  ScheduleLigaCE,
 };
 
 export function register() {
-  customElements.define('mjsz-vbr-schedule', ScheduleCE);
   customElements.define('mjsz-vbr-standings', StandingsCE);
+  customElements.define('mjsz-vbr-schedule', ScheduleCE);
   customElements.define('mjsz-vbr-players-leader', FieldPlayersLeaderCE);
   customElements.define('mjsz-vbr-players-penalties', FieldPlayersPenaltiesCE);
   customElements.define('mjsz-vbr-goalies', GoaliesLeaderCE);
@@ -51,11 +46,6 @@ export function register() {
   customElements.define('mjsz-vbr-team-penalty-killing', TeamPenaltyKillingCE);
   customElements.define('mjsz-vbr-team-powerplay', TeamPowerplayCE);
   customElements.define('mjsz-vbr-team-scoring', TeamScoringEfficiencyCE);
-  customElements.define('mjsz-vbr-statistics', StatisticsCE);
-  customElements.define('mjsz-vbr-schedule-liga', ScheduleLigaCE);
 }
 
-export const createConfig = ({ apiKey }) => {
-  window.__MJSZ_VBR_WIDGET__ = { apiKey };
-  register();
-};
+export default register;

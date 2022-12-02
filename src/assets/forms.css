@@ -29,3 +29,31 @@ label {
   font-weight: 700;
   text-transform: uppercase;
 }
+
+.tab-button {
+  padding: var(--vbr-widget-tab-btn-padding);
+  font-family: inherit;
+  font-size: var(--vbr-widget-tab-btn-font-size);
+  font-weight: var(--vbr-widget-tab-btn-font-weight);
+  color: var(--vbr-widget-tab-btn-color);
+  text-transform: var(--vbr-widget-tab-btn-text-transform);
+  background-color: var(--vbr-widget-tab-btn-bg-color);
+  border-color: var(--vbr-widget-tab-btn-border-color);
+  border-width: var(--vbr-widget-tab-btn-border-width);
+  border-style: var(--vbr-widget-tab-btn-border-style);
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--vbr-widget-tab-btn-hover-color);
+    border-color: var(--vbr-widget-tab-btn-hover-border-color);
+    background-color: var(--vbr-widget-tab-btn-hover-bg-color);
+  }
+
+  &.is-active {
+    color: var(--vbr-widget-tab-btn-active-color);
+    border-color: var(--vbr-widget-tab-btn-active-border-color);
+    background-color: var(--vbr-widget-tab-btn-active-bg-color);
+  }
+}

@@ -15,8 +15,7 @@
     "docs:dev": "vitepress dev docs --port 5555",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
-    "build:external": "node scripts/build.js",
-    "build:iife": "node scripts/iife-build/build.js"
+    "build:bundle": "node scripts/build.js"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.0.2",

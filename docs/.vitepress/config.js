@@ -9,12 +9,12 @@ export default defineConfig(({ mode }) => {
     title: 'MJSZ VBR Widgetek',
     description: 'Just playing around.',
     themeConfig: {
+      socialLinks: [{ icon: 'github', link: 'https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2' }],
       nav: [
         { text: 'Widget', link: '/widget/' },
         { text: 'Stílusok', link: '/styles/' },
         { text: 'VBR API', link: '/vbr-api/' },
         { text: 'VBR Azonosítók', link: '/vbr-api/identifiers' },
-        { text: 'GitHub', link: 'https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2' },
       ],
       sidebar: {
         '/widget/': [
@@ -44,9 +44,16 @@ export default defineConfig(({ mode }) => {
           },
           {
             text: 'Kibővített Widgetek',
-            items: [{ text: 'Statisztikák', link: '/widget/statistics' }],
+            items: [
+              { text: 'Statisztikák', link: '/widget/statistics' },
+              { text: 'Liga Menetrend', link: '/widget/schedule-liga' },
+            ],
           },
         ],
+      },
+      docFooter: {
+        prev: 'Előző',
+        next: 'PKövetkező',
       },
     },
     vue: {

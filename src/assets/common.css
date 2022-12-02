@@ -98,6 +98,26 @@
 
   --vbr-widget-timezone-selector-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-timezone-selector-font-size: 0.8125rem;
+
+  --vbr-widget-badge-bg-color: var(--vbr-widget-primary-color-50);
+  --vbr-widget-badge-color: var(--vbr-widget-primary-color-400);
+  --vbr-widget-badge-font-size: 0.625rem;
+
+  --vbr-widget-tab-btn-padding: 0.625rem 1rem;
+  --vbr-widget-tab-btn-font-size: 1rem;
+  --vbr-widget-tab-btn-font-weight: 500;
+  --vbr-widget-tab-btn-bg-color: var(--vbr-widget-primary-color-0);
+  --vbr-widget-tab-btn-color: var(--vbr-widget-primary-color-300);
+  --vbr-widget-tab-btn-border-color: transparent;
+  --vbr-widget-tab-btn-border-style: solid;
+  --vbr-widget-tab-btn-border-width: 0 0 3px 0;
+  --vbr-widget-tab-btn-text-transform: uppercase;
+  --vbr-widget-tab-btn-hover-color: var(--vbr-widget-primary-color-500);
+  --vbr-widget-tab-btn-hover-bg-color: var(--vbr-widget-primary-color-0);
+  --vbr-widget-tab-btn-hover-border-color: transparent;
+  --vbr-widget-tab-btn-active-bg-color: var(--vbr-widget-primary-color-0);
+  --vbr-widget-tab-btn-active-color: var(--vbr-widget-primary-color-900);
+  --vbr-widget-tab-btn-active-border-color: var(--vbr-widget-secondary-color-500);
 }
 
 .transition-fade-enter-active,
@@ -199,9 +219,22 @@ a {
   font-size: var(--vbr-widget-timezone-selector-font-size);
 }
 
-.is-card {
-  background-color: #fff;
-  padding: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10), 0 2px 2px 0 rgba(0, 0, 0, 0.10);
+.is-badge {
+  display: inline-block;
+  padding: 0.125rem 0.25rem;
+  color: var(--vbr-widget-badge-color);
+  font-size: var(--vbr-widget-badge-font-size);
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: var(--vbr-widget-badge-bg-color);
+  border-radius: 3px;
+
+  & + .is-badge {
+    margin-left: 3px;
+  }
+
+  &.is-invert {
+    color: var(--vbr-widget-badge-bg-color);
+    background-color: var(--vbr-widget-badge-color);
+  }
 }

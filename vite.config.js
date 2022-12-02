@@ -6,15 +6,6 @@ import postcssMixins from 'postcss-mixins';
 import postcssNested from 'postcss-nested';
 import postcssPrefixer from 'postcss-prefixer';
 
-import { version, author, license } from './package.json';
-
-const banner = `/*!
-  * MJSZ VBR Widgets v${version}
-  * (c) ${new Date().getFullYear()} ${author.name}
-  * Released: ${new Date().toLocaleString('en-GB')}
-  * Released under the ${license} License.
-  */`;
-
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   return {
@@ -23,7 +14,12 @@ export default defineConfig(({ mode }) => {
     },
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, './src'),
+        '@vbr-widget/assets': path.resolve(__dirname, './src/assets/'),
+        '@vbr-widget/core': path.resolve(__dirname, './src/@core/'),
+        '@vbr-widget/components': path.resolve(__dirname, './src/@core/components/index.js'),
+        '@vbr-widget/composables': path.resolve(__dirname, './src/@core/composables/index.js'),
+        '@vbr-widget/utils': path.resolve(__dirname, './src/@core/utils/index.js'),
+        '@vbr-widget/icons': path.resolve(__dirname, './src/@core/icons/index.js'),
       },
     },
     css: {
