@@ -1,10 +1,11 @@
 <script setup>
-import { format, getLocalTimezone } from '@vbr-widget/utils';
-import { ErrorNotice, ErrorProvider, I18NProvider, LoadingIndicator } from '@vbr-widget/components';
+import { ref, computed, unref } from 'vue';
+import { externalGameLinkResolver, format, getLocalTimezone, offsetName } from '@vbr-widget/utils';
+import { ErrorNotice, ErrorProvider, I18NProvider, LoadingIndicator, TimezoneSelector } from '@vbr-widget/components';
+import { useMainClass } from '@vbr-widget/composables';
 import DataProvider from './DataProvider.vue';
 import ScheduleSelector from './ScheduleSelector.vue';
 import GameItem from './Item.vue';
-import { useMainClass } from '@vbr-widget/composables';
 
 const props = defineProps({
   locale: {
@@ -31,10 +32,27 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+
+  timezoneSelector: {
+    type: Boolean,
+    default: false,
+  },
+
+  externalGameLink: {
+    type: [String, Function],
+    default: '',
+  },
 });
-const timezone = getLocalTimezone();
+const timezone = ref(getLocalTimezone());
+const currentOffsetName = computed(() => offsetName(new Date(), unref(timezone), props.locale));
 const tabButtonClasses = useMainClass('tab-button');
 const sectionSelectorMainClass = useMainClass('section-selector');
+
+const externalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
+
+const onTimezoneChange = (tz) => {
+  timezone.value = tz;
+};
 </script>
 
 <template>
@@ -91,6 +109,15 @@ const sectionSelectorMainClass = useMainClass('section-selector');
             </button>
           </div>
 
+          <TimezoneSelector
+            v-if="props.timezoneSelector"
+            class="is-mb-5"
+            :key="props.locale"
+            :locale="props.locale"
+            :current-zone="timezone"
+            @change="onTimezoneChange"
+          />
+
           <LoadingIndicator v-if="isLoading" />
 
           <template v-else>
@@ -98,7 +125,7 @@ const sectionSelectorMainClass = useMainClass('section-selector');
               {{ format(key, 'L dddd', timezone, locale) }}
               <div class="is-card">
                 <template v-for="game in gameDay" :key="game.id">
-                  <GameItem :game="game" />
+                  <GameItem :game="game" :offset-name="currentOffsetName" :game-link="externalGameLink"/>
                 </template>
               </div>
             </div>

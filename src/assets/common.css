@@ -33,6 +33,8 @@
   --vbr-widget-danger-color-900: #b71c1c;
   --vbr-widget-danger-color-a400: #ff1744;
 
+  --vbr-widget-live-game-color: #8bc34a;
+
   --vbr-widget-table-header-font-size: 12px;
   --vbr-widget-table-default-column-width: 30px;
   --vbr-widget-table-default-bg-color: var(--vbr-widget-primary-color-0);
@@ -217,6 +219,11 @@ a {
   padding: 3px 0;
   color: var(--vbr-widget-timezone-selector-color);
   font-size: var(--vbr-widget-timezone-selector-font-size);
+  font-weight: 500;
+
+  .is-active {
+    font-weight: 700;
+  }
 }
 
 .is-badge {

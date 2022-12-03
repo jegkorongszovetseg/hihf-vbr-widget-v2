@@ -318,6 +318,10 @@
     "data": {
       "localTime": "Game local time"
     },
+    "status": {
+      "jury": "Jury result",
+      "delayed": "Game delayed"
+    },
     "period": {
       "Bemelegítés": "Warm-up",
       "Bemelegítés vége": "Warm-up End",

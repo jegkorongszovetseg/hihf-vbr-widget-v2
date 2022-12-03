@@ -316,6 +316,10 @@
     "data": {
       "localTime": "Helyszín szerinti idő"
     },
+    "status": {
+      "jury": "Versenybíróság",
+      "delayed": "Elhalasztva"
+    },
     "period": {
       "Bemelegítés": "Bemelegítés",
       "Bemelegítés vége": "Bemelegítés Vége",

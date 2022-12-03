@@ -29,3 +29,21 @@
   font-size: 1.25rem; /* 20px */
   line-height: 1.75rem; /* 28px */
 }
+
+.is-uppercase {
+  text-transform: uppercase;
+}
+
+.is-opacity-20 {
+  opacity: 0.2;
+}
+.is-opacity-30 {
+  opacity: 0.3;
+}
+.is-opacity-50 {
+  opacity: 0.5;
+}
+
+.is-mb-5 {
+  margin-bottom: 1rem;
+}

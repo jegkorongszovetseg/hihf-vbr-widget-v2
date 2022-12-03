@@ -57,6 +57,24 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--vbr-widget-primary-color-900);
+
+      &:hover {
+        color: var(--vbr-widget-primary-color-600);
+      }
+    }
+
+    &.is-live {
+      color: var(--vbr-widget-live-game-color);
+      a {
+        color: var(--vbr-widget-live-game-color);
+      }
+    }
   }
 }
 

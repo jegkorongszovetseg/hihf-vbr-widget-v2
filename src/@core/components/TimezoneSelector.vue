@@ -1,7 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import dayjs from 'dayjs';
-import { offsetName } from '../utils/datetime';
+import { getLocalTimezone, offsetName } from '../utils/datetime';
 import { useI18n, i18n } from '../composables/useI18n';
 import { AVAILABLE_TIMEZONES_BY_COUNTRY } from '../constants.js';
 import { useMainClass } from '../composables/useMainClass';
@@ -23,13 +22,13 @@ const { t } = useI18n();
 const mainClass = useMainClass('timezone-selector');
 
 const localZoneName = computed(() => offsetName(new Date(), null, props.locale));
-const localTimeZone = dayjs.tz.guess();
+const localTimeZone = getLocalTimezone();
 
 const timezoneCountries = computed(() => {
   return Array.from(AVAILABLE_TIMEZONES_BY_COUNTRY.values()).map((item) => ({
     ...item,
     isActive:
-      offsetName(new Date(), props.localTimezone, props.locale) === offsetName(new Date(), item.timezone, props.locale),
+      offsetName(new Date(), props.currentZone, props.locale) === offsetName(new Date(), item.timezone, props.locale),
     zoneOffsetName: offsetName(new Date(), item.timezone, props.locale),
   }));
 });
