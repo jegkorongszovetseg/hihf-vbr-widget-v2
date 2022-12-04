@@ -52,7 +52,7 @@ const state = reactive({
   seasons: [],
   championshipId: Number(params.championshipId) || 0,
   sections: [],
-  section: null,
+  section: params.section || null,
   teams: [],
   selectedMonth: Number(params.selectedMonth) || null,
   selectedTeam: Number(params.selectedTeam) || null,
@@ -162,6 +162,7 @@ const changeMonth = (value) => {
 
 const changeSection = (value) => {
   state.section = value;
+  params.section = value;
   // resets
   state.selectedMonth = null;
   params.selectedMonth = null;
