@@ -12,18 +12,20 @@ const banner = `/*!
   * Released under the ${packageJson.license} License.
   */`;
 
+const BUILD_FORMATS = new Map().set('iife', 'global').set('es', 'esm-browser');
+
 const builds = [
   {
     entry: path.resolve(__dirname, '../src/@core/index.js'),
     name: 'MjszWidgetCore',
-    fileName: (format) => `mjsz-vbr-core.${format}.js`,
+    fileName: (format) => `mjsz-vbr-core.${BUILD_FORMATS.get(format)}.js`,
     external: [],
     globals: {},
   },
   {
     entry: path.resolve(__dirname, '../src/@widgets/index.js'),
     name: 'MjszWidgetElements',
-    fileName: (format) => `mjsz-vbr-elements.${format}.js`,
+    fileName: (format) => `mjsz-vbr-elements.${BUILD_FORMATS.get(format)}.js`,
     external: [
       '@vbr-widget/core',
       '@vbr-widget/components',
@@ -42,7 +44,7 @@ const builds = [
   {
     entry: path.resolve(__dirname, '../src/@widgets-extended/index.js'),
     name: 'MjszWidgetExtendedElements',
-    fileName: (format) => `mjsz-vbr-extended.${format}.js`,
+    fileName: (format) => `mjsz-vbr-extended.${BUILD_FORMATS.get(format)}.js`,
     external: [
       '@vbr-widget/core',
       '@vbr-widget/components',
@@ -61,7 +63,7 @@ const builds = [
   {
     entry: path.resolve(__dirname, '../src/bundle.js'),
     name: 'MjszWidgetBundle',
-    fileName: (format) => `mjsz-vbr-bundle.${format}.js`,
+    fileName: (format) => `mjsz-vbr-bundle.${BUILD_FORMATS.get(format)}.js`,
     external: [],
     globals: {},
   },
@@ -90,7 +92,7 @@ builds.forEach(async (settings) => {
       emptyOutDir: false,
       sourcemap: false,
       target: 'modules',
-      minify: false,
+      minify: true,
     },
   });
 });

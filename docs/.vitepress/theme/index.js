@@ -1,5 +1,5 @@
 import DefaultTheme from 'vitepress/theme';
-import { createConfig } from '../../../dist/mjsz-vbr-bundle.es.js';
+import { createConfig } from '../../../dist/mjsz-vbr-bundle.esm-browser.js';
 
 export default {
   ...DefaultTheme,

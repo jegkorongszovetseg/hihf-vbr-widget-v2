@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => {
     base: env.VITE_DOCS_BASE,
     lang: 'hu-HU',
     title: 'MJSZ VBR Widgetek',
-    description: 'Just playing around.',
+    description: 'Magyar Jégkorong Szövetség versenybírósági rendszerének adat megjelenítése.',
     themeConfig: {
       socialLinks: [{ icon: 'github', link: 'https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2' }],
       nav: [
@@ -53,7 +53,7 @@ export default defineConfig(({ mode }) => {
       },
       docFooter: {
         prev: 'Előző',
-        next: 'PKövetkező',
+        next: 'Következő',
       },
     },
     vue: {

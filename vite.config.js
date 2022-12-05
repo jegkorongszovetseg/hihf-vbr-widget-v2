@@ -72,12 +72,12 @@ export default defineConfig(({ mode }) => {
         },
       }),
 
-      // viteCompression({
-      //   algorithm: 'gzip',
-      // }),
-      // viteCompression({
-      //   algorithm: 'brotliCompress',
-      // }),
+      viteCompression({
+        algorithm: 'gzip',
+      }),
+      viteCompression({
+        algorithm: 'brotliCompress',
+      }),
     ],
   };
 });
