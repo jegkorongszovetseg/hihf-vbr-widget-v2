@@ -8,11 +8,11 @@ export * from './constants';
 
 export * from './icons/index';
 
-export const createConfig = ({ apiKey, modules = [] }) => {
+export const createConfig = ({ modules = [], apiKey }) => {
   window.__MJSZ_VBR_WIDGET__ = { apiKey };
 
   if (modules.length === 0) throw new Error('At least one module must be set');
-  modules.forEach((item) => {
-    item?.register();
+  modules.forEach((module) => {
+    module?.register();
   });
 };

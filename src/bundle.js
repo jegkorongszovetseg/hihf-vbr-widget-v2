@@ -55,7 +55,7 @@ export function register() {
   customElements.define('mjsz-vbr-schedule-liga', ScheduleLigaCE);
 }
 
-export const createConfig = ({ apiKey }) => {
-  window.__MJSZ_VBR_WIDGET__ = { apiKey };
+export const createConfig = ({ apiKey, gameResolver, teamResolver, playerResolver }) => {
+  window.__MJSZ_VBR_WIDGET__ = { apiKey, gameResolver, teamResolver, playerResolver };
   register();
 };

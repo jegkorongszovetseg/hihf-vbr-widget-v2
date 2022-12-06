@@ -7,7 +7,9 @@ A widgetek Vue3-ban készültek, ezért szükséges a Vue könyvtár importálá
 ```html
 <script src="https://unpkg.com/vue@3"></script>
 ```
+
 A `head` részbe illesztve az alábbi kódot, az oldaladon elérhetővé válnak a widgetek.
+
 ```html {2,5}
 <script src="https://unpkg.com/vue@3"></script>
 <script src="https://api.icehockey.hu/widgets/v2/mjsz-vbr-bundle.global.js"></script>
@@ -34,7 +36,7 @@ A `head` részbe illesztve az alábbi kódot, az oldaladon elérhetővé válnak
 </body>
 ```
 
-## Összetevők egyenkénti használata
+## Összetevők használata
 
 Lehetőség van az összes widget használatára, de szét is lehet választani az összetevőket:
 
@@ -51,13 +53,13 @@ A _global_ build nem UMD build hanem **_IIFE_** build. A globális változókon 
 
 Ha nincs szükség az összes elemre (widget), lehetőség van csak a szükséges elemek használatára. Ebben az esetben több fájlt kell importálnuk:
 
-```html
+```html {2-3}
 <script src="https://unpkg.com/vue@3"></script>
 <script src="https://api.icehockey.hu/widgets/v2/mjsz-vbr-core.global.js"></script>
 <script src="https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements.global.js"></script>
 
 <script>
-  MjszWidgetCore.createConfig([MjszWidgetElements], { apiKey: 'xxxxx' });
+  MjszWidgetCore.createConfig({ modules: [MjszWidgetElements], apiKey: 'xxxxx' });
 </script>
 ```
 
