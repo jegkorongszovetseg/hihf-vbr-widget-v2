@@ -23,6 +23,7 @@ export default defineConfig(({ mode }) => {
             items: [
               { text: 'Bemutatás', link: '/widget/' },
               { text: 'Widgetek használata', link: '/widget/using-widget' },
+              { text: 'Widgetek beállítása', link: '/widget/widget-config' },
               { text: 'Elérhető nyelvek', link: '/widget/available-languages' },
               { text: 'Elérhető widgetek', link: '/widget/available-widgets' },
             ],

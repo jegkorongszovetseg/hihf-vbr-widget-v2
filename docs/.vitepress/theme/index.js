@@ -6,7 +6,7 @@ export default {
   enhanceApp() {
     if (typeof window !== 'undefined') {
       createConfig({
-        apiKey: import.meta.env.VITE_VBR_API_KEY,
+        apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62',
       });
     }
   },
