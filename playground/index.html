@@ -10,8 +10,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.prod.min.js"></script>
 
   <!-- <script crossorigin src="/mjsz-vbr-widget.iife.js"></script> -->
-  <script src="/mjsz-vbr-core.iife.js"></script>
-  <script src="/mjsz-vbr-elements.iife.js"></script>
+  <script src="/mjsz-vbr-core.global.js"></script>
+  <script src="/mjsz-vbr-elements.global.js"></script>
   <!-- <script type="module" src="./mjsz-vbr-widget.esm.js"></script> -->
   <!-- <link rel="stylesheet" href="/style.css"> -->
   <style>
@@ -29,7 +29,8 @@
   <!-- <Statistics :locale="locale" championship-name="Erste Liga"  /> -->
   <!-- <mjsz-vbr-players-leader locale="hu" championship-id="3314" division="Alapszakasz"></mjsz-vbr-players-leader> -->
   <mjsz-vbr-standings locale="hu" championship-id="3314" division="Alapszakasz"></mjsz-vbr-standings>
-  <mjsz-vbr-schedule locale="en" championship-id="3314" division="Alapszakasz" auto-initial-page auto-refresh ></mjsz-vbr-schedule>
+  <mjsz-vbr-schedule locale="en" championship-id="3314" division="Alapszakasz" auto-initial-page auto-refresh>
+  </mjsz-vbr-schedule>
   <mjsz-vbr-players-leader locale="en" championship-id="3314" division="Alapszakasz"></mjsz-vbr-players-leader>
   <!-- <script crossorigin src="/bundle.umd.cjs"></script> -->
   <script>
@@ -38,7 +39,7 @@
     // MjszVbrWidget.setup({
     //   apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62'
     // })
-    MjszWidgetCore.createConfig({ modules: [MjszWidgetElements], apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62'})
+    MjszWidgetCore.createConfig({ modules: [MjszWidgetElements], apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62', gameResolver: 'link/'})
     // Widgets.setup({
     //   apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62'
     // })

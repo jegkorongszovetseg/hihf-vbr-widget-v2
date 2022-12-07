@@ -2,7 +2,7 @@ export const DEFAULT_EXTERNAL_BASE_URL = 'https://www.jegkorongszovetseg.hu/even
 
 export const DEFAULT_PORTRAIT_IMAGE_URL = 'https://jegkorongszovetseg.hu/assets/images/player_blank.png';
 
-export const DEFAULT_EXTERNAL_PLAYER_URL = 'https://www.ersteliga.hu/stats/players#/player/3314/';
+export const DEFAULT_EXTERNAL_PLAYER_URL = 'https://www.ersteliga.hu/stats/players#/player/';
 export const DEFAULT_EXTERNAL_TEAM_URL = 'https://www.ersteliga.hu/stats/teams#/team/3314/21096?name=';
 
 export const SORT_STATE_ORIGINAL = 'original';

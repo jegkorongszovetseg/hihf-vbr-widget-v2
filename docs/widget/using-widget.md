@@ -47,7 +47,7 @@ Lehetőség van az összes widget használatára, de szét is lehet választani 
 | Elements | [https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements.global.js](https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements.global.js) | MjszWidgetElements         |
 | Extended | [https://api.icehockey.hu/widgets/v2/mjsz-vbr-extended.global.js](https://api.icehockey.hu/widgets/v2/mjsz-vbr-extended.global.js) | MjszWidgetExtendedElements |
 
-::: tip Global Build
+::: info Global Build
 A _global_ build nem UMD build hanem **_IIFE_** build. A globális változókon keresztül lehet elérni a fügvényeket.
 :::
 
