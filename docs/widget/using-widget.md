@@ -73,7 +73,7 @@ Ha csak egy widget használatára van szükségünk, nem szükséges globális k
 <script src="https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements.global.js"></script>
 
 <script>
-  MjszWidgetElements.register();
+  MjszWidgetElements.register(); // [!code focus]
 </script>
 ```
 
