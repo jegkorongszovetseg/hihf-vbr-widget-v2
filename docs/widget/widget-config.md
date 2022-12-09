@@ -1,20 +1,5 @@
 # Widgetek beállítása
 
-Bundle használat esetén:
-
-```html
-<script>
-  MjszWidgetBundle.createConfig({
-    apiKey: 'xxxxx',
-    gameResolver: '/game/',
-    teamResolver: '/team/',
-    playerResolver: '/player/',
-  });
-</script>
-```
-
-Modul használat esetén:
-
 ```html
 <script>
   MjszWidgetCore.createConfig({
@@ -30,6 +15,21 @@ Modul használat esetén:
 ## modules
 
 - Type: `array`
+- `MjszWidgetElements`, `MjszWidgetExtendedElements`
+
+A használni kívánt modulokat lehet baállítani.
+Bundle használat estén nem szükséges a `modules` beállítása:
+
+```html
+<script>
+  MjszWidgetBundle.createConfig({
+    apiKey: 'xxxxx',
+    gameResolver: '/game/',
+    teamResolver: '/team/',
+    playerResolver: '/player/',
+  });
+</script>
+```
 
 ## apiKey
 
@@ -60,7 +60,23 @@ Lehetőség van fügvény megadására is:
 - Type: `string | function`
 - Default: `https://www.jegkorongszovetseg.hu/event/game/`
 
+::: details Funkció
+```js
+{
+  teamResolver: (id) => `/game/${id}`,
+}
+```
+:::
+
 ## playerResolver
 
 - Type: `string | function`
 - Default: `https://www.jegkorongszovetseg.hu/event/game/`
+
+::: details Funkció
+```js
+{
+  playerResolver: (id) => `/game/${id}`,
+}
+```
+:::
