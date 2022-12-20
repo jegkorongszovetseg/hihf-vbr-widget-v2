@@ -99,16 +99,13 @@ const onStatTypeChange = (value) => {
 
 const baseInputClass = useMainClass('base-input');
 const baseLabelClass = useMainClass('label');
+const tabButtonClasses = useMainClass('tab-button');
 </script>
 
 <template>
-  <div>
-    <button type="button" @click="onStatTypeChange(REPORT_TYPE_PLAYERS)">Players</button>
-    <button type="button" @click="onStatTypeChange(REPORT_TYPE_TEAMS)">Teams</button>
-  </div>
-  <div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 20px 0">
+  <div class="g-row is-mb-5" style="flex-wrap: wrap; gap: 20px; margin: 20px 0">
     <div>
-      <label for="season" :class="baseLabelClass">Szezon</label>
+      <label for="season" :class="baseLabelClass">{{ t('common.season') }}</label>
       <BaseSelect id="season" v-model="seasonSelect">
         <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">
           {{ season.seasonName }}
@@ -116,26 +113,26 @@ const baseLabelClass = useMainClass('label');
       </BaseSelect>
     </div>
     <div>
-      <label for="section" :class="baseLabelClass">Szakasz</label>
+      <label for="section" :class="baseLabelClass">{{ t('common.section') }}Szakasz</label>
       <BaseSelect id="section" v-model="sectionSelect">
         <option v-for="sectionName in sections" :key="sectionName" :value="sectionName">{{ sectionName }}</option>
       </BaseSelect>
     </div>
     <div>
-      <label for="report" :class="baseLabelClass">Riport</label>
+      <label for="report" :class="baseLabelClass">{{ t('common.report') }}Riport</label>
       <BaseSelect id="report" v-model="reportSelect">
         <option v-for="{ name, value } in reports" :key="value" :value="value">{{ name }}</option>
       </BaseSelect>
     </div>
     <div>
-      <label for="teams" :class="baseLabelClass">Teams</label>
+      <label for="teams" :class="baseLabelClass">{{ t('common.teams') }}Teams</label>
       <BaseSelect id="teams" v-model="teamSelect" :disabled="reportType !== 'players'">
         <option :value="null">{{ t('common.all') }}</option>
         <option v-for="{ teamId, teamName } in teams" :key="teamId" :value="teamId">{{ teamName }}</option>
       </BaseSelect>
     </div>
     <div>
-      <label for="player" :class="baseLabelClass">Szűrés névre</label>
+      <label for="player" :class="baseLabelClass">{{ t('common.filterName') }}Szűrés névre</label>
       <input
         id="player"
         type="text"
@@ -144,5 +141,22 @@ const baseLabelClass = useMainClass('label');
         :disabled="reportType !== 'players'"
       />
     </div>
+  </div>
+
+  <div>
+    <button
+      type="button"
+      @click="onStatTypeChange(REPORT_TYPE_PLAYERS)"
+      :class="[tabButtonClasses, { 'is-active': reportType === REPORT_TYPE_PLAYERS }]"
+    >
+      Players
+    </button>
+    <button
+      type="button"
+      @click="onStatTypeChange(REPORT_TYPE_TEAMS)"
+      :class="[tabButtonClasses, { 'is-active': reportType === REPORT_TYPE_TEAMS }]"
+    >
+      Teams
+    </button>
   </div>
 </template>

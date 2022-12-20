@@ -14,7 +14,8 @@
     "overtimeShort": "OT",
     "all": "All",
     "report": "Report Sheet",
-    "video": "Video"
+    "video": "Video",
+    "season": "Season"
   },
   "report": {
     "points": "Points",

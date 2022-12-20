@@ -22,8 +22,8 @@ const change = () => {
 <template>
   <div>
     <button type="button" @click="change">{{ locale }}</button>
-    <ScheduleLiga :locale="locale" championship-name="Erste Liga" :auto-refresh="true" timezone-selector />
-    <!-- <Statistics :locale="locale" championship-name="Erste Liga" /> -->
+    <!-- <ScheduleLiga :locale="locale" championship-name="Erste Liga" :auto-refresh="true" timezone-selector /> -->
+    <Statistics :locale="locale" championship-name="Erste Liga" />
     <!-- <TeamScoringEfficiency :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamPowerplay :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
     <!-- <TeamPenaltyKilling :locale="locale" championship-id="3314" division="Alapszakasz" /> -->
