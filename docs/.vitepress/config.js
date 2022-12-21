@@ -51,6 +51,14 @@ export default defineConfig(({ mode }) => {
             ],
           },
         ],
+        '/styles/': [
+          {
+            items: [
+              { text: 'Használat', link: '/styles/' },
+              { text: 'Változók listája', link: '/styles/css-variables' },
+            ],
+          },
+        ],
       },
       docFooter: {
         prev: 'Előző',
