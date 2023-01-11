@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { useVModels } from '@vueuse/core';
-import { useMainClass } from '@vbr-widget/composables';
+import { useI18n, useMainClass } from '@vbr-widget/composables';
 import { BaseSelect } from '@vbr-widget/components';
 
 const props = defineProps({
@@ -48,6 +48,8 @@ const emit = defineEmits([
   'update:selectedTeamGameType',
 ]);
 
+const { t } = useI18n();
+
 const { championshipId, selectedMonth, selectedTeam, selectedTeamGameType } = useVModels(props, emit);
 
 const isGameTypeDisabled = computed(() => selectedTeam.value === null);
@@ -58,7 +60,7 @@ const baseLabelClass = useMainClass('label');
 <template>
   <div class="g-row" style="column-gap: 8px;">
     <div>
-      <label for="season" :class="baseLabelClass">Szezon</label>
+      <label for="season" :class="baseLabelClass">{{ t('selection.season') }}</label>
       <BaseSelect id="season" v-model="championshipId">
         <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">
           {{ season.seasonName }}

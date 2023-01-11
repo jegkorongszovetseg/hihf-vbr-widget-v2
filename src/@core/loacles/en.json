@@ -13,9 +13,16 @@
     "shootoutShort": "SO",
     "overtimeShort": "OT",
     "all": "All",
-    "report": "Report Sheet",
+    "report": "Report Sheet"
+  },
+  "selection": {
+    "report": "Report",
     "video": "Video",
-    "season": "Season"
+    "season": "Season",
+    "section": "Section",
+    "teams": "Teams",
+    "filterName": "Filter by Name",
+    "players": "Players"
   },
   "report": {
     "points": "Points",
@@ -268,7 +275,6 @@
       "short": "PK%",
       "tooltip": "Penalty Killing Percentage"
     },
-
     "adv": {
       "short": "ADV",
       "tooltip": "Advantages (Times on Powerplay)"
@@ -297,7 +303,6 @@
       "short": "PP%",
       "tooltip": "Powerplay Percentage"
     },
-
     "gfgp": {
       "short": "GF/GP",
       "tooltip": "Szerzett gólátlag"

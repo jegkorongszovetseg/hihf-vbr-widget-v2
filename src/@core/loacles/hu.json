@@ -13,9 +13,16 @@
     "shootoutShort": "SU.",
     "overtimeShort": "HU.",
     "all": "Mind",
-    "report": "Jegyzőkönyv",
+    "report": "Jegyzőkönyv"
+  },
+  "selection": {
+    "report": "Riport",
     "video": "Videó",
-    "season": "Szezon"
+    "season": "Szezon",
+    "section": "Szakasz",
+    "teams": "Csapatok",
+    "filterName": "Szűrés névre",
+    "players": "Játékosok"
   },
   "report": {
     "points": "Pontok",

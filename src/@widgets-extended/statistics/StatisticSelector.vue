@@ -105,7 +105,7 @@ const tabButtonClasses = useMainClass('tab-button');
 <template>
   <div class="g-row is-mb-5" style="flex-wrap: wrap; gap: 20px; margin: 20px 0">
     <div>
-      <label for="season" :class="baseLabelClass">{{ t('common.season') }}</label>
+      <label for="season" :class="baseLabelClass">{{ t('selection.season') }}</label>
       <BaseSelect id="season" v-model="seasonSelect">
         <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">
           {{ season.seasonName }}
@@ -113,26 +113,26 @@ const tabButtonClasses = useMainClass('tab-button');
       </BaseSelect>
     </div>
     <div>
-      <label for="section" :class="baseLabelClass">{{ t('common.section') }}Szakasz</label>
+      <label for="section" :class="baseLabelClass">{{ t('selection.section') }}</label>
       <BaseSelect id="section" v-model="sectionSelect">
         <option v-for="sectionName in sections" :key="sectionName" :value="sectionName">{{ sectionName }}</option>
       </BaseSelect>
     </div>
     <div>
-      <label for="report" :class="baseLabelClass">{{ t('common.report') }}Riport</label>
+      <label for="report" :class="baseLabelClass">{{ t('selection.report') }}</label>
       <BaseSelect id="report" v-model="reportSelect">
         <option v-for="{ name, value } in reports" :key="value" :value="value">{{ name }}</option>
       </BaseSelect>
     </div>
     <div>
-      <label for="teams" :class="baseLabelClass">{{ t('common.teams') }}Teams</label>
+      <label for="teams" :class="baseLabelClass">{{ t('selection.teams') }}</label>
       <BaseSelect id="teams" v-model="teamSelect" :disabled="reportType !== 'players'">
         <option :value="null">{{ t('common.all') }}</option>
         <option v-for="{ teamId, teamName } in teams" :key="teamId" :value="teamId">{{ teamName }}</option>
       </BaseSelect>
     </div>
     <div>
-      <label for="player" :class="baseLabelClass">{{ t('common.filterName') }}Szűrés névre</label>
+      <label for="player" :class="baseLabelClass">{{ t('selection.filterName') }}</label>
       <input
         id="player"
         type="text"
@@ -149,14 +149,14 @@ const tabButtonClasses = useMainClass('tab-button');
       @click="onStatTypeChange(REPORT_TYPE_PLAYERS)"
       :class="[tabButtonClasses, { 'is-active': reportType === REPORT_TYPE_PLAYERS }]"
     >
-      Players
+    {{ t('selection.players') }}
     </button>
     <button
       type="button"
       @click="onStatTypeChange(REPORT_TYPE_TEAMS)"
       :class="[tabButtonClasses, { 'is-active': reportType === REPORT_TYPE_TEAMS }]"
     >
-      Teams
+    {{ t('selection.teams') }}
     </button>
   </div>
 </template>
