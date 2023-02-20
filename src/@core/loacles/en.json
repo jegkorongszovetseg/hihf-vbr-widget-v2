@@ -22,7 +22,11 @@
     "section": "Section",
     "teams": "Teams",
     "filterName": "Filter by Name",
-    "players": "Players"
+    "players": "Players",
+    "month": "Month",
+    "homeOrAway": "Home or Away",
+    "home": "Home",
+    "away": "Away"
   },
   "report": {
     "points": "Points",

@@ -22,7 +22,11 @@
     "section": "Szakasz",
     "teams": "Csapatok",
     "filterName": "Szűrés névre",
-    "players": "Játékosok"
+    "players": "Játékosok",
+    "month": "Hónap",
+    "homeOrAway": "Hazai vagy Vendég",
+    "home": "Hazai",
+    "away": "Vendég"
   },
   "report": {
     "points": "Pontok",

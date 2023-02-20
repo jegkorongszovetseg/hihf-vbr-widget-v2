@@ -58,7 +58,7 @@ const baseLabelClass = useMainClass('label');
 </script>
 
 <template>
-  <div class="g-row" style="column-gap: 8px;">
+  <div class="g-row" style="column-gap: 8px">
     <div>
       <label for="season" :class="baseLabelClass">{{ t('selection.season') }}</label>
       <BaseSelect id="season" v-model="championshipId">
@@ -68,25 +68,25 @@ const baseLabelClass = useMainClass('label');
       </BaseSelect>
     </div>
     <div>
-      <label for="months" :class="baseLabelClass">Month</label>
+      <label for="months" :class="baseLabelClass">{{ t('selection.month') }}</label>
       <BaseSelect id="months" v-model="selectedMonth">
-        <option :value="null">Mind</option>
+        <option :value="null">{{ t('common.all') }}</option>
         <option v-for="month in months" :key="month.value" :value="month.value">{{ month.name }}</option>
       </BaseSelect>
     </div>
     <div>
-      <label for="teams" :class="baseLabelClass">Teams</label>
-      <BaseSelect id="teams" v-model="selectedTeam" style="max-width: 200px;">
-        <option :value="null">Mind</option>
+      <label for="teams" :class="baseLabelClass">{{ t('selection.teams') }}</label>
+      <BaseSelect id="teams" v-model="selectedTeam" style="max-width: 200px">
+        <option :value="null">{{ t('common.all') }}</option>
         <option v-for="team in teams" :key="team.teamId" :value="team.teamId">{{ team.teamName }}</option>
       </BaseSelect>
     </div>
     <div>
-      <label for="type" :class="baseLabelClass">Home or Away</label>
+      <label for="type" :class="baseLabelClass">{{ t('selection.homeOrAway') }}</label>
       <BaseSelect id="type" v-model="selectedTeamGameType" :disabled="isGameTypeDisabled">
-        <option value="all">Mind</option>
-        <option value="home">Home</option>
-        <option value="away">Away</option>
+        <option value="all">{{ t('common.all') }}</option>
+        <option value="home">{{ t('selection.home') }}</option>
+        <option value="away">{{ t('selection.away') }}</option>
       </BaseSelect>
     </div>
   </div>
