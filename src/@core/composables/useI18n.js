@@ -1,5 +1,4 @@
 import { computed, defineComponent, h, inject, provide, reactive } from 'vue';
-import { $computed } from 'vue/macros';
 import { path, isEmpty, trim, map, split } from 'ramda';
 
 const I18nContext = Symbol('I18nContext');
@@ -19,11 +18,11 @@ export const createI18n = ({ messages = {}, locale = '', fallbackLocale = '' }) 
     const hasInterpolation = !isEmpty(data);
     const keyArray = map(trim, split('.', key));
 
-    const translation = $computed(() => {
+    const translation = computed(() => {
       const rawTransition = resolveTransition(keyArray);
       return hasInterpolation ? replacer(rawTransition, data) : rawTransition;
     });
-    return translation;
+    return translation.value;
   };
 
   const hasTranlation = (key) => {
