@@ -12,17 +12,21 @@ export default defineComponent({
     },
   },
   setup(props) {
-    createI18n({
+    const { translate } = createI18n({
       locale: computed(() => props.locale),
       messages: {
         hu,
         en,
       },
     });
+
+    return {
+      translate,
+    };
   },
 });
 </script>
 
 <template>
-  <slot />
+  <slot :t="translate" />
 </template>

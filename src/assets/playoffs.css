@@ -1,0 +1,51 @@
+.playoffs {
+  .table {
+    table-layout: fixed;
+
+    table,
+    th,
+    td {
+      border-collapse: collapse;
+    }
+  }
+  .section-title {
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--vbr-widget-primary-color-100);
+    background-color: var(--vbr-widget-primary-color-700);
+  }
+  .section-details {
+    display: grid;
+    grid-template-columns: 1fr fit-content(100px) fit-content(100px) fit-content(100px) 1fr;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: var(--vbr-widget-primary-color-50);
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+
+    :deep(.is-logo-image) {
+      width: 70px;
+    }
+
+    .is-result {
+      font-size: 4rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--vbr-widget-primary-color-800);
+    }
+
+    .is-team-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--vbr-widget-primary-color-800);
+    }
+    .is-right {
+      text-align: right;
+    }
+  }
+}
