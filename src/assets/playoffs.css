@@ -7,6 +7,10 @@
     td {
       border-collapse: collapse;
     }
+
+    @media (max-width: 600px) {
+      table-layout: auto;
+    }
   }
   .section-title {
     padding: 10px;
@@ -30,6 +34,7 @@
 
     :deep(.is-logo-image) {
       width: 70px;
+      height: 70px;
     }
 
     .is-result {
