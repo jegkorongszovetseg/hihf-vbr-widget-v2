@@ -93,4 +93,4 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
 
 <style lang="postcss" src="@vbr-widget/assets/common.css"></style>
 <style lang="postcss" src="@vbr-widget/assets/table.css"></style>
-<style lang="postcss" src="@vbr-widget/assets/playoffs.css" scoped></style>
+<style lang="postcss" src="@vbr-widget/assets/playoffs.css"></style>

@@ -4,6 +4,7 @@
     "module": "ES6",
     "baseUrl": "./",
     "paths": {
+      "@vbr-widget/assets/*": ["src/assets/*"],
       "@vbr-widget/core": ["src/@core/index.js"],
       "@vbr-widget/components": ["src/@core/components/index.js"],
       "@vbr-widget/composables": ["src/@core/composables/index.js"],

@@ -99,5 +99,6 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
 <style lang="postcss" src="@vbr-widget/assets/common.css"></style>
 <style lang="postcss" src="@vbr-widget/assets/forms.css"></style>
 <style lang="postcss" src="@vbr-widget/assets/table.css"></style>
+<style lang="postcss" src="@vbr-widget/assets/grid.css"></style>
 <style lang="postcss" src="@vbr-widget/assets/responsive-table.css"></style>
 <style lang="postcss" src="@vbr-widget/assets/paginator.css"></style>
