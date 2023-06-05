@@ -1,0 +1,17 @@
+{
+  "name": "@mjsz-vbr-elements/monorepo",
+  "version": "2.1.0",
+  "description": "Data visualization for MJSZ VBR",
+  "main": "index.js",
+  "workspaces": [
+    "packages/*",
+    "playground/**"
+  ],
+  "scripts": {
+    "playground": "cd playground && npm run dev",
+    "build": "pnpm -r --filter='./packages/*' run build"
+  },
+  "keywords": [],
+  "author": "Ákos Stegner <akos.stegner@gmail.com>",
+  "license": "ISC"
+}

@@ -1,0 +1,1 @@
+# Azonosítók lekérdezése

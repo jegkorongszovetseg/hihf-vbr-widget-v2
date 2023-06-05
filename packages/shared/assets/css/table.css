@@ -1,0 +1,206 @@
+@import './mixins.css';
+
+.table {
+  @add-mixin ResetTable;
+  color: var(--vbr-widget-table-color);
+  background-color: var(--vbr-widget-table-default-bg-color);
+
+  th {
+    width: var(--vbr-widget-table-default-column-width);
+    background-color: var(--vbr-widget-table-header-bg-color);
+    font-size: var(--vbr-widget-table-header-font-size);
+    font-weight: 700;
+    color: var(--vbr-widget-table-header-color);
+    text-align: center;
+
+    &:focus-visible,
+    &:hover {
+      background-color: var(--vbr-widget-table-header-hover-bg-color);
+      outline: none;
+    }
+
+    &.is-sortable {
+      position: relative;
+      cursor: pointer;
+
+      .icon-sort {
+        opacity: 0.5;
+      }
+    }
+
+    &.is-active {
+      background-color: var(--vbr-widget-table-table-header-active-bg-color);
+      color: var(--vbr-widget-table-header-active-color);
+
+      .icon-sort {
+        opacity: 1;
+      }
+    }
+
+    &.is-asc {
+      position: relative;
+    }
+
+    &.is-desc {
+      position: relative;
+    }
+
+    &.is-w-auto {
+      width: auto;
+    }
+
+    .is-icon-sort {
+      width: 11px;
+      height: 11px;
+      margin-left: 5px;
+    }
+  }
+
+  td {
+    text-align: center;
+
+    &.is-active {
+      font-weight: 700;
+      color: var(--vbr-widget-table-active-color);
+      background-color: var(--vbr-widget-table-active-bg-color);
+    }
+
+    .is-text-light,
+    &.is-text-light {
+      color: var(--vbr-widget-table-cell-light-color);
+    }
+
+    .is-text-dark,
+    &.is-text-dark {
+      color: var(--vbr-widget-table-cell-dark-color);
+    }
+
+    .is-logo-image {
+      display: inline-block;
+      vertical-align: middle;
+      width: var(--vbr-widget-table-cell-logo-size);
+      height: var(--vbr-widget-table-cell-logo-size);
+    }
+
+    .is-portrait-image {
+      display: inline-block;
+      vertical-align: middle;
+      width: var(--vbr-widget-table-cell-portrait-size);
+      height: var(--vbr-widget-table-cell-portrait-size);
+      object-fit: cover;
+      object-position: top;
+      overflow: hidden;
+      border-radius: 100%;
+      border: 1px solid var(--vbr-widget-primary-color-100);
+
+      img {
+        width: var(--vbr-widget-table-cell-portrait-size);
+        height: auto;
+      }
+    }
+
+    &.is-text-bold {
+      font-weight: 700;
+    }
+
+    &.is-text-xl {
+      font-size: 1.2 rem;
+    }
+
+    .is-text-accent {
+      color: var(--vbr-widget-secondary-color-500);
+    }
+
+    &.is-w-auto {
+      width: auto;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    button {
+      padding: 3px 3px;
+      line-height: 0;
+      border: none;
+      outline: none;
+      background-color: transparent;
+
+      &:hover {
+        background-color: var(--vbr-widget-popover-trigger-hover-bg-color);
+      }
+
+      &:active,
+      &:focus {
+        background-color: var(--vbr-widget-popover-trigger-focus-bg-color);
+      }
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .label {
+      padding: 3px 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--vbr-widget-table-label-color);
+      background-color: var(--vbr-widget-table-label-bg-color);
+      border-radius: 2px;
+
+      &:not(:last-of-type) {
+        margin-right: 3px;
+      }
+    }
+
+    a {
+      color: var(--vbr-widget-link-color);
+    }
+    a:hover {
+      color: var(--vbr-widget-hover-color);
+    }
+  }
+
+  th,
+  td {
+    padding: 8px;
+    white-space: nowrap;
+    vertical-align: middle;
+
+    &.is-text-left {
+      text-align: left;
+    }
+
+    &.is-text-right {
+      text-align: right;
+    }
+
+    &.is-has-image {
+      padding: 0 2px;
+    }
+
+    .is-duplicated {
+      color: var(--vbr-widget-table-neutral-color);
+    }
+  }
+
+  tr:nth-child(even) {
+    background-color: var(--vbr-widget-table-stripped-bg-color);
+
+    td.is-active {
+      background-color: var(--vbr-widget-table-active-even-bg-color);
+    }
+  }
+
+  tr:focus-within,
+  tr:hover {
+    color: var(--vbr-widget-table-hover-color);
+    background-color: var(--vbr-widget-table-hover-bg-color);
+
+    td.is-active {
+      color: var(--vbr-widget-table-active-hover-color);
+      background-color: var(--vbr-widget-table-active-hover-bg-color);
+    }
+  }
+}

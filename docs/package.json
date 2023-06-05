@@ -1,0 +1,22 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev --port 5555",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vitepress": "1.0.0-beta.1"
+  },
+  "dependencies": {
+    "@mjsz-vbr-elements/core": "workspace:^",
+    "@mjsz-vbr-elements/elements": "workspace:^",
+    "@mjsz-vbr-elements/extended": "workspace:^"
+  }
+}

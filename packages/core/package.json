@@ -1,0 +1,51 @@
+{
+  "name": "@mjsz-vbr-elements/core",
+  "description": "Data visualization for MJSZ VBR",
+  "author": "Ákos Stegner <akos.stegner@gmail.com>",
+  "private": true,
+  "version": "2.1.0",
+  "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "main": "./dist/mjsz-vbr-elements-core.umd.cjs",
+  "module": "./dist/mjsz-vbr-elements-core.js",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./src/index.js"
+    },
+    "./components": {
+      "import": "./src/index.js",
+      "require": "./src/components/index.js"
+    },
+    "./composables": {
+      "import": "./src/index.js",
+      "require": "./src/composables/index.js"
+    },
+    "./utils": {
+      "import": "./src/index.js",
+      "require": "./src/utils/index.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.2.9",
+    "@mjsz-vbr-elements/shared": "workspace:^",
+    "@vueuse/core": "^10.1.2",
+    "@xstate/fsm": "^2.0.0",
+    "dayjs": "^1.11.7",
+    "ramda": "^0.29.0",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.3.9",
+    "vite-plugin-banner": "^0.7.0"
+  }
+}

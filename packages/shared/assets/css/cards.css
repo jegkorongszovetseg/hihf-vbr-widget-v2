@@ -1,0 +1,84 @@
+.is-card {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.is-card > div {
+  border-bottom: 1px solid var(--vbr-widget-primary-color-100);
+
+  &:last-of-type {
+    border: none;
+  }
+}
+
+.card-item {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 2fr 1fr 2fr;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--vbr-widget-primary-color-100);
+
+  svg {
+    display: block;
+  }
+
+  .is-info {
+    grid-column: 1/4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--vbr-widget-primary-color-500);
+  }
+
+  .is-home-team {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+    font-weight: 700;
+  }
+
+  .is-away-team {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: 700;
+  }
+
+  .is-logo-image {
+    width: 40px;
+  }
+
+  .is-game-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--vbr-widget-primary-color-900);
+
+      &:hover {
+        color: var(--vbr-widget-primary-color-600);
+      }
+    }
+
+    &.is-live {
+      color: var(--vbr-widget-live-game-color);
+      a {
+        color: var(--vbr-widget-live-game-color);
+      }
+    }
+  }
+}
+
+.section-selector {
+  margin: 20px 0;
+  border-bottom: 1px solid var(--vbr-widget-primary-color-200);
+}

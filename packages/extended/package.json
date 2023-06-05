@@ -1,0 +1,32 @@
+{
+  "name": "@mjsz-vbr-elements/extended",
+  "description": "Data visualization for MJSZ VBR",
+  "private": true,
+  "version": "2.1.0",
+  "author": "Ákos Stegner <akos.stegner@gmail.com>",
+  "type": "module",
+  "main": "./dist/mjsz-vbr-elements-extended.umd.cjs",
+  "module": "./src/index.js",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./dist/mjsz-vbr-elements-extended.umd.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mjsz-vbr-elements/core": "workspace:^",
+    "@mjsz-vbr-elements/shared": "workspace:^",
+    "@vueuse/core": "^10.1.2",
+    "ramda": "^0.29.0",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.1.0",
+    "vite": "^4.3.9"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "@mjsz-vbr-elements/shared",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "files": [
+    "icons",
+    "css"
+  ],
+  "main": "./dist/icons/mjsz-vbr-elements-shared.umd.cjs",
+  "module": "./dist/icons/mjsz-vbr-elements-shared.js",
+  "exports": {
+    ".": {
+      "import": "./dist/icons/mjsz-vbr-elements-shared.js",
+      "require": "./dist/icons/mjsz-vbr-elements-shared.umd.cjs"
+    },
+    "./icons": {
+      "import": "./dist/icons/mjsz-vbr-elements-shared.js",
+      "require": "./dist/icons/mjsz-vbr-elements-shared.umd.cjs"
+    },
+    "./css/*.css": {
+      "import": "./dist/css/*.css",
+      "require": "./dist/css/*.css"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/convert-postcss.js",
+    "build:icons": "vite build",
+    "build:postcss": "node scripts/convert-postcss.js",
+    "build:postcss:watch": "nodemon --exec 'pnpm run build:postcss' --watch assets/css/*",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "glob": "^10.2.6",
+    "nodemon": "^2.0.22",
+    "postcss": "^8.4.24",
+    "postcss-import": "^15.1.0",
+    "postcss-mixins": "^9.0.4",
+    "postcss-nested": "^6.0.1",
+    "postcss-prefixer": "^2.1.3",
+    "vite": "^4.3.9",
+    "vite-svg-loader": "^4.0.0"
+  }
+}

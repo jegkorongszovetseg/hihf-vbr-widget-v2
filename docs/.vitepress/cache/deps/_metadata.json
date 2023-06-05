@@ -1,0 +1,95 @@
+{
+  "hash": "04015319",
+  "browserHash": "6a8fefd1",
+  "optimized": {
+    "vue": {
+      "src": "../../../../node_modules/.pnpm/vue@3.3.4/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "508884f9",
+      "needsInterop": false
+    },
+    "ramda": {
+      "src": "../../../../node_modules/.pnpm/ramda@0.29.0/node_modules/ramda/es/index.js",
+      "file": "ramda.js",
+      "fileHash": "73a6ba7b",
+      "needsInterop": false
+    },
+    "@vueuse/core": {
+      "src": "../../../../node_modules/.pnpm/@vueuse+core@10.1.2_vue@3.3.4/node_modules/@vueuse/core/index.mjs",
+      "file": "@vueuse_core.js",
+      "fileHash": "f5725d65",
+      "needsInterop": false
+    },
+    "@xstate/fsm": {
+      "src": "../../../../node_modules/.pnpm/@xstate+fsm@2.0.0/node_modules/@xstate/fsm/es/index.js",
+      "file": "@xstate_fsm.js",
+      "fileHash": "a4e74027",
+      "needsInterop": false
+    },
+    "dayjs": {
+      "src": "../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/dayjs.min.js",
+      "file": "dayjs.js",
+      "fileHash": "cad54e4d",
+      "needsInterop": true
+    },
+    "dayjs/plugin/utc": {
+      "src": "../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/utc.js",
+      "file": "dayjs_plugin_utc.js",
+      "fileHash": "885b7d79",
+      "needsInterop": true
+    },
+    "dayjs/plugin/timezone": {
+      "src": "../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/timezone.js",
+      "file": "dayjs_plugin_timezone.js",
+      "fileHash": "d99a17a5",
+      "needsInterop": true
+    },
+    "dayjs/plugin/advancedFormat": {
+      "src": "../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/advancedFormat.js",
+      "file": "dayjs_plugin_advancedFormat.js",
+      "fileHash": "e1a81f97",
+      "needsInterop": true
+    },
+    "dayjs/plugin/isSameOrBefore": {
+      "src": "../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/isSameOrBefore.js",
+      "file": "dayjs_plugin_isSameOrBefore.js",
+      "fileHash": "0b916e0c",
+      "needsInterop": true
+    },
+    "dayjs/plugin/isBetween": {
+      "src": "../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/isBetween.js",
+      "file": "dayjs_plugin_isBetween.js",
+      "fileHash": "6ffd5582",
+      "needsInterop": true
+    },
+    "dayjs/plugin/localizedFormat": {
+      "src": "../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/plugin/localizedFormat.js",
+      "file": "dayjs_plugin_localizedFormat.js",
+      "fileHash": "9c9ebee2",
+      "needsInterop": true
+    },
+    "dayjs/locale/hu": {
+      "src": "../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/locale/hu.js",
+      "file": "dayjs_locale_hu.js",
+      "fileHash": "37b05793",
+      "needsInterop": true
+    },
+    "@floating-ui/dom": {
+      "src": "../../../../node_modules/.pnpm/@floating-ui+dom@1.2.9/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.mjs",
+      "file": "@floating-ui_dom.js",
+      "fileHash": "819df30c",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-FYYTY2GY": {
+      "file": "chunk-FYYTY2GY.js"
+    },
+    "chunk-UQB2Y5Q5": {
+      "file": "chunk-UQB2Y5Q5.js"
+    },
+    "chunk-RSJERJUL": {
+      "file": "chunk-RSJERJUL.js"
+    }
+  }
+}
