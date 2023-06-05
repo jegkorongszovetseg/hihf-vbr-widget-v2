@@ -28,7 +28,7 @@
     "build": "vite build && node scripts/convert-postcss.js",
     "build:icons": "vite build",
     "build:postcss": "node scripts/convert-postcss.js",
-    "build:postcss:watch": "nodemon --exec 'pnpm run build:postcss' --watch assets/css/*",
+    "build:postcss:watch": "nodemon --exec 'npm run build:postcss' --watch assets -e css",
     "preview": "vite preview"
   },
   "devDependencies": {

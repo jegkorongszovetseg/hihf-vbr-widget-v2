@@ -1,18 +1,18 @@
-.playoffs {
-  .table {
+.mjsz-vbr-playoffs .mjsz-vbr-table {
     table-layout: fixed;
+  }
 
-    table,
-    th,
-    td {
+    .mjsz-vbr-playoffs .mjsz-vbr-table table,
+    .mjsz-vbr-playoffs .mjsz-vbr-table th,
+    .mjsz-vbr-playoffs .mjsz-vbr-table td {
       border-collapse: collapse;
     }
 
-    @media (max-width: 600px) {
-      table-layout: auto;
-    }
+    @media (max-width: 600px) {.mjsz-vbr-playoffs .mjsz-vbr-table {
+      table-layout: auto
   }
-  .section-title {
+    }
+  .mjsz-vbr-playoffs .mjsz-vbr-section-title {
     padding: 10px;
     text-align: center;
     font-size: 16px;
@@ -20,37 +20,34 @@
     color: var(--vbr-widget-primary-color-100);
     background-color: var(--vbr-widget-primary-color-700);
   }
-  .section-details {
+  .mjsz-vbr-playoffs .mjsz-vbr-section-details {
     display: grid;
     grid-template-columns: 1fr fit-content(100px) fit-content(100px) fit-content(100px) 1fr;
     align-items: center;
     gap: 20px;
     padding: 20px;
     background-color: var(--vbr-widget-primary-color-50);
-
-    @media (max-width: 600px) {
-      grid-template-columns: 1fr;
+  }
+  @media (max-width: 600px) {
+  .mjsz-vbr-playoffs .mjsz-vbr-section-details {
+      grid-template-columns: 1fr
+  }
     }
-
-    .is-logo-image {
+  .mjsz-vbr-playoffs .mjsz-vbr-section-details .is-logo-image {
       width: 70px;
       height: 70px;
     }
-
-    .is-result {
+  .mjsz-vbr-playoffs .mjsz-vbr-section-details .is-result {
       font-size: 4rem;
       font-weight: 700;
       text-align: center;
       color: var(--vbr-widget-primary-color-800);
     }
-
-    .is-team-name {
+  .mjsz-vbr-playoffs .mjsz-vbr-section-details .is-team-name {
       font-size: 20px;
       font-weight: 700;
       color: var(--vbr-widget-primary-color-800);
     }
-    .is-right {
+  .mjsz-vbr-playoffs .mjsz-vbr-section-details .is-right {
       text-align: right;
     }
-  }
-}
