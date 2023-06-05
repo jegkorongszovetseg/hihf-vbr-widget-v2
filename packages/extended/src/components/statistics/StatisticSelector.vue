@@ -123,23 +123,25 @@ const tabButtonClasses = useMainClass('tab-button');
         <option v-for="{ name, value } in reports" :key="value" :value="value">{{ name }}</option>
       </BaseSelect>
     </div>
-    <div>
-      <label for="teams" :class="baseLabelClass">{{ t('selection.teams') }}</label>
-      <BaseSelect id="teams" v-model="teamSelect" :disabled="reportType !== 'players'">
-        <option :value="null">{{ t('common.all') }}</option>
-        <option v-for="{ teamId, teamName } in teams" :key="teamId" :value="teamId">{{ teamName }}</option>
-      </BaseSelect>
-    </div>
-    <div>
-      <label for="player" :class="baseLabelClass">{{ t('selection.filterName') }}</label>
-      <input
-        id="player"
-        type="text"
-        v-model="playerName"
-        :class="baseInputClass"
-        :disabled="reportType !== 'players'"
-      />
-    </div>
+    <template v-if="reportType === 'players'">
+      <div>
+        <label for="teams" :class="baseLabelClass">{{ t('selection.teams') }}</label>
+        <BaseSelect id="teams" v-model="teamSelect" :disabled="reportType !== 'players'">
+          <option :value="null">{{ t('common.all') }}</option>
+          <option v-for="{ teamId, teamName } in teams" :key="teamId" :value="teamId">{{ teamName }}</option>
+        </BaseSelect>
+      </div>
+      <div>
+        <label for="player" :class="baseLabelClass">{{ t('selection.filterName') }}</label>
+        <input
+          id="player"
+          type="text"
+          v-model="playerName"
+          :class="baseInputClass"
+          :disabled="reportType !== 'players'"
+        />
+      </div>
+    </template>
   </div>
 
   <div>
@@ -148,14 +150,14 @@ const tabButtonClasses = useMainClass('tab-button');
       @click="onStatTypeChange(REPORT_TYPE_PLAYERS)"
       :class="[tabButtonClasses, { 'is-active': reportType === REPORT_TYPE_PLAYERS }]"
     >
-    {{ t('selection.players') }}
+      {{ t('selection.players') }}
     </button>
     <button
       type="button"
       @click="onStatTypeChange(REPORT_TYPE_TEAMS)"
       :class="[tabButtonClasses, { 'is-active': reportType === REPORT_TYPE_TEAMS }]"
     >
-    {{ t('selection.teams') }}
+      {{ t('selection.teams') }}
     </button>
   </div>
 </template>
