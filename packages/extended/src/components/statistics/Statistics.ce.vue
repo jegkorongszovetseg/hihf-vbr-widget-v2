@@ -44,7 +44,7 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
 <template>
   <div>
     <I18NProvider :locale="props.locale" :messages="messages" >
-      <ErrorProvider v-slot:default="{ message, hasError, error }">
+      <ErrorProvider v-slot:default="{ hasError, error }">
         <StatisticsProvider
           :championship-name="championshipName"
           :championship-id="championshipId"
@@ -88,7 +88,7 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
               :range-length="5"
               @change="onPaginatorChange"
             />
-            <div style="flex-grow: 1; text-align: right">{{ range.join('-') }} / {{ rows.totalItems }} db</div>
+            <div v-if="rows.totalItems > 0" style="flex-grow: 1; text-align: right">{{ range.join('-') }} / {{ rows.totalItems }} db</div>
           </div>
         </StatisticsProvider>
       </ErrorProvider>

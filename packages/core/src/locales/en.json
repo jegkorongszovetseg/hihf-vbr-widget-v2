@@ -13,7 +13,8 @@
     "shootoutShort": "SO",
     "overtimeShort": "OT",
     "all": "All",
-    "report": "Report Sheet"
+    "report": "Report Sheet",
+    "video": "Video"
   },
   "table": {
     "blank": "#",
