@@ -10,24 +10,19 @@
     "src",
     "assets"
   ],
-  "main": "./dist/mjsz-vbr-elements-core.umd.cjs",
   "module": "./dist/mjsz-vbr-elements-core.js",
   "exports": {
     ".": {
-      "import": "./src/index.js",
-      "require": "./src/index.js"
+      "import": "./src/index.js"
     },
     "./components": {
-      "import": "./src/index.js",
-      "require": "./src/components/index.js"
+      "import": "./src/index.js"
     },
     "./composables": {
-      "import": "./src/index.js",
-      "require": "./src/composables/index.js"
+      "import": "./src/index.js"
     },
     "./utils": {
-      "import": "./src/index.js",
-      "require": "./src/utils/index.js"
+      "import": "./src/index.js"
     },
     "./assets/icons/*": {
       "import": "./src/assets/icons/*.vue"

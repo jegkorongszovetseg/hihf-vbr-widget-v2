@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 import banner from 'vite-plugin-banner';
+import copy from 'rollup-plugin-copy';
 
 import pkg from './package.json';
 
@@ -21,10 +22,15 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.js'),
       name: 'MjszVbrElements',
       fileName: 'mjsz-vbr-elements',
-      formats: ['es', 'umd', 'iife'],
+      formats: ['es', 'iife'],
     },
     copyPublicDir: false,
     rollupOptions: {
+      plugins: [
+        copy({
+          targets: [{ src: 'dist/mjsz-vbr-elements.iife.js', dest: '../../build' }],
+        }),
+      ],
       external: ['vue', '@mjsz-vbr-elements/core'],
       output: {
         exports: 'named',

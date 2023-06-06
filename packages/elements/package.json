@@ -8,12 +8,10 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/mjsz-vbr-elements.umd.cjs",
   "module": "./src/index.js",
   "exports": {
     ".": {
-      "import": "./src/index.js",
-      "require": "./dist/mjsz-vbr-elements.umd.cjs"
+      "import": "./src/index.js"
     }
   },
   "scripts": {
@@ -29,6 +27,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
+    "rollup-plugin-copy": "^3.4.0",
     "vite": "^4.3.9",
     "vite-plugin-banner": "^0.7.0"
   }
