@@ -3,6 +3,8 @@ import { computed } from 'vue';
 import { I18NProvider, Image, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
 import { externalGameLinkResolver, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
+import hu from '../../locales/hu.json';
+import en from '../../locales/en.json';
 
 const props = defineProps({
   locale: {
@@ -33,6 +35,8 @@ execute();
 
 const timezone = getLocalTimezone();
 
+const messages = { en, hu };
+
 const externalGameResolver = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
 
 const formatGameDate = (date) => format(date, 'L dddd', timezone, props.locale);
@@ -41,7 +45,7 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
 
 <template>
   <div class="mjsz-vbr-playoffs">
-    <I18NProvider :locale="props.locale" v-slot:default="{ t }">
+    <I18NProvider :locale="props.locale" :messages="messages" v-slot:default="{ t }">
       <div v-for="playoff in playoffs">
         <div class="mjsz-vbr-section-title">{{ t(`playoffs.${playoff.tertiaryName}`) }}</div>
         <div class="mjsz-vbr-section-details">
@@ -91,6 +95,6 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
   </div>
 </template>
 
-<style lang="postcss" src="@mjsz-vbr-elements/shared/css/common.css"></style>
-<style lang="postcss" src="@mjsz-vbr-elements/shared/css/table.css"></style>
-<style lang="postcss" src="@mjsz-vbr-elements/shared/css/playoffs.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/playoffs.css"></style>

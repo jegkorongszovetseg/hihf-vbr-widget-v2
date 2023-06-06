@@ -6,6 +6,8 @@ import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import DataProvider from './DataProvider.vue';
 import ScheduleSelector from './ScheduleSelector.vue';
 import GameItem from './Item.vue';
+import hu from '../../locales/hu.json';
+import en from '../../locales/en.json';
 
 const props = defineProps({
   locale: {
@@ -48,6 +50,8 @@ const currentOffsetName = computed(() => offsetName(new Date(), unref(timezone),
 const tabButtonClasses = useMainClass('tab-button');
 const sectionSelectorMainClass = useMainClass('section-selector');
 
+const messages = { en, hu };
+
 const externalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
 
 const onTimezoneChange = (tz) => {
@@ -57,7 +61,7 @@ const onTimezoneChange = (tz) => {
 
 <template>
   <div>
-    <I18NProvider :locale="props.locale">
+    <I18NProvider :locale="props.locale" :messages="messages">
       <ErrorProvider v-slot:default="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
 
@@ -136,8 +140,8 @@ const onTimezoneChange = (tz) => {
   </div>
 </template>
 
-<style lang="postcss" src="@mjsz-vbr-elements/shared/css/common.css"></style>
-<style lang="postcss" src="@mjsz-vbr-elements/shared/css/typography.css"></style>
-<style lang="postcss" src="@mjsz-vbr-elements/shared/css/forms.css"></style>
-<style lang="postcss" src="@mjsz-vbr-elements/shared/css/grid.css"></style>
-<style lang="postcss" src="@mjsz-vbr-elements/shared/css/cards.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/cards.css"></style>

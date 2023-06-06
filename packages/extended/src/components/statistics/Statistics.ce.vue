@@ -3,6 +3,8 @@ import { playerStatsProps } from '@mjsz-vbr-elements/core';
 import { ErrorProvider, ErrorNotice, Paginator, StatisticsTable, I18NProvider } from '@mjsz-vbr-elements/core/components';
 import StatisticsProvider from './StatisticsProvider.vue';
 import StatisticSelector from './StatisticSelector.vue';
+import hu from '../../locales/hu.json';
+import en from '../../locales/en.json';
 
 const props = defineProps({
   locale: {
@@ -33,13 +35,15 @@ const props = defineProps({
   ...playerStatsProps,
 });
 
+const messages = { en, hu };
+
 const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamLink, teamName);
 const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props.externalPlayerLink, playerId);
 </script>
 
 <template>
   <div>
-    <I18NProvider :locale="props.locale">
+    <I18NProvider :locale="props.locale" :messages="messages" >
       <ErrorProvider v-slot:default="{ message, hasError, error }">
         <StatisticsProvider
           :championship-name="championshipName"
@@ -92,9 +96,9 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
   </div>
 </template>
 
-<style lang="postcss" src="@mjsz-vbr-elements/shared/css/common.css"></style>
-<style lang="postcss" src="@mjsz-vbr-elements/shared/css/forms.css"></style>
-<style lang="postcss" src="@mjsz-vbr-elements/shared/css/table.css"></style>
-<style lang="postcss" src="@mjsz-vbr-elements/shared/css/grid.css"></style>
-<style lang="postcss" src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
-<style lang="postcss" src="@mjsz-vbr-elements/shared/css/paginator.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/paginator.css"></style>
