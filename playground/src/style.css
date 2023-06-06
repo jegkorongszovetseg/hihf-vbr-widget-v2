@@ -1,4 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap');
+
 body {
   margin: 0;
   min-height: 100vh;
+}
+
+mjsz-vbr-schedule {
+  font-family: 'Roboto Slab', serif;
 }

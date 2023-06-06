@@ -5,12 +5,10 @@
   "version": "2.1.0",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "type": "module",
-  "main": "./dist/mjsz-vbr-elements-extended.umd.cjs",
   "module": "./src/index.js",
   "exports": {
     ".": {
-      "import": "./src/index.js",
-      "require": "./dist/mjsz-vbr-elements-extended.umd.cjs"
+      "import": "./src/index.js"
     }
   },
   "scripts": {
