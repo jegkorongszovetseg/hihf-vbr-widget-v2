@@ -7,7 +7,8 @@
   "type": "module",
   "files": [
     "dist",
-    "src"
+    "src",
+    "assets"
   ],
   "main": "./dist/mjsz-vbr-elements-core.umd.cjs",
   "module": "./dist/mjsz-vbr-elements-core.js",
@@ -27,6 +28,9 @@
     "./utils": {
       "import": "./src/index.js",
       "require": "./src/utils/index.js"
+    },
+    "./assets/icons/*": {
+      "import": "./src/assets/icons/*.vue"
     }
   },
   "scripts": {
@@ -36,7 +40,6 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.2.9",
-    "@mjsz-vbr-elements/shared": "workspace:^",
     "@vueuse/core": "^10.1.2",
     "@xstate/fsm": "^2.0.0",
     "dayjs": "^1.11.7",

@@ -2,7 +2,8 @@
 import { noop } from '@vueuse/core';
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
-import { IconYoutube, IconBroadcast } from '@mjsz-vbr-elements/shared/icons';
+import IconYoutube from '@mjsz-vbr-elements/core/assets/icons/IconYoutube';
+import IconBroadcast from '@mjsz-vbr-elements/core/assets/icons/IconBroadcast';
 
 defineProps({
   game: {

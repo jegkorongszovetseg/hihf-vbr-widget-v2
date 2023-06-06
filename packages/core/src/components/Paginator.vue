@@ -2,7 +2,8 @@
 import { computed } from 'vue';
 import { useMainClass } from '../composables/useMainClass';
 import usePagination from '../composables/usePagination';
-import { IconLeft, IconRight } from '@mjsz-vbr-elements/shared/icons';
+import IconLeft from '../assets/icons/IconLeft.vue';
+import IconRight from '../assets/icons/IconRight.vue';
 
 const props = defineProps({
   page: {
