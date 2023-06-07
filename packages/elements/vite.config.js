@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 import banner from 'vite-plugin-banner';
 import copy from 'rollup-plugin-copy';
+import { BUILD_FORMATS, compressConfig } from '../build';
 
 import pkg from './package.json';
 
@@ -15,20 +16,25 @@ export default defineConfig({
         'en-GB'
       )}\n * (c) ${new Date().getFullYear()}\n * description: ${pkg.description}\n * author: ${pkg.author}\n */`,
     }),
+    ...compressConfig,
   ],
 
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
       name: 'MjszVbrElements',
-      fileName: 'mjsz-vbr-elements',
+      fileName: (format) => `mjsz-vbr-elements.${BUILD_FORMATS.get(format)}.js`,
       formats: ['es', 'iife'],
     },
     copyPublicDir: false,
     rollupOptions: {
       plugins: [
         copy({
-          targets: [{ src: 'dist/mjsz-vbr-elements.iife.js', dest: '../../build' }],
+          targets: [
+            { src: 'dist/mjsz-vbr-elements.global.js', dest: '../../build' },
+            { src: 'dist/mjsz-vbr-elements.global.js.gz', dest: '../../build' },
+            { src: 'dist/mjsz-vbr-elements.global.js.br', dest: '../../build' },
+          ],
         }),
       ],
       external: ['vue', '@mjsz-vbr-elements/core'],
