@@ -15,14 +15,14 @@
 ## modules
 
 - Type: `array`
-- `MjszWidgetElements`, `MjszWidgetExtendedElements`
+- `MjszVbrElements`, `MjszVbrElementsExtended`
 
 A használni kívánt modulokat lehet baállítani.
-Bundle használat estén nem szükséges a `modules` beállítása:
 
 ```html
 <script>
   MjszWidgetBundle.createConfig({
+    modules: [MjszVbrElements, MjszVbrElementsExtended],
     apiKey: 'xxxxx',
     gameResolver: '/game/',
     teamResolver: '/team/',
@@ -61,11 +61,13 @@ Lehetőség van fügvény megadására is:
 - Default: `https://www.jegkorongszovetseg.hu/event/game/`
 
 ::: details Funkció
+
 ```js
 {
   teamResolver: (id) => `/game/${id}`,
 }
 ```
+
 :::
 
 ## playerResolver
@@ -74,9 +76,11 @@ Lehetőség van fügvény megadására is:
 - Default: `https://www.jegkorongszovetseg.hu/event/game/`
 
 ::: details Funkció
+
 ```js
 {
   playerResolver: (id) => `/game/${id}`,
 }
 ```
+
 :::

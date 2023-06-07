@@ -96,5 +96,6 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/playoffs.css"></style>

@@ -10,24 +10,26 @@ A widgetek Vue3-ban készültek, ezért szükséges a Vue könyvtár importálá
 
 A `head` részbe illesztve az alábbi kódot, az oldaladon elérhetővé válnak a widgetek.
 
-```html {2,5}
+```html {2,6}
 <script src="https://unpkg.com/vue@3"></script>
-<script src="https://api.icehockey.hu/widgets/v2/mjsz-vbr-bundle.global.js"></script>
+<script src="https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements-core.global.js"></script>
+<script src="https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements.global.js"></script>
 
 <script>
-  MjszWidgetBundle.createConfig({ apiKey: 'xxxxx' });
+  MjszVbrElementsCore.createConfig({ modules: [MjszVbrElements], apiKey: 'xxxxx' });
 </script>
 ```
 
 ## Használat html fájlokban
 
-```html {10-11}
+```html {11-12}
 <meta charset="utf-8" />
 <title>MJSZ VBR Official Widget Demo</title>
 <script src="https://unpkg.com/vue@3"></script>
-<script src="https://api.icehockey.hu/widgets/v2/mjsz-vbr-bundle.global.js"></script>
+<script src="https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements-core.global.js"></script>
+<script src="https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements.global.js"></script>
 <script>
-  MjszWidgetBundle.createConfig({ apiKey: 'xxxxx' });
+  MjszVbrElementsCore.createConfig({ modules: [MjszVbrElements], apiKey: 'xxxxx' });
 </script>
 
 <body>
@@ -40,28 +42,15 @@ A `head` részbe illesztve az alábbi kódot, az oldaladon elérhetővé válnak
 
 Lehetőség van az összes widget használatára, de szét is lehet választani az összetevőket:
 
-| Típus    | Link                                                                                                                               | Globális változó           |
-| -------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| Összes   | [https://api.icehockey.hu/widgets/v2/mjsz-vbr-bundle.global.js](https://api.icehockey.hu/widgets/v2/mjsz-vbr-bundle.global.js)     | MjszWidgetBundle           |
-| Core     | [https://api.icehockey.hu/widgets/v2/mjsz-vbr-core.global.js](https://api.icehockey.hu/widgets/v2/mjsz-vbr-core.global.js)         | MjszWidgetCore             |
-| Elements | [https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements.global.js](https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements.global.js) | MjszWidgetElements         |
-| Extended | [https://api.icehockey.hu/widgets/v2/mjsz-vbr-extended.global.js](https://api.icehockey.hu/widgets/v2/mjsz-vbr-extended.global.js) | MjszWidgetExtendedElements |
+| Típus    | Link                                                                                                                                                 | Globális változó        |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| Core     | [https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements-core.global.js](https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements-core.global.js)         | MjszVbrElementsCore     |
+| Elements | [https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements.global.js](https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements.global.js)                   | MjszVbrElements         |
+| Extended | [https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements-extended.global.js](https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements-extended.global.js) | MjszVbrElementsExtended |
 
 ::: info Global Build
 A _global_ build nem UMD build hanem **_IIFE_** build. A globális változókon keresztül lehet elérni a fügvényeket.
 :::
-
-Ha nincs szükség az összes elemre (widget), lehetőség van csak a szükséges elemek használatára. Ebben az esetben több fájlt kell importálnuk:
-
-```html {2-3}
-<script src="https://unpkg.com/vue@3"></script>
-<script src="https://api.icehockey.hu/widgets/v2/mjsz-vbr-core.global.js"></script>
-<script src="https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements.global.js"></script>
-
-<script>
-  MjszWidgetCore.createConfig({ modules: [MjszWidgetElements], apiKey: 'xxxxx' });
-</script>
-```
 
 ## Használat config beállítás nélkül
 
@@ -69,17 +58,17 @@ Ha csak egy widget használatára van szükségünk, nem szükséges globális k
 
 ```html
 <script src="https://unpkg.com/vue@3"></script>
-<script src="https://api.icehockey.hu/widgets/v2/mjsz-vbr-core.global.js"></script>
+<script src="https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements-core.global.js"></script>
 <script src="https://api.icehockey.hu/widgets/v2/mjsz-vbr-elements.global.js"></script>
 
 <script>
-  MjszWidgetElements.register(); // [!code focus]
+  MjszVbrElements.register(); // [!code focus]
 </script>
 ```
 
 Ebben az esetben pl. az `API kulcs` a megfelelő prop beállításával adható meg:
 
-```html
+```html {3}
 <body>
   <mjsz-vbr-goalies-leader
     api-key="xxxxx"

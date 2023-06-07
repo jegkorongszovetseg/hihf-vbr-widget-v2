@@ -8,7 +8,7 @@ const PlayoffsCE = defineCustomElement(Playoffs);
 
 export { StatisticsCE, ScheduleLigaCE, PlayoffsCE };
 
-function register() {
+export function register() {
   customElements.define('mjsz-vbr-statistics', StatisticsCE);
   customElements.define('mjsz-vbr-schedule-liga', ScheduleLigaCE);
   customElements.define('mjsz-vbr-playoffs', PlayoffsCE);

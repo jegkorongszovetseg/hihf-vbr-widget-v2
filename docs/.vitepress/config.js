@@ -25,7 +25,7 @@ export default defineConfig({
           ],
         },
         {
-          text: 'Widgetek',
+          text: 'Elements',
           items: [
             { text: 'Tabella', link: '/widget/standings' },
             { text: 'Menetrend', link: '/widget/schedule' },
@@ -40,10 +40,11 @@ export default defineConfig({
           ],
         },
         {
-          text: 'Kibővített Widgetek',
+          text: 'Extended Elements',
           items: [
             { text: 'Statisztikák', link: '/widget/statistics' },
             { text: 'Liga Menetrend', link: '/widget/schedule-liga' },
+            { text: 'Rájátszás', link: '/widget/playoffs' },
           ],
         },
       ],

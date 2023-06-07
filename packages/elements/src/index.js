@@ -37,7 +37,7 @@ export {
   TeamScoringEfficiencyCE,
 };
 
-function register() {
+export function register() {
   customElements.define('mjsz-vbr-standings', StandingsCE);
   customElements.define('mjsz-vbr-schedule', ScheduleCE);
   customElements.define('mjsz-vbr-players-leader', FieldPlayersLeaderCE);
