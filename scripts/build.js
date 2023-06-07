@@ -12,7 +12,7 @@ const banner = `/*!
   * Released under the ${packageJson.license} License.
   */`;
 
-const BUILD_FORMATS = new Map().set('iife', 'global').set('es', 'esm-browser');
+const BUILD_FORMATS = new Map().set('iife', 'global').set('es', 'esm');
 
 const builds = [
   {

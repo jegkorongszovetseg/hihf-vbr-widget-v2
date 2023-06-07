@@ -9,8 +9,9 @@
   <!-- <script type="module" src="https://unpkg.com/vue@3/dist/vue.esm-browser.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.40/vue.global.prod.min.js"></script>
 
-  <script src="/mjsz-vbr-core.global.js"></script>
-  <script src="/mjsz-vbr-elements.global.js"></script>
+  <!-- <script src="/mjsz-vbr-core.global.js"></script>
+  <script src="/mjsz-vbr-elements.global.js"></script> -->
+  <script src="/mjsz-vbr-bundle.global.js"></script>
   <!-- <script src="http://localhost:3333/widgets/v2/mjsz-vbr-core.global.js"></script>
   <script src="http://localhost:3333/widgets/v2/mjsz-vbr-elements.global.js"></script> -->
   <!-- <script type="module" src="./mjsz-vbr-widget.esm.js"></script> -->
@@ -28,10 +29,12 @@
 <body>
   <!-- <Statistics :locale="locale" championship-name="Erste Liga"  /> -->
   <!-- <mjsz-vbr-players-leader locale="hu" championship-id="3314" division="Alapszakasz"></mjsz-vbr-players-leader> -->
-  <mjsz-vbr-standings locale="hu" championship-id="3314" division="Alapszakasz"></mjsz-vbr-standings>
+  <!-- <mjsz-vbr-standings locale="hu" championship-id="3314" division="Alapszakasz"></mjsz-vbr-standings>
   <mjsz-vbr-schedule locale="en" championship-id="3314" division="Alapszakasz" auto-initial-page auto-refresh>
-  </mjsz-vbr-schedule>
-  <mjsz-vbr-players-leader locale="en" championship-id="3314" division="Alapszakasz"></mjsz-vbr-players-leader>
+  </mjsz-vbr-schedule> -->
+  <!-- <mjsz-vbr-players-leader locale="en" championship-id="3314" division="Alapszakasz"></mjsz-vbr-players-leader> -->
+  <!-- <mjsz-vbr-playoffs locale="en" championship-id="3314"></mjsz-vbr-playoffs> -->
+  <mjsz-vbr-statistics locale="en" championship-name="Erste Liga"></mjsz-vbr-statistics>
   <!-- <script crossorigin src="/bundle.umd.cjs"></script> -->
   <script>
     // import { setup } from './mjsz-vbr-widget.esm.js';
@@ -39,7 +42,8 @@
     // MjszVbrWidget.setup({
     //   apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62'
     // })
-    MjszWidgetCore.createConfig({ modules: [MjszWidgetElements], apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62', gameResolver: 'link/'})
+    MjszWidgetBundle.createConfig({ apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62', gameResolver: 'link/' })
+    // MjszWidgetCore.createConfig({ modules: [MjszWidgetElements], apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62', gameResolver: 'link/'})
     // Widgets.setup({
     //   apiKey: 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62'
     // })

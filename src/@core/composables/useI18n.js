@@ -51,6 +51,10 @@ export const createI18n = ({ messages = {}, locale = '', fallbackLocale = '' }) 
   };
 
   provide(I18nContext, api);
+
+  return {
+    translate,
+  };
 };
 
 export const useI18n = (settings) => {

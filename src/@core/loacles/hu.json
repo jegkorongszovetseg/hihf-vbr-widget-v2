@@ -41,6 +41,15 @@
     "teamPowerplay": "Emberelőnyök",
     "teamScoringEfficiency": "Hatékonyság"
   },
+  "playoffs": {
+    "Negyeddöntő1": "Negyeddöntő 1",
+    "Negyeddöntő2": "Negyeddöntő 2",
+    "Negyeddöntő3": "Negyeddöntő 3",
+    "Negyeddöntő4": "Negyeddöntő 4",
+    "Elődöntő1": "Elődöntő 1",
+    "Elődöntő2": "Elődöntő 2",
+    "Döntő": "Döntő"
+  },
   "table": {
     "blank": "#",
     "team": {

@@ -11,6 +11,7 @@ import TeamPowerplay from './@widgets/TeamPowerplay.ce.vue';
 import TeamScoringEfficiency from './@widgets/TeamScoringEfficiency.ce.vue';
 import Statistics from './@widgets-extended/statistics/Statistics.ce.vue';
 import ScheduleLiga from './@widgets-extended/schedule/ScheduleLiga.ce.vue';
+import Playoffs from './@widgets-extended/playoffs/Playoffs.ce.vue';
 
 const ScheduleCE = defineCustomElement(Schedule);
 const StandingsCE = defineCustomElement(Standings);
@@ -24,6 +25,7 @@ const TeamPowerplayCE = defineCustomElement(TeamPowerplay);
 const TeamScoringEfficiencyCE = defineCustomElement(TeamScoringEfficiency);
 const StatisticsCE = defineCustomElement(Statistics);
 const ScheduleLigaCE = defineCustomElement(ScheduleLiga);
+const PlayoffsCE = defineCustomElement(Playoffs);
 
 export {
   ScheduleCE,
@@ -38,6 +40,7 @@ export {
   TeamScoringEfficiencyCE,
   StatisticsCE,
   ScheduleLigaCE,
+  PlayoffsCE,
 };
 
 export function register() {
@@ -53,6 +56,7 @@ export function register() {
   customElements.define('mjsz-vbr-team-scoring', TeamScoringEfficiencyCE);
   customElements.define('mjsz-vbr-statistics', StatisticsCE);
   customElements.define('mjsz-vbr-schedule-liga', ScheduleLigaCE);
+  customElements.define('mjsz-vbr-playoffs', PlayoffsCE);
 }
 
 export const createConfig = ({ apiKey, gameResolver, teamResolver, playerResolver }) => {
