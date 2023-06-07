@@ -5,7 +5,10 @@ import { COLUMNS_SCHEDULE, DEFAULT_EXTERNAL_BASE_URL } from '@mjsz-vbr-elements/
 import { useColumns, useI18n, useError } from '@mjsz-vbr-elements/core/composables';
 import { WidgetError, UndefinedColumn } from '@mjsz-vbr-elements/core/utils';
 import { FloatingPanel, ResponsiveTable, Image, DataTable, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
-import { IconBroadcast, IconMore, IconSheet, IconYoutube } from '@mjsz-vbr-elements/shared';
+import IconBroadcast from '@mjsz-vbr-elements/shared/icons/IconBroadcast';
+import IconMore from '@mjsz-vbr-elements/shared/icons/IconMore';
+import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
+import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
 
 const props = defineProps({
   rows: {

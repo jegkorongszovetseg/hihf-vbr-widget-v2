@@ -4,9 +4,9 @@ import { useLazyLoadingState } from '../composables/useLazyLoadingState';
 import { useI18n } from '../composables/useI18n';
 import { useMainClass } from '../composables/useMainClass';
 import { SORT_STATE_ASCEND, SORT_STATE_DESCEND, SORT_STATE_ORIGINAL, LAZY_LOADING_STATE_DELAY } from '../constants.js';
-import IconSort from '../assets/icons/IconSort.vue';
-import IconSortAsc from '../assets/icons/IconSortAsc.vue';
-import IconSortDesc from '../assets/icons/IconSortAsc.vue';
+import IconSort from '@mjsz-vbr-elements/shared/icons/IconSort';
+import IconSortAsc from '@mjsz-vbr-elements/shared/icons/IconSortAsc';
+import IconSortDesc from '@mjsz-vbr-elements/shared/icons/IconSortAsc';
 import FloatingPanel from './FloatingPanel.vue';
 
 const props = defineProps({

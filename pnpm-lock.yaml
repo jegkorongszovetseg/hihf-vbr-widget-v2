@@ -25,6 +25,9 @@ importers:
       '@floating-ui/dom':
         specifier: ^1.2.9
         version: 1.2.9
+      '@mjsz-vbr-elements/shared':
+        specifier: workspace:^
+        version: link:../shared
       '@vueuse/core':
         specifier: ^10.1.2
         version: 10.1.2(vue@3.3.4)

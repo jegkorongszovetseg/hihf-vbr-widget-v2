@@ -29,6 +29,7 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
         },
+        chunkFileNames: '[name].js',
       },
     },
   },

@@ -13,9 +13,8 @@
     ".": {
       "import": "./dist/icons/mjsz-vbr-elements-shared.js"
     },
- 
     "./icons/*": {
-      "import": "./assets/icons/*.vue"
+      "import": "./dist/icons/*.js"
     },
     "./css/*.css": {
       "import": "./dist/css/*.css",

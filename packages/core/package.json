@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.2.9",
+    "@mjsz-vbr-elements/shared": "workspace:^",
     "@vueuse/core": "^10.1.2",
     "@xstate/fsm": "^2.0.0",
     "dayjs": "^1.11.7",
