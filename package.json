@@ -9,9 +9,12 @@
   ],
   "scripts": {
     "playground": "pnpm run -C playground dev",
-    "build": "pnpm -r --filter='./packages/*' run build"
+    "build": "rimraf build && pnpm -r --filter='./packages/*' run build"
   },
   "keywords": [],
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "rimraf": "^5.0.1"
+  }
 }
