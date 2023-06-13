@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["ESNext", "DOM"],
+    "skipLibCheck": true,
+    "noEmit": true,
+    "allowJs": true
+    // "paths": {
+    //   "@mjsz-vbr-elements/core/components": ["./packages/core/src/components/index.js"],
+    //   "@mjsz-vbr-elements/core/composables": ["./packages/core/src/composables/index.js"]
+    // }
+  }
+}

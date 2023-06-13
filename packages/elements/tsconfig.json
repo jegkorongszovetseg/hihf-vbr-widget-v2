@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "composite": true
+  },
+  "include": ["./src/*", "./src/components/*"],
+  "references": [{ "@mjsz-vbr-elements/core": "../core/tsconfig.json" }]
+}
