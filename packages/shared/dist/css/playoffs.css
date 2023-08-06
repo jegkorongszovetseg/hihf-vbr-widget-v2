@@ -1,14 +1,70 @@
-.mjsz-vbr-playoffs .mjsz-vbr-table {
-    table-layout: fixed;
+.mjsz-vbr-playoffs .mjsz-vbr-table-grid {
+    display: grid;
+    grid-template-columns: 60px 150px minmax(60px, 0.41fr) minmax(160px, 1fr) minmax(40px, 60px) 70px minmax(160px, 1fr) minmax(
+        180px,
+        0.9fr
+      );
+    color: var(--vbr-widget-table-color);
   }
 
-    .mjsz-vbr-playoffs .mjsz-vbr-table table,
+    .mjsz-vbr-playoffs .mjsz-vbr-table-grid:nth-child(odd) {
+      background-color: var(--vbr-widget-table-stripped-bg-color);
+    }
+
+    .mjsz-vbr-playoffs .mjsz-vbr-table-grid > div {
+      padding: 8px;
+    }
+
+    .mjsz-vbr-playoffs .mjsz-vbr-table-grid .is-truncate {
+      overflow: visible;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .mjsz-vbr-playoffs .mjsz-vbr-table-grid .is-text-right {
+      text-align: right;
+    }
+
+    .mjsz-vbr-playoffs .mjsz-vbr-table-grid .is-text-center {
+      text-align: center;
+    }
+
+    .mjsz-vbr-playoffs .mjsz-vbr-table-grid .is-text-bold {
+      font-weight: 900;
+    }
+
+    .mjsz-vbr-playoffs .mjsz-vbr-table-grid .is-text-light {
+      color: var(--vbr-widget-table-cell-light-color);
+    }
+
+    .mjsz-vbr-playoffs .mjsz-vbr-table-grid .is-text-dark {
+      color: var(--vbr-widget-table-cell-dark-color);
+    }
+
+    .mjsz-vbr-playoffs .mjsz-vbr-table-grid .is-text-accent {
+      color: var(--vbr-widget-secondary-color-500);
+    }
+
+    .mjsz-vbr-playoffs .mjsz-vbr-table-grid .label {
+      padding: 3px 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--vbr-widget-table-label-color);
+      background-color: var(--vbr-widget-table-label-bg-color);
+      border-radius: 2px;
+    }
+
+    .mjsz-vbr-playoffs .mjsz-vbr-table-grid .label:not(:last-of-type) {
+        margin-right: 3px;
+      }
+  /* table-layout: fixed; */
+  .mjsz-vbr-playoffs .mjsz-vbr-table table,
     .mjsz-vbr-playoffs .mjsz-vbr-table th,
     .mjsz-vbr-playoffs .mjsz-vbr-table td {
       border-collapse: collapse;
     }
-
-    @media (max-width: 600px) {.mjsz-vbr-playoffs .mjsz-vbr-table {
+  @media (max-width: 600px) {
+  .mjsz-vbr-playoffs .mjsz-vbr-table {
       table-layout: auto
   }
     }
@@ -22,17 +78,18 @@
   }
   .mjsz-vbr-playoffs .mjsz-vbr-section-details {
     display: grid;
-    grid-template-columns: 1fr fit-content(100px) fit-content(100px) fit-content(100px) 1fr;
+    grid-template-columns: 1fr;
     align-items: center;
+    justify-items: center;
     gap: 20px;
     padding: 20px;
     background-color: var(--vbr-widget-primary-color-50);
   }
-  @media (max-width: 600px) {
+  @media all and (min-width: 576px) {
   .mjsz-vbr-playoffs .mjsz-vbr-section-details {
-      grid-template-columns: 1fr
+      grid-template-columns: 1fr fit-content(100px) fit-content(100px) fit-content(100px) 1fr;
   }
-    }
+  }
   .mjsz-vbr-playoffs .mjsz-vbr-section-details .is-logo-image {
       width: 70px;
       height: 70px;

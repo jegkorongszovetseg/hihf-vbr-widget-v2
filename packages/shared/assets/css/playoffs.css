@@ -1,6 +1,68 @@
+@import './mixins.css';
+
 .playoffs {
+  .table-grid {
+    display: grid;
+    grid-template-columns: 60px 150px minmax(60px, 0.41fr) minmax(160px, 1fr) minmax(40px, 60px) 70px minmax(160px, 1fr) minmax(
+        180px,
+        0.9fr
+      );
+    color: var(--vbr-widget-table-color);
+
+    &:nth-child(odd) {
+      background-color: var(--vbr-widget-table-stripped-bg-color);
+    }
+
+    > div {
+      padding: 8px;
+    }
+
+    .is-truncate {
+      overflow: visible;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .is-text-right {
+      text-align: right;
+    }
+
+    .is-text-center {
+      text-align: center;
+    }
+
+    .is-text-bold {
+      font-weight: 900;
+    }
+
+    .is-text-light {
+      color: var(--vbr-widget-table-cell-light-color);
+    }
+
+    .is-text-dark {
+      color: var(--vbr-widget-table-cell-dark-color);
+    }
+
+    .is-text-accent {
+      color: var(--vbr-widget-secondary-color-500);
+    }
+
+    .label {
+      padding: 3px 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--vbr-widget-table-label-color);
+      background-color: var(--vbr-widget-table-label-bg-color);
+      border-radius: 2px;
+
+      &:not(:last-of-type) {
+        margin-right: 3px;
+      }
+    }
+  }
+
   .table {
-    table-layout: fixed;
+    /* table-layout: fixed; */
 
     table,
     th,
@@ -22,14 +84,15 @@
   }
   .section-details {
     display: grid;
-    grid-template-columns: 1fr fit-content(100px) fit-content(100px) fit-content(100px) 1fr;
+    grid-template-columns: 1fr;
     align-items: center;
+    justify-items: center;
     gap: 20px;
     padding: 20px;
     background-color: var(--vbr-widget-primary-color-50);
 
-    @media (max-width: 600px) {
-      grid-template-columns: 1fr;
+    @mixin mobile {
+      grid-template-columns: 1fr fit-content(100px) fit-content(100px) fit-content(100px) 1fr;
     }
 
     .is-logo-image {

@@ -61,14 +61,41 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
         </div>
 
         <ResponsiveTable>
+          <div v-for="game in playoff.games" :key="game.id" class="mjsz-vbr-table-grid">
+            <div>{{ game.name }}</div>
+            <div>{{ formatGameDate(game.gameDate) }}</div>
+            <div>{{ formatGameTime(game.gameDate) }}</div>
+            <div class="is-text-right is-text-bold">{{ game.homeTeamName }}</div>
+            <div class="is-text-center">
+              <span v-if="game.gameStatus === 0" class="is-text-dark">-:-</span>
+              <a
+                v-else
+                :href="externalGameResolver(game.id)"
+                target="_blank"
+                :class="{ 'is-text-dark': game.gameStatus !== 1, 'is-text-accent': game.gameStatus === 1 }"
+              >
+                {{ game.homeTeamScore }}:{{ game.awayTeamScore }}
+              </a>
+            </div>
+            <div>
+              <span v-if="game.isOvertime" class="label">{{ t('common.overtimeShort') }}</span>
+              <span v-if="game.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
+              <span v-if="game.seriesStandings" class="label">{{ game.seriesStandings }}</span>
+            </div>
+            <div class="is-text-bold">{{ game.awayTeamName }}</div>
+            <div class="is-text-light is-truncate is-text-right">{{ game.location }}</div>
+          </div>
+        </ResponsiveTable>
+
+        <ResponsiveTable>
           <table class="mjsz-vbr-table">
             <tbody>
               <tr v-for="game in playoff.games" :key="game.id">
-                <td style="width: 5%">{{ game.name }}</td>
-                <td style="width: 15%" class="is-text-left">{{ formatGameDate(game.gameDate) }}</td>
-                <td style="width: 3%">{{ formatGameTime(game.gameDate) }}</td>
+                <td>{{ game.name }}</td>
+                <td class="is-text-left">{{ formatGameDate(game.gameDate) }}</td>
+                <td>{{ formatGameTime(game.gameDate) }}</td>
                 <td class="is-text-right is-text-bold is-w-auto">{{ game.homeTeamName }}</td>
-                <td style="width: 1%">
+                <td>
                   <span v-if="game.gameStatus === 0" class="is-text-dark">-:-</span>
                   <a
                     v-else
@@ -79,7 +106,7 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
                     {{ game.homeTeamScore }}:{{ game.awayTeamScore }}
                   </a>
                 </td>
-                <td style="width: 2%">
+                <td>
                   <span v-if="game.isOvertime" class="label">{{ t('common.overtimeShort') }}</span>
                   <span v-if="game.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
                   <span v-if="game.seriesStandings" class="label">{{ game.seriesStandings }}</span>
