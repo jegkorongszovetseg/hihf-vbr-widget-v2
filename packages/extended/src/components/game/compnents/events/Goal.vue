@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({
+defineProps({
   event: {
     type: Object,
     required: true,
@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div style="display: flex; gap:16px;">
+  <div style="display: flex; gap: 16px">
     <div>{{ event.eventTime }}</div>
     <div>{{ event.teamName }}</div>
     <div>{{ event.type }}</div>

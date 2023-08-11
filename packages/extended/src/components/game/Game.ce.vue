@@ -1,8 +1,18 @@
 <script setup>
 import { computed } from 'vue';
-import { compose, groupBy, prop, reverse } from 'ramda';
+import { compose, groupBy, prop, reverse, isEmpty } from 'ramda';
+import { useUrlSearchParams } from '@vueuse/core';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
-import Event from './GameEvent.vue';
+import { I18NProvider } from '@mjsz-vbr-elements/core/components';
+import { handleServices } from './composables';
+import Event from './GameEvents.vue';
+import GameData from './GameData.vue';
+import hu from '../../locales/hu.json';
+import en from '../../locales/en.json';
+
+const messages = { en, hu };
+
+const REFRESH_DELAY = 10000;
 
 const props = defineProps({
   locale: {
@@ -16,16 +26,20 @@ const props = defineProps({
   },
 
   gameId: {
-    type: Number,
+    type: [Number, String],
     default: 0,
   },
 });
 
-const { state: gameData, execute } = useServices({
+const searchParams = useUrlSearchParams('history');
+
+const gameId = computed(() => searchParams?.gameId ?? props.gameId);
+
+const { state: gameData, execute: getGameData } = useServices({
   options: {
     path: '/v2/game-data',
     apiKey: props.apiKey,
-    params: computed(() => ({ gameId: props.gameId })),
+    params: { gameId: gameId.value },
   },
 });
 
@@ -33,47 +47,46 @@ const { state: gameEvents, execute: getEvents } = useServices({
   options: {
     path: '/v2/game-events',
     apiKey: props.apiKey,
-    params: { gameId: props.gameId },
+    params: { gameId: gameId.value },
   },
   transform: compose(groupBy(prop('eventPeriod')), reverse),
 });
-execute();
-getEvents();
+
+handleServices({ data: gameData, services: [getGameData, getEvents], interval: REFRESH_DELAY });
 </script>
 
 <template>
   <div>
-    <div>
-      <div>Name</div>
-      <div>date</div>
-      <div>local</div>
-      <div>
-        <div>Home</div>
-        <div>0:0</div>
-        <div>Away</div>
-      </div>
-    </div>
+    <I18NProvider :locale="props.locale" :messages="messages">
+      <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
 
-    <pre>
+      <pre>
       {{ gameData }}
-    </pre>
+    </pre
+      >
 
-    <div>Statistics</div>
+      <div>Statistics</div>
 
-    <div>
-      Events:
-      <template v-for="(period, key) in gameEvents">
-        <div>{{ key }}</div>
-        <template v-for="event in period" :key="event.id">
-          <Event :event="event" />
+      <div>
+        Events:
+        <template v-for="(period, key) in gameEvents">
+          <div>{{ key }}</div>
+          <!-- <template>
+            <div>
+              No event in this period
+            </div>
+          </template> -->
+          <template v-for="event in period" :key="event.id">
+            <Event :event="event" />
+          </template>
         </template>
-      </template>
-    </div>
+      </div>
 
-    <div>Team Players Stats</div>
+      <div>Team Players Stats</div>
 
-    <div>Team Goalies Stats</div>
+      <div>Team Goalies Stats</div>
 
-    <div>Team Members</div>
+      <div>Team Members</div>
+    </I18NProvider>
   </div>
 </template>
