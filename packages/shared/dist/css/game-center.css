@@ -1,0 +1,51 @@
+/* background-color: aqua; */
+
+  .mjsz-vbr-gamecenter-game-data {
+    text-align: center;
+  }
+
+  .mjsz-vbr-gamecenter-game-data .is-teams-and-results {
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      align-items: flex-end;
+    }
+
+  @media all and (min-width: 576px) {
+
+  .mjsz-vbr-gamecenter-game-data .is-teams-and-results {
+        grid-template-columns: repeat(3, 1fr)
+    }
+  }
+
+  .mjsz-vbr-gamecenter-game-data .is-title {
+      color: var(--vbr-widget-gamecenter-title-color);
+      font-size: var(--vbr-widget-gamecenter-title-size);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+  .mjsz-vbr-gamecenter-game-data .is-gamedate {
+      color: var(--vbr-widget-gamecenter-gamedate-color);
+      font-size: var(--vbr-widget-gamecenter-gamedate-size);
+      text-transform: uppercase;
+    }
+
+  .mjsz-vbr-gamecenter-game-data .is-local-gamedate {
+      color: var(--vbr-widget-gamecenter-local-gamedate-color);
+      font-size: var(--vbr-widget-gamecenter-local-gamedate-size);
+      text-transform: uppercase;
+    }
+
+  .mjsz-vbr-gamecenter-game-data .is-game-result {
+      color: var(--vbr-widget-gamecenter-result-color);
+      font-weight: 700;
+      font-size: var(--vbr-widget-gamecenter-result-size);
+      line-height: var(--vbr-widget-gamecenter-result-size);
+    }
+
+  .mjsz-vbr-gamecenter-game-data .is-team-name {
+      color: var(--vbr-widget-gamecenter-teamname-color);
+      font-weight: 700;
+      font-size: var(--vbr-widget-gamecenter-teamname-size);
+    }

@@ -120,6 +120,17 @@
   --vbr-widget-tab-btn-active-bg-color: var(--vbr-widget-primary-color-0);
   --vbr-widget-tab-btn-active-color: var(--vbr-widget-primary-color-900);
   --vbr-widget-tab-btn-active-border-color: var(--vbr-widget-secondary-color-500);
+  
+  --vbr-widget-gamecenter-result-size: 8rem;
+  --vbr-widget-gamecenter-result-color: var(--vbr-widget-primary-color-800);
+  --vbr-widget-gamecenter-teamname-size: 1.5rem;
+  --vbr-widget-gamecenter-teamname-color: var(--vbr-widget-primary-color-800);
+  --vbr-widget-gamecenter-title-color: var(--vbr-widget-primary-color-800);
+  --vbr-widget-gamecenter-title-size: 1rem;
+  --vbr-widget-gamecenter-gamedate-color: var(--vbr-widget-primary-color-500);
+  --vbr-widget-gamecenter-gamedate-size: 1rem;
+  --vbr-widget-gamecenter-local-gamedate-color: var(--vbr-widget-primary-color-500);
+  --vbr-widget-gamecenter-local-gamedate-size: 0.8125rem;
 }
 
 .transition-fade-enter-active,

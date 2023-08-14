@@ -1,0 +1,52 @@
+@import './mixins.css';
+
+.gamecenter {
+  /* background-color: aqua; */
+
+  &-game-data {
+    text-align: center;
+
+    .is-teams-and-results {
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      align-items: flex-end;
+
+      @add-mixin mobile {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .is-title {
+      color: var(--vbr-widget-gamecenter-title-color);
+      font-size: var(--vbr-widget-gamecenter-title-size);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .is-gamedate {
+      color: var(--vbr-widget-gamecenter-gamedate-color);
+      font-size: var(--vbr-widget-gamecenter-gamedate-size);
+      text-transform: uppercase;
+    }
+
+    .is-local-gamedate {
+      color: var(--vbr-widget-gamecenter-local-gamedate-color);
+      font-size: var(--vbr-widget-gamecenter-local-gamedate-size);
+      text-transform: uppercase;
+    }
+
+    .is-game-result {
+      color: var(--vbr-widget-gamecenter-result-color);
+      font-weight: 700;
+      font-size: var(--vbr-widget-gamecenter-result-size);
+      line-height: var(--vbr-widget-gamecenter-result-size);
+    }
+
+    .is-team-name {
+      color: var(--vbr-widget-gamecenter-teamname-color);
+      font-weight: 700;
+      font-size: var(--vbr-widget-gamecenter-teamname-size);
+    }
+  }
+}

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { compose, groupBy, prop, reverse, isEmpty } from 'ramda';
 import { useUrlSearchParams } from '@vueuse/core';
-import { useServices } from '@mjsz-vbr-elements/core/composables';
+import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { handleServices } from './composables';
 import Event from './GameEvents.vue';
@@ -37,7 +37,7 @@ const gameId = computed(() => searchParams?.gameId ?? props.gameId);
 
 const { state: gameData, execute: getGameData } = useServices({
   options: {
-    path: '/v2/game-data',
+    path: '/v1/gameData',
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
@@ -56,14 +56,13 @@ handleServices({ data: gameData, services: [getGameData, getEvents], interval: R
 </script>
 
 <template>
-  <div>
+  <div :class="useMainClass('gamecenter')">
     <I18NProvider :locale="props.locale" :messages="messages">
       <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
 
-      <pre>
-      {{ gameData }}
-    </pre
-      >
+      <!-- <pre>
+        {{ gameData }}
+      </pre> -->
 
       <div>Statistics</div>
 
@@ -90,3 +89,6 @@ handleServices({ data: gameData, services: [getGameData, getEvents], interval: R
     </I18NProvider>
   </div>
 </template>
+
+<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/game-center.css"></style>
