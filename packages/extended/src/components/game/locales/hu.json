@@ -1,0 +1,20 @@
+{
+  "localTime": "Helyszín szerinti idő",
+  "gameStatus": {
+    "status-1": "Élő",
+    "status-2": "Végeredmény",
+    "status-3": "Versenybíróság",
+    "status-4": "Elhalasztva"
+  },
+  "periods": {
+    "1. harmad": "1. harmad",
+    "2. harmad": "2. harmad",
+    "3. harmad": "3. harmad",
+    "4. harmad": "4. harmad",
+    "5. harmad": "5. harmad",
+    "6. harmad": "6. harmad",
+    "7. harmad": "7. harmad",
+    "8. harmad": "8. harmad",
+    "9. harmad": "9. harmad"
+  }
+}

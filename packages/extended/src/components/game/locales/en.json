@@ -1,0 +1,9 @@
+{
+  "localTime": "Local time",
+  "gameStatus": {
+    "status-1": "Live",
+    "status-2": "Game End",
+    "status-3": "Versenybíróság",
+    "status-4": "Delayed"
+  }
+}

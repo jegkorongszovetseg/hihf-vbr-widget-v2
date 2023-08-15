@@ -7,8 +7,8 @@ import { I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { handleServices } from './composables';
 import Event from './GameEvents.vue';
 import GameData from './GameData.vue';
-import hu from '../../locales/hu.json';
-import en from '../../locales/en.json';
+import hu from './locales/hu.json';
+import en from './locales/en.json';
 
 const messages = { en, hu };
 
@@ -45,11 +45,12 @@ const { state: gameData, execute: getGameData } = useServices({
 
 const { state: gameEvents, execute: getEvents } = useServices({
   options: {
-    path: '/v2/game-events',
+    path: '/v1/gameEvents',
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  transform: compose(groupBy(prop('eventPeriod')), reverse),
+  // transform: compose(groupBy(prop('eventPeriod')), reverse),
+  transform: compose(groupBy(prop('eventPeriod'))),
 });
 
 handleServices({ data: gameData, services: [getGameData, getEvents], interval: REFRESH_DELAY });
@@ -57,7 +58,7 @@ handleServices({ data: gameData, services: [getGameData, getEvents], interval: R
 
 <template>
   <div :class="useMainClass('gamecenter')">
-    <I18NProvider :locale="props.locale" :messages="messages">
+    <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
       <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
 
       <!-- <pre>
@@ -66,10 +67,9 @@ handleServices({ data: gameData, services: [getGameData, getEvents], interval: R
 
       <div>Statistics</div>
 
-      <div>
-        Events:
+      <div :class="useMainClass('gamecenter-game-events')">
         <template v-for="(period, key) in gameEvents">
-          <div>{{ key }}</div>
+          <div class="is-period-header">{{ t(`periods.${key}`) }}</div>
           <!-- <template>
             <div>
               No event in this period

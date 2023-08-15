@@ -8,12 +8,10 @@ defineProps({
 </script>
 
 <template>
-  <div style="display: flex; gap: 16px">
-    <div>{{ event.eventTime }}</div>
-    <div>{{ event.teamName }}</div>
-    <div>{{ event.type }}</div>
-    <div>c</div>
-    <div>d</div>
-    <div>Name</div>
-  </div>
+  <div>{{ event.eventTime }}</div>
+  <div>{{ event.teamName }}</div>
+  <div>{{ event.type }}</div>
+  <div>c</div>
+  <div>d</div>
+  <div>Name</div>
 </template>

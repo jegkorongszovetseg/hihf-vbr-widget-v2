@@ -49,3 +49,38 @@
       font-weight: 700;
       font-size: var(--vbr-widget-gamecenter-teamname-size);
     }
+
+  .mjsz-vbr-gamecenter-game-data .is-game-status {
+      color: var(--vbr-widget-gamecenter-gamestatus-color);
+      font-size: var(--vbr-widget-gamecenter-gamestatus-size);
+    }
+
+  .mjsz-vbr-gamecenter-game-data .is-period-results {
+      color: var(--vbr-widget-gamecenter-periodresults-color);
+      font-size: var(--vbr-widget-gamecenter-periodresults-size);
+      font-weight: 500;
+    }
+
+  .mjsz-vbr-gamecenter-game-events {
+    margin-bottom: 20px;
+  }
+
+  .mjsz-vbr-gamecenter-game-events .is-period-header {
+      padding: 10px 20px;
+      text-align: center;
+      background-color: red;
+      
+    }
+
+  .mjsz-vbr-gamecenter-game-event {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 4fr;
+  }
+
+  .mjsz-vbr-gamecenter-game-event:nth-child(odd) {
+      background-color: var(--vbr-widget-table-stripped-bg-color);
+    }
+
+  .mjsz-vbr-gamecenter-game-event > * {
+      padding: 10px;
+    }
