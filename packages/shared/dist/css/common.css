@@ -135,6 +135,8 @@
   --vbr-widget-gamecenter-gamestatus-size: 1rem;
   --vbr-widget-gamecenter-periodresults-color: var(--vbr-widget-primary-color-600);
   --vbr-widget-gamecenter-periodresults-size: 1.3125rem;
+  --vbr-widget-gamecenter-period-header-bg-color: var(--vbr-widget-primary-color-800);
+  --vbr-widget-gamecenter-period-header-color: var(--vbr-widget-primary-color-0);
 }
 
 .transition-fade-enter-active,

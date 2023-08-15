@@ -7,14 +7,16 @@
     "status-4": "Elhalasztva"
   },
   "periods": {
-    "1. harmad": "1. harmad",
-    "2. harmad": "2. harmad",
-    "3. harmad": "3. harmad",
-    "4. harmad": "4. harmad",
-    "5. harmad": "5. harmad",
-    "6. harmad": "6. harmad",
-    "7. harmad": "7. harmad",
-    "8. harmad": "8. harmad",
-    "9. harmad": "9. harmad"
+    "1-harmad": "I. harmad",
+    "2-harmad": "II. harmad",
+    "3-harmad": "III. harmad",
+    "4-harmad": "IV. harmad",
+    "5-harmad": "V. harmad",
+    "6-harmad": "VI. harmad",
+    "7-harmad": "VII. harmad",
+    "8-harmad": "VIII. harmad",
+    "9-harmad": "IX. harmad",
+    "Hosszabbítás": "Hosszabbítás",
+    "Büntetők": "Szétlövés"
   }
 }

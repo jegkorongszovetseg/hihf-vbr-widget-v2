@@ -67,11 +67,11 @@
     .is-period-header {
       padding: 10px 20px;
       text-align: center;
-      background-color: red;
-      
+      color: var(--vbr-widget-gamecenter-period-header-color);
+      background-color: var(--vbr-widget-gamecenter-period-header-bg-color);
     }
   }
-  
+
   &-game-event {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 4fr;

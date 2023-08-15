@@ -1,24 +1,29 @@
 <script setup>
-import { computed } from 'vue';
+import { replace } from 'ramda';
 import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
-import Goal from './compnents/events/goal.vue';
-import Penalty from './compnents/events/Penalty.vue';
-import Goalies from './compnents/events/Goalies.vue';
-import Timeout from './compnents/events/Timeout.vue';
+import GameEvent from './GameEvent.vue';
 
 const props = defineProps({
-  event: {
+  gameEvents: {
     type: Object,
     required: true,
   },
 });
-const TYPE_MAP = new Map().set('Gól', Goal).set('Kiállítás', Penalty).set('Kapus', Goalies).set('Idő', Timeout);
 
-const component = computed(() => TYPE_MAP.get(props.event.type));
+const { t } = useI18n();
+
+const convertPeriodName = (name) => replace('. ', '-', name)
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-game-event')">
-    <component :is="component" :event="event" />
+  <div :class="useMainClass('gamecenter-game-events')">
+    <template v-for="(period, key) in gameEvents">
+      <div class="is-period-header">{{ t(`periods.${convertPeriodName(key)}`) }}</div>
+      <template v-for="event in period" :key="event.id">
+        <div :class="useMainClass('gamecenter-game-event')">
+          <GameEvent :event="event" />
+        </div>
+      </template>
+    </template>
   </div>
 </template>

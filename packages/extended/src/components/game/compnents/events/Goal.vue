@@ -1,4 +1,6 @@
 <script setup>
+import TeamLogo from './TeamLogo.vue';
+
 defineProps({
   event: {
     type: Object,
@@ -9,7 +11,7 @@ defineProps({
 
 <template>
   <div>{{ event.eventTime }}</div>
-  <div>{{ event.teamName }}</div>
+  <div><TeamLogo :name="event.teamName" :logo="event.teamLogo" /></div>
   <div>{{ event.type }}</div>
   <div>c</div>
   <div>d</div>

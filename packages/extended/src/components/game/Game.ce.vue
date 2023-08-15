@@ -1,11 +1,11 @@
 <script setup>
 import { computed } from 'vue';
-import { compose, groupBy, prop, reverse, isEmpty } from 'ramda';
+import { compose, groupBy, prop, reverse, isEmpty, replace, map, over, lensProp } from 'ramda';
 import { useUrlSearchParams } from '@vueuse/core';
 import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { handleServices } from './composables';
-import Event from './GameEvents.vue';
+import GameEvents from './GameEvents.vue';
 import GameData from './GameData.vue';
 import hu from './locales/hu.json';
 import en from './locales/en.json';
@@ -50,7 +50,9 @@ const { state: gameEvents, execute: getEvents } = useServices({
     params: { gameId: gameId.value },
   },
   // transform: compose(groupBy(prop('eventPeriod')), reverse),
-  transform: compose(groupBy(prop('eventPeriod'))),
+  transform: groupBy(prop('eventPeriod')),
+  // transform: map(over(lensProp('eventPeriod'), replace('. ', '-'))),
+  // transform: compose(groupBy(prop('eventPeriod'), map(over(lensProp('eventPeriod'), replace('. ', '-'))))),
 });
 
 handleServices({ data: gameData, services: [getGameData, getEvents], interval: REFRESH_DELAY });
@@ -67,19 +69,7 @@ handleServices({ data: gameData, services: [getGameData, getEvents], interval: R
 
       <div>Statistics</div>
 
-      <div :class="useMainClass('gamecenter-game-events')">
-        <template v-for="(period, key) in gameEvents">
-          <div class="is-period-header">{{ t(`periods.${key}`) }}</div>
-          <!-- <template>
-            <div>
-              No event in this period
-            </div>
-          </template> -->
-          <template v-for="event in period" :key="event.id">
-            <Event :event="event" />
-          </template>
-        </template>
-      </div>
+      <GameEvents :game-events="gameEvents" />
 
       <div>Team Players Stats</div>
 

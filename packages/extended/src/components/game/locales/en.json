@@ -2,8 +2,21 @@
   "localTime": "Local time",
   "gameStatus": {
     "status-1": "Live",
-    "status-2": "Game End",
+    "status-2": "Game Completed",
     "status-3": "Versenybíróság",
     "status-4": "Delayed"
+  },
+  "periods": {
+    "1-harmad": "First Period",
+    "2-harmad": "Second Period",
+    "3-harmad": "Third Period",
+    "4-harmad": "Fourth Period",
+    "5-harmad": "Fifth Period",
+    "6-harmad": "Sixth Period",
+    "7-harmad": "Seventh Period",
+    "8-harmad": "Eighth Period",
+    "9-harmad": "Ninth Period",
+    "Hosszabbítás": "Overtime",
+    "Büntetők": "Shoot Out"
   }
 }

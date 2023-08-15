@@ -68,8 +68,8 @@
   .mjsz-vbr-gamecenter-game-events .is-period-header {
       padding: 10px 20px;
       text-align: center;
-      background-color: red;
-      
+      color: var(--vbr-widget-gamecenter-period-header-color);
+      background-color: var(--vbr-widget-gamecenter-period-header-bg-color);
     }
 
   .mjsz-vbr-gamecenter-game-event {
