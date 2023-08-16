@@ -21,6 +21,7 @@
   },
   "events": {
     "timeout": "Timeout",
-    "penaltyLength": "{0} m"
+    "penaltyLength": "{0} m",
+    "teamPenalty": "Team Penalty"
   }
 }

@@ -14,7 +14,18 @@ defineProps({
   <div><TeamLogo :name="event.teamName" :logo="event.teamLogo" /></div>
   <div>{{ event.type }}-Icon</div>
   <div>{{ event.score }}</div>
-  <div>eq</div>
-  <div></div>
-  <div>Name</div>
+  <div>{{ event.advantage }}</div>
+  <div>
+    <span v-if="event.gws" class="">GWG</span>
+    <span v-if="event.ps" class="">PS</span>
+  </div>
+  <div>
+    <dl>
+      <dt>
+        <span>{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
+      </dt>
+      <dt>Assists</dt>
+      <dd>PoI</dd>
+    </dl>
+  </div>
 </template>

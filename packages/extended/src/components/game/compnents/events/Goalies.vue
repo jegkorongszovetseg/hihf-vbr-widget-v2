@@ -17,8 +17,6 @@ defineProps({
   <div></div>
   <div></div>
   <div>
-    <span class=""
-      ><span class="">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}</span
-    >
+    <span class="">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
   </div>
 </template>

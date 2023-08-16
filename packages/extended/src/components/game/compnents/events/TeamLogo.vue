@@ -16,7 +16,7 @@ defineProps({
 
 <template>
   <FloatingPanel :offset="2" placement="top" theme="tooltip" :content="name" v-slot:default="{ setRef, show, hide }">
-    <span :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">
+    <span :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide" :tabindex="0">
       <Image :src="logo" />
     </span>
   </FloatingPanel>

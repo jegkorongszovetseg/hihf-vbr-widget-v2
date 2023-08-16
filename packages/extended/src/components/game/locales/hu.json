@@ -21,6 +21,7 @@
   },
   "events": {
     "timeout": "Időkérés",
-    "penaltyLength": "{0} p"
+    "penaltyLength": "{0} p",
+    "teamPenalty": "Csapat Büntetés"
   }
 }
