@@ -12,8 +12,9 @@ defineProps({
 <template>
   <div>{{ event.eventTime }}</div>
   <div><TeamLogo :name="event.teamName" :logo="event.teamLogo" /></div>
-  <div>{{ event.type }}</div>
-  <div>c</div>
-  <div>d</div>
+  <div>{{ event.type }}-Icon</div>
+  <div>{{ event.score }}</div>
+  <div>eq</div>
+  <div></div>
   <div>Name</div>
 </template>

@@ -1,5 +1,5 @@
 <script setup>
-import { Image } from '@mjsz-vbr-elements/core/components';
+import { Image, FloatingPanel } from '@mjsz-vbr-elements/core/components';
 
 defineProps({
   name: {
@@ -15,7 +15,9 @@ defineProps({
 </script>
 
 <template>
-  <div>
-    <Image :src="logo" />
-  </div>
+  <FloatingPanel :offset="2" placement="top" theme="tooltip" :content="name" v-slot:default="{ setRef, show, hide }">
+    <span :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">
+      <Image :src="logo" />
+    </span>
+  </FloatingPanel>
 </template>

@@ -18,5 +18,9 @@
     "9-harmad": "Ninth Period",
     "Hosszabbítás": "Overtime",
     "Büntetők": "Shoot Out"
+  },
+  "events": {
+    "timeout": "Timeout",
+    "penaltyLength": "{0} m"
   }
 }

@@ -18,5 +18,9 @@
     "9-harmad": "IX. harmad",
     "Hosszabbítás": "Hosszabbítás",
     "Büntetők": "Szétlövés"
+  },
+  "events": {
+    "timeout": "Időkérés",
+    "penaltyLength": "{0} p"
   }
 }
