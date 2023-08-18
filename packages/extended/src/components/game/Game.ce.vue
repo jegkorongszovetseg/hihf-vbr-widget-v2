@@ -7,6 +7,7 @@ import { I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { handleServices } from './composables';
 import GameEvents from './GameEvents.vue';
 import GameData from './GameData.vue';
+import GamePlayerStats from './GamePlayerStats.vue';
 import hu from './locales/hu.json';
 import en from './locales/en.json';
 
@@ -55,7 +56,15 @@ const { state: gameEvents, execute: getEvents } = useServices({
   // transform: compose(groupBy(prop('eventPeriod'), map(over(lensProp('eventPeriod'), replace('. ', '-'))))),
 });
 
-handleServices({ data: gameData, services: [getGameData, getEvents], interval: REFRESH_DELAY });
+const { state: gameStats, execute: getGameStats } = useServices({
+  options: {
+    path: '/v1/gameStats',
+    apiKey: props.apiKey,
+    params: { gameId: gameId.value },
+  },
+});
+
+handleServices({ data: gameData, services: [getGameData, getEvents, getGameStats], interval: REFRESH_DELAY });
 </script>
 
 <template>
@@ -63,15 +72,17 @@ handleServices({ data: gameData, services: [getGameData, getEvents], interval: R
     <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
       <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
 
-      <!-- <pre>
-        {{ gameData }}
-      </pre> -->
-
       <div>Statistics</div>
 
-      <GameEvents :game-events="gameEvents" />
+      <!-- <GameEvents :game-events="gameEvents" /> -->
 
-      <div>Team Players Stats</div>
+      <GamePlayerStats
+        :data="gameStats.players"
+        :home-team-id="gameData.homeTeamId"
+        :home-team-name="gameData.homeTeamName"
+        :away-team-id="gameData.awayTeamId"
+        :away-team-name="gameData.awayTeamName"
+      />
 
       <div>Team Goalies Stats</div>
 
@@ -82,3 +93,6 @@ handleServices({ data: gameData, services: [getGameData, getEvents], interval: R
 
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/game-center.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
