@@ -12,7 +12,7 @@ const props = defineProps({
 
 const { t } = useI18n();
 
-const convertPeriodName = (name) => replace('. ', '-', name)
+const convertPeriodName = (name) => replace('. ', '-', name);
 </script>
 
 <template>

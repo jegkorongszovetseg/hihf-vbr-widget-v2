@@ -2,6 +2,7 @@
 import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
 import { Image } from '@mjsz-vbr-elements/core/components';
+import { convertPeriodName } from './internal';
 
 defineProps({
   gameData: {
@@ -34,7 +35,11 @@ const { t } = useI18n();
         {{ gameData.homeTeamName }}
       </div>
       <div>
-        <p v-if="gameData.gameStatus > 0" class="is-game-status">{{ t(`gameStatus.status-${gameData.gameStatus}`) }}</p>
+        <p v-if="gameData.gameStatus > 1" class="is-game-status">{{ t(`gameStatus.status-${gameData.gameStatus}`) }}</p>
+        <p v-if="gameData.gameStatus === 1" class="is-game-status">
+          {{ t(`periods.${convertPeriodName(gameData.period)}`) }}
+        </p>
+        <p v-if="gameData.gameStatus === 1" class="is-game-status">{{ gameData.actualTime }}</p>
         <div :class="['is-game-result', { 'is-game-result-live': gameData.gameStatus === 1 }]">
           <span v-if="gameData.gameStatus === 0">-</span>
           <span v-else>{{ gameData.homeTeamScore }}</span

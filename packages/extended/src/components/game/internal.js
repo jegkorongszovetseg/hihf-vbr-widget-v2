@@ -1,3 +1,5 @@
+import { replace } from 'ramda';
+
 import { SORT_STATE_DESCEND, SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
 
 export const PLAYER_STATS_COLUMNS = {
@@ -12,7 +14,8 @@ export const PLAYER_STATS_COLUMNS = {
     sortOrders: [{ target: 'number', direction: SORT_STATE_ASCEND }],
   },
   name: {
-    label: 'name',
+    label: 'table.name.short',
+    tooltip: 'table.name.tooltip',
     class: '',
     sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
   },
@@ -52,6 +55,48 @@ export const PLAYER_STATS_COLUMNS = {
     tooltip: 'table.sog.tooltip',
     sortOrders: [{ target: 'shoot', direction: SORT_STATE_DESCEND }],
   },
+  pim: {
+    label: 'table.pim.short',
+    tooltip: 'table.pim.tooltip',
+    sortOrders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
+  },
+};
+
+export const GOALIES_STATS_COLUMNS = {
+  jerseyNumber: {
+    label: '#',
+    tooltip: 'table.toi.tooltip',
+    class: '',
+  },
+  name: {
+    label: 'table.name.short',
+    tooltip: 'table.name.tooltip',
+    class: '',
+  },
+  mip: {
+    label: 'table.toi.short',
+    tooltip: 'table.toi.tooltip',
+  },
+  ga: {
+    label: 'table.ga.short',
+    tooltip: 'table.ga.tooltip',
+  },
+  gaa: {
+    label: 'table.gaa.short',
+    tooltip: 'table.gaa.tooltip',
+  },
+  sog: {
+    label: 'table.sa.short',
+    tooltip: 'table.sa.tooltip',
+  },
+  svs: {
+    label: 'table.svs.short',
+    tooltip: 'table.svs.tooltip',
+  },
+  svsPercent: {
+    label: 'table.svsPercent.short',
+    tooltip: 'table.svsPercent.tooltip',
+  },
 };
 
 export function callFunctions() {
@@ -59,3 +104,5 @@ export function callFunctions() {
     arg?.();
   }
 }
+
+export const convertPeriodName = (name) => replace('. ', '-', name);

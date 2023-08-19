@@ -2,7 +2,6 @@
 import { computed } from 'vue';
 import { propEq, reject } from 'ramda';
 import { useSort } from '@mjsz-vbr-elements/core/composables';
-import { SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
 import { convert, playerName, rawConvert } from '@mjsz-vbr-elements/core/utils';
 
 const props = defineProps({

@@ -7,13 +7,14 @@ import { I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { handleServices } from './composables';
 import GameEvents from './GameEvents.vue';
 import GameData from './GameData.vue';
-import GamePlayerStats from './GamePlayerStats.vue';
+import GamePlayersStats from './GamePlayersStats.vue';
+import GameGoaliesStats from './GameGoaliesStats.vue';
 import hu from './locales/hu.json';
 import en from './locales/en.json';
 
 const messages = { en, hu };
 
-const REFRESH_DELAY = 10000;
+const REFRESH_DELAY = 30000;
 
 const props = defineProps({
   locale: {
@@ -74,9 +75,9 @@ handleServices({ data: gameData, services: [getGameData, getEvents, getGameStats
 
       <div>Statistics</div>
 
-      <!-- <GameEvents :game-events="gameEvents" /> -->
+      <GameEvents :game-events="gameEvents" />
 
-      <GamePlayerStats
+      <GamePlayersStats
         :data="gameStats.players"
         :home-team-id="gameData.homeTeamId"
         :home-team-name="gameData.homeTeamName"
@@ -84,7 +85,13 @@ handleServices({ data: gameData, services: [getGameData, getEvents, getGameStats
         :away-team-name="gameData.awayTeamName"
       />
 
-      <div>Team Goalies Stats</div>
+      <GameGoaliesStats
+        :data="gameStats.goalies"
+        :home-team-id="gameData.homeTeamId"
+        :home-team-name="gameData.homeTeamName"
+        :away-team-id="gameData.awayTeamId"
+        :away-team-name="gameData.awayTeamName"
+      />
 
       <div>Team Members</div>
     </I18NProvider>

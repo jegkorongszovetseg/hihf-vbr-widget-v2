@@ -1,0 +1,51 @@
+<script setup>
+import { computed } from 'vue';
+import { useColumns } from '@mjsz-vbr-elements/core/composables';
+import GameDataTable from './compnents/GameDataTable.vue';
+import GameGolaiesStatsProvider from './compnents/GameGoaliesStatsProvider.vue';
+import { GOALIES_STATS_COLUMNS } from './internal';
+
+const props = defineProps({
+  data: {
+    type: Object,
+    daefault: () => ({}),
+  },
+
+  homeTeamId: {
+    type: Number,
+  },
+
+  homeTeamName: {
+    type: String,
+    default: '',
+  },
+
+  awayTeamId: {
+    type: Number,
+  },
+
+  awayTeamName: {
+    type: String,
+    default: '',
+  },
+});
+
+const { columns } = useColumns(GOALIES_STATS_COLUMNS);
+
+const homePlayers = computed(() => props.data?.[props.homeTeamId]);
+const awayPlayers = computed(() => props.data?.[props.awayTeamId]);
+</script>
+<template>
+  <div class="g-row">
+    <div class="g-col-6">
+      <GameGolaiesStatsProvider :rows="homePlayers" #default="{ rows, sort, onSort }">
+        <GameDataTable :columns="columns" :rows="rows" :title="homeTeamName" :sort="sort" @sort="onSort" />
+      </GameGolaiesStatsProvider>
+    </div>
+    <div class="g-col-6">
+      <GameGolaiesStatsProvider :rows="awayPlayers" #default="{ rows, sort, onSort }">
+        <GameDataTable :columns="columns" :rows="rows" :title="awayTeamName" :sort="sort" @sort="onSort" />
+      </GameGolaiesStatsProvider>
+    </div>
+  </div>
+</template>
