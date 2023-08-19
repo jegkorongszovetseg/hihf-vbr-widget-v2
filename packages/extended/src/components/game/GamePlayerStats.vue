@@ -8,7 +8,7 @@ import { PLAYER_STATS_COLUMNS } from './internal';
 const props = defineProps({
   data: {
     type: Object,
-    required: true,
+    daefault: () => ({}),
   },
 
   homeTeamId: {
@@ -43,7 +43,9 @@ const awayPlayers = computed(() => props.data?.[props.awayTeamId]);
       </GamePlayerStatsProvider>
     </div>
     <div class="g-col-6">
-      <GameDataTable :columns="columns" :rows="awayPlayers" :title="awayTeamName" />
+      <GamePlayerStatsProvider :rows="awayPlayers" #default="{ rows, sort, onSort }">
+        <GameDataTable :columns="columns" :rows="rows" :title="awayTeamName" :sort="sort" @sort="onSort" />
+      </GamePlayerStatsProvider>
     </div>
   </div>
 </template>

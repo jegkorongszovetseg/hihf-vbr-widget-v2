@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue';
+import { propEq, reject } from 'ramda';
 import { useSort } from '@mjsz-vbr-elements/core/composables';
 import { SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
 import { convert, playerName, rawConvert } from '@mjsz-vbr-elements/core/utils';
@@ -11,12 +12,9 @@ const props = defineProps({
   },
 });
 
-const { sort, change: onSort } = useSort({
-  sortTarget: 'row',
-  orders: [{ target: 'row', direction: SORT_STATE_ASCEND }],
-});
+const { sort, change: onSort } = useSort();
 
-const rawConvertedRows = computed(() => rawConvert(props.rows, playerName));
+const rawConvertedRows = computed(() => rawConvert(reject(propEq('GK', 'position'), props.rows), playerName));
 
 const convertedRows = computed(() => {
   return convert(rawConvertedRows.value).sorted(sort).value();

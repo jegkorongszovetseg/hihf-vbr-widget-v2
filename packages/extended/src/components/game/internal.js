@@ -19,6 +19,7 @@ export const PLAYER_STATS_COLUMNS = {
   position: {
     label: 'position',
     class: '',
+    sortOrders: [{ target: 'position', direction: SORT_STATE_ASCEND }],
   },
   goal: {
     label: 'table.goals.short',
