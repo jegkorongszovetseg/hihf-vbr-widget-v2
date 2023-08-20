@@ -75,7 +75,7 @@ handleServices({ data: gameData, services: [getGameData, getEvents, getGameStats
 
       <div>Statistics</div>
 
-      <GameEvents :game-events="gameEvents" />
+      <GameEvents :game-events="gameEvents" :game-data="gameData" />
 
       <GamePlayersStats
         :data="gameStats.players"

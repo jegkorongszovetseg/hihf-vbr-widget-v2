@@ -1,7 +1,7 @@
 <script setup>
 import { replace } from 'ramda';
 import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
-import GameEvent from './GameEvent.vue';
+import GameEvent from './components/GameEvent.vue';
 
 const props = defineProps({
   gameEvents: {

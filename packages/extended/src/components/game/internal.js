@@ -109,5 +109,8 @@ export function callFunctions() {
 export const convertPeriodName = (name) => replace('. ', '-', name);
 
 export const gamePeriodCount = (gameData) => {
+  const periodResults = gamedata.periodResults;
   // R.compose(R.reject(R.test(/-:-/)), R.split(','))('(0:0, -:-, -:-)')
+  const pariodLength = compose(reject(test(/-:-/)), split(','))(periodResults).length;
+  conxole.log({ pariodLength });
 };

@@ -1,8 +1,8 @@
 <script setup>
 import { computed } from 'vue';
 import { useColumns } from '@mjsz-vbr-elements/core/composables';
-import GameDataTable from './compnents/GameDataTable.vue';
-import GameGolaiesStatsProvider from './compnents/GameGoaliesStatsProvider.vue';
+import GameDataTable from './components/GameDataTable.vue';
+import GameGolaiesStatsProvider from './components/GameGoaliesStatsProvider.vue';
 import { GOALIES_STATS_COLUMNS } from './internal';
 
 const props = defineProps({
