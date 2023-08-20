@@ -9,7 +9,8 @@ export const PLAYER_STATS_COLUMNS = {
     sortOrders: [{ target: 'row', direction: SORT_STATE_ASCEND }],
   },
   number: {
-    label: '#',
+    label: 'table.jerseyNumber.short',
+    tooltip: 'table.jerseyNumber.tooltip',
     class: '',
     sortOrders: [{ target: 'number', direction: SORT_STATE_ASCEND }],
   },
@@ -64,8 +65,8 @@ export const PLAYER_STATS_COLUMNS = {
 
 export const GOALIES_STATS_COLUMNS = {
   jerseyNumber: {
-    label: '#',
-    tooltip: 'table.toi.tooltip',
+    label: 'table.jerseyNumber.short',
+    tooltip: 'table.jerseyNumber.tooltip',
     class: '',
   },
   name: {
@@ -73,7 +74,7 @@ export const GOALIES_STATS_COLUMNS = {
     tooltip: 'table.name.tooltip',
     class: '',
   },
-  mip: {
+  mipMin: {
     label: 'table.toi.short',
     tooltip: 'table.toi.tooltip',
   },
@@ -106,3 +107,7 @@ export function callFunctions() {
 }
 
 export const convertPeriodName = (name) => replace('. ', '-', name);
+
+export const gamePeriodCount = (gameData) => {
+  // R.compose(R.reject(R.test(/-:-/)), R.split(','))('(0:0, -:-, -:-)')
+};

@@ -297,6 +297,10 @@
     "sagp": {
       "short": "SA/GP",
       "tooltip": "Shots Against per Game"
+    },
+    "jerseyNumber": {
+      "short": "#",
+      "tooltip": "Jersey Number"
     }
   },
   "game": {

@@ -38,13 +38,13 @@ const awayPlayers = computed(() => props.data?.[props.awayTeamId]);
 <template>
   <div class="g-row">
     <div class="g-col-6">
-      <GameGolaiesStatsProvider :rows="homePlayers" #default="{ rows, sort, onSort }">
-        <GameDataTable :columns="columns" :rows="rows" :title="homeTeamName" :sort="sort" @sort="onSort" />
+      <GameGolaiesStatsProvider :rows="homePlayers" #default="{ rows }">
+        <GameDataTable :columns="columns" :rows="rows" :title="homeTeamName" />
       </GameGolaiesStatsProvider>
     </div>
     <div class="g-col-6">
-      <GameGolaiesStatsProvider :rows="awayPlayers" #default="{ rows, sort, onSort }">
-        <GameDataTable :columns="columns" :rows="rows" :title="awayTeamName" :sort="sort" @sort="onSort" />
+      <GameGolaiesStatsProvider :rows="awayPlayers" #default="{ rows }">
+        <GameDataTable :columns="columns" :rows="rows" :title="awayTeamName" />
       </GameGolaiesStatsProvider>
     </div>
   </div>

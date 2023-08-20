@@ -297,6 +297,10 @@
     "sagp": {
       "short": "SA/GP",
       "tooltip": "Átlagos kapott lövésszám"
+    },
+    "jerseyNumber": {
+      "short": "#",
+      "tooltip": "Mezszám"
     }
   },
   "game": {
