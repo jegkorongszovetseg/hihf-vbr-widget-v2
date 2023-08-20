@@ -75,9 +75,10 @@ handleServices({ data: gameData, services: [getGameData, getEvents, getGameStats
 
       <div>Statistics</div>
 
-      <GameEvents :game-events="gameEvents" :game-data="gameData" />
+      <GameEvents v-if="!isEmpty(gameEvents) && !isEmpty(gameData)" :game-events="gameEvents" :game-data="gameData" />
 
       <GamePlayersStats
+        v-if="!isEmpty(gameStats)"
         :data="gameStats.players"
         :home-team-id="gameData.homeTeamId"
         :home-team-name="gameData.homeTeamName"
@@ -86,6 +87,7 @@ handleServices({ data: gameData, services: [getGameData, getEvents, getGameStats
       />
 
       <GameGoaliesStats
+        v-if="!isEmpty(gameStats)"
         :data="gameStats.goalies"
         :home-team-id="gameData.homeTeamId"
         :home-team-name="gameData.homeTeamName"

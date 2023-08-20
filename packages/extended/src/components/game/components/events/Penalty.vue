@@ -15,7 +15,7 @@ const { t } = useI18n();
 
 <template>
   <div>{{ event.eventTime }}</div>
-  <div><TeamLogo :name="event.teamName" :logo="event.teamLogo" /></div>
+  <div><TeamLogo :name="event.teamName" :logo="event.teamLogo" :key="event.teamId" /></div>
   <div>{{ event.type }}</div>
   <div>
     <FloatingPanel

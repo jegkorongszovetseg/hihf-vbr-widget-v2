@@ -1,4 +1,4 @@
-import { replace } from 'ramda';
+import { replace, compose, reject, test, split, mergeRight } from 'ramda';
 
 import { SORT_STATE_DESCEND, SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
 
@@ -108,9 +108,21 @@ export function callFunctions() {
 
 export const convertPeriodName = (name) => replace('. ', '-', name);
 
-export const gamePeriodCount = (gameData) => {
-  const periodResults = gamedata.periodResults;
-  // R.compose(R.reject(R.test(/-:-/)), R.split(','))('(0:0, -:-, -:-)')
-  const pariodLength = compose(reject(test(/-:-/)), split(','))(periodResults).length;
-  conxole.log({ pariodLength });
+export const convertPeriodEvents = (gameData, gameEvents) => {
+  const periodResults = gameData?.periodResults ?? '';
+  let pariodLength = compose(reject(test(/-:-/)), split(','))(periodResults).length;
+  let periods = {};
+  if (gameData.isShootout) {
+    pariodLength--;
+    periods['Büntetők'] = [];
+  }
+  if (gameData.isOvertime) {
+    pariodLength--;
+    periods['Hosszabbítás'] = [];
+  }
+  for (let i = pariodLength; i > 0; i--) {
+    periods[`${i}. harmad`] = [];
+  }
+  const events = mergeRight(periods, gameEvents);
+  return events;
 };
