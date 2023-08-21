@@ -1,7 +1,10 @@
-import { ref, watch } from 'vue';
+import { ref, watch, computed, unref } from 'vue';
 import { useAsyncQueue, useTimeoutPoll } from '@vueuse/core';
 import { useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
-import { callFunctions } from './internal.js';
+import { convertMinToSec } from '@mjsz-vbr-elements/core/utils';
+import { callFunctions, rawPeriodIndex } from './internal.js';
+
+const DEAFULT_PERIOD_LENGTH_MIN = 20;
 
 export function handleServices(options = {}) {
   const { data, interval, services = [] } = options;
@@ -26,5 +29,38 @@ export function handleServices(options = {}) {
 
   return {
     pause,
+  };
+}
+
+// actualTime: "60:00"
+// periodTime: 0
+// overtimeLength: 5
+export function usePeriodTime(gameData = {}) {
+  const periodLengthSec = computed(() => {
+    let periodLengthSec = DEAFULT_PERIOD_LENGTH_MIN * 60;
+    if (unref(gameData).isOvertime || unref(gameData).isShootout) {
+      periodLengthSec = unref(gameData).overtimeLength * 60;
+    }
+    return periodLengthSec;
+  });
+
+  const value = computed(() => {
+    const gameDateValue = unref(gameData);
+    if (gameDateValue.isOvertime || gameDateValue.isShootout) {
+      periodLengthSec.value = gameDateValue.overtimeLength * 60;
+    }
+    const fromPeriodTime = periodLengthSec.value - gameDateValue.periodTime * 60;
+
+    let periodCount = rawPeriodIndex(unref(gameData)) - 1;
+    if (gameDateValue.isOvertime || gameDateValue.isShootout) {
+      periodCount++;
+    }
+    const fromActualTime = convertMinToSec(gameDateValue.actualTime) - periodCount * DEAFULT_PERIOD_LENGTH_MIN * 60;
+    return Math.max(fromPeriodTime, fromActualTime);
+  });
+
+  return {
+    value,
+    max: periodLengthSec,
   };
 }

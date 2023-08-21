@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { replace } from 'ramda';
 import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import GameEvent from './components/GameEvent.vue';
-import { convertPeriodEvents } from './internal';
+import { convertPeriodEvents, convertPeriodName } from './internal';
 
 const props = defineProps({
   gameEvents: {
@@ -20,8 +20,6 @@ const props = defineProps({
 const { t } = useI18n();
 
 const covertedGameEvents = computed(() => convertPeriodEvents(props.gameData, props.gameEvents));
-
-const convertPeriodName = (name) => replace('. ', '-', name);
 </script>
 
 <template>

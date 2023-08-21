@@ -108,16 +108,26 @@ export function callFunctions() {
 
 export const convertPeriodName = (name) => replace('. ', '-', name);
 
-export const convertPeriodEvents = (gameData, gameEvents) => {
+export const rawPeriodIndex = (gameData) => {
   const periodResults = gameData?.periodResults ?? '';
-  let pariodLength = compose(reject(test(/-:-/)), split(','))(periodResults).length;
-  let periods = {};
+  let rawLength = compose(reject(test(/-:-/)), split(','))(periodResults).length;
   if (gameData.isShootout) {
-    pariodLength--;
-    periods['Büntetők'] = [];
+    rawLength = rawLength - 2;
   }
   if (gameData.isOvertime) {
-    pariodLength--;
+    rawLength = rawLength - 1;
+  }
+  return rawLength;
+};
+
+export const convertPeriodEvents = (gameData, gameEvents) => {
+  const pariodLength = rawPeriodIndex(gameData);
+  let periods = {};
+  if (gameData.isShootout) {
+    periods['Büntetők'] = [];
+    periods['Hosszabbítás'] = [];
+  }
+  if (gameData.isOvertime) {
     periods['Hosszabbítás'] = [];
   }
   for (let i = pariodLength; i > 0; i--) {
