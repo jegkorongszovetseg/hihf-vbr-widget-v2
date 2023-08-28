@@ -75,6 +75,7 @@
   .mjsz-vbr-gamecenter-game-event {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 6fr;
+    align-items: center;
   }
 
   .mjsz-vbr-gamecenter-game-event:nth-child(odd) {

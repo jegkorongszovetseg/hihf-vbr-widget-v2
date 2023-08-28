@@ -136,3 +136,59 @@ export const convertPeriodEvents = (gameData, gameEvents) => {
   const events = mergeRight(periods, gameEvents);
   return events;
 };
+
+export const buildSOG = (data, home, away, key) => {
+  let periods = [];
+  let homeSum = 0;
+  let awaySum = 0;
+  for (let i = 0; i < data.length; i++) {
+    periods.push(`${data[i][home]?.[key] ?? 0}:${data[i][away]?.[key] ?? 0}`);
+    homeSum = homeSum + (data[i][home]?.[key] ?? 0);
+    awaySum = awaySum + (data[i][away]?.[key] ?? 0);
+  }
+  return `(${periods.join(', ')}) ${homeSum}:${awaySum}`;
+};
+
+export const buildSaves = (data, home, away, key) => {
+  let periods = [];
+  let homeSum = 0;
+  let awaySum = 0;
+  for (let i = 0; i < data.length; i++) {
+    periods.push(`${data[i][home]?.[key] ?? 0}:${data[i][away]?.[key] ?? 0}`);
+    homeSum = homeSum + (data[i][home]?.[key] ?? 0);
+    awaySum = awaySum + (data[i][away]?.[key] ?? 0);
+  }
+  return `(${periods.join(', ')}) ${homeSum}:${awaySum}`;
+};
+
+export const buildAdv = (data, { home, away }) => {
+  return {
+    dvgTime: `${data[home].dvgTime} / ${data[away].dvgTime}`,
+    dvgTimePP1: `${data[home].dvgTimePP1} / ${data[away].dvgTimePP1}`,
+    dvgTimePP2: `${data[home].dvgTimePP2} / ${data[away].dvgTimePP2}`,
+  };
+};
+
+export const buildAdvPercent = (data, { home, away }) => {
+  const homeADV = data[home].adv;
+  const homePPGF = data[home].ppgf;
+
+  const awayADV = data[away].adv;
+  const awayPPGF = data[away].ppgf;
+
+  const homePPPercent = data[home].ppPercent.toFixed(2);
+  const awayPPPercent = data[away].ppPercent.toFixed(2);
+  return `(${homeADV}/${homePPGF}) <b>${homePPPercent}%</b> / (${awayADV}/${awayPPGF}) <b>${awayPPPercent}%</b>`;
+};
+
+export const buildDvgPercent = (data, { home, away }) => {
+  const homeDVG = data[home].dvg;
+  const homePPGA = data[home].ppga;
+
+  const awayDVG = data[away].dvg;
+  const awayPPGA = data[away].ppga;
+
+  const homePKPercent = data[home].pkPercent.toFixed(2);
+  const awayPKPercent = data[away].pkPercent.toFixed(2);
+  return `(${homePPGA}/${homeDVG}) <b>${homePKPercent}%</b> / (${awayPPGA}/${awayDVG}) <b>${awayPKPercent}%</b>`;
+};

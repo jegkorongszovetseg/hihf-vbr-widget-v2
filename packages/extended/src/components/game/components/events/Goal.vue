@@ -1,4 +1,5 @@
 <script setup>
+import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
 import TeamLogo from './TeamLogo.vue';
 
 defineProps({
@@ -12,7 +13,7 @@ defineProps({
 <template>
   <div>{{ event.eventTime }}</div>
   <div><TeamLogo :name="event.teamName" :logo="event.teamLogo" :key="event.teamId" /></div>
-  <div>{{ event.type }}-Icon</div>
+  <div><IconHockeyPuck /></div>
   <div>{{ event.score }}</div>
   <div>{{ event.advantage }}</div>
   <div>

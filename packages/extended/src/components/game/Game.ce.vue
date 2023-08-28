@@ -5,8 +5,9 @@ import { useUrlSearchParams } from '@vueuse/core';
 import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { handleServices } from './composables';
-import GameEvents from './GameEvents.vue';
 import GameData from './GameData.vue';
+import GameStats from './GameStats.vue';
+import GameEvents from './GameEvents.vue';
 import GamePlayersStats from './GamePlayersStats.vue';
 import GameGoaliesStats from './GameGoaliesStats.vue';
 import hu from './locales/hu.json';
@@ -73,7 +74,7 @@ handleServices({ data: gameData, services: [getGameData, getEvents, getGameStats
     <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
       <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
 
-      <div>Statistics</div>
+      <GameStats  v-if="!isEmpty(gameStats)" :game-data="gameData" :game-stats="gameStats"  />
 
       <GameEvents v-if="!isEmpty(gameEvents) && !isEmpty(gameData)" :game-events="gameEvents" :game-data="gameData" />
 
