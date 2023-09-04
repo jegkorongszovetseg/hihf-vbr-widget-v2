@@ -14,8 +14,8 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <div>{{ event.eventTime }}</div>
-  <div><TeamLogo :name="event.teamName" :logo="event.teamLogo" :key="event.teamId" /></div>
-  <div><IconTimer /></div>
+  <div class="is-time-cell">{{ event.eventTime }}</div>
+  <div class="is-team-logo-cell"><TeamLogo :name="event.teamName" :logo="event.teamLogo" :key="event.teamId" /></div>
+  <div class="is-icon-cell"><IconTimer /></div>
   <div>{{ t('events.timeout') }}</div>
 </template>

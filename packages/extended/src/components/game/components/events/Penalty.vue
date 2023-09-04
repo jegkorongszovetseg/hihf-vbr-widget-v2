@@ -15,9 +15,9 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <div>{{ event.eventTime }}</div>
-  <div><TeamLogo :name="event.teamName" :logo="event.teamLogo" :key="event.teamId" /></div>
-  <div><IconWhistle width="24" height="24" style="color: red;" /></div>
+  <div class="is-time-cell">{{ event.eventTime }}</div>
+  <div class="is-team-logo-cell"><TeamLogo :name="event.teamName" :logo="event.teamLogo" :key="event.teamId" /></div>
+  <div class="is-icon-cell"><IconWhistle width="24" height="24" style="color: red" /></div>
   <div>
     <FloatingPanel
       :offset="2"

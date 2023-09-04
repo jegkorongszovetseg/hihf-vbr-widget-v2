@@ -62,6 +62,8 @@
   }
 
   &-game-events {
+    container-name: rows;
+    container-type: inline-size;
     margin-bottom: 20px;
 
     .is-period-header {
@@ -70,12 +72,26 @@
       color: var(--vbr-widget-gamecenter-period-header-color);
       background-color: var(--vbr-widget-gamecenter-period-header-bg-color);
     }
+
+    .is-no-action {
+      padding: 10px;
+      text-align: center;
+    }
   }
 
   &-game-event {
+    --cols: 1fr 1fr 1fr 1fr 1fr 1fr 6fr;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 6fr;
+    grid-template-columns: var(--cols);
     align-items: center;
+
+    @container rows (max-width: 500px) {
+      --cols: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+      > *:last-of-type {
+        grid-column: 2/7;
+      }
+    }
 
     &:nth-child(odd) {
       background-color: var(--vbr-widget-table-stripped-bg-color);
@@ -83,6 +99,29 @@
 
     > * {
       padding: 10px;
+    }
+
+    .is-team-logo-cell {
+      span {
+        display: inline-block;
+      }
+
+      img {
+        display: block;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .is-icon-cell {
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    .is-time-cell {
+      font-weight: 700;
     }
   }
 }
