@@ -25,6 +25,9 @@
     "teamPowerplay": "Powerplay",
     "teamScoringEfficiency": "Scoring Efficiency"
   },
+  "stats": {
+    "shots": ""
+  },
   "playoffs": {
     "Negyeddöntő1": "Quarterfinal 1",
     "Negyeddöntő2": "Quarterfinal 2",

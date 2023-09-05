@@ -60,6 +60,46 @@
       font-weight: 500;
     }
   }
+  &-game-stats {
+    margin-bottom: 20px;
+  }
+
+  &-game-stats-container-wrapper {
+    --columns: 1fr;
+
+    display: grid;
+    grid-template-columns: var(--columns);
+    gap: 20px;
+    justify-items: center;
+    padding: 20px;
+    background-color: var(--vbr-widget-gamecenter-stats-bg-color);
+    border: 1px solid var(--vbr-widget-gamecenter-stats-border-color);
+
+    @add-mixin tablet {
+      --columns: repeat(2, 1fr);
+    }
+    @add-mixin desktop {
+      --columns: repeat(3, 1fr);
+    }
+  }
+
+  &-game-stats-container {
+    text-align: center;
+
+    dt {
+      font-size: var(--vbr-widget-gamecenter-stats-title-size);
+      color: var(--vbr-widget-gamecenter-stats-title-color);
+
+      button {
+        width: var(--vbr-widget-gamecenter-stats-title-size);
+      }
+    }
+
+    dd {
+      font-size: var(--vbr-widget-gamecenter-stats-size);
+      color: var(--vbr-widget-gamecenter-stats-color);
+    }
+  }
 
   &-game-events {
     container-name: rows;

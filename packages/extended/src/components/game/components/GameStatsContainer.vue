@@ -1,4 +1,6 @@
 <script setup>
+import { useMainClass } from '@mjsz-vbr-elements/core/composables';
+
 defineProps({
   title: {
     type: String,
@@ -13,7 +15,7 @@ defineProps({
 </script>
 
 <template>
-  <dl>
+  <dl :class="useMainClass('gamecenter-game-stats-container')">
     <dt>
       <slot>
         {{ title }}

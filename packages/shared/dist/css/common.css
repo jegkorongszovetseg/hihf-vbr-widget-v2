@@ -137,6 +137,12 @@
   --vbr-widget-gamecenter-periodresults-size: 1.3125rem;
   --vbr-widget-gamecenter-period-header-bg-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-gamecenter-period-header-color: var(--vbr-widget-primary-color-0);
+  --vbr-widget-gamecenter-stats-bg-color: var(--vbr-widget-primary-color-50);
+  --vbr-widget-gamecenter-stats-border-color: var(--vbr-widget-primary-color-200);
+  --vbr-widget-gamecenter-stats-title-size: 0.8125rem;
+  --vbr-widget-gamecenter-stats-title-color: var(--vbr-widget-primary-color-400);
+  --vbr-widget-gamecenter-stats-size: 1rem;
+  --vbr-widget-gamecenter-stats-color: var(--vbr-widget-primary-color-800);
 }
 
 .transition-fade-enter-active,

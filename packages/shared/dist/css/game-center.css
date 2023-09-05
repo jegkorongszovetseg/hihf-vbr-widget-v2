@@ -61,6 +61,54 @@
       font-weight: 500;
     }
 
+  .mjsz-vbr-gamecenter-game-stats {
+    margin-bottom: 20px;
+  }
+
+  .mjsz-vbr-gamecenter-game-stats-container-wrapper {
+    --columns: 1fr;
+
+    display: grid;
+    grid-template-columns: var(--columns);
+    gap: 20px;
+    justify-items: center;
+    padding: 20px;
+    background-color: var(--vbr-widget-gamecenter-stats-bg-color);
+    border: 1px solid var(--vbr-widget-gamecenter-stats-border-color);
+  }
+
+  @media all and (min-width: 768px) {
+
+  .mjsz-vbr-gamecenter-game-stats-container-wrapper {
+      --columns: repeat(2, 1fr)
+  }
+  }
+
+  @media all and (min-width: 992px) {
+
+  .mjsz-vbr-gamecenter-game-stats-container-wrapper {
+      --columns: repeat(3, 1fr)
+  }
+  }
+
+  .mjsz-vbr-gamecenter-game-stats-container {
+    text-align: center;
+  }
+
+  .mjsz-vbr-gamecenter-game-stats-container dt {
+      font-size: var(--vbr-widget-gamecenter-stats-title-size);
+      color: var(--vbr-widget-gamecenter-stats-title-color);
+    }
+
+  .mjsz-vbr-gamecenter-game-stats-container dt button {
+        width: var(--vbr-widget-gamecenter-stats-title-size);
+      }
+
+  .mjsz-vbr-gamecenter-game-stats-container dd {
+      font-size: var(--vbr-widget-gamecenter-stats-size);
+      color: var(--vbr-widget-gamecenter-stats-color);
+    }
+
   .mjsz-vbr-gamecenter-game-events {
     container-name: rows;
     container-type: inline-size;
