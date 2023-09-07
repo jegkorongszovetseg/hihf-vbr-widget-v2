@@ -36,8 +36,9 @@ export function handleServices(options = {}) {
 // periodTime: 0
 // overtimeLength: 5
 export function usePeriodTime(gameData = {}) {
+  const periodLength = gameData?.periodLength ?? DEAFULT_PERIOD_LENGTH_MIN;
   const periodLengthSec = computed(() => {
-    let periodLengthSec = DEAFULT_PERIOD_LENGTH_MIN * 60;
+    let periodLengthSec = periodLength * 60;
     if (unref(gameData).isOvertime || unref(gameData).isShootout) {
       periodLengthSec = unref(gameData).overtimeLength * 60;
     }
@@ -55,7 +56,7 @@ export function usePeriodTime(gameData = {}) {
     if (gameDateValue.isOvertime || gameDateValue.isShootout) {
       periodCount++;
     }
-    const fromActualTime = convertMinToSec(gameDateValue.actualTime) - periodCount * DEAFULT_PERIOD_LENGTH_MIN * 60;
+    const fromActualTime = convertMinToSec(gameDateValue.actualTime) - periodCount * periodLength * 60;
     return Math.max(fromPeriodTime, fromActualTime);
   });
 

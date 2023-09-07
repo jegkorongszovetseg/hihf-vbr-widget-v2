@@ -98,6 +98,7 @@
   .mjsz-vbr-gamecenter-game-stats-container dt {
       font-size: var(--vbr-widget-gamecenter-stats-title-size);
       color: var(--vbr-widget-gamecenter-stats-title-color);
+      text-transform: uppercase;
     }
 
   .mjsz-vbr-gamecenter-game-stats-container dt button {

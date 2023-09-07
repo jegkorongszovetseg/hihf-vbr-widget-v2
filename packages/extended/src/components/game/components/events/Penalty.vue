@@ -23,7 +23,7 @@ const { t } = useI18n();
       :offset="2"
       placement="top"
       theme="tooltip"
-      :content="event.penaltyCause"
+      :content="t(`penalties.${event.penaltyCause}`)"
       v-slot:default="{ setRef, show, hide }"
     >
       <span :ref="setRef" :tabindex="0" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">

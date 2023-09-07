@@ -18,6 +18,8 @@ const props = defineProps({
   },
 });
 
+const { t } = useI18n();
+
 const homeTeamId = computed(() => props.gameData?.homeTeamId ?? '');
 const awayTeamId = computed(() => props.gameData?.awayTeamId ?? '');
 
@@ -65,9 +67,9 @@ const dvgPercent = computed(() =>
 <template>
   <div :class="useMainClass('gamecenter-game-stats')">
     <div :class="useMainClass('gamecenter-game-stats-container-wrapper')">
-      <GameStatsContainer title="KAPURA LÖVÉSEK" :data="sog" />
-      <GameStatsContainer title="VÉDÉSEK" :data="saves" />
-      <GameStatsContainer title="KIÁLLÍTÁS PERCEK:" :data="pim" />
+      <GameStatsContainer :title="t('teamsStats.sog')" :data="sog" />
+      <GameStatsContainer :title="t('teamsStats.saves')" :data="saves" />
+      <GameStatsContainer :title="t('teamsStats.pim')" :data="pim" />
       <GameStatsContainer title="EMBERELŐNY KIHASZNÁLÁS" :data="advPercent" />
       <GameStatsContainer :data="dvgTime.dvgTime">
         EMBERELŐNYBEN TÖLTÖTT IDŐ

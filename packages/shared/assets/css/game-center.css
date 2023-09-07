@@ -89,6 +89,7 @@
     dt {
       font-size: var(--vbr-widget-gamecenter-stats-title-size);
       color: var(--vbr-widget-gamecenter-stats-title-color);
+      text-transform: uppercase;
 
       button {
         width: var(--vbr-widget-gamecenter-stats-title-size);
