@@ -27,7 +27,9 @@
   "teamsStats": {
     "sog": "Kapura lövések",
     "saves": "Védések",
-    "pim": "Kiállítás percek"
+    "pim": "Kiállítás percek",
+    "advPercent": "Emberelőny kihasználás",
+    "penaltyKilling": "Emberhátrányos védekezés"
   },
   "penalties": {
     "INTRF": "Akadályozás",

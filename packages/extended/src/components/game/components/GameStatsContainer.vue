@@ -8,7 +8,7 @@ defineProps({
   },
 
   data: {
-    type: String,
+    type: [String, Number],
     default: '',
   },
 });

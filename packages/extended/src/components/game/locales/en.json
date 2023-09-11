@@ -27,7 +27,9 @@
   "teamsStats": {
     "sog": "Shot on Goal",
     "saves": "Saves",
-    "pim": "Penalty minutes"
+    "pim": "Penalty minutes",
+    "advPercent": "Powerplay",
+    "penaltyKilling": "Penalty killing"
   },
   "penalties": {
     "INTRF": "Interference",

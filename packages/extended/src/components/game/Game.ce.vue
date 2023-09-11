@@ -10,6 +10,7 @@ import GameStats from './GameStats.vue';
 import GameEvents from './GameEvents.vue';
 import GamePlayersStats from './GamePlayersStats.vue';
 import GameGoaliesStats from './GameGoaliesStats.vue';
+import GameOfficials from './GameOfficials.vue';
 import hu from './locales/hu.json';
 import en from './locales/en.json';
 
@@ -66,7 +67,16 @@ const { state: gameStats, execute: getGameStats } = useServices({
   },
 });
 
+const { state: gameOfficials, execute: getGameOfficials } = useServices({
+  options: {
+    path: '/v1/gameOfficials',
+    apiKey: props.apiKey,
+    params: { gameId: gameId.value },
+  },
+});
+
 handleServices({ data: gameData, services: [getGameData, getEvents, getGameStats], interval: REFRESH_DELAY });
+getGameOfficials();
 </script>
 
 <template>
@@ -74,7 +84,9 @@ handleServices({ data: gameData, services: [getGameData, getEvents, getGameStats
     <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
       <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
 
-      <GameStats  v-if="!isEmpty(gameStats)" :game-data="gameData" :game-stats="gameStats"  />
+      <GameOfficials :game-data="gameData" :game-officials="gameOfficials" />
+
+      <GameStats v-if="!isEmpty(gameStats)" :game-data="gameData" :game-stats="gameStats" />
 
       <GameEvents v-if="!isEmpty(gameEvents) && !isEmpty(gameData)" :game-events="gameEvents" :game-data="gameData" />
 

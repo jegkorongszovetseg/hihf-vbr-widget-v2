@@ -70,7 +70,7 @@ const dvgPercent = computed(() =>
       <GameStatsContainer :title="t('teamsStats.sog')" :data="sog" />
       <GameStatsContainer :title="t('teamsStats.saves')" :data="saves" />
       <GameStatsContainer :title="t('teamsStats.pim')" :data="pim" />
-      <GameStatsContainer title="EMBERELŐNY KIHASZNÁLÁS" :data="advPercent" />
+      <GameStatsContainer :title="t('teamsStats.advPercent')" :data="advPercent" />
       <GameStatsContainer :data="dvgTime.dvgTime">
         EMBERELŐNYBEN TÖLTÖTT IDŐ
         <FloatingPanel :offset="2" placement="top" theme="content">
@@ -85,7 +85,7 @@ const dvgPercent = computed(() =>
           </template>
         </FloatingPanel>
       </GameStatsContainer>
-      <GameStatsContainer title="EMBERHÁTRÁNYOS VÉDEKEZÉS:" :data="dvgPercent" />
+      <GameStatsContainer :title="t('teamsStats.penaltyKilling')" :data="dvgPercent" />
     </div>
   </div>
 </template>
