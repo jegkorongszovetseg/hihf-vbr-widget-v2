@@ -1,8 +1,6 @@
 @import './mixins.css';
 
 .gamecenter {
-  /* background-color: aqua; */
-
   &-game-data {
     text-align: center;
 
@@ -163,6 +161,31 @@
 
     .is-time-cell {
       font-weight: 700;
+    }
+  }
+
+  &-data-table {
+    border: 1px solid red;
+    min-width: 0;
+
+    h2 {
+      font-size: 18px;
+      padding-inline: 8px;
+      padding-block: 4px;
+      background-color: antiquewhite;
+    }
+  }
+
+  &-data-columns {
+    --columns: 1fr;
+
+    display: grid;
+    grid-template-columns: var(--columns);
+    gap: 20px;
+    margin-bottom: 20px;
+
+    @add-mixin mobile {
+      --columns: repeat(2, 1fr);
     }
   }
 }

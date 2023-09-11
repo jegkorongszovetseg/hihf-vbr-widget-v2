@@ -11,6 +11,7 @@ import GameEvents from './GameEvents.vue';
 import GamePlayersStats from './GamePlayersStats.vue';
 import GameGoaliesStats from './GameGoaliesStats.vue';
 import GameOfficials from './GameOfficials.vue';
+import GameTeamsOfficials from './GameTeamOfficials.vue';
 import hu from './locales/hu.json';
 import en from './locales/en.json';
 
@@ -108,7 +109,11 @@ getGameOfficials();
         :away-team-name="gameData.awayTeamName"
       />
 
-      <div>Team Members</div>
+      <GameTeamsOfficials
+        :game-officials="gameOfficials"
+        :home-team-name="gameData.homeTeamName"
+        :away-team-name="gameData.awayTeamName"
+      />
     </I18NProvider>
   </div>
 </template>

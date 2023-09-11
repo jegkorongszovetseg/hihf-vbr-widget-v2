@@ -1,70 +1,66 @@
-/* background-color: aqua; */
-
-  .mjsz-vbr-gamecenter-game-data {
+.mjsz-vbr-gamecenter-game-data {
     text-align: center;
   }
 
-  .mjsz-vbr-gamecenter-game-data .is-teams-and-results {
+    .mjsz-vbr-gamecenter-game-data .is-teams-and-results {
       display: grid;
       grid-template-columns: 1fr;
       justify-items: center;
       align-items: flex-end;
     }
 
-  @media all and (min-width: 576px) {
+    @media all and (min-width: 576px) {
 
-  .mjsz-vbr-gamecenter-game-data .is-teams-and-results {
+    .mjsz-vbr-gamecenter-game-data .is-teams-and-results {
         grid-template-columns: repeat(3, 1fr)
     }
   }
 
-  .mjsz-vbr-gamecenter-game-data .is-title {
+    .mjsz-vbr-gamecenter-game-data .is-title {
       color: var(--vbr-widget-gamecenter-title-color);
       font-size: var(--vbr-widget-gamecenter-title-size);
       font-weight: 700;
       text-transform: uppercase;
     }
 
-  .mjsz-vbr-gamecenter-game-data .is-gamedate {
+    .mjsz-vbr-gamecenter-game-data .is-gamedate {
       color: var(--vbr-widget-gamecenter-gamedate-color);
       font-size: var(--vbr-widget-gamecenter-gamedate-size);
       text-transform: uppercase;
     }
 
-  .mjsz-vbr-gamecenter-game-data .is-local-gamedate {
+    .mjsz-vbr-gamecenter-game-data .is-local-gamedate {
       color: var(--vbr-widget-gamecenter-local-gamedate-color);
       font-size: var(--vbr-widget-gamecenter-local-gamedate-size);
       text-transform: uppercase;
     }
 
-  .mjsz-vbr-gamecenter-game-data .is-game-result {
+    .mjsz-vbr-gamecenter-game-data .is-game-result {
       color: var(--vbr-widget-gamecenter-result-color);
       font-weight: 700;
       font-size: var(--vbr-widget-gamecenter-result-size);
       line-height: var(--vbr-widget-gamecenter-result-size);
     }
 
-  .mjsz-vbr-gamecenter-game-data .is-team-name {
+    .mjsz-vbr-gamecenter-game-data .is-team-name {
       color: var(--vbr-widget-gamecenter-teamname-color);
       font-weight: 700;
       font-size: var(--vbr-widget-gamecenter-teamname-size);
     }
 
-  .mjsz-vbr-gamecenter-game-data .is-game-status {
+    .mjsz-vbr-gamecenter-game-data .is-game-status {
       color: var(--vbr-widget-gamecenter-gamestatus-color);
       font-size: var(--vbr-widget-gamecenter-gamestatus-size);
     }
 
-  .mjsz-vbr-gamecenter-game-data .is-period-results {
+    .mjsz-vbr-gamecenter-game-data .is-period-results {
       color: var(--vbr-widget-gamecenter-periodresults-color);
       font-size: var(--vbr-widget-gamecenter-periodresults-size);
       font-weight: 500;
     }
-
   .mjsz-vbr-gamecenter-game-stats {
     margin-bottom: 20px;
   }
-
   .mjsz-vbr-gamecenter-game-stats-container-wrapper {
     --columns: 1fr;
 
@@ -76,67 +72,53 @@
     background-color: var(--vbr-widget-gamecenter-stats-bg-color);
     border: 1px solid var(--vbr-widget-gamecenter-stats-border-color);
   }
-
   @media all and (min-width: 768px) {
-
   .mjsz-vbr-gamecenter-game-stats-container-wrapper {
       --columns: repeat(2, 1fr)
   }
   }
-
   @media all and (min-width: 992px) {
-
   .mjsz-vbr-gamecenter-game-stats-container-wrapper {
       --columns: repeat(3, 1fr)
   }
   }
-
   .mjsz-vbr-gamecenter-game-stats-container {
     text-align: center;
   }
-
   .mjsz-vbr-gamecenter-game-stats-container dt {
       font-size: var(--vbr-widget-gamecenter-stats-title-size);
       color: var(--vbr-widget-gamecenter-stats-title-color);
       text-transform: uppercase;
     }
-
   .mjsz-vbr-gamecenter-game-stats-container dt button {
         width: var(--vbr-widget-gamecenter-stats-title-size);
       }
-
   .mjsz-vbr-gamecenter-game-stats-container dd {
       font-size: var(--vbr-widget-gamecenter-stats-size);
       color: var(--vbr-widget-gamecenter-stats-color);
     }
-
   .mjsz-vbr-gamecenter-game-events {
     container-name: rows;
     container-type: inline-size;
     margin-bottom: 20px;
   }
-
   .mjsz-vbr-gamecenter-game-events .is-period-header {
       padding: 10px 20px;
       text-align: center;
       color: var(--vbr-widget-gamecenter-period-header-color);
       background-color: var(--vbr-widget-gamecenter-period-header-bg-color);
     }
-
   .mjsz-vbr-gamecenter-game-events .is-no-action {
       padding: 10px;
       text-align: center;
     }
-
   .mjsz-vbr-gamecenter-game-event {
     --cols: 1fr 1fr 1fr 1fr 1fr 1fr 6fr;
     display: grid;
     grid-template-columns: var(--cols);
     align-items: center;
   }
-
   @container rows (max-width: 500px) {
-
   .mjsz-vbr-gamecenter-game-event {
       --cols: 1fr 1fr 1fr 1fr 1fr 1fr
   }
@@ -145,30 +127,47 @@
         grid-column: 2/7;
       }
     }
-
   .mjsz-vbr-gamecenter-game-event:nth-child(odd) {
       background-color: var(--vbr-widget-table-stripped-bg-color);
     }
-
   .mjsz-vbr-gamecenter-game-event > * {
       padding: 10px;
     }
-
   .mjsz-vbr-gamecenter-game-event .is-team-logo-cell span {
         display: inline-block;
       }
-
   .mjsz-vbr-gamecenter-game-event .is-team-logo-cell img {
         display: block;
         width: 40px;
         height: 40px;
       }
-
   .mjsz-vbr-gamecenter-game-event .is-icon-cell svg {
         width: 25px;
         height: 25px;
       }
-
   .mjsz-vbr-gamecenter-game-event .is-time-cell {
       font-weight: 700;
     }
+  .mjsz-vbr-gamecenter-data-table {
+    border: 1px solid red;
+    min-width: 0;
+  }
+  .mjsz-vbr-gamecenter-data-table h2 {
+      font-size: 18px;
+      padding-inline: 8px;
+      padding-block: 4px;
+      background-color: antiquewhite;
+    }
+  .mjsz-vbr-gamecenter-data-columns {
+    --columns: 1fr;
+
+    display: grid;
+    grid-template-columns: var(--columns);
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  @media all and (min-width: 576px) {
+  .mjsz-vbr-gamecenter-data-columns {
+      --columns: repeat(2, 1fr)
+  }
+  }

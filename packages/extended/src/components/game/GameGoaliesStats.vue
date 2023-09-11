@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { useColumns } from '@mjsz-vbr-elements/core/composables';
+import { useMainClass, useColumns } from '@mjsz-vbr-elements/core/composables';
 import GameDataTable from './components/GameDataTable.vue';
 import GameGolaiesStatsProvider from './components/GameGoaliesStatsProvider.vue';
 import { GOALIES_STATS_COLUMNS } from './internal';
@@ -36,16 +36,12 @@ const homePlayers = computed(() => props.data?.[props.homeTeamId]);
 const awayPlayers = computed(() => props.data?.[props.awayTeamId]);
 </script>
 <template>
-  <div class="g-row">
-    <div class="g-col-6">
-      <GameGolaiesStatsProvider :rows="homePlayers" #default="{ rows }">
-        <GameDataTable :columns="columns" :rows="rows" :title="homeTeamName" />
-      </GameGolaiesStatsProvider>
-    </div>
-    <div class="g-col-6">
-      <GameGolaiesStatsProvider :rows="awayPlayers" #default="{ rows }">
-        <GameDataTable :columns="columns" :rows="rows" :title="awayTeamName" />
-      </GameGolaiesStatsProvider>
-    </div>
+  <div :class="useMainClass('gamecenter-data-columns')">
+    <GameGolaiesStatsProvider :rows="homePlayers" #default="{ rows }">
+      <GameDataTable :columns="columns" :rows="rows" :title="homeTeamName" />
+    </GameGolaiesStatsProvider>
+    <GameGolaiesStatsProvider :rows="awayPlayers" #default="{ rows }">
+      <GameDataTable :columns="columns" :rows="rows" :title="awayTeamName" />
+    </GameGolaiesStatsProvider>
   </div>
 </template>

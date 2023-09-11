@@ -29,7 +29,7 @@ const { t } = useI18n();
     <div class="is-gamedate">
       {{ format(gameData.gameDate, 'L dddd - HH:mm z', null, locale) }} ({{ offsetName(new Date(), null, locale) }})
     </div>
-    <div class="is-local-gamedate">{{ t('localTime') }} - {{ gameData.location }}: {{ gameData.gameDate }}</div>
+    <div class="is-local-gamedate">{{ t('localTime') }} - {{ gameData.location }}: {{ format(gameData.gameDate, 'L dddd - HH:mm z', null, locale) }}</div>
     <div class="is-teams-and-results">
       <div class="is-team-name">
         <Image :src="gameData.homeTeamLogo" />

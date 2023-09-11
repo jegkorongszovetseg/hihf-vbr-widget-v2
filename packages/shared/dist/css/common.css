@@ -1,3 +1,13 @@
+h1,
+h2,
+h3,
+dl,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
 :root,
 :host {
   font-family: 'Roboto Condensed', Avenir, Helvetica, Arial, sans-serif;

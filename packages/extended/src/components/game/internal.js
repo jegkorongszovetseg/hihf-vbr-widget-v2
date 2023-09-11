@@ -100,6 +100,19 @@ export const GOALIES_STATS_COLUMNS = {
   },
 };
 
+export const TEAM_OFFICIALS_COLUMNS = {
+  member: {
+    label: 'Hivatalos Személyek',
+    tooltip: '-',
+    class: 'is-text-left',
+  },
+  name: {
+    label: 'name',
+    tooltip: '-',
+    class: 'is-text-left',
+  },
+};
+
 export function callFunctions() {
   for (const arg of arguments) {
     arg?.();
@@ -191,4 +204,8 @@ export const buildDvgPercent = (data, { home, away }) => {
   const homePKPercent = data[home].pkPercent.toFixed(2);
   const awayPKPercent = data[away].pkPercent.toFixed(2);
   return `(${homePPGA}/${homeDVG}) <b>${homePKPercent}%</b> / (${awayPPGA}/${awayDVG}) <b>${awayPKPercent}%</b>`;
+};
+
+export const convertTeamMembersToRows = (data) => {
+  return Object.keys(data).map((member) => ({ member, name: data[member] }));
 };

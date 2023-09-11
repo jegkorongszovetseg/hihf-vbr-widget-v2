@@ -1,4 +1,5 @@
 <script setup>
+import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { ResponsiveTable, DataTable } from '@mjsz-vbr-elements/core/components';
 
 const props = defineProps({
@@ -28,7 +29,7 @@ const onSort = (payload) => emit('sort', payload);
 </script>
 
 <template>
-  <div>
+  <div :class="useMainClass('gamecenter-data-table')">
     <h2>{{ title }}</h2>
     <ResponsiveTable v-slot:default="{ el: rootElement }">
       <DataTable
