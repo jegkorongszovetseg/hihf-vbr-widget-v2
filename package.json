@@ -1,5 +1,5 @@
 {
-  "name": "@mjsz-vbr-elements/monorepo",
+  "name": "mjsz-vbr-elements",
   "version": "2.1.0",
   "description": "Data visualization for MJSZ VBR",
   "main": "index.js",

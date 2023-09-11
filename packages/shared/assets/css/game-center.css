@@ -165,14 +165,15 @@
   }
 
   &-data-table {
-    border: 1px solid red;
+    border: 1px solid var(--vbr-widget-gamecenter-team-container-border-color);
     min-width: 0;
 
     h2 {
-      font-size: 18px;
-      padding-inline: 8px;
-      padding-block: 4px;
-      background-color: antiquewhite;
+      padding: 8px;
+      font-size: var(--vbr-widget-gamecenter-team-container-title-size);
+      font-weight: 500;
+      color: var(--vbr-widget-gamecenter-team-container-title-color);
+      background-color: var(--vbr-widget-gamecenter-team-container-title-bg-color);
     }
   }
 

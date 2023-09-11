@@ -17,7 +17,7 @@ export const PLAYER_STATS_COLUMNS = {
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: '',
+    class: 'is-text-left',
     sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
   },
   position: {
@@ -72,7 +72,7 @@ export const GOALIES_STATS_COLUMNS = {
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: '',
+    class: 'is-text-left',
   },
   mipMin: {
     label: 'table.toi.short',

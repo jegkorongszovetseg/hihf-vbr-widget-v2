@@ -7,3 +7,18 @@ dd {
   margin: 0;
   padding: 0;
 }
+
+button {
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  
+  border-width: 0;
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
