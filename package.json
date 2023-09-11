@@ -3,9 +3,13 @@
   "version": "2.1.0",
   "description": "Data visualization for MJSZ VBR",
   "main": "index.js",
+  "packageManager": "pnpm@8.6.12",
   "workspaces": [
     "packages/*",
     "playground/**"
+  ],
+  "files": [
+    "build"
   ],
   "scripts": {
     "playground": "pnpm run -C playground dev",
