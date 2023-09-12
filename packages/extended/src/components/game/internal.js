@@ -183,33 +183,33 @@ export const buildSaves = (data, home, away, key) => {
 
 export const buildAdv = (data, { home, away }) => {
   return {
-    dvgTime: `${data[home]?.dvgTime} / ${data[away]?.dvgTime}`,
-    dvgTimePP1: `${data[home]?.dvgTimePP1} / ${data[away]?.dvgTimePP1}`,
-    dvgTimePP2: `${data[home]?.dvgTimePP2} / ${data[away]?.dvgTimePP2}`,
+    dvgTime: `${data[home]?.dvgTime ?? 0} / ${data[away]?.dvgTime ?? 0}`,
+    dvgTimePP1: `${data[home]?.dvgTimePP1 ?? 0} / ${data[away]?.dvgTimePP1 ?? 0}`,
+    dvgTimePP2: `${data[home]?.dvgTimePP2 ?? 0} / ${data[away]?.dvgTimePP2 ?? 0}`,
   };
 };
 
 export const buildAdvPercent = (data, { home, away }) => {
-  const homeADV = data[home]?.adv;
-  const homePPGF = data[home]?.ppgf;
+  const homeADV = data[home]?.adv ?? 0;
+  const homePPGF = data[home]?.ppgf ?? 0;
 
-  const awayADV = data[away]?.adv;
-  const awayPPGF = data[away]?.ppgf;
+  const awayADV = data[away]?.adv ?? 0;
+  const awayPPGF = data[away]?.ppgf ?? 0;
 
-  const homePPPercent = data[home]?.ppPercent.toFixed(2);
-  const awayPPPercent = data[away]?.ppPercent.toFixed(2);
+  const homePPPercent = (data[home]?.ppPercent ?? 0).toFixed(2);
+  const awayPPPercent = (data[away]?.ppPercent ?? 0).toFixed(2);
   return `(${homeADV}/${homePPGF}) <b>${homePPPercent}%</b> / (${awayADV}/${awayPPGF}) <b>${awayPPPercent}%</b>`;
 };
 
 export const buildDvgPercent = (data, { home, away }) => {
-  const homeDVG = data[home]?.dvg;
-  const homePPGA = data[home]?.ppga;
+  const homeDVG = data[home]?.dvg ?? 0;
+  const homePPGA = data[home]?.ppga ?? 0;
 
-  const awayDVG = data[away]?.dvg;
-  const awayPPGA = data[away]?.ppga;
+  const awayDVG = data[away]?.dvg ?? 0;
+  const awayPPGA = data[away]?.ppga ?? 0;
 
-  const homePKPercent = data[home]?.pkPercent.toFixed(2);
-  const awayPKPercent = data[away]?.pkPercent.toFixed(2);
+  const homePKPercent = (data[home]?.pkPercent ?? 0).toFixed(2);
+  const awayPKPercent = (data[away]?.pkPercent ?? 0).toFixed(2);
   return `(${homePPGA}/${homeDVG}) <b>${homePKPercent}%</b> / (${awayPPGA}/${awayDVG}) <b>${awayPKPercent}%</b>`;
 };
 
