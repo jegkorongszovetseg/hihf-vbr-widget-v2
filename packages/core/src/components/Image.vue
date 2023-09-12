@@ -2,6 +2,10 @@
 import { ref, toRefs } from 'vue';
 import { useImage } from '@vueuse/core';
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 const props = defineProps({
   src: {
     type: String,

@@ -42,7 +42,7 @@ const gameId = computed(() => searchParams?.gameId ?? props.gameId);
 
 const { state: gameData, execute: getGameData } = useServices({
   options: {
-    path: '/v1/gameData',
+    path: '/v2/game-data',
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
@@ -50,7 +50,7 @@ const { state: gameData, execute: getGameData } = useServices({
 
 const { state: gameEvents, execute: getEvents } = useServices({
   options: {
-    path: '/v1/gameEvents',
+    path: '/v2/game-events',
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
@@ -62,7 +62,7 @@ const { state: gameEvents, execute: getEvents } = useServices({
 
 const { state: gameStats, execute: getGameStats } = useServices({
   options: {
-    path: '/v1/gameStats',
+    path: '/v2/game-stats',
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
@@ -70,7 +70,7 @@ const { state: gameStats, execute: getGameStats } = useServices({
 
 const { state: gameOfficials, execute: getGameOfficials } = useServices({
   options: {
-    path: '/v1/gameOfficials',
+    path: '/v2/game-officials',
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },

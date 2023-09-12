@@ -301,6 +301,18 @@
     "jerseyNumber": {
       "short": "#",
       "tooltip": "Mezszám"
+    },
+    "row": {
+      "short": "Sor",
+      "tooltip": "Sor"
+    },
+    "position": {
+      "short": "Po",
+      "tooltip": "Poszt"
+    },
+    "teamOfficials": {
+      "short": "Hivatalos Személyek",
+      "tooltip": "Hivatalos Személyek"
     }
   },
   "game": {

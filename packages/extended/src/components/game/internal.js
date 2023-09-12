@@ -4,7 +4,8 @@ import { SORT_STATE_DESCEND, SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
 
 export const PLAYER_STATS_COLUMNS = {
   row: {
-    label: 'sor',
+    label: 'table.row.short',
+    tooltip: 'table.row.tooltip',
     sortOrders: [{ target: 'row', direction: SORT_STATE_ASCEND }],
   },
   number: {
@@ -20,7 +21,8 @@ export const PLAYER_STATS_COLUMNS = {
     sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
   },
   position: {
-    label: 'position',
+    label: 'table.position.short',
+    tooltip: 'table.position.tooltip',
     class: '',
     sortOrders: [{ target: 'position', direction: SORT_STATE_ASCEND }],
   },
@@ -101,13 +103,13 @@ export const GOALIES_STATS_COLUMNS = {
 
 export const TEAM_OFFICIALS_COLUMNS = {
   member: {
-    label: 'Hivatalos Személyek',
-    tooltip: '-',
+    label: 'table.teamOfficials.short',
+    tooltip: 'table.teamOfficials.tooltip',
     class: 'is-text-left',
   },
   name: {
-    label: 'name',
-    tooltip: '-',
+    label: 'table.name.short',
+    tooltip: 'table.name.tooltip',
     class: 'is-text-left is-text-bold',
   },
 };
@@ -175,33 +177,33 @@ export const buildSaves = (data, home, away, key) => {
 
 export const buildAdv = (data, { home, away }) => {
   return {
-    dvgTime: `${data[home].dvgTime} / ${data[away].dvgTime}`,
-    dvgTimePP1: `${data[home].dvgTimePP1} / ${data[away].dvgTimePP1}`,
-    dvgTimePP2: `${data[home].dvgTimePP2} / ${data[away].dvgTimePP2}`,
+    dvgTime: `${data[home]?.dvgTime} / ${data[away]?.dvgTime}`,
+    dvgTimePP1: `${data[home]?.dvgTimePP1} / ${data[away]?.dvgTimePP1}`,
+    dvgTimePP2: `${data[home]?.dvgTimePP2} / ${data[away]?.dvgTimePP2}`,
   };
 };
 
 export const buildAdvPercent = (data, { home, away }) => {
-  const homeADV = data[home].adv;
-  const homePPGF = data[home].ppgf;
+  const homeADV = data[home]?.adv;
+  const homePPGF = data[home]?.ppgf;
 
-  const awayADV = data[away].adv;
-  const awayPPGF = data[away].ppgf;
+  const awayADV = data[away]?.adv;
+  const awayPPGF = data[away]?.ppgf;
 
-  const homePPPercent = data[home].ppPercent.toFixed(2);
-  const awayPPPercent = data[away].ppPercent.toFixed(2);
+  const homePPPercent = data[home]?.ppPercent.toFixed(2);
+  const awayPPPercent = data[away]?.ppPercent.toFixed(2);
   return `(${homeADV}/${homePPGF}) <b>${homePPPercent}%</b> / (${awayADV}/${awayPPGF}) <b>${awayPPPercent}%</b>`;
 };
 
 export const buildDvgPercent = (data, { home, away }) => {
-  const homeDVG = data[home].dvg;
-  const homePPGA = data[home].ppga;
+  const homeDVG = data[home]?.dvg;
+  const homePPGA = data[home]?.ppga;
 
-  const awayDVG = data[away].dvg;
-  const awayPPGA = data[away].ppga;
+  const awayDVG = data[away]?.dvg;
+  const awayPPGA = data[away]?.ppga;
 
-  const homePKPercent = data[home].pkPercent.toFixed(2);
-  const awayPKPercent = data[away].pkPercent.toFixed(2);
+  const homePKPercent = data[home]?.pkPercent.toFixed(2);
+  const awayPKPercent = data[away]?.pkPercent.toFixed(2);
   return `(${homePPGA}/${homeDVG}) <b>${homePKPercent}%</b> / (${awayPPGA}/${awayDVG}) <b>${awayPKPercent}%</b>`;
 };
 

@@ -301,6 +301,18 @@
     "jerseyNumber": {
       "short": "#",
       "tooltip": "Jersey Number"
+    },
+    "row": {
+      "short": "Row",
+      "tooltip": "Row"
+    },
+    "position": {
+      "short": "Position",
+      "tooltip": "Position"
+    },
+    "teamOfficials": {
+      "short": "Team officials",
+      "tooltip": "Team officials"
     }
   },
   "game": {

@@ -11,7 +11,7 @@ import '../../../packages/shared/dist/css/grid.css';
 
 <template>
   <div class="p-5">
-    <!-- <Game :locale="store.locale" game-id="71861" /> -->
-    <mjsz-vbr-game :locale="store.locale" game-id="71861"  />
+    <Game :locale="store.locale" game-id="71861" />
+    <!-- <mjsz-vbr-game :locale="store.locale" game-id="71861"  /> -->
   </div>
 </template>
