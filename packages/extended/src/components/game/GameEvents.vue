@@ -1,6 +1,5 @@
 <script setup>
 import { computed } from 'vue';
-import { replace } from 'ramda';
 import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import GameEvent from './components/GameEvent.vue';
 import { convertPeriodEvents, convertPeriodName } from './internal';
@@ -33,5 +32,6 @@ const covertedGameEvents = computed(() => convertPeriodEvents(props.gameData, pr
         </div>
       </template>
     </template>
+    <div id="event-tooltip-container" />
   </div>
 </template>

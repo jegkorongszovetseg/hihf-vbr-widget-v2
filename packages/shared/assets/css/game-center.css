@@ -182,8 +182,61 @@
       }
     }
 
+    .is-penalty-icon {
+      color: var(--vbr-widget-primary-color-300);
+    }
+
+    .is-goal-icon {
+      color: var(--vbr-widget-danger-color-a400);
+    }
+
     .is-time-cell {
       font-weight: 700;
+    }
+
+    .is-penalty-cell {
+      font-size: 0.875rem;
+      text-align: center;
+    }
+
+    .is-score {
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--vbr-widget-danger-color-a400);
+    }
+
+    .is-assists-list {
+      font-size: 0.8125rem;
+      color: var(--vbr-widget-primary-color-400);
+
+      span::after {
+        content: ' / ';
+      }
+
+      span:last-child::after {
+        content: '';
+      }
+    }
+
+    .is-poi-data {
+      font-size: 0.75rem;
+      color: var(--vbr-widget-primary-color-400);
+
+      ul {
+        display: inline-flex;
+
+        li {
+          &::after {
+            content: ',';
+            margin-right: 2px;
+          }
+        }
+
+        li:last-child::after {
+          content: '';
+        }
+      }
     }
   }
 

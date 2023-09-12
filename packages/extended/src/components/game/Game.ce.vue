@@ -1,9 +1,9 @@
 <script setup>
 import { computed } from 'vue';
-import { compose, groupBy, prop, reverse, isEmpty} from 'ramda';
+import { compose, groupBy, prop, reverse, isEmpty } from 'ramda';
 import { useUrlSearchParams } from '@vueuse/core';
 import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
-import { I18NProvider } from '@mjsz-vbr-elements/core/components';
+import { I18NProvider, ErrorNotice } from '@mjsz-vbr-elements/core/components';
 import { handleServices } from './composables';
 import GameData from './GameData.vue';
 import GameStats from './GameStats.vue';
@@ -40,7 +40,11 @@ const searchParams = useUrlSearchParams('history');
 
 const gameId = computed(() => searchParams?.gameId ?? props.gameId);
 
-const { state: gameData, execute: getGameData } = useServices({
+const {
+  state: gameData,
+  execute: getGameData,
+  error: gameDataError,
+} = useServices({
   options: {
     path: '/v2/game-data',
     apiKey: props.apiKey,
@@ -48,17 +52,24 @@ const { state: gameData, execute: getGameData } = useServices({
   },
 });
 
-const { state: gameEvents, execute: getEvents } = useServices({
+const {
+  state: gameEvents,
+  execute: getEvents,
+  error: gameEventsError,
+} = useServices({
   options: {
     path: '/v2/game-events',
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
   transform: compose(groupBy(prop('eventPeriod')), reverse),
-  // transform: groupBy(prop('eventPeriod')),
 });
 
-const { state: gameStats, execute: getGameStats } = useServices({
+const {
+  state: gameStats,
+  execute: getGameStats,
+  error: gameStatssError,
+} = useServices({
   options: {
     path: '/v2/game-stats',
     apiKey: props.apiKey,
@@ -66,7 +77,11 @@ const { state: gameStats, execute: getGameStats } = useServices({
   },
 });
 
-const { state: gameOfficials, execute: getGameOfficials } = useServices({
+const {
+  state: gameOfficials,
+  execute: getGameOfficials,
+  error: gameOfficialsError,
+} = useServices({
   options: {
     path: '/v2/game-officials',
     apiKey: props.apiKey,
@@ -74,13 +89,19 @@ const { state: gameOfficials, execute: getGameOfficials } = useServices({
   },
 });
 
-handleServices({ data: gameData, services: [getGameData, getEvents, getGameStats], interval: REFRESH_DELAY });
+handleServices({ data: gameData, services: [getGameData, getGameStats, getEvents], interval: REFRESH_DELAY });
 getGameOfficials();
+
+const hasError = computed(() =>
+  [gameDataError.value, gameEventsError.value, gameStatssError.value, gameOfficialsError.value].some(Boolean)
+);
 </script>
 
 <template>
   <div :class="useMainClass('gamecenter')">
     <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
+      <ErrorNotice v-if="hasError" :error="gameDataError" />
+
       <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
 
       <GameOfficials v-if="!isEmpty(gameData)" :game-data="gameData" :game-officials="gameOfficials" />

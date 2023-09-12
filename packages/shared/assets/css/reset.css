@@ -1,6 +1,8 @@
 h1,
 h2,
 h3,
+ul,
+li,
 dl,
 dt,
 dd {
@@ -16,10 +18,15 @@ button {
   color: inherit;
   margin: 0;
   padding: 0;
-  
+
   border-width: 0;
   -webkit-appearance: button;
   background-color: transparent;
   background-image: none;
   cursor: pointer;
+}
+
+ol,
+ul {
+  list-style: none;
 }

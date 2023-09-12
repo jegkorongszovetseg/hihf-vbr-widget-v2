@@ -19,7 +19,7 @@ const props = defineProps({
 const TYPE_MAP = new Map().set('Gól', Goal).set('Kiállítás', Penalty).set('Kapus', Goalies).set('Idő', Timeout);
 
 const component = computed(() => TYPE_MAP.get(props.event.type));
-const isHomeTeam = computed(()=> props.event.teamId === props.homeTeamId)
+const isHomeTeam = computed(()=> props.event.team.id === props.homeTeamId)
 </script>
 
 <template>

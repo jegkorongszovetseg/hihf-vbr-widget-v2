@@ -22,10 +22,10 @@ const { t } = useI18n();
 <template>
   <div class="is-time-cell">{{ event.eventTime }}</div>
   <div class="is-team-logo-cell">
-    <TeamLogo :name="event.teamName" :logo="event.teamLogo" :key="event.teamId" :is-home-team="isHomeTeam" />
+    <TeamLogo :name="event.team.longName" :logo="event.teamLogo" :key="event.team.id" :is-home-team="isHomeTeam" />
   </div>
-  <div class="is-icon-cell"><IconWhistle width="24" height="24" style="color: red" /></div>
-  <div>
+  <div class="is-icon-cell"><IconWhistle width="24" height="24" class="is-penalty-icon" /></div>
+  <div class="is-penalty-cell">
     <FloatingPanel
       :offset="2"
       placement="top"
