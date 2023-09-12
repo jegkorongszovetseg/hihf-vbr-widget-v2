@@ -5,19 +5,18 @@ import { SORT_STATE_DESCEND, SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
 export const PLAYER_STATS_COLUMNS = {
   row: {
     label: 'sor',
-    class: 'is-text-left',
     sortOrders: [{ target: 'row', direction: SORT_STATE_ASCEND }],
   },
   number: {
     label: 'table.jerseyNumber.short',
     tooltip: 'table.jerseyNumber.tooltip',
-    class: '',
+    class: 'is-text-italic',
     sortOrders: [{ target: 'number', direction: SORT_STATE_ASCEND }],
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left',
+    class: 'is-text-left is-text-bold',
     sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
   },
   position: {
@@ -67,12 +66,12 @@ export const GOALIES_STATS_COLUMNS = {
   jerseyNumber: {
     label: 'table.jerseyNumber.short',
     tooltip: 'table.jerseyNumber.tooltip',
-    class: '',
+    class: 'is-text-italic',
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left',
+    class: 'is-text-left is-text-bold',
   },
   mipMin: {
     label: 'table.toi.short',
@@ -109,7 +108,7 @@ export const TEAM_OFFICIALS_COLUMNS = {
   name: {
     label: 'name',
     tooltip: '-',
-    class: 'is-text-left',
+    class: 'is-text-left is-text-bold',
   },
 };
 

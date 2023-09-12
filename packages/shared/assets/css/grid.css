@@ -33,9 +33,3 @@
 .g-gap-normal {
   gap: 20px;
 }
-
-[class^='tablet:g-col'] {
-  @add-mixin tablet {
-    flex-direction: column;
-  }
-}

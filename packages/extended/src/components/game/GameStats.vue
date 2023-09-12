@@ -73,19 +73,22 @@ const dvgPercent = computed(() =>
       <GameStatsContainer :title="t('teamsStats.advPercent')" :data="advPercent" />
       <GameStatsContainer :data="dvgTime.dvgTime">
         EMBERELŐNYBEN TÖLTÖTT IDŐ
-        <FloatingPanel :offset="2" placement="top" theme="content">
+        <FloatingPanel :offset="2" placement="top" theme="content" append-to="#popover-container">
           <template v-slot:default="{ setRef, show }">
             <button :ref="setRef" @click.stop="show">
               <IconMore />
             </button>
           </template>
           <template v-slot:content>
-            <GameStatsContainer title="EMBERELŐNYBEN TÖLTÖTT IDŐ" :data="dvgTime.dvgTimePP1" />
-            <GameStatsContainer title="EMBERELŐNYBEN TÖLTÖTT IDŐ" :data="dvgTime.dvgTimePP2" />
+            <div class="is-popover-content">
+              <GameStatsContainer title="EMBERELŐNYBEN TÖLTÖTT IDŐ" :data="dvgTime.dvgTimePP1" />
+              <GameStatsContainer title="EMBERELŐNYBEN TÖLTÖTT IDŐ" :data="dvgTime.dvgTimePP2" />
+            </div>
           </template>
         </FloatingPanel>
       </GameStatsContainer>
       <GameStatsContainer :title="t('teamsStats.penaltyKilling')" :data="dvgPercent" />
     </div>
+    <div id="popover-container"></div>
   </div>
 </template>

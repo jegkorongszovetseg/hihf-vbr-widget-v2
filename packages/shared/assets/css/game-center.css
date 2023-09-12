@@ -2,6 +2,7 @@
 
 .gamecenter {
   &-game-data {
+    margin-bottom: 30px;
     text-align: center;
 
     .is-teams-and-results {
@@ -32,6 +33,7 @@
       color: var(--vbr-widget-gamecenter-local-gamedate-color);
       font-size: var(--vbr-widget-gamecenter-local-gamedate-size);
       text-transform: uppercase;
+      margin-bottom: 30px;
     }
 
     .is-game-result {
@@ -57,9 +59,29 @@
       font-size: var(--vbr-widget-gamecenter-periodresults-size);
       font-weight: 500;
     }
+
+    .is-team-logo {
+      margin: auto;
+      display: block;
+      width: 128px;
+      height: 128px;
+    }
   }
+
   &-game-stats {
     margin-bottom: 20px;
+
+    [data-placement] {
+      z-index: 1000;
+    }
+
+    .is-popover-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 16px;
+      background-color: var(--vbr-widget-primary-color-50);
+    }
   }
 
   &-game-stats-container-wrapper {
@@ -104,6 +126,7 @@
     container-name: rows;
     container-type: inline-size;
     margin-bottom: 20px;
+    border: 1px solid var(--vbr-widget-gamecenter-stats-border-color);
 
     .is-period-header {
       padding: 10px 20px;

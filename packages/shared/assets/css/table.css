@@ -103,6 +103,10 @@
       font-weight: 700;
     }
 
+    &.is-text-italic {
+      font-style: italic;
+    }
+
     &.is-text-xl {
       font-size: 1.2 rem;
     }

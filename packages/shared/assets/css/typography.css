@@ -9,6 +9,10 @@
   font-weight: 700;
 }
 
+.is-text-italic {
+  font-style: italic;
+}
+
 .is-text-xs {
   font-size: 0.75rem; /* 12px */
   line-height: 1rem; /* 16px */
