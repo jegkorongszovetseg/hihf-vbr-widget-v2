@@ -47,10 +47,7 @@ export function usePeriodTime(gameData = {}) {
 
   const value = computed(() => {
     const gameDateValue = unref(gameData);
-    // if (gameDateValue.isOvertime || gameDateValue.isShootout) {
-    //   periodLengthSec.value = gameDateValue.overtimeLength * 60;
-    // }
-    const fromPeriodTime = periodLengthSec.value - gameDateValue.periodTime * 60;
+    const fromPeriodTime = periodLengthSec.value - parseInt(gameDateValue.periodTime, 10) * 60;
 
     let periodCount = rawPeriodIndex(unref(gameData)) - 1;
     if (gameDateValue.isOvertime || gameDateValue.isShootout) {

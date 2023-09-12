@@ -8,6 +8,11 @@ defineProps({
     type: Object,
     required: true,
   },
+
+  isHomeTeam: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const { t } = useI18n();
@@ -15,7 +20,9 @@ const { t } = useI18n();
 
 <template>
   <div class="is-time-cell">{{ event.eventTime }}</div>
-  <div class="is-team-logo-cell"><TeamLogo :name="event.teamName" :logo="event.teamLogo" :key="event.teamId" /></div>
+  <div class="is-team-logo-cell">
+    <TeamLogo :name="event.teamName" :logo="event.teamLogo" :key="event.teamId" :is-home-team="isHomeTeam" />
+  </div>
   <div class="is-icon-cell"><IconTimer /></div>
   <div>{{ t('events.timeout') }}</div>
 </template>

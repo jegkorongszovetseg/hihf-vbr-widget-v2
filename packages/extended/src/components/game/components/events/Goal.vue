@@ -7,12 +7,19 @@ defineProps({
     type: Object,
     required: true,
   },
+
+  isHomeTeam: {
+    type: Boolean,
+    default: true,
+  },
 });
 </script>
 
 <template>
   <div class="is-time-cell">{{ event.eventTime }}</div>
-  <div class="is-team-logo-cell"><TeamLogo :name="event.teamName" :logo="event.teamLogo" :key="event.teamId" /></div>
+  <div class="is-team-logo-cell">
+    <TeamLogo :name="event.teamName" :logo="event.teamLogo" :key="event.teamId" :is-home-team="isHomeTeam" />
+  </div>
   <div class="is-icon-cell"><IconHockeyPuck /></div>
   <div>{{ event.score }}</div>
   <div>{{ event.advantage }}</div>

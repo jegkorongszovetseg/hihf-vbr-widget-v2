@@ -29,7 +29,7 @@ const covertedGameEvents = computed(() => convertPeriodEvents(props.gameData, pr
       <div v-if="period.length === 0" class="is-no-action">Nem történt esemény a harmadban</div>
       <template v-for="event in period" :key="event.id">
         <div :class="useMainClass('gamecenter-game-event')">
-          <GameEvent :event="event" />
+          <GameEvent :event="event" :home-team-id="gameData.homeTeam.id" />
         </div>
       </template>
     </template>

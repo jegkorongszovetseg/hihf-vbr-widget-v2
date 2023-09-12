@@ -13,6 +13,6 @@ const { max, value } = usePeriodTime(computed(() => props.gameData));
 </script>
 
 <template>
-  {{ value }}
+  <!-- {{ value }} -->
   <progress :max="max" :value="value"></progress>
 </template>
