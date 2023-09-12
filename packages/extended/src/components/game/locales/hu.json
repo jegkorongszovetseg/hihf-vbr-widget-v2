@@ -19,6 +19,11 @@
     "Hosszabbítás": "Hosszabbítás",
     "Büntetők": "Szétlövés"
   },
+  "gameStats": {
+    "referees": "Játékvezető",
+    "linesmen": "Vonalbíró",
+    "attendance": "Nézőszám"
+  },
   "events": {
     "timeout": "Időkérés",
     "penaltyLength": "{0} p",
@@ -29,7 +34,10 @@
     "saves": "Védések",
     "pim": "Kiállítás percek",
     "advPercent": "Emberelőny kihasználás",
-    "penaltyKilling": "Emberhátrányos védekezés"
+    "penaltyKilling": "Emberhátrányos védekezés",
+    "advantageTime": "Emberelőnyben töltött idő",
+    "advantageTimePP1": "Szimpla előnyben töltött idő",
+    "advantageTimePP2": "Dupla előnyben töltött idő"
   },
   "penalties": {
     "INTRF": "Akadályozás",

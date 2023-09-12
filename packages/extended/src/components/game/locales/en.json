@@ -19,6 +19,11 @@
     "Hosszabbítás": "Overtime",
     "Büntetők": "Shoot Out"
   },
+  "gameStats": {
+    "referees": "Referees",
+    "linesmen": "Linesmen",
+    "attendance": "Attandance"
+  },
   "events": {
     "timeout": "Timeout",
     "penaltyLength": "{0} m",
@@ -29,7 +34,10 @@
     "saves": "Saves",
     "pim": "Penalty minutes",
     "advPercent": "Powerplay",
-    "penaltyKilling": "Penalty killing"
+    "penaltyKilling": "Penalty killing",
+    "advantageTime": "Advantage Time",
+    "advantageTimePP1": "Advantage Time PP1",
+    "advantageTimePP2": "Advantage Time PP2"
   },
   "penalties": {
     "INTRF": "Interference",

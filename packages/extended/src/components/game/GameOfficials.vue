@@ -15,6 +15,8 @@ const props = defineProps({
   },
 });
 
+const { t } = useI18n();
+
 const referees = computed(() => props.gameOfficials?.gameOfficials?.['Játékvezető'].join(', ') ?? '');
 const linesmen = computed(() => props.gameOfficials?.gameOfficials?.['Vonalbíró'].join(', ') ?? '');
 </script>
@@ -22,9 +24,9 @@ const linesmen = computed(() => props.gameOfficials?.gameOfficials?.['Vonalbír�
 <template>
   <div :class="useMainClass('gamecenter-game-stats')">
     <div :class="useMainClass('gamecenter-game-stats-container-wrapper')">
-      <GameStatsContainer title="JÁTÉKVEZETŐ" :data="referees" />
-      <GameStatsContainer title="VONALBÍRÓ" :data="linesmen" />
-      <GameStatsContainer title="NÉZŐSZÁM" :data="gameData?.attendance ?? 0" />
+      <GameStatsContainer :title="t('gameStats.referees')" :data="referees" />
+      <GameStatsContainer :title="t('gameStats.linesmen')" :data="linesmen" />
+      <GameStatsContainer :title="t('gameStats.attendance')" :data="gameData?.attendance ?? 0" />
     </div>
   </div>
 </template>

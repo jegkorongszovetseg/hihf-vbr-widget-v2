@@ -7,7 +7,6 @@ import '../../../packages/shared/dist/css/game-center.css';
 import '../../../packages/shared/dist/css/responsive-table.css';
 import '../../../packages/shared/dist/css/table.css';
 import '../../../packages/shared/dist/css/grid.css';
-// import '../../../packages/shared/dist/css/dropdown.css';
 </script>
 
 <template>
