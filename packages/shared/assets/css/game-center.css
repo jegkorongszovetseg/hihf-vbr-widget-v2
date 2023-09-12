@@ -207,7 +207,7 @@
     }
 
     .is-assists-list {
-      font-size: 0.8125rem;
+      font-size: 0.9375rem;
       color: var(--vbr-widget-primary-color-400);
 
       span::after {

@@ -47,8 +47,12 @@ const { t } = useI18n();
         <p v-if="gameData.gameStatus === 1" class="is-game-status">
           {{ t(`periods.${convertPeriodName(gameData.period)}`) }}
         </p>
-        <p v-if="gameData.isOvertime">Overtime</p>
-        <p v-if="gameData.isShootout">isShootout</p>
+        <p v-if="gameData.isOvertime">
+          <span class="is-badge is-invert">Overtime</span>
+        </p>
+        <p v-if="gameData.isShootout">
+          <span class="is-badge is-invert">isShootout</span>
+        </p>
         <p v-if="gameData.gameStatus === 1" class="is-game-status">{{ gameData.actualTime }}</p>
 
         <GamePeriodProgress :game-data="gameData" />

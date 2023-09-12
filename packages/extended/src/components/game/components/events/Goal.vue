@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { reject } from 'ramda';
+import { reject, isEmpty } from 'ramda';
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
 import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
 import TeamLogo from './TeamLogo.vue';
@@ -17,13 +17,9 @@ const props = defineProps({
   },
 });
 
-const assists = computed(() => reject((player) => !Boolean(player), [props.event.assists1, props.event.assists2]));
-const poi = [
-  { id: 0, name: 'A', number: '01' },
-  { id: 1, name: 'B', number: '02' },
-];
-const homeOnIce = computed(() => poi);
-const awayOnIce = computed(() => poi);
+const assists = computed(() => reject((player) => isEmpty(player), [props.event.assists1, props.event.assists2]));
+const homeOnIce = computed(() => props.event.homeOnIce);
+const awayOnIce = computed(() => props.event.awayOnIce);
 </script>
 
 <template>
@@ -49,7 +45,7 @@ const awayOnIce = computed(() => poi);
       </dt>
       <dt class="is-assists-list">
         <template v-for="assist in assists" :key="assist">
-          <span>{{ assist.firstname }}</span>
+          <span><i>{{ assist.shirt_number }}</i> {{ assist.surname }} {{ assist.firstname }}</span>
         </template>
       </dt>
       <dd class="is-poi-data">
@@ -63,7 +59,7 @@ const awayOnIce = computed(() => poi);
               v-slot:default="{ setRef, show, hide }"
             >
               <li :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide" :tabindex="0">
-                {{ player.number }}
+                {{ player.jersey_number }}
               </li>
             </FloatingPanel>
           </template>
@@ -77,12 +73,12 @@ const awayOnIce = computed(() => poi);
               :offset="2"
               placement="top"
               theme="tooltip"
-              :content="player.name"
+              :content="player.firstName"
               append-to="#event-tooltip-container"
               v-slot:default="{ setRef, show, hide }"
             >
               <li :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide" :tabindex="0">
-                {{ player.number }}
+                {{ player.jersey_number }}
               </li>
             </FloatingPanel>
           </template>
