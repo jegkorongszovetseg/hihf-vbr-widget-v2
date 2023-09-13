@@ -46,7 +46,7 @@ const { t } = useI18n();
   <div>
     <span v-if="event.jerseyNumber === null">{{ t('events.teamPenalty') }}</span>
     <template v-else>
-      <span class="PlayerNr">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
+      <span class="is-player-number"><i>{{ event.jerseyNumber }}</i></span> {{ event.lastName }} {{ event.firstName }}
     </template>
   </div>
 </template>

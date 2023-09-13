@@ -1,5 +1,7 @@
 {
   "localTime": "Local time",
+  "afterOvertime": "Overtime",
+  "afterShootout": "Shootout",
   "gameStatus": {
     "status-1": "Live",
     "status-2": "Game Completed",

@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { reject, isEmpty } from 'ramda';
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
 import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
@@ -16,6 +16,8 @@ const props = defineProps({
     default: true,
   },
 });
+
+const tooltipContainer = ref(null);
 
 const assists = computed(() => reject((player) => isEmpty(player), [props.event.assists1, props.event.assists2]));
 const homeOnIce = computed(() => props.event.homeOnIce);
@@ -45,21 +47,22 @@ const awayOnIce = computed(() => props.event.awayOnIce);
       </dt>
       <dt class="is-assists-list">
         <template v-for="assist in assists" :key="assist">
-          <span><i>{{ assist.shirt_number }}</i> {{ assist.surname }} {{ assist.firstname }}</span>
+          <span><i>{{ assist.jerseyNumber }}</i> {{ assist.lastName }} {{ assist.firstName }}</span>
         </template>
       </dt>
       <dd class="is-poi-data">
         <ul>
-          <template v-for="player in homeOnIce" :key="player.id">
+          <template v-for="player in homeOnIce" :key="player.playerId">
             <FloatingPanel
               :offset="2"
               placement="top"
               theme="tooltip"
-              :content="player.name"
+              :content="`${player.lastName} ${player.firstName}`"
+              :append-to="tooltipContainer"
               v-slot:default="{ setRef, show, hide }"
             >
               <li :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide" :tabindex="0">
-                {{ player.jersey_number }}
+                {{ player.jerseyNumber }}
               </li>
             </FloatingPanel>
           </template>
@@ -68,22 +71,23 @@ const awayOnIce = computed(() => props.event.awayOnIce);
         <span> / </span>
 
         <ul>
-          <template v-for="player in awayOnIce" :key="player.id">
+          <template v-for="player in awayOnIce" :key="player.playerId">
             <FloatingPanel
               :offset="2"
               placement="top"
               theme="tooltip"
-              :content="player.firstName"
-              append-to="#event-tooltip-container"
+              :content="`${player.lastName} ${player.firstName}`"
+              :append-to="tooltipContainer"
               v-slot:default="{ setRef, show, hide }"
             >
               <li :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide" :tabindex="0">
-                {{ player.jersey_number }}
+                {{ player.jerseyNumber }}
               </li>
             </FloatingPanel>
           </template>
         </ul>
       </dd>
     </dl>
+    <div ref="tooltipContainer" />
   </div>
 </template>

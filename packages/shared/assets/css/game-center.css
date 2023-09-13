@@ -190,6 +190,18 @@
       color: var(--vbr-widget-danger-color-a400);
     }
 
+    .is-timer-icon {
+      color: var(--vbr-widget-secondary-color-500);
+    }
+
+    .is-goalie-in-icon {
+      color: var(--vbr-widget-secondary-color-500);
+    }
+
+    .is-goalie-out-icon {
+      color: var(--vbr-widget-danger-color-a400);
+    }
+
     .is-time-cell {
       font-weight: 700;
     }
@@ -204,6 +216,12 @@
       font-weight: 700;
       text-align: center;
       color: var(--vbr-widget-danger-color-a400);
+    }
+
+    .is-goalie-direction {
+      font-size: 0.875rem;
+      text-align: center;
+      color: var(--vbr-widget-primary-color-400);
     }
 
     .is-assists-list {

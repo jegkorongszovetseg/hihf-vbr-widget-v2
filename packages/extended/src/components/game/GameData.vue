@@ -32,7 +32,7 @@ const { t } = useI18n();
       }})
     </div>
     <div class="is-local-gamedate">
-      {{ t('localTime') }} - {{ gameData.location.locationName }}:
+      {{ t('localTime') }} ({{ gameData.location.locationCountryISO }}):
       {{ format(gameData.localGameDate.dateTime, 'L dddd - HH:mm', null, locale) }} ({{
         gameData.localGameDate.timezoneAbbr
       }})
@@ -48,10 +48,10 @@ const { t } = useI18n();
           {{ t(`periods.${convertPeriodName(gameData.period)}`) }}
         </p>
         <p v-if="gameData.isOvertime">
-          <span class="is-badge is-invert">Overtime</span>
+          <span class="is-badge is-invert">{{ t('afterOvertime') }}</span>
         </p>
         <p v-if="gameData.isShootout">
-          <span class="is-badge is-invert">isShootout</span>
+          <span class="is-badge is-invert">{{ t('afterShootout') }}</span>
         </p>
         <p v-if="gameData.gameStatus === 1" class="is-game-status">{{ gameData.actualTime }}</p>
 

@@ -1,5 +1,7 @@
 {
   "localTime": "Helyszín szerinti idő",
+  "afterOvertime": "Hosszabbítás után",
+  "afterShootout": "Szétlövés után",
   "gameStatus": {
     "status-1": "Élő",
     "status-2": "Végeredmény",

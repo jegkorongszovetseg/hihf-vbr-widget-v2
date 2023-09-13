@@ -1,5 +1,7 @@
 <script setup>
 import TeamLogo from './TeamLogo.vue';
+import IconArrowDown from '@mjsz-vbr-elements/shared/icons/IconArrowDown';
+import IconArrowUp from '@mjsz-vbr-elements/shared/icons/IconArrowUp';
 
 defineProps({
   event: {
@@ -19,11 +21,14 @@ defineProps({
   <div class="is-team-logo-cell">
     <TeamLogo :name="event.team.longName" :logo="event.teamLogo" :key="event.team.id" :is-home-team="isHomeTeam" />
   </div>
-  <div class="is-icon-cell">{{ event.type }}</div>
-  <div>{{ event.gkDirection }}</div>
+  <div class="is-icon-cell">
+    <IconArrowUp v-if="event.gkDirection === 'BE'" width="24" height="24" class="is-goalie-in-icon" />
+    <IconArrowDown v-else width="24" height="24" class="is-goalie-out-icon" />
+  </div>
+  <div class="is-goalie-direction">{{ event.gkDirection }}</div>
   <div></div>
   <div></div>
   <div>
-    <span class="">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
+    <span class=""><i>{{ event.jerseyNumber }}</i></span> {{ event.lastName }} {{ event.firstName }}
   </div>
 </template>
