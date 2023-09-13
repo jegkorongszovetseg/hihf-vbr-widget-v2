@@ -55,7 +55,7 @@ const { t } = useI18n();
         </p>
         <p v-if="gameData.gameStatus === 1" class="is-game-status">{{ gameData.actualTime }}</p>
 
-        <GamePeriodProgress :game-data="gameData" />
+        <GamePeriodProgress v-if="gameData.gameStatus === 1" :game-data="gameData" />
 
         <div :class="['is-game-result', { 'is-game-result-live': gameData.gameStatus === 1 }]">
           <span v-if="gameData.gameStatus === 0">-</span>
