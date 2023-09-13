@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 import banner from 'vite-plugin-banner';
-import copy from 'rollup-plugin-copy';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 import { BUILD_FORMATS, compressConfig } from '../build';
 
 import pkg from './package.json';
@@ -19,7 +19,15 @@ export default defineConfig({
         'en-GB'
       )}\n * (c) ${new Date().getFullYear()}\n * description: ${pkg.description}\n * author: ${pkg.author}\n */`,
     }),
-    ...compressConfig,
+    // ...compressConfig,
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'dist/mjsz-vbr-elements.global.js',
+          dest: resolve(__dirname, '../../build'),
+        },
+      ],
+    }),
   ],
 
   build: {
@@ -31,15 +39,6 @@ export default defineConfig({
     },
     copyPublicDir: false,
     rollupOptions: {
-      plugins: [
-        copy({
-          targets: [
-            { src: 'dist/mjsz-vbr-elements.global.js', dest: '../../build' },
-            { src: 'dist/mjsz-vbr-elements.global.js.gz', dest: '../../build' },
-            { src: 'dist/mjsz-vbr-elements.global.js.br', dest: '../../build' },
-          ],
-        }),
-      ],
       external: ['vue', '@mjsz-vbr-elements/core'],
       output: {
         exports: 'named',

@@ -1,4 +1,10 @@
+@import './mixins.css';
+
 .g-row {
+  display: flex;
+}
+
+.g-row-wrap {
   display: flex;
   flex-wrap: wrap;
 }
@@ -22,4 +28,8 @@
 }
 .g-col-auto {
   width: auto;
+}
+
+.g-gap-normal {
+  gap: 20px;
 }
