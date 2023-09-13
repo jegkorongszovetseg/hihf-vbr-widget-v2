@@ -8,7 +8,7 @@
   "files": [
     "dist"
   ],
-  "module": "./dist/mjsz-vbr-elements-core.js",
+  "module": "./src/index.js",
   "exports": {
     ".": {
       "import": "./src/index.js"
@@ -27,7 +27,8 @@
     }
   },
   "publishConfig": {
-    "main": "dist/mjsz-vbr-elements-core.esm.js"
+    "main": "dist/mjsz-vbr-elements-core.global.js",
+    "module": "dist/mjsz-vbr-elements-core.esm.js"
   },
   "scripts": {
     "dev": "vite",

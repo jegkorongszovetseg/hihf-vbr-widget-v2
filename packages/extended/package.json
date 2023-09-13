@@ -12,7 +12,8 @@
     }
   },
   "publishConfig": {
-    "main": "dist/mjsz-vbr-elements-extended.esm.js"
+    "main": "dist/mjsz-vbr-elements-extended.global.js",
+    "module": "dist/mjsz-vbr-elements-extended.esm.js"
   },
   "scripts": {
     "dev": "vite",
