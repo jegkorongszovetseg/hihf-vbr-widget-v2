@@ -256,6 +256,16 @@
         }
       }
     }
+
+    .is-player-number {
+      font-weight: 400;
+      font-style: italic;
+      color: var(--vbr-widget-primary-color-500);
+    }
+
+    .is-light-cell {
+      color: var(--vbr-widget-primary-color-400);
+    }
   }
 
   &-data-table {
