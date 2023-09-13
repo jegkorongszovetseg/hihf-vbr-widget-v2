@@ -11,6 +11,9 @@
       "import": "./src/index.js"
     }
   },
+  "publishConfig": {
+    "main": "dist/mjsz-vbr-elements-extended.esm.js"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
