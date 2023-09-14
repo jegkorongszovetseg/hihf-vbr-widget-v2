@@ -1,19 +1,18 @@
 {
   "name": "@mjsz-vbr-elements/extended",
   "description": "Data visualization for MJSZ VBR",
-  "private": true,
+  "private": false,
   "version": "2.1.0-beta.4",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "type": "module",
   "module": "./src/index.js",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "import": "./src/index.js"
     }
-  },
-  "publishConfig": {
-    "main": "dist/mjsz-vbr-elements-extended.global.js",
-    "module": "dist/mjsz-vbr-elements-extended.esm.js"
   },
   "scripts": {
     "dev": "vite",

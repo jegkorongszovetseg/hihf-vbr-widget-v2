@@ -24,8 +24,9 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: 'dist/mjsz-vbr-elements-extended.global.js',
+          src: 'dist/index.iife.js',
           dest: resolve(__dirname, '../../build'),
+          rename: 'extended.global.js',
         },
       ],
     }),
@@ -35,7 +36,8 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
       name: 'MjszVbrElementsExtended',
-      fileName: (format) => `mjsz-vbr-elements-extended.${BUILD_FORMATS.get(format)}.js`,
+      fileName: 'index',
+      // fileName: (format) => `mjsz-vbr-elements-extended.${BUILD_FORMATS.get(format)}.js`,
       formats: ['es', 'iife'],
     },
     copyPublicDir: false,

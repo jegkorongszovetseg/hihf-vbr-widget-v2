@@ -16,7 +16,7 @@ export default defineConfig({
     lib: {
       entry: [resolve(__dirname, 'index.js')],
       name: 'MjszVbrElementsShared',
-      fileName: 'mjsz-vbr-elements-shared',
+      fileName: 'index',
       formats: ['es'],
     },
     outDir: resolve(__dirname, 'dist/icons'),
