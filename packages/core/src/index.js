@@ -11,6 +11,7 @@ export const createConfig = ({ modules = [], apiKey, gameResolver, teamResolver,
 
   if (modules.length === 0) throw new Error('At least one module must be set');
   modules.forEach((module) => {
-    module?.() ?? module?.register();
+    if (module.register) return module.register();
+    module?.();
   });
 };
