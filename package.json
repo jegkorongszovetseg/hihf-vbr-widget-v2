@@ -2,7 +2,6 @@
   "name": "mjsz-vbr-elements",
   "version": "2.1.0-beta.0",
   "description": "Data visualization for MJSZ VBR",
-  "main": "index.js",
   "packageManager": "pnpm@8.6.12",
   "workspaces": [
     "packages/*",

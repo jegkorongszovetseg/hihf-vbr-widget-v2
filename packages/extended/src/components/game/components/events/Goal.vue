@@ -43,7 +43,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
   <div>
     <dl>
       <dt>
-        <i>{{ event.jerseyNumber }}</i> {{ event.lastName }} {{ event.firstName }}
+        <span class="is-player-number">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
       </dt>
       <dt class="is-assists-list">
         <template v-for="assist in assists" :key="assist">

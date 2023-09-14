@@ -15,7 +15,8 @@
     }
   },
   "publishConfig": {
-    "main": "dist/mjsz-vbr-elements.esm.js"
+    "main": "dist/mjsz-vbr-elements.global.js",
+    "module": "dist/mjsz-vbr-elements.esm.js"
   },
   "scripts": {
     "dev": "vite",

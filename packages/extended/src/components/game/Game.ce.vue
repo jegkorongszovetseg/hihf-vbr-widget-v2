@@ -143,3 +143,4 @@ const hasError = computed(() =>
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/progress.css"></style>

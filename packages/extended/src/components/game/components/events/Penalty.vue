@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
 import IconWhistle from '@mjsz-vbr-elements/shared/icons/IconWhistle';
@@ -16,6 +17,8 @@ defineProps({
   },
 });
 
+const tooltipContainer = ref(null);
+
 const { t } = useI18n();
 </script>
 
@@ -31,22 +34,25 @@ const { t } = useI18n();
       placement="top"
       theme="tooltip"
       :content="t(`penalties.${event.penaltyCause}`)"
+      :append-to="tooltipContainer"
       v-slot:default="{ setRef, show, hide }"
     >
       <span :ref="setRef" :tabindex="0" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">
         {{ event.penaltyCause }}
       </span>
     </FloatingPanel>
+    <div ref="tooltipContainer" />
   </div>
-  <div>
+  <div class="is-light-cell">
     <template v-if="event.penaltyLength !== 0">{{ t('events.penaltyLength', event.penaltyLength) }}</template>
     <template v-if="event.perc === 0">PS</template>
   </div>
-  <div>{{ event.penaltyEnd }}</div>
+  <div class="is-light-cell">{{ event.penaltyEnd }}</div>
   <div>
     <span v-if="event.jerseyNumber === null">{{ t('events.teamPenalty') }}</span>
     <template v-else>
-      <span class="is-player-number"><i>{{ event.jerseyNumber }}</i></span> {{ event.lastName }} {{ event.firstName }}
+      <span class="is-player-number">{{ event.jerseyNumber }}</span>
+      {{ event.lastName }} {{ event.firstName }}
     </template>
   </div>
 </template>
