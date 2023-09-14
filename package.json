@@ -1,6 +1,6 @@
 {
   "name": "@mjsz-vbr-elements/browser",
-  "version": "2.1.0-beta.4",
+  "version": "2.1.0-beta.5",
   "description": "Data visualization for MJSZ VBR",
   "packageManager": "pnpm@8.6.12",
   "workspaces": [
