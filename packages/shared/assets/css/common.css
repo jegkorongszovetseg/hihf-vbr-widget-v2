@@ -156,6 +156,12 @@
   --vbr-widget-gamecenter-team-container-title-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-gamecenter-team-container-title-bg-color: var(--vbr-widget-primary-color-100);
   --vbr-widget-gamecenter-team-container-border-color: var(--vbr-widget-primary-color-100);
+
+  --vbr-widget-gamecenter-events-assitst-list-size: 0.9375rem;
+  --vbr-widget-gamecenter-events-poi-list-size: 0.75rem;
+  --vbr-widget-gamecenter-events-score-size: 1rem;
+  --vbr-widget-gamecenter-events-penalty-size: 0.875rem;
+  --vbr-widget-gamecenter-events-goalie-direction-size: 0.875rem;
 }
 
 .transition-fade-enter-active,

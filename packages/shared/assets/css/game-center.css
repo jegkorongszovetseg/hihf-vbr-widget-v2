@@ -207,25 +207,25 @@
     }
 
     .is-penalty-cell {
-      font-size: 0.875rem;
+      font-size: var(--vbr-widget-gamecenter-events-penalty-size);
       text-align: center;
     }
 
     .is-score {
-      font-size: 1rem;
+      font-size: var(--vbr-widget-gamecenter-events-score-size);
       font-weight: 700;
       text-align: center;
       color: var(--vbr-widget-danger-color-a400);
     }
 
     .is-goalie-direction {
-      font-size: 0.875rem;
+      font-size: var(--vbr-widget-gamecenter-events-goalie-direction-size);
       text-align: center;
       color: var(--vbr-widget-primary-color-400);
     }
 
     .is-assists-list {
-      font-size: 0.9375rem;
+      font-size: var(--vbr-widget-gamecenter-events-assitst-list-size);
       color: var(--vbr-widget-primary-color-400);
 
       span::after {
@@ -238,7 +238,7 @@
     }
 
     .is-poi-data {
-      font-size: 0.75rem;
+      font-size: var(--vbr-widget-gamecenter-events-poi-list-size);
       color: var(--vbr-widget-primary-color-400);
 
       ul {
