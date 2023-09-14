@@ -122,7 +122,14 @@
   --vbr-widget-tab-btn-active-bg-color: var(--vbr-widget-primary-color-0);
   --vbr-widget-tab-btn-active-color: var(--vbr-widget-primary-color-900);
   --vbr-widget-tab-btn-active-border-color: var(--vbr-widget-secondary-color-500);
-  
+
+  --vbr-widget-progress-height: 10px;
+  --vbr-widget-progress-border-radius: 5px;
+  --vbr-widget-progress-bg-color: var(--vbr-widget-primary-color-50);
+  --vbr-widget-progress-bar-color: var(--vbr-widget-live-game-color);
+  --vbr-widget-progress-bar-stripe-color: rgba(255, 255, 255, 0.2);
+  --vbr-widget-progress-bar-stripe-angle: 45deg;
+
   --vbr-widget-gamecenter-result-size: 6rem;
   --vbr-widget-gamecenter-result-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-gamecenter-teamname-size: 1.3125rem;
