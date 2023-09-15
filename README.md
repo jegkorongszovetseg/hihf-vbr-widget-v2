@@ -1,7 +1,38 @@
-# MJSZ VBR Widgets V2
+# MJSZ VBR Elements V2
 
-Versenybírósági rendszer adatainak megjelenítése.
+A Magyar Jégkorong Szövetség versenybírósági rendszer adatainak megjelenítése / Data visualization for HIHF VBR system
+
+## Részletes információ / Documentation:
+[Dokumentáció](https://api.icehockey.hu/widgets/docs/v2/)
+
+## Dev
+
+```sh
+pnpm run playground
+```
 
 ## Build
 
-`pnpm run build`
+```sh
+pnpm run build
+```
+
+## Release
+
+Verziószám növelése:
+
+```sh
+pnpm run release
+```
+
+NPM package publikálása:
+
+```sh
+pnpm run publish:release
+```
+
+Ha szükséges NPM login:
+
+```sh
+npm login
+```
