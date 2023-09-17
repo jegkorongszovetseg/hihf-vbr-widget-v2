@@ -19,7 +19,7 @@ export default defineConfig({
         'en-GB'
       )}\n * (c) ${new Date().getFullYear()}\n * description: ${pkg.description}\n * author: ${pkg.author}\n */`,
     }),
-    // ...compressConfig,
+    ...compressConfig,
     // viteStaticCopy({
     //   targets: [
     //     {
