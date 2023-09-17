@@ -1,7 +1,8 @@
 {
   "name": "@mjsz-vbr-elements/browser",
-  "version": "2.1.0-beta.5",
+  "version": "2.1.0-beta.6",
   "description": "Data visualization for MJSZ VBR",
+  "private": false,
   "packageManager": "pnpm@8.6.12",
   "workspaces": [
     "packages/*",
@@ -14,7 +15,7 @@
     "playground": "pnpm run -C playground dev",
     "build": "rimraf build && pnpm -r --filter='./packages/*' run build",
     "release": "bumpp -r",
-    "publish:release": "pnpm run build && pnpm -r publish --access public"
+    "publish:release": "pnpm run build && pnpm -r publish --access public --no-git-checks --dry-run"
   },
   "keywords": [],
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
