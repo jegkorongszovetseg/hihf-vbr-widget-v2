@@ -2,8 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 import banner from 'vite-plugin-banner';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
-import { BUILD_FORMATS, compressConfig } from '../build';
+import { compressConfig } from '../build';
 
 import pkg from './package.json';
 
@@ -20,15 +19,6 @@ export default defineConfig({
       )}\n * (c) ${new Date().getFullYear()}\n * description: ${pkg.description}\n * author: ${pkg.author}\n */`,
     }),
     ...compressConfig,
-    // viteStaticCopy({
-    //   targets: [
-    //     {
-    //       src: 'dist/index.iife.js',
-    //       dest: resolve(__dirname, '../../build'),
-    //       rename: 'elements.global.js',
-    //     },
-    //   ],
-    // }),
   ],
 
   build: {
@@ -36,7 +26,6 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.js'),
       name: 'MjszVbrElements',
       fileName: 'index',
-      // fileName: (format) => `mjsz-vbr-elements.${BUILD_FORMATS.get(format)}.js`,
       formats: ['es', 'iife'],
     },
     copyPublicDir: false,

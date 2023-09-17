@@ -1,3 +1,4 @@
+import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import VueRouter from 'unplugin-vue-router/vite';
@@ -9,6 +10,13 @@ import presetWind from '@unocss/preset-wind';
 export default defineConfig({
   server: {
     port: 5134,
+  },
+  resolve: {
+    alias: {
+      '@mjsz-vbr-elements/core/*': resolve(__dirname, '../packages/core/src/index.js'),
+      '@mjsz-vbr-elements/elements': resolve(__dirname, '../packages/elements/src/index.js'),
+      '@mjsz-vbr-elements/extended': resolve(__dirname, '../packages/extended/src/index.js'),
+    },
   },
   plugins: [
     VueRouter(),
