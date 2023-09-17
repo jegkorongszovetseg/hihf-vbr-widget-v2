@@ -1,5 +1,5 @@
 {
-  "name": "@mjsz-vbr-elements/browser",
+  "name": "@mjsz-vbr-elements/monorepo",
   "version": "2.1.0-beta.6",
   "description": "Data visualization for MJSZ VBR",
   "private": true,
