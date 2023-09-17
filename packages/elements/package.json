@@ -2,7 +2,7 @@
   "name": "@mjsz-vbr-elements/elements",
   "description": "Data visualization for MJSZ VBR",
   "private": false,
-  "version": "2.1.0-beta.6",
+  "version": "2.1.0-beta.7",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "type": "module",
   "files": [
