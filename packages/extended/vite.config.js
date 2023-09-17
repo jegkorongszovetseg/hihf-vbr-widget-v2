@@ -21,15 +21,15 @@ export default defineConfig({
       )}\n * (c) ${new Date().getFullYear()}\n * description: ${pkg.description}\n * author: ${pkg.author}\n */`,
     }),
     // ...compressConfig,
-    viteStaticCopy({
-      targets: [
-        {
-          src: 'dist/index.iife.js',
-          dest: resolve(__dirname, '../../build'),
-          rename: 'extended.global.js',
-        },
-      ],
-    }),
+    // viteStaticCopy({
+    //   targets: [
+    //     {
+    //       src: 'dist/index.iife.js',
+    //       dest: resolve(__dirname, '../../build'),
+    //       rename: 'extended.global.js',
+    //     },
+    //   ],
+    // }),
   ],
 
   build: {

@@ -8,10 +8,10 @@
   "files": [
     "dist"
   ],
-  "module": "./src/index.js",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
-      "import": "./src/index.js"
+      "import": "./dist/index.js"
     }
   },
   "scripts": {
@@ -19,6 +19,7 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "unpkg": "./dist/index.iife.js",
   "dependencies": {
     "@mjsz-vbr-elements/core": "workspace:^",
     "@mjsz-vbr-elements/shared": "workspace:^",

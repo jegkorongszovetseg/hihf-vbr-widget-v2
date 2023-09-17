@@ -11,19 +11,16 @@
   "module": "./dist/index.js",
   "exports": {
     ".": {
-      "import": "./src/index.js"
+      "import": "./dist/index.js"
     },
     "./components": {
-      "import": "./src/index.js"
+      "import": "./dist/index.js"
     },
     "./composables": {
-      "import": "./src/index.js"
+      "import": "./dist/index.js"
     },
     "./utils": {
-      "import": "./src/index.js"
-    },
-    "./assets/icons/*": {
-      "import": "./src/assets/icons/*.vue"
+      "import": "./dist/index.js"
     }
   },
   "scripts": {
@@ -31,6 +28,7 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "unpkg": "./dist/index.iife.js",
   "dependencies": {
     "@floating-ui/dom": "^1.2.9",
     "@mjsz-vbr-elements/shared": "workspace:^",
