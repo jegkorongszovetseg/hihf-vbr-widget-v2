@@ -1,7 +1,7 @@
 import { SORT_STATE_ASCEND, SORT_STATE_DESCEND } from './constants';
 
 export const COLUMNS_SCHEDULE = {
-  name: {
+  gameName: {
     label: 'table.gameName.short',
     tooltip: 'table.gameName.tooltip',
     class: 'is-text-left is-text-light',

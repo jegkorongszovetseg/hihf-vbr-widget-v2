@@ -14,6 +14,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@mjsz-vbr-elements/core/*': resolve(__dirname, '../packages/core/src/index.js'),
+      '@mjsz-vbr-elements/core/components': resolve(__dirname, '../packages/core/src/index.js'),
+      '@mjsz-vbr-elements/core/composables': resolve(__dirname, '../packages/core/src/index.js'),
+      '@mjsz-vbr-elements/core/utils': resolve(__dirname, '../packages/core/src/index.js'),
       '@mjsz-vbr-elements/elements': resolve(__dirname, '../packages/elements/src/index.js'),
       '@mjsz-vbr-elements/extended': resolve(__dirname, '../packages/extended/src/index.js'),
     },

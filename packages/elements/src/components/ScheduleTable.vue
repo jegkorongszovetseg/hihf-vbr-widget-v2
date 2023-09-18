@@ -71,11 +71,18 @@ const { t } = useI18n();
 <template>
   <ResponsiveTable v-slot:default="{ el: rootElement }">
     <DataTable :columns="columns" :rows="props.rows" :is-loading="isLoading" :append-to="rootElement">
+      
+      <template v-slot:cell-homeTeamName="{ row }">
+        <span>{{ row.homeTeam.longName }}</span>
+      </template>
+      <template v-slot:cell-awayTeamName="{ row }">
+        <span>{{ row.awayTeam.longName }}</span>
+      </template>
       <template v-slot:cell-homeTeamLogo="{ row }">
-        <Image class="is-logo-image is-right" :key="row.id" :src="row.homeTeamLogo" />
+        <Image class="is-logo-image is-right" :key="row.id" :src="row.homeTeam.logo" />
       </template>
       <template v-slot:cell-awayTeamLogo="{ row }">
-        <Image class="is-logo-image is-right" :key="row.id" :src="row.awayTeamLogo" />
+        <Image class="is-logo-image is-right" :key="row.id" :src="row.awayTeam.logo" />
       </template>
       <template v-slot:cell-gameResult="{ row }">
         <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>
@@ -96,6 +103,9 @@ const { t } = useI18n();
       <template v-slot:cell-broadcast="{ row }">
         <IconBroadcast v-if="row.broadcast" />
         <span v-else></span>
+      </template>
+      <template v-slot:cell-location="{ row }">
+        {{ row.location?.locationName ?? '' }}
       </template>
       <template v-slot:cell-more="{ row }">
         <FloatingPanel :offset="2" placement="left" theme="content" :append-to="rootElement">
