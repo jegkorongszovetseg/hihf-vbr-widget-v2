@@ -71,12 +71,13 @@ const { t } = useI18n();
 <template>
   <ResponsiveTable v-slot:default="{ el: rootElement }">
     <DataTable :columns="columns" :rows="props.rows" :is-loading="isLoading" :append-to="rootElement">
-      
       <template v-slot:cell-homeTeamName="{ row }">
-        <span>{{ row.homeTeam.longName }}</span>
+        <span class="is-team-name-long">{{ row.homeTeam.longName }}</span>
+        <span class="is-team-name-short">{{ row.homeTeam.shortName }}</span>
       </template>
       <template v-slot:cell-awayTeamName="{ row }">
-        <span>{{ row.awayTeam.longName }}</span>
+        <span class="is-team-name-long">{{ row.awayTeam.longName }}</span>
+        <span class="is-team-name-short">{{ row.awayTeam.shortName }}</span>
       </template>
       <template v-slot:cell-homeTeamLogo="{ row }">
         <Image class="is-logo-image is-right" :key="row.id" :src="row.homeTeam.logo" />
@@ -88,7 +89,7 @@ const { t } = useI18n();
         <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>
         <a
           v-else
-          :href="externalGameResolver(row.id)"
+          :href="externalGameResolver(row.gameId)"
           target="_blank"
           :class="{ 'is-text-dark': row.gameStatus !== 1, 'is-text-accent': row.gameStatus === 1 }"
         >
