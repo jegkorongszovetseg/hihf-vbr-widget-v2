@@ -10,5 +10,3 @@ export const compressConfig = [
     filter: (file) => file.includes('iife'),
   }),
 ];
-
-export const BUILD_FORMATS = new Map().set('iife', 'global').set('es', 'esm');
