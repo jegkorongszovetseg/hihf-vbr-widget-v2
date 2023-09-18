@@ -24,7 +24,7 @@ const locale = computed(() => props.locale);
 
 const { state: rows, isLoading } = useAsyncState(
   () =>
-    fetchVBRData('/v1/standings', props.apiKey, {
+    fetchVBRData('/v2/standings', props.apiKey, {
       championshipId: Number(props.championshipId),
       division: props.division,
     }),
