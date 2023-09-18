@@ -1,5 +1,6 @@
 import { ref, watch, computed, unref } from 'vue';
 import { useAsyncQueue, useTimeoutPoll } from '@vueuse/core';
+import { isEmpty } from 'ramda';
 import { useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
 import { convertMinToSec } from '@mjsz-vbr-elements/core/utils';
 import { callFunctions, rawPeriodIndex } from './internal.js';
@@ -60,5 +61,25 @@ export function usePeriodTime(gameData = {}) {
   return {
     value,
     max: periodLengthSec,
+  };
+}
+
+export function useApiErrors() {
+  const errors = ref([]);
+
+  function add(key, message) {
+    errors.value.push({ key, message });
+  }
+
+  function remove(key) {
+    if (isEmpty(errors.value)) return;
+    const index = errors.value.findIndex((error) => error.key === key);
+    errors.value.splice(index, 1);
+  }
+
+  return {
+    errors,
+    add,
+    remove,
   };
 }
