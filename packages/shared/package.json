@@ -8,10 +8,10 @@
   "files": [
     "dist"
   ],
-  "module": "./dist/index.js",
+  "module": "./dist/icons/index.js",
   "exports": {
     ".": {
-      "import": "./dist/icons/mjsz-vbr-elements-shared.js"
+      "import": "./dist/icons/index.js"
     },
     "./icons/*": {
       "import": "./dist/icons/*.js"
