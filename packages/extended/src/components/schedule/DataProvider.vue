@@ -74,7 +74,7 @@ const teamFilterTypes = computed(() => {
 
 const { isLoading: seasonsLoading, execute: fetchSeasons } = useServices({
   options: {
-    path: '/v1/championshipSeasons',
+    path: '/v2/championship-seasons',
     apiKey: props.apiKey,
     params: { championshipName: state.championshipName },
   },
@@ -84,7 +84,7 @@ const { isLoading: seasonsLoading, execute: fetchSeasons } = useServices({
 
 const { isLoading: sectionLoading, execute: fetchSection } = useServices({
   options: {
-    path: '/v1/championshipSections',
+    path: '/v2/championship-sections',
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId })),
   },
@@ -94,7 +94,7 @@ const { isLoading: sectionLoading, execute: fetchSection } = useServices({
 
 const { isLoading: teamsLoading, execute: fetchTeams } = useServices({
   options: {
-    path: '/v1/championshipTeams',
+    path: '/v2/championship-teams',
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId })),
   },
@@ -108,7 +108,7 @@ const {
   execute: fetchSchedule,
 } = useServices({
   options: {
-    path: '/v1/gamesList',
+    path: '/v2/games-list',
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId, division: state.section })),
   },
