@@ -21,7 +21,7 @@ const { t } = useI18n();
 <template>
   <div class="is-time-cell">{{ event.eventTime }}</div>
   <div class="is-team-logo-cell">
-    <TeamLogo :name="event.team.longName" :logo="event.teamLogo" :key="event.team.id" :is-home-team="isHomeTeam" />
+    <TeamLogo :name="event.team.longName" :logo="event.team.logo" :key="event.team.id" :is-home-team="isHomeTeam" />
   </div>
   <div class="is-icon-cell"><IconTimer class="is-timer-icon" /></div>
   <div></div>

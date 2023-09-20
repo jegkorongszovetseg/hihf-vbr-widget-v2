@@ -27,7 +27,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
 <template>
   <div class="is-time-cell">{{ event.eventTime }}</div>
   <div class="is-team-logo-cell">
-    <TeamLogo :name="event.team.longName" :logo="event.teamLogo" :key="event.team.id" :is-home-team="isHomeTeam" />
+    <TeamLogo :name="event.team.longName" :logo="event.team.logo" :key="event.team.id" :is-home-team="isHomeTeam" />
   </div>
   <div class="is-icon-cell"><IconHockeyPuck class="is-goal-icon" /></div>
   <div class="is-score">{{ event.score }}</div>

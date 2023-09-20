@@ -1,5 +1,5 @@
 <script setup>
-import { computed, unref } from 'vue';
+import { computed, ref, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { useSort, useErrorProvider, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
 import { externalTeamLinkResolver, convert } from '@mjsz-vbr-elements/core/utils';
@@ -17,6 +17,8 @@ const props = defineProps({
     validator: (value) => ['2', '3'].includes(value),
   },
 });
+
+const tooltipContainer = ref(null);
 
 const { onError, error, hasError } = useErrorProvider();
 
@@ -60,8 +62,11 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
         :sort="sort"
         :external-team-resolver="resolveExternalTeamLink"
         :is-team-linked="isTeamLinked"
+        :append-to="tooltipContainer"
         @sort="onSort"
       />
+
+      <div ref="tooltipContainer" />
     </I18NProvider>
   </div>
 </template>

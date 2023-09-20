@@ -54,6 +54,11 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+
+  appendTo: {
+    type: HTMLElement,
+    default: null,
+  }
 });
 
 const emit = defineEmits(['sort']);
@@ -80,7 +85,7 @@ const onSort = (payload) => emit('sort', payload);
       :sort="props.sort"
       :rows="props.rows"
       :is-loading="isLoading"
-      :append-to="rootElement"
+      :append-to="appendTo || rootElement"
       @sort="onSort"
     >
       <template v-slot:cell-index="{ row }">
