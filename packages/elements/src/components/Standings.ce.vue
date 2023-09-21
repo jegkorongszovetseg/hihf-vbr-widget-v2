@@ -1,5 +1,5 @@
 <script setup>
-import { computed, unref } from 'vue';
+import { computed, ref, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { useSort, useErrorProvider, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
 import { externalTeamLinkResolver, convert } from '@mjsz-vbr-elements/core/utils';
@@ -18,13 +18,15 @@ const props = defineProps({
   },
 });
 
+const tooltipContainer = ref(null);
+
 const { onError, error, hasError } = useErrorProvider();
 
 const locale = computed(() => props.locale);
 
 const { state: rows, isLoading } = useAsyncState(
   () =>
-    fetchVBRData('/v1/standings', props.apiKey, {
+    fetchVBRData('/v2/standings', props.apiKey, {
       championshipId: Number(props.championshipId),
       division: props.division,
     }),
@@ -60,8 +62,11 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
         :sort="sort"
         :external-team-resolver="resolveExternalTeamLink"
         :is-team-linked="isTeamLinked"
+        :append-to="tooltipContainer"
         @sort="onSort"
       />
+
+      <div ref="tooltipContainer" />
     </I18NProvider>
   </div>
 </template>

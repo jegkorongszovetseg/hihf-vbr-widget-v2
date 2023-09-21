@@ -63,7 +63,7 @@ const {
   execute,
 } = useAsyncState(
   () =>
-    fetchVBRData('/v1/gamesList', props.apiKey, {
+    fetchVBRData('/v2/games-list', props.apiKey, {
       championshipId: props.championshipId,
       division: props.division,
     }),

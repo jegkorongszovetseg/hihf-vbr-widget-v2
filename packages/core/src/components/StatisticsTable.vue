@@ -54,6 +54,11 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+
+  appendTo: {
+    type: HTMLElement,
+    default: null,
+  }
 });
 
 const emit = defineEmits(['sort']);
@@ -80,7 +85,7 @@ const onSort = (payload) => emit('sort', payload);
       :sort="props.sort"
       :rows="props.rows"
       :is-loading="isLoading"
-      :append-to="rootElement"
+      :append-to="appendTo || rootElement"
       @sort="onSort"
     >
       <template v-slot:cell-index="{ row }">
@@ -94,10 +99,17 @@ const onSort = (payload) => emit('sort', payload);
         </div>
       </template>
       <template v-slot:cell-teamLogo="{ row }">
-        <Image class="is-logo-image" :key="row.teamId || row.id" :src="row.teamLogo" />
+        <Image class="is-logo-image" :key="row.team.id || row.id" :src="row.team.logo" />
+      </template>
+      <template v-slot:cell-teamName="{ row }">
+        <span class="is-team-name-long">{{ row.team.longName }}</span>
+        <span class="is-team-name-short">{{ row.team.shortName }}</span>
       </template>
       <template v-if="isTeamLinked" v-slot:cell-teamName="{ row }">
-        <a :href="externalTeamResolver(row.teamName)" target="_blank">{{ row.teamName }}</a>
+        <a :href="externalTeamResolver(row.team.longName)" target="_blank">
+          <span class="is-team-name-long">{{ row.team.longName }}</span>
+          <span class="is-team-name-short">{{ row.team.shortName }}</span>
+        </a>
       </template>
       <template v-if="isPlayerLinked" v-slot:cell-name="{ row }">
         <a :href="externalPlayerResolver(row.id)" target="_blank">{{ row.name }}</a>

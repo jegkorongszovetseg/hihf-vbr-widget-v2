@@ -164,6 +164,22 @@
     a:hover {
       color: var(--vbr-widget-hover-color);
     }
+
+    .is-team-name-long {
+      display: block;
+    }
+    .is-team-name-short {
+      display: none;
+    }
+
+    @container table-wrapper (max-width: 768px) {
+      .is-team-name-long {
+        display: none;
+      }
+      .is-team-name-short {
+        display: block;
+      }
+    }
   }
 
   th,

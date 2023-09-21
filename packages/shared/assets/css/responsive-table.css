@@ -1,4 +1,7 @@
 .table-responsive {
+  container-name: table-wrapper;
+  container-type: inline-size;
+
   width: 100%;
   overflow-x: auto;
 }
