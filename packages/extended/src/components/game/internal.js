@@ -126,7 +126,7 @@ export function callFunctions() {
   }
 }
 
-export const convertPeriodName = (name) => replace('. ', '-', name);
+export const convertPeriodName = (name) => replace('. ', '-', name || '');
 
 export const rawPeriodIndex = (gameData) => {
   const periodResults = gameData?.periodResults ?? '';
