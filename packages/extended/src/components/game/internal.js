@@ -141,7 +141,7 @@ export const rawPeriodIndex = (gameData) => {
 };
 
 export const convertPeriodEvents = (gameData, gameEvents) => {
-  const pariodLength = rawPeriodIndex(gameData);
+  const pariodLength = gameData?.actualPeriod ?? rawPeriodIndex(gameData);
   let periods = {};
   if (gameData.isShootout) {
     periods['Büntetők'] = [];

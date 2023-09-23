@@ -20,7 +20,7 @@ const { max, value } = usePeriodTime(computed(() => props.gameData));
         'progress-bar-animated'
       )}`"
       role="progressbar"
-      :style="`transform: scaleX(${value / max})`"
+      :style="`width: ${(value / max)*100}%`"
       :aria-valuenow="value"
       aria-valuemin="0"
       :aria-valuemax="max"

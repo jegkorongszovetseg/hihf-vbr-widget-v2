@@ -16,7 +16,6 @@
   color: var(--vbr-widget-primary-color-0);
   text-align: center;
   white-space: nowrap;
-  transform-origin: left;
   background-color: var(--vbr-widget-progress-bar-color);
 }
 
