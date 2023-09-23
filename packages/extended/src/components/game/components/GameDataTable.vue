@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { ResponsiveTable, DataTable } from '@mjsz-vbr-elements/core/components';
 
@@ -25,6 +26,8 @@ const props = defineProps({
 });
 const emit = defineEmits(['sort']);
 
+const tooltipContainer = ref(null);
+
 const onSort = (payload) => emit('sort', payload);
 </script>
 
@@ -35,10 +38,11 @@ const onSort = (payload) => emit('sort', payload);
       <DataTable
         :columns="props.columns"
         :rows="props.rows"
-        :append-to="rootElement"
+        :append-to="tooltipContainer || rootElement"
         :sort="sort"
         @sort="onSort"
       ></DataTable>
     </ResponsiveTable>
+    <div ref="tooltipContainer" />
   </div>
 </template>
