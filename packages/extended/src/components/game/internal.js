@@ -151,7 +151,7 @@ export const convertPeriodEvents = (gameData, gameEvents) => {
     periods['Hosszabbítás'] = [];
   }
   for (let i = pariodLength; i > 0; i--) {
-    periods[`${i}. harmad`] = [];
+    periods[`${i}. játékrész`] = [];
   }
   const events = mergeRight(periods, gameEvents);
   return events;

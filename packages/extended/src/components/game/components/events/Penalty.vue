@@ -33,18 +33,18 @@ const { t } = useI18n();
       :offset="2"
       placement="top"
       theme="tooltip"
-      :content="t(`penalties.${event.penaltyCause}`)"
+      :content="t(`penalties.${event.penaltyCause.toUpperCase()}`)"
       :append-to="tooltipContainer"
       v-slot:default="{ setRef, show, hide }"
     >
       <span :ref="setRef" :tabindex="0" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">
-        {{ event.penaltyCause }}
+        {{ event.penaltyCause.toUpperCase() }}
       </span>
     </FloatingPanel>
     <div ref="tooltipContainer" />
   </div>
   <div class="is-light-cell">
-    <template v-if="event.penaltyLength !== 0">{{ t('events.penaltyLength', event.penaltyLength) }}</template>
+    <template v-if="event.penaltyLength !== 0">{{ t('events.penaltyLength', [event.penaltyLength]) }}</template>
     <template v-if="event.perc === 0">PS</template>
   </div>
   <div class="is-light-cell">{{ event.penaltyEnd }}</div>

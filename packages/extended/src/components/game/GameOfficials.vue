@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { reject, compose, join } from 'ramda';
+import { reject, compose, join, map } from 'ramda';
 import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import GameStatsContainer from './components/GameStatsContainer.vue';
 
@@ -21,14 +21,16 @@ const { t } = useI18n();
 const referees = computed(() =>
   compose(
     join(', '),
+    map((item)=> `${item.lastName} ${item.firstName}`),
     reject((item) => !Boolean(item))
-  )(props.gameOfficials?.gameOfficials?.['Játékvezető'] ?? [])
+  )(props.gameOfficials?.gameOfficials?.['Első játékvezető'] ?? [])
 );
 const linesmen = computed(() =>
   compose(
     join(', '),
+    map((item)=> `${item.lastName} ${item.firstName}`),
     reject((item) => !Boolean(item))
-  )(props.gameOfficials?.gameOfficials?.['Vonalbíró'] ?? [])
+  )(props.gameOfficials?.gameOfficials?.['Első vonalbíró'] ?? [])
 );
 </script>
 

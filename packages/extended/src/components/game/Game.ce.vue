@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { compose, groupBy, prop, reverse, isEmpty } from 'ramda';
+import { compose, groupBy, prop, reverse, isEmpty, toUpper, map } from 'ramda';
 import { useUrlSearchParams } from '@vueuse/core';
 import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { I18NProvider, ErrorNotice } from '@mjsz-vbr-elements/core/components';
@@ -94,36 +94,38 @@ getGameOfficials();
 
       <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
 
-      <GameOfficials v-if="!isEmpty(gameData)" :game-data="gameData" :game-officials="gameOfficials" />
+      <template v-if="gameData?.gameStatus > 0">
+        <GameOfficials v-if="!isEmpty(gameData)" :game-data="gameData" :game-officials="gameOfficials" />
 
-      <GameStats v-if="!isEmpty(gameStats)" :game-data="gameData" :game-stats="gameStats" />
+        <!-- <GameStats v-if="!isEmpty(gameStats)" :game-data="gameData" :game-stats="gameStats" /> -->
 
-      <GameEvents v-if="!isEmpty(gameEvents) && !isEmpty(gameData)" :game-events="gameEvents" :game-data="gameData" />
+        <GameEvents v-if="!isEmpty(gameEvents) && !isEmpty(gameData)" :game-events="gameEvents" :game-data="gameData" />
 
-      <GamePlayersStats
-        v-if="!isEmpty(gameStats)"
-        :data="gameStats.players"
-        :home-team-id="gameData.homeTeam.id"
-        :home-team-name="gameData.homeTeam.longName"
-        :away-team-id="gameData.awayTeam.id"
-        :away-team-name="gameData.awayTeam.longName"
-      />
+        <GamePlayersStats
+          v-if="!isEmpty(gameStats)"
+          :data="gameStats.players"
+          :home-team-id="gameData.homeTeam.id"
+          :home-team-name="gameData.homeTeam.longName"
+          :away-team-id="gameData.awayTeam.id"
+          :away-team-name="gameData.awayTeam.longName"
+        />
 
-      <GameGoaliesStats
-        v-if="!isEmpty(gameStats)"
-        :data="gameStats.goalies"
-        :home-team-id="gameData.homeTeam.id"
-        :home-team-name="gameData.homeTeam.longName"
-        :away-team-id="gameData.awayTeam.id"
-        :away-team-name="gameData.awayTeam.longName"
-      />
+        <!-- <GameGoaliesStats
+          v-if="!isEmpty(gameStats)"
+          :data="gameStats.goalies"
+          :home-team-id="gameData.homeTeam.id"
+          :home-team-name="gameData.homeTeam.longName"
+          :away-team-id="gameData.awayTeam.id"
+          :away-team-name="gameData.awayTeam.longName"
+        /> -->
 
-      <GameTeamsOfficials
-        v-if="!isEmpty(gameOfficials) && !isEmpty(gameData)"
-        :game-officials="gameOfficials"
-        :home-team-name="gameData.homeTeam.longName"
-        :away-team-name="gameData.awayTeam.longName"
-      />
+        <GameTeamsOfficials
+          v-if="!isEmpty(gameOfficials) && !isEmpty(gameData)"
+          :game-officials="gameOfficials"
+          :home-team-name="gameData.homeTeam.longName"
+          :away-team-name="gameData.awayTeam.longName"
+        />
+      </template>
     </I18NProvider>
   </div>
 </template>

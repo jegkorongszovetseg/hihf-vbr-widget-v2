@@ -1,5 +1,5 @@
 import { ref, watch, computed, unref } from 'vue';
-import { useAsyncQueue, useTimeoutPoll } from '@vueuse/core';
+import { useTimeoutPoll } from '@vueuse/core';
 import { isEmpty } from 'ramda';
 import { useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
 import { convertMinToSec } from '@mjsz-vbr-elements/core/utils';
@@ -10,11 +10,9 @@ const DEAFULT_PERIOD_LENGTH_MIN = 20;
 export function handleServices(options = {}) {
   const { data, interval, services = [] } = options;
 
-  const isRefreshable = ref(false);
+  const isRefreshable = ref(true);
 
-  useAsyncQueue([...services]);
-
-  const { resume, pause, isActive } = useTimeoutPoll(() => callFunctions(...services), interval, { immediate: false });
+  const { resume, pause, isActive } = useTimeoutPoll(() => callFunctions(...services), interval, { immediate: true });
   useVisibilityChange(isRefreshable, resume, pause);
 
   watch(data, (data) => {

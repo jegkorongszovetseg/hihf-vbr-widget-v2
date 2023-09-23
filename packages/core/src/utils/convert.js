@@ -136,6 +136,13 @@ export const playerName = (row) => ({
   ...(row.lastName && { name: `${row.lastName} ${row.firstName}` }),
 });
 
+export const upperCase =
+  (prop = []) =>
+  (row) => ({
+    ...row,
+    [prop]: row[prop]?.toUpperCase(),
+  });
+
 export const convertTimes =
   (targets = []) =>
   (row) => {
