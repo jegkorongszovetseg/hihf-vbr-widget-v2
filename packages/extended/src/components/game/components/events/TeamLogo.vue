@@ -26,8 +26,15 @@ const defaultSrc = computed(() => (props.isHomeTeam ? DEAFULT_LOGO_TEAM_A : DEAF
 </script>
 
 <template>
-  <FloatingPanel :offset="2" placement="top" theme="tooltip" :content="name" :append-to="tooltipContainer" v-slot:default="{ setRef, show, hide }">
-    <span :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide" :tabindex="0">
+  <FloatingPanel
+    :offset="2"
+    placement="top"
+    theme="tooltip"
+    :content="name"
+    :append-to="tooltipContainer"
+    v-slot:default="{ setRef, show, hide }"
+  >
+    <span :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide" @click="show" :tabindex="0">
       <Image :src="logo" :default-src="defaultSrc" />
     </span>
   </FloatingPanel>

@@ -37,7 +37,7 @@ const { t } = useI18n();
       :append-to="tooltipContainer"
       v-slot:default="{ setRef, show, hide }"
     >
-      <span :ref="setRef" :tabindex="0" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">
+      <span :ref="setRef" :tabindex="0" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide" @click="show">
         {{ event.penaltyCause.toUpperCase() }}
       </span>
     </FloatingPanel>

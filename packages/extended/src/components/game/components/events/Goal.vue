@@ -47,7 +47,9 @@ const awayOnIce = computed(() => props.event.awayOnIce);
       </dt>
       <dt class="is-assists-list">
         <template v-for="assist in assists" :key="assist">
-          <span><i>{{ assist.jerseyNumber }}</i> {{ assist.lastName }} {{ assist.firstName }}</span>
+          <span
+            ><i>{{ assist.jerseyNumber }}</i> {{ assist.lastName }} {{ assist.firstName }}</span
+          >
         </template>
       </dt>
       <dd class="is-poi-data">
@@ -61,7 +63,15 @@ const awayOnIce = computed(() => props.event.awayOnIce);
               :append-to="tooltipContainer"
               v-slot:default="{ setRef, show, hide }"
             >
-              <li :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide" :tabindex="0">
+              <li
+                :ref="setRef"
+                :tabindex="0"
+                @mouseenter="show"
+                @mouseleave="hide"
+                @focus="show"
+                @blur="hide"
+                @click="show"
+              >
                 {{ player.jerseyNumber }}
               </li>
             </FloatingPanel>
@@ -80,7 +90,15 @@ const awayOnIce = computed(() => props.event.awayOnIce);
               :append-to="tooltipContainer"
               v-slot:default="{ setRef, show, hide }"
             >
-              <li :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide" :tabindex="0">
+              <li
+                :ref="setRef"
+                :tabindex="0"
+                @mouseenter="show"
+                @mouseleave="hide"
+                @focus="show"
+                @blur="hide"
+                @click="show"
+              >
                 {{ player.jerseyNumber }}
               </li>
             </FloatingPanel>
