@@ -35,9 +35,9 @@ const { t } = useI18n();
       theme="tooltip"
       :content="t(`penalties.${event.penaltyCause.toUpperCase()}`)"
       :append-to="tooltipContainer"
-      v-slot:default="{ setRef, show, hide }"
+      v-slot:default="{ setRef, events }"
     >
-      <span :ref="setRef" :tabindex="0" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide" @click="show">
+      <span :ref="setRef" :tabindex="0" v-on="events">
         {{ event.penaltyCause.toUpperCase() }}
       </span>
     </FloatingPanel>

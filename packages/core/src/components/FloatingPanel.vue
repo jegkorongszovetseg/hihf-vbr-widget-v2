@@ -67,7 +67,6 @@ const events = {
   mouseleave: hide,
   focus: show,
   blur: hide,
-  click: show,
 };
 
 onClickOutside(floating, (event) => {

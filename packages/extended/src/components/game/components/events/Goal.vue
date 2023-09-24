@@ -61,17 +61,9 @@ const awayOnIce = computed(() => props.event.awayOnIce);
               theme="tooltip"
               :content="`${player.lastName} ${player.firstName}`"
               :append-to="tooltipContainer"
-              v-slot:default="{ setRef, show, hide }"
+              v-slot:default="{ setRef, events }"
             >
-              <li
-                :ref="setRef"
-                :tabindex="0"
-                @mouseenter="show"
-                @mouseleave="hide"
-                @focus="show"
-                @blur="hide"
-                @click="show"
-              >
+              <li :ref="setRef" :tabindex="0" v-on="events">
                 {{ player.jerseyNumber }}
               </li>
             </FloatingPanel>
@@ -88,17 +80,9 @@ const awayOnIce = computed(() => props.event.awayOnIce);
               theme="tooltip"
               :content="`${player.lastName} ${player.firstName}`"
               :append-to="tooltipContainer"
-              v-slot:default="{ setRef, show, hide }"
+              v-slot:default="{ setRef, events }"
             >
-              <li
-                :ref="setRef"
-                :tabindex="0"
-                @mouseenter="show"
-                @mouseleave="hide"
-                @focus="show"
-                @blur="hide"
-                @click="show"
-              >
+              <li :ref="setRef" :tabindex="0" v-on="events">
                 {{ player.jerseyNumber }}
               </li>
             </FloatingPanel>
