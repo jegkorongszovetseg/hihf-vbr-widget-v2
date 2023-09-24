@@ -1,4 +1,4 @@
-import { replace, compose, reject, test, split, mergeRight } from 'ramda';
+import { replace, compose, reject, test, split, mergeAll } from 'ramda';
 
 import { SORT_STATE_DESCEND, SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
 
@@ -153,7 +153,7 @@ export const convertPeriodEvents = (gameData, gameEvents) => {
   for (let i = pariodLength; i > 0; i--) {
     periods[`${i}. játékrész`] = [];
   }
-  const events = mergeRight(periods, gameEvents);
+  const events = mergeAll(gameEvents, periods);
   return events;
 };
 
@@ -216,3 +216,8 @@ export const buildDvgPercent = (data, { home, away }) => {
 export const convertTeamMembersToRows = (data) => {
   return Object.keys(data).map((member) => ({ member, name: data[member] }));
 };
+
+function logObject(name, data) {
+  console.log(name);
+  return Object.keys(data).map((key) => console.log(key));
+}
