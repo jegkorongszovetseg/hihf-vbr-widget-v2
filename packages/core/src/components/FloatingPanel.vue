@@ -3,7 +3,6 @@ import { computed, ref } from 'vue';
 import { flip, shift, offset } from '@floating-ui/dom';
 import { onClickOutside } from '@vueuse/core';
 import { useFloating, arrow } from '../composables/useFloating';
-// import { useMainClass } from '../composables/useMainClass';
 
 const props = defineProps({
   disabled: {
@@ -37,8 +36,6 @@ const props = defineProps({
   },
 });
 
-// const mainClassName = useMainClass('floating-content');
-
 const open = ref(false);
 const arrowRef = ref(null);
 
@@ -51,15 +48,26 @@ const { x, y, arrowX, arrowY, placement, reference, floating, strategy } = useFl
 
 const show = () => {
   if (props.disabled) return;
+  if (open.value) return;
   open.value = true;
 };
 
-const hide = () => {
+const hide = (event) => {
+  if (!open.value) return;
+  if (!event) return;
   open.value = false;
 };
 
 const setSlotRef = (el) => {
   reference.value = el;
+};
+
+const events = {
+  mouseenter: show,
+  mouseleave: hide,
+  focus: show,
+  blur: hide,
+  click: show,
 };
 
 onClickOutside(floating, (event) => {
@@ -69,7 +77,7 @@ onClickOutside(floating, (event) => {
 </script>
 
 <template>
-  <slot :set-ref="setSlotRef" :show="show" :hide="hide"></slot>
+  <slot :set-ref="setSlotRef" :show="show" :hide="hide" :events="events"></slot>
   <div
     ref="floating"
     :data-placement="placement"
