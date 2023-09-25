@@ -40,7 +40,7 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
       :append-to="tooltipContainer"
       v-slot:default="{ setRef, events }"
     >
-      <span :ref="setRef" :tabindex="0" v-on="events">
+      <span :ref="setRef" :tabindex="0" :aria-label="t(`penalties.${convertedEvent.penaltyCause}`)" v-on="events">
         {{ convertedEvent.penaltyCause }}
       </span>
     </FloatingPanel>

@@ -63,7 +63,12 @@ const awayOnIce = computed(() => props.event.awayOnIce);
               :append-to="tooltipContainer"
               v-slot:default="{ setRef, events }"
             >
-              <li :ref="setRef" :tabindex="0" v-on="events">
+              <li
+                :ref="setRef"
+                :tabindex="0"
+                :aria-label="`${player.jerseyNumber} ${player.lastName} ${player.firstName}`"
+                v-on="events"
+              >
                 {{ player.jerseyNumber }}
               </li>
             </FloatingPanel>
@@ -82,7 +87,12 @@ const awayOnIce = computed(() => props.event.awayOnIce);
               :append-to="tooltipContainer"
               v-slot:default="{ setRef, events }"
             >
-              <li :ref="setRef" :tabindex="0" v-on="events">
+              <li
+                :ref="setRef"
+                :tabindex="0"
+                :aria-label="`${player.jerseyNumber} ${player.lastName} ${player.firstName}`"
+                v-on="events"
+              >
                 {{ player.jerseyNumber }}
               </li>
             </FloatingPanel>
