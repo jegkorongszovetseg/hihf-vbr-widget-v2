@@ -1,11 +1,12 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
 import IconWhistle from '@mjsz-vbr-elements/shared/icons/IconWhistle';
+import { convertPenaltyCause } from '../../internal';
 import TeamLogo from './TeamLogo.vue';
 
-defineProps({
+const props = defineProps({
   event: {
     type: Object,
     required: true,
@@ -20,6 +21,8 @@ defineProps({
 const tooltipContainer = ref(null);
 
 const { t } = useI18n();
+
+const convertedEvent = computed(() => convertPenaltyCause(props.event));
 </script>
 
 <template>
@@ -33,12 +36,12 @@ const { t } = useI18n();
       :offset="2"
       placement="top"
       theme="tooltip"
-      :content="t(`penalties.${event.penaltyCause.toUpperCase()}`)"
+      :content="t(`penalties.${convertedEvent.penaltyCause}`)"
       :append-to="tooltipContainer"
       v-slot:default="{ setRef, events }"
     >
       <span :ref="setRef" :tabindex="0" v-on="events">
-        {{ event.penaltyCause.toUpperCase() }}
+        {{ convertedEvent.penaltyCause }}
       </span>
     </FloatingPanel>
     <div ref="tooltipContainer" />

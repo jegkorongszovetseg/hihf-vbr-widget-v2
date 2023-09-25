@@ -1,4 +1,4 @@
-import { replace, compose, reject, test, split, mergeAll } from 'ramda';
+import { replace, toUpper, compose, reject, test, split, mergeAll } from 'ramda';
 
 import { SORT_STATE_DESCEND, SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
 
@@ -216,6 +216,11 @@ export const buildDvgPercent = (data, { home, away }) => {
 export const convertTeamMembersToRows = (data) => {
   return Object.keys(data).map((member) => ({ member, name: data[member] }));
 };
+
+export const convertPenaltyCause = (event) => ({
+  ...event,
+  penaltyCause: compose(toUpper, replace('_', '-'))(event.penaltyCause),
+});
 
 function logObject(name, data) {
   console.log(name);
