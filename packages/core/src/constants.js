@@ -1,6 +1,4 @@
-// export const VBR_API_BASE_URL = 'http://localhost:3333/vbr';
-export const VBR_API_BASE_URL = 'https://api.icehockey.hu/vbr';
-// export const VBR_API_BASE_URL = 'https://preprodapi.icehockey.hu/vbr';
+export const VBR_API_BASE_URL = import.meta.env.VITE_VBR_API_URL;
 
 export const DEFAULT_EXTERNAL_BASE_URL = 'https://www.jegkorongszovetseg.hu/event/game/';
 

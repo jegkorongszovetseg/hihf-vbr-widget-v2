@@ -11,6 +11,7 @@ export default defineConfig({
   server: {
     port: 5134,
   },
+  envDir: resolve(__dirname, '../'),
   resolve: {
     alias: {
       '@mjsz-vbr-elements/core/*': resolve(__dirname, '../packages/core/src/index.js'),

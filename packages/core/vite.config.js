@@ -11,6 +11,7 @@ export default defineConfig({
   resolve: {
     dedupe: ['@mjsz-vbr-elements/shared'],
   },
+  envDir: resolve(__dirname, '../../'),
   plugins: [
     vue(),
     banner({
