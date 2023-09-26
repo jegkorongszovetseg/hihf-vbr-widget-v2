@@ -19,7 +19,7 @@
     .is-title {
       color: var(--vbr-widget-gamecenter-title-color);
       font-size: var(--vbr-widget-gamecenter-title-size);
-      font-weight: 700;
+      font-weight: var(--vbr-widget-gamecenter-title-weight);
       text-transform: uppercase;
     }
 
@@ -38,14 +38,16 @@
 
     .is-game-result {
       color: var(--vbr-widget-gamecenter-result-color);
-      font-weight: 700;
+      font-weight: var(--vbr-widget-gamecenter-result-weight);
       font-size: var(--vbr-widget-gamecenter-result-size);
       line-height: var(--vbr-widget-gamecenter-result-size);
     }
 
     .is-team-name {
+      display: block;
+      padding: 8px 0;
       color: var(--vbr-widget-gamecenter-teamname-color);
-      font-weight: 700;
+      font-weight: var(--vbr-widget-gamecenter-teamname-weight);
       font-size: var(--vbr-widget-gamecenter-teamname-size);
     }
 
@@ -130,7 +132,10 @@
 
     .is-period-header {
       padding: 10px 20px;
+      font-size: var(--vbr-widget-gamecenter-period-header-size);
+      font-weight: var(--vbr-widget-gamecenter-period-header-weight);
       text-align: center;
+      text-transform: uppercase;
       color: var(--vbr-widget-gamecenter-period-header-color);
       background-color: var(--vbr-widget-gamecenter-period-header-bg-color);
     }

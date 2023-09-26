@@ -131,11 +131,14 @@
   --vbr-widget-progress-bar-stripe-angle: 45deg;
 
   --vbr-widget-gamecenter-result-size: 6rem;
+  --vbr-widget-gamecenter-result-weight: 700;
   --vbr-widget-gamecenter-result-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-gamecenter-teamname-size: 1.3125rem;
   --vbr-widget-gamecenter-teamname-color: var(--vbr-widget-primary-color-800);
+  --vbr-widget-gamecenter-teamname-weight: 700;
   --vbr-widget-gamecenter-title-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-gamecenter-title-size: 1rem;
+  --vbr-widget-gamecenter-title-weight: 700;
   --vbr-widget-gamecenter-gamedate-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-gamecenter-gamedate-size: 1rem;
   --vbr-widget-gamecenter-local-gamedate-color: var(--vbr-widget-primary-color-500);
@@ -146,6 +149,8 @@
   --vbr-widget-gamecenter-periodresults-size: 1.3125rem;
   --vbr-widget-gamecenter-period-header-bg-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-gamecenter-period-header-color: var(--vbr-widget-primary-color-0);
+  --vbr-widget-gamecenter-period-header-size: 0.8125rem;
+  --vbr-widget-gamecenter-period-header-weight: 500;
   --vbr-widget-gamecenter-stats-bg-color: var(--vbr-widget-primary-color-50);
   --vbr-widget-gamecenter-stats-border-color: var(--vbr-widget-primary-color-100);
   --vbr-widget-gamecenter-stats-title-size: 0.8125rem;

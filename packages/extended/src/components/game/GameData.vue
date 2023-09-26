@@ -38,9 +38,9 @@ const { t } = useI18n();
       }})
     </div>
     <div class="is-teams-and-results">
-      <div class="is-team-name">
+      <div>
         <Image :src="gameData.homeTeam.logo" class="is-team-logo" :default-src="DEAFULT_LOGO_TEAM_A" />
-        {{ gameData.homeTeam.longName }}
+        <h1 class="is-team-name">{{ gameData.homeTeam.longName }}</h1>
       </div>
       <div>
         <p v-if="gameData.gameStatus > 1" class="is-game-status">{{ t(`gameStatus.status-${gameData.gameStatus}`) }}</p>
@@ -65,9 +65,9 @@ const { t } = useI18n();
         </div>
         <p class="is-period-results">{{ gameData.periodResults }}</p>
       </div>
-      <div class="is-team-name">
+      <div>
         <Image :src="gameData.awayTeam.logo" :default-src="DEAFULT_LOGO_TEAM_B" class="is-team-logo" />
-        {{ gameData.awayTeam.longName }}
+        <h1 class="is-team-name">{{ gameData.awayTeam.longName }}</h1>
       </div>
     </div>
   </div>
