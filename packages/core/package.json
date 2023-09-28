@@ -3,7 +3,7 @@
   "description": "Data visualization for MJSZ VBR",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "private": false,
-  "version": "2.1.0-beta.14",
+  "version": "2.1.0-beta.15",
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
   "type": "module",
   "files": [
