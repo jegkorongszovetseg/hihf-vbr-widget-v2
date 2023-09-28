@@ -44,7 +44,7 @@ const { t } = useI18n();
       </div>
       <div>
         <p v-if="gameData.gameStatus > 1" class="is-game-status">{{ t(`gameStatus.status-${gameData.gameStatus}`) }}</p>
-        <p class="is-game-status">
+        <p v-if="gameData.gameStatus === 1" class="is-game-status">
           {{ t(`periods.${convertPeriodName(gameData.period)}`) }}
         </p>
         <p v-if="gameData.isOvertime">
