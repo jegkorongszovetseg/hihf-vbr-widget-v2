@@ -6,7 +6,7 @@ import { store } from '../store.js';
   <div class="p-5">
     <mjsz-vbr-schedule
       :locale="store.locale"
-      championship-id="3314"
+      championship-id="3451"
       division="Alapszakasz"
       auto-initial-page
       auto-refresh
