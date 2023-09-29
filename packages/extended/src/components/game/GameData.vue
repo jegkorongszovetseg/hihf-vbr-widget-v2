@@ -33,7 +33,7 @@ const { t } = useI18n();
     </div>
     <div class="is-local-gamedate">
       {{ t('localTime') }} ({{ gameData.location.locationCountryISO }}):
-      {{ format(gameData.localGameDate.dateTime, 'L dddd - HH:mm', null, locale) }} ({{
+      {{ format(gameData.localGameDate.dateTime, 'L dddd - HH:mm', gameData.localGameDate.timezone, locale) }} ({{
         gameData.localGameDate.timezoneAbbr
       }})
     </div>
