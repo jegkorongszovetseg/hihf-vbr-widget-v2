@@ -1,4 +1,4 @@
-import { replace, toUpper, compose, reject, test, split, mergeAll } from 'ramda';
+import { replace, toUpper, compose, reject, test, split, mergeAll, mergeLeft } from 'ramda';
 
 import { SORT_STATE_DESCEND, SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
 
@@ -58,7 +58,7 @@ export const PLAYER_STATS_COLUMNS = {
     tooltip: 'table.plusMinus.tooltip',
     sortOrders: [{ target: 'plusMinus', direction: SORT_STATE_DESCEND }],
   },
-  shoot: {
+  shots: {
     label: 'table.sog.short',
     tooltip: 'table.sog.tooltip',
     sortOrders: [{ target: 'shoot', direction: SORT_STATE_DESCEND }],
@@ -144,16 +144,17 @@ export const convertPeriodEvents = (gameData, gameEvents) => {
   const pariodLength = gameData?.actualPeriod ?? rawPeriodIndex(gameData);
   let periods = {};
   if (gameData.isShootout) {
-    periods['Büntetők'] = [];
-    periods['Hosszabbítás'] = [];
+    periods['so'] = [];
+    periods['ot'] = [];
   }
   if (gameData.isOvertime) {
-    periods['Hosszabbítás'] = [];
+    periods['ot'] = [];
   }
   for (let i = pariodLength; i > 0; i--) {
-    periods[`${i}. játékrész`] = [];
+    periods[`p${i}`] = [];
   }
-  const events = mergeAll(gameEvents, periods);
+  const events = mergeLeft(gameEvents, periods);
+
   return events;
 };
 

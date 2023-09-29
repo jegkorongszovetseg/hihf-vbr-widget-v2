@@ -21,16 +21,19 @@ const { t } = useI18n();
 const referees = computed(() =>
   compose(
     join(', '),
-    map((item)=> `${item.lastName} ${item.firstName}`),
+    map((item) => `${item.lastName} ${item.firstName}`),
     reject((item) => !Boolean(item))
-  )(props.gameOfficials?.gameOfficials?.['Első játékvezető'] ?? [])
+  )([props.gameOfficials?.gameOfficials?.['first_referee'], props.gameOfficials?.gameOfficials?.['second_referee']])
 );
 const linesmen = computed(() =>
   compose(
     join(', '),
-    map((item)=> `${item.lastName} ${item.firstName}`),
+    map((item) => `${item.lastName} ${item.firstName}`),
     reject((item) => !Boolean(item))
-  )(props.gameOfficials?.gameOfficials?.['Első vonalbíró'] ?? [])
+  )([
+    props.gameOfficials?.gameOfficials?.['first_line_judge'],
+    props.gameOfficials?.gameOfficials?.['second_line_judge'],
+  ])
 );
 </script>
 
