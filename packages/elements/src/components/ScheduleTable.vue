@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { whenever } from '@vueuse/core';
 import { COLUMNS_SCHEDULE, DEFAULT_EXTERNAL_BASE_URL } from '@mjsz-vbr-elements/core';
 import { useColumns, useI18n, useError } from '@mjsz-vbr-elements/core/composables';
@@ -42,6 +42,8 @@ const props = defineProps({
   },
 });
 
+const tooltipContainer = ref(null);
+
 const { onError } = useError();
 
 const { columns, error } = useColumns(
@@ -70,7 +72,12 @@ const { t } = useI18n();
 
 <template>
   <ResponsiveTable v-slot:default="{ el: rootElement }">
-    <DataTable :columns="columns" :rows="props.rows" :is-loading="isLoading" :append-to="rootElement">
+    <DataTable
+      :columns="columns"
+      :rows="props.rows"
+      :is-loading="isLoading"
+      :append-to="tooltipContainer || rootElement"
+    >
       <template v-slot:cell-homeTeamName="{ row }">
         <span class="is-team-name-long">{{ row.homeTeam.longName }}</span>
         <span class="is-team-name-short">{{ row.homeTeam.shortName }}</span>
@@ -80,10 +87,10 @@ const { t } = useI18n();
         <span class="is-team-name-short">{{ row.awayTeam.shortName }}</span>
       </template>
       <template v-slot:cell-homeTeamLogo="{ row }">
-        <Image class="is-logo-image is-right" :key="row.id" :src="row.homeTeam.logo" />
+        <Image class="is-logo-image is-right" :key="row.homeTeam.id" :src="row.homeTeam.logo" />
       </template>
       <template v-slot:cell-awayTeamLogo="{ row }">
-        <Image class="is-logo-image is-right" :key="row.id" :src="row.awayTeam.logo" />
+        <Image class="is-logo-image is-right" :key="row.awayTeam.id" :src="row.awayTeam.logo" />
       </template>
       <template v-slot:cell-gameResult="{ row }">
         <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>
@@ -139,4 +146,5 @@ const { t } = useI18n();
       </template>
     </DataTable>
   </ResponsiveTable>
+  <div ref="tooltipContainer" />
 </template>
