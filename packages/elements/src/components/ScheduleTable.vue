@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { whenever } from '@vueuse/core';
-import { COLUMNS_SCHEDULE, DEFAULT_EXTERNAL_BASE_URL } from '@mjsz-vbr-elements/core';
+import { COLUMNS_SCHEDULE } from '@mjsz-vbr-elements/core';
 import { useColumns, useI18n, useError } from '@mjsz-vbr-elements/core/composables';
 import { WidgetError, UndefinedColumn } from '@mjsz-vbr-elements/core/utils';
 import { FloatingPanel, ResponsiveTable, Image, DataTable, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
@@ -21,11 +21,6 @@ const props = defineProps({
     deafult: false,
   },
 
-  externalBaseUrl: {
-    type: String,
-    default: DEFAULT_EXTERNAL_BASE_URL,
-  },
-
   hideColumns: {
     type: String,
     default: '',
@@ -39,6 +34,11 @@ const props = defineProps({
   externalGameResolver: {
     type: Function,
     required: true,
+  },
+
+  externalGameResolverTarget: {
+    type: String,
+    default: '_blank',
   },
 });
 
@@ -97,7 +97,7 @@ const { t } = useI18n();
         <a
           v-else
           :href="externalGameResolver(row.gameId)"
-          target="_blank"
+          :target="externalGameResolverTarget"
           :class="{ 'is-text-dark': row.gameStatus !== 1, 'is-text-accent': row.gameStatus === 1 }"
         >
           {{ row.homeTeamScore }}:{{ row.awayTeamScore }}
@@ -117,15 +117,19 @@ const { t } = useI18n();
       </template>
       <template v-slot:cell-more="{ row }">
         <FloatingPanel :offset="2" placement="left" theme="content" :append-to="rootElement">
-          <template v-slot:default="{ setRef, show }">
-            <button :ref="setRef" @click.stop="show">
+          <template v-slot:default="{ setRef, show, hide }">
+            <button :ref="setRef" @click.stop="show" @focus="show" @blur="hide">
               <IconMore />
             </button>
           </template>
           <template v-slot:content>
             <ul class="is-dropdown-menu">
               <li>
-                <a :href="externalBaseUrl + row.id" class="is-dropdown-item" target="_blank">
+                <a
+                  :href="externalGameResolver(row.gameId)"
+                  class="is-dropdown-item"
+                  :target="externalGameResolverTarget"
+                >
                   <IconSheet width="14" />
                   {{ t('common.report') }}
                 </a>

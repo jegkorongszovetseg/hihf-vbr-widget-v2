@@ -2,7 +2,13 @@
 import { computed, ref, unref, watch } from 'vue';
 import { useAsyncState, useDocumentVisibility, useTimeoutPoll } from '@vueuse/core';
 import { useErrorProvider, usePage, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
-import { convert, sortGames, getLocalTimezone, offsetName, externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
+import {
+  convert,
+  sortGames,
+  getLocalTimezone,
+  offsetName,
+  externalGameLinkResolver,
+} from '@mjsz-vbr-elements/core/utils';
 import { REFRESH_DELAY } from '@mjsz-vbr-elements/core';
 import { I18NProvider, Paginator, ErrorNotice, TimezoneSelector } from '@mjsz-vbr-elements/core/components';
 import { baseProps } from '@mjsz-vbr-elements/core';
@@ -40,6 +46,11 @@ const props = defineProps({
   externalGameLink: {
     type: [String, Function],
     default: '',
+  },
+
+  isTargetExternal: {
+    type: Boolean,
+    default: false,
   },
 
   timezoneSelector: {
@@ -116,6 +127,7 @@ const onTimezoneChange = (tz) => {
 };
 
 const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
+const externalGameResolverTarget = computed(() => (props.isTargetExternal ? '_blank' : '_self'));
 </script>
 
 <template>
@@ -136,6 +148,7 @@ const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.exter
         :is-loading="isLoading"
         :offset-name="currentOffsetName"
         :hide-columns="props.hideColumns"
+        :external-game-resolver-target="externalGameResolverTarget"
         :external-game-resolver="resolveExternalGameLink"
       />
 

@@ -10,6 +10,7 @@ import { store } from '../store.js';
       division="Alapszakasz"
       auto-initial-page
       auto-refresh
+      is-target-external
       timezone-selector
     />
   </div>
