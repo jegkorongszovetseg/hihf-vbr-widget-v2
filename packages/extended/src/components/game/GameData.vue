@@ -47,17 +47,19 @@ const { t } = useI18n();
         <p v-if="gameData.gameStatus === 1" class="is-game-status">
           {{ t(`periods.${convertPeriodName(gameData.period)}`) }}
         </p>
-        <p v-if="gameData.isOvertime">
-          <span class="is-badge is-invert">{{ t('afterOvertime') }}</span>
-        </p>
-        <p v-if="gameData.isShootout">
-          <span class="is-badge is-invert">{{ t('afterShootout') }}</span>
-        </p>
+        <template v-if="gameData.gameStatus > 1">
+          <p v-if="gameData.isOvertime">
+            <span class="is-badge is-invert">{{ t('afterOvertime') }}</span>
+          </p>
+          <p v-if="gameData.isShootout">
+            <span class="is-badge is-invert">{{ t('afterShootout') }}</span>
+          </p>
+        </template>
         <p v-if="gameData.gameStatus === 1" class="is-game-status">{{ gameData.actualTime }}</p>
 
         <GamePeriodProgress v-if="gameData.gameStatus === 1" :game-data="gameData" />
 
-        <div :class="['is-game-result', { 'is-game-result-live': gameData.gameStatus === 1 }]">
+        <div :class="['is-game-result', { 'is-game-status-live': gameData.gameStatus === 1 }]">
           <span v-if="gameData.gameStatus === 0">-</span>
           <span v-else>{{ gameData.homeTeamScore }}</span
           >:<span v-if="gameData.gameStatus === 0">-</span>

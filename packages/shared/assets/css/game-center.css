@@ -68,6 +68,10 @@
       width: 128px;
       height: 128px;
     }
+
+    .is-game-status-live {
+      color: var(--vbr-widget-live-game-color);
+    }
   }
 
   &-game-stats {
