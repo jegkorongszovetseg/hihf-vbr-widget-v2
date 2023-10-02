@@ -1,4 +1,7 @@
 .is-card {
+  container-name: card-row;
+  container-type: inline-size;
+
   background-color: #fff;
   padding: 15px;
   margin-bottom: 20px;
@@ -22,6 +25,19 @@
 
   svg {
     display: block;
+  }
+
+  .is-team-name-short {
+    display: none;
+  }
+
+  @container card-row (max-width: 768px) {
+    .is-team-name-long {
+      display: none;
+    }
+    .is-team-name-short {
+      display: block;
+    }
   }
 
   .is-info {

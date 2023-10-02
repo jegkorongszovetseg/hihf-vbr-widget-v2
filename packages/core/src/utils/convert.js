@@ -11,7 +11,7 @@ import {
   map,
   pipe,
   prop,
-  propEq,
+  path,
   sortWith,
   toLower,
   groupBy,
@@ -36,7 +36,7 @@ export const convert = (data = []) => {
     filter(name, condition = [], exact = false) {
       if (name) {
         const predicate = condition.map((key) =>
-          exact ? propEq(key, name) : pipe(prop(key), toLower, includes(name))
+          exact ? pipe(path(key), equals(name)) : pipe(prop(key), toLower, includes(name))
         );
         const filteredRows = filter(anyPass([...predicate]), this.result);
         this.isFiltered = true;

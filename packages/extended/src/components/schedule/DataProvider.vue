@@ -64,11 +64,14 @@ const { onError } = useError();
 const teamFilterTypes = computed(() => {
   switch (state.selectedTeamGameType) {
     case 'all':
-      return ['homeTeamId', 'awayTeamId'];
+      return [
+        ['homeTeam', 'id'],
+        ['awayTeam', 'id'],
+      ];
     case 'home':
-      return ['homeTeamId'];
+      return [['homeTeam', 'id']];
     default:
-      return ['awayTeamId'];
+      return [['awayTeam', 'id']];
   }
 });
 
@@ -176,7 +179,7 @@ const changeTeam = (value) => {
   if (!value) {
     state.selectedTeamGameType = 'all';
     params.selectedTeamGameType = null;
-  } 
+  }
 };
 
 const changeTeamType = (value) => {

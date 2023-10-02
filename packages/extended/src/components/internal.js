@@ -1,4 +1,4 @@
-import { head, compose, ascend, descend, map, pick, prop, sort } from 'ramda';
+import { head, compose, ascend, descend, map, pick, prop, sort, path } from 'ramda';
 import { InvalidSeasonName, WidgetError } from '@mjsz-vbr-elements/core/utils';
 
 export const transformSeasons = (seasons, state) => {
@@ -8,10 +8,10 @@ export const transformSeasons = (seasons, state) => {
 };
 
 export const transformSections = (sections, state) => {
-  state.sections = sections.sectionName;
-  if (state.sections && !state.sections.includes(state.section)) {
-    state.section = head(state.sections);
-  }
+  state.sections = path([0, 'phases'], sections);
+  // if (state.sections && !state.sections.includes(state.section)) {
+  state.section = compose(prop('phaseName'), head)(state.sections);
+  // }
 };
 
 export const transformTeams = (teams, state) => {

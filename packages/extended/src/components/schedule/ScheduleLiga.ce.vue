@@ -105,11 +105,11 @@ const onTimezoneChange = (tz) => {
           <div :class="sectionSelectorMainClass">
             <button
               v-for="rawSection in sections"
-              :key="rawSection"
-              @click="changeSection(rawSection)"
-              :class="[tabButtonClasses, { 'is-active': rawSection === section }]"
+              :key="rawSection.phaseId"
+              @click="changeSection(rawSection.phaseName)"
+              :class="[tabButtonClasses, { 'is-active': rawSection.phaseName === section }]"
             >
-              {{ rawSection }}
+              {{ rawSection.phaseName }}
             </button>
           </div>
 
