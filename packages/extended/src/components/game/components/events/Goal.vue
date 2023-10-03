@@ -43,7 +43,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
   <div></div>
   <div>
     <dl>
-      <dt>
+      <dt class="is-evented-person">
         <span class="is-player-number">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
       </dt>
       <dt class="is-assists-list">

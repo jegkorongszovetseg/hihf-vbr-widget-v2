@@ -163,6 +163,8 @@
   --vbr-widget-gamecenter-team-container-title-bg-color: var(--vbr-widget-primary-color-100);
   --vbr-widget-gamecenter-team-container-border-color: var(--vbr-widget-primary-color-100);
 
+  --vbr-widget-gamecenter-events-evented-person-size: 1rem;
+  --vbr-widget-gamecenter-events-evented-person-weight: 500;
   --vbr-widget-gamecenter-events-assitst-list-size: 0.9375rem;
   --vbr-widget-gamecenter-events-poi-list-size: 0.75rem;
   --vbr-widget-gamecenter-events-score-size: 1rem;

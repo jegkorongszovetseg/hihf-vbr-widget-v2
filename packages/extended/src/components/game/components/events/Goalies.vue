@@ -28,7 +28,7 @@ defineProps({
   <div class="is-goalie-direction">{{ event.gkDirection }}</div>
   <div></div>
   <div></div>
-  <div>
+  <div class="is-evented-person">
     <span class="is-player-number">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
   </div>
 </template>

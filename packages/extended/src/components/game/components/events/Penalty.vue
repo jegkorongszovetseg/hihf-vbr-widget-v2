@@ -51,7 +51,7 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
     <template v-if="event.perc === 0">PS</template>
   </div>
   <div class="is-light-cell">{{ event.penaltyEnd }}</div>
-  <div>
+  <div class="is-evented-person">
     <span v-if="event.jerseyNumber === null">{{ t('events.teamPenalty') }}</span>
     <template v-else>
       <span class="is-player-number">{{ event.jerseyNumber }}</span>

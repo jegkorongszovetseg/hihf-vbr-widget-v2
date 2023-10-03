@@ -281,6 +281,11 @@
       color: var(--vbr-widget-primary-color-400);
     }
 
+    .is-evented-person {
+      font-size: var(--vbr-widget-gamecenter-events-evented-person-size);
+      font-weight: var(--vbr-widget-gamecenter-events-evented-person-weight);
+    }
+
     .is-assists-list {
       font-size: var(--vbr-widget-gamecenter-events-assitst-list-size);
       color: var(--vbr-widget-primary-color-400);

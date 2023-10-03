@@ -34,11 +34,7 @@ const { t } = useI18n();
   <div>
     <!-- <span v-if="event.gws" class="">GWS</span> -->
   </div>
-  <div>
-    <dl>
-      <dt>
-        <span class="is-player-number">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
-      </dt>
-    </dl>
+  <div class="is-evented-person">
+    <span class="is-player-number">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
   </div>
 </template>
