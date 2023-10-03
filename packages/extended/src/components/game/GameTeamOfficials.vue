@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { useMainClass, useColumns } from '@mjsz-vbr-elements/core/composables';
+import { useMainClass, useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
 import GameDataTable from './components/GameDataTable.vue';
 import { TEAM_OFFICIALS_COLUMNS, convertTeamMembersToRows } from './internal';
 
@@ -23,8 +23,10 @@ const props = defineProps({
 
 const { columns } = useColumns(TEAM_OFFICIALS_COLUMNS);
 
-const homeTeamMembers = computed(() => convertTeamMembersToRows(props.gameOfficials?.gameTeamMembers?.home ?? {}));
-const awayTeamMembers = computed(() => convertTeamMembersToRows(props.gameOfficials?.gameTeamMembers?.away ?? {}));
+const { t } = useI18n();
+
+const homeTeamMembers = computed(() => convertTeamMembersToRows(props.gameOfficials?.gameTeamMembers?.home ?? [], t));
+const awayTeamMembers = computed(() => convertTeamMembersToRows(props.gameOfficials?.gameTeamMembers?.away ?? [], t));
 </script>
 
 <template>

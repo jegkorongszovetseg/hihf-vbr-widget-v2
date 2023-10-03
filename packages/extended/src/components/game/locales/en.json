@@ -71,6 +71,11 @@
     "advantageTimePP1": "Advantage Time PP1",
     "advantageTimePP2": "Advantage Time PP2"
   },
+  "teamMembers": {
+    "entry_team_leader": "Team leader",
+    "entry_second_coach": "Assistant Coach",
+    "entry_head_coach": "Coach"
+  },
   "penalties": {
     "INTRF": "Interference",
     "GK-INT": "Interference on a Goaltender",

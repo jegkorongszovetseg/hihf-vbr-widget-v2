@@ -1,4 +1,4 @@
-import { replace, toUpper, compose, reject, test, split, mergeAll, mergeLeft } from 'ramda';
+import { replace, toUpper, compose, reject, test, split, map, sortBy, indexOf, prop, mergeAll, mergeLeft } from 'ramda';
 
 import { SORT_STATE_DESCEND, SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
 
@@ -108,7 +108,7 @@ export const GOALIES_STATS_COLUMNS = {
 };
 
 export const TEAM_OFFICIALS_COLUMNS = {
-  member: {
+  role: {
     label: 'table.teamOfficials.short',
     tooltip: 'table.teamOfficials.tooltip',
     class: 'is-text-left',
@@ -214,8 +214,10 @@ export const buildDvgPercent = (data, { home, away }) => {
   return `(${homePPGA}/${homeDVG}) <b>${homePKPercent}%</b> / (${awayPPGA}/${awayDVG}) <b>${awayPKPercent}%</b>`;
 };
 
-export const convertTeamMembersToRows = (data) => {
-  return Object.keys(data).map((member) => ({ member, name: data[member] }));
+export const convertTeamMembersToRows = (data, t) => {
+  const members = (member) => ({ ...member, role: t(`teamMembers.${member.role}`) });
+  const sort = (item) => indexOf(item.role, ['entry_head_coach', 'entry_second_coach', 'entry_team_leader']);
+  return compose(map(members), sortBy(sort))(data);
 };
 
 export const convertPenaltyCause = (event) => ({

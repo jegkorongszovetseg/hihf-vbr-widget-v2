@@ -71,6 +71,11 @@
     "advantageTimePP1": "Szimpla előnyben töltött idő",
     "advantageTimePP2": "Dupla előnyben töltött idő"
   },
+  "teamMembers": {
+    "entry_team_leader": "Csapatvezető",
+    "entry_second_coach": "Másodedző",
+    "entry_head_coach": "Vezetőedző"
+  },
   "penalties": {
     "INTRF": "Akadályozás",
     "GK-INT": "Akadályozás (kapussal szemben)",
