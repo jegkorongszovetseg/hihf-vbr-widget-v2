@@ -2,6 +2,8 @@
   "localTime": "Helyszín szerinti idő",
   "afterOvertime": "Hosszabbítás után",
   "afterShootout": "Szétlövés után",
+  "sheet": "Jegyzőkönyv",
+  "video": "Videó",
   "gameStatus": {
     "status-1": "Élő",
     "status-2": "Végeredmény",
@@ -59,7 +61,9 @@
     "timeout": "Időkérés",
     "penaltyLength": "{0} p",
     "teamPenalty": "Csapat Büntetés",
-    "noEventsInPeriod": "Nem történt esemény a játékrészben"
+    "noEventsInPeriod": "Nem történt esemény a játékrészben",
+    "score": "Gól",
+    "missed": "Kimaradt"
   },
   "teamsStats": {
     "sog": "Kapura lövések",
@@ -74,7 +78,10 @@
   "teamMembers": {
     "entry_team_leader": "Csapatvezető",
     "entry_second_coach": "Másodedző",
-    "entry_head_coach": "Vezetőedző"
+    "entry_head_coach": "Vezetőedző",
+    "entry_official_person_1": "Hivatalos személy",
+    "entry_official_person_2": "Hivatalos személy",
+    "entry_official_person_3": "Hivatalos személy"
   },
   "penalties": {
     "INTRF": "Akadályozás",

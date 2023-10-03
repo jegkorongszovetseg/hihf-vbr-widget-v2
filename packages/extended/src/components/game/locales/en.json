@@ -2,6 +2,8 @@
   "localTime": "Local time",
   "afterOvertime": "Overtime",
   "afterShootout": "Shootout",
+  "sheet": "Game sheet",
+  "video": "Video",
   "gameStatus": {
     "status-1": "Live",
     "status-2": "Game Completed",
@@ -59,7 +61,9 @@
     "timeout": "Timeout",
     "penaltyLength": "{0} m",
     "teamPenalty": "Team Penalty",
-    "noEventsInPeriod": "No event in this period"
+    "noEventsInPeriod": "No event in this period",
+    "score": "Score",
+    "missed": "Missed"
   },
   "teamsStats": {
     "sog": "Shot on Goal",
@@ -74,7 +78,10 @@
   "teamMembers": {
     "entry_team_leader": "Team leader",
     "entry_second_coach": "Assistant Coach",
-    "entry_head_coach": "Coach"
+    "entry_head_coach": "Coach",
+    "entry_official_person_1": "Team Official",
+    "entry_official_person_2": "Team Official",
+    "entry_official_person_3": "Team Official"
   },
   "penalties": {
     "INTRF": "Interference",

@@ -106,6 +106,7 @@
   --vbr-widget-badge-bg-color: var(--vbr-widget-primary-color-50);
   --vbr-widget-badge-color: var(--vbr-widget-primary-color-400);
   --vbr-widget-badge-font-size: 0.625rem;
+  --vbr-widget-badge-large-font-size: 0.6875rem;
 
   --vbr-widget-tab-btn-padding: 0.625rem 1rem;
   --vbr-widget-tab-btn-font-size: 1rem;
@@ -144,7 +145,7 @@
   --vbr-widget-gamecenter-local-gamedate-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-gamecenter-local-gamedate-size: 0.8125rem;
   --vbr-widget-gamecenter-gamestatus-color: var(--vbr-widget-primary-color-600);
-  --vbr-widget-gamecenter-gamestatus-size: 1rem;
+  --vbr-widget-gamecenter-gamestatus-size: 0.9375rem;
   --vbr-widget-gamecenter-periodresults-color: var(--vbr-widget-primary-color-600);
   --vbr-widget-gamecenter-periodresults-size: 1.3125rem;
   --vbr-widget-gamecenter-period-header-bg-color: var(--vbr-widget-primary-color-800);
@@ -290,5 +291,15 @@ a {
   &.is-invert {
     color: var(--vbr-widget-badge-bg-color);
     background-color: var(--vbr-widget-badge-color);
+  }
+
+  &.is-green {
+    color: var(--vbr-widget-primary-color-0);
+    background-color: var(--vbr-widget-live-game-color);
+  }
+
+  &.is-large {
+    font-size: var(--vbr-widget-badge-large-font-size);
+    padding: 0.15rem 0.35rem;
   }
 }

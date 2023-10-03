@@ -1,6 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue';
-import { reject, isEmpty } from 'ramda';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
 import TeamLogo from './TeamLogo.vue';
 
@@ -16,6 +15,7 @@ const props = defineProps({
   },
 });
 
+const { t } = useI18n();
 </script>
 
 <template>
@@ -23,16 +23,16 @@ const props = defineProps({
   <div class="is-team-logo-cell">
     <TeamLogo :name="event.team.longName" :logo="event.team.logo" :key="event.team.id" :is-home-team="isHomeTeam" />
   </div>
-  <div class="is-icon-cell"><IconHockeyPuck class="is-goal-icon" /></div>
-  <div class="is-score">{{ event.score }}</div>
+  <div class="is-icon-cell"><IconHockeyPuck class="is-goal-so-icon" /></div>
+  <div :class="['is-score-so', { 'is-score-so-goal': event.goal }]">{{ event.score }}</div>
   <div>
-    <span class="is-badge">
-      {{ event.advantage }}
+    <span :class="['is-badge is-large', { 'is-green': event.goal }]">
+      <template v-if="event.goal">{{ t('events.score') }}</template>
+      <template v-else>{{ t('events.missed') }}</template>
     </span>
   </div>
   <div>
-    <span v-if="event.gws" class="">GWG</span>
-    <span v-if="event.ps" class="">PS</span>
+    <!-- <span v-if="event.gws" class="">GWS</span> -->
   </div>
   <div>
     <dl>

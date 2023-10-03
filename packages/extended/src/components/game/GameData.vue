@@ -2,6 +2,8 @@
 import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
 import { Image } from '@mjsz-vbr-elements/core/components';
+import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
+import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
 import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from './internal';
 import GamePeriodProgress from './components/GamePeriodProgress.vue';
 
@@ -22,21 +24,35 @@ const { t } = useI18n();
 
 <template>
   <div :class="useMainClass('gamecenter-game-data')">
-    <div class="is-title">
-      {{ gameData.championshipName }} - {{ gameData.divisionName }} - {{ gameData.gameName }} /
-      {{ gameData.location.locationName }}
+    <div class="is-title-container">
+      <div class="is-title">
+        {{ gameData.championshipName }} - {{ gameData.divisionName }} - {{ gameData.gameName }} /
+        {{ gameData.location.locationName }}
+      </div>
+      <div class="is-gamedate">
+        {{ format(gameData.gameDate, 'L dddd - HH:mm', null, locale) }} ({{
+          offsetName(new Date(gameData.gameDate), null, locale)
+        }})
+      </div>
+      <div class="is-local-gamedate">
+        {{ t('localTime') }} ({{ gameData.location.locationName }}):
+        {{ format(gameData.localGameDate.dateTime, 'L dddd - HH:mm', gameData.localGameDate.timezone, locale) }} ({{
+          gameData.localGameDate.timezoneAbbr
+        }})
+      </div>
+
+      <div class="is-external-contents">
+        <a v-if="gameData.electronicReportUrl" :href="gameData.electronicReportUrl" target="_blank">
+          <IconSheet class="is-icon" />
+          {{ t('sheet') }}
+        </a>
+        <a v-if="gameData.video" :href="gameData.electronicReportUrl" target="_blank">
+          <IconYoutube class="is-icon" />
+          {{ t('video') }}
+        </a>
+      </div>
     </div>
-    <div class="is-gamedate">
-      {{ format(gameData.gameDate, 'L dddd - HH:mm', null, locale) }} ({{
-        offsetName(new Date(gameData.gameDate), null, locale)
-      }})
-    </div>
-    <div class="is-local-gamedate">
-      {{ t('localTime') }} ({{ gameData.location.locationCountryISO }}):
-      {{ format(gameData.localGameDate.dateTime, 'L dddd - HH:mm', gameData.localGameDate.timezone, locale) }} ({{
-        gameData.localGameDate.timezoneAbbr
-      }})
-    </div>
+
     <div class="is-teams-and-results">
       <div>
         <Image :src="gameData.homeTeam.logo" class="is-team-logo" :default-src="DEAFULT_LOGO_TEAM_A" />
@@ -49,10 +65,10 @@ const { t } = useI18n();
         </p>
         <template v-if="gameData.gameStatus > 1">
           <p v-if="gameData.isOvertime">
-            <span class="is-badge is-invert">{{ t('afterOvertime') }}</span>
+            <span class="is-badge is-invert is-large">{{ t('afterOvertime') }}</span>
           </p>
           <p v-if="gameData.isShootout">
-            <span class="is-badge is-invert">{{ t('afterShootout') }}</span>
+            <span class="is-badge is-invert is-large">{{ t('afterShootout') }}</span>
           </p>
         </template>
         <p v-if="gameData.gameStatus === 1" class="is-game-status">{{ gameData.actualTime }}</p>

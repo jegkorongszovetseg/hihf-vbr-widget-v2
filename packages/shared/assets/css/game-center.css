@@ -16,6 +16,10 @@
       }
     }
 
+    .is-title-container {
+      margin-bottom: 30px;
+    }
+
     .is-title {
       color: var(--vbr-widget-gamecenter-title-color);
       font-size: var(--vbr-widget-gamecenter-title-size);
@@ -33,7 +37,6 @@
       color: var(--vbr-widget-gamecenter-local-gamedate-color);
       font-size: var(--vbr-widget-gamecenter-local-gamedate-size);
       text-transform: uppercase;
-      margin-bottom: 30px;
     }
 
     .is-game-result {
@@ -54,6 +57,7 @@
     .is-game-status {
       color: var(--vbr-widget-gamecenter-gamestatus-color);
       font-size: var(--vbr-widget-gamecenter-gamestatus-size);
+      text-transform: uppercase;
     }
 
     .is-period-results {
@@ -71,6 +75,35 @@
 
     .is-game-status-live {
       color: var(--vbr-widget-live-game-color);
+    }
+
+    .is-external-contents {
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      a {
+        display: flex;
+        align-items: center;
+        font-size: var(--vbr-widget-gamecenter-local-gamedate-size);
+
+        &:after {
+          content: '/';
+          margin: 0 5px;
+        }
+
+        &:last-of-type:after {
+          content: '';
+        }
+      }
+
+      .is-icon {
+        margin-right: 5px;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+      }
     }
   }
 
@@ -195,6 +228,10 @@
       color: var(--vbr-widget-primary-color-300);
     }
 
+    .is-goal-so-icon {
+      color: var(--vbr-widget-primary-color-500);
+    }
+
     .is-goal-icon {
       color: var(--vbr-widget-danger-color-a400);
     }
@@ -225,6 +262,17 @@
       font-weight: 700;
       text-align: center;
       color: var(--vbr-widget-danger-color-a400);
+    }
+
+    .is-score-so {
+      font-size: var(--vbr-widget-gamecenter-events-score-size);
+      font-weight: 700;
+      text-align: center;
+      color: var(--vbr-widget-primary-color-500);
+    }
+
+    .is-score-so-goal {
+      color: var(--vbr-widget-live-game-color);
     }
 
     .is-goalie-direction {

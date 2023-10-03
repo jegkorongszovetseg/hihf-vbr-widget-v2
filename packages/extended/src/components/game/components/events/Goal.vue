@@ -32,14 +32,15 @@ const awayOnIce = computed(() => props.event.awayOnIce);
   <div class="is-icon-cell"><IconHockeyPuck class="is-goal-icon" /></div>
   <div class="is-score">{{ event.score }}</div>
   <div>
-    <span class="is-badge">
+    <span v-if="event.advantage" class="is-badge is-large">
       {{ event.advantage }}
     </span>
+    <span v-if="event.ps || event.gws" class="is-badge is-invert is-large">
+      <template v-if="event.ps">PS</template>
+      <template v-if="event.gws">GWS</template>
+    </span>
   </div>
-  <div>
-    <span v-if="event.gws" class="">GWG</span>
-    <span v-if="event.ps" class="">PS</span>
-  </div>
+  <div></div>
   <div>
     <dl>
       <dt>

@@ -216,7 +216,15 @@ export const buildDvgPercent = (data, { home, away }) => {
 
 export const convertTeamMembersToRows = (data, t) => {
   const members = (member) => ({ ...member, role: t(`teamMembers.${member.role}`) });
-  const sort = (item) => indexOf(item.role, ['entry_head_coach', 'entry_second_coach', 'entry_team_leader']);
+  const sort = (item) =>
+    indexOf(item.role, [
+      'entry_head_coach',
+      'entry_second_coach',
+      'entry_team_leader',
+      'entry_official_person_1',
+      'entry_official_person_2',
+      'entry_official_person_3',
+    ]);
   return compose(map(members), sortBy(sort))(data);
 };
 
