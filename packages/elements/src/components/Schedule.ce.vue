@@ -10,9 +10,8 @@ import {
   externalGameLinkResolver,
 } from '@mjsz-vbr-elements/core/utils';
 import { REFRESH_DELAY } from '@mjsz-vbr-elements/core';
-import { I18NProvider, Paginator, ErrorNotice, TimezoneSelector } from '@mjsz-vbr-elements/core/components';
+import { I18NProvider, Paginator, ErrorNotice, TimezoneSelector, ScheduleTable } from '@mjsz-vbr-elements/core/components';
 import { baseProps } from '@mjsz-vbr-elements/core';
-import ScheduleTable from './ScheduleTable.vue';
 
 const props = defineProps({
   ...baseProps,
