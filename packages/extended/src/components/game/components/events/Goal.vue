@@ -35,12 +35,14 @@ const awayOnIce = computed(() => props.event.awayOnIce);
     <span v-if="event.advantage" class="is-badge is-large">
       {{ event.advantage }}
     </span>
-    <span v-if="event.ps || event.gws" class="is-badge is-invert is-large">
+  </div>
+  <div>
+    <span v-if="event.ps || event.gws || event.gwg" class="is-badge is-invert is-large">
       <template v-if="event.ps">PS</template>
       <template v-if="event.gws">GWS</template>
+      <template v-if="event.gwg">GWG</template>
     </span>
   </div>
-  <div></div>
   <div>
     <dl>
       <dt class="is-evented-person">

@@ -22,6 +22,7 @@ defineProps({
     <TeamLogo :name="event.team.longName" :logo="event.team.logo" :key="event.team.id" :is-home-team="isHomeTeam" />
   </div>
   <div class="is-icon-cell">
+    <IconArrowUp v-if="event.gkDirection === 'CSERE'" width="24" height="24" class="is-goalie-in-icon" />
     <IconArrowUp v-if="event.gkDirection === 'BE'" width="24" height="24" class="is-goalie-in-icon" />
     <IconArrowDown v-else width="24" height="24" class="is-goalie-out-icon" />
   </div>
