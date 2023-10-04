@@ -1,11 +1,18 @@
 <script setup>
 import { ref, computed, unref } from 'vue';
-import { externalGameLinkResolver, format, getLocalTimezone, offsetName } from '@mjsz-vbr-elements/core/utils';
-import { ErrorNotice, ErrorProvider, I18NProvider, LoadingIndicator, TimezoneSelector } from '@mjsz-vbr-elements/core/components';
+import { externalGameLinkResolver, getLocalTimezone, offsetName } from '@mjsz-vbr-elements/core/utils';
+import {
+  ErrorNotice,
+  ErrorProvider,
+  I18NProvider,
+  LoadingIndicator,
+  TimezoneSelector,
+  ScheduleTable,
+} from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import DataProvider from './DataProvider.vue';
-import ScheduleSelector from './ScheduleSelector.vue';
-import GameItem from './Item.vue';
+import SeasonSelector from './SeasonSelector.vue';
+import Selector from './Selector.vue';
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
 
@@ -23,16 +30,6 @@ const props = defineProps({
   championshipName: {
     type: String,
     default: '',
-  },
-
-  // championshipId: {
-  //   type: Number,
-  //   default: 0,
-  // },
-
-  autoRefresh: {
-    type: Boolean,
-    default: false,
   },
 
   timezoneSelector: {
@@ -69,47 +66,38 @@ const onTimezoneChange = (tz) => {
           :locale="locale"
           :timezone="timezone"
           :championship-name="championshipName"
-          :auto-refresh="props.autoRefresh"
           v-slot="{
             seasons,
             championshipId,
-            sections,
-            section,
-            teams,
+            championships,
+            selectedChampionshipId,
             games,
-            months,
             isLoading,
-            selectedMonth,
-            selectedTeam,
-            selectedTeamGameType,
+            phases,
+            phaseId,
             changeSeason,
-            changeMonth,
-            changeSection,
-            changeTeam,
-            changeTeamType,
+            changeChampionship,
+            changePhase,
           }"
         >
-          <ScheduleSelector
-            :seasons="seasons"
-            :championship-id="championshipId"
-            :months="months"
-            :selected-month="selectedMonth"
-            :teams="teams"
-            :selected-team="selectedTeam"
-            :selected-team-game-type="selectedTeamGameType"
-            @update:championship-id="changeSeason"
-            @update:selected-month="changeMonth"
-            @update:selected-team="changeTeam"
-            @update:selected-team-game-type="changeTeamType"
-          />
+          <SeasonSelector :seasons="seasons" :championship-id="championshipId" @update:championship-id="changeSeason" />
+
           <div :class="sectionSelectorMainClass">
             <button
-              v-for="rawSection in sections"
-              :key="rawSection.phaseId"
-              @click="changeSection(rawSection.phaseName)"
-              :class="[tabButtonClasses, { 'is-active': rawSection.phaseName === section }]"
+              v-for="rawChampionships in championships"
+              :key="rawChampionships.phaseId"
+              @click="changeChampionship(rawChampionships.sectionId)"
+              :class="[tabButtonClasses, { 'is-active': rawChampionships.sectionId === selectedChampionshipId }]"
             >
-              {{ rawSection.phaseName }}
+              {{ rawChampionships.sectionName }}
+            </button>
+          </div>
+
+          <Selector :phases="phases" :phase-id="phaseId" @update:phase-id="changePhase" />
+
+          <div :class="sectionSelectorMainClass">
+            <button :class="[tabButtonClasses, { 'is-active': true }]" @click="changeSection(rawSection.sectionId)">
+              Menetrend
             </button>
           </div>
 
@@ -124,16 +112,13 @@ const onTimezoneChange = (tz) => {
 
           <LoadingIndicator v-if="isLoading" />
 
-          <template v-else>
-            <div v-for="(gameDay, key) in games.rows" :key="key">
-              {{ format(key, 'L dddd', timezone, locale) }}
-              <div class="is-card">
-                <template v-for="game in gameDay" :key="game.id">
-                  <GameItem :game="game" :offset-name="currentOffsetName" :game-link="externalGameLink"/>
-                </template>
-              </div>
-            </div>
-          </template>
+          <ScheduleTable
+            :rows="games.rows"
+            :offset-name="currentOffsetName"
+            :is-loading="isLoading"
+            :external-game-resolver="externalGameLink"
+            hide-columns="broadcast"
+          ></ScheduleTable>
         </DataProvider>
       </ErrorProvider>
     </I18NProvider>
@@ -144,4 +129,7 @@ const onTimezoneChange = (tz) => {
 <style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/dropdown.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/cards.css"></style>

@@ -1,10 +1,14 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { whenever } from '@vueuse/core';
-import { COLUMNS_SCHEDULE } from '@mjsz-vbr-elements/core';
-import { useColumns, useI18n, useError } from '@mjsz-vbr-elements/core/composables';
-import { WidgetError, UndefinedColumn } from '@mjsz-vbr-elements/core/utils';
-import { FloatingPanel, ResponsiveTable, Image, DataTable, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
+import { COLUMNS_SCHEDULE } from '../columns';
+import { useColumns, useI18n, useError } from '../composables';
+import { WidgetError, UndefinedColumn } from '../utils';
+import FloatingPanel from './FloatingPanel.vue';
+import ResponsiveTable from './ResponsiveTable.vue';
+import Image from './Image.vue';
+import DataTable from './DataTable.vue';
+import LoadingIndicator from './LoadingIndicator.vue';
 import IconBroadcast from '@mjsz-vbr-elements/shared/icons/IconBroadcast';
 import IconMore from '@mjsz-vbr-elements/shared/icons/IconMore';
 import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
