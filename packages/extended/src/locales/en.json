@@ -4,6 +4,8 @@
     "video": "Video",
     "season": "Season",
     "section": "Section",
+    "phases": "Phases",
+    "noPhases": "No Phases",
     "teams": "Teams",
     "filterName": "Filter by Name",
     "players": "Players",

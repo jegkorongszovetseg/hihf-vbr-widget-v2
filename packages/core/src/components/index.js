@@ -10,20 +10,22 @@ import Paginator from './Paginator.vue';
 import ResponsiveTable from './ResponsiveTable.vue';
 import TimezoneSelector from './TimezoneSelector.vue';
 import StatisticsTable from './StatisticsTable.vue';
+import ScheduleTable from './ScheduleTable.vue';
 import Test from './Test.vue';
 
 export {
   Test,
-  BaseSelect,
-  DataTable,
-  ErrorNotice,
-  ErrorProvider,
-  FloatingPanel,
-  I18NProvider,
   Image,
-  LoadingIndicator,
   Paginator,
-  ResponsiveTable,
-  TimezoneSelector,
+  DataTable,
+  BaseSelect,
+  ErrorNotice,
+  I18NProvider,
+  ErrorProvider,
+  ScheduleTable,
+  FloatingPanel,
   StatisticsTable,
+  ResponsiveTable,
+  LoadingIndicator,
+  TimezoneSelector,
 };
