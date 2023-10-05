@@ -20,6 +20,8 @@ export default defineConfig({
       '@mjsz-vbr-elements/core/utils': resolve(__dirname, '../packages/core/src/index.js'),
       '@mjsz-vbr-elements/elements': resolve(__dirname, '../packages/elements/src/index.js'),
       '@mjsz-vbr-elements/extended': resolve(__dirname, '../packages/extended/src/index.js'),
+      '@mjsz-vbr-elements/liga': resolve(__dirname, '../packages/liga/src/index.js'),
+      '@mjsz-vbr-elements/gamecenter': resolve(__dirname, '../packages/gamecenter/src/index.js'),
     },
   },
   plugins: [
