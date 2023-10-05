@@ -1,12 +1,12 @@
 <script setup>
 import { computed } from 'vue';
-import { compose, groupBy, prop, reverse, isEmpty, toUpper, map } from 'ramda';
+import { compose, groupBy, prop, reverse, isEmpty, pathOr } from 'ramda';
 import { useUrlSearchParams } from '@vueuse/core';
 import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { I18NProvider, ErrorNotice } from '@mjsz-vbr-elements/core/components';
 import { handleServices, useApiErrors } from './composables';
 import GameData from './GameData.vue';
-import GameStats from './GameStats.vue';
+// import GameStats from './GameStats.vue';
 import GameEvents from './GameEvents.vue';
 import GamePlayersStats from './GamePlayersStats.vue';
 import GameGoaliesStats from './GameGoaliesStats.vue';
@@ -58,7 +58,7 @@ const { state: gameEvents, execute: getEvents } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  transform: compose(groupBy(prop('eventPeriod')), reverse),
+  transform: (data) => compose(groupBy(prop('eventPeriod')), reverse)(data?.isEmpty ? [] : data),
   onError: (e) => addApiError('gameEvents', e),
   onSuccess: () => removeApiError('gameEvents'),
 });

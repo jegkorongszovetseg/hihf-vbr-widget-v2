@@ -66,6 +66,9 @@ export function useApiErrors() {
   const errors = ref([]);
 
   function add(key, message) {
+    if (typeof message === 'object' && message !== null) {
+      message = message.message;
+    }
     errors.value.push({ key, message });
   }
 
