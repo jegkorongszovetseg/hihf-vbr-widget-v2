@@ -11,7 +11,6 @@ const props = defineProps({
 
   logo: {
     type: String,
-    required: true,
   },
 
   isHomeTeam: {

@@ -1,6 +1,6 @@
 <script setup>
 import { store } from '../store.js';
-import { ScheduleLiga } from '@mjsz-vbr-elements/extended';
+import { ScheduleLiga } from '@mjsz-vbr-elements/liga';
 import '../../../packages/shared/dist/css/common.css';
 import '../../../packages/shared/dist/css/typography.css';
 import '../../../packages/shared/dist/css/cards.css';

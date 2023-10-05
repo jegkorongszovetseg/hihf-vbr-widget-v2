@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+     "paths": {
+      "@mjsz-vbr-elements/core/composables": ["../core/src/composables/index.js"]
+    }
+  },
+  "include": ["./src/*", "./src/components/*"],
+  "exclude": ["dist/*"],
+  "references": [{ "path": "../core/tsconfig.json" }]
+}
