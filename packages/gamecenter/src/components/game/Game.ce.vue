@@ -110,14 +110,14 @@ getGameOfficials();
           :away-team-name="gameData.awayTeam.longName"
         />
 
-        <!-- <GameGoaliesStats
+        <GameGoaliesStats
           v-if="!isEmpty(gameStats)"
           :data="gameStats.goalies"
           :home-team-id="gameData.homeTeam.id"
           :home-team-name="gameData.homeTeam.longName"
           :away-team-id="gameData.awayTeam.id"
           :away-team-name="gameData.awayTeam.longName"
-        /> -->
+        />
 
         <GameTeamsOfficials
           v-if="!isEmpty(gameOfficials) && !isEmpty(gameData)"
