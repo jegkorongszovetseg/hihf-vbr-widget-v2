@@ -55,15 +55,15 @@
       "tooltip": "Vereség"
     },
     "goalFor": {
-      "short": "SZG",
+      "short": "GF",
       "tooltip": "Szerzett Gól"
     },
     "goalAgainst": {
-      "short": "KG",
+      "short": "GA",
       "tooltip": "Kapott Gól"
     },
     "goalDiff": {
-      "short": "GK",
+      "short": "GD",
       "tooltip": "Gólkülönbség"
     },
     "name": {

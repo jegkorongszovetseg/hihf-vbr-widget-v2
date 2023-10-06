@@ -128,7 +128,11 @@ export const COLUMNS_STANDINGS_P_3 = {
     label: 'table.points.short',
     tooltip: 'table.points.tooltip',
     class: 'is-text-bold',
-    sortOrders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
+    sortOrders: [
+      { target: 'points', direction: SORT_STATE_DESCEND },
+      { target: 'gd', direction: SORT_STATE_DESCEND },
+      { target: 'gf', direction: SORT_STATE_DESCEND },
+    ],
   },
 };
 
