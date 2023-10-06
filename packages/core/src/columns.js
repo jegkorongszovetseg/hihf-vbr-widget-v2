@@ -89,6 +89,16 @@ export const COLUMNS_STANDINGS_P_3 = {
     tooltip: 'table.otw.tooltip',
     sortOrders: [{ target: 'otw', direction: SORT_STATE_DESCEND }],
   },
+  sow: {
+    label: 'table.sow.short',
+    tooltip: 'table.sow.tooltip',
+    sortOrders: [{ target: 'sow', direction: SORT_STATE_DESCEND }],
+  },
+  sol: {
+    label: 'table.sol.short',
+    tooltip: 'table.sol.tooltip',
+    sortOrders: [{ target: 'sol', direction: SORT_STATE_DESCEND }],
+  },
   otl: {
     label: 'table.otl.short',
     tooltip: 'table.otl.tooltip',
