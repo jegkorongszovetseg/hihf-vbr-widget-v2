@@ -1,13 +1,14 @@
 <script setup>
-import { ref, computed, unref } from 'vue';
+import { computed, unref } from 'vue';
 import { externalGameLinkResolver, getLocalTimezone, offsetName } from '@mjsz-vbr-elements/core/utils';
 import {
   ErrorNotice,
   ErrorProvider,
   I18NProvider,
   LoadingIndicator,
-  TimezoneSelector,
+  // TimezoneSelector,
   ScheduleTable,
+  StatisticsTable,
 } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import DataProvider from './DataProvider.vue';
@@ -15,6 +16,7 @@ import SeasonSelector from './SeasonSelector.vue';
 import Selector from './Selector.vue';
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
+import { PANEL_SCHEDULE, PANEL_STANDINGS, PANEL_PLAYERS, PANEL_TEAMS } from './championship.internal';
 
 const props = defineProps({
   locale: {
@@ -42,7 +44,7 @@ const props = defineProps({
     default: '',
   },
 });
-const timezone = ref(getLocalTimezone());
+// const timezone = ref(getLocalTimezone());
 const currentOffsetName = computed(() => offsetName(new Date(), unref(timezone), props.locale));
 const tabButtonClasses = useMainClass('tab-button');
 const sectionSelectorMainClass = useMainClass('section-selector');
@@ -51,9 +53,9 @@ const messages = { en, hu };
 
 const externalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
 
-const onTimezoneChange = (tz) => {
-  timezone.value = tz;
-};
+// const onTimezoneChange = (tz) => {
+//   timezone.value = tz;
+// };
 </script>
 
 <template>
@@ -67,17 +69,19 @@ const onTimezoneChange = (tz) => {
           :timezone="timezone"
           :championship-name="championshipName"
           v-slot="{
-            seasons,
-            championshipId,
-            championships,
-            selectedChampionshipId,
             games,
-            isLoading,
             phases,
             phaseId,
+            seasons,
+            isLoading,
+            selectedPanel,
+            championships,
+            championshipId,
+            selectedChampionshipId,
+            changePanel,
+            changePhase,
             changeSeason,
             changeChampionship,
-            changePhase,
           }"
         >
           <SeasonSelector :seasons="seasons" :championship-id="championshipId" @update:championship-id="changeSeason" />
@@ -96,29 +100,66 @@ const onTimezoneChange = (tz) => {
           <Selector :phases="phases" :phase-id="phaseId" @update:phase-id="changePhase" />
 
           <div :class="sectionSelectorMainClass">
-            <button :class="[tabButtonClasses, { 'is-active': true }]" @click="changeSection(rawSection.sectionId)">
+            <button
+              :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_SCHEDULE }]"
+              @click="changePanel(PANEL_SCHEDULE)"
+            >
               Menetrend
+            </button>
+            <button
+              :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_STANDINGS }]"
+              @click="changePanel(PANEL_STANDINGS)"
+            >
+              Tabella
+            </button>
+            <button
+              :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_PLAYERS }]"
+              @click="changePanel(PANEL_PLAYERS)"
+            >
+              Játékos Statisztika
+            </button>
+            <button
+              :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_TEAMS }]"
+              @click="changePanel(PANEL_TEAMS)"
+            >
+              Csapat Statisztika
             </button>
           </div>
 
-          <TimezoneSelector
+          <pre>
+            {{ selectedPanel }}
+          </pre>
+
+          <!-- <TimezoneSelector
             v-if="props.timezoneSelector"
             class="is-mb-5"
             :key="props.locale"
             :locale="props.locale"
             :current-zone="timezone"
             @change="onTimezoneChange"
-          />
+          /> -->
 
           <LoadingIndicator v-if="isLoading" />
 
           <ScheduleTable
+            v-if="selectedPanel === PANEL_SCHEDULE"
             :rows="games.rows"
             :offset-name="currentOffsetName"
             :is-loading="isLoading"
             :external-game-resolver="externalGameLink"
             hide-columns="broadcast"
-          ></ScheduleTable>
+          />
+
+          <!-- <StatisticsTable
+            :columns="currentColumns"
+            :rows="convertedRows.rows"
+            :hide-columns="hideColumns"
+            :sort="sort"
+            :external-team-resolver="resolveExternalTeamLink"
+            :is-team-linked="isTeamLinked"
+            :append-to="tooltipContainer"
+            @sort="onSort"
+          /> -->
         </DataProvider>
       </ErrorProvider>
     </I18NProvider>

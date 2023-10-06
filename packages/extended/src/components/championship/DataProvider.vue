@@ -3,8 +3,8 @@ import { reactive, computed, unref, toRef } from 'vue';
 import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
 import { useLazyLoadingState, useError, useServices } from '@mjsz-vbr-elements/core/composables';
 import { convert, sortGames } from '@mjsz-vbr-elements/core/utils';
-import { transformSeasons, transformTeams } from '../internal';
-import { transformSections } from './championship.internal.js';
+import { transformSeasons } from '../internal';
+import { transformSections, PANEL_SCHEDULE, PANEL_STANDINGS } from './championship.internal.js';
 
 const props = defineProps({
   championshipName: {
@@ -49,23 +49,10 @@ const state = reactive({
   selectedChampionshipId: null,
   sections: [],
   section: params.section || null,
+  selectedPanel: PANEL_SCHEDULE,
 });
 const timezone = toRef(props, 'timezone');
 const { onError } = useError();
-
-const teamFilterTypes = computed(() => {
-  switch (state.selectedTeamGameType) {
-    case 'all':
-      return [
-        ['homeTeam', 'id'],
-        ['awayTeam', 'id'],
-      ];
-    case 'home':
-      return [['homeTeam', 'id']];
-    default:
-      return [['awayTeam', 'id']];
-  }
-});
 
 const { isLoading: seasonsLoading, execute: fetchSeasons } = useServices({
   options: {
@@ -111,9 +98,7 @@ const phases = computed(() => {
 });
 
 const convertedRows = computed(() => {
-  return convert(unref(rows))
-    .schedule(unref(timezone), unref(props.locale))
-    .value();
+  return convert(unref(rows)).schedule(unref(timezone), unref(props.locale)).value();
 });
 
 const changeSeason = (value) => {
@@ -132,6 +117,10 @@ const changePhase = (value) => {
   state.phaseId = value;
   fetchSchedule();
 };
+
+const changePanel = (value) => {
+  state.selectedPanel = value;
+};
 </script>
 
 <template>
@@ -141,9 +130,10 @@ const changePhase = (value) => {
       games: convertedRows,
       phases,
       isLoading,
+      changePanel,
+      changePhase,
       changeSeason,
       changeChampionship,
-      changePhase,
     }"
   ></slot>
 </template>
