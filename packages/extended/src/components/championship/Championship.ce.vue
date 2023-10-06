@@ -1,5 +1,5 @@
 <script setup>
-import { computed, unref } from 'vue';
+import { computed, unref, ref } from 'vue';
 import { externalGameLinkResolver, getLocalTimezone, offsetName } from '@mjsz-vbr-elements/core/utils';
 import {
   ErrorNotice,
@@ -44,7 +44,7 @@ const props = defineProps({
     default: '',
   },
 });
-// const timezone = ref(getLocalTimezone());
+const timezone = ref(getLocalTimezone());
 const currentOffsetName = computed(() => offsetName(new Date(), unref(timezone), props.locale));
 const tabButtonClasses = useMainClass('tab-button');
 const sectionSelectorMainClass = useMainClass('section-selector');
