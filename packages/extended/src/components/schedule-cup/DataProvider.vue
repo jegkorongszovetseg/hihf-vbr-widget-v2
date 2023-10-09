@@ -1,9 +1,10 @@
 <script setup>
 import { computed, reactive } from 'vue';
 import { useAsyncQueue } from '@vueuse/core';
+import { omit, path } from 'ramda';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
 import { sortGames } from '@mjsz-vbr-elements/core/utils';
-import { transformSeasons, transformSections  } from '../../utils/transformers';
+import { transformSeasons, transformSections } from '../../utils/transformers';
 
 const props = defineProps({
   championshipName: {
@@ -83,9 +84,19 @@ const {
 
 useAsyncQueue([fetchSeasons, fetchSection, fetchSchedule]);
 
-// function changeSection() {}
+function onChangeSeason(value) {
+  console.log(value);
+  state.championshipId = value;
+  useAsyncQueue([fetchSection, fetchSchedule]);
+}
+
+function onChangeSection(payload) {
+  state.sectionId = payload.sectionId;
+  state.phaseId = path(['phases', 0, 'phaseId'], payload);
+  fetchSchedule();
+}
 </script>
 
 <template>
-  <slot v-bind="{ ...state }" />
+  <slot v-bind="{ rows, values: omit(['phaseId'], state), listeners: { onChangeSection, onChangeSeason } }" />
 </template>

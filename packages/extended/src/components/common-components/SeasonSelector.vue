@@ -1,7 +1,7 @@
 <script setup>
-import { useVModels } from '@vueuse/core';
 import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { BaseSelect } from '@mjsz-vbr-elements/core/components';
+import { computed } from 'vue';
 
 const props = defineProps({
   seasons: {
@@ -25,14 +25,21 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['update:championshipId', 'update:sectionId']);
+const emit = defineEmits(['onChangeSeason', 'onChangeSection']);
 
 const { t } = useI18n();
 
-const { championshipId } = useVModels(props, emit);
+const championshipId = computed({
+  get() {
+    return props.championshipId;
+  },
+  set(value) {
+    emit('onChangeSeason', value);
+  },
+});
 
 function changeSection(id) {
-  emit('update:sectionId', id);
+  emit('onChangeSection', id);
 }
 </script>
 <template>
@@ -50,7 +57,7 @@ function changeSection(id) {
     <button
       v-for="section in sections"
       :key="section.phaseId"
-      @click="changeSection(section.sectionId)"
+      @click="changeSection(section)"
       :class="[useMainClass('tab-button'), { 'is-active': section.sectionId === sectionId }]"
     >
       {{ section.sectionName }}

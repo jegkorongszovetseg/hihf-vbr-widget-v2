@@ -14,23 +14,24 @@ export const COLUMNS_SCHEDULE = {
     tooltip: 'table.gameDateTime.tooltip',
     class: 'is-text-left',
   },
-  homeTeamName: {
-    label: 'table.homeTeam.short',
-    tooltip: 'table.homeTeam.tooltip',
-    class: 'is-text-right is-w-auto is-text-bold',
-  },
-  homeTeamLogo: {
-    label: '',
+  divisionName: {
+    label: 'table.section.short',
+    tooltip: 'table.section.tooltip',
     class: 'is-has-image',
   },
-  awayTeamName: {
-    label: 'table.awayTeam.short',
-    tooltip: 'table.awayTeam.tooltip',
+  homeTeamName: {
+    label: 'table.organizer.short',
+    tooltip: 'table.organizer.tooltip',
     class: 'is-text-left is-w-auto is-text-bold',
   },
   location: {
     label: 'table.location.short',
     tooltip: 'table.location.tooltip',
+    class: 'is-text-left',
+  },
+  document: {
+    label: 'table.document.short',
+    tooltip: 'table.document.tooltip',
     class: 'is-text-left',
   },
 };

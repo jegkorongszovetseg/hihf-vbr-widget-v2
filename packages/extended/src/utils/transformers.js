@@ -10,7 +10,7 @@ export const transformSeasons = (seasons, state) => {
 export const transformSections = (sections, state) => {
   state.sections = sections;
   state.sectionId = compose(prop('sectionId'), head)(sections);
-  state.phaseId = path([0, 'phases', 0], sections).phaseId;
+  state.phaseId = path([0, 'phases', 0], sections)?.phaseId ?? null;
 };
 
 export const convertSeasons = (seasons) =>

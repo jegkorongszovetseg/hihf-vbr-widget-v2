@@ -1,14 +1,13 @@
 <script setup>
-import {
-  ErrorNotice,
-  ErrorProvider,
-  I18NProvider,
-  ResponsiveTable,
-  DataTable,
-} from '@mjsz-vbr-elements/core/components';
+import { computed, ref } from 'vue';
+import { ErrorNotice, ErrorProvider, I18NProvider } from '@mjsz-vbr-elements/core/components';
+import { getLocalTimezone, offsetName } from '@mjsz-vbr-elements/core/utils';
 import SeasonSelector from '../common-components/SeasonSelector.vue';
 import DataProvider from './DataProvider.vue';
+import ScheduleCupDataTable from './ScheduleCupDataTable.vue';
 import { COLUMNS_SCHEDULE } from './schedule-cup.internal';
+import en from '../../locales/en.json';
+import hu from '../../locales/hu.json';
 
 const props = defineProps({
   locale: {
@@ -32,21 +31,21 @@ const props = defineProps({
   },
 });
 
-const messages = {};
+const messages = { en, hu };
+
+const timezone = ref(getLocalTimezone());
+const currentOffsetName = computed(() => offsetName(new Date(), timezone.value, props.locale));
 </script>
 <template>
   <I18NProvider :locale="props.locale" :messages="messages">
     <ErrorProvider v-slot:default="{ error, hasError }">
       <ErrorNotice v-if="hasError" :error="error" />
 
-      <DataProvider :championship-name="championshipName" v-slot="state">
-        <SeasonSelector v-bind="state" />
-      </DataProvider>
+      <DataProvider :championship-name="championshipName" v-slot="{ rows, values, listeners }">
+        <SeasonSelector v-bind="values" v-on="listeners" />
 
-      CUP
-      <ResponsiveTable>
-        <DataTable :columns="COLUMNS_SCHEDULE"></DataTable>
-      </ResponsiveTable>
+        <ScheduleCupDataTable :columns="COLUMNS_SCHEDULE" :rows="rows" :offset-name="currentOffsetName" />
+      </DataProvider>
     </ErrorProvider>
   </I18NProvider>
 </template>
