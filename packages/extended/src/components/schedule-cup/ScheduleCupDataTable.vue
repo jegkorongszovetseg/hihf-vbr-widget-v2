@@ -18,6 +18,11 @@ const props = defineProps({
     type: String,
     default: '',
   },
+
+  isLoading: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const tooltipContainer = ref(null);
@@ -34,7 +39,7 @@ const { t } = useI18n();
 <template>
   <div ref="tooltipContainer">
     <ResponsiveTable>
-      <DataTable :columns="columns" :rows="rows" :append-to="tooltipContainer">
+      <DataTable :columns="columns" :rows="rows" :is-loading="isLoading" :append-to="tooltipContainer">
         <template v-slot:cell-homeTeamName="{ row }">
           {{ row.homeTeam?.longName ?? '' }}
         </template>

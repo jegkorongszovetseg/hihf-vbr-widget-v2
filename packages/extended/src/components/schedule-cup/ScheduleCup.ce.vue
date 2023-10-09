@@ -45,11 +45,16 @@ const currentOffsetName = computed(() => offsetName(new Date(), timezone.value, 
         :championship-name="championshipName"
         :locale="locale"
         :timezone="timezone"
-        v-slot="{ rows, values, listeners }"
+        v-slot="{ rows, isLoading, values, listeners }"
       >
         <SeasonSelector v-bind="values" v-on="listeners" />
 
-        <ScheduleCupDataTable :columns="COLUMNS_SCHEDULE" :rows="rows.rows" :offset-name="currentOffsetName" />
+        <ScheduleCupDataTable
+          :columns="COLUMNS_SCHEDULE"
+          :rows="rows.rows"
+          :is-loading="isLoading"
+          :offset-name="currentOffsetName"
+        />
       </DataProvider>
     </ErrorProvider>
   </I18NProvider>

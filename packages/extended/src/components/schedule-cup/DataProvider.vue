@@ -88,6 +88,8 @@ const convertedRows = computed(() => {
 
 useAsyncQueue([fetchSeasons, fetchSection, fetchSchedule]);
 
+const isLoading = computed(() => [sectionLoading.value, seasonsLoading.value, gamesLoading.value].some(Boolean));
+
 function onChangeSeason(value) {
   state.championshipId = value;
   useAsyncQueue([fetchSection, fetchSchedule]);
@@ -102,6 +104,11 @@ function onChangeSection(payload) {
 
 <template>
   <slot
-    v-bind="{ rows: convertedRows, values: omit(['phaseId'], state), listeners: { onChangeSection, onChangeSeason } }"
+    v-bind="{
+      rows: convertedRows,
+      isLoading,
+      values: omit(['phaseId'], state),
+      listeners: { onChangeSection, onChangeSeason },
+    }"
   />
 </template>
