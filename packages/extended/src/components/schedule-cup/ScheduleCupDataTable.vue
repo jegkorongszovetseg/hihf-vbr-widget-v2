@@ -34,7 +34,7 @@ const { t } = useI18n();
 <template>
   <div ref="tooltipContainer">
     <ResponsiveTable>
-      <DataTable :columns="columns" :append-to="tooltipContainer">
+      <DataTable :columns="columns" :rows="rows" :append-to="tooltipContainer">
         <template v-slot:cell-location="{ row }">
           {{ row.location?.locationName ?? '' }}
         </template>
