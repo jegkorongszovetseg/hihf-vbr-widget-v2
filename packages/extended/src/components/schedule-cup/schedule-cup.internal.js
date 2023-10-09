@@ -17,7 +17,7 @@ export const COLUMNS_SCHEDULE = {
   divisionName: {
     label: 'table.section.short',
     tooltip: 'table.section.tooltip',
-    class: 'is-has-image',
+    class: 'is-has-image is-text-light',
   },
   homeTeamName: {
     label: 'table.organizer.short',
@@ -27,7 +27,7 @@ export const COLUMNS_SCHEDULE = {
   location: {
     label: 'table.location.short',
     tooltip: 'table.location.tooltip',
-    class: 'is-text-left',
+    class: 'is-text-left is-w-auto',
   },
   document: {
     label: 'table.document.short',

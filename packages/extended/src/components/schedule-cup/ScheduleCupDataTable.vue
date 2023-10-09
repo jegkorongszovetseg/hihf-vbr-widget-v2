@@ -35,6 +35,10 @@ const { t } = useI18n();
   <div ref="tooltipContainer">
     <ResponsiveTable>
       <DataTable :columns="columns" :rows="rows" :append-to="tooltipContainer">
+        <template v-slot:cell-homeTeamName="{ row }">
+          {{ row.homeTeam?.longName ?? '' }}
+        </template>
+
         <template v-slot:cell-location="{ row }">
           {{ row.location?.locationName ?? '' }}
         </template>
