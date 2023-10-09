@@ -3,7 +3,7 @@ import { computed, reactive } from 'vue';
 import { useAsyncQueue } from '@vueuse/core';
 import { omit, path } from 'ramda';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
-import { sortGames } from '@mjsz-vbr-elements/core/utils';
+import { convert, sortGames } from '@mjsz-vbr-elements/core/utils';
 import { transformSeasons, transformSections } from '../../utils/transformers';
 
 const props = defineProps({
@@ -82,10 +82,13 @@ const {
   onError,
 });
 
+const convertedRows = computed(() => {
+  return convert(rows.value).schedule(props.timezone, props.locale).value();
+});
+
 useAsyncQueue([fetchSeasons, fetchSection, fetchSchedule]);
 
 function onChangeSeason(value) {
-  console.log(value);
   state.championshipId = value;
   useAsyncQueue([fetchSection, fetchSchedule]);
 }
@@ -98,5 +101,7 @@ function onChangeSection(payload) {
 </script>
 
 <template>
-  <slot v-bind="{ rows, values: omit(['phaseId'], state), listeners: { onChangeSection, onChangeSeason } }" />
+  <slot
+    v-bind="{ rows: convertedRows, values: omit(['phaseId'], state), listeners: { onChangeSection, onChangeSeason } }"
+  />
 </template>

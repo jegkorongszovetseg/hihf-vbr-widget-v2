@@ -19,7 +19,6 @@ export default defineComponent({
   },
   setup(props) {
     const messages = mergeDeepRight({ hu, en }, props.messages);
-    console.log(messages)
     const { translate } = createI18n({
       locale: computed(() => props.locale),
       messages,

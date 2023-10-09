@@ -34,6 +34,10 @@ const { columns } = useColumns(
   <div ref="tooltipContainer">
     <ResponsiveTable>
       <DataTable :columns="columns" :append-to="tooltipContainer">
+        <template v-slot:cell-location="{ row }">
+          {{ row.location?.locationName ?? '' }}
+        </template>
+
         <template v-slot:cell-document="{ row }">
           <a v-if="row.schedule" :href="row.schedule" target="_blank"> Sorsolás </a>
           <a v-else-if="row.registration" :href="row.registration" target="_blank"> Regisztráció </a>
