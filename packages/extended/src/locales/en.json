@@ -1,4 +1,6 @@
 {
+  "schedule": "Schedule",
+  "registration": "Registration",
   "selection": {
     "report": "Report",
     "video": "Video",

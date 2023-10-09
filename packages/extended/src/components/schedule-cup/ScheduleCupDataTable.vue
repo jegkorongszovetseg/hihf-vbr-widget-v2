@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue';
-import { useColumns } from '@mjsz-vbr-elements/core/composables';
+import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { ResponsiveTable, DataTable } from '@mjsz-vbr-elements/core/components';
 
 const props = defineProps({
@@ -29,6 +29,7 @@ const { columns } = useColumns(
     offsetName: props.offsetName,
   }))
 );
+const { t } = useI18n();
 </script>
 <template>
   <div ref="tooltipContainer">
@@ -39,8 +40,12 @@ const { columns } = useColumns(
         </template>
 
         <template v-slot:cell-document="{ row }">
-          <a v-if="row.schedule" :href="row.schedule" target="_blank"> Sorsolás </a>
-          <a v-else-if="row.registration" :href="row.registration" target="_blank"> Regisztráció </a>
+          <a v-if="row.schedule" :href="row.schedule" target="_blank">
+            {{ t('schedule') }}
+          </a>
+          <a v-else-if="row.registration" :href="row.registration" target="_blank">
+            {{ t('registration') }}
+          </a>
         </template>
       </DataTable>
     </ResponsiveTable>
