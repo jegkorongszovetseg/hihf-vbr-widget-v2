@@ -10,7 +10,6 @@ import {
   ErrorNotice,
   ErrorProvider,
   I18NProvider,
-  LoadingIndicator,
   // TimezoneSelector,
   StatisticsTable,
 } from '@mjsz-vbr-elements/core/components';
@@ -145,13 +144,12 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
             @change="onTimezoneChange"
           /> -->
 
-          <LoadingIndicator v-if="isLoading" />
-
           <!-- :is-team-linked="isTeamLinked" -->
           <StatisticsTable
             :columns="columns"
             :rows="games.rows"
             :sort="sort"
+            :is-loading="isLoading"
             :offset-name="currentOffsetName"
             :external-team-resolver="resolveExternalTeamLink"
             :external-game-resolver="externalGameLink"

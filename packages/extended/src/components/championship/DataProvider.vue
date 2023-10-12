@@ -91,6 +91,7 @@ const {
   options: {
     path: computed(() => state.api),
     apiKey: props.apiKey,
+    resetOnExecute: true,
     params: computed(() => ({ championshipId: state.championshipId, phaseId: state.phaseId })),
   },
   transform: (data) => sortGames(data),
