@@ -1,13 +1,17 @@
 <script setup>
-import { ref, computed, unref } from 'vue';
-import { externalGameLinkResolver, getLocalTimezone, offsetName } from '@mjsz-vbr-elements/core/utils';
+import { computed, unref, ref } from 'vue';
+import {
+  externalGameLinkResolver,
+  externalTeamLinkResolver,
+  getLocalTimezone,
+  offsetName,
+} from '@mjsz-vbr-elements/core/utils';
 import {
   ErrorNotice,
   ErrorProvider,
   I18NProvider,
-  LoadingIndicator,
-  TimezoneSelector,
-  ScheduleTable,
+  // TimezoneSelector,
+  StatisticsTable,
 } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import DataProvider from './DataProvider.vue';
@@ -15,6 +19,7 @@ import SeasonSelector from './SeasonSelector.vue';
 import Selector from './Selector.vue';
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
+import { PANEL_SCHEDULE, PANEL_STANDINGS, PANEL_PLAYERS, PANEL_TEAMS } from './championship.internal';
 
 const props = defineProps({
   locale: {
@@ -42,6 +47,8 @@ const props = defineProps({
     default: '',
   },
 });
+
+const tooltipContainer = ref(null);
 const timezone = ref(getLocalTimezone());
 const currentOffsetName = computed(() => offsetName(new Date(), unref(timezone), props.locale));
 const tabButtonClasses = useMainClass('tab-button');
@@ -50,10 +57,11 @@ const sectionSelectorMainClass = useMainClass('section-selector');
 const messages = { en, hu };
 
 const externalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
+const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamLink, teamName);
 
-const onTimezoneChange = (tz) => {
-  timezone.value = tz;
-};
+// const onTimezoneChange = (tz) => {
+//   timezone.value = tz;
+// };
 </script>
 
 <template>
@@ -67,17 +75,22 @@ const onTimezoneChange = (tz) => {
           :timezone="timezone"
           :championship-name="championshipName"
           v-slot="{
-            seasons,
-            championshipId,
-            championships,
-            selectedChampionshipId,
+            sort,
             games,
-            isLoading,
             phases,
             phaseId,
+            columns,
+            seasons,
+            isLoading,
+            selectedPanel,
+            championships,
+            championshipId,
+            selectedChampionshipId,
+            onSort,
+            changePanel,
+            changePhase,
             changeSeason,
             changeChampionship,
-            changePhase,
           }"
         >
           <SeasonSelector :seasons="seasons" :championship-id="championshipId" @update:championship-id="changeSeason" />
@@ -96,30 +109,57 @@ const onTimezoneChange = (tz) => {
           <Selector :phases="phases" :phase-id="phaseId" @update:phase-id="changePhase" />
 
           <div :class="sectionSelectorMainClass">
-            <button :class="[tabButtonClasses, { 'is-active': true }]" @click="changeSection(rawSection.sectionId)">
+            <button
+              :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_SCHEDULE }]"
+              @click="changePanel(PANEL_SCHEDULE)"
+            >
               Menetrend
             </button>
+            <button
+              :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_STANDINGS }]"
+              @click="changePanel(PANEL_STANDINGS)"
+            >
+              Tabella
+            </button>
+            <!-- <button
+              :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_PLAYERS }]"
+              @click="changePanel(PANEL_PLAYERS)"
+            >
+              Játékos Statisztika
+            </button> -->
+            <!-- <button
+              :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_TEAMS }]"
+              @click="changePanel(PANEL_TEAMS)"
+            >
+              Csapat Statisztika
+            </button> -->
           </div>
 
-          <TimezoneSelector
+          <!-- <TimezoneSelector
             v-if="props.timezoneSelector"
             class="is-mb-5"
             :key="props.locale"
             :locale="props.locale"
             :current-zone="timezone"
             @change="onTimezoneChange"
-          />
+          /> -->
 
-          <LoadingIndicator v-if="isLoading" />
-
-          <ScheduleTable
+          <!-- :is-team-linked="isTeamLinked" -->
+          <StatisticsTable
+            :columns="columns"
             :rows="games.rows"
-            :offset-name="currentOffsetName"
+            :sort="sort"
             :is-loading="isLoading"
+            :offset-name="currentOffsetName"
+            :external-team-resolver="resolveExternalTeamLink"
             :external-game-resolver="externalGameLink"
-            hide-columns="broadcast"
-          ></ScheduleTable>
+            :append-to="tooltipContainer"
+            :hide-columns="selectedPanel === PANEL_SCHEDULE ? 'broadcast' : ''"
+            @sort="onSort"
+          />
         </DataProvider>
+
+        <div ref="tooltipContainer" />
       </ErrorProvider>
     </I18NProvider>
   </div>

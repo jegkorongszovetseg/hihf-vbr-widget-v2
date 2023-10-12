@@ -52,7 +52,7 @@ const { onError } = useError();
 
 const { columns, error } = useColumns(
   COLUMNS_SCHEDULE,
-  props.hideColumns,
+  computed(() => props.hideColumns),
   computed(() => ({
     offsetName: props.offsetName,
   }))

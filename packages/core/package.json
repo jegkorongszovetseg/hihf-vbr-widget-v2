@@ -22,6 +22,12 @@
     },
     "./utils": {
       "import": "./dist/index.js"
+    },
+    "./constants": {
+      "import": "./dist/index.js"
+    },
+    "./columns": {
+      "import": "./dist/index.js"
     }
   },
   "scripts": {

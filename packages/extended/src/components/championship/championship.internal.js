@@ -1,7 +1,32 @@
+import { sortBy, prop } from 'ramda';
+import { COLUMNS_SCHEDULE, COLUMNS_STANDINGS_P_3 } from '@mjsz-vbr-elements/core/columns';
+
+export const PANEL_SCHEDULE = 'schedule';
+export const PANEL_STANDINGS = 'standings';
+export const PANEL_PLAYERS = 'players';
+export const PANEL_TEAMS = 'teams';
+
 export const transformSections = (sections, state) => {
-  // state.sections = sections;
-  state.championships = sections;
+  state.championships = sortBy(prop('sectionName'))(sections);
   state.selectedChampionshipId = sections?.[0]?.sectionId;
   state.phaseId = sections?.[0]?.phases[0]?.phaseId;
-  // state.section = compose(prop('phaseName'), head)(state.sections);
 };
+
+export const convertPhaseName = (phases) => {
+  return phases.map((phase) => ({
+    ...phase,
+    phaseName: [phase.phaseName, phase.phaseSubType?.phaseSubTypeName ?? ''].join(' '),
+  }));
+};
+
+export const ALL_REPORTS_MAP = new Map()
+  .set('schedule', {
+    api: '/v2/games-list',
+    columns: COLUMNS_SCHEDULE,
+    sort: {},
+  })
+  .set('standings', {
+    api: '/v2/standings',
+    columns: COLUMNS_STANDINGS_P_3,
+    sort: {},
+  });
