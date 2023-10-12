@@ -41,7 +41,12 @@ const onSort = (payload) => emit('sort', payload);
         :append-to="tooltipContainer || rootElement"
         :sort="sort"
         @sort="onSort"
-      ></DataTable>
+      >
+        <template v-slot:cell-cora="{ row }">
+          <template v-if="row.isPlayerC">C</template>
+          <template v-if="row.isPlayerA">A</template>
+        </template>
+      </DataTable>
     </ResponsiveTable>
     <div ref="tooltipContainer" />
   </div>

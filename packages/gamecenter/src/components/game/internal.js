@@ -26,6 +26,11 @@ export const PLAYER_STATS_COLUMNS = {
     class: 'is-text-left is-text-bold',
     sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
   },
+  cora: {
+    label: '',
+    tooltip: '',
+    class: 'is-text-bold',
+  },
   position: {
     label: 'table.position.short',
     tooltip: 'table.position.tooltip',
