@@ -3,7 +3,7 @@ import { useAsyncState, noop } from '@vueuse/core';
 import { fetchVBRData } from './useFetchVBRApi';
 
 export const useServices = ({ options = {}, transform = (v) => v, onError = noop, onSuccess = noop }) => {
-  const { path, apiKey, params } = options;
+  const { path, apiKey, params, resetOnExecute = false } = options;
 
   const {
     state: apiState,
@@ -12,7 +12,7 @@ export const useServices = ({ options = {}, transform = (v) => v, onError = noop
     execute,
   } = useAsyncState(() => fetchVBRData(path, apiKey, unref(params)).then((response) => transform(response)), [], {
     immediate: false,
-    resetOnExecute: false,
+    resetOnExecute,
     onError,
     onSuccess,
   });

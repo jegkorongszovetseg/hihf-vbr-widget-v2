@@ -1,4 +1,6 @@
 {
+  "schedule": "Sorsolás",
+  "registration": "Jelentkezés",
   "selection": {
     "report": "Riport",
     "video": "Videó",
@@ -35,5 +37,19 @@
     "Elődöntő1": "Elődöntő 1",
     "Elődöntő2": "Elődöntő 2",
     "Döntő": "Döntő"
+  },
+  "table": {
+    "section": {
+      "short": "Szakasz",
+      "tooltip": "Szakasz"
+    },
+    "organizer": {
+      "short": "Rendező",
+      "tooltip": "Rendező csapat"
+    },
+    "document": {
+      "short": "Dokumentum",
+      "tooltip": "Jelentkezés/Sorsolás"
+    }
   }
 }

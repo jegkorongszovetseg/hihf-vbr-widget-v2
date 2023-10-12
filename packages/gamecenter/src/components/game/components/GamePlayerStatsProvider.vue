@@ -14,7 +14,7 @@ const props = defineProps({
 const { sort, change: onSort } = useSort();
 
 const rawConvertedRows = computed(() =>
-  rawConvert(reject(propEq('gk', 'position'), props.rows), upperCase('position'), playerName)
+  rawConvert(reject(propEq('gk', 'row'), props.rows), upperCase('position'), playerName)
 );
 
 const convertedRows = computed(() => {

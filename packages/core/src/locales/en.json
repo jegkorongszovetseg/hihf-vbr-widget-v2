@@ -38,6 +38,14 @@
       "short": "OTW",
       "tooltip": "Overtime Wins"
     },
+    "sow": {
+      "short": "SOW",
+      "tooltip": "Shoot Out Wins"
+    },
+    "sol": {
+      "short": "SOL",
+      "tooltip": "Shoot Out Losses"
+    },
     "otl": {
       "short": "OTL",
       "tooltip": "Overtime Losses"

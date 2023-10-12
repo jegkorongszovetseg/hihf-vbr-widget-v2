@@ -27,7 +27,7 @@
       "tooltip": "Mérkőzésszám"
     },
     "wins": {
-      "short": "GY",
+      "short": "W",
       "tooltip": "Győzelem"
     },
     "draw": {
@@ -35,27 +35,35 @@
       "tooltip": "Döntetlen"
     },
     "otw": {
-      "short": "GYH",
+      "short": "OTW",
       "tooltip": "Győzelem Hosszabbításban"
     },
+    "sow": {
+      "short": "SOW",
+      "tooltip": "Győzelem Szétlövésben"
+    },
+    "sol": {
+      "short": "SOL",
+      "tooltip": "Vereség Szétlövésben"
+    },
     "otl": {
-      "short": "VH",
+      "short": "OTL",
       "tooltip": "Vereség Hosszabbításban"
     },
     "losses": {
-      "short": "V",
+      "short": "L",
       "tooltip": "Vereség"
     },
     "goalFor": {
-      "short": "SZG",
+      "short": "GF",
       "tooltip": "Szerzett Gól"
     },
     "goalAgainst": {
-      "short": "KG",
+      "short": "GA",
       "tooltip": "Kapott Gól"
     },
     "goalDiff": {
-      "short": "GK",
+      "short": "GD",
       "tooltip": "Gólkülönbség"
     },
     "name": {

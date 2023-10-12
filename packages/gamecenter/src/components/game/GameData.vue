@@ -25,16 +25,16 @@ const { t } = useI18n();
 <template>
   <div :class="useMainClass('gamecenter-game-data')">
     <div class="is-title-container">
-      <div class="is-title">
+      <div class="is-title" v-once>
         {{ gameData.championshipName }} - {{ gameData.divisionName }} - {{ gameData.gameName }} /
         {{ gameData.location.locationName }}
       </div>
-      <div class="is-gamedate">
+      <div class="is-gamedate" v-once>
         {{ format(gameData.gameDate, 'L dddd - HH:mm', null, locale) }} ({{
           offsetName(new Date(gameData.gameDate), null, locale)
         }})
       </div>
-      <div class="is-local-gamedate">
+      <div class="is-local-gamedate" v-once>
         {{ t('localTime') }} ({{ gameData.location.locationName }}):
         {{ format(gameData.localGameDate.dateTime, 'L dddd - HH:mm', gameData.localGameDate.timezone, locale) }} ({{
           gameData.localGameDate.timezoneAbbr
@@ -54,7 +54,7 @@ const { t } = useI18n();
     </div>
 
     <div class="is-teams-and-results">
-      <div>
+      <div v-once>
         <Image :src="gameData.homeTeam.logo" class="is-team-logo" :default-src="DEAFULT_LOGO_TEAM_A" />
         <h1 class="is-team-name">{{ gameData.homeTeam.longName }}</h1>
       </div>
@@ -83,7 +83,7 @@ const { t } = useI18n();
         </div>
         <p class="is-period-results">{{ gameData.periodResults }}</p>
       </div>
-      <div>
+      <div v-once>
         <Image :src="gameData.awayTeam.logo" :default-src="DEAFULT_LOGO_TEAM_B" class="is-team-logo" />
         <h1 class="is-team-name">{{ gameData.awayTeam.longName }}</h1>
       </div>
