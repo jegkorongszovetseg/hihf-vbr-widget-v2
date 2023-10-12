@@ -35,9 +35,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
     <span v-if="event.advantage" class="is-badge is-large">
       {{ event.advantage }}
     </span>
-    <span v-if="event.en" class="is-badge is-large">
-      EN
-    </span>
+    <span v-if="event.en" class="is-badge is-large"> EN </span>
   </div>
   <div>
     <span v-if="event.ps || event.gws || event.gwg" class="is-badge is-invert is-large">
@@ -58,7 +56,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
           >
         </template>
       </dt>
-      <dd class="is-poi-data">
+      <dd v-if="!isEmpty(homeOnIce) || !isEmpty(awayOnIce)" class="is-poi-data">
         <ul>
           <template v-for="player in homeOnIce" :key="player.playerId">
             <FloatingPanel

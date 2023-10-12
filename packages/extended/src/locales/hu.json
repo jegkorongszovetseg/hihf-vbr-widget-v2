@@ -1,6 +1,6 @@
 {
   "schedule": "Sorsolás",
-  "registration": "Regisztració",
+  "registration": "Jelentkezés",
   "selection": {
     "report": "Riport",
     "video": "Videó",
@@ -49,7 +49,7 @@
     },
     "document": {
       "short": "Dokumentum",
-      "tooltip": "Regisztráció/Sorsolás"
+      "tooltip": "Jelentkezés/Sorsolás"
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "schedule": "Schedule",
-  "registration": "Registration",
+  "registration": "Application form",
   "selection": {
     "report": "Report",
     "video": "Video",
@@ -49,7 +49,7 @@
     },
     "document": {
       "short": "Document",
-      "tooltip": "Registration/Schedule"
+      "tooltip": "Application Form/Schedule"
     }
   }
 }
