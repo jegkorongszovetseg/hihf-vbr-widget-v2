@@ -1,3 +1,4 @@
+import { sortBy, prop } from 'ramda';
 import { COLUMNS_SCHEDULE, COLUMNS_STANDINGS_P_3 } from '@mjsz-vbr-elements/core/columns';
 
 export const PANEL_SCHEDULE = 'schedule';
@@ -6,9 +7,16 @@ export const PANEL_PLAYERS = 'players';
 export const PANEL_TEAMS = 'teams';
 
 export const transformSections = (sections, state) => {
-  state.championships = sections;
+  state.championships = sortBy(prop('sectionName'))(sections);
   state.selectedChampionshipId = sections?.[0]?.sectionId;
   state.phaseId = sections?.[0]?.phases[0]?.phaseId;
+};
+
+export const convertPhaseName = (phases) => {
+  return phases.map((phase) => ({
+    ...phase,
+    phaseName: [phase.phaseName, phase.phaseSubType?.phaseSubTypeName ?? ''].join(' '),
+  }));
 };
 
 export const ALL_REPORTS_MAP = new Map()

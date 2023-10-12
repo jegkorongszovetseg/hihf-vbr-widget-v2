@@ -6,21 +6,24 @@ export const useColumns = (columns, hiddenColumns = '', variables = {}) => {
   const errorRef = ref('');
   const { t } = useI18n();
 
-  if (hiddenColumns) {
-    try {
-      const columnsToHide = validateColumnsName(unref(columns), hiddenColumns);
-      columns = omit(columnsToHide, unref(columns));
-    } catch (err) {
-      errorRef.value = err;
+  const validatedColumns = computed(() => {
+    if (unref(hiddenColumns)) {
+      try {
+        const columnsToHide = validateColumnsName(unref(columns), unref(hiddenColumns));
+        return omit(columnsToHide, unref(columns));
+      } catch (err) {
+        errorRef.value = err;
+      }
     }
-  }
+    return unref(columns);
+  });
 
   const convert = (column) => ({
     ...column,
     ...(column.label && { label: t(column.label ?? '', unref(variables)) }),
     ...(column.tooltip && { tooltip: t(column.tooltip ?? '') }),
   });
-  const converted = computed(() => map(convert, unref(columns)));
+  const converted = computed(() => map(convert, validatedColumns.value));
   return {
     columns: converted,
     error: errorRef,

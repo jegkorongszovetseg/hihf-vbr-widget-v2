@@ -1,13 +1,17 @@
 <script setup>
 import { computed, unref, ref } from 'vue';
-import { externalGameLinkResolver, getLocalTimezone, offsetName } from '@mjsz-vbr-elements/core/utils';
+import {
+  externalGameLinkResolver,
+  externalTeamLinkResolver,
+  getLocalTimezone,
+  offsetName,
+} from '@mjsz-vbr-elements/core/utils';
 import {
   ErrorNotice,
   ErrorProvider,
   I18NProvider,
   LoadingIndicator,
   // TimezoneSelector,
-  ScheduleTable,
   StatisticsTable,
 } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
@@ -44,6 +48,8 @@ const props = defineProps({
     default: '',
   },
 });
+
+const tooltipContainer = ref(null);
 const timezone = ref(getLocalTimezone());
 const currentOffsetName = computed(() => offsetName(new Date(), unref(timezone), props.locale));
 const tabButtonClasses = useMainClass('tab-button');
@@ -52,6 +58,7 @@ const sectionSelectorMainClass = useMainClass('section-selector');
 const messages = { en, hu };
 
 const externalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
+const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamLink, teamName);
 
 // const onTimezoneChange = (tz) => {
 //   timezone.value = tz;
@@ -69,15 +76,18 @@ const externalGameLink = (gameId) => externalGameLinkResolver(props.externalGame
           :timezone="timezone"
           :championship-name="championshipName"
           v-slot="{
+            sort,
             games,
             phases,
             phaseId,
+            columns,
             seasons,
             isLoading,
             selectedPanel,
             championships,
             championshipId,
             selectedChampionshipId,
+            onSort,
             changePanel,
             changePhase,
             changeSeason,
@@ -112,23 +122,19 @@ const externalGameLink = (gameId) => externalGameLinkResolver(props.externalGame
             >
               Tabella
             </button>
-            <button
+            <!-- <button
               :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_PLAYERS }]"
               @click="changePanel(PANEL_PLAYERS)"
             >
               Játékos Statisztika
-            </button>
-            <button
+            </button> -->
+            <!-- <button
               :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_TEAMS }]"
               @click="changePanel(PANEL_TEAMS)"
             >
               Csapat Statisztika
-            </button>
+            </button> -->
           </div>
-
-          <pre>
-            {{ selectedPanel }}
-          </pre>
 
           <!-- <TimezoneSelector
             v-if="props.timezoneSelector"
@@ -141,26 +147,21 @@ const externalGameLink = (gameId) => externalGameLinkResolver(props.externalGame
 
           <LoadingIndicator v-if="isLoading" />
 
-          <ScheduleTable
-            v-if="selectedPanel === PANEL_SCHEDULE"
+          <!-- :is-team-linked="isTeamLinked" -->
+          <StatisticsTable
+            :columns="columns"
             :rows="games.rows"
-            :offset-name="currentOffsetName"
-            :is-loading="isLoading"
-            :external-game-resolver="externalGameLink"
-            hide-columns="broadcast"
-          />
-
-          <!-- <StatisticsTable
-            :columns="currentColumns"
-            :rows="convertedRows.rows"
-            :hide-columns="hideColumns"
             :sort="sort"
+            :offset-name="currentOffsetName"
             :external-team-resolver="resolveExternalTeamLink"
-            :is-team-linked="isTeamLinked"
+            :external-game-resolver="externalGameLink"
             :append-to="tooltipContainer"
+            :hide-columns="selectedPanel === PANEL_SCHEDULE ? 'broadcast' : ''"
             @sort="onSort"
-          /> -->
+          />
         </DataProvider>
+
+        <div ref="tooltipContainer" />
       </ErrorProvider>
     </I18NProvider>
   </div>

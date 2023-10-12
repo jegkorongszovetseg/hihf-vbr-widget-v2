@@ -7,14 +7,14 @@ import '../../../packages/shared/dist/css/responsive-table.css';
 import '../../../packages/shared/dist/css/table.css';
 import '../../../packages/shared/dist/css/grid.css';
 import '../../../packages/shared/dist/css/typography.css';
-// import '../../../packages/shared/dist/css/cards.css';
+import '../../../packages/shared/dist/css/cards.css';
 import '../../../packages/shared/dist/css/forms.css';
 import '../../../packages/shared/dist/css/dropdown.css';
 </script>
 
 <template>
   <div class="p-5">
-    <!-- <Championship :locale="store.locale" championship-name="U-16 Bajnokság" /> -->
-    <mjsz-vbr-championship :locale="store.locale" championship-name="U-16 Bajnokság"  />
+    <!-- <Championship :locale="store.locale" championship-name="U-14 Bajnokság" /> -->
+    <mjsz-vbr-championship :locale="store.locale" championship-name="U-21 Bajnokság"  />
   </div>
 </template>
