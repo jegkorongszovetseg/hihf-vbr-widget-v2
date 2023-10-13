@@ -14,24 +14,24 @@
 }
 
 .is-text-xs {
-  font-size: 0.75rem; /* 12px */
-  line-height: 1rem; /* 16px */
+  font-size: var(--vbr-widget-typography-text-xs-size);
+  line-height: var(--vbr-widget-typography-text-xs-lineheight);
 }
 .is-text-sm {
-  font-size: 0.875rem; /* 14px */
-  line-height: 1.25rem; /* 20px */
+  font-size: var(--vbr-widget-typography-text-sm-size);
+  line-height: var(--vbr-widget-typography-text-xs-lineheight);
 }
 .is-text-base {
-  font-size: 1rem; /* 16px */
-  line-height: 1.5rem; /* 24px */
+  font-size: var(--vbr-widget-typography-text-base-size);
+  line-height: var(--vbr-widget-typography-text-base-lineheight);
 }
 .is-text-lg {
-  font-size: 1.125rem; /* 18px */
-  line-height: 1.75rem; /* 28px */
+  font-size: var(--vbr-widget-typography-text-lg-size);
+  line-height: var(--vbr-widget-typography-text-lg-lineheight);
 }
 .is-text-xl {
-  font-size: 1.25rem; /* 20px */
-  line-height: 1.75rem; /* 28px */
+  font-size: var(--vbr-widget-typography-text-xl-size);
+  line-height: var(--vbr-widget-typography-text-xl-lineheight);
 }
 
 .is-uppercase {
