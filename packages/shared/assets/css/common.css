@@ -37,7 +37,18 @@
 
   --vbr-widget-live-game-color: #8bc34a;
 
-  --vbr-widget-table-header-font-size: 12px;
+  --vbr-widget-typography-text-xs-size: 0.75rem; /* 12px */
+  --vbr-widget-typography-text-xs-lineheight: 1rem; /* 16px */
+  --vbr-widget-typography-text-sm-size: 0.875rem; /* 14px */
+  --vbr-widget-typography-text-sm-lineheight: 1.25rem; /* 20px */
+  --vbr-widget-typography-text-base-size: 1rem; /* 16px */
+  --vbr-widget-typography-text-base-lineheight: 1.5rem; /* 24px */
+  --vbr-widget-typography-text-lg-size: 1.125rem; /* 18px */
+  --vbr-widget-typography-text-lg-lineheight: 1.75rem; /* 28px */
+  --vbr-widget-typography-text-xl-size: 1.25rem; /* 20px */
+  --vbr-widget-typography-text-xl-lineheight: 1.75rem; /* 28px */
+
+  --vbr-widget-table-header-font-size: var(--vbr-widget-typography-text-xs-size);
   --vbr-widget-table-default-column-width: 30px;
   --vbr-widget-table-default-bg-color: var(--vbr-widget-primary-color-0);
   --vbr-widget-table-color: var(--vbr-widget-primary-color-800);
@@ -73,7 +84,7 @@
   --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);
   --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);
 
-  --vbr-widget-tooltip-font-size: 12px;
+  --vbr-widget-tooltip-font-size: var(--vbr-widget-typography-text-xs-size);
   --vbr-widget-tooltip-color: #ffffff;
   --vbr-widget-tooltip-bg-color: #000000;
 
@@ -93,15 +104,15 @@
   --vbr-widget-hover-color: var(--vbr-widget-secondary-color-900);
 
   --vbr-widget-base-input-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-base-input-font-size: 0.875rem;
+  --vbr-widget-base-input-font-size: var(--vbr-widget-typography-text-sm-size);
   --vbr-widget-base-input-border-color: var(--vbr-widget-primary-color-300);
   --vbr-widget-base-input-border-radius: 3px;
 
   --vbr-widget-form-label-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-form-label-font-size: 0.75rem;
+  --vbr-widget-form-label-font-size: var(--vbr-widget-typography-text-xs-size);
 
   --vbr-widget-timezone-selector-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-timezone-selector-font-size: 0.8125rem;
+  --vbr-widget-timezone-selector-font-size: var(--vbr-widget-typography-text-sm-size); /* 0.8125rem */
 
   --vbr-widget-badge-bg-color: var(--vbr-widget-primary-color-50);
   --vbr-widget-badge-color: var(--vbr-widget-primary-color-400);
@@ -109,7 +120,7 @@
   --vbr-widget-badge-large-font-size: 0.6875rem;
 
   --vbr-widget-tab-btn-padding: 0.625rem 1rem;
-  --vbr-widget-tab-btn-font-size: 1rem;
+  --vbr-widget-tab-btn-font-size: var();
   --vbr-widget-tab-btn-font-weight: 500;
   --vbr-widget-tab-btn-bg-color: var(--vbr-widget-primary-color-0);
   --vbr-widget-tab-btn-color: var(--vbr-widget-primary-color-300);
@@ -138,10 +149,10 @@
   --vbr-widget-gamecenter-teamname-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-gamecenter-teamname-weight: 700;
   --vbr-widget-gamecenter-title-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-gamecenter-title-size: 1rem;
+  --vbr-widget-gamecenter-title-size: var(--vbr-widget-typography-text-base-size);
   --vbr-widget-gamecenter-title-weight: 700;
   --vbr-widget-gamecenter-gamedate-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-gamecenter-gamedate-size: 1rem;
+  --vbr-widget-gamecenter-gamedate-size: var(--vbr-widget-typography-text-base-size);
   --vbr-widget-gamecenter-local-gamedate-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-gamecenter-local-gamedate-size: 0.8125rem;
   --vbr-widget-gamecenter-gamestatus-color: var(--vbr-widget-primary-color-600);
@@ -156,31 +167,20 @@
   --vbr-widget-gamecenter-stats-border-color: var(--vbr-widget-primary-color-100);
   --vbr-widget-gamecenter-stats-title-size: 0.8125rem;
   --vbr-widget-gamecenter-stats-title-color: var(--vbr-widget-primary-color-400);
-  --vbr-widget-gamecenter-stats-size: 1rem;
+  --vbr-widget-gamecenter-stats-size: var(--vbr-widget-typography-text-base-size);
   --vbr-widget-gamecenter-stats-color: var(--vbr-widget-primary-color-800);
 
   --vbr-widget-gamecenter-team-container-title-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-gamecenter-team-container-title-bg-color: var(--vbr-widget-primary-color-100);
   --vbr-widget-gamecenter-team-container-border-color: var(--vbr-widget-primary-color-100);
 
-  --vbr-widget-gamecenter-events-evented-person-size: 1rem;
+  --vbr-widget-gamecenter-events-evented-person-size: var(--vbr-widget-typography-text-base-size);
   --vbr-widget-gamecenter-events-evented-person-weight: 500;
   --vbr-widget-gamecenter-events-assitst-list-size: 0.9375rem;
-  --vbr-widget-gamecenter-events-poi-list-size: 0.75rem;
-  --vbr-widget-gamecenter-events-score-size: 1rem;
-  --vbr-widget-gamecenter-events-penalty-size: 0.875rem;
-  --vbr-widget-gamecenter-events-goalie-direction-size: 0.875rem;
-
-  --vbr-widget-typography-text-xs-size: 0.75rem; /* 12px */
-  --vbr-widget-typography-text-xs-lineheight: 1rem; /* 16px */
-  --vbr-widget-typography-text-sm-size: 0.875rem; /* 14px */
-  --vbr-widget-typography-text-sm-lineheight: 1.25rem; /* 20px */
-  --vbr-widget-typography-text-base-size: 1rem; /* 16px */
-  --vbr-widget-typography-text-base-lineheight: 1.5rem; /* 24px */
-  --vbr-widget-typography-text-lg-size: 1.125rem; /* 18px */
-  --vbr-widget-typography-text-lg-lineheight: 1.75rem; /* 28px */
-  --vbr-widget-typography-text-xl-size: 1.25rem; /* 20px */
-  --vbr-widget-typography-text-xl-lineheight: 1.75rem; /* 28px */
+  --vbr-widget-gamecenter-events-poi-list-size: var(--vbr-widget-typography-text-xs-size);
+  --vbr-widget-gamecenter-events-score-size: var(--vbr-widget-typography-text-base-size);
+  --vbr-widget-gamecenter-events-penalty-size: var(--vbr-widget-typography-text-sm-size);
+  --vbr-widget-gamecenter-events-goalie-direction-size: var(--vbr-widget-typography-text-sm-size);
 }
 
 .transition-fade-enter-active,
