@@ -48,6 +48,10 @@
   opacity: 0.5;
 }
 
+.is-mt-5 {
+  margin-top: 1rem;
+}
+
 .is-mb-5 {
   margin-bottom: 1rem;
 }

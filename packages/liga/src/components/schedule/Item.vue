@@ -27,7 +27,7 @@ const mainClasses = useMainClass('card-item');
 
 <template>
   <div :class="mainClasses">
-    <div class="is-info is-text-sm">
+    <div class="is-info is-text-base">
       {{ game.gameName }} - {{ game.divisionName }} - {{ game.location.locationName }}
       <template v-if="game.broadcast">-&nbsp;<IconBroadcast height="16" />&nbsp;</template>
       <template v-if="game.video"
@@ -35,7 +35,7 @@ const mainClasses = useMainClass('card-item');
       ></template>
     </div>
 
-    <div class="is-home-team">
+    <div class="is-home-team is-text-base">
       <span class="is-team-name-short">{{ game.homeTeam.shortName }}</span>
       <span class="is-team-name-long">{{ game.homeTeam.longName }}</span>
       <Image class="is-logo-image" :src="game.homeTeam.logo" :key="game.homeTeam.id" />
@@ -68,7 +68,7 @@ const mainClasses = useMainClass('card-item');
       </template>
     </div>
 
-    <div class="is-away-team">
+    <div class="is-away-team is-text-base">
       <Image class="is-logo-image" :src="game.awayTeam.logo" :key="game.awayTeam.id" />
       <span class="is-team-name-short">{{ game.awayTeam.shortName }}</span>
       <span class="is-team-name-long">{{ game.awayTeam.longName }}</span>

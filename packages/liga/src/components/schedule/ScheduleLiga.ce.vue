@@ -126,7 +126,7 @@ const onTimezoneChange = (tz) => {
 
           <template v-else>
             <div v-for="(gameDay, key) in games.rows" :key="key">
-              {{ format(key, 'L dddd', timezone, locale) }}
+              <span class="is-text-base">{{ format(key, 'L dddd', timezone, locale) }}</span>
               <div class="is-card">
                 <template v-for="game in gameDay" :key="game.id">
                   <GameItem :game="game" :offset-name="currentOffsetName" :game-link="externalGameLink"/>

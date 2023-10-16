@@ -58,7 +58,7 @@ const baseLabelClass = useMainClass('label');
 </script>
 
 <template>
-  <div class="g-row" style="column-gap: 8px">
+  <div class="g-row" style="column-gap: 8px; padding-block-start: 15px;">
     <div>
       <label for="season" :class="baseLabelClass">{{ t('selection.season') }}</label>
       <BaseSelect id="season" v-model="championshipId">
