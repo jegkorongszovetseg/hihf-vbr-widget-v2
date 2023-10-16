@@ -47,7 +47,7 @@ const mainClasses = useMainClass('card-item');
         <span v-if="game.isShootout" class="is-badge is-invert">{{ t('common.shootoutShort') }}</span>
         <span v-if="game.seriesStandings" class="is-badge">{{ game.seriesStandings }}</span>
       </div>
-      <a :href="gameLink(game.id)">
+      <a :href="gameLink(game.gameId)">
         <span v-if="game.gameStatus > 0 && game.gameStatus < 3" class="is-text-xl is-text-bold">
           {{ game.homeTeamScore }} - {{ game.awayTeamScore }}
         </span>
