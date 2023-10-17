@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, unref } from 'vue';
+import { ref } from 'vue';
 import { externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import {
   ErrorNotice,
@@ -39,6 +39,8 @@ const props = defineProps({
 
 const messages = { en, hu };
 
+const tooltipContainer = ref(null);
+
 const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeamResolver, teamId);
 </script>
 
@@ -52,30 +54,22 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
           :locale="locale"
           :championship-name="championshipName"
           v-slot="{
-            seasons,
-            championshipId,
-            sections,
-            section,
+            sort,
             teams,
+            seasons,
+            section,
+            sections,
             isLoading,
-            selectedMonth,
-            selectedTeam,
-            selectedTeamGameType,
+            championshipId,
+            onSort,
             changeSeason,
             changeSection,
-            changeTeamType,
           }"
         >
           <Selector
             :seasons="seasons"
             :championship-id="championshipId"
-            :selected-month="selectedMonth"
-            :selected-team="selectedTeam"
-            :selected-team-game-type="selectedTeamGameType"
             @update:championship-id="changeSeason"
-            @update:selected-month="changeMonth"
-            @update:selected-team="changeTeam"
-            @update:selected-team-game-type="changeTeamType"
           />
           <div :class="useMainClass('section-selector')">
             <button
@@ -90,8 +84,17 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
 
           <LoadingIndicator v-if="isLoading" />
 
-          <StatisticsTable :rows="teams.rows" :columns="COLUMNS_STANDINGS_P_3" />
+          <StatisticsTable
+            :rows="teams.rows"
+            :columns="COLUMNS_STANDINGS_P_3"
+            :sort="sort"
+            :external-team-resolver="externalTeamLink"
+            :append-to="tooltipContainer"
+            @sort="onSort"
+          />
         </DataProvider>
+
+        <div ref="tooltipContainer" />
       </ErrorProvider>
     </I18NProvider>
   </div>

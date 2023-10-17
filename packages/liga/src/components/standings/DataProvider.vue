@@ -1,9 +1,9 @@
 <script setup>
-import { reactive, computed, unref, toRef } from 'vue';
+import { reactive, computed, unref } from 'vue';
 import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
-import { useLazyLoadingState, useError, useServices } from '@mjsz-vbr-elements/core/composables';
-import { convert, sortGames } from '@mjsz-vbr-elements/core/utils';
-import { transformSeasons, transformSections, transformTeams } from '../internal';
+import { useLazyLoadingState, useError, useServices, useSort } from '@mjsz-vbr-elements/core/composables';
+import { convert } from '@mjsz-vbr-elements/core/utils';
+import { transformSeasons, transformSections } from '../internal';
 
 const props = defineProps({
   championshipName: {
@@ -35,6 +35,11 @@ const state = reactive({
 
 const { onError } = useError();
 
+const { sort, change: onSort } = useSort({
+  sortTarget: '',
+  orders: [],
+});
+
 const { isLoading: seasonsLoading, execute: fetchSeasons } = useServices({
   options: {
     path: '/v2/championship-seasons',
@@ -65,47 +70,30 @@ const {
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId, division: state.section })),
   },
-  transform: (data) => sortGames(data),
   onError,
 });
 
 const isLoading = useLazyLoadingState([sectionLoading, seasonsLoading, gamesLoading], { delay: 1000 });
 
 const convertedRows = computed(() => {
-  return convert(unref(rows)).addContinuousIndex().value();
+  return convert(unref(rows)).sorted(sort).addContinuousIndex().value();
 });
 
-useAsyncQueue([fetchSeasons, fetchSection, fetchStandings], {
-  onFinished: () => {},
-});
+useAsyncQueue([fetchSeasons, fetchSection, fetchStandings]);
 
 const changeSeason = (value) => {
   state.championshipId = value;
   params.championshipId = value;
   // resets
-  state.selectedTeam = null;
-  params.selectedTeam = null;
-  state.selectedMonth = null;
-  params.selectedMonth = null;
-  state.selectedTeamGameType = 'all';
-  params.selectedTeamGameType = null;
-  useAsyncQueue([fetchSection, fetchTeams, fetchSchedule]);
+  params.section = null;
+  useAsyncQueue([fetchSection, fetchStandings]);
 };
-
 
 const changeSection = (value) => {
   state.section = value;
   params.section = value;
   // resets
-  state.selectedMonth = null;
-  params.selectedMonth = null;
-  fetchSchedule();
-};
-
-
-const changeTeamType = (value) => {
-  state.selectedTeamGameType = value;
-  params.selectedTeamGameType = value;
+  fetchStandings();
 };
 </script>
 
@@ -113,11 +101,12 @@ const changeTeamType = (value) => {
   <slot
     v-bind="{
       ...state,
+      sort,
       teams: convertedRows,
       isLoading,
+      onSort,
       changeSeason,
       changeSection,
-      changeTeamType,
     }"
   ></slot>
 </template>
