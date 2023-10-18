@@ -57,6 +57,7 @@ declare module 'vue-router/auto/routes' {
     '/LigaSchedule': RouteRecordInfo<'/LigaSchedule', '/LigaSchedule', Record<never, never>, Record<never, never>>,
     '/LigaStandings': RouteRecordInfo<'/LigaStandings', '/LigaStandings', Record<never, never>, Record<never, never>>,
     '/LigaStatistics': RouteRecordInfo<'/LigaStatistics', '/LigaStatistics', Record<never, never>, Record<never, never>>,
+    '/LigaTeams': RouteRecordInfo<'/LigaTeams', '/LigaTeams', Record<never, never>, Record<never, never>>,
   }
 }
 
