@@ -62,7 +62,7 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
 
           <ul v-else :class="useMainClass('wrapped-grid')" style="--min-width: 80px; --max-width: 160px">
             <li v-for="team in teams" :key="team.teamId">
-              <a :href="externalTeamLink(team.teamId)">
+              <a :href="externalTeamLink(team.teamId)" class="is-text-lg">
                 <Image class="is-team-logo" :src="team.teamLogo" :key="team.teamId" />
                 {{ team.teamName }}
               </a>
@@ -79,3 +79,4 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
 <style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
