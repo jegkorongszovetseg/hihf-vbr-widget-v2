@@ -1,0 +1,23 @@
+.wrapped-grid {
+  --min-width: 300px;
+  --max-width: 1fr;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--min-width), var(--max-width)));
+  gap: 30px;
+  padding-block: 20px;
+  text-align: center;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+  }
+
+  .is-team-logo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+  }
+}
