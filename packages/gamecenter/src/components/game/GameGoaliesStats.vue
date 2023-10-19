@@ -1,9 +1,12 @@
 <script setup>
 import { computed } from 'vue';
+import { sortWith, descend, prop } from 'ramda';
 import { useMainClass, useColumns } from '@mjsz-vbr-elements/core/composables';
 import GameDataTable from './components/GameDataTable.vue';
 import GameGolaiesStatsProvider from './components/GameGoaliesStatsProvider.vue';
 import { GOALIES_STATS_COLUMNS } from './internal';
+
+const transform = sortWith([descend(prop('startingFive'))]);
 
 const props = defineProps({
   data: {
@@ -32,8 +35,8 @@ const props = defineProps({
 
 const { columns } = useColumns(GOALIES_STATS_COLUMNS);
 
-const homePlayers = computed(() => props.data?.[props.homeTeamId]);
-const awayPlayers = computed(() => props.data?.[props.awayTeamId]);
+const homePlayers = computed(() => transform(props.data?.[props.homeTeamId] ?? []));
+const awayPlayers = computed(() => transform(props.data?.[props.awayTeamId] ?? []));
 </script>
 <template>
   <div :class="useMainClass('gamecenter-data-columns')">
