@@ -5,7 +5,7 @@ Egy adott bajnokság állását mutatja meg.
 ## Használat
 
 ```html
-<mjsz-vbr-standings locale="hu" championship-id="2051" division="Alapszakasz" />
+<mjsz-vbr-standings locale="hu" championship-id="3450" division="Alapszakasz" />
 ```
 
 ## Példa
@@ -13,7 +13,7 @@ Egy adott bajnokság állását mutatja meg.
 <ClientOnly>
   <mjsz-vbr-standings
     locale="hu"
-    championship-id="2051"
+    championship-id="3450"
     division="Alapszakasz" 
   />
 </ClientOnly>
