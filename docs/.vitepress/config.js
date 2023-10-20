@@ -42,9 +42,25 @@ export default defineConfig({
         {
           text: 'Extended Elements',
           items: [
-            { text: 'Statisztikák', link: '/widget/statistics' },
+            { text: 'Bajnokságok', link: '/widget/statistics' },
+            { text: 'Kupa Menetrend', link: '/widget/playoffs' },
+          ],
+        },
+        {
+          text: 'Liga',
+          items: [
+            { text: 'Rájátszás', link: '/widget/statistics' },
             { text: 'Liga Menetrend', link: '/widget/schedule-liga' },
-            { text: 'Rájátszás', link: '/widget/playoffs' },
+            { text: 'Liga Tabella', link: '/widget/playoffs' },
+            { text: 'Statisztikák', link: '/widget/statistics' },
+            { text: 'Csapatok', link: '/widget/statistics' },
+          ],
+        },
+        {
+          text: 'Game Center',
+          items: [
+            { text: 'Game', link: '/widget/gamecenter' },
+            { text: 'Game Timeline', link: '/widget/gamecenter-timeline' },
           ],
         },
       ],

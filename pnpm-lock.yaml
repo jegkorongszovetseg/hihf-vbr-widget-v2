@@ -23,6 +23,12 @@ importers:
       '@mjsz-vbr-elements/extended':
         specifier: workspace:^
         version: link:../packages/extended
+      '@mjsz-vbr-elements/gamecenter':
+        specifier: workspace:^
+        version: link:../packages/gamecenter
+      '@mjsz-vbr-elements/liga':
+        specifier: workspace:^
+        version: link:../packages/liga
     devDependencies:
       vitepress:
         specifier: 1.0.0-beta.1
@@ -239,6 +245,12 @@ importers:
       '@mjsz-vbr-elements/extended':
         specifier: workspace:^
         version: link:../packages/extended
+      '@mjsz-vbr-elements/gamecenter':
+        specifier: workspace:^
+        version: link:../packages/gamecenter
+      '@mjsz-vbr-elements/liga':
+        specifier: workspace:^
+        version: link:../packages/liga
       vue:
         specifier: ^3.3.4
         version: 3.3.4
