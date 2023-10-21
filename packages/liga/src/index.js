@@ -1,6 +1,6 @@
 import { defineCustomElement } from 'vue';
 
-import { Playoffs, Statistics, ScheduleLiga, StandingsLiga, TeamsLiga } from './components';
+import { Playoffs, Statistics, ScheduleLiga, StandingsLiga, TeamsLiga, TeamLiga } from './components';
 
 const StatisticsCE = defineCustomElement(Statistics);
 const ScheduleLigaCE = defineCustomElement(ScheduleLiga);
@@ -14,6 +14,7 @@ export {
   Playoffs,
   StandingsLiga,
   TeamsLiga,
+  TeamLiga,
   StatisticsCE,
   ScheduleLigaCE,
   PlayoffsCE,

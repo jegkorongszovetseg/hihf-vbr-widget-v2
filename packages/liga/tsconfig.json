@@ -8,5 +8,5 @@
   },
   "include": ["./src/*", "./src/components/*"],
   "exclude": ["dist/*"],
-  "references": [{ "path": "../core/tsconfig.json" }]
+  // "references": [{ "path": "../core/tsconfig.json" }]
 }
