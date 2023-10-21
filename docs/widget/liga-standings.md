@@ -1,7 +1,14 @@
 ---
 outline: false
 ---
+
 # Tabella Liga honlapra
+
+## Használat
+
+```html
+<mjsz-vbr-standings-liga locale="hu" championship-name="Erste Liga" />
+```
 
 ## Példa
 

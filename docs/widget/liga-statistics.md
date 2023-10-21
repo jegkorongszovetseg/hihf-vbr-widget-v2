@@ -3,6 +3,12 @@ outline: false
 ---
 # Statiszkikák
 
+## Használat
+
+```html
+<mjsz-vbr-statistics locale="hu" championship-name="Erste Liga" />
+```
+
 ## Példa
 
 <ClientOnly>
