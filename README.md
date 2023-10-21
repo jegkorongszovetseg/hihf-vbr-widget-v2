@@ -3,42 +3,45 @@
 A Magyar Jégkorong Szövetség versenybírósági rendszer adatainak megjelenítése / Data visualization for HIHF VBR system
 
 ## Részletes információ / Documentation:
+
 [Dokumentáció](https://api.icehockey.hu/widgets/docs/v2/)
 
 ## Tervezett Csomag felosztás
 
-1. Elements
-  [x] Standings
-  [x] Schedule
-  [x] FieldPlayerLeader
-  [x] FieldPlayerPenalties
-  [x] GoaliesLeader
-  [x] TeamAttendance
-  [x] TeamFairplay
-  [x] TeamPenaltyKilling
-  [x] TeamPowerplay
-  [x] TeamScoringEfficiency
+### Elements
 
-2. Extended
-  [ ] Season Calendar / Versenynaptár
-  [ ] Public Calendar / Felső eredmények
-  [ ] Championship / Teljes Bajnokság megjelenik
-  [ ] Standings / Főoldali tabellák
-  [ ] CupSchedule / Torna naptár
+- [x] Standings
+- [x] Schedule
+- [x] FieldPlayerLeader
+- [x] FieldPlayerPenalties
+- [x] GoaliesLeader
+- [x] TeamAttendance
+- [x] TeamFairplay
+- [x] TeamPenaltyKilling
+- [x] TeamPowerplay
+- [x] TeamScoringEfficiency
 
-3. Liga
-  [x] Statistics
-  [x] LigaSchedule
-  [x] Playoffs
-  [ ] LigaTeams
-  [ ] TeamGames
-  [ ] TeamPlayersStats
-  [ ] TeamPlayers
-  [ ] LigaPlayers
-  [ ] Player
+### Extended
 
-4. GameCenter
-  [x] Game
+- [ ] Season Calendar / Versenynaptár
+- [ ] Public Calendar / Felső eredmények
+- [x] Championship / Teljes Bajnokság megjelenik
+- [ ] Standings / Főoldali tabellák
+- [x] CupSchedule / Torna naptár
+
+### Liga
+
+- [x] Statistics
+- [x] LigaSchedule
+- [x] Playoffs
+- [x] LigaTeams
+- [ ] LigaTeam
+- [ ] LigaPlayers
+- [ ] Player
+
+### GameCenter
+
+- [x] Game
 
 ## Dev
 

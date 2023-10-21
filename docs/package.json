@@ -18,6 +18,8 @@
   "dependencies": {
     "@mjsz-vbr-elements/core": "workspace:^",
     "@mjsz-vbr-elements/elements": "workspace:^",
-    "@mjsz-vbr-elements/extended": "workspace:^"
+    "@mjsz-vbr-elements/extended": "workspace:^",
+    "@mjsz-vbr-elements/liga": "workspace:^",
+    "@mjsz-vbr-elements/gamecenter": "workspace:^"
   }
 }

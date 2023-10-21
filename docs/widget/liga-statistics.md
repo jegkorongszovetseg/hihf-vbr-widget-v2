@@ -1,12 +1,18 @@
 ---
 outline: false
 ---
-# Menetrend Liga honlapra
+# Statiszkikák
+
+## Használat
+
+```html
+<mjsz-vbr-statistics locale="hu" championship-name="Erste Liga" />
+```
 
 ## Példa
 
 <ClientOnly>
-  <mjsz-vbr-schedule-liga
+  <mjsz-vbr-statistics
     locale="hu"
     championship-name="Erste Liga"
     championship-id="3314"

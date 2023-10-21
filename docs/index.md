@@ -12,13 +12,13 @@ hero:
       link: /widget/
     - theme: alt
       text: Forrás a GitHub-on
-      link: /api-examples
+      link: https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Moduláris
+    details: Csak a neked szükséges elemeket használd
+  - title: Browser Imports
+    details: UNPKG.com CDN a gyors elérésért
+  - title: NPM packages
+    details: Saját Vue 3 (Nuxt) projektedben is használhatod
 ---
