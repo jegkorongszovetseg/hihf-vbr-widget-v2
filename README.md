@@ -7,7 +7,7 @@ A Magyar Jégkorong Szövetség versenybírósági rendszer adatainak megjelení
 
 ## Tervezett Csomag felosztás
 
-1. Elements
+### Elements
   [x] Standings
   [x] Schedule
   [x] FieldPlayerLeader
@@ -19,25 +19,23 @@ A Magyar Jégkorong Szövetség versenybírósági rendszer adatainak megjelení
   [x] TeamPowerplay
   [x] TeamScoringEfficiency
 
-2. Extended
+### Extended
   [ ] Season Calendar / Versenynaptár
   [ ] Public Calendar / Felső eredmények
-  [ ] Championship / Teljes Bajnokság megjelenik
+  [x] Championship / Teljes Bajnokság megjelenik
   [ ] Standings / Főoldali tabellák
-  [ ] CupSchedule / Torna naptár
+  [x] CupSchedule / Torna naptár
 
-3. Liga
+### Liga
   [x] Statistics
   [x] LigaSchedule
   [x] Playoffs
-  [ ] LigaTeams
-  [ ] TeamGames
-  [ ] TeamPlayersStats
-  [ ] TeamPlayers
+  [x] LigaTeams
+  [ ] LigaTeam
   [ ] LigaPlayers
   [ ] Player
 
-4. GameCenter
+### GameCenter
   [x] Game
 
 ## Dev
