@@ -7,6 +7,7 @@ const ScheduleLigaCE = defineCustomElement(ScheduleLiga);
 const PlayoffsCE = defineCustomElement(Playoffs);
 const StandingsLigaCE = defineCustomElement(StandingsLiga);
 const TeamsLigaCE = defineCustomElement(TeamsLiga);
+const TeamLigaCE = defineCustomElement(TeamLiga);
 
 export {
   Statistics,
@@ -20,6 +21,7 @@ export {
   PlayoffsCE,
   StandingsLigaCE,
   TeamsLigaCE,
+  TeamLigaCE,
 };
 
 export function register() {
@@ -28,6 +30,7 @@ export function register() {
   customElements.define('mjsz-vbr-playoffs', PlayoffsCE);
   customElements.define('mjsz-vbr-standings-liga', StandingsLigaCE);
   customElements.define('mjsz-vbr-teams-liga', TeamsLigaCE);
+  customElements.define('mjsz-vbr-team-liga', TeamLigaCE);
 }
 
 export default register;
