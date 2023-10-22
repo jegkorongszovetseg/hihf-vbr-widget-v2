@@ -38,15 +38,15 @@
   --vbr-widget-live-game-color: #8bc34a;
 
   --vbr-widget-typography-text-xs-size: 0.75rem; /* 12px */
-  --vbr-widget-typography-text-xs-lineheight: 1rem; /* 16px */
+  --vbr-widget-typography-text-xs-lineheight: 1.25rem; /* 16px */
   --vbr-widget-typography-text-sm-size: 0.875rem; /* 14px */
-  --vbr-widget-typography-text-sm-lineheight: 1.25rem; /* 20px */
+  --vbr-widget-typography-text-sm-lineheight: 1.5rem; /* 20px */
   --vbr-widget-typography-text-base-size: 1rem; /* 16px */
-  --vbr-widget-typography-text-base-lineheight: 1.5rem; /* 24px */
+  --vbr-widget-typography-text-base-lineheight: 1.75rem; /* 24px */
   --vbr-widget-typography-text-lg-size: 1.125rem; /* 18px */
-  --vbr-widget-typography-text-lg-lineheight: 1.75rem; /* 28px */
+  --vbr-widget-typography-text-lg-lineheight: 2rem; /* 28px */
   --vbr-widget-typography-text-xl-size: 1.25rem; /* 20px */
-  --vbr-widget-typography-text-xl-lineheight: 1.75rem; /* 28px */
+  --vbr-widget-typography-text-xl-lineheight: 2rem; /* 28px */
 
   --vbr-widget-table-header-font-size: var(--vbr-widget-typography-text-xs-size);
   --vbr-widget-table-default-column-width: 30px;
