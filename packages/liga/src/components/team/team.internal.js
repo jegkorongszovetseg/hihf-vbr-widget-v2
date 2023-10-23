@@ -1,4 +1,4 @@
-import { groupBy } from 'ramda';
+import { groupBy, compose, sortBy, prop } from 'ramda';
 
 export const PAGE_INFO = 'Info';
 export const PAGE_GAMES = 'Games';
@@ -35,10 +35,22 @@ export const COLUMNS_ROSTER = {
   },
 };
 
-export const transformRosters = (data) => groupBy(groupByPosition)(data);
+export const transformRosters = compose(
+  groupBy(groupByPosition),
+  sortBy((d) => {
+    if (['ld', 'rd'].includes(d.position)) return 1;
+    if (['lw', 'rw', 'c'].includes(d.position)) return 2;
+    return 0;
+  }),
+  sortBy(sortByJerseyNumber)
+);
 
-const groupByPosition = (data) => {
-  if (['ld', 'rd'].includes(data.position)) return 'd';
-  if (['lw', 'rw', 'c'].includes(data.position)) return 'f';
-  return 'gk';
-};
+function groupByPosition(data) {
+  if (['ld', 'rd'].includes(data.position)) return 'defenders';
+  if (['lw', 'rw', 'c'].includes(data.position)) return 'forwards';
+  return 'goalies';
+}
+
+function sortByJerseyNumber(d) {
+  return Number(d.number);
+}
