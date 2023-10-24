@@ -75,6 +75,28 @@ export const COLUMNS_GAMES = {
   },
 };
 
+export const COLUMNS_TEAM_INFO = {
+  teamKey: {
+    label: 'table.blank',
+    class: 'is-text-left',
+  },
+  teamValue: {
+    label: 'table.blank',
+    class: 'is-text-left',
+  },
+};
+
+export const COLUMNS_TEAM_INFO_ICERINK = {
+  teamKey: {
+    label: 'table.blank',
+    class: 'is-text-left',
+  },
+  teamValue: {
+    label: 'table.blank',
+    class: 'is-text-left',
+  },
+};
+
 export const transformRosters = compose(
   groupBy(groupByPosition),
   sortBy((d) => {

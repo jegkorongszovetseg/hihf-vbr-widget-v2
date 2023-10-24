@@ -5,6 +5,7 @@ import DataProvider from './DataProvider.vue';
 import PageInfo from './pages/Info.vue';
 import PageRoster from './pages/Roster.vue';
 import PageGames from './pages/Games.vue';
+import Statistics from './pages/Statistics.vue';
 import { PAGE_INFO, PAGE_GAMES, PAGE_PLAYER_STATS, PAGE_ROSTER } from './team.internal.js';
 
 const messages = {};
@@ -73,7 +74,7 @@ const props = defineProps({
 
           <PageInfo v-if="page === PAGE_INFO" />
           <PageGames v-if="page === PAGE_GAMES" />
-          <div v-if="page === PAGE_PLAYER_STATS">Stats</div>
+          <Statistics v-if="page === PAGE_PLAYER_STATS" />
           <PageRoster v-if="page === PAGE_ROSTER" :data="roster" />
         </DataProvider>
       </ErrorProvider>
