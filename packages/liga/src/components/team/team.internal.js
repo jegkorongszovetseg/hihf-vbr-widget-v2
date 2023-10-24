@@ -6,13 +6,13 @@ export const PAGE_PLAYER_STATS = 'Stats';
 export const PAGE_ROSTER = 'Roster';
 
 export const COLUMNS_ROSTER = {
-  jerseyNumber: {
-    label: 'table.blank',
-    class: 'is-text-left',
-  },
+  // jerseyNumber: {
+  //   label: 'table.blank',
+  //   class: 'is-text-left',
+  // },
   number: {
-    label: 'table.blank',
-    class: 'is-text-left',
+    label: 'table.jerseyNumber.short',
+    tooltip: 'table.jerseyNumber.tooltip',
   },
   playerPortrait: {
     label: '',
@@ -23,12 +23,52 @@ export const COLUMNS_ROSTER = {
     tooltip: 'table.name.tooltip',
     class: 'is-text-left is-w-auto is-text-bold',
   },
-  nationality: {
+  firstName: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
     class: 'is-text-left is-w-auto is-text-bold',
   },
-  born: {
+  nationality: {
+    label: 'table.nationality.short',
+    tooltip: 'table.nationality.tooltip',
+    class: 'is-text-left is-w-auto is-text-bold',
+  },
+  birthDate: {
+    label: 'table.birthDate.short',
+    tooltip: 'table.birthDate.tooltip',
+    class: 'is-text-left is-w-auto is-text-bold',
+  },
+  birthPlace: {
+    label: 'table.birthPlace.short',
+    tooltip: 'table.birthPlace.tooltip',
+    class: 'is-text-left is-w-auto is-text-bold',
+  },
+};
+
+export const COLUMNS_GAMES = {
+  gameDate: {
+    label: 'table.blank',
+    class: 'is-text-left',
+  },
+  gameTime: {
+    label: 'table.blank',
+    class: 'is-text-left',
+  },
+  result: {
+    label: '',
+    class: 'is-has-image',
+  },
+  opponent: {
+    label: 'table.name.short',
+    tooltip: 'table.name.tooltip',
+    class: 'is-text-left is-w-auto is-text-bold',
+  },
+  resultType: {
+    label: 'table.name.short',
+    tooltip: 'table.name.tooltip',
+    class: 'is-text-left is-w-auto is-text-bold',
+  },
+  shot: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
     class: 'is-text-left is-w-auto is-text-bold',

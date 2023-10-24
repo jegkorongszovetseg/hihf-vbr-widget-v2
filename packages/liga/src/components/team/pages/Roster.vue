@@ -21,7 +21,7 @@ const tooltipContainer = ref(null);
   <template v-for="(players, key) in data" :key="key">
     <h2>{{ key }}</h2>
     <ResponsiveTable>
-      <DataTable :rows="players" :columns="COLUMNS_ROSTER" :append-to="tooltipContainer">{{ player }}</DataTable>
+      <DataTable :rows="players" :columns="COLUMNS_ROSTER" :append-to="tooltipContainer"></DataTable>
     </ResponsiveTable>
   </template>
   <div ref="tooltipContainer"></div>
