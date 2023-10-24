@@ -35,5 +35,10 @@
     "Elődöntő1": "Elődöntő 1",
     "Elődöntő2": "Elődöntő 2",
     "Döntő": "Döntő"
+  },
+  "teams": {
+    "goalies": "Kapusok",
+    "defenders": "Védők",
+    "forwards": "Támadók"
   }
 }

@@ -7,8 +7,10 @@ import PageRoster from './pages/Roster.vue';
 import PageGames from './pages/Games.vue';
 import Statistics from './pages/Statistics.vue';
 import { PAGE_INFO, PAGE_GAMES, PAGE_PLAYER_STATS, PAGE_ROSTER } from './team.internal.js';
+import en from '../../locales/en.json';
+import hu from '../../locales/hu.json';
 
-const messages = {};
+const messages = { en, hu };
 
 const props = defineProps({
   locale: {
@@ -35,7 +37,7 @@ const props = defineProps({
         <ErrorNotice v-if="hasError" :error="error" />
 
         <DataProvider v-slot:default="{ page, roster, onChangePage }">
-          <h1>Team</h1>
+          <h1 class="is-heading-1 is-uppercase is-mb-5">Team</h1>
           <div :class="useMainClass('team-image-wrapper')">
             <div class="is-team-picture">
               <Image src="https://api.icehockey.hu/static/api/team-photo/21099.jpg" />
@@ -86,4 +88,5 @@ const props = defineProps({
 <style src="@mjsz-vbr-elements/shared/css/teams.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>

@@ -14,7 +14,7 @@ const tooltipContainer = ref(null);
 </script>
 
 <template>
-  <h2>Lejátszott mérkőzések</h2>
+  <h2 class="is-heading-2">Lejátszott mérkőzések</h2>
   <ResponsiveTable>
     <DataTable :rows="data" :columns="COLUMNS_GAMES" :append-to="tooltipContainer"></DataTable>
   </ResponsiveTable>

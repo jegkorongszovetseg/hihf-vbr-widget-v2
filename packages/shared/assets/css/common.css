@@ -47,6 +47,7 @@
   --vbr-widget-typography-text-lg-lineheight: 1.75rem; /* 28px */
   --vbr-widget-typography-text-xl-size: 1.25rem; /* 20px */
   --vbr-widget-typography-text-xl-lineheight: 1.75rem; /* 28px */
+  --vbr-widget-typography-heading-weight: 500;
 
   --vbr-widget-table-header-font-size: var(--vbr-widget-typography-text-xs-size);
   --vbr-widget-table-default-column-width: 30px;

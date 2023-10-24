@@ -15,7 +15,7 @@ const tooltipContainer = ref(null);
 
 <template>
   <div>
-    <h2>Klub Információk</h2>
+    <h2 class="is-heading-2">Klub Információk</h2>
     <ResponsiveTable>
       <DataTable :columns="COLUMNS_TEAM_INFO" :append-to="tooltipContainer"></DataTable>
     </ResponsiveTable>
