@@ -37,8 +37,17 @@
     "Döntő": "Döntő"
   },
   "teams": {
+    "tabs": {
+      "teamInfo": "Információk",
+      "games": "Mérkőzések"
+    },
     "goalies": "Kapusok",
     "defenders": "Védők",
-    "forwards": "Támadók"
+    "forwards": "Támadók",
+    "fieldPlayers": "Mezőnyjátékosok",
+    "games": "Lejátszott mérkőzések",
+    "teamInfo": "Klub Információk",
+    "roster": "Játékoskeret",
+    "playerStats": "Játékos statisztikák"
   }
 }

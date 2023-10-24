@@ -32,7 +32,7 @@ const props = defineProps({
 
 <template>
   <div>
-    <I18NProvider :locale="props.locale" :messages="messages">
+    <I18NProvider :locale="props.locale" :messages="messages" v-slot="{ t }">
       <ErrorProvider v-slot:default="{ hasError, error }">
         <ErrorNotice v-if="hasError" :error="error" />
 
@@ -40,7 +40,10 @@ const props = defineProps({
           <h1 class="is-heading-1 is-uppercase is-mb-5">Team</h1>
           <div :class="useMainClass('team-image-wrapper')">
             <div class="is-team-picture">
-              <Image src="https://api.icehockey.hu/static/api/team-photo/21099.jpg" />
+              <Image
+                src="https://api.icehockey.hu/static/api/team-photo/21099.jpg"
+                default-src="https://www.ersteliga.hu/assets/images/logo_liga@2x.png"
+              />
             </div>
             <div class="is-team-logo">
               <Image src="https://api.icehockey.hu/static/api/team-logo/21908.png" />
@@ -52,25 +55,25 @@ const props = defineProps({
               :class="[useMainClass('tab-button'), { 'is-active': page === PAGE_INFO }]"
               @click="onChangePage(PAGE_INFO)"
             >
-              Info
+              {{ t('teams.tabs.teamInfo') }}
             </button>
             <button
               :class="[useMainClass('tab-button'), { 'is-active': page === PAGE_GAMES }]"
               @click="onChangePage(PAGE_GAMES)"
             >
-              Mérkőzések
+              {{ t('teams.tabs.games') }}
             </button>
             <button
               :class="[useMainClass('tab-button'), { 'is-active': page === PAGE_PLAYER_STATS }]"
               @click="onChangePage(PAGE_PLAYER_STATS)"
             >
-              Játékos statisztikák
+              {{ t('teams.playerStats') }}
             </button>
             <button
               :class="[useMainClass('tab-button'), { 'is-active': page === PAGE_ROSTER }]"
               @click="onChangePage(PAGE_ROSTER)"
             >
-              Játékoskeret
+              {{ t('teams.roster') }}
             </button>
           </div>
 

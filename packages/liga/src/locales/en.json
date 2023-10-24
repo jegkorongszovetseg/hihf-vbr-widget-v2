@@ -37,8 +37,17 @@
     "Döntő": "Final"
   },
   "teams": {
+    "tabs": {
+      "teamInfo": "Informations",
+      "games": "Games"
+    },
     "goalies": "Goalies",
     "defenders": "Defenders",
-    "forwards": "Forwards"
+    "forwards": "Forwards",
+    "fieldPlayers": "Field Players",
+    "games": "Games",
+    "teamInfo": "Team Informations",
+    "roster": "Roster",
+    "playerStats": "Player Stats"
   }
 }
