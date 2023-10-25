@@ -2,6 +2,7 @@
 import { reactive, computed, watch } from 'vue';
 import { useUrlSearchParams } from '@vueuse/core';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
+import { convert } from '@mjsz-vbr-elements/core/utils';
 import { PAGE_INFO, PAGE_GAMES, PAGE_ROSTER, transformRosters } from './team.internal.js';
 
 const props = defineProps({
@@ -9,8 +10,13 @@ const props = defineProps({
     String,
     default: '',
   },
-});
 
+  locale: {
+    type: String,
+    default: 'hu',
+  },
+});
+const timezone = 'Europe/Budapest';
 const params = useUrlSearchParams('history');
 
 const state = reactive({
@@ -30,13 +36,13 @@ const { state: teamInfo } = useServices({
   onError,
 });
 
-const { execute: fetchTeamGames } = useServices({
+const { state: games, execute: fetchTeamGames } = useServices({
   options: {
-    path: '/v2/championship-teams',
+    path: '/v2/games-list',
     apiKey: props.apiKey,
-    params: computed(() => ({ championshipId: Number(props.teamId) })),
+    params: computed(() => ({ championshipId: 3450, division: 'Alapszakasz' })),
   },
-  // transform: (res) => transformTeams(res, state),
+  transform: (res) => convert(res).schedule(timezone, props.locale).value(),
   onError,
 });
 
@@ -50,12 +56,19 @@ const { state: roster, execute: fetchTeamRoster } = useServices({
   onError,
 });
 
-watch(params, () => {
-  console.log(params.page);
-  fetchData(params.page) 
-}, {
-  immediate: true,
+const convertedRows = computed(() => {
+  return convert(rows.value).schedule(props.timezone, props.locale).value();
 });
+
+watch(
+  params,
+  () => {
+    fetchData(params.page);
+  },
+  {
+    immediate: true,
+  }
+);
 
 function onChangePage(page) {
   state.page = page;
@@ -79,5 +92,5 @@ function fetchData(page) {
 </script>
 
 <template>
-  <slot v-bind="{ ...state, teamInfo, roster, onChangePage }" />
+  <slot v-bind="{ ...state, games, teamInfo, roster, onChangePage }" />
 </template>

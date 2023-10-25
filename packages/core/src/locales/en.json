@@ -321,6 +321,18 @@
     "teamOfficials": {
       "short": "Team officials",
       "tooltip": "Team officials"
+    },
+    "opponent": {
+      "short": "Opponent",
+      "tooltip": "Opponent"
+    },
+    "result": {
+      "short": "Result",
+      "tooltip": "Result"
+    },
+    "resultType": {
+      "short": "#",
+      "tooltip": "Result Type"
     }
   },
   "game": {

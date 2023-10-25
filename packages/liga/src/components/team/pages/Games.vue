@@ -1,7 +1,8 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { DataTable, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useI18n, useColumns } from '@mjsz-vbr-elements/core/composables';
+import { offsetName } from '@mjsz-vbr-elements/core/utils';
 import { COLUMNS_GAMES } from '../team.internal.js';
 
 defineProps({
@@ -14,7 +15,11 @@ defineProps({
 const tooltipContainer = ref(null);
 
 const { t } = useI18n();
-const { columns } = useColumns(COLUMNS_GAMES);
+const { columns } = useColumns(
+  COLUMNS_GAMES,
+  null,
+  computed(() => ({ offsetName: offsetName(new Date(), null, 'hu') }))
+);
 </script>
 
 <template>

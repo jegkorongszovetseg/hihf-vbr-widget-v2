@@ -36,7 +36,7 @@ const props = defineProps({
       <ErrorProvider v-slot:default="{ hasError, error }">
         <ErrorNotice v-if="hasError" :error="error" />
 
-        <DataProvider v-slot:default="{ page, roster, onChangePage }">
+        <DataProvider v-slot:default="{ page, roster, games, onChangePage }">
           <h1 class="is-heading-1 is-uppercase is-mb-5">Team</h1>
           <div :class="useMainClass('team-image-wrapper')">
             <div class="is-team-picture">
@@ -78,7 +78,7 @@ const props = defineProps({
           </div>
 
           <PageInfo v-if="page === PAGE_INFO" />
-          <PageGames v-if="page === PAGE_GAMES" />
+          <PageGames v-if="page === PAGE_GAMES" :data="games.rows" />
           <Statistics v-if="page === PAGE_PLAYER_STATS" />
           <PageRoster v-if="page === PAGE_ROSTER" :data="roster" />
         </DataProvider>

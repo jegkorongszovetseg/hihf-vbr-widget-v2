@@ -46,32 +46,50 @@ export const COLUMNS_ROSTER = {
 };
 
 export const COLUMNS_GAMES = {
-  gameDate: {
-    label: 'table.blank',
+  gameDateDate: {
+    label: 'table.gameDate.short',
+    tooltip: 'table.gameDate.tooltip',
     class: 'is-text-left',
   },
-  gameTime: {
-    label: 'table.blank',
+  gameDateTime: {
+    label: 'table.gameDateTime.short',
+    tooltip: 'table.gameDateTime.tooltip',
     class: 'is-text-left',
   },
-  result: {
-    label: '',
+  gameResult: {
+    label: 'table.result.short',
+    tooltip: 'table.result.tooltip',
     class: 'is-has-image',
   },
   opponent: {
-    label: 'table.name.short',
-    tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    label: 'table.opponent.short',
+    tooltip: 'table.opponent.tooltip',
+    class: 'is-text-left is-text-bold',
   },
   resultType: {
-    label: 'table.name.short',
-    tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    label: 'table.resultType.short',
+    tooltip: 'table.resultType.tooltip',
+    class: 'is-text-left',
   },
-  shot: {
-    label: 'table.name.short',
-    tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+  sog: {
+    label: 'table.sog.short',
+    tooltip: 'table.sog.tooltip',
+    class: 'is-text-left is-text-bold',
+  },
+  sa: {
+    label: 'table.sa.short',
+    tooltip: 'table.sa.tooltip',
+    class: 'is-text-left',
+  },
+  ppgf: {
+    label: 'table.ppgf.short',
+    tooltip: 'table.ppgf.tooltip',
+    class: 'is-text-left',
+  },
+  shga: {
+    label: 'table.shga.short',
+    tooltip: 'table.shga.tooltip',
+    class: 'is-text-left',
   },
 };
 
