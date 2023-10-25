@@ -46,7 +46,7 @@ const { t } = useI18n();
           <IconSheet class="is-icon" />
           {{ t('sheet') }}
         </a>
-        <a v-if="gameData.video" :href="gameData.electronicReportUrl" target="_blank">
+        <a v-if="gameData.video" :href="gameData.video" target="_blank">
           <IconYoutube class="is-icon" />
           {{ t('video') }}
         </a>
