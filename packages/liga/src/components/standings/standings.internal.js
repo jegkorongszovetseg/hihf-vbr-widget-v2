@@ -1,4 +1,5 @@
 import { computed, unref } from 'vue';
+import { descend, prop, sortWith } from 'ramda';
 
 export const mockGames = [
   {
@@ -30,7 +31,7 @@ export const mockGames = [
     divisionStage2Name: null,
     divisionStage3Name: null,
     homeTeamScore: 3,
-    awayTeamScore: 6,
+    awayTeamScore: 3,
     result: '3:6 (2:0, 0:4, 1:2)',
     gameStatus: 1,
     seriesStandings: null,
@@ -75,7 +76,7 @@ export const mockGames = [
     homeTeamScore: 2,
     awayTeamScore: 6,
     result: '2:6 (0:2, 0:3, 2:1)',
-    gameStatus: 2,
+    gameStatus: 1,
     seriesStandings: null,
     periodResults: '(0:2, 0:3, 2:1)',
     isOvertime: false,
@@ -266,23 +267,23 @@ export function useGamesListForLiveStandings(standings = [], games = []) {
 
   const isLiveStandingsActive = computed(() => liveGames.length > 0);
 
-  const standingsWithScore = computed(() => setLivedGames(unref(standings), liveGames.value));
+  const standingsWithScores = computed(() => setLivedGames(unref(standings), liveGames.value));
+
+  const standingsWithDiff = computed(() => positionDifference(unref(standings), standingsWithScores.value));
 
   return {
     isLiveStandingsActive,
-    rows: standingsWithScore,
+    rows: standingsWithDiff,
   };
 }
 
 // posDif, score
 
 function setLivedGames(standings = [], games = []) {
-  console.log({ standings, games });
-
   const convertedTable = [...standings].map((team) => {
     const activeGame = games.find((game) => game.homeTeam.id === team.team.id || game.awayTeam.id === team.team.id);
-    // console.log(activeGame);
     team.isActiveGame = Boolean(activeGame);
+
     if (activeGame) {
       const isHomeTeam = team.team.id === activeGame.homeTeam.id;
       const score = isHomeTeam
@@ -290,9 +291,11 @@ function setLivedGames(standings = [], games = []) {
         : [activeGame.awayTeamScore, activeGame.homeTeamScore];
 
       team.score = score.join(':');
-      const addPoints = additionalPoints(score);
-      console.log(team.team.shortName, { addPoints }, team.points, team.points + addPoints);
-      team.points = team.points + addPoints;
+      team.scoreType = setScoreType(score);
+      team.points = team.points + additionalPoints(score);
+      team.gf = team.gf + score[0];
+      team.ga = team.ga + score[1];
+      team.gd = team.gf - team.ga;
     }
     return team;
   });
@@ -303,4 +306,22 @@ function additionalPoints(score) {
   if (score[0] > score[1]) return 3;
   if (score[0] < score[1]) return 0;
   return 1;
+}
+
+function positionDifference(originalStandings, convertedTable) {
+  const sortedTable = sortWith([descend(prop('points')), descend(prop('gd'))])(convertedTable);
+
+  const x = sortedTable.map((team) => {
+    const originalIndex = originalStandings.findIndex((row) => team.team.id === row.team.id);
+    const newIndex = sortedTable.findIndex((row) => team.team.id === row.team.id);
+    team.diff = originalIndex - newIndex;
+    return team;
+  });
+  return x;
+}
+
+function setScoreType(score) {
+  if (score[0] > score[1]) return 'W';
+  if (score[0] < score[1]) return 'L';
+  return 'D';
 }

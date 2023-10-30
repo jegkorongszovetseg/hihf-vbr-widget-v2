@@ -21,6 +21,10 @@ const liveTable = {
     label: 'table.goalAgainst.short',
     tooltip: 'table.goalAgainst.tooltip',
   },
+  diff: {
+    label: 'table.goalAgainst.short',
+    tooltip: 'table.goalAgainst.tooltip',
+  },
 };
 
 const props = defineProps({
