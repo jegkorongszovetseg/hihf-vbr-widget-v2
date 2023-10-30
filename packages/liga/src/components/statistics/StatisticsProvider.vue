@@ -48,6 +48,7 @@ const state = reactive({
   championshipId: Number(params.championshipId) || props.championshipId,
   sections: [],
   section: params.section || null,
+  phaseId: 0,
   teams: [],
   teamFilter: Number(params.teamFilter) || null,
   playerFilter: '',
@@ -77,7 +78,7 @@ const { sort, change: onSort } = useSort({
 const fetchSeasons = async () => {
   try {
     state.loading = true;
-    const seasons = await fetchVBRData('/v1/championshipSeasons', props.apiKey, {
+    const seasons = await fetchVBRData('/v2/championship-seasons', props.apiKey, {
       championshipName: props.championshipName,
     });
     if (seasons.length === 0) throw new WidgetError(InvalidSeasonName.message, InvalidSeasonName.options);
@@ -93,12 +94,15 @@ const fetchSeasons = async () => {
 const fetchSection = async () => {
   try {
     state.loading = true;
-    const sections = await fetchVBRData('/v1/championshipSections', props.apiKey, {
+    const sections = await fetchVBRData('/v2/championship-sections', props.apiKey, {
       championshipId: state.championshipId,
     });
-    state.sections = sections.sectionName;
+    console.log(sections)
+    state.sections = sections[0].phases;
     if (state.sections && !state.sections.includes(state.section)) {
       state.section = head(state.sections);
+      state.phaseId = head(state.sections)?.phaseId;
+      state.championshipId = sections[0].sectionId;
     }
   } catch (error) {
     onError(error);
@@ -114,7 +118,8 @@ const fetchStatistic = async () => {
     onPaginatorChange(1);
     const rows = await fetchVBRData(state.api, props.apiKey, {
       championshipId: state.championshipId,
-      division: state.section,
+      phaseId: state.phaseId,
+      // division: state.section,
     });
     state.rows = rawConvert(
       rows,

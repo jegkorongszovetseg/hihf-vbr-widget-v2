@@ -57,7 +57,7 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('goalies', {
-    api: '/v1/playersGoaliePeriod',
+    api: '/v2/players-goalie',
     columns: COLUMNS_GOALIES,
     sort: {
       sortTarget: 'svsPercent',
