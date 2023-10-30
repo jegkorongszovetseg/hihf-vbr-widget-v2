@@ -4,6 +4,7 @@ import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
 import { useLazyLoadingState, useError, useServices, useSort } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
 import { transformSeasons, transformSections } from '../internal';
+import { useGamesListForLiveStandings, mockGames } from './standings.internal';
 
 const props = defineProps({
   championshipName: {
@@ -73,13 +74,21 @@ const {
   onError,
 });
 
+const { rows: liveRows } = useGamesListForLiveStandings(rows, mockGames);
+
 const isLoading = useLazyLoadingState([sectionLoading, seasonsLoading, gamesLoading], { delay: 1000 });
 
 const convertedRows = computed(() => {
   return convert(unref(rows)).sorted(sort).addContinuousIndex().value();
 });
 
+const convertedLiveRows = computed(() => {
+  return convert(unref(liveRows)).addContinuousIndex().value();
+});
+
 useAsyncQueue([fetchSeasons, fetchSection, fetchStandings]);
+
+
 
 const changeSeason = (value) => {
   state.championshipId = value;
@@ -103,6 +112,7 @@ const changeSection = (value) => {
       ...state,
       sort,
       teams: convertedRows,
+      liveRows: convertedLiveRows,
       isLoading,
       onSort,
       changeSeason,

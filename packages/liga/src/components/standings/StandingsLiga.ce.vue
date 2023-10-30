@@ -15,6 +15,14 @@ import Selector from './Selector.vue';
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
 
+const liveTable = {
+  ...COLUMNS_STANDINGS_P_3,
+  score: {
+    label: 'table.goalAgainst.short',
+    tooltip: 'table.goalAgainst.tooltip',
+  },
+};
+
 const props = defineProps({
   locale: {
     type: String,
@@ -62,15 +70,12 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
             isLoading,
             championshipId,
             onSort,
+            liveRows,
             changeSeason,
             changeSection,
           }"
         >
-          <Selector
-            :seasons="seasons"
-            :championship-id="championshipId"
-            @update:championship-id="changeSeason"
-          />
+          <Selector :seasons="seasons" :championship-id="championshipId" @update:championship-id="changeSeason" />
           <div :class="useMainClass('section-selector')">
             <button
               v-for="rawSection in sections"
@@ -83,6 +88,16 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
           </div>
 
           <LoadingIndicator v-if="isLoading" />
+
+          <!-- LIVE STANDINGS -->
+          <StatisticsTable
+            :rows="liveRows.rows"
+            :columns="liveTable"
+            :sort="sort"
+            :external-team-resolver="externalTeamLink"
+            :append-to="tooltipContainer"
+            @sort="onSort"
+          />
 
           <StatisticsTable
             :rows="teams.rows"
