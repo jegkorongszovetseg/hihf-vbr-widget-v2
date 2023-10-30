@@ -1,10 +1,13 @@
 <script setup>
+import { ref } from 'vue';
 import { playerStatsProps } from '@mjsz-vbr-elements/core';
 import { ErrorProvider, ErrorNotice, Paginator, StatisticsTable, I18NProvider } from '@mjsz-vbr-elements/core/components';
 import StatisticsProvider from './StatisticsProvider.vue';
 import StatisticSelector from './StatisticSelector.vue';
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
+
+const messages = { en, hu };
 
 const props = defineProps({
   locale: {
@@ -35,7 +38,7 @@ const props = defineProps({
   ...playerStatsProps,
 });
 
-const messages = { en, hu };
+const tooltipContainer = ref(null);
 
 const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamLink, teamName);
 const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props.externalPlayerLink, playerId);
@@ -77,6 +80,7 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
             :is-team-linked="isTeamLinked"
             :is-player-linked="isPlayerLinked"
             :hide-columns="hideColumns"
+            :append-to="tooltipContainer"
             @sort="onSort"
           />
 
@@ -90,6 +94,8 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
             />
             <div v-if="rows.totalItems > 0" style="flex-grow: 1; text-align: right">{{ range.join('-') }} / {{ rows.totalItems }} db</div>
           </div>
+
+          <div ref="tooltipContainer" />
         </StatisticsProvider>
       </ErrorProvider>
     </I18NProvider>

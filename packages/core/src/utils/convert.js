@@ -133,7 +133,7 @@ export const rawConvert = (data, ...fn) => map(compose(...fn))(data);
 
 export const playerName = (row) => ({
   ...row,
-  ...(row.lastName && { name: `${row.lastName} ${row.firstName}` }),
+  ...(row.player?.playerId && { name: `${row.player.lastName} ${row.player.firstName}` }),
 });
 
 export const upperCase =

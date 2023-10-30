@@ -383,7 +383,7 @@ export const COLUMNS_GOALIES = {
   mip: {
     label: 'table.toi.short',
     tooltip: 'table.toi.tooltip',
-    sortOrders: [{ target: 'mipSec', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'mip', direction: SORT_STATE_DESCEND }],
   },
   mipPercent: {
     label: 'table.toiPercent.short',
@@ -400,10 +400,10 @@ export const COLUMNS_GOALIES = {
     tooltip: 'table.gaa.tooltip',
     sortOrders: [{ target: 'gaa', direction: SORT_STATE_DESCEND }],
   },
-  sa: {
+  sog: {
     label: 'table.sa.short',
     tooltip: 'table.sa.tooltip',
-    sortOrders: [{ target: 'sa', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'sog', direction: SORT_STATE_DESCEND }],
   },
   svs: {
     label: 'table.svs.short',

@@ -11,7 +11,7 @@ import {
   TEAMS_REPORTS_SELECT,
   REPORT_TYPE_PLAYERS,
 } from './statistics.internal.js';
-import { convert, convertTimes, playerName, rawConvert, InvalidSeasonName, WidgetError } from '@mjsz-vbr-elements/core/utils';
+import { convert, convertTimes, convertTimesSecToMin, playerName, rawConvert, InvalidSeasonName, WidgetError } from '@mjsz-vbr-elements/core/utils';
 import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 import { useError, useI18n, useSort, usePage, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
 
@@ -100,9 +100,9 @@ const fetchSection = async () => {
     console.log(sections)
     state.sections = sections[0].phases;
     if (state.sections && !state.sections.includes(state.section)) {
-      state.section = head(state.sections);
+      state.section = head(state.sections)?.phaseName;
       state.phaseId = head(state.sections)?.phaseId;
-      state.championshipId = sections[0].sectionId;
+      // state.championshipId = sections[0].sectionId;
     }
   } catch (error) {
     onError(error);
@@ -120,11 +120,13 @@ const fetchStatistic = async () => {
       championshipId: state.championshipId,
       phaseId: state.phaseId,
       // division: state.section,
+      less: false,
     });
     state.rows = rawConvert(
       rows,
       playerName,
-      convertTimes(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2', 'mip'])
+      convertTimesSecToMin(['mip']),
+      convertTimes(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2'])
     );
   } catch (error) {
     onError(error);
@@ -137,7 +139,7 @@ const fetchTeams = async () => {
   try {
     state.loading = true;
     state.rows = [];
-    const teams = await fetchVBRData('/v1/championshipTeams', props.apiKey, {
+    const teams = await fetchVBRData('/v2/championship-teams', props.apiKey, {
       championshipId: state.championshipId,
     });
     state.teams = convertTeams(teams);
