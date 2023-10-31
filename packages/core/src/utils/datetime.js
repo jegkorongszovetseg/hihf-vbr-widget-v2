@@ -49,6 +49,12 @@ export const convertSecToMin = (duration) => {
   return stringPadLeft(mins, '0', 2) + ':' + stringPadLeft(secs, '0', 2);
 };
 
+export const convertMinToMinSec = (duration) => {
+  const minutes = ~~duration % 3600;
+  const seconds = Math.round(((duration - minutes) / 10) * 60 * 10);
+  return [minutes, seconds.toString().padStart(2, '0')].join(':');
+};
+
 export const isSameOrBefore = (date, unit = 'day') => {
   return dayjs().isSameOrBefore(dayjs(date), unit);
 };

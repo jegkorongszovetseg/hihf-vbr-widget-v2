@@ -380,7 +380,7 @@ export const COLUMNS_GOALIES = {
     tooltip: 'table.gpi.tooltip',
     sortOrders: [{ target: 'gpi', direction: SORT_STATE_DESCEND }],
   },
-  mip: {
+  mipMin: {
     label: 'table.toi.short',
     tooltip: 'table.toi.tooltip',
     sortOrders: [{ target: 'mip', direction: SORT_STATE_DESCEND }],

@@ -11,7 +11,15 @@ import {
   TEAMS_REPORTS_SELECT,
   REPORT_TYPE_PLAYERS,
 } from './statistics.internal.js';
-import { convert, convertTimes, convertTimesSecToMin, playerName, rawConvert, InvalidSeasonName, WidgetError } from '@mjsz-vbr-elements/core/utils';
+import {
+  convert,
+  convertTimes,
+  convertTimesMinToMinSec,
+  playerName,
+  rawConvert,
+  InvalidSeasonName,
+  WidgetError,
+} from '@mjsz-vbr-elements/core/utils';
 import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 import { useError, useI18n, useSort, usePage, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
 
@@ -58,9 +66,10 @@ const state = reactive({
   rows: [],
   columns: null,
   api: null,
+  apiParams: {},
 });
 
-const initialReport = REPORTS_MAP.get('points');
+const initialReport = REPORTS_MAP.get('playerspenalties'); // points
 state.columns = initialReport.columns;
 state.api = initialReport.api;
 
@@ -97,7 +106,7 @@ const fetchSection = async () => {
     const sections = await fetchVBRData('/v2/championship-sections', props.apiKey, {
       championshipId: state.championshipId,
     });
-    console.log(sections)
+    console.log(sections);
     state.sections = sections[0].phases;
     if (state.sections && !state.sections.includes(state.section)) {
       state.section = head(state.sections)?.phaseName;
@@ -119,14 +128,13 @@ const fetchStatistic = async () => {
     const rows = await fetchVBRData(state.api, props.apiKey, {
       championshipId: state.championshipId,
       phaseId: state.phaseId,
-      // division: state.section,
-      less: false,
+      ...state.apiParams,
     });
     state.rows = rawConvert(
       rows,
       playerName,
-      convertTimesSecToMin(['mip']),
-      convertTimes(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2'])
+      convertTimesMinToMinSec(['mip'])
+      // convertTimes(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2'])
     );
   } catch (error) {
     onError(error);
@@ -152,7 +160,7 @@ const fetchTeams = async () => {
 
 const convertedRows = computed(() =>
   convert(state.rows)
-    .filter(state.teamFilter, ['teamId'], true)
+    .filter(state.teamFilter, [['team', 'id']], true)
     .filter(state.playerFilter, ['name'])
     .sorted(sort)
     .addIndex(sort.sortTarget)
@@ -168,6 +176,7 @@ const setTableData = () => {
   const report = REPORTS_MAP.get(state.currentReport);
   state.columns = report.columns;
   state.api = report.api;
+  state.apiParams = report.params || {};
   sort.sortTarget = report.sort.sortTarget;
   sort.orders = report.sort.orders;
 };
@@ -195,6 +204,7 @@ const onReportChange = (value) => {
 };
 
 const onTeamChange = (value) => {
+  console.log('team:', value);
   onPaginatorChange(1);
   state.teamFilter = Number(value) || null;
   params.teamFilter = value || null;

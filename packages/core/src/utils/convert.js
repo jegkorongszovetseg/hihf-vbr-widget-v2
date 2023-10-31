@@ -17,7 +17,7 @@ import {
   groupBy,
 } from 'ramda';
 import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../constants.js';
-import { format, convertMinToSec, convertSecToMin } from './datetime.js';
+import { format, convertMinToSec, convertSecToMin, convertMinToMinSec } from './datetime.js';
 
 export const convert = (data = []) => {
   return {
@@ -149,6 +149,16 @@ export const convertTimes =
     targets.map((key) => {
       if (!row[key]) return row;
       return (row[`${key}Sec`] = convertMinToSec(row[key]));
+    });
+    return row;
+  };
+
+export const convertTimesMinToMinSec =
+  (targets = []) =>
+  (row) => {
+    targets.map((key) => {
+      if (!row[key]) return row;
+      return (row[`${key}Min`] = convertMinToMinSec(row[key]));
     });
     return row;
   };
