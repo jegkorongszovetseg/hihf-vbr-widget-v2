@@ -3,7 +3,7 @@
 ## Használat
 
 ```html
-<mjsz-vbr-goalies locale="hu" championship-id="2051" division="Alapszakasz" />
+<mjsz-vbr-goalies locale="hu" championship-id="3450" division="Alapszakasz" />
 ```
 
 ## Példa
@@ -11,8 +11,8 @@
 <ClientOnly>
   <mjsz-vbr-goalies
     locale="hu"
-    championship-id="2051"
-    division="Alapszakasz" 
+    championship-id="3450"
+    division="Alapszakasz"
   />
 </ClientOnly>
 
