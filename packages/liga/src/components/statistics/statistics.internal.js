@@ -58,7 +58,7 @@ export const REPORTS_MAP = new Map()
   })
   .set('goalies', {
     api: '/v2/players-goalie',
-    params: { less: false },
+    params: { more: true },
     columns: COLUMNS_GOALIES,
     sort: {
       sortTarget: 'svsPercent',

@@ -13,7 +13,7 @@ import {
 } from './statistics.internal.js';
 import {
   convert,
-  convertTimes,
+  convertTimesSecToMin,
   convertTimesMinToMinSec,
   playerName,
   rawConvert,
@@ -106,7 +106,6 @@ const fetchSection = async () => {
     const sections = await fetchVBRData('/v2/championship-sections', props.apiKey, {
       championshipId: state.championshipId,
     });
-    console.log(sections);
     state.sections = sections[0].phases;
     if (state.sections && !state.sections.includes(state.section)) {
       state.section = head(state.sections)?.phaseName;
@@ -133,8 +132,8 @@ const fetchStatistic = async () => {
     state.rows = rawConvert(
       rows,
       playerName,
-      convertTimesMinToMinSec(['mip'])
-      // convertTimes(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2'])
+      convertTimesMinToMinSec(['mip']),
+      convertTimesSecToMin(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2'])
     );
   } catch (error) {
     onError(error);
@@ -204,7 +203,6 @@ const onReportChange = (value) => {
 };
 
 const onTeamChange = (value) => {
-  console.log('team:', value);
   onPaginatorChange(1);
   state.teamFilter = Number(value) || null;
   params.teamFilter = value || null;

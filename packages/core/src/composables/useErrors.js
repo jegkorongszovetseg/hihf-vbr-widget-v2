@@ -8,7 +8,7 @@ export const useErrorProvider = () => {
   const errorObject = ref({});
 
   const onError = (error) => {
-    console.log({ error });
+    console.error({ error });
     errorMessage.value = error.message || error.error.message;
     errorObject.value = {
       message: error.message,
@@ -30,11 +30,11 @@ export const useErrorProvider = () => {
   provide(ErrorProviderContext, api);
 
   window.onerror = (e) => {
-    console.log('WINDOW_ONERROR:', e);
+    console.error('WINDOW_ONERROR:', e);
   };
 
   onErrorCaptured((error, vm, info) => {
-    console.log('onErrorCaptured:', error, vm, info);
+    console.error('onErrorCaptured:', error, vm, info);
   });
 
   return {

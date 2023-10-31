@@ -585,17 +585,17 @@ export const COLUMNS_TEAMS_PENALTY_KILLING = {
     tooltip: 'table.powerplayDisadvantages.tooltip',
     sortOrders: [{ target: 'dvg', direction: SORT_STATE_DESCEND }],
   },
-  dvgTime: {
+  dvgTimeMin: {
     label: 'table.dvgTime.short',
     tooltip: 'table.dvgTime.tooltip',
-    sortOrders: [{ target: 'dvgTimeSec', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'dvgTime', direction: SORT_STATE_DESCEND }],
   },
-  dvgTimePP1: {
+  dvgTimePP1Min: {
     label: 'table.dvgTimePP1.short',
     tooltip: 'table.dvgTimePP1.tooltip',
-    sortOrders: [{ target: 'dvgTimePP1Sec', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'dvgTimePP1', direction: SORT_STATE_DESCEND }],
   },
-  dvgTimePP2: {
+  dvgTimePP2Min: {
     label: 'table.dvgTimePP2.short',
     tooltip: 'table.dvgTimePP2.tooltip',
     sortOrders: [{ target: 'dvgTimePP2', direction: SORT_STATE_DESCEND }],
@@ -642,20 +642,20 @@ export const COLUMNS_TEAMS_POWERPLAY = {
     tooltip: 'table.adv.tooltip',
     sortOrders: [{ target: 'adv', direction: SORT_STATE_DESCEND }],
   },
-  advTime: {
+  advTimeMin: {
     label: 'table.advTime.short',
     tooltip: 'table.advTime.tooltip',
-    sortOrders: [{ target: 'advTimeSec', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'advTime', direction: SORT_STATE_DESCEND }],
   },
-  advTimePP1: {
+  advTimePP1Min: {
     label: 'table.advTimePP1.short',
     tooltip: 'table.advTimePP1.tooltip',
-    sortOrders: [{ target: 'advTimePP1Sec', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'advTimePP1', direction: SORT_STATE_DESCEND }],
   },
-  advTimePP2: {
+  advTimePP2Min: {
     label: 'table.advTimePP2.short',
     tooltip: 'table.advTimePP2.tooltip',
-    sortOrders: [{ target: 'advTimePP2Sec', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'advTimePP2', direction: SORT_STATE_DESCEND }],
   },
   ppgf: {
     label: 'table.ppgf.short',
