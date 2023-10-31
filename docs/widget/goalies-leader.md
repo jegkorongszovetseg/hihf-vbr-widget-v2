@@ -31,3 +31,5 @@
 | isPlayerLinked     | false    | Játékos külső hivatkozás aktív |                                   |
 | externalTeamLink   |          | Csapat külső hivatkozása       |                                   |
 | isTeamLinked       | false    | Csapat külső hivatkozás aktív  |                                   |
+| aboveLimit         | false    | 40% jégidő feletti lista       |                                   |
+| underLimit         | false    | 40% jégidő alatti lista        |                                   |

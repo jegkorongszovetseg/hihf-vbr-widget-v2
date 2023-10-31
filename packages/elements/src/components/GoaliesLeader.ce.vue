@@ -18,6 +18,11 @@ const props = defineProps({
   ...baseProps,
   ...playerStatsProps,
 
+  aboveLimit: {
+    type: Boolean,
+    default: false,
+  },
+
   underLimit: {
     type: Boolean,
     default: false,
@@ -36,7 +41,8 @@ const { state: rawRows, isLoading } = useAsyncState(
     fetchVBRData('/v2/players-goalie', props.apiKey, {
       championshipId: Number(props.championshipId),
       division: props.division,
-      less: props.underLimit,
+      ...(props.aboveLimit && { more: true }),
+      ...(props.underLimit && { less: true }),
     }),
   [],
   {
