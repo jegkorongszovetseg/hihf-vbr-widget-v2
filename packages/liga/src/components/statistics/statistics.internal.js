@@ -91,7 +91,7 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('teamPenaltiKilling', {
-    api: '/v1/teamPowerPlayPeriod',
+    api: '/v2/team-powerplay',
     columns: COLUMNS_TEAMS_PENALTY_KILLING,
     sort: {
       sortTarget: 'pkPercent',
@@ -158,13 +158,13 @@ export const TEAMS_REPORTS_SELECT = (t) => {
     //   name: t('report.teamFairplay'),
     //   value: 'teamFairplay',
     // },
-    // {
-    //   name: t('report.teamPenaltyKilling'),
-    //   value: 'teamPenaltiKilling',
-    // },
     {
       name: t('report.teamPowerplay'),
       value: 'teamPowerplay',
+    },
+    {
+      name: t('report.teamPenaltyKilling'),
+      value: 'teamPenaltiKilling',
     },
     // {
     //   name: t('report.teamScoringEfficiency'),
