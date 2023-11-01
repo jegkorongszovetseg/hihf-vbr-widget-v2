@@ -12,8 +12,8 @@
     "@mjsz-vbr-elements/core": "workspace:^",
     "@mjsz-vbr-elements/elements": "workspace:^",
     "@mjsz-vbr-elements/extended": "workspace:^",
-    "@mjsz-vbr-elements/liga": "workspace:^",
     "@mjsz-vbr-elements/gamecenter": "workspace:^",
+    "@mjsz-vbr-elements/liga": "workspace:^",
     "vue": "^3.3.4"
   },
   "devDependencies": {
@@ -23,7 +23,7 @@
     "@vitejs/plugin-vue": "^4.2.3",
     "unocss": "^0.53.0",
     "unplugin-vue-router": "^0.6.4",
-    "vite": "^4.3.9",
+    "vite": "^4.5.0",
     "vue-router": "^4.2.2"
   }
 }
