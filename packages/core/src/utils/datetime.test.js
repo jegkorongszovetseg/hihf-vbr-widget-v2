@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { convertSecToMin, convertMinToSec } from './datetime';
+import { convertSecToMin, convertMinToSec, convertMinToMinSec } from './datetime';
 
 describe('convertSecToMin', () => {
   test('Convert 0 sec to min string 00:00', () => {
@@ -34,5 +34,31 @@ describe('convertMinToSec', () => {
 
   test('Convert 70:20 min string to sec 4220', () => {
     expect(convertMinToSec('70:20')).toBe(4220);
+  });
+});
+
+describe('convertMinToMinSec', () => {
+  test('Convert 0 minutes to string 00:00', () => {
+    expect(convertMinToMinSec(0)).toBe('00:00');
+  });
+
+  test('Convert 60 minutes to string 60:12', () => {
+    expect(convertMinToMinSec(60.2)).toBe('60:12');
+  });
+
+  test('Convert 10.5 minutes to string 00:10', () => {
+    expect(convertMinToMinSec(10.5)).toBe('10:30');
+  });
+
+  test('Convert 150.7 minutes to string 150:42', () => {
+    expect(convertMinToMinSec(150.7)).toBe('150:42');
+  });
+
+  test('Convert 1234.9 minutes to string 1234:00', () => {
+    expect(convertMinToMinSec(1234.9)).toBe('1234:54');
+  });
+
+  test('Convert 4567 minutes to string 1234:00', () => {
+    expect(convertMinToMinSec(4567)).toBe('4567:00');
   });
 });

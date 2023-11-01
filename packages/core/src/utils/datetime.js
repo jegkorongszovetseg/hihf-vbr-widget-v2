@@ -50,9 +50,9 @@ export const convertSecToMin = (duration) => {
 };
 
 export const convertMinToMinSec = (duration) => {
-  const minutes = ~~duration % 3600;
+  const minutes = Math.trunc(duration);
   const seconds = Math.round(((duration - minutes) / 10) * 60 * 10);
-  return [minutes, seconds.toString().padStart(2, '0')].join(':');
+  return [minutes.toString().padStart(2, '0'), seconds.toString().padStart(2, '0')].join(':');
 };
 
 export const isSameOrBefore = (date, unit = 'day') => {
