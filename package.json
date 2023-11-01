@@ -14,7 +14,7 @@
     "build": "pnpm -r --filter='./packages/*' run build",
     "test": "vitest",
     "release": "bumpp -r",
-    "publish:release": "pnpm run build && pnpm -r publish --access public"
+    "publish:release": "pnpm run test && pnpm run build && pnpm -r publish --access public"
   },
   "keywords": [],
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
