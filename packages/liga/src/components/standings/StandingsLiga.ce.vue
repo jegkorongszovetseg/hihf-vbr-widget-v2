@@ -12,20 +12,10 @@ import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { COLUMNS_STANDINGS_P_3 } from '@mjsz-vbr-elements/core/columns';
 import DataProvider from './DataProvider.vue';
 import Selector from './Selector.vue';
+import StandingsTable from './StandingsTable.vue';
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
-
-const liveTable = {
-  ...COLUMNS_STANDINGS_P_3,
-  score: {
-    label: 'table.goalAgainst.short',
-    tooltip: 'table.goalAgainst.tooltip',
-  },
-  diff: {
-    label: 'table.goalAgainst.short',
-    tooltip: 'table.goalAgainst.tooltip',
-  },
-};
+import { COLUMNS_LIVE_STANDINGS_P_3 } from './standings.internal';
 
 const props = defineProps({
   locale: {
@@ -94,13 +84,11 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
           <LoadingIndicator v-if="isLoading" />
 
           <!-- LIVE STANDINGS -->
-          <StatisticsTable
+          <StandingsTable
             :rows="liveRows.rows"
-            :columns="liveTable"
-            :sort="sort"
+            :columns="COLUMNS_LIVE_STANDINGS_P_3"
             :external-team-resolver="externalTeamLink"
             :append-to="tooltipContainer"
-            @sort="onSort"
           />
 
           <StatisticsTable

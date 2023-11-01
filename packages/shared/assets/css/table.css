@@ -119,6 +119,21 @@
       width: auto;
     }
 
+    &.is-horizontal-content {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    &.is-text-positive,
+    .is-text-positive {
+      color: var(--vbr-widget-live-game-color);
+    }
+
+    &.is-text-negative,
+    .is-text-negative {
+      color: var(--vbr-widget-danger-color-a400);
+    }
+
     svg {
       width: 16px;
       height: 16px;
@@ -202,6 +217,12 @@
 
     .is-duplicated {
       color: var(--vbr-widget-table-neutral-color);
+    }
+  }
+
+  tr {
+    &.is-highlighted {
+      color: var(--vbr-widget-danger-color-a400);
     }
   }
 

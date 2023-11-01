@@ -36,6 +36,7 @@
   --vbr-widget-danger-color-a400: #ff1744;
 
   --vbr-widget-live-game-color: #8bc34a;
+  --vbr-widget-neutral-color: #FFC107;
 
   --vbr-widget-typography-text-xs-size: 0.75rem; /* 12px */
   --vbr-widget-typography-text-xs-lineheight: 1.25rem; /* 20px */
@@ -309,6 +310,16 @@ a {
   &.is-green {
     color: var(--vbr-widget-primary-color-0);
     background-color: var(--vbr-widget-live-game-color);
+  }
+
+  &.is-red {
+    color: var(--vbr-widget-primary-color-0);
+    background-color: var(--vbr-widget-danger-color-a400);
+  }
+
+  &.is-yellow {
+    color: var(--vbr-widget-primary-color-0);
+    background-color: var(--vbr-widget-neutral-color);
   }
 
   &.is-large {

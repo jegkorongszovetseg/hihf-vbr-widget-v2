@@ -1,6 +1,6 @@
 <script setup>
 import { reactive, computed, unref } from 'vue';
-import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
+import { useAsyncQueue, useUrlSearchParams, useIntervalFn } from '@vueuse/core';
 import { useLazyLoadingState, useError, useServices, useSort } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
 import { transformSeasons, transformSections } from '../internal';
@@ -74,7 +74,16 @@ const {
   onError,
 });
 
-const { rows: liveRows } = useGamesListForLiveStandings(rows, mockGames);
+const { state: games, execute: fetchGamesList } = useServices({
+  options: {
+    path: '/v2/games-list',
+    apiKey: props.apiKey,
+    params: computed(() => ({ championshipId: state.championshipId, division: state.section })),
+  },
+  onError,
+});
+
+const { isActive: isLiveStandingsActive, rows: liveRows } = useGamesListForLiveStandings(rows, mockGames);
 
 const isLoading = useLazyLoadingState([sectionLoading, seasonsLoading, gamesLoading], { delay: 1000 });
 
@@ -86,9 +95,9 @@ const convertedLiveRows = computed(() => {
   return convert(unref(liveRows)).addContinuousIndex().value();
 });
 
-useAsyncQueue([fetchSeasons, fetchSection, fetchStandings]);
+useAsyncQueue([fetchSeasons, fetchSection, fetchStandings, fetchGamesList]);
 
-
+useIntervalFn(fetchGamesList, 1000 * 60 * 2);
 
 const changeSeason = (value) => {
   state.championshipId = value;
@@ -111,9 +120,10 @@ const changeSection = (value) => {
     v-bind="{
       ...state,
       sort,
+      isLoading,
+      isLiveStandingsActive,
       teams: convertedRows,
       liveRows: convertedLiveRows,
-      isLoading,
       onSort,
       changeSeason,
       changeSection,
