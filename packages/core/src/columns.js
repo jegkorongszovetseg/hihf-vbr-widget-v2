@@ -130,6 +130,8 @@ export const COLUMNS_STANDINGS_P_3 = {
     class: 'is-text-bold',
     sortOrders: [
       { target: 'points', direction: SORT_STATE_DESCEND },
+      { target: 'gamesPlayed', direction: SORT_STATE_ASCEND },
+      { target: 'w', direction: SORT_STATE_DESCEND },
       { target: 'gd', direction: SORT_STATE_DESCEND },
       { target: 'gf', direction: SORT_STATE_DESCEND },
     ],

@@ -321,6 +321,10 @@
     "teamOfficials": {
       "short": "Hivatalos Személyek",
       "tooltip": "Hivatalos Személyek"
+    },
+    "score": {
+      "short": "Eredmény",
+      "tooltip": "Aktuális eredmény"
     }
   },
   "game": {

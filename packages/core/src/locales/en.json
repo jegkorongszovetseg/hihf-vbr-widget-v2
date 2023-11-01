@@ -321,6 +321,10 @@
     "teamOfficials": {
       "short": "Team officials",
       "tooltip": "Team officials"
+    },
+    "score": {
+      "short": "Score",
+      "tooltip": "Actual Game Score"
     }
   },
   "game": {

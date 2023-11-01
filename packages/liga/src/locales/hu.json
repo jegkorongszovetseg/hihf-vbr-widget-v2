@@ -35,5 +35,9 @@
     "Elődöntő1": "Elődöntő 1",
     "Elődöntő2": "Elődöntő 2",
     "Döntő": "Döntő"
+  },
+  "standings": {
+    "live": "Élő",
+    "default": "Összesített"
   }
 }
