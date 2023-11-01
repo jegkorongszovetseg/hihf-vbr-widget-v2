@@ -91,6 +91,14 @@ export const convert = (data = []) => {
       return this;
     },
 
+    teamName() {
+      this.result = this.result.map((row) => ({
+        ...row,
+        teamName: row.team.longName,
+      }));
+      return this;
+    },
+
     schedule(timezone = '', locale = 'hu') {
       this.result = this.result.map((row) => ({
         ...row,
@@ -136,6 +144,11 @@ export const playerName = (row) => ({
   ...(row.lastName && { name: `${row.lastName} ${row.firstName}` }),
 });
 
+export const teamName = (row) => ({
+  ...row,
+  ...(row.team.id && { teamName: row.team.longName }),
+});
+
 export const upperCase =
   (prop = []) =>
   (row) => ({
@@ -163,4 +176,4 @@ export const convertTimesSecToMin =
   };
 
 const dateDiff = (a, b) => new Date(a.gameDate).getTime() - new Date(b.gameDate).getTime();
-export const sortGames = sortWith([dateDiff, ascend(prop('id'))]);
+export const sortGames = sortWith([dateDiff, ascend(prop('id')), ascend(prop('gameId'))]);

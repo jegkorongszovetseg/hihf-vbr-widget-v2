@@ -15,7 +15,9 @@ export const transformSections = (sections, state) => {
 export const convertPhaseName = (phases) => {
   return phases.map((phase) => ({
     ...phase,
-    phaseName: [phase.phaseName, phase.phaseSubType?.phaseSubTypeName ?? ''].join(' '),
+    phaseName: [phase.phaseName, phase.phaseSubType?.phaseSubTypeName ?? '', phase.phaseType?.phaseTypeName ?? ''].join(
+      ' '
+    ),
   }));
 };
 

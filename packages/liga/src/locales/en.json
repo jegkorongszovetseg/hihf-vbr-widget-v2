@@ -49,5 +49,9 @@
     "teamInfo": "Team Informations",
     "roster": "Roster",
     "playerStats": "Player Stats"
+  },
+  "standings": {
+    "live": "Live",
+    "default": "Overall"
   }
 }

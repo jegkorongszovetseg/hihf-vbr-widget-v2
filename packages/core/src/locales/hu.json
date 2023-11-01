@@ -322,6 +322,10 @@
       "short": "Hivatalos Személyek",
       "tooltip": "Hivatalos Személyek"
     },
+    "score": {
+      "short": "Eredmény",
+      "tooltip": "Aktuális eredmény"
+    },
     "opponent": {
       "short": "Ellenfél",
       "tooltip": "Ellenfél"
@@ -344,6 +348,25 @@
       "delayed": "Elhalasztva"
     },
     "period": {
+      "wu": "Bemelegítés",
+      "pre": "Bemelegítés vége",
+      "p1": "I. játékrész",
+      "p1_int": "I. játékrész vége",
+      "p2": "II. játékrész",
+      "p2_int": "II. játékrész vége",
+      "p3": "III. játékrész",
+      "p3_int": "III. játékrész vége",
+      "p4": "IV. játékrész",
+      "p4_int": "IV. játékrész vége",
+      "p5": "V. játékrész",
+      "p5_int": "V. játékrész vége",
+      "p6": "VI. játékrész",
+      "p6_int": "VI. játékrész vége",
+      "ot": "Hosszabbítás",
+      "ot_int": "Hosszabbítás vége",
+      "so": "Szétlövés",
+      "so_int": "Szétlövés vége",
+      "end": "Végeredmény",
       "Bemelegítés": "Bemelegítés",
       "Bemelegítés vége": "Bemelegítés Vége",
       "1. harmad": "I. harmad",

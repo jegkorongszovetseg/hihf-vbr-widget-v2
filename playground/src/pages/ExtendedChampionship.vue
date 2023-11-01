@@ -15,6 +15,6 @@ import '../../../packages/shared/dist/css/dropdown.css';
 <template>
   <div class="p-5">
     <!-- <Championship :locale="store.locale" championship-name="U-14 Bajnokság" /> -->
-    <mjsz-vbr-championship :locale="store.locale" championship-name="U-21 Bajnokság"  />
+    <mjsz-vbr-championship :locale="store.locale" championship-name="Magyar Kupa"  />
   </div>
 </template>

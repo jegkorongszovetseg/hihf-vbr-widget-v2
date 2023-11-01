@@ -49,5 +49,9 @@
     "teamInfo": "Klub Információk",
     "roster": "Játékoskeret",
     "playerStats": "Játékos statisztikák"
+  },
+  "standings": {
+    "live": "Élő",
+    "default": "Összesített"
   }
 }

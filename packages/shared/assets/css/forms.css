@@ -62,3 +62,23 @@ label {
     background-color: var(--vbr-widget-tab-btn-active-bg-color);
   }
 }
+
+.toggle-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--vbr-widget-toggle-group-gap);
+  margin-bottom: 15px;
+
+  button {
+    padding: var(--vbr-widget-toggle-group-btn-padding);
+    font-family: inherit;
+    font-size: var(--vbr-widget-toggle-group-btn-size);
+    background-color: var(--vbr-widget-toggle-group-btn-bg-color);
+    border-radius: var(--vbr-widget-toggle-group-btn-radius);
+
+    &.is-active {
+      color: var(--vbr-widget-toggle-group-btn-active-color);
+      background-color: var(--vbr-widget-toggle-group-btn-active-bg-color);
+    }
+  }
+}

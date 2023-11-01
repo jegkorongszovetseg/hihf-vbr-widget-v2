@@ -61,10 +61,10 @@ const mainClasses = useMainClass('card-item');
           {{ game.gameDateTime }}
         </span>
       </a>
-      <span v-if="game.gameStatus === 0" class="is-text-xs is-opacity-30">({{ offsetName }})</span>
+      <span v-if="game.gameStatus === 0" class="is-text-xs is-opacity-40">({{ offsetName }})</span>
       <template v-if="game.gameStatus > 0">
-        <div class="is-text-sm">{{ game.periodResults }}</div>
-        <div v-if="game.gameStatus !== 2" class="is-text-xs is-uppercase">{{ game.period }}</div>
+        <div class="is-text-sm is-whitespace-nowrap">{{ game.periodResults }}</div>
+        <div v-if="game.gameStatus !== 2" class="is-text-xs is-uppercase is-whitespace-nowrap">{{ t(`game.period.${game.period}`) }}</div>
       </template>
     </div>
 

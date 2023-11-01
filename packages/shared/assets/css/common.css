@@ -36,17 +36,18 @@
   --vbr-widget-danger-color-a400: #ff1744;
 
   --vbr-widget-live-game-color: #8bc34a;
+  --vbr-widget-neutral-color: #ffc107;
 
   --vbr-widget-typography-text-xs-size: 0.75rem; /* 12px */
-  --vbr-widget-typography-text-xs-lineheight: 1rem; /* 16px */
+  --vbr-widget-typography-text-xs-lineheight: 1.25rem; /* 20px */
   --vbr-widget-typography-text-sm-size: 0.875rem; /* 14px */
-  --vbr-widget-typography-text-sm-lineheight: 1.25rem; /* 20px */
+  --vbr-widget-typography-text-sm-lineheight: 1.5rem; /* 24px */
   --vbr-widget-typography-text-base-size: 1rem; /* 16px */
-  --vbr-widget-typography-text-base-lineheight: 1.5rem; /* 24px */
+  --vbr-widget-typography-text-base-lineheight: 1.75rem; /* 28px */
   --vbr-widget-typography-text-lg-size: 1.125rem; /* 18px */
-  --vbr-widget-typography-text-lg-lineheight: 1.75rem; /* 28px */
+  --vbr-widget-typography-text-lg-lineheight: 2rem; /* 32px */
   --vbr-widget-typography-text-xl-size: 1.25rem; /* 20px */
-  --vbr-widget-typography-text-xl-lineheight: 1.75rem; /* 28px */
+  --vbr-widget-typography-text-xl-lineheight: 2rem; /* 32px */
   --vbr-widget-typography-heading-weight: 500;
 
   --vbr-widget-table-header-font-size: var(--vbr-widget-typography-text-xs-size);
@@ -135,6 +136,14 @@
   --vbr-widget-tab-btn-active-bg-color: var(--vbr-widget-primary-color-0);
   --vbr-widget-tab-btn-active-color: var(--vbr-widget-primary-color-900);
   --vbr-widget-tab-btn-active-border-color: var(--vbr-widget-secondary-color-500);
+
+  --vbr-widget-toggle-group-gap: 0.625rem;
+  --vbr-widget-toggle-group-btn-padding: 3px 10px;
+  --vbr-widget-toggle-group-btn-size: var(--vbr-widget-typography-text-sm-size);
+  --vbr-widget-toggle-group-btn-bg-color: var(--vbr-widget-primary-color-50);
+  --vbr-widget-toggle-group-btn-active-color: var(--vbr-widget-primary-color-0);
+  --vbr-widget-toggle-group-btn-active-bg-color: var(--vbr-widget-live-game-color);
+  --vbr-widget-toggle-group-btn-radius: 4px;
 
   --vbr-widget-progress-height: 10px;
   --vbr-widget-progress-border-radius: 5px;
@@ -310,6 +319,16 @@ a {
   &.is-green {
     color: var(--vbr-widget-primary-color-0);
     background-color: var(--vbr-widget-live-game-color);
+  }
+
+  &.is-red {
+    color: var(--vbr-widget-primary-color-0);
+    background-color: var(--vbr-widget-danger-color-a400);
+  }
+
+  &.is-yellow {
+    color: var(--vbr-widget-primary-color-0);
+    background-color: var(--vbr-widget-neutral-color);
   }
 
   &.is-large {
