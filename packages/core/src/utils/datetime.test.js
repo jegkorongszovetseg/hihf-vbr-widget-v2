@@ -2,6 +2,10 @@ import { describe, expect, test } from 'vitest';
 import { convertSecToMin, convertMinToSec } from './datetime';
 
 describe('convertSecToMin', () => {
+  test('Convert 0 sec to min string 00:00', () => {
+    expect(convertSecToMin(0)).toBe('00:00');
+  });
+
   test('Convert 60 sec to min string 01:00', () => {
     expect(convertSecToMin(60)).toBe('01:00');
   });
@@ -10,15 +14,11 @@ describe('convertSecToMin', () => {
     expect(convertSecToMin(10)).toBe('00:10');
   });
 
-  test('Convert 0 sec to min string 00:00', () => {
-    expect(convertSecToMin(10)).toBe('00:10');
-  });
-
-  test('Convert 150 sec to min string 00:00', () => {
+  test('Convert 150 sec to min string 02:30', () => {
     expect(convertSecToMin(150)).toBe('02:30');
   });
 
-  test('Convert 150 sec to min string 00:00', () => {
+  test('Convert 4567 sec to min string 76:07', () => {
     expect(convertSecToMin(4567)).toBe('76:07');
   });
 });
