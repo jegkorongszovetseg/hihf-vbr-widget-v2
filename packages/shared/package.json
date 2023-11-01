@@ -33,7 +33,7 @@
     "@vitejs/plugin-vue": "^4.2.3",
     "glob": "^10.2.6",
     "nodemon": "^2.0.22",
-    "postcss": "^8.4.24",
+    "postcss": "^8.4.31",
     "postcss-import": "^15.1.0",
     "postcss-mixins": "^9.0.4",
     "postcss-nested": "^6.0.1",
