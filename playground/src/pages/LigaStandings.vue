@@ -12,7 +12,7 @@ import '../../../packages/shared/dist/css/table.css';
 
 <template>
   <div class="p-5">
-    <StandingsLiga :locale="store.locale" championship-name="Erste Liga"></StandingsLiga>
-    <!-- <mjsz-vbr-standings-liga :locale="store.locale" championship-name="Erste Liga" /> -->
+    <!-- <StandingsLiga :locale="store.locale" championship-name="Erste Liga"></StandingsLiga> -->
+    <mjsz-vbr-standings-liga :locale="store.locale" championship-name="Erste Liga" />
   </div>
 </template>

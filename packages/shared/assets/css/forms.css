@@ -66,19 +66,19 @@ label {
 .toggle-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: var(--vbr-widget-toggle-group-gap);
   margin-bottom: 15px;
 
   button {
-    padding: 3px 10px;
+    padding: var(--vbr-widget-toggle-group-btn-padding);
     font-family: inherit;
-    font-size: 14px;
-    background-color: var(--vbr-widget-primary-color-50);
-    border-radius: 4px;
+    font-size: var(--vbr-widget-toggle-group-btn-size);
+    background-color: var(--vbr-widget-toggle-group-btn-bg-color);
+    border-radius: var(--vbr-widget-toggle-group-btn-radius);
 
     &.is-active {
-      color: #fff;
-      background-color: var(--vbr-widget-live-game-color);
+      color: var(--vbr-widget-toggle-group-btn-active-color);
+      background-color: var(--vbr-widget-toggle-group-btn-active-bg-color);
     }
   }
 }

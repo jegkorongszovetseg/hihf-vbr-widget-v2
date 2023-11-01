@@ -36,7 +36,7 @@
   --vbr-widget-danger-color-a400: #ff1744;
 
   --vbr-widget-live-game-color: #8bc34a;
-  --vbr-widget-neutral-color: #FFC107;
+  --vbr-widget-neutral-color: #ffc107;
 
   --vbr-widget-typography-text-xs-size: 0.75rem; /* 12px */
   --vbr-widget-typography-text-xs-lineheight: 1.25rem; /* 20px */
@@ -135,6 +135,14 @@
   --vbr-widget-tab-btn-active-bg-color: var(--vbr-widget-primary-color-0);
   --vbr-widget-tab-btn-active-color: var(--vbr-widget-primary-color-900);
   --vbr-widget-tab-btn-active-border-color: var(--vbr-widget-secondary-color-500);
+
+  --vbr-widget-toggle-group-gap: 0.625rem;
+  --vbr-widget-toggle-group-btn-padding: 3px 10px;
+  --vbr-widget-toggle-group-btn-size: var(--vbr-widget-typography-text-sm-size);
+  --vbr-widget-toggle-group-btn-bg-color: var(--vbr-widget-primary-color-50);
+  --vbr-widget-toggle-group-btn-active-color: var(--vbr-widget-primary-color-0);
+  --vbr-widget-toggle-group-btn-active-bg-color: var(--vbr-widget-live-game-color);
+  --vbr-widget-toggle-group-btn-radius: 4px;
 
   --vbr-widget-progress-height: 10px;
   --vbr-widget-progress-border-radius: 5px;
