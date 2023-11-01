@@ -16,6 +16,7 @@ import {
   convertTimesSecToMin,
   convertTimesMinToMinSec,
   playerName,
+  teamName,
   rawConvert,
   InvalidSeasonName,
   WidgetError,
@@ -132,6 +133,7 @@ const fetchStatistic = async () => {
     state.rows = rawConvert(
       rows,
       playerName,
+      teamName,
       convertTimesMinToMinSec(['mip']),
       convertTimesSecToMin(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2'])
     );

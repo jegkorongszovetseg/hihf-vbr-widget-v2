@@ -4,7 +4,7 @@ import { useAsyncQueue, useUrlSearchParams, useIntervalFn } from '@vueuse/core';
 import { useError, useServices, useSort } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
 import { transformSeasons, transformSections } from '../internal';
-import { useGamesListForLiveStandings, mockGames, TOGGLE_LIVE } from './standings.internal';
+import { useGamesListForLiveStandings, TOGGLE_LIVE } from './standings.internal';
 
 const props = defineProps({
   championshipName: {
