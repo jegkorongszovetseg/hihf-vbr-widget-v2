@@ -35,5 +35,9 @@
     "Elődöntő1": "Semifinal 1",
     "Elődöntő2": "Semifinal 2",
     "Döntő": "Final"
+  },
+  "standings": {
+    "live": "Live",
+    "default": "Overall"
   }
 }

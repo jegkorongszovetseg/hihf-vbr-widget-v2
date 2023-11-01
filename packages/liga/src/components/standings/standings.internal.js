@@ -1,5 +1,5 @@
 import { computed, unref } from 'vue';
-import { descend, ascend, prop, sortWith } from 'ramda';
+import { descend, ascend, prop, sortWith, clone } from 'ramda';
 
 export const mockGames = [
   {
@@ -123,7 +123,7 @@ export const mockGames = [
     seriesStandings: null,
     periodResults: '(0:1, 3:0, 2:1)',
     isOvertime: false,
-    isShootout: false,
+    isShootout: true,
     decision: null,
     period: 'end',
     broadcast: false,
@@ -262,6 +262,9 @@ export const mockGames = [
   },
 ];
 
+export const TOGGLE_LIVE = 'live';
+export const TOGGLE_DEFAULT = 'default';
+
 export const COLUMNS_LIVE_STANDINGS_P_3 = {
   index: {
     label: 'table.blank',
@@ -330,11 +333,11 @@ export const COLUMNS_LIVE_STANDINGS_P_3 = {
 export function useGamesListForLiveStandings(standings = [], games = []) {
   const liveGames = computed(() => (unref(games) || []).filter((game) => game.gameStatus === 1) || []);
 
-  const isLiveStandingsActive = computed(() => liveGames.length > 0);
+  const isLiveStandingsActive = computed(() => liveGames.value.length > 0);
 
-  const standingsWithScores = computed(() => setLivedGames(unref(standings), liveGames.value));
+  const standingsWithScores = computed(() => setLivedGames(unref(standings) || [], liveGames.value));
 
-  const standingsWithDiff = computed(() => positionDifference(unref(standings), standingsWithScores.value));
+  const standingsWithDiff = computed(() => positionDifference(unref(standings) || [], standingsWithScores.value));
 
   return {
     isActive: isLiveStandingsActive,
@@ -343,7 +346,7 @@ export function useGamesListForLiveStandings(standings = [], games = []) {
 }
 
 function setLivedGames(standings = [], games = []) {
-  const convertedTable = [...standings].map((team) => {
+  const convertedTable = clone(standings).map((team) => {
     const activeGame = games.find((game) => game.homeTeam.id === team.team.id || game.awayTeam.id === team.team.id);
     team.isActiveGame = Boolean(activeGame);
 
@@ -355,7 +358,7 @@ function setLivedGames(standings = [], games = []) {
 
       team.score = score.join(':');
       team.scoreType = setScoreType(score);
-      team.points = team.points + additionalPoints(score);
+      team.points = team.points + additionalPoints(score, activeGame);
       team.gf = team.gf + score[0];
       team.ga = team.ga + score[1];
       team.gd = team.gf - team.ga;
@@ -367,24 +370,28 @@ function setLivedGames(standings = [], games = []) {
   return convertedTable;
 }
 
-function additionalPoints(score) {
-  if (score[0] > score[1]) return 3;
-  if (score[0] < score[1]) return 0;
+function additionalPoints(score, game) {
+  const hasExtraPeriod = game.isOvertime || game.isShootout;
+  if (score[0] > score[1]) return hasExtraPeriod ? 2 : 3;
+  if (score[0] < score[1]) return hasExtraPeriod ? 1 : 0;
   return 1;
 }
 
 function positionDifference(originalStandings, convertedTable) {
-  const sortedTable = sortWith([descend(prop('points')), ascend(prop('gamesPlayed')), descend(prop('gd'))])(
-    convertedTable
-  );
+  const sortedTable = sortWith([
+    descend(prop('points')),
+    ascend(prop('gamesPlayed')),
+    descend(prop('w')),
+    descend(prop('gd')),
+    descend(prop('gf')),
+  ])(convertedTable);
 
-  const x = sortedTable.map((team) => {
+  return sortedTable.map((team) => {
     const originalIndex = originalStandings.findIndex((row) => team.team.id === row.team.id);
     const newIndex = sortedTable.findIndex((row) => team.team.id === row.team.id);
     team.diff = originalIndex - newIndex;
     return team;
   });
-  return x;
 }
 
 function setScoreType(score) {

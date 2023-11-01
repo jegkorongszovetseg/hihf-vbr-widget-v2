@@ -62,3 +62,23 @@ label {
     background-color: var(--vbr-widget-tab-btn-active-bg-color);
   }
 }
+
+.toggle-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 15px;
+
+  button {
+    padding: 3px 10px;
+    font-family: inherit;
+    font-size: 14px;
+    background-color: var(--vbr-widget-primary-color-50);
+    border-radius: 4px;
+
+    &.is-active {
+      color: #fff;
+      background-color: var(--vbr-widget-live-game-color);
+    }
+  }
+}

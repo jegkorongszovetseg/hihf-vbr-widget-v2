@@ -147,13 +147,6 @@ const onSort = (payload) => emit('sort', payload);
           >{{ row.score }}
         </span>
       </template>
-      <!-- <template v-slot:cell-diff="{ row }">
-        <span v-if="row.isActiveGame">
-          <IconArrowUp v-if="row.diff > 0" width="12" height="12" />
-          <IconArrowDown v-if="row.diff < 0" width="12" height="12" />
-          {{ row.diff }}
-        </span>
-      </template> -->
 
       <template v-slot:loading>
         <LoadingIndicator />

@@ -1,10 +1,10 @@
 <script setup>
 import { reactive, computed, unref } from 'vue';
 import { useAsyncQueue, useUrlSearchParams, useIntervalFn } from '@vueuse/core';
-import { useLazyLoadingState, useError, useServices, useSort } from '@mjsz-vbr-elements/core/composables';
+import { useError, useServices, useSort } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
 import { transformSeasons, transformSections } from '../internal';
-import { useGamesListForLiveStandings, mockGames } from './standings.internal';
+import { useGamesListForLiveStandings, mockGames, TOGGLE_LIVE } from './standings.internal';
 
 const props = defineProps({
   championshipName: {
@@ -32,6 +32,7 @@ const state = reactive({
   championshipId: Number(params.championshipId) || 0,
   sections: [],
   section: params.section || null,
+  standingsType: TOGGLE_LIVE,
 });
 
 const { onError } = useError();
@@ -62,7 +63,7 @@ const { isLoading: sectionLoading, execute: fetchSection } = useServices({
 });
 
 const {
-  isLoading: gamesLoading,
+  isLoading: standingsLoading,
   state: rows,
   execute: fetchStandings,
 } = useServices({
@@ -83,12 +84,13 @@ const { state: games, execute: fetchGamesList } = useServices({
   onError,
 });
 
-const { isActive: isLiveStandingsActive, rows: liveRows } = useGamesListForLiveStandings(rows, mockGames);
+const { isActive: isLiveStandingsActive, rows: liveRows } = useGamesListForLiveStandings(rows, games);
 
-const isLoading = useLazyLoadingState([sectionLoading, seasonsLoading, gamesLoading], { delay: 1000 });
+// const isLoading = useLazyLoadingState([sectionLoading, seasonsLoading, standingsLoading], { delay: 1000 });
+const isLoading = computed(() => [sectionLoading.value, seasonsLoading.value, standingsLoading.value].some(Boolean));
 
 const convertedRows = computed(() => {
-  return convert(unref(rows)).sorted(sort).addContinuousIndex().value();
+  return convert(unref(rows)).teamName().sorted(sort).addContinuousIndex().value();
 });
 
 const convertedLiveRows = computed(() => {
@@ -97,7 +99,7 @@ const convertedLiveRows = computed(() => {
 
 useAsyncQueue([fetchSeasons, fetchSection, fetchStandings, fetchGamesList]);
 
-useIntervalFn(fetchGamesList, 1000 * 60 * 2);
+useIntervalFn(fetchGamesList, 1000 * 10);
 
 const changeSeason = (value) => {
   state.championshipId = value;
@@ -113,6 +115,10 @@ const changeSection = (value) => {
   // resets
   fetchStandings();
 };
+
+const onChangeStandingsType = (type) => {
+  state.standingsType = type;
+};
 </script>
 
 <template>
@@ -127,6 +133,7 @@ const changeSection = (value) => {
       onSort,
       changeSeason,
       changeSection,
+      onChangeStandingsType,
     }"
   ></slot>
 </template>
