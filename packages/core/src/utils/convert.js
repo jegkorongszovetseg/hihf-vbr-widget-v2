@@ -91,6 +91,14 @@ export const convert = (data = []) => {
       return this;
     },
 
+    teamName() {
+      this.result = this.result.map((row) => ({
+        ...row,
+        teamName: row.team.longName,
+      }));
+      return this;
+    },
+
     schedule(timezone = '', locale = 'hu') {
       this.result = this.result.map((row) => ({
         ...row,
@@ -134,6 +142,11 @@ export const rawConvert = (data, ...fn) => map(compose(...fn))(data);
 export const playerName = (row) => ({
   ...row,
   ...(row.lastName && { name: `${row.lastName} ${row.firstName}` }),
+});
+
+export const teamName = (row) => ({
+  ...row,
+  ...(row.team.id && { teamName: row.team.longName }),
 });
 
 export const upperCase =

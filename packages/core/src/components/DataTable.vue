@@ -108,7 +108,7 @@ const sortBy = (column, prop) => {
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(row, index) in props.rows" :key="index">
+      <tr v-for="(row, index) in props.rows" :key="index" :class="row.rowClasses">
         <td
           v-for="(_, prop) in columns"
           :key="prop"
