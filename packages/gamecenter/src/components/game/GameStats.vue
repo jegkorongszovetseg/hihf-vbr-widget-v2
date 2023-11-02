@@ -43,51 +43,35 @@ const pim = computed(() =>
   )
 );
 
-const dvgTime = computed(() =>
-  buildAdv(props.gameStats?.teamPowerPlay ?? [], {
-    home: homeTeamId.value,
-    away: awayTeamId.value,
-  })
-);
-const advPercent = computed(() =>
-  buildAdvPercent(props.gameStats?.teamPowerPlay ?? [], {
-    home: homeTeamId.value,
-    away: awayTeamId.value,
-  })
-);
-
-const dvgPercent = computed(() =>
-  buildDvgPercent(props.gameStats?.teamPowerPlay ?? [], {
-    home: homeTeamId.value,
-    away: awayTeamId.value,
-  })
-);
+const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
+const advPercent = computed(() => buildAdvPercent(props.gameStats?.teamPowerPlay ?? {}));
+const dvgPercent = computed(() => buildDvgPercent(props.gameStats?.teamPowerPlay ?? {}));
 </script>
 
 <template>
   <div :class="useMainClass('gamecenter-game-stats')">
     <div :class="useMainClass('gamecenter-game-stats-container-wrapper')">
-      <GameStatsContainer :title="t('teamsStats.sog')" :data="sog" />
-      <GameStatsContainer :title="t('teamsStats.saves')" :data="saves" />
-      <GameStatsContainer :title="t('teamsStats.pim')" :data="pim" />
+      <!-- <GameStatsContainer :title="t('teamsStats.sog')" :data="sog" /> -->
+      <!-- <GameStatsContainer :title="t('teamsStats.saves')" :data="saves" /> -->
+      <!-- <GameStatsContainer :title="t('teamsStats.pim')" :data="pim" /> -->
       <GameStatsContainer :title="t('teamsStats.advPercent')" :data="advPercent" />
-      <GameStatsContainer :data="dvgTime.dvgTime">
+      <GameStatsContainer :title="t('teamsStats.penaltyKilling')" :data="dvgPercent" />
+      <GameStatsContainer :data="advTime.advTime">
         {{ t('teamsStats.advantageTime') }}
         <FloatingPanel :offset="2" placement="top" theme="content" append-to="#popover-container">
-          <template v-slot:default="{ setRef, show }">
-            <button :ref="setRef" @click.stop="show">
+          <template v-slot:default="{ setRef, show, hide }">
+            <button :ref="setRef" @click.stop="show" @focus="show" @blur="hide">
               <IconMore />
             </button>
           </template>
           <template v-slot:content>
             <div class="is-popover-content">
-              <GameStatsContainer :title="t('teamsStats.advantageTimePP1')" :data="dvgTime.dvgTimePP1" />
-              <GameStatsContainer :title="t('teamsStats.advantageTimePP2')" :data="dvgTime.dvgTimePP2" />
+              <GameStatsContainer :title="t('teamsStats.advantageTimePP1')" :data="advTime.advTimePP1" />
+              <GameStatsContainer :title="t('teamsStats.advantageTimePP2')" :data="advTime.advTimePP2" />
             </div>
           </template>
         </FloatingPanel>
       </GameStatsContainer>
-      <GameStatsContainer :title="t('teamsStats.penaltyKilling')" :data="dvgPercent" />
     </div>
     <div id="popover-container"></div>
   </div>
