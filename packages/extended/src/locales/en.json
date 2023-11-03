@@ -14,7 +14,11 @@
     "month": "Month",
     "homeOrAway": "Home or Away",
     "home": "Home",
-    "away": "Away"
+    "away": "Away",
+    "schedule": "Schedule",
+    "standings": "Standings",
+    "playerStats": "Player Statistics",
+    "teamStats": "Team Statistics"
   },
   "report": {
     "points": "Points",

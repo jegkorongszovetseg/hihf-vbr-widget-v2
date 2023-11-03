@@ -23,7 +23,7 @@
       "tooltip": "Csapatnév"
     },
     "game": {
-      "short": "M",
+      "short": "GP",
       "tooltip": "Mérkőzésszám"
     },
     "wins": {
@@ -151,11 +151,11 @@
       "tooltip": "Mérkőzésenkénti Büntetés Percek"
     },
     "gpgk": {
-      "short": "M",
+      "short": "GP",
       "tooltip": "Mérkőzésre Nevezve"
     },
     "gpi": {
-      "short": "LM",
+      "short": "GPI",
       "tooltip": "Mérkőzésen Játszott"
     },
     "toi": {

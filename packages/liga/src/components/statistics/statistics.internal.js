@@ -49,7 +49,7 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('playerspenalties', {
-    api: '/v1/playersPenaltyPeriod',
+    api: '/v2/players-penalty',
     columns: COLUMNS_FIELD_PLAYERS_PENALTY,
     sort: {
       sortTarget: 'pim',
@@ -57,7 +57,8 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('goalies', {
-    api: '/v1/playersGoaliePeriod',
+    api: '/v2/players-goalie',
+    params: { more: true },
     columns: COLUMNS_GOALIES,
     sort: {
       sortTarget: 'svsPercent',
@@ -65,7 +66,8 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('goaliesunderlimit', {
-    api: '/v1/playersGoalieUnderPeriod',
+    api: '/v2/players-goalie',
+    params: { less: true },
     columns: COLUMNS_GOALIES,
     sort: {
       sortTarget: 'svsPercent',
@@ -89,7 +91,7 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('teamPenaltiKilling', {
-    api: '/v1/teamPowerPlayPeriod',
+    api: '/v2/team-powerplay',
     columns: COLUMNS_TEAMS_PENALTY_KILLING,
     sort: {
       sortTarget: 'pkPercent',
@@ -97,7 +99,7 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('teamPowerplay', {
-    api: '/v1/teamPowerPlayPeriod',
+    api: '/v2/team-powerplay',
     columns: COLUMNS_TEAMS_POWERPLAY,
     sort: {
       sortTarget: 'ppPercent',
@@ -115,22 +117,22 @@ export const REPORTS_MAP = new Map()
 
 export const PLAYERS_REPORTS_SELECT = (t) => {
   return [
-    {
-      name: t('report.points'),
-      value: 'points',
-    },
-    {
-      name: t('report.goals'),
-      value: 'goals',
-    },
-    {
-      name: t('report.assists'),
-      value: 'assists',
-    },
-    {
-      name: '+/-',
-      value: 'plusminus',
-    },
+    // {
+    //   name: t('report.points'),
+    //   value: 'points',
+    // },
+    // {
+    //   name: t('report.goals'),
+    //   value: 'goals',
+    // },
+    // {
+    //   name: t('report.assists'),
+    //   value: 'assists',
+    // },
+    // {
+    //   name: '+/-',
+    //   value: 'plusminus',
+    // },
     {
       name: t('report.penalties'),
       value: 'playerspenalties',
@@ -148,26 +150,26 @@ export const PLAYERS_REPORTS_SELECT = (t) => {
 
 export const TEAMS_REPORTS_SELECT = (t) => {
   return [
-    {
-      name: t('report.teamAttendance'),
-      value: 'teamAttandance',
-    },
-    {
-      name: t('report.teamFairplay'),
-      value: 'teamFairplay',
-    },
-    {
-      name: t('report.teamPenaltyKilling'),
-      value: 'teamPenaltiKilling',
-    },
+    // {
+    //   name: t('report.teamAttendance'),
+    //   value: 'teamAttandance',
+    // },
+    // {
+    //   name: t('report.teamFairplay'),
+    //   value: 'teamFairplay',
+    // },
     {
       name: t('report.teamPowerplay'),
       value: 'teamPowerplay',
     },
     {
-      name: t('report.teamScoringEfficiency'),
-      value: 'teamScoringEfficiency',
+      name: t('report.teamPenaltyKilling'),
+      value: 'teamPenaltiKilling',
     },
+    // {
+    //   name: t('report.teamScoringEfficiency'),
+    //   value: 'teamScoringEfficiency',
+    // },
   ];
 };
 
@@ -179,7 +181,7 @@ export const convertTeams = (teams) => sort(ascend(prop('teamName')), teams);
 export const setDefaultReport = (params) => {
   if (params.report) return params.report;
   if (params.type) {
-    return params.type === REPORT_TYPE_PLAYERS ? 'points' : 'teamAttandance';
+    return params.type === REPORT_TYPE_PLAYERS ? 'playerspenalties' : 'teamPowerplay'; // playerspenalties => points, teamPowerplay =>  teamAttandance
   }
-  return 'points';
+  return 'playerspenalties';
 };

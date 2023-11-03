@@ -1,11 +1,29 @@
 <script setup>
 import { reactive, computed, unref, toRef } from 'vue';
-import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
-import { useLazyLoadingState, useError, useServices, useSort } from '@mjsz-vbr-elements/core/composables';
-import { convert, sortGames } from '@mjsz-vbr-elements/core/utils';
+import { useAsyncQueue, useUrlSearchParams, noop } from '@vueuse/core';
+import { head } from 'ramda';
+import { useLazyLoadingState, useError, useServices, useSort, usePage, useI18n } from '@mjsz-vbr-elements/core/composables';
+import {
+  convert,
+  sortGames,
+  rawConvert,
+  playerName,
+  teamName,
+  convertTimesMinToMinSec,
+  convertTimesSecToMin,
+} from '@mjsz-vbr-elements/core/utils';
 import { COLUMNS_SCHEDULE } from '@mjsz-vbr-elements/core/columns';
 import { transformSeasons } from '../internal';
-import { transformSections, convertPhaseName, PANEL_SCHEDULE, ALL_REPORTS_MAP } from './championship.internal.js';
+import {
+  transformSections,
+  convertPhaseName,
+  PANEL_SCHEDULE,
+  PANEL_PLAYERS,
+  PANEL_TEAMS,
+  ALL_REPORTS_MAP,
+  TEAMS_REPORTS_SELECT,
+  PLAYERS_REPORTS_SELECT,
+} from './championship.internal.js';
 
 const props = defineProps({
   championshipName: {
@@ -37,6 +55,11 @@ const props = defineProps({
     type: String,
     default: '',
   },
+
+  limit: {
+    type: Number,
+    default: 20,
+  },
 });
 
 const params = useUrlSearchParams('history');
@@ -52,8 +75,10 @@ const state = reactive({
   section: params.section || null,
   selectedPanel: PANEL_SCHEDULE,
   api: '/v2/games-list',
+  apiParams: {},
   columns: COLUMNS_SCHEDULE,
   sort: null,
+  report: 'playerspenalties',
 });
 const timezone = toRef(props, 'timezone');
 const { onError } = useError();
@@ -62,6 +87,10 @@ const { sort, change: onSort } = useSort({
   sortTarget: '',
   orders: [],
 });
+
+const { page, change: onPaginatorChange } = usePage();
+
+const { t } = useI18n();
 
 const { isLoading: seasonsLoading, execute: fetchSeasons } = useServices({
   options: {
@@ -86,13 +115,13 @@ const { isLoading: sectionLoading, execute: fetchSection } = useServices({
 const {
   isLoading: gamesLoading,
   state: rows,
-  execute: fetchSchedule,
+  execute: fetchData,
 } = useServices({
   options: {
     path: computed(() => state.api),
     apiKey: props.apiKey,
     resetOnExecute: true,
-    params: computed(() => ({ championshipId: state.championshipId, phaseId: state.phaseId })),
+    params: computed(() => ({ championshipId: state.championshipId, phaseId: state.phaseId, ...state.apiParams })),
   },
   transform: (data) => sortGames(data),
   onError,
@@ -100,42 +129,82 @@ const {
 
 const isLoading = useLazyLoadingState([sectionLoading, seasonsLoading, gamesLoading], { delay: 1000 });
 
-useAsyncQueue([fetchSeasons, fetchSection, fetchSchedule]);
+useAsyncQueue([fetchSeasons, fetchSection, fetchData]);
+
+const currentReportList = computed(() =>
+  state.selectedPanel === PANEL_PLAYERS ? PLAYERS_REPORTS_SELECT(t) : TEAMS_REPORTS_SELECT(t)
+);
 
 const phases = computed(() => {
   const championship = state.championships.find((item) => item.sectionId === state.selectedChampionshipId);
   return convertPhaseName(championship?.phases ?? []);
 });
 
+const rawConvertedRows = computed(() =>
+  rawConvert(
+    rows.value,
+    playerName,
+    teamName,
+    convertTimesMinToMinSec(['mip']),
+    convertTimesSecToMin(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2'])
+  )
+);
+
 const convertedRows = computed(() => {
-  return convert(unref(rows)).sorted(sort).addContinuousIndex().schedule(unref(timezone), unref(props.locale)).value();
+  return convert(unref(rawConvertedRows))
+    .sorted(sort)
+    .addContinuousIndex()
+    .schedule(unref(timezone), unref(props.locale))
+    .pagination(unref(page), props.limit)
+    .value();
 });
 
 const changeSeason = (value) => {
   state.championshipId = value;
   params.championshipId = value;
-  useAsyncQueue([fetchSection, fetchSchedule]);
+  useAsyncQueue([fetchSection, fetchData]);
 };
 
 const changeChampionship = (value) => {
   state.selectedChampionshipId = value;
   state.phaseId = phases.value[0]?.phaseId ?? null;
-  fetchSchedule();
+  fetchData();
 };
 
 const changePhase = (value) => {
   state.phaseId = value;
-  fetchSchedule();
+  fetchData();
 };
 
 const changePanel = (value) => {
+  state.selectedPanel = value;
+  let report = value;
+
+  if (value === PANEL_PLAYERS) {
+    report = head(PLAYERS_REPORTS_SELECT(noop))?.value;
+  }
+  if (value === PANEL_TEAMS) {
+    report = head(TEAMS_REPORTS_SELECT(noop))?.value;
+  }
+
+  state.report = report;
+  setFetchData(report);
+};
+
+function onChangeReport(value) {
+  setFetchData(value);
+}
+
+function setFetchData(value) {
   const report = ALL_REPORTS_MAP.get(value);
 
-  state.selectedPanel = value;
   state.api = report.api;
+  state.apiParams = report.params;
   state.columns = report.columns;
-  fetchSchedule();
-};
+  sort.sortTarget = report.sort?.sortTarget ?? '';
+  sort.orders = report.sort?.orders ?? [];
+  fetchData();
+}
 </script>
 
 <template>
@@ -143,13 +212,17 @@ const changePanel = (value) => {
     v-bind="{
       ...state,
       sort,
+      page,
       phases,
       isLoading,
       games: convertedRows,
+      reports: currentReportList,
       onSort,
       changePanel,
       changePhase,
       changeSeason,
+      onChangeReport,
+      onPaginatorChange,
       changeChampionship,
     }"
   ></slot>

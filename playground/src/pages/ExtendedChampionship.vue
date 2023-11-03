@@ -10,6 +10,7 @@ import '../../../packages/shared/dist/css/typography.css';
 import '../../../packages/shared/dist/css/cards.css';
 import '../../../packages/shared/dist/css/forms.css';
 import '../../../packages/shared/dist/css/dropdown.css';
+import '../../../packages/shared/dist/css/paginator.css';
 </script>
 
 <template>

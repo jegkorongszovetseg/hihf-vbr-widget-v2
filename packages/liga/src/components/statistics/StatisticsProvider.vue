@@ -11,7 +11,16 @@ import {
   TEAMS_REPORTS_SELECT,
   REPORT_TYPE_PLAYERS,
 } from './statistics.internal.js';
-import { convert, convertTimes, playerName, rawConvert, InvalidSeasonName, WidgetError } from '@mjsz-vbr-elements/core/utils';
+import {
+  convert,
+  convertTimesSecToMin,
+  convertTimesMinToMinSec,
+  playerName,
+  teamName,
+  rawConvert,
+  InvalidSeasonName,
+  WidgetError,
+} from '@mjsz-vbr-elements/core/utils';
 import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 import { useError, useI18n, useSort, usePage, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
 
@@ -48,6 +57,7 @@ const state = reactive({
   championshipId: Number(params.championshipId) || props.championshipId,
   sections: [],
   section: params.section || null,
+  phaseId: 0,
   teams: [],
   teamFilter: Number(params.teamFilter) || null,
   playerFilter: '',
@@ -57,9 +67,10 @@ const state = reactive({
   rows: [],
   columns: null,
   api: null,
+  apiParams: {},
 });
 
-const initialReport = REPORTS_MAP.get('points');
+const initialReport = REPORTS_MAP.get('playerspenalties'); // points
 state.columns = initialReport.columns;
 state.api = initialReport.api;
 
@@ -77,7 +88,7 @@ const { sort, change: onSort } = useSort({
 const fetchSeasons = async () => {
   try {
     state.loading = true;
-    const seasons = await fetchVBRData('/v1/championshipSeasons', props.apiKey, {
+    const seasons = await fetchVBRData('/v2/championship-seasons', props.apiKey, {
       championshipName: props.championshipName,
     });
     if (seasons.length === 0) throw new WidgetError(InvalidSeasonName.message, InvalidSeasonName.options);
@@ -93,12 +104,14 @@ const fetchSeasons = async () => {
 const fetchSection = async () => {
   try {
     state.loading = true;
-    const sections = await fetchVBRData('/v1/championshipSections', props.apiKey, {
+    const sections = await fetchVBRData('/v2/championship-sections', props.apiKey, {
       championshipId: state.championshipId,
     });
-    state.sections = sections.sectionName;
+    state.sections = sections[0].phases;
     if (state.sections && !state.sections.includes(state.section)) {
-      state.section = head(state.sections);
+      state.section = head(state.sections)?.phaseName;
+      state.phaseId = head(state.sections)?.phaseId;
+      // state.championshipId = sections[0].sectionId;
     }
   } catch (error) {
     onError(error);
@@ -114,12 +127,15 @@ const fetchStatistic = async () => {
     onPaginatorChange(1);
     const rows = await fetchVBRData(state.api, props.apiKey, {
       championshipId: state.championshipId,
-      division: state.section,
+      phaseId: state.phaseId,
+      ...state.apiParams,
     });
     state.rows = rawConvert(
       rows,
       playerName,
-      convertTimes(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2', 'mip'])
+      teamName,
+      convertTimesMinToMinSec(['mip']),
+      convertTimesSecToMin(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2'])
     );
   } catch (error) {
     onError(error);
@@ -132,7 +148,7 @@ const fetchTeams = async () => {
   try {
     state.loading = true;
     state.rows = [];
-    const teams = await fetchVBRData('/v1/championshipTeams', props.apiKey, {
+    const teams = await fetchVBRData('/v2/championship-teams', props.apiKey, {
       championshipId: state.championshipId,
     });
     state.teams = convertTeams(teams);
@@ -145,7 +161,7 @@ const fetchTeams = async () => {
 
 const convertedRows = computed(() =>
   convert(state.rows)
-    .filter(state.teamFilter, ['teamId'], true)
+    .filter(state.teamFilter, [['team', 'id']], true)
     .filter(state.playerFilter, ['name'])
     .sorted(sort)
     .addIndex(sort.sortTarget)
@@ -161,6 +177,7 @@ const setTableData = () => {
   const report = REPORTS_MAP.get(state.currentReport);
   state.columns = report.columns;
   state.api = report.api;
+  state.apiParams = report.params || {};
   sort.sortTarget = report.sort.sortTarget;
   sort.orders = report.sort.orders;
 };
