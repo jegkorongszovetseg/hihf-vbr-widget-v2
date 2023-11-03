@@ -7,9 +7,10 @@ import {
   offsetName,
 } from '@mjsz-vbr-elements/core/utils';
 import {
+  Paginator,
   ErrorNotice,
-  ErrorProvider,
   I18NProvider,
+  ErrorProvider,
   // TimezoneSelector,
   StatisticsTable,
 } from '@mjsz-vbr-elements/core/components';
@@ -46,6 +47,11 @@ const props = defineProps({
     type: [String, Function],
     default: '',
   },
+
+  limit: {
+    type: Number,
+    default: 20,
+  },
 });
 
 const tooltipContainer = ref(null);
@@ -74,8 +80,10 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
           :locale="locale"
           :timezone="timezone"
           :championship-name="championshipName"
+          :limit="limit"
           v-slot="{
             sort,
+            page,
             games,
             phases,
             report,
@@ -93,6 +101,7 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
             changePhase,
             changeSeason,
             onChangeReport,
+            onPaginatorChange,
             changeChampionship,
           }"
         >
@@ -167,6 +176,15 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
             :hide-columns="selectedPanel === PANEL_SCHEDULE ? 'broadcast' : ''"
             @sort="onSort"
           />
+
+          <Paginator
+            v-if="selectedPanel === PANEL_PLAYERS"
+            :page="page"
+            :items-per-page="props.limit"
+            :total-items="games.totalItems"
+            :range-length="5"
+            @change="onPaginatorChange"
+          />
         </DataProvider>
 
         <div ref="tooltipContainer" />
@@ -183,3 +201,4 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/dropdown.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/paginator.css"></style>

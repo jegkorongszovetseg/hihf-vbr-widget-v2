@@ -2,7 +2,7 @@
 import { reactive, computed, unref, toRef } from 'vue';
 import { useAsyncQueue, useUrlSearchParams, noop } from '@vueuse/core';
 import { head } from 'ramda';
-import { useLazyLoadingState, useError, useServices, useSort, useI18n } from '@mjsz-vbr-elements/core/composables';
+import { useLazyLoadingState, useError, useServices, useSort, usePage, useI18n } from '@mjsz-vbr-elements/core/composables';
 import {
   convert,
   sortGames,
@@ -55,6 +55,11 @@ const props = defineProps({
     type: String,
     default: '',
   },
+
+  limit: {
+    type: Number,
+    default: 20,
+  },
 });
 
 const params = useUrlSearchParams('history');
@@ -82,6 +87,8 @@ const { sort, change: onSort } = useSort({
   sortTarget: '',
   orders: [],
 });
+
+const { page, change: onPaginatorChange } = usePage();
 
 const { t } = useI18n();
 
@@ -148,6 +155,7 @@ const convertedRows = computed(() => {
     .sorted(sort)
     .addContinuousIndex()
     .schedule(unref(timezone), unref(props.locale))
+    .pagination(unref(page), props.limit)
     .value();
 });
 
@@ -193,6 +201,8 @@ function setFetchData(value) {
   state.api = report.api;
   state.apiParams = report.params;
   state.columns = report.columns;
+  sort.sortTarget = report.sort?.sortTarget ?? '';
+  sort.orders = report.sort?.orders ?? [];
   fetchData();
 }
 </script>
@@ -202,6 +212,7 @@ function setFetchData(value) {
     v-bind="{
       ...state,
       sort,
+      page,
       phases,
       isLoading,
       games: convertedRows,
@@ -211,6 +222,7 @@ function setFetchData(value) {
       changePhase,
       changeSeason,
       onChangeReport,
+      onPaginatorChange,
       changeChampionship,
     }"
   ></slot>
