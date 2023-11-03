@@ -46,7 +46,7 @@ export const convertMinToSec = (minutes) => {
 export const convertSecToMin = (duration) => {
   const mins = ~~(duration / 60);
   const secs = ~~duration % 60;
-  return stringPadLeft(mins, '0', 2) + ':' + stringPadLeft(secs, '0', 2);
+  return [mins.toString().padStart(2, '0'), secs.toString().padStart(2, '0')].join(':');
 };
 
 export const convertMinToMinSec = (duration) => {

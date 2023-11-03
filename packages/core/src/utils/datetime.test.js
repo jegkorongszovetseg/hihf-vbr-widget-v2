@@ -21,6 +21,10 @@ describe('convertSecToMin', () => {
   test('Convert 4567 sec to min string 76:07', () => {
     expect(convertSecToMin(4567)).toBe('76:07');
   });
+
+  test('Convert 6789 sec to min string 113:09', () => {
+    expect(convertSecToMin(6789)).toBe('113:09');
+  });
 });
 
 describe('convertMinToSec', () => {
