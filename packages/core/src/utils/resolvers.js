@@ -2,7 +2,6 @@ import { DEFAULT_EXTERNAL_BASE_URL, DEFAULT_EXTERNAL_PLAYER_URL, DEFAULT_EXTERNA
 
 export const externalGameLinkResolver = (rawResolver, gameId) => {
   const resolver = getSettingVariable('gameResolver') || rawResolver;
-  console.log(resolver);
   if (typeof resolver === 'function') return resolver(gameId);
   if (resolver) return resolver + gameId;
   return DEFAULT_EXTERNAL_BASE_URL + gameId;
