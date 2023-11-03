@@ -72,7 +72,7 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
 
 <template>
   <div>
-    <I18NProvider :locale="props.locale" :messages="messages">
+    <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
       <ErrorProvider v-slot:default="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
 
@@ -123,6 +123,7 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
             :phase-id="phaseId"
             :reports="reports"
             :report="report"
+            :is-reports-visible="selectedPanel === PANEL_PLAYERS || selectedPanel === PANEL_TEAMS"
             @update:phase-id="changePhase"
             @update:report="onChangeReport"
           />
@@ -132,25 +133,25 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
               :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_SCHEDULE }]"
               @click="changePanel(PANEL_SCHEDULE)"
             >
-              Menetrend
+              {{ t('selection.schedule') }}
             </button>
             <button
               :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_STANDINGS }]"
               @click="changePanel(PANEL_STANDINGS)"
             >
-              Tabella
+              {{ t('selection.standings') }}
             </button>
             <button
               :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_PLAYERS }]"
               @click="changePanel(PANEL_PLAYERS)"
             >
-              Játékos Statisztika
+              {{ t('selection.playerStats') }}
             </button>
             <button
               :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_TEAMS }]"
               @click="changePanel(PANEL_TEAMS)"
             >
-              Csapat Statisztika
+              {{ t('selection.teamStats') }}
             </button>
           </div>
 

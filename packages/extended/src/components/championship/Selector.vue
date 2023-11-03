@@ -25,6 +25,11 @@ const props = defineProps({
     type: String,
     required: true,
   },
+
+  isReportsVisible: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const emit = defineEmits(['update:phaseId', 'update:report']);
@@ -50,8 +55,8 @@ const baseLabelClass = useMainClass('label');
         <option v-for="phase in phases" :key="phase.phaseId" :value="phase.phaseId">{{ phase.phaseName }}</option>
       </BaseSelect>
     </div>
-    <div>
-      <label for="report" :class="baseLabelClass">{{ t('selection.reports') }}</label>
+    <div v-if="isReportsVisible">
+      <label for="report" :class="baseLabelClass">{{ t('selection.report') }}</label>
       <BaseSelect id="report" v-model="report">
         <option v-for="report in reports" :key="report.value" :value="report.value">{{ report.name }}</option>
       </BaseSelect>
