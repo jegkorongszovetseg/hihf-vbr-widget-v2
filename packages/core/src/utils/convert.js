@@ -146,7 +146,7 @@ export const playerName = (row) => ({
 
 export const teamName = (row) => ({
   ...row,
-  ...(row.team.id && { teamName: row.team.longName }),
+  ...(row?.team?.id && { teamName: row.team.longName }),
 });
 
 export const upperCase =

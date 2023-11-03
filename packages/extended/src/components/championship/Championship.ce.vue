@@ -78,9 +78,11 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
             sort,
             games,
             phases,
+            report,
             phaseId,
             columns,
             seasons,
+            reports,
             isLoading,
             selectedPanel,
             championships,
@@ -90,6 +92,7 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
             changePanel,
             changePhase,
             changeSeason,
+            onChangeReport,
             changeChampionship,
           }"
         >
@@ -106,7 +109,14 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
             </button>
           </div>
 
-          <Selector :phases="phases" :phase-id="phaseId" @update:phase-id="changePhase" />
+          <Selector
+            :phases="phases"
+            :phase-id="phaseId"
+            :reports="reports"
+            :report="report"
+            @update:phase-id="changePhase"
+            @update:report="onChangeReport"
+          />
 
           <div :class="sectionSelectorMainClass">
             <button
@@ -121,18 +131,18 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
             >
               Tabella
             </button>
-            <!-- <button
+            <button
               :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_PLAYERS }]"
               @click="changePanel(PANEL_PLAYERS)"
             >
               Játékos Statisztika
-            </button> -->
-            <!-- <button
+            </button>
+            <button
               :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_TEAMS }]"
               @click="changePanel(PANEL_TEAMS)"
             >
               Csapat Statisztika
-            </button> -->
+            </button>
           </div>
 
           <!-- <TimezoneSelector
