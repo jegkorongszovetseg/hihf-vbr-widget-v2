@@ -1,15 +1,17 @@
 <script setup>
-import { computed, unref } from 'vue';
+import { computed, ref, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { useSort, fetchVBRData, usePage, useErrorProvider } from '@mjsz-vbr-elements/core/composables';
 import {
   convert,
+  teamName,
   playerName,
   rawConvert,
   externalTeamLinkResolver,
   externalPlayerLinkResolver,
 } from '@mjsz-vbr-elements/core/utils';
-import { COLUMNS_FIELD_PLAYERS, SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
+import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
+import { COLUMNS_FIELD_PLAYERS } from '@mjsz-vbr-elements/core/columns';
 import { baseProps, playerStatsProps } from '@mjsz-vbr-elements/core';
 import { I18NProvider, ErrorNotice, StatisticsTable, Paginator } from '@mjsz-vbr-elements/core/components';
 
@@ -18,6 +20,8 @@ const props = defineProps({
   ...playerStatsProps,
 });
 
+const tooltipContainer = ref(null);
+
 const columns = COLUMNS_FIELD_PLAYERS;
 const locale = computed(() => props.locale);
 
@@ -25,7 +29,7 @@ const { onError, error, hasError } = useErrorProvider();
 
 const { state: rawRows, isLoading } = useAsyncState(
   () =>
-    fetchVBRData('/v1/playersStatsPeriod', props.apiKey, {
+    fetchVBRData('/v2/players-stats', props.apiKey, {
       championshipId: Number(props.championshipId),
       division: props.division,
     }),
@@ -38,11 +42,11 @@ const { state: rawRows, isLoading } = useAsyncState(
 const { page, change: onPaginatorChange } = usePage();
 
 const { sort, change: onSort } = useSort({
-  sortTarget: 'point',
-  orders: [{ target: 'point', direction: SORT_STATE_DESCEND }],
+  sortTarget: 'points',
+  orders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
 });
 
-const rows = computed(() => rawConvert(unref(rawRows), playerName));
+const rows = computed(() => rawConvert(unref(rawRows), playerName, teamName));
 
 const convertedRows = computed(() => {
   return convert(unref(rows))
@@ -74,6 +78,7 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
         :external-player-resolver="resolveExternalPlayerLink"
         :is-team-linked="isTeamLinked"
         :is-player-linked="isPlayerLinked"
+        :append-to="tooltipContainer"
         @sort="onSort"
       />
 
@@ -84,6 +89,7 @@ const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props
         :range-length="5"
         @change="onPaginatorChange"
       />
+      <div ref="tooltipContainer" />
     </I18NProvider>
   </div>
 </template>
