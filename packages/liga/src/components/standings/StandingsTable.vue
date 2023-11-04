@@ -63,7 +63,7 @@ const props = defineProps({
   },
 
   appendTo: {
-    type: HTMLElement,
+    type: [Object, String],
     default: null,
   },
 
