@@ -1,7 +1,6 @@
 import { ascend, compose, descend, map, pick, prop, sort } from 'ramda';
-// import { SORT_STATE_DESCEND } from '@vbr-widget/core';
+import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 import {
-  SORT_STATE_DESCEND,
   COLUMNS_FIELD_PLAYERS,
   COLUMNS_FIELD_PLAYERS_PENALTY,
   COLUMNS_GOALIES,
@@ -10,38 +9,44 @@ import {
   COLUMNS_TEAMS_PENALTY_KILLING,
   COLUMNS_TEAMS_POWERPLAY,
   COLUMNS_TEAM_ATTENDANCE,
-} from '@mjsz-vbr-elements/core';
+} from '@mjsz-vbr-elements/core/columns';
 
 export const REPORT_TYPE_PLAYERS = 'players';
 export const REPORT_TYPE_TEAMS = 'teams';
 
 export const REPORTS_MAP = new Map()
   .set('points', {
-    api: '/v1/playersStatsPeriod',
+    api: '/v2/players-stats',
     columns: COLUMNS_FIELD_PLAYERS,
     sort: {
-      sortTarget: 'point',
-      orders: [{ target: 'point', direction: SORT_STATE_DESCEND }],
+      sortTarget: 'points',
+      orders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
     },
   })
   .set('goals', {
-    api: '/v1/playersStatsPeriod',
+    api: '/v2/players-stats',
     columns: COLUMNS_FIELD_PLAYERS,
     sort: {
-      sortTarget: 'g',
-      orders: [{ target: 'g', direction: SORT_STATE_DESCEND }],
+      sortTarget: 'goals',
+      orders: [
+        { target: 'goals', direction: SORT_STATE_DESCEND },
+        { target: 'assists', direction: SORT_STATE_DESCEND },
+      ],
     },
   })
   .set('assists', {
-    api: '/v1/playersStatsPeriod',
+    api: '/v2/players-stats',
     columns: COLUMNS_FIELD_PLAYERS,
     sort: {
-      sortTarget: 'a',
-      orders: [{ target: 'a', direction: SORT_STATE_DESCEND }],
+      sortTarget: 'assists',
+      orders: [
+        { target: 'assists', direction: SORT_STATE_DESCEND },
+        { target: 'goals', direction: SORT_STATE_DESCEND },
+      ],
     },
   })
   .set('plusminus', {
-    api: '/v1/playersStatsPeriod',
+    api: '/v2/players-stats',
     columns: COLUMNS_FIELD_PLAYERS,
     sort: {
       sortTarget: 'plusMinus',
@@ -117,22 +122,22 @@ export const REPORTS_MAP = new Map()
 
 export const PLAYERS_REPORTS_SELECT = (t) => {
   return [
-    // {
-    //   name: t('report.points'),
-    //   value: 'points',
-    // },
-    // {
-    //   name: t('report.goals'),
-    //   value: 'goals',
-    // },
-    // {
-    //   name: t('report.assists'),
-    //   value: 'assists',
-    // },
-    // {
-    //   name: '+/-',
-    //   value: 'plusminus',
-    // },
+    {
+      name: t('report.points'),
+      value: 'points',
+    },
+    {
+      name: t('report.goals'),
+      value: 'goals',
+    },
+    {
+      name: t('report.assists'),
+      value: 'assists',
+    },
+    {
+      name: '+/-',
+      value: 'plusminus',
+    },
     {
       name: t('report.penalties'),
       value: 'playerspenalties',
