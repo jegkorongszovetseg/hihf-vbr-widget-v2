@@ -75,6 +75,7 @@ export const convert = (data = []) => {
     },
 
     pagination(page, limit) {
+      if (!limit) return this;
       page = Number(page);
       limit = Number(limit);
       const startIndex = (page - 1) * limit;
