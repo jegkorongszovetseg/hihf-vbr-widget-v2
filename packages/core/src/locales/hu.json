@@ -87,11 +87,11 @@
       "tooltip": "Plussz/Minusz"
     },
     "sog": {
-      "short": "L",
+      "short": "S",
       "tooltip": "Lövések"
     },
     "sogPercent": {
-      "short": "L%",
+      "short": "S%",
       "tooltip": "Lövés Hatékonyság"
     },
     "gameName": {
