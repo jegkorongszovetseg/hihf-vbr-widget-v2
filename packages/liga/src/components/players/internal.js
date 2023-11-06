@@ -33,7 +33,7 @@ export const PLAYERS_COLUMNS = {
   nationality: {
     label: 'table.nationality.short',
     tooltip: 'table.nationality.tooltip',
-    class: 'is-text-center',
+    class: 'is-horizontal-content',
   },
   birthDate: {
     label: 'table.birthDate.short',
