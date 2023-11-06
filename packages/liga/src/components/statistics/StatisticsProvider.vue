@@ -81,8 +81,8 @@ const currentReportList = computed(() =>
 const { page, change: onPaginatorChange } = usePage();
 
 const { sort, change: onSort } = useSort({
-  sortTarget: 'point',
-  orders: [{ target: 'point', direction: SORT_STATE_DESCEND }],
+  sortTarget: 'points',
+  orders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
 });
 
 const fetchSeasons = async () => {

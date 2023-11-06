@@ -232,36 +232,36 @@ export const COLUMNS_FIELD_PLAYERS = {
     tooltip: 'table.game.tooltip',
     sortOrders: [{ target: 'gp', direction: SORT_STATE_DESCEND }],
   },
-  g: {
+  goals: {
     label: 'table.goals.short',
     tooltip: 'table.goals.tooltip',
     sortOrders: [
-      { target: 'g', direction: SORT_STATE_DESCEND },
-      { target: 'a', direction: SORT_STATE_DESCEND },
+      { target: 'goals', direction: SORT_STATE_DESCEND },
+      { target: 'assists', direction: SORT_STATE_DESCEND },
     ],
   },
-  a: {
+  assists: {
     label: 'table.assists.short',
     tooltip: 'table.assists.tooltip',
     sortOrders: [
-      { target: 'a', direction: SORT_STATE_DESCEND },
-      { target: 'g', direction: SORT_STATE_DESCEND },
+      { target: 'assists', direction: SORT_STATE_DESCEND },
+      { target: 'goals', direction: SORT_STATE_DESCEND },
     ],
   },
-  point: {
+  points: {
     label: 'table.points.short',
     tooltip: 'table.points.tooltip',
-    sortOrders: [{ target: 'point', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
   },
   plusMinus: {
     label: 'table.plusMinus.short',
     tooltip: 'table.plusMinus.tooltip',
     sortOrders: [{ target: 'plusMinus', direction: SORT_STATE_DESCEND }],
   },
-  shoot: {
+  shoots: {
     label: 'table.sog.short',
     tooltip: 'table.sog.tooltip',
-    sortOrders: [{ target: 'shoot', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'shoots', direction: SORT_STATE_DESCEND }],
   },
   shootPercent: {
     label: 'table.sogPercent.short',

@@ -2,7 +2,14 @@
 import { reactive, computed, unref, toRef } from 'vue';
 import { useAsyncQueue, useUrlSearchParams, noop } from '@vueuse/core';
 import { head } from 'ramda';
-import { useLazyLoadingState, useError, useServices, useSort, usePage, useI18n } from '@mjsz-vbr-elements/core/composables';
+import {
+  useLazyLoadingState,
+  useError,
+  useServices,
+  useSort,
+  usePage,
+  useI18n,
+} from '@mjsz-vbr-elements/core/composables';
 import {
   convert,
   sortGames,
@@ -140,6 +147,8 @@ const phases = computed(() => {
   return convertPhaseName(championship?.phases ?? []);
 });
 
+const currentLimit = computed(() => (state.selectedPanel === PANEL_SCHEDULE ? 0 : props.limit));
+
 const rawConvertedRows = computed(() =>
   rawConvert(
     rows.value,
@@ -155,7 +164,7 @@ const convertedRows = computed(() => {
     .sorted(sort)
     .addContinuousIndex()
     .schedule(unref(timezone), unref(props.locale))
-    .pagination(unref(page), props.limit)
+    .pagination(unref(page), currentLimit.value)
     .value();
 });
 
