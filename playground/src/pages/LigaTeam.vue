@@ -13,7 +13,7 @@ import '../../../packages/shared/dist/css/table.css';
 
 <template>
   <div class="p-5 max-w-[1170px] mx-auto">
-    <TeamLiga :locale="store.locale" team-id="70000"></TeamLiga>
-    <!-- <mjsz-vbr-team-liga :locale="store.locale" team-id="2000" /> -->
+    <TeamLiga :locale="store.locale" championship-id="3450" team-id="21910"></TeamLiga>
+    <!-- <mjsz-vbr-team-liga :locale="store.locale" championship-id="3450" team-id="21910" /> -->
   </div>
 </template>

@@ -1,4 +1,5 @@
-import { groupBy, compose, sortBy, prop } from 'ramda';
+import { groupBy, compose, sortBy, filter, pathEq, map } from 'ramda';
+import { playerName, teamName } from '@mjsz-vbr-elements/core/utils';
 
 export const PAGE_INFO = 'Info';
 export const PAGE_GAMES = 'Games';
@@ -6,11 +7,7 @@ export const PAGE_PLAYER_STATS = 'Stats';
 export const PAGE_ROSTER = 'Roster';
 
 export const COLUMNS_ROSTER = {
-  // jerseyNumber: {
-  //   label: 'table.blank',
-  //   class: 'is-text-left',
-  // },
-  number: {
+  jerseyNr: {
     label: 'table.jerseyNumber.short',
     tooltip: 'table.jerseyNumber.tooltip',
   },
@@ -18,30 +15,30 @@ export const COLUMNS_ROSTER = {
     label: '',
     class: 'is-has-image',
   },
-  lastName: {
+  name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
     class: 'is-text-left is-w-auto is-text-bold',
   },
-  firstName: {
-    label: 'table.name.short',
-    tooltip: 'table.name.tooltip',
+  teamName: {
+    label: 'table.teamName.short',
+    tooltip: 'table.teamName.tooltip',
     class: 'is-text-left is-w-auto is-text-bold',
   },
   nationality: {
     label: 'table.nationality.short',
     tooltip: 'table.nationality.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'is-text-left',
   },
   birthDate: {
     label: 'table.birthDate.short',
     tooltip: 'table.birthDate.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'is-text-left',
   },
   birthPlace: {
     label: 'table.birthPlace.short',
     tooltip: 'table.birthPlace.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'is-text-left is-w-auto',
   },
 };
 
@@ -115,15 +112,18 @@ export const COLUMNS_TEAM_INFO_ICERINK = {
   },
 };
 
-export const transformRosters = compose(
-  groupBy(groupByPosition),
-  sortBy((d) => {
-    if (['ld', 'rd'].includes(d.position)) return 1;
-    if (['lw', 'rw', 'c'].includes(d.position)) return 2;
-    return 0;
-  }),
-  sortBy(sortByJerseyNumber)
-);
+export const transformRosters = (data, teamId) =>
+  compose(
+    groupBy(groupByPosition),
+    sortBy((d) => {
+      if (['ld', 'rd'].includes(d.position)) return 1;
+      if (['lw', 'rw', 'c'].includes(d.position)) return 2;
+      return 0;
+    }),
+    sortBy(sortByJerseyNumber),
+    map(compose(playerName, teamName)),
+    filter(pathEq(Number(teamId), ['team', 'id']))
+  )(data);
 
 function groupByPosition(data) {
   if (['ld', 'rd'].includes(data.position)) return 'defenders';
@@ -132,5 +132,5 @@ function groupByPosition(data) {
 }
 
 function sortByJerseyNumber(d) {
-  return Number(d.number);
+  return Number(d.jerseyNr);
 }

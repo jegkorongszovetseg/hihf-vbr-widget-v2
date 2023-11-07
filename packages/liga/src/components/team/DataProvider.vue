@@ -1,5 +1,6 @@
 <script setup>
 import { reactive, computed, watch } from 'vue';
+import { head } from 'ramda';
 import { useUrlSearchParams } from '@vueuse/core';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
@@ -7,7 +8,12 @@ import { PAGE_INFO, PAGE_GAMES, PAGE_ROSTER, transformRosters } from './team.int
 
 const props = defineProps({
   teamId: {
-    String,
+    type: String,
+    default: '',
+  },
+
+  championshipId: {
+    type: String,
     default: '',
   },
 
@@ -27,20 +33,20 @@ const { onError } = useError();
 
 const { state: teamInfo } = useServices({
   options: {
-    path: '/v2/championship-teams',
+    path: '/v2/team-info',
     apiKey: props.apiKey,
-    params: computed(() => ({ championshipId: props.teamId })),
+    params: computed(() => ({ championshipId: props.championshipId, teamId: props.teamId })),
     immediate: true,
   },
-  // transform: (res) => transformTeams(res, state),
+  transform: (res) => head(res),
   onError,
 });
 
 const { state: games, execute: fetchTeamGames } = useServices({
   options: {
-    path: '/v2/games-list',
+    path: '/v2/team-games',
     apiKey: props.apiKey,
-    params: computed(() => ({ championshipId: 3450, division: 'Alapszakasz' })),
+    params: computed(() => ({ championshipId: props.championshipId, teamId: props.teamId })),
   },
   transform: (res) => convert(res).schedule(timezone, props.locale).value(),
   onError,
@@ -48,17 +54,17 @@ const { state: games, execute: fetchTeamGames } = useServices({
 
 const { state: roster, execute: fetchTeamRoster } = useServices({
   options: {
-    path: '/v2/game-stats',
+    path: '/v2/championship-players',
     apiKey: props.apiKey,
-    params: computed(() => ({ gameId: 73020 })),
+    params: computed(() => ({ championshipId: 3450 })),
   },
-  transform: (res) => transformRosters(res.players[21910]),
+  transform: (res) => transformRosters(res, props.teamId),
   onError,
 });
 
-const convertedRows = computed(() => {
-  return convert(rows.value).schedule(props.timezone, props.locale).value();
-});
+// const convertedRows = computed(() => {
+//   return convert(rows.value).schedule(props.timezone, props.locale).value();
+// });
 
 watch(
   params,
