@@ -50,7 +50,7 @@ const onSort = (payload) => emit('sort', payload);
             v-slot:default="{ setRef, show, hide }"
           >
             <div :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">
-              <Image :src="`https://api.iconify.design/flag:${NATIONALITY_FLAG_MAP.get(country)}-4x3.svg`" />
+              <Image :src="`https://api.iconify.design/flag:${NATIONALITY_FLAG_MAP.get(country)}-1x1.svg`" />
             </div>
           </FloatingPanel>
         </template>
