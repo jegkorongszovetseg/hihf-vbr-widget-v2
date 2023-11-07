@@ -17,7 +17,7 @@ import {
   groupBy,
 } from 'ramda';
 import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../constants.js';
-import { format, convertMinToSec, convertSecToMin } from './datetime.js';
+import { format, convertMinToSec, convertSecToMin, convertMinToMinSec } from './datetime.js';
 
 export const convert = (data = []) => {
   return {
@@ -75,6 +75,7 @@ export const convert = (data = []) => {
     },
 
     pagination(page, limit) {
+      if (!limit) return this;
       page = Number(page);
       limit = Number(limit);
       const startIndex = (page - 1) * limit;
@@ -141,12 +142,13 @@ export const rawConvert = (data, ...fn) => map(compose(...fn))(data);
 
 export const playerName = (row) => ({
   ...row,
-  ...(row.lastName && { name: `${row.lastName} ${row.firstName}` }),
+  ...(row.lastName && row.firstName && { name: `${row.lastName} ${row.firstName}` }),
+  ...(row.player?.playerId && { name: `${row.player.lastName} ${row.player.firstName}` }),
 });
 
 export const teamName = (row) => ({
   ...row,
-  ...(row.team.id && { teamName: row.team.longName }),
+  ...(row?.team?.id && { teamName: row.team.longName }),
 });
 
 export const upperCase =
@@ -162,6 +164,16 @@ export const convertTimes =
     targets.map((key) => {
       if (!row[key]) return row;
       return (row[`${key}Sec`] = convertMinToSec(row[key]));
+    });
+    return row;
+  };
+
+export const convertTimesMinToMinSec =
+  (targets = []) =>
+  (row) => {
+    targets.map((key) => {
+      if (!row[key]) return row;
+      return (row[`${key}Min`] = convertMinToMinSec(row[key]));
     });
     return row;
   };

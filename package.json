@@ -1,6 +1,6 @@
 {
   "name": "@mjsz-vbr-elements/monorepo",
-  "version": "2.1.0-beta.40",
+  "version": "2.1.0-beta.46",
   "description": "Data visualization for MJSZ VBR",
   "private": true,
   "packageManager": "pnpm@8.6.12",
@@ -12,13 +12,16 @@
     "playground": "pnpm run -C playground dev",
     "playground:localhost": "pnpm run -C playground dev --mode localhost",
     "build": "pnpm -r --filter='./packages/*' run build",
+    "test": "vitest",
     "release": "bumpp -r",
-    "publish:release": "pnpm run build && pnpm -r publish --access public"
+    "publish:release": "vitest run && pnpm run build && pnpm -r publish --access public"
   },
   "keywords": [],
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "bumpp": "^9.2.0"
+    "bumpp": "^9.2.0",
+    "happy-dom": "^12.10.3",
+    "vitest": "^0.34.6"
   }
 }

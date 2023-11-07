@@ -23,7 +23,7 @@
       "tooltip": "Csapatnév"
     },
     "game": {
-      "short": "M",
+      "short": "GP",
       "tooltip": "Mérkőzésszám"
     },
     "wins": {
@@ -87,11 +87,11 @@
       "tooltip": "Plussz/Minusz"
     },
     "sog": {
-      "short": "L",
+      "short": "S",
       "tooltip": "Lövések"
     },
     "sogPercent": {
-      "short": "L%",
+      "short": "S%",
       "tooltip": "Lövés Hatékonyság"
     },
     "gameName": {
@@ -151,11 +151,11 @@
       "tooltip": "Mérkőzésenkénti Büntetés Percek"
     },
     "gpgk": {
-      "short": "M",
+      "short": "GP",
       "tooltip": "Mérkőzésre Nevezve"
     },
     "gpi": {
-      "short": "LM",
+      "short": "GPI",
       "tooltip": "Mérkőzésen Játszott"
     },
     "toi": {

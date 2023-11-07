@@ -4,7 +4,7 @@ import { useAsyncQueue, useUrlSearchParams, useIntervalFn } from '@vueuse/core';
 import { useError, useServices, useSort } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
 import { transformSeasons, transformSections } from '../internal';
-import { useGamesListForLiveStandings, mockGames, TOGGLE_LIVE } from './standings.internal';
+import { useGamesListForLiveStandings, TOGGLE_LIVE, FETCH_GAMES_INTERVAL } from './standings.internal';
 
 const props = defineProps({
   championshipName: {
@@ -99,7 +99,7 @@ const convertedLiveRows = computed(() => {
 
 useAsyncQueue([fetchSeasons, fetchSection, fetchStandings, fetchGamesList]);
 
-useIntervalFn(fetchGamesList, 1000 * 10);
+useIntervalFn(fetchGamesList, FETCH_GAMES_INTERVAL);
 
 const changeSeason = (value) => {
   state.championshipId = value;

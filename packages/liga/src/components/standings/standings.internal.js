@@ -4,6 +4,8 @@ import { descend, ascend, prop, sortWith, clone } from 'ramda';
 export const TOGGLE_LIVE = 'live';
 export const TOGGLE_DEFAULT = 'default';
 
+export const FETCH_GAMES_INTERVAL = 1000 * 60 * 2;
+
 export const COLUMNS_LIVE_STANDINGS_P_3 = {
   index: {
     label: 'table.blank',

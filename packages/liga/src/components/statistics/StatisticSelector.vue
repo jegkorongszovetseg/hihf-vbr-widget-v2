@@ -114,7 +114,7 @@ const tabButtonClasses = useMainClass('tab-button');
     <div>
       <label for="section" :class="baseLabelClass">{{ t('selection.section') }}</label>
       <BaseSelect id="section" v-model="sectionSelect">
-        <option v-for="sectionName in sections" :key="sectionName" :value="sectionName">{{ sectionName }}</option>
+        <option v-for="sectionName in sections" :key="sectionName.phaseId" :value="sectionName.phaseName">{{ sectionName.phaseName }}</option>
       </BaseSelect>
     </div>
     <div>

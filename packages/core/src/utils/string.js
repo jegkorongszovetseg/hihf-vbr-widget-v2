@@ -7,7 +7,3 @@ export function toKebabCase(str) {
       .join('-')
   );
 }
-
-export function stringPadLeft(string, pad, length) {
-  return (new Array(length + 1).join(pad) + string).slice(-length);
-}

@@ -5,11 +5,11 @@ import { baseProps, playerStatsProps } from '@mjsz-vbr-elements/core';
 import { fetchVBRData, useSort, usePage, useErrorProvider } from '@mjsz-vbr-elements/core/composables';
 import {
   convert,
-  convertTimes,
   playerName,
   rawConvert,
-  externalPlayerLinkResolver,
+  convertTimesMinToMinSec,
   externalTeamLinkResolver,
+  externalPlayerLinkResolver,
 } from '@mjsz-vbr-elements/core/utils';
 import { COLUMNS_GOALIES, SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 import { I18NProvider, ErrorNotice, StatisticsTable, Paginator } from '@mjsz-vbr-elements/core/components';
@@ -17,6 +17,11 @@ import { I18NProvider, ErrorNotice, StatisticsTable, Paginator } from '@mjsz-vbr
 const props = defineProps({
   ...baseProps,
   ...playerStatsProps,
+
+  aboveLimit: {
+    type: Boolean,
+    default: false,
+  },
 
   underLimit: {
     type: Boolean,
@@ -36,7 +41,8 @@ const { state: rawRows, isLoading } = useAsyncState(
     fetchVBRData('/v2/players-goalie', props.apiKey, {
       championshipId: Number(props.championshipId),
       division: props.division,
-      less: props.underLimit,
+      ...(props.aboveLimit && { more: true }),
+      ...(props.underLimit && { less: true }),
     }),
   [],
   {
@@ -51,12 +57,11 @@ const { sort, change: onSort } = useSort({
   orders: [{ target: 'svsPercent', direction: SORT_STATE_DESCEND }],
 });
 
-const rows = computed(() => rawConvert(unref(rawRows), playerName, convertTimes(['mip'])));
+const rows = computed(() => rawConvert(unref(rawRows), playerName, convertTimesMinToMinSec(['mip'])));
 
 const convertedRows = computed(() => {
   return convert(unref(rows))
-    .filter(props.teamFilterByName, ['teamName'])
-    .playerName()
+    .filter(props.teamFilterByName, [['team', 'longName']], true)
     .sorted(sort)
     .addIndex(sort.sortTarget)
     .pagination(unref(page), props.limit)
