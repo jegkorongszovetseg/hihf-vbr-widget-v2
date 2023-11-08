@@ -1,6 +1,5 @@
 <script setup>
 import { reactive, computed, watch } from 'vue';
-import { head } from 'ramda';
 import { useUrlSearchParams } from '@vueuse/core';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
 import {
@@ -13,6 +12,8 @@ import {
   getLocalTimezone,
 } from '@mjsz-vbr-elements/core/utils';
 import { PAGE_INFO, PAGE_GAMES, PAGE_ROSTER, transformRosters, transformTeamInfo } from './team.internal.js';
+
+const timezone = getLocalTimezone();
 
 const props = defineProps({
   teamId: {
@@ -30,7 +31,7 @@ const props = defineProps({
     default: 'hu',
   },
 });
-const timezone = getLocalTimezone();
+
 const params = useUrlSearchParams('history');
 
 const state = reactive({
