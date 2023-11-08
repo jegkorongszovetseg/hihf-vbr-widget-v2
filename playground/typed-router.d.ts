@@ -53,6 +53,7 @@ declare module 'vue-router/auto/routes' {
     '/ExtendedChampionship': RouteRecordInfo<'/ExtendedChampionship', '/ExtendedChampionship', Record<never, never>, Record<never, never>>,
     '/ExtendedScheduleCup': RouteRecordInfo<'/ExtendedScheduleCup', '/ExtendedScheduleCup', Record<never, never>, Record<never, never>>,
     '/GameCenter': RouteRecordInfo<'/GameCenter', '/GameCenter', Record<never, never>, Record<never, never>>,
+    '/LigaPlayer': RouteRecordInfo<'/LigaPlayer', '/LigaPlayer', Record<never, never>, Record<never, never>>,
     '/LigaPlayers': RouteRecordInfo<'/LigaPlayers', '/LigaPlayers', Record<never, never>, Record<never, never>>,
     '/LigaPlayoffs': RouteRecordInfo<'/LigaPlayoffs', '/LigaPlayoffs', Record<never, never>, Record<never, never>>,
     '/LigaSchedule': RouteRecordInfo<'/LigaSchedule', '/LigaSchedule', Record<never, never>, Record<never, never>>,
