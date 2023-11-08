@@ -13,7 +13,7 @@ import '../../../packages/shared/dist/css/paginator.css';
 
 <template>
   <div class="p-5 max-w-[1170px] mx-auto">
-    <!-- <PlayersLiga :locale="store.locale" championship-name="Erste Liga"></PlayersLiga> -->
-    <mjsz-vbr-players-liga :locale="store.locale" championship-name="Erste Liga" />
+    <PlayersLiga :locale="store.locale" championship-name="Erste Liga"></PlayersLiga>
+    <!-- <mjsz-vbr-players-liga :locale="store.locale" championship-name="Erste Liga" /> -->
   </div>
 </template>

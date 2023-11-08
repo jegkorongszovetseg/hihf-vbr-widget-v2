@@ -34,6 +34,7 @@ export const NATIONALITY_FLAG_MAP = new Map()
   .set('Orosz', 'ru')
   .set('Finn', 'fi')
   .set('Szlovén', 'si')
+  .set('Szlovák', 'sk')
   .set('Holland', 'nl')
   .set('Fehérorosz', 'by')
   .set('Cseh', 'cz')
@@ -42,7 +43,10 @@ export const NATIONALITY_FLAG_MAP = new Map()
   .set('Olasz', 'it')
   .set('Angol', 'gb-eng')
   .set('Szerb', 'rs')
-  .set('Svéd', 'se');
+  .set('Svéd', 'se')
+  .set('Német', 'de')
+  .set('Brit', 'gb')
+  .set('Kazah', 'kz');
 
 export const COLUMNS_PLAYERS = {
   jerseyNr: {
@@ -70,12 +74,12 @@ export const COLUMNS_PLAYERS = {
   nationality: {
     label: 'table.nationality.short',
     tooltip: 'table.nationality.tooltip',
-    class: 'is-text-left',
+    class: 'is-horizontal-content',
   },
   birthDate: {
     label: 'table.birthDate.short',
     tooltip: 'table.birthDate.tooltip',
-    class: 'is-text-left',
+    class: 'is-text-right',
   },
   birthPlace: {
     label: 'table.birthPlace.short',

@@ -2,8 +2,9 @@
 import { reactive, computed } from 'vue';
 import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
 import { useLazyLoadingState, useError, useServices, usePage, useSort } from '@mjsz-vbr-elements/core/composables';
-import { convert, rawConvert, playerName, teamName } from '@mjsz-vbr-elements/core/utils';
+import { convert } from '@mjsz-vbr-elements/core/utils';
 import { transformSeasons } from '../internal';
+import { transformPlayers } from './internal';
 
 const props = defineProps({
   championshipName: {
@@ -66,7 +67,7 @@ const {
       championshipId: state.championshipId,
     })),
   },
-  transform: (data) => rawConvert(data, playerName, teamName),
+  transform: (data) => transformPlayers(data),
   onError,
 });
 
@@ -81,7 +82,7 @@ const convertedRows = computed(() =>
 const changeSeason = (value) => {
   state.championshipId = value;
   params.championshipId = value;
-  useAsyncQueue([fetchTeams]);
+  useAsyncQueue([fetchPlayers]);
 };
 </script>
 
