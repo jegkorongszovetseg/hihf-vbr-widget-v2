@@ -325,6 +325,18 @@
     "score": {
       "short": "Eredmény",
       "tooltip": "Aktuális eredmény"
+    },
+    "opponent": {
+      "short": "Ellenfél",
+      "tooltip": "Ellenfél"
+    },
+    "result": {
+      "short": "Eredmény",
+      "tooltip": "Végeredmény"
+    },
+    "resultType": {
+      "short": "#",
+      "tooltip": "Végeredmény típusa"
     }
   },
   "game": {

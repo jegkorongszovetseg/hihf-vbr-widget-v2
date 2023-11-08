@@ -325,6 +325,18 @@
     "score": {
       "short": "Score",
       "tooltip": "Actual Game Score"
+    },
+    "opponent": {
+      "short": "Opponent",
+      "tooltip": "Opponent"
+    },
+    "result": {
+      "short": "Result",
+      "tooltip": "Result"
+    },
+    "resultType": {
+      "short": "#",
+      "tooltip": "Result Type"
     }
   },
   "game": {

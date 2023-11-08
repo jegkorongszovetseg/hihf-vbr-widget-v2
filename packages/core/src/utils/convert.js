@@ -151,6 +151,30 @@ export const teamName = (row) => ({
   ...(row?.team?.id && { teamName: row.team.longName }),
 });
 
+export const gameDateTime =
+  (timezone = '', locale = 'hu') =>
+  (row) => ({
+    ...row,
+    gameDateDate: format(row.gameDate, 'L dddd', timezone, locale),
+    gameDateTime: format(row.gameDate, 'HH:mm', timezone, locale),
+  });
+
+// Mindig a kiválasztott csapat (teamId) szerint konvertálja az eredményt
+export const gameResult = (teamId) => (row) => ({
+  ...row,
+  gameResult: createGameResult(row, teamId),
+});
+
+export const teamOpponent = (teamId) => (row) => ({
+  ...row,
+  opponent: createOpponent(row, teamId),
+});
+
+export const teamResultType = (teamId) => (row) => ({
+  ...row,
+  resultType: createGameResultType(row, teamId),
+});
+
 export const upperCase =
   (prop = []) =>
   (row) => ({
@@ -188,4 +212,33 @@ export const convertTimesSecToMin =
   };
 
 const dateDiff = (a, b) => new Date(a.gameDate).getTime() - new Date(b.gameDate).getTime();
+
 export const sortGames = sortWith([dateDiff, ascend(prop('id')), ascend(prop('gameId'))]);
+
+function createOpponent(row, teamId) {
+  if (row?.homeTeam?.id === teamId) return row?.awayTeam?.shortName ?? '';
+  return `@ ${row?.homeTeam?.shortName ?? ''}`;
+}
+
+function createGameResult(row, teamId) {
+  let firstScore = row?.homeTeamScore;
+  let secondScore = row?.awayTeamScore;
+  if (row?.awayTeam?.id === teamId) {
+    firstScore = row?.awayTeamScore;
+    secondScore = row?.homeTeamScore;
+  }
+  return [firstScore, secondScore].join(':');
+}
+
+function createGameResultType(row, teamId) {
+  const result = row.gameResult.split(':');
+  const isWonGame = result[0] > result[1];
+  const isLostGame = result[0] < result[1];
+  if (isWonGame && row.isOvertime) return 'OTW';
+  if (isWonGame && row.isShootout) return 'SOW';
+  if (isWonGame) return 'W';
+  if (isLostGame && row.isOvertime) return 'OTL';
+  if (isLostGame && row.isShootout) return 'SOL';
+  if (isLostGame) return 'L';
+  return 'D';
+}
