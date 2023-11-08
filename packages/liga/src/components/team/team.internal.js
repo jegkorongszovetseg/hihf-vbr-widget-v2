@@ -1,5 +1,5 @@
-import { groupBy, compose, sortBy, filter, pathEq, map } from 'ramda';
-import { playerName, teamName, upperCase } from '@mjsz-vbr-elements/core/utils';
+import { groupBy, compose, sortBy, filter, pathEq, map, head, omit } from 'ramda';
+import { playerName, teamName, upperCase, format } from '@mjsz-vbr-elements/core/utils';
 
 export const PAGE_INFO = 'Info';
 export const PAGE_GAMES = 'Games';
@@ -95,7 +95,7 @@ export const COLUMNS_GAMES = {
 };
 
 export const COLUMNS_TEAM_INFO = {
-  teamKey: {
+  teamKeyIntl: {
     label: 'table.blank',
     class: 'is-text-left',
   },
@@ -114,6 +114,28 @@ export const COLUMNS_TEAM_INFO_ICERINK = {
     label: 'table.blank',
     class: 'is-text-left',
   },
+};
+
+export const transformTeamInfo = (data) => {
+  data = head(data);
+
+  const organizationdData = omit(
+    ['team', 'organizationType', 'organizationShortName', 'organizationLogo', 'organizationRepresentatives', 'arenas'],
+    data
+  );
+  const tableData = [];
+
+  for (let [key, value] of Object.entries(organizationdData)) {
+    // let val = value;
+    if (key === 'organizationFoundingDate') {
+      value = format(value, 'YYYY');
+    }
+    if (key === 'organizationAddresses') {
+      value = Object.values(value?.headquarter ?? {}).join(' ');
+    }
+    tableData.push({ teamKey: key, teamValue: value });
+  }
+  return { team: data?.team, organizationInfo: tableData };
 };
 
 export const transformRosters = (data, teamId) =>

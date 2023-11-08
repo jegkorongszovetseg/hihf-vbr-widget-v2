@@ -46,9 +46,12 @@
     "forwards": "Forwards",
     "fieldPlayers": "Field Players",
     "games": "Games",
-    "teamInfo": "Team Informations",
+    "teamInfo": "Organization Informations",
     "roster": "Roster",
-    "playerStats": "Player Stats"
+    "playerStats": "Player Stats",
+    "info": {
+      "organizationName": "Organization name:"
+    }
   },
   "standings": {
     "live": "Live",

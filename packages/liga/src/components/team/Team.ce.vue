@@ -42,7 +42,7 @@ const props = defineProps({
         <ErrorNotice v-if="hasError" :error="error" />
 
         <DataProvider :championship-id="championshipId" :team-id="teamId" v-slot:default="{ teamInfo, page, roster, games, onChangePage }">
-          <h1 class="is-heading-1 is-uppercase is-mb-5">Team</h1>
+          <h1 class="is-heading-1 is-uppercase is-mb-5">{{ teamInfo?.team?.longName }}</h1>
           <div :class="useMainClass('team-image-wrapper')">
             <div class="is-team-picture">
               <Image
@@ -82,7 +82,7 @@ const props = defineProps({
             </button>
           </div>
 
-          <PageInfo v-if="page === PAGE_INFO" :data="teamInfo" />
+          <PageInfo v-if="page === PAGE_INFO" :data="teamInfo.organizationInfo" />
           <PageGames v-if="page === PAGE_GAMES" :data="games" />
           <Statistics v-if="page === PAGE_PLAYER_STATS" />
           <PageRoster v-if="page === PAGE_ROSTER" :data="roster" />

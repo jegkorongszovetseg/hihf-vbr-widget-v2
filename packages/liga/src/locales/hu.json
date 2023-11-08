@@ -46,9 +46,12 @@
     "forwards": "Támadók",
     "fieldPlayers": "Mezőnyjátékosok",
     "games": "Lejátszott mérkőzések",
-    "teamInfo": "Klub Információk",
+    "teamInfo": "Szervezeti Információk",
     "roster": "Játékoskeret",
-    "playerStats": "Játékos statisztikák"
+    "playerStats": "Játékos statisztikák",
+    "info": {
+      "organizationName": "Szervezet neve:"
+    }
   },
   "standings": {
     "live": "Élő",

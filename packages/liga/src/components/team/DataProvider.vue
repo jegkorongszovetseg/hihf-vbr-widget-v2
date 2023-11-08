@@ -12,7 +12,7 @@ import {
   sortGames,
   getLocalTimezone,
 } from '@mjsz-vbr-elements/core/utils';
-import { PAGE_INFO, PAGE_GAMES, PAGE_ROSTER, transformRosters } from './team.internal.js';
+import { PAGE_INFO, PAGE_GAMES, PAGE_ROSTER, transformRosters, transformTeamInfo } from './team.internal.js';
 
 const props = defineProps({
   teamId: {
@@ -47,7 +47,7 @@ const { state: teamInfo } = useServices({
     params: computed(() => ({ championshipId: props.championshipId, teamId: state.teamId })),
     immediate: true,
   },
-  transform: (res) => head(res),
+  transform: (res) => transformTeamInfo(res),
   onError,
 });
 
