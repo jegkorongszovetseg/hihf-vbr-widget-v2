@@ -6,46 +6,6 @@ export const PAGE_GAMES = 'Games';
 export const PAGE_PLAYER_STATS = 'Stats';
 export const PAGE_ROSTER = 'Roster';
 
-export const COLUMNS_ROSTER = {
-  jerseyNr: {
-    label: 'table.jerseyNumber.short',
-    tooltip: 'table.jerseyNumber.tooltip',
-  },
-  playerPortrait: {
-    label: '',
-    class: 'is-has-image',
-  },
-  name: {
-    label: 'table.name.short',
-    tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
-  },
-  teamName: {
-    label: 'table.teamName.short',
-    tooltip: 'table.teamName.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
-  },
-  position: {
-    label: 'table.position.short',
-    tooltip: 'table.position.tooltip',
-  },
-  nationality: {
-    label: 'table.nationality.short',
-    tooltip: 'table.nationality.tooltip',
-    class: 'is-text-left',
-  },
-  birthDate: {
-    label: 'table.birthDate.short',
-    tooltip: 'table.birthDate.tooltip',
-    class: 'is-text-left',
-  },
-  birthPlace: {
-    label: 'table.birthPlace.short',
-    tooltip: 'table.birthPlace.tooltip',
-    class: 'is-text-right',
-  },
-};
-
 export const COLUMNS_GAMES = {
   gameDateDate: {
     label: 'table.gameDate.short',

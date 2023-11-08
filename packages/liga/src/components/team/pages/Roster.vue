@@ -1,9 +1,9 @@
 <script setup>
 import { ref } from 'vue';
 import { omit } from 'ramda';
-import { DataTable, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useI18n, useColumns } from '@mjsz-vbr-elements/core/composables';
-import { COLUMNS_ROSTER } from '../team.internal.js';
+import PlayersDataTable from '../../common/PlayersDataTable.vue'
+import { COLUMNS_PLAYERS } from '../../internal';
 
 defineProps({
   data: {
@@ -20,15 +20,13 @@ defineProps({
 const tooltipContainer = ref(null);
 
 const { t } = useI18n();
-const { columns } = useColumns(omit(['teamName'], COLUMNS_ROSTER));
+const { columns } = useColumns(omit(['teamName'], COLUMNS_PLAYERS));
 </script>
 
 <template>
   <template v-for="(players, key) in data" :key="key">
     <h2 class="is-heading-2">{{ t(`teams.${key}`) }}</h2>
-    <ResponsiveTable>
-      <DataTable :rows="players" :columns="columns" :append-to="tooltipContainer"></DataTable>
-    </ResponsiveTable>
+    <PlayersDataTable :rows="players" :columns="columns" :append-to="tooltipContainer" />
   </template>
 
   <div ref="tooltipContainer"></div>

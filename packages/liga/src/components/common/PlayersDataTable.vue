@@ -37,7 +37,7 @@ const onSort = (payload) => emit('sort', payload);
     <DataTable :columns="columns" :rows="rows" :append-to="appendTo" :sort="sort" @sort="onSort">
       <template v-slot:cell-playerPortrait="{ row }">
         <div class="is-portrait-image">
-          <Image :key="row.playerId" :src="row.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
+          <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
         </div>
       </template>
 

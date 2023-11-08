@@ -10,8 +10,8 @@ import {
 } from '@mjsz-vbr-elements/core/components';
 import { externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import DataProvider from './DataProvider.vue';
-import PlayersDataTable from './PlayersDataTable.vue';
-import { PLAYERS_COLUMNS } from './internal';
+import PlayersDataTable from '../common/PlayersDataTable.vue';
+import { COLUMNS_PLAYERS } from '../internal';
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
 
@@ -71,7 +71,7 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalPlay
           <LoadingIndicator v-if="isLoading" />
 
           <PlayersDataTable
-            :columns="PLAYERS_COLUMNS"
+            :columns="COLUMNS_PLAYERS"
             :rows="players.rows"
             :append-to="tooltipContainer"
             :sort="sort"

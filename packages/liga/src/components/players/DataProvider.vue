@@ -63,7 +63,7 @@ const {
     path: '/v2/championship-players',
     apiKey: props.apiKey,
     params: computed(() => ({
-      championshipId: 3451, //state.championshipId
+      championshipId: state.championshipId,
     })),
   },
   transform: (data) => rawConvert(data, playerName, teamName),
