@@ -83,7 +83,7 @@ const props = defineProps({
           </div>
 
           <PageInfo v-if="page === PAGE_INFO" :data="teamInfo" />
-          <PageGames v-if="page === PAGE_GAMES" :data="games.rows" />
+          <PageGames v-if="page === PAGE_GAMES" :data="games" />
           <Statistics v-if="page === PAGE_PLAYER_STATS" />
           <PageRoster v-if="page === PAGE_ROSTER" :data="roster" />
         </DataProvider>

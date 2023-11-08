@@ -25,7 +25,22 @@ const { columns } = useColumns(
 <template>
   <h2 class="is-heading-2">{{ t('teams.games') }}</h2>
   <ResponsiveTable>
-    <DataTable :rows="data" :columns="columns" :append-to="tooltipContainer"></DataTable>
+    <DataTable :rows="data" :columns="columns" :append-to="tooltipContainer">
+      <template v-slot:cell-resultType="{ row }">
+        <span
+          :class="[
+            'is-badge',
+            {
+              'is-green': ['W', 'OTW', 'SOW'].includes(row.resultType),
+              'is-red': ['L', 'OTL', 'SOL'].includes(row.resultType),
+              'is-yellow': row.resultType === 'D',
+            },
+          ]"
+        >
+          {{ row.resultType }}
+        </span>
+      </template>
+    </DataTable>
   </ResponsiveTable>
   <div ref="tooltipContainer"></div>
 </template>

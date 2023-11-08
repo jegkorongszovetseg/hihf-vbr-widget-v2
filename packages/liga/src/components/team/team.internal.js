@@ -1,5 +1,5 @@
 import { groupBy, compose, sortBy, filter, pathEq, map } from 'ramda';
-import { playerName, teamName } from '@mjsz-vbr-elements/core/utils';
+import { playerName, teamName, upperCase } from '@mjsz-vbr-elements/core/utils';
 
 export const PAGE_INFO = 'Info';
 export const PAGE_GAMES = 'Games';
@@ -25,6 +25,10 @@ export const COLUMNS_ROSTER = {
     tooltip: 'table.teamName.tooltip',
     class: 'is-text-left is-w-auto is-text-bold',
   },
+  position: {
+    label: 'table.position.short',
+    tooltip: 'table.position.tooltip',
+  },
   nationality: {
     label: 'table.nationality.short',
     tooltip: 'table.nationality.tooltip',
@@ -38,7 +42,7 @@ export const COLUMNS_ROSTER = {
   birthPlace: {
     label: 'table.birthPlace.short',
     tooltip: 'table.birthPlace.tooltip',
-    class: 'is-text-left is-w-auto',
+    class: 'is-text-right',
   },
 };
 
@@ -61,12 +65,12 @@ export const COLUMNS_GAMES = {
   opponent: {
     label: 'table.opponent.short',
     tooltip: 'table.opponent.tooltip',
-    class: 'is-text-left is-text-bold',
+    class: 'is-text-left',
   },
   resultType: {
     label: 'table.resultType.short',
     tooltip: 'table.resultType.tooltip',
-    class: 'is-text-left',
+    class: '',
   },
   sog: {
     label: 'table.sog.short',
@@ -116,18 +120,18 @@ export const transformRosters = (data, teamId) =>
   compose(
     groupBy(groupByPosition),
     sortBy((d) => {
-      if (['ld', 'rd'].includes(d.position)) return 1;
-      if (['lw', 'rw', 'c'].includes(d.position)) return 2;
+      if (['ld', 'rd'].includes(d.position?.toLowerCase())) return 1;
+      if (['lw', 'rw', 'c'].includes(d.position?.toLowerCase())) return 2;
       return 0;
     }),
     sortBy(sortByJerseyNumber),
-    map(compose(playerName, teamName)),
+    map(compose(playerName, teamName, upperCase(['position']))),
     filter(pathEq(Number(teamId), ['team', 'id']))
   )(data);
 
 function groupByPosition(data) {
-  if (['ld', 'rd'].includes(data.position)) return 'defenders';
-  if (['lw', 'rw', 'c'].includes(data.position)) return 'forwards';
+  if (['ld', 'rd'].includes(data.position?.toLowerCase())) return 'defenders';
+  if (['lw', 'rw', 'c'].includes(data.position?.toLowerCase())) return 'forwards';
   return 'goalies';
 }
 

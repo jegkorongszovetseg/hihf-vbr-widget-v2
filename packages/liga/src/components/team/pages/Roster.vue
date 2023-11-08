@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { omit } from 'ramda';
 import { DataTable, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useI18n, useColumns } from '@mjsz-vbr-elements/core/composables';
 import { COLUMNS_ROSTER } from '../team.internal.js';
@@ -19,7 +20,7 @@ defineProps({
 const tooltipContainer = ref(null);
 
 const { t } = useI18n();
-const { columns } = useColumns(COLUMNS_ROSTER);
+const { columns } = useColumns(omit(['teamName'], COLUMNS_ROSTER));
 </script>
 
 <template>
