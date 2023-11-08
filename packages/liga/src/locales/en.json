@@ -36,6 +36,23 @@
     "Elődöntő2": "Semifinal 2",
     "Döntő": "Final"
   },
+  "teams": {
+    "tabs": {
+      "teamInfo": "Informations",
+      "games": "Games"
+    },
+    "goalies": "Goalies",
+    "defenders": "Defenders",
+    "forwards": "Forwards",
+    "fieldPlayers": "Field Players",
+    "games": "Games",
+    "teamInfo": "Organization Informations",
+    "roster": "Roster",
+    "playerStats": "Player Stats",
+    "info": {
+      "organizationName": "Organization name:"
+    }
+  },
   "standings": {
     "live": "Live",
     "default": "Overall"
