@@ -16,12 +16,16 @@
   },
   "table": {
     "nationality": {
-      "short": "#",
+      "short": "Nemzetiség",
       "tooltip": "Nemzetiség"
     },
     "birthDate": {
       "short": "Szülétési idő",
       "tooltip": "Szülétési idő"
+    },
+    "birthPlace": {
+      "short": "Születési hely",
+      "tooltip": "Születési hely"
     }
   },
   "report": {

@@ -1,5 +1,6 @@
 import { head, compose, ascend, descend, map, pick, prop, sort, path } from 'ramda';
 import { InvalidSeasonName, WidgetError } from '@mjsz-vbr-elements/core/utils';
+import { SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
 
 export const transformSeasons = (seasons, state) => {
   if (seasons.length === 0) throw new WidgetError(InvalidSeasonName.message, InvalidSeasonName.options);
@@ -52,6 +53,7 @@ export const COLUMNS_PLAYERS = {
   jerseyNr: {
     label: 'table.jerseyNumber.short',
     tooltip: 'table.jerseyNumber.tooltip',
+    sortOrders: [{ target: 'jerseyNr', direction: SORT_STATE_ASCEND }],
   },
   playerPortrait: {
     label: '',
@@ -61,11 +63,13 @@ export const COLUMNS_PLAYERS = {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
     class: 'is-text-left is-w-auto is-text-bold',
+    sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
   },
   teamName: {
     label: 'table.teamName.short',
     tooltip: 'table.teamName.tooltip',
     class: 'is-text-left is-w-auto is-text-bold',
+    sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   position: {
     label: 'table.position.short',
@@ -80,10 +84,12 @@ export const COLUMNS_PLAYERS = {
     label: 'table.birthDate.short',
     tooltip: 'table.birthDate.tooltip',
     class: 'is-text-right',
+    sortOrders: [{ target: 'birthDate', direction: SORT_STATE_ASCEND }],
   },
   birthPlace: {
     label: 'table.birthPlace.short',
     tooltip: 'table.birthPlace.tooltip',
     class: 'is-text-right',
+    sortOrders: [{ target: 'birthPlace', direction: SORT_STATE_ASCEND }],
   },
 };

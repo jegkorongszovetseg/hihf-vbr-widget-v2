@@ -6,8 +6,8 @@ import {
   I18NProvider,
   ErrorProvider,
   SeasonSelector,
-  LoadingIndicator,
 } from '@mjsz-vbr-elements/core/components';
+import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import DataProvider from './DataProvider.vue';
 import PlayersDataTable from '../common/PlayersDataTable.vue';
@@ -59,22 +59,38 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalPlay
           :locale="locale"
           :championship-name="championshipName"
           :limit="limit"
-          v-slot="{ players, seasons, isLoading, championshipId, page, changeSeason, sort, onSort, onPaginatorChange }"
+          v-slot="{
+            players,
+            seasons,
+            isLoading,
+            championshipId,
+            page,
+            query,
+            changeSeason,
+            sort,
+            onSort,
+            onPaginatorChange,
+            onInput,
+          }"
         >
           <SeasonSelector
             :seasons="seasons"
             :championship-id="championshipId"
             is-section-selection-disabled
             @on-change-season="changeSeason"
-          />
-
-          <LoadingIndicator v-if="isLoading" />
+          >
+            <div>
+              <label for="player" :class="useMainClass('label')">Név</label>
+              <input id="player" type="text" :class="useMainClass('base-input')" :value="query" @input="onInput" />
+            </div>
+          </SeasonSelector>
 
           <PlayersDataTable
             :columns="COLUMNS_PLAYERS"
             :rows="players.rows"
             :append-to="tooltipContainer"
             :sort="sort"
+            :is-loading="isLoading"
             @sort="onSort"
           />
 

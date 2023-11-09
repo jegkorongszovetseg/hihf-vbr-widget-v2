@@ -16,12 +16,16 @@
   },
   "table": {
     "nationality": {
-      "short": "#",
+      "short": "Nationality",
       "tooltip": "Nationality"
     },
     "birthDate": {
       "short": "Birth Date",
       "tooltip": "Birth Date"
+    },
+    "birthPlace": {
+      "short": "Birth Place",
+      "tooltip": "Birth Place"
     }
   },
   "report": {

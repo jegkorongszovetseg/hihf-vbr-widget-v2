@@ -28,12 +28,13 @@ const props = defineProps({
   },
 });
 
-const params = useUrlSearchParams('history');
+const params = useUrlSearchParams('hash');
 
 const state = reactive({
   championshipName: props.championshipName,
   seasons: [],
   championshipId: Number(params.championshipId) || 0,
+  query: '',
 });
 
 const { onError } = useError();
@@ -76,14 +77,24 @@ const isLoading = useLazyLoadingState([seasonsLoading, playersLoading], { delay:
 useAsyncQueue([fetchSeasons, fetchPlayers]);
 
 const convertedRows = computed(() =>
-  convert(rows.value).sorted(sort).pagination(page.value, props.limit).value()
+  convert(rows.value).sorted(sort).filter(state.query, [['name']]).pagination(page.value, props.limit).value()
 );
 
 const changeSeason = (value) => {
+  onPaginatorChange(1);
   state.championshipId = value;
   params.championshipId = value;
+  state.query = '';
+  params.query = null;
   useAsyncQueue([fetchPlayers]);
 };
+
+const onInput = (event) => {
+  const { value } = event.target;
+  onPaginatorChange(1);
+  state.query = value;
+  params.query = value;
+}
 </script>
 
 <template>
@@ -95,6 +106,7 @@ const changeSeason = (value) => {
       players: convertedRows,
       isLoading,
       onSort,
+      onInput,
       changeSeason,
       onPaginatorChange,
     }"

@@ -24,6 +24,11 @@ const props = defineProps({
     type: Object,
     default: () => ({}),
   },
+
+  isLoading: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const emit = defineEmits(['sort']);
@@ -34,7 +39,7 @@ const onSort = (payload) => emit('sort', payload);
 </script>
 <template>
   <ResponsiveTable>
-    <DataTable :columns="columns" :rows="rows" :append-to="appendTo" :sort="sort" @sort="onSort">
+    <DataTable :columns="columns" :rows="rows" :is-loading="isLoading" :append-to="appendTo" :sort="sort" @sort="onSort">
       <template v-slot:cell-playerPortrait="{ row }">
         <div class="is-portrait-image">
           <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />

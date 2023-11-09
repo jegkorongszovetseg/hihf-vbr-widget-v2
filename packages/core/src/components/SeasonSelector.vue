@@ -57,6 +57,7 @@ function changeSection(id) {
         </option>
       </BaseSelect>
     </div>
+    <slot></slot>
   </div>
   <div v-if="!isSectionSelectionDisabled">
     <button
