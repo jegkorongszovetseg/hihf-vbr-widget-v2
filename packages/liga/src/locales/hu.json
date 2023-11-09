@@ -70,5 +70,11 @@
   "standings": {
     "live": "Élő",
     "default": "Összesített"
+  },
+  "nationality": {
+    "hu": "Magyar",
+    "ro": "Román",
+    "us": "Amerikai",
+    "il": "Izraeli"
   }
 }

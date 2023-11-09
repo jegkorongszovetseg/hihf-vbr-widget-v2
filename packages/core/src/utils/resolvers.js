@@ -1,4 +1,9 @@
-import { DEFAULT_EXTERNAL_BASE_URL, DEFAULT_EXTERNAL_PLAYER_URL, DEFAULT_EXTERNAL_TEAM_URL } from '../constants';
+import {
+  DEFAULT_EXTERNAL_BASE_URL,
+  DEFAULT_EXTERNAL_PLAYER_URL,
+  DEFAULT_EXTERNAL_TEAM_URL,
+  FLAG_BASE_URL,
+} from '../constants';
 
 export const externalGameLinkResolver = (rawResolver, gameId) => {
   const resolver = getSettingVariable('gameResolver') || rawResolver;
@@ -20,5 +25,7 @@ export const externalPlayerLinkResolver = (rawResolver, playerId) => {
   if (resolver) return encodeURI(resolver + playerId);
   return encodeURI(DEFAULT_EXTERNAL_PLAYER_URL + playerId);
 };
+
+export const flagResolver = (countryCode, type = '1x1') => `${FLAG_BASE_URL}/flag:${countryCode}-${type}.svg`;
 
 const getSettingVariable = (key = '') => window?.__MJSZ_VBR_WIDGET__?.[key];

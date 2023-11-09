@@ -60,6 +60,7 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalPlay
           :championship-name="championshipName"
           :limit="limit"
           v-slot="{
+            range,
             players,
             seasons,
             isLoading,
@@ -94,13 +95,16 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalPlay
             @sort="onSort"
           />
 
-          <Paginator
-            :page="page"
-            :items-per-page="props.limit"
-            :total-items="players.totalItems"
-            :range-length="5"
-            @change="onPaginatorChange"
-          />
+          <div style="display: flex; justify-content: space-between; align-items: center">
+            <Paginator
+              :page="page"
+              :items-per-page="props.limit"
+              :total-items="players.totalItems"
+              :range-length="5"
+              @change="onPaginatorChange"
+            />
+            <div>{{ range.join('-') }} / {{ players.totalItems }}</div>
+          </div>
 
           <div ref="tooltipContainer" />
         </DataProvider>

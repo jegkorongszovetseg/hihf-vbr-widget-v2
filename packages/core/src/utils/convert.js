@@ -15,6 +15,10 @@ import {
   sortWith,
   toLower,
   groupBy,
+  replace,
+  curry,
+  over,
+  lensProp,
 } from 'ramda';
 import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../constants.js';
 import { format, convertMinToSec, convertSecToMin, convertMinToMinSec } from './datetime.js';
@@ -38,7 +42,8 @@ export const convert = (data = []) => {
         const predicate = condition.map((key) =>
           exact ? pipe(path(key), equals(name)) : pipe(prop(key), toLower, includes(name))
         );
-        const filteredRows = filter(anyPass([...predicate]), this.result);
+        const replaceComma = curry((row) => over(lensProp('name'), replace(',', ''), row));
+        const filteredRows = filter(pipe(replaceComma, anyPass([...predicate])), this.result);
         this.isFiltered = true;
         this.filteredRowsLength = filteredRows.length;
         this.result = filteredRows;
@@ -144,6 +149,11 @@ export const playerName = (row) => ({
   ...row,
   ...(row.lastName && row.firstName && { name: `${row.lastName} ${row.firstName}` }),
   ...(row.player?.playerId && { name: `${row.player.lastName} ${row.player.firstName}` }),
+  ...(row.player?.nationality && {
+    name: row.player?.nationality.includes('hu')
+      ? `${row.player.lastName} ${row.player.firstName}`
+      : `${row.player.lastName}, ${row.player.firstName}`,
+  }),
 });
 
 export const teamName = (row) => ({

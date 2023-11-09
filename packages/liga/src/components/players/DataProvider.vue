@@ -77,8 +77,16 @@ const isLoading = useLazyLoadingState([seasonsLoading, playersLoading], { delay:
 useAsyncQueue([fetchSeasons, fetchPlayers]);
 
 const convertedRows = computed(() =>
-  convert(rows.value).sorted(sort).filter(state.query, [['name']]).pagination(page.value, props.limit).value()
+  convert(rows.value)
+    .sorted(sort)
+    .filter(state.query, [['name']])
+    .pagination(page.value, props.limit)
+    .value()
 );
+
+const range = computed(() => {
+  return [(page.value - 1) * props.limit + 1, Math.min(page.value * props.limit, convertedRows.value.totalItems)];
+});
 
 const changeSeason = (value) => {
   onPaginatorChange(1);
@@ -94,7 +102,7 @@ const onInput = (event) => {
   onPaginatorChange(1);
   state.query = value;
   params.query = value;
-}
+};
 </script>
 
 <template>
@@ -103,8 +111,9 @@ const onInput = (event) => {
       ...state,
       sort,
       page,
-      players: convertedRows,
+      range,
       isLoading,
+      players: convertedRows,
       onSort,
       onInput,
       changeSeason,

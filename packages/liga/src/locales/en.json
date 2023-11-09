@@ -70,5 +70,8 @@
   "standings": {
     "live": "Live",
     "default": "Overall"
+  },
+  "nationality": {
+    "hu": "Hungarian"
   }
 }

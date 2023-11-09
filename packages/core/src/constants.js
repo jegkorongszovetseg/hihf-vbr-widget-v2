@@ -7,6 +7,8 @@ export const DEFAULT_PORTRAIT_IMAGE_URL = 'https://jegkorongszovetseg.hu/assets/
 export const DEFAULT_EXTERNAL_PLAYER_URL = 'https://www.ersteliga.hu/stats/player/';
 export const DEFAULT_EXTERNAL_TEAM_URL = 'https://www.ersteliga.hu/stats/team/';
 
+export const FLAG_BASE_URL = 'https://api.icehockey.hu/static/api/flag';
+
 export const SORT_STATE_ORIGINAL = 'original';
 export const SORT_STATE_DESCEND = 'descend';
 export const SORT_STATE_ASCEND = 'ascend';
