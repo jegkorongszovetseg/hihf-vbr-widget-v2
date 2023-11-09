@@ -31,13 +31,11 @@ const props = defineProps({
     default: '',
   },
 
-  externalTeamResolver: {
-    type: [String, Function],
-    default: '',
-  },
+  externalTeamResolver: Function,
 });
-
-const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeamResolver, teamId);
+console.log(typeof props.externalTeamResolver, props.externalTeamResolver);
+const externalTeamLink = (teamId, championshipId) =>
+  externalTeamLinkResolver(props.externalTeamResolver, { teamId, championshipId });
 </script>
 
 <template>
@@ -62,7 +60,7 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
 
           <ul v-else :class="useMainClass('wrapped-grid')" style="--min-width: 80px; --max-width: 160px">
             <li v-for="team in teams" :key="team.teamId">
-              <a :href="externalTeamLink(team.teamId)" class="is-text-lg">
+              <a :href="externalTeamLink(team.teamId, championshipId)" class="is-text-lg">
                 <Image class="is-team-logo" :src="team.teamLogo" :key="team.teamId" />
                 {{ team.teamName }}
               </a>

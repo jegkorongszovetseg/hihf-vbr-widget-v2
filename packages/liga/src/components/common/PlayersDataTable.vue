@@ -29,6 +29,21 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+
+  playerResolver: {
+    type: Function,
+    default: () => ({}),
+  },
+
+  teamResolver: {
+    type: Function,
+    default: () => ({}),
+  },
+
+  championshipId: {
+    type: String,
+    default: '',
+  },
 });
 
 const emit = defineEmits(['sort']);
@@ -53,6 +68,14 @@ const onSort = (payload) => emit('sort', payload);
         <div class="is-portrait-image">
           <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
         </div>
+      </template>
+
+      <template v-slot:cell-name="{ row }">
+        <a :href="playerResolver(row.player?.playerId, championshipId)" v-text="row.name" />
+      </template>
+
+      <template v-slot:cell-teamName="{ row }">
+        <a :href="teamResolver(row.team?.id, championshipId)" v-text="row.teamName" />
       </template>
 
       <template v-slot:cell-nationality="{ row }">

@@ -1,4 +1,4 @@
-import { groupBy, compose, sortBy, filter, pathEq, map, head, omit } from 'ramda';
+import { groupBy, compose, sortBy, filter, pathEq, map, omit } from 'ramda';
 import { playerName, teamName, upperCase, format } from '@mjsz-vbr-elements/core/utils';
 
 export const PAGE_INFO = 'Info';
@@ -77,8 +77,6 @@ export const COLUMNS_TEAM_INFO_ICERINK = {
 };
 
 export const transformTeamInfo = (data) => {
-  data = head(data);
-
   const organizationdData = omit(
     ['team', 'organizationType', 'organizationShortName', 'organizationLogo', 'organizationRepresentatives', 'arenas'],
     data
@@ -102,13 +100,12 @@ export const transformRosters = (data, teamId) =>
   compose(
     groupBy(groupByPosition),
     sortBy((d) => {
-      if (['ld', 'rd'].includes(d.position?.toLowerCase())) return 1;
+      if (['ld', 'rd', 'd'].includes(d.position?.toLowerCase())) return 1;
       if (['lw', 'rw', 'c'].includes(d.position?.toLowerCase())) return 2;
       return 0;
     }),
     sortBy(sortByJerseyNumber),
-    map(compose(playerName, teamName, upperCase(['position']))),
-    filter(pathEq(Number(teamId), ['team', 'id']))
+    map(compose(playerName, teamName, upperCase(['position'])))
   )(data);
 
 function groupByPosition(data) {

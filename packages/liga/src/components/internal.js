@@ -66,8 +66,8 @@ export const COLUMNS_PLAYERS = {
     sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
   },
   teamName: {
-    label: 'table.teamName.short',
-    tooltip: 'table.teamName.tooltip',
+    label: 'table.team.short',
+    tooltip: 'table.team.tooltip',
     class: 'is-text-left is-w-auto is-text-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },

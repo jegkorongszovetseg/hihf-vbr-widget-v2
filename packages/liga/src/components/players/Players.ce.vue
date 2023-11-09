@@ -8,7 +8,7 @@ import {
   SeasonSelector,
 } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
-import { externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
+import { externalPlayerLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import DataProvider from './DataProvider.vue';
 import PlayersDataTable from '../common/PlayersDataTable.vue';
 import { COLUMNS_PLAYERS } from '../internal';
@@ -42,16 +42,22 @@ const props = defineProps({
     type: [String, Function],
     default: '',
   },
+
+  externalTeamResolver: {
+    type: [String, Function],
+    default: '',
+  },
 });
 
 const tooltipContainer = ref(null);
 
-const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalPlayerResolver, teamId);
+const externalPlayerLink = (playerId, championshipId) =>
+  externalPlayerLinkResolver(props.externalPlayerResolver, { playerId, championshipId });
 </script>
 
 <template>
   <div>
-    <I18NProvider :locale="props.locale" :messages="messages">
+    <I18NProvider :locale="props.locale" :messages="messages" v-slot="{ t }">
       <ErrorProvider v-slot:default="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
 
@@ -81,7 +87,7 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalPlay
             @on-change-season="changeSeason"
           >
             <div>
-              <label for="player" :class="useMainClass('label')">Név</label>
+              <label for="player" :class="useMainClass('label')">{{ t('name') }}</label>
               <input id="player" type="text" :class="useMainClass('base-input')" :value="query" @input="onInput" />
             </div>
           </SeasonSelector>
@@ -92,6 +98,8 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalPlay
             :append-to="tooltipContainer"
             :sort="sort"
             :is-loading="isLoading"
+            :championship-id="championshipId"
+            :player-resolver="externalPlayerLink"
             @sort="onSort"
           />
 

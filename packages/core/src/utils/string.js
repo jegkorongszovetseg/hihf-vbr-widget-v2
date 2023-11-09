@@ -7,3 +7,10 @@ export function toKebabCase(str) {
       .join('-')
   );
 }
+
+// Example: 'https://www.example.com/api/{step}/{id}'
+export const templateReplacer = function (tpl, data) {
+  return tpl.replace(/\{(\w+)\}/g, function ($1, $2) {
+    return data[$2];
+  });
+};

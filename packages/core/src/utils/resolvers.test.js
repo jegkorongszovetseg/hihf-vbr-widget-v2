@@ -43,8 +43,8 @@ describe('externalTeamLinkResolver', () => {
   });
 
   test('Vissza adja az url-t teamId-val ha az url külső string', () => {
-    const resolver = externalTeamLinkResolver('/site-path/', 123);
-    expect(resolver).toBe('/site-path/123');
+    const resolver = externalTeamLinkResolver('/site-path/{step}/{id}', { step: 123, id: 456 });
+    expect(resolver).toBe('/site-path/123/456');
   });
 
   test('Vissza adja az url-t teamId-val ha az url külső function', () => {
@@ -90,7 +90,7 @@ describe('externalPlayerLinkResolver', () => {
   });
 
   test('Vissza adja a default url-t A teamId-val, ha nincs url beállítva', () => {
-    const resolver = externalPlayerLinkResolver(null, 123);
-    expect(resolver).toBe(`${DEFAULT_EXTERNAL_PLAYER_URL}123`);
+    const resolver = externalPlayerLinkResolver(null, 123, 2000);
+    expect(resolver).toBe(`${DEFAULT_EXTERNAL_PLAYER_URL}123/2000`);
   });
 });

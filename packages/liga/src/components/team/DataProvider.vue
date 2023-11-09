@@ -37,6 +37,7 @@ const params = useUrlSearchParams('history');
 const state = reactive({
   page: params.page || PAGE_INFO,
   teamId: Number(params.teamId) || Number(props.teamId),
+  championshipId: Number(params.championshipId) || Number(props.championshipId),
 });
 
 const { onError } = useError();
@@ -45,7 +46,7 @@ const { state: teamInfo } = useServices({
   options: {
     path: '/v2/team-info',
     apiKey: props.apiKey,
-    params: computed(() => ({ championshipId: props.championshipId, teamId: state.teamId })),
+    params: computed(() => ({ championshipId: state.championshipId, teamId: state.teamId })),
     immediate: true,
   },
   transform: (res) => transformTeamInfo(res),
@@ -56,7 +57,7 @@ const { state: games, execute: fetchTeamGames } = useServices({
   options: {
     path: '/v2/team-games',
     apiKey: props.apiKey,
-    params: computed(() => ({ championshipId: props.championshipId, teamId: state.teamId })),
+    params: computed(() => ({ championshipId: state.championshipId, teamId: state.teamId })),
   },
   transform: (res) =>
     rawConvert(
@@ -73,7 +74,7 @@ const { state: roster, execute: fetchTeamRoster } = useServices({
   options: {
     path: '/v2/championship-players',
     apiKey: props.apiKey,
-    params: computed(() => ({ championshipId: 3450 })),
+    params: computed(() => ({ championshipId: state.championshipId, teamId: state.teamId })),
   },
   transform: (res) => transformRosters(res, state.teamId),
   onError,

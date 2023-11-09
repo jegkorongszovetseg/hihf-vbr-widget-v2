@@ -1,15 +1,9 @@
 <script setup>
 import { ref } from 'vue';
-import {
-  ErrorNotice,
-  I18NProvider,
-  ErrorProvider,
-  LoadingIndicator,
-} from '@mjsz-vbr-elements/core/components';
+import { ErrorNotice, I18NProvider, ErrorProvider, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
 import { externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import DataProvider from './DataProvider.vue';
 // import PlayersDataTable from '../common/PlayersDataTable.vue';
-import { COLUMNS_PLAYERS } from '../internal';
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
 
@@ -31,15 +25,20 @@ const props = defineProps({
     default: '',
   },
 
+  championshipId: {
+    type: String,
+    default: '',
+  },
+
   externalPlayerResolver: {
-    type: [String, Function],
+    type: String,
     default: '',
   },
 });
 
 const tooltipContainer = ref(null);
 
-const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalPlayerResolver, teamId);
+// const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalPlayerResolver, { teamId });
 </script>
 
 <template>
@@ -52,12 +51,16 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalPlay
           :locale="locale"
           :championship-name="championshipName"
           :limit="limit"
-          v-slot="{ players, seasons, isLoading, championshipId, page, changeSeason, sort, onSort, onPaginatorChange }"
+          v-slot="{ playerData, playerGames, isLoading }"
         >
-
           <LoadingIndicator v-if="isLoading" />
 
-
+          <pre>
+            {{ playerData }}
+          </pre>
+          <pre>
+            {{ playerGames }}
+          </pre>
 
           <div ref="tooltipContainer" />
         </DataProvider>

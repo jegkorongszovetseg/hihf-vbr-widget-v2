@@ -9,11 +9,13 @@ import '../../../packages/shared/dist/css/forms.css';
 import '../../../packages/shared/dist/css/responsive-table.css';
 import '../../../packages/shared/dist/css/table.css';
 import '../../../packages/shared/dist/css/paginator.css';
+
+const resolver = `LigaPlayer?playerId={playerId}&championshipId={championshipId}`;
 </script>
 
 <template>
   <div class="p-5 max-w-[1170px] mx-auto">
-    <PlayersLiga :locale="store.locale" championship-name="Erste Liga"></PlayersLiga>
+    <PlayersLiga :locale="store.locale" championship-name="Erste Liga" :external-player-resolver="resolver"></PlayersLiga>
     <!-- <mjsz-vbr-players-liga :locale="store.locale" championship-name="Erste Liga" /> -->
   </div>
 </template>

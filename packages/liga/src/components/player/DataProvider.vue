@@ -39,7 +39,18 @@ const { state: playerData } = useServices({
   // transform: (res) => transformTeamInfo(res),
   onError,
 });
+
+const { state: playerGames } = useServices({
+  options: {
+    path: '/v2/player-games',
+    apiKey: props.apiKey,
+    params: computed(() => ({ championshipId: state.championshipId, playerId: state.playerId })),
+    immediate: true,
+  },
+  // transform: (res) => transformTeamInfo(res),
+  onError,
+});
 </script>
 <template>
-  <slot v-bind="{ playerData }"></slot>
+  <slot v-bind="{ playerData, playerGames }"></slot>
 </template>
