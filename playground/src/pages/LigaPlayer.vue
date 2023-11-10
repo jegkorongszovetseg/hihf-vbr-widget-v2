@@ -9,6 +9,7 @@ import '../../../packages/shared/dist/css/forms.css';
 import '../../../packages/shared/dist/css/responsive-table.css';
 import '../../../packages/shared/dist/css/table.css';
 import '../../../packages/shared/dist/css/paginator.css';
+import '../../../packages/shared/dist/css/teams.css';
 </script>
 
 <template>

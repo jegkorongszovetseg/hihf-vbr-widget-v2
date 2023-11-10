@@ -1,19 +1,16 @@
 <script setup>
 import { reactive, computed } from 'vue';
-import { useUrlSearchParams } from '@vueuse/core';
-import { reverse } from 'ramda';
+import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
+import { omit } from 'ramda';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
-import {
-  rawConvert,
-  sortGames,
-  gameDateTime,
-  teamResultType,
-  gameResult,
-  teamOpponent,
-  teamName,
-  getLocalTimezone,
-} from '@mjsz-vbr-elements/core/utils';
+import { getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
+import { COLUMNS_GAMES } from '../internal';
+import { transformPlayerData, transformSeasonStats, transformGames } from './player.internal';
 
+const PLAYER_SEASON_STATS_API = '/v2/player-season-stats';
+const GOALIE_STATS_API = '/v2/goalie-season-stats';
+const PLAYER_GAMES_API = '/v2/player-games';
+const GOALIE_GAMES_API = '/v2/goalie-games';
 const timezone = getLocalTimezone();
 
 const props = defineProps({
@@ -38,6 +35,9 @@ const params = useUrlSearchParams('history');
 const state = reactive({
   playerId: Number(params.playerId) || Number(props.playerId),
   championshipId: Number(params.championshipId) || Number(props.championshipId),
+  seasonApi: PLAYER_SEASON_STATS_API,
+  gamesApi: PLAYER_GAMES_API,
+  isGoalie: false,
 });
 
 const { onError } = useError();
@@ -49,39 +49,53 @@ const { state: playerData } = useServices({
     params: computed(() => ({ championshipId: state.championshipId, playerId: state.playerId })),
     immediate: true,
   },
-  // transform: (res) => transformTeamInfo(res),
+  transform: (res) => transformPlayerData(res, props.locale),
   onError,
+  onSuccess: (res) => {
+    console.log('Success', res);
+    const { position } = res;
+    if (position === 'gk') {
+      state.seasonApi = GOALIE_STATS_API;
+      state.gamesApi = GOALIE_GAMES_API;
+      state.isGoalie = true;
+    }
+    fetchData();
+  },
 });
 
-const { state: playerSeasonStats } = useServices({
+const { state: playerSeasonStats, execute: fetchSeasonStats } = useServices({
   options: {
-    path: '/v2/player-season-stats',
+    path: computed(() => state.seasonApi),
     apiKey: props.apiKey,
     params: computed(() => ({ playerId: state.playerId })),
-    immediate: true,
+    immediate: false,
   },
-  transform: (res) => rawConvert(reverse(res), teamName),
+  transform: (res) => transformSeasonStats(res),
   onError,
 });
 
-const { state: playerGames } = useServices({
+const { state: playerGames, execute: fetchGames } = useServices({
   options: {
-    path: '/v2/player-games',
+    path: computed(() => state.gamesApi),
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId, playerId: state.playerId })),
-    immediate: true,
+    immediate: false,
   },
-  transform: (res) =>
-    rawConvert(
-      sortGames(res),
-      gameDateTime(timezone, props.locale),
-      teamResultType(state.teamId),
-      gameResult(state.teamId),
-      teamOpponent(state.teamId)
-    ),
+  transform: (res) => transformGames(res, state, props.locale, timezone),
   onError,
 });
+
+const gameColumns = computed(() =>
+  state.isGoalie
+    ? omit(['ppgf', 'shga'], COLUMNS_GAMES)
+    : omit(['toi', 'saves', 'svsPercent', 'ppgf', 'shga'], COLUMNS_GAMES)
+);
+
+function fetchData() {
+  console.log(state.seasonApi, state.gamesApi);
+  useAsyncQueue([fetchSeasonStats, fetchGames]);
+}
 </script>
 <template>
-  <slot v-bind="{ playerData, playerGames, playerSeasonStats }"></slot>
+  <slot v-bind="{ playerData, playerGames, playerSeasonStats, gameColumns }"></slot>
 </template>

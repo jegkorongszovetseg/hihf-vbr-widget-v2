@@ -5,12 +5,14 @@ import advancedFormat from 'dayjs/plugin/advancedFormat';
 import _isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import _isBetween from 'dayjs/plugin/isBetween';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/hu';
 import { LOCALE_FOR_LANG } from '../constants.js';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(advancedFormat);
+dayjs.extend(relativeTime);
 dayjs.extend(localizedFormat);
 dayjs.extend(_isSameOrBefore);
 dayjs.extend(_isBetween);
@@ -64,4 +66,8 @@ export const isBetween = (date, startDate, endDate) => {
 
 export const isSame = (date, compareDate, unit = 'month') => {
   return dayjs(date).isSame(compareDate, unit);
+};
+
+export const yearToNow = (date, locale = 'hu') => {
+  return dayjs(date).locale(locale).toNow(true);
 };

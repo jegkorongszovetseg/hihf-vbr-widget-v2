@@ -67,6 +67,9 @@
       "organizationName": "Szervezet neve:"
     }
   },
+  "players": {
+    "age": "{years}es"
+  },
   "standings": {
     "live": "Élő",
     "default": "Összesített"

@@ -67,6 +67,9 @@
       "organizationName": "Organization name:"
     }
   },
+  "players": {
+    "age": "{years} old"
+  },
   "standings": {
     "live": "Live",
     "default": "Overall"

@@ -100,6 +100,11 @@ export const COLUMNS_GAMES = {
     tooltip: 'table.sog.tooltip',
     class: 'is-text-left is-text-bold',
   },
+  toi: {
+    label: 'table.toi.short',
+    tooltip: 'table.toi.tooltip',
+    class: 'is-text-left',
+  },
   sa: {
     label: 'table.sa.short',
     tooltip: 'table.sa.tooltip',
@@ -113,6 +118,16 @@ export const COLUMNS_GAMES = {
   shga: {
     label: 'table.shga.short',
     tooltip: 'table.shga.tooltip',
+    class: 'is-text-left',
+  },
+  saves: {
+    label: 'table.saves.short',
+    tooltip: 'table.saves.tooltip',
+    class: 'is-text-left',
+  },
+  svsPercent: {
+    label: 'table.svsPercent.short',
+    tooltip: 'table.svsPercent.tooltip',
     class: 'is-text-left',
   },
 };

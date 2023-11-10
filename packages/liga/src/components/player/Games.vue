@@ -3,9 +3,13 @@ import { computed } from 'vue';
 import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { offsetName } from '@mjsz-vbr-elements/core/utils';
 import GamesDataTable from '../common/GamesDataTable.vue';
-import { COLUMNS_GAMES } from '../internal';
 
 const props = defineProps({
+  columns: {
+    type: Object,
+    default: () => ({}),
+  },
+
   rows: {
     type: Array,
     default: () => [],
@@ -35,7 +39,7 @@ const props = defineProps({
 const { t } = useI18n();
 
 const { columns } = useColumns(
-  COLUMNS_GAMES,
+  props.columns,
   null,
   computed(() => ({ offsetName: offsetName(new Date(), null, 'hu') }))
 );
