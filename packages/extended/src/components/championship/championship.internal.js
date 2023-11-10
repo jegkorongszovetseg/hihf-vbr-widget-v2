@@ -6,6 +6,7 @@ import {
   COLUMNS_TEAMS_POWERPLAY,
   COLUMNS_TEAMS_PENALTY_KILLING,
   COLUMNS_FIELD_PLAYERS_PENALTY,
+  COLUMNS_FIELD_PLAYERS,
 } from '@mjsz-vbr-elements/core/columns';
 import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 
@@ -39,6 +40,44 @@ export const ALL_REPORTS_MAP = new Map()
     api: '/v2/standings',
     columns: COLUMNS_STANDINGS_P_3,
     sort: {},
+  })
+  .set('points', {
+    api: '/v2/players-stats',
+    columns: COLUMNS_FIELD_PLAYERS,
+    sort: {
+      sortTarget: 'points',
+      orders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
+    },
+  })
+  .set('goals', {
+    api: '/v2/players-stats',
+    columns: COLUMNS_FIELD_PLAYERS,
+    sort: {
+      sortTarget: 'goals',
+      orders: [
+        { target: 'goals', direction: SORT_STATE_DESCEND },
+        { target: 'assists', direction: SORT_STATE_DESCEND },
+      ],
+    },
+  })
+  .set('assists', {
+    api: '/v2/players-stats',
+    columns: COLUMNS_FIELD_PLAYERS,
+    sort: {
+      sortTarget: 'assists',
+      orders: [
+        { target: 'assists', direction: SORT_STATE_DESCEND },
+        { target: 'goals', direction: SORT_STATE_DESCEND },
+      ],
+    },
+  })
+  .set('plusminus', {
+    api: '/v2/players-stats',
+    columns: COLUMNS_FIELD_PLAYERS,
+    sort: {
+      sortTarget: 'plusMinus',
+      orders: [{ target: 'plusMinus', direction: SORT_STATE_DESCEND }],
+    },
   })
   .set('playerspenalties', {
     api: '/v2/players-penalty',
@@ -85,22 +124,22 @@ export const ALL_REPORTS_MAP = new Map()
 
 export const PLAYERS_REPORTS_SELECT = (t) => {
   return [
-    // {
-    //   name: t('report.points'),
-    //   value: 'points',
-    // },
-    // {
-    //   name: t('report.goals'),
-    //   value: 'goals',
-    // },
-    // {
-    //   name: t('report.assists'),
-    //   value: 'assists',
-    // },
-    // {
-    //   name: '+/-',
-    //   value: 'plusminus',
-    // },
+    {
+      name: t('report.points'),
+      value: 'points',
+    },
+    {
+      name: t('report.goals'),
+      value: 'goals',
+    },
+    {
+      name: t('report.assists'),
+      value: 'assists',
+    },
+    {
+      name: '+/-',
+      value: 'plusminus',
+    },
     {
       name: t('report.penalties'),
       value: 'playerspenalties',

@@ -85,7 +85,7 @@ const state = reactive({
   apiParams: {},
   columns: COLUMNS_SCHEDULE,
   sort: null,
-  report: 'playerspenalties',
+  report: 'points',
 });
 const timezone = toRef(props, 'timezone');
 const { onError } = useError();

@@ -186,7 +186,7 @@ export const convertTeams = (teams) => sort(ascend(prop('teamName')), teams);
 export const setDefaultReport = (params) => {
   if (params.report) return params.report;
   if (params.type) {
-    return params.type === REPORT_TYPE_PLAYERS ? 'playerspenalties' : 'teamPowerplay'; // playerspenalties => points, teamPowerplay =>  teamAttandance
+    return params.type === REPORT_TYPE_PLAYERS ? 'points' : 'teamPowerplay'; // teamPowerplay =>  teamAttandance
   }
-  return 'playerspenalties';
+  return 'points';
 };
