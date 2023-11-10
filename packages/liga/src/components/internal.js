@@ -24,31 +24,6 @@ export const convertSeasons = (seasons) =>
 
 export const convertTeams = (teams) => sort(ascend(prop('teamName')), teams);
 
-// export const NATIONALITY_FLAG_MAP = new Map()
-//   .set('Magyar', 'hu')
-//   .set('Hokimagyar', 'hu')
-//   .set('Román', 'ro')
-//   .set('Amerikai', 'us')
-//   .set('Izraeli', 'il')
-//   .set('Kanadai', 'ca')
-//   .set('Lett', 'lv')
-//   .set('Orosz', 'ru')
-//   .set('Finn', 'fi')
-//   .set('Szlovén', 'si')
-//   .set('Szlovák', 'sk')
-//   .set('Holland', 'nl')
-//   .set('Fehérorosz', 'by')
-//   .set('Cseh', 'cz')
-//   .set('Ukrán', 'ua')
-//   .set('Litván', 'lt')
-//   .set('Olasz', 'it')
-//   .set('Angol', 'gb-eng')
-//   .set('Szerb', 'rs')
-//   .set('Svéd', 'se')
-//   .set('Német', 'de')
-//   .set('Brit', 'gb')
-//   .set('Kazah', 'kz');
-
 export const COLUMNS_PLAYERS = {
   jerseyNr: {
     label: 'table.jerseyNumber.short',
@@ -91,5 +66,100 @@ export const COLUMNS_PLAYERS = {
     tooltip: 'table.birthPlace.tooltip',
     class: 'is-text-right',
     sortOrders: [{ target: 'birthPlace', direction: SORT_STATE_ASCEND }],
+  },
+};
+
+export const COLUMNS_GAMES = {
+  gameDateDate: {
+    label: 'table.gameDate.short',
+    tooltip: 'table.gameDate.tooltip',
+    class: 'is-text-left',
+  },
+  gameDateTime: {
+    label: 'table.gameDateTime.short',
+    tooltip: 'table.gameDateTime.tooltip',
+    class: 'is-text-left',
+  },
+  gameResult: {
+    label: 'table.result.short',
+    tooltip: 'table.result.tooltip',
+    class: 'is-has-image',
+  },
+  opponent: {
+    label: 'table.opponent.short',
+    tooltip: 'table.opponent.tooltip',
+    class: 'is-text-left',
+  },
+  resultType: {
+    label: 'table.resultType.short',
+    tooltip: 'table.resultType.tooltip',
+    class: '',
+  },
+  sog: {
+    label: 'table.sog.short',
+    tooltip: 'table.sog.tooltip',
+    class: 'is-text-left is-text-bold',
+  },
+  sa: {
+    label: 'table.sa.short',
+    tooltip: 'table.sa.tooltip',
+    class: 'is-text-left',
+  },
+  ppgf: {
+    label: 'table.ppgf.short',
+    tooltip: 'table.ppgf.tooltip',
+    class: 'is-text-left',
+  },
+  shga: {
+    label: 'table.shga.short',
+    tooltip: 'table.shga.tooltip',
+    class: 'is-text-left',
+  },
+};
+
+export const COLUMNS_PLAYER_SEASON_STATS = {
+  seasonId: {
+    label: 'table.season.short',
+    tooltip: 'table.season.tooltip',
+  },
+  teamName: {
+    label: 'table.team.short',
+    tooltip: 'table.team.tooltip',
+  },
+  gp: {
+    label: 'table.game.short',
+    tooltip: 'table.game.tooltip',
+  },
+  goals: {
+    label: 'table.goals.short',
+    tooltip: 'table.goals.tooltip',
+  },
+  assists: {
+    label: 'table.assists.short',
+    tooltip: 'table.assists.tooltip',
+  },
+  points: {
+    label: 'table.points.short',
+    tooltip: 'table.points.tooltip',
+  },
+  plusMinus: {
+    label: 'table.plusMinus.short',
+    tooltip: 'table.plusMinus.tooltip',
+  },
+  shoot: {
+    label: 'table.sog.short',
+    tooltip: 'table.sog.tooltip',
+  },
+  shootPercent: {
+    label: 'table.sogPercent.short',
+    tooltip: 'table.sogPercent.tooltip',
+  },
+  pim: {
+    label: 'table.pim.short',
+    tooltip: 'table.pim.tooltip',
+  },
+  pimPerGame: {
+    label: 'table.pimPerGame.short',
+    tooltip: 'table.pimPerGame.tooltip',
   },
 };

@@ -1,7 +1,20 @@
 <script setup>
 import { reactive, computed } from 'vue';
 import { useUrlSearchParams } from '@vueuse/core';
+import { reverse } from 'ramda';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
+import {
+  rawConvert,
+  sortGames,
+  gameDateTime,
+  teamResultType,
+  gameResult,
+  teamOpponent,
+  teamName,
+  getLocalTimezone,
+} from '@mjsz-vbr-elements/core/utils';
+
+const timezone = getLocalTimezone();
 
 const props = defineProps({
   playerId: {
@@ -40,6 +53,17 @@ const { state: playerData } = useServices({
   onError,
 });
 
+const { state: playerSeasonStats } = useServices({
+  options: {
+    path: '/v2/player-season-stats',
+    apiKey: props.apiKey,
+    params: computed(() => ({ playerId: state.playerId })),
+    immediate: true,
+  },
+  transform: (res) => rawConvert(reverse(res), teamName),
+  onError,
+});
+
 const { state: playerGames } = useServices({
   options: {
     path: '/v2/player-games',
@@ -47,10 +71,17 @@ const { state: playerGames } = useServices({
     params: computed(() => ({ championshipId: state.championshipId, playerId: state.playerId })),
     immediate: true,
   },
-  // transform: (res) => transformTeamInfo(res),
+  transform: (res) =>
+    rawConvert(
+      sortGames(res),
+      gameDateTime(timezone, props.locale),
+      teamResultType(state.teamId),
+      gameResult(state.teamId),
+      teamOpponent(state.teamId)
+    ),
   onError,
 });
 </script>
 <template>
-  <slot v-bind="{ playerData, playerGames }"></slot>
+  <slot v-bind="{ playerData, playerGames, playerSeasonStats }"></slot>
 </template>

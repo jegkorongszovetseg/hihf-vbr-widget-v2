@@ -16,6 +16,6 @@ const resolver = `LigaPlayer?playerId={playerId}&championshipId={championshipId}
 <template>
   <div class="p-5 max-w-[1170px] mx-auto">
     <PlayersLiga :locale="store.locale" championship-name="Erste Liga" :external-player-resolver="resolver"></PlayersLiga>
-    <!-- <mjsz-vbr-players-liga :locale="store.locale" championship-name="Erste Liga" /> -->
+    <!-- <mjsz-vbr-players-liga :locale="store.locale" championship-name="Erste Liga" :external-player-resolver="resolver" /> -->
   </div>
 </template>

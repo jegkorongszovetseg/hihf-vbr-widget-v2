@@ -1,9 +1,10 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { ErrorNotice, I18NProvider, ErrorProvider, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
-import { externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
+import { externalTeamLinkResolver, offsetName } from '@mjsz-vbr-elements/core/utils';
 import DataProvider from './DataProvider.vue';
-// import PlayersDataTable from '../common/PlayersDataTable.vue';
+import Games from './Games.vue';
+import Seasons from './Seasons.vue';
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
 
@@ -47,20 +48,18 @@ const tooltipContainer = ref(null);
       <ErrorProvider v-slot:default="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
 
-        <DataProvider
-          :locale="locale"
-          :championship-name="championshipName"
-          :limit="limit"
-          v-slot="{ playerData, playerGames, isLoading }"
-        >
+        <DataProvider :locale="locale" v-slot="{ playerData, playerGames, playerSeasonStats, isLoading }">
           <LoadingIndicator v-if="isLoading" />
 
           <pre>
             {{ playerData }}
           </pre>
-          <pre>
-            {{ playerGames }}
-          </pre>
+          <!-- <pre>
+            {{ playerSeasonStats }}
+          </pre> -->
+          <Seasons :rows="playerSeasonStats" :append-to="tooltipContainer" />
+
+          <Games :rows="playerGames" :append-to="tooltipContainer" />
 
           <div ref="tooltipContainer" />
         </DataProvider>
