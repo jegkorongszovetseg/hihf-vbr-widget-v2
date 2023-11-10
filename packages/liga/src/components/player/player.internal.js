@@ -13,7 +13,9 @@ import {
 export function transformPlayerData(data, locale) {
   return {
     ...data,
-    name: data.nationality.includes('hu') ? `${data.lastname} ${data.firstname}` : `${data.firstname} ${data.lastname}`,
+    name: data.player.nationality.includes('hu')
+      ? `${data.player.lastName} ${data.player.firstName}`
+      : `${data.player.firstName} ${data.player.lastName}`,
     age: yearToNow(data.birthDate, locale),
     position: toUpper(data.position),
   };

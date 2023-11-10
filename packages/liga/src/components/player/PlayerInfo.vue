@@ -14,11 +14,11 @@ defineProps({
 const { t } = useI18n();
 </script>
 <template>
-  <div v-if="!isEmpty(data)">
-    <h2 v-once>{{ data.name }} #{{ data.jerseyNr }}</h2>
-    <div style="display: flex;">
+  <div v-if="!isEmpty(data)" style="text-align: center;">
+    <h2 class="is-heading-1" v-once>{{ data.name }} #{{ data.jerseyNr }}</h2>
+    <div style="display: flex; align-items: center; justify-content: center;">
       {{ data.birthDate }} ({{ t('players.age', { years: data.age }) }}) /
-      <span v-for="flag in data.nationality">
+      <span v-for="flag in data.player.nationality">
         <Image :src="flagResolver(flag)" />
       </span>
       {{ data.birthPlace }} / {{ data.position }} /

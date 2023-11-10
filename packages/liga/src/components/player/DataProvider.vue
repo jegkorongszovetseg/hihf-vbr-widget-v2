@@ -54,7 +54,7 @@ const { state: playerData } = useServices({
   onSuccess: (res) => {
     console.log('Success', res);
     const { position } = res;
-    if (position === 'gk') {
+    if (position.toLowerCase() === 'gk') {
       state.seasonApi = GOALIE_STATS_API;
       state.gamesApi = GOALIE_GAMES_API;
       state.isGoalie = true;

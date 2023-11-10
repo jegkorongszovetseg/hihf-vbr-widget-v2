@@ -53,24 +53,24 @@ const tooltipContainer = ref(null);
         <DataProvider :locale="locale" v-slot="{ playerData, playerGames, playerSeasonStats, gameColumns, isLoading }">
           <LoadingIndicator v-if="isLoading" />
 
-          <div :class="useMainClass('team-image-wrapper')">
-            <div class="is-team-picture">
+          <div :class="useMainClass('main-image-wrapper')" style="--overlay-size: 180px">
+            <div class="is-main-image">
               <Image
-                src="https://api.icehockey.hu/static/api/team-photo/21099.jpg"
+                :src="playerData.playerAction"
                 default-src="https://www.ersteliga.hu/assets/images/logo_liga@2x.png"
               />
             </div>
-            <div class="is-team-logo">
-              <Image :src="playerData.team?.logo" :key="playerData.team?.id" />
+            <div class="is-ovarlay-image">
+              <Image :src="playerData?.player?.picture" :key="playerData.player?.playerId" />
             </div>
           </div>
 
           <PlayerInfo :data="playerData" />
 
-          <pre>
+          <!-- <pre>
             {{ playerData }}
-          </pre>
-          
+          </pre> -->
+
           <Seasons :rows="playerSeasonStats" :append-to="tooltipContainer" />
 
           <Games :rows="playerGames" :columns="gameColumns" :append-to="tooltipContainer" />
