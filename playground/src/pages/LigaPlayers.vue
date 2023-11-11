@@ -10,8 +10,8 @@ import '../../../packages/shared/dist/css/responsive-table.css';
 import '../../../packages/shared/dist/css/table.css';
 import '../../../packages/shared/dist/css/paginator.css';
 
-const playerResolver = `LigaPlayer?playerId={playerId}&championshipId={championshipId}`;
-const teamResolver = `LigaTeam?teamId={playerId}&championshipId={championshipId}`;
+const playerResolver = `LigaPlayer?playerId={player.playerId}&championshipId={championshipId}`;
+const teamResolver = `LigaTeam?teamId={team.id}&championshipId={championshipId}`;
 </script>
 
 <template>
