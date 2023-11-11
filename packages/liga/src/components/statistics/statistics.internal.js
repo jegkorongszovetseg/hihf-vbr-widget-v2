@@ -80,7 +80,7 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('teamAttandance', {
-    api: '/v1/teamAttendancePeriod',
+    api: '/v2/team-attendance',
     columns: COLUMNS_TEAM_ATTENDANCE,
     sort: {
       sortTarget: 'totalAttendanceAvg',
@@ -88,7 +88,7 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('teamFairplay', {
-    api: '/v1/teamFairplayPeriod',
+    api: '/v2/team-fairplay',
     columns: COLUMNS_TEAMS_FAIRPLAY,
     sort: {
       sortTarget: 'pim',
@@ -112,11 +112,11 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('teamScoringEfficiency', {
-    api: '/v1/standings',
+    api: '/v2/team-scoring-efficiency',
     columns: COLUMNS_SCORING_EFFICIENCY,
     sort: {
-      sortTarget: 'GFShots',
-      orders: [{ target: 'GFShots', direction: SORT_STATE_DESCEND }],
+      sortTarget: 'sp',
+      orders: [{ target: 'sp', direction: SORT_STATE_DESCEND }],
     },
   });
 
@@ -155,14 +155,14 @@ export const PLAYERS_REPORTS_SELECT = (t) => {
 
 export const TEAMS_REPORTS_SELECT = (t) => {
   return [
-    // {
-    //   name: t('report.teamAttendance'),
-    //   value: 'teamAttandance',
-    // },
-    // {
-    //   name: t('report.teamFairplay'),
-    //   value: 'teamFairplay',
-    // },
+    {
+      name: t('report.teamAttendance'),
+      value: 'teamAttandance',
+    },
+    {
+      name: t('report.teamFairplay'),
+      value: 'teamFairplay',
+    },
     {
       name: t('report.teamPowerplay'),
       value: 'teamPowerplay',
@@ -171,10 +171,10 @@ export const TEAMS_REPORTS_SELECT = (t) => {
       name: t('report.teamPenaltyKilling'),
       value: 'teamPenaltiKilling',
     },
-    // {
-    //   name: t('report.teamScoringEfficiency'),
-    //   value: 'teamScoringEfficiency',
-    // },
+    {
+      name: t('report.teamScoringEfficiency'),
+      value: 'teamScoringEfficiency',
+    },
   ];
 };
 
@@ -186,7 +186,7 @@ export const convertTeams = (teams) => sort(ascend(prop('teamName')), teams);
 export const setDefaultReport = (params) => {
   if (params.report) return params.report;
   if (params.type) {
-    return params.type === REPORT_TYPE_PLAYERS ? 'points' : 'teamPowerplay'; // teamPowerplay =>  teamAttandance
+    return params.type === REPORT_TYPE_PLAYERS ? 'points' : 'teamAttandance';
   }
   return 'points';
 };

@@ -3,10 +3,12 @@ import {
   COLUMNS_GOALIES,
   COLUMNS_SCHEDULE,
   COLUMNS_STANDINGS_P_3,
+  COLUMNS_FIELD_PLAYERS,
+  COLUMNS_TEAMS_FAIRPLAY,
   COLUMNS_TEAMS_POWERPLAY,
+  COLUMNS_SCORING_EFFICIENCY,
   COLUMNS_TEAMS_PENALTY_KILLING,
   COLUMNS_FIELD_PLAYERS_PENALTY,
-  COLUMNS_FIELD_PLAYERS,
 } from '@mjsz-vbr-elements/core/columns';
 import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 
@@ -105,6 +107,14 @@ export const ALL_REPORTS_MAP = new Map()
       orders: [{ target: 'svsPercent', direction: SORT_STATE_DESCEND }],
     },
   })
+  .set('teamFairplay', {
+    api: '/v2/team-fairplay',
+    columns: COLUMNS_TEAMS_FAIRPLAY,
+    sort: {
+      sortTarget: 'pim',
+      orders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
+    },
+  })
   .set('teamPenaltiKilling', {
     api: '/v2/team-powerplay',
     columns: COLUMNS_TEAMS_PENALTY_KILLING,
@@ -119,6 +129,14 @@ export const ALL_REPORTS_MAP = new Map()
     sort: {
       sortTarget: 'ppPercent',
       orders: [{ target: 'ppPercent', direction: SORT_STATE_DESCEND }],
+    },
+  })
+  .set('teamScoringEfficiency', {
+    api: '/v2/team-scoring-efficiency',
+    columns: COLUMNS_SCORING_EFFICIENCY,
+    sort: {
+      sortTarget: 'sp',
+      orders: [{ target: 'sp', direction: SORT_STATE_DESCEND }],
     },
   });
 
@@ -161,10 +179,10 @@ export const TEAMS_REPORTS_SELECT = (t) => {
     //   name: t('report.teamAttendance'),
     //   value: 'teamAttandance',
     // },
-    // {
-    //   name: t('report.teamFairplay'),
-    //   value: 'teamFairplay',
-    // },
+    {
+      name: t('report.teamFairplay'),
+      value: 'teamFairplay',
+    },
     {
       name: t('report.teamPowerplay'),
       value: 'teamPowerplay',
@@ -173,9 +191,9 @@ export const TEAMS_REPORTS_SELECT = (t) => {
       name: t('report.teamPenaltyKilling'),
       value: 'teamPenaltiKilling',
     },
-    // {
-    //   name: t('report.teamScoringEfficiency'),
-    //   value: 'teamScoringEfficiency',
-    // },
+    {
+      name: t('report.teamScoringEfficiency'),
+      value: 'teamScoringEfficiency',
+    },
   ];
 };
