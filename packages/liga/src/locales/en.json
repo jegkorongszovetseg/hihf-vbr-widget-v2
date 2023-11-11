@@ -75,6 +75,36 @@
     "default": "Overall"
   },
   "nationality": {
-    "hu": "Hungarian"
+    "hu": "Hungarian",
+    "ro": "Romanian",
+    "us": "American",
+    "il": "Izraelian",
+    "ca": "Canadian",
+    "lv": "Latvian",
+    "ee": "Estonian",
+    "ru": "Russian",
+    "fi": "Finnish",
+    "si": "Slovenian",
+    "sk": "Slovakian",
+    "nl": "Netherlands",
+    "by": "Belarusian",
+    "cz": "Czech",
+    "ua": "Ukrainian",
+    "lt": "Lithuanian",
+    "it": "Italian",
+    "gb-eng": "English",
+    "rs": "Serbian",
+    "se": "Swedish",
+    "de": "German",
+    "gb": "British",
+    "kz": "Kazah",
+    "dk": "Danish",
+    "pl": "Polish",
+    "at": "Austrian",
+    "ch": "Swiss",
+    "fr": "French",
+    "es": "Spanish",
+    "hr": "Croatian",
+    "no": "Norwegian"
   }
 }
