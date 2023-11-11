@@ -71,11 +71,11 @@ const onSort = (payload) => emit('sort', payload);
       </template>
 
       <template v-slot:cell-name="{ row }">
-        <a :href="playerResolver(row.player?.playerId, championshipId)" v-text="row.name" />
+        <a :href="playerResolver({ playerId: row.player.playerId, championshipId })" v-text="row.name" />
       </template>
 
       <template v-slot:cell-teamName="{ row }">
-        <a :href="teamResolver(row.team?.id, championshipId)" v-text="row.teamName" />
+        <a :href="teamResolver({ teamId: row.team?.id, championshipId })" v-text="row.teamName" />
       </template>
 
       <template v-slot:cell-nationality="{ row }">

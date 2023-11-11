@@ -17,14 +17,14 @@ export const externalTeamLinkResolver = (rawResolver, params = {}) => {
   const resolver = getSettingVariable('teamResolver') || rawResolver;
   if (typeof resolver === 'function') return resolver(params);
   if (resolver) return encodeURI(templateReplacer(resolver, params));
-  return encodeURI(DEFAULT_EXTERNAL_TEAM_URL + params);
+  return encodeURI(templateReplacer(DEFAULT_EXTERNAL_TEAM_URL, params));
 };
 
 export const externalPlayerLinkResolver = (rawResolver, params = {}) => {
   const resolver = getSettingVariable('playerResolver') || rawResolver;
-  if (typeof resolver === 'function') return resolver(playerId, params);
+  if (typeof resolver === 'function') return resolver(params);
   if (resolver) return encodeURI(templateReplacer(resolver, params));
-  return encodeURI(DEFAULT_EXTERNAL_PLAYER_URL + params);
+  return encodeURI(templateReplacer(DEFAULT_EXTERNAL_PLAYER_URL, params));
 };
 
 export const flagResolver = (countryCode, type = '1x1') => `${FLAG_BASE_URL}/flag:${countryCode}-${type}.svg`;

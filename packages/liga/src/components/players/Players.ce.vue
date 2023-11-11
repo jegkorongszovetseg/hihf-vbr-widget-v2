@@ -8,7 +8,7 @@ import {
   SeasonSelector,
 } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
-import { externalPlayerLinkResolver } from '@mjsz-vbr-elements/core/utils';
+import { externalPlayerLinkResolver, externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import DataProvider from './DataProvider.vue';
 import PlayersDataTable from '../common/PlayersDataTable.vue';
 import { COLUMNS_PLAYERS } from '../internal';
@@ -51,8 +51,8 @@ const props = defineProps({
 
 const tooltipContainer = ref(null);
 
-const externalPlayerLink = (playerId, championshipId) =>
-  externalPlayerLinkResolver(props.externalPlayerResolver, { playerId, championshipId });
+const externalPlayerLink = (params) => externalPlayerLinkResolver(props.externalPlayerResolver, params);
+const externalTeamLink = (params) => externalTeamLinkResolver(props.externalTeamResolver, params);
 </script>
 
 <template>
@@ -100,6 +100,7 @@ const externalPlayerLink = (playerId, championshipId) =>
             :is-loading="isLoading"
             :championship-id="championshipId"
             :player-resolver="externalPlayerLink"
+            :team-resolver="externalTeamLink"
             @sort="onSort"
           />
 

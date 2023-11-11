@@ -4,8 +4,10 @@ export const DEFAULT_EXTERNAL_BASE_URL = 'https://www.jegkorongszovetseg.hu/even
 
 export const DEFAULT_PORTRAIT_IMAGE_URL = 'https://jegkorongszovetseg.hu/assets/images/player_blank.png';
 
-export const DEFAULT_EXTERNAL_PLAYER_URL = 'https://www.ersteliga.hu/stats/player/';
-export const DEFAULT_EXTERNAL_TEAM_URL = 'https://www.ersteliga.hu/stats/team/';
+export const DEFAULT_EXTERNAL_PLAYER_URL =
+  'https://www.ersteliga.hu/stats/player/?playerId={playerId}&championshipId={championshipId}';
+export const DEFAULT_EXTERNAL_TEAM_URL =
+  'https://www.ersteliga.hu/stats/team/?playerId={playerId}&championshipId={championshipId}';
 
 export const FLAG_BASE_URL = 'https://api.icehockey.hu/static/api/flag';
 
