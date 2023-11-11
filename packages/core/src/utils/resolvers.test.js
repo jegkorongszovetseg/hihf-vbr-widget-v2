@@ -1,6 +1,5 @@
 import { describe, expect, test, vi, beforeEach, afterEach } from 'vitest';
 import { externalGameLinkResolver, externalTeamLinkResolver, externalPlayerLinkResolver } from './resolvers';
-// import { DEFAULT_EXTERNAL_TEAM_URL } from '../constants';
 
 vi.mock('../constants.js', () => ({
   DEFAULT_EXTERNAL_TEAM_URL: 'http://example.com/team/{id}',
