@@ -79,18 +79,27 @@ const onSort = (payload) => emit('sort', payload);
       </template>
 
       <template v-slot:cell-nationality="{ row }">
-        <template v-for="nationality in row.nationalityCode" :key="nationality">
-          <FloatingPanel
-            placement="top"
-            :content="t(`nationality.${nationality}`)"
-            :append-to="appendTo"
-            v-slot:default="{ setRef, show, hide }"
-          >
-            <div :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">
-              <Image :src="flagResolver(nationality)" />
-            </div>
-          </FloatingPanel>
-        </template>
+        <div class="g-row">
+          <template v-for="nationality in row.nationalityCode" :key="nationality">
+            <FloatingPanel
+              placement="top"
+              :content="t(`nationality.${nationality}`)"
+              :append-to="appendTo"
+              v-slot:default="{ setRef, show, hide }"
+            >
+              <div
+                :ref="setRef"
+                class="is-rounded is-w-5"
+                @mouseenter="show"
+                @mouseleave="hide"
+                @focus="show"
+                @blur="hide"
+              >
+                <Image :src="flagResolver(nationality)" />
+              </div>
+            </FloatingPanel>
+          </template>
+        </div>
       </template>
 
       <template v-slot:cell-position="{ row }"> {{ row.position?.toUpperCase() }} </template>

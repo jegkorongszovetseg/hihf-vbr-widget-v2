@@ -28,6 +28,7 @@ export const COLUMNS_PLAYERS = {
   jerseyNr: {
     label: 'table.jerseyNumber.short',
     tooltip: 'table.jerseyNumber.tooltip',
+    class: 'is-text-bold is-text-xl',
     sortOrders: [{ target: 'jerseyNr', direction: SORT_STATE_ASCEND }],
   },
   playerPortrait: {
@@ -53,7 +54,6 @@ export const COLUMNS_PLAYERS = {
   nationality: {
     label: 'table.nationality.short',
     tooltip: 'table.nationality.tooltip',
-    class: 'is-horizontal-content',
   },
   birthDate: {
     label: 'table.birthDate.short',

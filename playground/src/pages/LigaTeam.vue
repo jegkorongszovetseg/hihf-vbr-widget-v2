@@ -4,7 +4,7 @@ import { TeamLiga } from '@mjsz-vbr-elements/liga';
 import '../../../packages/shared/dist/css/common.css';
 import '../../../packages/shared/dist/css/typography.css';
 import '../../../packages/shared/dist/css/cards.css';
-// import '../../../packages/shared/dist/css/grid.css';
+import '../../../packages/shared/dist/css/grid.css';
 import '../../../packages/shared/dist/css/forms.css';
 import '../../../packages/shared/dist/css/teams.css';
 import '../../../packages/shared/dist/css/responsive-table.css';

@@ -87,7 +87,7 @@ const externalPlayerLink = (playerId, championshipId) =>
             @on-change-season="changeSeason"
           >
             <div>
-              <label for="player" :class="useMainClass('label')">{{ t('name') }}</label>
+              <label for="player" :class="useMainClass('label')">{{ t('selection.filterName') }}</label>
               <input id="player" type="text" :class="useMainClass('base-input')" :value="query" @input="onInput" />
             </div>
           </SeasonSelector>
@@ -111,7 +111,7 @@ const externalPlayerLink = (playerId, championshipId) =>
               :range-length="5"
               @change="onPaginatorChange"
             />
-            <div>{{ range.join('-') }} / {{ players.totalItems }}</div>
+            <div v-if="players.totalItems > 0">{{ range.join('-') }} / {{ players.totalItems }}</div>
           </div>
 
           <div ref="tooltipContainer" />

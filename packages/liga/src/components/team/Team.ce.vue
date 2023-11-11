@@ -92,6 +92,7 @@ const props = defineProps({
   </div>
 </template>
 
+<style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/teams.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>

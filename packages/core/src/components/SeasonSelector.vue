@@ -48,7 +48,7 @@ function changeSection(id) {
 }
 </script>
 <template>
-  <div class="g-row">
+  <div class="g-row g-gap-normal mb-5">
     <div>
       <label for="season" :class="useMainClass('label')">{{ t('selection.season') }}</label>
       <BaseSelect id="season" v-model="championshipId">
