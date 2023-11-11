@@ -136,10 +136,12 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
   seasonId: {
     label: 'table.season.short',
     tooltip: 'table.season.tooltip',
+    class: 'is-text-left',
   },
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
+    class: 'is-text-left is-w-auto',
   },
   gp: {
     label: 'table.game.short',

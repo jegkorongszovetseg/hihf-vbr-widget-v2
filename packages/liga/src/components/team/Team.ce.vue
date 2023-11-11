@@ -43,15 +43,15 @@ const props = defineProps({
 
         <DataProvider :championship-id="championshipId" :team-id="teamId" v-slot:default="{ teamInfo, page, roster, games, onChangePage }">
           <h1 class="is-heading-1 is-uppercase is-mb-5">{{ teamInfo?.team?.longName }}</h1>
-          <div :class="useMainClass('team-image-wrapper')">
-            <div class="is-team-picture">
+          <div :class="useMainClass('main-image-wrapper')" style="--overlay-radius: 0px">
+            <div class="is-main-image">
               <Image
-                src="https://api.icehockey.hu/static/api/team-photo/21099.jpg"
+                :src="teamInfo?.team?.teamPhoto"
                 default-src="https://www.ersteliga.hu/assets/images/logo_liga@2x.png"
               />
             </div>
-            <div class="is-team-logo">
-              <Image src="https://api.icehockey.hu/static/api/team-logo/21908.png" />
+            <div class="is-ovarlay-image">
+              <Image :src="teamInfo?.team?.logo" :key="teamInfo?.team?.id" />
             </div>
           </div>
 
@@ -95,6 +95,7 @@ const props = defineProps({
 <style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/teams.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
