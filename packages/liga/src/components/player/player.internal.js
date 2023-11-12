@@ -1,4 +1,4 @@
-import { reverse, toUpper } from 'ramda';
+import { reverse, toUpper, filter, propEq } from 'ramda';
 import {
   rawConvert,
   sortGames,
@@ -22,6 +22,9 @@ export function transformPlayerData(data, locale) {
 }
 
 export const transformSeasonStats = (data) => rawConvert(reverse(data), teamName);
+
+export const transformCurrentSeasonStats = (championshipId, data) =>
+  filter(propEq(championshipId, 'championshipId'))(data);
 
 export const transformGames = (data, state, locale, timezone) =>
   rawConvert(

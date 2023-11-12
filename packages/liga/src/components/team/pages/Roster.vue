@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { omit } from 'ramda';
 import { useI18n, useColumns } from '@mjsz-vbr-elements/core/composables';
-import PlayersDataTable from '../../common/PlayersDataTable.vue'
+import PlayersDataTable from '../../common/PlayersDataTable.vue';
 import { COLUMNS_PLAYERS } from '../../internal';
 
 defineProps({
@@ -15,6 +15,16 @@ defineProps({
     type: Object,
     default: () => ({}),
   },
+
+  championshipId: {
+    type: String,
+    default: '',
+  },
+
+  externalPlayerResolver: {
+    type: String,
+    default: '',
+  },
 });
 
 const tooltipContainer = ref(null);
@@ -26,7 +36,13 @@ const { columns } = useColumns(omit(['teamName'], COLUMNS_PLAYERS));
 <template>
   <template v-for="(players, key) in data" :key="key">
     <h2 class="is-heading-2">{{ t(`teams.${key}`) }}</h2>
-    <PlayersDataTable :rows="players" :columns="columns" :append-to="tooltipContainer" />
+    <PlayersDataTable
+      :rows="players"
+      :columns="columns"
+      :championship-id="championshipId"
+      :player-resolver="externalPlayerResolver"
+      :append-to="tooltipContainer"
+    />
   </template>
 
   <div ref="tooltipContainer"></div>

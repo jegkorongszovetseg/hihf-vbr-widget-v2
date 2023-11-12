@@ -6,6 +6,7 @@ import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import DataProvider from './DataProvider.vue';
 import Games from './Games.vue';
 import Seasons from './Seasons.vue';
+import SeasonsStats from './SeasonStats.vue';
 import PlayerInfo from './PlayerInfo.vue';
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
@@ -50,7 +51,7 @@ const tooltipContainer = ref(null);
       <ErrorProvider v-slot:default="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
 
-        <DataProvider :locale="locale" v-slot="{ playerData, playerGames, playerSeasonStats, gameColumns, isLoading }">
+        <DataProvider :locale="locale" v-slot="{ playerData, playerGames, playerSeasonStats, currentSeasonStats, gameColumns, isLoading }">
           <LoadingIndicator v-if="isLoading" />
 
           <div :class="useMainClass('main-image-wrapper')" style="--overlay-size: 180px">
@@ -70,6 +71,8 @@ const tooltipContainer = ref(null);
           <!-- <pre>
             {{ playerData }}
           </pre> -->
+
+          <SeasonsStats :rows="currentSeasonStats" :append-to="tooltipContainer" />
 
           <Seasons :rows="playerSeasonStats" :append-to="tooltipContainer" />
 

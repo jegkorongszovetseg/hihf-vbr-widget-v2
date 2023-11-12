@@ -5,7 +5,12 @@ import { omit } from 'ramda';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
 import { getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
 import { COLUMNS_GAMES } from '../internal';
-import { transformPlayerData, transformSeasonStats, transformGames } from './player.internal';
+import {
+  transformPlayerData,
+  transformSeasonStats,
+  transformGames,
+  transformCurrentSeasonStats,
+} from './player.internal';
 
 const PLAYER_SEASON_STATS_API = '/v2/player-season-stats';
 const GOALIE_STATS_API = '/v2/goalie-season-stats';
@@ -85,6 +90,8 @@ const { state: playerGames, execute: fetchGames } = useServices({
   onError,
 });
 
+const currentSeasonStats = computed(() => transformCurrentSeasonStats(3451, playerSeasonStats.value));
+
 const gameColumns = computed(() =>
   state.isGoalie
     ? omit(['ppgf', 'shga'], COLUMNS_GAMES)
@@ -97,5 +104,5 @@ function fetchData() {
 }
 </script>
 <template>
-  <slot v-bind="{ playerData, playerGames, playerSeasonStats, gameColumns }"></slot>
+  <slot v-bind="{ playerData, playerGames, playerSeasonStats, currentSeasonStats, gameColumns }"></slot>
 </template>

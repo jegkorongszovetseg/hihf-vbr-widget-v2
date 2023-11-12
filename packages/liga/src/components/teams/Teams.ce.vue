@@ -33,7 +33,7 @@ const props = defineProps({
 
   externalTeamResolver: Function,
 });
-console.log(typeof props.externalTeamResolver, props.externalTeamResolver);
+
 const externalTeamLink = (teamId, championshipId) =>
   externalTeamLinkResolver(props.externalTeamResolver, { teamId, championshipId });
 </script>

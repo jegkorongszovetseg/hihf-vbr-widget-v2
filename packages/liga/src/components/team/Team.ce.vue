@@ -1,6 +1,7 @@
 <script setup>
 import { ErrorProvider, ErrorNotice, I18NProvider, Image } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { externalPlayerLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import DataProvider from './DataProvider.vue';
 import PageInfo from './pages/Info.vue';
 import PageRoster from './pages/Roster.vue';
@@ -32,7 +33,14 @@ const props = defineProps({
     type: String,
     default: '',
   },
+
+  externalPlayerResolver: {
+    type: String,
+    default: '',
+  },
 });
+
+const externalPlayerLink = (params) => externalPlayerLinkResolver(props.externalPlayerResolver, params);
 </script>
 
 <template>
@@ -41,7 +49,11 @@ const props = defineProps({
       <ErrorProvider v-slot:default="{ hasError, error }">
         <ErrorNotice v-if="hasError" :error="error" />
 
-        <DataProvider :championship-id="championshipId" :team-id="teamId" v-slot:default="{ teamInfo, page, roster, games, onChangePage }">
+        <DataProvider
+          :championship-id="props.championshipId"
+          :team-id="teamId"
+          v-slot:default="{ teamInfo, championshipId, page, roster, games, onChangePage }"
+        >
           <h1 class="is-heading-1 is-uppercase is-mb-5">{{ teamInfo?.team?.longName }}</h1>
           <div :class="useMainClass('main-image-wrapper')" style="--overlay-radius: 0px">
             <div class="is-main-image">
@@ -55,7 +67,7 @@ const props = defineProps({
             </div>
           </div>
 
-          <div>
+          <div class="is-mt-5">
             <button
               :class="[useMainClass('tab-button'), { 'is-active': page === PAGE_INFO }]"
               @click="onChangePage(PAGE_INFO)"
@@ -85,7 +97,12 @@ const props = defineProps({
           <PageInfo v-if="page === PAGE_INFO" :data="teamInfo.organizationInfo" />
           <PageGames v-if="page === PAGE_GAMES" :data="games" />
           <Statistics v-if="page === PAGE_PLAYER_STATS" />
-          <PageRoster v-if="page === PAGE_ROSTER" :data="roster" />
+          <PageRoster
+            v-if="page === PAGE_ROSTER"
+            :data="roster"
+            :championship-id="championshipId"
+            :external-player-resolver="externalPlayerLink"
+          />
         </DataProvider>
       </ErrorProvider>
     </I18NProvider>
