@@ -4,6 +4,6 @@ import { store } from '../store.js';
 
 <template>
   <div class="p-5">
-    <mjsz-vbr-team-attendance :locale="store.locale" championship-id="3314" division="Alapszakasz" />
+    <mjsz-vbr-team-attendance :locale="store.locale" championship-id="3450" division="Alapszakasz" />
   </div>
 </template>

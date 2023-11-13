@@ -1,5 +1,5 @@
 <script setup>
-import { computed, unref } from 'vue';
+import { computed, unref, ref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { baseProps, teamStatsProps } from '@mjsz-vbr-elements/core';
 import { fetchVBRData, useSort, useErrorProvider } from '@mjsz-vbr-elements/core/composables';
@@ -7,19 +7,22 @@ import { SORT_STATE_DESCEND, COLUMNS_SCORING_EFFICIENCY } from '@mjsz-vbr-elemen
 import { convert, externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { StatisticsTable, ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
 
+const columns = COLUMNS_SCORING_EFFICIENCY;
+
 const props = defineProps({
   ...baseProps,
   ...teamStatsProps,
 });
 
+const tooltipContainer = ref(null);
+
 const { onError, error, hasError } = useErrorProvider();
 
-const columns = COLUMNS_SCORING_EFFICIENCY;
 const locale = computed(() => props.locale);
 
 const { state: rows, isLoading } = useAsyncState(
   () =>
-    fetchVBRData('/v1/standings', props.apiKey, {
+    fetchVBRData('/v2/team-scoring-efficiency', props.apiKey, {
       championshipId: Number(props.championshipId),
       division: props.division,
     }),
@@ -30,8 +33,8 @@ const { state: rows, isLoading } = useAsyncState(
 );
 
 const { sort, change: onSort } = useSort({
-  sortTarget: 'GFShots',
-  orders: [{ target: 'GFShots', direction: SORT_STATE_DESCEND }],
+  sortTarget: 'sp',
+  orders: [{ target: 'sp', direction: SORT_STATE_DESCEND }],
 });
 
 const convertedRows = computed(() => {
@@ -53,8 +56,11 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
         :sort="sort"
         :external-team-resolver="resolveExternalTeamLink"
         :is-team-linked="isTeamLinked"
+        :append-to="tooltipContainer"
         @sort="onSort"
       />
+
+      <div ref="tooltipContainer" />
     </I18NProvider>
   </div>
 </template>

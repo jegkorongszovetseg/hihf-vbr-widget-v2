@@ -36,6 +36,23 @@
     "Elődöntő2": "Elődöntő 2",
     "Döntő": "Döntő"
   },
+  "teams": {
+    "tabs": {
+      "teamInfo": "Információk",
+      "games": "Mérkőzések"
+    },
+    "goalies": "Kapusok",
+    "defenders": "Védők",
+    "forwards": "Támadók",
+    "fieldPlayers": "Mezőnyjátékosok",
+    "games": "Lejátszott mérkőzések",
+    "teamInfo": "Szervezeti Információk",
+    "roster": "Játékoskeret",
+    "playerStats": "Játékos statisztikák",
+    "info": {
+      "organizationName": "Szervezet neve:"
+    }
+  },
   "standings": {
     "live": "Élő",
     "default": "Összesített"

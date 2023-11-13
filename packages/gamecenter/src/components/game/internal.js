@@ -67,7 +67,7 @@ export const PLAYER_STATS_COLUMNS = {
   shots: {
     label: 'table.sog.short',
     tooltip: 'table.sog.tooltip',
-    sortOrders: [{ target: 'shoot', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'shots', direction: SORT_STATE_DESCEND }],
   },
   pim: {
     label: 'table.pim.short',

@@ -6,7 +6,6 @@ import _isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import _isBetween from 'dayjs/plugin/isBetween';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import 'dayjs/locale/hu';
-import { stringPadLeft } from './string.js';
 import { LOCALE_FOR_LANG } from '../constants.js';
 
 dayjs.extend(utc);
@@ -46,7 +45,13 @@ export const convertMinToSec = (minutes) => {
 export const convertSecToMin = (duration) => {
   const mins = ~~(duration / 60);
   const secs = ~~duration % 60;
-  return stringPadLeft(mins, '0', 2) + ':' + stringPadLeft(secs, '0', 2);
+  return [mins.toString().padStart(2, '0'), secs.toString().padStart(2, '0')].join(':');
+};
+
+export const convertMinToMinSec = (duration) => {
+  const minutes = Math.trunc(duration);
+  const seconds = Math.round(((duration - minutes) / 10) * 60 * 10);
+  return [minutes.toString().padStart(2, '0'), seconds.toString().padStart(2, '0')].join(':');
 };
 
 export const isSameOrBefore = (date, unit = 'day') => {

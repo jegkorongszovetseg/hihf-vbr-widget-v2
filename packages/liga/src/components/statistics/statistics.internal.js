@@ -1,7 +1,6 @@
 import { ascend, compose, descend, map, pick, prop, sort } from 'ramda';
-// import { SORT_STATE_DESCEND } from '@vbr-widget/core';
+import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 import {
-  SORT_STATE_DESCEND,
   COLUMNS_FIELD_PLAYERS,
   COLUMNS_FIELD_PLAYERS_PENALTY,
   COLUMNS_GOALIES,
@@ -10,38 +9,44 @@ import {
   COLUMNS_TEAMS_PENALTY_KILLING,
   COLUMNS_TEAMS_POWERPLAY,
   COLUMNS_TEAM_ATTENDANCE,
-} from '@mjsz-vbr-elements/core';
+} from '@mjsz-vbr-elements/core/columns';
 
 export const REPORT_TYPE_PLAYERS = 'players';
 export const REPORT_TYPE_TEAMS = 'teams';
 
 export const REPORTS_MAP = new Map()
   .set('points', {
-    api: '/v1/playersStatsPeriod',
+    api: '/v2/players-stats',
     columns: COLUMNS_FIELD_PLAYERS,
     sort: {
-      sortTarget: 'point',
-      orders: [{ target: 'point', direction: SORT_STATE_DESCEND }],
+      sortTarget: 'points',
+      orders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
     },
   })
   .set('goals', {
-    api: '/v1/playersStatsPeriod',
+    api: '/v2/players-stats',
     columns: COLUMNS_FIELD_PLAYERS,
     sort: {
-      sortTarget: 'g',
-      orders: [{ target: 'g', direction: SORT_STATE_DESCEND }],
+      sortTarget: 'goals',
+      orders: [
+        { target: 'goals', direction: SORT_STATE_DESCEND },
+        { target: 'assists', direction: SORT_STATE_DESCEND },
+      ],
     },
   })
   .set('assists', {
-    api: '/v1/playersStatsPeriod',
+    api: '/v2/players-stats',
     columns: COLUMNS_FIELD_PLAYERS,
     sort: {
-      sortTarget: 'a',
-      orders: [{ target: 'a', direction: SORT_STATE_DESCEND }],
+      sortTarget: 'assists',
+      orders: [
+        { target: 'assists', direction: SORT_STATE_DESCEND },
+        { target: 'goals', direction: SORT_STATE_DESCEND },
+      ],
     },
   })
   .set('plusminus', {
-    api: '/v1/playersStatsPeriod',
+    api: '/v2/players-stats',
     columns: COLUMNS_FIELD_PLAYERS,
     sort: {
       sortTarget: 'plusMinus',
@@ -49,7 +54,7 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('playerspenalties', {
-    api: '/v1/playersPenaltyPeriod',
+    api: '/v2/players-penalty',
     columns: COLUMNS_FIELD_PLAYERS_PENALTY,
     sort: {
       sortTarget: 'pim',
@@ -57,7 +62,8 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('goalies', {
-    api: '/v1/playersGoaliePeriod',
+    api: '/v2/players-goalie',
+    params: { more: true },
     columns: COLUMNS_GOALIES,
     sort: {
       sortTarget: 'svsPercent',
@@ -65,7 +71,8 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('goaliesunderlimit', {
-    api: '/v1/playersGoalieUnderPeriod',
+    api: '/v2/players-goalie',
+    params: { less: true },
     columns: COLUMNS_GOALIES,
     sort: {
       sortTarget: 'svsPercent',
@@ -73,7 +80,7 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('teamAttandance', {
-    api: '/v1/teamAttendancePeriod',
+    api: '/v2/team-attendance',
     columns: COLUMNS_TEAM_ATTENDANCE,
     sort: {
       sortTarget: 'totalAttendanceAvg',
@@ -81,7 +88,7 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('teamFairplay', {
-    api: '/v1/teamFairplayPeriod',
+    api: '/v2/team-fairplay',
     columns: COLUMNS_TEAMS_FAIRPLAY,
     sort: {
       sortTarget: 'pim',
@@ -89,7 +96,7 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('teamPenaltiKilling', {
-    api: '/v1/teamPowerPlayPeriod',
+    api: '/v2/team-powerplay',
     columns: COLUMNS_TEAMS_PENALTY_KILLING,
     sort: {
       sortTarget: 'pkPercent',
@@ -97,7 +104,7 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('teamPowerplay', {
-    api: '/v1/teamPowerPlayPeriod',
+    api: '/v2/team-powerplay',
     columns: COLUMNS_TEAMS_POWERPLAY,
     sort: {
       sortTarget: 'ppPercent',
@@ -105,11 +112,11 @@ export const REPORTS_MAP = new Map()
     },
   })
   .set('teamScoringEfficiency', {
-    api: '/v1/standings',
+    api: '/v2/team-scoring-efficiency',
     columns: COLUMNS_SCORING_EFFICIENCY,
     sort: {
-      sortTarget: 'GFShots',
-      orders: [{ target: 'GFShots', direction: SORT_STATE_DESCEND }],
+      sortTarget: 'sp',
+      orders: [{ target: 'sp', direction: SORT_STATE_DESCEND }],
     },
   });
 
@@ -157,12 +164,12 @@ export const TEAMS_REPORTS_SELECT = (t) => {
       value: 'teamFairplay',
     },
     {
-      name: t('report.teamPenaltyKilling'),
-      value: 'teamPenaltiKilling',
-    },
-    {
       name: t('report.teamPowerplay'),
       value: 'teamPowerplay',
+    },
+    {
+      name: t('report.teamPenaltyKilling'),
+      value: 'teamPenaltiKilling',
     },
     {
       name: t('report.teamScoringEfficiency'),

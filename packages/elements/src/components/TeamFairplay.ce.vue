@@ -1,5 +1,5 @@
 <script setup>
-import { computed, unref } from 'vue';
+import { computed, unref, ref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { baseProps, teamStatsProps } from '@mjsz-vbr-elements/core';
 import { fetchVBRData, useSort, useErrorProvider } from '@mjsz-vbr-elements/core/composables';
@@ -7,19 +7,22 @@ import { convert } from '@mjsz-vbr-elements/core/utils';
 import { COLUMNS_TEAMS_FAIRPLAY, SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 import { StatisticsTable, ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
 
+const columns = COLUMNS_TEAMS_FAIRPLAY;
+
 const props = defineProps({
   ...baseProps,
   ...teamStatsProps,
 });
 
+const tooltipContainer = ref(null);
+
 const { onError, error, hasError } = useErrorProvider();
 
-const columns = COLUMNS_TEAMS_FAIRPLAY;
 const locale = computed(() => props.locale);
 
 const { state: rows, isLoading } = useAsyncState(
   () =>
-    fetchVBRData('/v1/teamFairplayPeriod', props.apiKey, {
+    fetchVBRData('/v2/team-fairplay', props.apiKey, {
       championshipId: Number(props.championshipId),
       division: props.division,
     }),
@@ -53,8 +56,11 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
         :sort="sort"
         :external-team-resolver="resolveExternalTeamLink"
         :is-team-linked="isTeamLinked"
+        :append-to="tooltipContainer"
         @sort="onSort"
       />
+
+      <div ref="tooltipContainer" />
     </I18NProvider>
   </div>
 </template>

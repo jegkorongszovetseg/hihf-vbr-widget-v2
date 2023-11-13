@@ -1,9 +1,9 @@
 <script setup>
-import { computed, unref } from 'vue';
+import { computed, ref, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { baseProps, teamStatsProps } from '@mjsz-vbr-elements/core';
 import { fetchVBRData, useSort, useErrorProvider } from '@mjsz-vbr-elements/core/composables';
-import { convert, convertTimes, rawConvert, externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
+import { convert, convertTimesSecToMin, rawConvert, externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { SORT_STATE_DESCEND, COLUMNS_TEAMS_POWERPLAY } from '@mjsz-vbr-elements/core';
 import { I18NProvider, ErrorNotice, StatisticsTable } from '@mjsz-vbr-elements/core/components';
 
@@ -12,6 +12,8 @@ const props = defineProps({
   ...teamStatsProps,
 });
 
+const tooltipContainer = ref(null);
+
 const { onError, error, hasError } = useErrorProvider();
 
 const columns = COLUMNS_TEAMS_POWERPLAY;
@@ -19,7 +21,7 @@ const locale = computed(() => props.locale);
 
 const { state: rawRows, isLoading } = useAsyncState(
   () =>
-    fetchVBRData('/v1/teamPowerPlayPeriod', props.apiKey, {
+    fetchVBRData('/v2/team-powerplay', props.apiKey, {
       championshipId: Number(props.championshipId),
       division: props.division,
     }),
@@ -34,7 +36,7 @@ const { sort, change: onSort } = useSort({
   orders: [{ target: 'ppPercent', direction: SORT_STATE_DESCEND }],
 });
 
-const rows = computed(() => rawConvert(unref(rawRows), convertTimes(['advTime', 'advTimePP1', 'advTimePP2'])));
+const rows = computed(() => rawConvert(unref(rawRows), convertTimesSecToMin(['advTime', 'advTimePP1', 'advTimePP2'])));
 
 const convertedRows = computed(() => {
   return convert(unref(rows)).sorted(sort).addIndex(sort.sortTarget).value();
@@ -55,8 +57,11 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
         :sort="sort"
         :external-team-resolver="resolveExternalTeamLink"
         :is-team-linked="isTeamLinked"
+        :append-to="tooltipContainer"
         @sort="onSort"
       />
+
+      <div ref="tooltipContainer" />
     </I18NProvider>
   </div>
 </template>

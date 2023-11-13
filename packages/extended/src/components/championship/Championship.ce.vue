@@ -7,9 +7,10 @@ import {
   offsetName,
 } from '@mjsz-vbr-elements/core/utils';
 import {
+  Paginator,
   ErrorNotice,
-  ErrorProvider,
   I18NProvider,
+  ErrorProvider,
   // TimezoneSelector,
   StatisticsTable,
 } from '@mjsz-vbr-elements/core/components';
@@ -46,6 +47,11 @@ const props = defineProps({
     type: [String, Function],
     default: '',
   },
+
+  limit: {
+    type: Number,
+    default: 20,
+  },
 });
 
 const tooltipContainer = ref(null);
@@ -66,7 +72,7 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
 
 <template>
   <div>
-    <I18NProvider :locale="props.locale" :messages="messages">
+    <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
       <ErrorProvider v-slot:default="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
 
@@ -74,13 +80,17 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
           :locale="locale"
           :timezone="timezone"
           :championship-name="championshipName"
+          :limit="limit"
           v-slot="{
             sort,
+            page,
             games,
             phases,
+            report,
             phaseId,
             columns,
             seasons,
+            reports,
             isLoading,
             selectedPanel,
             championships,
@@ -90,6 +100,8 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
             changePanel,
             changePhase,
             changeSeason,
+            onChangeReport,
+            onPaginatorChange,
             changeChampionship,
           }"
         >
@@ -106,33 +118,41 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
             </button>
           </div>
 
-          <Selector :phases="phases" :phase-id="phaseId" @update:phase-id="changePhase" />
+          <Selector
+            :phases="phases"
+            :phase-id="phaseId"
+            :reports="reports"
+            :report="report"
+            :is-reports-visible="selectedPanel === PANEL_PLAYERS || selectedPanel === PANEL_TEAMS"
+            @update:phase-id="changePhase"
+            @update:report="onChangeReport"
+          />
 
           <div :class="sectionSelectorMainClass">
             <button
               :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_SCHEDULE }]"
               @click="changePanel(PANEL_SCHEDULE)"
             >
-              Menetrend
+              {{ t('selection.schedule') }}
             </button>
             <button
               :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_STANDINGS }]"
               @click="changePanel(PANEL_STANDINGS)"
             >
-              Tabella
+              {{ t('selection.standings') }}
             </button>
-            <!-- <button
+            <button
               :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_PLAYERS }]"
               @click="changePanel(PANEL_PLAYERS)"
             >
-              Játékos Statisztika
-            </button> -->
-            <!-- <button
+              {{ t('selection.playerStats') }}
+            </button>
+            <button
               :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_TEAMS }]"
               @click="changePanel(PANEL_TEAMS)"
             >
-              Csapat Statisztika
-            </button> -->
+              {{ t('selection.teamStats') }}
+            </button>
           </div>
 
           <!-- <TimezoneSelector
@@ -157,6 +177,15 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
             :hide-columns="selectedPanel === PANEL_SCHEDULE ? 'broadcast' : ''"
             @sort="onSort"
           />
+
+          <Paginator
+            v-if="selectedPanel === PANEL_PLAYERS"
+            :page="page"
+            :items-per-page="props.limit"
+            :total-items="games.totalItems"
+            :range-length="5"
+            @change="onPaginatorChange"
+          />
         </DataProvider>
 
         <div ref="tooltipContainer" />
@@ -173,3 +202,4 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/dropdown.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/paginator.css"></style>

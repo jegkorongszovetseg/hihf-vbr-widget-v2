@@ -17,7 +17,7 @@ import {
   groupBy,
 } from 'ramda';
 import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../constants.js';
-import { format, convertMinToSec, convertSecToMin } from './datetime.js';
+import { format, convertMinToSec, convertSecToMin, convertMinToMinSec } from './datetime.js';
 
 export const convert = (data = []) => {
   return {
@@ -75,6 +75,7 @@ export const convert = (data = []) => {
     },
 
     pagination(page, limit) {
+      if (!limit) return this;
       page = Number(page);
       limit = Number(limit);
       const startIndex = (page - 1) * limit;
@@ -141,12 +142,37 @@ export const rawConvert = (data, ...fn) => map(compose(...fn))(data);
 
 export const playerName = (row) => ({
   ...row,
-  ...(row.lastName && { name: `${row.lastName} ${row.firstName}` }),
+  ...(row.lastName && row.firstName && { name: `${row.lastName} ${row.firstName}` }),
+  ...(row.player?.playerId && { name: `${row.player.lastName} ${row.player.firstName}` }),
 });
 
 export const teamName = (row) => ({
   ...row,
-  ...(row.team.id && { teamName: row.team.longName }),
+  ...(row?.team?.id && { teamName: row.team.longName }),
+});
+
+export const gameDateTime =
+  (timezone = '', locale = 'hu') =>
+  (row) => ({
+    ...row,
+    gameDateDate: format(row.gameDate, 'L dddd', timezone, locale),
+    gameDateTime: format(row.gameDate, 'HH:mm', timezone, locale),
+  });
+
+// Mindig a kiválasztott csapat (teamId) szerint konvertálja az eredményt
+export const gameResult = (teamId) => (row) => ({
+  ...row,
+  gameResult: createGameResult(row, teamId),
+});
+
+export const teamOpponent = (teamId) => (row) => ({
+  ...row,
+  opponent: createOpponent(row, teamId),
+});
+
+export const teamResultType = (teamId) => (row) => ({
+  ...row,
+  resultType: createGameResultType(row, teamId),
 });
 
 export const upperCase =
@@ -166,6 +192,16 @@ export const convertTimes =
     return row;
   };
 
+export const convertTimesMinToMinSec =
+  (targets = []) =>
+  (row) => {
+    targets.map((key) => {
+      if (!row[key]) return row;
+      return (row[`${key}Min`] = convertMinToMinSec(row[key]));
+    });
+    return row;
+  };
+
 export const convertTimesSecToMin =
   (targets = []) =>
   (row) => {
@@ -176,4 +212,33 @@ export const convertTimesSecToMin =
   };
 
 const dateDiff = (a, b) => new Date(a.gameDate).getTime() - new Date(b.gameDate).getTime();
+
 export const sortGames = sortWith([dateDiff, ascend(prop('id')), ascend(prop('gameId'))]);
+
+function createOpponent(row, teamId) {
+  if (row?.homeTeam?.id === teamId) return row?.awayTeam?.shortName ?? '';
+  return `@ ${row?.homeTeam?.shortName ?? ''}`;
+}
+
+function createGameResult(row, teamId) {
+  let firstScore = row?.homeTeamScore;
+  let secondScore = row?.awayTeamScore;
+  if (row?.awayTeam?.id === teamId) {
+    firstScore = row?.awayTeamScore;
+    secondScore = row?.homeTeamScore;
+  }
+  return [firstScore, secondScore].join(':');
+}
+
+function createGameResultType(row, teamId) {
+  const result = row.gameResult.split(':');
+  const isWonGame = result[0] > result[1];
+  const isLostGame = result[0] < result[1];
+  if (isWonGame && row.isOvertime) return 'OTW';
+  if (isWonGame && row.isShootout) return 'SOW';
+  if (isWonGame) return 'W';
+  if (isLostGame && row.isOvertime) return 'OTL';
+  if (isLostGame && row.isShootout) return 'SOL';
+  if (isLostGame) return 'L';
+  return 'D';
+}

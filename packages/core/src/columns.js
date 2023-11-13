@@ -232,36 +232,36 @@ export const COLUMNS_FIELD_PLAYERS = {
     tooltip: 'table.game.tooltip',
     sortOrders: [{ target: 'gp', direction: SORT_STATE_DESCEND }],
   },
-  g: {
+  goals: {
     label: 'table.goals.short',
     tooltip: 'table.goals.tooltip',
     sortOrders: [
-      { target: 'g', direction: SORT_STATE_DESCEND },
-      { target: 'a', direction: SORT_STATE_DESCEND },
+      { target: 'goals', direction: SORT_STATE_DESCEND },
+      { target: 'assists', direction: SORT_STATE_DESCEND },
     ],
   },
-  a: {
+  assists: {
     label: 'table.assists.short',
     tooltip: 'table.assists.tooltip',
     sortOrders: [
-      { target: 'a', direction: SORT_STATE_DESCEND },
-      { target: 'g', direction: SORT_STATE_DESCEND },
+      { target: 'assists', direction: SORT_STATE_DESCEND },
+      { target: 'goals', direction: SORT_STATE_DESCEND },
     ],
   },
-  point: {
+  points: {
     label: 'table.points.short',
     tooltip: 'table.points.tooltip',
-    sortOrders: [{ target: 'point', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
   },
   plusMinus: {
     label: 'table.plusMinus.short',
     tooltip: 'table.plusMinus.tooltip',
     sortOrders: [{ target: 'plusMinus', direction: SORT_STATE_DESCEND }],
   },
-  shoot: {
+  shoots: {
     label: 'table.sog.short',
     tooltip: 'table.sog.tooltip',
-    sortOrders: [{ target: 'shoot', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'shoots', direction: SORT_STATE_DESCEND }],
   },
   shootPercent: {
     label: 'table.sogPercent.short',
@@ -382,10 +382,10 @@ export const COLUMNS_GOALIES = {
     tooltip: 'table.gpi.tooltip',
     sortOrders: [{ target: 'gpi', direction: SORT_STATE_DESCEND }],
   },
-  mip: {
+  mipMin: {
     label: 'table.toi.short',
     tooltip: 'table.toi.tooltip',
-    sortOrders: [{ target: 'mipSec', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'mip', direction: SORT_STATE_DESCEND }],
   },
   mipPercent: {
     label: 'table.toiPercent.short',
@@ -402,10 +402,10 @@ export const COLUMNS_GOALIES = {
     tooltip: 'table.gaa.tooltip',
     sortOrders: [{ target: 'gaa', direction: SORT_STATE_DESCEND }],
   },
-  sa: {
+  sog: {
     label: 'table.sa.short',
     tooltip: 'table.sa.tooltip',
-    sortOrders: [{ target: 'sa', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'sog', direction: SORT_STATE_DESCEND }],
   },
   svs: {
     label: 'table.svs.short',
@@ -587,17 +587,17 @@ export const COLUMNS_TEAMS_PENALTY_KILLING = {
     tooltip: 'table.powerplayDisadvantages.tooltip',
     sortOrders: [{ target: 'dvg', direction: SORT_STATE_DESCEND }],
   },
-  dvgTime: {
+  dvgTimeMin: {
     label: 'table.dvgTime.short',
     tooltip: 'table.dvgTime.tooltip',
-    sortOrders: [{ target: 'dvgTimeSec', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'dvgTime', direction: SORT_STATE_DESCEND }],
   },
-  dvgTimePP1: {
+  dvgTimePP1Min: {
     label: 'table.dvgTimePP1.short',
     tooltip: 'table.dvgTimePP1.tooltip',
-    sortOrders: [{ target: 'dvgTimePP1Sec', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'dvgTimePP1', direction: SORT_STATE_DESCEND }],
   },
-  dvgTimePP2: {
+  dvgTimePP2Min: {
     label: 'table.dvgTimePP2.short',
     tooltip: 'table.dvgTimePP2.tooltip',
     sortOrders: [{ target: 'dvgTimePP2', direction: SORT_STATE_DESCEND }],
@@ -644,20 +644,20 @@ export const COLUMNS_TEAMS_POWERPLAY = {
     tooltip: 'table.adv.tooltip',
     sortOrders: [{ target: 'adv', direction: SORT_STATE_DESCEND }],
   },
-  advTime: {
+  advTimeMin: {
     label: 'table.advTime.short',
     tooltip: 'table.advTime.tooltip',
-    sortOrders: [{ target: 'advTimeSec', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'advTime', direction: SORT_STATE_DESCEND }],
   },
-  advTimePP1: {
+  advTimePP1Min: {
     label: 'table.advTimePP1.short',
     tooltip: 'table.advTimePP1.tooltip',
-    sortOrders: [{ target: 'advTimePP1Sec', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'advTimePP1', direction: SORT_STATE_DESCEND }],
   },
-  advTimePP2: {
+  advTimePP2Min: {
     label: 'table.advTimePP2.short',
     tooltip: 'table.advTimePP2.tooltip',
-    sortOrders: [{ target: 'advTimePP2Sec', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'advTimePP2', direction: SORT_STATE_DESCEND }],
   },
   ppgf: {
     label: 'table.ppgf.short',
@@ -691,59 +691,59 @@ export const COLUMNS_SCORING_EFFICIENCY = {
     class: 'is-text-left is-w-auto is-text-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
-  m: {
+  gp: {
     label: 'table.game.short',
     tooltip: 'table.game.tooltip',
     sortOrders: [{ target: 'gp', direction: SORT_STATE_DESCEND }],
   },
-  plus: {
+  gf: {
     label: 'table.goalFor.short',
     tooltip: 'table.goalFor.tooltip',
-    sortOrders: [{ target: 'plus', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'gf', direction: SORT_STATE_DESCEND }],
   },
-  minus: {
+  ga: {
     label: 'table.goalAgainst.short',
     tooltip: 'table.goalAgainst.tooltip',
-    sortOrders: [{ target: 'minus', direction: SORT_STATE_ASCEND }],
+    sortOrders: [{ target: 'ga', direction: SORT_STATE_ASCEND }],
   },
-  gk: {
+  gd: {
     label: 'table.goalDiff.short',
     tooltip: 'table.goalDiff.tooltip',
-    sortOrders: [{ target: 'gk', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'gd', direction: SORT_STATE_DESCEND }],
   },
-  GFGP: {
+  gf_gp: {
     label: 'table.gfgp.short',
     tooltip: 'table.gfgp.tooltip',
-    sortOrders: [{ target: 'GFGP', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'gf_gp', direction: SORT_STATE_DESCEND }],
   },
-  GAGP: {
+  ga_gp: {
     label: 'table.gagp.short',
     tooltip: 'table.gagp.tooltip',
-    sortOrders: [{ target: 'GAGP', direction: SORT_STATE_ASCEND }],
+    sortOrders: [{ target: 'ga_gp', direction: SORT_STATE_ASCEND }],
   },
-  Shots: {
+  s: {
     label: 'table.sog.short',
     tooltip: 'table.sog.tooltip',
-    sortOrders: [{ target: 'Shots', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 's', direction: SORT_STATE_DESCEND }],
   },
-  SA: {
+  kl: {
     label: 'table.sa.short',
     tooltip: 'table.sa.tooltip',
-    sortOrders: [{ target: 'SA', direction: SORT_STATE_ASCEND }],
+    sortOrders: [{ target: 'sa', direction: SORT_STATE_ASCEND }],
   },
-  ShotsGP: {
+  shots_gp: {
     label: 'table.sogp.short',
     tooltip: 'table.sogp.tooltip',
-    sortOrders: [{ target: 'ShotsGP', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'shots_gp', direction: SORT_STATE_DESCEND }],
   },
-  SAGP: {
+  sa_gp: {
     label: 'table.sagp.short',
     tooltip: 'table.sagp.tooltip',
-    sortOrders: [{ target: 'SAGP', direction: SORT_STATE_ASCEND }],
+    sortOrders: [{ target: 'sa_gp', direction: SORT_STATE_ASCEND }],
   },
-  GFShots: {
+  sp: {
     label: 'table.sogPercent.short',
     tooltip: 'table.sogPercent.tooltip',
-    sortOrders: [{ target: 'GFShots', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'sp', direction: SORT_STATE_DESCEND }],
   },
 };

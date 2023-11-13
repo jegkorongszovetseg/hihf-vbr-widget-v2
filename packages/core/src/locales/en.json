@@ -67,7 +67,7 @@
       "tooltip": "Goal Differential"
     },
     "points": {
-      "short": "PTS",
+      "short": "P",
       "tooltip": "Points"
     },
     "name": {
@@ -87,12 +87,12 @@
       "tooltip": "Plus/Minus"
     },
     "sog": {
-      "short": "SOG",
+      "short": "S",
       "tooltip": "Shots on Goal"
     },
     "sogPercent": {
-      "short": "SOG%",
-      "tooltip": "Shots on Goal Percent"
+      "short": "S%",
+      "tooltip": "Shooting percentage"
     },
     "gameName": {
       "short": "#",
@@ -325,6 +325,18 @@
     "score": {
       "short": "Score",
       "tooltip": "Actual Game Score"
+    },
+    "opponent": {
+      "short": "Opponent",
+      "tooltip": "Opponent"
+    },
+    "result": {
+      "short": "Result",
+      "tooltip": "Result"
+    },
+    "resultType": {
+      "short": "#",
+      "tooltip": "Result Type"
     }
   },
   "game": {

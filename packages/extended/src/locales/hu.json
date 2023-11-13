@@ -14,7 +14,11 @@
     "month": "Hónap",
     "homeOrAway": "Hazai vagy Vendég",
     "home": "Hazai",
-    "away": "Vendég"
+    "away": "Vendég",
+    "schedule": "Menetrend",
+    "standings": "Tabella",
+    "playerStats": "Játékos statisztika",
+    "teamStats": "Csapat Statisztika"
   },
   "report": {
     "points": "Pontok",
