@@ -1,9 +1,14 @@
 <script setup>
+import { computed } from 'vue';
 import { DataTable, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
-import { COLUMNS_PLAYER_SEASON_STATS } from '../internal';
 
 const props = defineProps({
+  columns: {
+    type: Object,
+    default: () => ({}),
+  },
+
   rows: {
     type: Array,
     default: () => [],
@@ -21,7 +26,7 @@ const props = defineProps({
 });
 const { t } = useI18n();
 
-const { columns } = useColumns(COLUMNS_PLAYER_SEASON_STATS);
+const { columns } = useColumns(computed(() => props.columns));
 </script>
 
 <template>

@@ -51,7 +51,19 @@ const tooltipContainer = ref(null);
       <ErrorProvider v-slot:default="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
 
-        <DataProvider :locale="locale" v-slot="{ playerData, playerGames, playerSeasonStats, currentSeasonStats, gameColumns, isLoading }">
+        <DataProvider
+          :locale="locale"
+          v-slot="{
+            playerData,
+            playerGames,
+            playerSeasonStats,
+            currentSeasonStats,
+            gameColumns,
+            seasonColumns,
+            currentSeasonColumns,
+            isLoading,
+          }"
+        >
           <LoadingIndicator v-if="isLoading" />
 
           <div :class="useMainClass('main-image-wrapper')" style="--overlay-size: 180px">
@@ -68,13 +80,11 @@ const tooltipContainer = ref(null);
 
           <PlayerInfo :data="playerData" />
 
-          <!-- <pre>
-            {{ playerData }}
-          </pre> -->
+          <SeasonsStats :rows="currentSeasonStats" :columns="currentSeasonColumns" :append-to="tooltipContainer" />
 
-          <SeasonsStats :rows="currentSeasonStats" :append-to="tooltipContainer" />
-
-          <Seasons :rows="playerSeasonStats" :append-to="tooltipContainer" />
+          <div>Select</div>
+          
+          <Seasons :rows="playerSeasonStats" :columns="seasonColumns" :append-to="tooltipContainer" />
 
           <Games :rows="playerGames" :columns="gameColumns" :append-to="tooltipContainer" />
 

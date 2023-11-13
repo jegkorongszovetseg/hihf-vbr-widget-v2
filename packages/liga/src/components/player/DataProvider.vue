@@ -1,15 +1,16 @@
 <script setup>
 import { reactive, computed } from 'vue';
 import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
-import { omit } from 'ramda';
+import { omit, pick } from 'ramda';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
 import { getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
-import { COLUMNS_GAMES } from '../internal';
+import { COLUMNS_GAMES, COLUMNS_PLAYER_SEASON_STATS } from '../internal';
 import {
   transformPlayerData,
   transformSeasonStats,
   transformGames,
   transformCurrentSeasonStats,
+  removeCurrentFromSeasonStats,
 } from './player.internal';
 
 const PLAYER_SEASON_STATS_API = '/v2/player-season-stats';
@@ -57,7 +58,6 @@ const { state: playerData } = useServices({
   transform: (res) => transformPlayerData(res, props.locale),
   onError,
   onSuccess: (res) => {
-    console.log('Success', res);
     const { position } = res;
     if (position.toLowerCase() === 'gk') {
       state.seasonApi = GOALIE_STATS_API;
@@ -68,7 +68,7 @@ const { state: playerData } = useServices({
   },
 });
 
-const { state: playerSeasonStats, execute: fetchSeasonStats } = useServices({
+const { state: playerSeasonStatsRows, execute: fetchSeasonStats } = useServices({
   options: {
     path: computed(() => state.seasonApi),
     apiKey: props.apiKey,
@@ -90,7 +90,49 @@ const { state: playerGames, execute: fetchGames } = useServices({
   onError,
 });
 
-const currentSeasonStats = computed(() => transformCurrentSeasonStats(3451, playerSeasonStats.value));
+const playerSeasonStats = computed(() => removeCurrentFromSeasonStats(3451, playerSeasonStatsRows.value));
+const currentSeasonStats = computed(() => transformCurrentSeasonStats(3451, playerSeasonStatsRows.value));
+
+const currentSeasonColumns = computed(() =>
+  state.isGoalie
+    ? pick(
+        ['teamName', 'gkd', 'gpi', 'mipMin', 'mipPercent', 'ga', 'gaa', 'sog', 'svs', 'svsPercent'],
+        COLUMNS_PLAYER_SEASON_STATS
+      )
+    : omit(
+        ['seasonId', 'ga', 'gaa', 'sog', 'svs', 'svsPercent', 'mipMin', 'mipPercent', 'gkd', 'gpi'],
+        COLUMNS_PLAYER_SEASON_STATS
+      )
+);
+
+const seasonColumns = computed(() =>
+  state.isGoalie
+    ? pick(
+        ['season', 'teamName', 'gkd', 'gpi', 'mipMin', 'ga', 'gaa', 'sog', 'svs', 'svsPercent'],
+        COLUMNS_PLAYER_SEASON_STATS
+      )
+    : omit(
+        [
+          'shootPercent',
+          'pimPerGame',
+          'p2',
+          'p5',
+          'p10',
+          'p20',
+          'p25',
+          'gkd',
+          'gpi',
+          'mipMin',
+          'mipPercent',
+          'ga',
+          'gaa',
+          'sog',
+          'svs',
+          'svsPercent',
+        ],
+        COLUMNS_PLAYER_SEASON_STATS
+      )
+);
 
 const gameColumns = computed(() =>
   state.isGoalie
@@ -104,5 +146,15 @@ function fetchData() {
 }
 </script>
 <template>
-  <slot v-bind="{ playerData, playerGames, playerSeasonStats, currentSeasonStats, gameColumns }"></slot>
+  <slot
+    v-bind="{
+      playerData,
+      playerGames,
+      playerSeasonStats,
+      currentSeasonStats,
+      gameColumns,
+      currentSeasonColumns,
+      seasonColumns,
+    }"
+  ></slot>
 </template>

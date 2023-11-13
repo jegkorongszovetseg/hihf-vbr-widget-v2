@@ -39,7 +39,7 @@ const props = defineProps({
 const { t } = useI18n();
 
 const { columns } = useColumns(
-  props.columns,
+  computed(() => props.columns),
   null,
   computed(() => ({ offsetName: offsetName(new Date(), null, 'hu') }))
 );

@@ -1,6 +1,6 @@
 import { head, compose, ascend, descend, map, pick, prop, sort, path } from 'ramda';
 import { InvalidSeasonName, WidgetError } from '@mjsz-vbr-elements/core/utils';
-import { SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
+import { SORT_STATE_ASCEND, SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 
 export const transformSeasons = (seasons, state) => {
   if (seasons.length === 0) throw new WidgetError(InvalidSeasonName.message, InvalidSeasonName.options);
@@ -171,6 +171,26 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
     label: 'table.sogPercent.short',
     tooltip: 'table.sogPercent.tooltip',
   },
+  p2: {
+    label: 'table.minorPenalties.short',
+    tooltip: 'table.minorPenalties.tooltip',
+  },
+  p5: {
+    label: 'table.majorPenalties.short',
+    tooltip: 'table.majorPenalties.tooltip',
+  },
+  p10: {
+    label: 'table.misconducts.short',
+    tooltip: 'table.misconducts.tooltip',
+  },
+  p20: {
+    label: 'table.gameMisconducts.short',
+    tooltip: 'table.gameMisconducts.tooltip',
+  },
+  p25: {
+    label: 'table.matchPenalties.short',
+    tooltip: 'table.matchPenalties.tooltip',
+  },
   pim: {
     label: 'table.pim.short',
     tooltip: 'table.pim.tooltip',
@@ -178,5 +198,42 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
   pimPerGame: {
     label: 'table.pimPerGame.short',
     tooltip: 'table.pimPerGame.tooltip',
+  },
+
+  gkd: {
+    label: 'table.gpgk.short',
+    tooltip: 'table.gpgk.tooltip',
+  },
+  gpi: {
+    label: 'table.gpi.short',
+    tooltip: 'table.gpi.tooltip',
+  },
+  mipMin: {
+    label: 'table.toi.short',
+    tooltip: 'table.toi.tooltip',
+  },
+  mipPercent: {
+    label: 'table.toiPercent.short',
+    tooltip: 'table.toiPercent.tooltip',
+  },
+  ga: {
+    label: 'table.ga.short',
+    tooltip: 'table.ga.tooltip',
+  },
+  gaa: {
+    label: 'table.gaa.short',
+    tooltip: 'table.gaa.tooltip',
+  },
+  sog: {
+    label: 'table.sa.short',
+    tooltip: 'table.sa.tooltip',
+  },
+  svs: {
+    label: 'table.svs.short',
+    tooltip: 'table.svs.tooltip',
+  },
+  svsPercent: {
+    label: 'table.svsPercent.short',
+    tooltip: 'table.svsPercent.tooltip',
   },
 };
