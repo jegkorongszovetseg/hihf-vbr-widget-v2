@@ -70,7 +70,7 @@ const state = reactive({
   apiParams: {},
 });
 
-const initialReport = REPORTS_MAP.get('playerspenalties'); // points
+const initialReport = REPORTS_MAP.get('points');
 state.columns = initialReport.columns;
 state.api = initialReport.api;
 
