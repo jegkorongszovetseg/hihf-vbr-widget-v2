@@ -64,11 +64,19 @@
     "roster": "Roster",
     "playerStats": "Player Stats",
     "info": {
-      "organizationName": "Organization name:"
+      "organizationName": "Organization name:",
+      "organizationCountry": "Organization country:",
+      "organizationEmail": "Organization e-mail:",
+      "organizationWebpage": "Organization homepage:",
+      "organizationPhoneNumber": "Organization phone number:",
+      "organizationAddresses": "Organization address:",
+      "organizationFoundingDate": "Organization founding year:"
     }
   },
   "players": {
-    "age": "{years} old"
+    "age": "{years} old",
+    "games": "Games",
+    "seasons": "Seasons"
   },
   "standings": {
     "live": "Live",

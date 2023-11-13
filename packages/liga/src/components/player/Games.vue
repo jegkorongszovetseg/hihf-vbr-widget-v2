@@ -46,6 +46,5 @@ const { columns } = useColumns(
 </script>
 
 <template>
-  <h2 class="is-heading-2">{{ t('player.games') }}</h2>
   <GamesDataTable :rows="rows" :columns="columns" :append-to="appendTo" />
 </template>

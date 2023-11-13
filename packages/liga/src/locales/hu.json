@@ -64,11 +64,19 @@
     "roster": "Játékoskeret",
     "playerStats": "Játékos statisztikák",
     "info": {
-      "organizationName": "Szervezet neve:"
+      "organizationName": "Szervezet neve:",
+      "organizationCountry": "Szervezet országa:",
+      "organizationEmail": "Szervezet e-mail címe:",
+      "organizationWebpage": "Szervezet honlapja:",
+      "organizationPhoneNumber": "Szervezet telefonszáma:",
+      "organizationAddresses": "Szervezet címe:",
+      "organizationFoundingDate": "Szervezet alapítási éve:"
     }
   },
   "players": {
-    "age": "{years}es"
+    "age": "{years}es",
+    "games": "Mérkőzések",
+    "seasons": "Szezonok"
   },
   "standings": {
     "live": "Élő",

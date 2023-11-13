@@ -1,4 +1,4 @@
-import { groupBy, compose, sortBy, filter, pathEq, map, omit } from 'ramda';
+import { groupBy, compose, sortBy, map, omit, values, join, over, lensProp, replace } from 'ramda';
 import { playerName, teamName, upperCase, format } from '@mjsz-vbr-elements/core/utils';
 
 export const PAGE_INFO = 'Info';
@@ -36,19 +36,18 @@ export const transformTeamInfo = (data) => {
   const tableData = [];
 
   for (let [key, value] of Object.entries(organizationdData)) {
-    // let val = value;
     if (key === 'organizationFoundingDate') {
       value = format(value, 'YYYY');
     }
     if (key === 'organizationAddresses') {
-      value = Object.values(value?.headquarter ?? {}).join(' ');
+      value = convertAddress(value?.headquarter ?? {});
     }
     tableData.push({ teamKey: key, teamValue: value });
   }
   return { team: data?.team, organizationInfo: tableData };
 };
 
-export const transformRosters = (data, teamId) =>
+export const transformRosters = (data) =>
   compose(
     groupBy(groupByPosition),
     sortBy((d) => {
@@ -68,4 +67,9 @@ function groupByPosition(data) {
 
 function sortByJerseyNumber(d) {
   return Number(d.jerseyNr);
+}
+
+function convertAddress(data) {
+  const addCommaToCityName = data.city ? over(lensProp('city'), replace(/$/, ',')) : () => ({});
+  return compose(join(' '), values, addCommaToCityName, omit(['type']))(data);
 }
