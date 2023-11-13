@@ -138,8 +138,23 @@ const seasonColumns = computed(() =>
 
 const gameColumns = computed(() =>
   state.isGoalie
-    ? omit(['ppgf', 'shga'], COLUMNS_GAMES)
-    : omit(['toi', 'saves', 'svsPercent', 'ppgf', 'shga'], COLUMNS_GAMES)
+    ? pick(['gameDateDate', 'gameDateTime', 'gameResult', 'opponent', 'sa', 'ga', 'gaa', 'svsPercent'], COLUMNS_GAMES)
+    : pick(
+        [
+          'gameDateDate',
+          'gameDateTime',
+          'gameResult',
+          'opponent',
+          'goals',
+          'assists',
+          'points',
+          'plusMinus',
+          'shoot',
+          'shootPercent',
+          'pim',
+        ],
+        COLUMNS_GAMES
+      )
 );
 
 function fetchData() {

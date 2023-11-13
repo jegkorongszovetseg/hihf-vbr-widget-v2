@@ -6,54 +6,6 @@ export const PAGE_GAMES = 'Games';
 export const PAGE_PLAYER_STATS = 'Stats';
 export const PAGE_ROSTER = 'Roster';
 
-export const COLUMNS_GAMES = {
-  gameDateDate: {
-    label: 'table.gameDate.short',
-    tooltip: 'table.gameDate.tooltip',
-    class: 'is-text-left',
-  },
-  gameDateTime: {
-    label: 'table.gameDateTime.short',
-    tooltip: 'table.gameDateTime.tooltip',
-    class: 'is-text-left',
-  },
-  gameResult: {
-    label: 'table.result.short',
-    tooltip: 'table.result.tooltip',
-    class: 'is-has-image',
-  },
-  opponent: {
-    label: 'table.opponent.short',
-    tooltip: 'table.opponent.tooltip',
-    class: 'is-text-left',
-  },
-  resultType: {
-    label: 'table.resultType.short',
-    tooltip: 'table.resultType.tooltip',
-    class: '',
-  },
-  sog: {
-    label: 'table.sog.short',
-    tooltip: 'table.sog.tooltip',
-    class: 'is-text-left is-text-bold',
-  },
-  sa: {
-    label: 'table.sa.short',
-    tooltip: 'table.sa.tooltip',
-    class: 'is-text-left',
-  },
-  ppgf: {
-    label: 'table.ppgf.short',
-    tooltip: 'table.ppgf.tooltip',
-    class: 'is-text-left',
-  },
-  shga: {
-    label: 'table.shga.short',
-    tooltip: 'table.shga.tooltip',
-    class: 'is-text-left',
-  },
-};
-
 export const COLUMNS_TEAM_INFO = {
   teamKeyIntl: {
     label: 'table.blank',

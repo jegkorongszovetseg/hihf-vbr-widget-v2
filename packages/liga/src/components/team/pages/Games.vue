@@ -1,9 +1,10 @@
 <script setup>
 import { ref, computed } from 'vue';
+import { pick } from 'ramda';
 import { DataTable, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useI18n, useColumns } from '@mjsz-vbr-elements/core/composables';
 import { offsetName } from '@mjsz-vbr-elements/core/utils';
-import { COLUMNS_GAMES } from '../team.internal.js';
+import { COLUMNS_GAMES } from '../../internal.js';
 
 defineProps({
   data: {
@@ -16,7 +17,7 @@ const tooltipContainer = ref(null);
 
 const { t } = useI18n();
 const { columns } = useColumns(
-  COLUMNS_GAMES,
+  pick(['gameDateDate', 'gameDateTime', 'gameResult', 'opponent', 'resultType', 'sog', 'sa', 'pp', 'pk'], COLUMNS_GAMES),
   null,
   computed(() => ({ offsetName: offsetName(new Date(), null, 'hu') }))
 );

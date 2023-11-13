@@ -95,6 +95,22 @@ export const COLUMNS_GAMES = {
     tooltip: 'table.resultType.tooltip',
     class: '',
   },
+  goals: {
+    label: 'table.goals.short',
+    tooltip: 'table.goals.tooltip',
+  },
+  assists: {
+    label: 'table.assists.short',
+    tooltip: 'table.assists.tooltip',
+  },
+  points: {
+    label: 'table.points.short',
+    tooltip: 'table.points.tooltip',
+  },
+  plusMinus: {
+    label: 'table.plusMinus.short',
+    tooltip: 'table.plusMinus.tooltip',
+  },
   sog: {
     label: 'table.sog.short',
     tooltip: 'table.sog.tooltip',
@@ -109,6 +125,14 @@ export const COLUMNS_GAMES = {
     label: 'table.sa.short',
     tooltip: 'table.sa.tooltip',
     class: 'is-text-left',
+  },
+  ga: {
+    label: 'table.ga.short',
+    tooltip: 'table.ga.tooltip',
+  },
+  gaa: {
+    label: 'table.gaa.short',
+    tooltip: 'table.gaa.tooltip',
   },
   ppgf: {
     label: 'table.ppgf.short',
@@ -129,6 +153,27 @@ export const COLUMNS_GAMES = {
     label: 'table.svsPercent.short',
     tooltip: 'table.svsPercent.tooltip',
     class: 'is-text-left',
+  },
+  shoot: {
+    label: 'table.sog.short',
+    tooltip: 'table.sog.tooltip',
+  },
+  shootPercent: {
+    label: 'table.sogPercent.short',
+    tooltip: 'table.sogPercent.tooltip',
+  },
+  pim: {
+    label: 'table.pim.short',
+    tooltip: 'table.pim.tooltip',
+  },
+
+  pp: {
+    label: 'table.pp.short',
+    tooltip: 'table.pp.tooltip',
+  },
+  pk: {
+    label: 'table.pk.short',
+    tooltip: 'table.pk.tooltip',
   },
 };
 
