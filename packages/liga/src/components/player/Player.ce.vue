@@ -10,6 +10,7 @@ import SeasonsStats from './SeasonStats.vue';
 import PlayerInfo from './PlayerInfo.vue';
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
+import { PANE_GAMES, PANE_SEASONS } from './player.internal';
 
 const messages = { en, hu };
 
@@ -47,13 +48,15 @@ const tooltipContainer = ref(null);
 
 <template>
   <div>
-    <I18NProvider :locale="props.locale" :messages="messages">
+    <I18NProvider :locale="props.locale" :messages="messages" v-slot="{ t }">
       <ErrorProvider v-slot:default="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
 
         <DataProvider
           :locale="locale"
           v-slot="{
+            pane,
+            isLoading,
             playerData,
             playerGames,
             playerSeasonStats,
@@ -61,7 +64,7 @@ const tooltipContainer = ref(null);
             gameColumns,
             seasonColumns,
             currentSeasonColumns,
-            isLoading,
+            onChangePane,
           }"
         >
           <LoadingIndicator v-if="isLoading" />
@@ -82,11 +85,31 @@ const tooltipContainer = ref(null);
 
           <SeasonsStats :rows="currentSeasonStats" :columns="currentSeasonColumns" :append-to="tooltipContainer" />
 
-          <div>Select</div>
-          
-          <Seasons :rows="playerSeasonStats" :columns="seasonColumns" :append-to="tooltipContainer" />
+          <div class="is-mt-5">
+            <button
+              type="button"
+              :class="[useMainClass('tab-button'), { 'is-active': pane === PANE_GAMES }]"
+              @click="onChangePane(PANE_GAMES)"
+            >
+              {{ t('players.games') }}
+            </button>
+            <button
+              type="button"
+              :class="[useMainClass('tab-button'), { 'is-active': pane === PANE_SEASONS }]"
+              @click="onChangePane(PANE_SEASONS)"
+            >
+              {{ t('players.seasons') }}
+            </button>
+          </div>
 
-          <Games :rows="playerGames" :columns="gameColumns" :append-to="tooltipContainer" />
+          <Games v-if="pane === PANE_GAMES" :rows="playerGames" :columns="gameColumns" :append-to="tooltipContainer" />
+
+          <Seasons
+            v-if="pane === PANE_SEASONS"
+            :rows="playerSeasonStats"
+            :columns="seasonColumns"
+            :append-to="tooltipContainer"
+          />
 
           <div ref="tooltipContainer" />
         </DataProvider>

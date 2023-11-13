@@ -10,6 +10,9 @@ import {
   yearToNow,
 } from '@mjsz-vbr-elements/core/utils';
 
+export const PANE_GAMES = 'games';
+export const PANE_SEASONS = 'seasons';
+
 export function transformPlayerData(data, locale) {
   return {
     ...data,

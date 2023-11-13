@@ -11,6 +11,7 @@ import {
   transformGames,
   transformCurrentSeasonStats,
   removeCurrentFromSeasonStats,
+  PANE_GAMES,
 } from './player.internal';
 
 const PLAYER_SEASON_STATS_API = '/v2/player-season-stats';
@@ -44,6 +45,7 @@ const state = reactive({
   seasonApi: PLAYER_SEASON_STATS_API,
   gamesApi: PLAYER_GAMES_API,
   isGoalie: false,
+  pane: PANE_GAMES,
 });
 
 const { onError } = useError();
@@ -141,13 +143,17 @@ const gameColumns = computed(() =>
 );
 
 function fetchData() {
-  console.log(state.seasonApi, state.gamesApi);
   useAsyncQueue([fetchSeasonStats, fetchGames]);
+}
+
+function onChangePane(value) {
+  state.pane = value;
 }
 </script>
 <template>
   <slot
     v-bind="{
+      pane: state.pane,
       playerData,
       playerGames,
       playerSeasonStats,
@@ -155,6 +161,7 @@ function fetchData() {
       gameColumns,
       currentSeasonColumns,
       seasonColumns,
+      onChangePane,
     }"
   ></slot>
 </template>
