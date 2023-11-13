@@ -20,25 +20,25 @@ const props = defineProps({
 
 const { t } = useI18n();
 
-const homeTeamId = computed(() => props.gameData?.homeTeamId ?? '');
-const awayTeamId = computed(() => props.gameData?.awayTeamId ?? '');
+const homeTeamId = computed(() => props.gameData?.homeTeam?.id ?? '');
+const awayTeamId = computed(() => props.gameData?.awayTeam?.id ?? '');
 
 const sog = computed(() =>
-  buildSOG(props.gameStats?.teamSOG ?? [], props.gameData?.awayTeamId ?? '', props.gameData?.homeTeamId ?? '', 'shots')
+  buildSOG(props.gameStats?.teamSOG ?? [], awayTeamId.value, homeTeamId.value, 'shots')
 );
 const saves = computed(() =>
   buildSaves(
     props.gameStats?.teamSOG ?? [],
-    props.gameData?.homeTeamId ?? '',
-    props.gameData?.awayTeamId ?? '',
+    homeTeamId.value,
+    awayTeamId.value,
     'saves'
   )
 );
 const pim = computed(() =>
   buildSOG(
     props.gameStats?.teamPenalties ?? [],
-    props.gameData?.homeTeamId ?? '',
-    props.gameData?.awayTeamId ?? '',
+    homeTeamId.value,
+    awayTeamId.value,
     'penaltyLength'
   )
 );
@@ -51,9 +51,9 @@ const dvgPercent = computed(() => buildDvgPercent(props.gameStats?.teamPowerPlay
 <template>
   <div :class="useMainClass('gamecenter-game-stats')">
     <div :class="useMainClass('gamecenter-game-stats-container-wrapper')">
-      <!-- <GameStatsContainer :title="t('teamsStats.sog')" :data="sog" /> -->
-      <!-- <GameStatsContainer :title="t('teamsStats.saves')" :data="saves" /> -->
-      <!-- <GameStatsContainer :title="t('teamsStats.pim')" :data="pim" /> -->
+      <GameStatsContainer :title="t('teamsStats.sog')" :data="sog" />
+      <GameStatsContainer :title="t('teamsStats.saves')" :data="saves" />
+      <GameStatsContainer :title="t('teamsStats.pim')" :data="pim" />
       <GameStatsContainer :title="t('teamsStats.advPercent')" :data="advPercent" />
       <GameStatsContainer :title="t('teamsStats.penaltyKilling')" :data="dvgPercent" />
       <GameStatsContainer :data="advTime.advTime">
