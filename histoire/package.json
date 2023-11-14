@@ -1,0 +1,29 @@
+{
+  "name": "histoire",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "story:dev": "histoire dev",
+    "story:build": "histoire build",
+    "story:preview": "histoire preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@mjsz-vbr-elements/core": "workspace:^",
+    "@mjsz-vbr-elements/elements": "workspace:^",
+    "@mjsz-vbr-elements/extended": "workspace:^",
+    "@mjsz-vbr-elements/gamecenter": "workspace:^",
+    "@mjsz-vbr-elements/liga": "workspace:^"
+  },
+  "devDependencies": {
+    "@histoire/plugin-vue": "^0.17.5",
+    "@vitejs/plugin-vue": "^4.4.1",
+    "histoire": "^0.17.5",
+    "vite": "^4.5.0",
+    "vue": "^3.3.4"
+  }
+}
