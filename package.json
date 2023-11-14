@@ -6,7 +6,8 @@
   "packageManager": "pnpm@8.6.12",
   "workspaces": [
     "packages/*",
-    "playground/**"
+    "playground/**",
+    "histoire/**"
   ],
   "scripts": {
     "playground": "pnpm run -C playground dev",
