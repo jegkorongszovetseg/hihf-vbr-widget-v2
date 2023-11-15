@@ -7,19 +7,20 @@ const state = reactive({
   division: 'Alapszakasz',
   limit: 10,
   filter: '',
-  type: '3',
+  isPlayerLinked: false,
   hideColumns: '',
 });
 </script>
 
 <template>
-  <Story title="Elements/Standings">
+  <Story title="Elements/Field Players Penalties">
     <Variant title="Playground">
-      <mjsz-vbr-standings
+      <mjsz-vbr-players-penalties
         :locale="state.locale"
         :championship-id="state.championshipId"
         :division="state.division"
-        :type="state.type"
+        :limit="state.limit"
+        :team-filter-by-name="state.filter"
         :hide-columns="state.hideColumns"
       />
 
@@ -27,22 +28,23 @@ const state = reactive({
         <HstSelect v-model="state.locale" title="Locale" :options="{ hu: 'HU', en: 'EN' }" />
         <HstText v-model="state.championshipId" title="championshipId" />
         <HstText v-model="state.division" title="division" />
-        <HstSelect v-model="state.type" title="Type" :options="{ '2': '2 pontos', '3': '3 pontos' }" />
+        <HstText v-model="state.limit" title="limit" />
+        <HstText v-model="state.filter" title="teamFilterByName" />
         <HstCheckboxList
           v-model="state.hideColumns"
           title="hideColumns"
           :options="[
             {
-              label: 'GF',
-              value: 'gf',
+              label: 'GP',
+              value: 'gp',
             },
             {
-              label: 'GA',
-              value: 'ga',
+              label: 'S',
+              value: 'shoots',
             },
             {
-              label: 'GD',
-              value: 'gd',
+              label: 'S%',
+              value: 'shootPercent',
             },
           ]"
         />
@@ -50,10 +52,11 @@ const state = reactive({
     </Variant>
 
     <Variant title="Linked">
-      <mjsz-vbr-standings
+      <mjsz-vbr-players-leader
         :locale="state.locale"
         :championship-id="state.championshipId"
         :division="state.division"
+        is-player-linked
         is-team-linked
       />
 

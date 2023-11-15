@@ -15,7 +15,7 @@ const state = reactive({
 </script>
 
 <template>
-  <Story title="Elements/Menetrend">
+  <Story title="Elements/Schedule">
     <Variant title="Playground">
       <mjsz-vbr-schedule
         :locale="state.locale"

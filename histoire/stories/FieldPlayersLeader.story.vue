@@ -13,7 +13,7 @@ const state = reactive({
 </script>
 
 <template>
-  <Story title="Elements/Játékos statisztikák">
+  <Story title="Elements/Field Players Leader">
     <Variant title="Playground">
       <mjsz-vbr-players-leader
         :locale="state.locale"
