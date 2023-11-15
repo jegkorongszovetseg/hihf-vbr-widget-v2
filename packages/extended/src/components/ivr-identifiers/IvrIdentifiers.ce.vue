@@ -43,6 +43,14 @@ const props = defineProps({
             />
           </div>
           <div>
+            <label for="">Season-Id:</label>
+            <p v-text="seasonId" />
+
+            <label for="">Championship:</label>
+            <p v-text="championshipList.find((champ) => champ.championshipId === championshipId)?.championshipName" />
+
+            <label for="">Championship-Id:</label>
+            <p v-text="championshipId" />
             <pre v-text="sectionData"></pre>
           </div>
         </div>
