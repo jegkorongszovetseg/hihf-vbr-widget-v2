@@ -2,6 +2,10 @@
 import { I18NProvider, ErrorProvider, ErrorNotice } from '@mjsz-vbr-elements/core/components';
 import DataProvider from './DataProvider.vue';
 import Selector from './Selector.vue';
+import hu from '../../locales/hu.json';
+import en from '../../locales/en.json';
+
+const messages = { en, hu };
 
 const props = defineProps({
   locale: {
@@ -16,7 +20,7 @@ const props = defineProps({
 });
 </script>
 <template>
-  <I18NProvider :locale="props.locale">
+  <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
     <ErrorProvider v-slot:default="{ error, hasError }">
       <ErrorNotice v-if="hasError" :error="error" />
 
@@ -31,7 +35,7 @@ const props = defineProps({
           onChangeChampionship,
         }"
       >
-        <div style="display: flex; gap: 20px">
+        <div class="main-layout">
           <div>
             <Selector
               :seasons-list="seasonsList"
@@ -43,18 +47,58 @@ const props = defineProps({
             />
           </div>
           <div>
-            <label for="">Season-Id:</label>
-            <p v-text="seasonId" />
+            <section class="is-mb-5">
+              <label for="seasonId">{{ t('selection.seasonId') }}</label>
+              <p id="seasonId" v-text="seasonId" />
+            </section>
 
-            <label for="">Championship:</label>
-            <p v-text="championshipList.find((champ) => champ.championshipId === championshipId)?.championshipName" />
+            <section class="is-mb-5">
+              <label for="championshipName">{{ t('selection.championshipName') }}</label>
+              <p
+                id="championshipName"
+                v-text="championshipList.find((champ) => champ.championshipId === championshipId)?.championshipName"
+              />
+            </section>
 
-            <label for="">Championship-Id:</label>
-            <p v-text="championshipId" />
-            <pre v-text="sectionData"></pre>
+            <section class="is-mb-5">
+              <label for="championshipId">{{ t('selection.championshipId') }}</label>
+              <p id="championshipId" v-text="championshipId" />
+            </section>
+
+            <section class="is-mb-5">
+              <label for="phases">{{ t('selection.phases') }}:</label>
+              <pre id="phases" v-text="sectionData" />
+            </section>
           </div>
         </div>
       </DataProvider>
     </ErrorProvider>
   </I18NProvider>
 </template>
+
+<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+
+<style scoped>
+.main-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.main-layout >div:nth-child(2) {
+  flex: 1;
+}
+
+pre {
+  padding: 10px;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  background-color: var(--vbr-widget-primary-color-50);
+  border-radius: 5px;
+}
+/* pre:hover,
+pre:focus {
+  width: min-content;
+} */
+</style>
