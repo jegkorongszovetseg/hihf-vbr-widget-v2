@@ -175,11 +175,11 @@
       "tooltip": "Kapott Gólátlag"
     },
     "sa": {
-      "short": "KL",
+      "short": "SA",
       "tooltip": "Kapott Lövés"
     },
     "svs": {
-      "short": "VL",
+      "short": "SVS",
       "tooltip": "Védett Lövés"
     },
     "svsPercent": {
