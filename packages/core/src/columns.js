@@ -734,7 +734,7 @@ export const COLUMNS_SCORING_EFFICIENCY = {
   shotsPerGp: {
     label: 'table.sogp.short',
     tooltip: 'table.sogp.tooltip',
-    sortOrders: [{ target: 'shots_gp', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'shotsPerGp', direction: SORT_STATE_DESCEND }],
   },
   saPerGp: {
     label: 'table.sagp.short',
