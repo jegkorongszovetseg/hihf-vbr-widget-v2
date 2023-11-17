@@ -1,5 +1,6 @@
 <script setup>
 import { I18NProvider, ErrorProvider, ErrorNotice } from '@mjsz-vbr-elements/core/components';
+import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import DataProvider from './DataProvider.vue';
 import Selector from './Selector.vue';
 import hu from '../../locales/hu.json';
@@ -30,8 +31,11 @@ const props = defineProps({
           seasonId,
           championshipList,
           championshipId,
-          sectionData,
+          sections,
+          sectionId,
+          phaseData,
           onChangeSeason,
+          onChangeSection,
           onChangeChampionship,
         }"
       >
@@ -66,8 +70,19 @@ const props = defineProps({
             </section>
 
             <section class="is-mb-5">
+              <template v-for="section in sections" :key="section.sectionId">
+                <button
+                  :class="[useMainClass('tab-button'), { 'is-active': section.sectionId === sectionId }]"
+                  @click="onChangeSection(section.sectionId)"
+                >
+                  {{ section.sectionName }}
+                </button>
+              </template>
+            </section>
+
+            <section class="is-mb-5">
               <label for="phases">{{ t('selection.phases') }}:</label>
-              <pre id="phases" v-text="sectionData" />
+              <pre id="phases" v-text="phaseData" />
             </section>
           </div>
         </div>
@@ -86,7 +101,7 @@ const props = defineProps({
   flex-wrap: wrap;
   gap: 20px;
 }
-.main-layout >div:nth-child(2) {
+.main-layout > div:nth-child(2) {
   flex: 1;
 }
 

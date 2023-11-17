@@ -3,7 +3,7 @@ import { computed, reactive } from 'vue';
 import { useAsyncQueue } from '@vueuse/core';
 import { path } from 'ramda';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
-import { transformAllSeason, transformSeasons } from './internal';
+import { transformAllSeason, transformSeasons, transformSections } from './internal';
 
 const props = defineProps({
   apiKey: {
@@ -53,7 +53,6 @@ const { isLoading: seasonsLoading, execute: fetchSeasons } = useServices({
 });
 
 const {
-  state: sectionData,
   isLoading: sectionsLoading,
   execute: fetchSections,
 } = useServices({
@@ -62,9 +61,11 @@ const {
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId })),
   },
-  // transform: (res) => transformSections(res, state),
+  transform: (res) => transformSections(res, state),
   onError,
 });
+
+const phaseData = computed(()=> state.sections?.find((section)=>section.sectionId === state.sectionId)?.phases ?? [])
 
 useAsyncQueue([fetchAllSeasons, fetchSeasons, fetchSections]);
 
@@ -79,6 +80,10 @@ function onChangeChampionship(value) {
   state.championshipId = value;
   fetchSections();
 }
+
+function onChangeSection(value) {
+  state.sectionId = value;
+}
 </script>
 
 <template>
@@ -86,8 +91,9 @@ function onChangeChampionship(value) {
     v-bind="{
       ...state,
       isLoading,
-      sectionData,
+      phaseData,
       onChangeSeason,
+      onChangeSection,
       onChangeChampionship,
     }"
   />

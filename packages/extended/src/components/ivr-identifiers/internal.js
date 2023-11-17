@@ -9,3 +9,8 @@ export function transformSeasons(data, state) {
   state.championshipList = data;
   state.championshipId = pipe(head, prop('championshipId'))(data);
 }
+
+export function transformSections(data, state) {
+  state.sections = data;
+  state.sectionId = pipe(head, prop('sectionId'))(data);
+}
