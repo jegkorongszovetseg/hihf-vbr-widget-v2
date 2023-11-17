@@ -13,9 +13,9 @@ const state = reactive({
 </script>
 
 <template>
-  <Story title="Elements/Field Players Leader">
+  <Story title="Elements/Field Players Penalties">
     <Variant title="Playground">
-      <mjsz-vbr-players-leader
+      <mjsz-vbr-players-penalties
         :locale="state.locale"
         :championship-id="state.championshipId"
         :division="state.division"

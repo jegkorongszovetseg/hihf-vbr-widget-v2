@@ -711,35 +711,35 @@ export const COLUMNS_SCORING_EFFICIENCY = {
     tooltip: 'table.goalDiff.tooltip',
     sortOrders: [{ target: 'gd', direction: SORT_STATE_DESCEND }],
   },
-  gf_gp: {
+  gfPerGp: {
     label: 'table.gfgp.short',
     tooltip: 'table.gfgp.tooltip',
-    sortOrders: [{ target: 'gf_gp', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'gfPerGp', direction: SORT_STATE_DESCEND }],
   },
-  ga_gp: {
+  gaPerGp: {
     label: 'table.gagp.short',
     tooltip: 'table.gagp.tooltip',
-    sortOrders: [{ target: 'ga_gp', direction: SORT_STATE_ASCEND }],
+    sortOrders: [{ target: 'gaPerGp', direction: SORT_STATE_ASCEND }],
   },
   s: {
     label: 'table.sog.short',
     tooltip: 'table.sog.tooltip',
     sortOrders: [{ target: 's', direction: SORT_STATE_DESCEND }],
   },
-  kl: {
+  sa: {
     label: 'table.sa.short',
     tooltip: 'table.sa.tooltip',
     sortOrders: [{ target: 'sa', direction: SORT_STATE_ASCEND }],
   },
-  shots_gp: {
+  shotsPerGp: {
     label: 'table.sogp.short',
     tooltip: 'table.sogp.tooltip',
-    sortOrders: [{ target: 'shots_gp', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'shotsPerGp', direction: SORT_STATE_DESCEND }],
   },
-  sa_gp: {
+  saPerGp: {
     label: 'table.sagp.short',
     tooltip: 'table.sagp.tooltip',
-    sortOrders: [{ target: 'sa_gp', direction: SORT_STATE_ASCEND }],
+    sortOrders: [{ target: 'shotsPerGp', direction: SORT_STATE_ASCEND }],
   },
   sp: {
     label: 'table.sogPercent.short',

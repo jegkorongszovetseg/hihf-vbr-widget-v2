@@ -58,7 +58,7 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
         :columns="currentColumns"
         :rows="convertedRows.rows"
         :is-loading="isLoading"
-        :hide-columns="hideColumns"
+        :hide-columns="props.hideColumns"
         :sort="sort"
         :external-team-resolver="resolveExternalTeamLink"
         :is-team-linked="isTeamLinked"
