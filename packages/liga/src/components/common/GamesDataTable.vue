@@ -56,6 +56,11 @@ const props = defineProps({
           {{ row.resultType }}
         </span>
       </template>
+
+      <template v-slot:cell-teamName="{ row }">
+        <span class="is-team-name-long">{{ row.team?.longName }}</span>
+        <span class="is-team-name-short">{{ row.team?.shortName }}</span>
+      </template>
     </DataTable>
   </ResponsiveTable>
 </template>

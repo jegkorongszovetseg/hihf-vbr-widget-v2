@@ -38,5 +38,5 @@ export const transformGames = (data, state, locale, timezone) =>
     gameDateTime(timezone, locale),
     teamResultType(state.teamId),
     gameResult(state.teamId),
-    teamOpponent(state.teamId)
+    teamOpponent
   );

@@ -80,6 +80,11 @@ export const COLUMNS_GAMES = {
     tooltip: 'table.gameDateTime.tooltip',
     class: 'is-text-left',
   },
+  teamName: {
+    label: 'table.team.short',
+    tooltip: 'table.team.tooltip',
+    class: 'is-text-left',
+  },
   gameResult: {
     label: 'table.result.short',
     tooltip: 'table.result.tooltip',

@@ -175,14 +175,14 @@ export const gameResult = (teamId) => (row) => ({
   gameResult: createGameResult(row, teamId),
 });
 
-export const teamOpponent = (teamId) => (row) => ({
+export const teamOpponent = (row) => ({
   ...row,
-  opponent: createOpponent(row, teamId),
+  opponent: createOpponent(row),
 });
 
 export const teamResultType = (teamId) => (row) => ({
   ...row,
-  resultType: createGameResultType(row, teamId),
+  resultType: createGameResultType(row),
 });
 
 export const upperCase =
@@ -225,9 +225,8 @@ const dateDiff = (a, b) => new Date(a.gameDate).getTime() - new Date(b.gameDate)
 
 export const sortGames = sortWith([dateDiff, ascend(prop('id')), ascend(prop('gameId'))]);
 
-function createOpponent(row, teamId) {
-  if (row?.homeTeam?.id === teamId) return row?.awayTeam?.shortName ?? '';
-  return `@ ${row?.homeTeam?.shortName ?? ''}`;
+function createOpponent(row) {
+  return [!row.isHomeGame ? '@' : null, row.opponent?.shortName].join(' ');
 }
 
 function createGameResult(row, teamId) {
@@ -240,7 +239,7 @@ function createGameResult(row, teamId) {
   return [firstScore, secondScore].join(':');
 }
 
-function createGameResultType(row, teamId) {
+function createGameResultType(row) {
   const result = row.gameResult.split(':');
   const isWonGame = result[0] > result[1];
   const isLostGame = result[0] < result[1];

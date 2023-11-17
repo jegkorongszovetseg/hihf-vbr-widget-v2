@@ -138,13 +138,29 @@ const seasonColumns = computed(() =>
 
 const gameColumns = computed(() =>
   state.isGoalie
-    ? pick(['gameDateDate', 'gameDateTime', 'gameResult', 'opponent', 'sa', 'ga', 'gaa', 'svsPercent'], COLUMNS_GAMES)
+    ? pick(
+        [
+          'gameDateDate',
+          'gameDateTime',
+          'teamName',
+          'gameResult',
+          'opponent',
+          'resultType',
+          'sa',
+          'ga',
+          'gaa',
+          'svsPercent',
+        ],
+        COLUMNS_GAMES
+      )
     : pick(
         [
           'gameDateDate',
           'gameDateTime',
+          'teamName',
           'gameResult',
           'opponent',
+          'resultType',
           'goals',
           'assists',
           'points',
