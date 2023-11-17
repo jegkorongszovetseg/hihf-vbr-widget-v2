@@ -13,9 +13,9 @@ const state = reactive({
 </script>
 
 <template>
-  <Story title="Elements/Field Players Leader">
+  <Story title="Elements/Goalies Leader">
     <Variant title="Playground">
-      <mjsz-vbr-players-leader
+      <mjsz-vbr-goalies
         :locale="state.locale"
         :championship-id="state.championshipId"
         :division="state.division"
@@ -36,7 +36,7 @@ const state = reactive({
           :options="[
             {
               label: 'GP',
-              value: 'gp',
+              value: 'gkd',
             },
             {
               label: 'S',
@@ -52,7 +52,7 @@ const state = reactive({
     </Variant>
 
     <Variant title="Linked">
-      <mjsz-vbr-players-leader
+      <mjsz-vbr-goalies
         :locale="state.locale"
         :championship-id="state.championshipId"
         :division="state.division"

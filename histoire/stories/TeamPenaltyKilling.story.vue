@@ -7,20 +7,19 @@ const state = reactive({
   division: 'Alapszakasz',
   limit: 10,
   filter: '',
-  isPlayerLinked: false,
+  type: '3',
   hideColumns: '',
 });
 </script>
 
 <template>
-  <Story title="Elements/Field Players Leader">
+  <Story title="Elements/Team Penalty Killing">
     <Variant title="Playground">
-      <mjsz-vbr-players-leader
+      <mjsz-vbr-team-penalty-killing
         :locale="state.locale"
         :championship-id="state.championshipId"
         :division="state.division"
-        :limit="state.limit"
-        :team-filter-by-name="state.filter"
+        :type="state.type"
         :hide-columns="state.hideColumns"
       />
 
@@ -28,23 +27,22 @@ const state = reactive({
         <HstSelect v-model="state.locale" title="Locale" :options="{ hu: 'HU', en: 'EN' }" />
         <HstText v-model="state.championshipId" title="championshipId" />
         <HstText v-model="state.division" title="division" />
-        <HstText v-model="state.limit" title="limit" />
-        <HstText v-model="state.filter" title="teamFilterByName" />
+        <HstSelect v-model="state.type" title="Type" :options="{ '2': '2 pontos', '3': '3 pontos' }" />
         <HstCheckboxList
           v-model="state.hideColumns"
           title="hideColumns"
           :options="[
             {
-              label: 'GP',
-              value: 'gp',
+              label: 'GF',
+              value: 'gf',
             },
             {
-              label: 'S',
-              value: 'shoots',
+              label: 'GA',
+              value: 'ga',
             },
             {
-              label: 'S%',
-              value: 'shootPercent',
+              label: 'GD',
+              value: 'gd',
             },
           ]"
         />
@@ -52,11 +50,10 @@ const state = reactive({
     </Variant>
 
     <Variant title="Linked">
-      <mjsz-vbr-players-leader
+      <mjsz-vbr-team-penalty-killing
         :locale="state.locale"
         :championship-id="state.championshipId"
         :division="state.division"
-        is-player-linked
         is-team-linked
       />
 
@@ -69,20 +66,6 @@ const state = reactive({
 
 <docs lang="md">
 ## Változók
-
-| prop               | Leírás                         |
-| :----------------- | :----------------------------- |
-| api-key            | Api kulcs                      |
-| locale             | Nyelv                          |
-| championship-id    | Bajnokság azonosító            |
-| division           | Bajnokság szakasz              |
-| hide-columns       | Oszlopok elrejtése             |
-| limit              | Sorok száma                    |
-| teamFilterByName   | Szűrés csapat névre            |
-| externalPlayerLink | Játékos külső hivatkozása      |
-| isPlayerLinked     | Játékos külső hivatkozás aktív |
-| externalTeamLink   | Csapat külső hivatkozása       |
-| isTeamLinked       | Csapat külső hivatkozás aktív  |
 
 [VBR API Elements](https://api.icehockey.hu/widgets/docs/v2/widget/fieldplayers-leader.html)
 </docs>
