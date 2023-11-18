@@ -25,10 +25,15 @@ export const transformSections = (sections, state) => {
 
 export const convertPhaseName = (phases) => {
   return phases.map((phase) => ({
-    ...phase,
-    phaseName: [phase.phaseName, phase.phaseSubType?.phaseSubTypeName ?? '', phase.phaseType?.phaseTypeName ?? ''].join(
-      ' '
-    ),
+    phaseId: phase.phaseId,
+    phaseName: Object.values({
+      phaseName: phase.phaseName,
+      ...(phase.phaseType?.phaseTypeName &&
+        phase.phaseType.phaseTypeName !== phase.phaseName && {
+          phaseTypeName: phase.phaseType.phaseTypeName,
+        }),
+      ...(phase.phaseSubType?.phaseSubTypeName && { phaseSubTypeName: phase.phaseSubType.phaseSubTypeName }),
+    }).join('-'),
   }));
 };
 
