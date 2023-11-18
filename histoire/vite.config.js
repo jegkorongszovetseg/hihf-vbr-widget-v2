@@ -5,7 +5,8 @@ import vue from '@vitejs/plugin-vue';
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   return {
-    base: mode === 'build' ? '/widgets/stories/v2/' : '/',
+    envDir: resolve(__dirname, '../'),
+    base: '/widgets/stories/v2/',
     resolve: {
       alias: {
         '@mjsz-vbr-elements/core/*': resolve(__dirname, '../packages/core/src/index.js'),
