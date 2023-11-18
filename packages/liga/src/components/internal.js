@@ -83,7 +83,7 @@ export const COLUMNS_GAMES = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left',
+    class: 'is-text-left is-text-light',
   },
   gameResult: {
     label: 'table.result.short',
@@ -97,7 +97,7 @@ export const COLUMNS_GAMES = {
   opponent: {
     label: 'table.opponent.short',
     tooltip: 'table.opponent.tooltip',
-    class: 'is-text-left',
+    class: 'is-text-left is-text-light',
   },
   resultType: {
     label: 'table.resultType.short',
