@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
-import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
-import { offsetName } from '@mjsz-vbr-elements/core/utils';
+import { useColumns } from '@mjsz-vbr-elements/core/composables';
+import { offsetName, externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import GamesDataTable from '../common/GamesDataTable.vue';
 
 const props = defineProps({
@@ -26,8 +26,8 @@ const props = defineProps({
   },
 
   gameResolver: {
-    type: Function,
-    default: () => ({}),
+    type: [String, Function],
+    default: '',
   },
 
   championshipId: {
@@ -36,15 +36,14 @@ const props = defineProps({
   },
 });
 
-const { t } = useI18n();
-
 const { columns } = useColumns(
   computed(() => props.columns),
   null,
   computed(() => ({ offsetName: offsetName(new Date(), null, 'hu') }))
 );
+const resolveExternalGameLink = (params) => externalGameLinkResolver(props.gameResolver, params);
 </script>
 
 <template>
-  <GamesDataTable :rows="rows" :columns="columns" :append-to="appendTo" />
+  <GamesDataTable :rows="rows" :columns="columns" :append-to="appendTo" :game-resolver="resolveExternalGameLink" />
 </template>

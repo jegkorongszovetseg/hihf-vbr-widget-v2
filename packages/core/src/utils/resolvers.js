@@ -1,16 +1,16 @@
 import {
-  DEFAULT_EXTERNAL_BASE_URL,
+  DEFAULT_EXTERNAL_GAME_URL,
   DEFAULT_EXTERNAL_PLAYER_URL,
   DEFAULT_EXTERNAL_TEAM_URL,
   FLAG_BASE_URL,
 } from '../constants';
 import { templateReplacer } from './string';
 
-export const externalGameLinkResolver = (rawResolver, gameId) => {
+export const externalGameLinkResolver = (rawResolver, params = {}) => {
   const resolver = getSettingVariable('gameResolver') || rawResolver;
-  if (typeof resolver === 'function') return resolver(gameId);
-  if (resolver) return resolver + gameId;
-  return DEFAULT_EXTERNAL_BASE_URL + gameId;
+  if (typeof resolver === 'function') return resolver(params);
+  if (resolver) return encodeURI(templateReplacer(resolver, params));
+  return encodeURI(templateReplacer(DEFAULT_EXTERNAL_GAME_URL, params));
 };
 
 export const externalTeamLinkResolver = (rawResolver, params = {}) => {

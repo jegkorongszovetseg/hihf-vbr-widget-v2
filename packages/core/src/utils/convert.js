@@ -232,7 +232,7 @@ function createOpponent(row) {
 function createGameResult(row, teamId) {
   let firstScore = row?.homeTeamScore;
   let secondScore = row?.awayTeamScore;
-  if (row?.awayTeam?.id === teamId) {
+  if (!row.isHomeGame) {
     firstScore = row?.awayTeamScore;
     secondScore = row?.homeTeamScore;
   }

@@ -35,6 +35,11 @@ const props = defineProps({
     default: '',
   },
 
+  externalGameResolver: {
+    type: String,
+    default: '',
+  },
+
   externalPlayerResolver: {
     type: String,
     default: '',
@@ -102,7 +107,13 @@ const tooltipContainer = ref(null);
             </button>
           </div>
 
-          <Games v-if="pane === PANE_GAMES" :rows="playerGames" :columns="gameColumns" :append-to="tooltipContainer" />
+          <Games
+            v-if="pane === PANE_GAMES"
+            :rows="playerGames"
+            :columns="gameColumns"
+            :append-to="tooltipContainer"
+            :game-resolver="props.externalGameResolver"
+          />
 
           <Seasons
             v-if="pane === PANE_SEASONS"

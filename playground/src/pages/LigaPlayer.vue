@@ -10,11 +10,18 @@ import '../../../packages/shared/dist/css/responsive-table.css';
 import '../../../packages/shared/dist/css/table.css';
 import '../../../packages/shared/dist/css/paginator.css';
 import '../../../packages/shared/dist/css/teams.css';
+
+const gameResolver = 'https://www.ersteliga.hu/game/id/{gameId}';
 </script>
 
 <template>
   <div class="p-5 max-w-[1170px] mx-auto">
-    <PlayerLiga :locale="store.locale" championship-name="Erste Liga" player-id="1111"></PlayerLiga>
+    <PlayerLiga
+      :locale="store.locale"
+      championship-name="Erste Liga"
+      player-id="1111"
+      :external-game-resolver="gameResolver"
+    ></PlayerLiga>
     <!-- <mjsz-vbr-player-liga :locale="store.locale" championship-name="Erste Liga" /> -->
   </div>
 </template>

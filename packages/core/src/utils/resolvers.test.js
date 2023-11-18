@@ -72,6 +72,11 @@ describe('externalTeamLinkResolver', () => {
     const resolver = externalTeamLinkResolver(undefined, { playerId: 123, id: 456 });
     expect(resolver).toBe(`http://example.com/team/456`);
   });
+
+  test('Vissza adja az url-t teamId-val ha az url külső üres function', () => {
+    const resolver = externalTeamLinkResolver(() => undefined, { step: 123, id: 456 });
+    expect(resolver).toBe(undefined);
+  });
 });
 
 describe('externalPlayerLinkResolver', () => {

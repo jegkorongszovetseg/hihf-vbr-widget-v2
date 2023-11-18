@@ -88,7 +88,11 @@ export const COLUMNS_GAMES = {
   gameResult: {
     label: 'table.result.short',
     tooltip: 'table.result.tooltip',
-    class: 'is-has-image',
+    class: 'is-text-bold',
+  },
+  gameResultType: {
+    label: '',
+    tooltip: '',
   },
   opponent: {
     label: 'table.opponent.short',
