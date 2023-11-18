@@ -10,16 +10,17 @@ import {
   externalGameLinkResolver,
 } from '@mjsz-vbr-elements/core/utils';
 import { REFRESH_DELAY } from '@mjsz-vbr-elements/core';
-import { I18NProvider, Paginator, ErrorNotice, TimezoneSelector, ScheduleTable } from '@mjsz-vbr-elements/core/components';
+import {
+  I18NProvider,
+  Paginator,
+  ErrorNotice,
+  TimezoneSelector,
+  ScheduleTable,
+} from '@mjsz-vbr-elements/core/components';
 import { baseProps } from '@mjsz-vbr-elements/core';
 
 const props = defineProps({
   ...baseProps,
-
-  pagination: {
-    type: Boolean,
-    default: true,
-  },
 
   limit: {
     type: Number,
@@ -93,7 +94,7 @@ const rows = computed(() => sortGames(rawRows.value));
 const { pause, resume } = useTimeoutPoll(execute, REFRESH_DELAY, { immediate: false });
 
 const { page, change: onPaginatorChange } = usePage({
-  initial: props.initialPage,
+  initial: computed(() => props.initialPage),
   items: rows,
   limit: props.limit,
   auto: props.autoInitialPage,
@@ -135,7 +136,7 @@ const externalGameResolverTarget = computed(() => (props.isTargetExternal ? '_bl
       <ErrorNotice v-if="hasError" :error="error" />
 
       <TimezoneSelector
-        v-if="timezoneSelector"
+        v-if="props.timezoneSelector"
         :key="props.locale"
         :locale="props.locale"
         :current-zone="timezone"
@@ -152,6 +153,7 @@ const externalGameResolverTarget = computed(() => (props.isTargetExternal ? '_bl
       />
 
       <Paginator
+        v-if="props.limit > 0"
         :page="page"
         :items-per-page="props.limit"
         :total-items="totalItems"
