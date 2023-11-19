@@ -83,6 +83,10 @@ const { columns: columnsGoalies } = useColumns(goalieColumns);
             <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
           </div>
         </template>
+
+        <template v-slot:cell-name="{ row }">
+          <a :href="externalPlayerResolver({ ...row, championshipId })" v-text="row.name" />
+        </template>
       </DataTable>
     </ResponsiveTable>
 
