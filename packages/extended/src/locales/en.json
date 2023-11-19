@@ -5,6 +5,7 @@
     "report": "Report",
     "video": "Video",
     "season": "Season",
+    "seasons": "Seasons",
     "section": "Section",
     "phases": "Phases",
     "noPhases": "No Phases",
@@ -18,7 +19,11 @@
     "schedule": "Schedule",
     "standings": "Standings",
     "playerStats": "Player Statistics",
-    "teamStats": "Team Statistics"
+    "teamStats": "Team Statistics",
+    "championships": "Championships",
+    "championshipName": "Championship Name (Championship-Name):",
+    "championshipId": "Championship Identifier (Championship-id):",
+    "seasonId": "Season Identifier (season-Id):"
   },
   "report": {
     "points": "Points",

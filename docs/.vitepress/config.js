@@ -15,7 +15,8 @@ export default defineConfig(({ mode }) => {
         { text: 'Widget', link: '/widget/' },
         { text: 'Stílusok', link: '/styles/' },
         { text: 'VBR API', link: '/vbr-api/' },
-        { text: 'VBR Azonosítók', link: '/vbr-api/identifiers' },
+        { text: 'IVR Azonosítók', link: '/vbr-api/identifiers' },
+        { text: 'Stories', link: 'https://api.icehockey.hu/widgets/stories/v2' },
       ],
       sidebar: {
         '/widget/': [

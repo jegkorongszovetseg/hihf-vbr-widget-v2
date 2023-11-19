@@ -5,6 +5,7 @@
     "report": "Riport",
     "video": "Videó",
     "season": "Szezon",
+    "seasons": "Szezonok",
     "section": "Szakasz",
     "phases": "Szakaszok",
     "noPhases": "Nincsenek szakaszok",
@@ -18,7 +19,11 @@
     "schedule": "Menetrend",
     "standings": "Tabella",
     "playerStats": "Játékos statisztika",
-    "teamStats": "Csapat Statisztika"
+    "teamStats": "Csapat Statisztika",
+    "championships": "Bajnokságok",
+    "championshipName": "Bajnokság Neve (Championship-Name):",
+    "championshipId": "Bajnokság azonosító (Championship-id):",
+    "seasonId": "Szezon azonosító (season-Id):"
   },
   "report": {
     "points": "Pontok",

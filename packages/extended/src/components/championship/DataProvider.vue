@@ -213,6 +213,7 @@ function setFetchData(value) {
   sort.sortTarget = report.sort?.sortTarget ?? '';
   sort.orders = report.sort?.orders ?? [];
   fetchData();
+  onPaginatorChange(1);
 }
 </script>
 
