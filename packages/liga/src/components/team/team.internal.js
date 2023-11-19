@@ -1,4 +1,24 @@
-import { groupBy, compose, sortBy, map, omit, values, join, over, lensProp, replace } from 'ramda';
+import {
+  groupBy,
+  compose,
+  sortBy,
+  map,
+  omit,
+  values,
+  join,
+  over,
+  lensProp,
+  replace,
+  filter,
+  pathEq,
+  mergeWith,
+  mergeLeft,
+  indexBy,
+  path,
+  pipe,
+  reject,
+  innerJoin,
+} from 'ramda';
 import { playerName, teamName, upperCase, format } from '@mjsz-vbr-elements/core/utils';
 
 export const PAGE_INFO = 'Info';
@@ -58,6 +78,26 @@ export const transformRosters = (data) =>
     sortBy(sortByJerseyNumber),
     map(compose(playerName, teamName, upperCase(['position'])))
   )(data);
+
+export const transformFieledPlayersStats = (row, teamId) =>
+  pipe(filter(pathEq(teamId, ['team', 'id'])), map(playerName))(row);
+
+export const mergeArrayByTeamId = (a, b) =>
+  values(mergeWith(mergeLeft, indexBy(path(['player', 'playerId']), a), indexBy(path(['player', 'playerId']), b)));
+
+export const mergePlayerStats = ({ goalieStats, fieldPlayers, playersPenalty }) => {
+  const goaliesIds = map(path(['player', 'playerId']))(goalieStats);
+  const rejectGoalies = (r) => goaliesIds.includes(r.player.playerId);
+  const withoutGoalies = reject(rejectGoalies)(playersPenalty);
+  const onlyGoalies = innerJoin((record, id) => record.player.playerId === id, playersPenalty, goaliesIds);
+
+  const mergedFieldPlayers = mergeArrayByTeamId(fieldPlayers, withoutGoalies);
+  const mergedGoalies = mergeArrayByTeamId(goalieStats, onlyGoalies);
+  return {
+    fieldPlayers: mergedFieldPlayers,
+    goalies: mergedGoalies,
+  };
+};
 
 function groupByPosition(data) {
   if (['ld', 'rd'].includes(data.position?.toLowerCase())) return 'defenders';

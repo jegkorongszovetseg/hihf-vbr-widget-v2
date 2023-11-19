@@ -52,7 +52,17 @@ const externalPlayerLink = (params) => externalPlayerLinkResolver(props.external
         <DataProvider
           :championship-id="props.championshipId"
           :team-id="teamId"
-          v-slot:default="{ teamInfo, championshipId, page, roster, games, onChangePage }"
+          v-slot:default="{
+            teamInfo,
+            championshipId,
+            page,
+            roster,
+            games,
+            statistics,
+            fieldPlayers,
+            fieldPlayersPenalty,
+            onChangePage,
+          }"
         >
           <h1 class="is-heading-1 is-uppercase is-mb-5">{{ teamInfo?.team?.longName }}</h1>
           <div :class="useMainClass('main-image-wrapper')" style="--overlay-radius: 0px">
@@ -96,7 +106,7 @@ const externalPlayerLink = (params) => externalPlayerLinkResolver(props.external
 
           <PageInfo v-if="page === PAGE_INFO" :data="teamInfo.organizationInfo" />
           <PageGames v-if="page === PAGE_GAMES" :data="games" />
-          <Statistics v-if="page === PAGE_PLAYER_STATS" />
+          <Statistics v-if="page === PAGE_PLAYER_STATS" :field-players="statistics.fieldPlayers" :goalies="statistics.goalies" />
           <PageRoster
             v-if="page === PAGE_ROSTER"
             :data="roster"

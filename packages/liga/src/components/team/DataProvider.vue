@@ -1,6 +1,6 @@
 <script setup>
 import { reactive, computed, watch } from 'vue';
-import { useUrlSearchParams } from '@vueuse/core';
+import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
 import {
   rawConvert,
@@ -11,7 +11,16 @@ import {
   sortGames,
   getLocalTimezone,
 } from '@mjsz-vbr-elements/core/utils';
-import { PAGE_INFO, PAGE_GAMES, PAGE_ROSTER, transformRosters, transformTeamInfo } from './team.internal.js';
+import {
+  PAGE_INFO,
+  PAGE_GAMES,
+  PAGE_PLAYER_STATS,
+  PAGE_ROSTER,
+  transformRosters,
+  mergePlayerStats,
+  transformTeamInfo,
+  transformFieledPlayersStats,
+} from './team.internal.js';
 
 const timezone = getLocalTimezone();
 
@@ -38,6 +47,7 @@ const state = reactive({
   page: params.page || PAGE_INFO,
   teamId: Number(params.teamId) || Number(props.teamId),
   championshipId: Number(params.championshipId) || Number(props.championshipId),
+  statistics: {},
 });
 
 const { onError } = useError();
@@ -80,6 +90,36 @@ const { state: roster, execute: fetchTeamRoster } = useServices({
   onError,
 });
 
+const { state: fieldPlayers, execute: fetchFieldLeaders } = useServices({
+  options: {
+    path: '/v2/players-stats',
+    apiKey: props.apiKey,
+    params: computed(() => ({ championshipId: state.championshipId })),
+  },
+  transform: (res) => transformFieledPlayersStats(res, state.teamId),
+  onError,
+});
+
+const { state: fieldPlayersPenalty, execute: fetchFieldPenalty } = useServices({
+  options: {
+    path: '/v2/players-penalty',
+    apiKey: props.apiKey,
+    params: computed(() => ({ championshipId: state.championshipId })),
+  },
+  transform: (res) => transformFieledPlayersStats(res, state.teamId),
+  onError,
+});
+
+const { state: goalieStats, execute: fetchGoalieStats } = useServices({
+  options: {
+    path: '/v2/players-goalie',
+    apiKey: props.apiKey,
+    params: computed(() => ({ championshipId: state.championshipId })),
+  },
+  transform: (res) => transformFieledPlayersStats(res, state.teamId),
+  onError,
+});
+
 watch(
   params,
   () => {
@@ -103,6 +143,17 @@ function fetchData(page) {
     case PAGE_ROSTER:
       fetchTeamRoster();
       break;
+    case PAGE_PLAYER_STATS:
+      useAsyncQueue([fetchGoalieStats, fetchFieldLeaders, fetchFieldPenalty], {
+        onFinished: () => {
+          state.statistics = mergePlayerStats({
+            goalieStats: goalieStats.value,
+            fieldPlayers: fieldPlayers.value,
+            playersPenalty: fieldPlayersPenalty.value,
+          });
+        },
+      });
+      break;
 
     default:
       break;
@@ -111,5 +162,5 @@ function fetchData(page) {
 </script>
 
 <template>
-  <slot v-bind="{ ...state, games, teamInfo, roster, onChangePage }" />
+  <slot v-bind="{ ...state, games, teamInfo, roster, fieldPlayers, fieldPlayersPenalty, onChangePage }" />
 </template>

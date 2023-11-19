@@ -65,6 +65,15 @@
       background-color: var(--vbr-widget-table-active-bg-color);
     }
 
+    &.is-zero {
+      color: var(--vbr-widget-table-zero-color);
+    }
+
+    &.is-possible-empty:empty:before {
+      content: '0';
+      color: var(--vbr-widget-table-zero-color);
+    }
+
     .is-text-light,
     &.is-text-light {
       color: var(--vbr-widget-table-cell-light-color);

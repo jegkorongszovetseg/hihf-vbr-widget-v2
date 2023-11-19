@@ -197,6 +197,11 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
     tooltip: 'table.team.tooltip',
     class: 'is-text-left is-w-auto',
   },
+  name: {
+    label: 'table.name.short',
+    tooltip: 'table.name.tooltip',
+    class: 'is-text-left',
+  },
   gp: {
     label: 'table.game.short',
     tooltip: 'table.game.tooltip',
@@ -217,41 +222,13 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
     label: 'table.plusMinus.short',
     tooltip: 'table.plusMinus.tooltip',
   },
-  shoot: {
+  shoots: {
     label: 'table.sog.short',
     tooltip: 'table.sog.tooltip',
   },
   shootPercent: {
     label: 'table.sogPercent.short',
     tooltip: 'table.sogPercent.tooltip',
-  },
-  p2: {
-    label: 'table.minorPenalties.short',
-    tooltip: 'table.minorPenalties.tooltip',
-  },
-  p5: {
-    label: 'table.majorPenalties.short',
-    tooltip: 'table.majorPenalties.tooltip',
-  },
-  p10: {
-    label: 'table.misconducts.short',
-    tooltip: 'table.misconducts.tooltip',
-  },
-  p20: {
-    label: 'table.gameMisconducts.short',
-    tooltip: 'table.gameMisconducts.tooltip',
-  },
-  p25: {
-    label: 'table.matchPenalties.short',
-    tooltip: 'table.matchPenalties.tooltip',
-  },
-  pim: {
-    label: 'table.pim.short',
-    tooltip: 'table.pim.tooltip',
-  },
-  pimPerGame: {
-    label: 'table.pimPerGame.short',
-    tooltip: 'table.pimPerGame.tooltip',
   },
 
   gkd: {
@@ -289,5 +266,39 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
   svsPercent: {
     label: 'table.svsPercent.short',
     tooltip: 'table.svsPercent.tooltip',
+  },
+  p2: {
+    label: 'table.minorPenalties.short',
+    tooltip: 'table.minorPenalties.tooltip',
+    class: 'is-possible-empty',
+  },
+  p5: {
+    label: 'table.majorPenalties.short',
+    tooltip: 'table.majorPenalties.tooltip',
+    class: 'is-possible-empty',
+  },
+  p10: {
+    label: 'table.misconducts.short',
+    tooltip: 'table.misconducts.tooltip',
+    class: 'is-possible-empty',
+  },
+  p20: {
+    label: 'table.gameMisconducts.short',
+    tooltip: 'table.gameMisconducts.tooltip',
+    class: 'is-possible-empty',
+  },
+  p25: {
+    label: 'table.matchPenalties.short',
+    tooltip: 'table.matchPenalties.tooltip',
+    class: 'is-possible-empty',
+  },
+  pim: {
+    label: 'table.pim.short',
+    tooltip: 'table.pim.tooltip',
+    class: 'is-possible-empty',
+  },
+  pimPerGame: {
+    label: 'table.pimPerGame.short',
+    tooltip: 'table.pimPerGame.tooltip',
   },
 };
