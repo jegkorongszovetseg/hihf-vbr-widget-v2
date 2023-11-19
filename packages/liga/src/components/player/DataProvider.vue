@@ -102,7 +102,20 @@ const currentSeasonColumns = computed(() =>
         COLUMNS_PLAYER_SEASON_STATS
       )
     : omit(
-        ['seasonId', 'ga', 'gaa', 'sog', 'svs', 'svsPercent', 'mipMin', 'mipPercent', 'gkd', 'gpi'],
+        [
+          'playerPortrait',
+          'seasonId',
+          'ga',
+          'gaa',
+          'sog',
+          'svs',
+          'svsPercent',
+          'mipMin',
+          'mipPercent',
+          'gkd',
+          'gpi',
+          'name',
+        ],
         COLUMNS_PLAYER_SEASON_STATS
       )
 );
@@ -115,6 +128,8 @@ const seasonColumns = computed(() =>
       )
     : omit(
         [
+          'playerPortrait',
+          'name',
           'shootPercent',
           'pimPerGame',
           'p2',

@@ -18,7 +18,7 @@ const gameResolver = 'https://www.ersteliga.hu/game/id/{gameId}';
   <div class="p-5 max-w-[1170px] mx-auto">
     <PlayerLiga
       :locale="store.locale"
-      championship-name="Erste Liga"
+      championship-id="3450"
       player-id="1111"
       :external-game-resolver="gameResolver"
     ></PlayerLiga>

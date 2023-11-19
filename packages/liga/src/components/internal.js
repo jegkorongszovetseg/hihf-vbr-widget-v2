@@ -187,6 +187,10 @@ export const COLUMNS_GAMES = {
 };
 
 export const COLUMNS_PLAYER_SEASON_STATS = {
+  playerPortrait: {
+    label: '',
+    class: 'is-has-image',
+  },
   seasonId: {
     label: 'table.season.short',
     tooltip: 'table.season.tooltip',

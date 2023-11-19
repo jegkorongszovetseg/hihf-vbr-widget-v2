@@ -19,7 +19,7 @@ import {
   reject,
   innerJoin,
 } from 'ramda';
-import { playerName, teamName, upperCase, format } from '@mjsz-vbr-elements/core/utils';
+import { playerName, teamName, upperCase, format, localeSort } from '@mjsz-vbr-elements/core/utils';
 
 export const PAGE_INFO = 'Info';
 export const PAGE_GAMES = 'Games';
@@ -94,8 +94,8 @@ export const mergePlayerStats = ({ goalieStats, fieldPlayers, playersPenalty }) 
   const mergedFieldPlayers = mergeArrayByTeamId(fieldPlayers, withoutGoalies);
   const mergedGoalies = mergeArrayByTeamId(goalieStats, onlyGoalies);
   return {
-    fieldPlayers: mergedFieldPlayers,
-    goalies: mergedGoalies,
+    fieldPlayers: localeSort(mergedFieldPlayers),
+    goalies: localeSort(mergedGoalies),
   };
 };
 

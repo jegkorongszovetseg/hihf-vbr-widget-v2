@@ -1,8 +1,9 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { omit } from 'ramda';
-import { DataTable, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
+import { DataTable, ResponsiveTable, Image } from '@mjsz-vbr-elements/core/components';
 import { useI18n, useColumns } from '@mjsz-vbr-elements/core/composables';
+import { DEFAULT_PORTRAIT_IMAGE_URL } from '@mjsz-vbr-elements/core/constants';
 import { COLUMNS_PLAYER_SEASON_STATS } from '../../internal.js';
 
 const playersColumns = omit(
@@ -38,6 +39,16 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+
+  championshipId: {
+    type: [String, Number],
+    default: '',
+  },
+
+  externalPlayerResolver: {
+    type: Function,
+    default: () => undefined,
+  },
 });
 
 const tooltipContainer = ref(null);
@@ -51,12 +62,28 @@ const { columns: columnsGoalies } = useColumns(goalieColumns);
   <div>
     <h2 class="is-heading-2">{{ t('teams.fieldPlayers') }}</h2>
     <ResponsiveTable>
-      <DataTable :columns="columnsFieldPlayers" :rows="fieldPlayers" :append-to="tooltipContainer"></DataTable>
+      <DataTable :columns="columnsFieldPlayers" :rows="fieldPlayers" :append-to="tooltipContainer">
+        <template v-slot:cell-playerPortrait="{ row }">
+          <div class="is-portrait-image">
+            <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
+          </div>
+        </template>
+
+        <template v-slot:cell-name="{ row }">
+          <a :href="externalPlayerResolver({ ...row, championshipId })" v-text="row.name" />
+        </template>
+      </DataTable>
     </ResponsiveTable>
 
     <h2 class="is-heading-2">{{ t('teams.goalies') }}</h2>
     <ResponsiveTable>
-      <DataTable :columns="columnsGoalies" :rows="goalies" :append-to="tooltipContainer"></DataTable>
+      <DataTable :columns="columnsGoalies" :rows="goalies" :append-to="tooltipContainer">
+        <template v-slot:cell-playerPortrait="{ row }">
+          <div class="is-portrait-image">
+            <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
+          </div>
+        </template>
+      </DataTable>
     </ResponsiveTable>
 
     <div ref="tooltipContainer"></div>

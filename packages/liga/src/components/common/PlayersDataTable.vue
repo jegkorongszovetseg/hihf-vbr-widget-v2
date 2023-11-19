@@ -41,7 +41,7 @@ const props = defineProps({
   },
 
   championshipId: {
-    type: String,
+    type: [String, Number],
     default: '',
   },
 });

@@ -59,6 +59,7 @@ const tooltipContainer = ref(null);
 
         <DataProvider
           :locale="locale"
+          :championship-id="championshipId"
           v-slot="{
             pane,
             isLoading,

@@ -17,13 +17,13 @@ defineProps({
   },
 
   championshipId: {
-    type: String,
+    type: [String, Number],
     default: '',
   },
 
   externalPlayerResolver: {
-    type: String,
-    default: '',
+    type: Function,
+    required: true,
   },
 });
 

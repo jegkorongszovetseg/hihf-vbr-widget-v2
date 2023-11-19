@@ -19,6 +19,7 @@ import {
   curry,
   over,
   lensProp,
+  sort,
 } from 'ramda';
 import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../constants.js';
 import { format, convertMinToSec, convertSecToMin, convertMinToMinSec } from './datetime.js';
@@ -224,6 +225,9 @@ export const convertTimesSecToMin =
 const dateDiff = (a, b) => new Date(a.gameDate).getTime() - new Date(b.gameDate).getTime();
 
 export const sortGames = sortWith([dateDiff, ascend(prop('id')), ascend(prop('gameId'))]);
+
+const localeCompare = (key) => (a, b) => a[key].localeCompare(b[key], 'hu');
+export const localeSort = sort(localeCompare('name'));
 
 function createOpponent(row) {
   return [!row.isHomeGame ? '@' : null, row.opponent?.shortName].join(' ');

@@ -106,7 +106,13 @@ const externalPlayerLink = (params) => externalPlayerLinkResolver(props.external
 
           <PageInfo v-if="page === PAGE_INFO" :data="teamInfo.organizationInfo" />
           <PageGames v-if="page === PAGE_GAMES" :data="games" />
-          <Statistics v-if="page === PAGE_PLAYER_STATS" :field-players="statistics.fieldPlayers" :goalies="statistics.goalies" />
+          <Statistics
+            v-if="page === PAGE_PLAYER_STATS"
+            :field-players="statistics.fieldPlayers"
+            :goalies="statistics.goalies"
+            :championship-id="championshipId"
+            :external-player-resolver="externalPlayerLink"
+          />
           <PageRoster
             v-if="page === PAGE_ROSTER"
             :data="roster"
