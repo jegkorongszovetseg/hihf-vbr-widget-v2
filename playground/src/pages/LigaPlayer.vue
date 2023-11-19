@@ -16,12 +16,17 @@ const gameResolver = 'https://www.ersteliga.hu/game/id/{gameId}';
 
 <template>
   <div class="p-5 max-w-[1170px] mx-auto">
-    <PlayerLiga
+    <!-- <PlayerLiga
       :locale="store.locale"
       championship-id="3450"
       player-id="1111"
       :external-game-resolver="gameResolver"
-    ></PlayerLiga>
-    <!-- <mjsz-vbr-player-liga :locale="store.locale" championship-name="Erste Liga" /> -->
+    ></PlayerLiga> -->
+    <mjsz-vbr-player-liga
+      :locale="store.locale"
+      championship-id="3450"
+      player-id="1111"
+      :external-game-resolver="gameResolver"
+    />
   </div>
 </template>
