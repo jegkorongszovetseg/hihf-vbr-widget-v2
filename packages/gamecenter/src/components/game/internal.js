@@ -217,14 +217,14 @@ export const buildAdvPercent = (data) => {
 
 export const buildDvgPercent = (data) => {
   const homeDVG = data?.home?.dvg ?? 0;
-  const homePPGA = data?.home?.ppga ?? 0;
+  const homePK = data?.home?.pk ?? 0;
 
   const awayDVG = data?.away?.dvg ?? 0;
-  const awayPPGA = data?.away?.ppga ?? 0;
+  const awayPK = data?.away?.pk ?? 0;
 
   const homePKPercent = (data?.home?.pkPercent ?? 0).toFixed(2);
   const awayPKPercent = (data?.away?.pkPercent ?? 0).toFixed(2);
-  return `(${homePPGA}/${homeDVG}) <b>${homePKPercent}%</b> / (${awayPPGA}/${awayDVG}) <b>${awayPKPercent}%</b>`;
+  return `(${homeDVG}/${homePK}) <b>${homePKPercent}%</b> / (${awayDVG}/${awayPK}) <b>${awayPKPercent}%</b>`;
 };
 
 export const convertTeamMembersToRows = (data, t) => {
