@@ -40,7 +40,7 @@ const state = reactive({
             },
             {
               label: 'S',
-              value: 'shoots',
+              value: 'shots',
             },
             {
               label: 'S%',

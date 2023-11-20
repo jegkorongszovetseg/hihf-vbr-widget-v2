@@ -20,48 +20,32 @@ const props = defineProps({
 
 const { t } = useI18n();
 
-const homeTeamId = computed(() => props.gameData?.homeTeamId ?? '');
-const awayTeamId = computed(() => props.gameData?.awayTeamId ?? '');
+const homeTeamId = computed(() => props.gameData?.homeTeam?.id ?? '');
+const awayTeamId = computed(() => props.gameData?.awayTeam?.id ?? '');
 
 const sog = computed(() =>
-  buildSOG(props.gameStats?.teamSOG ?? [], props.gameData?.awayTeamId ?? '', props.gameData?.homeTeamId ?? '', 'shots')
+  buildSOG(props.gameStats?.teamSOG ?? [], awayTeamId.value, homeTeamId.value, 'shots')
 );
 const saves = computed(() =>
   buildSaves(
     props.gameStats?.teamSOG ?? [],
-    props.gameData?.homeTeamId ?? '',
-    props.gameData?.awayTeamId ?? '',
+    homeTeamId.value,
+    awayTeamId.value,
     'saves'
   )
 );
 const pim = computed(() =>
   buildSOG(
     props.gameStats?.teamPenalties ?? [],
-    props.gameData?.homeTeamId ?? '',
-    props.gameData?.awayTeamId ?? '',
+    homeTeamId.value,
+    awayTeamId.value,
     'penaltyLength'
   )
 );
 
-const dvgTime = computed(() =>
-  buildAdv(props.gameStats?.teamPowerPlay ?? [], {
-    home: homeTeamId.value,
-    away: awayTeamId.value,
-  })
-);
-const advPercent = computed(() =>
-  buildAdvPercent(props.gameStats?.teamPowerPlay ?? [], {
-    home: homeTeamId.value,
-    away: awayTeamId.value,
-  })
-);
-
-const dvgPercent = computed(() =>
-  buildDvgPercent(props.gameStats?.teamPowerPlay ?? [], {
-    home: homeTeamId.value,
-    away: awayTeamId.value,
-  })
-);
+const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
+const advPercent = computed(() => buildAdvPercent(props.gameStats?.teamPowerPlay ?? {}));
+const dvgPercent = computed(() => buildDvgPercent(props.gameStats?.teamPowerPlay ?? {}));
 </script>
 
 <template>
@@ -71,23 +55,23 @@ const dvgPercent = computed(() =>
       <GameStatsContainer :title="t('teamsStats.saves')" :data="saves" />
       <GameStatsContainer :title="t('teamsStats.pim')" :data="pim" />
       <GameStatsContainer :title="t('teamsStats.advPercent')" :data="advPercent" />
-      <GameStatsContainer :data="dvgTime.dvgTime">
+      <GameStatsContainer :title="t('teamsStats.penaltyKilling')" :data="dvgPercent" />
+      <GameStatsContainer :data="advTime.advTime">
         {{ t('teamsStats.advantageTime') }}
         <FloatingPanel :offset="2" placement="top" theme="content" append-to="#popover-container">
-          <template v-slot:default="{ setRef, show }">
-            <button :ref="setRef" @click.stop="show">
+          <template v-slot:default="{ setRef, show, hide }">
+            <button :ref="setRef" @click.stop="show" @focus="show" @blur="hide">
               <IconMore />
             </button>
           </template>
           <template v-slot:content>
             <div class="is-popover-content">
-              <GameStatsContainer :title="t('teamsStats.advantageTimePP1')" :data="dvgTime.dvgTimePP1" />
-              <GameStatsContainer :title="t('teamsStats.advantageTimePP2')" :data="dvgTime.dvgTimePP2" />
+              <GameStatsContainer :title="t('teamsStats.advantageTimePP1')" :data="advTime.advTimePP1" />
+              <GameStatsContainer :title="t('teamsStats.advantageTimePP2')" :data="advTime.advTimePP2" />
             </div>
           </template>
         </FloatingPanel>
       </GameStatsContainer>
-      <GameStatsContainer :title="t('teamsStats.penaltyKilling')" :data="dvgPercent" />
     </div>
     <div id="popover-container"></div>
   </div>

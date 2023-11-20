@@ -258,12 +258,12 @@ export const COLUMNS_FIELD_PLAYERS = {
     tooltip: 'table.plusMinus.tooltip',
     sortOrders: [{ target: 'plusMinus', direction: SORT_STATE_DESCEND }],
   },
-  shoots: {
+  shots: {
     label: 'table.sog.short',
     tooltip: 'table.sog.tooltip',
-    sortOrders: [{ target: 'shoots', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'shots', direction: SORT_STATE_DESCEND }],
   },
-  shootPercent: {
+  shotPercent: {
     label: 'table.sogPercent.short',
     tooltip: 'table.sogPercent.tooltip',
     sortOrders: [{ target: 'shootPercent', direction: SORT_STATE_DESCEND }],
