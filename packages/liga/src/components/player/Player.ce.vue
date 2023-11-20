@@ -40,7 +40,7 @@ const props = defineProps({
     default: '',
   },
 
-  externalPlayerResolver: {
+  externalTeamResolver: {
     type: String,
     default: '',
   },

@@ -92,8 +92,12 @@ const { state: playerGames, execute: fetchGames } = useServices({
   onError,
 });
 
-const playerSeasonStats = computed(() => removeCurrentFromSeasonStats(3451, playerSeasonStatsRows.value));
-const currentSeasonStats = computed(() => transformCurrentSeasonStats(3451, playerSeasonStatsRows.value));
+const playerSeasonStats = computed(() =>
+  removeCurrentFromSeasonStats(state.championshipId, playerSeasonStatsRows.value)
+);
+const currentSeasonStats = computed(() =>
+  transformCurrentSeasonStats(state.championshipId, playerSeasonStatsRows.value)
+);
 
 const currentSeasonColumns = computed(() =>
   state.isGoalie
@@ -130,7 +134,7 @@ const seasonColumns = computed(() =>
         [
           'playerPortrait',
           'name',
-          'shootPercent',
+          'shotPercent',
           'pimPerGame',
           'p2',
           'p5',
@@ -182,8 +186,8 @@ const gameColumns = computed(() =>
           'assists',
           'points',
           'plusMinus',
-          'shoot',
-          'shootPercent',
+          'shots',
+          'shotPercent',
           'pim',
         ],
         COLUMNS_GAMES

@@ -26,6 +26,10 @@
     "birthPlace": {
       "short": "Születési hely",
       "tooltip": "Születési hely"
+    },
+    "season": {
+      "short": "Szezon",
+      "tooltip": "Szezon"
     }
   },
   "report": {

@@ -163,11 +163,11 @@ export const COLUMNS_GAMES = {
     tooltip: 'table.svsPercent.tooltip',
     class: 'is-text-left',
   },
-  shoot: {
+  shots: {
     label: 'table.sog.short',
     tooltip: 'table.sog.tooltip',
   },
-  shootPercent: {
+  shotPercent: {
     label: 'table.sogPercent.short',
     tooltip: 'table.sogPercent.tooltip',
   },
@@ -226,11 +226,11 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
     label: 'table.plusMinus.short',
     tooltip: 'table.plusMinus.tooltip',
   },
-  shoots: {
+  shots: {
     label: 'table.sog.short',
     tooltip: 'table.sog.tooltip',
   },
-  shootPercent: {
+  shotPercent: {
     label: 'table.sogPercent.short',
     tooltip: 'table.sogPercent.tooltip',
   },

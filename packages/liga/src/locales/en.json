@@ -26,6 +26,10 @@
     "birthPlace": {
       "short": "Birth Place",
       "tooltip": "Birth Place"
+    },
+    "season": {
+      "short": "Season",
+      "tooltip": "Season"
     }
   },
   "report": {
