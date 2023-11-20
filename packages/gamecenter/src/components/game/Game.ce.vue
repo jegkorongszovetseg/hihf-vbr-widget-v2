@@ -6,7 +6,7 @@ import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { I18NProvider, ErrorNotice } from '@mjsz-vbr-elements/core/components';
 import { handleServices, useApiErrors } from './composables';
 import GameData from './GameData.vue';
-// import GameStats from './GameStats.vue';
+import GameStats from './GameStats.vue';
 import GameEvents from './GameEvents.vue';
 import GamePlayersStats from './GamePlayersStats.vue';
 import GameGoaliesStats from './GameGoaliesStats.vue';
@@ -97,7 +97,7 @@ getGameOfficials();
       <template v-if="gameData?.gameStatus > 0">
         <GameOfficials v-if="!isEmpty(gameData)" :game-data="gameData" :game-officials="gameOfficials" />
 
-        <!-- <GameStats v-if="!isEmpty(gameStats)" :game-data="gameData" :game-stats="gameStats" /> -->
+        <GameStats v-if="!isEmpty(gameStats)" :game-data="gameData" :game-stats="gameStats" />
 
         <GameEvents v-if="!isEmpty(gameEvents) && !isEmpty(gameData)" :game-events="gameEvents" :game-data="gameData" />
 

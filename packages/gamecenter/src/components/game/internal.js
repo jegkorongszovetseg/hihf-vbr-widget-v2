@@ -1,6 +1,7 @@
 import { replace, toUpper, compose, reject, test, split, map, sortBy, indexOf, prop, mergeAll, mergeLeft } from 'ramda';
 
 import { SORT_STATE_DESCEND, SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
+import { convertSecToMin } from '@mjsz-vbr-elements/core/utils';
 
 export const DEAFULT_LOGO_TEAM_A =
   'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMzYgMzYiPjxwYXRoIGZpbGw9IiNERDJFNDQiIGQ9Ik0zNiAzMmE0IDQgMCAwIDEtNCA0SDRhNCA0IDAgMCAxLTQtNFY0YTQgNCAwIDAgMSA0LTRoMjhhNCA0IDAgMCAxIDQgNHYyOHoiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNMTQuNzQ3IDkuMTI1Yy41MjctMS40MjYgMS43MzYtMi41NzMgMy4zMTctMi41NzNjMS42NDMgMCAyLjc5MiAxLjA4NSAzLjMxOCAyLjU3M2w2LjA3NyAxNi44NjdjLjE4Ni40OTYuMjQ4LjkzMS4yNDggMS4xNDdjMCAxLjIwOS0uOTkyIDIuMDQ2LTIuMTM5IDIuMDQ2Yy0xLjMwMyAwLTEuOTU0LS42ODItMi4yNjQtMS42MTFsLS45MzEtMi45MTVoLTguNjJsLS45MyAyLjg4NGMtLjMxLjk2MS0uOTYxIDEuNjQyLTIuMjMyIDEuNjQyYy0xLjI0IDAtMi4yOTQtLjkzLTIuMjk0LTIuMTdjMC0uNDk2LjE1NS0uODY4LjIxNy0xLjAyM2w2LjIzMy0xNi44Njd6bS4zNCAxMS4yNTZoNS44OTFsLTIuODgzLTguOTkyaC0uMDYybC0yLjk0NiA4Ljk5MnoiLz48L3N2Zz4=';
@@ -187,36 +188,43 @@ export const buildSaves = (data, home, away, key) => {
   return `(${periods.join(', ')}) ${homeSum}:${awaySum}`;
 };
 
-export const buildAdv = (data, { home, away }) => {
+export const buildAdv = (data) => {
+  const homeAdvTime = data?.home?.advTime ?? 0;
+  const awayAdvTime = data?.away?.advTime ?? 0;
+  const homeAdvTimePP1 = data?.home?.advTimePP1 ?? 0;
+  const awayAdvTimePP1 = data?.away?.advTimePP1 ?? 0;
+  const homeAdvTimePP2 = data?.home?.advTimePP2 ?? 0;
+  const awayAdvTimePP2 = data?.away?.advTimePP2 ?? 0;
+
   return {
-    dvgTime: `${data[home]?.dvgTime ?? 0} / ${data[away]?.dvgTime ?? 0}`,
-    dvgTimePP1: `${data[home]?.dvgTimePP1 ?? 0} / ${data[away]?.dvgTimePP1 ?? 0}`,
-    dvgTimePP2: `${data[home]?.dvgTimePP2 ?? 0} / ${data[away]?.dvgTimePP2 ?? 0}`,
+    advTime: `${convertSecToMin(homeAdvTime)} / ${convertSecToMin(awayAdvTime)}`,
+    advTimePP1: `${convertSecToMin(homeAdvTimePP1)} / ${convertSecToMin(awayAdvTimePP1)}`,
+    advTimePP2: `${convertSecToMin(homeAdvTimePP2)} / ${convertSecToMin(awayAdvTimePP2)}`,
   };
 };
 
-export const buildAdvPercent = (data, { home, away }) => {
-  const homeADV = data[home]?.adv ?? 0;
-  const homePPGF = data[home]?.ppgf ?? 0;
+export const buildAdvPercent = (data) => {
+  const homeADV = data?.home?.adv ?? 0;
+  const homePPGF = data?.home?.ppgf ?? 0;
 
-  const awayADV = data[away]?.adv ?? 0;
-  const awayPPGF = data[away]?.ppgf ?? 0;
+  const awayADV = data?.away?.adv ?? 0;
+  const awayPPGF = data?.away?.ppgf ?? 0;
 
-  const homePPPercent = (data[home]?.ppPercent ?? 0).toFixed(2);
-  const awayPPPercent = (data[away]?.ppPercent ?? 0).toFixed(2);
+  const homePPPercent = (data?.home?.ppPercent ?? 0).toFixed(2);
+  const awayPPPercent = (data?.away?.ppPercent ?? 0).toFixed(2);
   return `(${homeADV}/${homePPGF}) <b>${homePPPercent}%</b> / (${awayADV}/${awayPPGF}) <b>${awayPPPercent}%</b>`;
 };
 
-export const buildDvgPercent = (data, { home, away }) => {
-  const homeDVG = data[home]?.dvg ?? 0;
-  const homePPGA = data[home]?.ppga ?? 0;
+export const buildDvgPercent = (data) => {
+  const homeDVG = data?.home?.dvg ?? 0;
+  const homePK = data?.home?.pk ?? 0;
 
-  const awayDVG = data[away]?.dvg ?? 0;
-  const awayPPGA = data[away]?.ppga ?? 0;
+  const awayDVG = data?.away?.dvg ?? 0;
+  const awayPK = data?.away?.pk ?? 0;
 
-  const homePKPercent = (data[home]?.pkPercent ?? 0).toFixed(2);
-  const awayPKPercent = (data[away]?.pkPercent ?? 0).toFixed(2);
-  return `(${homePPGA}/${homeDVG}) <b>${homePKPercent}%</b> / (${awayPPGA}/${awayDVG}) <b>${awayPKPercent}%</b>`;
+  const homePKPercent = (data?.home?.pkPercent ?? 0).toFixed(2);
+  const awayPKPercent = (data?.away?.pkPercent ?? 0).toFixed(2);
+  return `(${homeDVG}/${homePK}) <b>${homePKPercent}%</b> / (${awayDVG}/${awayPK}) <b>${awayPKPercent}%</b>`;
 };
 
 export const convertTeamMembersToRows = (data, t) => {
