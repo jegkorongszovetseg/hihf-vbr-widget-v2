@@ -181,7 +181,7 @@ export const teamOpponent = (row) => ({
   opponent: createOpponent(row),
 });
 
-export const teamResultType = (teamId) => (row) => ({
+export const teamResultType = (row) => ({
   ...row,
   resultType: createGameResultType(row),
 });

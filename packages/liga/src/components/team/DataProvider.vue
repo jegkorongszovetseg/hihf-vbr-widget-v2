@@ -73,9 +73,9 @@ const { state: games, execute: fetchTeamGames } = useServices({
     rawConvert(
       sortGames(res),
       gameDateTime(timezone, props.locale),
-      teamResultType(state.teamId),
+      teamResultType,
       gameResult(state.teamId),
-      teamOpponent(state.teamId)
+      teamOpponent
     ),
   onError,
 });

@@ -33,10 +33,4 @@ export const transformCurrentSeasonStats = (championshipId, data) =>
   filter(propEq(championshipId, 'championshipId'))(data);
 
 export const transformGames = (data, state, locale, timezone) =>
-  rawConvert(
-    sortGames(data),
-    gameDateTime(timezone, locale),
-    teamResultType(state.teamId),
-    gameResult(state.teamId),
-    teamOpponent
-  );
+  rawConvert(sortGames(data), gameDateTime(timezone, locale), teamResultType, gameResult(state.teamId), teamOpponent);

@@ -29,8 +29,8 @@ const props = defineProps({
   },
 
   gameResolver: {
-    type: [String, Function],
-    default: '',
+    type: Function,
+    default: () => undefined,
   },
 
   championshipId: {

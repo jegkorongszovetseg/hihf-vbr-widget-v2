@@ -1,7 +1,7 @@
 <script setup>
 import { ErrorProvider, ErrorNotice, I18NProvider, Image } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
-import { externalPlayerLinkResolver } from '@mjsz-vbr-elements/core/utils';
+import { externalPlayerLinkResolver, externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import DataProvider from './DataProvider.vue';
 import PageInfo from './pages/Info.vue';
 import PageRoster from './pages/Roster.vue';
@@ -38,9 +38,15 @@ const props = defineProps({
     type: String,
     default: '',
   },
+
+  externalGameResolver: {
+    type: String,
+    default: '',
+  },
 });
 
 const externalPlayerLink = (params) => externalPlayerLinkResolver(props.externalPlayerResolver, params);
+const externalGameLink = (params) => externalGameLinkResolver(props.externalGameResolver, params);
 </script>
 
 <template>
@@ -105,7 +111,7 @@ const externalPlayerLink = (params) => externalPlayerLinkResolver(props.external
           </div>
 
           <PageInfo v-if="page === PAGE_INFO" :data="teamInfo.organizationInfo" />
-          <PageGames v-if="page === PAGE_GAMES" :data="games" />
+          <PageGames v-if="page === PAGE_GAMES" :data="games" :game-resolver="externalGameLink" />
           <Statistics
             v-if="page === PAGE_PLAYER_STATS"
             :field-players="statistics.fieldPlayers"
