@@ -1,10 +1,11 @@
 <script setup>
 import { computed, reactive } from 'vue';
 import { useAsyncQueue } from '@vueuse/core';
-import { omit, path } from 'ramda';
+import { omit, path, pipe } from 'ramda';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
 import { convert, sortGames } from '@mjsz-vbr-elements/core/utils';
 import { transformSeasons, transformSections } from '../../utils/transformers';
+import { transformRegistration } from './schedule-cup.internal';
 
 const props = defineProps({
   championshipName: {
@@ -78,7 +79,7 @@ const {
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId, phaseId: state.phaseId })),
   },
-  transform: (data) => sortGames(data),
+  transform: (data) => pipe(sortGames, transformRegistration(state.championshipId))(data),
   onError,
 });
 
