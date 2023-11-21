@@ -15,6 +15,11 @@ import {
   sortWith,
   toLower,
   groupBy,
+  replace,
+  curry,
+  over,
+  lensProp,
+  sort,
 } from 'ramda';
 import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../constants.js';
 import { format, convertMinToSec, convertSecToMin, convertMinToMinSec } from './datetime.js';
@@ -38,7 +43,8 @@ export const convert = (data = []) => {
         const predicate = condition.map((key) =>
           exact ? pipe(path(key), equals(name)) : pipe(prop(key), toLower, includes(toLower(name)))
         );
-        const filteredRows = filter(anyPass([...predicate]), this.result);
+        const replaceComma = curry((row) => over(lensProp('name'), replace(',', ''), row));
+        const filteredRows = filter(pipe(replaceComma, anyPass([...predicate])), this.result);
         this.isFiltered = true;
         this.filteredRowsLength = filteredRows.length;
         this.result = filteredRows;
@@ -144,6 +150,11 @@ export const playerName = (row) => ({
   ...row,
   ...(row.lastName && row.firstName && { name: `${row.lastName} ${row.firstName}` }),
   ...(row.player?.playerId && { name: `${row.player.lastName} ${row.player.firstName}` }),
+  ...(row.player?.nationality && {
+    name: row.player?.nationality.includes('hu')
+      ? `${row.player.lastName} ${row.player.firstName}`
+      : `${row.player.lastName}, ${row.player.firstName}`,
+  }),
 });
 
 export const teamName = (row) => ({
@@ -165,14 +176,14 @@ export const gameResult = (teamId) => (row) => ({
   gameResult: createGameResult(row, teamId),
 });
 
-export const teamOpponent = (teamId) => (row) => ({
+export const teamOpponent = (row) => ({
   ...row,
-  opponent: createOpponent(row, teamId),
+  opponent: createOpponent(row),
 });
 
-export const teamResultType = (teamId) => (row) => ({
+export const teamResultType = (row) => ({
   ...row,
-  resultType: createGameResultType(row, teamId),
+  resultType: createGameResultType(row),
 });
 
 export const upperCase =
@@ -215,22 +226,24 @@ const dateDiff = (a, b) => new Date(a.gameDate).getTime() - new Date(b.gameDate)
 
 export const sortGames = sortWith([dateDiff, ascend(prop('id')), ascend(prop('gameId'))]);
 
-function createOpponent(row, teamId) {
-  if (row?.homeTeam?.id === teamId) return row?.awayTeam?.shortName ?? '';
-  return `@ ${row?.homeTeam?.shortName ?? ''}`;
+const localeCompare = (key) => (a, b) => a[key].localeCompare(b[key], 'hu');
+export const localeSort = sort(localeCompare('name'));
+
+function createOpponent(row) {
+  return [!row.isHomeGame ? '@' : null, row.opponent?.shortName].join(' ');
 }
 
 function createGameResult(row, teamId) {
   let firstScore = row?.homeTeamScore;
   let secondScore = row?.awayTeamScore;
-  if (row?.awayTeam?.id === teamId) {
+  if (!row.isHomeGame) {
     firstScore = row?.awayTeamScore;
     secondScore = row?.homeTeamScore;
   }
   return [firstScore, secondScore].join(':');
 }
 
-function createGameResultType(row, teamId) {
+function createGameResultType(row) {
   const result = row.gameResult.split(':');
   const isWonGame = result[0] > result[1];
   const isLostGame = result[0] < result[1];

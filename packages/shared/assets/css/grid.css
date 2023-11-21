@@ -13,6 +13,10 @@
   flex: 1 0 0%;
 }
 
+.g-gap-normal {
+  gap: 16px;
+}
+
 [class^='g-col-'] {
   flex: 0 0 auto;
 }

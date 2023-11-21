@@ -48,6 +48,12 @@
   --vbr-widget-typography-text-lg-lineheight: 2rem; /* 32px */
   --vbr-widget-typography-text-xl-size: 1.25rem; /* 20px */
   --vbr-widget-typography-text-xl-lineheight: 2rem; /* 32px */
+  --vbr-widget-typography-text-2xl-size: 1.5rem; /* 24px */
+  --vbr-widget-typography-text-2xl-lineheight: 2.5rem; /* 40px */
+  --vbr-widget-typography-text-3xl-size: 1.75rem; /* 28px */
+  --vbr-widget-typography-text-3xl-lineheight: 2.5rem; /* 40px */
+  --vbr-widget-typography-text-4xl-size: 2rem; /* 32px */
+  --vbr-widget-typography-text-4xl-lineheight: 2.75rem; /* 44px */
   --vbr-widget-typography-heading-weight: 500;
 
   --vbr-widget-table-header-font-size: var(--vbr-widget-typography-text-xs-size);
@@ -76,6 +82,7 @@
   --vbr-widget-table-label-bg-color: var(--vbr-widget-primary-color-50);
   --vbr-widget-table-cell-logo-size: 20px;
   --vbr-widget-table-cell-portrait-size: 26px;
+  --vbr-widget-table-zero-color: var(--vbr-widget-primary-color-200);
 
   --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);

@@ -116,6 +116,7 @@ const sortBy = (column, prop) => {
             [_.class],
             {
               'is-active': prop === sort.sortTarget && sort.orders[0].direction !== SORT_STATE_ORIGINAL,
+              'is-zero': row[prop] == 0
             },
           ]"
         >

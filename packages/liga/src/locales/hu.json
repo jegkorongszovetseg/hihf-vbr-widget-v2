@@ -14,6 +14,24 @@
     "home": "Hazai",
     "away": "Vendég"
   },
+  "table": {
+    "nationality": {
+      "short": "Nemzetiség",
+      "tooltip": "Nemzetiség"
+    },
+    "birthDate": {
+      "short": "Szülétési idő",
+      "tooltip": "Szülétési idő"
+    },
+    "birthPlace": {
+      "short": "Születési hely",
+      "tooltip": "Születési hely"
+    },
+    "season": {
+      "short": "Szezon",
+      "tooltip": "Szezon"
+    }
+  },
   "report": {
     "points": "Pontok",
     "goals": "Gólok",
@@ -50,11 +68,55 @@
     "roster": "Játékoskeret",
     "playerStats": "Játékos statisztikák",
     "info": {
-      "organizationName": "Szervezet neve:"
+      "organizationName": "Szervezet neve:",
+      "organizationCountry": "Szervezet országa:",
+      "organizationEmail": "Szervezet e-mail címe:",
+      "organizationWebpage": "Szervezet honlapja:",
+      "organizationPhoneNumber": "Szervezet telefonszáma:",
+      "organizationAddresses": "Szervezet címe:",
+      "organizationFoundingDate": "Szervezet alapítási éve:"
     }
+  },
+  "players": {
+    "age": "{years}es",
+    "games": "Mérkőzések",
+    "seasons": "Szezonok"
   },
   "standings": {
     "live": "Élő",
     "default": "Összesített"
+  },
+  "nationality": {
+    "hu": "Magyar",
+    "ro": "Román",
+    "us": "Amerikai",
+    "il": "Izraeli",
+    "ca": "Kanadai",
+    "lv": "Lett",
+    "ee": "Észt",
+    "ru": "Orosz",
+    "fi": "Finn",
+    "si": "Szlovén",
+    "sk": "Szlovák",
+    "nl": "Holland",
+    "by": "Fehérorosz",
+    "cz": "Cseh",
+    "ua": "Ukrán",
+    "lt": "Litván",
+    "it": "Olasz",
+    "gb-eng": "Angol",
+    "rs": "Szerb",
+    "se": "Svéd",
+    "de": "Német",
+    "gb": "Brit",
+    "kz": "Kazah",
+    "dk": "Dán",
+    "pl": "Lengyel",
+    "at": "Osztrák",
+    "ch": "Svájci",
+    "fr": "Francia",
+    "es": "Spanyol",
+    "hr": "Horvát",
+    "no": "Norvég"
   }
 }

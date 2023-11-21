@@ -14,6 +14,24 @@
     "home": "Home",
     "away": "Away"
   },
+  "table": {
+    "nationality": {
+      "short": "Nationality",
+      "tooltip": "Nationality"
+    },
+    "birthDate": {
+      "short": "Birth Date",
+      "tooltip": "Birth Date"
+    },
+    "birthPlace": {
+      "short": "Birth Place",
+      "tooltip": "Birth Place"
+    },
+    "season": {
+      "short": "Season",
+      "tooltip": "Season"
+    }
+  },
   "report": {
     "points": "Points",
     "goals": "Goals",
@@ -50,11 +68,55 @@
     "roster": "Roster",
     "playerStats": "Player Stats",
     "info": {
-      "organizationName": "Organization name:"
+      "organizationName": "Organization name:",
+      "organizationCountry": "Organization country:",
+      "organizationEmail": "Organization e-mail:",
+      "organizationWebpage": "Organization homepage:",
+      "organizationPhoneNumber": "Organization phone number:",
+      "organizationAddresses": "Organization address:",
+      "organizationFoundingDate": "Organization founding year:"
     }
+  },
+  "players": {
+    "age": "{years} old",
+    "games": "Games",
+    "seasons": "Seasons"
   },
   "standings": {
     "live": "Live",
     "default": "Overall"
+  },
+  "nationality": {
+    "hu": "Hungarian",
+    "ro": "Romanian",
+    "us": "American",
+    "il": "Izraelian",
+    "ca": "Canadian",
+    "lv": "Latvian",
+    "ee": "Estonian",
+    "ru": "Russian",
+    "fi": "Finnish",
+    "si": "Slovenian",
+    "sk": "Slovakian",
+    "nl": "Netherlands",
+    "by": "Belarusian",
+    "cz": "Czech",
+    "ua": "Ukrainian",
+    "lt": "Lithuanian",
+    "it": "Italian",
+    "gb-eng": "English",
+    "rs": "Serbian",
+    "se": "Swedish",
+    "de": "German",
+    "gb": "British",
+    "kz": "Kazah",
+    "dk": "Danish",
+    "pl": "Polish",
+    "at": "Austrian",
+    "ch": "Swiss",
+    "fr": "French",
+    "es": "Spanish",
+    "hr": "Croatian",
+    "no": "Norwegian"
   }
 }

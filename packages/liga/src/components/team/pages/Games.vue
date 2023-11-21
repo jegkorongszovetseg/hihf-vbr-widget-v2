@@ -1,14 +1,20 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { DataTable, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
+import { pick } from 'ramda';
 import { useI18n, useColumns } from '@mjsz-vbr-elements/core/composables';
 import { offsetName } from '@mjsz-vbr-elements/core/utils';
-import { COLUMNS_GAMES } from '../team.internal.js';
+import GamesDataTable from '../../common/GamesDataTable.vue';
+import { COLUMNS_GAMES } from '../../internal.js';
 
 defineProps({
   data: {
     type: Object,
     default: () => ({}),
+  },
+
+  gameResolver: {
+    type: [String, Function],
+    default: '',
   },
 });
 
@@ -16,7 +22,10 @@ const tooltipContainer = ref(null);
 
 const { t } = useI18n();
 const { columns } = useColumns(
-  COLUMNS_GAMES,
+  pick(
+    ['gameDateDate', 'gameDateTime', 'gameResult', 'gameResultType', 'opponent', 'resultType', 'sog', 'sa'], // 'pp', 'pk'
+    COLUMNS_GAMES
+  ),
   null,
   computed(() => ({ offsetName: offsetName(new Date(), null, 'hu') }))
 );
@@ -24,23 +33,6 @@ const { columns } = useColumns(
 
 <template>
   <h2 class="is-heading-2">{{ t('teams.games') }}</h2>
-  <ResponsiveTable>
-    <DataTable :rows="data" :columns="columns" :append-to="tooltipContainer">
-      <template v-slot:cell-resultType="{ row }">
-        <span
-          :class="[
-            'is-badge',
-            {
-              'is-green': ['W', 'OTW', 'SOW'].includes(row.resultType),
-              'is-red': ['L', 'OTL', 'SOL'].includes(row.resultType),
-              'is-yellow': row.resultType === 'D',
-            },
-          ]"
-        >
-          {{ row.resultType }}
-        </span>
-      </template>
-    </DataTable>
-  </ResponsiveTable>
+  <GamesDataTable :rows="data" :columns="columns" :game-resolver="gameResolver" :append-to="tooltipContainer" />
   <div ref="tooltipContainer"></div>
 </template>

@@ -33,6 +33,10 @@
   font-size: var(--vbr-widget-typography-text-xl-size);
   line-height: var(--vbr-widget-typography-text-xl-lineheight);
 }
+.is-text-4xl {
+  font-size: var(--vbr-widget-typography-text-4xl-size);
+  line-height: var(--vbr-widget-typography-text-4xl-lineheight);
+}
 
 .is-uppercase {
   text-transform: uppercase;
@@ -85,4 +89,28 @@
   font-weight: var(--vbr-widget-typography-heading-weight);
   margin-block-start: var(--vbr-widget-typography-text-base-size);
   margin-block-end: calc(var(--vbr-widget-typography-text-base-size) / 2);
+}
+
+.is-rounded {
+  overflow: hidden;
+  border-radius: 100%;
+
+  & + .is-rounded {
+    margin-left: 3px;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+.is-w-5 {
+  width: 16px;
+}
+
+.is-w-7 {
+  width: 24px;
+}
+.is-w-10 {
+  width: 32px;
 }

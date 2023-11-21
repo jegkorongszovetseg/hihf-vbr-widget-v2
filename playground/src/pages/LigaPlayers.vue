@@ -1,31 +1,27 @@
 <script setup>
 import { store } from '../store.js';
-import { TeamLiga } from '@mjsz-vbr-elements/liga';
+import { PlayersLiga } from '@mjsz-vbr-elements/liga';
 import '../../../packages/shared/dist/css/common.css';
 import '../../../packages/shared/dist/css/typography.css';
 import '../../../packages/shared/dist/css/cards.css';
 import '../../../packages/shared/dist/css/grid.css';
 import '../../../packages/shared/dist/css/forms.css';
-import '../../../packages/shared/dist/css/teams.css';
 import '../../../packages/shared/dist/css/responsive-table.css';
 import '../../../packages/shared/dist/css/table.css';
+import '../../../packages/shared/dist/css/paginator.css';
 
 const playerResolver = `LigaPlayer?playerId={player.playerId}&championshipId={championshipId}`;
+const teamResolver = `LigaTeam?teamId={team.id}&championshipId={championshipId}`;
 </script>
 
 <template>
   <div class="p-5 max-w-[1170px] mx-auto">
-    <!-- <TeamLiga
+    <PlayersLiga
       :locale="store.locale"
-      championship-id="3450"
-      team-id="21910"
+      championship-name="Erste Liga"
       :external-player-resolver="playerResolver"
-    ></TeamLiga> -->
-    <mjsz-vbr-team-liga
-      :locale="store.locale"
-      championship-id="3450"
-      team-id="21910"
-      :external-player-resolver="playerResolver"
-    />
+      :external-team-resolver="teamResolver"
+    ></PlayersLiga>
+    <!-- <mjsz-vbr-players-liga :locale="store.locale" championship-name="Erste Liga" :external-player-resolver="resolver" /> -->
   </div>
 </template>

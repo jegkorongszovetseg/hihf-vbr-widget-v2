@@ -1,3 +1,5 @@
+import { path, split } from 'ramda';
+
 export function toKebabCase(str) {
   return (
     str &&
@@ -7,3 +9,10 @@ export function toKebabCase(str) {
       .join('-')
   );
 }
+
+// Example: 'https://www.example.com/api/{step}/{id}'
+export const templateReplacer = function (tpl = '', data = {}) {
+  return tpl.replace(/\{([^}]+)\}/g, function (_, $2) {
+    return path(split('.', $2), data);
+  });
+};
