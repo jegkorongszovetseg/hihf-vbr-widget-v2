@@ -15,7 +15,7 @@ const { t } = useI18n();
 </script>
 <template>
   <div v-if="!isEmpty(data)" style="text-align: center">
-    <h2 class="is-heading-1" v-once>{{ data.name }} #{{ data.jerseyNr }}</h2>
+    <h2 class="is-heading-2" v-once>{{ data.name }} <span class="is-text-italic">#{{ data.jerseyNr }}</span></h2>
     <div style="display: flex; align-items: center; justify-content: center">
       {{ data.birthDate }} ({{ t('players.age', { years: data.age }) }}) /&nbsp;
       <template v-for="flag in data.player.nationality" :kay="flag">

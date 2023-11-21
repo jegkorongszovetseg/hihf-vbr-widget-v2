@@ -33,6 +33,10 @@
   font-size: var(--vbr-widget-typography-text-xl-size);
   line-height: var(--vbr-widget-typography-text-xl-lineheight);
 }
+.is-text-4xl {
+  font-size: var(--vbr-widget-typography-text-4xl-size);
+  line-height: var(--vbr-widget-typography-text-4xl-lineheight);
+}
 
 .is-uppercase {
   text-transform: uppercase;
