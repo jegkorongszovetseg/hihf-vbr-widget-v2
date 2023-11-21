@@ -204,7 +204,7 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left',
+    class: 'is-text-bold is-text-left',
   },
   gp: {
     label: 'table.game.short',

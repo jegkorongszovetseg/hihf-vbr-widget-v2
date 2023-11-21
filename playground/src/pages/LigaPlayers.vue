@@ -16,12 +16,17 @@ const teamResolver = `LigaTeam?teamId={team.id}&championshipId={championshipId}`
 
 <template>
   <div class="p-5 max-w-[1170px] mx-auto">
-    <PlayersLiga
+    <!-- <PlayersLiga
       :locale="store.locale"
       championship-name="Erste Liga"
       :external-player-resolver="playerResolver"
       :external-team-resolver="teamResolver"
-    ></PlayersLiga>
-    <!-- <mjsz-vbr-players-liga :locale="store.locale" championship-name="Erste Liga" :external-player-resolver="resolver" /> -->
+    ></PlayersLiga> -->
+    <mjsz-vbr-players-liga
+      :locale="store.locale"
+      championship-name="Erste Liga"
+      :external-player-resolver="playerResolver"
+      :external-team-resolver="teamResolver"
+    />
   </div>
 </template>

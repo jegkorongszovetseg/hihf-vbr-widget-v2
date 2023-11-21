@@ -9,6 +9,11 @@ defineProps({
     type: Object,
     default: () => ({}),
   },
+
+  appendTo: {
+    type: [Object, String],
+    default: null,
+  },
 });
 
 const { t } = useI18n();
@@ -22,6 +27,7 @@ const { t } = useI18n();
         <FloatingPanel
           placement="top"
           :content="t(`nationality.${flag}`)"
+          :append-to="appendTo"
           v-slot:default="{ setRef, show, hide }"
         >
           <span :ref="setRef" class="is-rounded" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">

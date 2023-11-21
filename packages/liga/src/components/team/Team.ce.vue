@@ -50,7 +50,7 @@ const externalGameLink = (params) => externalGameLinkResolver(props.externalGame
 </script>
 
 <template>
-  <div>
+  <div class="is-mb-5">
     <I18NProvider :locale="props.locale" :messages="messages" v-slot="{ t }">
       <ErrorProvider v-slot:default="{ hasError, error }">
         <ErrorNotice v-if="hasError" :error="error" />

@@ -52,7 +52,7 @@ const tooltipContainer = ref(null);
 </script>
 
 <template>
-  <div>
+  <div class="is-mb-5">
     <I18NProvider :locale="props.locale" :messages="messages" v-slot="{ t }">
       <ErrorProvider v-slot:default="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
@@ -89,7 +89,7 @@ const tooltipContainer = ref(null);
             </div>
           </div>
 
-          <PlayerInfo :data="playerData" />
+          <PlayerInfo :data="playerData" :append-to="tooltipContainer" />
 
           <SeasonsStats
             :rows="currentSeasonStats"

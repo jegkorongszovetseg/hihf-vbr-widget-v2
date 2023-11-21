@@ -128,4 +128,5 @@ const externalTeamLink = (params) => externalTeamLinkResolver(props.externalTeam
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/paginator.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
