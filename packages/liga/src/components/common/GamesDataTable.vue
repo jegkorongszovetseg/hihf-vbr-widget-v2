@@ -43,7 +43,7 @@ const { t } = useI18n();
 </script>
 <template>
   <ResponsiveTable>
-    <DataTable :rows="rows" :columns="columns" :append-to="appendTo">
+    <DataTable :rows="rows" :columns="columns" :is-loading="isLoading" :append-to="appendTo">
       <template v-slot:cell-resultType="{ row }">
         <span
           :class="[

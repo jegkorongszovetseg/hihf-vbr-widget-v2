@@ -62,7 +62,8 @@ const tooltipContainer = ref(null);
           :championship-id="championshipId"
           v-slot="{
             pane,
-            isLoading,
+            isGamesLoading,
+            isPlayerSeasonsLoading,
             playerData,
             playerGames,
             playerSeasonStats,
@@ -73,8 +74,9 @@ const tooltipContainer = ref(null);
             onChangePane,
           }"
         >
-          <LoadingIndicator v-if="isLoading" />
-
+          <h1 class="is-heading-1 is-uppercase">
+            {{ playerData.name }}
+          </h1>
           <div :class="useMainClass('main-image-wrapper')" style="--overlay-size: 180px">
             <div class="is-main-image">
               <Image
@@ -89,7 +91,12 @@ const tooltipContainer = ref(null);
 
           <PlayerInfo :data="playerData" />
 
-          <SeasonsStats :rows="currentSeasonStats" :columns="currentSeasonColumns" :append-to="tooltipContainer" />
+          <SeasonsStats
+            :rows="currentSeasonStats"
+            :columns="currentSeasonColumns"
+            :is-loading="isPlayerSeasonsLoading"
+            :append-to="tooltipContainer"
+          />
 
           <div class="is-mt-5">
             <button
@@ -112,6 +119,7 @@ const tooltipContainer = ref(null);
             v-if="pane === PANE_GAMES"
             :rows="playerGames"
             :columns="gameColumns"
+            :is-loading="isGamesLoading"
             :append-to="tooltipContainer"
             :game-resolver="props.externalGameResolver"
           />

@@ -45,5 +45,5 @@ const resolveExternalGameLink = (params) => externalGameLinkResolver(props.gameR
 </script>
 
 <template>
-  <GamesDataTable :rows="rows" :columns="columns" :append-to="appendTo" :game-resolver="resolveExternalGameLink" />
+  <GamesDataTable :rows="rows" :columns="columns" :is-loading="isLoading" :append-to="appendTo" :game-resolver="resolveExternalGameLink" />
 </template>

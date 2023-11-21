@@ -31,6 +31,6 @@ const { columns } = useColumns(computed(() => props.columns));
 <template>
   <h2 class="is-heading-2">{{ rows[0]?.seasonId ?? '' }}</h2>
   <ResponsiveTable>
-    <DataTable :rows="rows" :columns="columns" :append-to="appendTo" />
+    <DataTable :rows="rows" :columns="columns" :is-loading="isLoading" :append-to="appendTo" />
   </ResponsiveTable>
 </template>

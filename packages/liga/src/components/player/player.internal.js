@@ -8,6 +8,7 @@ import {
   teamOpponent,
   teamName,
   yearToNow,
+  convertTimesMinToMinSec,
 } from '@mjsz-vbr-elements/core/utils';
 
 export const PANE_GAMES = 'games';
@@ -24,7 +25,7 @@ export function transformPlayerData(data, locale) {
   };
 }
 
-export const transformSeasonStats = (data) => rawConvert(reverse(data), teamName);
+export const transformSeasonStats = (data) => rawConvert(reverse(data), teamName, convertTimesMinToMinSec(['mip']));
 
 export const removeCurrentFromSeasonStats = (championshipId, data) =>
   reject(propEq(championshipId, 'championshipId'))(data);

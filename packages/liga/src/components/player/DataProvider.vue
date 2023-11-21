@@ -50,7 +50,7 @@ const state = reactive({
 
 const { onError } = useError();
 
-const { state: playerData } = useServices({
+const { state: playerData, isLoading: isLoadingPlayerData } = useServices({
   options: {
     path: '/v2/player-data',
     apiKey: props.apiKey,
@@ -70,7 +70,11 @@ const { state: playerData } = useServices({
   },
 });
 
-const { state: playerSeasonStatsRows, execute: fetchSeasonStats } = useServices({
+const {
+  state: playerSeasonStatsRows,
+  isLoading: isPlayerSeasonsLoading,
+  execute: fetchSeasonStats,
+} = useServices({
   options: {
     path: computed(() => state.seasonApi),
     apiKey: props.apiKey,
@@ -81,7 +85,11 @@ const { state: playerSeasonStatsRows, execute: fetchSeasonStats } = useServices(
   onError,
 });
 
-const { state: playerGames, execute: fetchGames } = useServices({
+const {
+  state: playerGames,
+  isLoading: isGamesLoading,
+  execute: fetchGames,
+} = useServices({
   options: {
     path: computed(() => state.gamesApi),
     apiKey: props.apiKey,
@@ -206,6 +214,9 @@ function onChangePane(value) {
   <slot
     v-bind="{
       pane: state.pane,
+      isLoadingPlayerData,
+      isPlayerSeasonsLoading,
+      isGamesLoading,
       playerData,
       playerGames,
       playerSeasonStats,
