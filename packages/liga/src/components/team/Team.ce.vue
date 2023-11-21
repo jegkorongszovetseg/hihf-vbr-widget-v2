@@ -65,8 +65,7 @@ const externalGameLink = (params) => externalGameLinkResolver(props.externalGame
             roster,
             games,
             statistics,
-            fieldPlayers,
-            fieldPlayersPenalty,
+            isStatsLoading,
             onChangePage,
           }"
         >
@@ -117,6 +116,7 @@ const externalGameLink = (params) => externalGameLinkResolver(props.externalGame
             :field-players="statistics.fieldPlayers"
             :goalies="statistics.goalies"
             :championship-id="championshipId"
+            :is-loading="isStatsLoading"
             :external-player-resolver="externalPlayerLink"
           />
           <PageRoster

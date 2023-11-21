@@ -45,6 +45,11 @@ const props = defineProps({
     default: '',
   },
 
+  isLoading: {
+    type: Boolean,
+    default: false,
+  },
+
   externalPlayerResolver: {
     type: Function,
     default: () => undefined,
@@ -62,7 +67,12 @@ const { columns: columnsGoalies } = useColumns(goalieColumns);
   <div>
     <h2 class="is-heading-2">{{ t('teams.fieldPlayers') }}</h2>
     <ResponsiveTable>
-      <DataTable :columns="columnsFieldPlayers" :rows="fieldPlayers" :append-to="tooltipContainer">
+      <DataTable
+        :columns="columnsFieldPlayers"
+        :rows="fieldPlayers"
+        :is-loading="isLoading"
+        :append-to="tooltipContainer"
+      >
         <template v-slot:cell-playerPortrait="{ row }">
           <div class="is-portrait-image">
             <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
@@ -77,7 +87,7 @@ const { columns: columnsGoalies } = useColumns(goalieColumns);
 
     <h2 class="is-heading-2">{{ t('teams.goalies') }}</h2>
     <ResponsiveTable>
-      <DataTable :columns="columnsGoalies" :rows="goalies" :append-to="tooltipContainer">
+      <DataTable :columns="columnsGoalies" :rows="goalies" :is-loading="isLoading" :append-to="tooltipContainer">
         <template v-slot:cell-playerPortrait="{ row }">
           <div class="is-portrait-image">
             <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />

@@ -48,6 +48,7 @@ const state = reactive({
   teamId: Number(params.teamId) || Number(props.teamId),
   championshipId: Number(params.championshipId) || Number(props.championshipId),
   statistics: {},
+  isStatsLoading: false,
 });
 
 const { onError } = useError();
@@ -144,8 +145,10 @@ function fetchData(page) {
       fetchTeamRoster();
       break;
     case PAGE_PLAYER_STATS:
+      state.isStatsLoading = true;
       useAsyncQueue([fetchGoalieStats, fetchFieldLeaders, fetchFieldPenalty], {
         onFinished: () => {
+          state.isStatsLoading = false;
           state.statistics = mergePlayerStats({
             goalieStats: goalieStats.value,
             fieldPlayers: fieldPlayers.value,
@@ -153,6 +156,7 @@ function fetchData(page) {
           });
         },
       });
+      // state.isStatsLoading = false;
       break;
 
     default:
