@@ -43,7 +43,7 @@ export const convert = (data = []) => {
         const predicate = condition.map((key) =>
           exact ? pipe(path(key), equals(name)) : pipe(prop(key), toLower, includes(toLower(name)))
         );
-        const replaceComma = curry((row) => over(lensProp('name'), replace(',', ''), row));
+        const replaceComma = curry((row) => (row.name ? over(lensProp('name'), replace(',', ''), row) : row));
         const filteredRows = filter(pipe(replaceComma, anyPass([...predicate])), this.result);
         this.isFiltered = true;
         this.filteredRowsLength = filteredRows.length;
