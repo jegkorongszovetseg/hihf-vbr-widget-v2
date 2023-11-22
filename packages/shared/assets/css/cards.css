@@ -106,6 +106,8 @@
   display: grid;
   grid-template-columns: 1fr var(--overlay-size) 1fr;
   grid-template-rows: 1fr 1fr 1fr calc(var(--overlay-size) / 2) calc(var(--overlay-size) / 2);
+  margin-left: var(--vbr-widget-main-image-wrapper-horizontal-margin);
+  margin-right: var(--vbr-widget-main-image-wrapper-horizontal-margin);
 
   &:has(img.is-default) {
     min-height: 470px;

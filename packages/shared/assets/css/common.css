@@ -56,6 +56,13 @@
   --vbr-widget-typography-text-4xl-lineheight: 2.75rem; /* 44px */
   --vbr-widget-typography-heading-weight: 500;
 
+  --vbr-widget-typography-heading-1-size: var(--vbr-widget-typography-text-2xl-size);
+  --vbr-widget-typography-heading-2-size: var(--vbr-widget-typography-text-xl-size);
+  --vbr-widget-typography-heading-3-size: var(--vbr-widget-typography-text-lg-size);
+  --vbr-widget-typography-heading-4-size: var(--vbr-widget-typography-text-base-size);
+  --vbr-widget-typography-heading-5-size: var(--vbr-widget-typography-text-sm-size);
+  --vbr-widget-typography-heading-6-size: var(--vbr-widget-typography-text-xs-size);
+
   --vbr-widget-table-header-font-size: var(--vbr-widget-typography-text-xs-size);
   --vbr-widget-table-default-column-width: 30px;
   --vbr-widget-table-default-bg-color: var(--vbr-widget-primary-color-0);
@@ -198,6 +205,8 @@
   --vbr-widget-gamecenter-events-score-size: var(--vbr-widget-typography-text-base-size);
   --vbr-widget-gamecenter-events-penalty-size: var(--vbr-widget-typography-text-sm-size);
   --vbr-widget-gamecenter-events-goalie-direction-size: var(--vbr-widget-typography-text-sm-size);
+
+  --vbr-widget-main-image-wrapper-horizontal-margin: 0rem;
 }
 
 .transition-fade-enter-active,

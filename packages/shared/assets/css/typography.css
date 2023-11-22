@@ -68,7 +68,7 @@
 }
 
 .is-heading-1 {
-  font-size: var(--vbr-widget-typography-text-xl-size);
+  font-size: var(--vbr-widget-typography-heading-1-size);
   line-height: var(--vbr-widget-typography-text-xl-lineheight);
   margin-block-start: var(--vbr-widget-typography-text-xl-size);
   margin-block-end: calc(var(--vbr-widget-typography-text-xl-size) / 2);
@@ -76,7 +76,7 @@
 }
 
 .is-heading-2 {
-  font-size: var(--vbr-widget-typography-text-lg-size);
+  font-size: var(--vbr-widget-typography-heading-2size);
   line-height: var(--vbr-widget-typography-text-lg-lineheight);
   font-weight: var(--vbr-widget-typography-heading-weight);
   margin-block-start: var(--vbr-widget-typography-text-lg-size);
@@ -84,7 +84,7 @@
 }
 
 .is-heading-3 {
-  font-size: var(--vbr-widget-typography-text-base-size);
+  font-size: var(--vbr-widget-typography-heading-3-size);
   line-height: var(--vbr-widget-typography-text-base-lineheight);
   font-weight: var(--vbr-widget-typography-heading-weight);
   margin-block-start: var(--vbr-widget-typography-text-base-size);

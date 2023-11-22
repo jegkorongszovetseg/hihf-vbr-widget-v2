@@ -31,7 +31,10 @@ const props = defineProps({
     default: '',
   },
 
-  externalTeamResolver: Function,
+  externalTeamResolver: {
+    type: String,
+    default: '',
+  },
 });
 
 const externalTeamLink = (teamId, championshipId) =>
@@ -60,7 +63,7 @@ const externalTeamLink = (teamId, championshipId) =>
 
           <ul v-else :class="useMainClass('wrapped-grid')" style="--min-width: 80px; --max-width: 160px">
             <li v-for="team in teams" :key="team.teamId">
-              <a :href="externalTeamLink(team.teamId, championshipId)" class="is-text-lg">
+              <a :href="externalTeamLink(team.teamId, championshipId)" class="is-text-lg is-text-bold">
                 <Image class="is-team-logo" :src="team.teamLogo" :key="team.teamId" />
                 {{ team.teamName }}
               </a>
