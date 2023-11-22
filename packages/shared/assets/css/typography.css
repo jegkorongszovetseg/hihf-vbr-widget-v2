@@ -76,7 +76,7 @@
 }
 
 .is-heading-2 {
-  font-size: var(--vbr-widget-typography-heading-2size);
+  font-size: var(--vbr-widget-typography-heading-2-size);
   line-height: var(--vbr-widget-typography-text-lg-lineheight);
   font-weight: var(--vbr-widget-typography-heading-weight);
   margin-block-start: var(--vbr-widget-typography-text-lg-size);
