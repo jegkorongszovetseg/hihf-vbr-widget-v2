@@ -5,7 +5,7 @@ import { isSameOrBefore } from '../utils/datetime';
 
 export const usePage = (options = {}) => {
   const { initial = 1, items = [], limit, auto = false } = options;
-  const page = ref(initial);
+  const page = ref(unref(initial));
 
   const condition = (date) => {
     return isSameOrBefore(date, 'day');
