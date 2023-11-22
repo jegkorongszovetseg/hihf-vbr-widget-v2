@@ -27,13 +27,17 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.js'),
       name: 'MjszVbrElementsExtended',
       fileName: 'index',
-      formats: ['es', 'iife'],
+      formats: ['es'],
     },
     copyPublicDir: false,
     rollupOptions: {
       external: ['vue', '@mjsz-vbr-elements/core'],
+      input: {
+        Championship: resolve(__dirname, 'src/components/championship/Championship.ce.vue'),
+      },
       output: {
-        exports: 'named',
+        inlineDynamicImports: false,
+        // exports: 'named',
         globals: {
           vue: 'Vue',
           '@mjsz-vbr-elements/core': 'MjszVbrElementsCore',
