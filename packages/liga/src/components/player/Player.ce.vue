@@ -80,6 +80,7 @@ const tooltipContainer = ref(null);
           <div :class="useMainClass('main-image-wrapper')" style="--overlay-size: 180px">
             <div class="is-main-image">
               <Image
+                :key="playerData.player?.playerId"
                 :src="playerData.playerAction"
                 default-src="https://www.ersteliga.hu/assets/images/logo_liga@2x.png"
               />
