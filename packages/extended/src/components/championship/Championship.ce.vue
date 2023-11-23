@@ -62,7 +62,7 @@ const sectionSelectorMainClass = useMainClass('section-selector');
 
 const messages = { en, hu };
 
-const externalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
+const externalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, { gameId });
 const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamLink, teamName);
 
 // const onTimezoneChange = (tz) => {

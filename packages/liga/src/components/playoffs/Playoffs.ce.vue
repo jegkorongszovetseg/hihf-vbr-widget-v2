@@ -37,7 +37,7 @@ const timezone = getLocalTimezone();
 
 const messages = { en, hu };
 
-const externalGameResolver = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
+const externalGameResolver = (gameId) => externalGameLinkResolver(props.externalGameLink, { gameId });
 
 const formatGameDate = (date) => format(date, 'L dddd', timezone, props.locale);
 const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
