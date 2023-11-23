@@ -129,7 +129,7 @@ const onTimezoneChange = (tz) => {
   timezone.value = tz;
 };
 
-const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
+const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, { gameId });
 const externalGameResolverTarget = computed(() => (props.isTargetExternal ? '_blank' : '_self'));
 </script>
 
