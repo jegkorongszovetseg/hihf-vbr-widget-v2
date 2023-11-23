@@ -14,6 +14,11 @@ export const baseProps = {
     default: '',
   },
 
+  phaseId: {
+    type: String,
+    default: '',
+  },
+
   apiKey: {
     type: String,
     default: '',

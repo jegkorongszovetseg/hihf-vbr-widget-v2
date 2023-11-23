@@ -7,6 +7,7 @@ Csapatok mérkőzései a bajnokságban
 ```html
 <mjsz-vbr-schedule locale="hu" championship-id="3450" division="Alapszakasz" timezone-selector />
 ```
+<!--@include: ./parts/phase.md-->
 
 ## Példa
 

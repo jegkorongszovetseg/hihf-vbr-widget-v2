@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, unref, watch } from 'vue';
+import { computed, ref, unref, watch, toRefs } from 'vue';
 import { useAsyncState, useDocumentVisibility, useTimeoutPoll } from '@vueuse/core';
 import { useErrorProvider, usePage, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
 import {
@@ -63,6 +63,8 @@ const props = defineProps({
     default: false,
   },
 });
+console.log(props)
+const { division, phaseId } = toRefs(props);
 
 const { onError, error, hasError } = useErrorProvider();
 
@@ -76,7 +78,8 @@ const {
   () =>
     fetchVBRData('/v2/games-list', props.apiKey, {
       championshipId: props.championshipId,
-      division: props.division,
+      ...(props.division && { division: props.division }),
+      ...(props.phaseId && { phaseId: props.phaseId }),
     }),
   [],
   {
