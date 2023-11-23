@@ -70,14 +70,18 @@ const props = defineProps({
             </section>
 
             <section class="is-mb-5">
-              <template v-for="section in sections" :key="section.sectionId">
-                <button
-                  :class="[useMainClass('tab-button'), { 'is-active': section.sectionId === sectionId }]"
-                  @click="onChangeSection(section.sectionId)"
-                >
-                  {{ section.sectionName }}
-                </button>
-              </template>
+              <label for="sections">{{ t('selection.sections') }}:</label>
+
+              <div id="sections" :class="[useMainClass('toggle-group')]">
+                <template v-for="section in sections" :key="section.sectionId">
+                  <button
+                    :class="{ 'is-active': section.sectionId === sectionId }"
+                    @click="onChangeSection(section.sectionId)"
+                  >
+                    {{ section.sectionName }}
+                  </button>
+                </template>
+              </div>
             </section>
 
             <section class="is-mb-5">
