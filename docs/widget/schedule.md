@@ -25,20 +25,20 @@ Csapatok mérkőzései a bajnokságban
 
 ## Változók
 
+<!--@include: ./parts/props-base.md-->
+
+<!--@include: ./parts/props-games.md-->
+
+### Elem specifikus változó:
+
 | prop                | Default  | Leírás                            | Megjegyzés                       |
 | :------------------ | :------- | :-------------------------------- | :------------------------------- |
-| api-key             | null     | Api kulcs                         |
-| locale              | hu       | Nyelv                             | Elérhető nyelvek                 |
-| championship-id     | kötelező | Bajnokság azonosító               |
-| phase-id            |          | Bajnokság szakasz azonosító       |
-| division            |          | Bajnokság szakasz                 | Nem ajánlott                     |
-| hide-columns        |          | Oszlopok elrejtése                | pl.: `hide-columns="tv"`         |
 | limit               | 20       | Mérkőzések oldalanként            |
 | team-filter-by-name |          | Csak egy csapat mérkőzései        | pl.: `team-filter-by-name="UTE"` |
+| timezone-selector   | false    | Időzóna váltási lehetőség         |                                  |
 | initial-page        | page > 0 | Kezdő oldal                       |                                  |
 | auto-initial-page   | false    | Az utolsó mérkőzés oldala         |                                  |
 | auto-refresh        | false    | Eredmények automatikus frissítése | 5 percenként                     |
-| external-game-link  | vbr      | A mérkőzés hivatkozása            |                                  |
 
 ## Oszlop elnevezések
 

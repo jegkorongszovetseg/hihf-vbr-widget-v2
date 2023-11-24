@@ -5,8 +5,10 @@ Egy adott bajnokság állását mutatja meg.
 ## Használat
 
 ```html
-<mjsz-vbr-standings locale="hu" championship-id="3450" division="Alapszakasz" />
+<mjsz-vbr-standings locale="hu" championship-id="3450" phase-id="45196" />
 ```
+
+<!--@include: ./parts/phase.md-->
 
 ## Példa
 
@@ -14,20 +16,21 @@ Egy adott bajnokság állását mutatja meg.
   <mjsz-vbr-standings
     locale="hu"
     championship-id="3450"
-    division="Alapszakasz" 
+    phase-id="45196"
   />
 </ClientOnly>
 
 ## Változók
 
-| prop            | Default  | Leírás                  | Megjegyzés                        |
-| :-------------- | :------- | :---------------------- | :-------------------------------- |
-| api-key         | null     | Api kulcs               |
-| locale          | hu       | Nyelv                   | Elérhető nyelvek                  |
-| championship-id | kötelező | Bajnokság azonosító     |
-| division        | kötelező | Bajnokság szakasz       |
-| type            | 3        | Pont számítási rendszer | Lehetséges: 3 / 2                 |
-| hide-columns    |          | Oszlopok elrejtése      | pl.: `hide-columns="teamLogo,gk"` |
+<!--@include: ./parts/props-base.md-->
+
+<!--@include: ./parts/props-team.md-->
+
+### Elem specifikus változó:
+
+| prop | Default | Leírás                  | Megjegyzés        |
+| :--- | :------ | :---------------------- | :---------------- |
+| type | 3       | Pont számítási rendszer | Lehetséges: 3 / 2 |
 
 ## Oszlop elnevezések
 
@@ -44,4 +47,5 @@ Egy adott bajnokság állását mutatja meg.
 | plus       |
 | minus      |
 | gk         |
+
 | p

@@ -31,7 +31,12 @@ export const baseProps = {
 };
 
 export const teamStatsProps = {
-  externalTeamLink: {
+  teamFilterByName: {
+    type: String,
+    default: '',
+  },
+
+  externalTeamResolver: {
     type: [String, Function],
     default: '',
   },
@@ -48,12 +53,7 @@ export const playerStatsProps = {
     default: 20,
   },
 
-  teamFilterByName: {
-    type: String,
-    default: '',
-  },
-
-  externalPlayerLink: {
+  externalPlayerResolver: {
     type: [String, Function],
     default: '',
   },
@@ -62,6 +62,16 @@ export const playerStatsProps = {
     type: Boolean,
     default: false,
   },
+};
 
-  ...teamStatsProps,
+export const gameProps = {
+  externalGameResolver: {
+    type: [String, Function],
+    default: '',
+  },
+
+  isGameTargetExternal: {
+    type: Boolean,
+    default: false,
+  },
 };

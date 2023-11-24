@@ -1,6 +1,7 @@
 <script setup>
 import { computed, ref, unref, watch, toRefs } from 'vue';
 import { useAsyncState, useDocumentVisibility, useTimeoutPoll } from '@vueuse/core';
+import { pick } from 'ramda';
 import { useErrorProvider, usePage, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
 import {
   convert,
@@ -17,20 +18,16 @@ import {
   TimezoneSelector,
   ScheduleTable,
 } from '@mjsz-vbr-elements/core/components';
-import { baseProps } from '@mjsz-vbr-elements/core';
+import { baseProps, playerProps, teamStatsProps, gameProps } from '@mjsz-vbr-elements/core';
 
 const props = defineProps({
   ...baseProps,
 
-  limit: {
-    type: Number,
-    default: 20,
-  },
+  ...pick(['limit', 'teamFilterByName'], playerProps),
 
-  teamFilterByName: {
-    type: String,
-    default: '',
-  },
+  ...teamStatsProps,
+
+  ...gameProps,
 
   initialPage: {
     type: Number,
@@ -39,16 +36,6 @@ const props = defineProps({
   },
 
   autoInitialPage: {
-    type: Boolean,
-    default: false,
-  },
-
-  externalGameLink: {
-    type: [String, Function],
-    default: '',
-  },
-
-  isTargetExternal: {
     type: Boolean,
     default: false,
   },
@@ -63,7 +50,7 @@ const props = defineProps({
     default: false,
   },
 });
-console.log(props)
+console.log(props);
 const { division, phaseId } = toRefs(props);
 
 const { onError, error, hasError } = useErrorProvider();
@@ -129,8 +116,8 @@ const onTimezoneChange = (tz) => {
   timezone.value = tz;
 };
 
-const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, { gameId });
-const externalGameResolverTarget = computed(() => (props.isTargetExternal ? '_blank' : '_self'));
+const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.externalGameResolver, { gameId });
+const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? '_blank' : '_self'));
 </script>
 
 <template>

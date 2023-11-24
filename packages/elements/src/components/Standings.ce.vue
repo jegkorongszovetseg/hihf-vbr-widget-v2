@@ -28,7 +28,8 @@ const { state: rows, isLoading } = useAsyncState(
   () =>
     fetchVBRData('/v2/standings', props.apiKey, {
       championshipId: Number(props.championshipId),
-      division: props.division,
+      ...(props.division && { division: props.division }),
+      ...(props.phaseId && { phaseId: props.phaseId }),
     }),
   [],
   {
@@ -46,7 +47,7 @@ const currentColumns = computed(() => (props.type === '3' ? COLUMNS_STANDINGS_P_
 
 const onSort = (payload) => change(payload);
 
-const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamLink, teamName);
+const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamResolver, teamName);
 </script>
 
 <template>

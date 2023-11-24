@@ -41,7 +41,7 @@ const convertedRows = computed(() => {
   return convert(unref(rows)).sorted(sort).addIndex(sort.sortTarget).value();
 });
 
-const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamLink, teamName);
+const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamResolver, teamName);
 </script>
 
 <template>
