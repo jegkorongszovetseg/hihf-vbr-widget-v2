@@ -41,7 +41,8 @@ const { sort, change: onSort } = useSort({
 const convertedRows = computed(() => {
   return convert(unref(rows)).sorted(sort).addIndex(sort.sortTarget).value();
 });
-const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamResolver, teamName);
+const resolveExternalTeamLink = (params) =>
+  externalTeamLinkResolver(props.externalTeamResolver, { ...params, championshipId: props.championshipId });
 </script>
 
 <template>

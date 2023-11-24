@@ -4,7 +4,7 @@ import { reactive } from 'vue';
 const state = reactive({
   locale: 'hu',
   championshipId: 3450,
-  division: 'Alapszakasz',
+  phaseId: '45196',
   limit: 10,
   filter: '',
   isPlayerLinked: false,
@@ -18,7 +18,7 @@ const state = reactive({
       <mjsz-vbr-players-leader
         :locale="state.locale"
         :championship-id="state.championshipId"
-        :division="state.division"
+        :phase-id="state.phaseId"
         :limit="state.limit"
         :team-filter-by-name="state.filter"
         :hide-columns="state.hideColumns"
@@ -27,7 +27,7 @@ const state = reactive({
       <template #controls>
         <HstSelect v-model="state.locale" title="Locale" :options="{ hu: 'HU', en: 'EN' }" />
         <HstText v-model="state.championshipId" title="championshipId" />
-        <HstText v-model="state.division" title="division" />
+        <HstText v-model="state.phaseId" title="phaseId" />
         <HstText v-model="state.limit" title="limit" />
         <HstText v-model="state.filter" title="teamFilterByName" />
         <HstCheckboxList
@@ -55,7 +55,7 @@ const state = reactive({
       <mjsz-vbr-players-leader
         :locale="state.locale"
         :championship-id="state.championshipId"
-        :division="state.division"
+        :phase-id="state.phaseId"
         is-player-linked
         is-team-linked
       />
@@ -68,21 +68,7 @@ const state = reactive({
 </template>
 
 <docs lang="md">
-## Változók
-
-| prop               | Leírás                         |
-| :----------------- | :----------------------------- |
-| api-key            | Api kulcs                      |
-| locale             | Nyelv                          |
-| championship-id    | Bajnokság azonosító            |
-| division           | Bajnokság szakasz              |
-| hide-columns       | Oszlopok elrejtése             |
-| limit              | Sorok száma                    |
-| teamFilterByName   | Szűrés csapat névre            |
-| externalPlayerLink | Játékos külső hivatkozása      |
-| isPlayerLinked     | Játékos külső hivatkozás aktív |
-| externalTeamLink   | Csapat külső hivatkozása       |
-| isTeamLinked       | Csapat külső hivatkozás aktív  |
+## Dokumentáció:
 
 [VBR API Elements](https://api.icehockey.hu/widgets/docs/v2/widget/fieldplayers-leader.html)
 </docs>

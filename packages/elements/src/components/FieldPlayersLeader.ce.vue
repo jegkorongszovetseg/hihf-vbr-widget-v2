@@ -61,8 +61,10 @@ const convertedRows = computed(() => {
 
 const totalItems = computed(() => convertedRows.value?.totalItems);
 
-const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamResolver, teamName);
-const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props.externalPlayerResolver, playerId);
+const resolveExternalTeamLink = (params) =>
+  externalTeamLinkResolver(props.externalTeamResolver, { ...params, championshipId: props.championshipId });
+const resolveExternalPlayerLink = (params) =>
+  externalPlayerLinkResolver(props.externalPlayerResolver, { ...params, championshipId: props.championshipId });
 </script>
 
 <template>

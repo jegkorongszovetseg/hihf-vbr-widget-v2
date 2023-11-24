@@ -47,7 +47,8 @@ const currentColumns = computed(() => (props.type === '3' ? COLUMNS_STANDINGS_P_
 
 const onSort = (payload) => change(payload);
 
-const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamResolver, teamName);
+const resolveExternalTeamLink = (params) =>
+  externalTeamLinkResolver(props.externalTeamResolver, { ...params, championshipId: props.championshipId });
 </script>
 
 <template>
