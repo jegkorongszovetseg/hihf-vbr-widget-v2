@@ -116,7 +116,7 @@ const currentSeasonColumns = computed(() =>
     : omit(
         [
           'playerPortrait',
-          'seasonId',
+          'season',
           'ga',
           'gaa',
           'sog',
@@ -135,7 +135,7 @@ const currentSeasonColumns = computed(() =>
 const seasonColumns = computed(() =>
   state.isGoalie
     ? pick(
-        ['seasonId', 'teamName', 'gkd', 'gpi', 'mipMin', 'ga', 'gaa', 'sog', 'svs', 'svsPercent'],
+        ['season', 'teamName', 'gkd', 'gpi', 'mipMin', 'ga', 'gaa', 'sog', 'svs', 'svsPercent'],
         COLUMNS_PLAYER_SEASON_STATS
       )
     : omit(

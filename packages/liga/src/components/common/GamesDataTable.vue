@@ -18,11 +18,6 @@ const props = defineProps({
     default: null,
   },
 
-  // sort: {
-  //   type: Object,
-  //   default: () => ({}),
-  // },
-
   isLoading: {
     type: Boolean,
     default: false,
@@ -78,6 +73,14 @@ const { t } = useI18n();
       <template v-slot:cell-gameResultType="{ row }">
         <span v-if="row.isOvertime" class="label">{{ t('common.overtimeShort') }}</span>
         <span v-if="row.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
+      </template>
+
+      <template  v-slot:cell-powerplay="{ row }">
+        {{ row.adv }} / {{ row.ppgf }}
+      </template>
+
+      <template  v-slot:cell-penaltyKilling="{ row }">
+        {{ row.dvg }} / {{ row.pk }}
       </template>
     </DataTable>
   </ResponsiveTable>

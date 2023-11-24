@@ -30,6 +30,14 @@
     "season": {
       "short": "Szezon",
       "tooltip": "Szezon"
+    },
+    "pp": {
+      "short": "PP",
+      "tooltip": "Emberelőnyök"
+    },
+    "pk": {
+      "short": "PK",
+      "tooltip": "Emberhátrányos Védekezés"
     }
   },
   "report": {

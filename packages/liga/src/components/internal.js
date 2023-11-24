@@ -176,11 +176,11 @@ export const COLUMNS_GAMES = {
     tooltip: 'table.pim.tooltip',
   },
 
-  pp: {
+  powerplay: {
     label: 'table.pp.short',
     tooltip: 'table.pp.tooltip',
   },
-  pk: {
+  penaltyKilling: {
     label: 'table.pk.short',
     tooltip: 'table.pk.tooltip',
   },
@@ -191,10 +191,10 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
     label: '',
     class: 'is-has-image',
   },
-  seasonId: {
+  season: {
     label: 'table.season.short',
     tooltip: 'table.season.tooltip',
-    class: 'is-text-left',
+    class: 'is-text-left is-text-light',
   },
   teamName: {
     label: 'table.team.short',

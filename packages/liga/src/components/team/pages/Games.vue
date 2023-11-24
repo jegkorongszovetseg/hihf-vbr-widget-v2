@@ -23,7 +23,18 @@ const tooltipContainer = ref(null);
 const { t } = useI18n();
 const { columns } = useColumns(
   pick(
-    ['gameDateDate', 'gameDateTime', 'gameResult', 'gameResultType', 'opponent', 'resultType', 'sog', 'sa'], // 'pp', 'pk'
+    [
+      'gameDateDate',
+      'gameDateTime',
+      'gameResult',
+      'gameResultType',
+      'opponent',
+      'resultType',
+      'sog',
+      'sa',
+      'powerplay',
+      'penaltyKilling',
+    ],
     COLUMNS_GAMES
   ),
   null,
