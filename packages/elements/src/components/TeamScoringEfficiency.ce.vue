@@ -24,7 +24,8 @@ const { state: rows, isLoading } = useAsyncState(
   () =>
     fetchVBRData('/v2/team-scoring-efficiency', props.apiKey, {
       championshipId: Number(props.championshipId),
-      division: props.division,
+      ...(props.division && { division: props.division }),
+      ...(props.phaseId && { phaseId: props.phaseId }),
     }),
   [],
   {

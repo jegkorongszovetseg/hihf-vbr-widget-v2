@@ -1,4 +1,5 @@
 # Játékos statisztikák
+Egy bajnokság vagy bajnokság fázis mezőnyjátékosok statisztikáit jeleníti meg.
 
 ## Használat
 
