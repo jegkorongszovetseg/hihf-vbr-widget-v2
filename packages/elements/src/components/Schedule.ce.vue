@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, unref, watch, toRefs } from 'vue';
+import { computed, ref, unref, watch } from 'vue';
 import { useAsyncState, useDocumentVisibility, useTimeoutPoll } from '@vueuse/core';
 import { pick } from 'ramda';
 import { useErrorProvider, usePage, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
@@ -18,12 +18,12 @@ import {
   TimezoneSelector,
   ScheduleTable,
 } from '@mjsz-vbr-elements/core/components';
-import { baseProps, playerProps, teamStatsProps, gameProps } from '@mjsz-vbr-elements/core';
+import { baseProps, playerStatsProps, teamStatsProps, gameProps } from '@mjsz-vbr-elements/core';
 
 const props = defineProps({
   ...baseProps,
 
-  ...pick(['limit', 'teamFilterByName'], playerProps),
+  ...pick(['limit'], playerStatsProps),
 
   ...teamStatsProps,
 
@@ -50,9 +50,6 @@ const props = defineProps({
     default: false,
   },
 });
-console.log(props);
-const { division, phaseId } = toRefs(props);
-
 const { onError, error, hasError } = useErrorProvider();
 
 const locale = computed(() => props.locale);
