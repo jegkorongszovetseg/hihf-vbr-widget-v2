@@ -35,3 +35,7 @@ Egy bajnokság vagy bajnokság fázis kapus statisztikái.
 ::: info
 Ha nincs **above-limit** vagy **under-limit** beállítva, akkor teljes listát kapjuk meg.
 :::
+
+## Oszlop elnevezések
+
+<Columns name="COLUMNS_GOALIES" />

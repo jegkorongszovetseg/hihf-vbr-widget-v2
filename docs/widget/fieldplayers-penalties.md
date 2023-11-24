@@ -24,3 +24,7 @@ Egy bajnokság vagy bajnokság fázis játékos büntetés statisztikái.
 <!--@include: ./parts/props-base.md-->
 <!--@include: ./parts/props-players.md-->
 <!--@include: ./parts/props-team.md-->
+
+## Oszlop elnevezések
+
+<Columns name="COLUMNS_FIELD_PLAYERS_PENALTY" />

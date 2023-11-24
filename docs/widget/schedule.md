@@ -42,17 +42,4 @@ Csapatok mérkőzései a bajnokságban
 
 ## Oszlop elnevezések
 
-| Oszlop név     | Leírás |
-| -------------- | ------ |
-| name           |
-| gameDateDate   |
-| gameDateTime   |
-| homeTeamName   |
-| homeTeamLogo   |
-| gameResult     |
-| gameResultType |
-| awayTeamLogo   |
-| awayTeamName   |
-| location       |
-| broadcast      |
-| more           |
+<Columns name="COLUMNS_SCHEDULE" />

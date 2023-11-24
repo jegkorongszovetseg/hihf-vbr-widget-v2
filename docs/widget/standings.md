@@ -34,18 +34,10 @@ Egy adott bajnokság állását mutatja meg.
 
 ## Oszlop elnevezések
 
-| Oszlop név | Leírás |
-| ---------- | ------ |
-| index      |
-| teamLogo   |
-| teamName   |
-| m          |
-| p3         |
-| p2         |
-| p1         |
-| p0         |
-| plus       |
-| minus      |
-| gk         |
+### 3 pontos
 
-| p
+<Columns name="COLUMNS_STANDINGS_P_3" />
+
+### 2 pontos
+
+<Columns name="COLUMNS_STANDINGS_P_2" />

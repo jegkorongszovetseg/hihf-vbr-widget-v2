@@ -24,3 +24,7 @@ Csapatok összesített emberelőny kihasználása bajnokság vagy bajnokság fá
 
 <!--@include: ./parts/props-base.md-->
 <!--@include: ./parts/props-team.md-->
+
+## Oszlop elnevezések
+
+<Columns name="COLUMNS_TEAMS_POWERPLAY" />

@@ -23,3 +23,7 @@ Csapatok összesített büntetései bajnokság vagy bajnokság fázis szerint.
 
 <!--@include: ./parts/props-base.md-->
 <!--@include: ./parts/props-team.md-->
+
+## Oszlop elnevezések
+
+<Columns name="COLUMNS_TEAMS_FAIRPLAY" />
