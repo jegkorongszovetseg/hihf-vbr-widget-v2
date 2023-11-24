@@ -3,7 +3,7 @@ import { computed, unref, ref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { baseProps, teamStatsProps } from '@mjsz-vbr-elements/core';
 import { fetchVBRData, useSort, useErrorProvider } from '@mjsz-vbr-elements/core/composables';
-import { convert } from '@mjsz-vbr-elements/core/utils';
+import { convert, externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { COLUMNS_TEAMS_FAIRPLAY, SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 import { StatisticsTable, ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
 
@@ -24,7 +24,8 @@ const { state: rows, isLoading } = useAsyncState(
   () =>
     fetchVBRData('/v2/team-fairplay', props.apiKey, {
       championshipId: Number(props.championshipId),
-      division: props.division,
+      ...(props.division && { division: props.division }),
+      ...(props.phaseId && { phaseId: props.phaseId }),
     }),
   [],
   {
@@ -40,7 +41,8 @@ const { sort, change: onSort } = useSort({
 const convertedRows = computed(() => {
   return convert(unref(rows)).sorted(sort).addIndex(sort.sortTarget).value();
 });
-const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamLink, teamName);
+const resolveExternalTeamLink = (params) =>
+  externalTeamLinkResolver(props.externalTeamResolver, { ...params, championshipId: props.championshipId });
 </script>
 
 <template>

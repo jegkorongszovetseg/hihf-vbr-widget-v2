@@ -5,22 +5,18 @@ const state = reactive({
   locale: 'hu',
   championshipId: 3450,
   phaseId: '45196',
-  limit: 10,
   filter: '',
-  isPlayerLinked: false,
   hideColumns: '',
 });
 </script>
 
 <template>
-  <Story title="Elements/Field Players Penalties">
+  <Story title="Elements/Team Fairplay">
     <Variant title="Playground">
-      <mjsz-vbr-players-penalties
+      <mjsz-vbr-team-fairplay
         :locale="state.locale"
         :championship-id="state.championshipId"
         :phase-id="state.phaseId"
-        :limit="state.limit"
-        :team-filter-by-name="state.filter"
         :hide-columns="state.hideColumns"
       />
 
@@ -28,8 +24,6 @@ const state = reactive({
         <HstSelect v-model="state.locale" title="Locale" :options="{ hu: 'HU', en: 'EN' }" />
         <HstText v-model="state.championshipId" title="championshipId" />
         <HstText v-model="state.phaseId" title="phaseId" />
-        <HstText v-model="state.limit" title="limit" />
-        <HstText v-model="state.filter" title="teamFilterByName" />
         <HstCheckboxList
           v-model="state.hideColumns"
           title="hideColumns"
@@ -38,25 +32,24 @@ const state = reactive({
               label: 'GP',
               value: 'gp',
             },
-            {
-              label: 'S',
-              value: 'shots',
-            },
-            {
-              label: 'S%',
-              value: 'shootPercent',
-            },
+            // {
+            //   label: 'GA',
+            //   value: 'ga',
+            // },
+            // {
+            //   label: 'GD',
+            //   value: 'gd',
+            // },
           ]"
         />
       </template>
     </Variant>
 
     <Variant title="Linked">
-      <mjsz-vbr-players-leader
+      <mjsz-vbr-team-fairplay
         :locale="state.locale"
         :championship-id="state.championshipId"
         :phase-id="state.phaseId"
-        is-player-linked
         is-team-linked
       />
 
@@ -70,5 +63,5 @@ const state = reactive({
 <docs lang="md">
 ## Dokumentáció:
 
-[VBR API Elements](https://api.icehockey.hu/widgets/docs/v2/widget/fieldplayers-penalties.html)
+[VBR API Elements](https://api.icehockey.hu/widgets/docs/v2/widget/teams-fairplay.html)
 </docs>

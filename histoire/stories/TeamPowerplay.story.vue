@@ -4,10 +4,9 @@ import { reactive } from 'vue';
 const state = reactive({
   locale: 'hu',
   championshipId: 3450,
-  division: 'Alapszakasz',
+  phaseId: '45196',
   limit: 10,
   filter: '',
-  type: '3',
   hideColumns: '',
 });
 </script>
@@ -18,32 +17,30 @@ const state = reactive({
       <mjsz-vbr-team-powerplay
         :locale="state.locale"
         :championship-id="state.championshipId"
-        :division="state.division"
-        :type="state.type"
+        :phase-id="state.phaseId"
         :hide-columns="state.hideColumns"
       />
 
       <template #controls>
         <HstSelect v-model="state.locale" title="Locale" :options="{ hu: 'HU', en: 'EN' }" />
         <HstText v-model="state.championshipId" title="championshipId" />
-        <HstText v-model="state.division" title="division" />
-        <HstSelect v-model="state.type" title="Type" :options="{ '2': '2 pontos', '3': '3 pontos' }" />
+        <HstText v-model="state.phaseId" title="phaseId" />
         <HstCheckboxList
           v-model="state.hideColumns"
           title="hideColumns"
           :options="[
             {
-              label: 'GF',
-              value: 'gf',
+              label: 'GP',
+              value: 'gp',
             },
-            {
-              label: 'GA',
-              value: 'ga',
-            },
-            {
-              label: 'GD',
-              value: 'gd',
-            },
+            // {
+            //   label: 'GA',
+            //   value: 'ga',
+            // },
+            // {
+            //   label: 'GD',
+            //   value: 'gd',
+            // },
           ]"
         />
       </template>
@@ -53,7 +50,7 @@ const state = reactive({
       <mjsz-vbr-team-powerplay
         :locale="state.locale"
         :championship-id="state.championshipId"
-        :division="state.division"
+        :phase-id="state.phaseId"
         is-team-linked
       />
 
@@ -67,5 +64,5 @@ const state = reactive({
 <docs lang="md">
 ## Változók
 
-[VBR API Elements](https://api.icehockey.hu/widgets/docs/v2/widget/fieldplayers-leader.html)
+[VBR API Elements](https://api.icehockey.hu/widgets/docs/v2/widget/teams-powerplay.html)
 </docs>

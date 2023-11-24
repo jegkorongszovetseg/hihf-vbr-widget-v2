@@ -14,6 +14,11 @@ export const baseProps = {
     default: '',
   },
 
+  phaseId: {
+    type: String,
+    default: '',
+  },
+
   apiKey: {
     type: String,
     default: '',
@@ -26,7 +31,7 @@ export const baseProps = {
 };
 
 export const teamStatsProps = {
-  externalTeamLink: {
+  externalTeamResolver: {
     type: [String, Function],
     default: '',
   },
@@ -48,7 +53,7 @@ export const playerStatsProps = {
     default: '',
   },
 
-  externalPlayerLink: {
+  externalPlayerResolver: {
     type: [String, Function],
     default: '',
   },
@@ -57,6 +62,16 @@ export const playerStatsProps = {
     type: Boolean,
     default: false,
   },
+};
 
-  ...teamStatsProps,
+export const gameProps = {
+  externalGameResolver: {
+    type: [String, Function],
+    default: '',
+  },
+
+  isGameTargetExternal: {
+    type: Boolean,
+    default: false,
+  },
 };
