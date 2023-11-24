@@ -38,7 +38,7 @@ const props = defineProps({
 });
 
 const externalTeamLink = (teamId, championshipId) =>
-  externalTeamLinkResolver(props.externalTeamResolver, { teamId, championshipId });
+  externalTeamLinkResolver(props.externalTeamResolver, { team: { id: teamId }, championshipId });
 </script>
 
 <template>
