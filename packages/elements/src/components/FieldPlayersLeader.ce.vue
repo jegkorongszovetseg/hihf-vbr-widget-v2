@@ -12,12 +12,13 @@ import {
 } from '@mjsz-vbr-elements/core/utils';
 import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 import { COLUMNS_FIELD_PLAYERS } from '@mjsz-vbr-elements/core/columns';
-import { baseProps, playerStatsProps } from '@mjsz-vbr-elements/core';
+import { baseProps, playerStatsProps, teamStatsProps } from '@mjsz-vbr-elements/core';
 import { I18NProvider, ErrorNotice, StatisticsTable, Paginator } from '@mjsz-vbr-elements/core/components';
 
 const props = defineProps({
   ...baseProps,
   ...playerStatsProps,
+  ...teamStatsProps,
 });
 
 const tooltipContainer = ref(null);
@@ -60,7 +61,7 @@ const convertedRows = computed(() => {
 const totalItems = computed(() => convertedRows.value?.totalItems);
 
 const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamResolver, teamName);
-const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props.externalPlayerLink, playerId);
+const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props.externalPlayerResolver, playerId);
 </script>
 
 <template>

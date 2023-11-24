@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
-import { baseProps, playerStatsProps } from '@mjsz-vbr-elements/core';
+import { baseProps, playerStatsProps, teamStatsProps } from '@mjsz-vbr-elements/core';
 import { fetchVBRData, useSort, usePage, useErrorProvider } from '@mjsz-vbr-elements/core/composables';
 import {
   convert,
@@ -17,6 +17,7 @@ import { I18NProvider, ErrorNotice, StatisticsTable, Paginator } from '@mjsz-vbr
 const props = defineProps({
   ...baseProps,
   ...playerStatsProps,
+  ...teamStatsProps,
 
   aboveLimit: {
     type: Boolean,

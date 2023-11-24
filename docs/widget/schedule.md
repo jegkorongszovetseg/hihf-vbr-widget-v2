@@ -29,7 +29,7 @@ Csapatok mérkőzései a bajnokságban
 
 <!--@include: ./parts/props-games.md-->
 
-### Elem specifikus változó:
+### Elem specifikus változók:
 
 | prop                | Default  | Leírás                            | Megjegyzés                       |
 | :------------------ | :------- | :-------------------------------- | :------------------------------- |

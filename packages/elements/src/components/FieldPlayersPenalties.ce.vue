@@ -1,14 +1,15 @@
 <script setup>
 import { computed, ref, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
-import { baseProps, playerStatsProps } from '@mjsz-vbr-elements/core';
+import { baseProps, playerStatsProps, teamStatsProps } from '@mjsz-vbr-elements/core';
 import { SORT_STATE_DESCEND, COLUMNS_FIELD_PLAYERS_PENALTY } from '@mjsz-vbr-elements/core';
 import {
   convert,
+  teamName,
   playerName,
   rawConvert,
-  externalPlayerLinkResolver,
   externalTeamLinkResolver,
+  externalPlayerLinkResolver,
 } from '@mjsz-vbr-elements/core/utils';
 import { useErrorProvider, usePage, useSort, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
 import { I18NProvider, ErrorNotice, StatisticsTable, Paginator } from '@mjsz-vbr-elements/core/components';
@@ -18,6 +19,7 @@ const columns = COLUMNS_FIELD_PLAYERS_PENALTY;
 const props = defineProps({
   ...baseProps,
   ...playerStatsProps,
+  ...teamStatsProps,
 });
 
 const tooltipContainer = ref(null);
@@ -45,7 +47,7 @@ const { sort, change: onSort } = useSort({
   orders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
 });
 
-const rows = computed(() => rawConvert(unref(rawRows), playerName));
+const rows = computed(() => rawConvert(unref(rawRows), playerName, teamName));
 
 const convertedRows = computed(() => {
   return convert(unref(rows))
@@ -59,7 +61,7 @@ const convertedRows = computed(() => {
 const totalItems = computed(() => convertedRows.value?.totalItems);
 
 const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamResolver, teamName);
-const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props.externalPlayerLink, playerId);
+const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props.externalPlayerResolver, playerId);
 </script>
 
 <template>
