@@ -31,11 +31,6 @@ export const baseProps = {
 };
 
 export const teamStatsProps = {
-  teamFilterByName: {
-    type: String,
-    default: '',
-  },
-
   externalTeamResolver: {
     type: [String, Function],
     default: '',
@@ -51,6 +46,11 @@ export const playerStatsProps = {
   limit: {
     type: Number,
     default: 20,
+  },
+
+  teamFilterByName: {
+    type: String,
+    default: '',
   },
 
   externalPlayerResolver: {

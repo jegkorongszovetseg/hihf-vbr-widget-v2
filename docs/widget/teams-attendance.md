@@ -1,6 +1,6 @@
 # Nézőszámok
 
-A csapatok nézőszámait jeleníti meg.
+Csapatok nézőszámai bajnokság vagy bajnokság fázis szerint.
 
 ## Használat
 
