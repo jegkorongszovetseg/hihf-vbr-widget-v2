@@ -6,6 +6,9 @@ hero:
   name: "MJSZ VBR Elements"
   text: "VBR adat megjelenítés"
   tagline: Magyar Jégkorong Szövetség versenybírósági rendszerének adat megjelenítése
+  image:
+    src: https://www.jegkorongszovetseg.hu/assets/images/logo_mjsz@2x.png
+    alt: MJSZ
   actions:
     - theme: brand
       text: Kezdhetjük
