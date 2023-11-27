@@ -85,7 +85,7 @@ const props = defineProps({
             </section>
 
             <section class="is-mb-5">
-              <label for="phases">{{ t('selection.phases') }}:</label>
+              <label for="phases">{{ t('selection.phasesDivision') }}:</label>
               <pre id="phases" v-text="phaseData" />
             </section>
           </div>
