@@ -18,3 +18,12 @@ outline: false
     championship-name="Erste Liga"
   />
 </ClientOnly>
+
+## Változók
+
+| prop                   | Default  | Leírás                   | Megjegyzés       |
+| :--------------------- | :------- | :----------------------- | :--------------- |
+| api-key                | null     | Api kulcs                |                  |
+| locale                 | hu       | Nyelv                    | Elérhető nyelvek |
+| championship-name      | kötelező | Bajnokság neve           |                  |
+| external-team-resolver |          | Csapat külső hivatkozása |                  |
