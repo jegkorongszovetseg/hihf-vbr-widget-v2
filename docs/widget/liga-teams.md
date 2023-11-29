@@ -1,7 +1,3 @@
----
-outline: false
----
-
 # Csapatok Liga honlapra
 
 ## Használat

@@ -1,14 +1,19 @@
----
-outline: false
----
-
-# Csapatok Liga honlapra
+# Csapat oldal Liga honlapra
 
 ## Használat
 
 ```html
 <mjsz-vbr-teams-liga locale="hu" team-id="21908" championship-id="3450" />
 ```
+
+A `team-id` és a `championship-id` változókat megadhatjuk az url-ben is search paraméterként is.
+url-search-params
+
+```http
+https://www.ersteliga.hu/stats/team?teamId=21908&championshipId=3450
+```
+
+<!--@include: ./parts/url-search-params.md-->
 
 ## Példa
 
