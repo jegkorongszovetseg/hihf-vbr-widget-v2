@@ -87,7 +87,7 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
           </div>
         </ResponsiveTable>
 
-        <ResponsiveTable>
+        <!-- <ResponsiveTable>
           <table class="mjsz-vbr-table">
             <tbody>
               <tr v-for="game in playoff.games" :key="game.id">
@@ -116,7 +116,7 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
               </tr>
             </tbody>
           </table>
-        </ResponsiveTable>
+        </ResponsiveTable> -->
       </div>
     </I18NProvider>
   </div>
