@@ -14,9 +14,9 @@
     "playground:localhost": "pnpm run -C playground dev --mode localhost",
     "build": "pnpm -r --filter='./packages/*' run build",
     "test": "vitest",
-    "release": "bumpp -r --no-push --no-commit --no-tag",
+    "dump": "bumpp -r --no-push --no-commit --no-tag",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "release-it": "release-it",
+    "release": "pnpm run release --workspaces && release-it",
     "publish:release": "vitest run && pnpm run build && pnpm -r publish --access public"
   },
   "keywords": [],
