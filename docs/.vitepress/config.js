@@ -1,5 +1,6 @@
 import { resolve } from 'node:path';
 import { defineConfig, loadEnv } from 'vitepress';
+import pkg from '../../package.json';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig(({ mode }) => {
@@ -17,6 +18,7 @@ export default defineConfig(({ mode }) => {
         { text: 'VBR API', link: '/vbr-api/' },
         { text: 'IVR Azonosítók', link: '/vbr-api/identifiers' },
         { text: 'Stories', link: 'https://api.icehockey.hu/widgets/stories/v2' },
+        { text: pkg.version, link: '/changelog' },
       ],
       sidebar: {
         '/widget/': [

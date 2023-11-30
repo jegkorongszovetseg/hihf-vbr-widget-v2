@@ -2,7 +2,7 @@
   "name": "@mjsz-vbr-elements/liga",
   "description": "Data visualization for MJSZ VBR",
   "private": false,
-  "version": "2.1.0",
+  "version": "2.1.1",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
   "type": "module",
@@ -18,7 +18,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "release": "release-it"
   },
   "unpkg": "./dist/index.iife.js",
   "dependencies": {
@@ -33,5 +34,16 @@
     "vite": "^4.5.0",
     "vite-plugin-banner": "^0.7.0",
     "vite-plugin-compression": "^0.5.1"
+  },
+  "release-it": {
+    "git": false,
+    "plugins": {
+      "@release-it/bumper": {
+        "out": {
+          "file": "package.json",
+          "path": ["dependencies.@mjsz-vbr-elements/core", "dependencies.@mjsz-vbr-elements/shared"]
+        }
+      }
+    }
   }
 }

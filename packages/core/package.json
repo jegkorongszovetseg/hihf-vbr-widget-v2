@@ -3,7 +3,7 @@
   "description": "Data visualization for MJSZ VBR",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "private": false,
-  "version": "2.1.0",
+  "version": "2.1.1",
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
   "type": "module",
   "files": [
@@ -33,7 +33,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "release": "release-it"
   },
   "unpkg": "./dist/index.iife.js",
   "dependencies": {
@@ -51,5 +52,16 @@
     "vite-plugin-banner": "^0.7.0",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-static-copy": "^0.17.0"
+  },
+  "release-it": {
+    "git": false,
+    "plugins": {
+      "@release-it/bumper": {
+        "out": {
+          "file": "package.json",
+          "path": ["dependencies.@mjsz-vbr-elements/shared"]
+        }
+      }
+    }
   }
 }
