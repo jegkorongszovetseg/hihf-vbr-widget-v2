@@ -1,6 +1,6 @@
 {
   "name": "@mjsz-vbr-elements/monorepo",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Data visualization for MJSZ VBR",
   "private": true,
   "packageManager": "pnpm@8.6.12",
@@ -14,7 +14,7 @@
     "playground:localhost": "pnpm run -C playground dev --mode localhost",
     "build": "pnpm -r --filter='./packages/*' run build",
     "test": "vitest",
-    "release": "bumpp -r",
+    "release": "bumpp -r --no-push --no-commit --no-tag",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "publish:release": "vitest run && pnpm run build && pnpm -r publish --access public"
   },
