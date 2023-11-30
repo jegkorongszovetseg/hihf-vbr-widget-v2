@@ -15,6 +15,7 @@
     "build": "pnpm -r --filter='./packages/*' run build",
     "test": "vitest",
     "release": "bumpp -r",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "publish:release": "vitest run && pnpm run build && pnpm -r publish --access public"
   },
   "keywords": [],
@@ -22,6 +23,7 @@
   "license": "ISC",
   "devDependencies": {
     "bumpp": "^9.2.0",
+    "conventional-changelog-cli": "^4.1.0",
     "happy-dom": "^12.10.3",
     "vitest": "^0.34.6"
   }
