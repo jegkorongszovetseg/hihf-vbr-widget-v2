@@ -54,14 +54,6 @@
     "vite-plugin-static-copy": "^0.17.0"
   },
   "release-it": {
-    "git": false,
-    "plugins": {
-      "@release-it/bumper": {
-        "out": {
-          "file": "package.json",
-          "path": ["dependencies.@mjsz-vbr-elements/shared"]
-        }
-      }
-    }
+    "git": false
   }
 }

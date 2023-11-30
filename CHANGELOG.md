@@ -5,6 +5,6 @@
 
 ### Bug Fixes
 
-* Playoffs duplatáblázat javítása ([1813275](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/18132757d884d4f9abaabd4429e991fcc8d2c182))
+* Playoffs dupla táblázat javítása ([1813275](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/18132757d884d4f9abaabd4429e991fcc8d2c182))
 
 # V2.1.0
