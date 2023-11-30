@@ -13,9 +13,7 @@
     }
   },
   "hooks": {
-    "before:init": [
-      "pnpm test"
-    ],
+    "before:init": "pnpm run test",
     "after:bump": "pnpm run build",
     "after:git:release": "echo After git push, before github release",
     "after:release": [
