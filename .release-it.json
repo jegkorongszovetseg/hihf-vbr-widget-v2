@@ -13,7 +13,7 @@
     }
   },
   "hooks": {
-    "before:init": "pnpm run test",
+    "before:init": "pnpm vitest",
     "after:bump": "pnpm run build",
     "after:git:release": "echo After git push, before github release",
     "after:release": [
