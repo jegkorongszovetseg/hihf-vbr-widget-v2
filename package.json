@@ -15,7 +15,7 @@
     "build": "pnpm -r --filter='./packages/*' run build",
     "test": "vitest",
     "release": "bumpp -r",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "publish:release": "vitest run && pnpm run build && pnpm -r publish --access public"
   },
   "keywords": [],
