@@ -16,7 +16,7 @@
     "test": "vitest",
     "dump": "bumpp -r --no-push --no-commit --no-tag",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "release": "pnpm release --workspaces && release-it",
+    "release": "pnpm -r --filter='./packages/*' release && release-it",
     "publish:release": "vitest run && pnpm run build && pnpm -r publish --access public"
   },
   "keywords": [],
