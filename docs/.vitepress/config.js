@@ -60,6 +60,9 @@ export default defineConfig(({ mode }) => {
               { text: 'Liga Tabella', link: '/widget/liga-standings' },
               { text: 'Statisztikák', link: '/widget/liga-statistics' },
               { text: 'Csapatok', link: '/widget/liga-teams' },
+              { text: 'Csapat', link: '/widget/liga-team' },
+              { text: 'Játékosok', link: '/widget/liga-players' },
+              { text: 'Játékos', link: '/widget/liga-player' },
             ],
           },
           {

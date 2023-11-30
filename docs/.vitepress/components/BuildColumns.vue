@@ -1,16 +1,23 @@
 <script setup>
 import * as Columns from '@mjsz-vbr-elements/core/columns';
 import hu from '../../../packages/core/src/locales/hu.json';
-import { path, split } from 'ramda';
+import { path, split, omit } from 'ramda';
 
 const props = defineProps({
   name: {
     type: String,
     required: true,
   },
+
+  remove: {
+    type: Array,
+    default: () => [],
+  },
 });
 
-const cols = Object.keys(Columns[props.name] || []).reduce((acc, columnName) => {
+const excludedColumns = omit(props.remove, path([props.name], Columns));
+
+const cols = Object.keys(excludedColumns).reduce((acc, columnName) => {
   const localePath = Columns[props.name][columnName].tooltip || '';
   acc.push({
     name: columnName,

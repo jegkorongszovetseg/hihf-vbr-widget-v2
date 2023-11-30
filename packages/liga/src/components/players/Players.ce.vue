@@ -62,6 +62,7 @@ const externalTeamLink = (params) => externalTeamLinkResolver(props.externalTeam
         <ErrorNotice v-if="hasError" :error="error" />
 
         <DataProvider
+          :api-key="props.apiKey"
           :locale="locale"
           :championship-name="championshipName"
           :limit="limit"

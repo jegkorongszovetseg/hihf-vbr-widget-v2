@@ -58,8 +58,10 @@ const tooltipContainer = ref(null);
         <ErrorNotice v-if="hasError" :error="error" />
 
         <DataProvider
+          :api-key="props.apiKey"
           :locale="locale"
           :championship-id="championshipId"
+          :player-id="props.playerId"
           v-slot="{
             pane,
             isGamesLoading,

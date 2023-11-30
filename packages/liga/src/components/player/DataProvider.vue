@@ -21,6 +21,11 @@ const GOALIE_GAMES_API = '/v2/goalie-games';
 const timezone = getLocalTimezone();
 
 const props = defineProps({
+  apiKey: {
+    type: String,
+    default: '',
+  },
+  
   playerId: {
     type: String,
     default: '',

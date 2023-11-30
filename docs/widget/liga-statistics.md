@@ -1,6 +1,3 @@
----
-outline: false
----
 # Statiszkikák
 
 ## Használat

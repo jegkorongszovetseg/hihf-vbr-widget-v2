@@ -56,6 +56,7 @@ const externalGameLink = (params) => externalGameLinkResolver(props.externalGame
         <ErrorNotice v-if="hasError" :error="error" />
 
         <DataProvider
+          :api-key="props.apiKey"
           :championship-id="props.championshipId"
           :team-id="teamId"
           v-slot:default="{
