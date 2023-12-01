@@ -17,7 +17,8 @@
     "test:ci": "vitest run",
     "dump": "pnpm run test:ci && bumpp -r",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "release": "pnpm -r --filter='./packages/*' run release && release-it",
+    "rel": "pnpm test:ci && bumpp -r -x \"pnpm run changelog\" --all",
+    "release": "pnpm -r --filter='./packages/*' run release && release-it --dry-run",
     "publish:release": "vitest run && pnpm run build && pnpm -r publish --access public"
   },
   "keywords": [],

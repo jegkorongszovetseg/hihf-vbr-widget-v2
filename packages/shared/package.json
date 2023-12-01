@@ -28,7 +28,7 @@
     "build:postcss": "node scripts/convert-postcss.js",
     "build:postcss:watch": "nodemon --exec 'npm run build:postcss' --watch assets -e css",
     "preview": "vite preview",
-    "release": "release-it"
+    "release": "release-it -i patch --dry-run"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",

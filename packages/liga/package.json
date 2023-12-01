@@ -19,7 +19,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "release": "release-it"
+    "release": "release-it -i patch --dry-run"
   },
   "unpkg": "./dist/index.iife.js",
   "dependencies": {
@@ -36,6 +36,14 @@
     "vite-plugin-compression": "^0.5.1"
   },
   "release-it": {
-    "git": false
+    "git": false,
+    "plugins": {
+      "@release-it/bumper": {
+        "out": {
+          "file": "package.json",
+          "path": ["dependencies.@mjsz-vbr-elements/core", "dependencies.@mjsz-vbr-elements/shared"]
+        }
+      }
+    }
   }
 }
