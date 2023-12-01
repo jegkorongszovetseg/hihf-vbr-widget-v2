@@ -3,7 +3,7 @@
   "description": "Data visualization for MJSZ VBR",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "private": false,
-  "version": "2.1.2",
+  "version": "2.1.3",
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
   "type": "module",
   "files": [
@@ -59,7 +59,9 @@
       "@release-it/bumper": {
         "out": {
           "file": "package.json",
-          "path": ["dependencies.@mjsz-vbr-elements/shared"]
+          "path": [
+            "dependencies.@mjsz-vbr-elements/shared"
+          ]
         }
       }
     }
