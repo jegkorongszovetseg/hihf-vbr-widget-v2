@@ -36,7 +36,7 @@ const { t } = useI18n();
       </div>
       <div class="is-local-gamedate" v-once>
         {{ t('localTime') }} ({{ gameData.location.locationCountryISO || gameData.location.locationName }}):
-        {{ format(gameData.localGameDate.dateTime, 'L dddd - HH:mm', gameData.location.timezone, locale) }} ({{
+        {{ format(gameData.gameDate, 'L dddd - HH:mm', gameData.location.timezone, locale) }} ({{
           offsetName(new Date(gameData.gameDate), gameData.location.timezone, locale)
         }})
       </div>
