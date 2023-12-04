@@ -15,27 +15,17 @@
     "build": "pnpm -r --filter='./packages/*' run build",
     "test": "vitest",
     "test:ci": "vitest run",
-    "dump": "pnpm run test:ci && bumpp -r",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "release": "pnpm test:ci && bumpp -r -x \"pnpm run changelog\" --all",
-    "release-it": "pnpm -r --filter='./packages/*' run release && release-it --dry-run",
-    "publish:release": "vitest run && pnpm run build && pnpm -r publish --access public"
+    "publish:release": "pnpm run build && pnpm -r publish --access public"
   },
   "keywords": [],
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "@release-it/bumper": "^6.0.1",
-    "@release-it/conventional-changelog": "^8.0.1",
     "bumpp": "^9.2.0",
     "conventional-changelog-cli": "^4.1.0",
     "happy-dom": "^12.10.3",
-    "release-it": "^17.0.0",
     "vitest": "^0.34.6"
-  },
-  "release-it": {
-    "git": {
-      "requireCleanWorkingDir": false
-    }
   }
 }
