@@ -1,6 +1,7 @@
 ## [2.1.4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.3...v2.1.4) (2023-12-04)
 
-
+🚀 Features
+- Game-GameData - localGameDate helyett location timezone használata a helyi időhöz
 
 ## [2.1.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.2...v2.1.3) (2023-12-01)
 
