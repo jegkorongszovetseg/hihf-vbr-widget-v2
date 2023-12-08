@@ -1,6 +1,5 @@
 import { defineCustomElement } from 'vue';
-
-import { Championship, ScheduleCup, IVRIdentifiers } from './components';
+import { ScheduleCup, IVRIdentifiers, Championship } from './components';
 
 const ChampionshipCE = defineCustomElement(Championship);
 const ScheduleCupCE = defineCustomElement(ScheduleCup);

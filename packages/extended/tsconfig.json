@@ -7,6 +7,6 @@
     }
   },
   "include": ["./src/*", "./src/components/*"],
-  "exclude": ["dist/*"],
+  "exclude": ["dist/*"]
   // "references": [{ "path": "../core/tsconfig.json" }]
 }
