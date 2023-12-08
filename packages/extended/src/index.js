@@ -1,23 +1,16 @@
-// import { defineCustomElement } from 'vue';
+import { defineCustomElement } from 'vue';
+import { ScheduleCup, IVRIdentifiers, Championship } from './components';
 
-// import { ScheduleCup, IVRIdentifiers, Championship } from './components';
-export * from './components/championship';
-export * from './components/schedule-cup';
+const ChampionshipCE = defineCustomElement(Championship);
+const ScheduleCupCE = defineCustomElement(ScheduleCup);
+const IVRIdentifiersCE = defineCustomElement(IVRIdentifiers);
 
-// const Championship = await import('./components/championship/Championship.ce.vue');
+export { Championship, ScheduleCup, IVRIdentifiers, ChampionshipCE, ScheduleCupCE, IVRIdentifiersCE };
 
-// const ChampionshipCE = defineCustomElement(Championship);
-// const ScheduleCupCE = defineCustomElement(ScheduleCup);
-// const IVRIdentifiersCE = defineCustomElement(IVRIdentifiers);
+export function register() {
+  customElements.define('mjsz-vbr-championship', ChampionshipCE);
+  customElements.define('mjsz-vbr-schedule-cup', ScheduleCupCE);
+  customElements.define('mjsz-vbr-ibr-identifiers', IVRIdentifiersCE);
+}
 
-// export { IVRIdentifiers };
-// export { ScheduleCup };
-// export { ChampionshipCE };
-
-// export function register() {
-//   customElements.define('mjsz-vbr-championship', ChampionshipCE);
-//   // customElements.define('mjsz-vbr-schedule-cup', ScheduleCupCE);
-//   // customElements.define('mjsz-vbr-ibr-identifiers', IVRIdentifiersCE);
-// }
-
-// export default register;
+export default register;
