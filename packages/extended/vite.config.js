@@ -31,22 +31,25 @@ export default defineConfig({
     },
     copyPublicDir: false,
     rollupOptions: {
-      external: ['vue', '@mjsz-vbr-elements/core'],
-      input: {
-        Championship: resolve(__dirname, 'src/components/championship/index.js'),
-        ScheduleCup: resolve(__dirname, 'src/components/schedule-cup/index.js'),
-      },
+      external: [
+        'vue',
+        '@mjsz-vbr-elements/core',
+        '@mjsz-vbr-elements/core/utils',
+        '@mjsz-vbr-elements/core/columns',
+        '@mjsz-vbr-elements/core/constants',
+        '@mjsz-vbr-elements/core/components',
+        '@mjsz-vbr-elements/core/composables',
+      ],
       output: {
-        inlineDynamicImports: false,
-        // exports: 'named',
+        exports: 'named',
         globals: {
           vue: 'Vue',
           '@mjsz-vbr-elements/core': 'MjszVbrElementsCore',
-        },
-        assetFileNames: (chunkInfo) => {
-          console.log(chunkInfo);
-          if (chunkInfo.name === 'style.css') return 'index.css';
-          return chunkInfo.name;
+          '@mjsz-vbr-elements/core/utils': 'MjszVbrElementsCore',
+          '@mjsz-vbr-elements/core/columns': 'MjszVbrElementsCore',
+          '@mjsz-vbr-elements/core/constants': 'MjszVbrElementsCore',
+          '@mjsz-vbr-elements/core/components': 'MjszVbrElementsCore',
+          '@mjsz-vbr-elements/core/composables': 'MjszVbrElementsCore',
         },
       },
     },

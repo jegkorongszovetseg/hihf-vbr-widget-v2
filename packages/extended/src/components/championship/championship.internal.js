@@ -10,7 +10,7 @@ import {
   COLUMNS_TEAMS_PENALTY_KILLING,
   COLUMNS_FIELD_PLAYERS_PENALTY,
 } from '@mjsz-vbr-elements/core/columns';
-import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
+import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core/constants';
 
 export const PANEL_SCHEDULE = 'schedule';
 export const PANEL_STANDINGS = 'standings';

@@ -30,12 +30,25 @@ export default defineConfig({
     },
     copyPublicDir: false,
     rollupOptions: {
-      external: ['vue', '@mjsz-vbr-elements/core'],
+      external: [
+        'vue',
+        '@mjsz-vbr-elements/core',
+        '@mjsz-vbr-elements/core/utils',
+        '@mjsz-vbr-elements/core/columns',
+        '@mjsz-vbr-elements/core/constants',
+        '@mjsz-vbr-elements/core/components',
+        '@mjsz-vbr-elements/core/composables',
+      ],
       output: {
         exports: 'named',
         globals: {
           vue: 'Vue',
           '@mjsz-vbr-elements/core': 'MjszVbrElementsCore',
+          '@mjsz-vbr-elements/core/utils': 'MjszVbrElementsCore',
+          '@mjsz-vbr-elements/core/columns': 'MjszVbrElementsCore',
+          '@mjsz-vbr-elements/core/constants': 'MjszVbrElementsCore',
+          '@mjsz-vbr-elements/core/components': 'MjszVbrElementsCore',
+          '@mjsz-vbr-elements/core/composables': 'MjszVbrElementsCore',
         },
       },
     },
