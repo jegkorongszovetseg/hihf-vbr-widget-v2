@@ -1,25 +1,29 @@
 # Csapat büntetések
+Csapatok összesített büntetései bajnokság vagy bajnokság fázis szerint.
+
+## Használat
+
+```html
+<mjsz-vbr-team-fairplay locale="hu" championship-id="3450" phase-id="45196" />
+```
+
+<!--@include: ./parts/phase.md-->
 
 ## Példa
 
 <ClientOnly>
   <mjsz-vbr-team-fairplay
     locale="hu"
-    championship-id="3314"
-    division="Alapszakasz" 
+    championship-id="3450"
+    phase-id="45196"
   />
 </ClientOnly>
 
 ## Változók
 
-| prop               | Default  | Leírás                         | Megjegyzés                        |
-| :----------------- | :------- | :----------------------------- | :-------------------------------- |
-| api-key            | null     | Api kulcs                      |
-| locale             | hu       | Nyelv                          | Elérhető nyelvek                  |
-| championship-id    | kötelező | Bajnokság azonosító            |
-| division           | kötelező | Bajnokság szakasz              |
-| hide-columns       |          | Oszlopok elrejtése             | pl.: `hide-columns="teamLogo,gk"` |
-| limit              | 20       | Sorok száma                    |                                   |
-| teamFilterByName   |          | Szűrés csapat névre            |                                   |
-| externalTeamLink   |          | Csapat külső hivatkozása       |                                   |
-| isTeamLinked       | false    | Csapat külső hivatkozás aktív  |                                   |
+<!--@include: ./parts/props-base.md-->
+<!--@include: ./parts/props-team.md-->
+
+## Oszlop elnevezések
+
+<Columns name="COLUMNS_TEAMS_FAIRPLAY" />

@@ -21,6 +21,11 @@ const GOALIE_GAMES_API = '/v2/goalie-games';
 const timezone = getLocalTimezone();
 
 const props = defineProps({
+  apiKey: {
+    type: String,
+    default: '',
+  },
+  
   playerId: {
     type: String,
     default: '',
@@ -116,7 +121,7 @@ const currentSeasonColumns = computed(() =>
     : omit(
         [
           'playerPortrait',
-          'seasonId',
+          'season',
           'ga',
           'gaa',
           'sog',
@@ -135,7 +140,7 @@ const currentSeasonColumns = computed(() =>
 const seasonColumns = computed(() =>
   state.isGoalie
     ? pick(
-        ['seasonId', 'teamName', 'gkd', 'gpi', 'mipMin', 'ga', 'gaa', 'sog', 'svs', 'svsPercent'],
+        ['season', 'teamName', 'gkd', 'gpi', 'mipMin', 'ga', 'gaa', 'sog', 'svs', 'svsPercent'],
         COLUMNS_PLAYER_SEASON_STATS
       )
     : omit(

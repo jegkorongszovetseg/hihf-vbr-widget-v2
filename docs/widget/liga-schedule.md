@@ -1,7 +1,3 @@
----
-outline: false
----
-
 # Menetrend Liga honlapra
 
 ## Használat

@@ -25,10 +25,10 @@ const props = defineProps({
     default: '',
   },
 
-  timezoneSelector: {
-    type: Boolean,
-    default: false,
-  },
+  // timezoneSelector: {
+  //   type: Boolean,
+  //   default: false,
+  // },
 });
 
 const messages = { en, hu };

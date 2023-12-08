@@ -56,6 +56,7 @@ const externalGameLink = (params) => externalGameLinkResolver(props.externalGame
         <ErrorNotice v-if="hasError" :error="error" />
 
         <DataProvider
+          :api-key="props.apiKey"
           :championship-id="props.championshipId"
           :team-id="teamId"
           v-slot:default="{
@@ -73,6 +74,7 @@ const externalGameLink = (params) => externalGameLinkResolver(props.externalGame
           <div :class="useMainClass('main-image-wrapper')" style="--overlay-radius: 0px">
             <div class="is-main-image">
               <Image
+                :key="teamInfo?.team?.id"
                 :src="teamInfo?.team?.teamPhoto"
                 default-src="https://www.ersteliga.hu/assets/images/logo_liga@2x.png"
               />

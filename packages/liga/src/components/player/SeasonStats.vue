@@ -29,7 +29,7 @@ const { columns } = useColumns(computed(() => props.columns));
 </script>
 
 <template>
-  <h2 class="is-heading-2">{{ rows[0]?.seasonId ?? '' }}</h2>
+  <h2 class="is-heading-2">{{ rows[0]?.season ?? '' }}</h2>
   <ResponsiveTable>
     <DataTable :rows="rows" :columns="columns" :is-loading="isLoading" :append-to="appendTo" />
   </ResponsiveTable>

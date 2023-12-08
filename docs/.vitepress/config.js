@@ -1,5 +1,6 @@
 import { resolve } from 'node:path';
 import { defineConfig, loadEnv } from 'vitepress';
+import pkg from '../../package.json';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig(({ mode }) => {
@@ -17,6 +18,7 @@ export default defineConfig(({ mode }) => {
         { text: 'VBR API', link: '/vbr-api/' },
         { text: 'IVR Azonosítók', link: '/vbr-api/identifiers' },
         { text: 'Stories', link: 'https://api.icehockey.hu/widgets/stories/v2' },
+        { text: pkg.version, link: '/changelog' },
       ],
       sidebar: {
         '/widget/': [
@@ -60,6 +62,9 @@ export default defineConfig(({ mode }) => {
               { text: 'Liga Tabella', link: '/widget/liga-standings' },
               { text: 'Statisztikák', link: '/widget/liga-statistics' },
               { text: 'Csapatok', link: '/widget/liga-teams' },
+              { text: 'Csapat', link: '/widget/liga-team' },
+              { text: 'Játékosok', link: '/widget/liga-players' },
+              { text: 'Játékos', link: '/widget/liga-player' },
             ],
           },
           {

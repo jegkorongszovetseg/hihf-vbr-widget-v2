@@ -9,7 +9,7 @@ import { store } from '../store.js';
 // import '../../../packages/shared/dist/css/responsive-table.css';
 // import '../../../packages/shared/dist/css/table.css';
 
-const resolver = `LigaTeam?teamId={teamId}&championshipId={championshipId}`;
+const resolver = `LigaTeam?teamId={team.id}&championshipId={championshipId}`;
 </script>
 
 <template>

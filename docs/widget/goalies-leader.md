@@ -1,10 +1,13 @@
 # Kapus statisztikák
+Egy bajnokság vagy bajnokság fázis kapus statisztikái.
 
 ## Használat
 
 ```html
-<mjsz-vbr-goalies locale="hu" championship-id="3450" division="Alapszakasz" />
+<mjsz-vbr-goalies locale="hu" championship-id="3450" phase-id="45196" />
 ```
+
+<!--@include: ./parts/phase.md-->
 
 ## Példa
 
@@ -12,24 +15,27 @@
   <mjsz-vbr-goalies
     locale="hu"
     championship-id="3450"
-    division="Alapszakasz"
+    phase-id="45196"
   />
 </ClientOnly>
 
 ## Változók
 
-| prop               | Default  | Leírás                         | Megjegyzés                        |
-| :----------------- | :------- | :----------------------------- | :-------------------------------- |
-| api-key            | null     | Api kulcs                      |
-| locale             | hu       | Nyelv                          | Elérhető nyelvek                  |
-| championship-id    | kötelező | Bajnokság azonosító            |
-| division           | kötelező | Bajnokság szakasz              |
-| hide-columns       |          | Oszlopok elrejtése             | pl.: `hide-columns="teamLogo,gk"` |
-| limit              | 20       | Sorok száma                    |                                   |
-| teamFilterByName   |          | Szűrés csapat névre            |                                   |
-| externalPlayerLink |          | Játékos külső hivatkozása      |                                   |
-| isPlayerLinked     | false    | Játékos külső hivatkozás aktív |                                   |
-| externalTeamLink   |          | Csapat külső hivatkozása       |                                   |
-| isTeamLinked       | false    | Csapat külső hivatkozás aktív  |                                   |
-| aboveLimit         | false    | 40% jégidő feletti lista       |                                   |
-| underLimit         | false    | 40% jégidő alatti lista        |                                   |
+<!--@include: ./parts/props-base.md-->
+<!--@include: ./parts/props-players.md-->
+<!--@include: ./parts/props-team.md-->
+
+### Elem specifikus változók:
+
+| prop        | Default | Leírás                   | Megjegyzés |
+| :---------- | :------ | :----------------------- | :--------- |
+| above-limit | false   | 40% jégidő feletti lista |            |
+| under-limit | false   | 40% jégidő alatti lista  |            |
+
+::: info
+Ha nincs **above-limit** vagy **under-limit** beállítva, akkor teljes listát kapjuk meg.
+:::
+
+## Oszlop elnevezések
+
+<Columns name="COLUMNS_GOALIES" />

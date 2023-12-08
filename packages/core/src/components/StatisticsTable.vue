@@ -142,13 +142,13 @@ const onSort = (payload) => emit('sort', payload);
         <span class="is-team-name-short">{{ row.awayTeam?.shortName }}</span>
       </template>
       <template v-if="isTeamLinked" v-slot:cell-teamName="{ row }">
-        <a :href="externalTeamResolver(row.team?.longName)" target="_blank">
+        <a :href="externalTeamResolver(row)" target="_blank">
           <span class="is-team-name-long">{{ row.team?.longName }}</span>
           <span class="is-team-name-short">{{ row.team?.shortName }}</span>
         </a>
       </template>
       <template v-if="isPlayerLinked" v-slot:cell-name="{ row }">
-        <a :href="externalPlayerResolver(row.id)" target="_blank">{{ row.name }}</a>
+        <a :href="externalPlayerResolver(row)" target="_blank">{{ row.name }}</a>
       </template>
       <template v-slot:cell-location="{ row }">
         {{ row.location?.locationName ?? '' }}
@@ -157,7 +157,7 @@ const onSort = (payload) => emit('sort', payload);
         <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>
         <a
           v-else
-          :href="externalGameResolver(row.gameId)"
+          :href="externalGameResolver(row)"
           :target="externalGameResolverTarget"
           :class="{ 'is-text-dark': row.gameStatus !== 1, 'is-text-accent': row.gameStatus === 1 }"
         >

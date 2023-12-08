@@ -38,7 +38,7 @@ const props = defineProps({
 });
 
 const externalTeamLink = (teamId, championshipId) =>
-  externalTeamLinkResolver(props.externalTeamResolver, { teamId, championshipId });
+  externalTeamLinkResolver(props.externalTeamResolver, { team: { id: teamId }, championshipId });
 </script>
 
 <template>
@@ -48,6 +48,7 @@ const externalTeamLink = (teamId, championshipId) =>
         <ErrorNotice v-if="hasError" :error="error" />
 
         <DataProvider
+          :api-key="props.apiKey"
           :locale="locale"
           :championship-name="championshipName"
           v-slot="{ teams, seasons, isLoading, championshipId, changeSeason }"

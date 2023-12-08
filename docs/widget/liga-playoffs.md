@@ -1,7 +1,3 @@
----
-outline: false
----
-
 # Rájátszás Liga honlapra
 
 ## Használat

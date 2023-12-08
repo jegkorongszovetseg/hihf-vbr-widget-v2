@@ -25,6 +25,11 @@ import {
 const timezone = getLocalTimezone();
 
 const props = defineProps({
+  apiKey: {
+    type: String,
+    default: '',
+  },
+  
   teamId: {
     type: String,
     default: '',

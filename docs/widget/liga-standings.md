@@ -1,7 +1,3 @@
----
-outline: false
----
-
 # Tabella Liga honlapra
 
 ## Használat

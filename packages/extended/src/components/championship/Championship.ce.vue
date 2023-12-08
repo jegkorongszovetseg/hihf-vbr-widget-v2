@@ -43,7 +43,7 @@ const props = defineProps({
     default: false,
   },
 
-  externalGameLink: {
+  externalGameResolver: {
     type: [String, Function],
     default: '',
   },
@@ -62,8 +62,8 @@ const sectionSelectorMainClass = useMainClass('section-selector');
 
 const messages = { en, hu };
 
-const externalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
-const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamLink, teamName);
+const externalGameLink = (params) => externalGameLinkResolver(props.externalGameResolver, params);
+const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamResolver, teamName);
 
 // const onTimezoneChange = (tz) => {
 //   timezone.value = tz;

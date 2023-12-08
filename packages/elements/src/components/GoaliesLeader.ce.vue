@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
-import { baseProps, playerStatsProps } from '@mjsz-vbr-elements/core';
+import { baseProps, playerStatsProps, teamStatsProps } from '@mjsz-vbr-elements/core';
 import { fetchVBRData, useSort, usePage, useErrorProvider } from '@mjsz-vbr-elements/core/composables';
 import {
   convert,
@@ -17,6 +17,7 @@ import { I18NProvider, ErrorNotice, StatisticsTable, Paginator } from '@mjsz-vbr
 const props = defineProps({
   ...baseProps,
   ...playerStatsProps,
+  ...teamStatsProps,
 
   aboveLimit: {
     type: Boolean,
@@ -40,7 +41,8 @@ const { state: rawRows, isLoading } = useAsyncState(
   () =>
     fetchVBRData('/v2/players-goalie', props.apiKey, {
       championshipId: Number(props.championshipId),
-      division: props.division,
+      ...(props.division && { division: props.division }),
+      ...(props.phaseId && { phaseId: props.phaseId }),
       ...(props.aboveLimit && { more: true }),
       ...(props.underLimit && { less: true }),
     }),
@@ -70,8 +72,10 @@ const convertedRows = computed(() => {
 
 const totalItems = computed(() => convertedRows.value?.totalItems);
 
-const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamLink, teamName);
-const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props.externalPlayerLink, playerId);
+const resolveExternalTeamLink = (params) =>
+  externalTeamLinkResolver(props.externalTeamResolver, { ...params, championshipId: props.championshipId });
+const resolveExternalPlayerLink = (params) =>
+  externalPlayerLinkResolver(props.externalPlayerResolver, { ...params, championshipId: props.championshipId });
 </script>
 
 <template>

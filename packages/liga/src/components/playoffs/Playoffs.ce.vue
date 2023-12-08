@@ -37,7 +37,7 @@ const timezone = getLocalTimezone();
 
 const messages = { en, hu };
 
-const externalGameResolver = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
+const externalGameResolver = (gameId) => externalGameLinkResolver(props.externalGameLink, { gameId });
 
 const formatGameDate = (date) => format(date, 'L dddd', timezone, props.locale);
 const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
@@ -85,37 +85,6 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
             <div class="is-text-bold">{{ game.awayTeamName }}</div>
             <div class="is-text-light is-truncate is-text-right">{{ game.location }}</div>
           </div>
-        </ResponsiveTable>
-
-        <ResponsiveTable>
-          <table class="mjsz-vbr-table">
-            <tbody>
-              <tr v-for="game in playoff.games" :key="game.id">
-                <td>{{ game.name }}</td>
-                <td class="is-text-left">{{ formatGameDate(game.gameDate) }}</td>
-                <td>{{ formatGameTime(game.gameDate) }}</td>
-                <td class="is-text-right is-text-bold is-w-auto">{{ game.homeTeamName }}</td>
-                <td>
-                  <span v-if="game.gameStatus === 0" class="is-text-dark">-:-</span>
-                  <a
-                    v-else
-                    :href="externalGameResolver(game.id)"
-                    target="_blank"
-                    :class="{ 'is-text-dark': game.gameStatus !== 1, 'is-text-accent': game.gameStatus === 1 }"
-                  >
-                    {{ game.homeTeamScore }}:{{ game.awayTeamScore }}
-                  </a>
-                </td>
-                <td>
-                  <span v-if="game.isOvertime" class="label">{{ t('common.overtimeShort') }}</span>
-                  <span v-if="game.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
-                  <span v-if="game.seriesStandings" class="label">{{ game.seriesStandings }}</span>
-                </td>
-                <td class="is-text-left is-text-bold is-w-auto">{{ game.awayTeamName }}</td>
-                <td class="is-text-left is-text-light is-w-auto">{{ game.location }}</td>
-              </tr>
-            </tbody>
-          </table>
         </ResponsiveTable>
       </div>
     </I18NProvider>

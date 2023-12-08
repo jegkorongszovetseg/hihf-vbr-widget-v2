@@ -2,7 +2,7 @@
   "name": "@mjsz-vbr-elements/elements",
   "description": "Data visualization for MJSZ VBR",
   "private": false,
-  "version": "2.1.0-rc.2",
+  "version": "2.1.4",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
   "type": "module",
@@ -25,6 +25,7 @@
     "@mjsz-vbr-elements/core": "workspace:^",
     "@mjsz-vbr-elements/shared": "workspace:^",
     "@vueuse/core": "^10.1.2",
+    "ramda": "^0.29.0",
     "vue": "^3.3.4"
   },
   "devDependencies": {

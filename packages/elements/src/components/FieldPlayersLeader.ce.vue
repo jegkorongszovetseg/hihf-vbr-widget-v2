@@ -12,12 +12,13 @@ import {
 } from '@mjsz-vbr-elements/core/utils';
 import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 import { COLUMNS_FIELD_PLAYERS } from '@mjsz-vbr-elements/core/columns';
-import { baseProps, playerStatsProps } from '@mjsz-vbr-elements/core';
+import { baseProps, playerStatsProps, teamStatsProps } from '@mjsz-vbr-elements/core';
 import { I18NProvider, ErrorNotice, StatisticsTable, Paginator } from '@mjsz-vbr-elements/core/components';
 
 const props = defineProps({
   ...baseProps,
   ...playerStatsProps,
+  ...teamStatsProps,
 });
 
 const tooltipContainer = ref(null);
@@ -31,7 +32,8 @@ const { state: rawRows, isLoading } = useAsyncState(
   () =>
     fetchVBRData('/v2/players-stats', props.apiKey, {
       championshipId: Number(props.championshipId),
-      division: props.division,
+      ...(props.division && { division: props.division }),
+      ...(props.phaseId && { phaseId: props.phaseId }),
     }),
   [],
   {
@@ -59,8 +61,10 @@ const convertedRows = computed(() => {
 
 const totalItems = computed(() => convertedRows.value?.totalItems);
 
-const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamLink, teamName);
-const resolveExternalPlayerLink = (playerId) => externalPlayerLinkResolver(props.externalPlayerLink, playerId);
+const resolveExternalTeamLink = (params) =>
+  externalTeamLinkResolver(props.externalTeamResolver, { ...params, championshipId: props.championshipId });
+const resolveExternalPlayerLink = (params) =>
+  externalPlayerLinkResolver(props.externalPlayerResolver, { ...params, championshipId: props.championshipId });
 </script>
 
 <template>

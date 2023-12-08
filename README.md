@@ -35,9 +35,9 @@ A Magyar Jégkorong Szövetség versenybírósági rendszer adatainak megjelení
 - [x] LigaSchedule
 - [x] Playoffs
 - [x] LigaTeams
-- [ ] LigaTeam
-- [ ] LigaPlayers
-- [ ] Player
+- [x] LigaTeam
+- [x] LigaPlayers
+- [x] LigaPlayer
 
 ### GameCenter
 
