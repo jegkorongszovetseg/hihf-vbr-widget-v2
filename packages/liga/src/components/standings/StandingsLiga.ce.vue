@@ -126,4 +126,5 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
 <style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>

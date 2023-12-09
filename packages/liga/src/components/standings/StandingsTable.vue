@@ -1,6 +1,6 @@
 <script setup>
 import { computed, toRefs } from 'vue';
-import { useColumns, useError } from '@mjsz-vbr-elements/core/composables';
+import { useI18n, useColumns, useError, useInheritedPoints } from '@mjsz-vbr-elements/core/composables';
 import * as Errors from '@mjsz-vbr-elements/core';
 import { ResponsiveTable, DataTable, Image, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
 import IconArrowDown from '@mjsz-vbr-elements/shared/icons/IconArrowDown';
@@ -73,11 +73,14 @@ const props = defineProps({
   },
 });
 
-const { columns: currentColumns, hideColumns } = toRefs(props);
+const { columns: currentColumns, hideColumns, rows } = toRefs(props);
 
 const emit = defineEmits(['sort']);
 
 const { onError } = useError();
+const { t } = useI18n();
+
+const { isVisible, text } = useInheritedPoints(rows, t);
 
 const { columns, error } = useColumns(
   currentColumns,
@@ -153,4 +156,7 @@ const onSort = (payload) => emit('sort', payload);
       </template>
     </DataTable>
   </ResponsiveTable>
+
+  <!-- v-if="isVisible"  -->
+  <div class="is-text-xs is-text-light is-mt-5">sdfsfsdfd</div>
 </template>
