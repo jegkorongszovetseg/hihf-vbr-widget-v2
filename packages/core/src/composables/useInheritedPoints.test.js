@@ -1,4 +1,4 @@
-import { computed, createApp, toRaw } from 'vue';
+import { computed, createApp } from 'vue';
 import { expect, describe, it, vi } from 'vitest';
 import { useInheritedPoints } from './useInheritedPoints';
 
