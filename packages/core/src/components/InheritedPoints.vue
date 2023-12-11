@@ -1,5 +1,5 @@
 <script setup>
-import { toRef } from 'vue';
+import { toRef, watch } from 'vue';
 import { useI18n, useInheritedPoints } from '../composables';
 
 const props = defineProps({
@@ -9,8 +9,12 @@ const props = defineProps({
   },
 });
 
+const rows = toRef(props, 'rows');
 const { t } = useI18n();
-const { isVisible, text } = useInheritedPoints(toRef(props, 'rows'), t);
+
+watch(rows, (r) => console.log('watch:', r), { immediate: true });
+
+const { isVisible, text } = useInheritedPoints(rows, t);
 </script>
 
 <template>

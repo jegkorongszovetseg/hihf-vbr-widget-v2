@@ -7,11 +7,12 @@ export function useInheritedPoints(rows, t) {
 
   // Verenybírósági döntés: XYZ csapatától 2 pont, XYZ csapatától 2 pont levonva.
   const createText = (rows) => {
+    console.log('useInheritedPoints-rows:', rows);
     const inheritedTeams = rows.filter((row) => row.inherited_points);
-    const isVisible = inheritedTeams.length > 0;
-    isVisible.value = isVisible;
+    const visibility = inheritedTeams.length > 0;
+    isVisible.value = visibility;
 
-    if (!isVisible) return (text.value = '');
+    if (!visibility) return (text.value = '');
 
     const teamObject = inheritedTeams.map((row) => ({
       team: row.team.longName,
@@ -21,7 +22,8 @@ export function useInheritedPoints(rows, t) {
     text.value = [t('vb'), convertedToText, t('deducted')].join(' ');
   };
 
-  watchOnce(rows, createText, { immediate: true });
+  // watch(rows, createText, { immediate: true });
+  watchOnce(rows, createText);
 
   return {
     text,

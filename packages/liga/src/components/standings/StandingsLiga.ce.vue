@@ -5,6 +5,7 @@ import {
   ErrorNotice,
   ErrorProvider,
   I18NProvider,
+  InheritedPoints,
 } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { COLUMNS_STANDINGS_P_3 } from '@mjsz-vbr-elements/core/columns';
@@ -113,6 +114,8 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
             :is-loading="isLoading"
             @sort="onSort"
           />
+
+          <InheritedPoints :rows="teams.rows" />
         </DataProvider>
 
         <div ref="tooltipContainer" />
