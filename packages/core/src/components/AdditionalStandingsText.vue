@@ -1,20 +1,23 @@
 <script setup>
-import { toRef, watch } from 'vue';
-import { useI18n, useInheritedPoints } from '../composables';
+import { toRef } from 'vue';
+import { useI18n, useAdditionalText } from '../composables';
 
 const props = defineProps({
   rows: {
     type: Array,
     default: () => [],
   },
+
+  additionalKey: {
+    type: String,
+    required: true,
+  },
 });
 
 const rows = toRef(props, 'rows');
 const { t } = useI18n();
 
-watch(rows, (r) => console.log('watch:', r), { immediate: true });
-
-const { isVisible, text } = useInheritedPoints(rows, t);
+const { isVisible, text } = useAdditionalText(rows, props.additionalKey, t);
 </script>
 
 <template>

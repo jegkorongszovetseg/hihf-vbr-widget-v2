@@ -9,4 +9,4 @@ export * from './usePagination';
 export * from './useServices';
 export * from './useSort';
 export * from './useVisibilityChange';
-export * from './useInheritedPoints';
+export * from './useAdditionalText';

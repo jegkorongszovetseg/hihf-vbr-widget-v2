@@ -1,7 +1,6 @@
-import { computed, createApp, ref, nextTick } from 'vue';
+import { ref, nextTick } from 'vue';
 import { expect, describe, it, vi } from 'vitest';
-import { useInheritedPoints } from './useInheritedPoints';
-import { shallowMount } from '@vue/test-utils';
+import { useInheritedPoints } from './useAdditionalText';
 
 describe('useInheritedPoints', () => {
   const mockT = vi.fn().mockImplementation(handleLabels);

@@ -1,14 +1,15 @@
 import { ref } from 'vue';
 import { watchOnce } from '@vueuse/core';
+import { filter, prop } from 'ramda';
 
-export function useInheritedPoints(rows, t) {
+export function useAdditionalText(rows, key, t) {
   const text = ref('');
   const isVisible = ref(false);
 
   // Verenybírósági döntés: XYZ csapatától 2 pont, XYZ csapatától 2 pont levonva.
   const createText = (rows) => {
-    console.log('useInheritedPoints-rows:', rows);
-    const inheritedTeams = rows.filter((row) => row.inherited_points);
+    const inheritedTeams = filter(prop(key), rows);
+    // const inheritedTeams = rows.filter((row) => row.inherited_points);
     const visibility = inheritedTeams.length > 0;
     isVisible.value = visibility;
 
@@ -22,7 +23,6 @@ export function useInheritedPoints(rows, t) {
     text.value = [t('vb'), convertedToText, t('deducted')].join(' ');
   };
 
-  // watch(rows, createText, { immediate: true });
   watchOnce(rows, createText);
 
   return {
