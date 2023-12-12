@@ -21,6 +21,11 @@
       "prependix": "Inherited points:",
       "content": "{team} {points} point(s)",
       "appendix": ""
+    },
+    "penaltyPoints": {
+      "prependix": "DOPS:",
+      "content": "team {team} {points} point(s)",
+      "appendix": "deducted."
     }
   },
   "table": {
