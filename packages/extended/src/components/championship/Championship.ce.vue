@@ -188,6 +188,11 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
           />
         </DataProvider>
 
+        <template v-if="selectedPanel === PANEL_STANDINGS">
+          <AdditionalStandingsText :rows="games.rows" additional-key="inheritedPoints" />
+          <AdditionalStandingsText :rows="games.rows" additional-key="penaltyPoints" />
+        </template>
+
         <div ref="tooltipContainer" />
       </ErrorProvider>
     </I18NProvider>
