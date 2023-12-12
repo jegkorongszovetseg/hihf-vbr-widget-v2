@@ -115,7 +115,8 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
             @sort="onSort"
           />
 
-          <AdditionalStandingsText :rows="teams.rows" additional-key="inherited-points" />
+          <AdditionalStandingsText :rows="teams.rows" additional-key="inheritedPoints" />
+          <AdditionalStandingsText :rows="teams.rows" additional-key="penaltyPoints" />
         </DataProvider>
 
         <div ref="tooltipContainer" />

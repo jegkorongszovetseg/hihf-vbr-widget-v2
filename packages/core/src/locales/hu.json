@@ -16,6 +16,18 @@
     "report": "Jegyzőkönyv",
     "video": "Videó"
   },
+  "additionalText": {
+    "inheritedPoints": {
+      "prependix": "Hozott pontok:",
+      "content": "{team} {points} pont",
+      "appendix": ""
+    },
+    "penaltyPoints": {
+      "prependix": "Versenybírósági döntés:",
+      "content": "{team} csapatától {points} pont",
+      "appendix": "levonva."
+    }
+  },
   "table": {
     "blank": "#",
     "team": {

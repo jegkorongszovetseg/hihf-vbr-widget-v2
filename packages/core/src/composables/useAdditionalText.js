@@ -9,7 +9,6 @@ export function useAdditionalText(rows, key, t) {
   // Verenybírósági döntés: XYZ csapatától 2 pont, XYZ csapatától 2 pont levonva.
   const createText = (rows) => {
     const inheritedTeams = filter(prop(key), rows);
-    // const inheritedTeams = rows.filter((row) => row.inherited_points);
     const visibility = inheritedTeams.length > 0;
     isVisible.value = visibility;
 
@@ -17,10 +16,14 @@ export function useAdditionalText(rows, key, t) {
 
     const teamObject = inheritedTeams.map((row) => ({
       team: row.team.longName,
-      points: row.inherited_points,
+      points: prop(key, row),
     }));
-    const convertedToText = teamObject.map((row) => t('key-team-points', row)).join(', ');
-    text.value = [t('vb'), convertedToText, t('deducted')].join(' ');
+    const convertedToText = teamObject.map((row) => t(`additionalText.${key}.content`, row)).join(', ');
+    text.value = [
+      t(`additionalText.${key}.prependix`),
+      convertedToText,
+      ...(t(`additionalText.${key}.appendix`) && [t(`additionalText.${key}.appendix`)]),
+    ].join(' ');
   };
 
   watchOnce(rows, createText);

@@ -16,6 +16,13 @@
     "report": "Report Sheet",
     "video": "Video"
   },
+  "additionalText": {
+    "inheritedPoints": {
+      "prependix": "Inherited points:",
+      "content": "{team} {points} point(s)",
+      "appendix": ""
+    }
+  },
   "table": {
     "blank": "#",
     "team": {

@@ -1,104 +1,210 @@
 import { ref, nextTick } from 'vue';
 import { expect, describe, it, vi } from 'vitest';
-import { useInheritedPoints } from './useAdditionalText';
+import { path, split } from 'ramda';
+import { useAdditionalText } from './useAdditionalText';
+import hu from '../locales/hu.json';
 
-describe('useInheritedPoints', () => {
+describe('useAdditionalText', () => {
   const mockT = vi.fn().mockImplementation(handleLabels);
 
-  it('Vissza kell adnia egy csapat nevét és a levont pontokat mondatba', async () => {
+  it('Működik, hogy csak az első betültés után változnak az adatok (watchOnce)', async () => {
     const rows = ref([]);
 
-    const { isVisible, text } = useInheritedPoints(rows, mockT);
+    const { isVisible, text } = useAdditionalText(rows, 'inheritedPoints', mockT);
     await nextTick();
+
+    expect(isVisible.value).toBe(false);
 
     rows.value = [
       {
         team: {
           longName: 'TeamA',
         },
-        inherited_points: 2,
+        inheritedPoints: 2,
       },
     ];
     await nextTick();
 
     expect(isVisible.value).toBe(true);
-    expect(text.value).toBe('VB határozat: TeamA csapatától 2 pont levonva.');
 
     rows.value = [
       {
         team: {
           longName: 'TeamB',
         },
-        inherited_points: 5,
+        inheritedPoints: 5,
       },
     ];
     await nextTick();
-    console.log('isVisible:', isVisible.value, text.value);
+    expect(isVisible.value).toBe(true);
   });
 
-  // it('Vissza kell adnia két csapat nevét és a levont pontokat mondatba', async () => {
-  //   const rows = [
-  //     {
-  //       team: {
-  //         longName: 'TeamA',
-  //       },
-  //       inherited_points: 1,
-  //     },
-  //     {
-  //       team: {
-  //         longName: 'TeamB',
-  //       },
-  //       inherited_points: 2,
-  //     },
-  //   ];
+  it('Hozott pontok szöveg nem jelenik meg, mert nincs olyan csapat', async () => {
+    const rows = ref([]);
 
-  //   const [results, app] = withSetup(() =>
-  //     useInheritedPoints(
-  //       computed(() => rows),
-  //       mockT
-  //     )
-  //   );
-  //   expect(results.isVisible.value).toBe(true);
-  //   expect(results.text.value).toBe('VB határozat: TeamA csapatától 1 pont, TeamB csapatától 2 pont levonva.');
+    const { isVisible, text } = useAdditionalText(rows, 'inheritedPoints', mockT);
+    await nextTick();
 
-  //   app.unmount();
-  // });
+    expect(isVisible.value).toBe(false);
 
-  // it('A szöveg nem jelenik meg, ha nincs pontlevonás', async () => {
-  //   const rows = [
-  //     {
-  //       team: {
-  //         longName: 'TeamA',
-  //       },
-  //       inherited_points: null,
-  //     },
-  //   ];
+    rows.value = [
+      {
+        team: {
+          longName: 'TeamA',
+        },
+        inheritedPoints: null,
+      },
+      {
+        team: {
+          longName: 'TeamB',
+        },
+        inheritedPoints: null,
+      },
+    ];
+    await nextTick();
 
-  //   const [results, app] = withSetup(() =>
-  //     useInheritedPoints(
-  //       computed(() => rows),
-  //       mockT
-  //     )
-  //   );
-  //   expect(results.isVisible.value).toBe(false);
+    expect(isVisible.value).toBe(false);
+    expect(text.value).toBe('');
+  });
 
-  //   app.unmount();
-  // });
+  it('Hozott pontok szöveg megjelenik, ha van egy inheritedPoints tartalmazó csapat', async () => {
+    const rows = ref([]);
+
+    const { isVisible, text } = useAdditionalText(rows, 'inheritedPoints', mockT);
+    await nextTick();
+
+    expect(isVisible.value).toBe(false);
+
+    rows.value = [
+      {
+        team: {
+          longName: 'TeamA',
+        },
+        inheritedPoints: 2,
+      },
+    ];
+    await nextTick();
+
+    expect(isVisible.value).toBe(true);
+    expect(text.value).toBe('Hozott pontok: TeamA 2 pont');
+
+    // console.log('isVisible:', isVisible.value, text.value);
+  });
+
+  it('Hozott pontok szöveg megjelenik - és vesszővel van elválasztva - ha van több inheritedPoints tartalmazó csapat', async () => {
+    const rows = ref([]);
+
+    const { isVisible, text } = useAdditionalText(rows, 'inheritedPoints', mockT);
+    await nextTick();
+
+    expect(isVisible.value).toBe(false);
+
+    rows.value = [
+      {
+        team: {
+          longName: 'TeamA',
+        },
+        inheritedPoints: 3,
+      },
+      {
+        team: {
+          longName: 'TeamB',
+        },
+        inheritedPoints: 2,
+      },
+      {
+        team: {
+          longName: 'TeamC',
+        },
+        inheritedPoints: 1,
+      },
+    ];
+    await nextTick();
+
+    expect(isVisible.value).toBe(true);
+    expect(text.value).toBe('Hozott pontok: TeamA 3 pont, TeamB 2 pont, TeamC 1 pont');
+  });
+
+  it('Büntető pontok szöveg nem jelenik meg, mert nincs olyan csapat', async () => {
+    const rows = ref([]);
+
+    const { isVisible, text } = useAdditionalText(rows, 'penaltyPoints', mockT);
+    await nextTick();
+
+    expect(isVisible.value).toBe(false);
+
+    rows.value = [
+      {
+        team: {
+          longName: 'TeamA',
+        },
+        penaltyPoints: null,
+      },
+    ];
+    await nextTick();
+
+    expect(isVisible.value).toBe(false);
+    expect(text.value).toBe('');
+  });
+
+  it('Büntető pontok szöveg megjelenik, ha van egy penaltyPoints tartalmazó csapat', async () => {
+    const rows = ref([]);
+
+    const { isVisible, text } = useAdditionalText(rows, 'penaltyPoints', mockT);
+    await nextTick();
+
+    expect(isVisible.value).toBe(false);
+
+    rows.value = [
+      {
+        team: {
+          longName: 'TeamA',
+        },
+        penaltyPoints: 2,
+      },
+    ];
+    await nextTick();
+
+    expect(isVisible.value).toBe(true);
+    expect(text.value).toBe('Versenybírósági döntés: TeamA csapatától 2 pont levonva.');
+  });
+
+  it('Büntető pontok szöveg megjelenik - és vesszővel van elválasztva -, ha van több penaltyPoints tartalmazó csapat', async () => {
+    const rows = ref([]);
+
+    const { isVisible, text } = useAdditionalText(rows, 'penaltyPoints', mockT);
+    await nextTick();
+
+    expect(isVisible.value).toBe(false);
+
+    rows.value = [
+      {
+        team: {
+          longName: 'TeamA',
+        },
+        penaltyPoints: 2,
+      },
+      {
+        team: {
+          longName: 'TeamB',
+        },
+        penaltyPoints: 1,
+      },
+    ];
+    await nextTick();
+
+    expect(isVisible.value).toBe(true);
+    expect(text.value).toBe('Versenybírósági döntés: TeamA csapatától 2 pont, TeamB csapatától 1 pont levonva.');
+  });
 });
 
 function handleLabels(key, params) {
   switch (key) {
-    case 'vb':
-      return 'VB határozat:';
-      break;
-    case 'key-team-points':
+    case 'additionalText.inheritedPoints.content':
+      return `${params.team} ${params.points} pont`;
+    case 'additionalText.penaltyPoints.content':
       return `${params.team} csapatától ${params.points} pont`;
-      break;
-    case 'deducted':
-      return 'levonva.';
-      break;
-
     default:
-      break;
+      return path(split('.', key), hu);
   }
 }
