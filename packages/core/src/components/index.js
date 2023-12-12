@@ -12,7 +12,7 @@ import TimezoneSelector from './TimezoneSelector.vue';
 import StatisticsTable from './StatisticsTable.vue';
 import ScheduleTable from './ScheduleTable.vue';
 import SeasonSelector from './SeasonSelector.vue';
-import InheritedPoints from './InheritedPoints.vue';
+import AdditionalStandingsText from './AdditionalStandingsText.vue';
 import Test from './Test.vue';
 
 export {
@@ -27,9 +27,9 @@ export {
   ScheduleTable,
   FloatingPanel,
   SeasonSelector,
-  InheritedPoints,
   StatisticsTable,
   ResponsiveTable,
   LoadingIndicator,
   TimezoneSelector,
+  AdditionalStandingsText,
 };
