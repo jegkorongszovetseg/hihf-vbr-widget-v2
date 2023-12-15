@@ -7,7 +7,7 @@ import _isBetween from 'dayjs/plugin/isBetween';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/hu';
-import { LOCALE_FOR_LANG } from '../constants.js';
+import { LOCALE_FOR_LANG } from '@mjsz-vbr-elements/core/constants';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);

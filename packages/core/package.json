@@ -15,24 +15,26 @@
       "import": "./dist/index.js"
     },
     "./components": {
-      "import": "./dist/index.js"
+      "import": "./dist/components.js"
     },
     "./composables": {
-      "import": "./dist/index.js"
+      "import": "./dist/composables.js"
     },
     "./utils": {
-      "import": "./dist/index.js"
+      "import": "./dist/inutilsdex.js"
     },
     "./constants": {
-      "import": "./dist/index.js"
+      "import": "./dist/utils.js"
     },
     "./columns": {
-      "import": "./dist/index.js"
+      "import": "./dist/columns.js"
     }
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "pnpm run build:esm && pnpm run build:browser",
+    "build:esm": "vite build",
+    "build:browser": "vite build -c ./build-browser.config.js --emptyOutDir false",
     "preview": "vite preview"
   },
   "unpkg": "./dist/index.iife.js",
