@@ -1,8 +1,14 @@
 ## [2.1.5](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.4...v2.1.5) (2023-12-16)
 
+### 🚀 Features
+
+- Külső függőségek átalakítása a kisebb csomagméret eléréséért - by @Sokamoka [<samp>(a8a68)</samp>](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/a8a6884)
+- (core) Code spilt a jobb ESM importáláshoz - by @Sokamoka [<samp>(a1676)</samp>](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/a16761e)
+
 ## [2.1.4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.3...v2.1.4) (2023-12-04)
 
-🚀 Features
+### 🚀 Features
+
 - Game-GameData - localGameDate helyett location timezone használata a helyi időhöz
 
 ## [2.1.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.2...v2.1.3) (2023-12-01)
