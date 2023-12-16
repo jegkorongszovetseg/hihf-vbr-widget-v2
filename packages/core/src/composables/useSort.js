@@ -1,6 +1,6 @@
 import { createMachine } from '@xstate/fsm';
 import { reactive } from 'vue';
-import { SORT_STATE_ASCEND, SORT_STATE_DESCEND, SORT_STATE_ORIGINAL } from '@mjsz-vbr-elements/core/constants';
+import { SORT_STATE_ASCEND, SORT_STATE_DESCEND, SORT_STATE_ORIGINAL } from '../constants';
 
 const sortMachine = createMachine({
   id: 'sort',

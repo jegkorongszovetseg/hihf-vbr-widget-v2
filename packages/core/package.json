@@ -21,10 +21,10 @@
       "import": "./dist/composables.js"
     },
     "./utils": {
-      "import": "./dist/inutilsdex.js"
+      "import": "./dist/utils.js"
     },
     "./constants": {
-      "import": "./dist/utils.js"
+      "import": "./dist/constants.js"
     },
     "./columns": {
       "import": "./dist/columns.js"

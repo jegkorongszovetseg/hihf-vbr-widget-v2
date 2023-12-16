@@ -21,7 +21,7 @@ import {
   lensProp,
   sort,
 } from 'ramda';
-import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '@mjsz-vbr-elements/core/constants';
+import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../constants.js';
 import { format, convertMinToSec, convertSecToMin, convertMinToMinSec } from './datetime.js';
 
 export const convert = (data = []) => {

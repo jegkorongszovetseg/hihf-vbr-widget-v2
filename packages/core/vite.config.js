@@ -9,9 +9,6 @@ import pkg from './package.json';
 export default defineConfig({
   resolve: {
     dedupe: ['@mjsz-vbr-elements/shared'],
-    alias: {
-      '@mjsz-vbr-elements/core/constants': resolve(__dirname, './src/constants.js'),
-    },
   },
   envDir: resolve(__dirname, '../../'),
   plugins: [
