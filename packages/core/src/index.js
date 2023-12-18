@@ -1,3 +1,5 @@
+import { getCurrentInstance } from 'vue';
+
 export * from './components';
 export * from './composables';
 export * from './utils';
@@ -14,4 +16,22 @@ export const createConfig = ({ modules = [], apiKey, gameResolver, teamResolver,
     if (module.register) return module.register();
     module?.();
   });
+};
+
+export default {
+  install: (app, options = {}) => {
+    const { modules = [], apiKey, gameResolver, teamResolver, playerResolver } = options;
+    // Plugin code goes here
+    console.log({ app, options });
+    // app.config.compilerOptions.isCustomElement = (tag) => tag.startsWith('mjsz-vbr-');
+
+    app.provide('globalOptions', { apiKey, gameResolver, teamResolver, playerResolver });
+    app.config.globalProperties.$mjszVbrElements = { apiKey, gameResolver, teamResolver, playerResolver };
+
+    if (modules.length === 0) throw new Error('At least one module must be set');
+    modules.forEach((module) => {
+      if (module.register) return module.register();
+      module?.();
+    });
+  },
 };
