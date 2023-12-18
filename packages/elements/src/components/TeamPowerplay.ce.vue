@@ -40,7 +40,7 @@ const { sort, change: onSort } = useSort({
 const rows = computed(() => rawConvert(unref(rawRows), convertTimesSecToMin(['advTime', 'advTimePP1', 'advTimePP2'])));
 
 const convertedRows = computed(() => {
-  return convert(unref(rows)).sorted(sort).addIndex(sort.sortTarget).value();
+  return convert(unref(rows)).teamName().sorted(sort).addIndex(sort.sortTarget).value();
 });
 const resolveExternalTeamLink = (params) =>
   externalTeamLinkResolver(props.externalTeamResolver, { ...params, championshipId: props.championshipId });
