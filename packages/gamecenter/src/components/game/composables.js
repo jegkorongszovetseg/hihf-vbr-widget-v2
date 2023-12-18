@@ -1,5 +1,5 @@
 import { ref, watch, computed, unref } from 'vue';
-import { useTimeoutPoll } from '@vueuse/core';
+import { useIntervalFn, useTimeoutPoll } from '@vueuse/core';
 import { isEmpty } from 'ramda';
 import { useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
 import { convertMinToSec } from '@mjsz-vbr-elements/core/utils';
@@ -12,12 +12,21 @@ export function handleServices(options = {}) {
 
   const isRefreshable = ref(true);
 
-  const { resume, pause, isActive } = useTimeoutPoll(() => callFunctions(...services), interval, { immediate: true });
+  const { resume, pause, isActive } = useTimeoutPoll(() => callFunctions(...services), interval, { immediate: false });
+  const { resume: resumeGameData, pause: pauseGameData } = useIntervalFn(() => services[0]?.(), 10000, {
+    immediate: false,
+  });
   useVisibilityChange(isRefreshable, resume, pause);
 
   watch(data, (data) => {
-    if (data.gameStatus <= 1 && !isActive.value) {
+    if (data.gameStatus < 1) {
+      resumeGameData();
+      isRefreshable.value = false;
+    }
+
+    if (data.gameStatus === 1 && !isActive.value) {
       isRefreshable.value = true;
+      pauseGameData();
       resume();
     }
     if (data.gameStatus > 1) {
@@ -25,6 +34,8 @@ export function handleServices(options = {}) {
       pause();
     }
   });
+
+  services[0]?.();
 
   return {
     pause,
