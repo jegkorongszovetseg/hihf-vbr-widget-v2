@@ -1,7 +1,10 @@
 import { unref } from 'vue';
 import { VBR_API_BASE_URL } from '../constants';
+import { useState } from './useState';
 
 export const fetchVBRData = async (route, apiKey, data) => {
+  const { apiKey: apiKey2 } = useState();
+  console.log('apiKey2', apiKey2);
   const url = `${VBR_API_BASE_URL}${unref(route)}?${objectToQueryString(data)}`;
   return new Promise((resolve, reject) => {
     fetch(url, {

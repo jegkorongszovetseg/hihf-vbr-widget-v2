@@ -1,4 +1,5 @@
 import { getCurrentInstance } from 'vue';
+import { useState } from './composables/useState';
 
 export * from './components';
 export * from './composables';
@@ -27,6 +28,13 @@ export default {
 
     app.provide('globalOptions', { apiKey, gameResolver, teamResolver, playerResolver });
     app.config.globalProperties.$mjszVbrElements = { apiKey, gameResolver, teamResolver, playerResolver };
+
+    // const compSetup = app._component.setup;
+    // compSetup() {
+
+    // };
+    const { set } = useState();
+    set('abcd');
 
     if (modules.length === 0) throw new Error('At least one module must be set');
     modules.forEach((module) => {

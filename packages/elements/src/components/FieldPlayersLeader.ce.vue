@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, unref, inject } from 'vue';
+import { computed, ref, unref } from 'vue';
 import { useAsyncState } from '@vueuse/core';
 import { useSort, fetchVBRData, usePage, useErrorProvider } from '@mjsz-vbr-elements/core/composables';
 import {
@@ -25,9 +25,6 @@ const tooltipContainer = ref(null);
 
 const columns = COLUMNS_FIELD_PLAYERS;
 const locale = computed(() => props.locale);
-
-const go = inject('globalOptions', null);
-console.log('go', go);
 
 const { onError, error, hasError } = useErrorProvider();
 
