@@ -1,3 +1,15 @@
+## [2.1.6](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.5...v2.1.6) (2023-12-19)
+
+
+### Features
+
+* (elements) Komponensek exportálása ([7205965](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/72059655bf01039f2ebc7753f834c7db7ccbb7e5))
+
+
+### Bug Fixes
+
+* Elements csapat név rendezés javítás ([5301ee1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/5301ee1fc59ce726589872b8bf36c3b12b528362))
+
 ## [2.1.5](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.4...v2.1.5) (2023-12-16)
 
 ### 🚀 Features
