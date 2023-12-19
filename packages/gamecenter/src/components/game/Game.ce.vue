@@ -83,7 +83,11 @@ const { state: gameOfficials, execute: getGameOfficials } = useServices({
   onSuccess: () => removeApiError('gameOfficials'),
 });
 
-handleServices({ data: gameData, services: {getGameData, getGameStats, getEvents, getGameOfficials}, interval: REFRESH_DELAY });
+handleServices({
+  data: gameData,
+  services: { getGameData, getGameStats, getEvents, getGameOfficials },
+  interval: REFRESH_DELAY,
+});
 </script>
 
 <template>
