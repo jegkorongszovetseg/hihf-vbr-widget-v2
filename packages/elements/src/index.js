@@ -25,6 +25,16 @@ const TeamPowerplayCE = defineCustomElement(TeamPowerplay);
 const TeamScoringEfficiencyCE = defineCustomElement(TeamScoringEfficiency);
 
 export {
+  Standings,
+  Schedule,
+  FieldPlayersLeader,
+  FieldPlayersPenalties,
+  GoaliesLeader,
+  TeamAttendance,
+  TeamFairplay,
+  TeamPenaltyKilling,
+  TeamPowerplay,
+  TeamScoringEfficiency,
   StandingsCE,
   ScheduleCE,
   FieldPlayersLeaderCE,

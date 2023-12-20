@@ -39,7 +39,7 @@ const { sort, change: onSort } = useSort({
 });
 
 const convertedRows = computed(() => {
-  return convert(unref(rows)).sorted(sort).addIndex(sort.sortTarget).value();
+  return convert(unref(rows)).teamName().sorted(sort).addIndex(sort.sortTarget).value();
 });
 
 const resolveExternalTeamLink = (params) =>

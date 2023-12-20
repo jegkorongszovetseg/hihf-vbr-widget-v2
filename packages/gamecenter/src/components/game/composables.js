@@ -1,27 +1,56 @@
 import { ref, watch, computed, unref } from 'vue';
-import { useTimeoutPoll } from '@vueuse/core';
+import { useIntervalFn, useTimeoutPoll } from '@vueuse/core';
 import { isEmpty } from 'ramda';
 import { useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
 import { convertMinToSec } from '@mjsz-vbr-elements/core/utils';
 import { callFunctions, rawPeriodIndex } from './internal.js';
 
 const DEAFULT_PERIOD_LENGTH_MIN = 20;
+const LAZY_INTERVAL = 1000 * 60 * 5;
 
 export function handleServices(options = {}) {
-  const { data, interval, services = [] } = options;
+  const { data, interval, services } = options;
+  const { getGameData, getGameStats, getEvents, getGameOfficials } = services;
 
   const isRefreshable = ref(true);
 
-  const { resume, pause, isActive } = useTimeoutPoll(() => callFunctions(...services), interval, { immediate: true });
+  const { resume, pause, isActive } = useTimeoutPoll(
+    () => callFunctions(getGameData, getGameStats, getEvents),
+    interval,
+    { immediate: false }
+  );
+
+  const { pause: pauseGameData } = useIntervalFn(() => getGameData(), LAZY_INTERVAL, {
+    immediate: true,
+    immediateCallback: true,
+  });
+
+  const { resume: resumeGameOfficials, pause: pauseGameOfficials } = useIntervalFn(
+    () => getGameOfficials(),
+    LAZY_INTERVAL,
+    {
+      immediate: false,
+      immediateCallback: true,
+    }
+  );
   useVisibilityChange(isRefreshable, resume, pause);
 
   watch(data, (data) => {
-    if (data.gameStatus <= 1 && !isActive.value) {
-      isRefreshable.value = true;
+    if (data.gameStatus < 1) {
+      isRefreshable.value = false;
+    }
+
+    if (data.gameStatus === 1 && !isActive.value) {
+      pauseGameData();
+      resumeGameOfficials();
       resume();
+      isRefreshable.value = true;
     }
     if (data.gameStatus > 1) {
       isRefreshable.value = false;
+      callFunctions(getGameStats, getEvents, getGameOfficials);
+      pauseGameData();
+      pauseGameOfficials();
       pause();
     }
   });
