@@ -1,3 +1,10 @@
+## [2.1.7](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.6...v2.1.7) (2023-12-21)
+
+
+### Bug Fixes
+
+* Időzóna választás javításe EET időzónában ([b1f7c6a](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/b1f7c6a160cf1b0b0dcbfcc58d1c588058bdcfbd))
+
 ## [2.1.6](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.5...v2.1.6) (2023-12-19)
 
 ### Features
