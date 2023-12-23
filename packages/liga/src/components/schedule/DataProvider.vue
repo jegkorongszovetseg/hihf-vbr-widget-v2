@@ -54,7 +54,7 @@ const state = reactive({
   sections: [],
   section: params.section || null,
   teams: [],
-  selectedMonth: Number(params.selectedMonth) || null,
+  selectedMonth: Number(params.selectedMonth) ?? null,
   selectedTeam: Number(params.selectedTeam) || null,
   selectedTeamGameType: params.selectedTeamGameType || 'all',
 });
@@ -122,7 +122,7 @@ const {
 const isLoading = useLazyLoadingState([sectionLoading, seasonsLoading, teamsLoading, gamesLoading], { delay: 1000 });
 
 const { months } = useCollectMonths(rows, toRef(props, 'locale'), (month) => {
-  state.selectedMonth = month;
+  state.selectedMonth = params.selectedMonth ?? month;
 });
 
 const { pause, resume } = useTimeoutPoll(fetchSchedule, REFRESH_DELAY, { immediate: false });
