@@ -63,7 +63,6 @@ const tabButtonClasses = useMainClass('tab-button');
 const sectionSelectorMainClass = useMainClass('section-selector');
 
 const selectorHeight = computed(() => {
-  console.dir(unrefElement(selectorElement));
   return unrefElement(selectorElement)?.clientHeight ?? 0;
 });
 
