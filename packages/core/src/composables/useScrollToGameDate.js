@@ -17,7 +17,6 @@ export const useScrollToGameDate = (options = {}) => {
     await nextTick();
     const dateElement = unrefElement(element).querySelector(`div[data-gamedate="${idDate}"]`);
     if (!dateElement) return;
-    console.log(unref(offset));
     window.scrollTo(0, dateElement.offsetTop - unref(offset));
   };
 
