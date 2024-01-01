@@ -9,3 +9,4 @@ export * from './composables/usePagination';
 export * from './composables/useServices';
 export * from './composables/useSort';
 export * from './composables/useVisibilityChange';
+export * from './composables/useScrollToGameDate';

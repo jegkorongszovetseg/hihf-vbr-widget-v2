@@ -1,13 +1,22 @@
 <script setup>
 import { ref, computed, unref } from 'vue';
+import { unrefElement } from '@vueuse/core';
 import { externalGameLinkResolver, format, getLocalTimezone, offsetName } from '@mjsz-vbr-elements/core/utils';
-import { ErrorNotice, ErrorProvider, I18NProvider, LoadingIndicator, TimezoneSelector } from '@mjsz-vbr-elements/core/components';
+import {
+  ErrorNotice,
+  ErrorProvider,
+  I18NProvider,
+  LoadingIndicator,
+  TimezoneSelector,
+} from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import DataProvider from './DataProvider.vue';
 import ScheduleSelector from './ScheduleSelector.vue';
 import GameItem from './Item.vue';
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
+
+const messages = { en, hu };
 
 const props = defineProps({
   locale: {
@@ -45,12 +54,18 @@ const props = defineProps({
     default: '',
   },
 });
+
+const mainElement = ref(null);
+const selectorElement = ref(null);
 const timezone = ref(getLocalTimezone());
 const currentOffsetName = computed(() => offsetName(new Date(), unref(timezone), props.locale));
 const tabButtonClasses = useMainClass('tab-button');
 const sectionSelectorMainClass = useMainClass('section-selector');
 
-const messages = { en, hu };
+const selectorHeight = computed(() => {
+  console.dir(unrefElement(selectorElement));
+  return unrefElement(selectorElement)?.clientHeight ?? 0;
+});
 
 const externalGameLink = (gameId) => `/game/id/${gameId}`;
 // const externalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
@@ -61,7 +76,7 @@ const onTimezoneChange = (tz) => {
 </script>
 
 <template>
-  <div>
+  <div ref="mainElement">
     <I18NProvider :locale="props.locale" :messages="messages">
       <ErrorProvider v-slot:default="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
@@ -70,7 +85,9 @@ const onTimezoneChange = (tz) => {
           :locale="locale"
           :timezone="timezone"
           :championship-name="championshipName"
+          :main-element="mainElement"
           :auto-refresh="props.autoRefresh"
+          :scroll-offset="selectorHeight"
           v-slot="{
             seasons,
             championshipId,
@@ -91,6 +108,8 @@ const onTimezoneChange = (tz) => {
           }"
         >
           <ScheduleSelector
+            ref="selectorElement"
+            class="is-sticky is-blured-bg"
             :seasons="seasons"
             :championship-id="championshipId"
             :months="months"
@@ -126,11 +145,11 @@ const onTimezoneChange = (tz) => {
           <LoadingIndicator v-if="isLoading" />
 
           <template v-else>
-            <div v-for="(gameDay, key) in games.rows" :key="key">
+            <div v-for="(gameDay, key) in games.rows" :key="key" :data-gamedate="key">
               <span class="is-text-base">{{ format(new Date(key), 'L dddd', timezone, locale) }}</span>
               <div class="is-card">
                 <template v-for="game in gameDay" :key="game.id">
-                  <GameItem :game="game" :offset-name="currentOffsetName" :game-link="externalGameLink"/>
+                  <GameItem :game="game" :offset-name="currentOffsetName" :game-link="externalGameLink" />
                 </template>
               </div>
             </div>
