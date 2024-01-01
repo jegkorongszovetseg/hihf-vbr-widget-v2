@@ -16,6 +16,14 @@
   }
 }
 
+.is-sticky {
+  position: sticky;
+  top: 0;
+  /* background-color: var(--vbr-widget-primary-color-0); */
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
 .card-item {
   display: grid;
   grid-gap: 1rem;
