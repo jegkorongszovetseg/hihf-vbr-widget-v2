@@ -1,3 +1,10 @@
+## [2.1.9](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.8...v2.1.9) (2024-01-01)
+
+
+### Bug Fixes
+
+* (liga-standings) Scroll pozició számítása ([6103358](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/61033589f46fb3f7bbd1055f814d00762b4a423f))
+
 ## [2.1.8](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.7...v2.1.8) (2024-01-01)
 
 ### Features
