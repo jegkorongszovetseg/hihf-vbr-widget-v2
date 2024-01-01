@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, unref } from 'vue';
+import { unrefElement } from '@vueuse/core';
 import { externalGameLinkResolver, format, getLocalTimezone, offsetName } from '@mjsz-vbr-elements/core/utils';
 import {
   ErrorNotice,
@@ -14,6 +15,8 @@ import ScheduleSelector from './ScheduleSelector.vue';
 import GameItem from './Item.vue';
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
+
+const messages = { en, hu };
 
 const props = defineProps({
   locale: {
@@ -53,12 +56,16 @@ const props = defineProps({
 });
 
 const mainElement = ref(null);
+const selectorElement = ref(null);
 const timezone = ref(getLocalTimezone());
 const currentOffsetName = computed(() => offsetName(new Date(), unref(timezone), props.locale));
 const tabButtonClasses = useMainClass('tab-button');
 const sectionSelectorMainClass = useMainClass('section-selector');
 
-const messages = { en, hu };
+const selectorHeight = computed(() => {
+  console.dir(unrefElement(selectorElement));
+  return unrefElement(selectorElement)?.clientHeight ?? 0;
+});
 
 const externalGameLink = (gameId) => `/game/id/${gameId}`;
 // const externalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
@@ -80,6 +87,7 @@ const onTimezoneChange = (tz) => {
           :championship-name="championshipName"
           :main-element="mainElement"
           :auto-refresh="props.autoRefresh"
+          :scroll-offset="selectorHeight"
           v-slot="{
             seasons,
             championshipId,
@@ -100,7 +108,8 @@ const onTimezoneChange = (tz) => {
           }"
         >
           <ScheduleSelector
-            class="is-sticky"
+            ref="selectorElement"
+            class="is-sticky is-blured-bg"
             :seasons="seasons"
             :championship-id="championshipId"
             :months="months"
