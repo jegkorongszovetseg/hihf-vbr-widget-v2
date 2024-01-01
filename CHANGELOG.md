@@ -1,3 +1,10 @@
+## [2.1.8](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.7...v2.1.8) (2024-01-01)
+
+
+### Bug Fixes
+
+* (liga) Menetrend hónap választás javítása frissítés után ([2da778f](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/2da778fdebc38e7da5b8ad82090e41cd5e3ff2ef))
+
 ## [2.1.7](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.6...v2.1.7) (2023-12-21)
 
 ### Bug Fixes
