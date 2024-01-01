@@ -141,7 +141,7 @@ const {
 const isLoading = useLazyLoadingState([sectionLoading, seasonsLoading, teamsLoading, gamesLoading], { delay: 1000 });
 
 const { months } = useCollectMonths(rows, toRef(props, 'locale'), (month) => {
-  state.selectedMonth = params.selectedMonth ?? month;
+  state.selectedMonth = Number(params.selectedMonth) || month;
 });
 
 useScrollToGameDate({ items: rows, element: mainElement, offset: scrollOffset });
