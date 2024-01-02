@@ -18,7 +18,7 @@
 
 .is-sticky {
   position: sticky;
-  top: 0;
+  top: var(--vbr-widget-sticky-top-offset);
   z-index: 10;
 }
 

@@ -205,4 +205,6 @@
   --vbr-widget-gamecenter-events-goalie-direction-size: var(--vbr-widget-typography-text-sm-size);
 
   --vbr-widget-main-image-wrapper-horizontal-margin: 0rem;
+
+  --vbr-widget-sticky-top-offset: 0;
 }
