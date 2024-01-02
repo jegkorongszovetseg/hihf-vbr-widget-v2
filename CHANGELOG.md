@@ -1,3 +1,10 @@
+## [2.1.10](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.9...v2.1.10) (2024-01-02)
+
+
+### Features
+
+* (schedule-liga) Sticky header top offset beállítási lehetőség ([6b0ec00](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/6b0ec001ba77c429c33d041488cc334dcc51fc39))
+
 ## [2.1.9](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.8...v2.1.9) (2024-01-01)
 
 
