@@ -45,13 +45,12 @@
     "@xstate/fsm": "^2.0.0",
     "dayjs": "^1.11.7",
     "ramda": "^0.29.0",
-    "vue": "^3.3.4"
+    "vue": "^3.4.3"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.3",
-    "vite": "^4.5.0",
+    "@vitejs/plugin-vue": "^5.0.2",
+    "vite": "^5.0.10",
     "vite-plugin-banner": "^0.7.0",
-    "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-static-copy": "^0.17.0"
+    "vite-plugin-compression": "^0.5.1"
   }
 }
