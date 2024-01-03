@@ -29,28 +29,6 @@ A `head` részbe illesztve az alábbi kódot, az oldaladon elérhetővé válnak
 </script>
 ```
 
-### Használat Vue Pluginként
-
-```html {9-16}
-<script src="https://unpkg.com/vue@3"></script>
-<script src="https://unpkg.com/@mjsz-vbr-elements/core"></script>
-<script src="https://unpkg.com/@mjsz-vbr-elements/elements"></script>
-<script src="https://unpkg.com/@mjsz-vbr-elements/extended"></script>
-<script src="https://unpkg.com/@mjsz-vbr-elements/liga"></script>
-<script src="https://unpkg.com/@mjsz-vbr-elements/gamecenter"></script>
-
-<script>
-  const { createApp } = Vue;
-
-  const app = createApp();
-  app.use(MjszVbrElementsCore, {
-    modules: [MjszVbrElements, MjszVbrElementsExtended, MjszVbrElementsLiga, MjszVbrElementsGamecenter],
-    apiKey: 'xxxxx',
-    ...
-  });
-</script>
-```
-
 ### Elemek használata html fájlokban
 
 ```html {11-12}
@@ -64,8 +42,8 @@ A `head` részbe illesztve az alábbi kódot, az oldaladon elérhetővé válnak
 </script>
 
 <body>
-  <mjsz-vbr-goalies-leader locale="hu" championship-id="2051" division="Alapszakasz"></mjsz-vbr-goalies-leader>
-  <mjsz-vbr-field-players locale="hu" championship-id="2051" division="Alapszakasz"></mjsz-vbr-field-players>
+  <mjsz-vbr-goalies-leader locale="hu" championship-id="3450" phase-id="45196"></mjsz-vbr-goalies-leader>
+  <mjsz-vbr-field-players locale="hu" championship-id="3450" phase-id="45196"></mjsz-vbr-field-players>
 </body>
 ```
 
@@ -106,13 +84,15 @@ Ebben az esetben pl. az `API kulcs` a megfelelő prop beállításával adható 
   <mjsz-vbr-goalies-leader
     api-key="xxxxx"
     locale="hu"
-    championship-id="2051"
-    division="Alapszakasz"
+    championship-id="3450"
+    phase-id="45196"
   ></mjsz-vbr-goalies-leader>
 </body>
 ```
 
 ## Használat Vue alkalmazásokban (Vue.js plugin)
+
+Vue 3 alkalmázosákban szabványos pluginként is be lehet állítani az elemeket.
 
 ```js
 import { createApp } from 'vue';
@@ -132,6 +112,29 @@ app.use(MjszVbrElementsCore, {
 });
 
 app.mount('#app');
+```
+
+### Vite használata esetén
+
+Ha __Vite build tool__-t használsz be kell állítani, hogy az elemek `customElement`-ként legyenek értelmezve.
+
+```js
+// vite.config.js
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('mjsz-vbr-'),
+        },
+      },
+    }),
+  ],
+});
 ```
 
 ## Használat Nuxt alkalmazásokban
