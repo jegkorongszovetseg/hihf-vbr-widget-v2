@@ -10,4 +10,6 @@ export function register() {
   customElements.define('mjsz-vbr-game', GameCE);
 }
 
-export default register;
+export default {
+  install: () => register(),
+};
