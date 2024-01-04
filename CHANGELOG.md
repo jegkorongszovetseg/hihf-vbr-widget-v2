@@ -1,3 +1,5 @@
+## [2.2.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.0...v2.2.1) (2024-01-04)
+
 ## [2.2.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.10...v2.2.0) (2024-01-04)
 
 - Használat Vue pluginként &nbsp;-&nbsp; by @Sokamoka [<samp>(6a44b)</samp>](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/6a44b5a)
