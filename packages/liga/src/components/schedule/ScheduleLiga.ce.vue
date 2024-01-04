@@ -34,11 +34,6 @@ const props = defineProps({
     default: '',
   },
 
-  // championshipId: {
-  //   type: Number,
-  //   default: 0,
-  // },
-
   autoRefresh: {
     type: Boolean,
     default: false,
@@ -49,11 +44,18 @@ const props = defineProps({
     default: false,
   },
 
-  externalGameLink: {
+  externalGameResolver: {
     type: [String, Function],
     default: '',
   },
+
+  scrollToGameDate: {
+    type: Boolean,
+    default: true,
+  },
 });
+
+console.log(typeof props.scrollToGameDate, Boolean(props.scrollToGameDate));
 
 const mainElement = ref(null);
 const selectorElement = ref(null);

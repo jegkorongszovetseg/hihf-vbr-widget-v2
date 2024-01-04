@@ -11,6 +11,11 @@ import '../../../packages/shared/dist/css/forms.css';
 <template>
   <div class="p-5">
     <!-- <ScheduleLiga :locale="store.locale" championship-name="Erste Liga"></ScheduleLiga> -->
-    <mjsz-vbr-schedule-liga :locale="store.locale" championship-name="Erste Liga" timezone-selector />
+    <mjsz-vbr-schedule-liga
+      :locale="store.locale"
+      championship-name="Erste Liga"
+      timezone-selector
+      scroll-to-game-date="false"
+    />
   </div>
 </template>
