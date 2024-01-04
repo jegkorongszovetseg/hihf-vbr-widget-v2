@@ -37,3 +37,15 @@
 .g-gap-normal {
   gap: 20px;
 }
+
+.g-grid {
+  --columns: repeat(2, 1fr);
+  --columns-tablet: repeat(4, 1fr);
+
+  display: grid;
+  grid-template-columns: var(--columns);
+
+  @add-mixin tablet {
+    grid-template-columns: var(--columns-tablet);
+  }
+}

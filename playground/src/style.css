@@ -8,3 +8,13 @@ body {
 mjsz-vbr-schedule {
   font-family: 'Roboto Slab', serif;
 }
+
+mjsz-vbr-schedule-liga {
+  font-family: 'Roboto Slab', serif;
+
+  --vbr-widget-sticky-top-offset: 50px;
+  
+  @media all and (min-width: 768px) {
+    --vbr-widget-sticky-top-offset: 0;
+  }
+}

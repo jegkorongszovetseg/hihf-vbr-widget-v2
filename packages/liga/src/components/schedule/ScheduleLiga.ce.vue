@@ -1,13 +1,25 @@
 <script setup>
 import { ref, computed, unref } from 'vue';
+import { unrefElement } from '@vueuse/core';
 import { externalGameLinkResolver, format, getLocalTimezone, offsetName } from '@mjsz-vbr-elements/core/utils';
-import { ErrorNotice, ErrorProvider, I18NProvider, LoadingIndicator, TimezoneSelector } from '@mjsz-vbr-elements/core/components';
+import {
+  ErrorNotice,
+  ErrorProvider,
+  I18NProvider,
+  LoadingIndicator,
+  TimezoneSelector,
+} from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { gameProps } from '@mjsz-vbr-elements/core';
 import DataProvider from './DataProvider.vue';
 import ScheduleSelector from './ScheduleSelector.vue';
 import GameItem from './Item.vue';
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
+
+const DEFAULT_LIGA_GAME_RESOLVER = '/game/id/{gameId}';
+
+const messages = { en, hu };
 
 const props = defineProps({
   locale: {
@@ -25,11 +37,6 @@ const props = defineProps({
     default: '',
   },
 
-  // championshipId: {
-  //   type: Number,
-  //   default: 0,
-  // },
-
   autoRefresh: {
     type: Boolean,
     default: false,
@@ -40,28 +47,38 @@ const props = defineProps({
     default: false,
   },
 
-  externalGameLink: {
-    type: [String, Function],
-    default: '',
+  scrollToGameDate: {
+    type: String,
+    default: 'true',
   },
+
+  ...gameProps,
 });
+
+console.log(typeof props.scrollToGameDate, Boolean(props.scrollToGameDate));
+
+const mainElement = ref(null);
+const selectorElement = ref(null);
 const timezone = ref(getLocalTimezone());
+
 const currentOffsetName = computed(() => offsetName(new Date(), unref(timezone), props.locale));
-const tabButtonClasses = useMainClass('tab-button');
-const sectionSelectorMainClass = useMainClass('section-selector');
+const scrollToGameDate = computed(() => props.scrollToGameDate.toLowerCase() === 'true');
 
-const messages = { en, hu };
-
-const externalGameLink = (gameId) => `/game/id/${gameId}`;
-// const externalGameLink = (gameId) => externalGameLinkResolver(props.externalGameLink, gameId);
+const selectorHeight = computed(() => {
+  return unrefElement(selectorElement)?.clientHeight ?? 0;
+});
 
 const onTimezoneChange = (tz) => {
   timezone.value = tz;
 };
+
+const resolveExternalGameLink = (game) =>
+  externalGameLinkResolver(props.externalGameResolver || DEFAULT_LIGA_GAME_RESOLVER, game);
+const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? '_blank' : '_self'));
 </script>
 
 <template>
-  <div>
+  <div ref="mainElement">
     <I18NProvider :locale="props.locale" :messages="messages">
       <ErrorProvider v-slot:default="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
@@ -70,7 +87,10 @@ const onTimezoneChange = (tz) => {
           :locale="locale"
           :timezone="timezone"
           :championship-name="championshipName"
+          :main-element="mainElement"
           :auto-refresh="props.autoRefresh"
+          :scroll-offset="selectorHeight"
+          :scroll-to-game-date="scrollToGameDate"
           v-slot="{
             seasons,
             championshipId,
@@ -91,6 +111,8 @@ const onTimezoneChange = (tz) => {
           }"
         >
           <ScheduleSelector
+            ref="selectorElement"
+            class="is-sticky is-blured-bg"
             :seasons="seasons"
             :championship-id="championshipId"
             :months="months"
@@ -103,12 +125,12 @@ const onTimezoneChange = (tz) => {
             @update:selected-team="changeTeam"
             @update:selected-team-game-type="changeTeamType"
           />
-          <div :class="sectionSelectorMainClass">
+          <div :class="useMainClass('section-selector')">
             <button
               v-for="rawSection in sections"
               :key="rawSection.phaseId"
               @click="changeSection(rawSection.phaseName)"
-              :class="[tabButtonClasses, { 'is-active': rawSection.phaseName === section }]"
+              :class="[useMainClass('tab-button'), { 'is-active': rawSection.phaseName === section }]"
             >
               {{ rawSection.phaseName }}
             </button>
@@ -126,11 +148,16 @@ const onTimezoneChange = (tz) => {
           <LoadingIndicator v-if="isLoading" />
 
           <template v-else>
-            <div v-for="(gameDay, key) in games.rows" :key="key">
-              <span class="is-text-base">{{ format(key, 'L dddd', timezone, locale) }}</span>
+            <div v-for="(gameDay, key) in games.rows" :key="key" :data-gamedate="key">
+              <span class="is-text-base">{{ format(new Date(key), 'L dddd', timezone, locale) }}</span>
               <div class="is-card">
                 <template v-for="game in gameDay" :key="game.id">
-                  <GameItem :game="game" :offset-name="currentOffsetName" :game-link="externalGameLink"/>
+                  <GameItem
+                    :game="game"
+                    :offset-name="currentOffsetName"
+                    :game-link="resolveExternalGameLink"
+                    :target="externalGameResolverTarget"
+                  />
                 </template>
               </div>
             </div>

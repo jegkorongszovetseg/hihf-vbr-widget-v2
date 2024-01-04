@@ -4,7 +4,7 @@ import pkg from '../../package.json';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, resolve(__dirname, '../../'));
+  const env = loadEnv(mode, process.cwd());
 
   return {
     base: env.VITE_DOCS_BASE,

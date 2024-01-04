@@ -40,7 +40,7 @@ const { state: rows, isLoading } = useAsyncState(
 const { sort, change } = useSort();
 
 const convertedRows = computed(() => {
-  return convert(unref(rows)).sorted(sort).addContinuousIndex().value();
+  return convert(unref(rows)).teamName().sorted(sort).addContinuousIndex().value();
 });
 
 const currentColumns = computed(() => (props.type === '3' ? COLUMNS_STANDINGS_P_3 : COLUMNS_STANDINGS_P_2));

@@ -1,8 +1,14 @@
 <script setup>
-import { reactive, computed, unref, toRef } from 'vue';
+import { reactive, computed, unref, toRef, toRefs } from 'vue';
 import { useAsyncQueue, useTimeoutFn, useTimeoutPoll, useUrlSearchParams } from '@vueuse/core';
-import { useLazyLoadingState, useVisibilityChange, useError, useServices } from '@mjsz-vbr-elements/core/composables';
-import { convert, sortGames } from '@mjsz-vbr-elements/core/utils';
+import {
+  useLazyLoadingState,
+  useVisibilityChange,
+  useError,
+  useServices,
+  useScrollToGameDate,
+} from '@mjsz-vbr-elements/core/composables';
+import { convert, sortGames, scrollToTop } from '@mjsz-vbr-elements/core/utils';
 import { REFRESH_DELAY } from '@mjsz-vbr-elements/core';
 import { transformSeasons, transformSections, transformTeams } from '../internal';
 import { useCollectMonths } from './schedule.internal.js';
@@ -42,6 +48,21 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+
+  mainElement: {
+    type: Object,
+    default: null,
+  },
+
+  scrollOffset: {
+    type: Number,
+    default: 0,
+  },
+
+  scrollToGameDate: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const params = useUrlSearchParams('history');
@@ -54,11 +75,12 @@ const state = reactive({
   sections: [],
   section: params.section || null,
   teams: [],
-  selectedMonth: Number(params.selectedMonth) || null,
+  selectedMonth: Number(params.selectedMonth) ?? null,
   selectedTeam: Number(params.selectedTeam) || null,
   selectedTeamGameType: params.selectedTeamGameType || 'all',
 });
-const timezone = toRef(props, 'timezone');
+const { timezone, mainElement, scrollOffset, scrollToGameDate } = toRefs(props);
+
 const { onError } = useError();
 
 const teamFilterTypes = computed(() => {
@@ -122,8 +144,10 @@ const {
 const isLoading = useLazyLoadingState([sectionLoading, seasonsLoading, teamsLoading, gamesLoading], { delay: 1000 });
 
 const { months } = useCollectMonths(rows, toRef(props, 'locale'), (month) => {
-  state.selectedMonth = month;
+  state.selectedMonth = Number(params.selectedMonth) || month;
 });
+
+useScrollToGameDate({ items: rows, element: mainElement, offset: scrollOffset, enabled: scrollToGameDate });
 
 const { pause, resume } = useTimeoutPoll(fetchSchedule, REFRESH_DELAY, { immediate: false });
 useVisibilityChange(props.autoRefresh, resume, pause);
@@ -156,11 +180,13 @@ const changeSeason = (value) => {
   params.selectedTeamGameType = null;
   useAsyncQueue([fetchSection, fetchTeams, fetchSchedule]);
   if (props.autoRefresh) resume();
+  scrollToTop();
 };
 
 const changeMonth = (value) => {
   state.selectedMonth = value;
   params.selectedMonth = value;
+  scrollToTop();
 };
 
 const changeSection = (value) => {

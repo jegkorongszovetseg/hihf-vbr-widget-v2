@@ -25,6 +25,16 @@ const TeamPowerplayCE = defineCustomElement(TeamPowerplay);
 const TeamScoringEfficiencyCE = defineCustomElement(TeamScoringEfficiency);
 
 export {
+  Standings,
+  Schedule,
+  FieldPlayersLeader,
+  FieldPlayersPenalties,
+  GoaliesLeader,
+  TeamAttendance,
+  TeamFairplay,
+  TeamPenaltyKilling,
+  TeamPowerplay,
+  TeamScoringEfficiency,
   StandingsCE,
   ScheduleCE,
   FieldPlayersLeaderCE,
@@ -50,4 +60,6 @@ export function register() {
   customElements.define('mjsz-vbr-team-scoring', TeamScoringEfficiencyCE);
 }
 
-export default register;
+export default {
+  install: () => register(),
+};

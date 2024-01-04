@@ -2,7 +2,7 @@
   "name": "@mjsz-vbr-elements/elements",
   "description": "Data visualization for MJSZ VBR",
   "private": false,
-  "version": "2.1.4",
+  "version": "2.2.1",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
   "type": "module",
@@ -26,13 +26,12 @@
     "@mjsz-vbr-elements/shared": "workspace:^",
     "@vueuse/core": "^10.1.2",
     "ramda": "^0.29.0",
-    "vue": "^3.3.4"
+    "vue": "^3.4.3"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.1.0",
-    "vite": "^4.5.0",
+    "@vitejs/plugin-vue": "^5.0.2",
+    "vite": "^5.0.10",
     "vite-plugin-banner": "^0.7.0",
-    "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-static-copy": "^0.17.0"
+    "vite-plugin-compression": "^0.5.1"
   }
 }

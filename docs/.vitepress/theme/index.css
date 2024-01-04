@@ -1,0 +1,11 @@
+mjsz-vbr-schedule-liga {
+  --vbr-widget-sticky-top-offset: 50px;
+
+  @media all and (min-width: 960px) {
+    --vbr-widget-sticky-top-offset: 112px;
+  }
+
+  @media all and (min-width: 1280px) {
+    --vbr-widget-sticky-top-offset: 63px;
+  }
+}

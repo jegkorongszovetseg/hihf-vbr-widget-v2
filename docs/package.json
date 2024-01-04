@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "vitepress": "1.0.0-rc.30"
+    "vitepress": "1.0.0-rc.34"
   },
   "dependencies": {
     "@mjsz-vbr-elements/core": "workspace:^",

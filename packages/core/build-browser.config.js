@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 import banner from 'vite-plugin-banner';
+import { compressConfig } from '../build';
 
 import pkg from './package.json';
 
@@ -18,33 +19,25 @@ export default defineConfig({
         'en-GB'
       )}\n * (c) ${new Date().getFullYear()}\n * description: ${pkg.description}\n * author: ${pkg.author}\n */`,
     }),
+    ...compressConfig,
   ],
 
   build: {
     lib: {
-      entry: [
-        resolve(__dirname, 'src/index.js'),
-        resolve(__dirname, 'src/components.js'),
-        resolve(__dirname, 'src/composables.js'),
-        resolve(__dirname, 'src/utils.js'),
-        resolve(__dirname, 'src/columns.js'),
-        resolve(__dirname, 'src/constants.js'),
-      ],
-      formats: ['es'],
+      entry: resolve(__dirname, 'src/index.js'),
+      name: 'MjszVbrElementsCore',
+      fileName: 'index',
+      formats: ['iife'],
     },
     copyPublicDir: false,
     rollupOptions: {
       external: ['vue'],
       output: {
-        exports: 'named',
+        // exports: 'named',
         globals: {
           vue: 'Vue',
         },
       },
     },
-  },
-
-  test: {
-    environment: 'happy-dom',
   },
 });

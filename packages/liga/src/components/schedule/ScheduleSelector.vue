@@ -58,7 +58,7 @@ const baseLabelClass = useMainClass('label');
 </script>
 
 <template>
-  <div class="g-row" style="column-gap: 8px; padding-block-start: 15px;">
+  <div class="g-grid" style="column-gap: 8px; padding-block: 15px; --columns-tablet: repeat(4, max-content);">
     <div>
       <label for="season" :class="baseLabelClass">{{ t('selection.season') }}</label>
       <BaseSelect id="season" v-model="championshipId">
@@ -76,7 +76,7 @@ const baseLabelClass = useMainClass('label');
     </div>
     <div>
       <label for="teams" :class="baseLabelClass">{{ t('selection.teams') }}</label>
-      <BaseSelect id="teams" v-model="selectedTeam" style="max-width: 200px">
+      <BaseSelect id="teams" v-model="selectedTeam">
         <option :value="null">{{ t('common.all') }}</option>
         <option v-for="team in teams" :key="team.teamId" :value="team.teamId">{{ team.teamName }}</option>
       </BaseSelect>
