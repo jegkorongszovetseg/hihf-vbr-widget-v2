@@ -6,6 +6,8 @@ import '../../../packages/shared/dist/css/typography.css';
 import '../../../packages/shared/dist/css/cards.css';
 import '../../../packages/shared/dist/css/grid.css';
 import '../../../packages/shared/dist/css/forms.css';
+
+const gameLinkResolver = '/GameCenter?gameId={gameId}'
 </script>
 
 <template>
@@ -15,7 +17,8 @@ import '../../../packages/shared/dist/css/forms.css';
       :locale="store.locale"
       championship-name="Erste Liga"
       timezone-selector
-      scroll-to-game-date="false"
+      :external-game-resolver="gameLinkResolver"
+      :scroll-to-game-date="true"
     />
   </div>
 </template>
