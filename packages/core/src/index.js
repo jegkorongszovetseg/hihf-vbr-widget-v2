@@ -13,6 +13,7 @@ export const createConfig = ({ app = null, modules = [], apiKey, gameResolver, t
   modules.forEach((module) => {
     if (app) return app.use(module);
     if (module.register) return module.register();
+    module?.install();
   });
 };
 
