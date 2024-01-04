@@ -34,6 +34,5 @@ const objectToQueryString = (obj) => {
 const resolveApiKey = (apiKey) => {
   if (apiKey) return apiKey;
   if (window.__MJSZ_VBR_WIDGET__?.apiKey) return window.__MJSZ_VBR_WIDGET__.apiKey;
-  if (import.meta.env.NODE_ENV !== 'production') return import.meta.env.VITE_VBR_API_KEY;
   return '';
 };

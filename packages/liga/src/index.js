@@ -50,4 +50,6 @@ export function register() {
   customElements.define('mjsz-vbr-team-liga', TeamLigaCE);
 }
 
-export default register;
+export default {
+  install: () => register(),
+};

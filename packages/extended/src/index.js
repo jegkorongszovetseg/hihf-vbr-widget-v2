@@ -13,4 +13,6 @@ export function register() {
   customElements.define('mjsz-vbr-ibr-identifiers', IVRIdentifiersCE);
 }
 
-export default register;
+export default {
+  install: () => register(),
+};

@@ -60,4 +60,6 @@ export function register() {
   customElements.define('mjsz-vbr-team-scoring', TeamScoringEfficiencyCE);
 }
 
-export default register;
+export default {
+  install: () => register(),
+};
