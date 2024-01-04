@@ -1,18 +1,18 @@
 ## [2.2.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.10...v2.2.0) (2024-01-04)
 
-## [2.1.10](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.9...v2.1.10) (2024-01-02)
+- Használat Vue pluginként &nbsp;-&nbsp; by @Sokamoka [<samp>(6a44b)</samp>](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/6a44b5a)
 
+## [2.1.10](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.9...v2.1.10) (2024-01-02)
 
 ### Features
 
-* (schedule-liga) Sticky header top offset beállítási lehetőség ([6b0ec00](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/6b0ec001ba77c429c33d041488cc334dcc51fc39))
+- (schedule-liga) Sticky header top offset beállítási lehetőség ([6b0ec00](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/6b0ec001ba77c429c33d041488cc334dcc51fc39))
 
 ## [2.1.9](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.8...v2.1.9) (2024-01-01)
 
-
 ### Bug Fixes
 
-* (liga-standings) Scroll pozició számítása ([6103358](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/61033589f46fb3f7bbd1055f814d00762b4a423f))
+- (liga-standings) Scroll pozició számítása ([6103358](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/61033589f46fb3f7bbd1055f814d00762b4a423f))
 
 ## [2.1.8](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.1.7...v2.1.8) (2024-01-01)
 
