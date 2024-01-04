@@ -4,12 +4,13 @@ import { propSatisfies, find } from 'ramda';
 import { format, isSameOrBefore } from '../utils/datetime';
 
 export const useScrollToGameDate = (options = {}) => {
-  const { items = [], element, offset = 0 } = options;
+  const { items = [], element, offset = 0, enabled = true } = options;
 
   const condition = (date) => isSameOrBefore(date, 'day');
 
   const scrollToDatePosition = () => {
     stop();
+    if (!unref(enabled)) return;
     const item = find(propSatisfies(condition, 'gameDate'))(unref(items));
     if (!item) return;
     const idDate = format(item.gameDate, 'YYYY-MM-DD');

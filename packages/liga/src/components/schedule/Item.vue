@@ -20,6 +20,11 @@ defineProps({
     type: Function,
     default: noop,
   },
+
+  target: {
+    type: String,
+    default: '_self',
+  },
 });
 const { t } = useI18n();
 const mainClasses = useMainClass('card-item');
@@ -47,7 +52,7 @@ const mainClasses = useMainClass('card-item');
         <span v-if="game.isShootout" class="is-badge is-invert">{{ t('common.shootoutShort') }}</span>
         <span v-if="game.seriesStandings" class="is-badge">{{ game.seriesStandings }}</span>
       </div>
-      <a :href="gameLink(game.gameId)">
+      <a :href="gameLink(game)" :target="target">
         <span v-if="game.gameStatus > 0 && game.gameStatus < 3" class="is-text-xl is-text-bold">
           {{ game.homeTeamScore }} - {{ game.awayTeamScore }}
         </span>
@@ -64,7 +69,9 @@ const mainClasses = useMainClass('card-item');
       <span v-if="game.gameStatus === 0" class="is-text-xs is-opacity-40">({{ offsetName }})</span>
       <template v-if="game.gameStatus > 0">
         <div class="is-text-sm is-whitespace-nowrap">{{ game.periodResults }}</div>
-        <div v-if="game.gameStatus !== 2" class="is-text-xs is-uppercase is-whitespace-nowrap">{{ t(`game.period.${game.period}`) }}</div>
+        <div v-if="game.gameStatus !== 2" class="is-text-xs is-uppercase is-whitespace-nowrap">
+          {{ t(`game.period.${game.period}`) }}
+        </div>
       </template>
     </div>
 

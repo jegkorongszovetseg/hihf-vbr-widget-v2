@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, computed, unref, toRef } from 'vue';
+import { reactive, computed, unref, toRef, toRefs } from 'vue';
 import { useAsyncQueue, useTimeoutFn, useTimeoutPoll, useUrlSearchParams } from '@vueuse/core';
 import {
   useLazyLoadingState,
@@ -58,6 +58,11 @@ const props = defineProps({
     type: Number,
     default: 0,
   },
+
+  scrollToGameDate: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const params = useUrlSearchParams('history');
@@ -74,9 +79,7 @@ const state = reactive({
   selectedTeam: Number(params.selectedTeam) || null,
   selectedTeamGameType: params.selectedTeamGameType || 'all',
 });
-const timezone = toRef(props, 'timezone');
-const mainElement = toRef(props, 'mainElement');
-const scrollOffset = toRef(props, 'scrollOffset');
+const { timezone, mainElement, scrollOffset, scrollToGameDate } = toRefs(props);
 
 const { onError } = useError();
 
@@ -144,7 +147,7 @@ const { months } = useCollectMonths(rows, toRef(props, 'locale'), (month) => {
   state.selectedMonth = Number(params.selectedMonth) || month;
 });
 
-useScrollToGameDate({ items: rows, element: mainElement, offset: scrollOffset });
+useScrollToGameDate({ items: rows, element: mainElement, offset: scrollOffset, enabled: scrollToGameDate });
 
 const { pause, resume } = useTimeoutPoll(fetchSchedule, REFRESH_DELAY, { immediate: false });
 useVisibilityChange(props.autoRefresh, resume, pause);
