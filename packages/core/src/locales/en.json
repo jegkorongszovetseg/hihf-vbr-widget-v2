@@ -18,14 +18,14 @@
   },
   "additionalText": {
     "inheritedPoints": {
-      "prependix": "Inherited points:",
-      "content": "{team} {points} point(s)",
-      "appendix": ""
+      "prependix": "",
+      "content": "{team} has {points} extra point(s)",
+      "appendix": "based on its results in the previous championship phase."
     },
     "penaltyPoints": {
-      "prependix": "DOPS:",
-      "content": "team {team} {points} point(s)",
-      "appendix": "deducted."
+      "prependix": "",
+      "content": "{points} point(s) deducted from team {team}",
+      "appendix": "based on the decision of the Disciplinary Committee."
     }
   },
   "table": {

@@ -86,9 +86,10 @@ describe('useAdditionalText', () => {
     await nextTick();
 
     expect(isVisible.value).toBe(true);
-    expect(text.value).toBe('Hozott pontok: TeamA 2 pont');
-
-    // console.log('isVisible:', isVisible.value, text.value);
+    expect(text.value).toBe(
+      'A megelőző bajnokság szakaszban elért eredménye alapján TeamA csapata 2 többletponttal rendelkezik.'
+    );
+    console.log(text.value);
   });
 
   it('Hozott pontok szöveg megjelenik - és vesszővel van elválasztva - ha van több inheritedPoints tartalmazó csapat', async () => {
@@ -122,7 +123,10 @@ describe('useAdditionalText', () => {
     await nextTick();
 
     expect(isVisible.value).toBe(true);
-    expect(text.value).toBe('Hozott pontok: TeamA 3 pont, TeamB 2 pont, TeamC 1 pont');
+    expect(text.value).toBe(
+      'A megelőző bajnokság szakaszban elért eredménye alapján TeamA csapata 3, TeamB csapata 2, TeamC csapata 1 többletponttal rendelkezik.'
+    );
+    console.log(text.value);
   });
 
   it('Büntető pontok szöveg nem jelenik meg, mert nincs olyan csapat', async () => {
@@ -166,7 +170,7 @@ describe('useAdditionalText', () => {
     await nextTick();
 
     expect(isVisible.value).toBe(true);
-    expect(text.value).toBe('Versenybírósági döntés: TeamA csapatától 2 pont levonva.');
+    expect(text.value).toBe('Fegyelmi Bizottság döntése alapján: TeamA csapatától 2 pont levonva.');
   });
 
   it('Büntető pontok szöveg megjelenik - és vesszővel van elválasztva -, ha van több penaltyPoints tartalmazó csapat', async () => {
@@ -194,14 +198,16 @@ describe('useAdditionalText', () => {
     await nextTick();
 
     expect(isVisible.value).toBe(true);
-    expect(text.value).toBe('Versenybírósági döntés: TeamA csapatától 2 pont, TeamB csapatától 1 pont levonva.');
+    expect(text.value).toBe(
+      'Fegyelmi Bizottság döntése alapján: TeamA csapatától 2 pont, TeamB csapatától 1 pont levonva.'
+    );
   });
 });
 
 function handleLabels(key, params) {
   switch (key) {
     case 'additionalText.inheritedPoints.content':
-      return `${params.team} ${params.points} pont`;
+      return `${params.team} csapata ${params.points}`;
     case 'additionalText.penaltyPoints.content':
       return `${params.team} csapatától ${params.points} pont`;
     default:
