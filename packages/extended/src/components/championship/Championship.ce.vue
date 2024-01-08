@@ -13,6 +13,7 @@ import {
   ErrorProvider,
   // TimezoneSelector,
   StatisticsTable,
+  AdditionalStandingsText,
 } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import DataProvider from './DataProvider.vue';
@@ -186,6 +187,11 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
             :range-length="5"
             @change="onPaginatorChange"
           />
+
+          <template v-if="selectedPanel === PANEL_STANDINGS">
+            <AdditionalStandingsText :rows="games.rows" additional-key="inheritedPoints" />
+            <AdditionalStandingsText :rows="games.rows" additional-key="penaltyPoints" />
+          </template>
         </DataProvider>
 
         <div ref="tooltipContainer" />

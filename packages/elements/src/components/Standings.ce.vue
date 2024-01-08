@@ -4,7 +4,7 @@ import { useAsyncState } from '@vueuse/core';
 import { useSort, useErrorProvider, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
 import { externalTeamLinkResolver, convert } from '@mjsz-vbr-elements/core/utils';
 import { COLUMNS_STANDINGS_P_2, COLUMNS_STANDINGS_P_3 } from '@mjsz-vbr-elements/core';
-import { I18NProvider, ErrorNotice, StatisticsTable } from '@mjsz-vbr-elements/core/components';
+import { I18NProvider, ErrorNotice, StatisticsTable, AdditionalStandingsText } from '@mjsz-vbr-elements/core/components';
 import { baseProps, teamStatsProps } from '@mjsz-vbr-elements/core';
 
 const props = defineProps({
@@ -67,6 +67,9 @@ const resolveExternalTeamLink = (params) =>
         :append-to="tooltipContainer"
         @sort="onSort"
       />
+
+      <AdditionalStandingsText :rows="convertedRows.rows" additional-key="inheritedPoints" />
+      <AdditionalStandingsText :rows="convertedRows.rows" additional-key="penaltyPoints" />
 
       <div ref="tooltipContainer" />
     </I18NProvider>

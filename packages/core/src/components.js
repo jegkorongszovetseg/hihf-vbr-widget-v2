@@ -12,6 +12,7 @@ import TimezoneSelector from './components/TimezoneSelector.vue';
 import StatisticsTable from './components/StatisticsTable.vue';
 import ScheduleTable from './components/ScheduleTable.vue';
 import SeasonSelector from './components/SeasonSelector.vue';
+import AdditionalStandingsText from './components/AdditionalStandingsText.vue';
 
 export {
   Image,
@@ -28,4 +29,5 @@ export {
   ResponsiveTable,
   LoadingIndicator,
   TimezoneSelector,
+  AdditionalStandingsText,
 };

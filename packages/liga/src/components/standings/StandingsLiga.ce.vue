@@ -5,6 +5,7 @@ import {
   ErrorNotice,
   ErrorProvider,
   I18NProvider,
+  AdditionalStandingsText,
 } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { COLUMNS_STANDINGS_P_3 } from '@mjsz-vbr-elements/core/columns';
@@ -113,6 +114,9 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
             :is-loading="isLoading"
             @sort="onSort"
           />
+
+          <AdditionalStandingsText :rows="teams.rows" additional-key="inheritedPoints" />
+          <AdditionalStandingsText :rows="teams.rows" additional-key="penaltyPoints" />
         </DataProvider>
 
         <div ref="tooltipContainer" />
@@ -126,4 +130,5 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
 <style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>

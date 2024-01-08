@@ -73,7 +73,7 @@ const props = defineProps({
   },
 });
 
-const { columns: currentColumns, hideColumns } = toRefs(props);
+const { columns: currentColumns, hideColumns, rows } = toRefs(props);
 
 const emit = defineEmits(['sort']);
 

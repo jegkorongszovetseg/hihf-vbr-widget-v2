@@ -16,6 +16,18 @@
     "report": "Jegyzőkönyv",
     "video": "Videó"
   },
+  "additionalText": {
+    "inheritedPoints": {
+      "prependix": "A megelőző bajnokság szakaszban elért eredménye alapján",
+      "content": "{team} csapata {points}",
+      "appendix": "többletponttal rendelkezik."
+    },
+    "penaltyPoints": {
+      "prependix": "Fegyelmi Bizottság döntése alapján:",
+      "content": "{team} csapatától {points} pont",
+      "appendix": "levonva."
+    }
+  },
   "table": {
     "blank": "#",
     "team": {
