@@ -1,5 +1,7 @@
 ## [2.2.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.1...v2.2.2) (2024-01-08)
 
+- (core) Hozott pontok és Fegyelmi Bizottsági pont levonások kezelése &nbsp;-&nbsp; by @Sokamoka [<samp>(8003c)</samp>](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/8003c03)
+
 ## [2.2.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.0...v2.2.1) (2024-01-04)
 
 - (schedule-liga) Állítható legközelebbi mérkőzésnapra ugrás és game resolver beállítás &nbsp;-&nbsp; by @Sokamoka [<samp>(b48160b)</samp>](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/b48160b)
