@@ -171,7 +171,7 @@ pnpm add @mjsz-vbr-elements/nuxt @mjsz-vbr-elements/core @mjsz-vbr-elements/elem
 :::
 
 ::: info
-A további elérhető csomagokat [itt](#packages) találod. Ha újabb csomagot szeretnél hozzáadni csak telepítened kell és máris eléehető lesz az alkalmazásban.
+A további elérhető csomagokat [itt](#packages) találod. Ha újabb csomagot szeretnél hozzáadni csak telepítened kell és máris elérhető lesz az alkalmazásban.
 :::
 
 ```ts [nuxt.config.ts]
