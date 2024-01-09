@@ -94,6 +94,23 @@ Ebben az esetben pl. az `API kulcs` a megfelelő prop beállításával adható 
 
 Vue 3 alkalmázosákban szabványos pluginként is be lehet állítani az elemeket.
 
+Telepítés:
+::: code-group
+
+```bash [npm]
+npm install @mjsz-vbr-elements/core @mjsz-vbr-elements/elements
+```
+
+```bash [pnpm]
+pnpm add @mjsz-vbr-elements/core @mjsz-vbr-elements/elements
+```
+
+:::
+
+::: info
+A további elérhető csomagokat [itt](#packages) találáod.
+:::
+
 ```js
 import { createApp } from 'vue';
 import MjszVbrElementsCore from '@mjsz-vbr-elements/core';
@@ -116,7 +133,7 @@ app.mount('#app');
 
 ### Vite használata esetén
 
-Ha __Vite build tool__-t használsz be kell állítani, hogy az elemek `customElement`-ként legyenek értelmezve.
+Ha **Vite build tool**-t használsz be kell állítani, hogy az elemek `customElement`-ként legyenek értelmezve.
 
 ```js
 // vite.config.js
@@ -139,4 +156,41 @@ export default defineConfig({
 
 ## Használat Nuxt alkalmazásokban
 
-Fejlesztés alatt!
+A használathoz hozzá kell adni két alap csomagot (`@mjsz-vbr-elements/nuxt` `@mjsz-vbr-elements/core`) és a kivánt elemenket (`@mjsz-vbr-elements/elements`):
+
+::: code-group
+
+```bash [npm]
+npm install @mjsz-vbr-elements/nuxt @mjsz-vbr-elements/core @mjsz-vbr-elements/elements
+```
+
+```bash [pnpm]
+pnpm add @mjsz-vbr-elements/nuxt @mjsz-vbr-elements/core @mjsz-vbr-elements/elements
+```
+
+:::
+
+::: info
+A további elérhető csomagokat [itt](#packages) találod. Ha újabb csomagot szeretnél hozzáadni csak telepítened kell és máris eléehető lesz az alkalmazásban.
+:::
+
+```ts [nuxt.config.ts]
+// nuxt.config.ts
+export default defineNuxtConfig({
+  modules: ['@mjsz-vbr-elements/nuxt'],
+
+  mjszVbrElements: {
+    apiKey: process.env.NUXT_VBR_API_KEY,
+  },
+});
+```
+
+## Elérhető package-ek: {#packages}
+
+| Típus      | Link                                                                                         |
+| ---------- | -------------------------------------------------------------------------------------------- |
+| Core       | [@mjsz-vbr-elements/core](https://www.npmjs.com/package/@mjsz-vbr-elements/core)             |
+| Elements   | [@mjsz-vbr-elements/elements](https://www.npmjs.com/package/@mjsz-vbr-elements/elements)     |
+| Extended   | [@mjsz-vbr-elements/extended](https://www.npmjs.com/package/@mjsz-vbr-elements/extended)     |
+| Liga       | [@mjsz-vbr-elements/liga](https://www.npmjs.com/package/@mjsz-vbr-elements/liga)             |
+| GameCenter | [@mjsz-vbr-elements/gamecenter](https://www.npmjs.com/package/@mjsz-vbr-elements/gamecenter) |

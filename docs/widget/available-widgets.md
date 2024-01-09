@@ -1,5 +1,10 @@
 # Elérhető widgetek
 
+## Elements
+
+- CDN: [https://unpkg.com/@mjsz-vbr-elements/elements](https://unpkg.com/@mjsz-vbr-elements/elements)
+- NPM: [@mjsz-vbr-elements/elements](https://www.npmjs.com/package/@mjsz-vbr-elements/elements)
+
 | Widget                                                         | Felhasznált VBR API lekérdezés | Leírás                                  |
 | -------------------------------------------------------------- | ------------------------------ | --------------------------------------- |
 | [mjsz-vbr-standings](/widget/standings)                        | vbr/v2/standings               | Egy adott bajnokság állását mutatja meg |
@@ -12,3 +17,38 @@
 | [mjsz-vbr-team-penalty-killing](/widget/teams-penalty-killing) | vbr/v2/team-powerplay          | Csapat emberhátrányok                   |
 | [mjsz-vbr-team-powerplay](/widget/teams-powerplay)             | vbr/v2/team-powerplay          | Csapat emberelőnyök                     |
 | [mjsz-vbr-team-scoring](/widget/teams-scoring-efficiency)      | vbr/v2/team-scoring-efficiency | Csapat hatékonyság                      |
+
+## Extended Elements
+
+- CDN: [https://unpkg.com/@mjsz-vbr-elements/extended](https://unpkg.com/@mjsz-vbr-elements/extended)
+- NPM: [@mjsz-vbr-elements/extended](https://www.npmjs.com/package/@mjsz-vbr-elements/extended)
+
+| Widget                                                 | Felhasznált VBR API lekérdezés | Leírás                                        |
+| ------------------------------------------------------ | ------------------------------ | --------------------------------------------- |
+| [mjsz-vbr-championship](/widget/extended-championship) | + Több lekérdezés              | Egy adott bajnokság minden statiszkijája      |
+| [mjsz-vbr-schedule-cup](/widget/extended-cup-schedule) | vbr/v2/games-list              | Egy adott bajnokság kupa rendszerű mérkőzései |
+
+## Liga
+
+- CDN: [https://unpkg.com/@mjsz-vbr-elements/liga](https://unpkg.com/@mjsz-vbr-elements/liga)
+- NPM: [@mjsz-vbr-elements/liga](https://www.npmjs.com/package/@mjsz-vbr-elements/liga)
+
+| Widget                                            | Felhasznált VBR API lekérdezés | Leírás                                      |
+| ------------------------------------------------- | ------------------------------ | ------------------------------------------- |
+| [mjsz-vbr-playoffs](/widget/liga-playoffs)        | vbr/v2/games-list              | Rájátszás mérkőzései csoportosítva          |
+| [mjsz-vbr-schedule-liga](/widget/liga-schedule)   | vbr/v2/games-list              | Liga mérkőzései napok szerint csoportosítva |
+| [mjsz-vbr-standings-liga](/widget/liga-standings) | vbr/v2/standings               | Liga tabella és Élő tabella                 |
+| [mjsz-vbr-statistics](/widget/liga-statistics)    | + Több lekérdezés              | Liga statisztikák                           |
+| [mjsz-vbr-teams-liga](/widget/liga-teams)         | + Több lekérdezés              | Liga csapatai                               |
+| [mjsz-vbr-team-liga](/widget/liga-team)           | + Több lekérdezés              | Liga csapata                                |
+| [mjsz-vbr-players-liga](/widget/liga-players)     | + Több lekérdezés              | Liga játékosai                              |
+| [mjsz-vbr-player-liga](/widget/liga-player)       | + Több lekérdezés              | Liga játékos statisztikái                   |
+
+## Game Center
+
+- CDN: [https://unpkg.com/@mjsz-vbr-elements/gamecenter](https://unpkg.com/@mjsz-vbr-elements/gamecenter)
+- NPM: [@mjsz-vbr-elements/gamecenter](https://www.npmjs.com/package/@mjsz-vbr-elements/gamecenter)
+
+| Widget                              | Felhasznált VBR API lekérdezés | Leírás             |
+| ----------------------------------- | ------------------------------ | ------------------ |
+| [mjsz-vbr-game](/widget/gamecenter) | + Több lekérdezés              | Egy adott mérkőzés |

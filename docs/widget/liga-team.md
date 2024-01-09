@@ -3,7 +3,7 @@
 ## Használat
 
 ```html
-<mjsz-vbr-teams-liga locale="hu" team-id="21908" championship-id="3450" />
+<mjsz-vbr-team-liga locale="hu" team-id="21908" championship-id="3450" />
 ```
 
 A `team-id` és a `championship-id` változókat megadhatjuk az url-ben is search paraméterként is.
