@@ -27,11 +27,10 @@ defineProps({
   },
 });
 const { t } = useI18n();
-const mainClasses = useMainClass('card-item');
 </script>
 
 <template>
-  <div :class="mainClasses">
+  <div :class="useMainClass('card-item')">
     <div class="is-info is-text-base">
       {{ game.gameName }} - {{ game.divisionName }} - {{ game.location.locationName }}
       <template v-if="game.broadcast">-&nbsp;<IconBroadcast height="16" />&nbsp;</template>

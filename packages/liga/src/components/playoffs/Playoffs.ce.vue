@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { I18NProvider, Image, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
-import { useServices } from '@mjsz-vbr-elements/core/composables';
+import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { externalGameLinkResolver, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
@@ -25,7 +25,7 @@ const props = defineProps({
 
 const { state: playoffs, execute } = useServices({
   options: {
-    path: '/v1/playoffsTree',
+    path: '/v2/playoffs-tree',
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: props.championshipId })),
   },
@@ -44,28 +44,39 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
 </script>
 
 <template>
-  <div class="mjsz-vbr-playoffs">
+  <div :class="useMainClass('playoffs')">
     <I18NProvider :locale="props.locale" :messages="messages" v-slot:default="{ t }">
       <div v-for="playoff in playoffs">
         <div class="mjsz-vbr-section-title">{{ t(`playoffs.${playoff.tertiaryName}`) }}</div>
-        <div class="mjsz-vbr-section-details">
-          <div class="is-team-name is-right">{{ playoff.homeTeamName }}</div>
+        <div :class="useMainClass('section-details')">
+          <div class="is-team-name is-right">
+            {{ playoff.homeTeam?.longName }}
+          </div>
           <div>
-            <Image class="is-logo-image" :src="playoff.homeTeamLogo" />
+            <Image class="is-logo-image" :src="playoff.homeTeam.logo" />
           </div>
           <div class="is-result">{{ playoff.seriesStandings }}</div>
           <div>
-            <Image class="is-logo-image" :src="playoff.awayTeamLogo" />
+            <Image class="is-logo-image" :src="playoff.awayTeam.logo" />
           </div>
-          <div class="is-team-name">{{ playoff.awayTeamName }}</div>
+          <div class="is-team-name">
+            {{ playoff.awayTeam?.longName }}
+          </div>
         </div>
 
         <ResponsiveTable>
-          <div v-for="game in playoff.games" :key="game.id" class="mjsz-vbr-table-grid">
-            <div>{{ game.name }}</div>
+          <div
+            v-for="game in playoff.games"
+            :key="game.id"
+            :class="[useMainClass('table-grid'), { 'is-optional': game.optional }]"
+          >
+            <div>{{ game.gameName }}</div>
             <div>{{ formatGameDate(game.gameDate) }}</div>
             <div>{{ formatGameTime(game.gameDate) }}</div>
-            <div class="is-text-right is-text-bold">{{ game.homeTeamName }}</div>
+            <div class="is-text-right is-text-bold">
+              <span class="is-team-name-long">{{ game.homeTeam?.longName }}</span>
+              <span class="is-team-name-short">{{ game.homeTeam?.shortName }}</span>
+            </div>
             <div class="is-text-center">
               <span v-if="game.gameStatus === 0" class="is-text-dark">-:-</span>
               <a
@@ -82,8 +93,11 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
               <span v-if="game.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
               <span v-if="game.seriesStandings" class="label">{{ game.seriesStandings }}</span>
             </div>
-            <div class="is-text-bold">{{ game.awayTeamName }}</div>
-            <div class="is-text-light is-truncate is-text-right">{{ game.location }}</div>
+            <div class="is-text-bold">
+              <span class="is-team-name-long">{{ game.awayTeam?.longName }}</span>
+              <span class="is-team-name-short">{{ game.awayTeam?.shortName }}</span>
+            </div>
+            <div class="is-text-light is-truncate is-text-right">{{ game.location?.locationName ?? '' }}</div>
           </div>
         </ResponsiveTable>
       </div>
