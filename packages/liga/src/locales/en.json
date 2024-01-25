@@ -54,12 +54,8 @@
     "teamScoringEfficiency": "Scoring Efficiency"
   },
   "playoffs": {
-    "Negyeddöntő1": "Quarterfinal 1",
-    "Negyeddöntő2": "Quarterfinal 2",
-    "Negyeddöntő3": "Quarterfinal 3",
-    "Negyeddöntő4": "Quarterfinal 4",
-    "Elődöntő1": "Semifinal 1",
-    "Elődöntő2": "Semifinal 2",
+    "Negyeddöntő": "Quarterfinal",
+    "Elődöntő": "Semifinal",
     "Döntő": "Final"
   },
   "teams": {

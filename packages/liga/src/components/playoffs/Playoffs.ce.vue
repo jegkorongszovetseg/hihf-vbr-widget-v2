@@ -47,7 +47,9 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
   <div :class="useMainClass('playoffs')">
     <I18NProvider :locale="props.locale" :messages="messages" v-slot:default="{ t }">
       <div v-for="playoff in playoffs">
-        <div class="mjsz-vbr-section-title">{{ t(`playoffs.${playoff.tertiaryName}`) }}</div>
+        <div class="mjsz-vbr-section-title">
+          {{ t(`playoffs.${playoff.divisionStage2Name}`) }}-{{ playoff.divisionStageNumber }}
+        </div>
         <div :class="useMainClass('section-details')">
           <div class="is-team-name is-right">
             {{ playoff.homeTeam?.longName }}
