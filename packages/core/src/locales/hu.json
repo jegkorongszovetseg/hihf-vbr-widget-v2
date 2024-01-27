@@ -23,7 +23,7 @@
       "appendix": "többletponttal rendelkezik."
     },
     "penaltyPoints": {
-      "prependix": "Fegyelmi Bizottság döntése alapján:",
+      "prependix": "* Fegyelmi Bizottság döntése alapján:",
       "content": "{team} csapatától {points} pont",
       "appendix": "levonva."
     }
