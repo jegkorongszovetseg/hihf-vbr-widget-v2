@@ -78,4 +78,5 @@ const resolveExternalTeamLink = (params) =>
 
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
