@@ -1,3 +1,10 @@
+## [2.2.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.2...v2.2.3) (2024-01-27)
+
+
+### Bug Fixes
+
+* Csapat linkelés template hiba javítása ([284eba7](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/284eba7129640a7c50cdc66065842f64cdfe967e))
+
 ## [2.2.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.1...v2.2.2) (2024-01-08)
 
 - (core) Hozott pontok és Fegyelmi Bizottsági pont levonások kezelése &nbsp;-&nbsp; by @Sokamoka [<samp>(8003c)</samp>](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/8003c03)
