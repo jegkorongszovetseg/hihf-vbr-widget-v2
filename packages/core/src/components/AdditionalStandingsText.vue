@@ -15,9 +15,9 @@ const props = defineProps({
 });
 
 const rows = toRef(props, 'rows');
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
-const { isVisible, text } = useAdditionalText(rows, props.additionalKey, t);
+const { isVisible, text } = useAdditionalText(rows, props.additionalKey, t, locale);
 </script>
 
 <template>

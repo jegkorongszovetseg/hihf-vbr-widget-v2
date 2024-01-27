@@ -170,7 +170,7 @@ describe('useAdditionalText', () => {
     await nextTick();
 
     expect(isVisible.value).toBe(true);
-    expect(text.value).toBe('Fegyelmi Bizottság döntése alapján: TeamA csapatától 2 pont levonva.');
+    expect(text.value).toBe('* Fegyelmi Bizottság döntése alapján: TeamA csapatától 2 pont levonva.');
   });
 
   it('Büntető pontok szöveg megjelenik - és vesszővel van elválasztva -, ha van több penaltyPoints tartalmazó csapat', async () => {
@@ -199,8 +199,30 @@ describe('useAdditionalText', () => {
 
     expect(isVisible.value).toBe(true);
     expect(text.value).toBe(
-      'Fegyelmi Bizottság döntése alapján: TeamA csapatától 2 pont, TeamB csapatától 1 pont levonva.'
+      '* Fegyelmi Bizottság döntése alapján: TeamA csapatától 2 pont, TeamB csapatától 1 pont levonva.'
     );
+  });
+
+  it('Büntető pontok pozitív egész számként jelenik meg, ha eredetileg negatív szám', async () => {
+    const rows = ref([]);
+
+    const { isVisible, text } = useAdditionalText(rows, 'penaltyPoints', mockT);
+    await nextTick();
+
+    expect(isVisible.value).toBe(false);
+
+    rows.value = [
+      {
+        team: {
+          longName: 'TeamA',
+        },
+        penaltyPoints: -2,
+      },
+    ];
+    await nextTick();
+
+    expect(isVisible.value).toBe(true);
+    expect(text.value).toBe('* Fegyelmi Bizottság döntése alapján: TeamA csapatától 2 pont levonva.');
   });
 });
 
