@@ -15,7 +15,7 @@ const gameLinkResolver = '/GameCenter?gameId={gameId}'
     <!-- <ScheduleLiga :locale="store.locale" championship-name="Erste Liga"></ScheduleLiga> -->
     <mjsz-vbr-schedule-liga
       :locale="store.locale"
-      championship-name="Átnevezett Erste Liga"
+      championship-name="Erste Liga"
       timezone-selector
       :external-game-resolver="gameLinkResolver"
       :scroll-to-game-date="true"
