@@ -10,6 +10,7 @@
     "status-3": "Versenybíróság",
     "status-4": "Delayed"
   },
+  "bestPlayer": "Best Player of the Team",
   "periods": {
     "wu": "Preparation",
     "pre": "Preparation Ended",
