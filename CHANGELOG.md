@@ -1,9 +1,8 @@
 ## [2.2.4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.3...v2.2.4) (2024-02-08)
 
-
 ### Features
 
-* Add Best Player indicator ([1299250](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/1299250dceaca6b7884e66952737ac5e7c49f435))
+- (gamecenter) A mérkőzés legjobb játékosának jelzése ([1299250](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/1299250dceaca6b7884e66952737ac5e7c49f435))
 
 ## [2.2.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.2...v2.2.3) (2024-01-27)
 
