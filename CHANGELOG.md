@@ -1,3 +1,10 @@
+## [2.2.5](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.4...v2.2.5) (2024-02-08)
+
+
+### Bug Fixes
+
+* (gamecenter) Legjobb játékos tooltip javítás ([6baab6e](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/6baab6ef5d362d63e2b605dbf396914766efdfc5))
+
 ## [2.2.4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.3...v2.2.4) (2024-02-08)
 
 ### Features
