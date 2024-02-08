@@ -47,7 +47,7 @@ const onSort = (payload) => emit('sort', payload);
       >
         <template v-slot:cell-name="{ row }">
           {{ row.name }}
-          <FloatingPanel v-if="row.isBP" placement="top" :content="t('bestPlayer')">
+          <FloatingPanel v-if="row.isBP" placement="top" :content="t('bestPlayer')" :append-to="tooltipContainer">
             <template v-slot:default="{ setRef, show, hide }">
               <span class="is-text-dark" :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">
                 <IconStar />
