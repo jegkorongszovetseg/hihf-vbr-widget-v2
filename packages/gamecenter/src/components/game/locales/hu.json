@@ -10,6 +10,7 @@
     "status-3": "Versenybíróság",
     "status-4": "Elhalasztva"
   },
+  "bestPlayer": "A csapat legjobb játékosa",
   "periods": {
     "wu": "Bemelegítés",
     "pre": "Bemelegítés vége",

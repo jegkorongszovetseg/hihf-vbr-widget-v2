@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from 'vue';
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
-import { ResponsiveTable, DataTable } from '@mjsz-vbr-elements/core/components';
+import { useMainClass, useI18n } from '@mjsz-vbr-elements/core/composables';
+import { ResponsiveTable, DataTable, FloatingPanel } from '@mjsz-vbr-elements/core/components';
+import IconStar from '@mjsz-vbr-elements/shared/icons/IconStar';
 
 const props = defineProps({
   columns: {
@@ -28,6 +29,8 @@ const emit = defineEmits(['sort']);
 
 const tooltipContainer = ref(null);
 
+const { t } = useI18n();
+
 const onSort = (payload) => emit('sort', payload);
 </script>
 
@@ -42,6 +45,16 @@ const onSort = (payload) => emit('sort', payload);
         :sort="sort"
         @sort="onSort"
       >
+        <template v-slot:cell-name="{ row }">
+          {{ row.name }}
+          <FloatingPanel v-if="row.isBP" placement="top" :content="t('bestPlayer')">
+            <template v-slot:default="{ setRef, show, hide }">
+              <span class="is-text-dark" :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">
+                <IconStar />
+              </span>
+            </template>
+          </FloatingPanel>
+        </template>
         <template v-slot:cell-cora="{ row }">
           <template v-if="row.isPlayerC">C</template>
           <template v-if="row.isPlayerA">A</template>
