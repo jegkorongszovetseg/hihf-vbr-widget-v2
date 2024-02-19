@@ -55,8 +55,6 @@ const props = defineProps({
   ...gameProps,
 });
 
-console.log(typeof props.scrollToGameDate, Boolean(props.scrollToGameDate));
-
 const mainElement = ref(null);
 const selectorElement = ref(null);
 const timezone = ref(getLocalTimezone());
@@ -128,11 +126,11 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
           <div :class="useMainClass('section-selector')">
             <button
               v-for="rawSection in sections"
-              :key="rawSection.phaseId"
-              @click="changeSection(rawSection.phaseName)"
-              :class="[useMainClass('tab-button'), { 'is-active': rawSection.phaseName === section }]"
+              :key="rawSection.id"
+              @click="changeSection(rawSection.name)"
+              :class="[useMainClass('tab-button'), { 'is-active': rawSection.name === section }]"
             >
-              {{ rawSection.phaseName }}
+              {{ rawSection.name }}
             </button>
           </div>
 

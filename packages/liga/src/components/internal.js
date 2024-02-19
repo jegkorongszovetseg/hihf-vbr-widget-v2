@@ -15,6 +15,11 @@ export const transformSections = (sections, state) => {
   // }
 };
 
+export const transformPhases = (sections, state) => {
+  state.sections = sections;
+  state.section = compose(prop('name'), head)(sections);
+};
+
 export const transformTeams = (teams, state) => {
   state.teams = convertTeams(teams);
 };

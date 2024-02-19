@@ -10,7 +10,7 @@ import {
 } from '@mjsz-vbr-elements/core/composables';
 import { convert, sortGames, scrollToTop } from '@mjsz-vbr-elements/core/utils';
 import { REFRESH_DELAY } from '@mjsz-vbr-elements/core';
-import { transformSeasons, transformSections, transformTeams } from '../internal';
+import { transformSeasons, transformSections, transformPhases, transformTeams } from '../internal';
 import { useCollectMonths } from './schedule.internal.js';
 
 const props = defineProps({
@@ -109,11 +109,11 @@ const { isLoading: seasonsLoading, execute: fetchSeasons } = useServices({
 
 const { isLoading: sectionLoading, execute: fetchSection } = useServices({
   options: {
-    path: '/v2/championship-sections',
+    path: '/v2/championship-phases',
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId })),
   },
-  transform: (res) => transformSections(res, state),
+  transform: (res) => transformPhases(res, state),
   onError,
 });
 
