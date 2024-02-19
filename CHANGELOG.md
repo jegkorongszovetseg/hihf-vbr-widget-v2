@@ -1,3 +1,24 @@
+## [2.2.5](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.4...v2.2.5) (2024-02-08)
+
+
+### Bug Fixes
+
+* (gamecenter) Legjobb játékos tooltip javítás ([6baab6e](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/6baab6ef5d362d63e2b605dbf396914766efdfc5))
+
+## [2.2.4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.3...v2.2.4) (2024-02-08)
+
+### Features
+
+- (gamecenter) A mérkőzés legjobb játékosának jelzése ([1299250](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/1299250dceaca6b7884e66952737ac5e7c49f435))
+
+## [2.2.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.2...v2.2.3) (2024-01-27)
+
+### Bug Fixes
+
+- Büntetőpontok megjelenítésének javítása/fejlesztése &nbsp;-&nbsp; by @Sokamoka [<samp>(8f0d8)</samp>](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/8f0d83d)
+
+- Csapat linkelés template hiba javítása ([284eba7](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/284eba7129640a7c50cdc66065842f64cdfe967e))
+
 ## [2.2.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.1...v2.2.2) (2024-01-08)
 
 - (core) Hozott pontok és Fegyelmi Bizottsági pont levonások kezelése &nbsp;-&nbsp; by @Sokamoka [<samp>(8003c)</samp>](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/8003c03)

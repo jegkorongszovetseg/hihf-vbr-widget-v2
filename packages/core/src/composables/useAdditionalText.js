@@ -1,8 +1,8 @@
-import { ref } from 'vue';
+import { ref, watch, unref } from 'vue';
 import { watchOnce } from '@vueuse/core';
 import { filter, prop } from 'ramda';
 
-export function useAdditionalText(rows, key, t) {
+export function useAdditionalText(rows, key, t, locale) {
   const text = ref('');
   const isVisible = ref(false);
 
@@ -16,7 +16,7 @@ export function useAdditionalText(rows, key, t) {
 
     const teamObject = inheritedTeams.map((row) => ({
       team: row.team.longName,
-      points: prop(key, row),
+      points: Math.abs(prop(key, row)),
     }));
     const convertedToText = teamObject.map((row) => t(`additionalText.${key}.content`, row)).join(', ');
     text.value = [
@@ -27,6 +27,8 @@ export function useAdditionalText(rows, key, t) {
   };
 
   watchOnce(rows, createText);
+
+  watch(locale, () => createText(unref(rows)));
 
   return {
     text,

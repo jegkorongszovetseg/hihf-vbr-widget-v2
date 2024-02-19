@@ -11,12 +11,12 @@ const props = defineProps({
   },
 });
 
-const { t, hasTranlation } = useI18n();
+const { t, hasTranslation } = useI18n();
 
 const mainClass = useMainClass('error-notice');
 
 const errorMessage = computed(() => {
-  if (!hasTranlation(`errors.${props.error.key}`)) return `${props.error.key}: ${props.error?.message}`;
+  if (!hasTranslation(`errors.${props.error.key}`)) return `${props.error.key}: ${props.error?.message}`;
   return t(`errors.${props.error.key}`, props.error.cause);
 });
 </script>

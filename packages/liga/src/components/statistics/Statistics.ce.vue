@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { playerStatsProps } from '@mjsz-vbr-elements/core';
+import { playerStatsProps, teamStatsProps } from '@mjsz-vbr-elements/core';
 import { ErrorProvider, ErrorNotice, Paginator, StatisticsTable, I18NProvider } from '@mjsz-vbr-elements/core/components';
 import StatisticsProvider from './StatisticsProvider.vue';
 import StatisticSelector from './StatisticSelector.vue';
@@ -36,6 +36,8 @@ const props = defineProps({
   },
 
   ...playerStatsProps,
+
+  ...teamStatsProps,
 });
 
 const tooltipContainer = ref(null);

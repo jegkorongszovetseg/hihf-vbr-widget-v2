@@ -73,7 +73,7 @@ const props = defineProps({
   },
 });
 
-const { columns: currentColumns, hideColumns, rows } = toRefs(props);
+const { columns: currentColumns, hideColumns } = toRefs(props);
 
 const emit = defineEmits(['sort']);
 
@@ -116,8 +116,12 @@ const onSort = (payload) => emit('sort', payload);
         <Image class="is-logo-image" :key="row.team?.id ?? row.id" :src="row.team?.logo" />
       </template>
       <template v-slot:cell-teamName="{ row }">
-        <span class="is-team-name-long">{{ row.team?.longName }}</span>
-        <span class="is-team-name-short">{{ row.team?.shortName }}</span>
+        <span class="is-team-name-long"
+          >{{ row.team?.longName }} <span v-if="row.penaltyPoints"><sup>*</sup></span></span
+        >
+        <span class="is-team-name-short"
+          >{{ row.team?.shortName }} <span v-if="row.penaltyPoints"><sup>*</sup></span></span
+        >
 
         <template v-if="row.isActiveGame && row.diff !== 0">
           <IconArrowUp v-if="row.diff > 0" width="12" height="12" class="is-text-positive" />

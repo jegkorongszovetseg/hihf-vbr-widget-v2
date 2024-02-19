@@ -130,8 +130,8 @@ const onSort = (payload) => emit('sort', payload);
         <Image class="is-logo-image is-right" :key="row.awayTeam?.id" :src="row.awayTeam?.logo" />
       </template>
       <template v-slot:cell-teamName="{ row }">
-        <span class="is-team-name-long">{{ row.team?.longName }}</span>
-        <span class="is-team-name-short">{{ row.team?.shortName }}</span>
+        <span class="is-team-name-long">{{ row.team?.longName }} <span v-if="row.penaltyPoints"><sup>*</sup></span></span>
+        <span class="is-team-name-short">{{ row.team?.shortName }} <span v-if="row.penaltyPoints"><sup>*</sup></span></span>
       </template>
       <template v-slot:cell-homeTeamName="{ row }">
         <span class="is-team-name-long">{{ row.homeTeam?.longName }}</span>

@@ -23,7 +23,7 @@
       "appendix": "based on its results in the previous championship phase."
     },
     "penaltyPoints": {
-      "prependix": "",
+      "prependix": "* ",
       "content": "{points} point(s) deducted from team {team}",
       "appendix": "based on the decision of the Disciplinary Committee."
     }
