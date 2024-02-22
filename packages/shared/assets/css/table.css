@@ -233,6 +233,9 @@
     &.is-highlighted {
       color: var(--vbr-widget-danger-color-a400);
     }
+    &.is-optional {
+      opacity: 0.5;
+    }
   }
 
   tr:nth-child(even) {

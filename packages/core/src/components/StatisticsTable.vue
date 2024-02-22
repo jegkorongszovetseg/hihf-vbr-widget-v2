@@ -2,6 +2,7 @@
 import { computed, toRefs } from 'vue';
 import { useColumns } from '../composables/useColumns.js';
 import { useError } from '../composables/useErrors';
+import { useI18n } from '../composables';
 import * as Errors from '../utils/errors';
 import { DEFAULT_PORTRAIT_IMAGE_URL } from '../constants';
 import ResponsiveTable from './ResponsiveTable.vue';
@@ -82,6 +83,8 @@ const emit = defineEmits(['sort']);
 
 const { onError } = useError();
 
+const { t } = useI18n();
+
 const { columns, error } = useColumns(
   currentColumns,
   hideColumns,
@@ -115,44 +118,55 @@ const onSort = (payload) => emit('sort', payload);
           {{ row.index }}
         </span>
       </template>
+      
       <template v-slot:cell-playerPortrait="{ row }">
         <div class="is-portrait-image">
           <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
         </div>
       </template>
+
       <template v-slot:cell-teamLogo="{ row }">
         <Image class="is-logo-image" :key="row.team?.id ?? row.id" :src="row.team?.logo" />
       </template>
+
       <template v-slot:cell-homeTeamLogo="{ row }">
         <Image class="is-logo-image is-right" :key="row.homeTeam?.id" :src="row.homeTeam?.logo" />
       </template>
+
       <template v-slot:cell-awayTeamLogo="{ row }">
         <Image class="is-logo-image is-right" :key="row.awayTeam?.id" :src="row.awayTeam?.logo" />
       </template>
+
       <template v-slot:cell-teamName="{ row }">
         <span class="is-team-name-long">{{ row.team?.longName }} <span v-if="row.penaltyPoints"><sup>*</sup></span></span>
         <span class="is-team-name-short">{{ row.team?.shortName }} <span v-if="row.penaltyPoints"><sup>*</sup></span></span>
       </template>
+
       <template v-slot:cell-homeTeamName="{ row }">
         <span class="is-team-name-long">{{ row.homeTeam?.longName }}</span>
         <span class="is-team-name-short">{{ row.homeTeam?.shortName }}</span>
       </template>
+
       <template v-slot:cell-awayTeamName="{ row }">
         <span class="is-team-name-long">{{ row.awayTeam?.longName }}</span>
         <span class="is-team-name-short">{{ row.awayTeam?.shortName }}</span>
       </template>
+
       <template v-if="isTeamLinked" v-slot:cell-teamName="{ row }">
         <a :href="externalTeamResolver(row)" target="_blank">
           <span class="is-team-name-long">{{ row.team?.longName }}</span>
           <span class="is-team-name-short">{{ row.team?.shortName }}</span>
         </a>
       </template>
+
       <template v-if="isPlayerLinked" v-slot:cell-name="{ row }">
         <a :href="externalPlayerResolver(row)" target="_blank">{{ row.name }}</a>
       </template>
+
       <template v-slot:cell-location="{ row }">
         {{ row.location?.locationName ?? '' }}
       </template>
+
       <template v-slot:cell-gameResult="{ row }">
         <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>
         <a
@@ -163,6 +177,12 @@ const onSort = (payload) => emit('sort', payload);
         >
           {{ row.homeTeamScore }}:{{ row.awayTeamScore }}
         </a>
+      </template>
+
+      <template v-slot:cell-gameResultType="{ row }">
+        <span v-if="row.isOvertime" class="label">{{ t('common.overtimeShort') }}</span>
+        <span v-if="row.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
+        <span v-if="row.seriesStandings" class="label">{{ row.seriesStandings }}</span>
       </template>
 
       <template v-slot:loading>

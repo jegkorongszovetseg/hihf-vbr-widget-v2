@@ -16,8 +16,9 @@ import {
   rawConvert,
   playerName,
   teamName,
-  convertTimesMinToMinSec,
   convertTimesSecToMin,
+  convertTimesMinToMinSec,
+  scheduleOptionalRowClass,
 } from '@mjsz-vbr-elements/core/utils';
 import { COLUMNS_SCHEDULE } from '@mjsz-vbr-elements/core/columns';
 import { transformSeasons } from '../internal';
@@ -154,6 +155,7 @@ const rawConvertedRows = computed(() =>
     rows.value,
     playerName,
     teamName,
+    scheduleOptionalRowClass,
     convertTimesMinToMinSec(['mip']),
     convertTimesSecToMin(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2'])
   )
