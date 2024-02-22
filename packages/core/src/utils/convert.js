@@ -186,6 +186,11 @@ export const teamResultType = (row) => ({
   resultType: createGameResultType(row),
 });
 
+export const scheduleOptionalRowClass = (row) => ({
+  ...row,
+  rowClasses: row.optional ? 'is-optional' : '',
+});
+
 export const upperCase =
   (prop = []) =>
   (row) => ({
