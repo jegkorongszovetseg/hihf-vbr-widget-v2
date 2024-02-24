@@ -30,7 +30,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <div :class="useMainClass('card-item')">
+  <div :class="[useMainClass('card-item'), { 'is-optional': game.optional }]">
     <div class="is-info is-text-base">
       {{ game.gameName }} - {{ game.divisionName }} - {{ game.location.locationName }}
       <template v-if="game.broadcast">-&nbsp;<IconBroadcast height="16" />&nbsp;</template>
