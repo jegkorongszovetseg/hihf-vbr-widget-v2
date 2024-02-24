@@ -1,6 +1,6 @@
 import { ref, watch } from 'vue';
 import { noop, watchOnce } from '@vueuse/core';
-import { pick, head, last } from 'ramda';
+import { pick, head, last, sortBy, indexOf } from 'ramda';
 import { isBetween } from '@mjsz-vbr-elements/core/utils';
 
 export const useCollectMonths = (rows = [], locale = 'hu', onUpdated = noop) => {
@@ -41,4 +41,9 @@ export const useCollectMonths = (rows = [], locale = 'hu', onUpdated = noop) => 
 
 function capitalizeFirstLetter(string) {
   return string[0].toUpperCase() + string.slice(1);
+}
+
+export function sortSubPhases(phases) {
+  const sort = ({ name }) => indexOf(name, ['Negyeddöntő', 'Elődöntő', 'Döntő']);
+  return sortBy(sort)(phases);
 }

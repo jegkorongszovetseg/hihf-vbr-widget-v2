@@ -10,8 +10,8 @@ import {
 } from '@mjsz-vbr-elements/core/composables';
 import { convert, sortGames, scrollToTop } from '@mjsz-vbr-elements/core/utils';
 import { REFRESH_DELAY } from '@mjsz-vbr-elements/core';
-import { transformSeasons, transformSections, transformPhases, transformTeams } from '../internal';
-import { useCollectMonths } from './schedule.internal.js';
+import { transformSeasons, transformPhases, transformTeams } from '../internal';
+import { useCollectMonths, sortSubPhases } from './schedule.internal.js';
 
 const props = defineProps({
   championshipName: {
@@ -74,6 +74,7 @@ const state = reactive({
   championshipId: Number(params.championshipId) || 0,
   sections: [],
   section: params.section || null,
+  subPhase: '',
   teams: [],
   selectedMonth: Number(params.selectedMonth) ?? null,
   selectedTeam: Number(params.selectedTeam) || null,
@@ -156,9 +157,15 @@ const convertedRows = computed(() => {
   return convert(unref(rows))
     .filter(state.selectedTeam, teamFilterTypes.value, true)
     .schedule(unref(timezone), unref(props.locale))
+    .filter(state.subPhase, [['divisionStage2Name']], true)
     .gameDateFilter(unref(state.selectedMonth))
     .groupByDays()
     .value();
+});
+
+const subPhases = computed(() => {
+  const mainPhase = state.sections.find((item) => item.name === state.section);
+  return sortSubPhases(mainPhase?.phases ?? []);
 });
 
 useAsyncQueue([fetchSeasons, fetchSection, fetchTeams, fetchSchedule], {
@@ -178,6 +185,7 @@ const changeSeason = (value) => {
   params.selectedMonth = null;
   state.selectedTeamGameType = 'all';
   params.selectedTeamGameType = null;
+  state.subPhase = '';
   useAsyncQueue([fetchSection, fetchTeams, fetchSchedule]);
   if (props.autoRefresh) resume();
   scrollToTop();
@@ -190,12 +198,18 @@ const changeMonth = (value) => {
 };
 
 const changeSection = (value) => {
+  console.log(value);
   state.section = value;
   params.section = value;
   // resets
   state.selectedMonth = null;
   params.selectedMonth = null;
+  state.subPhase = '';
   fetchSchedule();
+};
+
+const changeSubSection = (value) => {
+  state.subPhase = value;
 };
 
 const changeTeam = (value) => {
@@ -218,14 +232,16 @@ const changeTeamType = (value) => {
   <slot
     v-bind="{
       ...state,
-      games: convertedRows,
       months,
       isLoading,
+      subPhases,
+      games: convertedRows,
       changeSeason,
       changeMonth,
       changeSection,
       changeTeam,
       changeTeamType,
+      changeSubSection,
     }"
   ></slot>
 </template>
