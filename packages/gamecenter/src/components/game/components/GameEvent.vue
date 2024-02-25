@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import Goal from './events/goal.vue';
+import Goal from './events/Goal.vue';
 import Penalty from './events/Penalty.vue';
 import Goalies from './events/Goalies.vue';
 import Timeout from './events/Timeout.vue';
