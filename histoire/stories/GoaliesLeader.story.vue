@@ -13,7 +13,13 @@ const state = reactive({
 </script>
 
 <template>
-  <Story title="Elements/Goalies Leader">
+  <Story
+    title="Elements/Goalies Leader"
+    :layout="{
+      type: 'grid',
+      width: '100%',
+    }"
+  >
     <Variant title="Playground">
       <mjsz-vbr-goalies
         :locale="state.locale"

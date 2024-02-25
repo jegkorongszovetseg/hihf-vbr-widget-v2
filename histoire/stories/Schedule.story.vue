@@ -15,7 +15,13 @@ const state = reactive({
 </script>
 
 <template>
-  <Story title="Elements/Schedule">
+  <Story
+    title="Elements/Schedule"
+    :layout="{
+      type: 'grid',
+      width: '100%',
+    }"
+  >
     <Variant title="Playground">
       <mjsz-vbr-schedule
         :locale="state.locale"

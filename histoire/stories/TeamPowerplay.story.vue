@@ -12,7 +12,13 @@ const state = reactive({
 </script>
 
 <template>
-  <Story title="Elements/Team Powerplay">
+  <Story
+    title="Elements/Team Powerplay"
+    :layout="{
+      type: 'grid',
+      width: '100%',
+    }"
+  >
     <Variant title="Playground">
       <mjsz-vbr-team-powerplay
         :locale="state.locale"

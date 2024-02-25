@@ -12,7 +12,13 @@ const state = reactive({
 </script>
 
 <template>
-  <Story title="Elements/Team Scoring Efficiency">
+  <Story
+    title="Elements/Team Scoring Efficiency"
+    :layout="{
+      type: 'grid',
+      width: '100%',
+    }"
+  >
     <Variant title="Playground">
       <mjsz-vbr-team-scoring
         :locale="state.locale"
