@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "vitepress": "1.0.0-rc.34"
+    "vitepress": "1.0.0-rc.44"
   },
   "dependencies": {
     "@mjsz-vbr-elements/core": "workspace:^",
@@ -22,6 +22,6 @@
     "@mjsz-vbr-elements/extended": "workspace:^",
     "@mjsz-vbr-elements/gamecenter": "workspace:^",
     "@mjsz-vbr-elements/liga": "workspace:^",
-    "ramda": "^0.29.0"
+    "ramda": "^0.29.1"
   }
 }
