@@ -30,10 +30,10 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.2",
-    "glob": "^10.2.6",
-    "nodemon": "^3.0.2",
-    "postcss": "^8.4.31",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "glob": "^10.3.10",
+    "nodemon": "^3.1.0",
+    "postcss": "^8.4.35",
     "postcss-import": "^15.1.0",
     "postcss-mixins": "^9.0.4",
     "postcss-nested": "^6.0.1",

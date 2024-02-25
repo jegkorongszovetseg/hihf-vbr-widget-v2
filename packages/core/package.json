@@ -39,18 +39,18 @@
   },
   "unpkg": "./dist/index.iife.js",
   "dependencies": {
-    "@floating-ui/dom": "^1.2.9",
+    "@floating-ui/dom": "^1.6.3",
     "@mjsz-vbr-elements/shared": "workspace:^",
-    "@vueuse/core": "^10.1.2",
-    "@xstate/fsm": "^2.0.0",
-    "dayjs": "^1.11.7",
-    "ramda": "^0.29.0",
+    "@vueuse/core": "^10.8.0",
+    "@xstate/fsm": "^2.1.0",
+    "dayjs": "^1.11.10",
+    "ramda": "^0.29.1",
     "vue": "^3.4.19"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.2",
+    "@vitejs/plugin-vue": "^5.0.4",
     "vite": "^5.1.4",
-    "vite-plugin-banner": "^0.7.0",
+    "vite-plugin-banner": "^0.7.1",
     "vite-plugin-compression": "^0.5.1"
   }
 }
