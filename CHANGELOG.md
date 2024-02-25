@@ -1,15 +1,32 @@
 ## [2.3.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.7...v2.3.0) (2024-02-25)
 
+### &nbsp;&nbsp;&nbsp;🚀 Chore
+
+- Függőségek frissítése by @Sokamoka in https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/pull/43
+
+**Full Changelog**: https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.7...v2.3.0
+
 ## [2.2.7](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.6...v2.2.7) (2024-02-25)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- (liga) Rájátszás beállítása és Menetrend fejlesztése &nbsp;-&nbsp; by @Sokamoka [<samp>(0cee4)</samp>](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/0cee4cf)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.6...v2.2.7)
 
 ## [2.2.6](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.5...v2.2.6) (2024-02-22)
 
-## [2.2.5](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.4...v2.2.5) (2024-02-08)
+### &nbsp;&nbsp;&nbsp;🚀 Features
 
+- (extended) Playoffs kezelése a Championship menetrendekben &nbsp;-&nbsp; by @Sokamoka [<samp>(5a37d)</samp>](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/5a37dd3)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.5...v2.2.6)
+
+## [2.2.5](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.4...v2.2.5) (2024-02-08)
 
 ### Bug Fixes
 
-* (gamecenter) Legjobb játékos tooltip javítás ([6baab6e](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/6baab6ef5d362d63e2b605dbf396914766efdfc5))
+- (gamecenter) Legjobb játékos tooltip javítás ([6baab6e](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/6baab6ef5d362d63e2b605dbf396914766efdfc5))
 
 ## [2.2.4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.3...v2.2.4) (2024-02-08)
 
