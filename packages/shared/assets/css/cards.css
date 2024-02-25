@@ -33,6 +33,14 @@
   padding: 2rem 0;
   border-bottom: 1px solid var(--vbr-widget-primary-color-100);
 
+  &.is-optional {
+    opacity: 0.4;
+    transition: opacity 0.3s ease-out;
+  }
+  &.is-optional:hover {
+    opacity: 1;
+  }
+
   svg {
     display: block;
   }

@@ -1,4 +1,4 @@
-import { head, compose, ascend, descend, map, pick, prop, sort, path } from 'ramda';
+import { head, last, compose, ascend, descend, map, pick, prop, sort, path } from 'ramda';
 import { InvalidSeasonName, WidgetError } from '@mjsz-vbr-elements/core/utils';
 import { SORT_STATE_ASCEND, SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 
@@ -13,6 +13,11 @@ export const transformSections = (sections, state) => {
   // if (state.sections && !state.sections.includes(state.section)) {
   state.section = compose(prop('phaseName'), head)(state.sections);
   // }
+};
+
+export const transformPhases = (sections, state) => {
+  state.sections = [...sections].reverse();
+  state.section = compose(prop('name'), last)(state.sections);
 };
 
 export const transformTeams = (teams, state) => {

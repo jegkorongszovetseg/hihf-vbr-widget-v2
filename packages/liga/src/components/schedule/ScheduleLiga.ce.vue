@@ -55,8 +55,6 @@ const props = defineProps({
   ...gameProps,
 });
 
-console.log(typeof props.scrollToGameDate, Boolean(props.scrollToGameDate));
-
 const mainElement = ref(null);
 const selectorElement = ref(null);
 const timezone = ref(getLocalTimezone());
@@ -79,7 +77,7 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
 
 <template>
   <div ref="mainElement">
-    <I18NProvider :locale="props.locale" :messages="messages">
+    <I18NProvider :locale="props.locale" :messages="messages" v-slot="{t}">
       <ErrorProvider v-slot:default="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
 
@@ -100,6 +98,8 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
             games,
             months,
             isLoading,
+            subPhases,
+            subPhase,
             selectedMonth,
             selectedTeam,
             selectedTeamGameType,
@@ -108,6 +108,7 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
             changeSection,
             changeTeam,
             changeTeamType,
+            changeSubSection,
           }"
         >
           <ScheduleSelector
@@ -128,11 +129,22 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
           <div :class="useMainClass('section-selector')">
             <button
               v-for="rawSection in sections"
-              :key="rawSection.phaseId"
-              @click="changeSection(rawSection.phaseName)"
-              :class="[useMainClass('tab-button'), { 'is-active': rawSection.phaseName === section }]"
+              :key="rawSection.id"
+              @click="changeSection(rawSection.name)"
+              :class="[useMainClass('tab-button'), { 'is-active': rawSection.name === section }]"
             >
-              {{ rawSection.phaseName }}
+              {{ rawSection.name }}
+            </button>
+          </div>
+
+          <div v-if="subPhases.length > 1" :class="[useMainClass('toggle-group')]">
+            <button @click="changeSubSection('')" :class="{ 'is-active': subPhase === '' }">{{ t('common.all') }}</button>
+            <button
+              v-for="{ name } in subPhases"
+              @click="changeSubSection(name)"
+              :class="{ 'is-active': name === subPhase }"
+            >
+              {{ name }}
             </button>
           </div>
 

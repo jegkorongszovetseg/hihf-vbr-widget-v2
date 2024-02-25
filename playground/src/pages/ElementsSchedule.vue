@@ -7,7 +7,7 @@ import { store } from '../store.js';
     <mjsz-vbr-schedule
       :locale="store.locale"
       championship-id="3450"
-      phase-id="45196"
+      phase-id="45240"
       auto-initial-page
       auto-refresh
       is-target-external
