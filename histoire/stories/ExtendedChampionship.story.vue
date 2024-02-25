@@ -9,13 +9,15 @@ const state = reactive({
 </script>
 
 <template>
-  <Story title="Extended/Championship">
+  <Story
+    title="Extended/Championship"
+    :layout="{
+      type: 'grid',
+      width: '100%',
+    }"
+  >
     <Variant title="Playground">
-      <mjsz-vbr-championship
-        :locale="state.locale"
-        :championship-name="state.championshipName"
-        :limit="state.limit"
-      />
+      <mjsz-vbr-championship :locale="state.locale" :championship-name="state.championshipName" :limit="state.limit" />
 
       <template #controls>
         <HstSelect v-model="state.locale" title="Locale" :options="{ hu: 'HU', en: 'EN' }" />
