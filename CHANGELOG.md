@@ -1,3 +1,11 @@
+## [2.3.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.0...v2.3.1) (2024-03-06)
+
+
+### Bug Fixes
+
+* (liga/schedule) URL params javítás ([f6a78f0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/f6a78f05e07f502a4f9810bd737119ad4ea1c536))
+* (liga/standings) Bajnokság fázisokból Rájátszás törlése ([49dfa4a](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/49dfa4a8856cc65d5c8b1131ecb72bd670b2dff2))
+
 ## [2.3.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.7...v2.3.0) (2024-02-25)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Chore
