@@ -16,8 +16,8 @@ export const transformSections = (sections, state) => {
 };
 
 export const transformPhases = (sections, state) => {
-  state.sections = [...sections].reverse();
-  state.section = compose(prop('name'), last)(state.sections);
+  state.sections = [...sections];
+  if (!state.section) state.section = compose(prop('name'), last)(state.sections);
 };
 
 export const transformTeams = (teams, state) => {
