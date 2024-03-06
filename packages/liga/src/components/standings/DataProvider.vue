@@ -3,7 +3,7 @@ import { reactive, computed, unref } from 'vue';
 import { useAsyncQueue, useUrlSearchParams, useIntervalFn } from '@vueuse/core';
 import { useError, useServices, useSort } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
-import { transformSeasons, transformSections } from '../internal';
+import { transformSeasons, transformStandingSections } from '../internal';
 import { useGamesListForLiveStandings, TOGGLE_LIVE, FETCH_GAMES_INTERVAL } from './standings.internal';
 
 const props = defineProps({
@@ -58,7 +58,7 @@ const { isLoading: sectionLoading, execute: fetchSection } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId })),
   },
-  transform: (res) => transformSections(res, state),
+  transform: (res) => transformStandingSections(res, state),
   onError,
 });
 
