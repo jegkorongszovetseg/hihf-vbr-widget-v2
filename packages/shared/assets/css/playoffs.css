@@ -9,7 +9,7 @@
       );
     color: var(--vbr-widget-table-color);
 
-    &:nth-child(odd) {
+    &:nth-child(odd) > div {
       background-color: var(--vbr-widget-table-stripped-bg-color);
     }
 
