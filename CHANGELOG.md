@@ -1,3 +1,10 @@
+## [2.3.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.1...v2.3.2) (2024-03-09)
+
+
+### Bug Fixes
+
+* (liga/playoffs) Mobil nézet csíkozás javítás ([e290914](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/e29091401bde2b2414ae42e045d9263b28758476))
+
 ## [2.3.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.0...v2.3.1) (2024-03-06)
 
 
