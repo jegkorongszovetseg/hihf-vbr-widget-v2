@@ -6,6 +6,8 @@ import { externalGameLinkResolver, format, getLocalTimezone } from '@mjsz-vbr-el
 import hu from '../../locales/hu.json';
 import en from '../../locales/en.json';
 
+const DEFAULT_LIGA_GAME_RESOLVER = '/game/id/{gameId}';
+
 const props = defineProps({
   locale: {
     type: String,
@@ -37,7 +39,8 @@ const timezone = getLocalTimezone();
 
 const messages = { en, hu };
 
-const externalGameResolver = (gameId) => externalGameLinkResolver(props.externalGameLink, { gameId });
+const externalGameResolver = (game) =>
+  externalGameLinkResolver(props.externalGameLink || DEFAULT_LIGA_GAME_RESOLVER, game);
 
 const formatGameDate = (date) => format(date, 'L dddd', timezone, props.locale);
 const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
@@ -83,9 +86,12 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
               <span v-if="game.gameStatus === 0" class="is-text-dark">-:-</span>
               <a
                 v-else
-                :href="externalGameResolver(game.id)"
+                :href="externalGameResolver(game)"
                 target="_blank"
-                :class="{ 'is-text-dark': game.gameStatus !== 1, 'is-text-accent': game.gameStatus === 1 }"
+                :class="[
+                  'is-text-bold',
+                  { 'is-text-dark': game.gameStatus !== 1, 'is-text-accent': game.gameStatus === 1 },
+                ]"
               >
                 {{ game.homeTeamScore }}:{{ game.awayTeamScore }}
               </a>
