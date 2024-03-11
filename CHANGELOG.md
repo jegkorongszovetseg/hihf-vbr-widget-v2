@@ -1,3 +1,10 @@
+## [2.3.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.2...v2.3.3) (2024-03-11)
+
+
+### Bug Fixes
+
+* (liga/playoffs): Mérkőzés linkek javítása ([1a20f8a](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/1a20f8a8b1d5ec7b59c61f4775f963a20b25d184))
+
 ## [2.3.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.1...v2.3.2) (2024-03-09)
 
 
