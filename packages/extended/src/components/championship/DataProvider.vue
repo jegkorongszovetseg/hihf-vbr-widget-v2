@@ -12,10 +12,11 @@ import {
 } from '@mjsz-vbr-elements/core/composables';
 import {
   convert,
+  teamName,
   sortGames,
   rawConvert,
   playerName,
-  teamName,
+  convertPhaseName,
   convertTimesSecToMin,
   convertTimesMinToMinSec,
   scheduleOptionalRowClass,
@@ -24,7 +25,6 @@ import { COLUMNS_SCHEDULE } from '@mjsz-vbr-elements/core/columns';
 import { transformSeasons } from '../internal';
 import {
   transformSections,
-  convertPhaseName,
   PANEL_SCHEDULE,
   PANEL_PLAYERS,
   PANEL_TEAMS,

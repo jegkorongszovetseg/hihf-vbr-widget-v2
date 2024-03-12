@@ -260,3 +260,17 @@ function createGameResultType(row) {
   if (isLostGame) return 'L';
   return 'D';
 }
+
+export const convertPhaseName = (phases) => {
+  return phases.map((phase) => ({
+    phaseId: phase.phaseId,
+    phaseName: Object.values({
+      phaseName: phase.phaseName,
+      ...(phase.phaseType?.phaseTypeName &&
+        phase.phaseType.phaseTypeName !== phase.phaseName && {
+          phaseTypeName: phase.phaseType.phaseTypeName,
+        }),
+      ...(phase.phaseSubType?.phaseSubTypeName && { phaseSubTypeName: phase.phaseSubType.phaseSubTypeName }),
+    }).join('-'),
+  }));
+};

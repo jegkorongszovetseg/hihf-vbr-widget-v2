@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { convertPhaseName } from './championship.internal';
+import { convertPhaseName } from './convert';
 
 describe('convertPhaseName', () => {
   test('A phases üres []', () => {

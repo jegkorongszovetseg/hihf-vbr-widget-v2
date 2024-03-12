@@ -1,7 +1,7 @@
 <script setup>
 import { computed, reactive, unref } from 'vue';
 import { useUrlSearchParams } from '@vueuse/core';
-import { head, pick } from 'ramda';
+import { head, pick, path, sortBy, prop } from 'ramda';
 import {
   convertSeasons,
   convertTeams,
@@ -20,6 +20,7 @@ import {
   rawConvert,
   InvalidSeasonName,
   WidgetError,
+  convertPhaseName
 } from '@mjsz-vbr-elements/core/utils';
 import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 import { useError, useI18n, useSort, usePage, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
@@ -57,7 +58,7 @@ const state = reactive({
   championshipId: Number(params.championshipId) || props.championshipId,
   sections: [],
   section: params.section || null,
-  phaseId: 0,
+  phaseId: Number(params.phaseId) || 0,
   teams: [],
   teamFilter: Number(params.teamFilter) || null,
   playerFilter: '',
@@ -107,12 +108,8 @@ const fetchSection = async () => {
     const sections = await fetchVBRData('/v2/championship-sections', props.apiKey, {
       championshipId: state.championshipId,
     });
-    state.sections = sections[0].phases;
-    if (state.sections && !state.sections.includes(state.section)) {
-      state.section = head(state.sections)?.phaseName;
-      state.phaseId = head(state.sections)?.phaseId;
-      // state.championshipId = sections[0].sectionId;
-    }
+    state.sections = sortBy(prop('phaseName'))(convertPhaseName(path([0, 'phases'], sections)));
+    state.phaseId = state.phaseId || head(state.sections)?.phaseId;
   } catch (error) {
     onError(error);
   } finally {
@@ -192,8 +189,8 @@ const onSeasonChange = async (value) => {
 };
 
 const onSectionChange = async (value) => {
-  state.section = value;
-  params.section = value;
+  state.phaseId = value
+  params.phaseId = value;
   await fetchStatistic();
 };
 
@@ -253,7 +250,7 @@ init();
             'seasons',
             'championshipId',
             'sections',
-            'section',
+            'phaseId',
             'currentReport',
             'reportType',
             'teams',

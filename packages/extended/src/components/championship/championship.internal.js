@@ -23,20 +23,6 @@ export const transformSections = (sections, state) => {
   state.phaseId = sections?.[0]?.phases[0]?.phaseId;
 };
 
-export const convertPhaseName = (phases) => {
-  return phases.map((phase) => ({
-    phaseId: phase.phaseId,
-    phaseName: Object.values({
-      phaseName: phase.phaseName,
-      ...(phase.phaseType?.phaseTypeName &&
-        phase.phaseType.phaseTypeName !== phase.phaseName && {
-          phaseTypeName: phase.phaseType.phaseTypeName,
-        }),
-      ...(phase.phaseSubType?.phaseSubTypeName && { phaseSubTypeName: phase.phaseSubType.phaseSubTypeName }),
-    }).join('-'),
-  }));
-};
-
 export const ALL_REPORTS_MAP = new Map()
   .set('schedule', {
     api: '/v2/games-list',

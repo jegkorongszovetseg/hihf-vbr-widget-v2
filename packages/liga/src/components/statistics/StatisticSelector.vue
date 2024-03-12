@@ -20,7 +20,7 @@ const props = defineProps({
     defauét: () => [],
   },
 
-  section: {
+  phaseId: {
     type: String,
     default: '',
   },
@@ -73,7 +73,7 @@ const seasonSelect = computed({
 });
 
 const sectionSelect = computed({
-  get: () => props.section,
+  get: () => props.phaseId,
   set: (value) => emit('onSectionChange', value),
 });
 
@@ -114,7 +114,13 @@ const tabButtonClasses = useMainClass('tab-button');
     <div>
       <label for="section" :class="baseLabelClass">{{ t('selection.section') }}</label>
       <BaseSelect id="section" v-model="sectionSelect">
-        <option v-for="sectionName in sections" :key="sectionName.phaseId" :value="sectionName.phaseName">{{ sectionName.phaseName }}</option>
+        <option
+          v-for="sectionName in sections"
+          :key="sectionName.phaseId"
+          :value="sectionName.phaseId"
+        >
+          {{ sectionName.phaseName }}
+        </option>
       </BaseSelect>
     </div>
     <div>
