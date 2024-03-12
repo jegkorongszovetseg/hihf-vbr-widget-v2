@@ -21,8 +21,8 @@ const props = defineProps({
   },
 
   phaseId: {
-    type: String,
-    default: '',
+    type: Number,
+    default: null,
   },
 
   reports: {
