@@ -1,3 +1,10 @@
+## [2.3.5](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.4...v2.3.5) (2024-03-12)
+
+
+### Bug Fixes
+
+* (liga/statistic) Prop type javítás ([f378da1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/f378da19147d24120fd5828f39adad1418616c08))
+
 ## [2.3.4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.3...v2.3.4) (2024-03-12)
 
 
