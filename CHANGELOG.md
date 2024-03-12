@@ -1,3 +1,10 @@
+## [2.3.4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.3...v2.3.4) (2024-03-12)
+
+
+### Bug Fixes
+
+* (liga/statistics) Szakaszok kiválásztásának javítása ([b2d1fe8](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/b2d1fe88325265e2e7c0276a016f7353a3c23263))
+
 ## [2.3.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.2...v2.3.3) (2024-03-11)
 
 
