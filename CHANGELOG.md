@@ -1,3 +1,10 @@
+## [2.3.6](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.5...v2.3.6) (2024-03-16)
+
+
+### Bug Fixes
+
+* (liga/standings) Újrajátszandó kiszúrése ([e08afc8](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/e08afc8d13efc036f31ac8f664f05be3b69a6f78))
+
 ## [2.3.5](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.4...v2.3.5) (2024-03-12)
 
 

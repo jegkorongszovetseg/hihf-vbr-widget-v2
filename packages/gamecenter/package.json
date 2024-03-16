@@ -2,7 +2,7 @@
   "name": "@mjsz-vbr-elements/gamecenter",
   "description": "Data visualization for MJSZ VBR",
   "private": false,
-  "version": "2.3.5",
+  "version": "2.3.6",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
   "type": "module",
