@@ -1,3 +1,10 @@
+## [2.3.7](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.6...v2.3.7) (2024-03-17)
+
+
+### Bug Fixes
+
+* (liga/schedule) Videó link javítás ([2d4d675](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/2d4d675305e22389e04132a5b0b1165fdfc3f67e))
+
 ## [2.3.6](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.5...v2.3.6) (2024-03-16)
 
 
