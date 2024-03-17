@@ -35,7 +35,7 @@ const { t } = useI18n();
       {{ game.gameName }} - {{ game.divisionName }} - {{ game.location.locationName }}
       <template v-if="game.broadcast">-&nbsp;<IconBroadcast height="16" />&nbsp;</template>
       <template v-if="game.video"
-        >-&nbsp;<a href="#"><IconYoutube height="18" /></a
+        >-&nbsp;<a :href="game.video" target="_blank"><IconYoutube height="18" /></a
       ></template>
     </div>
 
