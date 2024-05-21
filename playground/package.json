@@ -14,16 +14,16 @@
     "@mjsz-vbr-elements/extended": "workspace:^",
     "@mjsz-vbr-elements/gamecenter": "workspace:^",
     "@mjsz-vbr-elements/liga": "workspace:^",
-    "vue": "^3.4.19"
+    "vue": "^3.4.27"
   },
   "devDependencies": {
-    "@unocss/preset-uno": "^0.58.5",
-    "@unocss/preset-wind": "^0.58.5",
-    "@unocss/reset": "^0.58.5",
+    "@unocss/preset-uno": "^0.60.3",
+    "@unocss/preset-wind": "^0.60.3",
+    "@unocss/reset": "^0.60.3",
     "@vitejs/plugin-vue": "^5.0.4",
-    "unocss": "^0.58.5",
-    "unplugin-vue-router": "^0.8.4",
-    "vite": "^5.1.4",
-    "vue-router": "^4.3.0"
+    "unocss": "^0.60.3",
+    "unplugin-vue-router": "^0.8.7",
+    "vite": "^5.2.11",
+    "vue-router": "^4.3.2"
   }
 }
