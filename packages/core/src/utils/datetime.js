@@ -4,6 +4,8 @@ import timezone from 'dayjs/plugin/timezone';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import _isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import _isBetween from 'dayjs/plugin/isBetween';
+import _isToday from 'dayjs/plugin/isToday';
+import _weekday from 'dayjs/plugin/weekday';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/hu';
@@ -16,6 +18,8 @@ dayjs.extend(relativeTime);
 dayjs.extend(localizedFormat);
 dayjs.extend(_isSameOrBefore);
 dayjs.extend(_isBetween);
+dayjs.extend(_isToday);
+dayjs.extend(_weekday);
 
 export const getLocalTimezone = () => dayjs.tz.guess();
 
@@ -61,7 +65,7 @@ export const isSameOrBefore = (date, unit = 'day') => {
 };
 
 export const isBetween = (date, startDate, endDate) => {
-  return dayjs(date).isBetween(startDate, dayjs(endDate));
+  return dayjs(date).isBetween(startDate, dayjs(endDate), 'day', '[]');
 };
 
 export const isSame = (date, compareDate, unit = 'month') => {
@@ -70,4 +74,36 @@ export const isSame = (date, compareDate, unit = 'month') => {
 
 export const yearToNow = (date, locale = 'hu') => {
   return dayjs(date).locale(locale).toNow(true);
+};
+
+export const isBefore = (date, compareDate, unit = 'day') => {
+  return dayjs(date).isBefore(compareDate, unit);
+};
+
+export const isAfter = (date, compareDate, unit = 'day') => {
+  return dayjs(date).isAfter(compareDate, unit);
+};
+
+export const isToday = (date) => {
+  return dayjs(date).isToday();
+};
+
+export const currentWeek = (date) => {
+  const startDate = dayjs().weekday(1);
+  const endDate = dayjs().weekday(7);
+  return isBetween(date, startDate, endDate);
+};
+
+export const currentWeekStartEnd = (date) => {
+  const startDate = dayjs(date).weekday(1);
+  const endDate = dayjs(date).weekday(7);
+  return { startDate, endDate };
+};
+
+export const subtractDays = (date, day) => {
+  return dayjs(date).subtract(day, 'day');
+};
+
+export const addDays = (date, day) => {
+  return dayjs(date).add(day, 'day');
 };
