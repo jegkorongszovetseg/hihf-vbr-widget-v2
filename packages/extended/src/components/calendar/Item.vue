@@ -71,16 +71,12 @@ const { t } = useI18n();
         <span v-if="game.gameStatus === 4" class="is-text-xl is-text-bold">
           {{ t('game.status.delayed') }}
         </span>
-        <!-- <span v-if="game.gameStatus === 0">
-          {{ game.gameDateTime }}
-        </span> -->
       </a>
-      <!-- <span v-if="game.gameStatus === 0" class="is-text-xs is-opacity-40">({{ offsetName }})</span> -->
       <template v-if="game.gameStatus > 0">
         <div class="is-text-sm is-whitespace-nowrap">{{ game.result }}</div>
-        <div v-if="game.gameStatus !== 2" class="is-text-xs is-uppercase is-whitespace-nowrap">
+        <!-- <div v-if="game.gameStatus !== 2" class="is-text-xs is-uppercase is-whitespace-nowrap">
           {{ t(`game.period.${game.period}`) }}
-        </div>
+        </div> -->
       </template>
     </div>
 

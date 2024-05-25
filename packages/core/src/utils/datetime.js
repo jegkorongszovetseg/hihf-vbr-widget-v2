@@ -6,6 +6,7 @@ import _isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import _isBetween from 'dayjs/plugin/isBetween';
 import _isToday from 'dayjs/plugin/isToday';
 import _weekday from 'dayjs/plugin/weekday';
+import _minMax from 'dayjs/plugin/minMax';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/hu';
@@ -20,6 +21,7 @@ dayjs.extend(_isSameOrBefore);
 dayjs.extend(_isBetween);
 dayjs.extend(_isToday);
 dayjs.extend(_weekday);
+dayjs.extend(_minMax);
 
 export const getLocalTimezone = () => dayjs.tz.guess();
 
@@ -64,8 +66,8 @@ export const isSameOrBefore = (date, unit = 'day') => {
   return dayjs().isSameOrBefore(dayjs(date), unit);
 };
 
-export const isBetween = (date, startDate, endDate) => {
-  return dayjs(date).isBetween(startDate, dayjs(endDate), 'day', '[]');
+export const isBetween = (date, startDate, endDate, inclusivity = '[]') => {
+  return dayjs(date).isBetween(startDate, dayjs(endDate), 'day', inclusivity);
 };
 
 export const isSame = (date, compareDate, unit = 'month') => {
@@ -106,4 +108,26 @@ export const subtractDays = (date, day) => {
 
 export const addDays = (date, day) => {
   return dayjs(date).add(day, 'day');
+};
+
+export const startOfMonth = (date) => {
+  return dayjs(date).startOf('month');
+};
+
+export const endOfMonth = (date) => {
+  return dayjs(date).endOf('month');
+};
+
+export const min = (dates) => {
+  if (Array.isArray(dates)) {
+    dates = dates.map((date) => dayjs(date));
+  }
+  return dayjs.min(dates);
+};
+
+export const max = (dates) => {
+  if (Array.isArray(dates)) {
+    dates = dates.map((date) => dayjs(date));
+  }
+  return dayjs.max(...dates);
 };

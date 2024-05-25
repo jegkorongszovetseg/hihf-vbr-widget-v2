@@ -15,7 +15,7 @@ import '../../../packages/shared/dist/css/forms.css';
 
 <template>
   <div class="p-5">
-    <Calendar :locale="store.locale" season-id="216" />
-    <!-- <mjsz-vbr-calendar :locale="store.locale" season-id="216" /> -->
+    <!-- <Calendar :locale="store.locale" season-id="216" external-game-resolver="/GameCenter?gameId={id}" /> -->
+    <mjsz-vbr-calendar :locale="store.locale" season-id="216" external-game-resolver="/GameCenter?gameId={id}" />
   </div>
 </template>

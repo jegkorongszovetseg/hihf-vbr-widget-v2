@@ -1,8 +1,9 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { I18NProvider, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
-import { getLocalTimezone, format } from '@mjsz-vbr-elements/core/utils';
+import { getLocalTimezone, format, externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
+import { gameProps } from '@mjsz-vbr-elements/core';
 import DataProvider from './DataProvider.vue';
 import GameItem from './Item.vue';
 import hu from '../../locales/hu.json';
@@ -26,11 +27,17 @@ const props = defineProps({
     type: String,
     default: '',
   },
+
+  ...gameProps,
 });
 
 const timezone = ref(getLocalTimezone());
 
 const tabButtonClasses = useMainClass('tab-button');
+
+const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? '_blank' : '_self'));
+
+const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externalGameResolver || '/game/id/{id}', game);
 </script>
 
 <template>
@@ -40,9 +47,20 @@ const tabButtonClasses = useMainClass('tab-button');
       :timezone="timezone"
       :seasonId="seasonId"
       :apiKey="apiKey"
-      #default="{ games, selectedPanel, isLoading, changePanel, fetchMore }"
+      #default="{
+        today,
+        games,
+        months,
+        isLoading,
+        selectedPanel,
+        selectedMonth,
+        datesFilter,
+        more,
+        setMonth,
+        changePanel,
+      }"
     >
-      <div class="flex overflow-x-auto is-mb-5">
+      <div id="top" class="flex overflow-x-auto is-mb-5">
         <button
           :class="[
             tabButtonClasses,
@@ -85,21 +103,44 @@ const tabButtonClasses = useMainClass('tab-button');
         </button>
       </div>
 
+      <div v-if="!isLoading" :class="[useMainClass('toggle-group')]">
+        <button
+          type="button"
+          v-for="month in months"
+          :class="{ 'is-active': selectedMonth === month.name }"
+          @click="setMonth(month)"
+        >
+          {{ month.name }}
+        </button>
+      </div>
+
       <LoadingIndicator v-if="isLoading" />
 
-      <div id="container-top">
+      <pre>{{ datesFilter }}</pre>
+      <pre>{{ today }}</pre>
+      <div>
         <div v-if="games.totalItems === 0 && !isLoading">No game</div>
 
         <div v-for="(gameDay, key) in games.rows" :key="key" :data-gamedate="key">
           <span class="is-text-base">{{ format(new Date(key), 'LL dddd', timezone, locale) }}</span>
           <div class="is-card">
             <template v-for="game in gameDay" :key="game.id">
-              <GameItem :game="game" :locale="locale" :timezone="timezone" />
+              <GameItem
+                :game="game"
+                :locale="locale"
+                :timezone="timezone"
+                :game-link="resolveExternalGameLink"
+                :target="externalGameResolverTarget"
+              />
             </template>
           </div>
         </div>
       </div>
-      <a href="#container-top" @click="fetchMore">More</a>
+      <button  @click="more">More</button>
+      <!-- <div v-if="isPaginationVisible">
+        <a href="#top" :disabled="!nextAndPrevDates.prev" @click="prev">Prev</a>
+        <a href="#top" :disabled="!nextAndPrevDates.next" @click="next">Next</a>
+      </div> -->
     </DataProvider>
   </I18NProvider>
 </template>
