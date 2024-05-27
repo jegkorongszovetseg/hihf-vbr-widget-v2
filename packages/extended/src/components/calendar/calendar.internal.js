@@ -1,17 +1,11 @@
 import {
-  isToday,
   isBefore,
   isAfter,
-  currentWeek,
   currentWeekStartEnd,
   addDays,
   subtractDays,
   startOfMonth,
   endOfMonth,
-  min,
-  max,
-  isSame,
-  isBetween,
 } from '@mjsz-vbr-elements/core';
 import { last, head } from 'ramda';
 
@@ -20,17 +14,33 @@ export const PANEL_TODAYS_GAMES = 'todaysGames';
 export const PANEL_NEXT_GAMES = 'nextGames';
 export const PANEL_WEEK_GAMES = 'weekGames';
 
-export const today = '2023-06-20';
-
+export const today = '2024-05-27';
 export const gamesFilterMap = new Map()
-  .set(PANEL_TODAYS_GAMES, () => ({ min: new Date(today), max: new Date(today), month: null }))
+  .set(PANEL_TODAYS_GAMES, () => ({ min: new Date(today), max: new Date(today), month: null, id: null }))
   .set(PANEL_WEEK_GAMES, () => ({
     min: currentWeekStartEnd(today).startDate,
     max: currentWeekStartEnd(today).endDate,
     month: null,
+    id: null,
   }))
-  .set(PANEL_GAMES_PLAYED, (months) => ({ min: last(months)?.min, max: last(months)?.max, month: last(months)?.name }))
-  .set(PANEL_NEXT_GAMES, (months) => ({ min: head(months)?.min, max: head(months)?.max, month: head(months)?.name }));
+  .set(PANEL_GAMES_PLAYED, (months, paramsMonth = null) => {
+    const month = months.find((m) => m.id === paramsMonth);
+    return {
+      min: month?.min || last(months)?.min,
+      max: month?.max || last(months)?.max,
+      month: month?.month || last(months)?.name,
+      id: paramsMonth || last(months)?.id,
+    };
+  })
+  .set(PANEL_NEXT_GAMES, (months, paramsMonth = null) => {
+    const month = months.find((m) => m.id === paramsMonth);
+    return {
+      min: month?.min || head(months)?.min,
+      max: month?.max || head(months)?.max,
+      month: month?.month || head(months)?.name,
+      id: paramsMonth || head(months)?.id,
+    };
+  });
 
 export const monthDatesMap = new Map()
   .set(PANEL_TODAYS_GAMES, () => [])
@@ -52,6 +62,7 @@ function calculateNextGamesMonths(today, first, last) {
 
 export function getMonthsBetweenDates(startDate, endDate, direction, locale = 'hu') {
   const originalStartDate = startDate;
+  const originalEndDate = endDate;
   startDate = new Date(startDate);
   endDate = new Date(endDate);
 
@@ -73,9 +84,10 @@ export function getMonthsBetweenDates(startDate, endDate, direction, locale = 'h
   function setMonthObject(month) {
     if (months.findIndex((item) => item.name === month) === -1) {
       months.push({
+        id: `${currentDate.getFullYear()}-${currentDate.getMonth()}`,
         name: month,
         min: handleMinDates(originalStartDate, currentDate),
-        max: handleMaxDates(endDate, currentDate),
+        max: handleMaxDates(originalEndDate, currentDate),
       });
     }
   }
@@ -87,9 +99,9 @@ export function getMonthsBetweenDates(startDate, endDate, direction, locale = 'h
     return isAfter(startOfMonth(currentDate), date) ? startOfMonth(currentDate) : date;
   }
 
-  function handleMaxDates(endDate, currentDate) {
+  function handleMaxDates(date, currentDate) {
     if (direction) {
-      return isAfter(endOfMonth(currentDate), endDate) ? endDate : endOfMonth(currentDate);
+      return isAfter(date, endOfMonth(currentDate)) ? endOfMonth(currentDate) : date;
     }
     return endOfMonth(currentDate);
   }

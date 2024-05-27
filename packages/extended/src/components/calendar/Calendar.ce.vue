@@ -52,9 +52,10 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
         games,
         months,
         isLoading,
+        datesFilter,
         selectedPanel,
         selectedMonth,
-        datesFilter,
+        isFetchMoreButtonActive,
         more,
         setMonth,
         changePanel,
@@ -107,7 +108,7 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
         <button
           type="button"
           v-for="month in months"
-          :class="{ 'is-active': selectedMonth === month.name }"
+          :class="{ 'is-active': selectedMonth === month.id }"
           @click="setMonth(month)"
         >
           {{ month.name }}
@@ -118,6 +119,8 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
 
       <pre>{{ datesFilter }}</pre>
       <pre>{{ today }}</pre>
+      <pre>Selected-month: {{ selectedMonth }}</pre>
+      <pre>Total: {{ games.totalItems }}</pre>
       <div>
         <div v-if="games.totalItems === 0 && !isLoading">No game</div>
 
@@ -136,11 +139,10 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
           </div>
         </div>
       </div>
-      <button  @click="more">More</button>
-      <!-- <div v-if="isPaginationVisible">
-        <a href="#top" :disabled="!nextAndPrevDates.prev" @click="prev">Prev</a>
-        <a href="#top" :disabled="!nextAndPrevDates.next" @click="next">Next</a>
-      </div> -->
+
+      <button v-if="!isLoading && games.currentItems < games.totalItems && isFetchMoreButtonActive" @click="more">
+        More
+      </button>
     </DataProvider>
   </I18NProvider>
 </template>
