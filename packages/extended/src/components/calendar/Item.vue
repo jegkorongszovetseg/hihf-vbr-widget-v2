@@ -56,11 +56,11 @@ const { t } = useI18n();
     </div>
 
     <div :class="['is-game-data', { 'is-live': game.gameStatus === 1 }]">
-      <div class="g-row">
+      <!-- <div class="g-row">
         <span v-if="game.isOvertime" class="is-badge is-invert">{{ t('common.overtimeShort') }}</span>
         <span v-if="game.isShootout" class="is-badge is-invert">{{ t('common.shootoutShort') }}</span>
         <span v-if="game.seriesStandings" class="is-badge">{{ game.seriesStandings }}</span>
-      </div>
+      </div> -->
       <a :href="gameLink(game)" :target="target">
         <span v-if="game.gameStatus > 0 && game.gameStatus < 3" class="is-text-xl is-text-bold">
           {{ game.homeTeamScore }} - {{ game.awayTeamScore }}
@@ -73,10 +73,7 @@ const { t } = useI18n();
         </span>
       </a>
       <template v-if="game.gameStatus > 0">
-        <div class="is-text-sm is-whitespace-nowrap">{{ game.result }}</div>
-        <!-- <div v-if="game.gameStatus !== 2" class="is-text-xs is-uppercase is-whitespace-nowrap">
-          {{ t(`game.period.${game.period}`) }}
-        </div> -->
+        <div class="is-text-sm is-info is-whitespace-nowrap">{{ game.periodResults }}</div>
       </template>
     </div>
 

@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
-import { I18NProvider, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
+import { I18NProvider, LoadingIndicator, FetchMoreObserver } from '@mjsz-vbr-elements/core/components';
 import { getLocalTimezone, format, externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { gameProps } from '@mjsz-vbr-elements/core';
 import DataProvider from './DataProvider.vue';
@@ -114,15 +114,16 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
           {{ month.name }}
         </button>
       </div>
+      
+      <div v-if="games.totalItems === 0 && !isLoading" class="is-text-center">{{ t('calendar.noGame') }}</div>
 
-      <LoadingIndicator v-if="isLoading" />
-
-      <pre>{{ datesFilter }}</pre>
-      <pre>{{ today }}</pre>
-      <pre>Selected-month: {{ selectedMonth }}</pre>
-      <pre>Total: {{ games.totalItems }}</pre>
+      <!-- <pre>{{ datesFilter }}</pre>
+        <pre>{{ today }}</pre>
+        <pre>Selected-month: {{ selectedMonth }}</pre>
+        <pre>Total: {{ games.totalItems }}</pre> -->
       <div>
-        <div v-if="games.totalItems === 0 && !isLoading">No game</div>
+        
+        <LoadingIndicator v-if="isLoading" />
 
         <div v-for="(gameDay, key) in games.rows" :key="key" :data-gamedate="key">
           <span class="is-text-base">{{ format(new Date(key), 'LL dddd', timezone, locale) }}</span>
@@ -140,9 +141,13 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
         </div>
       </div>
 
-      <button v-if="!isLoading && games.currentItems < games.totalItems && isFetchMoreButtonActive" @click="more">
-        More
-      </button>
+      <FetchMoreObserver
+        v-if="!isLoading && games.currentItems < games.totalItems && isFetchMoreButtonActive"
+        :options="{ rootMargin: '400px' }"
+        @intersect="more"
+      >
+        <button @click="more">More</button>
+      </FetchMoreObserver>
     </DataProvider>
   </I18NProvider>
 </template>

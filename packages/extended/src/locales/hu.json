@@ -67,6 +67,7 @@
     "gamesPlayed": "Lejátszott mérkőzések",
     "todaysGames": "Mai mérkőzések",
     "nextGames": "Következő mérkőzések",
-    "weekGames": "A hét mérkőzései"
+    "weekGames": "A hét mérkőzései",
+    "noGame": "Nincs megjeleníthető mérkőzés"
   }
 }

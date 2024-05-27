@@ -21,6 +21,7 @@ import {
   today,
   getMonthsBetweenDates,
   monthDatesMap,
+  transformGames,
 } from './calendar.internal';
 
 // const limitInDay = 10;
@@ -70,7 +71,7 @@ const {
     apiKey: props.apiKey,
     params: { seasonId: props.seasonId },
   },
-  // transform: (res) => transformSections(res, state),
+  transform: (data) => transformGames(data),
   // onError,
 });
 

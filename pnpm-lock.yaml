@@ -88,6 +88,9 @@ importers:
       '@floating-ui/dom':
         specifier: ^1.6.5
         version: 1.6.5
+      '@lostui/utils':
+        specifier: ^0.0.3
+        version: 0.0.3
       '@mjsz-vbr-elements/shared':
         specifier: workspace:^
         version: link:../shared
@@ -911,6 +914,9 @@ packages:
 
   '@lezer/lr@1.4.0':
     resolution: {integrity: sha512-Wst46p51km8gH0ZUmeNrtpRYmdlRHUpN1DQd3GFAyKANi8WVz8c2jHYTf1CVScFaCjQw1iO3ZZdqGDxQPRErTg==}
+
+  '@lostui/utils@0.0.3':
+    resolution: {integrity: sha512-MlACQ3CnyqCDnBJPJC58heCQ06nb/CbB1BEwOE1mEqeZGpc0x7bhL3ok6IMc+O15V7eE0MYJYgFb//aqWCQXow==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -3798,6 +3804,12 @@ snapshots:
   '@lezer/lr@1.4.0':
     dependencies:
       '@lezer/common': 1.2.1
+
+  '@lostui/utils@0.0.3':
+    dependencies:
+      vue: 3.4.27
+    transitivePeerDependencies:
+      - typescript
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

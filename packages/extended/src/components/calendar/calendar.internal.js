@@ -6,6 +6,8 @@ import {
   subtractDays,
   startOfMonth,
   endOfMonth,
+  rawConvert,
+  convertGamePeriodResults,
 } from '@mjsz-vbr-elements/core';
 import { last, head } from 'ramda';
 
@@ -13,6 +15,8 @@ export const PANEL_GAMES_PLAYED = 'gamesPlayed';
 export const PANEL_TODAYS_GAMES = 'todaysGames';
 export const PANEL_NEXT_GAMES = 'nextGames';
 export const PANEL_WEEK_GAMES = 'weekGames';
+
+export const transformGames = (games) => rawConvert(games, convertGamePeriodResults);
 
 export const today = '2024-05-27';
 export const gamesFilterMap = new Map()

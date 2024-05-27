@@ -67,6 +67,7 @@
     "gamesPlayed": "Games played",
     "todaysGames": "Today's games",
     "nextGames": "Next games",
-    "weekGames": "Games of the week"
+    "weekGames": "Games of the week",
+    "noGame": "No games can be displayed"
   }
 }

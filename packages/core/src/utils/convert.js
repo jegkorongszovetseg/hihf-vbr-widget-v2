@@ -233,6 +233,13 @@ export const convertTimesSecToMin =
     return row;
   };
 
+export const convertGamePeriodResults = (row) => {
+  return {
+    ...row,
+    periodResults: row.result?.match(/\(.*?\)/)?.[0] ?? '',
+  };
+};
+
 const dateDiff = (a, b) => new Date(a.gameDate).getTime() - new Date(b.gameDate).getTime();
 
 export const sortGames = sortWith([dateDiff, ascend(prop('id')), ascend(prop('gameId'))]);
