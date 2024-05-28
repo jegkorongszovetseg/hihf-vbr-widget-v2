@@ -18,7 +18,8 @@ export const PANEL_WEEK_GAMES = 'weekGames';
 
 export const transformGames = (games) => rawConvert(games, convertGamePeriodResults);
 
-export const today = '2024-05-27';
+export const today = '2024-03-16';
+
 export const gamesFilterMap = new Map()
   .set(PANEL_TODAYS_GAMES, () => ({ min: new Date(today), max: new Date(today), month: null, id: null }))
   .set(PANEL_WEEK_GAMES, () => ({

@@ -23,7 +23,7 @@ A Magyar Jégkorong Szövetség versenybírósági rendszer adatainak megjelení
 
 ### Extended
 
-- [ ] Season Calendar / Versenynaptár
+- [x] Season Calendar / Versenynaptár
 - [ ] Public Calendar / Felső eredmények
 - [x] Championship / Teljes Bajnokság megjelenik
 - [ ] Standings / Főoldali tabellák

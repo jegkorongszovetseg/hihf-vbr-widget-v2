@@ -52,6 +52,7 @@ export default defineConfig(({ mode }) => {
             items: [
               { text: 'Bajnokságok', link: '/widget/extended-championship' },
               { text: 'Kupa Menetrend', link: '/widget/extended-cup-schedule' },
+              { text: 'Versenynaptár', link: '/widget/extended-calendar' },
             ],
           },
           {
