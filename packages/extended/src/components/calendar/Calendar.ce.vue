@@ -104,11 +104,13 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
         </button>
       </div>
 
-      <div v-if="!isLoading" :class="[useMainClass('toggle-group')]">
+      <div :class="[useMainClass('toggle-group')]">
         <button
           type="button"
           v-for="month in months"
+          :key="month.id"
           :class="{ 'is-active': selectedMonth === month.id }"
+          :disabled="isLoading"
           @click="setMonth(month)"
         >
           {{ month.name }}

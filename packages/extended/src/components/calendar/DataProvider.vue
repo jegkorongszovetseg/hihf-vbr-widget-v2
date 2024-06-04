@@ -4,14 +4,7 @@ import { useUrlSearchParams } from '@vueuse/core';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
 import {
   convert,
-  addDays,
-  subtractDays,
-  isBetween,
-  isAfter,
-  isBefore,
-  min,
-  max,
-  isSame,
+  format,
 } from '@mjsz-vbr-elements/core/utils';
 import {
   PANEL_GAMES_PLAYED,
@@ -24,7 +17,6 @@ import {
   transformGames,
 } from './calendar.internal';
 
-// const limitInDay = 10;
 const limit = 20;
 
 const props = defineProps({
@@ -56,9 +48,14 @@ const selectedPanel = ref(params.panel || PANEL_TODAYS_GAMES);
 const selectedMonth = ref(null);
 const page = ref(0);
 
+const firstAndLastDates = shallowRef({
+  firstGame: new Date(),
+  lastGame: new Date(),
+});
+
 const datesFilter = shallowRef({
-  min: null,
-  max: null,
+  min: format(new Date(), 'YYYY-MM-DD'),
+  max: format(new Date(), 'YYYY-MM-DD'),
 });
 
 const {
@@ -69,53 +66,42 @@ const {
   options: {
     path: '/v2/games-calendar',
     apiKey: props.apiKey,
-    params: { seasonId: props.seasonId },
+    params: computed(() => ({
+      seasonId: props.seasonId,
+      firstDate: datesFilter.value.min,
+      lastDate: datesFilter.value.max,
+    })),
+    resetOnExecute: true,
   },
-  transform: (data) => transformGames(data),
+  transform: (data) => transformGames(data, firstAndLastDates),
   // onError,
 });
 
-fetchGames();
-
-const filteredGames = computed(() =>
-  games.value.filter((game) => isBetween(game.gameDate, datesFilter.value.min, datesFilter.value.max))
-);
-
 const convertedGames = computed(() =>
-  convert(filteredGames.value)
+  convert(games.value)
     .schedule(timezone.value, locale.value)
     .more(0, page.value * limit + limit)
     .groupByDays()
     .value()
 );
 
-const firstAndLastDates = computed(() => {
-  const gameDates = (games.value || [])
-    .filter((game) => !isSame(game.gameDate, new Date('1970-01-01')))
-    .map((game) => game.gameDate);
-  const firstDate = min(gameDates);
-  const lastDate = max(gameDates);
-  return { firstDate, lastDate };
-});
-
 const isFetchMoreButtonActive = computed(() => [PANEL_GAMES_PLAYED, PANEL_NEXT_GAMES].includes(selectedPanel.value));
 
 const months = computed(() =>
   getMonthsBetweenDates(
-    ...monthDatesMap.get(selectedPanel.value)(firstAndLastDates.value.firstDate, firstAndLastDates.value.lastDate),
+    ...monthDatesMap.get(selectedPanel.value)(firstAndLastDates.value.firstGame, firstAndLastDates.value.lastGame),
     selectedPanel.value === PANEL_GAMES_PLAYED,
     locale.value
   )
 );
 
 watch(
-  [() => selectedPanel.value, () => firstAndLastDates.value],
-  ([selectedPanel, firstAndLastDates]) => {
-    if (!selectedPanel || !firstAndLastDates.firstDate) return;
-    const { min, max, id } = gamesFilterMap.get(selectedPanel)(months.value, params.month);
-    datesFilter.value = { min, max };
+  selectedPanel,
+  (selectedPanel) => {
+    const { min, max, id } = gamesFilterMap.get(selectedPanel)(params.month);
+    datesFilter.value = { min: format(min, 'YYYY-MM-DD'), max: format(max, 'YYYY-MM-DD') };
     selectedMonth.value = id;
-    params.month = id;
+    fetchGames();
   },
   {
     immediate: true,
@@ -130,15 +116,16 @@ function changePanel(value) {
 }
 
 function setMonth(payload) {
-  const { min, max, id } = payload;
+  const { min, max, id } = gamesFilterMap.get(selectedPanel.value)(payload.id);
   selectedMonth.value = id;
   params.month = id;
 
   datesFilter.value = {
-    min,
-    max,
+    min: format(min, 'YYYY-MM-DD'),
+    max: format(max, 'YYYY-MM-DD'),
   };
   page.value = 0;
+  fetchGames();
 }
 
 function more() {

@@ -16,41 +16,42 @@ export const PANEL_TODAYS_GAMES = 'todaysGames';
 export const PANEL_NEXT_GAMES = 'nextGames';
 export const PANEL_WEEK_GAMES = 'weekGames';
 
-export const transformGames = (games) => rawConvert(games, convertGamePeriodResults);
+export const transformGames = (games, dateRage) => {
+  dateRage.value = { firstGame: games.firstGame, lastGame: games.lastGame };
+  return rawConvert(games.games, convertGamePeriodResults);
+};
 
 export const today = '2024-03-16';
 
 export const gamesFilterMap = new Map()
-  .set(PANEL_TODAYS_GAMES, () => ({ min: new Date(today), max: new Date(today), month: null, id: null }))
+  .set(PANEL_TODAYS_GAMES, () => ({ min: new Date(), max: new Date(), month: null, id: null }))
   .set(PANEL_WEEK_GAMES, () => ({
-    min: currentWeekStartEnd(today).startDate,
-    max: currentWeekStartEnd(today).endDate,
+    min: currentWeekStartEnd().startDate,
+    max: currentWeekStartEnd().endDate,
     month: null,
     id: null,
   }))
-  .set(PANEL_GAMES_PLAYED, (months, paramsMonth = null) => {
-    const month = months.find((m) => m.id === paramsMonth);
+  .set(PANEL_GAMES_PLAYED, (paramsMonth = null) => {
+    const { year, month } = handleMonthParam(paramsMonth);
     return {
-      min: month?.min || last(months)?.min,
-      max: month?.max || last(months)?.max,
-      month: month?.month || last(months)?.name,
-      id: paramsMonth || last(months)?.id,
+      min: handleMinDates(new Date(year, month, 1), true),
+      max: handleMaxDates(new Date(year, month, 1), true),
+      id: `${year}-${month}`,
     };
   })
-  .set(PANEL_NEXT_GAMES, (months, paramsMonth = null) => {
-    const month = months.find((m) => m.id === paramsMonth);
+  .set(PANEL_NEXT_GAMES, (paramsMonth = null) => {
+    const { year, month } = handleMonthParam(paramsMonth);
     return {
-      min: month?.min || head(months)?.min,
-      max: month?.max || head(months)?.max,
-      month: month?.month || head(months)?.name,
-      id: paramsMonth || head(months)?.id,
+      min: handleMinDates(new Date(year, month, 1)),
+      max: handleMaxDates(new Date(year, month, 1)),
+      id: `${year}-${month}`,
     };
   });
 
 export const monthDatesMap = new Map()
   .set(PANEL_TODAYS_GAMES, () => [])
-  .set(PANEL_GAMES_PLAYED, (first, last) => calculateGamePlayedMonths(subtractDays(new Date(today), 1), first, last))
-  .set(PANEL_NEXT_GAMES, (first, last) => calculateNextGamesMonths(addDays(new Date(today), 1), first, last))
+  .set(PANEL_GAMES_PLAYED, (first, last) => calculateGamePlayedMonths(subtractDays(new Date(), 1), first, last))
+  .set(PANEL_NEXT_GAMES, (first, last) => calculateNextGamesMonths(addDays(new Date(), 1), first, last))
   .set(PANEL_WEEK_GAMES, () => []);
 
 function calculateGamePlayedMonths(today, first, last) {
@@ -91,25 +92,31 @@ export function getMonthsBetweenDates(startDate, endDate, direction, locale = 'h
       months.push({
         id: `${currentDate.getFullYear()}-${currentDate.getMonth()}`,
         name: month,
-        min: handleMinDates(originalStartDate, currentDate),
-        max: handleMaxDates(originalEndDate, currentDate),
       });
     }
   }
 
-  function handleMinDates(date, currentDate) {
-    if (direction) {
-      return startOfMonth(currentDate);
-    }
-    return isAfter(startOfMonth(currentDate), date) ? startOfMonth(currentDate) : date;
-  }
-
-  function handleMaxDates(date, currentDate) {
-    if (direction) {
-      return isAfter(date, endOfMonth(currentDate)) ? endOfMonth(currentDate) : date;
-    }
-    return endOfMonth(currentDate);
-  }
-
   return months;
+}
+
+function handleMonthParam(monthParam) {
+  if (!monthParam) return { year: new Date().getFullYear(), month: new Date().getMonth() };
+  const [year, month] = monthParam.split('-');
+  return { year, month };
+}
+
+function handleMinDates(date, direction) {
+  if (direction) {
+    return startOfMonth(date);
+  }
+  const limitDate = addDays(new Date(), 1);
+  return isBefore(startOfMonth(date), limitDate) ? limitDate : startOfMonth(date);
+}
+
+function handleMaxDates(date, direction = false) {
+  if (direction) {
+    const limitDate = subtractDays(new Date(), 1);
+    return isAfter(endOfMonth(date), limitDate) ? limitDate : endOfMonth(date);
+  }
+  return endOfMonth(date);
 }
