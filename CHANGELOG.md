@@ -1,54 +1,53 @@
 ## [2.4.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.8...v2.4.0) (2024-06-06)
-## [2.3.8](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.7...v2.3.8) (2024-05-21)
-## [2.3.7](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.6...v2.3.7) (2024-03-17)
 
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- Versenynaptár hozzáadása &nbsp;-&nbsp; by @Sokamoka [<samp>(121ab)</samp>](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/121ab0f)
+
+## [2.3.8](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.7...v2.3.8) (2024-05-21)
+
+## [2.3.7](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.6...v2.3.7) (2024-03-17)
 
 ### Bug Fixes
 
-* (liga/schedule) Videó link javítás ([2d4d675](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/2d4d675305e22389e04132a5b0b1165fdfc3f67e))
+- (liga/schedule) Videó link javítás ([2d4d675](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/2d4d675305e22389e04132a5b0b1165fdfc3f67e))
 
 ## [2.3.6](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.5...v2.3.6) (2024-03-16)
 
-
 ### Bug Fixes
 
-* (liga/standings) Újrajátszandó kiszúrése ([e08afc8](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/e08afc8d13efc036f31ac8f664f05be3b69a6f78))
+- (liga/standings) Újrajátszandó kiszúrése ([e08afc8](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/e08afc8d13efc036f31ac8f664f05be3b69a6f78))
 
 ## [2.3.5](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.4...v2.3.5) (2024-03-12)
 
-
 ### Bug Fixes
 
-* (liga/statistic) Prop type javítás ([f378da1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/f378da19147d24120fd5828f39adad1418616c08))
+- (liga/statistic) Prop type javítás ([f378da1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/f378da19147d24120fd5828f39adad1418616c08))
 
 ## [2.3.4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.3...v2.3.4) (2024-03-12)
 
-
 ### Bug Fixes
 
-* (liga/statistics) Szakaszok kiválásztásának javítása ([b2d1fe8](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/b2d1fe88325265e2e7c0276a016f7353a3c23263))
+- (liga/statistics) Szakaszok kiválásztásának javítása ([b2d1fe8](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/b2d1fe88325265e2e7c0276a016f7353a3c23263))
 
 ## [2.3.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.2...v2.3.3) (2024-03-11)
 
-
 ### Bug Fixes
 
-* (liga/playoffs): Mérkőzés linkek javítása ([1a20f8a](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/1a20f8a8b1d5ec7b59c61f4775f963a20b25d184))
+- (liga/playoffs): Mérkőzés linkek javítása ([1a20f8a](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/1a20f8a8b1d5ec7b59c61f4775f963a20b25d184))
 
 ## [2.3.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.1...v2.3.2) (2024-03-09)
 
-
 ### Bug Fixes
 
-* (liga/playoffs) Mobil nézet csíkozás javítás ([e290914](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/e29091401bde2b2414ae42e045d9263b28758476))
+- (liga/playoffs) Mobil nézet csíkozás javítás ([e290914](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/e29091401bde2b2414ae42e045d9263b28758476))
 
 ## [2.3.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.0...v2.3.1) (2024-03-06)
 
-
 ### Bug Fixes
 
-* (liga/schedule) URL params javítás ([f6a78f0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/f6a78f05e07f502a4f9810bd737119ad4ea1c536))
-* (liga/standings) Bajnokság fázisokból Rájátszás törlése ([49dfa4a](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/49dfa4a8856cc65d5c8b1131ecb72bd670b2dff2))
+- (liga/schedule) URL params javítás ([f6a78f0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/f6a78f05e07f502a4f9810bd737119ad4ea1c536))
+- (liga/standings) Bajnokság fázisokból Rájátszás törlése ([49dfa4a](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/49dfa4a8856cc65d5c8b1131ecb72bd670b2dff2))
 
 ## [2.3.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.2.7...v2.3.0) (2024-02-25)
 
