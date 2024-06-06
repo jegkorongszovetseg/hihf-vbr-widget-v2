@@ -29,5 +29,11 @@ const { error, isReady } = useImage(imageOptions, { resetOnExecute: false, shall
 
 <template>
   <img v-if="error && defaultSrc" :src="defaultSrc" :class="['is-loaded is-default', $attrs.class]" />
-  <img v-if="!error" :src="imageOptions.src" :class="[$attrs.class, { 'is-loaded': isReady }]" :title="props.title" />
+  <img
+    v-if="!error"
+    :src="imageOptions.src"
+    :class="[$attrs.class, { 'is-loaded': isReady }]"
+    :title="props.title"
+    loading="lazy"
+  />
 </template>

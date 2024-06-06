@@ -33,8 +33,8 @@ export const convert = (data = []) => {
     value() {
       return {
         rows: this.result,
-        totalItems: this.filteredRowsLength,
         totalItems: this.isFiltered ? this.filteredRowsLength : data.length,
+        currentItems: this.currentItems,
       };
     },
 
@@ -90,6 +90,11 @@ export const convert = (data = []) => {
       return this;
     },
 
+    more(min, max) {
+      this.result = this.result.slice(Number(min), Number(max));
+      return this;
+    },
+
     playerName() {
       this.result = this.result.map((row) => ({
         ...row,
@@ -136,6 +141,7 @@ export const convert = (data = []) => {
     },
 
     groupByDays() {
+      this.currentItems = this.result.length;
       this.result = groupBy((row) => {
         return format(row.gameDate, 'YYYY-MM-DD');
       })(this.result);
@@ -226,6 +232,13 @@ export const convertTimesSecToMin =
     });
     return row;
   };
+
+export const convertGamePeriodResults = (row) => {
+  return {
+    ...row,
+    periodResults: row.result?.match(/\(.*?\)/)?.[0] ?? '',
+  };
+};
 
 const dateDiff = (a, b) => new Date(a.gameDate).getTime() - new Date(b.gameDate).getTime();
 

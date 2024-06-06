@@ -62,5 +62,13 @@
       "short": "Document",
       "tooltip": "Application Form/Schedule"
     }
+  },
+  "calendar": {
+    "gamesPlayed": "Games played",
+    "todaysGames": "Today's games",
+    "nextGames": "Next games",
+    "weekGames": "Games of the week",
+    "noGame": "No games can be displayed",
+    "more": "More"
   }
 }

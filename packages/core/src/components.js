@@ -1,3 +1,4 @@
+import { FetchMoreObserver } from '@lostui/utils/components';
 import BaseSelect from './components/BaseSelect.vue';
 import DataTable from './components/DataTable.vue';
 import ErrorNotice from './components/ErrorNotice.vue';
@@ -29,5 +30,6 @@ export {
   ResponsiveTable,
   LoadingIndicator,
   TimezoneSelector,
+  FetchMoreObserver,
   AdditionalStandingsText,
 };
