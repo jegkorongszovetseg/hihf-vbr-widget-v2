@@ -2,16 +2,16 @@
 outline: false
 ---
 
-# Versenynaptár (Fejlesztés alatt)
+# Versenynaptár
 
 ## Használat
 
 ```html
-<mjsz-vbr-calendar locale="hu" season-id="216" external-game-resolver="/GameCenter?gameId={id}" />
+<mjsz-vbr-calendar locale="hu" season-id="216" />
 ```
 
 ## Példa
 
 <ClientOnly>
-  <mjsz-vbr-calendar locale="hu" season-id="216" />
+  <mjsz-vbr-calendar locale="hu" season-id="216" external-game-resolver="/widget/gamecenter.html?gameId={id}" />
 </ClientOnly>
