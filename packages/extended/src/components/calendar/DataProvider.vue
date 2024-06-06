@@ -1,20 +1,18 @@
 <script setup>
 import { computed, ref, shallowRef, toRefs, watch } from 'vue';
 import { useUrlSearchParams } from '@vueuse/core';
-import { useServices } from '@mjsz-vbr-elements/core/composables';
+import { head, last } from 'ramda';
+import { useServices, useError } from '@mjsz-vbr-elements/core/composables';
+import { convert, format, isAfter, isBefore } from '@mjsz-vbr-elements/core/utils';
 import {
-  convert,
-  format,
-} from '@mjsz-vbr-elements/core/utils';
-import {
+  today,
+  monthDatesMap,
+  gamesFilterMap,
+  transformGames,
+  PANEL_NEXT_GAMES,
   PANEL_GAMES_PLAYED,
   PANEL_TODAYS_GAMES,
-  PANEL_NEXT_GAMES,
-  gamesFilterMap,
-  today,
   getMonthsBetweenDates,
-  monthDatesMap,
-  transformGames,
 } from './calendar.internal';
 
 const limit = 20;
@@ -42,6 +40,8 @@ const props = defineProps({
 });
 const { timezone, locale } = toRefs(props);
 
+const { onError } = useError();
+
 const params = useUrlSearchParams('history');
 
 const selectedPanel = ref(params.panel || PANEL_TODAYS_GAMES);
@@ -49,13 +49,13 @@ const selectedMonth = ref(null);
 const page = ref(0);
 
 const firstAndLastDates = shallowRef({
-  firstGame: new Date(),
-  lastGame: new Date(),
+  firstGame: today,
+  lastGame: today,
 });
 
 const datesFilter = shallowRef({
-  min: format(new Date(), 'YYYY-MM-DD'),
-  max: format(new Date(), 'YYYY-MM-DD'),
+  min: format(today, 'YYYY-MM-DD'),
+  max: format(today, 'YYYY-MM-DD'),
 });
 
 const {
@@ -74,7 +74,7 @@ const {
     resetOnExecute: true,
   },
   transform: (data) => transformGames(data, firstAndLastDates),
-  // onError,
+  onError,
 });
 
 const convertedGames = computed(() =>
@@ -97,11 +97,12 @@ const months = computed(() =>
 
 watch(
   selectedPanel,
-  (selectedPanel) => {
+  async (selectedPanel) => {
     const { min, max, id } = gamesFilterMap.get(selectedPanel)(params.month);
     datesFilter.value = { min: format(min, 'YYYY-MM-DD'), max: format(max, 'YYYY-MM-DD') };
     selectedMonth.value = id;
-    fetchGames();
+    await fetchGames();
+    if (!params.month) monthOverwrite();
   },
   {
     immediate: true,
@@ -130,6 +131,23 @@ function setMonth(payload) {
 
 function more() {
   page.value += 1;
+}
+
+function monthOverwrite() {
+  if (![PANEL_GAMES_PLAYED, PANEL_NEXT_GAMES].includes(selectedPanel.value)) return;
+  const { firstGame, lastGame } = firstAndLastDates.value;
+  if (isBefore(today, firstGame)) {
+    const { min, max, id } = gamesFilterMap.get(selectedPanel.value)(head(months.value)?.id);
+    datesFilter.value = { min: format(min, 'YYYY-MM-DD'), max: format(max, 'YYYY-MM-DD') };
+    selectedMonth.value = id;
+    return fetchGames();
+  }
+  if (isAfter(today, lastGame)) {
+    const { min, max, id } = gamesFilterMap.get(selectedPanel.value)(last(months.value)?.id);
+    datesFilter.value = { min: format(min, 'YYYY-MM-DD'), max: format(max, 'YYYY-MM-DD') };
+    selectedMonth.value = id;
+    fetchGames();
+  }
 }
 </script>
 

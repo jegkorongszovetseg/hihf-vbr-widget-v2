@@ -9,7 +9,6 @@ import {
   rawConvert,
   convertGamePeriodResults,
 } from '@mjsz-vbr-elements/core';
-import { last, head } from 'ramda';
 
 export const PANEL_GAMES_PLAYED = 'gamesPlayed';
 export const PANEL_TODAYS_GAMES = 'todaysGames';
@@ -21,10 +20,11 @@ export const transformGames = (games, dateRage) => {
   return rawConvert(games.games, convertGamePeriodResults);
 };
 
-export const today = '2024-03-16';
+// '2024-06-08'
+export const today = new Date();
 
 export const gamesFilterMap = new Map()
-  .set(PANEL_TODAYS_GAMES, () => ({ min: new Date(), max: new Date(), month: null, id: null }))
+  .set(PANEL_TODAYS_GAMES, () => ({ min: today, max: today, month: null, id: null }))
   .set(PANEL_WEEK_GAMES, () => ({
     min: currentWeekStartEnd().startDate,
     max: currentWeekStartEnd().endDate,
@@ -50,8 +50,8 @@ export const gamesFilterMap = new Map()
 
 export const monthDatesMap = new Map()
   .set(PANEL_TODAYS_GAMES, () => [])
-  .set(PANEL_GAMES_PLAYED, (first, last) => calculateGamePlayedMonths(subtractDays(new Date(), 1), first, last))
-  .set(PANEL_NEXT_GAMES, (first, last) => calculateNextGamesMonths(addDays(new Date(), 1), first, last))
+  .set(PANEL_GAMES_PLAYED, (first, last) => calculateGamePlayedMonths(subtractDays(today, 1), first, last))
+  .set(PANEL_NEXT_GAMES, (first, last) => calculateNextGamesMonths(addDays(today, 1), first, last))
   .set(PANEL_WEEK_GAMES, () => []);
 
 function calculateGamePlayedMonths(today, first, last) {
@@ -99,8 +99,8 @@ export function getMonthsBetweenDates(startDate, endDate, direction, locale = 'h
   return months;
 }
 
-function handleMonthParam(monthParam) {
-  if (!monthParam) return { year: new Date().getFullYear(), month: new Date().getMonth() };
+export function handleMonthParam(monthParam) {
+  if (!monthParam) return { year: today.getFullYear(), month: today.getMonth() };
   const [year, month] = monthParam.split('-');
   return { year, month };
 }
@@ -109,13 +109,13 @@ function handleMinDates(date, direction) {
   if (direction) {
     return startOfMonth(date);
   }
-  const limitDate = addDays(new Date(), 1);
+  const limitDate = addDays(today, 1);
   return isBefore(startOfMonth(date), limitDate) ? limitDate : startOfMonth(date);
 }
 
 function handleMaxDates(date, direction = false) {
   if (direction) {
-    const limitDate = subtractDays(new Date(), 1);
+    const limitDate = subtractDays(today, 1);
     return isAfter(endOfMonth(date), limitDate) ? limitDate : endOfMonth(date);
   }
   return endOfMonth(date);

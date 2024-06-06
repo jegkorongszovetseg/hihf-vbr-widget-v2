@@ -49,7 +49,7 @@
     display: none;
   }
 
-  @container card-row (max-width: 768px) {
+  @container card-row (max-width: 640px) {
     .is-team-name-long {
       display: none;
     }
