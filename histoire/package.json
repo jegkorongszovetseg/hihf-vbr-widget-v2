@@ -20,7 +20,7 @@
     "@mjsz-vbr-elements/liga": "workspace:^"
   },
   "devDependencies": {
-    "@histoire/plugin-vue": "^0.17.17",
+    "@histoire/plugin-vue": "^0.17.9",
     "@vitejs/plugin-vue": "^5.0.4",
     "histoire": "^0.17.9",
     "vite": "^5.2.11",
