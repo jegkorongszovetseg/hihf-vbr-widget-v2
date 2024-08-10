@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
-import { createWebHistory, createRouter } from 'vue-router/auto';
+import { createRouter, createWebHistory } from 'vue-router';
+import { routes } from 'vue-router/auto-routes';
 import MjszVbrElementsCore from '@mjsz-vbr-elements/core';
 import MjszVbrElements from '@mjsz-vbr-elements/elements';
 import MjszVbrElementsExtended from '@mjsz-vbr-elements/extended';
@@ -12,6 +13,7 @@ import '@unocss/reset/tailwind.css';
 
 const router = createRouter({
   history: createWebHistory(),
+  routes,
 });
 
 const app = createApp(App);

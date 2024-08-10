@@ -40,7 +40,7 @@
   "unpkg": "./dist/index.iife.js",
   "dependencies": {
     "@floating-ui/dom": "^1.6.10",
-    "@lostui/utils": "^0.0.3",
+    "@lostui/utils": "^0.0.4",
     "@mjsz-vbr-elements/shared": "workspace:^",
     "@vueuse/core": "^10.11.1",
     "@xstate/fsm": "^2.1.0",

@@ -17,12 +17,12 @@
     "vue": "^3.4.37"
   },
   "devDependencies": {
-    "@unocss/preset-uno": "^0.60.4",
-    "@unocss/preset-wind": "^0.60.4",
-    "@unocss/reset": "^0.60.4",
+    "@unocss/preset-uno": "^0.61.9",
+    "@unocss/preset-wind": "^0.61.9",
+    "@unocss/reset": "^0.61.9",
     "@vitejs/plugin-vue": "^5.1.2",
     "unocss": "^0.60.4",
-    "unplugin-vue-router": "^0.8.8",
+    "unplugin-vue-router": "^0.10.2",
     "vite": "^5.4.0",
     "vue-router": "^4.4.3"
   }
