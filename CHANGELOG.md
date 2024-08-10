@@ -1,3 +1,8 @@
+## [2.4.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.4.0...v2.4.1) (2024-08-10)
+
+### Bug Fixes
+
+* **doc:** Fix external-game-resolver prop name in docs ([41654c1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/41654c1812fd55186d7c29977632d754a9121039))
 ## [2.4.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.3.8...v2.4.0) (2024-06-06)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
