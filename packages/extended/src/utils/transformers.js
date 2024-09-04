@@ -1,4 +1,4 @@
-import { head, compose, descend, map, pick, prop, sort, path } from 'ramda';
+import { head, compose, descend, map, pick, prop, sort, path, sortBy } from 'ramda';
 import { InvalidSeasonName, WidgetError } from '@mjsz-vbr-elements/core/utils';
 
 export const transformSeasons = (seasons, state) => {
@@ -8,8 +8,8 @@ export const transformSeasons = (seasons, state) => {
 };
 
 export const transformSections = (sections, state) => {
-  state.sections = sections;
-  state.sectionId = compose(prop('sectionId'), head)(sections);
+  state.sections = sortBy(prop('sectionId'))(sections);
+  state.sectionId = compose(prop('sectionId'), head)(state.sections);
   state.phaseId = path([0, 'phases', 0], sections)?.phaseId ?? null;
 };
 
