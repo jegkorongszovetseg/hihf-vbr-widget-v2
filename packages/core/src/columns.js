@@ -419,6 +419,49 @@ export const COLUMNS_GOALIES = {
   },
 };
 
+export const COLUMNS_PLAYERS_NATIONAL = {
+  index: {
+    label: '#',
+    class: 'is-text-left',
+  },
+  playerPortrait: {
+    label: '',
+    class: 'is-has-image',
+  },
+  name: {
+    label: 'table.name.short',
+    tooltip: 'table.name.tooltip',
+    class: 'is-text-left is-w-auto is-text-bold',
+    sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
+  },
+  gp: {
+    label: 'table.game.short',
+    tooltip: 'table.game.tooltip',
+    sortOrders: [{ target: 'gp', direction: SORT_STATE_DESCEND }],
+  },
+  goals: {
+    label: 'table.goals.short',
+    tooltip: 'table.goals.tooltip',
+    sortOrders: [
+      { target: 'goals', direction: SORT_STATE_DESCEND },
+      { target: 'assists', direction: SORT_STATE_DESCEND },
+    ],
+  },
+  assists: {
+    label: 'table.assists.short',
+    tooltip: 'table.assists.tooltip',
+    sortOrders: [
+      { target: 'assists', direction: SORT_STATE_DESCEND },
+      { target: 'goals', direction: SORT_STATE_DESCEND },
+    ],
+  },
+  points: {
+    label: 'table.points.short',
+    tooltip: 'table.points.tooltip',
+    sortOrders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
+  },
+};
+
 export const COLUMNS_TEAM_ATTENDANCE = {
   index: {
     label: 'table.blank',

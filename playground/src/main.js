@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
-import { routes } from 'vue-router/auto-routes';
+import { routes, handleHotUpdate } from 'vue-router/auto-routes';
 import MjszVbrElementsCore from '@mjsz-vbr-elements/core';
 import MjszVbrElements from '@mjsz-vbr-elements/elements';
 import MjszVbrElementsExtended from '@mjsz-vbr-elements/extended';
@@ -15,6 +15,10 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+if (import.meta.hot) {
+  handleHotUpdate(router);
+}
 
 const app = createApp(App);
 
