@@ -1,3 +1,8 @@
+## [2.4.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.4.2...v2.4.3) (2024-09-04)
+
+### Bug Fixes
+
+* (extended/schedule-cup) Section sorrend id szerint ([5dcc591](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/5dcc5914b529ba9e9e2c80122f743cfa55111ba3))
 ## [2.4.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.4.1...v2.4.2) (2024-09-04)
 
 ### Bug Fixes
