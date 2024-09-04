@@ -1,3 +1,8 @@
+## [2.4.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.4.1...v2.4.2) (2024-09-04)
+
+### Bug Fixes
+
+* (extended/championship) Section sorrend id alapján ([509933b](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/509933b6bce37106e3b3e0df11fa0bc6722d07fc))
 ## [2.4.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.4.0...v2.4.1) (2024-08-10)
 
 ### Bug Fixes
