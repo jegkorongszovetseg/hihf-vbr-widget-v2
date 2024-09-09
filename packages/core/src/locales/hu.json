@@ -349,6 +349,58 @@
     "resultType": {
       "short": "#",
       "tooltip": "Végeredmény típusa"
+    },
+    "atoi": {
+      "short": "ATOI",
+      "tooltip": "Átlagos jégen töltött idő"
+    },
+    "shf": {
+      "short": "SHF",
+      "tooltip": "Jégre lépések száma"
+    },
+    "ashf": {
+      "short": "ASHF",
+      "tooltip": "Jégre lépések száma átlagosan"
+    },
+    "eqToi": {
+      "short": "eqTOI",
+      "tooltip": "Jégen töltött idő azonos létszámban"
+    },
+    "pp1Toi": {
+      "short": "pp1Toi",
+      "tooltip": "Jégen töltött idő egyszeres emberelőnyben"
+    },
+    "pp2Toi": {
+      "short": "pp2Toi",
+      "tooltip": "Jégen töltött idő kétszeres emberelőnyben"
+    },
+    "sh1Toi": {
+      "short": "sh1Toi",
+      "tooltip": "Jégen töltött idő egyszeres emberhátrányban"
+    },
+    "sh2Toi": {
+      "short": "sh2Toi",
+      "tooltip": "Jégen töltött idő kétszeres emberhátrányban"
+    },
+    "eqAToi": {
+      "short": "eqAToi",
+      "tooltip": "Átlagos jégen töltött idő azonos létszámban"
+    },
+    "pp1AToi": {
+      "short": "pp1AToi",
+      "tooltip": "Átlagos jégen töltött idő egyszeres emberelőnyben"
+    },
+    "pp2AToi": {
+      "short": "pp2AToi",
+      "tooltip": "Átlagos jégen töltött idő kétszeres emberelőnyben"
+    },
+    "sh1AToi": {
+      "short": "sh1AToi",
+      "tooltip": "Átlagos jégen töltött idő egyszeres emberhátrányban"
+    },
+    "sh2AToi": {
+      "short": "sh2AToi",
+      "tooltip": "Átlagos jégen töltött idő kétszeres emberhátrányban"
     }
   },
   "game": {

@@ -7,6 +7,7 @@ import {
   teamName,
   playerName,
   rawConvert,
+  convertTimesSecToMin,
   externalTeamLinkResolver,
   externalPlayerLinkResolver,
 } from '@mjsz-vbr-elements/core/utils';
@@ -44,11 +45,31 @@ const { state: rawRows, isLoading } = useAsyncState(
 const { page, change: onPaginatorChange } = usePage();
 
 const { sort, change: onSort } = useSort({
-  sortTarget: 'points',
-  orders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
+  sortTarget: 'toi',
+  orders: [{ target: 'toi', direction: SORT_STATE_DESCEND }],
 });
 
-const rows = computed(() => rawConvert(unref(rawRows), playerName, teamName));
+const rows = computed(() =>
+  rawConvert(
+    unref(rawRows),
+    playerName,
+    teamName,
+    convertTimesSecToMin([
+      'toi',
+      'atoi',
+      'eqToi',
+      'pp1Toi',
+      'pp2Toi',
+      'sh1Toi',
+      'sh2Toi',
+      'eqAToi',
+      'pp1AToi',
+      'pp2AToi',
+      'sh1AToi',
+      'sh2AToi',
+    ])
+  )
+);
 
 const convertedRows = computed(() => {
   return convert(unref(rows))
