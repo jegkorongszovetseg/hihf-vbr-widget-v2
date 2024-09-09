@@ -4,7 +4,6 @@ import { useAsyncState } from '@vueuse/core';
 import { useSort, fetchVBRData, usePage, useErrorProvider } from '@mjsz-vbr-elements/core/composables';
 import {
   convert,
-  teamName,
   playerName,
   rawConvert,
   externalTeamLinkResolver,
@@ -47,14 +46,14 @@ const { state: rawRows, isLoading } = useAsyncState(
 const { page, change: onPaginatorChange } = usePage();
 
 const { sort, change: onSort } = useSort({
-  sortTarget: 'points',
-  orders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
+  sortTarget: 'gp',
+  orders: [{ target: 'gp', direction: SORT_STATE_DESCEND }],
 });
 
 const rows = computed(() => rawConvert(unref(rawRows), playerName));
 
 const convertedRows = computed(() => {
-  return convert(unref(rows))
+  return convert(rows.value)
     .sorted(sort)
     .addIndex(sort.sortTarget)
     .pagination(unref(page), props.limit)

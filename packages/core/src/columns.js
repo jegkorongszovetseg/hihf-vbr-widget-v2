@@ -447,11 +447,11 @@ export const COLUMNS_PLAYERS_NATIONAL = {
       { target: 'assists', direction: SORT_STATE_DESCEND },
     ],
   },
-  assists: {
+  assist: {
     label: 'table.assists.short',
     tooltip: 'table.assists.tooltip',
     sortOrders: [
-      { target: 'assists', direction: SORT_STATE_DESCEND },
+      { target: 'assist', direction: SORT_STATE_DESCEND },
       { target: 'goals', direction: SORT_STATE_DESCEND },
     ],
   },
