@@ -8,6 +8,7 @@ import TeamFairplay from './TeamFairplay.ce.vue';
 import TeamPenaltyKilling from './TeamPenaltyKilling.ce.vue';
 import TeamPowerplay from './TeamPowerplay.ce.vue';
 import TeamScoringEfficiency from './TeamScoringEfficiency.ce.vue';
+import FieldPlayersToi from './FieldPlayersToi.ce.vue';
 
 export {
   Standings,
@@ -20,4 +21,5 @@ export {
   TeamPenaltyKilling,
   TeamPowerplay,
   TeamScoringEfficiency,
+  FieldPlayersToi,
 };
