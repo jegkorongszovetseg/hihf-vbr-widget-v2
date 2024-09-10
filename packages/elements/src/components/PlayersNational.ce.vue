@@ -14,6 +14,11 @@ import { COLUMNS_PLAYERS_NATIONAL } from '@mjsz-vbr-elements/core/columns';
 import { I18NProvider, ErrorNotice, StatisticsTable, Paginator } from '@mjsz-vbr-elements/core/components';
 
 const props = defineProps({
+  apiKey: {
+    type: String,
+    default: '',
+  },
+
   locale: {
     type: String,
     default: 'hu',
@@ -22,6 +27,11 @@ const props = defineProps({
   gender: {
     type: String,
     default: 'male',
+  },
+
+  limit: {
+    type: Number,
+    default: 50,
   },
 });
 
