@@ -16,6 +16,8 @@ import { COLUMNS_FIELD_PLAYERS_TOI } from '@mjsz-vbr-elements/core/columns';
 import { baseProps, playerStatsProps, teamStatsProps } from '@mjsz-vbr-elements/core';
 import { I18NProvider, ErrorNotice, StatisticsTable, Paginator } from '@mjsz-vbr-elements/core/components';
 
+const columns = COLUMNS_FIELD_PLAYERS_TOI;
+
 const props = defineProps({
   ...baseProps,
   ...playerStatsProps,
@@ -24,7 +26,6 @@ const props = defineProps({
 
 const tooltipContainer = ref(null);
 
-const columns = COLUMNS_FIELD_PLAYERS_TOI;
 const locale = computed(() => props.locale);
 
 const { onError, error, hasError } = useErrorProvider();
