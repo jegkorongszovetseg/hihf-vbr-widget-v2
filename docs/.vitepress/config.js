@@ -45,6 +45,7 @@ export default defineConfig(({ mode }) => {
               { text: 'Csapat emberhátrányok', link: '/widget/teams-penalty-killing' },
               { text: 'Csapat emberelőnyök', link: '/widget/teams-powerplay' },
               { text: 'Csapat hatékonyság', link: '/widget/teams-scoring-efficiency' },
+              { text: 'Válogatott játékosok', link: '/widget/national-players' },
             ],
           },
           {

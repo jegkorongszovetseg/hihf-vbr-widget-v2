@@ -156,6 +156,7 @@ export const playerName = (row) => ({
   ...row,
   ...(row.lastName && row.firstName && { name: `${row.lastName} ${row.firstName}` }),
   ...(row.player?.playerId && { name: `${row.player.lastName} ${row.player.firstName}` }),
+  ...(row.player?.id && { name: `${row.player.lastName} ${row.player.firstName}` }),
   ...(row.player?.nationality && {
     name: row.player?.nationality.includes('hu')
       ? `${row.player.lastName} ${row.player.firstName}`
