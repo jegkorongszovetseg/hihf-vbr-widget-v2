@@ -1,7 +1,7 @@
-import { replace, toUpper, compose, reject, test, split, map, sortBy, indexOf, prop, mergeAll, mergeLeft } from 'ramda';
+import { replace, toUpper, compose, reject, test, split, map, sortBy, indexOf, mergeLeft } from 'ramda';
 
 import { SORT_STATE_DESCEND, SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
-import { convertSecToMin } from '@mjsz-vbr-elements/core/utils';
+import { convertSecToMin, convertTimesSecToMin, rawConvert } from '@mjsz-vbr-elements/core/utils';
 
 export const DEAFULT_LOGO_TEAM_A =
   'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMzYgMzYiPjxwYXRoIGZpbGw9IiNERDJFNDQiIGQ9Ik0zNiAzMmE0IDQgMCAwIDEtNCA0SDRhNCA0IDAgMCAxLTQtNFY0YTQgNCAwIDAgMSA0LTRoMjhhNCA0IDAgMCAxIDQgNHYyOHoiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNMTQuNzQ3IDkuMTI1Yy41MjctMS40MjYgMS43MzYtMi41NzMgMy4zMTctMi41NzNjMS42NDMgMCAyLjc5MiAxLjA4NSAzLjMxOCAyLjU3M2w2LjA3NyAxNi44NjdjLjE4Ni40OTYuMjQ4LjkzMS4yNDggMS4xNDdjMCAxLjIwOS0uOTkyIDIuMDQ2LTIuMTM5IDIuMDQ2Yy0xLjMwMyAwLTEuOTU0LS42ODItMi4yNjQtMS42MTFsLS45MzEtMi45MTVoLTguNjJsLS45MyAyLjg4NGMtLjMxLjk2MS0uOTYxIDEuNjQyLTIuMjMyIDEuNjQyYy0xLjI0IDAtMi4yOTQtLjkzLTIuMjk0LTIuMTdjMC0uNDk2LjE1NS0uODY4LjIxNy0xLjAyM2w2LjIzMy0xNi44Njd6bS4zNCAxMS4yNTZoNS44OTFsLTIuODgzLTguOTkyaC0uMDYybC0yLjk0NiA4Ljk5MnoiLz48L3N2Zz4=';
@@ -73,6 +73,16 @@ export const PLAYER_STATS_COLUMNS = {
     label: 'table.pim.short',
     tooltip: 'table.pim.tooltip',
     sortOrders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
+  },
+  shf: {
+    label: 'table.shf.short',
+    tooltip: 'table.shf.tooltip',
+    sortOrders: [{ target: 'shf', direction: SORT_STATE_DESCEND }],
+  },
+  toiMin: {
+    label: 'table.toi.short',
+    tooltip: 'table.toi.tooltip',
+    sortOrders: [{ target: 'toi', direction: SORT_STATE_DESCEND }],
   },
 };
 
@@ -250,3 +260,5 @@ function logObject(name, data) {
   console.log(name);
   return Object.keys(data).map((key) => console.log(key));
 }
+
+export const convertPlayersTOI = (data) => rawConvert(data, convertTimesSecToMin(['toi']));
