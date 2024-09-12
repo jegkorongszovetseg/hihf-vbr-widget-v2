@@ -1,3 +1,8 @@
+## [2.5.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.5.1...v2.5.2) (2024-09-12)
+
+### Bug Fixes
+
+* (gamecenter) Játékos statisztikák egymás alatt ([c543149](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/c543149dd3e96c09c9a920881590b340f124ed62))
 ## [2.5.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.5.0...v2.5.1) (2024-09-12)
 
 ### Features
