@@ -1,3 +1,8 @@
+## [2.5.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.5.0...v2.5.1) (2024-09-12)
+
+### Features
+
+* (gamecenter) Cserék és jégen töltött idők megjelenítése ([5165f7c](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/5165f7cc11c52e0b7f7811d6aac582c7cd315540))
 ## [2.5.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.4.3...v2.5.0) (2024-09-12)
 ## [2.4.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.4.2...v2.4.3) (2024-09-04)
 
