@@ -36,7 +36,7 @@ const homePlayers = computed(() => convertPlayersTOI(props.data?.[props.homeTeam
 const awayPlayers = computed(() => convertPlayersTOI(props.data?.[props.awayTeamId] ?? []));
 </script>
 <template>
-  <div :class="useMainClass('gamecenter-data-columns')">
+  <div :class="useMainClass('gamecenter-data-column')">
     <GamePlayerStatsProvider :rows="homePlayers" #default="{ rows, sort, onSort }">
       <GameDataTable :columns="columns" :rows="rows" :title="homeTeamName" :sort="sort" @sort="onSort" />
     </GamePlayerStatsProvider>
