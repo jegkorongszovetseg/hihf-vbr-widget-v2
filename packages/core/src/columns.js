@@ -347,6 +347,108 @@ export const COLUMNS_FIELD_PLAYERS_PENALTY = {
   },
 };
 
+export const COLUMNS_FIELD_PLAYERS_TOI = {
+  index: {
+    label: '#',
+    class: 'is-text-left',
+  },
+  playerPortrait: {
+    label: '',
+    class: 'is-has-image',
+  },
+  name: {
+    label: 'table.name.short',
+    tooltip: 'table.name.tooltip',
+    class: 'is-text-left is-w-auto is-text-bold',
+    sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
+  },
+  teamLogo: {
+    label: '',
+    class: 'is-has-image',
+  },
+  teamName: {
+    label: 'table.team.short',
+    tooltip: 'table.team.tooltip',
+    class: 'is-text-left is-w-auto',
+    sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
+  },
+  gp: {
+    label: 'table.game.short',
+    tooltip: 'table.game.tooltip',
+    sortOrders: [{ target: 'gp', direction: SORT_STATE_DESCEND }],
+  },
+  toiMin: {
+    label: 'table.toi.short',
+    tooltip: 'table.toi.tooltip',
+    sortOrders: [{ target: 'toi', direction: SORT_STATE_DESCEND }],
+  },
+  atoiMin: {
+    label: 'table.atoi.short',
+    tooltip: 'table.atoi.tooltip',
+    sortOrders: [{ target: 'atoi', direction: SORT_STATE_DESCEND }],
+  },
+  shf: {
+    label: 'table.shf.short',
+    tooltip: 'table.shf.tooltip',
+    sortOrders: [{ target: 'shf', direction: SORT_STATE_DESCEND }],
+  },
+  ashf: {
+    label: 'table.ashf.short',
+    tooltip: 'table.ashf.tooltip',
+    sortOrders: [{ target: 'ashf', direction: SORT_STATE_DESCEND }],
+  },
+  eqToiMin: {
+    label: 'table.eqToi.short',
+    tooltip: 'table.eqToi.tooltip',
+    sortOrders: [{ target: 'eqToi', direction: SORT_STATE_DESCEND }],
+  },
+  pp1ToiMin: {
+    label: 'table.pp1Toi.short',
+    tooltip: 'table.pp1Toi.tooltip',
+    sortOrders: [{ target: 'pp1Toi', direction: SORT_STATE_DESCEND }],
+  },
+  pp2ToiMin: {
+    label: 'table.pp2Toi.short',
+    tooltip: 'table.pp2Toi.tooltip',
+    sortOrders: [{ target: 'pp2Toi', direction: SORT_STATE_DESCEND }],
+  },
+  sh1ToiMin: {
+    label: 'table.sh1Toi.short',
+    tooltip: 'table.sh1Toi.tooltip',
+    sortOrders: [{ target: 'sh1Toi', direction: SORT_STATE_DESCEND }],
+  },
+  sh2ToiMin: {
+    label: 'table.sh2Toi.short',
+    tooltip: 'table.sh2Toi.tooltip',
+    sortOrders: [{ target: 'sh2Toi', direction: SORT_STATE_DESCEND }],
+  },
+  eqAToiMin: {
+    label: 'table.eqAToi.short',
+    tooltip: 'table.eqAToi.tooltip',
+    sortOrders: [{ target: 'eqAToi', direction: SORT_STATE_DESCEND }],
+  },
+  pp1AToiMin: {
+    label: 'table.pp1AToi.short',
+    tooltip: 'table.pp1AToi.tooltip',
+    sortOrders: [{ target: 'pp1AToi', direction: SORT_STATE_DESCEND }],
+  },
+  pp2AToiMin: {
+    label: 'table.pp2AToi.short',
+    tooltip: 'table.pp2AToi.tooltip',
+    sortOrders: [{ target: 'pp2AToi', direction: SORT_STATE_DESCEND }],
+  },
+  sh1AToiMin: {
+    label: 'table.sh1AToi.short',
+    tooltip: 'table.sh1AToi.tooltip',
+    sortOrders: [{ target: 'sh1AToi', direction: SORT_STATE_DESCEND }],
+  },
+  sh2AToiMin: {
+    label: 'table.sh2AToi.short',
+    tooltip: 'table.sh2AToi.tooltip',
+    sortOrders: [{ target: 'sh2AToi', direction: SORT_STATE_DESCEND }],
+  },
+};
+
 export const COLUMNS_GOALIES = {
   index: {
     label: 'table.blank',

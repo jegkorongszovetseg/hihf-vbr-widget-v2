@@ -11,6 +11,7 @@ import {
   TeamPenaltyKilling,
   TeamPowerplay,
   TeamScoringEfficiency,
+  FieldPlayersToi,
 } from './components';
 
 const StandingsCE = defineCustomElement(Standings);
@@ -23,6 +24,7 @@ const TeamFairplayCE = defineCustomElement(TeamFairplay);
 const TeamPenaltyKillingCE = defineCustomElement(TeamPenaltyKilling);
 const TeamPowerplayCE = defineCustomElement(TeamPowerplay);
 const TeamScoringEfficiencyCE = defineCustomElement(TeamScoringEfficiency);
+const FieldPlayersToiCE = defineCustomElement(FieldPlayersToi);
 
 export {
   Standings,
@@ -45,6 +47,7 @@ export {
   TeamPenaltyKillingCE,
   TeamPowerplayCE,
   TeamScoringEfficiencyCE,
+  FieldPlayersToiCE,
 };
 
 export function register() {
@@ -58,6 +61,7 @@ export function register() {
   customElements.define('mjsz-vbr-team-penalty-killing', TeamPenaltyKillingCE);
   customElements.define('mjsz-vbr-team-powerplay', TeamPowerplayCE);
   customElements.define('mjsz-vbr-team-scoring', TeamScoringEfficiencyCE);
+  customElements.define('mjsz-vbr-players-toi', FieldPlayersToiCE);
 }
 
 export default {
