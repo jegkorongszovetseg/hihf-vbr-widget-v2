@@ -3,6 +3,7 @@ import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 import {
   COLUMNS_FIELD_PLAYERS,
   COLUMNS_FIELD_PLAYERS_PENALTY,
+  COLUMNS_FIELD_PLAYERS_TOI,
   COLUMNS_GOALIES,
   COLUMNS_SCORING_EFFICIENCY,
   COLUMNS_TEAMS_FAIRPLAY,
@@ -59,6 +60,14 @@ export const REPORTS_MAP = new Map()
     sort: {
       sortTarget: 'pim',
       orders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
+    },
+  })
+  .set('playerstoi', {
+    api: '/v2/players-toi',
+    columns: COLUMNS_FIELD_PLAYERS_TOI,
+    sort: {
+      sortTarget: 'toiMin',
+      orders: [{ target: 'toi', direction: SORT_STATE_DESCEND }],
     },
   })
   .set('goalies', {
@@ -141,6 +150,10 @@ export const PLAYERS_REPORTS_SELECT = (t) => {
     {
       name: t('report.penalties'),
       value: 'playerspenalties',
+    },
+    {
+      name: t('report.toi'),
+      value: 'playerstoi',
     },
     {
       name: t('report.goalies'),
