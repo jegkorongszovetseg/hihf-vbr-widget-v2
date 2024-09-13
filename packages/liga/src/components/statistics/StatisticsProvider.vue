@@ -20,7 +20,7 @@ import {
   rawConvert,
   InvalidSeasonName,
   WidgetError,
-  convertPhaseName
+  convertPhaseName,
 } from '@mjsz-vbr-elements/core/utils';
 import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 import { useError, useI18n, useSort, usePage, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
@@ -132,7 +132,26 @@ const fetchStatistic = async () => {
       playerName,
       teamName,
       convertTimesMinToMinSec(['mip']),
-      convertTimesSecToMin(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2'])
+      convertTimesSecToMin([
+        'dvgTime',
+        'dvgTimePP1',
+        'dvgTimePP2',
+        'advTime',
+        'advTimePP1',
+        'advTimePP2',
+        'toi',
+        'atoi',
+        'eqToi',
+        'pp1Toi',
+        'pp2Toi',
+        'sh1Toi',
+        'sh2Toi',
+        'eqAToi',
+        'pp1AToi',
+        'pp2AToi',
+        'sh1AToi',
+        'sh2AToi',
+      ])
     );
   } catch (error) {
     onError(error);
@@ -182,6 +201,8 @@ const setTableData = () => {
 const onSeasonChange = async (value) => {
   state.championshipId = value;
   params.championshipId = value;
+  state.phaseId = null;
+  params.phaseId = null;
   await fetchSection();
   params.section = state.section;
   await fetchTeams();
@@ -189,7 +210,7 @@ const onSeasonChange = async (value) => {
 };
 
 const onSectionChange = async (value) => {
-  state.phaseId = value
+  state.phaseId = value;
   params.phaseId = value;
   await fetchStatistic();
 };
