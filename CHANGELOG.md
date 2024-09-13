@@ -1,3 +1,4 @@
+## [2.6.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.5.2...v2.6.0) (2024-09-13)
 ## [2.5.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.5.1...v2.5.2) (2024-09-12)
 
 ### Bug Fixes
