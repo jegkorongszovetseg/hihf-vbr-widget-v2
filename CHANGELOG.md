@@ -1,3 +1,8 @@
+## [2.6.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.6.0...v2.6.1) (2024-09-15)
+
+### Bug Fixes
+
+* (extended/calendar) Lapozás javítása ([66d4e8d](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/66d4e8d236c6c192720b7ec1f2df5c656701e2ff))
 ## [2.6.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.5.2...v2.6.0) (2024-09-13)
 ## [2.5.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.5.1...v2.5.2) (2024-09-12)
 
