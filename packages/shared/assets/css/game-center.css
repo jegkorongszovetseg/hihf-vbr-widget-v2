@@ -355,10 +355,22 @@
       --columns: repeat(2, 1fr);
     }
   }
-  
+
   &-data-column {
     display: grid;
     gap: 20px;
     margin-bottom: 20px;
+  }
+}
+
+.gamecenter-timeline {
+  .event-container {
+    --columns: 0.2fr 2px 0.2fr 1fr;
+    --areas: 'time time time details' 'event-type event-type event-type details';
+
+    display: grid;
+    grid-template-columns: var(--columns);
+    grid-template-areas: var(--areas);
+    gap: 0.5rem;
   }
 }
