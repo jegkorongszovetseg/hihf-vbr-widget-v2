@@ -364,13 +364,136 @@
 }
 
 .gamecenter-timeline {
-  .event-container {
+  &-game-events {
+    container-name: rows;
+    container-type: inline-size;
+  }
+
+  &-game-event {
     --columns: 0.2fr 2px 0.2fr 1fr;
-    --areas: 'time time time details' 'event-type event-type event-type details';
+    --areas: '. . . .' 'time time time details' 'event-type event-type event-type details' '. . . .';
 
     display: grid;
     grid-template-columns: var(--columns);
+    grid-template-rows: 0.5rem 1fr 1fr 0.5rem;
     grid-template-areas: var(--areas);
-    gap: 0.5rem;
+    gap: 0.25rem;
+
+    .is-timeline {
+      grid-column: 2/3;
+      grid-row: 1/-1;
+      background-color: var(--vbr-widget-primary-color-200);
+    }
+
+    .is-details {
+      grid-area: details;
+
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas: 'team-logo' 'detail-list';
+      gap: 1rem;
+      padding: 1rem;
+      border-top: 3px solid var(--vbr-widget-danger-color-a400);
+      background-color: var(--vbr-widget-primary-color-50);
+      border-radius: 0.5rem;
+      align-items: center;
+    }
+
+    .is-timestamp {
+      grid-area: time;
+
+      justify-self: center;
+      align-self: end;
+
+      p {
+        margin: 0;
+        padding-inline: 0.5rem;
+        width: max-content;
+        color: #fff;
+        font-size: small;
+        line-height: 1.5rem;
+        background-color: var(--vbr-widget-primary-color-900);
+        border-radius: 6px;
+      }
+    }
+
+    .is-event-type {
+      grid-area: event-type;
+
+      justify-self: center;
+
+      p {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin: 0;
+        padding-inline: 0.5rem;
+        color: var(--vbr-widget-primary-color-500);
+        font-size: small;
+        line-height: 1.5rem;
+        background-color: var(--vbr-widget-primary-color-100);
+        border-radius: 6px;
+      }
+
+      svg {
+        display: block;
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    .is-team-logo {
+      grid-area: team-logo;
+
+      justify-self: center;
+      align-self: center;
+
+      > span {
+        display: block;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .is-details-list {
+      grid-area: detail-list;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    &[data-team='away'] {
+      .is-details {
+        border-color: var(--vbr-widget-live-game-color);
+      }
+    }
+
+    @container rows (width > 500px) {
+      --columns: 1fr 0.2fr 2px 0.2fr 1fr;
+      --areas: '. . . . .' 'details time time time .' 'details event-type event-type event-type .' '. . . . .';
+
+      .is-timeline {
+        grid-column: 3/4;
+        grid-row: 1/-1;
+      }
+
+      .is-details {
+        grid-template-columns: auto 1fr;
+        grid-template-areas: 'team-logo detail-list';
+      }
+
+      &[data-team='away'] {
+        --areas: '. . . . .' '. time time time details' '. event-type event-type event-type details' '. . . . .';
+
+        .is-details {
+          border-color: var(--vbr-widget-live-game-color);
+        }
+      }
+
+      &:not([data-team='away']) .is-details {
+        grid-template-columns: 1fr auto;
+        grid-template-areas: 'detail-list team-logo';
+      }
+    }
   }
 }
