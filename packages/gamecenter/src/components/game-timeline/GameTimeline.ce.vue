@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { compose, groupBy, prop, reverse, isEmpty } from 'ramda';
 import { useUrlSearchParams } from '@vueuse/core';
 import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
@@ -8,10 +8,12 @@ import { handleServices, useApiErrors } from '../game/composables';
 import GameData from './GameData.vue';
 // import GameStats from './GameStats.vue';
 import GameEvents from './GameEvents.vue';
-// import GamePlayersStats from './GamePlayersStats.vue';
+import GameLineups from './GameLineups.vue';
+import GamePlayersStats from '../game/GamePlayersStats.vue';
 // import GameGoaliesStats from './GameGoaliesStats.vue';
 // import GameOfficials from './GameOfficials.vue';
 // import GameTeamsOfficials from './GameTeamOfficials.vue';
+import { TAB_EVENTS, TAB_LINEUPS, TAB_TEAM_STATS, TAB_PLAYER_STATS, TAB_OFFICIALS } from './constants';
 import hu from '../game/locales/hu.json';
 import en from '../game/locales/en.json';
 import commonHU from '../../locales/hu.json';
@@ -37,6 +39,8 @@ const props = defineProps({
     default: 0,
   },
 });
+
+const activeTab = ref('events');
 
 const searchParams = useUrlSearchParams('history');
 
@@ -90,6 +94,10 @@ handleServices({
   services: { getGameData, getGameStats, getEvents, getGameOfficials },
   interval: REFRESH_DELAY,
 });
+
+function onTabChange(value) {
+  activeTab.value = value;
+}
 </script>
 
 <template>
@@ -99,7 +107,57 @@ handleServices({
 
       <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
 
-      <GameEvents v-if="!isEmpty(gameEvents) && !isEmpty(gameData)" :game-events="gameEvents" :game-data="gameData" />
+      <template v-if="gameData?.gameStatus > 0">
+        <div class="">
+          <button
+            :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_EVENTS }]"
+            @click="onTabChange(TAB_EVENTS)"
+          >
+            Events
+          </button>
+          <button
+            :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_LINEUPS }]"
+            @click="onTabChange(TAB_LINEUPS)"
+          >
+            Lineups
+          </button>
+          <button
+            :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_TEAM_STATS }]"
+            @click="onTabChange(TAB_TEAM_STATS)"
+          >
+            Team Stats
+          </button>
+          <button
+            :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_PLAYER_STATS }]"
+            @click="onTabChange(TAB_PLAYER_STATS)"
+          >
+            Player Stats
+          </button>
+          <button
+            :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_OFFICIALS }]"
+            @click="onTabChange(TAB_OFFICIALS)"
+          >
+            Officials
+          </button>
+        </div>
+
+        <GameEvents
+          v-if="activeTab === TAB_EVENTS && !isEmpty(gameEvents) && !isEmpty(gameData)"
+          :game-events="gameEvents"
+          :game-data="gameData"
+        />
+
+        <GameLineups v-if="activeTab === TAB_LINEUPS" />
+
+        <GamePlayersStats
+          v-if="activeTab === TAB_PLAYER_STATS && !isEmpty(gameStats)"
+          :data="gameStats.players"
+          :home-team-id="gameData.homeTeam.id"
+          :home-team-name="gameData.homeTeam.longName"
+          :away-team-id="gameData.awayTeam.id"
+          :away-team-name="gameData.awayTeam.longName"
+        />
+      </template>
 
       <!-- <template v-if="gameData?.gameStatus > 0">
         <GameOfficials v-if="!isEmpty(gameData)" :game-data="gameData" :game-officials="gameOfficials" />

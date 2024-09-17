@@ -4,9 +4,9 @@ import { store } from '../store.js';
 import { GameTimeline } from '@mjsz-vbr-elements/gamecenter';
 import '../../../packages/shared/dist/css/common.css';
 import '../../../packages/shared/dist/css/game-center.css';
-// import '../../../packages/shared/dist/css/responsive-table.css';
-// import '../../../packages/shared/dist/css/table.css';
-// import '../../../packages/shared/dist/css/grid.css';
+import '../../../packages/shared/dist/css/responsive-table.css';
+import '../../../packages/shared/dist/css/table.css';
+import '../../../packages/shared/dist/css/forms.css';
 </script>
 
 <template>

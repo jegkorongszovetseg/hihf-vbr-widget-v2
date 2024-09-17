@@ -18,7 +18,7 @@ defineProps({
 </script>
 
 <template>
-  <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam" :event-type="event.type">
+  <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam" :event-type="event.type" :event="event">
     <template #title> Kapus {{ event.gkDirection }} </template>
 
     <template #default>

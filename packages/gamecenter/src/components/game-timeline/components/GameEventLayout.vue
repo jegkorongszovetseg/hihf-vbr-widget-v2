@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
-import { EVENT_TYPE_GOAL, EVENT_TYPE_PENALTY } from '../constants';
+import { EVENT_TYPE_GOAL, EVENT_TYPE_PENALTY, EVENT_TYPE_TIMEOUT, EVENT_TYPE_GOALIE } from '../constants';
 
 const props = defineProps({
   timestamp: {
@@ -11,6 +11,12 @@ const props = defineProps({
   eventType: {
     type: String,
     default: '',
+    // required: true,
+  },
+
+  event: {
+    type: Object,
+    default: () => ({}),
     // required: true,
   },
 
@@ -25,7 +31,7 @@ const { t } = useI18n();
 <template>
   <div :class="useMainClass('gamecenter-timeline-game-event')" :data-team="isHomeTeam ? 'home' : 'away'">
     <div class="is-timeline"></div>
-    <div class="is-details">
+    <div :class="['is-details', { 'is-goal': event.type === EVENT_TYPE_GOAL }]">
       <div class="is-details-title">
         <slot name="title" />
       </div>
@@ -44,7 +50,13 @@ const { t } = useI18n();
     <div
       :class="[
         'is-event-type',
-        { 'is-goal': eventType === EVENT_TYPE_GOAL, 'is-penalty': eventType === EVENT_TYPE_PENALTY },
+        {
+          'is-goal': eventType === EVENT_TYPE_GOAL,
+          'is-penalty': eventType === EVENT_TYPE_PENALTY,
+          'is-timeout': eventType === EVENT_TYPE_TIMEOUT,
+          'is-goalie-in': eventType === EVENT_TYPE_GOALIE,
+          'is-goalie-out': eventType === EVENT_TYPE_GOALIE && event.gkDirection === 'KI',
+        },
       ]"
     >
       <p><slot name="event-type-icon" />{{ t(`eventType.${eventType}`) }}</p>

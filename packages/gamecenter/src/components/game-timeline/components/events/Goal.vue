@@ -29,19 +29,55 @@ const awayOnIce = computed(() => props.event.awayOnIce);
 </script>
 
 <template>
-  <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam" :event-type="event.type">
+  <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam" :event-type="event.type" :event="event">
     <template #title>
-      {{ t('events.Gól') }}
+      <span v-if="event.advantage" class="is-badge is-large">
+        {{ event.advantage }}
+      </span>
+      <span v-if="event.en" class="is-badge is-large"> EN </span>
+      {{ t('eventType.Gól') }} {{ event.score }}
     </template>
 
     <template #default>
-      <li class="is-score">{{ event.score }}</li>
+      <li class="is-evented-person">
+        <span class="is-player-number">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
+      </li>
+      <li class="is-assists-list">
+        <template v-for="assist in assists" :key="assist">
+          <span
+            ><i>{{ assist.jerseyNumber }}</i> {{ assist.lastName }} {{ assist.firstName }}</span
+          >
+        </template>
+      </li>
       <li>
+        <!-- <ul>
+          <template v-for="player in homeOnIce" :key="player.playerId">
+            <FloatingPanel
+              :offset="2"
+              placement="top"
+              theme="tooltip"
+              :content="`${player.lastName} ${player.firstName}`"
+              :append-to="tooltipContainer"
+              v-slot:default="{ setRef, events }"
+            >
+              <li
+                :ref="setRef"
+                :tabindex="0"
+                :aria-label="`${player.jerseyNumber} ${player.lastName} ${player.firstName}`"
+                v-on="events"
+              >
+                {{ player.jerseyNumber }}
+              </li>
+            </FloatingPanel>
+          </template>
+        </ul> -->
+      </li>
+      <!-- <li>
         <span v-if="event.advantage" class="is-badge is-large">
           {{ event.advantage }}
         </span>
         <span v-if="event.en" class="is-badge is-large"> EN </span>
-      </li>
+      </li> -->
       <li>
         <span v-if="event.ps || event.gws || event.gwg" class="is-badge is-invert is-large">
           <template v-if="event.ps">PS</template>

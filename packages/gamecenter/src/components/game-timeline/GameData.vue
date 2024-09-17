@@ -86,7 +86,7 @@ const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gam
           >:<span v-if="gameData.gameStatus === 0">-</span>
           <span v-else>{{ gameData.awayTeamScore }}</span>
         </div>
-        <!-- <p class="is-period-results">{{ gameData.periodResults }}</p> -->
+        <p class="is-attendance">{{ gameData.attendance }}</p>
         <PeriodResults
           :results="convertedPeriodResults"
           :home-team-name="gameData.homeTeam.shortName"

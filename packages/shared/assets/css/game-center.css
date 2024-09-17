@@ -429,14 +429,18 @@
       grid-area: details;
 
       display: grid;
-      grid-template-columns: auto 1fr;
-      grid-template-areas: 'team-logo detail-title' 'detail-list detail-list';
+      grid-template-columns: 1fr auto;
+      grid-template-areas: 'detail-title team-logo' 'detail-list team-logo';
       gap: 0.5rem;
       padding: 1rem;
       border-inline-end: 3px solid var(--vbr-widget-gamecenter-home-team-identifier-color);
       background-color: var(--vbr-widget-primary-color-50);
       border-radius: 0.5rem;
       align-items: center;
+
+      &.is-goal {
+        background-color: var(--vbr-widget-primary-color-100);
+      }
     }
 
     .is-timestamp {
@@ -493,6 +497,29 @@
           color: var(--vbr-widget-primary-color-900);
         }
       }
+
+      &.is-timeout {
+        p {
+          color: var(--vbr-widget-primary-color-0);
+          background-color: var(--vbr-widget-secondary-color-700);
+        }
+      }
+
+      &.is-goalie-in {
+        p {
+          color: var(--vbr-widget-secondary-color-700);
+          border: 1px solid var(--vbr-widget-primary-color-100);
+          background-color: var(--vbr-widget-primary-color-0);
+        }
+      }
+      
+      &.is-goalie-out {
+        p {
+          color: var(--vbr-widget-danger-color-700);
+          border: 1px solid var(--vbr-widget-primary-color-100);
+          background-color: var(--vbr-widget-primary-color-0);
+        }
+      }
     }
 
     .is-team-logo {
@@ -503,8 +530,8 @@
 
       > span {
         display: block;
-        width: 20px;
-        height: 20px;
+        width: 40px;
+        height: 40px;
       }
     }
 
@@ -548,8 +575,8 @@
       }
 
       &[data-team='home'] .is-details {
-        grid-template-columns: 1fr auto;
-        grid-template-areas: 'detail-title team-logo' 'detail-list detail-list';
+        grid-template-columns: auto 1fr;
+        grid-template-areas: 'team-logo detail-title' 'team-logo detail-list';
         
         border-inline-end: none;
         border-inline-start: 3px solid var(--vbr-widget-danger-color-a400);
