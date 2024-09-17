@@ -369,8 +369,20 @@
     container-type: inline-size;
   }
 
+  .is-period-header {
+    text-align: center;
+
+    span {
+      padding-inline: 1rem;
+      padding-block: 0.5rem;
+      font-size: small;
+      background-color: var(--vbr-widget-neutral-color);
+      border-radius: 0.5rem;
+    }
+  }
+
   &-game-event {
-    --columns: 0.2fr 2px 0.2fr 1fr;
+    --columns: 0.15fr 2px 0.15fr 1fr;
     --areas: '. . . .' 'time time time details' 'event-type event-type event-type details' '. . . .';
 
     display: grid;
@@ -393,7 +405,7 @@
       grid-template-areas: 'team-logo' 'detail-list';
       gap: 1rem;
       padding: 1rem;
-      border-top: 3px solid var(--vbr-widget-danger-color-a400);
+      border-inline-end: 3px solid var(--vbr-widget-danger-color-a400);
       background-color: var(--vbr-widget-primary-color-50);
       border-radius: 0.5rem;
       align-items: center;
@@ -469,7 +481,7 @@
     }
 
     @container rows (width > 500px) {
-      --columns: 1fr 0.2fr 2px 0.2fr 1fr;
+      --columns: 1fr 0.15fr 2px 0.15fr 1fr;
       --areas: '. . . . .' 'details time time time .' 'details event-type event-type event-type .' '. . . . .';
 
       .is-timeline {
