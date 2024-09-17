@@ -14,8 +14,10 @@ import GameEvents from './GameEvents.vue';
 // import GameTeamsOfficials from './GameTeamOfficials.vue';
 import hu from '../game/locales/hu.json';
 import en from '../game/locales/en.json';
+import commonHU from '../../locales/hu.json';
+import commonEN from '../../locales/en.json';
 
-const messages = { en, hu };
+const messages = { en: { ...en, ...commonEN }, hu: { ...hu, ...commonHU } };
 
 const REFRESH_DELAY = 30000;
 

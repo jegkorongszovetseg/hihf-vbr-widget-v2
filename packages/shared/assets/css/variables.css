@@ -204,6 +204,9 @@
   --vbr-widget-gamecenter-events-penalty-size: var(--vbr-widget-typography-text-sm-size);
   --vbr-widget-gamecenter-events-goalie-direction-size: var(--vbr-widget-typography-text-sm-size);
 
+  --vbr-widget-gamecenter-home-team-identifier-color: var(--vbr-widget-danger-color-a400);
+  --vbr-widget-gamecenter-away-team-identifier-color: var(--vbr-widget-live-game-color);
+
   --vbr-widget-main-image-wrapper-horizontal-margin: 0rem;
 
   --vbr-widget-sticky-top-offset: 0;

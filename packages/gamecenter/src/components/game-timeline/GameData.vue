@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue';
 import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
 import { Image } from '@mjsz-vbr-elements/core/components';
@@ -6,8 +7,10 @@ import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
 import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
 import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from '../game/internal';
 import GamePeriodProgress from '../game/components/GamePeriodProgress.vue';
+import PeriodResults from './components/PeriodResults.vue';
+import { buildPeriodResultsByTeam } from './internal';
 
-defineProps({
+const props = defineProps({
   gameData: {
     type: Object,
     required: true,
@@ -20,6 +23,8 @@ defineProps({
 });
 
 const { t } = useI18n();
+
+const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gameData.periodResults));
 </script>
 
 <template>
@@ -81,7 +86,12 @@ const { t } = useI18n();
           >:<span v-if="gameData.gameStatus === 0">-</span>
           <span v-else>{{ gameData.awayTeamScore }}</span>
         </div>
-        <p class="is-period-results">{{ gameData.periodResults }}</p>
+        <!-- <p class="is-period-results">{{ gameData.periodResults }}</p> -->
+        <PeriodResults
+          :results="convertedPeriodResults"
+          :home-team-name="gameData.homeTeam.shortName"
+          :away-team-name="gameData.awayTeam.shortName"
+        />
       </div>
       <div v-once>
         <Image :src="gameData.awayTeam.logo" :default-src="DEAFULT_LOGO_TEAM_B" class="is-team-logo" />

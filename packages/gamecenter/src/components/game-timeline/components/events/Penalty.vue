@@ -26,7 +26,15 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
 </script>
 
 <template>
-  <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam">
+  <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam" :event-type="event.type">
+    <template #title>
+      Büntetés
+      <template v-if="event.penaltyLength !== 0">
+        {{ t('events.penaltyLength', [event.penaltyLength]) }}
+      </template>
+      <template v-if="event.perc === 0">PS</template>
+    </template>
+
     <template #default>
       <li>
         <span v-if="event.jerseyNumber === null">{{ t('events.teamPenalty') }}</span>
@@ -38,15 +46,13 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
       <li>
         {{ convertedEvent.penaltyCause }}
       </li>
-      <li>
+      <!-- <li>
         <template v-if="event.penaltyLength !== 0">
           {{ t('events.penaltyLength', [event.penaltyLength]) }}
-          <template v-if="event.penaltyEnd">
-            ({{ event.penaltyEnd }})
-          </template>
+          <template v-if="event.penaltyEnd"> ({{ event.penaltyEnd }}) </template>
         </template>
         <template v-if="event.perc === 0">PS</template>
-      </li>
+      </li> -->
     </template>
 
     <template #team-logo>

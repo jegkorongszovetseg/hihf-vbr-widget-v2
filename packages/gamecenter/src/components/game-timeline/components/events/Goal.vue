@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue';
 import { reject, isEmpty } from 'ramda';
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
 import GameEventLayout from '../GameEventLayout.vue';
 import TeamLogo from './TeamLogo.vue';
@@ -20,13 +21,19 @@ const props = defineProps({
 
 const tooltipContainer = ref(null);
 
+const { t } = useI18n();
+
 const assists = computed(() => reject((player) => isEmpty(player), [props.event.assists1, props.event.assists2]));
 const homeOnIce = computed(() => props.event.homeOnIce);
 const awayOnIce = computed(() => props.event.awayOnIce);
 </script>
 
 <template>
-  <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam">
+  <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam" :event-type="event.type">
+    <template #title>
+      {{ t('events.Gól') }}
+    </template>
+
     <template #default>
       <li class="is-score">{{ event.score }}</li>
       <li>
