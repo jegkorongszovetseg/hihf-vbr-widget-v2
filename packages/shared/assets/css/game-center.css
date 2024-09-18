@@ -364,6 +364,16 @@
 }
 
 .gamecenter-timeline {
+  .is-heading-1 {
+    margin-block-start: 3rem;
+    margin-block-end: 1rem;
+    font-size: var(--vbr-widget-typography-text-base-size);
+    font-weight: 700;
+    color: var(--vbr-widget-primary-color-800);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
   .period-results {
     width: 100%;
 
@@ -664,6 +674,15 @@
         grid-template-columns: 1fr 1fr;
         grid-template-areas: '. lw' 'ld lw' 'ld c' 'rd c' 'rd rw' '. rw';
       }
+    }
+  }
+
+  &-team-stats {
+    .is-stat-container {
+      display: grid;
+      gap: 1rem;
+      margin-inline: auto;
+      width: min(100%, 600px);
     }
   }
 }

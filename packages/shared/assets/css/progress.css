@@ -50,3 +50,67 @@
     background-position-x: var(--vbr-widget-progress-height);
   }
 }
+
+.statistics-double-bar {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr auto;
+  grid-template-areas: 'value-start title title value-end' 'bar-start bar-start bar-end bar-end';
+  align-items: center;
+
+  @media (width > 500px) {
+    grid-template-areas: 'title title title title' 'value-start bar-start bar-end value-end';
+  }
+
+  .is-value {
+    font-weight: 700;
+    color: var(--vbr-widget-primary-color-900);
+  }
+
+  .is-value-start {
+    grid-area: value-start;
+    padding-inline-end: 0.5rem;
+  }
+
+  .is-value-end {
+    grid-area: value-end;
+    padding-inline-start: 0.5rem;
+  }
+
+  .is-bar {
+    background-color: var(--vbr-widget-primary-color-50);
+    height: 8px;
+    margin-block: 5px;
+  }
+
+  .is-bar-start {
+    grid-area: bar-start;
+
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .is-bar-start--progress {
+    background-color: var(--vbr-widget-gamecenter-home-team-identifier-color);
+    height: 100%;
+    transition: width 0.3s ease-out;
+  }
+
+  .is-bar-end {
+    grid-area: bar-end;
+  }
+
+  .is-bar-end--progress {
+    background-color: var(--vbr-widget-gamecenter-away-team-identifier-color);
+    height: 100%;
+  }
+
+  .is-title {
+    grid-area: title;
+
+    justify-self: center;
+    font-size: var(--vbr-widget-typography-text-sm-size);
+    font-weight: 700;
+    line-height: 1.5rem;
+    color: var(--vbr-widget-primary-color-500);
+  }
+}
