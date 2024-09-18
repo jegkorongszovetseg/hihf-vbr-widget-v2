@@ -682,7 +682,7 @@
       display: grid;
       gap: 1rem;
       margin-inline: auto;
-      width: min(100%, 600px);
+      width: min(100%, 700px);
     }
   }
 }
