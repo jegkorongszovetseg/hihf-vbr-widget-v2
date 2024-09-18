@@ -512,7 +512,7 @@
           background-color: var(--vbr-widget-primary-color-0);
         }
       }
-      
+
       &.is-goalie-out {
         p {
           color: var(--vbr-widget-danger-color-700);
@@ -577,9 +577,92 @@
       &[data-team='home'] .is-details {
         grid-template-columns: auto 1fr;
         grid-template-areas: 'team-logo detail-title' 'team-logo detail-list';
-        
+
         border-inline-end: none;
         border-inline-start: 3px solid var(--vbr-widget-danger-color-a400);
+      }
+    }
+  }
+
+  &-lineups {
+    container-name: linesup;
+    container-type: inline-size;
+
+    display: grid;
+    gap: 1rem;
+
+    @media (width > 500px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &-lines {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas: 'ld' 'rd' 'lw' 'c' 'rw';
+      gap: 0.5rem;
+
+      .is-ld {
+        grid-area: ld;
+      }
+
+      .is-rd {
+        grid-area: rd;
+      }
+
+      .is-lw {
+        grid-area: lw;
+      }
+
+      .is-c {
+        grid-area: c;
+      }
+
+      .is-rw {
+        grid-area: rw;
+      }
+
+      .is-gk {
+        grid-area: gk;
+      }
+
+      .is-player-wrapper {
+        display: grid;
+        grid-template-columns: auto  auto 1fr;
+        grid-template-areas: 'img number name' 'img position .';
+        gap: 0.5rem;
+        padding: 0.75rem;
+        background-color: var(--vbr-widget-primary-color-50);
+        border-radius: 0.5rem;
+
+        li:nth-child(1) {
+          grid-area: img;
+        }
+        li:nth-child(2) {
+          grid-area: number;
+        }
+        li:nth-child(3) {
+          grid-area: name;
+        }
+        li:nth-child(4) {
+          grid-area: position;
+        }
+
+        img {
+          display: block;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+      }
+
+      &:has(.is-gk) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas: '. gk gk .';
+      }
+
+      @container linesup (width > 500px) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: '. lw' 'ld lw' 'ld c' 'rd c' 'rd rw' '. rw';
       }
     }
   }

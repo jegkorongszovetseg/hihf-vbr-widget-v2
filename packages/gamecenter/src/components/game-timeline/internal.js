@@ -1,4 +1,4 @@
-import { replace, compose, split, map, trim } from 'ramda';
+import { replace, compose, split, map, trim, groupBy, prop } from 'ramda';
 
 export const buildPeriodResultsByTeam = (periodResults) => {
   const defaultPeriodResultObject = {
@@ -14,3 +14,5 @@ export const buildPeriodResultsByTeam = (periodResults) => {
     return acc;
   }, defaultPeriodResultObject);
 };
+
+export const groupLines = (data) => groupBy(prop('row'), data);

@@ -147,7 +147,14 @@ function onTabChange(value) {
           :game-data="gameData"
         />
 
-        <GameLineups v-if="activeTab === TAB_LINEUPS" />
+        <GameLineups
+          v-if="activeTab === TAB_LINEUPS"
+          :data="gameStats.players"
+          :home-team-id="gameData.homeTeam.id"
+          :home-team-name="gameData.homeTeam.longName"
+          :away-team-id="gameData.awayTeam.id"
+          :away-team-name="gameData.awayTeam.longName"
+        />
 
         <GamePlayersStats
           v-if="activeTab === TAB_PLAYER_STATS && !isEmpty(gameStats)"
