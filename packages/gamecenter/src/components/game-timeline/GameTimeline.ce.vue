@@ -11,6 +11,7 @@ import GameEvents from './GameEvents.vue';
 import GameLineups from './GameLineups.vue';
 import GameTeamStats from './GameTeamStats.vue';
 import GamePlayersStats from '../game/GamePlayersStats.vue';
+import GamePlayerStats from './GamePlayerStats.vue';
 // import GameGoaliesStats from './GameGoaliesStats.vue';
 import GameOfficials from './GameOfficials.vue';
 // import GameTeamsOfficials from './GameTeamOfficials.vue';
@@ -159,9 +160,9 @@ function onTabChange(value) {
 
         <GameTeamStats v-if="activeTab === TAB_TEAM_STATS" :game-data="gameData" :game-stats="gameStats" />
 
-        <GamePlayersStats
+        <GamePlayerStats
           v-if="activeTab === TAB_PLAYER_STATS && !isEmpty(gameStats)"
-          :data="gameStats.players"
+          :data="gameStats"
           :home-team-id="gameData.homeTeam.id"
           :home-team-name="gameData.homeTeam.longName"
           :away-team-id="gameData.awayTeam.id"

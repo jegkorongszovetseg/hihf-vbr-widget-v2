@@ -1,5 +1,5 @@
 import { playerName } from '@mjsz-vbr-elements/core';
-import { replace, compose, split, map, trim, groupBy, prop, values, sortBy } from 'ramda';
+import { replace, compose, split, map, trim, groupBy, prop, values, sortBy, sortWith, descend } from 'ramda';
 
 export const buildPeriodResultsByTeam = (periodResults) => {
   const defaultPeriodResultObject = {
@@ -141,7 +141,6 @@ export const convertGameOfficials = (data, t) => {
     return index > -1 ? index : 4;
   };
 
-  // role
   const convertName = (item) => ({ ...playerName(item), role: t(`role.${item.role}`) });
 
   return groupBy(prop('type'), map(convertName, sortBy(sortByType, values(data))));
@@ -159,3 +158,5 @@ export const GAME_OFFICIALS_COLUMNS = {
     class: 'is-text-left is-text-bold',
   },
 };
+
+export const transformGoalieStats = sortWith([descend(prop('startingFive'))]);
