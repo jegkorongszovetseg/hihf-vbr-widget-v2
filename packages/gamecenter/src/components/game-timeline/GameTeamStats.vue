@@ -38,7 +38,7 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
     <!-- <h1>Team Stats</h1> -->
     <!-- <StatisticsDoubleBar :max="100" :value-start="33" :value-end="55" value-suffix="%" title="SOG" /> -->
 
-    <h1 class="is-heading-1">{{ t('teamsStats.sog') }}</h1>
+    <h1 class="is-heading-2">{{ t('teamsStats.sog') }}</h1>
     <div class="is-stat-container">
       <template v-for="({ max, valueStart, valueEnd }, index) in sog" :key="index">
         <StatisticsDoubleBar
@@ -50,7 +50,7 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
       </template>
     </div>
 
-    <h1 class="is-heading-1">{{ t('teamsStats.saves') }}</h1>
+    <h1 class="is-heading-2">{{ t('teamsStats.saves') }}</h1>
     <div class="is-stat-container">
       <template v-for="({ max, valueStart, valueEnd }, index) in saves">
         <StatisticsDoubleBar
@@ -62,7 +62,7 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
       </template>
     </div>
 
-    <h1 class="is-heading-1">{{ t('teamsStats.pim') }}</h1>
+    <h1 class="is-heading-2">{{ t('teamsStats.pim') }}</h1>
     <div class="is-stat-container">
       <template v-for="({ max, valueStart, valueEnd }, index) in pim">
         <StatisticsDoubleBar
@@ -74,7 +74,7 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
       </template>
     </div>
 
-    <h1 class="is-heading-1">{{ t('teamsStats.advPercent') }}</h1>
+    <h1 class="is-heading-2">{{ t('teamsStats.advPercent') }}</h1>
     <div class="is-stat-container">
       <template v-for="({ max, valueStart, valueEnd, suffix }, index) in advPercent">
         <StatisticsDoubleBar
@@ -87,7 +87,7 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
       </template>
     </div>
 
-    <h1 class="is-heading-1">{{ t('teamsStats.penaltyKilling') }}</h1>
+    <h1 class="is-heading-2">{{ t('teamsStats.penaltyKilling') }}</h1>
     <div class="is-stat-container">
       <template v-for="({ max, valueStart, valueEnd, suffix }, index) in dvgPercent">
         <StatisticsDoubleBar
@@ -100,7 +100,7 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
       </template>
     </div>
 
-    <h1 class="is-heading-1">{{ t('teamsStats.advantageTime') }}</h1>
+    <h1 class="is-heading-2">{{ t('teamsStats.advantageTime') }}</h1>
     <div class="is-stat-container">
       <StatisticsDoubleBar
         :max="advTime.advTime.max"

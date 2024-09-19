@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { reject, isEmpty } from 'ramda';
-import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
+// import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
 import GameEventLayout from '../GameEventLayout.vue';

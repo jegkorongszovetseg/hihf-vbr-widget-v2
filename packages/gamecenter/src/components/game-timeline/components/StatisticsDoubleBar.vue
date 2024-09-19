@@ -9,12 +9,12 @@ const props = defineProps({
   },
 
   valueStart: {
-    type: Number,
+    type: [Number, String],
     default: 0,
   },
 
   valueEnd: {
-    type: Number,
+    type: [Number, String],
     default: 0,
   },
 

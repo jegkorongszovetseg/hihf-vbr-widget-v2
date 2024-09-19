@@ -364,7 +364,20 @@
 }
 
 .gamecenter-timeline {
+  container-name: rows;
+  container-type: inline-size;
+
   .is-heading-1 {
+    margin-block-start: 3rem;
+    margin-block-end: 1rem;
+    font-size: var(--vbr-widget-typography-text-xl-size);
+    font-weight: 700;
+    color: var(--vbr-widget-primary-color-800);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .is-heading-2 {
     margin-block-start: 3rem;
     margin-block-end: 1rem;
     font-size: var(--vbr-widget-typography-text-base-size);
@@ -372,6 +385,13 @@
     color: var(--vbr-widget-primary-color-800);
     text-align: center;
     text-transform: uppercase;
+  }
+
+  &-tab-buttons {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--vbr-widget-primary-color-100);
+    margin-block-end: 2rem;
   }
 
   .period-results {
@@ -402,10 +422,10 @@
     }
   }
 
-  &-game-events {
+  /* &-game-events {
     container-name: rows;
     container-type: inline-size;
-  }
+  } */
 
   .is-period-header {
     text-align: center;
@@ -595,13 +615,10 @@
   }
 
   &-lineups {
-    container-name: linesup;
-    container-type: inline-size;
-
     display: grid;
-    gap: 1rem;
+    gap: 2rem;
 
-    @media (width > 500px) {
+    @container rows (width >= 768px) {
       grid-template-columns: 1fr 1fr;
     }
 
@@ -610,6 +627,10 @@
       grid-template-columns: 1fr;
       grid-template-areas: 'ld' 'rd' 'lw' 'c' 'rw';
       gap: 0.5rem;
+
+      &.is-away-team {
+        grid-template-areas: 'ld' 'rd' 'lw' 'c' 'rw';
+      }
 
       .is-ld {
         grid-area: ld;
@@ -637,42 +658,75 @@
 
       .is-player-wrapper {
         display: grid;
-        grid-template-columns: auto  auto 1fr;
-        grid-template-areas: 'img number name' 'img position .';
-        gap: 0.5rem;
+        grid-template-columns: 40px auto 1fr;
+        grid-template-areas: 'img number name' 'img position name';
+        column-gap: 0.5rem;
         padding: 0.75rem;
         background-color: var(--vbr-widget-primary-color-50);
+        border-inline-start: 3px solid var(--vbr-widget-gamecenter-home-team-identifier-color);
         border-radius: 0.5rem;
+        overflow: hidden;
+
+        li {
+          line-height: var(--vbr-widget-typography-text-xs-lineheight);
+        }
 
         li:nth-child(1) {
           grid-area: img;
         }
         li:nth-child(2) {
           grid-area: number;
+          font-style: italic;
+          color: var(--vbr-widget-primary-color-500);
         }
         li:nth-child(3) {
           grid-area: name;
+          font-weight: 600;
+          color: var(--vbr-widget-primary-color-700);
+
+          svg {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            color: var(--vbr-widget-primary-color-900);
+          }
         }
         li:nth-child(4) {
           grid-area: position;
+          align-self: center;
+          font-size: var(--vbr-widget-typography-text-xs-size);
+          line-height: 1;
+          color: var(--vbr-widget-primary-color-300);
+          text-transform: uppercase;
         }
 
         img {
           display: block;
-          width: 50px;
-          height: 50px;
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
         }
       }
 
       &:has(.is-gk) {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-areas: '. gk gk .';
+        display: flex;
+        justify-content: center;
+        grid-template-columns: none;
+        grid-template-areas: none;
       }
 
-      @container linesup (width > 500px) {
+      &.is-away-team .is-player-wrapper {
+        border-inline-start: none;
+        border-inline-end: 3px solid var(--vbr-widget-gamecenter-away-team-identifier-color);
+      }
+
+      @container rows (width >= 768px) {
         grid-template-columns: 1fr 1fr;
         grid-template-areas: '. lw' 'ld lw' 'ld c' 'rd c' 'rd rw' '. rw';
+
+        &.is-away-team {
+          grid-template-areas: 'lw .' 'lw ld' 'c ld' 'c rd' 'rw rd' 'rw .';
+        }
       }
     }
   }

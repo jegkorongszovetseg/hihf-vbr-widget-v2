@@ -109,7 +109,7 @@ function onTabChange(value) {
       <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
 
       <template v-if="gameData?.gameStatus > 0">
-        <div class="">
+        <div :class="useMainClass('gamecenter-timeline-tab-buttons')">
           <button
             :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_EVENTS }]"
             @click="onTabChange(TAB_EVENTS)"

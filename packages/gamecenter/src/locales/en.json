@@ -8,11 +8,19 @@
   },
   "section": {
     "all": "All",
+    "ot": "Overtime",
     "p1": "First period",
     "p2": "Second period",
     "p3": "Third period",
     "p4": "IV. period",
     "p5": "V. period",
     "p6": "VI. period"
+  },
+  "rows": {
+    "row-1": "Line 1",
+    "row-2": "Line 2",
+    "row-3": "Line 3",
+    "row-4": "Line 4",
+    "row-gk": "Goalkeepers"
   }
 }
