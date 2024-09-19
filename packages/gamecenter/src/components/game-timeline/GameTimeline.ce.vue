@@ -12,7 +12,7 @@ import GameLineups from './GameLineups.vue';
 import GameTeamStats from './GameTeamStats.vue';
 import GamePlayersStats from '../game/GamePlayersStats.vue';
 // import GameGoaliesStats from './GameGoaliesStats.vue';
-// import GameOfficials from './GameOfficials.vue';
+import GameOfficials from './GameOfficials.vue';
 // import GameTeamsOfficials from './GameTeamOfficials.vue';
 import { TAB_EVENTS, TAB_LINEUPS, TAB_TEAM_STATS, TAB_PLAYER_STATS, TAB_OFFICIALS } from './constants';
 import hu from '../game/locales/hu.json';
@@ -165,6 +165,13 @@ function onTabChange(value) {
           :home-team-id="gameData.homeTeam.id"
           :home-team-name="gameData.homeTeam.longName"
           :away-team-id="gameData.awayTeam.id"
+          :away-team-name="gameData.awayTeam.longName"
+        />
+
+        <GameOfficials
+          v-if="activeTab === TAB_OFFICIALS && !isEmpty(gameOfficials) && !isEmpty(gameData)"
+          :game-officials="gameOfficials"
+          :home-team-name="gameData.homeTeam.longName"
           :away-team-name="gameData.awayTeam.longName"
         />
       </template>

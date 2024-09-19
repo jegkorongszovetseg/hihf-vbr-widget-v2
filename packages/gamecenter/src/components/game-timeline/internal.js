@@ -1,4 +1,5 @@
-import { replace, compose, split, map, trim, groupBy, prop } from 'ramda';
+import { playerName } from '@mjsz-vbr-elements/core';
+import { replace, compose, split, map, trim, groupBy, prop, values, sortBy } from 'ramda';
 
 export const buildPeriodResultsByTeam = (periodResults) => {
   const defaultPeriodResultObject = {
@@ -132,4 +133,29 @@ export const buildDvgPercent = (data) => {
       suffix: '%',
     },
   };
+};
+
+export const convertGameOfficials = (data, t) => {
+  const sortByType = (item) => {
+    const index = ['first_referee', 'second_referee', 'first_line_judge', 'second_line_judge'].indexOf(item.role);
+    return index > -1 ? index : 4;
+  };
+
+  // role
+  const convertName = (item) => ({ ...playerName(item), role: t(`role.${item.role}`) });
+
+  return groupBy(prop('type'), map(convertName, sortBy(sortByType, values(data))));
+};
+
+export const GAME_OFFICIALS_COLUMNS = {
+  role: {
+    label: 'table.role.short',
+    tooltip: 'table.role.tooltip',
+    class: 'is-text-left',
+  },
+  name: {
+    label: 'table.name.short',
+    tooltip: 'table.name.tooltip',
+    class: 'is-text-left is-text-bold',
+  },
 };

@@ -22,5 +22,22 @@
     "row-3": "Harmadik sor",
     "row-4": "Negyedik sor",
     "row-gk": "Kapusok"
+  },
+  "role": {
+    "first_referee": "Játékvezető",
+    "second_referee": "Játékvezető",
+    "first_line_judge": "Vonalbíró",
+    "second_line_judge": "Vonalbíró",
+    "music": "Zene",
+    "recorder_ivr": "Jegyzőkönyv vezető",
+    "timer": "Időmérő",
+    "announcer": "Hangosbemondó",
+    "penalty_timer_a": "Büntetés időmérő",
+    "penalty_timer_b": "Büntetés időmérő",
+    "doctor": "Orvos",
+    "medical": "Orvos",
+    "toi_statistician_a": "TOI időmérő",
+    "toi_statistician_b": "TOI időmérő",
+    "led_wall_operator": "Eredmény jelző kezelő"
   }
 }
