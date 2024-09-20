@@ -35,9 +35,6 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
 
 <template>
   <div :class="useMainClass('gamecenter-timeline-team-stats')">
-    <!-- <h1>Team Stats</h1> -->
-    <!-- <StatisticsDoubleBar :max="100" :value-start="33" :value-end="55" value-suffix="%" title="SOG" /> -->
-
     <h1 class="is-heading-2">{{ t('teamsStats.sog') }}</h1>
     <div class="is-stat-container">
       <template v-for="({ max, valueStart, valueEnd }, index) in sog" :key="index">

@@ -117,6 +117,59 @@
     }
   }
 
+  &-score-board {
+    /* display: grid; */
+    grid-template-columns: 1fr 50px auto auto auto 50px 1fr;
+    grid-template-rows: 50px;
+    align-items: center;
+    justify-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+    color: #fff;
+    background-color: var(--vbr-widget-primary-color-700);
+    position: sticky;
+    top: 0;
+    /* opacity: 0; */
+    display: none;
+    transform: translateY(-100%);
+    transition: transform 250ms ease-out, display 250ms;
+    z-index: 100;
+
+    &.is-visible {
+      display: grid;
+      transform: translateY(0);
+      /* opacity: 1; */
+    }
+
+    .is-score {
+      font-size: var(--vbr-widget-typography-text-4xl-size);
+      font-weight: 700;
+    }
+
+    .is-team {
+      font-size: var(--vbr-widget-typography-text-base-size);
+      font-weight: 700;
+      color: var(--vbr-widget-primary-color-100);
+    }
+
+    .is-home-team {
+      justify-self: end;
+      text-align: right;
+    }
+
+    .is-away-team {
+      justify-self: start;
+    }
+
+    .is-game-status {
+      font-size: var(--vbr-widget-typography-text-sm-size);
+      font-weight: 500;
+      text-transform: uppercase;
+      color: var(--vbr-widget-live-game-color);
+    }
+  }
+
   .is-heading-1 {
     margin-block-start: 3rem;
     margin-block-end: 1rem;
@@ -152,12 +205,13 @@
     }
 
     td {
-      font-size: var(--vbr-widget-typography-text-sm-size);
+      font-size: var(--vbr-widget-typography-text-base-size);
       font-weight: 500;
       color: var(--vbr-widget-primary-color-700);
     }
 
     td:nth-child(2) {
+      font-size: var(--vbr-widget-typography-text-sm-size);
       text-align: left;
     }
 
@@ -225,7 +279,7 @@
       align-items: center;
 
       &.is-goal {
-        background-color: var(--vbr-widget-primary-color-100);
+        background-color: var(--vbr-widget-danger-color-50);
       }
     }
 
@@ -409,7 +463,7 @@
       }
 
       .is-gk {
-        grid-area: gk;
+        width: 100%;
       }
 
       .is-player-wrapper {
@@ -464,13 +518,6 @@
         }
       }
 
-      &:has(.is-gk) {
-        display: flex;
-        justify-content: center;
-        grid-template-columns: none;
-        grid-template-areas: none;
-      }
-
       &.is-away-team .is-player-wrapper {
         border-inline-start: none;
         border-inline-end: 3px solid var(--vbr-widget-gamecenter-away-team-identifier-color);
@@ -482,6 +529,13 @@
 
         &.is-away-team {
           grid-template-areas: 'lw .' 'lw ld' 'c ld' 'c rd' 'rw rd' 'rw .';
+        }
+
+        &:has(.is-gk) {
+          display: flex;
+          justify-content: center;
+          grid-template-columns: none;
+          grid-template-areas: none;
         }
       }
     }

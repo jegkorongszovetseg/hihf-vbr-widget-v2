@@ -23,7 +23,7 @@ export const buildSOG = (data, homeTeamId, awayTeamId, key) => {
   let allValueEnd = 0;
 
   const converted = data.reduce((acc, item) => {
-    const period = item[homeTeamId]?.period ?? '';
+    const period = item[homeTeamId]?.period ?? 'p1';
     const valueStart = item[homeTeamId]?.[key] ?? 0;
     const valueEnd = item[awayTeamId]?.[key] ?? 0;
     const max = valueStart + valueEnd;

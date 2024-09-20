@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { compose, groupBy, prop, reverse, isEmpty } from 'ramda';
-import { useUrlSearchParams } from '@vueuse/core';
+import { useIntersectionObserver, useUrlSearchParams } from '@vueuse/core';
 import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { I18NProvider, ErrorNotice } from '@mjsz-vbr-elements/core/components';
 import { handleServices, useApiErrors } from '../game/composables';
@@ -11,6 +11,7 @@ import GameLineups from './GameLineups.vue';
 import GameTeamStats from './GameTeamStats.vue';
 import GamePlayerStats from './GamePlayerStats.vue';
 import GameOfficials from './GameOfficials.vue';
+import ScoreBoard from './components/ScoreBoard.vue';
 import { TAB_EVENTS, TAB_LINEUPS, TAB_TEAM_STATS, TAB_PLAYER_STATS, TAB_OFFICIALS } from './constants';
 import hu from '../game/locales/hu.json';
 import en from '../game/locales/en.json';
@@ -39,8 +40,20 @@ const props = defineProps({
 });
 
 const activeTab = ref('events');
+const contentElementRef = ref(null);
+const isScoreBoardVisible = ref(false);
 
 const searchParams = useUrlSearchParams('history');
+
+useIntersectionObserver(
+  contentElementRef,
+  ([{ isIntersecting }]) => {
+    isScoreBoardVisible.value = !isIntersecting;
+  },
+  {
+    threshold: 0.25,
+  }
+);
 
 const { errors, add: addApiError, remove: removeApiError } = useApiErrors();
 
@@ -103,9 +116,11 @@ function onTabChange(value) {
     <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
       <ErrorNotice v-for="error in errors" :key="error.key" :error="error" />
 
-      <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
+      <ScoreBoard :class="{'is-visible': isScoreBoardVisible}" v-if="gameData?.gameStatus === 1" :game-data="gameData" />
 
-      <template v-if="gameData?.gameStatus > 0">
+      <GameData v-if="!isEmpty(gameData)" ref="contentElementRef" :game-data="gameData" :locale="props.locale" />
+
+      <div v-if="gameData?.gameStatus > 0">
         <div :class="useMainClass('gamecenter-timeline-tab-buttons')">
           <button
             :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_EVENTS }]"
@@ -171,7 +186,7 @@ function onTabChange(value) {
           :home-team-name="gameData.homeTeam.longName"
           :away-team-name="gameData.awayTeam.longName"
         />
-      </template>
+      </div>
     </I18NProvider>
   </div>
 </template>
