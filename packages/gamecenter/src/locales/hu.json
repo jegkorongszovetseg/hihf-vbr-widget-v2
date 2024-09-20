@@ -1,4 +1,7 @@
 {
+  "gameData": {
+    "attendance": "{0} néző"
+  },
   "eventType": {
     "Gól": "Gól",
     "Kiállítás": "Kiállítás",

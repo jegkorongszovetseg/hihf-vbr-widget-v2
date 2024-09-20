@@ -28,7 +28,7 @@ const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gam
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-game-data')">
+  <div :class="useMainClass('gamecenter-timeline-game-data')">
     <div class="is-title-container">
       <div class="is-title" v-once>
         {{ gameData.championshipName }} - {{ gameData.divisionName }} - {{ gameData.gameName }} /
@@ -86,7 +86,9 @@ const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gam
           >:<span v-if="gameData.gameStatus === 0">-</span>
           <span v-else>{{ gameData.awayTeamScore }}</span>
         </div>
-        <p class="is-attendance">{{ gameData.attendance }}</p>
+
+        <p class="is-attendance">{{ t('gameData.attendance', [gameData.attendance]) }}</p>
+
         <PeriodResults
           :results="convertedPeriodResults"
           :home-team-name="gameData.homeTeam.shortName"
