@@ -163,7 +163,7 @@
     }
 
     .is-game-status {
-      font-size: var(--vbr-widget-typography-text-sm-size);
+      font-size: var(--vbr-widget-typography-text-xs-size);
       font-weight: 500;
       text-transform: uppercase;
       color: var(--vbr-widget-live-game-color);
@@ -425,11 +425,17 @@
   }
 
   &-lineups {
-    display: grid;
-    gap: 2rem;
+    hr {
+      margin-block: 1.5rem;
+    }
 
-    @container rows (width >= 768px) {
-      grid-template-columns: 1fr 1fr;
+    .is-container {
+      display: grid;
+      gap: 2rem;
+
+      @container rows (width >= 768px) {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     &-lines {
@@ -466,57 +472,7 @@
         width: 100%;
       }
 
-      .is-player-wrapper {
-        display: grid;
-        grid-template-columns: 40px auto 1fr;
-        grid-template-areas: 'img number name' 'img position name';
-        column-gap: 0.5rem;
-        padding: 0.75rem;
-        background-color: var(--vbr-widget-primary-color-50);
-        border-inline-start: 3px solid var(--vbr-widget-gamecenter-home-team-identifier-color);
-        border-radius: 0.5rem;
-        overflow: hidden;
-
-        li {
-          line-height: var(--vbr-widget-typography-text-xs-lineheight);
-        }
-
-        li:nth-child(1) {
-          grid-area: img;
-        }
-        li:nth-child(2) {
-          grid-area: number;
-          font-style: italic;
-          color: var(--vbr-widget-primary-color-500);
-        }
-        li:nth-child(3) {
-          grid-area: name;
-          font-weight: 600;
-          color: var(--vbr-widget-primary-color-700);
-
-          svg {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            color: var(--vbr-widget-primary-color-900);
-          }
-        }
-        li:nth-child(4) {
-          grid-area: position;
-          align-self: center;
-          font-size: var(--vbr-widget-typography-text-xs-size);
-          line-height: 1;
-          color: var(--vbr-widget-primary-color-300);
-          text-transform: uppercase;
-        }
-
-        img {
-          display: block;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-        }
-      }
+      
 
       &.is-away-team .is-player-wrapper {
         border-inline-start: none;
@@ -537,6 +493,104 @@
           grid-template-columns: none;
           grid-template-areas: none;
         }
+      }
+    }
+
+    &-lines-simple {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+
+      @container rows (width >= 768px) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    &-lines-referees {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+
+      @container rows (width >= 768px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+    }
+
+    .is-official-person-container {
+      display: grid;
+      padding: 0.75rem;
+      background-color: var(--vbr-widget-primary-color-50);
+      border-radius: 0.5rem;
+
+      &.is-home-team {
+        border-inline-start: 3px solid var(--vbr-widget-gamecenter-home-team-identifier-color);
+      }
+      &.is-away-team {
+        border-inline-end: 3px solid var(--vbr-widget-gamecenter-away-team-identifier-color);
+      }
+
+      li:nth-child(1) {
+        font-weight: 600;
+        color: var(--vbr-widget-primary-color-700);
+      }
+      li:nth-child(2) {
+        align-self: center;
+        font-size: var(--vbr-widget-typography-text-xs-size);
+        line-height: 1;
+        color: var(--vbr-widget-primary-color-300);
+        text-transform: uppercase;
+      }
+    }
+
+    .is-player-wrapper {
+      display: grid;
+      grid-template-columns: 40px auto 1fr;
+      grid-template-areas: 'img number name' 'img position name';
+      column-gap: 0.5rem;
+      padding: 0.75rem;
+      background-color: var(--vbr-widget-primary-color-50);
+      border-inline-start: 3px solid var(--vbr-widget-gamecenter-home-team-identifier-color);
+      border-radius: 0.5rem;
+      overflow: hidden;
+
+      li {
+        line-height: var(--vbr-widget-typography-text-xs-lineheight);
+      }
+
+      li:nth-child(1) {
+        grid-area: img;
+      }
+      li:nth-child(2) {
+        grid-area: number;
+        font-style: italic;
+        color: var(--vbr-widget-primary-color-500);
+      }
+      li:nth-child(3) {
+        grid-area: name;
+        font-weight: 600;
+        color: var(--vbr-widget-primary-color-700);
+
+        svg {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          color: var(--vbr-widget-primary-color-900);
+        }
+      }
+      li:nth-child(4) {
+        grid-area: position;
+        align-self: center;
+        font-size: var(--vbr-widget-typography-text-xs-size);
+        line-height: 1;
+        color: var(--vbr-widget-primary-color-300);
+        text-transform: uppercase;
+      }
+
+      img {
+        display: block;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
       }
     }
   }

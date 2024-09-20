@@ -116,7 +116,11 @@ function onTabChange(value) {
     <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
       <ErrorNotice v-for="error in errors" :key="error.key" :error="error" />
 
-      <ScoreBoard :class="{'is-visible': isScoreBoardVisible}" v-if="gameData?.gameStatus === 1" :game-data="gameData" />
+      <ScoreBoard
+        :class="{ 'is-visible': isScoreBoardVisible }"
+        v-if="gameData?.gameStatus === 1"
+        :game-data="gameData"
+      />
 
       <GameData v-if="!isEmpty(gameData)" ref="contentElementRef" :game-data="gameData" :locale="props.locale" />
 
@@ -163,6 +167,7 @@ function onTabChange(value) {
         <GameLineups
           v-if="activeTab === TAB_LINEUPS"
           :data="gameStats.players"
+          :game-officials="gameOfficials"
           :home-team-id="gameData.homeTeam.id"
           :home-team-name="gameData.homeTeam.longName"
           :away-team-id="gameData.awayTeam.id"

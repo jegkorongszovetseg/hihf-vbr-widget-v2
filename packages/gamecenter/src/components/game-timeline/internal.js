@@ -1,5 +1,21 @@
 import { playerName } from '@mjsz-vbr-elements/core';
-import { replace, compose, split, map, trim, groupBy, prop, values, sortBy, sortWith, descend } from 'ramda';
+import {
+  replace,
+  compose,
+  split,
+  map,
+  trim,
+  groupBy,
+  prop,
+  values,
+  sortBy,
+  sortWith,
+  descend,
+  includes,
+  filter,
+  pick,
+  omit,
+} from 'ramda';
 
 export const buildPeriodResultsByTeam = (periodResults) => {
   const defaultPeriodResultObject = {
@@ -136,14 +152,12 @@ export const buildDvgPercent = (data) => {
 };
 
 export const convertGameOfficials = (data, t) => {
-  const sortByType = (item) => {
-    const index = ['first_referee', 'second_referee', 'first_line_judge', 'second_line_judge'].indexOf(item.role);
-    return index > -1 ? index : 4;
-  };
-
   const convertName = (item) => ({ ...playerName(item), role: t(`role.${item.role}`) });
 
-  return groupBy(prop('type'), map(convertName, sortBy(sortByType, values(data))));
+  return groupBy(
+    prop('type'),
+    map(convertName, values(omit(['first_referee', 'second_referee', 'first_line_judge', 'second_line_judge'], data)))
+  );
 };
 
 export const GAME_OFFICIALS_COLUMNS = {
@@ -160,3 +174,10 @@ export const GAME_OFFICIALS_COLUMNS = {
 };
 
 export const transformGoalieStats = sortWith([descend(prop('startingFive'))]);
+
+export const pickCoaches = (data) => {
+  const pickRole = (item) => includes(prop('role', item), ['entry_head_coach', 'entry_second_coach']);
+  return filter(pickRole, data);
+};
+
+export const pickReferees = pick(['first_referee', 'second_referee', 'first_line_judge', 'second_line_judge']);

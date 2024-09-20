@@ -36,7 +36,7 @@ const convertedGameOfficials = computed(() => convertGameOfficials(props.gameOff
 <template>
   <div :class="useMainClass('gamecenter-timeline-game-officials')">
     <h1 class="is-heading-1">Team OFFICALS</h1>
-    <div :class="useMainClass('gamecenter-data-columns')">
+    <div class="is-game-officials-container">
       <GameDataTable :columns="columns" :rows="homeTeamMembers" :title="homeTeamName" />
       <GameDataTable :columns="columns" :rows="awayTeamMembers" :title="awayTeamName" />
     </div>
