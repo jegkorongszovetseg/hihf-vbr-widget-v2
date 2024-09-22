@@ -46,7 +46,7 @@ const awayGoalies = computed(() => transformGoalieStats(props.data?.goalies?.[pr
   <div :class="useMainClass('gamecenter-data-column')">
     <GamePlayerStatsProvider :rows="homePlayers" #default="{ rows, sort, onSort }">
       <GameDataTable
-        :class="useMainClass('gamecenter-timeline-data-table')"
+        :class="[useMainClass('gamecenter-timeline-data-table'), 'is-home-team']"
         :columns="columns"
         :rows="rows"
         :title="homeTeamName"
@@ -56,7 +56,7 @@ const awayGoalies = computed(() => transformGoalieStats(props.data?.goalies?.[pr
     </GamePlayerStatsProvider>
     <GamePlayerStatsProvider :rows="awayPlayers" #default="{ rows, sort, onSort }">
       <GameDataTable
-        :class="useMainClass('gamecenter-timeline-data-table')"
+        :class="[useMainClass('gamecenter-timeline-data-table'), 'is-away-team']"
         :columns="columns"
         :rows="rows"
         :title="awayTeamName"
@@ -69,7 +69,7 @@ const awayGoalies = computed(() => transformGoalieStats(props.data?.goalies?.[pr
   <div :class="useMainClass('gamecenter-data-columns')">
     <GameGolaiesStatsProvider :rows="homeGoalies" #default="{ rows }">
       <GameDataTable
-        :class="useMainClass('gamecenter-timeline-data-table')"
+        :class="[useMainClass('gamecenter-timeline-data-table'), 'is-home-team']"
         :columns="goliesColumns"
         :rows="rows"
         :title="homeTeamName"
@@ -77,7 +77,7 @@ const awayGoalies = computed(() => transformGoalieStats(props.data?.goalies?.[pr
     </GameGolaiesStatsProvider>
     <GameGolaiesStatsProvider :rows="awayGoalies" #default="{ rows }">
       <GameDataTable
-        :class="useMainClass('gamecenter-timeline-data-table')"
+        :class="[useMainClass('gamecenter-timeline-data-table'), 'is-away-team']"
         :columns="goliesColumns"
         :rows="rows"
         :title="awayTeamName"

@@ -637,9 +637,13 @@
 
         svg {
           display: inline-block;
+          margin-inline-end: 0.125rem;
+          padding: 0.125rem;
           width: 16px;
           height: 16px;
-          color: var(--vbr-widget-primary-color-900);
+          color: var(--vbr-widget-primary-color-0);
+          background-color: var(--vbr-widget-primary-color-700);
+          border-radius: 0.25rem;
         }
       }
       li:nth-child(4) {
@@ -681,6 +685,41 @@
 
       @container rows (width >= 768px) {
         flex-direction: row;
+      }
+    }
+  }
+
+  &-data-table {
+    margin-block-end: 1rem;
+    min-width: 0;
+
+    h2 {
+      padding: 8px;
+      font-size: var(--vbr-widget-gamecenter-team-container-title-size);
+      font-weight: 700;
+      color: var(--vbr-widget-gamecenter-team-container-title-color);
+
+      &:before {
+        display: inline-block;
+        content: '';
+        width: 0;
+        aspect-ratio: 1;
+        background-color: transparent;
+        border-radius: 100%;
+        margin-inline-end: 0.25rem;
+      }
+    }
+
+    &.is-home-team {
+      h2:before {
+        width: 8px;
+        background-color: var(--vbr-widget-gamecenter-home-team-identifier-color);
+      }
+    }
+    &.is-away-team {
+      h2:before {
+        width: 8px;
+        background-color: var(--vbr-widget-gamecenter-away-team-identifier-color);
       }
     }
   }

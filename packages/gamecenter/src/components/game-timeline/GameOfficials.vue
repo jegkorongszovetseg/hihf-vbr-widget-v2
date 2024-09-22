@@ -35,23 +35,23 @@ const convertedGameOfficials = computed(() => convertGameOfficials(props.gameOff
 
 <template>
   <div :class="useMainClass('gamecenter-timeline-game-officials')">
-    <h1 class="is-heading-1">Team OFFICALS</h1>
+    <h2 class="is-heading-2">Team OFFICALS</h2>
     <div class="is-game-officials-container">
       <GameDataTable
-        :class="useMainClass('gamecenter-timeline-data-table')"
+        :class="[useMainClass('gamecenter-timeline-data-table'), 'is-home-team']"
         :columns="columns"
         :rows="homeTeamMembers"
         :title="homeTeamName"
       />
       <GameDataTable
-        :class="useMainClass('gamecenter-timeline-data-table')"
+        :class="[useMainClass('gamecenter-timeline-data-table'), 'is-away-team']"
         :columns="columns"
         :rows="awayTeamMembers"
         :title="awayTeamName"
       />
     </div>
 
-    <h1 class="is-heading-1">Game OFFICALS</h1>
+    <h2 class="is-heading-2">Game OFFICALS</h2>
 
     <div class="is-game-officials-container">
       <div v-for="(group, key) in convertedGameOfficials">
