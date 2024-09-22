@@ -432,6 +432,11 @@
       color: var(--vbr-widget-primary-color-900);
     }
 
+    .is-details-sub-title {
+      font-size: var(--vbr-widget-typography-text-sm-size);
+      color: var(--vbr-widget-primary-color-500);
+    }
+
     .is-evented-person {
       font-weight: 600;
       color: var(--vbr-widget-primary-color-700);

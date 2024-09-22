@@ -31,6 +31,7 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
       Büntetés
       <template v-if="event.penaltyLength !== 0">
         {{ t('events.penaltyLength', [event.penaltyLength]) }}
+        <template v-if="event.penaltyEnd"> ({{ event.penaltyEnd }}) </template>
       </template>
       <template v-if="event.perc === 0">PS</template>
     </template>
@@ -43,16 +44,9 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
           {{ event.lastName }} {{ event.firstName }}
         </template>
       </li>
-      <li>
-        {{ convertedEvent.penaltyCause }}
+      <li class="is-details-sub-title">
+        {{ t(`penalties.${convertedEvent.penaltyCause}`) }} <b>({{ convertedEvent.penaltyCause }})</b>
       </li>
-      <!-- <li>
-        <template v-if="event.penaltyLength !== 0">
-          {{ t('events.penaltyLength', [event.penaltyLength]) }}
-          <template v-if="event.penaltyEnd"> ({{ event.penaltyEnd }}) </template>
-        </template>
-        <template v-if="event.perc === 0">PS</template>
-      </li> -->
     </template>
 
     <template #team-logo>
