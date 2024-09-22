@@ -279,7 +279,47 @@
       align-items: center;
 
       &.is-goal {
+        color: var(--vbr-widget-danger-color-500);
         background-color: var(--vbr-widget-danger-color-50);
+
+        .is-details-title {
+          color: var(--vbr-widget-danger-color-900);
+        }
+
+        .is-evented-person {
+          color: var(--vbr-widget-danger-color-700);
+        }
+
+        .is-assists-list {
+          font-size: var(--vbr-widget-typography-text-sm-size);
+          color: var(--vbr-widget-danger-color-400);
+
+          span:not(:last-of-type):after {
+            content: '/';
+            margin-inline: 0.25rem;
+          }
+        }
+
+        .is-poi-data {
+          display: flex;
+          gap: 0.25rem;
+          font-size: var(--vbr-widget-typography-text-xs-size);
+          color: var(--vbr-widget-danger-color-400);
+
+          ul {
+            display: flex;
+            gap: 0.125rem;
+
+            li:not(:last-of-type):after {
+              content: ',';
+            }
+          }
+        }
+
+        .is-badge.is-invert {
+          color: var(--vbr-widget-danger-color-50);
+          background-color: var(--vbr-widget-danger-color-500);
+        }
       }
     }
 
@@ -381,6 +421,7 @@
       padding: 0;
       list-style: none;
       justify-self: end;
+      text-align: right;
     }
 
     .is-details-title {
@@ -388,6 +429,17 @@
 
       justify-self: end;
       font-weight: 700;
+      color: var(--vbr-widget-primary-color-900);
+    }
+
+    .is-evented-person {
+      font-weight: 600;
+      color: var(--vbr-widget-primary-color-700);
+    }
+
+    .is-player-number {
+      font-weight: 400;
+      font-style: italic;
     }
 
     &[data-team='away'] {
@@ -398,6 +450,7 @@
       .is-details-list,
       .is-details-title {
         justify-self: start;
+        text-align: left;
       }
     }
 
@@ -425,6 +478,9 @@
   }
 
   &-lineups {
+    margin-block-start: 1rem;
+    padding-block-end: 2rem;
+
     hr {
       margin-block: 1.5rem;
     }
@@ -472,8 +528,6 @@
         width: 100%;
       }
 
-      
-
       &.is-away-team .is-player-wrapper {
         border-inline-start: none;
         border-inline-end: 3px solid var(--vbr-widget-gamecenter-away-team-identifier-color);
@@ -482,6 +536,7 @@
       @container rows (width >= 768px) {
         grid-template-columns: 1fr 1fr;
         grid-template-areas: '. lw' 'ld lw' 'ld c' 'rd c' 'rd rw' '. rw';
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
 
         &.is-away-team {
           grid-template-areas: 'lw .' 'lw ld' 'c ld' 'c rd' 'rw rd' 'rw .';
@@ -492,6 +547,10 @@
           justify-content: center;
           grid-template-columns: none;
           grid-template-areas: none;
+        }
+
+        .is-gk {
+          width: 50%;
         }
       }
     }
@@ -569,6 +628,12 @@
         grid-area: name;
         font-weight: 600;
         color: var(--vbr-widget-primary-color-700);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
 
         svg {
           display: inline-block;

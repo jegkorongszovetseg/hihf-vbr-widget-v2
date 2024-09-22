@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { reject, isEmpty } from 'ramda';
-// import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
+import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
 import GameEventLayout from '../GameEventLayout.vue';
@@ -31,9 +31,9 @@ const awayOnIce = computed(() => props.event.awayOnIce);
 <template>
   <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam" :event-type="event.type" :event="event">
     <template #title>
-      <span v-if="event.advantage" class="is-badge is-large">
-        {{ event.advantage }}
-      </span>
+      <!-- <span v-if="event.advantage" class="is-badge is-large"> -->
+      {{ event.advantage }}
+      <!-- </span> -->
       <span v-if="event.en" class="is-badge is-large"> EN </span>
       {{ t('eventType.Gól') }} {{ event.score }}
     </template>
@@ -44,13 +44,13 @@ const awayOnIce = computed(() => props.event.awayOnIce);
       </li>
       <li class="is-assists-list">
         <template v-for="assist in assists" :key="assist">
-          <span
-            ><i>{{ assist.jerseyNumber }}</i> {{ assist.lastName }} {{ assist.firstName }}</span
+          <span class="is-evented-person"
+            ><i class="is-player-number">{{ assist.jerseyNumber }}</i> {{ assist.lastName }} {{ assist.firstName }}</span
           >
         </template>
       </li>
-      <li>
-        <!-- <ul>
+      <li v-if="!isEmpty(homeOnIce) || !isEmpty(awayOnIce)" class="is-poi-data">
+        <ul>
           <template v-for="player in homeOnIce" :key="player.playerId">
             <FloatingPanel
               :offset="2"
@@ -70,7 +70,31 @@ const awayOnIce = computed(() => props.event.awayOnIce);
               </li>
             </FloatingPanel>
           </template>
-        </ul> -->
+        </ul>
+
+        <span> / </span>
+
+        <ul>
+          <template v-for="player in awayOnIce" :key="player.playerId">
+            <FloatingPanel
+              :offset="2"
+              placement="top"
+              theme="tooltip"
+              :content="`${player.lastName} ${player.firstName}`"
+              :append-to="tooltipContainer"
+              v-slot:default="{ setRef, events }"
+            >
+              <li
+                :ref="setRef"
+                :tabindex="0"
+                :aria-label="`${player.jerseyNumber} ${player.lastName} ${player.firstName}`"
+                v-on="events"
+              >
+                {{ player.jerseyNumber }}
+              </li>
+            </FloatingPanel>
+          </template>
+        </ul>
       </li>
       <!-- <li>
         <span v-if="event.advantage" class="is-badge is-large">
@@ -85,67 +109,6 @@ const awayOnIce = computed(() => props.event.awayOnIce);
           <template v-if="event.gwg">GWG</template>
         </span>
       </li>
-      <!-- <div>
-        <dl>
-          <dt class="is-evented-person">
-            <span class="is-player-number">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
-          </dt>
-          <dt class="is-assists-list">
-            <template v-for="assist in assists" :key="assist">
-              <span
-                ><i>{{ assist.jerseyNumber }}</i> {{ assist.lastName }} {{ assist.firstName }}</span
-              >
-            </template>
-          </dt>
-          <dd v-if="!isEmpty(homeOnIce) || !isEmpty(awayOnIce)" class="is-poi-data">
-            <ul>
-              <template v-for="player in homeOnIce" :key="player.playerId">
-                <FloatingPanel
-                  :offset="2"
-                  placement="top"
-                  theme="tooltip"
-                  :content="`${player.lastName} ${player.firstName}`"
-                  :append-to="tooltipContainer"
-                  v-slot:default="{ setRef, events }"
-                >
-                  <li
-                    :ref="setRef"
-                    :tabindex="0"
-                    :aria-label="`${player.jerseyNumber} ${player.lastName} ${player.firstName}`"
-                    v-on="events"
-                  >
-                    {{ player.jerseyNumber }}
-                  </li>
-                </FloatingPanel>
-              </template>
-            </ul>
-
-            <span> / </span>
-
-            <ul>
-              <template v-for="player in awayOnIce" :key="player.playerId">
-                <FloatingPanel
-                  :offset="2"
-                  placement="top"
-                  theme="tooltip"
-                  :content="`${player.lastName} ${player.firstName}`"
-                  :append-to="tooltipContainer"
-                  v-slot:default="{ setRef, events }"
-                >
-                  <li
-                    :ref="setRef"
-                    :tabindex="0"
-                    :aria-label="`${player.jerseyNumber} ${player.lastName} ${player.firstName}`"
-                    v-on="events"
-                  >
-                    {{ player.jerseyNumber }}
-                  </li>
-                </FloatingPanel>
-              </template>
-            </ul>
-          </dd>
-        </dl>
-      </div> -->
     </template>
 
     <template #team-logo>

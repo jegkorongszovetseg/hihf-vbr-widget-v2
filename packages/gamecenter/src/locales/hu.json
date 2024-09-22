@@ -2,6 +2,17 @@
   "gameData": {
     "attendance": "{0} néző"
   },
+  "menu": {
+    "events": "Események",
+    "lineups": "Felállások",
+    "teamStats": "Csapat statisztikák",
+    "playerStats": "Játékos statisztikák",
+    "officials": "Hivatalos személyek"
+  },
+  "title": {
+    "coaches": "Edzők",
+    "referees": "Játékvezetők"
+  },
   "eventType": {
     "Gól": "Gól",
     "Kiállítás": "Kiállítás",
@@ -9,7 +20,7 @@
     "Idő": "Időkérés",
     "Büntető": "Büntető"
   },
-  "section" :{
+  "section": {
     "all": "Összesen",
     "ot": "Hosszabbítás",
     "p1": "1. harmad",

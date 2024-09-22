@@ -2,6 +2,10 @@
   "gameData": {
     "attendance": "{0} attending"
   },
+  "title": {
+    "coaches": "Coaches",
+    "referees": "Referees"
+  },
   "eventType": {
     "Gól": "Goal",
     "Kiállítás": "Penalty",
@@ -25,5 +29,22 @@
     "row-3": "Line 3",
     "row-4": "Line 4",
     "row-gk": "Goalkeepers"
+  },
+  "role": {
+    "first_referee": "Referee",
+    "second_referee": "Referee",
+    "first_line_judge": "Linesman",
+    "second_line_judge": "Linesman",
+    "music": "Music",
+    "recorder_ivr": "IVR recorder",
+    "timer": "Timer",
+    "announcer": "Announcer",
+    "penalty_timer_a": "Penalty Timer",
+    "penalty_timer_b": "Penalty Timer",
+    "doctor": "Doctor",
+    "medical": "Medical",
+    "toi_statistician_a": "TOI statistician",
+    "toi_statistician_b": "TOI statistician",
+    "led_wall_operator": "LED wall operator"
   }
 }

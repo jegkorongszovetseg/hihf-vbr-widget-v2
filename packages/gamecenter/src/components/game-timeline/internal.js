@@ -34,6 +34,26 @@ export const buildPeriodResultsByTeam = (periodResults) => {
 
 export const groupLines = (data) => groupBy(prop('row'), data);
 
+export const groupLinesByTeams = (data, homeTeamId, awayTeamId) => {
+  const homeTeam = groupLines(data?.[homeTeamId] ?? []);
+  const awayTeam = groupLines(data?.[awayTeamId] ?? []);
+
+  return ['1', '2', '3', '4', 'gk'].reduce(
+    (acc, key) => {
+      acc[key].home = homeTeam[key];
+      acc[key].away = awayTeam[key];
+      return acc;
+    },
+    {
+      1: { home: [], away: [] },
+      2: { home: [], away: [] },
+      3: { home: [], away: [] },
+      4: { home: [], away: [] },
+      gk: { home: [], away: [] },
+    }
+  );
+};
+
 export const buildSOG = (data, homeTeamId, awayTeamId, key) => {
   let allValueStart = 0;
   let allValueEnd = 0;
