@@ -130,31 +130,31 @@ function onTabChange(value) {
             :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_EVENTS }]"
             @click="onTabChange(TAB_EVENTS)"
           >
-            Events
+            {{ t('menu.events') }}
           </button>
           <button
             :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_LINEUPS }]"
             @click="onTabChange(TAB_LINEUPS)"
           >
-            Lineups
+            {{ t('menu.lineups') }}
           </button>
           <button
             :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_TEAM_STATS }]"
             @click="onTabChange(TAB_TEAM_STATS)"
           >
-            Team Stats
+            {{ t('menu.teamStats') }}
           </button>
           <button
             :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_PLAYER_STATS }]"
             @click="onTabChange(TAB_PLAYER_STATS)"
           >
-            Player Stats
+            {{ t('menu.playerStats') }}
           </button>
           <button
             :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_OFFICIALS }]"
             @click="onTabChange(TAB_OFFICIALS)"
           >
-            Officials
+            {{ t('menu.officials') }}
           </button>
         </div>
 

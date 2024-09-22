@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { useMainClass, useColumns } from '@mjsz-vbr-elements/core/composables';
-import GameDataTable from '../game/components/GameDataTable.vue';
+import GameDataTable from '../common/GameDataTable.vue';
 import GamePlayerStatsProvider from '../game/components/GamePlayerStatsProvider.vue';
 import GameGolaiesStatsProvider from '../game/components/GameGoaliesStatsProvider.vue';
 import { PLAYER_STATS_COLUMNS, GOALIES_STATS_COLUMNS, convertPlayersTOI } from '../game/internal';
@@ -45,19 +45,43 @@ const awayGoalies = computed(() => transformGoalieStats(props.data?.goalies?.[pr
 <template>
   <div :class="useMainClass('gamecenter-data-column')">
     <GamePlayerStatsProvider :rows="homePlayers" #default="{ rows, sort, onSort }">
-      <GameDataTable :columns="columns" :rows="rows" :title="homeTeamName" :sort="sort" @sort="onSort" />
+      <GameDataTable
+        :class="useMainClass('gamecenter-timeline-data-table')"
+        :columns="columns"
+        :rows="rows"
+        :title="homeTeamName"
+        :sort="sort"
+        @sort="onSort"
+      />
     </GamePlayerStatsProvider>
     <GamePlayerStatsProvider :rows="awayPlayers" #default="{ rows, sort, onSort }">
-      <GameDataTable :columns="columns" :rows="rows" :title="awayTeamName" :sort="sort" @sort="onSort" />
+      <GameDataTable
+        :class="useMainClass('gamecenter-timeline-data-table')"
+        :columns="columns"
+        :rows="rows"
+        :title="awayTeamName"
+        :sort="sort"
+        @sort="onSort"
+      />
     </GamePlayerStatsProvider>
   </div>
 
   <div :class="useMainClass('gamecenter-data-columns')">
     <GameGolaiesStatsProvider :rows="homeGoalies" #default="{ rows }">
-      <GameDataTable :columns="goliesColumns" :rows="rows" :title="homeTeamName" />
+      <GameDataTable
+        :class="useMainClass('gamecenter-timeline-data-table')"
+        :columns="goliesColumns"
+        :rows="rows"
+        :title="homeTeamName"
+      />
     </GameGolaiesStatsProvider>
     <GameGolaiesStatsProvider :rows="awayGoalies" #default="{ rows }">
-      <GameDataTable :columns="goliesColumns" :rows="rows" :title="awayTeamName" />
+      <GameDataTable
+        :class="useMainClass('gamecenter-timeline-data-table')"
+        :columns="goliesColumns"
+        :rows="rows"
+        :title="awayTeamName"
+      />
     </GameGolaiesStatsProvider>
   </div>
 </template>
