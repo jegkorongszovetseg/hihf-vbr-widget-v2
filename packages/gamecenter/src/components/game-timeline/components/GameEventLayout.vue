@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
-import { EVENT_TYPE_GOAL, EVENT_TYPE_PENALTY, EVENT_TYPE_TIMEOUT, EVENT_TYPE_GOALIE } from '../constants';
+import { EVENT_TYPE_GOAL, EVENT_TYPE_PENALTY, EVENT_TYPE_TIMEOUT, EVENT_TYPE_GOALIE, EVENT_TYPE_PENALTY_SHOT } from '../constants';
 
 const props = defineProps({
   timestamp: {
@@ -56,6 +56,8 @@ const { t } = useI18n();
           'is-timeout': eventType === EVENT_TYPE_TIMEOUT,
           'is-goalie-in': eventType === EVENT_TYPE_GOALIE,
           'is-goalie-out': eventType === EVENT_TYPE_GOALIE && event.gkDirection === 'KI',
+          'is-penalty-shot-goal': eventType === EVENT_TYPE_PENALTY_SHOT && event.goal,
+          'is-penalty-shot-no-goal': eventType === EVENT_TYPE_PENALTY_SHOT && !event.goal,
         },
       ]"
     >

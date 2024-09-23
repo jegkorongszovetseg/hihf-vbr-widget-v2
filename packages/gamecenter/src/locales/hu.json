@@ -18,7 +18,12 @@
     "Kiállítás": "Kiállítás",
     "Kapus": "Kapus",
     "Idő": "Időkérés",
-    "Büntető": "Büntető"
+    "Büntető": "Büntető",
+    "goalie": {
+      "KI": "Ki",
+      "BE": "BE",
+      "CSERE": "CSERE"
+    }
   },
   "section": {
     "all": "Összesen",

@@ -11,7 +11,12 @@
     "Kiállítás": "Penalty",
     "Kapus": "Goalie",
     "Idő": "Timeout",
-    "Büntető": "Penalty Shoot"
+    "Büntető": "Penalty Shoot",
+    "goalie": {
+      "KI": "Out",
+      "BE": "In",
+      "CSERE": "Change"
+    }
   },
   "section": {
     "all": "All",

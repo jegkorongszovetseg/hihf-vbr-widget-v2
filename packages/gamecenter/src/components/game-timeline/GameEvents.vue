@@ -24,7 +24,7 @@ const covertedGameEvents = computed(() => convertPeriodEvents(props.gameData, pr
 <template>
   <div :class="useMainClass('gamecenter-timeline-game-events')">
     <template v-for="(period, key) in covertedGameEvents" :key="key">
-      <div class="is-period-header"><span>{{ t(`periods.${convertPeriodName(key)}`) }}</span></div>
+      <div class="is-period-header"><div /><span>{{ t(`periods.${convertPeriodName(key)}`) }}</span></div>
       <div v-if="period.length === 0" class="is-no-action">{{ t('events.noEventsInPeriod') }}</div>
       <template v-for="event in period" :key="event.id">
         <!-- <div :class="useMainClass('gamecenter-game-event')"> -->

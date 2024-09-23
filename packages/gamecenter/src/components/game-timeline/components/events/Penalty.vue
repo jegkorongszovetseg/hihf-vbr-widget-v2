@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import IconWhistle from '@mjsz-vbr-elements/shared/icons/IconWhistle';
 import { convertPenaltyCause } from '../../../game/internal';
@@ -18,8 +18,6 @@ const props = defineProps({
   },
 });
 
-const tooltipContainer = ref(null);
-
 const { t } = useI18n();
 
 const convertedEvent = computed(() => convertPenaltyCause(props.event));
@@ -28,7 +26,7 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
 <template>
   <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam" :event-type="event.type">
     <template #title>
-      Büntetés
+      {{ t('eventType.Kiállítás') }}
       <template v-if="event.penaltyLength !== 0">
         {{ t('events.penaltyLength', [event.penaltyLength]) }}
         <template v-if="event.penaltyEnd"> ({{ event.penaltyEnd }}) </template>

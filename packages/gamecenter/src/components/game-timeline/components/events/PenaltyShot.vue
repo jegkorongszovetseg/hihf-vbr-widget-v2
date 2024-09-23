@@ -20,20 +20,22 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam" :event-type="event.type">
+  <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam" :event-type="event.type" :event="event">
+    <template #title>
+      {{ t('eventType.Büntető') }} - <template v-if="event.goal">{{ t('events.score') }}</template>
+      <template v-else>{{ t('events.missed') }}</template> - ({{ event.score }})
+    </template>
+
     <template #default>
-      <div class="is-time-cell">{{ event.eventTime }}</div>
-      <div class="is-icon-cell"><IconHockeyPuck class="is-goal-so-icon" /></div>
-      <div :class="['is-score-so', { 'is-score-so-goal': event.goal }]">{{ event.score }}</div>
-      <div>
+      <li class="is-evented-person">
+        <span class="is-player-number">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
+      </li>
+      <!-- <div>
         <span :class="['is-badge is-large', { 'is-green': event.goal }]">
           <template v-if="event.goal">{{ t('events.score') }}</template>
           <template v-else>{{ t('events.missed') }}</template>
         </span>
-      </div>
-      <div class="is-evented-person">
-        <span class="is-player-number">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
-      </div>
+      </div> -->
     </template>
 
     <template #team-logo>
