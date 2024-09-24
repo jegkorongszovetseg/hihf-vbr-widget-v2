@@ -78,7 +78,7 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
           :max="max"
           :value-start="valueStart"
           :value-end="valueEnd"
-          :title="t(`notsection.${index}`)"
+          :title="t(`stats.${index}`)"
           :value-suffix="suffix"
         />
       </template>
@@ -91,7 +91,7 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
           :max="max"
           :value-start="valueStart"
           :value-end="valueEnd"
-          :title="t(`notsection.${index}`)"
+          :title="t(`stats.${index}`)"
           :value-suffix="suffix"
         />
       </template>

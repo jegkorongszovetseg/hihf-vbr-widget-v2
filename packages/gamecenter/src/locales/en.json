@@ -2,6 +2,13 @@
   "gameData": {
     "attendance": "{0} attending"
   },
+  "menu": {
+    "events": "Events",
+    "lineups": "Lineups",
+    "teamStats": "Team stats",
+    "playerStats": "Player stats",
+    "officials": "Officials"
+  },
   "title": {
     "coaches": "Coaches",
     "referees": "Referees",
@@ -23,12 +30,21 @@
   "section": {
     "all": "All",
     "ot": "Overtime",
+    "so": "Shoot Out",
     "p1": "First period",
     "p2": "Second period",
     "p3": "Third period",
     "p4": "IV. period",
     "p5": "V. period",
     "p6": "VI. period"
+  },
+  "stats": {
+    "powerPlays": "Power-plays",
+    "powerPlaysGoalFor": "Power-plays Gals Fr",
+    "powerPlayEfficiency": "Power-plays Efficiency",
+    "penaltyKill": "Shorthanded",
+    "powerPlaysKilled": "Power-plays Killed",
+    "penaltyKillEfficiency": "Penalty-Killing Efficiency"
   },
   "rows": {
     "row-1": "Line 1",

@@ -30,12 +30,21 @@
   "section": {
     "all": "Összesen",
     "ot": "Hosszabbítás",
+    "so": "Szétlövés",
     "p1": "1. harmad",
     "p2": "2. harmad",
     "p3": "3. harmad",
     "p4": "4. harmad",
     "p5": "5. harmad",
     "p6": "6. harmad"
+  },
+  "stats": {
+    "powerPlays": "Emberelőnyök",
+    "powerPlaysGoalFor": "Emberelőnyben szerzett gólok",
+    "powerPlayEfficiency": "Emberelőny hatékonyság",
+    "penaltyKill": "Emberhátrányok",
+    "powerPlaysKilled": "Kivédekezett emberhátrányok",
+    "penaltyKillEfficiency": "Emberhátrány hatékonyság"
   },
   "rows": {
     "row-1": "Első sor",

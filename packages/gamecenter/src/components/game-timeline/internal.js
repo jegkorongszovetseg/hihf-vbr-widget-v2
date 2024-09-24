@@ -161,7 +161,7 @@ export const buildDvgPercent = (data) => {
       valueEnd: awayDVG,
       suffix: '',
     },
-    penaltyKillGoalA: {
+    powerPlaysKilled: {
       max: homePK + awayPK,
       valueStart: homePK,
       valueEnd: awayPK,
