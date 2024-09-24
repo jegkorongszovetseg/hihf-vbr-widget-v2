@@ -18,7 +18,7 @@ defineProps({
     <div class="is-team is-home-team">{{ gameData.homeTeam?.longName }}</div>
     <Image :src="gameData.homeTeam?.logo" :key="gameData.homeTeam?.logo" />
     <div class="is-score">{{ gameData.homeTeamScore }}</div>
-    <div class="is-game-status ">
+    <div class="is-game-status">
       <template v-if="gameData.gameStatus > 0">
         {{ t(`periods.${convertPeriodName(gameData.period)}`) }}
       </template>

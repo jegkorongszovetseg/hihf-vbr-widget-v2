@@ -12,6 +12,7 @@ import GameTeamStats from './GameTeamStats.vue';
 import GamePlayerStats from './GamePlayerStats.vue';
 import GameOfficials from './GameOfficials.vue';
 import ScoreBoard from './components/ScoreBoard.vue';
+import GameTabs from './GameTabs.vue';
 import { TAB_EVENTS, TAB_LINEUPS, TAB_TEAM_STATS, TAB_PLAYER_STATS, TAB_OFFICIALS } from './constants';
 import hu from '../game/locales/hu.json';
 import en from '../game/locales/en.json';
@@ -39,11 +40,11 @@ const props = defineProps({
   },
 });
 
-const activeTab = ref('events');
 const contentElementRef = ref(null);
 const isScoreBoardVisible = ref(false);
 
 const searchParams = useUrlSearchParams('history');
+const activeTab = ref(searchParams.tab || TAB_EVENTS);
 
 useIntersectionObserver(
   contentElementRef,
@@ -105,10 +106,6 @@ handleServices({
   services: { getGameData, getGameStats, getEvents, getGameOfficials },
   interval: REFRESH_DELAY,
 });
-
-function onTabChange(value) {
-  activeTab.value = value;
-}
 </script>
 
 <template>
@@ -117,8 +114,8 @@ function onTabChange(value) {
       <ErrorNotice v-for="error in errors" :key="error.key" :error="error" />
 
       <ScoreBoard
-        :class="{ 'is-visible': isScoreBoardVisible }"
         v-if="gameData?.gameStatus === 1"
+        :class="{ 'is-visible': isScoreBoardVisible }"
         :game-data="gameData"
       />
 
@@ -130,39 +127,8 @@ function onTabChange(value) {
         :locale="locale"
       />
 
-      <div v-if="gameData?.gameStatus > 0">
-        <div :class="useMainClass('gamecenter-timeline-tab-buttons')">
-          <button
-            :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_EVENTS }]"
-            @click="onTabChange(TAB_EVENTS)"
-          >
-            {{ t('menu.events') }}
-          </button>
-          <button
-            :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_LINEUPS }]"
-            @click="onTabChange(TAB_LINEUPS)"
-          >
-            {{ t('menu.lineups') }}
-          </button>
-          <button
-            :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_TEAM_STATS }]"
-            @click="onTabChange(TAB_TEAM_STATS)"
-          >
-            {{ t('menu.teamStats') }}
-          </button>
-          <button
-            :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_PLAYER_STATS }]"
-            @click="onTabChange(TAB_PLAYER_STATS)"
-          >
-            {{ t('menu.playerStats') }}
-          </button>
-          <button
-            :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_OFFICIALS }]"
-            @click="onTabChange(TAB_OFFICIALS)"
-          >
-            {{ t('menu.officials') }}
-          </button>
-        </div>
+      <template v-if="gameData?.gameStatus > 0">
+        <GameTabs v-model:activeTab="activeTab" />
 
         <GameEvents
           v-if="activeTab === TAB_EVENTS && !isEmpty(gameEvents) && !isEmpty(gameData)"
@@ -197,7 +163,7 @@ function onTabChange(value) {
           :home-team-name="gameData.homeTeam.longName"
           :away-team-name="gameData.awayTeam.longName"
         />
-      </div>
+      </template>
     </I18NProvider>
   </div>
 </template>
