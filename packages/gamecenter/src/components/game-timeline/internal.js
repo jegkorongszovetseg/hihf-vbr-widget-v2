@@ -15,6 +15,11 @@ import {
   filter,
   pick,
   omit,
+  propEq,
+  allPass,
+  pathEq,
+  reduce,
+  reduceBy,
 } from 'ramda';
 
 export const buildPeriodResultsByTeam = (periodResults) => {
@@ -171,7 +176,19 @@ export const buildDvgPercent = (data) => {
   };
 };
 
+// TODO: refact
 export const convertGameOfficials = (data, t) => {
+  const sortByType = (item) => {
+    const index = ['first_referee', 'second_referee', 'first_line_judge', 'second_line_judge'].indexOf(item.role);
+    return index > -1 ? index : 4;
+  };
+
+  const convertName = (item) => ({ ...playerName(item), role: t(`role.${item.role}`) });
+
+  return groupBy(prop('type'), map(convertName, sortBy(sortByType, values(data))));
+};
+
+export const convertGameOfficials2 = (data, t) => {
   const convertName = (item) => ({ ...playerName(item), role: t(`role.${item.role}`) });
 
   return groupBy(
@@ -201,3 +218,43 @@ export const pickCoaches = (data) => {
 };
 
 export const pickReferees = pick(['first_referee', 'second_referee', 'first_line_judge', 'second_line_judge']);
+
+export const filterGoalScorers = (events, teamId) => {
+  const filtered = filter(allPass([pathEq(teamId, ['team', 'id']), propEq('Gól', 'type')]), flattenEvents(events));
+  const reduced = reduce(
+    (players, player) => {
+      if (players[player.playerId]) {
+        players[player.playerId].eventTime += `, ${player.eventTime}`;
+      } else {
+        players[player.playerId] = {
+          name: `${player.lastName} ${player.firstName}`,
+          eventTime: player.eventTime,
+        };
+      }
+      return players;
+    },
+    {},
+    filtered
+  );
+
+  // const filterFn = allPass([pathEq(teamId, ['team', 'id']), propEq('Gól', 'type')]);
+
+  // const reducedFn = (players, player) => {
+  //   console.log(player);
+  //   if (players[player.playerId]) {
+  //     players[player.playerId].eventTime += `, ${player.eventTime}`;
+  //   } else {
+  //     players[player.playerId] = {
+  //       name: `${player.lastName} ${player.firstName}`,
+  //       eventTime: player.eventTime,
+  //     };
+  //   }
+  //   return players;
+  // };
+  return reduced;
+  // return compose(reduceBy(reducedFn, {}), filter(filterFn))(flattenEvents(events));
+};
+
+function flattenEvents(events) {
+  return Object.values(events).flat().reverse();
+}

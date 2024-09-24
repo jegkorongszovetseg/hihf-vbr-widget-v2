@@ -8,10 +8,15 @@ import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
 import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from '../game/internal';
 import GamePeriodProgress from '../game/components/GamePeriodProgress.vue';
 import PeriodResults from './components/PeriodResults.vue';
-import { buildPeriodResultsByTeam } from './internal';
+import { buildPeriodResultsByTeam, filterGoalScorers } from './internal';
 
 const props = defineProps({
   gameData: {
+    type: Object,
+    required: true,
+  },
+
+  gameEvents: {
     type: Object,
     required: true,
   },
@@ -25,6 +30,8 @@ const props = defineProps({
 const { t } = useI18n();
 
 const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gameData.periodResults));
+const homeGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.homeTeam.id));
+const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.awayTeam.id));
 </script>
 
 <template>
@@ -59,9 +66,14 @@ const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gam
     </div>
 
     <div class="is-teams-and-results">
-      <div v-once>
-        <Image :src="gameData.homeTeam.logo" class="is-team-logo" :default-src="DEAFULT_LOGO_TEAM_A" />
+      <div>
+        <Image v-once :src="gameData.homeTeam.logo" class="is-team-logo" :default-src="DEAFULT_LOGO_TEAM_A" />
         <h1 class="is-team-name">{{ gameData.homeTeam.longName }}</h1>
+        <ul class="is-goal-scorers">
+          <li v-for="person in homeGoalScorer">
+            {{ person.name }} <span>{{ person.eventTime }}</span>
+          </li>
+        </ul>
       </div>
       <div>
         <p v-if="gameData.gameStatus > 1" class="is-game-status">{{ t(`gameStatus.status-${gameData.gameStatus}`) }}</p>
@@ -90,14 +102,20 @@ const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gam
         <p v-if="gameData.attendance" class="is-attendance">{{ t('gameData.attendance', [gameData.attendance]) }}</p>
 
         <PeriodResults
+          v-if="gameData.gameStatus > 0"
           :results="convertedPeriodResults"
           :home-team-name="gameData.homeTeam.shortName"
           :away-team-name="gameData.awayTeam.shortName"
         />
       </div>
-      <div v-once>
-        <Image :src="gameData.awayTeam.logo" :default-src="DEAFULT_LOGO_TEAM_B" class="is-team-logo" />
+      <div>
+        <Image v-once :src="gameData.awayTeam.logo" :default-src="DEAFULT_LOGO_TEAM_B" class="is-team-logo" />
         <h1 class="is-team-name">{{ gameData.awayTeam.longName }}</h1>
+        <ul class="is-goal-scorers">
+          <li v-for="person in awayGoalScorer">
+            {{ person.name }} <span>{{ person.eventTime }}</span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

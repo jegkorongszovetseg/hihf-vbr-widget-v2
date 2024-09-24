@@ -43,7 +43,7 @@ const teamsPlayers = computed(() => groupLinesByTeams(props.data, props.homeTeam
 const homeCoaches = computed(() => pickCoaches(props.gameOfficials?.gameTeamMembers?.home ?? []));
 const awayCoaches = computed(() => pickCoaches(props.gameOfficials?.gameTeamMembers?.away ?? []));
 
-const referees = computed(() => pickReferees(props.gameOfficials?.gameOfficials));
+// const referees = computed(() => pickReferees(props.gameOfficials?.gameOfficials));
 </script>
 <template>
   <div :class="useMainClass('gamecenter-timeline-lineups')">
@@ -82,14 +82,14 @@ const referees = computed(() => pickReferees(props.gameOfficials?.gameOfficials)
       </div>
     </div>
 
-    <hr />
+    <!-- <hr /> -->
 
-    <h2 class="is-heading-2">{{ t('title.referees') }}</h2>
+    <!-- <h2 class="is-heading-2">{{ t('title.referees') }}</h2>
     <div :class="useMainClass('gamecenter-timeline-lineups-lines-referees')">
       <ul v-for="person in referees" :key="person.role" class="is-official-person-container">
         <li>{{ person.lastName }} {{ person.firstName }}</li>
         <li>{{ t(`role.${person.role}`) }}</li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </template>

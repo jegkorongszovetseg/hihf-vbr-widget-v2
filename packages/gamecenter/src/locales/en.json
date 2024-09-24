@@ -4,7 +4,9 @@
   },
   "title": {
     "coaches": "Coaches",
-    "referees": "Referees"
+    "referees": "Referees",
+    "teamOfficials": "Team Officials",
+    "gameOfficials": "Game Officials"
   },
   "eventType": {
     "Gól": "Goal",
@@ -34,6 +36,11 @@
     "row-3": "Line 3",
     "row-4": "Line 4",
     "row-gk": "Goalkeepers"
+  },
+  "roleType": {
+    "referee":"Referees",
+    "judge":"Judges",
+    "medical":"Medical"
   },
   "role": {
     "first_referee": "Referee",

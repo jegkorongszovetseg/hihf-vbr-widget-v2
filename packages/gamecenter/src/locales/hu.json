@@ -11,7 +11,9 @@
   },
   "title": {
     "coaches": "Edzők",
-    "referees": "Játékvezetők"
+    "referees": "Játékvezetők",
+    "teamOfficials": "Csapat Hivatalos személyek",
+    "gameOfficials": "Mérkőzés Hivatalos személyek"
   },
   "eventType": {
     "Gól": "Gól",
@@ -41,6 +43,11 @@
     "row-3": "Harmadik sor",
     "row-4": "Negyedik sor",
     "row-gk": "Kapusok"
+  },
+  "roleType": {
+    "referee":"Játékvezetők",
+    "judge":"Versenybírók",
+    "medical":"Egészségügyi személyzet"
   },
   "role": {
     "first_referee": "Játékvezető",

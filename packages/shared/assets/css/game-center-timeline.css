@@ -12,7 +12,7 @@
       display: grid;
       grid-template-columns: 1fr;
       justify-items: center;
-      align-items: flex-end;
+      align-items: start;
       background-color: var(--vbr-widget-primary-color-0);
 
       @add-mixin mobile {
@@ -115,6 +115,17 @@
       line-height: var(--vbr-widget-typography-text-lg-lineheight);
       color: var(--vbr-widget-primary-color-500);
     }
+
+    .is-goal-scorers {
+      font-size: var(--vbr-widget-typography-text-xs-size);
+      font-weight: 700;
+      line-height: var(--vbr-widget-typography-text-xs-lineheight);
+      color: var(--vbr-widget-primary-color-500);
+
+      span {
+        font-weight: 400;;
+      }
+    }
   }
 
   &-score-board {
@@ -192,6 +203,7 @@
 
   &-tab-buttons {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     border-bottom: 1px solid var(--vbr-widget-primary-color-100);
     margin-block-end: 2rem;

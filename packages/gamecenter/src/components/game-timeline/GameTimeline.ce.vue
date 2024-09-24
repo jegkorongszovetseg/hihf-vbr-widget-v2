@@ -122,7 +122,13 @@ function onTabChange(value) {
         :game-data="gameData"
       />
 
-      <GameData v-if="!isEmpty(gameData)" ref="contentElementRef" :game-data="gameData" :locale="props.locale" />
+      <GameData
+        v-if="!isEmpty(gameData)"
+        ref="contentElementRef"
+        :game-events="gameEvents"
+        :game-data="gameData"
+        :locale="props.locale"
+      />
 
       <div v-if="gameData?.gameStatus > 0">
         <div :class="useMainClass('gamecenter-timeline-tab-buttons')">

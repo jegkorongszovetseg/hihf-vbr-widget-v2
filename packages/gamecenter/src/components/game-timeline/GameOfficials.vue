@@ -35,7 +35,7 @@ const convertedGameOfficials = computed(() => convertGameOfficials(props.gameOff
 
 <template>
   <div :class="useMainClass('gamecenter-timeline-game-officials')">
-    <h2 class="is-heading-2">Team OFFICALS</h2>
+    <h2 class="is-heading-2">{{ t('title.teamOfficials') }}</h2>
     <div class="is-game-officials-container">
       <GameDataTable
         :class="[useMainClass('gamecenter-timeline-data-table'), 'is-home-team']"
@@ -51,17 +51,17 @@ const convertedGameOfficials = computed(() => convertGameOfficials(props.gameOff
       />
     </div>
 
-    <h2 class="is-heading-2">Game OFFICALS</h2>
+    <h2 class="is-heading-2">{{ t('title.gameOfficials') }}</h2>
 
     <div class="is-game-officials-container">
-      <div v-for="(group, key) in convertedGameOfficials">
+      <template v-for="(group, key) in convertedGameOfficials">
         <GameDataTable
           :class="useMainClass('gamecenter-timeline-data-table')"
           :columns="gameOffiacialsColumns"
           :rows="group"
-          :title="key"
+          :title="t(`roleType.${key}`)"
         />
-      </div>
+      </template>
     </div>
   </div>
 </template>
