@@ -1,3 +1,8 @@
+## [2.6.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.6.1...v2.6.2) (2024-09-24)
+
+### Bug Fixes
+
+* (extended) Scope css javítás ([0dbb2b7](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/0dbb2b748cd26b8a2d52f799ce261b6585c7c0a0))
 ## [2.6.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.6.0...v2.6.1) (2024-09-15)
 
 ### Bug Fixes
