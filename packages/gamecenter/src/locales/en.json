@@ -38,25 +38,44 @@
     "row-gk": "Goalkeepers"
   },
   "roleType": {
-    "referee":"Referees",
-    "judge":"Judges",
-    "medical":"Medical"
+    "referee": "Referees",
+    "judge": "Judges",
+    "medical": "Medical"
   },
   "role": {
     "first_referee": "Referee",
     "second_referee": "Referee",
     "first_line_judge": "Linesman",
     "second_line_judge": "Linesman",
-    "music": "Music",
+    "first_goal_judge": "Goal judge",
+    "second_goal_judge": "Goal judge",
+    "referee_inspector": "Referee inspector",
+    "referee_supporter": "Referee supporter",
+    "reserve_referee": "Reserve referee",
+    "reserve_linesman": "Reserve linesman",
+    "video_inspector": "Video inspector",
     "recorder_ivr": "IVR recorder",
     "timer": "Timer",
     "announcer": "Announcer",
     "penalty_timer_a": "Penalty Timer",
     "penalty_timer_b": "Penalty Timer",
-    "doctor": "Doctor",
+    "music": "Music",
+    "sog_statistician_a": "S.O.G. statistician",
+    "sog_statistician_b": "S.O.G. statistician",
+    "video_recorder": "Video recorder",
     "medical": "Medical",
+    "doctor": "Doctor",
+    "federal_inspector": "Federal inspector",
+    "judge_inspector": "Judge inspector",
+    "recorder_e_grep": "Recorder (E-Grep)",
+    "recorder_manual": "Recorder (Kézi)",
+    "recorder_orion": "Recorder (Orion)",
     "toi_statistician_a": "TOI statistician",
     "toi_statistician_b": "TOI statistician",
-    "led_wall_operator": "LED wall operator"
+    "fos_statistician_a": "F.O.S. statistician",
+    "fos_statistician_b": "F.O.S. statistician",
+    "led_wall_operator": "LED wall operator",
+    "assist_statistician": "Assist statistician",
+    "other": "Other"
   }
 }
