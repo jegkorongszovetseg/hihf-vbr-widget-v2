@@ -26,16 +26,12 @@ const { t } = useI18n();
       <template v-else>{{ t('events.missed') }}</template> - ({{ event.score }})
     </template>
 
-    <template #default>
-      <li class="is-evented-person">
-        <span class="is-player-number">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
-      </li>
-      <!-- <div>
-        <span :class="['is-badge is-large', { 'is-green': event.goal }]">
-          <template v-if="event.goal">{{ t('events.score') }}</template>
-          <template v-else>{{ t('events.missed') }}</template>
-        </span>
-      </div> -->
+    <template #details-list>
+      <ul class="is-details-list">
+        <li class="is-evented-person">
+          <span class="is-player-number">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
+        </li>
+      </ul>
     </template>
 
     <template #team-logo>

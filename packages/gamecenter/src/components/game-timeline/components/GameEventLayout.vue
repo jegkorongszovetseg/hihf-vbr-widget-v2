@@ -31,15 +31,18 @@ const { t } = useI18n();
 <template>
   <div :class="useMainClass('gamecenter-timeline-game-event')" :data-team="isHomeTeam ? 'home' : 'away'">
     <div class="is-timeline"></div>
-    <div :class="['is-details', { 'is-goal': event.type === EVENT_TYPE_GOAL }]">
+    <div :class="['is-details-container', { 'is-goal': event.type === EVENT_TYPE_GOAL }]">
       <div class="is-details-title">
         <slot name="title" />
       </div>
-      <ul class="is-details-list">
-        <slot />
-      </ul>
+      
+      <slot name="details-list" />
+
       <div class="is-team-logo">
         <slot name="team-logo" />
+      </div>
+      <div class="is-event-type-icon">
+        <slot name="event-type-icon" />
       </div>
     </div>
 
@@ -47,7 +50,7 @@ const { t } = useI18n();
       <p>{{ timestamp }}</p>
     </div>
 
-    <div
+    <!-- <div
       :class="[
         'is-event-type',
         {
@@ -62,6 +65,6 @@ const { t } = useI18n();
       ]"
     >
       <p><slot name="event-type-icon" />{{ t(`eventType.${eventType}`) }}</p>
-    </div>
+    </div> -->
   </div>
 </template>

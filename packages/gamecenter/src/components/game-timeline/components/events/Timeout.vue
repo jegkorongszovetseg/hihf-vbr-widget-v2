@@ -25,11 +25,6 @@ const { t } = useI18n();
       {{ t('events.timeout') }}
     </template>
 
-    <!-- <template #default>
-      <div class="is-time-cell">{{ event.eventTime }}</div>
-      <div>{{ t('events.timeout') }}</div>
-    </template> -->
-
     <template #team-logo>
       <TeamLogo :name="event.team.longName" :logo="event.team.logo" :key="event.team.id" :is-home-team="isHomeTeam" />
     </template>

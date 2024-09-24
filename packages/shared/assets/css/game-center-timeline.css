@@ -123,7 +123,7 @@
       color: var(--vbr-widget-primary-color-500);
 
       span {
-        font-weight: 400;;
+        font-weight: 400;
       }
     }
   }
@@ -276,7 +276,7 @@
 
   &-game-event {
     --columns: 0.15fr 2px 0.15fr 1fr;
-    --areas: '. . . .' 'time time time details' 'event-type event-type event-type details' '. . . .';
+    --areas: '. . . .' 'time time time details' '. . . .';
 
     display: grid;
     grid-template-columns: var(--columns);
@@ -290,18 +290,77 @@
       background-color: var(--vbr-widget-primary-color-200);
     }
 
-    .is-details {
+    .is-details-container {
       grid-area: details;
 
       display: grid;
-      grid-template-columns: 1fr auto;
-      grid-template-areas: 'detail-title team-logo' 'detail-list team-logo';
+      grid-template-columns: auto 1fr auto;
+      grid-template-areas: 'type-icon detail-title team-logo' 'type-icon detail-list team-logo';
       column-gap: 0.5rem;
       padding: 1rem;
       border-inline-end: 3px solid var(--vbr-widget-gamecenter-home-team-identifier-color);
       background-color: var(--vbr-widget-primary-color-50);
       border-radius: 0.5rem;
-      align-items: center;
+      align-items: start;
+
+      &:not(:has(.is-details-list)) {
+        grid-template-areas: 'type-icon detail-title team-logo';
+        align-items: center;
+      }
+
+      .is-details-title {
+        grid-area: detail-title;
+
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--vbr-widget-primary-color-900);
+      }
+
+      .is-details-list {
+        grid-area: detail-list;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        .is-details-sub-title {
+          font-size: var(--vbr-widget-typography-text-sm-size);
+          color: var(--vbr-widget-primary-color-500);
+        }
+
+        .is-evented-person {
+          font-weight: 600;
+          color: var(--vbr-widget-primary-color-700);
+        }
+
+        .is-player-number {
+          font-weight: 400;
+          font-style: italic;
+        }
+      }
+
+      .is-team-logo {
+        grid-area: team-logo;
+
+        justify-self: center;
+        align-self: center;
+
+        > span {
+          display: block;
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      .is-event-type-icon {
+        grid-area: type-icon;
+
+        svg {
+          display: block;
+          width: 20px;
+          height: 20px;
+          margin-block-start: 1px;
+        }
+      }
 
       &.is-goal {
         color: var(--vbr-widget-danger-color-500);
@@ -327,6 +386,7 @@
 
         .is-poi-data {
           display: flex;
+          flex-wrap: wrap;
           gap: 0.25rem;
           font-size: var(--vbr-widget-typography-text-xs-size);
           color: var(--vbr-widget-danger-color-400);
@@ -352,15 +412,16 @@
       grid-area: time;
 
       justify-self: center;
-      align-self: end;
+      align-self: center;
 
       p {
         margin: 0;
         padding-inline: 0.5rem;
         width: max-content;
         color: #fff;
-        font-size: small;
-        line-height: 1.5rem;
+        font-size: var(--vbr-widget-typography-text-base-size);
+        font-weight: 500;
+        line-height: var(--vbr-widget-typography-text-base-lineheight);
         background-color: var(--vbr-widget-primary-color-900);
         border-radius: 6px;
       }
@@ -441,67 +502,22 @@
       }
     }
 
-    .is-team-logo {
-      grid-area: team-logo;
-
-      justify-self: center;
-      align-self: center;
-
-      > span {
-        display: block;
-        width: 40px;
-        height: 40px;
-      }
-    }
-
-    .is-details-list {
-      grid-area: detail-list;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      justify-self: end;
-      text-align: right;
-    }
-
-    .is-details-title {
-      grid-area: detail-title;
-
-      justify-self: end;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--vbr-widget-primary-color-900);
-    }
-
-    .is-details-sub-title {
-      font-size: var(--vbr-widget-typography-text-sm-size);
-      color: var(--vbr-widget-primary-color-500);
-    }
-
-    .is-evented-person {
-      font-weight: 600;
-      color: var(--vbr-widget-primary-color-700);
-    }
-
-    .is-player-number {
-      font-weight: 400;
-      font-style: italic;
-    }
-
     &[data-team='away'] {
-      .is-details {
+      .is-details-container {
         border-color: var(--vbr-widget-gamecenter-away-team-identifier-color);
       }
+    }
 
+    /* &[data-team='home'] {
       .is-details-list,
       .is-details-title {
-        justify-self: start;
-        text-align: left;
+        text-align: right;
       }
-    }
+    } */
 
     @container rows (width > 500px) {
       --columns: 1fr 0.15fr 2px 0.15fr 1fr;
-      --areas: '. . . . .' 'details time time time .' 'details event-type event-type event-type .' '. . . . .';
+      --areas: '. . . . .' 'details time time time .' '. . . . .';
 
       .is-timeline {
         grid-column: 3/4;
@@ -509,15 +525,28 @@
       }
 
       &[data-team='away'] {
-        --areas: '. . . . .' '. time time time details' '. event-type event-type event-type details' '. . . . .';
+        --areas: '. . . . .' '. time time time details' '. . . . .';
       }
 
-      &[data-team='home'] .is-details {
+      &[data-team='home'] .is-details-container {
         grid-template-columns: auto 1fr;
-        grid-template-areas: 'team-logo detail-title' 'team-logo detail-list';
+        grid-template-areas: 'team-logo detail-title type-icon' 'team-logo detail-list type-icon';
+
+        &:not(:has(.is-details-list)) {
+          grid-template-areas: 'team-logo detail-title type-icon';
+        }
 
         border-inline-end: none;
-        border-inline-start: 3px solid var(--vbr-widget-danger-color-a400);
+        border-inline-start: 3px solid var(--vbr-widget-gamecenter-home-team-identifier-color);
+
+        .is-details-list,
+        .is-details-title {
+          text-align: right;
+        }
+
+        .is-poi-data {
+          justify-content: flex-end;
+        }
       }
     }
   }

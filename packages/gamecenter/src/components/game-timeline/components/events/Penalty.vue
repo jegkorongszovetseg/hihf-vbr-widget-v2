@@ -34,17 +34,19 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
       <template v-if="event.perc === 0">PS</template>
     </template>
 
-    <template #default>
-      <li class="is-evented-person">
-        <span v-if="event.jerseyNumber === null">{{ t('events.teamPenalty') }}</span>
-        <template v-else>
-          <span class="is-player-number">{{ event.jerseyNumber }}</span>
-          {{ event.lastName }} {{ event.firstName }}
-        </template>
-      </li>
-      <li class="is-details-sub-title">
-        {{ t(`penalties.${convertedEvent.penaltyCause}`) }} <b>({{ convertedEvent.penaltyCause }})</b>
-      </li>
+    <template #details-list>
+      <ul class="is-details-list">
+        <li class="is-evented-person">
+          <span v-if="event.jerseyNumber === null">{{ t('events.teamPenalty') }}</span>
+          <template v-else>
+            <span class="is-player-number">{{ event.jerseyNumber }}</span>
+            {{ event.lastName }} {{ event.firstName }}
+          </template>
+        </li>
+        <li class="is-details-sub-title">
+          {{ t(`penalties.${convertedEvent.penaltyCause}`) }} <b>({{ convertedEvent.penaltyCause }})</b>
+        </li>
+      </ul>
     </template>
 
     <template #team-logo>

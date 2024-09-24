@@ -24,10 +24,12 @@ const { t } = useI18n();
   <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam" :event-type="event.type" :event="event">
     <template #title> {{ t('eventType.Kapus') }} - {{ t(`eventType.goalie.${event.gkDirection}`) }} </template>
 
-    <template #default>
-      <li class="is-evented-person">
-        <span class="is-player-number">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
-      </li>
+    <template #details-list>
+      <ul class="is-details-list">
+        <li class="is-evented-person">
+          <span class="is-player-number">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
+        </li>
+      </ul>
     </template>
 
     <template #team-logo>
