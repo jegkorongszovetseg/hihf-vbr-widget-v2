@@ -127,7 +127,7 @@ function onTabChange(value) {
         ref="contentElementRef"
         :game-events="gameEvents"
         :game-data="gameData"
-        :locale="props.locale"
+        :locale="locale"
       />
 
       <div v-if="gameData?.gameStatus > 0">
@@ -203,8 +203,9 @@ function onTabChange(value) {
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
-<style src="@mjsz-vbr-elements/shared/css/game-center-timeline.css"></style>
-<style src="@mjsz-vbr-elements/shared/css/table.css"></style>
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/progress.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/game-center-timeline.css"></style>

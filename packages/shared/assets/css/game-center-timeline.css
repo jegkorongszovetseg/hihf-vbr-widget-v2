@@ -13,6 +13,7 @@
       grid-template-columns: 1fr;
       justify-items: center;
       align-items: start;
+      row-gap: 1rem;
       background-color: var(--vbr-widget-primary-color-0);
 
       @add-mixin mobile {
@@ -228,7 +229,6 @@
     }
 
     span {
-      /* margin-inline-end: 0.5rem; */
       display: inline-block;
       width: 9px;
       height: 9px;
@@ -280,7 +280,7 @@
 
     display: grid;
     grid-template-columns: var(--columns);
-    grid-template-rows: 0.5rem 1fr 1fr 0.5rem;
+    grid-template-rows: 0.5rem 1fr 0.5rem;
     grid-template-areas: var(--areas);
     gap: 0.25rem;
 
@@ -344,7 +344,7 @@
         justify-self: center;
         align-self: center;
 
-        > span {
+        img {
           display: block;
           width: 40px;
           height: 40px;

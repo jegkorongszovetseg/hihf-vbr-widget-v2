@@ -125,8 +125,8 @@ export const GOALIES_STATS_COLUMNS = {
 
 export const TEAM_OFFICIALS_COLUMNS = {
   role: {
-    label: 'table.teamOfficials.short',
-    tooltip: 'table.teamOfficials.tooltip',
+    label: 'table.role.short',
+    tooltip: 'table.role.tooltip',
     class: 'is-text-left',
   },
   name: {

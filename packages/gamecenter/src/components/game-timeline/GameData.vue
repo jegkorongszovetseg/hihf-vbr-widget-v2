@@ -41,12 +41,12 @@ const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.
         {{ gameData.championshipName }} - {{ gameData.divisionName }} - {{ gameData.gameName }} /
         {{ gameData.location.locationName }}
       </div>
-      <div class="is-gamedate" v-once>
+      <div class="is-gamedate">
         {{ format(gameData.gameDate, 'L dddd - HH:mm', null, locale) }} ({{
           offsetName(new Date(gameData.gameDate), null, locale)
         }})
       </div>
-      <div class="is-local-gamedate" v-once>
+      <div class="is-local-gamedate">
         {{ t('localTime') }} ({{ gameData.location.locationCountryISO || gameData.location.locationName }}):
         {{ format(gameData.gameDate, 'L dddd - HH:mm', gameData.location.timezone, locale) }} ({{
           offsetName(new Date(gameData.gameDate), gameData.location.timezone, locale)

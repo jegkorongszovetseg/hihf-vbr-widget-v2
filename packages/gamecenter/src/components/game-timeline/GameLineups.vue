@@ -4,7 +4,7 @@ import { useMainClass, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { playerName } from '@mjsz-vbr-elements/core/utils';
 import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
-import { pickCoaches, pickReferees, groupLinesByTeams } from './internal';
+import { pickCoaches, groupLinesByTeams } from './internal';
 
 const props = defineProps({
   data: {
