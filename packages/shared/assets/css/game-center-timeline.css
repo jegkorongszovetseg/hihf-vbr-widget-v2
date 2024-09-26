@@ -130,6 +130,7 @@
   }
 
   &-score-board {
+    /* display: grid; */
     grid-template-columns: 1fr 50px auto auto auto 50px 1fr;
     grid-template-rows: 50px;
     align-items: center;
@@ -300,10 +301,11 @@
       grid-template-areas: 'type-icon detail-title team-logo' 'type-icon detail-list team-logo';
       column-gap: 0.5rem;
       padding: 1rem;
-      border-inline-end: 3px solid var(--vbr-widget-gamecenter-home-team-identifier-color);
-      background-color: var(--vbr-widget-primary-color-50);
+      border-inline-end: 5px solid var(--vbr-widget-gamecenter-home-team-identifier-color);
+      /* background-color: var(--vbr-widget-primary-color-50); */
       border-radius: 0.5rem;
       align-items: start;
+      outline: 1px solid var(--vbr-widget-primary-color-100);
 
       &:not(:has(.is-details-list)) {
         grid-template-areas: 'type-icon detail-title team-logo';
@@ -330,8 +332,8 @@
         }
 
         .is-evented-person {
-          font-weight: 600;
-          color: var(--vbr-widget-primary-color-700);
+          font-weight: var(--vbr-widget-gamecenter-events-evented-person-weight);
+          color: var(--vbr-widget-primary-color-500);
         }
 
         .is-player-number {
@@ -358,27 +360,30 @@
 
         svg {
           display: block;
-          width: 20px;
-          height: 20px;
-          margin-block-start: 1px;
+          width: 24px;
+          height: 24px;
+          /* margin-block-start: 1px; */
         }
       }
 
       &.is-goal {
-        color: var(--vbr-widget-danger-color-500);
-        background-color: var(--vbr-widget-danger-color-50);
+        .is-event-type-icon {
+          color: var(--vbr-widget-live-game-color);
+        }
+        /* color: var(--vbr-widget-secondary-color-500); */
+        background-color: var(--vbr-widget-primary-color-700);
 
         .is-details-title {
-          color: var(--vbr-widget-danger-color-900);
+          color: var(--vbr-widget-live-game-color);
         }
 
         .is-evented-person {
-          color: var(--vbr-widget-danger-color-700);
+          color: var(--vbr-widget-primary-color-100);
         }
 
         .is-assists-list {
           font-size: var(--vbr-widget-typography-text-sm-size);
-          color: var(--vbr-widget-danger-color-400);
+          /* color: var(--vbr-widget-primary-color-400); */
 
           span:not(:last-of-type):after {
             content: '/';
@@ -391,7 +396,7 @@
           flex-wrap: wrap;
           gap: 0.25rem;
           font-size: var(--vbr-widget-typography-text-xs-size);
-          color: var(--vbr-widget-danger-color-400);
+          color: var(--vbr-widget-primary-color-300);
 
           ul {
             display: flex;
@@ -429,7 +434,7 @@
       }
     }
 
-    .is-event-type {
+    /* .is-event-type {
       grid-area: event-type;
 
       justify-self: center;
@@ -502,7 +507,7 @@
           background-color: var(--vbr-widget-danger-color-100);
         }
       }
-    }
+    } */
 
     &[data-team='away'] {
       .is-details-container {
