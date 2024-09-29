@@ -18,6 +18,7 @@ import hu from '../game/locales/hu.json';
 import en from '../game/locales/en.json';
 import commonHU from '../../locales/hu.json';
 import commonEN from '../../locales/en.json';
+import { transformEvents } from './internal';
 
 const messages = { en: { ...en, ...commonEN }, hu: { ...hu, ...commonHU } };
 
@@ -76,7 +77,11 @@ const { state: gameEvents, execute: getEvents } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  transform: (data) => compose(groupBy(prop('eventPeriod')), reverse)(data?.isEmpty ? [] : data),
+  transform: (data) => {
+    transformEvents(gameData, data);
+    return compose(groupBy(prop('eventPeriod')), reverse)(data?.isEmpty ? [] : data);
+  },
+
   onError: (e) => addApiError('gameEvents', e),
   onSuccess: () => removeApiError('gameEvents'),
 });

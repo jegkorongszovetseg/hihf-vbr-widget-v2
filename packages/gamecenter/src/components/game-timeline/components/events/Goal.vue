@@ -31,11 +31,12 @@ const awayOnIce = computed(() => props.event.awayOnIce);
 <template>
   <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam" :event-type="event.type" :event="event">
     <template #title>
-      <!-- <span v-if="event.advantage" class="is-badge is-large"> -->
-      {{ event.advantage }}
-      <!-- </span> -->
-      <span v-if="event.en" class="is-badge is-large"> EN </span>
-      {{ t('eventType.Gól') }} {{ event.score }}
+      {{ t('eventType.Gól') }}
+      <span v-if="event.advantage">
+        {{ event.advantage }}
+      </span>
+      <span v-if="event.en"> EN </span>
+      ({{ event.score }})
     </template>
 
     <template #details-list>
@@ -116,5 +117,5 @@ const awayOnIce = computed(() => props.event.awayOnIce);
       <IconHockeyPuck />
     </template>
   </GameEventLayout>
-  <div ref="tooltipContainer" />
+  <!-- <div ref="tooltipContainer" /> -->
 </template>

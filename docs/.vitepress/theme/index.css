@@ -14,4 +14,24 @@ mjsz-vbr-schedule-liga {
 
 mjsz-vbr-game-timeline {
   font-family: 'Roboto Condensed', Avenir, Helvetica, Arial, sans-serif;
+
+  --vbr-widget-primary-color-0: #ffffff;
+  --vbr-widget-primary-color-50: #f9fafb;
+  --vbr-widget-primary-color-100: #f3f4f6;
+  --vbr-widget-primary-color-200: #e5e7eb;
+  --vbr-widget-primary-color-300: #d1d5db;
+  --vbr-widget-primary-color-400: #9ca3af;
+  --vbr-widget-primary-color-500: #6b7280;
+  --vbr-widget-primary-color-600: #4b5563;
+  --vbr-widget-primary-color-700: #374151;
+  --vbr-widget-primary-color-800: #1f2937;
+  --vbr-widget-primary-color-900: #111827;
+
+  --vbr-widget-tab-btn-color: var(--vbr-widget-primary-color-400);
+  --vbr-widget-tab-btn-active-border-color: #2870ed;
+
+  --vbr-widget-gamecenter-card-border-color: var(--vbr-widget-primary-color-300);
+  --vbr-widget-gamecenter-card-event-goal-border-color: var(--vbr-widget-primary-color-700);
+  --vbr-widget-gamecenter-card-event-goal-bg-color: var(--vbr-widget-primary-color-700);
+  --vbr-widget-gamecenter-card-tertiary-color: var(--vbr-widget-primary-color-400);
 }

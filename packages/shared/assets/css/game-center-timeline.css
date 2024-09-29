@@ -299,13 +299,13 @@
       display: grid;
       grid-template-columns: auto 1fr auto;
       grid-template-areas: 'type-icon detail-title team-logo' 'type-icon detail-list team-logo';
-      column-gap: 0.5rem;
+      column-gap: 1rem;
       padding: 1rem;
       border-inline-end: 5px solid var(--vbr-widget-gamecenter-home-team-identifier-color);
-      /* background-color: var(--vbr-widget-primary-color-50); */
+      background-color: var(--vbr-widget-gamecenter-card-bg-color);
       border-radius: 0.5rem;
       align-items: start;
-      outline: 1px solid var(--vbr-widget-primary-color-100);
+      outline: 1px solid var(--vbr-widget-gamecenter-card-border-color);
 
       &:not(:has(.is-details-list)) {
         grid-template-areas: 'type-icon detail-title team-logo';
@@ -317,7 +317,7 @@
 
         font-weight: 700;
         text-transform: uppercase;
-        color: var(--vbr-widget-primary-color-900);
+        color: var(--vbr-widget-gamecenter-card-title-color);
       }
 
       .is-details-list {
@@ -328,12 +328,12 @@
 
         .is-details-sub-title {
           font-size: var(--vbr-widget-typography-text-sm-size);
-          color: var(--vbr-widget-primary-color-500);
+          color: var(--vbr-widget-gamecenter-card-secondary-color);
         }
 
         .is-evented-person {
           font-weight: var(--vbr-widget-gamecenter-events-evented-person-weight);
-          color: var(--vbr-widget-primary-color-500);
+          color: var(--vbr-widget-gamecenter-card-secondary-color);
         }
 
         .is-player-number {
@@ -357,6 +357,8 @@
 
       .is-event-type-icon {
         grid-area: type-icon;
+        padding: 0.5rem;
+        border-radius: 100%;
 
         svg {
           display: block;
@@ -366,15 +368,59 @@
         }
       }
 
-      &.is-goal {
+      &.is-penalty {
+        /* outline-color: var(--vbr-widget-danger-color-a400); */
+
         .is-event-type-icon {
-          color: var(--vbr-widget-live-game-color);
+          color: var(--vbr-widget-primary-color-0);
+          background-color: var(--vbr-widget-danger-color-a400);
         }
+      }
+
+      &.is-timeout {
+        /* outline-color: var(--vbr-widget-gamecenter-home-team-identifier-color); */
+
+        .is-event-type-icon {
+          color: var(--vbr-widget-primary-color-0);
+          background-color: var(--vbr-widget-gamecenter-home-team-identifier-color);
+        }
+      }
+
+      &.is-goalies {
+        /* outline-color: var(--vbr-widget-gamecenter-home-team-identifier-color); */
+
+        .is-event-type-icon {
+          color: var(--vbr-widget-primary-color-900);
+          background-color: var(--vbr-widget-neutral-color);
+        }
+      }
+
+      &.is-penalty-shot-goal {
+        .is-event-type-icon {
+          color: var(--vbr-widget-primary-color-0);
+          background-color: var(--vbr-widget-live-game-color);
+        }
+      }
+
+      &.is-penalty-shot-no-goal {
+        .is-event-type-icon {
+          color: var(--vbr-widget-primary-color-400);
+          background-color: var(--vbr-widget-primary-color-100);
+        }
+      }
+
+      &.is-goal {
         /* color: var(--vbr-widget-secondary-color-500); */
-        background-color: var(--vbr-widget-primary-color-700);
+        background-color: var(--vbr-widget-gamecenter-card-event-goal-bg-color);
+        outline-color: var(--vbr-widget-gamecenter-card-event-goal-border-color);
+
+        .is-event-type-icon {
+          color: var(--vbr-widget-primary-color-0);
+          background-color: var(--vbr-widget-live-game-color);
+        }
 
         .is-details-title {
-          color: var(--vbr-widget-live-game-color);
+          color: var(--vbr-widget-primary-color-0);
         }
 
         .is-evented-person {
@@ -396,7 +442,7 @@
           flex-wrap: wrap;
           gap: 0.25rem;
           font-size: var(--vbr-widget-typography-text-xs-size);
-          color: var(--vbr-widget-primary-color-300);
+          color: var(--vbr-widget-gamecenter-card-tertiary-color);
 
           ul {
             display: flex;
@@ -544,7 +590,7 @@
         }
 
         border-inline-end: none;
-        border-inline-start: 3px solid var(--vbr-widget-gamecenter-home-team-identifier-color);
+        border-inline-start: 5px solid var(--vbr-widget-gamecenter-home-team-identifier-color);
 
         .is-details-list,
         .is-details-title {
@@ -660,7 +706,8 @@
     .is-official-person-container {
       display: grid;
       padding: 0.75rem;
-      background-color: var(--vbr-widget-primary-color-50);
+      outline: 1px solid var(--vbr-widget-gamecenter-card-border-color);
+      background-color: var(--vbr-widget-gamecenter-card-bg-color);
       border-radius: 0.5rem;
 
       &.is-home-team {
@@ -678,7 +725,7 @@
         align-self: center;
         font-size: var(--vbr-widget-typography-text-xs-size);
         line-height: 1;
-        color: var(--vbr-widget-primary-color-300);
+        color: var(--vbr-widget-gamecenter-card-tertiary-color);
         text-transform: uppercase;
       }
     }
@@ -689,8 +736,9 @@
       grid-template-areas: 'img number name' 'img position name';
       column-gap: 0.5rem;
       padding: 0.75rem;
-      background-color: var(--vbr-widget-primary-color-50);
+      background-color: var(--vbr-widget-gamecenter-card-bg-color);
       border-inline-start: 3px solid var(--vbr-widget-gamecenter-home-team-identifier-color);
+      outline: 1px solid var(--vbr-widget-gamecenter-card-border-color);
       border-radius: 0.5rem;
       overflow: hidden;
 
@@ -720,12 +768,12 @@
         svg {
           display: inline-block;
           margin-inline-end: 0.125rem;
-          padding: 0.125rem;
-          width: 16px;
-          height: 16px;
+          padding: 0.2rem;
+          width: 20px;
+          height: 20px;
           color: var(--vbr-widget-primary-color-0);
-          background-color: var(--vbr-widget-primary-color-700);
-          border-radius: 0.25rem;
+          background-color: var(--vbr-widget-live-game-color);
+          border-radius: 100%;
         }
       }
       li:nth-child(4) {
@@ -733,7 +781,7 @@
         align-self: center;
         font-size: var(--vbr-widget-typography-text-xs-size);
         line-height: 1;
-        color: var(--vbr-widget-primary-color-300);
+        color: var(--vbr-widget-gamecenter-card-tertiary-color);
         text-transform: uppercase;
       }
 

@@ -29,9 +29,9 @@ const covertedGameEvents = computed(() => convertPeriodEvents(props.gameData, pr
         <span>{{ t(`periods.${convertPeriodName(key)}`) }}</span>
       </div>
       <div v-if="period.length === 0" class="is-no-action">{{ t('events.noEventsInPeriod') }}</div>
-      <template v-for="event in period" :key="event.id">
-        <GameEvent :event="event" :home-team-id="gameData.homeTeam.id" />
-      </template>
+      <TransitionGroup name="transition-event">
+        <GameEvent v-for="event in period" :key="event.eventId" :event="event" :home-team-id="gameData.homeTeam.id" />
+      </TransitionGroup>
     </template>
     <div id="event-tooltip-container" />
   </div>
