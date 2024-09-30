@@ -17,7 +17,7 @@ const props = defineProps({
   },
 
   gameEvents: {
-    type: Object,
+    type: Array,
     required: true,
   },
 

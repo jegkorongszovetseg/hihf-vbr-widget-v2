@@ -78,8 +78,8 @@ const { state: gameEvents, execute: getEvents } = useServices({
     params: { gameId: gameId.value },
   },
   transform: (data) => {
-    transformEvents(gameData, data);
-    return compose(groupBy(prop('eventPeriod')), reverse)(data?.isEmpty ? [] : data);
+    return transformEvents(gameData.value, data);
+    // return compose(groupBy(prop('eventPeriod')), reverse)(data?.isEmpty ? [] : data);
   },
 
   onError: (e) => addApiError('gameEvents', e),

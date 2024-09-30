@@ -5,6 +5,7 @@ import Penalty from './events/Penalty.vue';
 import Goalies from './events/Goalies.vue';
 import Timeout from './events/Timeout.vue';
 import PenaltyShot from './events/PenaltyShot.vue';
+import Period from './events/Period.vue';
 
 const props = defineProps({
   event: {
@@ -22,10 +23,11 @@ const TYPE_MAP = new Map()
   .set('Kiállítás', Penalty)
   .set('Kapus', Goalies)
   .set('Idő', Timeout)
-  .set('Büntető', PenaltyShot);
+  .set('Büntető', PenaltyShot)
+  .set('period', Period);
 
 const component = computed(() => TYPE_MAP.get(props.event.type));
-const isHomeTeam = computed(() => props.event.team.id === props.homeTeamId);
+const isHomeTeam = computed(() => props.event?.team?.id === props.homeTeamId);
 </script>
 
 <template>

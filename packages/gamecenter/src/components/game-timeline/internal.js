@@ -1,4 +1,4 @@
-import { playerName } from '@mjsz-vbr-elements/core';
+import { playerName, convertMinToSec } from '@mjsz-vbr-elements/core';
 import {
   replace,
   compose,
@@ -20,7 +20,18 @@ import {
   pathEq,
   reduce,
   reduceBy,
+  reverse,
 } from 'ramda';
+import {
+  EXTENDED_PERIOD_EVENTS,
+  EXTENDED_PERIOD_EVENTS_END,
+  EXTENDED_PERIOD_EVENTS_OT,
+  EXTENDED_PERIOD_EVENTS_SO,
+  PERIODS,
+  PERIODS_END,
+  PERIODS_OT,
+  PERIODS_SO,
+} from './constants';
 
 export const buildPeriodResultsByTeam = (periodResults) => {
   const defaultPeriodResultObject = {
@@ -220,7 +231,8 @@ export const pickCoaches = (data) => {
 export const pickReferees = pick(['first_referee', 'second_referee', 'first_line_judge', 'second_line_judge']);
 
 export const filterGoalScorers = (events, teamId) => {
-  const filtered = filter(allPass([pathEq(teamId, ['team', 'id']), propEq('Gól', 'type')]), flattenEvents(events));
+  const filtered = filter(allPass([pathEq(teamId, ['team', 'id']), propEq('Gól', 'type')]), events);
+  // const filtered = filter(allPass([pathEq(teamId, ['team', 'id']), propEq('Gól', 'type')]), flattenEvents(events));
   const reduced = reduce(
     (players, player) => {
       if (players[player.playerId]) {
@@ -255,6 +267,37 @@ export const filterGoalScorers = (events, teamId) => {
   // return compose(reduceBy(reducedFn, {}), filter(filterFn))(flattenEvents(events));
 };
 
-function flattenEvents(events) {
-  return Object.values(events).flat().reverse();
-}
+// function flattenEvents(events) {
+//   return Object.values(events).flat().reverse();
+// }
+
+export const transformEvents = ({ period, isOvertime, isShootout }, events) => {
+  const currentPeriodRange = [
+    ...PERIODS,
+    ...(isOvertime ? PERIODS_OT : []),
+    ...(isShootout ? [...PERIODS_OT, ...PERIODS_SO] : []),
+    ...PERIODS_END,
+  ];
+  const currentExtendedPeriodEventsRange = [
+    ...EXTENDED_PERIOD_EVENTS,
+    ...(isOvertime ? EXTENDED_PERIOD_EVENTS_OT : []),
+    ...(isShootout ? [...EXTENDED_PERIOD_EVENTS_OT, ...EXTENDED_PERIOD_EVENTS_SO] : []),
+    ...EXTENDED_PERIOD_EVENTS_END(isOvertime, isShootout),
+  ];
+
+  const index = currentPeriodRange.findIndex((current) => current === period);
+  const extraEvents = currentExtendedPeriodEventsRange.slice(0, index + 1);
+  const extendedEvents = [...events, ...extraEvents];
+
+  const sortPeriods = (data) =>
+    isOvertime ? ['Gól', 'Kapus'].indexOf(data.type) : ['Kapus', 'period', 'Büntető', 'Gól'].indexOf(data.type);
+
+  const converted = compose(
+    reverse,
+    sortBy(prop('eventTimeSec')),
+    sortBy(sortPeriods),
+    map((event) => ({ ...event, ...(!event.eventTimeSec && { eventTimeSec: convertMinToSec(event.eventTime) }) }))
+  )(extendedEvents);
+
+  return converted;
+};
