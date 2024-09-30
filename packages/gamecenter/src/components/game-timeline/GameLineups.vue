@@ -57,7 +57,12 @@ const awayCoaches = computed(() => pickCoaches(props.gameOfficials?.gameTeamMemb
           <ul v-for="player in row" :key="player.position" :class="['is-player-wrapper', `is-${player.position}`]">
             <li><Image :src="player.player.picture" /></li>
             <li>{{ player.number }}</li>
-            <li>{{ playerName(player)?.name ?? '' }} <IconHockeyPuck v-for="i in player.goal" /></li>
+            <li>
+              {{ playerName(player)?.name ?? '' }}
+              <ul>
+                <li v-for="i in player.goal"><IconHockeyPuck /></li>
+              </ul>
+            </li>
             <li>{{ player.position }}</li>
           </ul>
         </div>
@@ -81,15 +86,5 @@ const awayCoaches = computed(() => pickCoaches(props.gameOfficials?.gameTeamMemb
         </ul>
       </div>
     </div>
-
-    <!-- <hr /> -->
-
-    <!-- <h2 class="is-heading-2">{{ t('title.referees') }}</h2>
-    <div :class="useMainClass('gamecenter-timeline-lineups-lines-referees')">
-      <ul v-for="person in referees" :key="person.role" class="is-official-person-container">
-        <li>{{ person.lastName }} {{ person.firstName }}</li>
-        <li>{{ t(`role.${person.role}`) }}</li>
-      </ul>
-    </div> -->
   </div>
 </template>
