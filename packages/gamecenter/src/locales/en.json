@@ -13,7 +13,9 @@
     "coaches": "Coaches",
     "referees": "Referees",
     "teamOfficials": "Team Officials",
-    "gameOfficials": "Game Officials"
+    "gameOfficials": "Game Officials",
+    "fieldPlayers": "Field Players",
+    "goalies": "Goalies"
   },
   "eventType": {
     "Gól": "Goal",

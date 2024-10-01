@@ -27,8 +27,24 @@ mjsz-vbr-game-timeline {
   --vbr-widget-primary-color-800: #1f2937;
   --vbr-widget-primary-color-900: #111827;
 
+  --vbr-widget-secondary-color-100: #DBEAFE;
+  --vbr-widget-secondary-color-200: #BFDBFE;
+  --vbr-widget-secondary-color-300: #93C5FD;
+  --vbr-widget-secondary-color-400: #818CF8;
+  --vbr-widget-secondary-color-500: #3B82F6;
+  --vbr-widget-secondary-color-600: #2563EB;
+  --vbr-widget-secondary-color-700: #1D4ED8;
+  --vbr-widget-secondary-color-800: #1E40AF;
+  --vbr-widget-secondary-color-900: #1E3A8A;
+
   --vbr-widget-tab-btn-color: var(--vbr-widget-primary-color-400);
-  --vbr-widget-tab-btn-active-border-color: #2870ed;
+  --vbr-widget-tab-btn-active-border-color: var(--vbr-widget-secondary-color-500);
+
+  --vbr-widget-table-header-bg-color: var(--vbr-widget-secondary-color-500);
+  --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-secondary-color-600);
+  --vbr-widget-table-header-color: var(--vbr-widget-secondary-color-200);
+  --vbr-widget-table-zero-color: var(--vbr-widget-primary-color-400);
+  --vbr-widget-table-stripped-bg-color: #f6f6f6;
 
   --vbr-widget-gamecenter-card-border-color: var(--vbr-widget-primary-color-300);
   --vbr-widget-gamecenter-card-event-goal-border-color: var(--vbr-widget-primary-color-700);

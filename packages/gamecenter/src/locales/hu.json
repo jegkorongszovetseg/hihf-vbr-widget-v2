@@ -12,8 +12,10 @@
   "title": {
     "coaches": "Edzők",
     "referees": "Játékvezetők",
-    "teamOfficials": "Csapat Hivatalos személyek",
-    "gameOfficials": "Mérkőzés Hivatalos személyek"
+    "teamOfficials": "Stábtagok",
+    "gameOfficials": "Hivatalos személyek",
+    "fieldPlayers": "Mezőnyjátékosok",
+    "goalies": "Kapusok"
   },
   "eventType": {
     "Gól": "Gól",

@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { useMainClass, useColumns } from '@mjsz-vbr-elements/core/composables';
+import {useI18n,  useMainClass, useColumns } from '@mjsz-vbr-elements/core/composables';
 import GameDataTable from '../common/GameDataTable.vue';
 import GamePlayerStatsProvider from '../game/components/GamePlayerStatsProvider.vue';
 import GameGolaiesStatsProvider from '../game/components/GameGoaliesStatsProvider.vue';
@@ -32,6 +32,8 @@ const props = defineProps({
   },
 });
 
+const { t } = useI18n();
+
 const { columns } = useColumns(PLAYER_STATS_COLUMNS);
 const { columns: goliesColumns } = useColumns(GOALIES_STATS_COLUMNS);
 
@@ -43,6 +45,7 @@ const awayGoalies = computed(() => transformGoalieStats(props.data?.goalies?.[pr
 </script>
 
 <template>
+  <h2 class="is-heading-2">{{ t('title.fieldPlayers') }}</h2>
   <div :class="useMainClass('gamecenter-data-column')">
     <GamePlayerStatsProvider :rows="homePlayers" #default="{ rows, sort, onSort }">
       <GameDataTable
@@ -66,6 +69,7 @@ const awayGoalies = computed(() => transformGoalieStats(props.data?.goalies?.[pr
     </GamePlayerStatsProvider>
   </div>
 
+  <h2 class="is-heading-2">{{ t('title.goalies') }}</h2>
   <div :class="useMainClass('gamecenter-data-columns')">
     <GameGolaiesStatsProvider :rows="homeGoalies" #default="{ rows }">
       <GameDataTable
