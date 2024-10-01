@@ -321,8 +321,8 @@
       grid-area: details;
 
       display: grid;
-      grid-template-columns: auto 1fr auto;
-      grid-template-areas: 'type-icon detail-title team-logo' 'type-icon detail-list team-logo';
+      grid-template-columns: auto 1fr;
+      grid-template-areas: 'type-icon detail-title' 'type-icon detail-list';
       column-gap: 1rem;
       padding: 1rem;
       border-inline-end: 5px solid var(--vbr-widget-gamecenter-home-team-identifier-color);
@@ -332,7 +332,7 @@
       outline: 1px solid var(--vbr-widget-gamecenter-card-border-color);
 
       &:not(:has(.is-details-list)) {
-        grid-template-areas: 'type-icon detail-title team-logo';
+        grid-template-areas: 'type-icon detail-title';
         align-items: center;
       }
 
@@ -369,11 +369,12 @@
       .is-team-logo {
         grid-area: team-logo;
 
+        display: none;
+
         justify-self: center;
         align-self: center;
 
         img {
-          display: block;
           width: 40px;
           height: 40px;
         }
@@ -386,9 +387,14 @@
 
         svg {
           display: block;
-          width: 24px;
-          height: 24px;
+          width: 14px;
+          height: 14px;
           /* margin-block-start: 1px; */
+
+          @container rows (width > 410px) {
+            width: 24px;
+            height: 24px;
+          }
         }
       }
 
@@ -481,6 +487,20 @@
         .is-badge.is-invert {
           color: var(--vbr-widget-danger-color-50);
           background-color: var(--vbr-widget-danger-color-500);
+        }
+      }
+
+      @container rows (width > 410px) {
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas: 'type-icon detail-title team-logo' 'type-icon detail-list team-logo';
+
+        &:not(:has(.is-details-list)) {
+          grid-template-areas: 'type-icon detail-title team-logo';
+          align-items: center;
+        }
+
+        .is-team-logo {
+          display: block;
         }
       }
     }
