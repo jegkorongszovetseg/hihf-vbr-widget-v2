@@ -2,7 +2,8 @@
 import { computed } from 'vue';
 import { useMainClass, useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
 import GameDataTable from '../common/GameDataTable.vue';
-import { TEAM_OFFICIALS_COLUMNS, convertTeamMembersToRows } from './internal';
+import { convertTeamMembersToRows } from '../../utils/convert-official-persons';
+import { TEAM_OFFICIALS_COLUMNS } from './internal';
 
 const props = defineProps({
   gameOfficials: {

@@ -80,12 +80,10 @@
   "teamMembers": {
     "headCoach": "Vezetőedző",
     "secondCoach": "Másodedző",
-    "entry_team_leader": "Csapatvezető",
-    "entry_second_coach": "Másodedző",
-    "entry_head_coach": "Vezetőedző",
-    "entry_official_person_1": "Hivatalos személy",
-    "entry_official_person_2": "Hivatalos személy",
-    "entry_official_person_3": "Hivatalos személy"
+    "teamLeader": "Csapatvezető",
+    "officialPerson1": "Hivatalos személy",
+    "officialPerson2": "Hivatalos személy",
+    "officialPerson3": "Hivatalos személy"
   },
   "penalties": {
     "INTRF": "Akadályozás",

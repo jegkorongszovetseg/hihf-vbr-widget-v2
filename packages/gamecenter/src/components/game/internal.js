@@ -1,4 +1,4 @@
-import { replace, toUpper, compose, reject, test, split, map, sortBy, indexOf, mergeLeft } from 'ramda';
+import { replace, toUpper, compose, reject, test, split, mergeLeft } from 'ramda';
 
 import { SORT_STATE_DESCEND, SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
 import { convertSecToMin, convertTimesSecToMin, rawConvert } from '@mjsz-vbr-elements/core/utils';
@@ -235,20 +235,6 @@ export const buildDvgPercent = (data) => {
   const homePKPercent = (data?.home?.pkPercent ?? 0).toFixed(2);
   const awayPKPercent = (data?.away?.pkPercent ?? 0).toFixed(2);
   return `(${homeDVG}/${homePK}) <b>${homePKPercent}%</b> / (${awayDVG}/${awayPK}) <b>${awayPKPercent}%</b>`;
-};
-
-export const convertTeamMembersToRows = (data, t) => {
-  const members = (member) => ({ ...member, role: t(`teamMembers.${member.role}`) });
-  const sort = (item) =>
-    indexOf(item.role, [
-      'entry_head_coach',
-      'entry_second_coach',
-      'entry_team_leader',
-      'entry_official_person_1',
-      'entry_official_person_2',
-      'entry_official_person_3',
-    ]);
-  return compose(map(members), sortBy(sort))(data);
 };
 
 export const convertPenaltyCause = (event) => ({

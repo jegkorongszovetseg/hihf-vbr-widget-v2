@@ -80,12 +80,10 @@
   "teamMembers": {
     "headCoach": "Coach",
     "secondCoach": "Assistant Coach",
-    "entry_team_leader": "Team leader",
-    "entry_second_coach": "Assistant Coach",
-    "entry_head_coach": "Coach",
-    "entry_official_person_1": "Team Official",
-    "entry_official_person_2": "Team Official",
-    "entry_official_person_3": "Team Official"
+    "teamLeader": "Team leader",
+    "officialPerson1": "Team Official",
+    "officialPerson2": "Team Official",
+    "officialPerson3": "Team Official"
   },
   "penalties": {
     "INTRF": "Interference",
