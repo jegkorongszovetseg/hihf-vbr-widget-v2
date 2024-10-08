@@ -78,6 +78,8 @@
     "advantageTimePP2": "Advantage Time PP2"
   },
   "teamMembers": {
+    "headCoach": "Coach",
+    "secondCoach": "Assistant Coach",
     "entry_team_leader": "Team leader",
     "entry_second_coach": "Assistant Coach",
     "entry_head_coach": "Coach",

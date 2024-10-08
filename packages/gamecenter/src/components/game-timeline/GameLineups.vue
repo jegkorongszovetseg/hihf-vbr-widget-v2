@@ -74,15 +74,17 @@ const awayCoaches = computed(() => pickCoaches(props.gameOfficials?.gameTeamMemb
     <h2 class="is-heading-2">{{ t('title.coaches') }}</h2>
     <div class="is-container">
       <div :class="useMainClass('gamecenter-timeline-lineups-lines-simple')">
-        <ul v-for="person in homeCoaches" :key="person.role" class="is-official-person-container is-home-team">
+        <ul v-for="(person, key) in homeCoaches" :key="person.role" class="is-official-person-container is-home-team">
+          <li><Image :src="person.picture" /></li>
           <li>{{ person.name }}</li>
-          <li>{{ t(`teamMembers.${person.role}`) }}</li>
+          <li>{{ t(`teamMembers.${key}`) }}</li>
         </ul>
       </div>
       <div :class="useMainClass('gamecenter-timeline-lineups-lines-simple')">
-        <ul v-for="person in awayCoaches" :key="person.role" class="is-official-person-container is-away-team">
+        <ul v-for="(person, key) in awayCoaches" :key="person.role" class="is-official-person-container is-away-team">
+          <li><Image :src="person.picture" /></li>
           <li>{{ person.name }}</li>
-          <li>{{ t(`teamMembers.${person.role}`) }}</li>
+          <li>{{ t(`teamMembers.${key}`) }}</li>
         </ul>
       </div>
     </div>

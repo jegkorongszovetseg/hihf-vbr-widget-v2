@@ -224,15 +224,13 @@ export const GAME_OFFICIALS_COLUMNS = {
 export const transformGoalieStats = sortWith([descend(prop('startingFive'))]);
 
 export const pickCoaches = (data) => {
-  const pickRole = (item) => includes(prop('role', item), ['entry_head_coach', 'entry_second_coach']);
-  return filter(pickRole, data);
+  return compose(map(playerName), pick(['headCoach', 'secondCoach']))(data);
 };
 
 export const pickReferees = pick(['first_referee', 'second_referee', 'first_line_judge', 'second_line_judge']);
 
 export const filterGoalScorers = (events, teamId) => {
-  const filtered = filter(allPass([pathEq(teamId, ['team', 'id']), propEq('Gól', 'type')]), events);
-  // const filtered = filter(allPass([pathEq(teamId, ['team', 'id']), propEq('Gól', 'type')]), flattenEvents(events));
+  const filtered = filter(allPass([pathEq(teamId, ['team', 'id']), propEq('Gól', 'type')]), reverse(events));
   const reduced = reduce(
     (players, player) => {
       if (players[player.playerId]) {
@@ -241,6 +239,7 @@ export const filterGoalScorers = (events, teamId) => {
         players[player.playerId] = {
           name: `${player.lastName} ${player.firstName}`,
           eventTime: player.eventTime,
+          eventTimeSec: player.eventTimeSec,
         };
       }
       return players;
@@ -249,29 +248,12 @@ export const filterGoalScorers = (events, teamId) => {
     filtered
   );
 
-  // const filterFn = allPass([pathEq(teamId, ['team', 'id']), propEq('Gól', 'type')]);
-
-  // const reducedFn = (players, player) => {
-  //   console.log(player);
-  //   if (players[player.playerId]) {
-  //     players[player.playerId].eventTime += `, ${player.eventTime}`;
-  //   } else {
-  //     players[player.playerId] = {
-  //       name: `${player.lastName} ${player.firstName}`,
-  //       eventTime: player.eventTime,
-  //     };
-  //   }
-  //   return players;
-  // };
-  return reduced;
-  // return compose(reduceBy(reducedFn, {}), filter(filterFn))(flattenEvents(events));
+  const sorted = sortBy(prop('eventTimeSec'), values(reduced));
+  return sorted;
 };
 
-// function flattenEvents(events) {
-//   return Object.values(events).flat().reverse();
-// }
-
 export const transformEvents = ({ period, isOvertime, isShootout }, events) => {
+  events = events.isEmpty ? [] : events;
   const currentPeriodRange = [
     ...PERIODS,
     ...(isOvertime ? PERIODS_OT : []),

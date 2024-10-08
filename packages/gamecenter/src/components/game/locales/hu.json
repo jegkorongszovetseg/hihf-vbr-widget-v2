@@ -78,6 +78,8 @@
     "advantageTimePP2": "Dupla előnyben töltött idő"
   },
   "teamMembers": {
+    "headCoach": "Vezetőedző",
+    "secondCoach": "Másodedző",
     "entry_team_leader": "Csapatvezető",
     "entry_second_coach": "Másodedző",
     "entry_head_coach": "Vezetőedző",
