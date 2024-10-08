@@ -355,7 +355,7 @@
       --columns: repeat(2, 1fr);
     }
   }
-  
+
   &-data-column {
     display: grid;
     gap: 20px;

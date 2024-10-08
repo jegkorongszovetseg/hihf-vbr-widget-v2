@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { useMainClass, useColumns } from '@mjsz-vbr-elements/core/composables';
-import GameDataTable from './components/GameDataTable.vue';
+import GameDataTable from '../common/GameDataTable.vue';
 import GamePlayerStatsProvider from './components/GamePlayerStatsProvider.vue';
 import { PLAYER_STATS_COLUMNS, convertPlayersTOI } from './internal';
 
@@ -38,10 +38,24 @@ const awayPlayers = computed(() => convertPlayersTOI(props.data?.[props.awayTeam
 <template>
   <div :class="useMainClass('gamecenter-data-column')">
     <GamePlayerStatsProvider :rows="homePlayers" #default="{ rows, sort, onSort }">
-      <GameDataTable :columns="columns" :rows="rows" :title="homeTeamName" :sort="sort" @sort="onSort" />
+      <GameDataTable
+        :class="useMainClass('gamecenter-data-table')"
+        :columns="columns"
+        :rows="rows"
+        :title="homeTeamName"
+        :sort="sort"
+        @sort="onSort"
+      />
     </GamePlayerStatsProvider>
     <GamePlayerStatsProvider :rows="awayPlayers" #default="{ rows, sort, onSort }">
-      <GameDataTable :columns="columns" :rows="rows" :title="awayTeamName" :sort="sort" @sort="onSort" />
+      <GameDataTable
+        :class="useMainClass('gamecenter-data-table')"
+        :columns="columns"
+        :rows="rows"
+        :title="awayTeamName"
+        :sort="sort"
+        @sort="onSort"
+      />
     </GamePlayerStatsProvider>
   </div>
 </template>

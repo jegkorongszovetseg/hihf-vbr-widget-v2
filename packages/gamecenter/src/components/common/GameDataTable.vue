@@ -35,7 +35,7 @@ const onSort = (payload) => emit('sort', payload);
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-data-table')">
+  <div>
     <h2>{{ title }}</h2>
     <ResponsiveTable v-slot:default="{ el: rootElement }">
       <DataTable

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { sortWith, descend, prop } from 'ramda';
 import { useMainClass, useColumns } from '@mjsz-vbr-elements/core/composables';
-import GameDataTable from './components/GameDataTable.vue';
+import GameDataTable from '../common/GameDataTable.vue';
 import GameGolaiesStatsProvider from './components/GameGoaliesStatsProvider.vue';
 import { GOALIES_STATS_COLUMNS } from './internal';
 
@@ -41,10 +41,20 @@ const awayPlayers = computed(() => transform(props.data?.[props.awayTeamId] ?? [
 <template>
   <div :class="useMainClass('gamecenter-data-columns')">
     <GameGolaiesStatsProvider :rows="homePlayers" #default="{ rows }">
-      <GameDataTable :columns="columns" :rows="rows" :title="homeTeamName" />
+      <GameDataTable
+        :class="useMainClass('gamecenter-data-table')"
+        :columns="columns"
+        :rows="rows"
+        :title="homeTeamName"
+      />
     </GameGolaiesStatsProvider>
     <GameGolaiesStatsProvider :rows="awayPlayers" #default="{ rows }">
-      <GameDataTable :columns="columns" :rows="rows" :title="awayTeamName" />
+      <GameDataTable
+        :class="useMainClass('gamecenter-data-table')"
+        :columns="columns"
+        :rows="rows"
+        :title="awayTeamName"
+      />
     </GameGolaiesStatsProvider>
   </div>
 </template>

@@ -161,6 +161,9 @@ export const playerName = (row) => ({
       ? `${row.player.lastName} ${row.player.firstName}`
       : `${row.player.lastName}, ${row.player.firstName}`,
   }),
+  ...(row.nationality && {
+    name: row.nationality.includes('hu') ? `${row.lastName} ${row.firstName}` : `${row.lastName}, ${row.firstName}`,
+  }),
 });
 
 export const teamName = (row) => ({

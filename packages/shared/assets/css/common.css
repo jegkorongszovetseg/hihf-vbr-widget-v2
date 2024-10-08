@@ -1,6 +1,11 @@
 @import './reset.css';
 @import './variables.css';
 
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
 .transition-fade-enter-active,
 .transition-fade-leave-active {
   transition: all 0.25s ease;
@@ -10,6 +15,18 @@
 .transition-fade-leave-to {
   opacity: 0;
   transform: translateY(5px);
+}
+
+.transition-event-move,
+.transition-event-enter-active,
+.transition-event-leave-active {
+  transition: all 0.25s ease;
+}
+
+.transition-event-enter-from,
+.transition-event-leave-to {
+  opacity: 0;
+  /* transform: translateY(5px); */
 }
 
 img {
