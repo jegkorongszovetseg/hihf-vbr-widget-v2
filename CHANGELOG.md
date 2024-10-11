@@ -1,3 +1,8 @@
+## [2.6.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.6.2...v2.6.3) (2024-10-11)
+
+### Bug Fixes
+
+* Hivatalos személyek átalakítása ([d1443ef](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/d1443efea6f3cae01e1a83553384dfc75e9dabf6))
 ## [2.6.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.6.1...v2.6.2) (2024-09-24)
 
 ### Bug Fixes
