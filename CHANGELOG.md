@@ -1,3 +1,8 @@
+## [2.6.4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.6.3...v2.6.4) (2024-10-22)
+
+### Bug Fixes
+
+* Új period event miatti javítás ([a1ac4f2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/a1ac4f25559c11b9d98720fc1e57181f5f8ec022))
 ## [2.6.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.6.2...v2.6.3) (2024-10-11)
 
 ### Bug Fixes
