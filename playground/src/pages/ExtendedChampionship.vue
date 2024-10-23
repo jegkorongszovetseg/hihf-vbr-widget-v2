@@ -16,6 +16,6 @@ import '../../../packages/shared/dist/css/paginator.css';
 <template>
   <div class="p-5">
     <!-- <Championship :locale="store.locale" championship-name="U-14 Bajnokság" /> -->
-    <mjsz-vbr-championship :locale="store.locale" championship-name="Női U-25/A Bajnokság" />
+    <mjsz-vbr-championship :locale="store.locale" championship-name="Szupermini Bajnokság" />
   </div>
 </template>

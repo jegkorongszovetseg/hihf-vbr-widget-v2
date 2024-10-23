@@ -82,7 +82,13 @@
     "entry_head_coach": "Vezetőedző",
     "entry_official_person_1": "Hivatalos személy",
     "entry_official_person_2": "Hivatalos személy",
-    "entry_official_person_3": "Hivatalos személy"
+    "entry_official_person_3": "Hivatalos személy",
+    "headCoach": "Vezetőedző",
+    "secondCoach": "Másodedző",
+    "teamLeader": "Csapatvezető",
+    "officialPerson1": "Hivatalos személy",
+    "officialPerson2": "Hivatalos személy",
+    "officialPerson3": "Hivatalos személy"
   },
   "penalties": {
     "INTRF": "Akadályozás",

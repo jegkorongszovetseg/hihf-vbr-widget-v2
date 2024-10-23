@@ -39,6 +39,7 @@ export default defineConfig(({ mode }) => {
               { text: 'Menetrend', link: '/widget/schedule' },
               { text: 'Játékos statisztikák', link: '/widget/fieldplayers-leader' },
               { text: 'Játékos büntetések', link: '/widget/fieldplayers-penalties' },
+              { text: 'Játékos jégen töltött idő', link: '/widget/fieldplayers-toi' },
               { text: 'Kapus statisztikák', link: '/widget/goalies-leader' },
               { text: 'Csapat nézőszámok', link: '/widget/teams-attendance' },
               { text: 'Csapat büntetések', link: '/widget/teams-fairplay' },

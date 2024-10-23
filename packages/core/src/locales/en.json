@@ -349,6 +349,58 @@
     "resultType": {
       "short": "#",
       "tooltip": "Result Type"
+    },
+    "atoi": {
+      "short": "ATOI",
+      "tooltip": "Average Time On Ice"
+    },
+    "shf": {
+      "short": "SHF",
+      "tooltip": "Shifts"
+    },
+    "ashf": {
+      "short": "ASHF",
+      "tooltip": "Average Shifts"
+    },
+    "eqToi": {
+      "short": "EQ-TOI",
+      "tooltip": "Time On Ice in Equal"
+    },
+    "pp1Toi": {
+      "short": "PP1-TOI",
+      "tooltip": "Time On Ice in PowerPlay 1"
+    },
+    "pp2Toi": {
+      "short": "PP2-TOI",
+      "tooltip": "Time On Ice in PowerPlay 2"
+    },
+    "sh1Toi": {
+      "short": "SH1-TOI",
+      "tooltip": "Time On Ice in Shorthanded 1"
+    },
+    "sh2Toi": {
+      "short": "SH2-TOI",
+      "tooltip": "Time On Ice in Shorthanded 2"
+    },
+    "eqAToi": {
+      "short": "EQ-A-TOI",
+      "tooltip": "Average Time On Ice in Equal"
+    },
+    "pp1AToi": {
+      "short": "PP1-A-TOI",
+      "tooltip": "Average Time On Ice in PowerPlay 1"
+    },
+    "pp2AToi": {
+      "short": "PP2-A-TOI",
+      "tooltip": "Average Time On Ice in PowerPlay 2"
+    },
+    "sh1AToi": {
+      "short": "SH1-A-TOI",
+      "tooltip": "Average Time On Ice in Shorthanded 1"
+    },
+    "sh2AToi": {
+      "short": "SH2-A-TOI",
+      "tooltip": "Average Time On Ice in Shorthanded 2"
     }
   },
   "game": {

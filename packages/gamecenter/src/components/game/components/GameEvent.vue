@@ -25,7 +25,7 @@ const TYPE_MAP = new Map()
   .set('Büntető', PenaltyShot);
 
 const component = computed(() => TYPE_MAP.get(props.event.type));
-const isHomeTeam = computed(() => props.event.team.id === props.homeTeamId);
+const isHomeTeam = computed(() => props.event.team?.id === props.homeTeamId);
 </script>
 
 <template>

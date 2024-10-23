@@ -18,8 +18,8 @@ export const PANEL_PLAYERS = 'players';
 export const PANEL_TEAMS = 'teams';
 
 export const transformSections = (sections, state) => {
-  state.championships = sortBy(prop('sectionName'))(sections);
-  state.selectedChampionshipId = sections?.[0]?.sectionId;
+  state.championships = sortBy(prop('sectionId'))(sections);
+  state.selectedChampionshipId = state.championships?.[0]?.sectionId;
   state.phaseId = sections?.[0]?.phases[0]?.phaseId;
 };
 

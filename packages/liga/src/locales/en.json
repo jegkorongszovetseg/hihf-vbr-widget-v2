@@ -41,6 +41,7 @@
     }
   },
   "report": {
+    "toi": "Time On Ice",
     "points": "Points",
     "goals": "Goals",
     "assists": "Assists",

@@ -40,7 +40,7 @@ const searchParams = useUrlSearchParams('history');
 
 const { errors, add: addApiError, remove: removeApiError } = useApiErrors();
 
-const gameId = computed(() => searchParams?.gameId ?? props.gameId);
+const gameId = computed(() => searchParams?.gameid ?? props.gameId);
 
 const { state: gameData, execute: getGameData } = useServices({
   options: {

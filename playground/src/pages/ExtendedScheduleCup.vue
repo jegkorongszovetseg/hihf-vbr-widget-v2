@@ -14,6 +14,6 @@ import { store } from '../store.js';
 <template>
   <div class="p-5">
     <!-- <ScheduleCup :locale="store.locale" championship-name="Mini Bajnokság" /> -->
-    <mjsz-vbr-schedule-cup :locale="store.locale" championship-name="Mini Bajnokság" />
+    <mjsz-vbr-schedule-cup :locale="store.locale" championship-name="Szupermini Bajnokság" />
   </div>
 </template>
