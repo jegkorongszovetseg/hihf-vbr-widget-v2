@@ -215,8 +215,8 @@
 
   --vbr-widget-gamecenter-home-team-identifier-color: #2870ed;
   --vbr-widget-gamecenter-away-team-identifier-color: #ff6129;
-  /* --vbr-widget-gamecenter-home-team-identifier-color: var(--vbr-widget-danger-color-a400);
-  --vbr-widget-gamecenter-away-team-identifier-color: var(--vbr-widget-live-game-color); */
+  --vbr-widget-gamecenter-home-team-identifier-border-color: transparent;
+  --vbr-widget-gamecenter-away-team-identifier-border-color: transparent;
 
   --vbr-widget-main-image-wrapper-horizontal-margin: 0rem;
 

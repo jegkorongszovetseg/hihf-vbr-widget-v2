@@ -238,9 +238,13 @@
 
       &.is-home-team {
         background-color: var(--vbr-widget-gamecenter-home-team-identifier-color);
+        outline: 1px solid var(--vbr-widget-gamecenter-home-team-identifier-border-color);
+        outline-offset: -2px;
       }
       &.is-away-team {
         background-color: var(--vbr-widget-gamecenter-away-team-identifier-color);
+        outline: 1px solid var(--vbr-widget-gamecenter-away-team-identifier-border-color);
+        outline-offset: -2px;
       }
     }
   }
@@ -905,6 +909,7 @@
         background-color: transparent;
         border-radius: 100%;
         margin-inline-end: 0.25rem;
+        margin-block-end: 1px;
       }
     }
 
@@ -912,12 +917,16 @@
       h2:before {
         width: 8px;
         background-color: var(--vbr-widget-gamecenter-home-team-identifier-color);
+        outline: 1px solid var(--vbr-widget-gamecenter-home-team-identifier-border-color);
+        outline-offset: -1px;
       }
     }
     &.is-away-team {
       h2:before {
         width: 8px;
         background-color: var(--vbr-widget-gamecenter-away-team-identifier-color);
+        outline: 1px solid var(--vbr-widget-gamecenter-away-team-identifier-border-color);
+        outline-offset: -1px;
       }
     }
   }

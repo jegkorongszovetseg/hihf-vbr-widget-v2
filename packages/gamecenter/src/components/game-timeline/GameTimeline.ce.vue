@@ -19,6 +19,7 @@ import en from '../game/locales/en.json';
 import commonHU from '../../locales/hu.json';
 import commonEN from '../../locales/en.json';
 import { transformEvents } from './internal';
+import { useTeamColors } from './composables/use-team-colors';
 
 const messages = { en: { ...en, ...commonEN }, hu: { ...hu, ...commonHU } };
 
@@ -111,10 +112,15 @@ handleServices({
   services: { getGameData, getGameStats, getEvents, getGameOfficials },
   interval: REFRESH_DELAY,
 });
+
+const colors = useTeamColors(gameData)
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-timeline')">
+  <div
+    :class="useMainClass('gamecenter-timeline')"
+    :style="colors"
+  >
     <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
       <ErrorNotice v-for="error in errors" :key="error.key" :error="error" />
 
