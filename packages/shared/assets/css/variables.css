@@ -203,6 +203,7 @@
   --vbr-widget-gamecenter-events-score-size: var(--vbr-widget-typography-text-base-size);
   --vbr-widget-gamecenter-events-penalty-size: var(--vbr-widget-typography-text-sm-size);
   --vbr-widget-gamecenter-events-goalie-direction-size: var(--vbr-widget-typography-text-sm-size);
+  --vbr-widget-gamecenter-events-timeout-bg-color: #2870ed;
 
   --vbr-widget-gamecenter-card-title-color: var(--vbr-widget-primary-color-900);
   --vbr-widget-gamecenter-card-secondary-color: var(--vbr-widget-primary-color-500);

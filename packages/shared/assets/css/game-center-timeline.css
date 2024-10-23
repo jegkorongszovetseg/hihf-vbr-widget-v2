@@ -393,7 +393,6 @@
           display: block;
           width: 14px;
           height: 14px;
-          /* margin-block-start: 1px; */
 
           @container rows (width > 410px) {
             width: 24px;
@@ -403,8 +402,6 @@
       }
 
       &.is-penalty {
-        /* outline-color: var(--vbr-widget-danger-color-a400); */
-
         .is-event-type-icon {
           color: var(--vbr-widget-primary-color-0);
           background-color: var(--vbr-widget-danger-color-a400);
@@ -412,17 +409,13 @@
       }
 
       &.is-timeout {
-        /* outline-color: var(--vbr-widget-gamecenter-home-team-identifier-color); */
-
         .is-event-type-icon {
           color: var(--vbr-widget-primary-color-0);
-          background-color: var(--vbr-widget-gamecenter-home-team-identifier-color);
+          background-color: var(--vbr-widget-gamecenter-events-timeout-bg-color);
         }
       }
 
       &.is-goalies {
-        /* outline-color: var(--vbr-widget-gamecenter-home-team-identifier-color); */
-
         .is-event-type-icon {
           color: var(--vbr-widget-primary-color-900);
           background-color: var(--vbr-widget-neutral-color);
@@ -444,7 +437,6 @@
       }
 
       &.is-goal {
-        /* color: var(--vbr-widget-secondary-color-500); */
         background-color: var(--vbr-widget-gamecenter-card-event-goal-bg-color);
         outline-color: var(--vbr-widget-gamecenter-card-event-goal-border-color);
 
@@ -528,93 +520,11 @@
       }
     }
 
-    /* .is-event-type {
-      grid-area: event-type;
-
-      justify-self: center;
-
-      p {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        margin: 0;
-        padding-inline: 0.5rem;
-        color: var(--vbr-widget-primary-color-500);
-        font-size: small;
-        line-height: 1.5rem;
-        background-color: var(--vbr-widget-primary-color-100);
-        border-radius: 6px;
-      }
-
-      svg {
-        display: block;
-        width: 14px;
-        height: 14px;
-      }
-
-      &.is-goal {
-        p {
-          color: var(--vbr-widget-primary-color-0);
-          background-color: var(--vbr-widget-danger-color-a400);
-        }
-      }
-
-      &.is-penalty {
-        p {
-          color: var(--vbr-widget-primary-color-900);
-        }
-      }
-
-      &.is-timeout {
-        p {
-          color: var(--vbr-widget-primary-color-0);
-          background-color: var(--vbr-widget-secondary-color-700);
-        }
-      }
-
-      &.is-goalie-in {
-        p {
-          color: var(--vbr-widget-secondary-color-700);
-          border: 1px solid var(--vbr-widget-primary-color-100);
-          background-color: var(--vbr-widget-primary-color-0);
-        }
-      }
-
-      &.is-goalie-out {
-        p {
-          color: var(--vbr-widget-danger-color-700);
-          border: 1px solid var(--vbr-widget-primary-color-100);
-          background-color: var(--vbr-widget-primary-color-0);
-        }
-      }
-
-      &.is-penalty-shot-goal {
-        p {
-          color: var(--vbr-widget-primary-color-0);
-          background-color: var(--vbr-widget-danger-color-a400);
-        }
-      }
-
-      &.is-penalty-shot-no-goal {
-        p {
-          color: var(--vbr-widget-danger-color-700);
-          background-color: var(--vbr-widget-danger-color-100);
-        }
-      }
-    } */
-
     &[data-team='away'] {
       .is-details-container {
         border-color: var(--vbr-widget-gamecenter-away-team-identifier-color);
       }
     }
-
-    /* &[data-team='home'] {
-      .is-details-list,
-      .is-details-title {
-        text-align: right;
-      }
-    } */
 
     @container rows (width > 500px) {
       --columns: 1fr 0.15fr 2px 0.15fr 1fr;
