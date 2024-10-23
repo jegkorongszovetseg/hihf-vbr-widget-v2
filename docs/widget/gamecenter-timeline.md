@@ -14,6 +14,9 @@ https://www.example.com/game?gameId=73020
 
 <!--@include: ./parts/url-search-params.md-->
 
+## Előnézet
+[Teljes képernyős előnézet](./gamecenter-timeline-preview)
+
 ## Példa
 
 <ClientOnly>
