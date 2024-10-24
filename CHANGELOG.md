@@ -1,3 +1,8 @@
+## [2.7.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.7.0...v2.7.1) (2024-10-24)
+
+### Bug Fixes
+
+* (gamecenter) Period események kiszűrése ([9628f67](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/9628f6714efac3ca640901cd992224934c860e33))
 ## [2.7.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.6.4...v2.7.0) (2024-10-23)
 ## [2.6.4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.6.3...v2.6.4) (2024-10-22)
 
