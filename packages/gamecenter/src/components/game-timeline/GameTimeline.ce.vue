@@ -14,14 +14,13 @@ import GameOfficials from './GameOfficials.vue';
 import ScoreBoard from './components/ScoreBoard.vue';
 import GameTabs from './GameTabs.vue';
 import { TAB_EVENTS, TAB_LINEUPS, TAB_TEAM_STATS, TAB_PLAYER_STATS, TAB_OFFICIALS } from './constants';
-import hu from '../game/locales/hu.json';
-import en from '../game/locales/en.json';
-import commonHU from '../../locales/hu.json';
-import commonEN from '../../locales/en.json';
-import { transformEvents } from './internal';
+import commonEN from '../../locales/en/common.json';
+import commonHU from '../../locales/hu/common.json';
+import extendeEN from '../../locales/en/extended.json';
+import extendedHU from '../../locales/hu/extended.json';
 import { useTeamColors } from './composables/use-team-colors';
 
-const messages = { en: { ...en, ...commonEN }, hu: { ...hu, ...commonHU } };
+const messages = { en: { ...commonEN, ...extendeEN }, hu: { ...commonHU, ...extendedHU } };
 
 const REFRESH_DELAY = 30000;
 
@@ -78,10 +77,7 @@ const { state: gameEvents, execute: getEvents } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  transform: (data) => {
-    return transformEvents(gameData.value, data);
-    // return compose(groupBy(prop('eventPeriod')), reverse)(data?.isEmpty ? [] : data);
-  },
+  transform: (data) => reverse(data),
 
   onError: (e) => addApiError('gameEvents', e),
   onSuccess: () => removeApiError('gameEvents'),
@@ -113,14 +109,11 @@ handleServices({
   interval: REFRESH_DELAY,
 });
 
-const colors = useTeamColors(gameData)
+const colors = useTeamColors(gameData);
 </script>
 
 <template>
-  <div
-    :class="useMainClass('gamecenter-timeline')"
-    :style="colors"
-  >
+  <div :class="useMainClass('gamecenter-timeline')" :style="colors">
     <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
       <ErrorNotice v-for="error in errors" :key="error.key" :error="error" />
 

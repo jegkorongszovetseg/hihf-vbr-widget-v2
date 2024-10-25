@@ -12,10 +12,10 @@ import GamePlayersStats from './GamePlayersStats.vue';
 import GameGoaliesStats from './GameGoaliesStats.vue';
 import GameOfficials from './GameOfficials.vue';
 import GameTeamsOfficials from './GameTeamOfficials.vue';
-import hu from './locales/hu.json';
-import en from './locales/en.json';
+import CommonEn from '../../locales/en/common.json';
+import CommonHu from '../../locales/hu/common.json';
 
-const messages = { en, hu };
+const messages = { en: CommonEn, hu: CommonHu };
 
 const REFRESH_DELAY = 30000;
 

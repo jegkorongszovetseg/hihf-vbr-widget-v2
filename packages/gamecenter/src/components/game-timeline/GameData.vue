@@ -58,6 +58,10 @@ const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.
           <IconSheet class="is-icon" />
           {{ t('sheet') }}
         </a>
+        <a v-if="gameData.toiReportUrl" :href="gameData.toiReportUrl" target="_blank">
+          <IconSheet class="is-icon" />
+          {{ t('toiSheet') }}
+        </a>
         <a v-if="gameData.video" :href="gameData.video" target="_blank">
           <IconYoutube class="is-icon" />
           {{ t('video') }}

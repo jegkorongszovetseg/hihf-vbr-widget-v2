@@ -24,7 +24,7 @@ const TYPE_MAP = new Map()
   .set('Kapus', Goalies)
   .set('Idő', Timeout)
   .set('Büntető', PenaltyShot)
-  .set('period', Period);
+  .set('Period', Period);
 
 const component = computed(() => TYPE_MAP.get(props.event.type));
 const isHomeTeam = computed(() => props.event?.team?.id === props.homeTeamId);

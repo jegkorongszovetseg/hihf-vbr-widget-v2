@@ -11,27 +11,14 @@ import {
   sortBy,
   sortWith,
   descend,
-  includes,
   filter,
   pick,
-  omit,
   propEq,
   allPass,
   pathEq,
   reduce,
-  reduceBy,
   reverse,
 } from 'ramda';
-import {
-  EXTENDED_PERIOD_EVENTS,
-  EXTENDED_PERIOD_EVENTS_END,
-  EXTENDED_PERIOD_EVENTS_OT,
-  EXTENDED_PERIOD_EVENTS_SO,
-  PERIODS,
-  PERIODS_END,
-  PERIODS_OT,
-  PERIODS_SO,
-} from './constants';
 
 export const buildPeriodResultsByTeam = (periodResults) => {
   const defaultPeriodResultObject = {
@@ -187,7 +174,6 @@ export const buildDvgPercent = (data) => {
   };
 };
 
-// TODO: refact
 export const convertGameOfficials = (data, t) => {
   const sortByType = (item) => {
     const index = ['first_referee', 'second_referee', 'first_line_judge', 'second_line_judge'].indexOf(item.role);
@@ -197,15 +183,6 @@ export const convertGameOfficials = (data, t) => {
   const convertName = (item) => ({ ...playerName(item), role: t(`role.${item.role}`) });
 
   return groupBy(prop('type'), map(convertName, sortBy(sortByType, values(data))));
-};
-
-export const convertGameOfficials2 = (data, t) => {
-  const convertName = (item) => ({ ...playerName(item), role: t(`role.${item.role}`) });
-
-  return groupBy(
-    prop('type'),
-    map(convertName, values(omit(['first_referee', 'second_referee', 'first_line_judge', 'second_line_judge'], data)))
-  );
 };
 
 export const GAME_OFFICIALS_COLUMNS = {
@@ -231,6 +208,8 @@ export const pickReferees = pick(['first_referee', 'second_referee', 'first_line
 
 export const filterGoalScorers = (events, teamId) => {
   const filtered = filter(allPass([pathEq(teamId, ['team', 'id']), propEq('Gól', 'type')]), reverse(events));
+  const converted = map((event) => ({ ...event, eventTimeSec: convertMinToSec(event.eventTime) }), filtered);
+
   const reduced = reduce(
     (players, player) => {
       if (players[player.playerId]) {
@@ -245,41 +224,9 @@ export const filterGoalScorers = (events, teamId) => {
       return players;
     },
     {},
-    filtered
+    converted
   );
 
   const sorted = sortBy(prop('eventTimeSec'), values(reduced));
   return sorted;
-};
-
-export const transformEvents = ({ period, isOvertime, isShootout }, events) => {
-  events = events.isEmpty ? [] : events;
-  const currentPeriodRange = [
-    ...PERIODS,
-    ...(isOvertime ? PERIODS_OT : []),
-    ...(isShootout ? [...PERIODS_OT, ...PERIODS_SO] : []),
-    ...PERIODS_END,
-  ];
-  const currentExtendedPeriodEventsRange = [
-    ...EXTENDED_PERIOD_EVENTS,
-    ...(isOvertime ? EXTENDED_PERIOD_EVENTS_OT : []),
-    ...(isShootout ? [...EXTENDED_PERIOD_EVENTS_OT, ...EXTENDED_PERIOD_EVENTS_SO] : []),
-    ...EXTENDED_PERIOD_EVENTS_END(isOvertime, isShootout),
-  ];
-
-  const index = currentPeriodRange.findIndex((current) => current === period);
-  const extraEvents = currentExtendedPeriodEventsRange.slice(0, index + 1);
-  const extendedEvents = [...events, ...extraEvents];
-
-  const sortPeriods = (data) =>
-    isOvertime ? ['Gól', 'Kapus'].indexOf(data.type) : ['Kapus', 'period', 'Büntető', 'Gól'].indexOf(data.type);
-
-  const converted = compose(
-    reverse,
-    sortBy(prop('eventTimeSec')),
-    sortBy(sortPeriods),
-    map((event) => ({ ...event, ...(!event.eventTimeSec && { eventTimeSec: convertMinToSec(event.eventTime) }) }))
-  )(extendedEvents);
-
-  return converted;
 };
