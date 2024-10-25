@@ -185,19 +185,6 @@ export const convertGameOfficials = (data, t) => {
   return groupBy(prop('type'), map(convertName, sortBy(sortByType, values(data))));
 };
 
-export const GAME_OFFICIALS_COLUMNS = {
-  role: {
-    label: 'table.role.short',
-    tooltip: 'table.role.tooltip',
-    class: 'is-text-left',
-  },
-  name: {
-    label: 'table.name.short',
-    tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-text-bold',
-  },
-};
-
 export const transformGoalieStats = sortWith([descend(prop('startingFive'))]);
 
 export const pickCoaches = (data) => {

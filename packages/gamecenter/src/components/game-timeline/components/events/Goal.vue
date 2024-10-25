@@ -117,5 +117,4 @@ const awayOnIce = computed(() => props.event.awayOnIce);
       <IconHockeyPuck />
     </template>
   </GameEventLayout>
-  <!-- <div ref="tooltipContainer" /> -->
 </template>

@@ -67,22 +67,5 @@ const props = defineProps({
     <div class="is-timestamp">
       <p>{{ timestamp }}</p>
     </div>
-
-    <!-- <div
-      :class="[
-        'is-event-type',
-        {
-          'is-goal': eventType === EVENT_TYPE_GOAL,
-          'is-penalty': eventType === EVENT_TYPE_PENALTY,
-          'is-timeout': eventType === EVENT_TYPE_TIMEOUT,
-          'is-goalie-in': eventType === EVENT_TYPE_GOALIE,
-          'is-goalie-out': eventType === EVENT_TYPE_GOALIE && event.gkDirection === 'KI',
-          'is-penalty-shot-goal': eventType === EVENT_TYPE_PENALTY_SHOT && event.goal,
-          'is-penalty-shot-no-goal': eventType === EVENT_TYPE_PENALTY_SHOT && !event.goal,
-        },
-      ]"
-    >
-      <p><slot name="event-type-icon" />{{ t(`eventType.${eventType}`) }}</p>
-    </div> -->
   </div>
 </template>

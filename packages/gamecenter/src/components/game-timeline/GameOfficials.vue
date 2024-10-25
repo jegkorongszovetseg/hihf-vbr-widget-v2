@@ -4,7 +4,8 @@ import { useColumns, useI18n, useMainClass } from '@mjsz-vbr-elements/core/compo
 import GameDataTable from '../common/GameDataTable.vue';
 import { TEAM_OFFICIALS_COLUMNS } from '../game/internal';
 import { convertTeamMembersToRows } from '../../utils/convert-official-persons';
-import { convertGameOfficials, GAME_OFFICIALS_COLUMNS } from './internal';
+import { convertGameOfficials } from './internal';
+import { GAME_OFFICIALS_COLUMNS } from './constants';
 
 const props = defineProps({
   gameOfficials: {

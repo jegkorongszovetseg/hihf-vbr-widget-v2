@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue';
-import { compose, groupBy, prop, reverse, isEmpty } from 'ramda';
+import { reverse, isEmpty } from 'ramda';
 import { useIntersectionObserver, useUrlSearchParams } from '@vueuse/core';
 import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { I18NProvider, ErrorNotice } from '@mjsz-vbr-elements/core/components';
