@@ -1,3 +1,8 @@
+## [2.7.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.7.1...v2.7.2) (2024-10-25)
+
+### Features
+
+* (gamecenter) Toi riport hozzáadása ([25d04dd](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/25d04ddad763f9a48e71e6ed369478c5327f7c2e))
 ## [2.7.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.7.0...v2.7.1) (2024-10-24)
 
 ### Bug Fixes
