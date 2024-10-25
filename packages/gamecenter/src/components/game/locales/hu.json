@@ -3,6 +3,7 @@
   "afterOvertime": "Hosszabbítás után",
   "afterShootout": "Szétlövés után",
   "sheet": "Jegyzőkönyv",
+  "toiSheet": "TOI statisztika",
   "video": "Videó",
   "gameStatus": {
     "status-1": "Élő",

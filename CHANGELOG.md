@@ -1,3 +1,34 @@
+## [2.7.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.7.1...v2.7.2) (2024-10-25)
+
+### Features
+
+* (gamecenter) Toi riport hozzáadása ([25d04dd](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/25d04ddad763f9a48e71e6ed369478c5327f7c2e))
+## [2.7.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.7.0...v2.7.1) (2024-10-24)
+
+### Bug Fixes
+
+* (gamecenter) Period események kiszűrése ([9628f67](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/9628f6714efac3ca640901cd992224934c860e33))
+## [2.7.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.6.4...v2.7.0) (2024-10-23)
+## [2.6.4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.6.3...v2.6.4) (2024-10-22)
+
+### Bug Fixes
+
+* Új period event miatti javítás ([a1ac4f2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/a1ac4f25559c11b9d98720fc1e57181f5f8ec022))
+## [2.6.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.6.2...v2.6.3) (2024-10-11)
+
+### Bug Fixes
+
+* Hivatalos személyek átalakítása ([d1443ef](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/d1443efea6f3cae01e1a83553384dfc75e9dabf6))
+## [2.6.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.6.1...v2.6.2) (2024-09-24)
+
+### Bug Fixes
+
+* (extended) Scope css javítás ([0dbb2b7](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/0dbb2b748cd26b8a2d52f799ce261b6585c7c0a0))
+## [2.6.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.6.0...v2.6.1) (2024-09-15)
+
+### Bug Fixes
+
+* (extended/calendar) Lapozás javítása ([66d4e8d](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/66d4e8d236c6c192720b7ec1f2df5c656701e2ff))
 ## [2.6.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.5.2...v2.6.0) (2024-09-13)
 ## [2.5.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.5.1...v2.5.2) (2024-09-12)
 

@@ -3,6 +3,7 @@
   "afterOvertime": "Overtime",
   "afterShootout": "Shootout",
   "sheet": "Game sheet",
+  "toiSheet": "TOI sheet",
   "video": "Video",
   "gameStatus": {
     "status-1": "Live",

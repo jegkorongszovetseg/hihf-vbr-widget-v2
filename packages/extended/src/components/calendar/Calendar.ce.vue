@@ -62,7 +62,6 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
           isLoading,
           selectedPanel,
           selectedMonth,
-          isFetchMoreButtonActive,
           more,
           setMonth,
           changePanel,
@@ -146,7 +145,7 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
         </div>
 
         <FetchMoreObserver
-          v-if="!isLoading && games.currentItems < games.totalItems && isFetchMoreButtonActive"
+          v-if="!isLoading && games.currentItems < games.totalItems"
           :options="{ rootMargin: '400px' }"
           @intersect="more"
         >
@@ -157,7 +156,7 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
   </I18NProvider>
 </template>
 
+<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
-<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>

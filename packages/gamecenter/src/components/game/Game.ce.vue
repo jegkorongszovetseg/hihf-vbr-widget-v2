@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { compose, groupBy, prop, reverse, isEmpty, pathOr } from 'ramda';
+import { compose, groupBy, prop, reverse, isEmpty, reject, propEq } from 'ramda';
 import { useUrlSearchParams } from '@vueuse/core';
 import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { I18NProvider, ErrorNotice } from '@mjsz-vbr-elements/core/components';
@@ -58,7 +58,8 @@ const { state: gameEvents, execute: getEvents } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  transform: (data) => compose(groupBy(prop('eventPeriod')), reverse)(data?.isEmpty ? [] : data),
+  transform: (data) =>
+    compose(groupBy(prop('eventPeriod')), reverse, reject(propEq('Period', 'type')))(data?.isEmpty ? [] : data),
   onError: (e) => addApiError('gameEvents', e),
   onSuccess: () => removeApiError('gameEvents'),
 });

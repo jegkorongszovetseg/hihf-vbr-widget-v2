@@ -85,8 +85,6 @@ const convertedGames = computed(() =>
     .value()
 );
 
-const isFetchMoreButtonActive = computed(() => [PANEL_GAMES_PLAYED, PANEL_NEXT_GAMES].includes(selectedPanel.value));
-
 const months = computed(() =>
   getMonthsBetweenDates(
     ...monthDatesMap.get(selectedPanel.value)(firstAndLastDates.value.firstGame, firstAndLastDates.value.lastGame),
@@ -161,7 +159,6 @@ function monthOverwrite() {
       selectedMonth,
       selectedPanel,
       games: convertedGames,
-      isFetchMoreButtonActive,
       more,
       setMonth,
       changePanel,
