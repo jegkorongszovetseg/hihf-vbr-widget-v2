@@ -401,6 +401,10 @@
     "sh2AToi": {
       "short": "SH2-A-TOI",
       "tooltip": "Average Time On Ice in Shorthanded 2"
+    },
+    "role": {
+      "short": "Role",
+      "tooltip": "Role"
     }
   },
   "game": {

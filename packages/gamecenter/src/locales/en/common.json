@@ -32,6 +32,7 @@
     "so": "Shoot Out",
     "so_int": "Shoot Out Ended",
     "end": "Game Ended",
+    "end-event": "Game Ended",
     "1-harmad": "First Period",
     "2-harmad": "Second Period",
     "3-harmad": "Third Period",
@@ -78,12 +79,6 @@
     "advantageTimePP2": "Advantage Time PP2"
   },
   "teamMembers": {
-    "entry_team_leader": "Team leader",
-    "entry_second_coach": "Assistant Coach",
-    "entry_head_coach": "Coach",
-    "entry_official_person_1": "Team Official",
-    "entry_official_person_2": "Team Official",
-    "entry_official_person_3": "Team Official",
     "headCoach": "Coach",
     "secondCoach": "Assistant Coach",
     "teamLeader": "Team leader",

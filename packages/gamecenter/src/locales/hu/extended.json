@@ -1,0 +1,99 @@
+{
+  "gameData": {
+    "attendance": "{0} néző"
+  },
+  "menu": {
+    "events": "Események",
+    "lineups": "Sorok",
+    "teamStats": "Csapat statisztikák",
+    "playerStats": "Játékos statisztikák",
+    "officials": "Hivatalos személyek"
+  },
+  "title": {
+    "coaches": "Edzők",
+    "referees": "Játékvezetők",
+    "teamOfficials": "Stábtagok",
+    "gameOfficials": "Hivatalos személyek",
+    "fieldPlayers": "Mezőnyjátékosok",
+    "goalies": "Kapusok"
+  },
+  "eventType": {
+    "Gól": "Gól",
+    "Kiállítás": "Kiállítás",
+    "Kapus": "Kapus",
+    "Idő": "Időkérés",
+    "Büntető": "Büntető",
+    "goalie": {
+      "KI": "Ki",
+      "BE": "BE",
+      "CSERE": "CSERE"
+    }
+  },
+  "section": {
+    "all": "Összesen",
+    "ot": "Hosszabbítás",
+    "so": "Szétlövés",
+    "p1": "1. harmad",
+    "p2": "2. harmad",
+    "p3": "3. harmad",
+    "p4": "4. harmad",
+    "p5": "5. harmad",
+    "p6": "6. harmad"
+  },
+  "stats": {
+    "powerPlays": "Emberelőnyök",
+    "powerPlaysGoalFor": "Emberelőnyben szerzett gólok",
+    "powerPlayEfficiency": "Emberelőny hatékonyság",
+    "penaltyKill": "Emberhátrányok",
+    "powerPlaysKilled": "Kivédekezett emberhátrányok",
+    "penaltyKillEfficiency": "Emberhátrány hatékonyság"
+  },
+  "rows": {
+    "row-1": "Első sor",
+    "row-2": "Második sor",
+    "row-3": "Harmadik sor",
+    "row-4": "Negyedik sor",
+    "row-gk": "Kapusok"
+  },
+  "roleType": {
+    "referee": "Játékvezetők",
+    "judge": "Versenybírók",
+    "medical": "Egészségügyi személyzet"
+  },
+  "role": {
+    "first_referee": "Játékvezető",
+    "second_referee": "Játékvezető",
+    "first_line_judge": "Vonalbíró",
+    "second_line_judge": "Vonalbíró",
+    "first_goal_judge": "Gólbíró",
+    "second_goal_judge": "Gólbíró",
+    "referee_inspector": "Játékvezető ellenőr",
+    "referee_supporter": "Játékvezető támogató",
+    "reserve_referee": "Tartalék játékvezető",
+    "reserve_linesman": "Tartalék vonalbíró",
+    "video_inspector": "Videó ellenőr",
+    "recorder_ivr": "Jegyzőkönyvvezető (IVR)",
+    "timer": "Időmérő",
+    "announcer": "Hangosbemondó",
+    "penalty_timer_a": "Büntetés időmérő",
+    "penalty_timer_b": "Büntetés időmérő",
+    "music": "Zene",
+    "sog_statistician_a": "S.O.G. statisztikus",
+    "sog_statistician_b": "S.O.G. statisztikus",
+    "video_recorder": "Videó-rögzítő",
+    "medical": "EÜ személy",
+    "doctor": "EÜ személy",
+    "federal_inspector": "Szövetségi ellenőr",
+    "judge_inspector": "Versenybíró ellenőr",
+    "recorder_e_grep": "Jegyzőkönyvvezető (E-Grep)",
+    "recorder_manual": "Jegyzőkönyvvezető (Kézi)",
+    "recorder_orion": "Jegyzőkönyvvezető (Orion)",
+    "toi_statistician_a": "T.O.I. statisztikus",
+    "toi_statistician_b": "T.O.I. statisztikus",
+    "fos_statistician_a": "F.O.S. statisztikus",
+    "fos_statistician_b": "F.O.S. statisztikus",
+    "led_wall_operator": "Eredményjelző kezelő",
+    "assist_statistician": "Assziszt statisztikus",
+    "other": "Egyéb"
+  }
+}

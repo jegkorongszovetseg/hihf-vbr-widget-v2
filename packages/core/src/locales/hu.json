@@ -401,6 +401,10 @@
     "sh2AToi": {
       "short": "SH2-A-TOI",
       "tooltip": "Átlagos jégen töltött idő kétszeres emberhátrányban"
+    },
+    "role": {
+      "short": "Szerep",
+      "tooltip": "Szerep"
     }
   },
   "game": {

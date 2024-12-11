@@ -197,12 +197,27 @@
   --vbr-widget-gamecenter-team-container-border-color: var(--vbr-widget-primary-color-100);
 
   --vbr-widget-gamecenter-events-evented-person-size: var(--vbr-widget-typography-text-base-size);
-  --vbr-widget-gamecenter-events-evented-person-weight: 500;
+  --vbr-widget-gamecenter-events-evented-person-weight: 600;
   --vbr-widget-gamecenter-events-assitst-list-size: 0.9375rem;
   --vbr-widget-gamecenter-events-poi-list-size: var(--vbr-widget-typography-text-xs-size);
   --vbr-widget-gamecenter-events-score-size: var(--vbr-widget-typography-text-base-size);
   --vbr-widget-gamecenter-events-penalty-size: var(--vbr-widget-typography-text-sm-size);
   --vbr-widget-gamecenter-events-goalie-direction-size: var(--vbr-widget-typography-text-sm-size);
+  --vbr-widget-gamecenter-events-timeout-bg-color: #2870ed;
+
+  --vbr-widget-gamecenter-card-title-color: var(--vbr-widget-primary-color-900);
+  --vbr-widget-gamecenter-card-secondary-color: var(--vbr-widget-primary-color-500);
+  --vbr-widget-gamecenter-card-tertiary-color: var(--vbr-widget-primary-color-300);
+  --vbr-widget-gamecenter-card-border-color: var(--vbr-widget-primary-color-100);
+  --vbr-widget-gamecenter-card-bg-color: var(--vbr-widget-primary-color-0);
+
+  --vbr-widget-gamecenter-card-event-goal-border-color: var(--vbr-widget-primary-color-700);
+  --vbr-widget-gamecenter-card-event-goal-bg-color: var(--vbr-widget-primary-color-700);
+
+  --vbr-widget-gamecenter-home-team-identifier-color: #2870ed;
+  --vbr-widget-gamecenter-away-team-identifier-color: #ff6129;
+  --vbr-widget-gamecenter-home-team-identifier-border-color: transparent;
+  --vbr-widget-gamecenter-away-team-identifier-border-color: transparent;
 
   --vbr-widget-main-image-wrapper-horizontal-margin: 0rem;
 

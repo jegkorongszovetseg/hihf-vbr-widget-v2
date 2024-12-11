@@ -32,6 +32,7 @@
     "so": "Szétlövés",
     "so_int": "Szétlövés vége",
     "end": "Végeredmény",
+    "end-event": "Mérkőzés vége",
     "1-harmad": "I. harmad",
     "2-harmad": "II. harmad",
     "3-harmad": "III. harmad",
@@ -78,12 +79,6 @@
     "advantageTimePP2": "Dupla előnyben töltött idő"
   },
   "teamMembers": {
-    "entry_team_leader": "Csapatvezető",
-    "entry_second_coach": "Másodedző",
-    "entry_head_coach": "Vezetőedző",
-    "entry_official_person_1": "Hivatalos személy",
-    "entry_official_person_2": "Hivatalos személy",
-    "entry_official_person_3": "Hivatalos személy",
     "headCoach": "Vezetőedző",
     "secondCoach": "Másodedző",
     "teamLeader": "Csapatvezető",

@@ -1,8 +1,9 @@
 <script setup>
 import { computed } from 'vue';
 import { useMainClass, useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
-import GameDataTable from './components/GameDataTable.vue';
-import { TEAM_OFFICIALS_COLUMNS, convertTeamMembersToRows } from './internal';
+import GameDataTable from '../common/GameDataTable.vue';
+import { convertTeamMembersToRows } from '../../utils/convert-official-persons';
+import { TEAM_OFFICIALS_COLUMNS } from './internal';
 
 const props = defineProps({
   gameOfficials: {
@@ -31,7 +32,17 @@ const awayTeamMembers = computed(() => convertTeamMembersToRows(props.gameOffici
 
 <template>
   <div :class="useMainClass('gamecenter-data-columns')">
-    <GameDataTable :columns="columns" :rows="homeTeamMembers" :title="homeTeamName" />
-    <GameDataTable :columns="columns" :rows="awayTeamMembers" :title="awayTeamName" />
+    <GameDataTable
+      :class="useMainClass('gamecenter-data-table')"
+      :columns="columns"
+      :rows="homeTeamMembers"
+      :title="homeTeamName"
+    />
+    <GameDataTable
+      :class="useMainClass('gamecenter-data-table')"
+      :columns="columns"
+      :rows="awayTeamMembers"
+      :title="awayTeamName"
+    />
   </div>
 </template>

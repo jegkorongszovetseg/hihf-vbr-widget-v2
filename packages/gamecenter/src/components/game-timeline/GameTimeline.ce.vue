@@ -1,21 +1,26 @@
 <script setup>
-import { computed } from 'vue';
-import { compose, groupBy, prop, reverse, isEmpty, reject, propEq } from 'ramda';
-import { useUrlSearchParams } from '@vueuse/core';
+import { computed, ref } from 'vue';
+import { reverse, isEmpty } from 'ramda';
+import { useIntersectionObserver, useUrlSearchParams } from '@vueuse/core';
 import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { I18NProvider, ErrorNotice } from '@mjsz-vbr-elements/core/components';
-import { handleServices, useApiErrors } from './composables';
+import { handleServices, useApiErrors } from '../game/composables';
 import GameData from './GameData.vue';
-import GameStats from './GameStats.vue';
 import GameEvents from './GameEvents.vue';
-import GamePlayersStats from './GamePlayersStats.vue';
-import GameGoaliesStats from './GameGoaliesStats.vue';
+import GameLineups from './GameLineups.vue';
+import GameTeamStats from './GameTeamStats.vue';
+import GamePlayerStats from './GamePlayerStats.vue';
 import GameOfficials from './GameOfficials.vue';
-import GameTeamsOfficials from './GameTeamOfficials.vue';
-import CommonEn from '../../locales/en/common.json';
-import CommonHu from '../../locales/hu/common.json';
+import ScoreBoard from './components/ScoreBoard.vue';
+import GameTabs from './GameTabs.vue';
+import { TAB_EVENTS, TAB_LINEUPS, TAB_TEAM_STATS, TAB_PLAYER_STATS, TAB_OFFICIALS } from './constants';
+import commonEN from '../../locales/en/common.json';
+import commonHU from '../../locales/hu/common.json';
+import extendeEN from '../../locales/en/extended.json';
+import extendedHU from '../../locales/hu/extended.json';
+import { useTeamColors } from './composables/use-team-colors';
 
-const messages = { en: CommonEn, hu: CommonHu };
+const messages = { en: { ...commonEN, ...extendeEN }, hu: { ...commonHU, ...extendedHU } };
 
 const REFRESH_DELAY = 30000;
 
@@ -36,11 +41,25 @@ const props = defineProps({
   },
 });
 
+const contentElementRef = ref(null);
+const isScoreBoardVisible = ref(false);
+
 const searchParams = useUrlSearchParams('history');
+const activeTab = ref(searchParams.tab || TAB_EVENTS);
+
+useIntersectionObserver(
+  contentElementRef,
+  ([{ isIntersecting }]) => {
+    isScoreBoardVisible.value = !isIntersecting;
+  },
+  {
+    threshold: 0.25,
+  }
+);
 
 const { errors, add: addApiError, remove: removeApiError } = useApiErrors();
 
-const gameId = computed(() => searchParams?.gameid ?? props.gameId);
+const gameId = computed(() => searchParams?.gameid || searchParams?.gameId || props.gameId);
 
 const { state: gameData, execute: getGameData } = useServices({
   options: {
@@ -58,8 +77,8 @@ const { state: gameEvents, execute: getEvents } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  transform: (data) =>
-    compose(groupBy(prop('eventPeriod')), reverse, reject(propEq('Period', 'type')))(data?.isEmpty ? [] : data),
+  transform: (data) => reverse(data),
+
   onError: (e) => addApiError('gameEvents', e),
   onSuccess: () => removeApiError('gameEvents'),
 });
@@ -89,42 +108,61 @@ handleServices({
   services: { getGameData, getGameStats, getEvents, getGameOfficials },
   interval: REFRESH_DELAY,
 });
+
+const colors = useTeamColors(gameData);
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter')">
+  <div :class="useMainClass('gamecenter-timeline')" :style="colors">
     <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
       <ErrorNotice v-for="error in errors" :key="error.key" :error="error" />
 
-      <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
+      <ScoreBoard
+        v-if="gameData?.gameStatus === 1"
+        :class="{ 'is-visible': isScoreBoardVisible }"
+        :game-data="gameData"
+      />
+
+      <GameData
+        v-if="!isEmpty(gameData)"
+        ref="contentElementRef"
+        :game-events="gameEvents"
+        :game-data="gameData"
+        :locale="locale"
+      />
 
       <template v-if="gameData?.gameStatus > 0">
-        <GameOfficials v-if="!isEmpty(gameData)" :game-data="gameData" :game-officials="gameOfficials" />
+        <GameTabs v-model:activeTab="activeTab" />
 
-        <GameStats v-if="!isEmpty(gameStats)" :game-data="gameData" :game-stats="gameStats" />
+        <GameEvents
+          v-if="activeTab === TAB_EVENTS && !isEmpty(gameEvents) && !isEmpty(gameData)"
+          :game-events="gameEvents"
+          :game-data="gameData"
+        />
 
-        <GameEvents v-if="!isEmpty(gameEvents) && !isEmpty(gameData)" :game-events="gameEvents" :game-data="gameData" />
-
-        <GamePlayersStats
-          v-if="!isEmpty(gameStats)"
+        <GameLineups
+          v-if="activeTab === TAB_LINEUPS"
           :data="gameStats.players"
+          :game-officials="gameOfficials"
           :home-team-id="gameData.homeTeam.id"
           :home-team-name="gameData.homeTeam.longName"
           :away-team-id="gameData.awayTeam.id"
           :away-team-name="gameData.awayTeam.longName"
         />
 
-        <GameGoaliesStats
-          v-if="!isEmpty(gameStats)"
-          :data="gameStats.goalies"
+        <GameTeamStats v-if="activeTab === TAB_TEAM_STATS" :game-data="gameData" :game-stats="gameStats" />
+
+        <GamePlayerStats
+          v-if="activeTab === TAB_PLAYER_STATS && !isEmpty(gameStats)"
+          :data="gameStats"
           :home-team-id="gameData.homeTeam.id"
           :home-team-name="gameData.homeTeam.longName"
           :away-team-id="gameData.awayTeam.id"
           :away-team-name="gameData.awayTeam.longName"
         />
 
-        <GameTeamsOfficials
-          v-if="!isEmpty(gameOfficials) && !isEmpty(gameData)"
+        <GameOfficials
+          v-if="activeTab === TAB_OFFICIALS && !isEmpty(gameOfficials) && !isEmpty(gameData)"
           :game-officials="gameOfficials"
           :home-team-name="gameData.homeTeam.longName"
           :away-team-name="gameData.awayTeam.longName"
@@ -135,8 +173,9 @@ handleServices({
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
-<style src="@mjsz-vbr-elements/shared/css/game-center.css"></style>
-<style src="@mjsz-vbr-elements/shared/css/table.css"></style>
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.css"></style>
 <style src="@mjsz-vbr-elements/shared/css/progress.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/game-center-timeline.css"></style>

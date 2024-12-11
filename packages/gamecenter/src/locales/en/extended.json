@@ -1,0 +1,99 @@
+{
+  "gameData": {
+    "attendance": "{0} attending"
+  },
+  "menu": {
+    "events": "Events",
+    "lineups": "Lineups",
+    "teamStats": "Team stats",
+    "playerStats": "Player stats",
+    "officials": "Officials"
+  },
+  "title": {
+    "coaches": "Coaches",
+    "referees": "Referees",
+    "teamOfficials": "Team Officials",
+    "gameOfficials": "Game Officials",
+    "fieldPlayers": "Field Players",
+    "goalies": "Goalies"
+  },
+  "eventType": {
+    "Gól": "Goal",
+    "Kiállítás": "Penalty",
+    "Kapus": "Goalie",
+    "Idő": "Timeout",
+    "Büntető": "Penalty Shoot",
+    "goalie": {
+      "KI": "Out",
+      "BE": "In",
+      "CSERE": "Change"
+    }
+  },
+  "section": {
+    "all": "All",
+    "ot": "Overtime",
+    "so": "Shoot Out",
+    "p1": "First period",
+    "p2": "Second period",
+    "p3": "Third period",
+    "p4": "IV. period",
+    "p5": "V. period",
+    "p6": "VI. period"
+  },
+  "stats": {
+    "powerPlays": "Power-plays",
+    "powerPlaysGoalFor": "Power-plays Gals Fr",
+    "powerPlayEfficiency": "Power-plays Efficiency",
+    "penaltyKill": "Shorthanded",
+    "powerPlaysKilled": "Power-plays Killed",
+    "penaltyKillEfficiency": "Penalty-Killing Efficiency"
+  },
+  "rows": {
+    "row-1": "Line 1",
+    "row-2": "Line 2",
+    "row-3": "Line 3",
+    "row-4": "Line 4",
+    "row-gk": "Goalkeepers"
+  },
+  "roleType": {
+    "referee": "Referees",
+    "judge": "Judges",
+    "medical": "Medical"
+  },
+  "role": {
+    "first_referee": "Referee",
+    "second_referee": "Referee",
+    "first_line_judge": "Linesman",
+    "second_line_judge": "Linesman",
+    "first_goal_judge": "Goal judge",
+    "second_goal_judge": "Goal judge",
+    "referee_inspector": "Referee inspector",
+    "referee_supporter": "Referee supporter",
+    "reserve_referee": "Reserve referee",
+    "reserve_linesman": "Reserve linesman",
+    "video_inspector": "Video inspector",
+    "recorder_ivr": "IVR recorder",
+    "timer": "Timer",
+    "announcer": "Announcer",
+    "penalty_timer_a": "Penalty Timer",
+    "penalty_timer_b": "Penalty Timer",
+    "music": "Music",
+    "sog_statistician_a": "S.O.G. statistician",
+    "sog_statistician_b": "S.O.G. statistician",
+    "video_recorder": "Video recorder",
+    "medical": "Medical",
+    "doctor": "Doctor",
+    "federal_inspector": "Federal inspector",
+    "judge_inspector": "Judge inspector",
+    "recorder_e_grep": "Recorder (E-Grep)",
+    "recorder_manual": "Recorder (Kézi)",
+    "recorder_orion": "Recorder (Orion)",
+    "toi_statistician_a": "TOI statistician",
+    "toi_statistician_b": "TOI statistician",
+    "fos_statistician_a": "F.O.S. statistician",
+    "fos_statistician_b": "F.O.S. statistician",
+    "led_wall_operator": "LED wall operator",
+    "assist_statistician": "Assist statistician",
+    "other": "Other"
+  }
+}
