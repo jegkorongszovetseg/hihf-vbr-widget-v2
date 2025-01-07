@@ -1,0 +1,77 @@
+.games-timeline {
+  display: grid;
+  grid-template-columns: 30px 1fr 30px;
+  height: 100%;
+
+  > div {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .is-slide {
+    flex-shrink: 0;
+    flex-grow: 0;
+    scroll-snap-align: start;
+  }
+}
+
+.games-timeline-game {
+  display: grid;
+  grid-template-columns: 20px 1fr 20px;
+  grid-template-areas: 'gamedate gamedate gamedate' 'home-logo home-team home-score' 'away-logo away-team away-score' 'status status status';
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 5px;
+  justify-items: center;
+  align-items: center;
+  padding: 15px 10px;
+  line-height: 1;
+
+  time {
+    grid-area: gamedate;
+    font-size: 0.75rem;
+  }
+
+  .is-home-team-logo {
+    grid-area: home-logo;
+  }
+  .is-away-team-logo {
+    grid-area: away-logo;
+  }
+
+  :is(.is-home-team-name, .is-away-team-name) {
+    justify-self: start;
+    font-size: 0.8125rem;
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .is-home-team-name {
+    grid-area: home-team;
+  }
+  .is-away-team-name {
+    grid-area: away-team;
+  }
+
+  :is(.is-home-team-score, .is-away-team-score) {
+    font-size: 0.8125rem;
+  }
+  .is-home-team-score {
+    grid-area: home-score;
+  }
+  .is-away-team-score {
+    grid-area: away-score;
+  }
+
+  .is-status {
+    grid-area: status;
+    font-size: 0.75rem;
+  }
+}
