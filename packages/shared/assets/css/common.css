@@ -156,6 +156,11 @@ a {
     background-color: var(--vbr-widget-neutral-color);
   }
 
+  &.is-dark {
+    color: var(--vbr-widget-primary-color-0);
+    background-color: var(--vbr-widget-primary-color-700);
+  }
+
   &.is-large {
     font-size: var(--vbr-widget-badge-large-font-size);
     padding: 0.15rem 0.35rem;
@@ -163,6 +168,6 @@ a {
 
   &.is-extra-large {
     font-size: var(--vbr-widget-badge-extra-large-font-size);
-    padding: 0.25rem 0.45rem;
+    padding: 0.21875rem 0.45rem;
   }
 }

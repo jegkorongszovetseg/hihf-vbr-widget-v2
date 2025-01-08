@@ -1,7 +1,8 @@
 <script setup>
 import { computed } from 'vue';
 import { isEmpty } from 'ramda';
-import { I18NProvider } from '@mjsz-vbr-elements/core/components';
+import { useIntervalFn } from '@vueuse/core';
+import { I18NProvider, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
 import { isAfter, offsetName, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
 import Carousel from './Carousel.vue';
@@ -9,10 +10,12 @@ import CarouselItem from './CarouselItem.vue';
 import Game from './Game.vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
-import { transformGames } from './internal';
+import { transformGames, useGameDataService } from './internal';
 
 const messages = { en, hu };
 const timezone = getLocalTimezone();
+
+let gameDataIntervals = [];
 
 const props = defineProps({
   locale: {
@@ -29,12 +32,14 @@ const props = defineProps({
     type: [String, Function],
     default: '',
   },
+
+  externalScheduleUrl: {
+    type: String,
+    default: '',
+  },
 });
 
-const {
-  state: games,
-  isLoading,
-} = useServices({
+const { state: games, execute } = useServices({
   options: {
     path: '/v2/public-calendar',
     apiKey: props.apiKey,
@@ -43,7 +48,10 @@ const {
   },
   transform: (res) => transformGames(res, props.locale),
   // onError,
+  onSuccess: () => handleLiveGames(),
 });
+
+useIntervalFn(execute, 1000 * 60 * 5);
 
 const initialIndex = computed(() => {
   if (isEmpty(games.value)) return 0;
@@ -61,22 +69,56 @@ const convertedGames = computed(() =>
   }))
 );
 
-function navigateTo(url) {
-  console.log('URL', url);
-  // window.location.href = url;
+const { execute: fetchGameData } = useGameDataService({ apiKey: props.apiKey });
+
+async function handleLiveGames() {
+  gameDataIntervals.map((cleanFn) => cleanFn?.());
+  gameDataIntervals = [];
+  const liveGames = games.value.filter((game) => game.gameStatus === 1);
+
+  for (let i = 0; i < liveGames.length; i++) {
+    const id = liveGames[i].id;
+    const { pause } = useIntervalFn(
+      () => fetchGameData(0, { gameId: id }).then((data) => updateGameData(id, data)),
+      60000,
+      { immediate: true }
+    );
+    gameDataIntervals.push(pause);
+  }
+}
+
+function updateGameData(id = 81407, gameData = { gameStatus: 1 }) {
+  const { gameStatus, homeTeamScore, awayTeamScore } = gameData;
+  const cloned = [...games.value];
+  const gameObj = cloned.find((game) => game.id === id);
+  gameObj.gameStatus = gameStatus;
+  gameObj.homeTeamScore = homeTeamScore;
+  gameObj.awayTeamScore = awayTeamScore;
+  games.value = cloned;
+}
+
+function navigateTo({ url, target }) {
+  console.log('navigateTo:', url, target);
+  // window.open(url, target);
 }
 </script>
 
 <template>
   <I18NProvider :locale="props.locale" :messages="messages">
     <Carousel :initial-index="initialIndex">
-      <template v-if="!isLoading">
+      <div v-if="isEmpty(games)" style="width: 100%">
+        <LoadingIndicator />
+      </div>
+      <template v-else>
         <CarouselItem>SLOT Default1</CarouselItem>
-        <CarouselItem v-for="element in convertedGames" :key="element.id">
-          <Game :game-data="element" @navigate-to="navigateTo" />
+        <CarouselItem
+          v-for="game in convertedGames"
+          :key="game.id"
+          v-memo="[game.gameDateTime, game.gameStatus, game.homeTeamScore, game.awayTeamScore]"
+        >
+          <Game :game-data="game" :external-game-resolver="externalGameResolver" @navigate-to="navigateTo" />
         </CarouselItem>
         <CarouselItem>SLOT Default2</CarouselItem>
-
       </template>
     </Carousel>
   </I18NProvider>
