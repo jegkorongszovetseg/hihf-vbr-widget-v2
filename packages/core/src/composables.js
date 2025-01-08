@@ -11,3 +11,4 @@ export * from './composables/useSort';
 export * from './composables/useVisibilityChange';
 export * from './composables/useScrollToGameDate';
 export * from './composables/useAdditionalText';
+export * from './composables/useId';

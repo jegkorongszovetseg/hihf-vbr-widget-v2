@@ -1,7 +1,11 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue';
-import { unrefElement } from '@vueuse/core';
+import { computed, nextTick, onMounted, provide, ref, watch } from 'vue';
+import { unrefElement, useScroll } from '@vueuse/core';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { sortByDomNode } from '@mjsz-vbr-elements/core/utils';
+import IconLeft from '@mjsz-vbr-elements/shared/icons/IconLeft';
+import IconRight from '@mjsz-vbr-elements/shared/icons/IconRight';
+import { CarouselContext } from './internal';
 
 const props = defineProps({
   initialIndex: {
@@ -18,18 +22,42 @@ const props = defineProps({
 const containerRef = ref(null);
 const currentIndex = ref(props.initialIndex);
 
-const currentElement = computed(() => unrefElement(containerRef).querySelector(`[data-index="${currentIndex.value}"]`));
+const carouselItems = ref([]);
+
+const api = {
+  register: (id) => {
+    carouselItems.value.push(id);
+    carouselItems.value = sortByDomNode(carouselItems.value, (id) => {
+      return unrefElement(containerRef.value).querySelector(`#${id}`);
+    });
+  },
+};
+
+provide(CarouselContext, api);
+
+const { arrivedState } = useScroll(containerRef);
+
+const currentElement = computed(() =>
+  unrefElement(containerRef).querySelector(`#${carouselItems.value[currentIndex.value]}`)
+);
 
 onMounted(() => updateScrollPosition());
 
+watch(
+  () => props.initialIndex,
+  (value) => {
+    currentIndex.value = value;
+    nextTick(() => updateScrollPosition());
+  }
+);
+
 function prev() {
-  if (currentIndex.value === 0) return;
+  if (arrivedState.left) return;
   currentIndex.value--;
   updateScrollPosition({ behavior: 'smooth' });
 }
 function next() {
-  console.log(currentIndex.value, props.elements.length - 1);
-  if (currentIndex.value === props.elements.length - 1) return;
+  if (arrivedState.right) return;
   currentIndex.value++;
   updateScrollPosition({ behavior: 'smooth' });
 }
@@ -49,14 +77,10 @@ function onScrollend() {
 
 <template>
   <div :class="useMainClass('games-timeline')">
-    <button type="button" @click="prev">{{ currentIndex }}</button>
+    <button type="button" @click="prev"><IconLeft /></button>
     <div ref="containerRef" @scrollend="onScrollend">
-      <div v-for="(element, index) in elements" :key="element.id" class="is-slide" style="flex-basis: 25%" :data-index="index">
-        <slot :element="element">
-          {{ index }}
-        </slot>
-      </div>
+      <slot />
     </div>
-    <button type="button" @click="next">N</button>
+    <button type="button" @click="next"><IconRight /></button>
   </div>
 </template>

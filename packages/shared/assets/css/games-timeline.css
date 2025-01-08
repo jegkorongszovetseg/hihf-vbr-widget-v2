@@ -1,9 +1,14 @@
 .games-timeline {
   display: grid;
   grid-template-columns: 30px 1fr 30px;
+  align-items: center;
   height: 100%;
 
+  container-type: inline-size;
+  container-name: games-timeline;
+
   > div {
+
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -18,7 +23,21 @@
   .is-slide {
     flex-shrink: 0;
     flex-grow: 0;
+    flex-basis: 100%;
     scroll-snap-align: start;
+
+    @container games-timeline (width > 375px) {
+      flex-basis: 50%;
+    }
+    @container games-timeline (width > 500px) {
+      flex-basis: 33.3334%;
+    }
+    @container games-timeline (width > 700px) {
+      flex-basis: 25%;
+    }
+    @container games-timeline (width > 880px) {
+      flex-basis: 20%;
+    }
   }
 }
 
@@ -26,16 +45,22 @@
   display: grid;
   grid-template-columns: 20px 1fr 20px;
   grid-template-areas: 'gamedate gamedate gamedate' 'home-logo home-team home-score' 'away-logo away-team away-score' 'status status status';
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr auto;
   gap: 5px;
   justify-items: center;
   align-items: center;
-  padding: 15px 10px;
+  padding: 0.625rem;
   line-height: 1;
+  cursor: pointer;
+
+  &:hover {
+    background-color: aliceblue;
+  }
 
   time {
     grid-area: gamedate;
     font-size: 0.75rem;
+    font-weight: 700;
   }
 
   .is-home-team-logo {
@@ -44,10 +69,18 @@
   .is-away-team-logo {
     grid-area: away-logo;
   }
+  :is(.is-home-team-logo, .is-away-team-logo) {
+    .is-team-logo {
+      display: block;
+      width: 20px;
+      height: 20px;
+    }
+  }
 
   :is(.is-home-team-name, .is-away-team-name) {
     justify-self: start;
     font-size: 0.8125rem;
+    font-weight: 700;
     overflow: hidden;
     width: 100%;
     text-overflow: ellipsis;
@@ -73,5 +106,10 @@
   .is-status {
     grid-area: status;
     font-size: 0.75rem;
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
   }
 }

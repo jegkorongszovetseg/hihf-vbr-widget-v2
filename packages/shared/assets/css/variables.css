@@ -132,6 +132,7 @@
   --vbr-widget-badge-color: var(--vbr-widget-primary-color-400);
   --vbr-widget-badge-font-size: 0.625rem;
   --vbr-widget-badge-large-font-size: 0.6875rem;
+  --vbr-widget-badge-extra-large-font-size: 0.8125rem;
 
   --vbr-widget-tab-btn-padding: 0.625rem 1rem;
   --vbr-widget-tab-btn-font-size: var();
