@@ -31,6 +31,10 @@ const api = {
       return unrefElement(containerRef.value).querySelector(`#${id}`);
     });
   },
+  unregister: (id) => {
+    let idx = carouselItems.value.indexOf(id);
+    if (idx !== -1) carouselItems.value.splice(idx, 1);
+  },
 };
 
 provide(CarouselContext, api);
@@ -77,10 +81,10 @@ function onScrollend() {
 
 <template>
   <div :class="useMainClass('games-timeline')">
-    <button type="button" @click="prev"><IconLeft /></button>
+    <button type="button" :disabled="arrivedState.left" @click="prev"><IconLeft /></button>
     <div ref="containerRef" @scrollend="onScrollend">
       <slot />
     </div>
-    <button type="button" @click="next"><IconRight /></button>
+    <button type="button" :disabled="arrivedState.right" @click="next"><IconRight /></button>
   </div>
 </template>

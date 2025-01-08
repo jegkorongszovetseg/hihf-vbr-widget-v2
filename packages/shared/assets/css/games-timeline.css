@@ -55,7 +55,7 @@
     display: grid;
     place-content: center;
     height: 100%;
-    
+
     svg {
       display: block;
       height: 22px;
@@ -67,6 +67,13 @@
     &:hover {
       svg {
         color: var(--vbr-widget-games-timeline-arrow-hover-color);
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      svg {
+        color: var(--vbr-widget-games-timeline-arrow-disabled-color);
       }
     }
   }
@@ -145,5 +152,15 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     text-align: center;
+  }
+}
+
+.games-timeline-schedule-link {
+  display: grid;
+  place-content: center;
+  height: 100%;
+
+  &:hover {
+    background-image: var(--vbr-widget-games-timeline-game-hover-bg-color);
   }
 }

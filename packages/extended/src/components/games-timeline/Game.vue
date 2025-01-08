@@ -60,7 +60,7 @@ function log(id) {
       >
     </div>
     <div class="is-status">
-      {{ gameData.gameStatus !== 1 ? `${gameData.championshipName} - ${gameData.divisionName}` : gameData.gameStatus }}
+      {{ gameData.gameStatus !== 1 ? `${gameData.championshipName} - ${gameData.divisionName}` : gameData.period }}
     </div>
   </div>
 </template>

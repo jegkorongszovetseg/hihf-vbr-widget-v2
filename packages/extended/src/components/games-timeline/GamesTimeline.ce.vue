@@ -8,6 +8,7 @@ import { isAfter, offsetName, format, getLocalTimezone } from '@mjsz-vbr-element
 import Carousel from './Carousel.vue';
 import CarouselItem from './CarouselItem.vue';
 import Game from './Game.vue';
+import ExternalSchedule from './ExternalSchedule.vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
 import { transformGames, useGameDataService } from './internal';
@@ -74,32 +75,34 @@ const { execute: fetchGameData } = useGameDataService({ apiKey: props.apiKey });
 async function handleLiveGames() {
   gameDataIntervals.map((cleanFn) => cleanFn?.());
   gameDataIntervals = [];
+
   const liveGames = games.value.filter((game) => game.gameStatus === 1);
 
   for (let i = 0; i < liveGames.length; i++) {
     const id = liveGames[i].id;
+    fetchGameData(0, { gameId: id }).then((data) => updateGameData(id, data));
     const { pause } = useIntervalFn(
       () => fetchGameData(0, { gameId: id }).then((data) => updateGameData(id, data)),
-      60000,
-      { immediate: true }
+      60000
     );
     gameDataIntervals.push(pause);
   }
 }
 
 function updateGameData(id = 81407, gameData = { gameStatus: 1 }) {
-  const { gameStatus, homeTeamScore, awayTeamScore } = gameData;
+  const { gameStatus, homeTeamScore, awayTeamScore, period } = gameData;
   const cloned = [...games.value];
   const gameObj = cloned.find((game) => game.id === id);
   gameObj.gameStatus = gameStatus;
   gameObj.homeTeamScore = homeTeamScore;
   gameObj.awayTeamScore = awayTeamScore;
+  gameObj.period = period;
   games.value = cloned;
 }
 
 function navigateTo({ url, target }) {
   console.log('navigateTo:', url, target);
-  // window.open(url, target);
+  window.open(url, target);
 }
 </script>
 
@@ -110,15 +113,19 @@ function navigateTo({ url, target }) {
         <LoadingIndicator />
       </div>
       <template v-else>
-        <CarouselItem>SLOT Default1</CarouselItem>
+        <CarouselItem>
+          <ExternalSchedule :external-schedule-url="externalScheduleUrl" @navigate-to="navigateTo" />
+        </CarouselItem>
         <CarouselItem
           v-for="game in convertedGames"
           :key="game.id"
-          v-memo="[game.gameDateTime, game.gameStatus, game.homeTeamScore, game.awayTeamScore]"
+          v-memo="[game.gameDateTime, game.gameStatus, game.homeTeamScore, game.awayTeamScore, game.period]"
         >
           <Game :game-data="game" :external-game-resolver="externalGameResolver" @navigate-to="navigateTo" />
         </CarouselItem>
-        <CarouselItem>SLOT Default2</CarouselItem>
+        <CarouselItem>
+          <ExternalSchedule :external-schedule-url="externalScheduleUrl" @navigate-to="navigateTo" />
+        </CarouselItem>
       </template>
     </Carousel>
   </I18NProvider>

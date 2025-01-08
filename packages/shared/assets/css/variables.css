@@ -230,4 +230,5 @@
   --vbr-widget-games-timeline-game-hover-bg-color: linear-gradient(#fff, #f5f6f7 50%, #fff);
   --vbr-widget-games-timeline-arrow-color: var(--vbr-widget-primary-color-300);
   --vbr-widget-games-timeline-arrow-hover-color: var(--vbr-widget-primary-color-500);
+  --vbr-widget-games-timeline-arrow-disabled-color: var(--vbr-widget-primary-color-100);
 }
