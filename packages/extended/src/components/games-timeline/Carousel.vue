@@ -12,11 +12,6 @@ const props = defineProps({
     type: Number,
     default: 0,
   },
-
-  elements: {
-    type: Array,
-    default: () => [],
-  },
 });
 
 const containerRef = ref(null);
@@ -26,6 +21,7 @@ const carouselItems = ref([]);
 
 const api = {
   register: (id) => {
+    if (carouselItems.value.includes(id)) return;
     carouselItems.value.push(id);
     carouselItems.value = sortByDomNode(carouselItems.value, (id) => {
       return unrefElement(containerRef.value).querySelector(`#${id}`);

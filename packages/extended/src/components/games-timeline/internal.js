@@ -12,8 +12,6 @@ export function useGameDataService({ apiKey }) {
     {
       immediate: false,
       resetOnExecute: false,
-      // onError,
-      // onSuccess,
     }
   );
 

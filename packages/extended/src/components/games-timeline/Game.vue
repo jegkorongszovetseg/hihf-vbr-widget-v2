@@ -1,5 +1,5 @@
 <script setup>
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useMainClass, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
 
@@ -16,6 +16,8 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['navigate-to']);
+
+const { t } = useI18n();
 
 function navigateTo() {
   const { externalUrl, id } = props.gameData;
@@ -60,7 +62,11 @@ function log(id) {
       >
     </div>
     <div class="is-status">
-      {{ gameData.gameStatus !== 1 ? `${gameData.championshipName} - ${gameData.divisionName}` : gameData.period }}
+      {{
+        gameData.gameStatus !== 1
+          ? `${gameData.championshipName} - ${gameData.divisionName}`
+          : t(`game.period.${gameData.period}`)
+      }}
     </div>
   </div>
 </template>

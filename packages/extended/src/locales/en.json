@@ -70,5 +70,8 @@
     "weekGames": "Games of the week",
     "noGame": "No games can be displayed",
     "more": "More"
+  },
+  "gamesTimeline": {
+    "allSchedule": "Games Schedule"
   }
 }

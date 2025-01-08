@@ -163,4 +163,18 @@
   &:hover {
     background-image: var(--vbr-widget-games-timeline-game-hover-bg-color);
   }
+
+  button {
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--vbr-widget-games-timeline-external-link-color);
+
+    svg {
+      display: inline-block;
+      width: 14px;
+    }
+  }
 }
