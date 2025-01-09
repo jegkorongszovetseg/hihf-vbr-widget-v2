@@ -19,16 +19,17 @@
       display: none;
     }
 
-    background: canvas;
+    /* background: canvas;
     --cover: canvas;
     --mixed: color-mix(in lch, canvasText, canvas 75%);
     --shadow: light-dark(var(--mixed), black);
-    --size: 40px;
-    background: linear-gradient(var(--cover) 50%, #0000) 50% 0 / 100% var(--size) no-repeat local,
-      radial-gradient(100% 100% at 50% -10%, var(--shadow) 0%, #0000 55%) 50% 0 / 100% var(--size) no-repeat scroll,
-      linear-gradient(#0000, var(--cover) 50%) 50% 100% / 100% var(--size) no-repeat local,
-      radial-gradient(100% 100% at 50% 110%, var(--shadow) 0%, #0000 55%) 50% 100% / 100% var(--size) no-repeat scroll,
-      canvas;
+    --size: 4px;
+    background: 
+    linear-gradient(-270deg, var(--cover) 0, #0000) 0 0 / calc(var(--size) * 2) 
+      no-repeat local,
+    linear-gradient(-270deg, var(--shadow) 0, #0000) 0 0 / var(--size)
+      no-repeat scroll,
+    canvas; */
   }
 
   .is-slide {
@@ -51,7 +52,8 @@
     }
   }
 
-  button {
+  > button {
+    position: relative;
     display: grid;
     place-content: center;
     height: 100%;
@@ -75,6 +77,31 @@
       svg {
         color: var(--vbr-widget-games-timeline-arrow-disabled-color);
       }
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      content: '';
+      top: 10px;
+      height: 90px;
+      transition: opacity 0.2s;
+    }
+
+    &:first-of-type:after {
+      right: 0;
+      border-right: 1px solid var(--vbr-widget-games-timeline-arrow-border-color);
+      box-shadow: 1px 0 3px 0 rgba(0, 0, 0, 0.1);
+    }
+    &:last-of-type:before {
+      left: 0;
+      border-left: 1px solid var(--vbr-widget-games-timeline-arrow-border-color);
+      box-shadow: -1px 0 3px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    &:disabled:first-of-type:after,
+    &:disabled:last-of-type:before {
+      opacity: 0;
     }
   }
 }

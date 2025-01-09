@@ -231,5 +231,6 @@
   --vbr-widget-games-timeline-arrow-color: var(--vbr-widget-primary-color-300);
   --vbr-widget-games-timeline-arrow-hover-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-games-timeline-arrow-disabled-color: var(--vbr-widget-primary-color-100);
+  --vbr-widget-games-timeline-arrow-border-color: var(--vbr-widget-primary-color-100);
   --vbr-widget-games-timeline-external-link-color: var(--vbr-widget-primary-color-500);
 }
