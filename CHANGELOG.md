@@ -1,3 +1,8 @@
+## [2.9.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.8.0...v2.9.0) (2025-01-09)
+
+### Bug Fixes
+
+* Scoreboard mobile view ([8c0f864](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/8c0f8649dc336e85a1c7bae230e6be70e9619339))
 ## [2.8.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.7.2...v2.8.0) (2024-12-11)
 ## [2.7.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.7.1...v2.7.2) (2024-10-25)
 
