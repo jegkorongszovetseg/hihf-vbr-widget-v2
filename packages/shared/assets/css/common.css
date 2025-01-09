@@ -168,6 +168,6 @@ a {
 
   &.is-extra-large {
     font-size: var(--vbr-widget-badge-extra-large-font-size);
-    padding: 0.21875rem 0.45rem;
+    padding: 0.21875rem 0.4196rem;
   }
 }

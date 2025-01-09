@@ -18,18 +18,6 @@
     &::-webkit-scrollbar {
       display: none;
     }
-
-    /* background: canvas;
-    --cover: canvas;
-    --mixed: color-mix(in lch, canvasText, canvas 75%);
-    --shadow: light-dark(var(--mixed), black);
-    --size: 4px;
-    background: 
-    linear-gradient(-270deg, var(--cover) 0, #0000) 0 0 / calc(var(--size) * 2) 
-      no-repeat local,
-    linear-gradient(-270deg, var(--shadow) 0, #0000) 0 0 / var(--size)
-      no-repeat scroll,
-    canvas; */
   }
 
   .is-slide {
@@ -124,7 +112,7 @@
 
   time {
     grid-area: gamedate;
-    font-size: 0.6875rem;
+    font-size: var(--vbr-widget-games-timeline-game-date-size);
     font-weight: 700;
     color: var(--vbr-widget-games-timeline-game-date-color);
   }
@@ -145,7 +133,7 @@
 
   :is(.is-home-team-name, .is-away-team-name) {
     justify-self: start;
-    font-size: 0.8125rem;
+    font-size: var(--vbr-widget-games-timeline-game-team-size);
     font-weight: 700;
     color: var(--vbr-widget-games-timeline-game-team-color);
     overflow: hidden;
@@ -160,9 +148,6 @@
     grid-area: away-team;
   }
 
-  :is(.is-home-team-score, .is-away-team-score) {
-    font-size: 0.8125rem;
-  }
   .is-home-team-score {
     grid-area: home-score;
   }
@@ -172,7 +157,7 @@
 
   .is-status {
     grid-area: status;
-    font-size: 0.75rem;
+    font-size: var(--vbr-widget-games-timeline-game-status-size);
     color: var(--vbr-widget-games-timeline-game-status-color);
     overflow: hidden;
     width: 100%;
@@ -194,7 +179,7 @@
   button {
     display: flex;
     align-items: center;
-    font-size: 0.75rem;
+    font-size: var(--vbr-widget-games-timeline-external-link-size);
     font-weight: 700;
     text-transform: uppercase;
     color: var(--vbr-widget-games-timeline-external-link-color);
@@ -212,9 +197,8 @@
   align-items: center;
   place-content: center;
   width: 100%;
-  font-size: 0.875rem;
+  font-size: var(--vbr-widget-typography-text-sm-size);
   font-weight: 500;
-  /* text-transform: uppercase; */
   color: var(--vbr-widget-error-notice-color);
 
   svg {
@@ -223,7 +207,6 @@
   }
 
   button {
-    /* text-transform: uppercase; */
     text-decoration: underline;
   }
 }

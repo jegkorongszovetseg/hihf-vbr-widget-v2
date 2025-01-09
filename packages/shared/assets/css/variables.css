@@ -36,8 +36,12 @@
   --vbr-widget-live-game-color: #8bc34a;
   --vbr-widget-neutral-color: #ffc107;
 
+  --vbr-widget-typography-text-xxs-size: 0.6875rem; /* 11px */
+  --vbr-widget-typography-text-xxs-lineheight: 1rem; /* 16px */
   --vbr-widget-typography-text-xs-size: 0.75rem; /* 12px */
   --vbr-widget-typography-text-xs-lineheight: 1.25rem; /* 20px */
+  --vbr-widget-typography-text-xsm-size: 0.8125rem; /* 13px */
+  --vbr-widget-typography-text-xsm-lineheight: 1.375rem; /* 22px */
   --vbr-widget-typography-text-sm-size: 0.875rem; /* 14px */
   --vbr-widget-typography-text-sm-lineheight: 1.5rem; /* 24px */
   --vbr-widget-typography-text-base-size: 1rem; /* 16px */
@@ -132,10 +136,10 @@
   --vbr-widget-badge-color: var(--vbr-widget-primary-color-400);
   --vbr-widget-badge-font-size: 0.625rem;
   --vbr-widget-badge-large-font-size: 0.6875rem;
-  --vbr-widget-badge-extra-large-font-size: 0.8125rem;
+  --vbr-widget-badge-extra-large-font-size: var(--vbr-widget-typography-text-xsm-size);
 
   --vbr-widget-tab-btn-padding: 0.625rem 1rem;
-  --vbr-widget-tab-btn-font-size: var();
+  --vbr-widget-tab-btn-font-size: var(--vbr-widget-typography-text-base-size);
   --vbr-widget-tab-btn-font-weight: 500;
   --vbr-widget-tab-btn-bg-color: var(--vbr-widget-primary-color-0);
   --vbr-widget-tab-btn-color: var(--vbr-widget-primary-color-300);
@@ -224,13 +228,17 @@
 
   --vbr-widget-sticky-top-offset: 0;
 
+  --vbr-widget-games-timeline-game-date-size: var(--vbr-widget-typography-text-xxs-size);
   --vbr-widget-games-timeline-game-date-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-games-timeline-game-team-color: var(--vbr-widget-primary-color-700);
+  --vbr-widget-games-timeline-game-team-size: var(--vbr-widget-typography-text-xsm-size);
   --vbr-widget-games-timeline-game-status-color: var(--vbr-widget-primary-color-300);
+  --vbr-widget-games-timeline-game-status-size: var(--vbr-widget-typography-text-xs-size);
   --vbr-widget-games-timeline-game-hover-bg-color: linear-gradient(#fff, #f5f6f7 50%, #fff);
   --vbr-widget-games-timeline-arrow-color: var(--vbr-widget-primary-color-300);
   --vbr-widget-games-timeline-arrow-hover-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-games-timeline-arrow-disabled-color: var(--vbr-widget-primary-color-100);
   --vbr-widget-games-timeline-arrow-border-color: var(--vbr-widget-primary-color-100);
   --vbr-widget-games-timeline-external-link-color: var(--vbr-widget-primary-color-500);
+  --vbr-widget-games-timeline-external-link-size: var(--vbr-widget-typography-text-xs-size);
 }
