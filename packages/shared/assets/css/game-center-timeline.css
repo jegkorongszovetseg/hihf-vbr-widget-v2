@@ -131,7 +131,7 @@
 
   &-score-board {
     /* display: grid; */
-    grid-template-columns: 1fr 50px auto auto auto 50px 1fr;
+    grid-template-columns: 50px auto auto auto 50px;
     grid-template-rows: 50px;
     align-items: center;
     justify-items: center;
@@ -155,6 +155,7 @@
     }
 
     .is-team {
+      display: none;
       font-size: var(--vbr-widget-typography-text-base-size);
       font-weight: 700;
       color: var(--vbr-widget-primary-color-100);
@@ -180,6 +181,14 @@
       display: block;
       width: 100%;
       height: 100%;
+    }
+
+    @add-mixin mobile {
+      grid-template-columns: 1fr 50px auto auto auto 50px 1fr;
+
+      .is-team {
+        display: block;
+      }
     }
   }
 
