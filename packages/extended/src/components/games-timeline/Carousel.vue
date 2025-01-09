@@ -23,9 +23,9 @@ const api = {
   register: (id) => {
     if (carouselItems.value.includes(id)) return;
     carouselItems.value.push(id);
-    carouselItems.value = sortByDomNode(carouselItems.value, (id) => {
-      return unrefElement(containerRef.value).querySelector(`#${id}`);
-    });
+    carouselItems.value = sortByDomNode(carouselItems.value, (id) =>
+      unrefElement(containerRef.value).querySelector(`#${id}`)
+    );
   },
   unregister: (id) => {
     let idx = carouselItems.value.indexOf(id);
@@ -35,7 +35,7 @@ const api = {
 
 provide(CarouselContext, api);
 
-const { arrivedState } = useScroll(containerRef);
+const { arrivedState } = useScroll(containerRef, { onStop: onScrollend });
 
 const currentElement = computed(() =>
   unrefElement(containerRef).querySelector(`#${carouselItems.value[currentIndex.value]}`)
@@ -78,7 +78,7 @@ function onScrollend() {
 <template>
   <div :class="useMainClass('games-timeline')">
     <button type="button" :disabled="arrivedState.left" @click="prev"><IconLeft /></button>
-    <div ref="containerRef" @scrollend="onScrollend">
+    <div ref="containerRef">
       <slot />
     </div>
     <button type="button" :disabled="arrivedState.right" @click="next"><IconRight /></button>
