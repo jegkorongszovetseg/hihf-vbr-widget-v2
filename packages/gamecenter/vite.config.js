@@ -2,7 +2,7 @@ import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import banner from 'vite-plugin-banner';
-import { compressConfig } from '../build';
+import { compressConfig } from '../../compress.config';
 
 import pkg from './package.json';
 
