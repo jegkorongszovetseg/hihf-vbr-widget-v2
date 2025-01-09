@@ -1,3 +1,8 @@
+## [2.9.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.9.0...v2.9.1) (2025-01-09)
+
+### Bug Fixes
+
+* (extended/games-timeline) Font méretek megadása és javítása ([58e614a](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/58e614a5585e1d4a518546d97fda4f8e05846098))
 ## [2.9.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.8.0...v2.9.0) (2025-01-09)
 
 ### Bug Fixes
