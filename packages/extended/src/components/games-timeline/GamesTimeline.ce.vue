@@ -1,0 +1,148 @@
+<script setup>
+import { computed, ref } from 'vue';
+import { isEmpty } from 'ramda';
+import { useIntervalFn } from '@vueuse/core';
+import { I18NProvider, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
+import { useServices } from '@mjsz-vbr-elements/core/composables';
+import { isAfter, offsetName, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
+import Carousel from './Carousel.vue';
+import CarouselItem from './CarouselItem.vue';
+import Game from './Game.vue';
+import ExternalSchedule from './ExternalSchedule.vue';
+import TrayAgain from './TryAgain.vue';
+import en from '../../locales/en.json';
+import hu from '../../locales/hu.json';
+import { transformGames, useGameDataService } from './internal';
+
+const messages = { en, hu };
+const timezone = getLocalTimezone();
+
+let gameDataIntervals = [];
+
+const props = defineProps({
+  locale: {
+    type: String,
+    default: 'hu',
+  },
+
+  apiKey: {
+    type: String,
+    default: '',
+  },
+
+  servicePath: {
+    type: String,
+    default: '/v2/public-calendar?seasonId=217',
+  },
+
+  externalGameResolver: {
+    type: [String, Function],
+    default: '',
+  },
+
+  externalScheduleUrl: {
+    type: String,
+    default: '',
+  },
+});
+
+const error = ref(false);
+
+const { state: games, execute } = useServices({
+  options: {
+    path: props.servicePath,
+    apiKey: props.apiKey,
+    params: {},
+    immediate: true,
+  },
+  transform: (res) => transformGames(res, props.locale),
+  onError: () => (error.value = true),
+  onSuccess: () => handleLiveGames(),
+});
+
+useIntervalFn(execute, 1000 * 60 * 5);
+
+const initialIndex = computed(() => {
+  if (isEmpty(games.value)) return 0;
+  return games.value.findIndex((game) => !isAfter(new Date(game.gameDate), new Date(), 'day')) + 1;
+});
+
+const convertedGames = computed(() =>
+  games.value.map((game) => ({
+    ...game,
+    gameDateTime: `${format(game.gameDate, 'L LT', timezone, props.locale)} (${offsetName(
+      game.gameDate,
+      timezone,
+      props.locale
+    )})`,
+  }))
+);
+
+const { execute: fetchGameData } = useGameDataService({ apiKey: props.apiKey });
+
+async function handleLiveGames() {
+  gameDataIntervals.map((cleanFn) => cleanFn?.());
+  gameDataIntervals = [];
+
+  const liveGames = games.value.filter((game) => game.gameStatus === 1);
+
+  for (let i = 0; i < liveGames.length; i++) {
+    const id = liveGames[i].id;
+    fetchGameData(0, { gameId: id }).then((data) => updateGameData(id, data));
+    const { pause } = useIntervalFn(
+      () => fetchGameData(0, { gameId: id }).then((data) => updateGameData(id, data)),
+      60000
+    );
+    gameDataIntervals.push(pause);
+  }
+}
+
+function updateGameData(id = 81407, gameData = { gameStatus: 1 }) {
+  const { gameStatus, homeTeamScore, awayTeamScore, period } = gameData;
+  const cloned = [...games.value];
+  const gameObj = cloned.find((game) => game.id === id);
+  gameObj.gameStatus = gameStatus;
+  gameObj.homeTeamScore = homeTeamScore;
+  gameObj.awayTeamScore = awayTeamScore;
+  gameObj.period = period;
+  games.value = cloned;
+}
+
+function navigateTo({ url, target }) {
+  window.open(url, target);
+}
+
+function onTryAgain() {
+  error.value = false;
+  execute();
+}
+</script>
+
+<template>
+  <I18NProvider :locale="props.locale" :messages="messages">
+    <Carousel :initial-index="initialIndex">
+      <div v-if="isEmpty(games) && !error" style="width: 100%">
+        <LoadingIndicator />
+      </div>
+      <TrayAgain v-else-if="error" @try-again="onTryAgain" />
+      <template v-else>
+        <CarouselItem>
+          <ExternalSchedule :external-schedule-url="externalScheduleUrl" @navigate-to="navigateTo" />
+        </CarouselItem>
+        <CarouselItem
+          v-for="game in convertedGames"
+          :key="game.id"
+          v-memo="[game.gameDateTime, game.gameStatus, game.homeTeamScore, game.awayTeamScore, game.period]"
+        >
+          <Game :game-data="game" :external-game-resolver="externalGameResolver" @navigate-to="navigateTo" />
+        </CarouselItem>
+        <CarouselItem>
+          <ExternalSchedule :external-schedule-url="externalScheduleUrl" @navigate-to="navigateTo" />
+        </CarouselItem>
+      </template>
+    </Carousel>
+  </I18NProvider>
+</template>
+
+<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/games-timeline.css"></style>

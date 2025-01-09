@@ -70,5 +70,10 @@
     "weekGames": "Games of the week",
     "noGame": "No games can be displayed",
     "more": "More"
+  },
+  "gamesTimeline": {
+    "allSchedule": "Games Schedule",
+    "errorText": "Something went wrong!",
+    "errorCta": "Try Again"
   }
 }

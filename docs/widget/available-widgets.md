@@ -23,10 +23,12 @@
 - CDN: [https://unpkg.com/@mjsz-vbr-elements/extended](https://unpkg.com/@mjsz-vbr-elements/extended)
 - NPM: [@mjsz-vbr-elements/extended](https://www.npmjs.com/package/@mjsz-vbr-elements/extended)
 
-| Widget                                                 | Felhasznált VBR API lekérdezés | Leírás                                        |
-| ------------------------------------------------------ | ------------------------------ | --------------------------------------------- |
-| [mjsz-vbr-championship](/widget/extended-championship) | + Több lekérdezés              | Egy adott bajnokság minden statiszkijája      |
-| [mjsz-vbr-schedule-cup](/widget/extended-cup-schedule) | vbr/v2/games-list              | Egy adott bajnokság kupa rendszerű mérkőzései |
+| Widget                                                     | Felhasznált VBR API lekérdezés | Leírás                                        |
+| ---------------------------------------------------------- | ------------------------------ | --------------------------------------------- |
+| [mjsz-vbr-championship](/widget/extended-championship)     | + Több lekérdezés              | Egy adott bajnokság minden statiszkijája      |
+| [mjsz-vbr-schedule-cup](/widget/extended-cup-schedule)     | vbr/v2/games-list              | Egy adott bajnokság kupa rendszerű mérkőzései |
+| [mjsz-vbr-games-timeline](/widget/extended-games-timeline) | Állítható                      | Mérkőzések indővonal szerű megjelenítése      |
+| [mjsz-vbr-calendar](/widget/extended-calendar)             | vbr/v2/games-calendar          | Versenynaptár                                 |
 
 ## Liga
 
@@ -49,6 +51,7 @@
 - CDN: [https://unpkg.com/@mjsz-vbr-elements/gamecenter](https://unpkg.com/@mjsz-vbr-elements/gamecenter)
 - NPM: [@mjsz-vbr-elements/gamecenter](https://www.npmjs.com/package/@mjsz-vbr-elements/gamecenter)
 
-| Widget                              | Felhasznált VBR API lekérdezés | Leírás             |
-| ----------------------------------- | ------------------------------ | ------------------ |
-| [mjsz-vbr-game](/widget/gamecenter) | + Több lekérdezés              | Egy adott mérkőzés |
+| Widget                                                | Felhasznált VBR API lekérdezés | Leírás             |
+| ----------------------------------------------------- | ------------------------------ | ------------------ |
+| [mjsz-vbr-game](/widget/gamecenter)                   | + Több lekérdezés              | Egy adott mérkőzés |
+| [mjsz-vbr-game-timeline](/widget/gamecenter-timeline) | + Több lekérdezés              | Egy adott mérkőzés |

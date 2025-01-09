@@ -132,6 +132,7 @@
   --vbr-widget-badge-color: var(--vbr-widget-primary-color-400);
   --vbr-widget-badge-font-size: 0.625rem;
   --vbr-widget-badge-large-font-size: 0.6875rem;
+  --vbr-widget-badge-extra-large-font-size: 0.8125rem;
 
   --vbr-widget-tab-btn-padding: 0.625rem 1rem;
   --vbr-widget-tab-btn-font-size: var();
@@ -222,4 +223,14 @@
   --vbr-widget-main-image-wrapper-horizontal-margin: 0rem;
 
   --vbr-widget-sticky-top-offset: 0;
+
+  --vbr-widget-games-timeline-game-date-color: var(--vbr-widget-primary-color-500);
+  --vbr-widget-games-timeline-game-team-color: var(--vbr-widget-primary-color-700);
+  --vbr-widget-games-timeline-game-status-color: var(--vbr-widget-primary-color-300);
+  --vbr-widget-games-timeline-game-hover-bg-color: linear-gradient(#fff, #f5f6f7 50%, #fff);
+  --vbr-widget-games-timeline-arrow-color: var(--vbr-widget-primary-color-300);
+  --vbr-widget-games-timeline-arrow-hover-color: var(--vbr-widget-primary-color-500);
+  --vbr-widget-games-timeline-arrow-disabled-color: var(--vbr-widget-primary-color-100);
+  --vbr-widget-games-timeline-arrow-border-color: var(--vbr-widget-primary-color-100);
+  --vbr-widget-games-timeline-external-link-color: var(--vbr-widget-primary-color-500);
 }

@@ -70,5 +70,10 @@
     "weekGames": "A hét mérkőzései",
     "noGame": "Nincs megjeleníthető mérkőzés",
     "more": "Még több"
+  },
+  "gamesTimeline": {
+    "allSchedule": "Teljes menetrend",
+    "errorText": "Valami hiba történt!",
+    "errorCta": "Próbáld újra"
   }
 }
