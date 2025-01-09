@@ -178,3 +178,25 @@
     }
   }
 }
+
+.games-timeline-error-indicator {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  place-content: center;
+  width: 100%;
+  font-size: 0.875rem;
+  font-weight: 500;
+  /* text-transform: uppercase; */
+  color: var(--vbr-widget-error-notice-color);
+
+  svg {
+    display: block;
+    width: 20px;
+  }
+
+  button {
+    /* text-transform: uppercase; */
+    text-decoration: underline;
+  }
+}

@@ -72,6 +72,8 @@
     "more": "Még több"
   },
   "gamesTimeline": {
-    "allSchedule": "Teljes menetrend"
+    "allSchedule": "Teljes menetrend",
+    "errorText": "Valami hiba történt!",
+    "errorCta": "Próbáld újra"
   }
 }

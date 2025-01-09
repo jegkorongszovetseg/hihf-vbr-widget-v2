@@ -10,6 +10,7 @@ import '../../../packages/shared/dist/css/games-timeline.css';
   <div style="height: 110px; outline: 1px solid #ccc">
     <GamesTimeline
       :locale="store.locale"
+      service-path="/v2/championship-calendar?championshipId=3783"
       external-game-resolver="/GameCenterTimeline?gameid={gameId}"
       external-schedule-url="/ExtendedCalendar"
     />

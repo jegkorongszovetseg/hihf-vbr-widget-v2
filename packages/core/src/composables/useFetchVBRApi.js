@@ -1,8 +1,9 @@
 import { unref } from 'vue';
+import { isEmpty } from 'ramda';
 import { VBR_API_BASE_URL } from '../constants';
 
 export const fetchVBRData = async (route, apiKey, data) => {
-  const url = `${VBR_API_BASE_URL}${unref(route)}?${objectToQueryString(data)}`;
+  const url = `${VBR_API_BASE_URL}${unref(route)}${!isEmpty(data) ? `?${objectToQueryString(data)}` : ''}`;
   return new Promise((resolve, reject) => {
     fetch(url, {
       method: 'GET',

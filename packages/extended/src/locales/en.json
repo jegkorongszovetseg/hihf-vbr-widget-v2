@@ -72,6 +72,8 @@
     "more": "More"
   },
   "gamesTimeline": {
-    "allSchedule": "Games Schedule"
+    "allSchedule": "Games Schedule",
+    "errorText": "Something went wrong!",
+    "errorCta": "Try Again"
   }
 }

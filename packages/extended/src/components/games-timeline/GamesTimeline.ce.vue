@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { isEmpty } from 'ramda';
 import { useIntervalFn } from '@vueuse/core';
 import { I18NProvider, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
@@ -9,6 +9,7 @@ import Carousel from './Carousel.vue';
 import CarouselItem from './CarouselItem.vue';
 import Game from './Game.vue';
 import ExternalSchedule from './ExternalSchedule.vue';
+import TrayAgain from './TryAgain.vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
 import { transformGames, useGameDataService } from './internal';
@@ -29,6 +30,11 @@ const props = defineProps({
     default: '',
   },
 
+  servicePath: {
+    type: String,
+    default: '/v2/public-calendar?seasonId=217',
+  },
+
   externalGameResolver: {
     type: [String, Function],
     default: '',
@@ -40,15 +46,17 @@ const props = defineProps({
   },
 });
 
+const error = ref(false);
+
 const { state: games, execute } = useServices({
   options: {
-    path: '/v2/public-calendar',
+    path: props.servicePath,
     apiKey: props.apiKey,
-    params: { seasonId: 217 },
+    params: {},
     immediate: true,
   },
   transform: (res) => transformGames(res, props.locale),
-  // onError,
+  onError: () => (error.value = true),
   onSuccess: () => handleLiveGames(),
 });
 
@@ -101,17 +109,22 @@ function updateGameData(id = 81407, gameData = { gameStatus: 1 }) {
 }
 
 function navigateTo({ url, target }) {
-  console.log('navigateTo:', url, target);
   window.open(url, target);
+}
+
+function onTryAgain() {
+  error.value = false;
+  execute();
 }
 </script>
 
 <template>
   <I18NProvider :locale="props.locale" :messages="messages">
     <Carousel :initial-index="initialIndex">
-      <div v-if="isEmpty(games)" style="width: 100%">
+      <div v-if="isEmpty(games) && !error" style="width: 100%">
         <LoadingIndicator />
       </div>
+      <TrayAgain v-else-if="error" @try-again="onTryAgain" />
       <template v-else>
         <CarouselItem>
           <ExternalSchedule :external-schedule-url="externalScheduleUrl" @navigate-to="navigateTo" />
