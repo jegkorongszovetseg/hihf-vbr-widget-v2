@@ -171,7 +171,7 @@
 
     .label {
       padding: 3px 6px;
-      font-size: 11px;
+      font-size: var(--vbr-widget-typography-font-size-100);
       font-weight: 700;
       color: var(--vbr-widget-table-label-color);
       background-color: var(--vbr-widget-table-label-bg-color);
