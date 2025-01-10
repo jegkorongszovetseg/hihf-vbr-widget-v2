@@ -14,28 +14,28 @@
 }
 
 .is-text-xs {
-  font-size: var(--vbr-widget-typography-text-xs-size);
-  line-height: var(--vbr-widget-typography-text-xs-lineheight);
+  font-size: var(--vbr-widget-typography-font-size-200);
+  line-height: var(--vbr-widget-typography-font-lineheight-200);
 }
 .is-text-sm {
-  font-size: var(--vbr-widget-typography-text-sm-size);
-  line-height: var(--vbr-widget-typography-text-xs-lineheight);
+  font-size: var(--vbr-widget-typography-font-size-400);
+  line-height: var(--vbr-widget-typography-font-lineheight-200);
 }
 .is-text-base {
-  font-size: var(--vbr-widget-typography-text-base-size);
-  line-height: var(--vbr-widget-typography-text-base-lineheight);
+  font-size: var(--vbr-widget-typography-font-size-500);
+  line-height: var(--vbr-widget-typography-font-lineheight-500);
 }
 .is-text-lg {
-  font-size: var(--vbr-widget-typography-text-lg-size);
-  line-height: var(--vbr-widget-typography-text-lg-lineheight);
+  font-size: var(--vbr-widget-typography-font-size-600);
+  line-height: var(--vbr-widget-typography-font-lineheight-600);
 }
 .is-text-xl {
-  font-size: var(--vbr-widget-typography-text-xl-size);
-  line-height: var(--vbr-widget-typography-text-xl-lineheight);
+  font-size: var(--vbr-widget-typography-font-size-700);
+  line-height: var(--vbr-widget-typography-font-lineheight-700);
 }
 .is-text-4xl {
-  font-size: var(--vbr-widget-typography-text-4xl-size);
-  line-height: var(--vbr-widget-typography-text-4xl-lineheight);
+  font-size: var(--vbr-widget-typography-font-size-950);
+  line-height: var(--vbr-widget-typography-font-lineheight-950);
 }
 
 .is-uppercase {
@@ -69,26 +69,26 @@
 
 .is-heading-1 {
   font-size: var(--vbr-widget-typography-heading-1-size);
-  line-height: var(--vbr-widget-typography-text-xl-lineheight);
-  margin-block-start: var(--vbr-widget-typography-text-xl-size);
-  margin-block-end: calc(var(--vbr-widget-typography-text-xl-size) / 2);
+  line-height: var(--vbr-widget-typography-font-lineheight-700);
+  margin-block-start: var(--vbr-widget-typography-font-size-700);
+  margin-block-end: calc(var(--vbr-widget-typography-font-size-700) / 2);
   font-weight: var(--vbr-widget-typography-heading-weight);
 }
 
 .is-heading-2 {
   font-size: var(--vbr-widget-typography-heading-2-size);
-  line-height: var(--vbr-widget-typography-text-lg-lineheight);
+  line-height: var(--vbr-widget-typography-font-lineheight-600);
   font-weight: var(--vbr-widget-typography-heading-weight);
-  margin-block-start: var(--vbr-widget-typography-text-lg-size);
-  margin-block-end: calc(var(--vbr-widget-typography-text-lg-size) / 2);
+  margin-block-start: var(--vbr-widget-typography-font-size-600);
+  margin-block-end: calc(var(--vbr-widget-typography-font-size-600) / 2);
 }
 
 .is-heading-3 {
   font-size: var(--vbr-widget-typography-heading-3-size);
-  line-height: var(--vbr-widget-typography-text-base-lineheight);
+  line-height: var(--vbr-widget-typography-font-lineheight-500);
   font-weight: var(--vbr-widget-typography-heading-weight);
-  margin-block-start: var(--vbr-widget-typography-text-base-size);
-  margin-block-end: calc(var(--vbr-widget-typography-text-base-size) / 2);
+  margin-block-start: var(--vbr-widget-typography-font-size-500);
+  margin-block-end: calc(var(--vbr-widget-typography-font-size-500) / 2);
 }
 
 .is-rounded {

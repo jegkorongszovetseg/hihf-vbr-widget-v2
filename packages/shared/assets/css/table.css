@@ -117,7 +117,7 @@
     }
 
     &.is-text-xl {
-      font-size: var(--vbr-widget-typography-text-xl-size);
+      font-size: var(--vbr-widget-typography-font-size-700);
     }
 
     .is-text-accent {

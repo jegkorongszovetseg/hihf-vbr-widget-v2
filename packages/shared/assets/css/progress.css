@@ -113,7 +113,7 @@
     grid-area: title;
 
     justify-self: center;
-    font-size: var(--vbr-widget-typography-text-sm-size);
+    font-size: var(--vbr-widget-typography-font-size-400);
     font-weight: 700;
     line-height: 1.5rem;
     color: var(--vbr-widget-primary-color-500);

@@ -197,7 +197,7 @@
   align-items: center;
   place-content: center;
   width: 100%;
-  font-size: var(--vbr-widget-typography-text-sm-size);
+  font-size: var(--vbr-widget-typography-font-size-400);
   font-weight: 500;
   color: var(--vbr-widget-error-notice-color);
 

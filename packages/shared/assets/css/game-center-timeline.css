@@ -112,15 +112,15 @@
     }
 
     .is-attendance {
-      font-size: var(--vbr-widget-typography-text-sm-size);
-      line-height: var(--vbr-widget-typography-text-lg-lineheight);
+      font-size: var(--vbr-widget-typography-font-size-400);
+      line-height: var(--vbr-widget-typography-font-lineheight-600);
       color: var(--vbr-widget-primary-color-500);
     }
 
     .is-goal-scorers {
-      font-size: var(--vbr-widget-typography-text-xs-size);
+      font-size: var(--vbr-widget-typography-font-size-200);
       font-weight: 700;
-      line-height: var(--vbr-widget-typography-text-xs-lineheight);
+      line-height: var(--vbr-widget-typography-font-lineheight-200);
       color: var(--vbr-widget-primary-color-500);
 
       span {
@@ -150,13 +150,13 @@
     }
 
     .is-score {
-      font-size: var(--vbr-widget-typography-text-4xl-size);
+      font-size: var(--vbr-widget-typography-font-size-950);
       font-weight: 700;
     }
 
     .is-team {
       display: none;
-      font-size: var(--vbr-widget-typography-text-base-size);
+      font-size: var(--vbr-widget-typography-font-size-500);
       font-weight: 700;
       color: var(--vbr-widget-primary-color-100);
     }
@@ -171,7 +171,7 @@
     }
 
     .is-game-status {
-      font-size: var(--vbr-widget-typography-text-xs-size);
+      font-size: var(--vbr-widget-typography-font-size-200);
       font-weight: 500;
       text-transform: uppercase;
       color: var(--vbr-widget-live-game-color);
@@ -195,7 +195,7 @@
   .is-heading-1 {
     margin-block-start: 3rem;
     margin-block-end: 1rem;
-    font-size: var(--vbr-widget-typography-text-xl-size);
+    font-size: var(--vbr-widget-typography-font-size-700);
     font-weight: 700;
     color: var(--vbr-widget-primary-color-800);
     text-align: center;
@@ -205,7 +205,7 @@
   .is-heading-2 {
     margin-block-start: 3rem;
     margin-block-end: 1rem;
-    font-size: var(--vbr-widget-typography-text-base-size);
+    font-size: var(--vbr-widget-typography-font-size-500);
     font-weight: 700;
     color: var(--vbr-widget-primary-color-800);
     text-align: center;
@@ -228,13 +228,13 @@
     }
 
     td {
-      font-size: var(--vbr-widget-typography-text-base-size);
+      font-size: var(--vbr-widget-typography-font-size-500);
       font-weight: 500;
       color: var(--vbr-widget-primary-color-700);
     }
 
     td:nth-child(2) {
-      font-size: var(--vbr-widget-typography-text-sm-size);
+      font-size: var(--vbr-widget-typography-font-size-400);
       text-align: left;
     }
 
@@ -279,9 +279,9 @@
         padding-inline: 0.5rem;
         width: max-content;
         color: #fff;
-        font-size: var(--vbr-widget-typography-text-base-size);
+        font-size: var(--vbr-widget-typography-font-size-500);
         font-weight: 500;
-        line-height: var(--vbr-widget-typography-text-base-lineheight);
+        line-height: var(--vbr-widget-typography-font-lineheight-500);
         background-color: var(--vbr-widget-primary-color-900);
         border-radius: 6px;
       }
@@ -364,7 +364,7 @@
         list-style: none;
 
         .is-details-sub-title {
-          font-size: var(--vbr-widget-typography-text-sm-size);
+          font-size: var(--vbr-widget-typography-font-size-400);
           color: var(--vbr-widget-gamecenter-card-secondary-color);
         }
 
@@ -463,7 +463,7 @@
         }
 
         .is-assists-list {
-          font-size: var(--vbr-widget-typography-text-sm-size);
+          font-size: var(--vbr-widget-typography-font-size-400);
           /* color: var(--vbr-widget-primary-color-400); */
 
           span:not(:last-of-type):after {
@@ -476,7 +476,7 @@
           display: flex;
           flex-wrap: wrap;
           gap: 0.25rem;
-          font-size: var(--vbr-widget-typography-text-xs-size);
+          font-size: var(--vbr-widget-typography-font-size-200);
           color: var(--vbr-widget-gamecenter-card-tertiary-color);
 
           ul {
@@ -521,9 +521,9 @@
         padding-inline: 0.5rem;
         width: max-content;
         color: #fff;
-        font-size: var(--vbr-widget-typography-text-base-size);
+        font-size: var(--vbr-widget-typography-font-size-500);
         font-weight: 500;
-        line-height: var(--vbr-widget-typography-text-base-lineheight);
+        line-height: var(--vbr-widget-typography-font-lineheight-500);
         background-color: var(--vbr-widget-primary-color-900);
         border-radius: 6px;
       }
@@ -702,7 +702,7 @@
         grid-area: role;
 
         align-self: center;
-        font-size: var(--vbr-widget-typography-text-xs-size);
+        font-size: var(--vbr-widget-typography-font-size-200);
         line-height: 1;
         color: var(--vbr-widget-gamecenter-card-tertiary-color);
         text-transform: uppercase;
@@ -729,7 +729,7 @@
       overflow: hidden;
 
       li {
-        line-height: var(--vbr-widget-typography-text-xs-lineheight);
+        line-height: var(--vbr-widget-typography-font-lineheight-200);
       }
 
       li:nth-child(1) {
@@ -770,7 +770,7 @@
       li:nth-child(4) {
         grid-area: position;
         align-self: center;
-        font-size: var(--vbr-widget-typography-text-xs-size);
+        font-size: var(--vbr-widget-typography-font-size-200);
         line-height: 1;
         color: var(--vbr-widget-gamecenter-card-tertiary-color);
         text-transform: uppercase;

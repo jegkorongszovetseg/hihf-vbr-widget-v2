@@ -1,3 +1,5 @@
+@import './mixins.css';
+
 :root,
 :host {
   font-family: 'Roboto Condensed', Avenir, Helvetica, Arial, sans-serif;
@@ -36,36 +38,40 @@
   --vbr-widget-live-game-color: #8bc34a;
   --vbr-widget-neutral-color: #ffc107;
 
-  --vbr-widget-typography-text-xxs-size: 0.6875rem; /* 11px */
-  --vbr-widget-typography-text-xxs-lineheight: 1rem; /* 16px */
-  --vbr-widget-typography-text-xs-size: 0.75rem; /* 12px */
-  --vbr-widget-typography-text-xs-lineheight: 1.25rem; /* 20px */
-  --vbr-widget-typography-text-xsm-size: 0.8125rem; /* 13px */
-  --vbr-widget-typography-text-xsm-lineheight: 1.375rem; /* 22px */
-  --vbr-widget-typography-text-sm-size: 0.875rem; /* 14px */
-  --vbr-widget-typography-text-sm-lineheight: 1.5rem; /* 24px */
-  --vbr-widget-typography-text-base-size: 1rem; /* 16px */
-  --vbr-widget-typography-text-base-lineheight: 1.75rem; /* 28px */
-  --vbr-widget-typography-text-lg-size: 1.125rem; /* 18px */
-  --vbr-widget-typography-text-lg-lineheight: 2rem; /* 32px */
-  --vbr-widget-typography-text-xl-size: 1.25rem; /* 20px */
-  --vbr-widget-typography-text-xl-lineheight: 2rem; /* 32px */
-  --vbr-widget-typography-text-2xl-size: 1.5rem; /* 24px */
-  --vbr-widget-typography-text-2xl-lineheight: 2.5rem; /* 40px */
-  --vbr-widget-typography-text-3xl-size: 1.75rem; /* 28px */
-  --vbr-widget-typography-text-3xl-lineheight: 2.5rem; /* 40px */
-  --vbr-widget-typography-text-4xl-size: 2rem; /* 32px */
-  --vbr-widget-typography-text-4xl-lineheight: 2.75rem; /* 44px */
+  --vbr-widget-typography-font-size-50: 0.6275rem; /* 10px */
+  --vbr-widget-typography-font-size-100: 0.6875rem; /* 11px */
+  --vbr-widget-typography-font-size-200: 0.75rem; /* 12px */
+  --vbr-widget-typography-font-size-300: 0.8125rem; /* 13px */
+  --vbr-widget-typography-font-size-400: 0.875rem; /* 14px */
+  --vbr-widget-typography-font-size-500: 1rem; /* 16px */
+  --vbr-widget-typography-font-size-600: 1.125rem; /* 18px */
+  --vbr-widget-typography-font-size-700: 1.25rem; /* 20px */
+  --vbr-widget-typography-font-size-800: 1.5rem; /* 24px */
+  --vbr-widget-typography-font-size-900: 1.75rem; /* 28px */
+  --vbr-widget-typography-font-size-950: 2rem; /* 32px */
+
+  @mixin calcLineHeight 50;
+  @mixin calcLineHeight 100;
+  @mixin calcLineHeight 200;
+  @mixin calcLineHeight 300;
+  @mixin calcLineHeight 400;
+  @mixin calcLineHeight 500;
+  @mixin calcLineHeight 600;
+  @mixin calcLineHeight 700;
+  @mixin calcLineHeight 800;
+  @mixin calcLineHeight 900;
+  @mixin calcLineHeight 950;
+
   --vbr-widget-typography-heading-weight: 500;
 
-  --vbr-widget-typography-heading-1-size: var(--vbr-widget-typography-text-2xl-size);
-  --vbr-widget-typography-heading-2-size: var(--vbr-widget-typography-text-xl-size);
-  --vbr-widget-typography-heading-3-size: var(--vbr-widget-typography-text-lg-size);
-  --vbr-widget-typography-heading-4-size: var(--vbr-widget-typography-text-base-size);
-  --vbr-widget-typography-heading-5-size: var(--vbr-widget-typography-text-sm-size);
-  --vbr-widget-typography-heading-6-size: var(--vbr-widget-typography-text-xs-size);
+  --vbr-widget-typography-heading-1-size: var(--vbr-widget-typography-font-size-800);
+  --vbr-widget-typography-heading-2-size: var(--vbr-widget-typography-font-size-700);
+  --vbr-widget-typography-heading-3-size: var(--vbr-widget-typography-font-size-600);
+  --vbr-widget-typography-heading-4-size: var(--vbr-widget-typography-font-size-500);
+  --vbr-widget-typography-heading-5-size: var(--vbr-widget-typography-font-size-400);
+  --vbr-widget-typography-heading-6-size: var(--vbr-widget-typography-font-size-200);
 
-  --vbr-widget-table-header-font-size: var(--vbr-widget-typography-text-xs-size);
+  --vbr-widget-table-header-font-size: var(--vbr-widget-typography-font-size-200);
   --vbr-widget-table-default-column-width: 30px;
   --vbr-widget-table-default-bg-color: var(--vbr-widget-primary-color-0);
   --vbr-widget-table-color: var(--vbr-widget-primary-color-800);
@@ -102,7 +108,7 @@
   --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);
   --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);
 
-  --vbr-widget-tooltip-font-size: var(--vbr-widget-typography-text-xs-size);
+  --vbr-widget-tooltip-font-size: var(--vbr-widget-typography-font-size-200);
   --vbr-widget-tooltip-color: #ffffff;
   --vbr-widget-tooltip-bg-color: #000000;
 
@@ -122,24 +128,24 @@
   --vbr-widget-hover-color: var(--vbr-widget-secondary-color-900);
 
   --vbr-widget-base-input-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-base-input-font-size: var(--vbr-widget-typography-text-sm-size);
+  --vbr-widget-base-input-font-size: var(--vbr-widget-typography-font-size-400);
   --vbr-widget-base-input-border-color: var(--vbr-widget-primary-color-300);
   --vbr-widget-base-input-border-radius: 3px;
 
   --vbr-widget-form-label-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-form-label-font-size: var(--vbr-widget-typography-text-xs-size);
+  --vbr-widget-form-label-font-size: var(--vbr-widget-typography-font-size-200);
 
   --vbr-widget-timezone-selector-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-timezone-selector-font-size: var(--vbr-widget-typography-text-sm-size); /* 0.8125rem */
+  --vbr-widget-timezone-selector-font-size: var(--vbr-widget-typography-font-size-400);
 
   --vbr-widget-badge-bg-color: var(--vbr-widget-primary-color-50);
   --vbr-widget-badge-color: var(--vbr-widget-primary-color-400);
-  --vbr-widget-badge-font-size: 0.625rem;
-  --vbr-widget-badge-large-font-size: 0.6875rem;
-  --vbr-widget-badge-extra-large-font-size: var(--vbr-widget-typography-text-xsm-size);
+  --vbr-widget-badge-font-size: var(--vbr-widget-typography-font-size-50);
+  --vbr-widget-badge-large-font-size: var(--vbr-widget-typography-font-size-100);
+  --vbr-widget-badge-extra-large-font-size: var(--vbr-widget-typography-font-size-300);
 
   --vbr-widget-tab-btn-padding: 0.625rem 1rem;
-  --vbr-widget-tab-btn-font-size: var(--vbr-widget-typography-text-base-size);
+  --vbr-widget-tab-btn-font-size: var(--vbr-widget-typography-font-size-500);
   --vbr-widget-tab-btn-font-weight: 500;
   --vbr-widget-tab-btn-bg-color: var(--vbr-widget-primary-color-0);
   --vbr-widget-tab-btn-color: var(--vbr-widget-primary-color-300);
@@ -156,7 +162,7 @@
 
   --vbr-widget-toggle-group-gap: 0.625rem;
   --vbr-widget-toggle-group-btn-padding: 3px 10px;
-  --vbr-widget-toggle-group-btn-size: var(--vbr-widget-typography-text-sm-size);
+  --vbr-widget-toggle-group-btn-size: var(--vbr-widget-typography-font-size-400);
   --vbr-widget-toggle-group-btn-bg-color: var(--vbr-widget-primary-color-50);
   --vbr-widget-toggle-group-btn-active-color: var(--vbr-widget-primary-color-0);
   --vbr-widget-toggle-group-btn-active-bg-color: var(--vbr-widget-live-game-color);
@@ -172,42 +178,42 @@
   --vbr-widget-gamecenter-result-size: 6rem;
   --vbr-widget-gamecenter-result-weight: 700;
   --vbr-widget-gamecenter-result-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-gamecenter-teamname-size: 1.3125rem;
+  --vbr-widget-gamecenter-teamname-size: var(--vbr-widget-typography-font-size-700);
   --vbr-widget-gamecenter-teamname-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-gamecenter-teamname-weight: 700;
   --vbr-widget-gamecenter-title-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-gamecenter-title-size: var(--vbr-widget-typography-text-base-size);
+  --vbr-widget-gamecenter-title-size: var(--vbr-widget-typography-font-size-500);
   --vbr-widget-gamecenter-title-weight: 700;
   --vbr-widget-gamecenter-gamedate-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-gamecenter-gamedate-size: var(--vbr-widget-typography-text-base-size);
+  --vbr-widget-gamecenter-gamedate-size: var(--vbr-widget-typography-font-size-500);
   --vbr-widget-gamecenter-local-gamedate-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-gamecenter-local-gamedate-size: 0.8125rem;
+  --vbr-widget-gamecenter-local-gamedate-size: var(--vbr-widget-typography-font-size-300);
   --vbr-widget-gamecenter-gamestatus-color: var(--vbr-widget-primary-color-600);
-  --vbr-widget-gamecenter-gamestatus-size: 0.9375rem;
+  --vbr-widget-gamecenter-gamestatus-size: var(--vbr-widget-typography-font-size-400);
   --vbr-widget-gamecenter-periodresults-color: var(--vbr-widget-primary-color-600);
-  --vbr-widget-gamecenter-periodresults-size: 1.3125rem;
+  --vbr-widget-gamecenter-periodresults-size: var(--vbr-widget-typography-font-size-700);
   --vbr-widget-gamecenter-period-header-bg-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-gamecenter-period-header-color: var(--vbr-widget-primary-color-0);
-  --vbr-widget-gamecenter-period-header-size: 0.8125rem;
+  --vbr-widget-gamecenter-period-header-size: var(--vbr-widget-typography-font-size-300);
   --vbr-widget-gamecenter-period-header-weight: 500;
   --vbr-widget-gamecenter-stats-bg-color: var(--vbr-widget-primary-color-50);
   --vbr-widget-gamecenter-stats-border-color: var(--vbr-widget-primary-color-100);
-  --vbr-widget-gamecenter-stats-title-size: 0.8125rem;
+  --vbr-widget-gamecenter-stats-title-size: var(--vbr-widget-typography-font-size-300);
   --vbr-widget-gamecenter-stats-title-color: var(--vbr-widget-primary-color-400);
-  --vbr-widget-gamecenter-stats-size: var(--vbr-widget-typography-text-base-size);
+  --vbr-widget-gamecenter-stats-size: var(--vbr-widget-typography-font-size-500);
   --vbr-widget-gamecenter-stats-color: var(--vbr-widget-primary-color-800);
 
   --vbr-widget-gamecenter-team-container-title-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-gamecenter-team-container-title-bg-color: var(--vbr-widget-primary-color-100);
   --vbr-widget-gamecenter-team-container-border-color: var(--vbr-widget-primary-color-100);
 
-  --vbr-widget-gamecenter-events-evented-person-size: var(--vbr-widget-typography-text-base-size);
+  --vbr-widget-gamecenter-events-evented-person-size: var(--vbr-widget-typography-font-size-500);
   --vbr-widget-gamecenter-events-evented-person-weight: 600;
-  --vbr-widget-gamecenter-events-assitst-list-size: 0.9375rem;
-  --vbr-widget-gamecenter-events-poi-list-size: var(--vbr-widget-typography-text-xs-size);
-  --vbr-widget-gamecenter-events-score-size: var(--vbr-widget-typography-text-base-size);
-  --vbr-widget-gamecenter-events-penalty-size: var(--vbr-widget-typography-text-sm-size);
-  --vbr-widget-gamecenter-events-goalie-direction-size: var(--vbr-widget-typography-text-sm-size);
+  --vbr-widget-gamecenter-events-assitst-list-size: var(--vbr-widget-typography-font-size-400);
+  --vbr-widget-gamecenter-events-poi-list-size: var(--vbr-widget-typography-font-size-200);
+  --vbr-widget-gamecenter-events-score-size: var(--vbr-widget-typography-font-size-500);
+  --vbr-widget-gamecenter-events-penalty-size: var(--vbr-widget-typography-font-size-400);
+  --vbr-widget-gamecenter-events-goalie-direction-size: var(--vbr-widget-typography-font-size-400);
   --vbr-widget-gamecenter-events-timeout-bg-color: #2870ed;
 
   --vbr-widget-gamecenter-card-title-color: var(--vbr-widget-primary-color-900);
@@ -224,21 +230,21 @@
   --vbr-widget-gamecenter-home-team-identifier-border-color: transparent;
   --vbr-widget-gamecenter-away-team-identifier-border-color: transparent;
 
-  --vbr-widget-main-image-wrapper-horizontal-margin: 0rem;
+  --vbr-widget-main-image-wrapper-horizontal-margin: 0;
 
   --vbr-widget-sticky-top-offset: 0;
 
-  --vbr-widget-games-timeline-game-date-size: var(--vbr-widget-typography-text-xxs-size);
+  --vbr-widget-games-timeline-game-date-size: var(--vbr-widget-typography-font-size-100);
   --vbr-widget-games-timeline-game-date-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-games-timeline-game-team-color: var(--vbr-widget-primary-color-700);
-  --vbr-widget-games-timeline-game-team-size: var(--vbr-widget-typography-text-xsm-size);
+  --vbr-widget-games-timeline-game-team-size: var(--vbr-widget-typography-font-size-300);
   --vbr-widget-games-timeline-game-status-color: var(--vbr-widget-primary-color-300);
-  --vbr-widget-games-timeline-game-status-size: var(--vbr-widget-typography-text-xs-size);
+  --vbr-widget-games-timeline-game-status-size: var(--vbr-widget-typography-font-size-200);
   --vbr-widget-games-timeline-game-hover-bg-color: linear-gradient(#fff, #f5f6f7 50%, #fff);
   --vbr-widget-games-timeline-arrow-color: var(--vbr-widget-primary-color-300);
   --vbr-widget-games-timeline-arrow-hover-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-games-timeline-arrow-disabled-color: var(--vbr-widget-primary-color-100);
   --vbr-widget-games-timeline-arrow-border-color: var(--vbr-widget-primary-color-100);
   --vbr-widget-games-timeline-external-link-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-games-timeline-external-link-size: var(--vbr-widget-typography-text-xs-size);
+  --vbr-widget-games-timeline-external-link-size: var(--vbr-widget-typography-font-size-200);
 }
