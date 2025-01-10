@@ -1,5 +1,5 @@
 <script setup>
-import { computed, nextTick, onMounted, provide, ref, watch } from 'vue';
+import { computed, nextTick, onMounted, provide, ref, useTemplateRef, watch } from 'vue';
 import { unrefElement, useScroll } from '@vueuse/core';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { sortByDomNode } from '@mjsz-vbr-elements/core/utils';
@@ -14,7 +14,7 @@ const props = defineProps({
   },
 });
 
-const containerRef = ref(null);
+const containerRef = useTemplateRef('container')
 const currentIndex = ref(props.initialIndex);
 
 const carouselItems = ref([]);
@@ -78,7 +78,7 @@ function onScrollend() {
 <template>
   <div :class="useMainClass('games-timeline')">
     <button type="button" :disabled="arrivedState.left" @click="prev"><IconLeft /></button>
-    <div ref="containerRef">
+    <div ref="container">
       <slot />
     </div>
     <button type="button" :disabled="arrivedState.right" @click="next"><IconRight /></button>

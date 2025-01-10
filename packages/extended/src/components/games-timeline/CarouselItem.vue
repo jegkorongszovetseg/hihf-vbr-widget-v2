@@ -1,6 +1,5 @@
 <script setup>
-import { h, inject, onMounted, onUnmounted, useSlots } from 'vue';
-import { useId } from '@mjsz-vbr-elements/core/composables';
+import { h, inject, onMounted, onUnmounted, useId, useSlots } from 'vue';
 import { CarouselContext } from './internal';
 
 const slots = useSlots();
