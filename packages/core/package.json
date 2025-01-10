@@ -42,7 +42,7 @@
     "@floating-ui/dom": "^1.6.13",
     "@lostui/utils": "^0.0.4",
     "@mjsz-vbr-elements/shared": "workspace:^",
-    "@vueuse/core": "^12.3.0",
+    "@vueuse/core": "^12.4.0",
     "@xstate/fsm": "^2.1.0",
     "dayjs": "^1.11.13",
     "ramda": "^0.30.1",
