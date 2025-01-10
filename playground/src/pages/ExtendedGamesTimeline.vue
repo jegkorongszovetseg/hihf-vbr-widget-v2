@@ -16,7 +16,7 @@ import { store } from '../store.js';
     /> -->
     <mjsz-vbr-games-timeline
       :locale="store.locale"
-      service-path="/v2/championship-calendar?championshipId=3783"
+      service-path="/v2/public-calendar?seasonId=217"
       external-game-resolver="/GameCenterTimeline?gameid={gameId}"
       external-schedule-url="/ExtendedCalendar"
     />

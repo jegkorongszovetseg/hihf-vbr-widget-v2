@@ -7,7 +7,7 @@ export const transformGames = (games) => [...games].reverse();
 
 export function useGameDataService({ apiKey }) {
   const { execute } = useAsyncState(
-    (params) => fetchVBRData('/v2/game-data', apiKey, params),
+    (params) => fetchVBRData('/v2/game-data', apiKey, params).then((data) => ({ ...data, ...params })),
     {},
     {
       immediate: false,

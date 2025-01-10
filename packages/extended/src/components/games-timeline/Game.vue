@@ -28,7 +28,7 @@ function navigateTo() {
 }
 
 function log(id) {
-  // console.log(id);
+  console.log(id);
 }
 </script>
 
@@ -62,10 +62,13 @@ function log(id) {
       >
     </div>
     <div class="is-status">
+      {{ gameData.id }} -
       {{
-        gameData.gameStatus !== 1
-          ? `${gameData.championshipName} - ${gameData.divisionName}`
-          : t(`game.period.${gameData.period}`)
+        gameData.gameStatus === 1
+          ? gameData.period
+            ? `${t(`game.period.${gameData.period}`)} - ${gameData.actualTime}`
+            : ''
+          : `${gameData.championshipName} - ${gameData.divisionName}`
       }}
     </div>
   </div>
