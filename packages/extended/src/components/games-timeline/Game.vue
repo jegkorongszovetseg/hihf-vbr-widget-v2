@@ -2,6 +2,7 @@
 import { useMainClass, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
+import ScoreDisplay from './ScoreDisplay.vue';
 
 const props = defineProps({
   gameData: {
@@ -21,7 +22,6 @@ const { t } = useI18n();
 
 function navigateTo() {
   const { externalUrl, id } = props.gameData;
-  console.log({ externalUrl, id });
   if (externalUrl) return emit('navigate-to', { url: externalUrl, target: '_blank' });
   const url = externalGameLinkResolver(props.externalGameResolver, { gameId: id });
   emit('navigate-to', { url, target: '_self' });
@@ -44,10 +44,11 @@ function log(id) {
     </div>
     <div class="is-home-team-name">{{ gameData.homeTeam.longName }}</div>
     <div class="is-home-team-score">
-      <span
+      <ScoreDisplay
         v-if="gameData.homeTeamScore != null"
         :class="['is-badge is-extra-large', gameData.gameStatus === 1 ? 'is-green' : 'is-dark']"
-        >{{ gameData.homeTeamScore }}</span
+        :score="gameData.homeTeamScore"
+        >{{ gameData.homeTeamScore }}</ScoreDisplay
       >
     </div>
     <div class="is-away-team-logo">
@@ -55,10 +56,11 @@ function log(id) {
     </div>
     <div class="is-away-team-name">{{ gameData.awayTeam.longName }}</div>
     <div class="is-away-team-score">
-      <span
+      <ScoreDisplay
         v-if="gameData.awayTeamScore != null"
+        :score="gameData.awayTeamScore"
         :class="['is-badge is-extra-large', gameData.gameStatus === 1 ? 'is-green' : 'is-dark']"
-        >{{ gameData.awayTeamScore }}</span
+        >{{ gameData.awayTeamScore }}</ScoreDisplay
       >
     </div>
     <div class="is-status">
@@ -66,7 +68,7 @@ function log(id) {
       {{
         gameData.gameStatus === 1
           ? gameData.period
-            ? `${t(`game.period.${gameData.period}`)} - ${gameData.actualTime}`
+            ? `${t(`game.period.${gameData.period}`)} - ${gameData.periodTime}`
             : ''
           : `${gameData.championshipName} - ${gameData.divisionName}`
       }}

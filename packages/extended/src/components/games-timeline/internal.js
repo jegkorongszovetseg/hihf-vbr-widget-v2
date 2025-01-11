@@ -3,7 +3,7 @@ import { fetchVBRData } from '@mjsz-vbr-elements/core/composables';
 
 export const CarouselContext = Symbol('CarouselContext');
 
-export const transformGames = (games) => [...games].reverse();
+// export const transformGames = (games) => [...games].reverse();
 
 export function useGameDataService({ apiKey }) {
   const { execute } = useAsyncState(
@@ -18,4 +18,26 @@ export function useGameDataService({ apiKey }) {
   return {
     execute,
   };
+}
+
+export function mergeGames(income, base, key) {
+  const baseMap = createMap(base, key);
+
+  const merged = income.reduce((acc, item) => {
+    if (baseMap.has(item.id)) {
+      acc.push({ ...baseMap.get(item.id), ...item });
+    } else {
+      acc.push(item);
+    }
+    return acc;
+  }, []);
+  return merged;
+}
+
+function createMap(data, key) {
+  const createdMap = new Map();
+  for (const obj of data) {
+    createdMap.set(obj[key], obj);
+  }
+  return createdMap;
 }

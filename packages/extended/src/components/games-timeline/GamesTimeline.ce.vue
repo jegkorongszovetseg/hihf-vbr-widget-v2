@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, shallowRef } from 'vue';
+import { computed, ref, triggerRef } from 'vue';
 import { isEmpty } from 'ramda';
 import { useIntervalFn } from '@vueuse/core';
 import { I18NProvider, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
@@ -12,7 +12,7 @@ import ExternalSchedule from './ExternalSchedule.vue';
 import TrayAgain from './TryAgain.vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
-import { transformGames, useGameDataService } from './internal';
+import { mergeGames, useGameDataService } from './internal';
 
 const messages = { en, hu };
 const timezone = getLocalTimezone();
@@ -55,9 +55,12 @@ const { state: games, execute } = useServices({
     params: {},
     immediate: true,
   },
-  transform: (res) => transformGames(res, props.locale),
-  onError: () => (error.value = true),
-  onSuccess: () => handleLiveGames(),
+  transform: (res) => mergeGames(res, games.value, 'id').reverse(),
+  onError: () => {
+    error.value = true;
+    games.value = [];
+  },
+  onSuccess: handleLiveGames,
 });
 
 useIntervalFn(execute, 1000 * 60 * 5);
@@ -80,7 +83,14 @@ const convertedGames = computed(() =>
 
 const { execute: fetchGameData } = useGameDataService({ apiKey: props.apiKey });
 
-async function handleLiveGames(d) {
+// watch(
+//   () => props.locale,
+//   () => {
+//     games.value = formatGameDate(games.value);
+//   }
+// );
+
+async function handleLiveGames() {
   gameDataIntervals.map((cleanFn) => cleanFn?.());
   gameDataIntervals = [];
 
@@ -95,16 +105,26 @@ async function handleLiveGames(d) {
 }
 
 function updateGameData(gameData = {}) {
-  const { gameId, gameStatus, homeTeamScore, awayTeamScore, period, actualTime } = gameData;
-  const cloned = [...games.value];
-  const gameObj = cloned.find((game) => game.id === gameId);
+  const { gameId, gameStatus, homeTeamScore, awayTeamScore, period, periodTime } = gameData;
+  const gameObj = games.value.find((game) => game.id === gameId);
   gameObj.gameStatus = gameStatus;
   gameObj.homeTeamScore = homeTeamScore;
   gameObj.awayTeamScore = awayTeamScore;
   gameObj.period = period;
-  gameObj.actualTime = actualTime;
-  games.value = cloned;
+  gameObj.periodTime = periodTime;
+  triggerRef(games);
 }
+
+// function formatGameDate(data) {
+//   return data.map((game) => ({
+//     ...game,
+//     gameDateTime: `${format(game.gameDate, 'L LT', timezone, props.locale)} (${offsetName(
+//       game.gameDate,
+//       timezone,
+//       props.locale
+//     )})`,
+//   }));
+// }
 
 function navigateTo({ url, target }) {
   window.open(url, target);
@@ -113,6 +133,13 @@ function navigateTo({ url, target }) {
 function onTryAgain() {
   error.value = false;
   execute();
+}
+
+function onTest() {
+  const gameObj = games.value.find((game) => game.id === 78696);
+  gameObj.homeTeamScore = gameObj.homeTeamScore + 1;
+  gameObj.awayTeamScore = gameObj.awayTeamScore + 1;
+  triggerRef(games);
 }
 </script>
 
@@ -146,6 +173,7 @@ function onTryAgain() {
         </CarouselItem>
       </template>
     </Carousel>
+    <button type="button" @click="onTest">++</button>
   </I18NProvider>
 </template>
 
