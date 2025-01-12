@@ -44,11 +44,6 @@ const props = defineProps({
     type: String,
     default: '',
   },
-
-  options: {
-    type: Object,
-    default: () => ({}),
-  },
 });
 
 const error = ref(false);

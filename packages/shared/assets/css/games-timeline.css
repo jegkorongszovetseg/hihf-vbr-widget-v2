@@ -210,3 +210,43 @@
     text-decoration: underline;
   }
 }
+
+.score-display {
+  height: 20px;
+  padding: 0 5px !important;
+
+  .is-score {
+    display: grid;
+    grid-template-areas: 'stack';
+    justify-items: center;
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, transparent 0, black 30%, black 70%, transparent 100%);
+
+    > span {
+      grid-area: stack;
+      line-height: 20px;
+    }
+  }
+
+  .is-slide-transition-enter-active,
+  .is-slide-transition-leave-active {
+    transition: all 420ms linear;
+  }
+
+  .is-slide-transition-enter-from {
+    transform: translateY(-100%);
+  }
+
+  .is-slide-transition-enter-to {
+    transform: translateY(0);
+  }
+
+  .is-slide-transition-leave-from {
+    transform: translateY(0);
+  }
+
+  .is-slide-transition-leave-to {
+    transform: translateY(100%);
+  }
+}
