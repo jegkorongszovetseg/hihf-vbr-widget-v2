@@ -44,6 +44,11 @@ const props = defineProps({
     type: String,
     default: '',
   },
+
+  options: {
+    type: Object,
+    default: () => ({}),
+  },
 });
 
 const error = ref(false);
@@ -58,7 +63,6 @@ const { state: games, execute } = useServices({
   transform: (res) => mergeGames(res, games.value, 'id').reverse(),
   onError: () => {
     error.value = true;
-    games.value = [];
   },
   onSuccess: handleLiveGames,
 });
@@ -91,6 +95,7 @@ const { execute: fetchGameData } = useGameDataService({ apiKey: props.apiKey });
 // );
 
 async function handleLiveGames() {
+  error.value = false;
   gameDataIntervals.map((cleanFn) => cleanFn?.());
   gameDataIntervals = [];
 
@@ -134,13 +139,6 @@ function onTryAgain() {
   error.value = false;
   execute();
 }
-
-function onTest() {
-  const gameObj = games.value.find((game) => game.id === 78696);
-  gameObj.homeTeamScore = gameObj.homeTeamScore + 1;
-  gameObj.awayTeamScore = gameObj.awayTeamScore + 1;
-  triggerRef(games);
-}
 </script>
 
 <template>
@@ -149,7 +147,7 @@ function onTest() {
       <div v-if="isEmpty(games) && !error" style="width: 100%">
         <LoadingIndicator />
       </div>
-      <TrayAgain v-else-if="error" @try-again="onTryAgain" />
+      <TrayAgain v-else-if="error && isEmpty(games)" @try-again="onTryAgain" />
       <template v-else>
         <CarouselItem>
           <ExternalSchedule :external-schedule-url="externalScheduleUrl" @navigate-to="navigateTo" />
@@ -173,7 +171,6 @@ function onTest() {
         </CarouselItem>
       </template>
     </Carousel>
-    <button type="button" @click="onTest">++</button>
   </I18NProvider>
 </template>
 
