@@ -3,7 +3,7 @@ import { computed, ref, triggerRef } from 'vue';
 import { isEmpty } from 'ramda';
 import { useIntervalFn } from '@vueuse/core';
 import { I18NProvider, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
-import { useServices } from '@mjsz-vbr-elements/core/composables';
+import { useServices, useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
 import { isAfter, offsetName, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
 import Carousel from './Carousel.vue';
 import CarouselItem from './CarouselItem.vue';
@@ -62,7 +62,20 @@ const { state: games, execute } = useServices({
   onSuccess: handleLiveGames,
 });
 
-useIntervalFn(execute, 1000 * 60 * 5);
+const { resume, pause } = useIntervalFn(execute, 1000 * 60 * 5);
+
+useVisibilityChange(
+  true,
+  () => {
+    execute();
+    resume();
+  },
+  () => {
+    pause();
+    gameDataIntervals.map((cleanFn) => cleanFn?.());
+    gameDataIntervals = [];
+  }
+);
 
 const initialIndex = computed(() => {
   if (isEmpty(games.value)) return 0;

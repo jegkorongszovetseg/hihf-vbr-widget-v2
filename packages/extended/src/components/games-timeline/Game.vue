@@ -36,16 +36,12 @@ function navigateTo() {
   const url = externalGameLinkResolver(props.externalGameResolver, { gameId: id });
   emit('navigate-to', { url, target: '_self' });
 }
-
-function log(id) {
-  console.log(id);
-}
 </script>
 
 <template>
   <div :class="useMainClass('games-timeline-game')" @click="navigateTo">
     <time
-      >{{ gameData.gameDateTime }} {{ log(gameData.id) }}
+      >{{ gameData.gameDateTime }}
       <span v-if="gameData.isShootout" class="is-badge">SO</span>
       <span v-if="gameData.isOvertime" class="is-badge">OT</span>
     </time>
