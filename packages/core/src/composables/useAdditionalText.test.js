@@ -89,7 +89,6 @@ describe('useAdditionalText', () => {
     expect(text.value).toBe(
       'A megelőző bajnokság szakaszban elért eredménye alapján TeamA csapata 2 többletponttal rendelkezik.'
     );
-    console.log(text.value);
   });
 
   it('Hozott pontok szöveg megjelenik - és vesszővel van elválasztva - ha van több inheritedPoints tartalmazó csapat', async () => {
@@ -126,7 +125,6 @@ describe('useAdditionalText', () => {
     expect(text.value).toBe(
       'A megelőző bajnokság szakaszban elért eredménye alapján TeamA csapata 3, TeamB csapata 2, TeamC csapata 1 többletponttal rendelkezik.'
     );
-    console.log(text.value);
   });
 
   it('Büntető pontok szöveg nem jelenik meg, mert nincs olyan csapat', async () => {

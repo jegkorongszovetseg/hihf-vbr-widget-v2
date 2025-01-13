@@ -10,8 +10,8 @@
     "selectTimezone": "*Minden időpont a számítógép időzónája szerint jelenik meg ({timezone}). Váltás: ",
     "hungary": "Magyarország",
     "romania": "Románia",
-    "shootoutShort": "SU.",
-    "overtimeShort": "HU.",
+    "shootoutShort": "SO",
+    "overtimeShort": "OT",
     "all": "Mind",
     "report": "Jegyzőkönyv",
     "video": "Videó"

@@ -28,7 +28,10 @@ export function useAdditionalText(rows, key, t, locale) {
 
   watchOnce(rows, createText);
 
-  watch(locale, () => createText(unref(rows)));
+  watch(
+    () => unref(locale),
+    () => createText(unref(rows))
+  );
 
   return {
     text,

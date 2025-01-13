@@ -1,9 +1,9 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref, triggerRef } from 'vue';
 import { isEmpty } from 'ramda';
 import { useIntervalFn } from '@vueuse/core';
 import { I18NProvider, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
-import { useServices } from '@mjsz-vbr-elements/core/composables';
+import { useServices, useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
 import { isAfter, offsetName, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
 import Carousel from './Carousel.vue';
 import CarouselItem from './CarouselItem.vue';
@@ -12,7 +12,7 @@ import ExternalSchedule from './ExternalSchedule.vue';
 import TrayAgain from './TryAgain.vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
-import { transformGames, useGameDataService } from './internal';
+import { mergeGames, useGameDataService } from './internal';
 
 const messages = { en, hu };
 const timezone = getLocalTimezone();
@@ -55,12 +55,27 @@ const { state: games, execute } = useServices({
     params: {},
     immediate: true,
   },
-  transform: (res) => transformGames(res, props.locale),
-  onError: () => (error.value = true),
-  onSuccess: () => handleLiveGames(),
+  transform: (res) => mergeGames(res, games.value, 'id').reverse(),
+  onError: () => {
+    error.value = true;
+  },
+  onSuccess: handleLiveGames,
 });
 
-useIntervalFn(execute, 1000 * 60 * 5);
+const { resume, pause } = useIntervalFn(execute, 1000 * 60 * 5);
+
+useVisibilityChange(
+  true,
+  () => {
+    execute();
+    resume();
+  },
+  () => {
+    pause();
+    gameDataIntervals.map((cleanFn) => cleanFn?.());
+    gameDataIntervals = [];
+  }
+);
 
 const initialIndex = computed(() => {
   if (isEmpty(games.value)) return 0;
@@ -81,6 +96,7 @@ const convertedGames = computed(() =>
 const { execute: fetchGameData } = useGameDataService({ apiKey: props.apiKey });
 
 async function handleLiveGames() {
+  error.value = false;
   gameDataIntervals.map((cleanFn) => cleanFn?.());
   gameDataIntervals = [];
 
@@ -88,24 +104,21 @@ async function handleLiveGames() {
 
   for (let i = 0; i < liveGames.length; i++) {
     const id = liveGames[i].id;
-    fetchGameData(0, { gameId: id }).then((data) => updateGameData(id, data));
-    const { pause } = useIntervalFn(
-      () => fetchGameData(0, { gameId: id }).then((data) => updateGameData(id, data)),
-      60000
-    );
+    fetchGameData(0, { gameId: id }).then((data) => updateGameData(data));
+    const { pause } = useIntervalFn(() => fetchGameData(0, { gameId: id }).then((data) => updateGameData(data)), 60000);
     gameDataIntervals.push(pause);
   }
 }
 
-function updateGameData(id = 81407, gameData = { gameStatus: 1 }) {
-  const { gameStatus, homeTeamScore, awayTeamScore, period } = gameData;
-  const cloned = [...games.value];
-  const gameObj = cloned.find((game) => game.id === id);
+function updateGameData(gameData = {}) {
+  const { gameId, gameStatus, homeTeamScore, awayTeamScore, period, periodTime } = gameData;
+  const gameObj = games.value.find((game) => game.id === gameId);
   gameObj.gameStatus = gameStatus;
   gameObj.homeTeamScore = homeTeamScore;
   gameObj.awayTeamScore = awayTeamScore;
   gameObj.period = period;
-  games.value = cloned;
+  gameObj.periodTime = periodTime;
+  triggerRef(games);
 }
 
 function navigateTo({ url, target }) {
@@ -124,7 +137,7 @@ function onTryAgain() {
       <div v-if="isEmpty(games) && !error" style="width: 100%">
         <LoadingIndicator />
       </div>
-      <TrayAgain v-else-if="error" @try-again="onTryAgain" />
+      <TrayAgain v-else-if="error && isEmpty(games)" @try-again="onTryAgain" />
       <template v-else>
         <CarouselItem>
           <ExternalSchedule :external-schedule-url="externalScheduleUrl" @navigate-to="navigateTo" />
@@ -132,7 +145,14 @@ function onTryAgain() {
         <CarouselItem
           v-for="game in convertedGames"
           :key="game.id"
-          v-memo="[game.gameDateTime, game.gameStatus, game.homeTeamScore, game.awayTeamScore, game.period]"
+          v-memo="[
+            game.gameDateTime,
+            game.gameStatus,
+            game.homeTeamScore,
+            game.awayTeamScore,
+            game.period,
+            game.actualTime,
+          ]"
         >
           <Game :game-data="game" :external-game-resolver="externalGameResolver" @navigate-to="navigateTo" />
         </CarouselItem>

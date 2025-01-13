@@ -2,6 +2,9 @@
 import { useMainClass, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
+import ScoreDisplay from './ScoreDisplay.vue';
+import { computed } from 'vue';
+import { isPeriodTimeVisible } from './internal';
 
 const props = defineProps({
   gameData: {
@@ -19,35 +22,39 @@ const emit = defineEmits(['navigate-to']);
 
 const { t } = useI18n();
 
+const statusText = computed(() => {
+  const { gameStatus, championshipName, divisionName, period, periodTime } = props.gameData;
+  if (gameStatus !== 1) return `${championshipName} - ${divisionName}`;
+  if (period && isPeriodTimeVisible(period)) return `${t(`game.period.${period}`)} - ${periodTime}`;
+  if (period && !isPeriodTimeVisible(period)) return t(`game.period.${period}`);
+  return '';
+});
+
 function navigateTo() {
   const { externalUrl, id } = props.gameData;
-  console.log({ externalUrl, id });
   if (externalUrl) return emit('navigate-to', { url: externalUrl, target: '_blank' });
   const url = externalGameLinkResolver(props.externalGameResolver, { gameId: id });
   emit('navigate-to', { url, target: '_self' });
-}
-
-function log(id) {
-  // console.log(id);
 }
 </script>
 
 <template>
   <div :class="useMainClass('games-timeline-game')" @click="navigateTo">
     <time
-      >{{ gameData.gameDateTime }} {{ log(gameData.id) }}
-      <span v-if="gameData.isShootout" class="is-badge">SO</span>
-      <span v-if="gameData.isOvertime" class="is-badge">OT</span>
+      >{{ gameData.gameDateTime }}
+      <span v-if="gameData.isShootout" class="is-badge">{{ t('common.shootoutShort') }}</span>
+      <span v-if="gameData.isOvertime" class="is-badge">{{ t('common.overtimeShort') }}</span>
     </time>
     <div class="is-home-team-logo">
       <Image :src="gameData.homeTeam.logo" class="is-team-logo" />
     </div>
     <div class="is-home-team-name">{{ gameData.homeTeam.longName }}</div>
     <div class="is-home-team-score">
-      <span
+      <ScoreDisplay
         v-if="gameData.homeTeamScore != null"
         :class="['is-badge is-extra-large', gameData.gameStatus === 1 ? 'is-green' : 'is-dark']"
-        >{{ gameData.homeTeamScore }}</span
+        :score="gameData.homeTeamScore"
+        >{{ gameData.homeTeamScore }}</ScoreDisplay
       >
     </div>
     <div class="is-away-team-logo">
@@ -55,18 +62,15 @@ function log(id) {
     </div>
     <div class="is-away-team-name">{{ gameData.awayTeam.longName }}</div>
     <div class="is-away-team-score">
-      <span
+      <ScoreDisplay
         v-if="gameData.awayTeamScore != null"
+        :score="gameData.awayTeamScore"
         :class="['is-badge is-extra-large', gameData.gameStatus === 1 ? 'is-green' : 'is-dark']"
-        >{{ gameData.awayTeamScore }}</span
+        >{{ gameData.awayTeamScore }}</ScoreDisplay
       >
     </div>
     <div class="is-status">
-      {{
-        gameData.gameStatus !== 1
-          ? `${gameData.championshipName} - ${gameData.divisionName}`
-          : t(`game.period.${gameData.period}`)
-      }}
+      {{ statusText }}
     </div>
   </div>
 </template>
