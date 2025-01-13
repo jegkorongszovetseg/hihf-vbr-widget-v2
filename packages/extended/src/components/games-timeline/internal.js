@@ -41,3 +41,9 @@ function createMap(data, key) {
   }
   return createdMap;
 }
+
+export function isPeriodTimeVisible(period) {
+  if (period.includes('_int')) return false;
+  if (['wu', 'pre', 'so', 'end'].includes(period)) return false;
+  return true;
+}

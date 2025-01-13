@@ -3,6 +3,8 @@ import { useMainClass, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import ScoreDisplay from './ScoreDisplay.vue';
+import { computed } from 'vue';
+import { isPeriodTimeVisible } from './internal';
 
 const props = defineProps({
   gameData: {
@@ -19,6 +21,14 @@ const props = defineProps({
 const emit = defineEmits(['navigate-to']);
 
 const { t } = useI18n();
+
+const statusText = computed(() => {
+  const { gameStatus, championshipName, divisionName, period, periodTime } = props.gameData;
+  if (gameStatus !== 1) return `${championshipName} - ${divisionName}`;
+  if (period && isPeriodTimeVisible(period)) return `${t(`game.period.${period}`)} - ${periodTime}`;
+  if (period && !isPeriodTimeVisible(period)) return t(`game.period.${period}`);
+  return '';
+});
 
 function navigateTo() {
   const { externalUrl, id } = props.gameData;
@@ -65,13 +75,7 @@ function log(id) {
     </div>
     <div class="is-status">
       {{ gameData.id }} -
-      {{
-        gameData.gameStatus === 1
-          ? gameData.period
-            ? `${t(`game.period.${gameData.period}`)} - ${gameData.periodTime}`
-            : ''
-          : `${gameData.championshipName} - ${gameData.divisionName}`
-      }}
+      {{ statusText }}
     </div>
   </div>
 </template>
