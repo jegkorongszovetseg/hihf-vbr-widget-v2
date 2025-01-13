@@ -74,7 +74,6 @@ function log(id) {
       >
     </div>
     <div class="is-status">
-      {{ gameData.id }} -
       {{ statusText }}
     </div>
   </div>
