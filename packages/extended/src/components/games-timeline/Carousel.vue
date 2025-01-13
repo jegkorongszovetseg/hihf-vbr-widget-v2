@@ -14,7 +14,7 @@ const props = defineProps({
   },
 });
 
-const containerRef = useTemplateRef('container')
+const containerRef = useTemplateRef('container');
 const currentIndex = ref(props.initialIndex);
 
 const carouselItems = ref([]);

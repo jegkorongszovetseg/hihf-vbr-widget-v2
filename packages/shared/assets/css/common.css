@@ -124,7 +124,7 @@ a {
 
 .is-badge {
   display: inline-block;
-  padding: 0.125rem 0.25rem;
+  padding: 0.125em 0.25em;
   color: var(--vbr-widget-badge-color);
   font-size: var(--vbr-widget-badge-font-size);
   font-weight: 700;
@@ -133,7 +133,7 @@ a {
   border-radius: 3px;
 
   & + .is-badge {
-    margin-left: 3px;
+    margin-inline-start: 3px;
   }
 
   &.is-invert {
@@ -163,11 +163,11 @@ a {
 
   &.is-large {
     font-size: var(--vbr-widget-badge-large-font-size);
-    padding: 0.15rem 0.35rem;
+    padding: 0.15em 0.35em;
   }
 
   &.is-extra-large {
     font-size: var(--vbr-widget-badge-extra-large-font-size);
-    padding: 0.21875rem 0.4196rem;
+    padding: 0.2695em 0.5165em;
   }
 }
