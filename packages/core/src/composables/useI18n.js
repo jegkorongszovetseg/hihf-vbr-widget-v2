@@ -77,7 +77,7 @@ export const useI18n = (settings) => {
 const useI18nContext = () => {
   const api = inject(I18nContext, null);
   if (api === null) {
-    throw new Error('Privider is missing a parent component.');
+    throw new Error('Provider is missing a parent component.');
   }
   return api;
 };
