@@ -42,8 +42,8 @@ function navigateTo() {
   <div :class="useMainClass('games-timeline-game')" @click="navigateTo">
     <time
       >{{ gameData.gameDateTime }}
-      <span v-if="gameData.isShootout" class="is-badge">SO</span>
-      <span v-if="gameData.isOvertime" class="is-badge">OT</span>
+      <span v-if="gameData.isShootout" class="is-badge">{{ t('common.shootoutShort') }}</span>
+      <span v-if="gameData.isOvertime" class="is-badge">{{ t('common.overtimeShort') }}</span>
     </time>
     <div class="is-home-team-logo">
       <Image :src="gameData.homeTeam.logo" class="is-team-logo" />

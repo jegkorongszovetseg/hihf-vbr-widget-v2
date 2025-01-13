@@ -95,13 +95,6 @@ const convertedGames = computed(() =>
 
 const { execute: fetchGameData } = useGameDataService({ apiKey: props.apiKey });
 
-// watch(
-//   () => props.locale,
-//   () => {
-//     games.value = formatGameDate(games.value);
-//   }
-// );
-
 async function handleLiveGames() {
   error.value = false;
   gameDataIntervals.map((cleanFn) => cleanFn?.());
@@ -127,17 +120,6 @@ function updateGameData(gameData = {}) {
   gameObj.periodTime = periodTime;
   triggerRef(games);
 }
-
-// function formatGameDate(data) {
-//   return data.map((game) => ({
-//     ...game,
-//     gameDateTime: `${format(game.gameDate, 'L LT', timezone, props.locale)} (${offsetName(
-//       game.gameDate,
-//       timezone,
-//       props.locale
-//     )})`,
-//   }));
-// }
 
 function navigateTo({ url, target }) {
   window.open(url, target);
