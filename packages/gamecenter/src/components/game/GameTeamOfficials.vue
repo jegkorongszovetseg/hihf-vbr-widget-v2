@@ -1,8 +1,8 @@
 <script setup>
+import { useColumns, useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { computed } from 'vue';
-import { useMainClass, useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
-import GameDataTable from '../common/GameDataTable.vue';
 import { convertTeamMembersToRows } from '../../utils/convert-official-persons';
+import GameDataTable from '../common/GameDataTable.vue';
 import { TEAM_OFFICIALS_COLUMNS } from './internal';
 
 const props = defineProps({

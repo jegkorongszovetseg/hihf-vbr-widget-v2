@@ -1,11 +1,11 @@
 <script setup>
 import { computed } from 'vue';
 import Goal from './events/Goal.vue';
-import Penalty from './events/Penalty.vue';
 import Goalies from './events/Goalies.vue';
-import Timeout from './events/Timeout.vue';
+import Penalty from './events/Penalty.vue';
 import PenaltyShot from './events/PenaltyShot.vue';
 import Period from './events/Period.vue';
+import Timeout from './events/Timeout.vue';
 
 const props = defineProps({
   event: {

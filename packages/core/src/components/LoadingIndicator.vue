@@ -5,5 +5,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <div style="text-align: center">{{ t('common.loading') }}</div>
+  <div style="text-align: center">
+    {{ t('common.loading') }}
+  </div>
 </template>

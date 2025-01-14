@@ -1,6 +1,6 @@
 <script setup>
-import { computed } from 'vue';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { computed } from 'vue';
 
 const props = defineProps({
   max: {
@@ -44,10 +44,10 @@ const barWidthEnd = computed(() => ({ width: `${(props.valueEnd / props.max) * 1
       </slot>
     </div>
     <div class="is-bar is-bar-start">
-      <div class="is-bar-start--progress" :style="barWidthStart"></div>
+      <div class="is-bar-start--progress" :style="barWidthStart" />
     </div>
     <div class="is-bar is-bar-end">
-      <div class="is-bar-end--progress" :style="barWidthEnd"></div>
+      <div class="is-bar-end--progress" :style="barWidthEnd" />
     </div>
     <div class="is-value is-value-end">
       <slot name="value-end">
@@ -57,6 +57,8 @@ const barWidthEnd = computed(() => ({ width: `${(props.valueEnd / props.max) * 1
         </template>
       </slot>
     </div>
-    <div class="is-title">{{ title }}</div>
+    <div class="is-title">
+      {{ title }}
+    </div>
   </div>
 </template>

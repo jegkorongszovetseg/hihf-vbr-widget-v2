@@ -1,28 +1,24 @@
 <script setup>
-import { computed, ref } from 'vue';
-import { reverse, isEmpty } from 'ramda';
+import { ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
+import { useMainClass, useServices } from '@mjsz-vbr-elements/core/composables';
 import { useIntersectionObserver, useUrlSearchParams } from '@vueuse/core';
-import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
-import { I18NProvider, ErrorNotice } from '@mjsz-vbr-elements/core/components';
+import { isEmpty, reverse } from 'ramda';
+import { computed, ref } from 'vue';
+import commonEN from '../../locales/en/common.json';
+import extendeEN from '../../locales/en/extended.json';
+import commonHU from '../../locales/hu/common.json';
+import extendedHU from '../../locales/hu/extended.json';
 import { handleServices, useApiErrors } from '../game/composables';
+import ScoreBoard from './components/ScoreBoard.vue';
+import { useTeamColors } from './composables/use-team-colors';
+import { TAB_EVENTS, TAB_LINEUPS, TAB_OFFICIALS, TAB_PLAYER_STATS, TAB_TEAM_STATS } from './constants';
 import GameData from './GameData.vue';
 import GameEvents from './GameEvents.vue';
 import GameLineups from './GameLineups.vue';
-import GameTeamStats from './GameTeamStats.vue';
-import GamePlayerStats from './GamePlayerStats.vue';
 import GameOfficials from './GameOfficials.vue';
-import ScoreBoard from './components/ScoreBoard.vue';
+import GamePlayerStats from './GamePlayerStats.vue';
 import GameTabs from './GameTabs.vue';
-import { TAB_EVENTS, TAB_LINEUPS, TAB_TEAM_STATS, TAB_PLAYER_STATS, TAB_OFFICIALS } from './constants';
-import commonEN from '../../locales/en/common.json';
-import commonHU from '../../locales/hu/common.json';
-import extendeEN from '../../locales/en/extended.json';
-import extendedHU from '../../locales/hu/extended.json';
-import { useTeamColors } from './composables/use-team-colors';
-
-const messages = { en: { ...commonEN, ...extendeEN }, hu: { ...commonHU, ...extendedHU } };
-
-const REFRESH_DELAY = 30000;
+import GameTeamStats from './GameTeamStats.vue';
 
 const props = defineProps({
   locale: {
@@ -41,6 +37,10 @@ const props = defineProps({
   },
 });
 
+const messages = { en: { ...commonEN, ...extendeEN }, hu: { ...commonHU, ...extendedHU } };
+
+const REFRESH_DELAY = 30000;
+
 const contentElementRef = ref(null);
 const isScoreBoardVisible = ref(false);
 
@@ -54,7 +54,7 @@ useIntersectionObserver(
   },
   {
     threshold: 0.25,
-  }
+  },
 );
 
 const { errors, add: addApiError, remove: removeApiError } = useApiErrors();
@@ -67,7 +67,7 @@ const { state: gameData, execute: getGameData } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  onError: (e) => addApiError('gameData', e),
+  onError: e => addApiError('gameData', e),
   onSuccess: () => removeApiError('gameData'),
 });
 
@@ -77,9 +77,9 @@ const { state: gameEvents, execute: getEvents } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  transform: (data) => reverse(data),
+  transform: data => reverse(data),
 
-  onError: (e) => addApiError('gameEvents', e),
+  onError: e => addApiError('gameEvents', e),
   onSuccess: () => removeApiError('gameEvents'),
 });
 
@@ -89,7 +89,7 @@ const { state: gameStats, execute: getGameStats } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  onError: (e) => addApiError('gameStats', e),
+  onError: e => addApiError('gameStats', e),
   onSuccess: () => removeApiError('gameStats'),
 });
 
@@ -99,7 +99,7 @@ const { state: gameOfficials, execute: getGameOfficials } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  onError: (e) => addApiError('gameOfficials', e),
+  onError: e => addApiError('gameOfficials', e),
   onSuccess: () => removeApiError('gameOfficials'),
 });
 
@@ -114,7 +114,7 @@ const colors = useTeamColors(gameData);
 
 <template>
   <div :class="useMainClass('gamecenter-timeline')" :style="colors">
-    <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
+    <I18NProvider :locale="props.locale" :messages="messages">
       <ErrorNotice v-for="error in errors" :key="error.key" :error="error" />
 
       <ScoreBoard
@@ -132,7 +132,7 @@ const colors = useTeamColors(gameData);
       />
 
       <template v-if="gameData?.gameStatus > 0">
-        <GameTabs v-model:activeTab="activeTab" />
+        <GameTabs v-model:active-tab="activeTab" />
 
         <GameEvents
           v-if="activeTab === TAB_EVENTS && !isEmpty(gameEvents) && !isEmpty(gameData)"
@@ -173,9 +173,15 @@ const colors = useTeamColors(gameData);
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/progress.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/game-center-timeline.css"></style>

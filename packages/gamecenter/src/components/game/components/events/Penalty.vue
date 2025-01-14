@@ -1,8 +1,8 @@
 <script setup>
-import { ref, computed } from 'vue';
-import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import IconWhistle from '@mjsz-vbr-elements/shared/icons/IconWhistle';
+import { computed, ref } from 'vue';
 import { convertPenaltyCause } from '../../internal';
 import TeamLogo from './TeamLogo.vue';
 
@@ -26,19 +26,23 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
 </script>
 
 <template>
-  <div class="is-time-cell">{{ event.eventTime }}</div>
-  <div class="is-team-logo-cell">
-    <TeamLogo :name="event.team.longName" :logo="event.team.logo" :key="event.team.id" :is-home-team="isHomeTeam" />
+  <div class="is-time-cell">
+    {{ event.eventTime }}
   </div>
-  <div class="is-icon-cell"><IconWhistle width="24" height="24" class="is-penalty-icon" /></div>
+  <div class="is-team-logo-cell">
+    <TeamLogo :key="event.team.id" :name="event.team.longName" :logo="event.team.logo" :is-home-team="isHomeTeam" />
+  </div>
+  <div class="is-icon-cell">
+    <IconWhistle width="24" height="24" class="is-penalty-icon" />
+  </div>
   <div class="is-penalty-cell">
     <FloatingPanel
+      v-slot="{ setRef, events }"
       :offset="2"
       placement="top"
       theme="tooltip"
       :content="t(`penalties.${convertedEvent.penaltyCause}`)"
       :append-to="tooltipContainer"
-      v-slot:default="{ setRef, events }"
     >
       <span :ref="setRef" :tabindex="0" :aria-label="t(`penalties.${convertedEvent.penaltyCause}`)" v-on="events">
         {{ convertedEvent.penaltyCause }}
@@ -47,10 +51,16 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
     <div ref="tooltipContainer" />
   </div>
   <div class="is-light-cell">
-    <template v-if="event.penaltyLength !== 0">{{ t('events.penaltyLength', [event.penaltyLength]) }}</template>
-    <template v-if="event.perc === 0">PS</template>
+    <template v-if="event.penaltyLength !== 0">
+      {{ t('events.penaltyLength', [event.penaltyLength]) }}
+    </template>
+    <template v-if="event.perc === 0">
+      PS
+    </template>
   </div>
-  <div class="is-light-cell">{{ event.penaltyEnd }}</div>
+  <div class="is-light-cell">
+    {{ event.penaltyEnd }}
+  </div>
   <div class="is-evented-person">
     <span v-if="event.jerseyNumber === null">{{ t('events.teamPenalty') }}</span>
     <template v-else>

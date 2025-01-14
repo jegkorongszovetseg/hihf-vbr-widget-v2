@@ -1,6 +1,6 @@
 <script setup>
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { BaseSelect } from '@mjsz-vbr-elements/core/components';
+import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { computed } from 'vue';
 
 const props = defineProps({
@@ -42,6 +42,7 @@ function changeSection(id) {
   emit('onChangeSection', id);
 }
 </script>
+
 <template>
   <div class="g-row">
     <div>
@@ -57,8 +58,8 @@ function changeSection(id) {
     <button
       v-for="section in sections"
       :key="section.phaseId"
-      @click="changeSection(section)"
       :class="[useMainClass('tab-button'), { 'is-active': section.sectionId === sectionId }]"
+      @click="changeSection(section)"
     >
       {{ section.sectionName }}
     </button>

@@ -1,26 +1,25 @@
 <script setup>
-import { computed, ref, unref } from 'vue';
-import { useAsyncState } from '@vueuse/core';
-import { baseProps, playerStatsProps, teamStatsProps } from '@mjsz-vbr-elements/core';
-import { SORT_STATE_DESCEND, COLUMNS_FIELD_PLAYERS_PENALTY } from '@mjsz-vbr-elements/core';
+import { baseProps, COLUMNS_FIELD_PLAYERS_PENALTY, playerStatsProps, SORT_STATE_DESCEND, teamStatsProps } from '@mjsz-vbr-elements/core';
+import { ErrorNotice, I18NProvider, Paginator, StatisticsTable } from '@mjsz-vbr-elements/core/components';
+import { fetchVBRData, useErrorProvider, usePage, useSort } from '@mjsz-vbr-elements/core/composables';
 import {
   convert,
-  teamName,
+  externalPlayerLinkResolver,
+  externalTeamLinkResolver,
   playerName,
   rawConvert,
-  externalTeamLinkResolver,
-  externalPlayerLinkResolver,
+  teamName,
 } from '@mjsz-vbr-elements/core/utils';
-import { useErrorProvider, usePage, useSort, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
-import { I18NProvider, ErrorNotice, StatisticsTable, Paginator } from '@mjsz-vbr-elements/core/components';
-
-const columns = COLUMNS_FIELD_PLAYERS_PENALTY;
+import { useAsyncState } from '@vueuse/core';
+import { computed, ref, unref } from 'vue';
 
 const props = defineProps({
   ...baseProps,
   ...playerStatsProps,
   ...teamStatsProps,
 });
+
+const columns = COLUMNS_FIELD_PLAYERS_PENALTY;
 
 const tooltipContainer = ref(null);
 
@@ -37,8 +36,8 @@ const { state: rawRows, isLoading } = useAsyncState(
     }),
   [],
   {
-    onError: (error) => onError(error),
-  }
+    onError: error => onError(error),
+  },
 );
 
 const { page, change: onPaginatorChange } = usePage();
@@ -61,10 +60,12 @@ const convertedRows = computed(() => {
 
 const totalItems = computed(() => convertedRows.value?.totalItems);
 
-const resolveExternalTeamLink = (params) =>
-  externalTeamLinkResolver(props.externalTeamResolver, { ...params, championshipId: props.championshipId });
-const resolveExternalPlayerLink = (params) =>
-  externalPlayerLinkResolver(props.externalPlayerResolver, { ...params, championshipId: props.championshipId });
+function resolveExternalTeamLink(params) {
+  return externalTeamLinkResolver(props.externalTeamResolver, { ...params, championshipId: props.championshipId });
+}
+function resolveExternalPlayerLink(params) {
+  return externalPlayerLinkResolver(props.externalPlayerResolver, { ...params, championshipId: props.championshipId });
+}
 </script>
 
 <template>
@@ -100,6 +101,9 @@ const resolveExternalPlayerLink = (params) =>
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/paginator.css"></style>

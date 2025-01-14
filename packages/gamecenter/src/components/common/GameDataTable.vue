@@ -1,8 +1,8 @@
 <script setup>
-import { ref } from 'vue';
-import { useMainClass, useI18n } from '@mjsz-vbr-elements/core/composables';
-import { ResponsiveTable, DataTable, FloatingPanel } from '@mjsz-vbr-elements/core/components';
+import { DataTable, FloatingPanel, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import IconStar from '@mjsz-vbr-elements/shared/icons/IconStar';
+import { ref } from 'vue';
 
 const props = defineProps({
   columns: {
@@ -31,13 +31,13 @@ const tooltipContainer = ref(null);
 
 const { t } = useI18n();
 
-const onSort = (payload) => emit('sort', payload);
+const onSort = payload => emit('sort', payload);
 </script>
 
 <template>
   <div>
     <h2>{{ title }}</h2>
-    <ResponsiveTable v-slot:default="{ el: rootElement }">
+    <ResponsiveTable v-slot="{ el: rootElement }">
       <DataTable
         :columns="props.columns"
         :rows="props.rows"
@@ -45,19 +45,23 @@ const onSort = (payload) => emit('sort', payload);
         :sort="sort"
         @sort="onSort"
       >
-        <template v-slot:cell-name="{ row }">
+        <template #cell-name="{ row }">
           {{ row.name }}
           <FloatingPanel v-if="row.isBP" placement="top" :content="t('bestPlayer')" :append-to="tooltipContainer">
-            <template v-slot:default="{ setRef, show, hide }">
-              <span class="is-text-dark" :ref="setRef" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">
+            <template #default="{ setRef, show, hide }">
+              <span :ref="setRef" class="is-text-dark" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">
                 <IconStar />
               </span>
             </template>
           </FloatingPanel>
         </template>
-        <template v-slot:cell-cora="{ row }">
-          <template v-if="row.isPlayerC">C</template>
-          <template v-if="row.isPlayerA">A</template>
+        <template #cell-cora="{ row }">
+          <template v-if="row.isPlayerC">
+            C
+          </template>
+          <template v-if="row.isPlayerA">
+            A
+          </template>
         </template>
       </DataTable>
     </ResponsiveTable>

@@ -1,20 +1,20 @@
 <script setup>
-import { ref } from 'vue';
-import { externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
+import { COLUMNS_STANDINGS_P_3 } from '@mjsz-vbr-elements/core/columns';
 import {
+  AdditionalStandingsText,
   ErrorNotice,
   ErrorProvider,
   I18NProvider,
-  AdditionalStandingsText,
 } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
-import { COLUMNS_STANDINGS_P_3 } from '@mjsz-vbr-elements/core/columns';
+import { externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
+import { ref } from 'vue';
+import en from '../../locales/en.json';
+import hu from '../../locales/hu.json';
 import DataProvider from './DataProvider.vue';
 import Selector from './Selector.vue';
+import { COLUMNS_LIVE_STANDINGS_P_3, TOGGLE_DEFAULT, TOGGLE_LIVE } from './standings.internal';
 import StandingsTable from './StandingsTable.vue';
-import hu from '../../locales/hu.json';
-import en from '../../locales/en.json';
-import { COLUMNS_LIVE_STANDINGS_P_3, TOGGLE_LIVE, TOGGLE_DEFAULT } from './standings.internal';
 
 const props = defineProps({
   locale: {
@@ -42,18 +42,16 @@ const messages = { en, hu };
 
 const tooltipContainer = ref(null);
 
-const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeamResolver, teamId);
+const externalTeamLink = teamId => externalTeamLinkResolver(props.externalTeamResolver, teamId);
 </script>
 
 <template>
   <div>
-    <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
-      <ErrorProvider v-slot:default="{ error, hasError }">
+    <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
+      <ErrorProvider v-slot="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
 
         <DataProvider
-          :locale="locale"
-          :championship-name="championshipName"
           v-slot="{
             sort,
             teams,
@@ -70,14 +68,16 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
             changeSection,
             onChangeStandingsType,
           }"
+          :locale="locale"
+          :championship-name="championshipName"
         >
           <Selector :seasons="seasons" :championship-id="championshipId" @update:championship-id="changeSeason" />
           <div :class="useMainClass('section-selector')">
             <button
               v-for="rawSection in sections"
               :key="rawSection.phaseId"
-              @click="changeSection(rawSection.phaseName)"
               :class="[useMainClass('tab-button'), { 'is-active': rawSection.phaseName === section }]"
+              @click="changeSection(rawSection.phaseName)"
             >
               {{ rawSection.phaseName }}
             </button>
@@ -91,7 +91,7 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
               :class="{ 'is-active': standingsType === TOGGLE_DEFAULT }"
               @click="onChangeStandingsType(TOGGLE_DEFAULT)"
             >
-            {{ t('standings.default') }}
+              {{ t('standings.default') }}
             </button>
           </div>
 
@@ -126,9 +126,15 @@ const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalTeam
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>

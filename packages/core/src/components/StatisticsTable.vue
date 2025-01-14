@@ -1,14 +1,14 @@
 <script setup>
 import { computed, toRefs } from 'vue';
+import { useI18n } from '../composables';
 import { useColumns } from '../composables/useColumns.js';
 import { useError } from '../composables/useErrors';
-import { useI18n } from '../composables';
-import * as Errors from '../utils/errors';
 import { DEFAULT_PORTRAIT_IMAGE_URL } from '../constants';
-import ResponsiveTable from './ResponsiveTable.vue';
+import * as Errors from '../utils/errors';
 import DataTable from './DataTable.vue';
 import Image from './Image.vue';
 import LoadingIndicator from './LoadingIndicator.vue';
+import ResponsiveTable from './ResponsiveTable.vue';
 
 const props = defineProps({
   columns: {
@@ -77,9 +77,9 @@ const props = defineProps({
   },
 });
 
-const { columns: currentColumns, hideColumns } = toRefs(props);
-
 const emit = defineEmits(['sort']);
+
+const { columns: currentColumns, hideColumns } = toRefs(props);
 
 const { onError } = useError();
 
@@ -90,21 +90,22 @@ const { columns, error } = useColumns(
   hideColumns,
   computed(() => ({
     offsetName: props.offsetName,
-  }))
+  })),
 );
-if (error.value)
+if (error.value) {
   onError(
     new Errors.WidgetError(Errors.UndefinedColumn.message, {
       ...Errors.UndefinedColumn.options,
       cause: { column: error.value },
-    })
+    }),
   );
+}
 
-const onSort = (payload) => emit('sort', payload);
+const onSort = payload => emit('sort', payload);
 </script>
 
 <template>
-  <ResponsiveTable v-slot:default="{ el: rootElement }">
+  <ResponsiveTable v-slot="{ el: rootElement }">
     <DataTable
       :columns="columns"
       :sort="props.sort"
@@ -113,61 +114,60 @@ const onSort = (payload) => emit('sort', payload);
       :append-to="appendTo || rootElement"
       @sort="onSort"
     >
-      <template v-slot:cell-index="{ row }">
+      <template #cell-index="{ row }">
         <span :class="row.indexClass">
           {{ row.index }}
         </span>
       </template>
-      
-      <template v-slot:cell-playerPortrait="{ row }">
+
+      <template #cell-playerPortrait="{ row }">
         <div class="is-portrait-image">
           <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
         </div>
       </template>
 
-      <template v-slot:cell-teamLogo="{ row }">
-        <Image class="is-logo-image" :key="row.team?.id ?? row.id" :src="row.team?.logo" />
+      <template #cell-teamLogo="{ row }">
+        <Image :key="row.team?.id ?? row.id" class="is-logo-image" :src="row.team?.logo" />
       </template>
 
-      <template v-slot:cell-homeTeamLogo="{ row }">
-        <Image class="is-logo-image is-right" :key="row.homeTeam?.id" :src="row.homeTeam?.logo" />
+      <template #cell-homeTeamLogo="{ row }">
+        <Image :key="row.homeTeam?.id" class="is-logo-image is-right" :src="row.homeTeam?.logo" />
       </template>
 
-      <template v-slot:cell-awayTeamLogo="{ row }">
-        <Image class="is-logo-image is-right" :key="row.awayTeam?.id" :src="row.awayTeam?.logo" />
+      <template #cell-awayTeamLogo="{ row }">
+        <Image :key="row.awayTeam?.id" class="is-logo-image is-right" :src="row.awayTeam?.logo" />
       </template>
 
-      <template v-slot:cell-teamName="{ row }">
-        <span class="is-team-name-long">{{ row.team?.longName }} <span v-if="row.penaltyPoints"><sup>*</sup></span></span>
-        <span class="is-team-name-short">{{ row.team?.shortName }} <span v-if="row.penaltyPoints"><sup>*</sup></span></span>
+      <template #cell-teamName="{ row }">
+        <a v-if="isTeamLinked" :href="externalTeamResolver(row)" target="_blank">
+          <span class="is-team-name-long">{{ row.team?.longName }}</span>
+          <span class="is-team-name-short">{{ row.team?.shortName }}</span>
+        </a>
+        <template v-else>
+          <span class="is-team-name-long">{{ row.team?.longName }} <span v-if="row.penaltyPoints"><sup>*</sup></span></span>
+          <span class="is-team-name-short">{{ row.team?.shortName }} <span v-if="row.penaltyPoints"><sup>*</sup></span></span>
+        </template>
       </template>
 
-      <template v-slot:cell-homeTeamName="{ row }">
+      <template #cell-homeTeamName="{ row }">
         <span class="is-team-name-long">{{ row.homeTeam?.longName }}</span>
         <span class="is-team-name-short">{{ row.homeTeam?.shortName }}</span>
       </template>
 
-      <template v-slot:cell-awayTeamName="{ row }">
+      <template #cell-awayTeamName="{ row }">
         <span class="is-team-name-long">{{ row.awayTeam?.longName }}</span>
         <span class="is-team-name-short">{{ row.awayTeam?.shortName }}</span>
       </template>
 
-      <template v-if="isTeamLinked" v-slot:cell-teamName="{ row }">
-        <a :href="externalTeamResolver(row)" target="_blank">
-          <span class="is-team-name-long">{{ row.team?.longName }}</span>
-          <span class="is-team-name-short">{{ row.team?.shortName }}</span>
-        </a>
-      </template>
-
-      <template v-if="isPlayerLinked" v-slot:cell-name="{ row }">
+      <template v-if="isPlayerLinked" #cell-name="{ row }">
         <a :href="externalPlayerResolver(row)" target="_blank">{{ row.name }}</a>
       </template>
 
-      <template v-slot:cell-location="{ row }">
+      <template #cell-location="{ row }">
         {{ row.location?.locationName ?? '' }}
       </template>
 
-      <template v-slot:cell-gameResult="{ row }">
+      <template #cell-gameResult="{ row }">
         <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>
         <a
           v-else
@@ -179,13 +179,13 @@ const onSort = (payload) => emit('sort', payload);
         </a>
       </template>
 
-      <template v-slot:cell-gameResultType="{ row }">
+      <template #cell-gameResultType="{ row }">
         <span v-if="row.isOvertime" class="label">{{ t('common.overtimeShort') }}</span>
         <span v-if="row.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
         <span v-if="row.seriesStandings" class="label">{{ row.seriesStandings }}</span>
       </template>
 
-      <template v-slot:loading>
+      <template #loading>
         <LoadingIndicator />
       </template>
     </DataTable>

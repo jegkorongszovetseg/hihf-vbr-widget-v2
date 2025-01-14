@@ -1,7 +1,7 @@
 <script setup>
-import { computed } from 'vue';
-import { useMainClass, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { BaseSelect } from '@mjsz-vbr-elements/core/components';
+import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { computed } from 'vue';
 import { REPORT_TYPE_PLAYERS, REPORT_TYPE_TEAMS } from './statistics.internal';
 
 const props = defineProps({
@@ -69,32 +69,32 @@ const { t } = useI18n();
 
 const seasonSelect = computed({
   get: () => props.championshipId,
-  set: (value) => emit('onSeasonChange', value),
+  set: value => emit('onSeasonChange', value),
 });
 
 const sectionSelect = computed({
   get: () => props.phaseId,
-  set: (value) => emit('onSectionChange', value),
+  set: value => emit('onSectionChange', value),
 });
 
 const reportSelect = computed({
   get: () => props.currentReport,
-  set: (value) => emit('onReportChange', value),
+  set: value => emit('onReportChange', value),
 });
 
 const teamSelect = computed({
   get: () => props.teamFilter,
-  set: (value) => emit('onTeamChange', value),
+  set: value => emit('onTeamChange', value),
 });
 
 const playerName = computed({
   get: () => props.playerFilter,
-  set: (value) => emit('onPlayerInput', value),
+  set: value => emit('onPlayerInput', value),
 });
 
-const onStatTypeChange = (value) => {
+function onStatTypeChange(value) {
   emit('onStatTypeChange', value);
-};
+}
 
 const baseInputClass = useMainClass('base-input');
 const baseLabelClass = useMainClass('label');
@@ -126,26 +126,32 @@ const tabButtonClasses = useMainClass('tab-button');
     <div>
       <label for="report" :class="baseLabelClass">{{ t('selection.report') }}</label>
       <BaseSelect id="report" v-model="reportSelect">
-        <option v-for="{ name, value } in reports" :key="value" :value="value">{{ name }}</option>
+        <option v-for="{ name, value } in reports" :key="value" :value="value">
+          {{ name }}
+        </option>
       </BaseSelect>
     </div>
     <template v-if="reportType === 'players'">
       <div>
         <label for="teams" :class="baseLabelClass">{{ t('selection.teams') }}</label>
         <BaseSelect id="teams" v-model="teamSelect" :disabled="reportType !== 'players'">
-          <option :value="null">{{ t('common.all') }}</option>
-          <option v-for="{ teamId, teamName } in teams" :key="teamId" :value="teamId">{{ teamName }}</option>
+          <option :value="null">
+            {{ t('common.all') }}
+          </option>
+          <option v-for="{ teamId, teamName } in teams" :key="teamId" :value="teamId">
+            {{ teamName }}
+          </option>
         </BaseSelect>
       </div>
       <div>
         <label for="player" :class="baseLabelClass">{{ t('selection.filterName') }}</label>
         <input
           id="player"
-          type="text"
           v-model="playerName"
+          type="text"
           :class="baseInputClass"
           :disabled="reportType !== 'players'"
-        />
+        >
       </div>
     </template>
   </div>
@@ -153,15 +159,15 @@ const tabButtonClasses = useMainClass('tab-button');
   <div>
     <button
       type="button"
-      @click="onStatTypeChange(REPORT_TYPE_PLAYERS)"
       :class="[tabButtonClasses, { 'is-active': reportType === REPORT_TYPE_PLAYERS }]"
+      @click="onStatTypeChange(REPORT_TYPE_PLAYERS)"
     >
       {{ t('selection.players') }}
     </button>
     <button
       type="button"
-      @click="onStatTypeChange(REPORT_TYPE_TEAMS)"
       :class="[tabButtonClasses, { 'is-active': reportType === REPORT_TYPE_TEAMS }]"
+      @click="onStatTypeChange(REPORT_TYPE_TEAMS)"
     >
       {{ t('selection.teams') }}
     </button>

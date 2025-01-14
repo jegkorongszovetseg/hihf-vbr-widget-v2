@@ -1,6 +1,6 @@
 <script setup>
+import { convertTimesSecToMin, playerName, rawConvert } from '@mjsz-vbr-elements/core/utils';
 import { computed } from 'vue';
-import { playerName, rawConvert, convertTimesSecToMin } from '@mjsz-vbr-elements/core/utils';
 
 const props = defineProps({
   rows: {

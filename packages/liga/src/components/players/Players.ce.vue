@@ -1,21 +1,19 @@
 <script setup>
-import { ref } from 'vue';
 import {
-  Paginator,
   ErrorNotice,
-  I18NProvider,
   ErrorProvider,
+  I18NProvider,
+  Paginator,
   SeasonSelector,
 } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { externalPlayerLinkResolver, externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
-import DataProvider from './DataProvider.vue';
+import { ref } from 'vue';
+import en from '../../locales/en.json';
+import hu from '../../locales/hu.json';
 import PlayersDataTable from '../common/PlayersDataTable.vue';
 import { COLUMNS_PLAYERS } from '../internal';
-import hu from '../../locales/hu.json';
-import en from '../../locales/en.json';
-
-const messages = { en, hu };
+import DataProvider from './DataProvider.vue';
 
 const props = defineProps({
   locale: {
@@ -49,23 +47,21 @@ const props = defineProps({
   },
 });
 
+const messages = { en, hu };
+
 const tooltipContainer = ref(null);
 
-const externalPlayerLink = (params) => externalPlayerLinkResolver(props.externalPlayerResolver, params);
-const externalTeamLink = (params) => externalTeamLinkResolver(props.externalTeamResolver, params);
+const externalPlayerLink = params => externalPlayerLinkResolver(props.externalPlayerResolver, params);
+const externalTeamLink = params => externalTeamLinkResolver(props.externalTeamResolver, params);
 </script>
 
 <template>
   <div>
-    <I18NProvider :locale="props.locale" :messages="messages" v-slot="{ t }">
-      <ErrorProvider v-slot:default="{ error, hasError }">
+    <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
+      <ErrorProvider v-slot="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
 
         <DataProvider
-          :api-key="props.apiKey"
-          :locale="locale"
-          :championship-name="championshipName"
-          :limit="limit"
           v-slot="{
             range,
             players,
@@ -80,6 +76,10 @@ const externalTeamLink = (params) => externalTeamLinkResolver(props.externalTeam
             onPaginatorChange,
             onInput,
           }"
+          :api-key="props.apiKey"
+          :locale="locale"
+          :championship-name="championshipName"
+          :limit="limit"
         >
           <SeasonSelector
             :seasons="seasons"
@@ -89,7 +89,7 @@ const externalTeamLink = (params) => externalTeamLinkResolver(props.externalTeam
           >
             <div>
               <label for="player" :class="useMainClass('label')">{{ t('selection.filterName') }}</label>
-              <input id="player" type="text" :class="useMainClass('base-input')" :value="query" @input="onInput" />
+              <input id="player" type="text" :class="useMainClass('base-input')" :value="query" @input="onInput">
             </div>
           </SeasonSelector>
 
@@ -113,7 +113,9 @@ const externalTeamLink = (params) => externalTeamLinkResolver(props.externalTeam
               :range-length="5"
               @change="onPaginatorChange"
             />
-            <div v-if="players.totalItems > 0">{{ range.join('-') }} / {{ players.totalItems }}</div>
+            <div v-if="players.totalItems > 0">
+              {{ range.join('-') }} / {{ players.totalItems }}
+            </div>
           </div>
 
           <div ref="tooltipContainer" />
@@ -124,10 +126,17 @@ const externalTeamLink = (params) => externalTeamLinkResolver(props.externalTeam
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/paginator.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>

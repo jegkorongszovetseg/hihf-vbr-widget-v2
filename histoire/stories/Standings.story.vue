@@ -33,7 +33,7 @@ const state = reactive({
         <HstSelect v-model="state.locale" title="Locale" :options="{ hu: 'HU', en: 'EN' }" />
         <HstText v-model="state.championshipId" title="championshipId" />
         <HstText v-model="state.phaseId" title="phaseId" />
-        <HstSelect v-model="state.type" title="Type" :options="{ '2': '2 pontos', '3': '3 pontos' }" />
+        <HstSelect v-model="state.type" title="Type" :options="{ 2: '2 pontos', 3: '3 pontos' }" />
         <HstCheckboxList
           v-model="state.hideColumns"
           title="hideColumns"

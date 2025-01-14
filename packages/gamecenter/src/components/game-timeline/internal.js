@@ -205,6 +205,7 @@ export function filterGoalScorers(events, teamId) {
       }
       else {
         players[player.playerId] = {
+          id: player.playerId,
           name: `${player.lastName} ${player.firstName}`,
           eventTime: player.eventTime,
           eventTimeSec: player.eventTimeSec,

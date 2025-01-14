@@ -2,7 +2,7 @@
 import { DataTable, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 
-const props = defineProps({
+defineProps({
   columns: {
     type: Object,
     default: () => ({}),
@@ -36,13 +36,13 @@ const props = defineProps({
 
 const { t } = useI18n();
 </script>
+
 <template>
   <ResponsiveTable>
     <DataTable :rows="rows" :columns="columns" :is-loading="isLoading" :append-to="appendTo">
-      <template v-slot:cell-resultType="{ row }">
+      <template #cell-resultType="{ row }">
         <span
-          :class="[
-            'is-badge',
+          class="is-badge" :class="[
             {
               'is-green': ['W', 'OTW', 'SOW'].includes(row.resultType),
               'is-red': ['L', 'OTL', 'SOL'].includes(row.resultType),
@@ -54,12 +54,12 @@ const { t } = useI18n();
         </span>
       </template>
 
-      <template v-slot:cell-teamName="{ row }">
+      <template #cell-teamName="{ row }">
         <span class="is-team-name-long">{{ row.team?.longName }}</span>
         <span class="is-team-name-short">{{ row.team?.shortName }}</span>
       </template>
 
-      <template v-slot:cell-gameResult="{ row }">
+      <template #cell-gameResult="{ row }">
         <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>
         <a
           v-else
@@ -70,16 +70,16 @@ const { t } = useI18n();
         </a>
       </template>
 
-      <template v-slot:cell-gameResultType="{ row }">
+      <template #cell-gameResultType="{ row }">
         <span v-if="row.isOvertime" class="label">{{ t('common.overtimeShort') }}</span>
         <span v-if="row.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
       </template>
 
-      <template  v-slot:cell-powerplay="{ row }">
+      <template #cell-powerplay="{ row }">
         {{ row.adv }} / {{ row.ppgf }}
       </template>
 
-      <template  v-slot:cell-penaltyKilling="{ row }">
+      <template #cell-penaltyKilling="{ row }">
         {{ row.dvg }} / {{ row.pk }}
       </template>
     </DataTable>

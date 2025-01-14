@@ -12,11 +12,11 @@ const props = defineProps({
 const emits = defineEmits(['update:modelValue']);
 const baseInputClass = useMainClass('base-input');
 
-const value = computed({ get: () => props.modelValue, set: (value) => emits('update:modelValue', value) });
+const value = computed({ get: () => props.modelValue, set: value => emits('update:modelValue', value) });
 </script>
 
 <template>
-  <select v-model="value" :class="[baseInputClass, 'is-select']">
+  <select v-model="value" class="is-select" :class="[baseInputClass]">
     <slot />
   </select>
 </template>

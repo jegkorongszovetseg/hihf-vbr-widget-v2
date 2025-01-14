@@ -1,8 +1,8 @@
 <script setup>
-import { ref, computed } from 'vue';
-import { pick } from 'ramda';
-import { useI18n, useColumns } from '@mjsz-vbr-elements/core/composables';
+import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { offsetName } from '@mjsz-vbr-elements/core/utils';
+import { pick } from 'ramda';
+import { computed, ref } from 'vue';
 import GamesDataTable from '../../common/GamesDataTable.vue';
 import { COLUMNS_GAMES } from '../../internal.js';
 
@@ -35,15 +35,17 @@ const { columns } = useColumns(
       'powerplay',
       'penaltyKilling',
     ],
-    COLUMNS_GAMES
+    COLUMNS_GAMES,
   ),
   null,
-  computed(() => ({ offsetName: offsetName(new Date(), null, 'hu') }))
+  computed(() => ({ offsetName: offsetName(new Date(), null, 'hu') })),
 );
 </script>
 
 <template>
-  <h2 class="is-heading-2">{{ t('teams.games') }}</h2>
+  <h2 class="is-heading-2">
+    {{ t('teams.games') }}
+  </h2>
   <GamesDataTable :rows="data" :columns="columns" :game-resolver="gameResolver" :append-to="tooltipContainer" />
-  <div ref="tooltipContainer"></div>
+  <div ref="tooltipContainer" />
 </template>
