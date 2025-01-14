@@ -1,3 +1,8 @@
+## [2.11.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.11.0...v2.11.1) (2025-01-14)
+
+### Bug Fixes
+
+* (extended/GamesTimeline) Css és cimke javítása ([6a0ee68](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/6a0ee68071226a531720b9df26c8e0538f938b65))
 ## [2.11.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.10.0...v2.11.0) (2025-01-14)
 
 ### Bug Fixes
