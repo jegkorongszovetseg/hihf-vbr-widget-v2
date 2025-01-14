@@ -1,7 +1,7 @@
 <script setup>
-import { ref } from 'vue';
+import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { omit } from 'ramda';
-import { useI18n, useColumns } from '@mjsz-vbr-elements/core/composables';
+import { ref } from 'vue';
 import PlayersDataTable from '../../common/PlayersDataTable.vue';
 import { COLUMNS_PLAYERS } from '../../internal';
 
@@ -35,7 +35,9 @@ const { columns } = useColumns(omit(['teamName'], COLUMNS_PLAYERS));
 
 <template>
   <template v-for="(players, key) in data" :key="key">
-    <h2 class="is-heading-2">{{ t(`teams.${key}`) }}</h2>
+    <h2 class="is-heading-2">
+      {{ t(`teams.${key}`) }}
+    </h2>
     <PlayersDataTable
       :rows="players"
       :columns="columns"
@@ -45,5 +47,5 @@ const { columns } = useColumns(omit(['teamName'], COLUMNS_PLAYERS));
     />
   </template>
 
-  <div ref="tooltipContainer"></div>
+  <div ref="tooltipContainer" />
 </template>

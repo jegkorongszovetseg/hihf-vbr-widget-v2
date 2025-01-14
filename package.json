@@ -1,32 +1,37 @@
 {
   "name": "@mjsz-vbr-elements/monorepo",
-  "version": "2.10.0",
-  "description": "Data visualization for MJSZ VBR",
   "type": "module",
+  "version": "2.10.0",
   "private": true,
   "packageManager": "pnpm@9.15.3",
+  "description": "Data visualization for MJSZ VBR",
   "workspaces": [
     "packages/*",
     "playground/**",
     "histoire/**"
   ],
+  "author": "Ákos Stegner <akos.stegner@gmail.com>",
+  "license": "ISC",
+  "keywords": [],
   "scripts": {
     "playground": "pnpm run -C playground dev",
     "playground:localhost": "pnpm run -C playground dev --mode localhost",
     "build": "pnpm -r --filter='./packages/*' run build",
     "test": "vitest",
     "test:ci": "vitest run",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s",
     "release": "pnpm test:ci && bumpp -r -x \"pnpm run changelog\" --all",
     "publish:release": "pnpm run build && pnpm -r publish --access public"
   },
-  "keywords": [],
-  "author": "Ákos Stegner <akos.stegner@gmail.com>",
-  "license": "ISC",
   "devDependencies": {
+    "@antfu/eslint-config": "^3.14.0",
     "@vue/test-utils": "^2.4.6",
     "bumpp": "^9.10.0",
     "conventional-changelog-cli": "^5.0.0",
+    "eslint": "^9.18.0",
+    "eslint-plugin-format": "^1.0.1",
     "happy-dom": "^16.5.3",
     "vitest": "^2.1.8"
   }

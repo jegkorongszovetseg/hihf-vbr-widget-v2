@@ -47,6 +47,7 @@ function changeSection(id) {
   emit('onChangeSection', id);
 }
 </script>
+
 <template>
   <div class="g-row g-gap-normal is-mb-5">
     <div>
@@ -57,14 +58,14 @@ function changeSection(id) {
         </option>
       </BaseSelect>
     </div>
-    <slot></slot>
+    <slot />
   </div>
   <div v-if="!isSectionSelectionDisabled">
     <button
       v-for="section in sections"
       :key="section.phaseId"
-      @click="changeSection(section)"
       :class="[useMainClass('tab-button'), { 'is-active': section.sectionId === sectionId }]"
+      @click="changeSection(section)"
     >
       {{ section.sectionName }}
     </button>

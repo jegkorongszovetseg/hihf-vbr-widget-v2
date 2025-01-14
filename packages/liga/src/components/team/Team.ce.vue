@@ -1,17 +1,15 @@
 <script setup>
-import { ErrorProvider, ErrorNotice, I18NProvider, Image } from '@mjsz-vbr-elements/core/components';
+import { ErrorNotice, ErrorProvider, I18NProvider, Image } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
-import { externalPlayerLinkResolver, externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
-import DataProvider from './DataProvider.vue';
-import PageInfo from './pages/Info.vue';
-import PageRoster from './pages/Roster.vue';
-import PageGames from './pages/Games.vue';
-import Statistics from './pages/Statistics.vue';
-import { PAGE_INFO, PAGE_GAMES, PAGE_PLAYER_STATS, PAGE_ROSTER } from './team.internal.js';
+import { externalGameLinkResolver, externalPlayerLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
-
-const messages = { en, hu };
+import DataProvider from './DataProvider.vue';
+import PageGames from './pages/Games.vue';
+import PageInfo from './pages/Info.vue';
+import PageRoster from './pages/Roster.vue';
+import Statistics from './pages/Statistics.vue';
+import { PAGE_GAMES, PAGE_INFO, PAGE_PLAYER_STATS, PAGE_ROSTER } from './team.internal.js';
 
 const props = defineProps({
   locale: {
@@ -45,23 +43,21 @@ const props = defineProps({
   },
 });
 
-const externalPlayerLink = (params) => externalPlayerLinkResolver(props.externalPlayerResolver, params);
-const externalGameLink = (params) => externalGameLinkResolver(props.externalGameResolver, params);
+const messages = { en, hu };
+
+const externalPlayerLink = params => externalPlayerLinkResolver(props.externalPlayerResolver, params);
+const externalGameLink = params => externalGameLinkResolver(props.externalGameResolver, params);
 </script>
 
 <template>
   <div class="is-mb-5">
-    <I18NProvider :locale="props.locale" :messages="messages" v-slot="{ t }">
-      <ErrorProvider v-slot:default="{ hasError, error }">
+    <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
+      <ErrorProvider v-slot="{ hasError, error }">
         <ErrorNotice v-if="hasError" :error="error" />
 
         <DataProvider
-          :api-key="props.apiKey"
-          :championship-id="props.championshipId"
-          :team-id="teamId"
-          v-slot:default="{
+          v-slot="{
             teamInfo,
-            championshipId,
             page,
             roster,
             games,
@@ -69,8 +65,13 @@ const externalGameLink = (params) => externalGameLinkResolver(props.externalGame
             isStatsLoading,
             onChangePage,
           }"
+          :api-key="props.apiKey"
+          :championship-id="championshipId"
+          :team-id="teamId"
         >
-          <h1 class="is-heading-1 is-uppercase is-mb-5">{{ teamInfo?.team?.longName }}</h1>
+          <h1 class="is-heading-1 is-uppercase is-mb-5">
+            {{ teamInfo?.team?.longName }}
+          </h1>
           <div :class="useMainClass('main-image-wrapper')" style="--overlay-radius: 0px">
             <div class="is-main-image">
               <Image
@@ -80,7 +81,7 @@ const externalGameLink = (params) => externalGameLinkResolver(props.externalGame
               />
             </div>
             <div class="is-ovarlay-image">
-              <Image :src="teamInfo?.team?.logo" :key="teamInfo?.team?.id" />
+              <Image :key="teamInfo?.team?.id" :src="teamInfo?.team?.logo" />
             </div>
           </div>
 
@@ -134,10 +135,17 @@ const externalGameLink = (params) => externalGameLinkResolver(props.externalGame
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/teams.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>

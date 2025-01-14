@@ -1,11 +1,11 @@
-import DefaultTheme from 'vitepress/theme';
-import Columns from '../components/BuildColumns.vue';
-
 import MjszVbrElementsCore from '@mjsz-vbr-elements/core';
 import MjszVbrElements from '@mjsz-vbr-elements/elements';
+
 import MjszVbrElementsExtended from '@mjsz-vbr-elements/extended';
-import MjszVbrElementsLiga from '@mjsz-vbr-elements/liga';
 import MjszVbrElementsGamecenter from '@mjsz-vbr-elements/gamecenter';
+import MjszVbrElementsLiga from '@mjsz-vbr-elements/liga';
+import DefaultTheme from 'vitepress/theme';
+import Columns from '../components/BuildColumns.vue';
 import './index.css';
 
 export default {

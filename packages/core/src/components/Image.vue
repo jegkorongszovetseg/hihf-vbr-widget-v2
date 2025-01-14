@@ -1,6 +1,6 @@
 <script setup>
-import { ref, toRefs } from 'vue';
 import { useImage } from '@vueuse/core';
+import { ref, toRefs } from 'vue';
 
 defineOptions({
   inheritAttrs: false,
@@ -28,12 +28,12 @@ const { error, isReady } = useImage(imageOptions, { resetOnExecute: false, shall
 </script>
 
 <template>
-  <img v-if="error && defaultSrc" :src="defaultSrc" :class="['is-loaded is-default', $attrs.class]" />
+  <img v-if="error && defaultSrc" :src="defaultSrc" class="is-loaded is-default" :class="[$attrs.class]">
   <img
     v-if="!error"
     :src="imageOptions.src"
     :class="[$attrs.class, { 'is-loaded': isReady }]"
     :title="props.title"
     loading="lazy"
-  />
+  >
 </template>

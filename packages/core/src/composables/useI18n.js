@@ -1,5 +1,5 @@
+import { isEmpty, map, path, split, trim } from 'ramda';
 import { computed, defineComponent, h, inject, provide, reactive } from 'vue';
-import { path, isEmpty, trim, map, split } from 'ramda';
 
 const I18nContext = Symbol('I18nContext');
 
@@ -9,7 +9,7 @@ const state = reactive({
   fallbackLocale: '',
 });
 
-export const createI18n = ({ messages = {}, locale = '', fallbackLocale = '' }) => {
+export function createI18n({ messages = {}, locale = '', fallbackLocale = '' }) {
   state.messages = messages;
   state.locale = locale;
   state.fallbackLocale = fallbackLocale;
@@ -55,9 +55,9 @@ export const createI18n = ({ messages = {}, locale = '', fallbackLocale = '' }) 
   return {
     translate,
   };
-};
+}
 
-export const useI18n = (settings) => {
+export function useI18n(settings) {
   if (settings) {
     state.messages = settings.messages;
     state.locale = settings.locale;
@@ -72,34 +72,35 @@ export const useI18n = (settings) => {
     setLocale: api.setLocale,
     hasTranslation: api.hasTranslation,
   };
-};
+}
 
-const useI18nContext = () => {
+function useI18nContext() {
   const api = inject(I18nContext, null);
   if (api === null) {
     throw new Error('Privider is missing a parent component.');
   }
   return api;
-};
+}
 
-const resolveTransition = (keys = []) => {
+function resolveTransition(keys = []) {
   let rawTransition = getTranslation(state.locale, keys, state.messages);
   if (!rawTransition && state.fallbackLocale) {
     rawTransition = getTranslation(state.fallbackLocale, keys, state.messages);
   }
-  if (!rawTransition) return keys.join('.');
+  if (!rawTransition)
+    return keys.join('.');
   return rawTransition;
-};
+}
 
 function getTranslation(locale, keys, messages) {
   return path([locale, ...keys], messages);
 }
 
-const replacer = function (tpl, data) {
-  return tpl.replace(/\{(\w+)\}/g, function ($1, $2) {
+function replacer(tpl, data) {
+  return tpl.replace(/\{(\w+)\}/g, ($1, $2) => {
     return data[$2];
   });
-};
+}
 
 export const i18n = defineComponent({
   props: {
@@ -117,11 +118,12 @@ export const i18n = defineComponent({
   setup(props, { slots }) {
     const keys = map(trim, split('.', props.path));
     const transition = resolveTransition(keys);
-    const interpolationItems = split(/{|}/, transition);
+    const interpolationItems = split(/\{|\}/, transition);
 
     const children = Object.keys(slots).map((item) => {
       const index = interpolationItems.indexOf(item);
-      if (index > -1) interpolationItems[index] = slots[item]()[0];
+      if (index > -1)
+        interpolationItems[index] = slots[item]()[0];
       return interpolationItems;
     });
 

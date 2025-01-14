@@ -1,12 +1,12 @@
 <script setup>
-import { computed } from 'vue';
+import { Image } from '@mjsz-vbr-elements/core/components';
 import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
-import { Image } from '@mjsz-vbr-elements/core/components';
-import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
 import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
-import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from '../game/internal';
+import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
+import { computed } from 'vue';
 import GamePeriodProgress from '../game/components/GamePeriodProgress.vue';
+import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from '../game/internal';
 import PeriodResults from './components/PeriodResults.vue';
 import { buildPeriodResultsByTeam, filterGoalScorers } from './internal';
 
@@ -37,7 +37,7 @@ const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.
 <template>
   <div :class="useMainClass('gamecenter-timeline-game-data')">
     <div class="is-title-container">
-      <div class="is-title" v-once>
+      <div v-once class="is-title">
         {{ gameData.championshipName }} - {{ gameData.divisionName }} - {{ gameData.gameName }} /
         {{ gameData.location.locationName }}
       </div>
@@ -72,15 +72,19 @@ const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.
     <div class="is-teams-and-results">
       <div>
         <Image v-once :src="gameData.homeTeam.logo" class="is-team-logo" :default-src="DEAFULT_LOGO_TEAM_A" />
-        <h1 class="is-team-name">{{ gameData.homeTeam.longName }}</h1>
+        <h1 class="is-team-name">
+          {{ gameData.homeTeam.longName }}
+        </h1>
         <ul class="is-goal-scorers">
-          <li v-for="person in homeGoalScorer">
+          <li v-for="person in homeGoalScorer" :key="person.id">
             {{ person.name }} <span>{{ person.eventTime }}</span>
           </li>
         </ul>
       </div>
       <div>
-        <p v-if="gameData.gameStatus > 1" class="is-game-status">{{ t(`gameStatus.status-${gameData.gameStatus}`) }}</p>
+        <p v-if="gameData.gameStatus > 1" class="is-game-status">
+          {{ t(`gameStatus.status-${gameData.gameStatus}`) }}
+        </p>
         <p v-if="gameData.gameStatus === 1" class="is-game-status">
           {{ t(`periods.${convertPeriodName(gameData.period)}`) }}
         </p>
@@ -92,18 +96,21 @@ const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.
             <span class="is-badge is-invert is-large">{{ t('afterShootout') }}</span>
           </p>
         </template>
-        <p v-if="gameData.gameStatus === 1" class="is-game-status">{{ gameData.actualTime }}</p>
+        <p v-if="gameData.gameStatus === 1" class="is-game-status">
+          {{ gameData.actualTime }}
+        </p>
 
         <GamePeriodProgress v-if="gameData.gameStatus === 1" :game-data="gameData" />
 
-        <div :class="['is-game-result', { 'is-game-status-live': gameData.gameStatus === 1 }]">
+        <div class="is-game-result" :class="[{ 'is-game-status-live': gameData.gameStatus === 1 }]">
           <span v-if="gameData.gameStatus === 0">-</span>
-          <span v-else>{{ gameData.homeTeamScore }}</span
-          >:<span v-if="gameData.gameStatus === 0">-</span>
+          <span v-else>{{ gameData.homeTeamScore }}</span>:<span v-if="gameData.gameStatus === 0">-</span>
           <span v-else>{{ gameData.awayTeamScore }}</span>
         </div>
 
-        <p v-if="gameData.attendance" class="is-attendance">{{ t('gameData.attendance', [gameData.attendance]) }}</p>
+        <p v-if="gameData.attendance" class="is-attendance">
+          {{ t('gameData.attendance', [gameData.attendance]) }}
+        </p>
 
         <PeriodResults
           v-if="gameData.gameStatus > 0"
@@ -114,9 +121,11 @@ const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.
       </div>
       <div>
         <Image v-once :src="gameData.awayTeam.logo" :default-src="DEAFULT_LOGO_TEAM_B" class="is-team-logo" />
-        <h1 class="is-team-name">{{ gameData.awayTeam.longName }}</h1>
+        <h1 class="is-team-name">
+          {{ gameData.awayTeam.longName }}
+        </h1>
         <ul class="is-goal-scorers">
-          <li v-for="person in awayGoalScorer">
+          <li v-for="person in awayGoalScorer" :key="person.id">
             {{ person.name }} <span>{{ person.eventTime }}</span>
           </li>
         </ul>

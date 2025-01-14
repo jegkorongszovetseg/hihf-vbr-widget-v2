@@ -1,5 +1,6 @@
 <script setup>
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
+
 defineProps({
   score: {
     type: Number,

@@ -4,7 +4,7 @@ import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
 import GameEventLayout from '../GameEventLayout.vue';
 import TeamLogo from './TeamLogo.vue';
 
-const props = defineProps({
+defineProps({
   event: {
     type: Object,
     required: true,
@@ -22,8 +22,12 @@ const { t } = useI18n();
 <template>
   <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam" :event-type="event.type" :event="event">
     <template #title>
-      {{ t('eventType.Büntető') }} - <template v-if="event.goal">{{ t('events.score') }}</template>
-      <template v-else>{{ t('events.missed') }}</template> - ({{ event.score }})
+      {{ t('eventType.Büntető') }} - <template v-if="event.goal">
+        {{ t('events.score') }}
+      </template>
+      <template v-else>
+        {{ t('events.missed') }}
+      </template> - ({{ event.score }})
     </template>
 
     <template #details-list>
@@ -35,7 +39,7 @@ const { t } = useI18n();
     </template>
 
     <template #team-logo>
-      <TeamLogo :name="event.team.longName" :logo="event.team.logo" :key="event.team.id" :is-home-team="isHomeTeam" />
+      <TeamLogo :key="event.team.id" :name="event.team.longName" :logo="event.team.logo" :is-home-team="isHomeTeam" />
     </template>
 
     <template #event-type-icon>

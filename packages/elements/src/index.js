@@ -1,18 +1,18 @@
 import { defineCustomElement } from 'vue';
 
 import {
-  Standings,
-  Schedule,
   FieldPlayersLeader,
   FieldPlayersPenalties,
+  FieldPlayersToi,
   GoaliesLeader,
+  PlayersNational,
+  Schedule,
+  Standings,
   TeamAttendance,
   TeamFairplay,
   TeamPenaltyKilling,
   TeamPowerplay,
   TeamScoringEfficiency,
-  PlayersNational,
-  FieldPlayersToi,
 } from './components';
 
 const StandingsCE = defineCustomElement(Standings);
@@ -29,29 +29,29 @@ const PlayersNationalCE = defineCustomElement(PlayersNational);
 const FieldPlayersToiCE = defineCustomElement(FieldPlayersToi);
 
 export {
-  Standings,
-  Schedule,
   FieldPlayersLeader,
-  FieldPlayersPenalties,
-  GoaliesLeader,
-  TeamAttendance,
-  TeamFairplay,
-  TeamPenaltyKilling,
-  TeamPowerplay,
-  TeamScoringEfficiency,
-  PlayersNational,
-  StandingsCE,
-  ScheduleCE,
   FieldPlayersLeaderCE,
+  FieldPlayersPenalties,
   FieldPlayersPenaltiesCE,
-  GoaliesLeaderCE,
-  TeamAttendanceCE,
-  TeamFairplayCE,
-  TeamPenaltyKillingCE,
-  TeamPowerplayCE,
-  TeamScoringEfficiencyCE,
-  PlayersNationalCE,
   FieldPlayersToiCE,
+  GoaliesLeader,
+  GoaliesLeaderCE,
+  PlayersNational,
+  PlayersNationalCE,
+  Schedule,
+  ScheduleCE,
+  Standings,
+  StandingsCE,
+  TeamAttendance,
+  TeamAttendanceCE,
+  TeamFairplay,
+  TeamFairplayCE,
+  TeamPenaltyKilling,
+  TeamPenaltyKillingCE,
+  TeamPowerplay,
+  TeamPowerplayCE,
+  TeamScoringEfficiency,
+  TeamScoringEfficiencyCE,
 };
 
 export function register() {

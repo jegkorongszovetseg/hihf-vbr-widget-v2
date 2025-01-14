@@ -1,23 +1,18 @@
 <script setup>
-import { computed, ref, triggerRef } from 'vue';
-import { isEmpty } from 'ramda';
-import { useIntervalFn } from '@vueuse/core';
 import { I18NProvider, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
 import { useServices, useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
-import { isAfter, offsetName, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
-import Carousel from './Carousel.vue';
-import CarouselItem from './CarouselItem.vue';
-import Game from './Game.vue';
-import ExternalSchedule from './ExternalSchedule.vue';
-import TrayAgain from './TryAgain.vue';
+import { format, getLocalTimezone, isAfter, offsetName } from '@mjsz-vbr-elements/core/utils';
+import { useIntervalFn } from '@vueuse/core';
+import { isEmpty } from 'ramda';
+import { computed, ref, triggerRef } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
+import Carousel from './Carousel.vue';
+import CarouselItem from './CarouselItem.vue';
+import ExternalSchedule from './ExternalSchedule.vue';
+import Game from './Game.vue';
 import { mergeGames, useGameDataService } from './internal';
-
-const messages = { en, hu };
-const timezone = getLocalTimezone();
-
-let gameDataIntervals = [];
+import TrayAgain from './TryAgain.vue';
 
 const props = defineProps({
   locale: {
@@ -45,6 +40,10 @@ const props = defineProps({
     default: '',
   },
 });
+const messages = { en, hu };
+const timezone = getLocalTimezone();
+
+let gameDataIntervals = [];
 
 const error = ref(false);
 
@@ -55,7 +54,7 @@ const { state: games, execute } = useServices({
     params: {},
     immediate: true,
   },
-  transform: (res) => mergeGames(res, games.value, 'id').reverse(),
+  transform: res => mergeGames(res, games.value, 'id').reverse(),
   onError: () => {
     error.value = true;
   },
@@ -72,47 +71,48 @@ useVisibilityChange(
   },
   () => {
     pause();
-    gameDataIntervals.map((cleanFn) => cleanFn?.());
+    gameDataIntervals.map(cleanFn => cleanFn?.());
     gameDataIntervals = [];
-  }
+  },
 );
 
 const initialIndex = computed(() => {
-  if (isEmpty(games.value)) return 0;
-  return games.value.findIndex((game) => !isAfter(new Date(game.gameDate), new Date(), 'day')) + 1;
+  if (isEmpty(games.value))
+    return 0;
+  return games.value.findIndex(game => !isAfter(new Date(game.gameDate), new Date(), 'day')) + 1;
 });
 
 const convertedGames = computed(() =>
-  games.value.map((game) => ({
+  games.value.map(game => ({
     ...game,
     gameDateTime: `${format(game.gameDate, 'L LT', timezone, props.locale)} (${offsetName(
       game.gameDate,
       timezone,
-      props.locale
+      props.locale,
     )})`,
-  }))
+  })),
 );
 
 const { execute: fetchGameData } = useGameDataService({ apiKey: props.apiKey });
 
 async function handleLiveGames() {
   error.value = false;
-  gameDataIntervals.map((cleanFn) => cleanFn?.());
+  gameDataIntervals.map(cleanFn => cleanFn?.());
   gameDataIntervals = [];
 
-  const liveGames = games.value.filter((game) => game.gameStatus === 1);
+  const liveGames = games.value.filter(game => game.gameStatus === 1);
 
   for (let i = 0; i < liveGames.length; i++) {
     const id = liveGames[i].id;
-    fetchGameData(0, { gameId: id }).then((data) => updateGameData(data));
-    const { pause } = useIntervalFn(() => fetchGameData(0, { gameId: id }).then((data) => updateGameData(data)), 60000);
+    fetchGameData(0, { gameId: id }).then(data => updateGameData(data));
+    const { pause } = useIntervalFn(() => fetchGameData(0, { gameId: id }).then(data => updateGameData(data)), 60000);
     gameDataIntervals.push(pause);
   }
 }
 
 function updateGameData(gameData = {}) {
   const { gameId, gameStatus, homeTeamScore, awayTeamScore, period, periodTime } = gameData;
-  const gameObj = games.value.find((game) => game.id === gameId);
+  const gameObj = games.value.find(game => game.id === gameId);
   gameObj.gameStatus = gameStatus;
   gameObj.homeTeamScore = homeTeamScore;
   gameObj.awayTeamScore = awayTeamScore;
@@ -165,4 +165,5 @@ function onTryAgain() {
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/games-timeline.css"></style>

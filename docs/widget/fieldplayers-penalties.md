@@ -1,4 +1,5 @@
 # Játékos büntetések
+
 Egy bajnokság vagy bajnokság fázis játékos büntetés statisztikái.
 
 ## Használat

@@ -1,11 +1,10 @@
 <script setup>
-import { computed, ref, unref } from 'vue';
+import { baseProps, COLUMNS_STANDINGS_P_2, COLUMNS_STANDINGS_P_3, teamStatsProps } from '@mjsz-vbr-elements/core';
+import { AdditionalStandingsText, ErrorNotice, I18NProvider, StatisticsTable } from '@mjsz-vbr-elements/core/components';
+import { fetchVBRData, useErrorProvider, useSort } from '@mjsz-vbr-elements/core/composables';
+import { convert, externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { useAsyncState } from '@vueuse/core';
-import { useSort, useErrorProvider, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
-import { externalTeamLinkResolver, convert } from '@mjsz-vbr-elements/core/utils';
-import { COLUMNS_STANDINGS_P_2, COLUMNS_STANDINGS_P_3 } from '@mjsz-vbr-elements/core';
-import { I18NProvider, ErrorNotice, StatisticsTable, AdditionalStandingsText } from '@mjsz-vbr-elements/core/components';
-import { baseProps, teamStatsProps } from '@mjsz-vbr-elements/core';
+import { computed, ref, unref } from 'vue';
 
 const props = defineProps({
   ...baseProps,
@@ -14,7 +13,7 @@ const props = defineProps({
   type: {
     type: String,
     default: '3',
-    validator: (value) => ['2', '3'].includes(value),
+    validator: value => ['2', '3'].includes(value),
   },
 });
 
@@ -33,8 +32,8 @@ const { state: rows, isLoading } = useAsyncState(
     }),
   [],
   {
-    onError: (error) => onError(error),
-  }
+    onError: error => onError(error),
+  },
 );
 
 const { sort, change } = useSort();
@@ -45,10 +44,11 @@ const convertedRows = computed(() => {
 
 const currentColumns = computed(() => (props.type === '3' ? COLUMNS_STANDINGS_P_3 : COLUMNS_STANDINGS_P_2));
 
-const onSort = (payload) => change(payload);
+const onSort = payload => change(payload);
 
-const resolveExternalTeamLink = (params) =>
-  externalTeamLinkResolver(props.externalTeamResolver, { ...params, championshipId: props.championshipId });
+function resolveExternalTeamLink(params) {
+  return externalTeamLinkResolver(props.externalTeamResolver, { ...params, championshipId: props.championshipId });
+}
 </script>
 
 <template>
@@ -77,6 +77,9 @@ const resolveExternalTeamLink = (params) =>
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>

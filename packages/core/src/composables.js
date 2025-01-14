@@ -1,3 +1,4 @@
+export * from './composables/useAdditionalText';
 export * from './composables/useColumns';
 export * from './composables/useErrors';
 export * from './composables/useFetchVBRApi';
@@ -6,8 +7,7 @@ export * from './composables/useLazyLoadingState';
 export * from './composables/useMainClass';
 export * from './composables/usePage';
 export * from './composables/usePagination';
+export * from './composables/useScrollToGameDate';
 export * from './composables/useServices';
 export * from './composables/useSort';
 export * from './composables/useVisibilityChange';
-export * from './composables/useScrollToGameDate';
-export * from './composables/useAdditionalText';

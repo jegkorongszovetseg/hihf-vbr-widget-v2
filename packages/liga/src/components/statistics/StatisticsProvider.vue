@@ -1,29 +1,29 @@
 <script setup>
-import { computed, reactive, unref } from 'vue';
+import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
+import { fetchVBRData, useError, useI18n, usePage, useSort } from '@mjsz-vbr-elements/core/composables';
+import {
+  convert,
+  convertPhaseName,
+  convertTimesMinToMinSec,
+  convertTimesSecToMin,
+  InvalidSeasonName,
+  playerName,
+  rawConvert,
+  teamName,
+  WidgetError,
+} from '@mjsz-vbr-elements/core/utils';
 import { useUrlSearchParams } from '@vueuse/core';
-import { head, pick, path, sortBy, prop } from 'ramda';
+import { head, path, pick, prop, sortBy } from 'ramda';
+import { computed, reactive, unref } from 'vue';
 import {
   convertSeasons,
   convertTeams,
-  setDefaultReport,
-  REPORTS_MAP,
   PLAYERS_REPORTS_SELECT,
-  TEAMS_REPORTS_SELECT,
   REPORT_TYPE_PLAYERS,
+  REPORTS_MAP,
+  setDefaultReport,
+  TEAMS_REPORTS_SELECT,
 } from './statistics.internal.js';
-import {
-  convert,
-  convertTimesSecToMin,
-  convertTimesMinToMinSec,
-  playerName,
-  teamName,
-  rawConvert,
-  InvalidSeasonName,
-  WidgetError,
-  convertPhaseName,
-} from '@mjsz-vbr-elements/core/utils';
-import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
-import { useError, useI18n, useSort, usePage, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
 
 const props = defineProps({
   championshipName: {
@@ -76,7 +76,7 @@ state.columns = initialReport.columns;
 state.api = initialReport.api;
 
 const currentReportList = computed(() =>
-  state.reportType === REPORT_TYPE_PLAYERS ? PLAYERS_REPORTS_SELECT(t) : TEAMS_REPORTS_SELECT(t)
+  state.reportType === REPORT_TYPE_PLAYERS ? PLAYERS_REPORTS_SELECT(t) : TEAMS_REPORTS_SELECT(t),
 );
 
 const { page, change: onPaginatorChange } = usePage();
@@ -86,23 +86,27 @@ const { sort, change: onSort } = useSort({
   orders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
 });
 
-const fetchSeasons = async () => {
+async function fetchSeasons() {
   try {
     state.loading = true;
     const seasons = await fetchVBRData('/v2/championship-seasons', props.apiKey, {
       championshipName: props.championshipName,
     });
-    if (seasons.length === 0) throw new WidgetError(InvalidSeasonName.message, InvalidSeasonName.options);
+    if (seasons.length === 0)
+      throw new WidgetError(InvalidSeasonName.message, InvalidSeasonName.options);
     state.seasons = convertSeasons(seasons);
-    if (!state.championshipId) state.championshipId = head(state.seasons).championshipId;
-  } catch (error) {
+    if (!state.championshipId)
+      state.championshipId = head(state.seasons).championshipId;
+  }
+  catch (error) {
     onError(error);
-  } finally {
+  }
+  finally {
     state.loading = false;
   }
-};
+}
 
-const fetchSection = async () => {
+async function fetchSection() {
   try {
     state.loading = true;
     const sections = await fetchVBRData('/v2/championship-sections', props.apiKey, {
@@ -110,14 +114,16 @@ const fetchSection = async () => {
     });
     state.sections = sortBy(prop('phaseName'))(convertPhaseName(path([0, 'phases'], sections)));
     state.phaseId = state.phaseId || head(state.sections)?.phaseId;
-  } catch (error) {
+  }
+  catch (error) {
     onError(error);
-  } finally {
+  }
+  finally {
     state.loading = false;
   }
-};
+}
 
-const fetchStatistic = async () => {
+async function fetchStatistic() {
   try {
     state.loading = true;
     state.rows = [];
@@ -151,16 +157,18 @@ const fetchStatistic = async () => {
         'pp2AToi',
         'sh1AToi',
         'sh2AToi',
-      ])
+      ]),
     );
-  } catch (error) {
+  }
+  catch (error) {
     onError(error);
-  } finally {
+  }
+  finally {
     state.loading = false;
   }
-};
+}
 
-const fetchTeams = async () => {
+async function fetchTeams() {
   try {
     state.loading = true;
     state.rows = [];
@@ -168,12 +176,14 @@ const fetchTeams = async () => {
       championshipId: state.championshipId,
     });
     state.teams = convertTeams(teams);
-  } catch (error) {
+  }
+  catch (error) {
     onError(error);
-  } finally {
+  }
+  finally {
     state.loading = false;
   }
-};
+}
 
 const convertedRows = computed(() =>
   convert(state.rows)
@@ -182,23 +192,23 @@ const convertedRows = computed(() =>
     .sorted(sort)
     .addIndex(sort.sortTarget)
     .pagination(unref(page), props.limit)
-    .value()
+    .value(),
 );
 
 const range = computed(() => {
   return [(page.value - 1) * props.limit + 1, Math.min(page.value * props.limit, convertedRows.value.totalItems)];
 });
 
-const setTableData = () => {
+function setTableData() {
   const report = REPORTS_MAP.get(state.currentReport);
   state.columns = report.columns;
   state.api = report.api;
   state.apiParams = report.params || {};
   sort.sortTarget = report.sort.sortTarget;
   sort.orders = report.sort.orders;
-};
+}
 
-const onSeasonChange = async (value) => {
+async function onSeasonChange(value) {
   state.championshipId = value;
   params.championshipId = value;
   state.phaseId = null;
@@ -207,34 +217,35 @@ const onSeasonChange = async (value) => {
   params.section = state.section;
   await fetchTeams();
   await fetchStatistic();
-};
+}
 
-const onSectionChange = async (value) => {
+async function onSectionChange(value) {
   state.phaseId = value;
   params.phaseId = value;
   await fetchStatistic();
-};
+}
 
-const onReportChange = (value) => {
+function onReportChange(value) {
   state.currentReport = value;
   params.report = value;
   setTableData();
   fetchStatistic();
-};
+}
 
-const onTeamChange = (value) => {
+function onTeamChange(value) {
   onPaginatorChange(1);
   state.teamFilter = Number(value) || null;
   params.teamFilter = value || null;
-};
+}
 
-const onPlayerInput = (event) => {
+function onPlayerInput(event) {
   onPaginatorChange(1);
-  if (event instanceof Event) event = event.target.value;
+  if (event instanceof Event)
+    event = event.target.value;
   state.playerFilter = event;
-};
+}
 
-const onStatTypeChange = (value) => {
+function onStatTypeChange(value) {
   state.reportType = value;
   state.currentReport = head(currentReportList.value).value;
   state.teamFilter = null;
@@ -244,15 +255,15 @@ const onStatTypeChange = (value) => {
   params.type = value;
   setTableData();
   fetchStatistic();
-};
+}
 
-const init = async () => {
+async function init() {
   await fetchSeasons();
   await fetchSection();
   await fetchTeams();
   setTableData();
   await fetchStatistic();
-};
+}
 init();
 </script>
 
@@ -278,7 +289,7 @@ init();
             'teamFilter',
             'playerFilter',
           ],
-          state
+          state,
         ),
       },
       selectorListeners: {

@@ -1,35 +1,33 @@
 <script setup>
-import { reactive, computed, watch } from 'vue';
-import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
 import {
-  rawConvert,
   gameDateTime,
   gameResult,
+  getLocalTimezone,
+  rawConvert,
+  sortGames,
   teamOpponent,
   teamResultType,
-  sortGames,
-  getLocalTimezone,
 } from '@mjsz-vbr-elements/core/utils';
+import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
+import { computed, reactive, watch } from 'vue';
 import {
-  PAGE_INFO,
+  mergePlayerStats,
   PAGE_GAMES,
+  PAGE_INFO,
   PAGE_PLAYER_STATS,
   PAGE_ROSTER,
-  transformRosters,
-  mergePlayerStats,
-  transformTeamInfo,
   transformFieledPlayersStats,
+  transformRosters,
+  transformTeamInfo,
 } from './team.internal.js';
-
-const timezone = getLocalTimezone();
 
 const props = defineProps({
   apiKey: {
     type: String,
     default: '',
   },
-  
+
   teamId: {
     type: String,
     default: '',
@@ -45,6 +43,8 @@ const props = defineProps({
     default: 'hu',
   },
 });
+
+const timezone = getLocalTimezone();
 
 const params = useUrlSearchParams('history');
 
@@ -65,7 +65,7 @@ const { state: teamInfo } = useServices({
     params: computed(() => ({ championshipId: state.championshipId, teamId: state.teamId })),
     immediate: true,
   },
-  transform: (res) => transformTeamInfo(res),
+  transform: res => transformTeamInfo(res),
   onError,
 });
 
@@ -75,13 +75,13 @@ const { state: games, execute: fetchTeamGames } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId, teamId: state.teamId })),
   },
-  transform: (res) =>
+  transform: res =>
     rawConvert(
       sortGames(res),
       gameDateTime(timezone, props.locale),
       teamResultType,
       gameResult(state.teamId),
-      teamOpponent
+      teamOpponent,
     ),
   onError,
 });
@@ -92,7 +92,7 @@ const { state: roster, execute: fetchTeamRoster } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId, teamId: state.teamId })),
   },
-  transform: (res) => transformRosters(res, state.teamId),
+  transform: res => transformRosters(res, state.teamId),
   onError,
 });
 
@@ -102,7 +102,7 @@ const { state: fieldPlayers, execute: fetchFieldLeaders } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId })),
   },
-  transform: (res) => transformFieledPlayersStats(res, state.teamId),
+  transform: res => transformFieledPlayersStats(res, state.teamId),
   onError,
 });
 
@@ -112,7 +112,7 @@ const { state: fieldPlayersPenalty, execute: fetchFieldPenalty } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId })),
   },
-  transform: (res) => transformFieledPlayersStats(res, state.teamId),
+  transform: res => transformFieledPlayersStats(res, state.teamId),
   onError,
 });
 
@@ -122,7 +122,7 @@ const { state: goalieStats, execute: fetchGoalieStats } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId })),
   },
-  transform: (res) => transformFieledPlayersStats(res, state.teamId),
+  transform: res => transformFieledPlayersStats(res, state.teamId),
   onError,
 });
 
@@ -133,7 +133,7 @@ watch(
   },
   {
     immediate: true,
-  }
+  },
 );
 
 function onChangePage(page) {

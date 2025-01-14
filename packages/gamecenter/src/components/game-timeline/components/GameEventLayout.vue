@@ -2,13 +2,13 @@
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import {
   EVENT_TYPE_GOAL,
-  EVENT_TYPE_PENALTY,
-  EVENT_TYPE_TIMEOUT,
   EVENT_TYPE_GOALIE,
+  EVENT_TYPE_PENALTY,
   EVENT_TYPE_PENALTY_SHOT,
+  EVENT_TYPE_TIMEOUT,
 } from '../constants';
 
-const props = defineProps({
+defineProps({
   timestamp: {
     type: String,
     required: true,
@@ -36,10 +36,9 @@ const props = defineProps({
 
 <template>
   <div :class="useMainClass('gamecenter-timeline-game-event')" :data-team="isHomeTeam ? 'home' : 'away'">
-    <div class="is-timeline"></div>
+    <div class="is-timeline" />
     <div
-      :class="[
-        'is-details-container',
+      class="is-details-container" :class="[
         {
           'is-goal': eventType === EVENT_TYPE_GOAL,
           'is-penalty': eventType === EVENT_TYPE_PENALTY,

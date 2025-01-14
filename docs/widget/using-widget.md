@@ -38,7 +38,7 @@ A `head` részbe illesztve az alábbi kódot, az oldaladon elérhetővé válnak
 <script src="https://unpkg.com/@mjsz-vbr-elements/core"></script>
 <script src="https://unpkg.com/@mjsz-vbr-elements/elements"></script>
 <script>
-  MjszVbrElementsCore.createConfig({ modules: [MjszVbrElements], apiKey: 'xxxxx' });
+  MjszVbrElementsCore.createConfig({ modules: [MjszVbrElements], apiKey: 'xxxxx' })
 </script>
 
 <body>
@@ -73,7 +73,7 @@ Ha csak egy widget használatára van szükségünk, nem szükséges globális k
 <script src="https://unpkg.com/@mjsz-vbr-elements/elements"></script>
 
 <script>
-  MjszVbrElements.register(); // [!code focus]
+  MjszVbrElements.register() // [!code focus]
 </script>
 ```
 
@@ -112,12 +112,12 @@ A további elérhető csomagokat [itt](#packages) találáod.
 :::
 
 ```js
-import { createApp } from 'vue';
 import MjszVbrElementsCore from '@mjsz-vbr-elements/core';
 import MjszVbrElements from '@mjsz-vbr-elements/elements';
 import MjszVbrElementsExtended from '@mjsz-vbr-elements/extended';
-import MjszVbrElementsLiga from '@mjsz-vbr-elements/liga';
 import MjszVbrElementsGamecenter from '@mjsz-vbr-elements/gamecenter';
+import MjszVbrElementsLiga from '@mjsz-vbr-elements/liga';
+import { createApp } from 'vue';
 import App from './App.vue';
 import './style.css';
 
@@ -136,9 +136,9 @@ app.mount('#app');
 Ha **Vite build tool**-t használsz be kell állítani, hogy az elemek `customElement`-ként legyenek értelmezve.
 
 ```js
+import vue from '@vitejs/plugin-vue';
 // vite.config.js
 import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -146,7 +146,7 @@ export default defineConfig({
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: (tag) => tag.startsWith('mjsz-vbr-'),
+          isCustomElement: tag => tag.startsWith('mjsz-vbr-'),
         },
       },
     }),

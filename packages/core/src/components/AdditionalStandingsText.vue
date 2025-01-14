@@ -1,6 +1,6 @@
 <script setup>
 import { toRef } from 'vue';
-import { useI18n, useAdditionalText } from '../composables';
+import { useAdditionalText, useI18n } from '../composables';
 
 const props = defineProps({
   rows: {

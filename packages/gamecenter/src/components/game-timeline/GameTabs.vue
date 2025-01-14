@@ -1,7 +1,7 @@
 <script setup>
-import { useUrlSearchParams } from '@vueuse/core';
 import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
-import { TAB_EVENTS, TAB_LINEUPS, TAB_TEAM_STATS, TAB_PLAYER_STATS, TAB_OFFICIALS } from './constants';
+import { useUrlSearchParams } from '@vueuse/core';
+import { TAB_EVENTS, TAB_LINEUPS, TAB_OFFICIALS, TAB_PLAYER_STATS, TAB_TEAM_STATS } from './constants';
 
 const props = defineProps({
   activeTab: {
@@ -24,7 +24,8 @@ const { t } = useI18n();
 function onTabChange(value) {
   emit('update:activeTab', value);
 
-  if (!props.useSearchParams) return;
+  if (!props.useSearchParams)
+    return;
   searchParams.tab = value;
 }
 </script>

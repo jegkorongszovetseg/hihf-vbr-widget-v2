@@ -12,6 +12,6 @@ import { store } from '../store.js';
 <template>
   <div class="p-5">
     <!-- <Game :locale="store.locale" game-id="71861" /> -->
-    <mjsz-vbr-game :locale="store.locale" game-id="71861"  />
+    <mjsz-vbr-game :locale="store.locale" game-id="81274" />
   </div>
 </template>

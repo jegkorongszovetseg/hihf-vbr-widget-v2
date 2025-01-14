@@ -1,8 +1,8 @@
 <script setup>
-import { reactive, computed } from 'vue';
+import { useError, useLazyLoadingState, useServices } from '@mjsz-vbr-elements/core/composables';
 import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
-import { useLazyLoadingState, useError, useServices } from '@mjsz-vbr-elements/core/composables';
-import { transformSeasons, convertTeams } from '../internal';
+import { computed, reactive } from 'vue';
+import { convertTeams, transformSeasons } from '../internal';
 
 const props = defineProps({
   championshipName: {
@@ -37,7 +37,7 @@ const { isLoading: seasonsLoading, execute: fetchSeasons } = useServices({
     apiKey: props.apiKey,
     params: { championshipName: state.championshipName },
   },
-  transform: (res) => transformSeasons(res, state),
+  transform: res => transformSeasons(res, state),
   onError,
 });
 
@@ -59,11 +59,11 @@ const isLoading = useLazyLoadingState([seasonsLoading, teamsLoading], { delay: 1
 
 useAsyncQueue([fetchSeasons, fetchTeams]);
 
-const changeSeason = (value) => {
+function changeSeason(value) {
   state.championshipId = value;
   params.championshipId = value;
   useAsyncQueue([fetchTeams]);
-};
+}
 </script>
 
 <template>
@@ -74,5 +74,5 @@ const changeSeason = (value) => {
       isLoading,
       changeSeason,
     }"
-  ></slot>
+  />
 </template>

@@ -1,18 +1,16 @@
 <script setup>
-import { ref } from 'vue';
-import { ErrorNotice, I18NProvider, ErrorProvider, LoadingIndicator, Image } from '@mjsz-vbr-elements/core/components';
+import { ErrorNotice, ErrorProvider, I18NProvider, Image } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { ref } from 'vue';
+import en from '../../locales/en.json';
+import hu from '../../locales/hu.json';
 // import { externalTeamLinkResolver, offsetName } from '@mjsz-vbr-elements/core/utils';
 import DataProvider from './DataProvider.vue';
 import Games from './Games.vue';
+import { PANE_GAMES, PANE_SEASONS } from './player.internal';
+import PlayerInfo from './PlayerInfo.vue';
 import Seasons from './Seasons.vue';
 import SeasonsStats from './SeasonStats.vue';
-import PlayerInfo from './PlayerInfo.vue';
-import hu from '../../locales/hu.json';
-import en from '../../locales/en.json';
-import { PANE_GAMES, PANE_SEASONS } from './player.internal';
-
-const messages = { en, hu };
 
 const props = defineProps({
   locale: {
@@ -46,6 +44,8 @@ const props = defineProps({
   },
 });
 
+const messages = { en, hu };
+
 const tooltipContainer = ref(null);
 
 // const externalTeamLink = (teamId) => externalTeamLinkResolver(props.externalPlayerResolver, { teamId });
@@ -53,15 +53,11 @@ const tooltipContainer = ref(null);
 
 <template>
   <div class="is-mb-5">
-    <I18NProvider :locale="props.locale" :messages="messages" v-slot="{ t }">
-      <ErrorProvider v-slot:default="{ error, hasError }">
+    <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
+      <ErrorProvider v-slot="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
 
         <DataProvider
-          :api-key="props.apiKey"
-          :locale="locale"
-          :championship-id="championshipId"
-          :player-id="props.playerId"
           v-slot="{
             pane,
             isGamesLoading,
@@ -75,6 +71,10 @@ const tooltipContainer = ref(null);
             currentSeasonColumns,
             onChangePane,
           }"
+          :api-key="props.apiKey"
+          :locale="locale"
+          :championship-id="championshipId"
+          :player-id="props.playerId"
         >
           <h1 class="is-heading-1 is-uppercase">
             {{ playerData.name }}
@@ -88,7 +88,7 @@ const tooltipContainer = ref(null);
               />
             </div>
             <div class="is-ovarlay-image">
-              <Image :src="playerData?.player?.picture" :key="playerData.player?.playerId" />
+              <Image :key="playerData.player?.playerId" :src="playerData?.player?.picture" />
             </div>
           </div>
 
@@ -142,11 +142,19 @@ const tooltipContainer = ref(null);
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/teams.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/paginator.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>

@@ -1,9 +1,9 @@
 <script>
-import { computed, defineComponent } from 'vue';
 import { mergeDeepRight } from 'ramda';
+import { computed, defineComponent } from 'vue';
 import { createI18n } from '../composables/useI18n';
-import hu from '../locales/hu.json';
 import en from '../locales/en.json';
+import hu from '../locales/hu.json';
 
 export default defineComponent({
   props: {

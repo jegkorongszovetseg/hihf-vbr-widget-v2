@@ -1,36 +1,36 @@
 <script setup>
-import { reactive, computed, unref, toRef } from 'vue';
-import { useAsyncQueue, useUrlSearchParams, noop } from '@vueuse/core';
-import { head } from 'ramda';
+import { COLUMNS_SCHEDULE } from '@mjsz-vbr-elements/core/columns';
 import {
-  useLazyLoadingState,
   useError,
+  useI18n,
+  useLazyLoadingState,
+  usePage,
   useServices,
   useSort,
-  usePage,
-  useI18n,
 } from '@mjsz-vbr-elements/core/composables';
 import {
   convert,
-  teamName,
-  sortGames,
-  rawConvert,
-  playerName,
   convertPhaseName,
-  convertTimesSecToMin,
   convertTimesMinToMinSec,
+  convertTimesSecToMin,
+  playerName,
+  rawConvert,
   scheduleOptionalRowClass,
+  sortGames,
+  teamName,
 } from '@mjsz-vbr-elements/core/utils';
-import { COLUMNS_SCHEDULE } from '@mjsz-vbr-elements/core/columns';
+import { noop, useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
+import { head } from 'ramda';
+import { computed, reactive, toRef, unref } from 'vue';
 import { transformSeasons } from '../internal';
 import {
-  transformSections,
-  PANEL_SCHEDULE,
-  PANEL_PLAYERS,
-  PANEL_TEAMS,
   ALL_REPORTS_MAP,
-  TEAMS_REPORTS_SELECT,
+  PANEL_PLAYERS,
+  PANEL_SCHEDULE,
+  PANEL_TEAMS,
   PLAYERS_REPORTS_SELECT,
+  TEAMS_REPORTS_SELECT,
+  transformSections,
 } from './championship.internal.js';
 
 const props = defineProps({
@@ -62,11 +62,6 @@ const props = defineProps({
   timezone: {
     type: String,
     default: '',
-  },
-
-  limit: {
-    type: Number,
-    default: 20,
   },
 });
 
@@ -106,7 +101,7 @@ const { isLoading: seasonsLoading, execute: fetchSeasons } = useServices({
     apiKey: props.apiKey,
     params: { championshipName: props.championshipName },
   },
-  transform: (res) => transformSeasons(res, state),
+  transform: res => transformSeasons(res, state),
   onError,
 });
 
@@ -116,7 +111,7 @@ const { isLoading: sectionLoading, execute: fetchSection } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId })),
   },
-  transform: (res) => transformSections(res, state),
+  transform: res => transformSections(res, state),
   onError,
 });
 
@@ -131,7 +126,7 @@ const {
     resetOnExecute: true,
     params: computed(() => ({ championshipId: state.championshipId, phaseId: state.phaseId, ...state.apiParams })),
   },
-  transform: (data) => sortGames(data),
+  transform: data => sortGames(data),
   onError,
 });
 
@@ -140,11 +135,11 @@ const isLoading = useLazyLoadingState([sectionLoading, seasonsLoading, gamesLoad
 useAsyncQueue([fetchSeasons, fetchSection, fetchData]);
 
 const currentReportList = computed(() =>
-  state.selectedPanel === PANEL_PLAYERS ? PLAYERS_REPORTS_SELECT(t) : TEAMS_REPORTS_SELECT(t)
+  state.selectedPanel === PANEL_PLAYERS ? PLAYERS_REPORTS_SELECT(t) : TEAMS_REPORTS_SELECT(t),
 );
 
 const phases = computed(() => {
-  const championship = state.championships.find((item) => item.sectionId === state.selectedChampionshipId);
+  const championship = state.championships.find(item => item.sectionId === state.selectedChampionshipId);
   return convertPhaseName(championship?.phases ?? []);
 });
 
@@ -157,8 +152,8 @@ const rawConvertedRows = computed(() =>
     teamName,
     scheduleOptionalRowClass,
     convertTimesMinToMinSec(['mip']),
-    convertTimesSecToMin(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2'])
-  )
+    convertTimesSecToMin(['dvgTime', 'dvgTimePP1', 'dvgTimePP2', 'advTime', 'advTimePP1', 'advTimePP2']),
+  ),
 );
 
 const convertedRows = computed(() => {
@@ -170,24 +165,24 @@ const convertedRows = computed(() => {
     .value();
 });
 
-const changeSeason = (value) => {
+function changeSeason(value) {
   state.championshipId = value;
   params.championshipId = value;
   useAsyncQueue([fetchSection, fetchData]);
-};
+}
 
-const changeChampionship = (value) => {
+function changeChampionship(value) {
   state.selectedChampionshipId = value;
   state.phaseId = phases.value[0]?.phaseId ?? null;
   fetchData();
-};
+}
 
-const changePhase = (value) => {
+function changePhase(value) {
   state.phaseId = value;
   fetchData();
-};
+}
 
-const changePanel = (value) => {
+function changePanel(value) {
   state.selectedPanel = value;
   let report = value;
 
@@ -200,7 +195,7 @@ const changePanel = (value) => {
 
   state.report = report;
   setFetchData(report);
-};
+}
 
 function onChangeReport(value) {
   setFetchData(value);
@@ -237,5 +232,5 @@ function setFetchData(value) {
       onPaginatorChange,
       changeChampionship,
     }"
-  ></slot>
+  />
 </template>

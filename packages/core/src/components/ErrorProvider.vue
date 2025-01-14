@@ -5,5 +5,5 @@ const { message, hasError, error } = useErrorProvider();
 </script>
 
 <template>
-  <slot :message="message" :error="error" :has-error="hasError"></slot>
+  <slot :message="message" :error="error" :has-error="hasError" />
 </template>

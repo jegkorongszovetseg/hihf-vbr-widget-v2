@@ -1,10 +1,10 @@
 <script setup>
-import { reactive, computed, unref } from 'vue';
-import { useAsyncQueue, useUrlSearchParams, useIntervalFn } from '@vueuse/core';
 import { useError, useServices, useSort } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
+import { useAsyncQueue, useIntervalFn, useUrlSearchParams } from '@vueuse/core';
+import { computed, reactive, unref } from 'vue';
 import { transformSeasons, transformStandingSections } from '../internal';
-import { useGamesListForLiveStandings, TOGGLE_LIVE, FETCH_GAMES_INTERVAL } from './standings.internal';
+import { FETCH_GAMES_INTERVAL, TOGGLE_LIVE, useGamesListForLiveStandings } from './standings.internal';
 
 const props = defineProps({
   championshipName: {
@@ -48,7 +48,7 @@ const { isLoading: seasonsLoading, execute: fetchSeasons } = useServices({
     apiKey: props.apiKey,
     params: { championshipName: state.championshipName },
   },
-  transform: (res) => transformSeasons(res, state),
+  transform: res => transformSeasons(res, state),
   onError,
 });
 
@@ -58,7 +58,7 @@ const { isLoading: sectionLoading, execute: fetchSection } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId })),
   },
-  transform: (res) => transformStandingSections(res, state),
+  transform: res => transformStandingSections(res, state),
   onError,
 });
 
@@ -101,24 +101,24 @@ useAsyncQueue([fetchSeasons, fetchSection, fetchStandings, fetchGamesList]);
 
 useIntervalFn(fetchGamesList, FETCH_GAMES_INTERVAL);
 
-const changeSeason = (value) => {
+function changeSeason(value) {
   state.championshipId = value;
   params.championshipId = value;
   // resets
   params.section = null;
   useAsyncQueue([fetchSection, fetchStandings]);
-};
+}
 
-const changeSection = (value) => {
+function changeSection(value) {
   state.section = value;
   params.section = value;
   // resets
   fetchStandings();
-};
+}
 
-const onChangeStandingsType = (type) => {
+function onChangeStandingsType(type) {
   state.standingsType = type;
-};
+}
 </script>
 
 <template>
@@ -135,5 +135,5 @@ const onChangeStandingsType = (type) => {
       changeSection,
       onChangeStandingsType,
     }"
-  ></slot>
+  />
 </template>

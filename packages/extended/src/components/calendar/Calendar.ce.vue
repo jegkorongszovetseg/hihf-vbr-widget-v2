@@ -1,22 +1,20 @@
 <script setup>
-import { computed, ref } from 'vue';
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { gameProps } from '@mjsz-vbr-elements/core';
 import {
+  ErrorNotice,
+  ErrorProvider,
+  FetchMoreObserver,
   I18NProvider,
   LoadingIndicator,
-  FetchMoreObserver,
-  ErrorProvider,
-  ErrorNotice,
 } from '@mjsz-vbr-elements/core/components';
-import { getLocalTimezone, format, externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
-import { gameProps } from '@mjsz-vbr-elements/core';
+import { useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { externalGameLinkResolver, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
+import { computed, ref } from 'vue';
+import en from '../../locales/en.json';
+import hu from '../../locales/hu.json';
+import { PANEL_GAMES_PLAYED, PANEL_NEXT_GAMES, PANEL_TODAYS_GAMES, PANEL_WEEK_GAMES } from './calendar.internal';
 import DataProvider from './DataProvider.vue';
 import GameItem from './Item.vue';
-import hu from '../../locales/hu.json';
-import en from '../../locales/en.json';
-import { PANEL_GAMES_PLAYED, PANEL_TODAYS_GAMES, PANEL_NEXT_GAMES, PANEL_WEEK_GAMES } from './calendar.internal';
-
-const messages = { en, hu };
 
 const props = defineProps({
   locale: {
@@ -37,26 +35,24 @@ const props = defineProps({
   ...gameProps,
 });
 
+const messages = { en, hu };
+
 const timezone = ref(getLocalTimezone());
 
 const tabButtonClasses = useMainClass('tab-button');
 
 const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? '_blank' : '_self'));
 
-const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externalGameResolver || '/game/id/{id}', game);
+const resolveExternalGameLink = game => externalGameLinkResolver(props.externalGameResolver || '/game/id/{id}', game);
 </script>
 
 <template>
-  <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
-    <ErrorProvider v-slot:default="{ error, hasError }">
+  <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
+    <ErrorProvider v-slot="{ error, hasError }">
       <ErrorNotice v-if="hasError" :error="error" />
 
       <DataProvider
-        :locale="props.locale"
-        :timezone="timezone"
-        :seasonId="seasonId"
-        :apiKey="apiKey"
-        #default="{
+        v-slot="{
           games,
           months,
           isLoading,
@@ -66,12 +62,15 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
           setMonth,
           changePanel,
         }"
+        :locale="props.locale"
+        :timezone="timezone"
+        :season-id="seasonId"
+        :api-key="apiKey"
       >
         <div id="top" class="flex overflow-x-auto is-mb-5">
           <button
-            :class="[
+            class="basis-[fit-content] shrink-0" :class="[
               tabButtonClasses,
-              'basis-[fit-content] shrink-0',
               { 'is-active': selectedPanel === PANEL_GAMES_PLAYED },
             ]"
             @click="changePanel(PANEL_GAMES_PLAYED)"
@@ -79,9 +78,8 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
             {{ t('calendar.gamesPlayed') }}
           </button>
           <button
-            :class="[
+            class="basis-[fit-content] shrink-0" :class="[
               tabButtonClasses,
-              'basis-[fit-content] shrink-0',
               { 'is-active': selectedPanel === PANEL_TODAYS_GAMES },
             ]"
             @click="changePanel(PANEL_TODAYS_GAMES)"
@@ -89,9 +87,8 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
             {{ t('calendar.todaysGames') }}
           </button>
           <button
-            :class="[
+            class="basis-[fit-content] shrink-0" :class="[
               tabButtonClasses,
-              'basis-[fit-content] shrink-0',
               { 'is-active': selectedPanel === PANEL_NEXT_GAMES },
             ]"
             @click="changePanel(PANEL_NEXT_GAMES)"
@@ -99,9 +96,8 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
             {{ t('calendar.nextGames') }}
           </button>
           <button
-            :class="[
+            class="basis-[fit-content] shrink-0" :class="[
               tabButtonClasses,
-              'basis-[fit-content] shrink-0',
               { 'is-active': selectedPanel === PANEL_WEEK_GAMES },
             ]"
             @click="changePanel(PANEL_WEEK_GAMES)"
@@ -112,9 +108,9 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
 
         <div :class="[useMainClass('toggle-group')]">
           <button
-            type="button"
             v-for="month in months"
             :key="month.id"
+            type="button"
             :class="{ 'is-active': selectedMonth === month.id }"
             :disabled="isLoading"
             @click="setMonth(month)"
@@ -123,7 +119,9 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
           </button>
         </div>
 
-        <div v-if="games.totalItems === 0 && !isLoading" class="is-text-center">{{ t('calendar.noGame') }}</div>
+        <div v-if="games.totalItems === 0 && !isLoading" class="is-text-center">
+          {{ t('calendar.noGame') }}
+        </div>
 
         <div>
           <LoadingIndicator v-if="isLoading" />
@@ -149,7 +147,9 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
           :options="{ rootMargin: '400px' }"
           @intersect="more"
         >
-          <button @click="more">{{ t('calendar.more') }}</button>
+          <button @click="more">
+            {{ t('calendar.more') }}
+          </button>
         </FetchMoreObserver>
       </DataProvider>
     </ErrorProvider>
@@ -157,6 +157,9 @@ const resolveExternalGameLink = (game) => externalGameLinkResolver(props.externa
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/cards.css"></style>

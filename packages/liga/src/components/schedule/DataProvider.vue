@@ -1,17 +1,17 @@
 <script setup>
-import { reactive, computed, unref, toRef, toRefs } from 'vue';
-import { useAsyncQueue, useTimeoutFn, useTimeoutPoll, useUrlSearchParams } from '@vueuse/core';
-import {
-  useLazyLoadingState,
-  useVisibilityChange,
-  useError,
-  useServices,
-  useScrollToGameDate,
-} from '@mjsz-vbr-elements/core/composables';
-import { convert, sortGames, scrollToTop } from '@mjsz-vbr-elements/core/utils';
 import { REFRESH_DELAY } from '@mjsz-vbr-elements/core';
-import { transformSeasons, transformPhases, transformTeams } from '../internal';
-import { useCollectMonths, sortSubPhases } from './schedule.internal.js';
+import {
+  useError,
+  useLazyLoadingState,
+  useScrollToGameDate,
+  useServices,
+  useVisibilityChange,
+} from '@mjsz-vbr-elements/core/composables';
+import { convert, scrollToTop, sortGames } from '@mjsz-vbr-elements/core/utils';
+import { useAsyncQueue, useTimeoutFn, useTimeoutPoll, useUrlSearchParams } from '@vueuse/core';
+import { computed, reactive, toRef, toRefs, unref } from 'vue';
+import { transformPhases, transformSeasons, transformTeams } from '../internal';
+import { sortSubPhases, useCollectMonths } from './schedule.internal.js';
 
 const props = defineProps({
   championshipName: {
@@ -104,7 +104,7 @@ const { isLoading: seasonsLoading, execute: fetchSeasons } = useServices({
     apiKey: props.apiKey,
     params: { championshipName: state.championshipName },
   },
-  transform: (res) => transformSeasons(res, state),
+  transform: res => transformSeasons(res, state),
   onError,
 });
 
@@ -114,7 +114,7 @@ const { isLoading: sectionLoading, execute: fetchSection } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId })),
   },
-  transform: (res) => transformPhases(res, state),
+  transform: res => transformPhases(res, state),
   onError,
 });
 
@@ -124,7 +124,7 @@ const { isLoading: teamsLoading, execute: fetchTeams } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId })),
   },
-  transform: (res) => transformTeams(res, state),
+  transform: res => transformTeams(res, state),
   onError,
 });
 
@@ -138,7 +138,7 @@ const {
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId, division: state.section })),
   },
-  transform: (data) => sortGames(data),
+  transform: data => sortGames(data),
   onError,
 });
 
@@ -164,21 +164,23 @@ const convertedRows = computed(() => {
 });
 
 const subPhases = computed(() => {
-  const mainPhase = state.sections.find((item) => item.name === state.section);
+  const mainPhase = state.sections.find(item => item.name === state.section);
   return sortSubPhases(mainPhase?.phases ?? []);
 });
 
 useAsyncQueue([fetchSeasons, fetchSection, fetchTeams, fetchSchedule], {
   onFinished: () => {
-    if (props.autoRefresh) useTimeoutFn(resume, REFRESH_DELAY);
+    if (props.autoRefresh)
+      useTimeoutFn(resume, REFRESH_DELAY);
   },
 });
 
-const changeSeason = (value) => {
+function changeSeason(value) {
   state.championshipId = value;
   params.championshipId = value;
   // resets
-  if (props.autoRefresh) resume();
+  if (props.autoRefresh)
+    resume();
   state.selectedTeam = null;
   params.selectedTeam = null;
   state.selectedMonth = null;
@@ -187,18 +189,18 @@ const changeSeason = (value) => {
   params.selectedTeamGameType = null;
   state.subPhase = '';
   useAsyncQueue([fetchSection, fetchTeams, fetchSchedule]);
-  if (props.autoRefresh) resume();
+  if (props.autoRefresh)
+    resume();
   scrollToTop();
-};
+}
 
-const changeMonth = (value) => {
+function changeMonth(value) {
   state.selectedMonth = value;
   params.selectedMonth = value;
   scrollToTop();
-};
+}
 
-const changeSection = (value) => {
-  console.log(value);
+function changeSection(value) {
   state.section = value;
   params.section = value;
   // resets
@@ -206,13 +208,13 @@ const changeSection = (value) => {
   params.selectedMonth = null;
   state.subPhase = '';
   fetchSchedule();
-};
+}
 
-const changeSubSection = (value) => {
+function changeSubSection(value) {
   state.subPhase = value;
-};
+}
 
-const changeTeam = (value) => {
+function changeTeam(value) {
   state.selectedTeam = value;
   params.selectedTeam = value;
   // resets
@@ -220,12 +222,12 @@ const changeTeam = (value) => {
     state.selectedTeamGameType = 'all';
     params.selectedTeamGameType = null;
   }
-};
+}
 
-const changeTeamType = (value) => {
+function changeTeamType(value) {
   state.selectedTeamGameType = value;
   params.selectedTeamGameType = value;
-};
+}
 </script>
 
 <template>
@@ -243,5 +245,5 @@ const changeTeamType = (value) => {
       changeTeamType,
       changeSubSection,
     }"
-  ></slot>
+  />
 </template>

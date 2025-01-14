@@ -1,4 +1,4 @@
-import { pipe, prop, head } from 'ramda';
+import { head, pipe, prop } from 'ramda';
 
 export function transformAllSeason(data, state) {
   state.seasonsList = data;

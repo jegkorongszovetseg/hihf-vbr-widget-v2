@@ -27,10 +27,10 @@ const sortMachine = createMachine({
   },
 });
 
-const transitionOrderState = (originalSortState, sortState) => {
+function transitionOrderState(originalSortState, sortState) {
   const direction = sortState === SORT_STATE_ASCEND ? 'DIRECTION2' : 'DIRECTION1';
   return sortMachine.transition(originalSortState, direction).value;
-};
+}
 
 export function useSort(sortParams = {}) {
   const { sortTarget = null, orders = [] } = sortParams;

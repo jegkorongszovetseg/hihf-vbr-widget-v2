@@ -11,9 +11,9 @@ const api = inject(CarouselContext, null);
 onMounted(() => api?.register(id));
 onUnmounted(() => api?.unregister(id));
 
-const render = () => {
+function render() {
   return h('div', { id, class: 'is-slide' }, slots.default());
-};
+}
 </script>
 
 <template>

@@ -1,13 +1,12 @@
 <script setup>
-import { computed } from 'vue';
-import { useVModels } from '@vueuse/core';
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { BaseSelect } from '@mjsz-vbr-elements/core/components';
+import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useVModels } from '@vueuse/core';
 
 const props = defineProps({
   seasons: {
     type: Array,
-    defauét: () => [],
+    default: () => [],
   },
 
   championshipId: {
@@ -17,7 +16,7 @@ const props = defineProps({
 
   months: {
     type: Array,
-    defauét: () => [],
+    default: () => [],
   },
 
   selectedMonth: {
@@ -27,7 +26,7 @@ const props = defineProps({
 
   teams: {
     type: Array,
-    defauét: () => [],
+    default: () => [],
   },
 
   selectedTeam: {
@@ -50,9 +49,7 @@ const emit = defineEmits([
 
 const { t } = useI18n();
 
-const { championshipId, selectedMonth, selectedTeam, selectedTeamGameType } = useVModels(props, emit);
-
-const isGameTypeDisabled = computed(() => selectedTeam.value === null);
+const { championshipId } = useVModels(props, emit);
 
 const baseLabelClass = useMainClass('label');
 </script>

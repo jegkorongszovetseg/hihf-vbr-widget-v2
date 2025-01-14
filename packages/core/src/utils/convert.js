@@ -3,28 +3,28 @@ import {
   anyPass,
   ascend,
   compose,
+  curry,
   descend,
   equals,
   filter,
+  groupBy,
   ifElse,
   includes,
+  lensProp,
   map,
+  over,
+  path,
   pipe,
   prop,
-  path,
+  replace,
+  sort,
   sortWith,
   toLower,
-  groupBy,
-  replace,
-  curry,
-  over,
-  lensProp,
-  sort,
 } from 'ramda';
 import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../constants.js';
-import { format, convertMinToSec, convertSecToMin, convertMinToMinSec } from './datetime.js';
+import { convertMinToMinSec, convertMinToSec, convertSecToMin, format } from './datetime.js';
 
-export const convert = (data = []) => {
+export function convert(data = []) {
   return {
     result: [...data],
     filteredRowsLength: 0,
@@ -40,10 +40,10 @@ export const convert = (data = []) => {
 
     filter(name, condition = [], exact = false) {
       if (name) {
-        const predicate = condition.map((key) =>
-          exact ? pipe(path(key), equals(name)) : pipe(prop(key), toLower, includes(toLower(name)))
+        const predicate = condition.map(key =>
+          exact ? pipe(path(key), equals(name)) : pipe(prop(key), toLower, includes(toLower(name))),
         );
-        const replaceComma = curry((row) => (row.name ? over(lensProp('name'), replace(',', ''), row) : row));
+        const replaceComma = curry(row => (row.name ? over(lensProp('name'), replace(',', ''), row) : row));
         const filteredRows = filter(pipe(replaceComma, anyPass([...predicate])), this.result);
         this.isFiltered = true;
         this.filteredRowsLength = filteredRows.length;
@@ -53,10 +53,12 @@ export const convert = (data = []) => {
     },
 
     sorted(sort) {
-      if (!sort.sortTarget) return this;
-      if (sort.orders[0].direction === SORT_STATE_ORIGINAL) return this;
+      if (!sort.sortTarget)
+        return this;
+      if (sort.orders[0].direction === SORT_STATE_ORIGINAL)
+        return this;
       const sortDirection = ifElse(equals(SORT_STATE_ASCEND), always(ascend), always(descend));
-      this.result = sortWith(sort.orders.map((s) => compose(sortDirection(s.direction), prop)(s.target)))(this.result);
+      this.result = sortWith(sort.orders.map(s => compose(sortDirection(s.direction), prop)(s.target)))(this.result);
       return this;
     },
 
@@ -81,7 +83,8 @@ export const convert = (data = []) => {
     },
 
     pagination(page, limit) {
-      if (!limit) return this;
+      if (!limit)
+        return this;
       page = Number(page);
       limit = Number(limit);
       const startIndex = (page - 1) * limit;
@@ -96,7 +99,7 @@ export const convert = (data = []) => {
     },
 
     playerName() {
-      this.result = this.result.map((row) => ({
+      this.result = this.result.map(row => ({
         ...row,
         name: `${row.lastName} ${row.firstName}`,
       }));
@@ -104,7 +107,7 @@ export const convert = (data = []) => {
     },
 
     teamName() {
-      this.result = this.result.map((row) => ({
+      this.result = this.result.map(row => ({
         ...row,
         teamName: row.team.longName,
       }));
@@ -112,7 +115,7 @@ export const convert = (data = []) => {
     },
 
     schedule(timezone = '', locale = 'hu') {
-      this.result = this.result.map((row) => ({
+      this.result = this.result.map(row => ({
         ...row,
         gameResult: `${row.homeTeamScore}-${row.awayTeamScore}`,
         gameDateDate: format(row.gameDate, 'L dddd', timezone, locale),
@@ -122,9 +125,10 @@ export const convert = (data = []) => {
     },
 
     gameDateFilter(month) {
-      if (month === null) return this;
+      if (month === null)
+        return this;
       this.result = this.result.filter((game) => {
-        return new Date(game.gameDate).getMonth() == month;
+        return new Date(game.gameDate).getMonth() === month;
       });
       return this;
     },
@@ -132,7 +136,8 @@ export const convert = (data = []) => {
     convertTimes(targets = []) {
       this.result = this.result.map((row) => {
         targets.map((key) => {
-          if (!row[key]) return row;
+          if (!row[key])
+            return row;
           return (row[`${key}Sec`] = convertMinToSec(row[key]));
         });
         return row;
@@ -148,114 +153,128 @@ export const convert = (data = []) => {
       return this;
     },
   };
-};
+}
 
 export const rawConvert = (data, ...fn) => map(compose(...fn))(data);
 
-export const playerName = (row) => ({
-  ...row,
-  ...(row.lastName && row.firstName && { name: `${row.lastName} ${row.firstName}` }),
-  ...(row.player?.playerId && { name: `${row.player.lastName} ${row.player.firstName}` }),
-  ...(row.player?.id && { name: `${row.player.lastName} ${row.player.firstName}` }),
-  ...(row.player?.nationality && {
-    name: row.player?.nationality.includes('hu')
-      ? `${row.player.lastName} ${row.player.firstName}`
-      : `${row.player.lastName}, ${row.player.firstName}`,
-  }),
-  ...(row.nationality && {
-    name: row.nationality.includes('hu') ? `${row.lastName} ${row.firstName}` : `${row.lastName}, ${row.firstName}`,
-  }),
-});
+export function playerName(row) {
+  return {
+    ...row,
+    ...(row.lastName && row.firstName && { name: `${row.lastName} ${row.firstName}` }),
+    ...(row.player?.playerId && { name: `${row.player.lastName} ${row.player.firstName}` }),
+    ...(row.player?.id && { name: `${row.player.lastName} ${row.player.firstName}` }),
+    ...(row.player?.nationality && {
+      name: row.player?.nationality.includes('hu')
+        ? `${row.player.lastName} ${row.player.firstName}`
+        : `${row.player.lastName}, ${row.player.firstName}`,
+    }),
+    ...(row.nationality && {
+      name: row.nationality.includes('hu') ? `${row.lastName} ${row.firstName}` : `${row.lastName}, ${row.firstName}`,
+    }),
+  };
+}
 
-export const teamName = (row) => ({
-  ...row,
-  ...(row?.team?.id && { teamName: row.team.longName }),
-});
+export function teamName(row) {
+  return {
+    ...row,
+    ...(row?.team?.id && { teamName: row.team.longName }),
+  };
+}
 
-export const gameDateTime =
-  (timezone = '', locale = 'hu') =>
-  (row) => ({
+export function gameDateTime(timezone = '', locale = 'hu') {
+  return row => ({
     ...row,
     gameDateDate: format(row.gameDate, 'L dddd', timezone, locale),
     gameDateTime: format(row.gameDate, 'HH:mm', timezone, locale),
   });
+}
 
 // Mindig a kiválasztott csapat (teamId) szerint konvertálja az eredményt
-export const gameResult = (teamId) => (row) => ({
-  ...row,
-  gameResult: createGameResult(row, teamId),
-});
+export function gameResult(teamId) {
+  return row => ({
+    ...row,
+    gameResult: createGameResult(row, teamId),
+  });
+}
 
-export const teamOpponent = (row) => ({
-  ...row,
-  opponent: createOpponent(row),
-});
+export function teamOpponent(row) {
+  return {
+    ...row,
+    opponent: createOpponent(row),
+  };
+}
 
-export const teamResultType = (row) => ({
-  ...row,
-  resultType: createGameResultType(row),
-});
+export function teamResultType(row) {
+  return {
+    ...row,
+    resultType: createGameResultType(row),
+  };
+}
 
-export const scheduleOptionalRowClass = (row) => ({
-  ...row,
-  rowClasses: row.optional ? 'is-optional' : '',
-});
+export function scheduleOptionalRowClass(row) {
+  return {
+    ...row,
+    rowClasses: row.optional ? 'is-optional' : '',
+  };
+}
 
-export const upperCase =
-  (prop = []) =>
-  (row) => ({
+export function upperCase(prop = []) {
+  return row => ({
     ...row,
     [prop]: row[prop]?.toUpperCase(),
   });
+}
 
-export const convertTimes =
-  (targets = []) =>
-  (row) => {
+export function convertTimes(targets = []) {
+  return (row) => {
     targets.map((key) => {
-      if (!row[key]) return row;
+      if (!row[key])
+        return row;
       return (row[`${key}Sec`] = convertMinToSec(row[key]));
     });
     return row;
   };
+}
 
-export const convertTimesMinToMinSec =
-  (targets = []) =>
-  (row) => {
+export function convertTimesMinToMinSec(targets = []) {
+  return (row) => {
     targets.map((key) => {
-      if (!row[key]) return row;
+      if (!row[key])
+        return row;
       return (row[`${key}Min`] = convertMinToMinSec(row[key]));
     });
     return row;
   };
+}
 
-export const convertTimesSecToMin =
-  (targets = []) =>
-  (row) => {
+export function convertTimesSecToMin(targets = []) {
+  return (row) => {
     targets.map((key) => {
       return (row[`${key}Min`] = convertSecToMin(row[key]));
     });
     return row;
   };
+}
 
-export const convertGamePeriodResults = (row) => {
+export function convertGamePeriodResults(row) {
   return {
     ...row,
     periodResults: row.result?.match(/\(.*?\)/)?.[0] ?? '',
   };
-};
+}
 
 const dateDiff = (a, b) => new Date(a.gameDate).getTime() - new Date(b.gameDate).getTime();
 
 export const sortGames = sortWith([dateDiff, ascend(prop('id')), ascend(prop('gameId'))]);
 
-const localeCompare = (key) => (a, b) => a[key].localeCompare(b[key], 'hu');
+const localeCompare = key => (a, b) => a[key].localeCompare(b[key], 'hu');
 export const localeSort = sort(localeCompare('name'));
 
 function createOpponent(row) {
   return [!row.isHomeGame ? '@' : null, row.opponent?.shortName].join(' ');
 }
 
-function createGameResult(row, teamId) {
+function createGameResult(row) {
   let firstScore = row?.homeTeamScore;
   let secondScore = row?.awayTeamScore;
   if (!row.isHomeGame) {
@@ -269,25 +288,31 @@ function createGameResultType(row) {
   const result = row.gameResult.split(':');
   const isWonGame = result[0] > result[1];
   const isLostGame = result[0] < result[1];
-  if (isWonGame && row.isOvertime) return 'OTW';
-  if (isWonGame && row.isShootout) return 'SOW';
-  if (isWonGame) return 'W';
-  if (isLostGame && row.isOvertime) return 'OTL';
-  if (isLostGame && row.isShootout) return 'SOL';
-  if (isLostGame) return 'L';
+  if (isWonGame && row.isOvertime)
+    return 'OTW';
+  if (isWonGame && row.isShootout)
+    return 'SOW';
+  if (isWonGame)
+    return 'W';
+  if (isLostGame && row.isOvertime)
+    return 'OTL';
+  if (isLostGame && row.isShootout)
+    return 'SOL';
+  if (isLostGame)
+    return 'L';
   return 'D';
 }
 
-export const convertPhaseName = (phases) => {
-  return phases.map((phase) => ({
+export function convertPhaseName(phases) {
+  return phases.map(phase => ({
     phaseId: phase.phaseId,
     phaseName: Object.values({
       phaseName: phase.phaseName,
-      ...(phase.phaseType?.phaseTypeName &&
-        phase.phaseType.phaseTypeName !== phase.phaseName && {
-          phaseTypeName: phase.phaseType.phaseTypeName,
-        }),
+      ...(phase.phaseType?.phaseTypeName
+        && phase.phaseType.phaseTypeName !== phase.phaseName && {
+        phaseTypeName: phase.phaseType.phaseTypeName,
+      }),
       ...(phase.phaseSubType?.phaseSubTypeName && { phaseSubTypeName: phase.phaseSubType.phaseSubTypeName }),
     }).join('-'),
   }));
-};
+}

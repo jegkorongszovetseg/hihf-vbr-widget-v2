@@ -1,9 +1,7 @@
 <script setup>
 import { store } from '../store.js';
-
-import { GamesTimeline } from '@mjsz-vbr-elements/extended';
-import '../../../packages/shared/dist/css/common.css';
-import '../../../packages/shared/dist/css/games-timeline.css';
+// import '../../../packages/shared/dist/css/common.css';
+// import '../../../packages/shared/dist/css/games-timeline.css';
 </script>
 
 <template>

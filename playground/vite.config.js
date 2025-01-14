@@ -1,10 +1,10 @@
 import { resolve } from 'node:path';
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import VueRouter from 'unplugin-vue-router/vite';
-import UnoCSS from 'unocss/vite';
 import presetUno from '@unocss/preset-uno';
 import presetWind from '@unocss/preset-wind';
+import vue from '@vitejs/plugin-vue';
+import UnoCSS from 'unocss/vite';
+import VueRouter from 'unplugin-vue-router/vite';
+import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -31,7 +31,7 @@ export default defineConfig({
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: (tag) => tag.startsWith('mjsz-vbr-'),
+          isCustomElement: tag => tag.startsWith('mjsz-vbr-'),
         },
       },
     }),

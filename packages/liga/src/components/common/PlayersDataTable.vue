@@ -1,8 +1,8 @@
 <script setup>
-import { Image, DataTable, ResponsiveTable, FloatingPanel } from '@mjsz-vbr-elements/core/components';
+import { DEFAULT_PORTRAIT_IMAGE_URL } from '@mjsz-vbr-elements/core';
+import { DataTable, FloatingPanel, Image, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { flagResolver } from '@mjsz-vbr-elements/core/utils';
-import { DEFAULT_PORTRAIT_IMAGE_URL } from '@mjsz-vbr-elements/core';
 
 const props = defineProps({
   columns: {
@@ -52,8 +52,9 @@ const { t } = useI18n();
 
 const { columns } = useColumns(props.columns);
 
-const onSort = (payload) => emit('sort', payload);
+const onSort = payload => emit('sort', payload);
 </script>
+
 <template>
   <ResponsiveTable>
     <DataTable
@@ -64,28 +65,28 @@ const onSort = (payload) => emit('sort', payload);
       :sort="sort"
       @sort="onSort"
     >
-      <template v-slot:cell-playerPortrait="{ row }">
+      <template #cell-playerPortrait="{ row }">
         <div class="is-portrait-image">
           <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
         </div>
       </template>
 
-      <template v-slot:cell-name="{ row }">
+      <template #cell-name="{ row }">
         <a :href="playerResolver({ ...row, championshipId })" v-text="row.name" />
       </template>
 
-      <template v-slot:cell-teamName="{ row }">
+      <template #cell-teamName="{ row }">
         <a :href="teamResolver({ ...row, championshipId })" v-text="row.teamName" />
       </template>
 
-      <template v-slot:cell-nationality="{ row }">
+      <template #cell-nationality="{ row }">
         <div class="g-row">
           <template v-for="nationality in row.nationalityCode" :key="nationality">
             <FloatingPanel
+              v-slot="{ setRef, show, hide }"
               placement="top"
               :content="t(`nationality.${nationality}`)"
               :append-to="appendTo"
-              v-slot:default="{ setRef, show, hide }"
             >
               <div
                 :ref="setRef"
@@ -102,7 +103,9 @@ const onSort = (payload) => emit('sort', payload);
         </div>
       </template>
 
-      <template v-slot:cell-position="{ row }"> {{ row.position?.toUpperCase() }} </template>
+      <template #cell-position="{ row }">
+        {{ row.position?.toUpperCase() }}
+      </template>
     </DataTable>
   </ResponsiveTable>
 </template>

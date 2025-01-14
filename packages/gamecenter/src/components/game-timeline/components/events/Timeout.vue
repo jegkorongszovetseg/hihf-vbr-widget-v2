@@ -26,7 +26,7 @@ const { t } = useI18n();
     </template>
 
     <template #team-logo>
-      <TeamLogo :name="event.team.longName" :logo="event.team.logo" :key="event.team.id" :is-home-team="isHomeTeam" />
+      <TeamLogo :key="event.team.id" :name="event.team.longName" :logo="event.team.logo" :is-home-team="isHomeTeam" />
     </template>
 
     <template #event-type-icon>

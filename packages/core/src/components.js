@@ -1,4 +1,5 @@
 import { FetchMoreObserver } from '@lostui/utils/components';
+import AdditionalStandingsText from './components/AdditionalStandingsText.vue';
 import BaseSelect from './components/BaseSelect.vue';
 import DataTable from './components/DataTable.vue';
 import ErrorNotice from './components/ErrorNotice.vue';
@@ -9,27 +10,26 @@ import Image from './components/Image.vue';
 import LoadingIndicator from './components/LoadingIndicator.vue';
 import Paginator from './components/Paginator.vue';
 import ResponsiveTable from './components/ResponsiveTable.vue';
-import TimezoneSelector from './components/TimezoneSelector.vue';
-import StatisticsTable from './components/StatisticsTable.vue';
 import ScheduleTable from './components/ScheduleTable.vue';
 import SeasonSelector from './components/SeasonSelector.vue';
-import AdditionalStandingsText from './components/AdditionalStandingsText.vue';
+import StatisticsTable from './components/StatisticsTable.vue';
+import TimezoneSelector from './components/TimezoneSelector.vue';
 
 export {
-  Image,
-  Paginator,
-  DataTable,
+  AdditionalStandingsText,
   BaseSelect,
+  DataTable,
   ErrorNotice,
-  I18NProvider,
   ErrorProvider,
-  ScheduleTable,
+  FetchMoreObserver,
   FloatingPanel,
+  I18NProvider,
+  Image,
+  LoadingIndicator,
+  Paginator,
+  ResponsiveTable,
+  ScheduleTable,
   SeasonSelector,
   StatisticsTable,
-  ResponsiveTable,
-  LoadingIndicator,
   TimezoneSelector,
-  FetchMoreObserver,
-  AdditionalStandingsText,
 };

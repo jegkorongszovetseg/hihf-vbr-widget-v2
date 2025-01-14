@@ -1,8 +1,8 @@
 <script setup>
-import { computed } from 'vue';
-import { propEq, reject } from 'ramda';
 import { useSort } from '@mjsz-vbr-elements/core/composables';
 import { convert, playerName, rawConvert, upperCase } from '@mjsz-vbr-elements/core/utils';
+import { propEq, reject } from 'ramda';
+import { computed } from 'vue';
 
 const props = defineProps({
   rows: {
@@ -14,7 +14,7 @@ const props = defineProps({
 const { sort, change: onSort } = useSort();
 
 const rawConvertedRows = computed(() =>
-  rawConvert(reject(propEq('gk', 'row'), props.rows), upperCase('position'), playerName)
+  rawConvert(reject(propEq('gk', 'row'), props.rows), upperCase('position'), playerName),
 );
 
 const convertedRows = computed(() => {

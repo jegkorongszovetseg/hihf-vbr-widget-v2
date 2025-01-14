@@ -1,31 +1,25 @@
 <script setup>
-import { reactive, computed } from 'vue';
-import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
-import { omit, pick } from 'ramda';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
 import { getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
+import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
+import { omit, pick } from 'ramda';
+import { computed, reactive } from 'vue';
 import { COLUMNS_GAMES, COLUMNS_PLAYER_SEASON_STATS } from '../internal';
 import {
+  PANE_GAMES,
+  removeCurrentFromSeasonStats,
+  transformCurrentSeasonStats,
+  transformGames,
   transformPlayerData,
   transformSeasonStats,
-  transformGames,
-  transformCurrentSeasonStats,
-  removeCurrentFromSeasonStats,
-  PANE_GAMES,
 } from './player.internal';
-
-const PLAYER_SEASON_STATS_API = '/v2/player-season-stats';
-const GOALIE_STATS_API = '/v2/goalie-season-stats';
-const PLAYER_GAMES_API = '/v2/player-games';
-const GOALIE_GAMES_API = '/v2/goalie-games';
-const timezone = getLocalTimezone();
 
 const props = defineProps({
   apiKey: {
     type: String,
     default: '',
   },
-  
+
   playerId: {
     type: String,
     default: '',
@@ -41,6 +35,11 @@ const props = defineProps({
     default: 'hu',
   },
 });
+const PLAYER_SEASON_STATS_API = '/v2/player-season-stats';
+const GOALIE_STATS_API = '/v2/goalie-season-stats';
+const PLAYER_GAMES_API = '/v2/player-games';
+const GOALIE_GAMES_API = '/v2/goalie-games';
+const timezone = getLocalTimezone();
 
 const params = useUrlSearchParams('history');
 
@@ -62,7 +61,7 @@ const { state: playerData, isLoading: isLoadingPlayerData } = useServices({
     params: computed(() => ({ championshipId: state.championshipId, playerId: state.playerId })),
     immediate: true,
   },
-  transform: (res) => transformPlayerData(res, props.locale),
+  transform: res => transformPlayerData(res, props.locale),
   onError,
   onSuccess: (res) => {
     const { position } = res;
@@ -86,7 +85,7 @@ const {
     params: computed(() => ({ playerId: state.playerId })),
     immediate: false,
   },
-  transform: (res) => transformSeasonStats(res),
+  transform: res => transformSeasonStats(res),
   onError,
 });
 
@@ -101,22 +100,22 @@ const {
     params: computed(() => ({ championshipId: state.championshipId, playerId: state.playerId })),
     immediate: false,
   },
-  transform: (res) => transformGames(res, state, props.locale, timezone),
+  transform: res => transformGames(res, state, props.locale, timezone),
   onError,
 });
 
 const playerSeasonStats = computed(() =>
-  removeCurrentFromSeasonStats(state.championshipId, playerSeasonStatsRows.value)
+  removeCurrentFromSeasonStats(state.championshipId, playerSeasonStatsRows.value),
 );
 const currentSeasonStats = computed(() =>
-  transformCurrentSeasonStats(state.championshipId, playerSeasonStatsRows.value)
+  transformCurrentSeasonStats(state.championshipId, playerSeasonStatsRows.value),
 );
 
 const currentSeasonColumns = computed(() =>
   state.isGoalie
     ? pick(
         ['teamName', 'gkd', 'gpi', 'mipMin', 'mipPercent', 'ga', 'gaa', 'sog', 'svs', 'svsPercent'],
-        COLUMNS_PLAYER_SEASON_STATS
+        COLUMNS_PLAYER_SEASON_STATS,
       )
     : omit(
         [
@@ -133,15 +132,15 @@ const currentSeasonColumns = computed(() =>
           'gpi',
           'name',
         ],
-        COLUMNS_PLAYER_SEASON_STATS
-      )
+        COLUMNS_PLAYER_SEASON_STATS,
+      ),
 );
 
 const seasonColumns = computed(() =>
   state.isGoalie
     ? pick(
         ['season', 'teamName', 'gkd', 'gpi', 'mipMin', 'ga', 'gaa', 'sog', 'svs', 'svsPercent'],
-        COLUMNS_PLAYER_SEASON_STATS
+        COLUMNS_PLAYER_SEASON_STATS,
       )
     : omit(
         [
@@ -164,8 +163,8 @@ const seasonColumns = computed(() =>
           'svs',
           'svsPercent',
         ],
-        COLUMNS_PLAYER_SEASON_STATS
-      )
+        COLUMNS_PLAYER_SEASON_STATS,
+      ),
 );
 
 const gameColumns = computed(() =>
@@ -184,7 +183,7 @@ const gameColumns = computed(() =>
           'gaa',
           'svsPercent',
         ],
-        COLUMNS_GAMES
+        COLUMNS_GAMES,
       )
     : pick(
         [
@@ -203,8 +202,8 @@ const gameColumns = computed(() =>
           'shotPercent',
           'pim',
         ],
-        COLUMNS_GAMES
-      )
+        COLUMNS_GAMES,
+      ),
 );
 
 function fetchData() {
@@ -215,6 +214,7 @@ function onChangePane(value) {
   state.pane = value;
 }
 </script>
+
 <template>
   <slot
     v-bind="{
@@ -231,5 +231,5 @@ function onChangePane(value) {
       seasonColumns,
       onChangePane,
     }"
-  ></slot>
+  />
 </template>

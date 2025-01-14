@@ -1,7 +1,7 @@
 <script setup>
-import { computed } from 'vue';
 import { DataTable, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
-import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
+import { useColumns } from '@mjsz-vbr-elements/core/composables';
+import { computed } from 'vue';
 
 const props = defineProps({
   columns: {
@@ -24,7 +24,6 @@ const props = defineProps({
     default: false,
   },
 });
-const { t } = useI18n();
 
 const { columns } = useColumns(computed(() => props.columns));
 </script>

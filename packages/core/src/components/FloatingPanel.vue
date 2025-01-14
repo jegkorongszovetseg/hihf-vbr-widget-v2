@@ -1,8 +1,8 @@
 <script setup>
-import { computed, ref } from 'vue';
-import { flip, shift, offset } from '@floating-ui/dom';
+import { flip, offset, shift } from '@floating-ui/dom';
 import { onClickOutside } from '@vueuse/core';
-import { useFloating, arrow } from '../composables/useFloating';
+import { computed, ref } from 'vue';
+import { arrow, useFloating } from '../composables/useFloating';
 
 const props = defineProps({
   disabled: {
@@ -46,21 +46,25 @@ const { x, y, arrowX, arrowY, placement, reference, floating, strategy } = useFl
   enabled: open,
 });
 
-const show = () => {
-  if (props.disabled) return;
-  if (open.value) return;
+function show() {
+  if (props.disabled)
+    return;
+  if (open.value)
+    return;
   open.value = true;
-};
+}
 
-const hide = (event) => {
-  if (!open.value) return;
-  if (!event) return;
+function hide(event) {
+  if (!open.value)
+    return;
+  if (!event)
+    return;
   open.value = false;
-};
+}
 
-const setSlotRef = (el) => {
+function setSlotRef(el) {
   reference.value = el;
-};
+}
 
 const events = {
   mouseenter: show,
@@ -70,13 +74,14 @@ const events = {
 };
 
 onClickOutside(floating, (event) => {
-  if (reference.value?.contains(event.target)) return;
+  if (reference.value?.contains(event.target))
+    return;
   hide();
 });
 </script>
 
 <template>
-  <slot :set-ref="setSlotRef" :show="show" :hide="hide" :events="events"></slot>
+  <slot :set-ref="setSlotRef" :show="show" :hide="hide" :events="events" />
   <div
     ref="floating"
     :data-placement="placement"
@@ -87,8 +92,10 @@ onClickOutside(floating, (event) => {
     }"
   >
     <transition name="transition-fade" mode="out-in">
-      <div v-if="open" :class="['floating-content', [`is-${props.theme}`]]">
-        <slot name="content" :close="hide">{{ content }}</slot>
+      <div v-if="open" class="floating-content" :class="[[`is-${props.theme}`]]">
+        <slot name="content" :close="hide">
+          {{ content }}
+        </slot>
         <div
           ref="arrowRef"
           class="is-arrow"
@@ -97,7 +104,7 @@ onClickOutside(floating, (event) => {
             top: arrowY ? `${arrowY}px` : '',
             left: arrowX ? `${arrowX}px` : '',
           }"
-        ></div>
+        />
       </div>
     </transition>
   </div>

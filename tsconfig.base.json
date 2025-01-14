@@ -1,18 +1,18 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+    "jsx": "preserve",
+    "lib": ["ESNext", "DOM"],
     "useDefineForClassFields": true,
     "module": "ESNext",
     "moduleResolution": "Node",
-    "strict": true,
-    "jsx": "preserve",
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "lib": ["ESNext", "DOM"],
-    "skipLibCheck": true,
+    "allowJs": true,
+    "strict": true,
     "noEmit": true,
-    "allowJs": true
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
     // "paths": {
     //   "@mjsz-vbr-elements/core/components": ["./packages/core/src/components/index.js"],
     //   "@mjsz-vbr-elements/core/composables": ["./packages/core/src/composables/index.js"]

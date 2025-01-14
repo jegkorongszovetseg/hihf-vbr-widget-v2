@@ -1,4 +1,5 @@
 # Kapus statisztikák
+
 Egy bajnokság vagy bajnokság fázis kapus statisztikái.
 
 ## Használat

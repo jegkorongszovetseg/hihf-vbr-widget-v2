@@ -1,10 +1,9 @@
 <script setup>
-import { store } from '../store.js';
 // DEV:
-import { IVRIdentifiers } from '@mjsz-vbr-elements/extended';
-import '../../../packages/shared/dist/css/common.css';
-import '../../../packages/shared/dist/css/typography.css';
-import '../../../packages/shared/dist/css/forms.css';
+import { store } from '../store.js';
+// import '../../../packages/shared/dist/css/common.css';
+// import '../../../packages/shared/dist/css/typography.css';
+// import '../../../packages/shared/dist/css/forms.css';
 </script>
 
 <template>

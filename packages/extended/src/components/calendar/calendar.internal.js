@@ -1,13 +1,13 @@
 import {
-  isBefore,
-  isAfter,
-  currentWeekStartEnd,
   addDays,
-  subtractDays,
-  startOfMonth,
-  endOfMonth,
-  rawConvert,
   convertGamePeriodResults,
+  currentWeekStartEnd,
+  endOfMonth,
+  isAfter,
+  isBefore,
+  rawConvert,
+  startOfMonth,
+  subtractDays,
 } from '@mjsz-vbr-elements/core';
 
 export const PANEL_GAMES_PLAYED = 'gamesPlayed';
@@ -15,10 +15,10 @@ export const PANEL_TODAYS_GAMES = 'todaysGames';
 export const PANEL_NEXT_GAMES = 'nextGames';
 export const PANEL_WEEK_GAMES = 'weekGames';
 
-export const transformGames = (games, dateRage) => {
+export function transformGames(games, dateRage) {
   dateRage.value = { firstGame: games.firstGame, lastGame: games.lastGame };
   return rawConvert(games.games, convertGamePeriodResults);
-};
+}
 
 // '2024-06-08'
 export const today = new Date();
@@ -55,26 +55,35 @@ export const monthDatesMap = new Map()
   .set(PANEL_WEEK_GAMES, () => []);
 
 function calculateGamePlayedMonths(today, first, last) {
-  if (isBefore(today, first)) return [];
-  if (isAfter(today, last)) return [first, last];
+  if (isBefore(today, first))
+    return [];
+
+  if (isAfter(today, last))
+    return [first, last];
+
   return [first, today];
 }
 
 function calculateNextGamesMonths(today, first, last) {
-  if (isBefore(today, first)) return [first, last];
-  if (isAfter(today, last)) return [];
+  if (isBefore(today, first))
+    return [first, last];
+
+  if (isAfter(today, last))
+    return [];
+
   return [today, last];
 }
 
 export function getMonthsBetweenDates(startDate, endDate, direction, locale = 'hu') {
-  const originalStartDate = startDate;
-  const originalEndDate = endDate;
+  // const originalStartDate = startDate;
+  // const originalEndDate = endDate;
   startDate = new Date(startDate);
   endDate = new Date(endDate);
 
   const months = [];
   const currentDate = startDate;
 
+  // eslint-disable-next-line no-unmodified-loop-condition
   while (currentDate <= endDate) {
     const month = currentDate.toLocaleString(locale, { month: 'short' });
     setMonthObject(month);
@@ -88,7 +97,7 @@ export function getMonthsBetweenDates(startDate, endDate, direction, locale = 'h
   }
 
   function setMonthObject(month) {
-    if (months.findIndex((item) => item.name === month) === -1) {
+    if (months.findIndex(item => item.name === month) === -1) {
       months.push({
         id: `${currentDate.getFullYear()}-${currentDate.getMonth()}`,
         name: month,
@@ -100,7 +109,8 @@ export function getMonthsBetweenDates(startDate, endDate, direction, locale = 'h
 }
 
 export function handleMonthParam(monthParam) {
-  if (!monthParam) return { year: today.getFullYear(), month: today.getMonth() };
+  if (!monthParam)
+    return { year: today.getFullYear(), month: today.getMonth() };
   const [year, month] = monthParam.split('-');
   return { year, month };
 }

@@ -1,7 +1,7 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { DataTable, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
-import { ResponsiveTable, DataTable } from '@mjsz-vbr-elements/core/components';
+import { computed, ref } from 'vue';
 
 const props = defineProps({
   columns: {
@@ -32,23 +32,24 @@ const { columns } = useColumns(
   null,
   computed(() => ({
     offsetName: props.offsetName,
-  }))
+  })),
 );
 const { t } = useI18n();
 </script>
+
 <template>
   <div ref="tooltipContainer">
     <ResponsiveTable>
       <DataTable :columns="columns" :rows="rows" :is-loading="isLoading" :append-to="tooltipContainer">
-        <template v-slot:cell-homeTeamName="{ row }">
+        <template #cell-homeTeamName="{ row }">
           {{ row.homeTeam?.longName ?? '' }}
         </template>
 
-        <template v-slot:cell-location="{ row }">
+        <template #cell-location="{ row }">
           {{ row.location?.locationName ?? '' }}
         </template>
 
-        <template v-slot:cell-document="{ row }">
+        <template #cell-document="{ row }">
           <a v-if="row.schedule" :href="row.schedule" target="_blank">
             {{ t('schedule') }}
           </a>

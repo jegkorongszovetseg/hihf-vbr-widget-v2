@@ -1,15 +1,15 @@
-import { reverse, toUpper, filter, propEq, reject } from 'ramda';
 import {
+  convertTimesMinToMinSec,
+  gameDateTime,
+  gameResult,
   rawConvert,
   sortGames,
-  gameDateTime,
-  teamResultType,
-  gameResult,
-  teamOpponent,
   teamName,
+  teamOpponent,
+  teamResultType,
   yearToNow,
-  convertTimesMinToMinSec,
 } from '@mjsz-vbr-elements/core/utils';
+import { filter, propEq, reject, reverse, toUpper } from 'ramda';
 
 export const PANE_GAMES = 'games';
 export const PANE_SEASONS = 'seasons';
@@ -25,13 +25,16 @@ export function transformPlayerData(data, locale) {
   };
 }
 
-export const transformSeasonStats = (data) => rawConvert(reverse(data), teamName, convertTimesMinToMinSec(['mip']));
+export const transformSeasonStats = data => rawConvert(reverse(data), teamName, convertTimesMinToMinSec(['mip']));
 
-export const removeCurrentFromSeasonStats = (championshipId, data) =>
-  reject(propEq(championshipId, 'championshipId'))(data);
+export function removeCurrentFromSeasonStats(championshipId, data) {
+  return reject(propEq(championshipId, 'championshipId'))(data);
+}
 
-export const transformCurrentSeasonStats = (championshipId, data) =>
-  filter(propEq(championshipId, 'championshipId'))(data);
+export function transformCurrentSeasonStats(championshipId, data) {
+  return filter(propEq(championshipId, 'championshipId'))(data);
+}
 
-export const transformGames = (data, state, locale, timezone) =>
-  rawConvert(sortGames(data), gameDateTime(timezone, locale), teamResultType, gameResult(state.teamId), teamOpponent);
+export function transformGames(data, state, locale, timezone) {
+  return rawConvert(sortGames(data), gameDateTime(timezone, locale), teamResultType, gameResult(state.teamId), teamOpponent);
+}

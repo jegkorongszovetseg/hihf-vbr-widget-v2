@@ -1,14 +1,10 @@
 {
   "name": "@mjsz-vbr-elements/shared",
-  "private": false,
+  "type": "module",
   "version": "2.10.0",
+  "private": false,
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
-  "type": "module",
-  "files": [
-    "dist"
-  ],
-  "module": "./dist/icons/index.js",
   "exports": {
     ".": {
       "import": "./dist/icons/index.js"
@@ -21,6 +17,10 @@
       "require": "./dist/css/*.css"
     }
   },
+  "module": "./dist/icons/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/convert-postcss.js",
@@ -31,10 +31,12 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
+    "@zeecoder/postcss-container-query": "^3.1.0",
     "glob": "^11.0.1",
     "nodemon": "^3.1.9",
     "postcss": "^8.4.49",
     "postcss-import": "^16.1.0",
+    "postcss-media-minmax": "^5.0.0",
     "postcss-mixins": "^11.0.3",
     "postcss-nested": "^7.0.2",
     "postcss-prefixer": "^3.0.0",

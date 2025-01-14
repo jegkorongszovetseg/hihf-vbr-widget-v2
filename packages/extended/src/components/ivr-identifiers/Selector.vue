@@ -1,7 +1,7 @@
 <script setup>
-import { useVModels } from '@vueuse/core';
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { BaseSelect } from '@mjsz-vbr-elements/core/components';
+import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useVModels } from '@vueuse/core';
 
 const props = defineProps({
   seasonsList: {

@@ -1,18 +1,18 @@
 <script setup>
-import { computed, ref } from 'vue';
-import { whenever } from '@vueuse/core';
-import { COLUMNS_SCHEDULE } from '../columns';
-import { useColumns, useI18n, useError } from '../composables';
-import { WidgetError, UndefinedColumn } from '../utils';
-import FloatingPanel from './FloatingPanel.vue';
-import ResponsiveTable from './ResponsiveTable.vue';
-import Image from './Image.vue';
-import DataTable from './DataTable.vue';
-import LoadingIndicator from './LoadingIndicator.vue';
 import IconBroadcast from '@mjsz-vbr-elements/shared/icons/IconBroadcast';
 import IconMore from '@mjsz-vbr-elements/shared/icons/IconMore';
 import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
 import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
+import { whenever } from '@vueuse/core';
+import { computed, ref } from 'vue';
+import { COLUMNS_SCHEDULE } from '../columns';
+import { useColumns, useError, useI18n } from '../composables';
+import { UndefinedColumn, WidgetError } from '../utils';
+import DataTable from './DataTable.vue';
+import FloatingPanel from './FloatingPanel.vue';
+import Image from './Image.vue';
+import LoadingIndicator from './LoadingIndicator.vue';
+import ResponsiveTable from './ResponsiveTable.vue';
 
 const props = defineProps({
   rows: {
@@ -55,7 +55,7 @@ const { columns, error } = useColumns(
   computed(() => props.hideColumns),
   computed(() => ({
     offsetName: props.offsetName,
-  }))
+  })),
 );
 
 whenever(
@@ -65,38 +65,38 @@ whenever(
       new WidgetError(UndefinedColumn.message, {
         ...UndefinedColumn.options,
         cause: { column: error.value },
-      })
+      }),
     ),
   {
     immediate: true,
-  }
+  },
 );
 const { t } = useI18n();
 </script>
 
 <template>
-  <ResponsiveTable v-slot:default="{ el: rootElement }">
+  <ResponsiveTable v-slot="{ el: rootElement }">
     <DataTable
       :columns="columns"
       :rows="props.rows"
       :is-loading="isLoading"
       :append-to="tooltipContainer || rootElement"
     >
-      <template v-slot:cell-homeTeamName="{ row }">
+      <template #cell-homeTeamName="{ row }">
         <span class="is-team-name-long">{{ row.homeTeam.longName }}</span>
         <span class="is-team-name-short">{{ row.homeTeam.shortName }}</span>
       </template>
-      <template v-slot:cell-awayTeamName="{ row }">
+      <template #cell-awayTeamName="{ row }">
         <span class="is-team-name-long">{{ row.awayTeam.longName }}</span>
         <span class="is-team-name-short">{{ row.awayTeam.shortName }}</span>
       </template>
-      <template v-slot:cell-homeTeamLogo="{ row }">
-        <Image class="is-logo-image is-right" :key="row.homeTeam.id" :src="row.homeTeam.logo" />
+      <template #cell-homeTeamLogo="{ row }">
+        <Image :key="row.homeTeam.id" class="is-logo-image is-right" :src="row.homeTeam.logo" />
       </template>
-      <template v-slot:cell-awayTeamLogo="{ row }">
-        <Image class="is-logo-image is-right" :key="row.awayTeam.id" :src="row.awayTeam.logo" />
+      <template #cell-awayTeamLogo="{ row }">
+        <Image :key="row.awayTeam.id" class="is-logo-image is-right" :src="row.awayTeam.logo" />
       </template>
-      <template v-slot:cell-gameResult="{ row }">
+      <template #cell-gameResult="{ row }">
         <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>
         <a
           v-else
@@ -107,26 +107,26 @@ const { t } = useI18n();
           {{ row.homeTeamScore }}:{{ row.awayTeamScore }}
         </a>
       </template>
-      <template v-slot:cell-gameResultType="{ row }">
+      <template #cell-gameResultType="{ row }">
         <span v-if="row.isOvertime" class="label">{{ t('common.overtimeShort') }}</span>
         <span v-if="row.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
         <span v-if="row.seriesStandings" class="label">{{ row.seriesStandings }}</span>
       </template>
-      <template v-slot:cell-broadcast="{ row }">
+      <template #cell-broadcast="{ row }">
         <IconBroadcast v-if="row.broadcast" />
-        <span v-else></span>
+        <span v-else />
       </template>
-      <template v-slot:cell-location="{ row }">
+      <template #cell-location="{ row }">
         {{ row.location?.locationName ?? '' }}
       </template>
-      <template v-slot:cell-more="{ row }">
+      <template #cell-more="{ row }">
         <FloatingPanel :offset="2" placement="left" theme="content" :append-to="rootElement">
-          <template v-slot:default="{ setRef, show, hide }">
+          <template #default="{ setRef, show, hide }">
             <button :ref="setRef" @click.stop="show" @focus="show" @blur="hide">
               <IconMore />
             </button>
           </template>
-          <template v-slot:content>
+          <template #content>
             <ul class="is-dropdown-menu">
               <li>
                 <a
@@ -149,7 +149,7 @@ const { t } = useI18n();
         </FloatingPanel>
       </template>
 
-      <template v-slot:loading>
+      <template #loading>
         <LoadingIndicator />
       </template>
     </DataTable>

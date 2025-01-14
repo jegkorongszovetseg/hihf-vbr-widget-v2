@@ -1,27 +1,27 @@
 <script setup>
-import { computed, unref, ref } from 'vue';
+import {
+  AdditionalStandingsText,
+  ErrorNotice,
+  ErrorProvider,
+  I18NProvider,
+  Paginator,
+  // TimezoneSelector,
+  StatisticsTable,
+} from '@mjsz-vbr-elements/core/components';
+import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import {
   externalGameLinkResolver,
   externalTeamLinkResolver,
   getLocalTimezone,
   offsetName,
 } from '@mjsz-vbr-elements/core/utils';
-import {
-  Paginator,
-  ErrorNotice,
-  I18NProvider,
-  ErrorProvider,
-  // TimezoneSelector,
-  StatisticsTable,
-  AdditionalStandingsText,
-} from '@mjsz-vbr-elements/core/components';
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { computed, ref, unref } from 'vue';
+import en from '../../locales/en.json';
+import hu from '../../locales/hu.json';
+import { PANEL_PLAYERS, PANEL_SCHEDULE, PANEL_STANDINGS, PANEL_TEAMS } from './championship.internal';
 import DataProvider from './DataProvider.vue';
 import SeasonSelector from './SeasonSelector.vue';
 import Selector from './Selector.vue';
-import hu from '../../locales/hu.json';
-import en from '../../locales/en.json';
-import { PANEL_SCHEDULE, PANEL_STANDINGS, PANEL_PLAYERS, PANEL_TEAMS } from './championship.internal';
 
 const props = defineProps({
   locale: {
@@ -63,8 +63,8 @@ const sectionSelectorMainClass = useMainClass('section-selector');
 
 const messages = { en, hu };
 
-const externalGameLink = (params) => externalGameLinkResolver(props.externalGameResolver, params);
-const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.externalTeamResolver, teamName);
+const externalGameLink = params => externalGameLinkResolver(props.externalGameResolver, params);
+const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.externalTeamResolver, teamName);
 
 // const onTimezoneChange = (tz) => {
 //   timezone.value = tz;
@@ -73,15 +73,11 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
 
 <template>
   <div>
-    <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
-      <ErrorProvider v-slot:default="{ error, hasError }">
+    <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
+      <ErrorProvider v-slot="{ error, hasError }">
         <ErrorNotice v-if="hasError" :error="error" />
 
         <DataProvider
-          :locale="locale"
-          :timezone="timezone"
-          :championship-name="championshipName"
-          :limit="limit"
           v-slot="{
             sort,
             page,
@@ -105,6 +101,10 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
             onPaginatorChange,
             changeChampionship,
           }"
+          :locale="locale"
+          :timezone="timezone"
+          :championship-name="championshipName"
+          :limit="limit"
         >
           <SeasonSelector :seasons="seasons" :championship-id="championshipId" @update:championship-id="changeSeason" />
 
@@ -112,8 +112,8 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
             <button
               v-for="rawChampionships in championships"
               :key="rawChampionships.phaseId"
-              @click="changeChampionship(rawChampionships.sectionId)"
               :class="[tabButtonClasses, { 'is-active': rawChampionships.sectionId === selectedChampionshipId }]"
+              @click="changeChampionship(rawChampionships.sectionId)"
             >
               {{ rawChampionships.sectionName }}
             </button>
@@ -201,11 +201,19 @@ const resolveExternalTeamLink = (teamName) => externalTeamLinkResolver(props.ext
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/dropdown.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/paginator.css"></style>
