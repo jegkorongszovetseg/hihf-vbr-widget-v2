@@ -1,12 +1,12 @@
-import viteCompression from 'vite-plugin-compression';
+import { compression } from 'vite-plugin-compression2';
 
 export const compressConfig = [
-  viteCompression({
+  compression({
     algorithm: 'gzip',
-    filter: file => file.includes('iife'),
+    include: /iife/,
   }),
-  viteCompression({
+  compression({
     algorithm: 'brotliCompress',
-    filter: file => file.includes('iife'),
+    include: /iife/,
   }),
 ];

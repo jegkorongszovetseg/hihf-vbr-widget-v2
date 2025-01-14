@@ -128,9 +128,9 @@ importers:
       vite-plugin-banner:
         specifier: ^0.8.0
         version: 0.8.0
-      vite-plugin-compression:
-        specifier: ^0.5.1
-        version: 0.5.1(vite@6.0.7(@types/node@20.11.20)(jiti@2.4.2)(sugarss@4.0.1(postcss@8.4.49))(tsx@4.19.2)(yaml@2.7.0))
+      vite-plugin-compression2:
+        specifier: ^1.3.3
+        version: 1.3.3(rollup@4.30.1)(vite@6.0.7(@types/node@20.11.20)(jiti@2.4.2)(sugarss@4.0.1(postcss@8.4.49))(tsx@4.19.2)(yaml@2.7.0))
 
   packages/elements:
     dependencies:
@@ -159,9 +159,9 @@ importers:
       vite-plugin-banner:
         specifier: ^0.8.0
         version: 0.8.0
-      vite-plugin-compression:
-        specifier: ^0.5.1
-        version: 0.5.1(vite@6.0.7(@types/node@20.11.20)(jiti@2.4.2)(sugarss@4.0.1(postcss@8.4.49))(tsx@4.19.2)(yaml@2.7.0))
+      vite-plugin-compression2:
+        specifier: ^1.3.3
+        version: 1.3.3(rollup@4.30.1)(vite@6.0.7(@types/node@20.11.20)(jiti@2.4.2)(sugarss@4.0.1(postcss@8.4.49))(tsx@4.19.2)(yaml@2.7.0))
 
   packages/extended:
     dependencies:
@@ -190,9 +190,9 @@ importers:
       vite-plugin-banner:
         specifier: ^0.8.0
         version: 0.8.0
-      vite-plugin-compression:
-        specifier: ^0.5.1
-        version: 0.5.1(vite@6.0.7(@types/node@20.11.20)(jiti@2.4.2)(sugarss@4.0.1(postcss@8.4.49))(tsx@4.19.2)(yaml@2.7.0))
+      vite-plugin-compression2:
+        specifier: ^1.3.3
+        version: 1.3.3(rollup@4.30.1)(vite@6.0.7(@types/node@20.11.20)(jiti@2.4.2)(sugarss@4.0.1(postcss@8.4.49))(tsx@4.19.2)(yaml@2.7.0))
 
   packages/gamecenter:
     dependencies:
@@ -221,9 +221,9 @@ importers:
       vite-plugin-banner:
         specifier: ^0.8.0
         version: 0.8.0
-      vite-plugin-compression:
-        specifier: ^0.5.1
-        version: 0.5.1(vite@6.0.7(@types/node@20.11.20)(jiti@2.4.2)(sugarss@4.0.1(postcss@8.4.49))(tsx@4.19.2)(yaml@2.7.0))
+      vite-plugin-compression2:
+        specifier: ^1.3.3
+        version: 1.3.3(rollup@4.30.1)(vite@6.0.7(@types/node@20.11.20)(jiti@2.4.2)(sugarss@4.0.1(postcss@8.4.49))(tsx@4.19.2)(yaml@2.7.0))
 
   packages/liga:
     dependencies:
@@ -252,9 +252,9 @@ importers:
       vite-plugin-banner:
         specifier: ^0.8.0
         version: 0.8.0
-      vite-plugin-compression:
-        specifier: ^0.5.1
-        version: 0.5.1(vite@6.0.7(@types/node@20.11.20)(jiti@2.4.2)(sugarss@4.0.1(postcss@8.4.49))(tsx@4.19.2)(yaml@2.7.0))
+      vite-plugin-compression2:
+        specifier: ^1.3.3
+        version: 1.3.3(rollup@4.30.1)(vite@6.0.7(@types/node@20.11.20)(jiti@2.4.2)(sugarss@4.0.1(postcss@8.4.49))(tsx@4.19.2)(yaml@2.7.0))
 
   packages/shared:
     devDependencies:
@@ -2249,15 +2249,6 @@ packages:
       supports-color:
         optional: true
 
-  debug@4.3.4:
-    resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
-    engines: {node: '>=6.0'}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-
   debug@4.3.6:
     resolution: {integrity: sha512-O/09Bd4Z1fBrU4VzkhFqVgpPzaGbw6Sm9FEkBT1A/YBXQFGuuSxa1dN2nxgxS34JmKXqYx8CZAwEVoJFImUXIg==}
     engines: {node: '>=6.0'}
@@ -4035,6 +4026,9 @@ packages:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
 
+  tar-mini@0.2.0:
+    resolution: {integrity: sha512-+qfUHz700DWnRutdUsxRRVZ38G1Qr27OetwaMYTdg8hcPxf46U0S1Zf76dQMWRBmusOt2ZCK5kbIaiLkoGO7WQ==}
+
   tar@6.2.0:
     resolution: {integrity: sha512-/Wo7DcT0u5HUV486xg675HtjNd3BXZ6xDbzsCUZPt5iw8bTQ63bP0Raut3mvro9u+CUyq7YQd8Cx55fsZXxqLQ==}
     engines: {node: '>=10'}
@@ -4255,10 +4249,10 @@ packages:
   vite-plugin-banner@0.8.0:
     resolution: {integrity: sha512-JpDWDYxtrsytuvUOJCgJcTkBb6XM8yPOidjRtB6F5SW1JSzDd/Y+PD/44wR6ovWKXhSUiyDRqPvx7mMf8+8ELg==}
 
-  vite-plugin-compression@0.5.1:
-    resolution: {integrity: sha512-5QJKBDc+gNYVqL/skgFAP81Yuzo9R+EAf19d+EtsMF/i8kFUpNi3J/H01QD3Oo8zBQn+NzoCIFkpPLynoOzaJg==}
+  vite-plugin-compression2@1.3.3:
+    resolution: {integrity: sha512-Mb+xi/C5b68awtF4fNwRBPtoZiyUHU3I0SaBOAGlerlR31kusq1si6qG31lsjJH8T7QNg/p3IJY2HY9O9SvsfQ==}
     peerDependencies:
-      vite: '>=2.0.0'
+      vite: ^2.0.0||^3.0.0||^4.0.0||^5.0.0 ||^6.0.0
 
   vite-svg-loader@5.1.0:
     resolution: {integrity: sha512-M/wqwtOEjgb956/+m5ZrYT/Iq6Hax0OakWbokj8+9PXOnB7b/4AxESHieEtnNEy7ZpjsjYW1/5nK8fATQMmRxw==}
@@ -6461,10 +6455,6 @@ snapshots:
     dependencies:
       ms: 2.1.3
 
-  debug@4.3.4:
-    dependencies:
-      ms: 2.1.2
-
   debug@4.3.6(supports-color@5.5.0):
     dependencies:
       ms: 2.1.2
@@ -8618,6 +8608,8 @@ snapshots:
 
   tapable@2.2.1: {}
 
+  tar-mini@0.2.0: {}
+
   tar@6.2.0:
     dependencies:
       chownr: 2.0.0
@@ -8877,14 +8869,13 @@ snapshots:
 
   vite-plugin-banner@0.8.0: {}
 
-  vite-plugin-compression@0.5.1(vite@6.0.7(@types/node@20.11.20)(jiti@2.4.2)(sugarss@4.0.1(postcss@8.4.49))(tsx@4.19.2)(yaml@2.7.0)):
+  vite-plugin-compression2@1.3.3(rollup@4.30.1)(vite@6.0.7(@types/node@20.11.20)(jiti@2.4.2)(sugarss@4.0.1(postcss@8.4.49))(tsx@4.19.2)(yaml@2.7.0)):
     dependencies:
-      chalk: 4.1.2
-      debug: 4.3.4
-      fs-extra: 10.1.0
+      '@rollup/pluginutils': 5.1.4(rollup@4.30.1)
+      tar-mini: 0.2.0
       vite: 6.0.7(@types/node@20.11.20)(jiti@2.4.2)(sugarss@4.0.1(postcss@8.4.49))(tsx@4.19.2)(yaml@2.7.0)
     transitivePeerDependencies:
-      - supports-color
+      - rollup
 
   vite-svg-loader@5.1.0(vue@3.5.13(typescript@5.7.3)):
     dependencies:
