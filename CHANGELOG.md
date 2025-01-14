@@ -1,3 +1,9 @@
+## [2.11.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.10.0...v2.11.0) (2025-01-14)
+
+### Bug Fixes
+
+* GameTimeline eventId key handling ([0d342fb](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/0d342fbe33a84d65e8646bf735f3ddd702f9a97c))
+* National Players list ([430e531](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/430e53158f8c0919684772b34fa682f784f47e91))
 ## [2.10.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.9.1...v2.10.0) (2025-01-13)
 
 ### Bug Fixes
