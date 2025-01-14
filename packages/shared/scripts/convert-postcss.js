@@ -23,6 +23,8 @@ files.forEach((file) => {
     fs.mkdirSync(path.resolve(__dirname, `../dist/css`), { recursive: true });
   }
   fs.readFile(file, (err, css) => {
+    if (err)
+      throw err;
     postcss([
       postcssImport(),
       postcssNested,

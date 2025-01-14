@@ -10,10 +10,15 @@ Amennyiben rendelkezel a megfelelő jogosultsággal, akkor kapcsolódhatsz a ren
 Az API kulcsot a request headerben kell küldeni:
 
 ```js
+axios.get(path, {
+  params: {
+    ...data,
+  },
   headers: {
     'Content-Type': 'application/json',
-    'X-API-KEY': 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62'
-  }
+    'X-API-KEY': 'dd8adf5fdb738b3741fa579b5ede5ce69b681f62',
+  },
+});
 ```
 
 ## Példák kapcsolódásra

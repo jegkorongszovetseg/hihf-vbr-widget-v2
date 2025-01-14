@@ -48,9 +48,7 @@ Az olyan megjelenítéseknél ahol egy mérkőzés eredményére kattintva az ad
 Lehetőség van fügvény megadására is:
 
 ```js
-{
-  gameResolver: (id) => `/game/${id}`,
-}
+const gameResolver = id => `/game/${id}`;
 ```
 
 :::
@@ -63,9 +61,7 @@ Lehetőség van fügvény megadására is:
 ::: details Funkció
 
 ```js
-{
-  teamResolver: (id) => `/game/${id}`,
-}
+const teamResolver = id => `/game/${id}`;
 ```
 
 :::
@@ -78,9 +74,7 @@ Lehetőség van fügvény megadására is:
 ::: details Funkció
 
 ```js
-{
-  playerResolver: (id) => `/game/${id}`,
-}
+const playerResolver = id => `/game/${id}`;
 ```
 
 :::

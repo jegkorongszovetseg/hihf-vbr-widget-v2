@@ -57,16 +57,20 @@ export const monthDatesMap = new Map()
 function calculateGamePlayedMonths(today, first, last) {
   if (isBefore(today, first))
     return [];
+
   if (isAfter(today, last))
     return [first, last];
+
   return [first, today];
 }
 
 function calculateNextGamesMonths(today, first, last) {
   if (isBefore(today, first))
     return [first, last];
+
   if (isAfter(today, last))
     return [];
+
   return [today, last];
 }
 
@@ -79,6 +83,7 @@ export function getMonthsBetweenDates(startDate, endDate, direction, locale = 'h
   const months = [];
   const currentDate = startDate;
 
+  // eslint-disable-next-line no-unmodified-loop-condition
   while (currentDate <= endDate) {
     const month = currentDate.toLocaleString(locale, { month: 'short' });
     setMonthObject(month);
