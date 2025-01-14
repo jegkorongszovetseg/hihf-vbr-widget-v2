@@ -132,7 +132,7 @@ function onTryAgain() {
 </script>
 
 <template>
-  <I18NProvider :locale="props.locale" :messages="messages">
+  <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
     <Carousel :initial-index="initialIndex">
       <div v-if="isEmpty(games) && !error" style="width: 100%">
         <LoadingIndicator />
@@ -140,7 +140,7 @@ function onTryAgain() {
       <TrayAgain v-else-if="error && isEmpty(games)" @try-again="onTryAgain" />
       <template v-else>
         <CarouselItem>
-          <ExternalSchedule :external-schedule-url="externalScheduleUrl" @navigate-to="navigateTo" />
+          <ExternalSchedule :external-schedule-url="externalScheduleUrl" :title="t('gamesTimeline.allSchedule')" @navigate-to="navigateTo" />
         </CarouselItem>
         <CarouselItem
           v-for="game in convertedGames"
@@ -157,7 +157,7 @@ function onTryAgain() {
           <Game :game-data="game" :external-game-resolver="externalGameResolver" @navigate-to="navigateTo" />
         </CarouselItem>
         <CarouselItem>
-          <ExternalSchedule :external-schedule-url="externalScheduleUrl" @navigate-to="navigateTo" />
+          <ExternalSchedule :external-schedule-url="externalScheduleUrl" :title="t('gamesTimeline.allSchedule')" @navigate-to="navigateTo" />
         </CarouselItem>
       </template>
     </Carousel>

@@ -1,11 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import postcssMediaQuery from '@zeecoder/postcss-container-query';
 import { sync } from 'glob';
 import postcss from 'postcss';
 import postcssImport from 'postcss-import';
-import postcssMediaMinmax from 'postcss-media-minmax';
 import postcssMixins from 'postcss-mixins';
 import postcssNested from 'postcss-nested';
 import postcssPrefixer from 'postcss-prefixer';
@@ -30,8 +28,6 @@ files.forEach((file) => {
       postcssImport(),
       postcssNested({ bubble: ['container'] }),
       postcssMixins,
-      postcssMediaMinmax,
-      postcssMediaQuery,
       postcssPrefixer({
         prefix: 'mjsz-vbr-',
         ignore: [/icon/, /is-[a-zA-Z]*/, /transition-[a-zA-Z]*/, /g-[a-zA-Z]*/, 'label'],
