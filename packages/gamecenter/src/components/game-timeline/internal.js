@@ -20,6 +20,13 @@ import {
   values,
 } from 'ramda';
 
+let i = 0;
+function generateId() {
+  return ++i;
+}
+
+export const transformEvents = events => compose(reverse, map(event => ({ ...event, eventId: event.eventId ? event.eventId : generateId() })))(events);
+
 export function buildPeriodResultsByTeam(periodResults) {
   const defaultPeriodResultObject = {
     home: [],
