@@ -3,10 +3,9 @@
 .playoffs {
   .table-grid {
     display: grid;
-    grid-template-columns: 60px 160px minmax(60px, 0.41fr) minmax(160px, 1fr) minmax(40px, 60px) 70px minmax(160px, 1fr) minmax(
-        180px,
-        0.9fr
-      );
+    grid-template-columns:
+      60px 160px minmax(60px, 0.41fr) minmax(160px, 1fr) minmax(40px, 60px) 70px minmax(160px, 1fr)
+      minmax(180px, 0.9fr);
     color: var(--vbr-widget-table-color);
 
     &:nth-child(odd) > div {

@@ -1,4 +1,5 @@
 # Csapat büntetések
+
 Csapatok összesített büntetései bajnokság vagy bajnokság fázis szerint.
 
 ## Használat

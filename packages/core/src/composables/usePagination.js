@@ -1,5 +1,5 @@
-import { computed, unref } from 'vue';
 import { noop } from '@vueuse/core';
+import { computed, unref } from 'vue';
 
 export default function usePagination({ currentPage, itemsPerPage = 20, totalItems, rangeLength = 5, update = noop }) {
   const pageCount = computed(() => Math.ceil(unref(totalItems) / itemsPerPage));
@@ -18,16 +18,18 @@ export default function usePagination({ currentPage, itemsPerPage = 20, totalIte
 
   const pageStep = (v) => {
     const page = unref(currentPage) + v;
-    if (validPage(page)) update(page);
+    if (validPage(page))
+      update(page);
   };
 
   const goTo = (page) => {
-    if (validPage(page)) update(page);
+    if (validPage(page))
+      update(page);
   };
 
-  const validPage = (page) => {
+  function validPage(page) {
     return page <= pageCount.value && page > 0;
-  };
+  }
 
   return {
     page: currentPage,

@@ -1,5 +1,5 @@
+import { ascend, clone, descend, prop, sortWith } from 'ramda';
 import { computed, unref } from 'vue';
-import { descend, ascend, prop, sortWith, clone } from 'ramda';
 
 export const TOGGLE_LIVE = 'live';
 export const TOGGLE_DEFAULT = 'default';
@@ -72,7 +72,7 @@ export const COLUMNS_LIVE_STANDINGS_P_3 = {
 };
 
 export function useGamesListForLiveStandings(standings = [], games = []) {
-  const liveGames = computed(() => (unref(games) || []).filter((game) => game.gameStatus === 1) || []);
+  const liveGames = computed(() => (unref(games) || []).filter(game => game.gameStatus === 1) || []);
 
   const isLiveStandingsActive = computed(() => liveGames.value.length > 0);
 
@@ -88,7 +88,7 @@ export function useGamesListForLiveStandings(standings = [], games = []) {
 
 function setLivedGames(standings = [], games = []) {
   const convertedTable = clone(standings).map((team) => {
-    const activeGame = games.find((game) => game.homeTeam.id === team.team.id || game.awayTeam.id === team.team.id);
+    const activeGame = games.find(game => game.homeTeam.id === team.team.id || game.awayTeam.id === team.team.id);
     team.isActiveGame = Boolean(activeGame);
 
     if (activeGame) {
@@ -113,8 +113,10 @@ function setLivedGames(standings = [], games = []) {
 
 function additionalPoints(score, game) {
   const hasExtraPeriod = game.isOvertime || game.isShootout;
-  if (score[0] > score[1]) return hasExtraPeriod ? 2 : 3;
-  if (score[0] < score[1]) return hasExtraPeriod ? 1 : 0;
+  if (score[0] > score[1])
+    return hasExtraPeriod ? 2 : 3;
+  if (score[0] < score[1])
+    return hasExtraPeriod ? 1 : 0;
   return 1;
 }
 
@@ -128,15 +130,17 @@ function positionDifference(originalStandings, convertedTable) {
   ])(convertedTable);
 
   return sortedTable.map((team) => {
-    const originalIndex = originalStandings.findIndex((row) => team.team.id === row.team.id);
-    const newIndex = sortedTable.findIndex((row) => team.team.id === row.team.id);
+    const originalIndex = originalStandings.findIndex(row => team.team.id === row.team.id);
+    const newIndex = sortedTable.findIndex(row => team.team.id === row.team.id);
     team.diff = originalIndex - newIndex;
     return team;
   });
 }
 
 function setScoreType(score) {
-  if (score[0] > score[1]) return 'W';
-  if (score[0] < score[1]) return 'L';
+  if (score[0] > score[1])
+    return 'W';
+  if (score[0] < score[1])
+    return 'L';
   return 'D';
 }

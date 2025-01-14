@@ -1,14 +1,10 @@
 {
   "name": "@mjsz-vbr-elements/shared",
-  "private": false,
+  "type": "module",
   "version": "2.10.0",
+  "private": false,
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
-  "type": "module",
-  "files": [
-    "dist"
-  ],
-  "module": "./dist/icons/index.js",
   "exports": {
     ".": {
       "import": "./dist/icons/index.js"
@@ -21,6 +17,10 @@
       "require": "./dist/css/*.css"
     }
   },
+  "module": "./dist/icons/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/convert-postcss.js",

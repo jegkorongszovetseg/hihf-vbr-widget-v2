@@ -1,7 +1,7 @@
-import { replace, toUpper, compose, reject, test, split, mergeLeft } from 'ramda';
+import { SORT_STATE_ASCEND, SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
 
-import { SORT_STATE_DESCEND, SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
 import { convertSecToMin, convertTimesSecToMin, rawConvert } from '@mjsz-vbr-elements/core/utils';
+import { compose, mergeLeft, reject, replace, split, test, toUpper } from 'ramda';
 
 export const DEAFULT_LOGO_TEAM_A =
   'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMzYgMzYiPjxwYXRoIGZpbGw9IiNERDJFNDQiIGQ9Ik0zNiAzMmE0IDQgMCAwIDEtNCA0SDRhNCA0IDAgMCAxLTQtNFY0YTQgNCAwIDAgMSA0LTRoMjhhNCA0IDAgMCAxIDQgNHYyOHoiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNMTQuNzQ3IDkuMTI1Yy41MjctMS40MjYgMS43MzYtMi41NzMgMy4zMTctMi41NzNjMS42NDMgMCAyLjc5MiAxLjA4NSAzLjMxOCAyLjU3M2w2LjA3NyAxNi44NjdjLjE4Ni40OTYuMjQ4LjkzMS4yNDggMS4xNDdjMCAxLjIwOS0uOTkyIDIuMDQ2LTIuMTM5IDIuMDQ2Yy0xLjMwMyAwLTEuOTU0LS42ODItMi4yNjQtMS42MTFsLS45MzEtMi45MTVoLTguNjJsLS45MyAyLjg4NGMtLjMxLjk2MS0uOTYxIDEuNjQyLTIuMjMyIDEuNjQyYy0xLjI0IDAtMi4yOTQtLjkzLTIuMjk0LTIuMTdjMC0uNDk2LjE1NS0uODY4LjIxNy0xLjAyM2w2LjIzMy0xNi44Njd6bS4zNCAxMS4yNTZoNS44OTFsLTIuODgzLTguOTkyaC0uMDYybC0yLjk0NiA4Ljk5MnoiLz48L3N2Zz4=';
@@ -136,15 +136,15 @@ export const TEAM_OFFICIALS_COLUMNS = {
   },
 };
 
-export function callFunctions() {
-  for (const arg of arguments) {
+export function callFunctions(...args) {
+  for (const arg of args) {
     arg?.();
   }
 }
 
 export const convertPeriodName = (name) => replace('. ', '-', name || '');
 
-export const rawPeriodIndex = (gameData) => {
+export function rawPeriodIndex(gameData) {
   const periodResults = gameData?.periodResults ?? '';
   let rawLength = compose(reject(test(/-:-/)), split(','))(periodResults).length;
   if (gameData.isShootout) {
@@ -154,17 +154,17 @@ export const rawPeriodIndex = (gameData) => {
     rawLength = rawLength - 1;
   }
   return rawLength;
-};
+}
 
-export const convertPeriodEvents = (gameData, gameEvents) => {
+export function convertPeriodEvents(gameData, gameEvents) {
   const pariodLength = gameData?.actualPeriod ?? rawPeriodIndex(gameData);
-  let periods = {};
+  const periods = {};
   if (gameData.isShootout) {
-    periods['so'] = [];
-    periods['ot'] = [];
+    periods.so = [];
+    periods.ot = [];
   }
   if (gameData.isOvertime) {
-    periods['ot'] = [];
+    periods.ot = [];
   }
   for (let i = pariodLength; i > 0; i--) {
     periods[`p${i}`] = [];
@@ -172,10 +172,10 @@ export const convertPeriodEvents = (gameData, gameEvents) => {
   const events = mergeLeft(gameEvents, periods);
 
   return events;
-};
+}
 
-export const buildSOG = (data, home, away, key) => {
-  let periods = [];
+export function buildSOG(data, home, away, key) {
+  const periods = [];
   let homeSum = 0;
   let awaySum = 0;
   for (let i = 0; i < data.length; i++) {
@@ -184,10 +184,10 @@ export const buildSOG = (data, home, away, key) => {
     awaySum = awaySum + (data[i][away]?.[key] ?? 0);
   }
   return `(${periods.join(', ')}) ${homeSum}:${awaySum}`;
-};
+}
 
-export const buildSaves = (data, home, away, key) => {
-  let periods = [];
+export function buildSaves(data, home, away, key) {
+  const periods = [];
   let homeSum = 0;
   let awaySum = 0;
   for (let i = 0; i < data.length; i++) {
@@ -196,9 +196,9 @@ export const buildSaves = (data, home, away, key) => {
     awaySum = awaySum + (data[i][away]?.[key] ?? 0);
   }
   return `(${periods.join(', ')}) ${homeSum}:${awaySum}`;
-};
+}
 
-export const buildAdv = (data) => {
+export function buildAdv(data) {
   const homeAdvTime = data?.home?.advTime ?? 0;
   const awayAdvTime = data?.away?.advTime ?? 0;
   const homeAdvTimePP1 = data?.home?.advTimePP1 ?? 0;
@@ -211,9 +211,9 @@ export const buildAdv = (data) => {
     advTimePP1: `${convertSecToMin(homeAdvTimePP1)} / ${convertSecToMin(awayAdvTimePP1)}`,
     advTimePP2: `${convertSecToMin(homeAdvTimePP2)} / ${convertSecToMin(awayAdvTimePP2)}`,
   };
-};
+}
 
-export const buildAdvPercent = (data) => {
+export function buildAdvPercent(data) {
   const homeADV = data?.home?.adv ?? 0;
   const homePPGF = data?.home?.ppgf ?? 0;
 
@@ -223,9 +223,9 @@ export const buildAdvPercent = (data) => {
   const homePPPercent = (data?.home?.ppPercent ?? 0).toFixed(2);
   const awayPPPercent = (data?.away?.ppPercent ?? 0).toFixed(2);
   return `(${homeADV}/${homePPGF}) <b>${homePPPercent}%</b> / (${awayADV}/${awayPPGF}) <b>${awayPPPercent}%</b>`;
-};
+}
 
-export const buildDvgPercent = (data) => {
+export function buildDvgPercent(data) {
   const homeDVG = data?.home?.dvg ?? 0;
   const homePK = data?.home?.pk ?? 0;
 
@@ -235,16 +235,18 @@ export const buildDvgPercent = (data) => {
   const homePKPercent = (data?.home?.pkPercent ?? 0).toFixed(2);
   const awayPKPercent = (data?.away?.pkPercent ?? 0).toFixed(2);
   return `(${homeDVG}/${homePK}) <b>${homePKPercent}%</b> / (${awayDVG}/${awayPK}) <b>${awayPKPercent}%</b>`;
-};
-
-export const convertPenaltyCause = (event) => ({
-  ...event,
-  penaltyCause: compose(toUpper, replace('_', '-'))(event.penaltyCause),
-});
-
-function logObject(name, data) {
-  console.log(name);
-  return Object.keys(data).map((key) => console.log(key));
 }
+
+export function convertPenaltyCause(event) {
+  return {
+    ...event,
+    penaltyCause: compose(toUpper, replace('_', '-'))(event.penaltyCause),
+  };
+}
+
+// export function logObject(name, data) {
+//   console.log(name);
+//   return Object.keys(data).map((key) => console.log(key));
+// }
 
 export const convertPlayersTOI = (data) => rawConvert(data, convertTimesSecToMin(['toi']));

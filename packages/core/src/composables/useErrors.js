@@ -1,9 +1,9 @@
-import { inject, provide, ref, computed, onErrorCaptured } from 'vue';
+import { computed, inject, onErrorCaptured, provide, ref } from 'vue';
 import { toKebabCase } from '../utils/string';
 
 const ErrorProviderContext = Symbol('ErrorProviderContext');
 
-export const useErrorProvider = () => {
+export function useErrorProvider() {
   const errorMessage = ref('');
   const errorObject = ref({});
 
@@ -43,20 +43,20 @@ export const useErrorProvider = () => {
     error: errorObject,
     onError,
   };
-};
+}
 
-export const useError = () => {
+export function useError() {
   const api = useErrorProviderContext();
   return {
     onError: api.onError,
     reset: api.reset,
   };
-};
+}
 
-const useErrorProviderContext = () => {
+function useErrorProviderContext() {
   const api = inject(ErrorProviderContext, null);
   if (api === null) {
     throw new Error('Privider is missing a parent component.');
   }
   return api;
-};
+}

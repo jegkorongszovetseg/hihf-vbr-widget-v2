@@ -1,12 +1,12 @@
 import { defineCustomElement } from 'vue';
 
-import Game from './components/game/Game.ce.vue';
 import GameTimeline from './components/game-timeline/GameTimeline.ce.vue';
+import Game from './components/game/Game.ce.vue';
 
 const GameCE = defineCustomElement(Game);
 const GameTimelineCE = defineCustomElement(GameTimeline);
 
-export { Game, GameTimeline, GameCE, GameTimelineCE };
+export { Game, GameCE, GameTimeline, GameTimelineCE };
 
 export function register() {
   customElements.define('mjsz-vbr-game', GameCE);

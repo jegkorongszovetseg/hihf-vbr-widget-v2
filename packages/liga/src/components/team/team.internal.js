@@ -1,25 +1,25 @@
+import { format, localeSort, playerName, teamName, upperCase } from '@mjsz-vbr-elements/core/utils';
 import {
-  groupBy,
   compose,
-  sortBy,
-  map,
-  omit,
-  values,
-  join,
-  over,
-  lensProp,
-  replace,
   filter,
-  pathEq,
-  mergeWith,
-  mergeLeft,
+  groupBy,
   indexBy,
+  innerJoin,
+  join,
+  lensProp,
+  map,
+  mergeLeft,
+  mergeWith,
+  omit,
+  over,
   path,
+  pathEq,
   pipe,
   reject,
-  innerJoin,
+  replace,
+  sortBy,
+  values,
 } from 'ramda';
-import { playerName, teamName, upperCase, format, localeSort } from '@mjsz-vbr-elements/core/utils';
 
 export const PAGE_INFO = 'Info';
 export const PAGE_GAMES = 'Games';
@@ -48,10 +48,10 @@ export const COLUMNS_TEAM_INFO_ICERINK = {
   },
 };
 
-export const transformTeamInfo = (data) => {
+export function transformTeamInfo(data) {
   const organizationdData = omit(
     ['team', 'organizationType', 'organizationShortName', 'organizationLogo', 'organizationRepresentatives', 'arenas'],
-    data
+    data,
   );
   const tableData = [];
 
@@ -65,29 +65,34 @@ export const transformTeamInfo = (data) => {
     tableData.push({ teamKey: key, teamValue: value });
   }
   return { team: data?.team, organizationInfo: tableData };
-};
+}
 
-export const transformRosters = (data) =>
-  compose(
+export function transformRosters(data) {
+  return compose(
     groupBy(groupByPosition),
     sortBy((d) => {
-      if (['ld', 'rd', 'd'].includes(d.position?.toLowerCase())) return 1;
-      if (['lw', 'rw', 'c'].includes(d.position?.toLowerCase())) return 2;
+      if (['ld', 'rd', 'd'].includes(d.position?.toLowerCase()))
+        return 1;
+      if (['lw', 'rw', 'c'].includes(d.position?.toLowerCase()))
+        return 2;
       return 0;
     }),
     sortBy(sortByJerseyNumber),
-    map(compose(playerName, teamName, upperCase(['position'])))
+    map(compose(playerName, teamName, upperCase(['position']))),
   )(data);
+}
 
-export const transformFieledPlayersStats = (row, teamId) =>
-  pipe(filter(pathEq(teamId, ['team', 'id'])), map(playerName))(row);
+export function transformFieledPlayersStats(row, teamId) {
+  return pipe(filter(pathEq(teamId, ['team', 'id'])), map(playerName))(row);
+}
 
-export const mergeArrayByTeamId = (a, b) =>
-  values(mergeWith(mergeLeft, indexBy(path(['player', 'playerId']), a), indexBy(path(['player', 'playerId']), b)));
+export function mergeArrayByTeamId(a, b) {
+  return values(mergeWith(mergeLeft, indexBy(path(['player', 'playerId']), a), indexBy(path(['player', 'playerId']), b)));
+}
 
-export const mergePlayerStats = ({ goalieStats, fieldPlayers, playersPenalty }) => {
+export function mergePlayerStats({ goalieStats, fieldPlayers, playersPenalty }) {
   const goaliesIds = map(path(['player', 'playerId']))(goalieStats);
-  const rejectGoalies = (r) => goaliesIds.includes(r.player.playerId);
+  const rejectGoalies = r => goaliesIds.includes(r.player.playerId);
   const withoutGoalies = reject(rejectGoalies)(playersPenalty);
   const onlyGoalies = innerJoin((record, id) => record.player.playerId === id, playersPenalty, goaliesIds);
 
@@ -97,11 +102,13 @@ export const mergePlayerStats = ({ goalieStats, fieldPlayers, playersPenalty }) 
     fieldPlayers: localeSort(mergedFieldPlayers),
     goalies: localeSort(mergedGoalies),
   };
-};
+}
 
 function groupByPosition(data) {
-  if (['ld', 'rd'].includes(data.position?.toLowerCase())) return 'defenders';
-  if (['lw', 'rw', 'c'].includes(data.position?.toLowerCase())) return 'forwards';
+  if (['ld', 'rd'].includes(data.position?.toLowerCase()))
+    return 'defenders';
+  if (['lw', 'rw', 'c'].includes(data.position?.toLowerCase()))
+    return 'forwards';
   return 'goalies';
 }
 

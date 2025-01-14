@@ -1,43 +1,44 @@
-import { playerName, convertMinToSec } from '@mjsz-vbr-elements/core';
+import { convertMinToSec, playerName } from '@mjsz-vbr-elements/core';
 import {
-  replace,
+  allPass,
   compose,
-  split,
-  map,
-  trim,
-  groupBy,
-  prop,
-  values,
-  sortBy,
-  sortWith,
   descend,
   filter,
-  pick,
-  propEq,
-  allPass,
+  groupBy,
+  map,
   pathEq,
+  pick,
+  prop,
+  propEq,
   reduce,
+  replace,
   reverse,
+  sortBy,
+  sortWith,
+  split,
+  trim,
+  values,
 } from 'ramda';
 
-export const buildPeriodResultsByTeam = (periodResults) => {
+export function buildPeriodResultsByTeam(periodResults) {
   const defaultPeriodResultObject = {
     home: [],
     away: [],
   };
 
-  if (!periodResults) return defaultPeriodResultObject;
+  if (!periodResults)
+    return defaultPeriodResultObject;
   const convertedArray = compose(map(split(':')), map(trim), split(','), replace(/^\(|\)$/g, ''))(periodResults);
   return convertedArray.reduce((acc, item) => {
     acc.home.push(item[0]);
     acc.away.push(item[1]);
     return acc;
   }, defaultPeriodResultObject);
-};
+}
 
-export const groupLines = (data) => groupBy(prop('row'), data);
+export const groupLines = data => groupBy(prop('row'), data);
 
-export const groupLinesByTeams = (data, homeTeamId, awayTeamId) => {
+export function groupLinesByTeams(data, homeTeamId, awayTeamId) {
   const homeTeam = groupLines(data?.[homeTeamId] ?? []);
   const awayTeam = groupLines(data?.[awayTeamId] ?? []);
 
@@ -53,11 +54,11 @@ export const groupLinesByTeams = (data, homeTeamId, awayTeamId) => {
       3: { home: [], away: [] },
       4: { home: [], away: [] },
       gk: { home: [], away: [] },
-    }
+    },
   );
-};
+}
 
-export const buildSOG = (data, homeTeamId, awayTeamId, key) => {
+export function buildSOG(data, homeTeamId, awayTeamId, key) {
   let allValueStart = 0;
   let allValueEnd = 0;
 
@@ -83,9 +84,9 @@ export const buildSOG = (data, homeTeamId, awayTeamId, key) => {
   };
 
   return converted;
-};
+}
 
-export const buildAdv = (data) => {
+export function buildAdv(data) {
   const homeAdvTime = data?.home?.advTime ?? 0;
   const awayAdvTime = data?.away?.advTime ?? 0;
   const homeAdvTimePP1 = data?.home?.advTimePP1 ?? 0;
@@ -110,9 +111,9 @@ export const buildAdv = (data) => {
       valueEnd: awayAdvTimePP2,
     },
   };
-};
+}
 
-export const buildAdvPercent = (data) => {
+export function buildAdvPercent(data) {
   const homeADV = data?.home?.adv ?? 0;
   const homePPGF = data?.home?.ppgf ?? 0;
 
@@ -141,9 +142,9 @@ export const buildAdvPercent = (data) => {
       suffix: '%',
     },
   };
-};
+}
 
-export const buildDvgPercent = (data) => {
+export function buildDvgPercent(data) {
   const homeDVG = data?.home?.dvg ?? 0;
   const homePK = data?.home?.pk ?? 0;
 
@@ -172,36 +173,37 @@ export const buildDvgPercent = (data) => {
       suffix: '%',
     },
   };
-};
+}
 
-export const convertGameOfficials = (data, t) => {
+export function convertGameOfficials(data, t) {
   const sortByType = (item) => {
     const index = ['first_referee', 'second_referee', 'first_line_judge', 'second_line_judge'].indexOf(item.role);
     return index > -1 ? index : 4;
   };
 
-  const convertName = (item) => ({ ...playerName(item), role: t(`role.${item.role}`) });
+  const convertName = item => ({ ...playerName(item), role: t(`role.${item.role}`) });
 
   return groupBy(prop('type'), map(convertName, sortBy(sortByType, values(data))));
-};
+}
 
 export const transformGoalieStats = sortWith([descend(prop('startingFive'))]);
 
-export const pickCoaches = (data) => {
+export function pickCoaches(data) {
   return compose(map(playerName), pick(['headCoach', 'secondCoach']))(data);
-};
+}
 
 export const pickReferees = pick(['first_referee', 'second_referee', 'first_line_judge', 'second_line_judge']);
 
-export const filterGoalScorers = (events, teamId) => {
+export function filterGoalScorers(events, teamId) {
   const filtered = filter(allPass([pathEq(teamId, ['team', 'id']), propEq('Gól', 'type')]), reverse(events));
-  const converted = map((event) => ({ ...event, eventTimeSec: convertMinToSec(event.eventTime) }), filtered);
+  const converted = map(event => ({ ...event, eventTimeSec: convertMinToSec(event.eventTime) }), filtered);
 
   const reduced = reduce(
     (players, player) => {
       if (players[player.playerId]) {
         players[player.playerId].eventTime += `, ${player.eventTime}`;
-      } else {
+      }
+      else {
         players[player.playerId] = {
           name: `${player.lastName} ${player.firstName}`,
           eventTime: player.eventTime,
@@ -211,9 +213,9 @@ export const filterGoalScorers = (events, teamId) => {
       return players;
     },
     {},
-    converted
+    converted,
   );
 
   const sorted = sortBy(prop('eventTimeSec'), values(reduced));
   return sorted;
-};
+}

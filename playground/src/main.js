@@ -1,11 +1,11 @@
-import { createApp } from 'vue';
-import { createRouter, createWebHistory } from 'vue-router';
-import { routes, handleHotUpdate } from 'vue-router/auto-routes';
 import MjszVbrElementsCore from '@mjsz-vbr-elements/core';
 import MjszVbrElements from '@mjsz-vbr-elements/elements';
 import MjszVbrElementsExtended from '@mjsz-vbr-elements/extended';
-import MjszVbrElementsLiga from '@mjsz-vbr-elements/liga';
 import MjszVbrElementsGamecenter from '@mjsz-vbr-elements/gamecenter';
+import MjszVbrElementsLiga from '@mjsz-vbr-elements/liga';
+import { createApp } from 'vue';
+import { createRouter, createWebHistory } from 'vue-router';
+import { handleHotUpdate, routes } from 'vue-router/auto-routes';
 import App from './App.vue';
 import './style.css';
 import 'uno.css';

@@ -8,7 +8,7 @@
     gameResolver: '/game/',
     teamResolver: '/team/',
     playerResolver: '/player/',
-  });
+  })
 </script>
 ```
 
@@ -27,7 +27,7 @@ A használni kívánt modulokat lehet baállítani.
     gameResolver: '/game/',
     teamResolver: '/team/',
     playerResolver: '/player/',
-  });
+  })
 </script>
 ```
 

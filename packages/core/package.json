@@ -1,15 +1,11 @@
 {
   "name": "@mjsz-vbr-elements/core",
+  "type": "module",
+  "version": "2.10.0",
+  "private": false,
   "description": "Data visualization for MJSZ VBR",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
-  "private": false,
-  "version": "2.10.0",
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
-  "type": "module",
-  "files": [
-    "dist"
-  ],
-  "module": "./dist/index.js",
   "exports": {
     ".": {
       "import": "./dist/index.js"
@@ -30,6 +26,11 @@
       "import": "./dist/columns.js"
     }
   },
+  "module": "./dist/index.js",
+  "unpkg": "./dist/index.iife.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "pnpm run build:esm && pnpm run build:browser",
@@ -37,7 +38,6 @@
     "build:browser": "vite build -c ./build-browser.config.js --emptyOutDir false",
     "preview": "vite preview"
   },
-  "unpkg": "./dist/index.iife.js",
   "dependencies": {
     "@floating-ui/dom": "^1.6.13",
     "@lostui/utils": "^0.0.4",

@@ -1,8 +1,8 @@
-import { expect, describe, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { mergeGames } from './internal';
 
 describe('mergeGames', () => {
-  it('A merge működik, ha a meglévő tömb(base) üres', () => {
+  it('a merge működik, ha a meglévő tömb(base) üres', () => {
     const base = [];
 
     const income = [
@@ -29,7 +29,7 @@ describe('mergeGames', () => {
     expect(result).toEqual(expected);
   });
 
-  it('A merge működik, ha a bejövő tömb (income) üres', () => {
+  it('a merge működik, ha a bejövő tömb (income) üres', () => {
     const base = [
       {
         id: 0,
@@ -49,7 +49,7 @@ describe('mergeGames', () => {
     expect(result).toEqual(expected);
   });
 
-  it('A merge működik, ha a két array egyforma elemeket tartalmaz', () => {
+  it('a merge működik, ha a két array egyforma elemeket tartalmaz', () => {
     const base = [
       {
         id: 0,
@@ -89,7 +89,7 @@ describe('mergeGames', () => {
     expect(result).toEqual(expected);
   });
 
-  it('A merge működik, ha a bejövő elemek különböznek a meglévő elemktől', () => {
+  it('a merge működik, ha a bejövő elemek különböznek a meglévő elemktől', () => {
     const base = [
       {
         id: 0,
