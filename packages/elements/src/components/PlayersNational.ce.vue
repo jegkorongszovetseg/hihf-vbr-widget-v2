@@ -93,8 +93,6 @@ function resolveExternalPlayerLink(params) {
         :sort="sort"
         :external-team-resolver="resolveExternalTeamLink"
         :external-player-resolver="resolveExternalPlayerLink"
-        :is-team-linked="isTeamLinked"
-        :is-player-linked="isPlayerLinked"
         :append-to="tooltipContainer"
         @sort="onSort"
       />
