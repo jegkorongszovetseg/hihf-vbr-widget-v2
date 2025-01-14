@@ -1,9 +1,9 @@
-import { process } from 'node:process';
 import { defineConfig, loadEnv } from 'vitepress';
 import pkg from '../../package.json';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig(({ mode }) => {
+  // eslint-disable-next-line node/prefer-global/process
   const env = loadEnv(mode, process.cwd());
 
   return {
