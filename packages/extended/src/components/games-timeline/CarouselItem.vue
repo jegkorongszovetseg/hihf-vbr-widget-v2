@@ -1,8 +1,6 @@
 <script setup>
-import { h, inject, onMounted, onUnmounted, useId, useSlots } from 'vue';
+import { inject, onMounted, onUnmounted, useId } from 'vue';
 import { CarouselContext } from './internal';
-
-const slots = useSlots();
 
 const id = `mjsz-vbr-carousel-item-${useId()}`;
 
@@ -10,14 +8,10 @@ const api = inject(CarouselContext, null);
 
 onMounted(() => api?.register(id));
 onUnmounted(() => api?.unregister(id));
-
-function render() {
-  return h('div', { id, class: 'is-slide' }, slots.default());
-}
 </script>
 
 <template>
-  <render>
+  <div :id="id" class="is-slide">
     <slot />
-  </render>
+  </div>
 </template>
