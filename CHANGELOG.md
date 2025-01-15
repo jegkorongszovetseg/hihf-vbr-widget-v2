@@ -1,3 +1,8 @@
+## [2.11.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.11.1...v2.11.2) (2025-01-15)
+
+### Bug Fixes
+
+* (extended/GamesTimeline) Carousel Item render átalakítás ([8bbe93b](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/8bbe93bc8ec333707db488f07b98736450d2e655))
 ## [2.11.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.11.0...v2.11.1) (2025-01-14)
 
 ### Bug Fixes
