@@ -1,3 +1,8 @@
+## [2.11.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.11.2...v2.11.3) (2025-01-15)
+
+### Bug Fixes
+
+* Nyelvi cimkék kezelése több custom-element esetén ([7ac5249](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/7ac52495e8cef00588398c3056e5c4344c15221c))
 ## [2.11.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.11.1...v2.11.2) (2025-01-15)
 
 ### Bug Fixes
