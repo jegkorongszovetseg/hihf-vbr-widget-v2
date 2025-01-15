@@ -132,7 +132,7 @@ function onTryAgain() {
 </script>
 
 <template>
-  <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
+  <I18NProvider v-slot="{ t }" :locale="locale" :messages="messages">
     <Carousel :initial-index="initialIndex">
       <div v-if="isEmpty(games) && !error" style="width: 100%">
         <LoadingIndicator />
