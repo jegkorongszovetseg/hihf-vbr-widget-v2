@@ -1,4 +1,4 @@
-import { isEmpty, map, path, split, trim } from 'ramda';
+import { isEmpty, map, mergeDeepRight, path, split, trim } from 'ramda';
 import { computed, defineComponent, h, inject, provide, reactive } from 'vue';
 
 const I18nContext = Symbol('I18nContext');
@@ -10,7 +10,7 @@ const state = reactive({
 });
 
 export function createI18n({ messages = {}, locale = '', fallbackLocale = '' }) {
-  state.messages = messages;
+  state.messages = mergeDeepRight(state.messages, messages);
   state.locale = locale;
   state.fallbackLocale = fallbackLocale;
 

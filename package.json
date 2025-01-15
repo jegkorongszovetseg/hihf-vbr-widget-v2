@@ -1,7 +1,7 @@
 {
   "name": "@mjsz-vbr-elements/monorepo",
   "type": "module",
-  "version": "2.11.1",
+  "version": "2.11.3",
   "private": true,
   "packageManager": "pnpm@9.15.3",
   "description": "Data visualization for MJSZ VBR",
@@ -33,6 +33,14 @@
     "eslint": "^9.18.0",
     "eslint-plugin-format": "^1.0.1",
     "happy-dom": "^16.5.3",
+    "lint-staged": "^15.3.0",
+    "simple-git-hooks": "^2.11.1",
     "vitest": "^2.1.8"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
