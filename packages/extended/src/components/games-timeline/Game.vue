@@ -1,6 +1,6 @@
 <script setup>
 import { Image } from '@mjsz-vbr-elements/core/components';
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { computed } from 'vue';
 import { isPeriodTimeVisible } from './internal';
@@ -43,7 +43,7 @@ function navigateTo() {
 </script>
 
 <template>
-  <div :class="useMainClass('games-timeline-game')" @click="navigateTo">
+  <div class="games-timeline-game" @click="navigateTo">
     <time>{{ gameData.gameDateTime }}
       <span v-if="gameData.isShootout" class="is-badge">{{ t('common.shootoutShort') }}</span>
       <span v-if="gameData.isOvertime" class="is-badge">{{ t('common.overtimeShort') }}</span>

@@ -46,7 +46,7 @@ function changeSection(id) {
 <template>
   <div class="g-row">
     <div>
-      <label for="season" :class="useMainClass('label')">{{ t('selection.season') }}</label>
+      <label for="season" class="label">{{ t('selection.season') }}</label>
       <BaseSelect id="season" v-model="championshipId">
         <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">
           {{ season.seasonName }}

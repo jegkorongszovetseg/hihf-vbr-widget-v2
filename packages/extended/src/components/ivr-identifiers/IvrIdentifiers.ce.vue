@@ -96,11 +96,23 @@ const messages = { en, hu };
   </I18NProvider>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
 
-<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+<!-- <style src="@mjsz-vbr-elements/shared/css/typography.css" lang="scss"></style> -->
 
-<style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+<!-- <style src="@mjsz-vbr-elements/shared/css/forms.css" lang="scss"></style> -->
+
+<style lang="scss">
+@use '@mjsz-vbr-elements/shared/css/common.scss';
+</style>
+
+<style lang="scss">
+@use '@mjsz-vbr-elements/shared/css/typography.css';
+</style>
+
+<style lang="scss">
+@use '@mjsz-vbr-elements/shared/css/forms.css';
+</style>
 
 <style scoped>
 .main-layout {
@@ -119,8 +131,4 @@ pre {
   background-color: var(--vbr-widget-primary-color-50);
   border-radius: 5px;
 }
-/* pre:hover,
-pre:focus {
-  width: min-content;
-} */
 </style>

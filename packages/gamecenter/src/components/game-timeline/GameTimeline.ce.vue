@@ -173,7 +173,7 @@ const colors = useTeamColors(gameData);
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.scss"></style>
 
 <style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
 

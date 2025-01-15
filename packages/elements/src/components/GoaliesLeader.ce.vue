@@ -111,7 +111,7 @@ function resolveExternalPlayerLink(params) {
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.scss"></style>
 
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
 

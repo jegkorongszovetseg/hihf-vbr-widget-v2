@@ -46,7 +46,7 @@ const baseLabelClass = useMainClass('label');
 <template>
   <div class="g-row" style="column-gap: 8px">
     <div>
-      <label for="phases" :class="baseLabelClass">{{ t('selection.phases') }}</label>
+      <label for="phases" class="label">{{ t('selection.phases') }}</label>
       <BaseSelect id="phases" v-model="phaseId" :disabled="phaseId === null">
         <option v-if="phaseId === null" :value="null">
           {{ t('selection.noPhases') }}
