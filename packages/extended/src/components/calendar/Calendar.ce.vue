@@ -156,7 +156,7 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
   </I18NProvider>
 </template>
 
-<style lang="scss">
+<!-- <style lang="scss">
 @use '@mjsz-vbr-elements/shared/css/common.scss';
 </style>
 
@@ -170,12 +170,12 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
 
 <style lang="scss">
 @use '@mjsz-vbr-elements/shared/css/cards.css';
-</style>
+</style> -->
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/typography.css" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/forms.css" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/cards.css" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>

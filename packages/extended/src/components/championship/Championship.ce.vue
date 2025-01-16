@@ -200,7 +200,7 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
   </div>
 </template>
 
-<style lang="scss">
+<!-- <style lang="scss">
 @use '@mjsz-vbr-elements/shared/css/common.scss';
 </style>
 
@@ -230,22 +230,22 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
 
 <style lang="scss">
 @use '@mjsz-vbr-elements/shared/css/paginator.css';
-</style>
+</style> -->
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
-<!--
-<style src="@mjsz-vbr-elements/shared/css/typography.css" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/forms.css" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/grid.css" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/responsive-table.css" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/table.css" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/dropdown.css" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/cards.css" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/dropdown.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/paginator.css" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
+
+<style src="@mjsz-vbr-elements/shared/css/paginator.scss" lang="scss"></style>

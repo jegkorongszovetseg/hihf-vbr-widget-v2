@@ -12,17 +12,9 @@
     "./icons/*": {
       "import": "./dist/icons/*.js"
     },
-    "./css/*.css": {
-      "import": "./assets/css/*.css",
-      "require": "./assets/css/*.css"
-    },
     "./css/*.scss": {
       "import": "./assets/css/*.scss",
       "require": "./assets/css/*.scss"
-    },
-    "./css/module/*.css": {
-      "import": "./assets/modules/*.css",
-      "require": "./assets/modules/*.scss"
     }
   },
   "module": "./dist/icons/index.js",

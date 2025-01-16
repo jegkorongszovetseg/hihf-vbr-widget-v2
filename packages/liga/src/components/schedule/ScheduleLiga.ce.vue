@@ -184,20 +184,20 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
   </div>
 </template>
 
-<style lang="scss">
+<!-- <style lang="scss">
 @use '@mjsz-vbr-elements/shared/css/common.scss';
 @use '@mjsz-vbr-elements/shared/css/typography.css';
 @use '@mjsz-vbr-elements/shared/css/forms.css';
 @use '@mjsz-vbr-elements/shared/css/grid.css';
 @use '@mjsz-vbr-elements/shared/css/cards.css';
-</style>
+</style> -->
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/forms.css" lang="scss"></style> -->
+<!-- <style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style> -->
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/typography.css" lang="scss"></style> -->
+<!-- <style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style> -->
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/grid.css" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/cards.css" lang="scss"></style> -->
+<!-- <style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style> -->

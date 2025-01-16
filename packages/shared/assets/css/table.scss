@@ -196,14 +196,14 @@
       display: none;
     }
 
-    @container table-wrapper (max-width: 768px) {
+    /* @container table-wrapper (max-width: 768px) {
       .is-team-name-long {
         display: none;
       }
       .is-team-name-short {
         display: block;
       }
-    }
+    } */
   }
 
   th,

@@ -96,13 +96,13 @@ const messages = { en, hu };
   </I18NProvider>
 </template>
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/typography.css" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/forms.css" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
 
-<style lang="scss">
+<!-- <style lang="scss">
 @use '@mjsz-vbr-elements/shared/css/common.scss';
 </style>
 
@@ -112,7 +112,7 @@ const messages = { en, hu };
 
 <style lang="scss">
 @use '@mjsz-vbr-elements/shared/css/forms.css';
-</style>
+</style> -->
 
 <style scoped>
 .main-layout {
