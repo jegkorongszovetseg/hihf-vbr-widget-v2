@@ -1,12 +1,10 @@
 <script setup>
-import { computed } from 'vue';
 import { I18NProvider, Image, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
-import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useMainClass, useServices } from '@mjsz-vbr-elements/core/composables';
 import { externalGameLinkResolver, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
-import hu from '../../locales/hu.json';
+import { computed } from 'vue';
 import en from '../../locales/en.json';
-
-const DEFAULT_LIGA_GAME_RESOLVER = '/game/id/{gameId}';
+import hu from '../../locales/hu.json';
 
 const props = defineProps({
   locale: {
@@ -25,6 +23,8 @@ const props = defineProps({
   },
 });
 
+const DEFAULT_LIGA_GAME_RESOLVER = '/game/id/{gameId}';
+
 const { state: playoffs, execute } = useServices({
   options: {
     path: '/v2/playoffs-tree',
@@ -39,17 +39,18 @@ const timezone = getLocalTimezone();
 
 const messages = { en, hu };
 
-const externalGameResolver = (game) =>
-  externalGameLinkResolver(props.externalGameLink || DEFAULT_LIGA_GAME_RESOLVER, game);
+function externalGameResolver(game) {
+  return externalGameLinkResolver(props.externalGameLink || DEFAULT_LIGA_GAME_RESOLVER, game);
+}
 
-const formatGameDate = (date) => format(date, 'L dddd', timezone, props.locale);
-const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
+const formatGameDate = date => format(date, 'L dddd', timezone, props.locale);
+const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
 </script>
 
 <template>
   <div :class="useMainClass('playoffs')">
-    <I18NProvider :locale="props.locale" :messages="messages" v-slot:default="{ t }">
-      <div v-for="playoff in playoffs">
+    <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
+      <div v-for="playoff in playoffs" :key="`${playoff.divisionStage2Name}-${playoff.divisionStageNumber}`">
         <div class="mjsz-vbr-section-title">
           {{ t(`playoffs.${playoff.divisionStage2Name}`) }}-{{ playoff.divisionStageNumber }}
         </div>
@@ -60,7 +61,9 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
           <div>
             <Image class="is-logo-image" :src="playoff.homeTeam.logo" />
           </div>
-          <div class="is-result">{{ playoff.seriesStandings }}</div>
+          <div class="is-result">
+            {{ playoff.seriesStandings }}
+          </div>
           <div>
             <Image class="is-logo-image" :src="playoff.awayTeam.logo" />
           </div>
@@ -88,10 +91,8 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
                 v-else
                 :href="externalGameResolver(game)"
                 target="_blank"
-                :class="[
-                  'is-text-bold',
-                  { 'is-text-dark': game.gameStatus !== 1, 'is-text-accent': game.gameStatus === 1 },
-                ]"
+                class="is-text-bold"
+                :class="[{ 'is-text-dark': game.gameStatus !== 1, 'is-text-accent': game.gameStatus === 1 }]"
               >
                 {{ game.homeTeamScore }}:{{ game.awayTeamScore }}
               </a>
@@ -105,7 +106,9 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
               <span class="is-team-name-long">{{ game.awayTeam?.longName }}</span>
               <span class="is-team-name-short">{{ game.awayTeam?.shortName }}</span>
             </div>
-            <div class="is-text-light is-truncate is-text-right">{{ game.location?.locationName ?? '' }}</div>
+            <div class="is-text-light is-truncate is-text-right">
+              {{ game.location?.locationName ?? '' }}
+            </div>
           </div>
         </ResponsiveTable>
       </div>
@@ -114,6 +117,9 @@ const formatGameTime = (date) => format(date, 'HH:mm', timezone, props.locale);
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/playoffs.css"></style>

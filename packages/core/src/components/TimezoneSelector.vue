@@ -1,9 +1,9 @@
 <script setup>
 import { computed } from 'vue';
-import { getLocalTimezone, offsetName } from '../utils/datetime';
-import { useI18n, i18n } from '../composables/useI18n';
-import { AVAILABLE_TIMEZONES_BY_COUNTRY } from '../constants.js';
+import { i18n, useI18n } from '../composables/useI18n';
 import { useMainClass } from '../composables/useMainClass';
+import { AVAILABLE_TIMEZONES_BY_COUNTRY } from '../constants.js';
+import { getLocalTimezone, offsetName } from '../utils/datetime';
 
 const props = defineProps({
   locale: {
@@ -25,7 +25,7 @@ const localZoneName = computed(() => offsetName(new Date(), null, props.locale))
 const localTimeZone = getLocalTimezone();
 
 const timezoneCountries = computed(() => {
-  return Array.from(AVAILABLE_TIMEZONES_BY_COUNTRY.values()).map((item) => ({
+  return Array.from(AVAILABLE_TIMEZONES_BY_COUNTRY.values()).map(item => ({
     ...item,
     isActive:
       offsetName(new Date(), props.currentZone, props.locale) === offsetName(new Date(), item.timezone, props.locale),
@@ -33,7 +33,7 @@ const timezoneCountries = computed(() => {
   }));
 });
 
-const onChangeTimezone = (tz) => emit('change', tz);
+const onChangeTimezone = tz => emit('change', tz);
 </script>
 
 <template>

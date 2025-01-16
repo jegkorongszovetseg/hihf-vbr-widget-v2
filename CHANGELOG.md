@@ -1,3 +1,29 @@
+## [2.11.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.11.2...v2.11.3) (2025-01-15)
+
+### Bug Fixes
+
+* Nyelvi cimkék kezelése több custom-element esetén ([7ac5249](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/7ac52495e8cef00588398c3056e5c4344c15221c))
+## [2.11.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.11.1...v2.11.2) (2025-01-15)
+
+### Bug Fixes
+
+* (extended/GamesTimeline) Carousel Item render átalakítás ([8bbe93b](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/8bbe93bc8ec333707db488f07b98736450d2e655))
+## [2.11.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.11.0...v2.11.1) (2025-01-14)
+
+### Bug Fixes
+
+* (extended/GamesTimeline) Css és cimke javítása ([6a0ee68](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/6a0ee68071226a531720b9df26c8e0538f938b65))
+## [2.11.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.10.0...v2.11.0) (2025-01-14)
+
+### Bug Fixes
+
+* GameTimeline eventId key handling ([0d342fb](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/0d342fbe33a84d65e8646bf735f3ddd702f9a97c))
+* National Players list ([430e531](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/430e53158f8c0919684772b34fa682f784f47e91))
+## [2.10.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.9.1...v2.10.0) (2025-01-13)
+
+### Bug Fixes
+
+* Clean test ([6c25f4a](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/6c25f4a1620069eaf27569475c9ee6fc17055279))
 ## [2.9.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.9.0...v2.9.1) (2025-01-09)
 
 ### Bug Fixes

@@ -1,16 +1,16 @@
-import { ref, nextTick } from 'vue';
-import { expect, describe, it, vi } from 'vitest';
 import { path, split } from 'ramda';
-import { useAdditionalText } from './useAdditionalText';
+import { describe, expect, it, vi } from 'vitest';
+import { nextTick, ref } from 'vue';
 import hu from '../locales/hu.json';
+import { useAdditionalText } from './useAdditionalText';
 
 describe('useAdditionalText', () => {
   const mockT = vi.fn().mockImplementation(handleLabels);
 
-  it('Működik, hogy csak az első betültés után változnak az adatok (watchOnce)', async () => {
+  it('működik, hogy csak az első betültés után változnak az adatok (watchOnce)', async () => {
     const rows = ref([]);
 
-    const { isVisible, text } = useAdditionalText(rows, 'inheritedPoints', mockT);
+    const { isVisible } = useAdditionalText(rows, 'inheritedPoints', mockT);
     await nextTick();
 
     expect(isVisible.value).toBe(false);
@@ -39,7 +39,7 @@ describe('useAdditionalText', () => {
     expect(isVisible.value).toBe(true);
   });
 
-  it('Hozott pontok szöveg nem jelenik meg, mert nincs olyan csapat', async () => {
+  it('hozott pontok szöveg nem jelenik meg, mert nincs olyan csapat', async () => {
     const rows = ref([]);
 
     const { isVisible, text } = useAdditionalText(rows, 'inheritedPoints', mockT);
@@ -67,7 +67,7 @@ describe('useAdditionalText', () => {
     expect(text.value).toBe('');
   });
 
-  it('Hozott pontok szöveg megjelenik, ha van egy inheritedPoints tartalmazó csapat', async () => {
+  it('hozott pontok szöveg megjelenik, ha van egy inheritedPoints tartalmazó csapat', async () => {
     const rows = ref([]);
 
     const { isVisible, text } = useAdditionalText(rows, 'inheritedPoints', mockT);
@@ -87,12 +87,11 @@ describe('useAdditionalText', () => {
 
     expect(isVisible.value).toBe(true);
     expect(text.value).toBe(
-      'A megelőző bajnokság szakaszban elért eredménye alapján TeamA csapata 2 többletponttal rendelkezik.'
+      'A megelőző bajnokság szakaszban elért eredménye alapján TeamA csapata 2 többletponttal rendelkezik.',
     );
-    console.log(text.value);
   });
 
-  it('Hozott pontok szöveg megjelenik - és vesszővel van elválasztva - ha van több inheritedPoints tartalmazó csapat', async () => {
+  it('hozott pontok szöveg megjelenik - és vesszővel van elválasztva - ha van több inheritedPoints tartalmazó csapat', async () => {
     const rows = ref([]);
 
     const { isVisible, text } = useAdditionalText(rows, 'inheritedPoints', mockT);
@@ -124,12 +123,11 @@ describe('useAdditionalText', () => {
 
     expect(isVisible.value).toBe(true);
     expect(text.value).toBe(
-      'A megelőző bajnokság szakaszban elért eredménye alapján TeamA csapata 3, TeamB csapata 2, TeamC csapata 1 többletponttal rendelkezik.'
+      'A megelőző bajnokság szakaszban elért eredménye alapján TeamA csapata 3, TeamB csapata 2, TeamC csapata 1 többletponttal rendelkezik.',
     );
-    console.log(text.value);
   });
 
-  it('Büntető pontok szöveg nem jelenik meg, mert nincs olyan csapat', async () => {
+  it('büntető pontok szöveg nem jelenik meg, mert nincs olyan csapat', async () => {
     const rows = ref([]);
 
     const { isVisible, text } = useAdditionalText(rows, 'penaltyPoints', mockT);
@@ -151,7 +149,7 @@ describe('useAdditionalText', () => {
     expect(text.value).toBe('');
   });
 
-  it('Büntető pontok szöveg megjelenik, ha van egy penaltyPoints tartalmazó csapat', async () => {
+  it('büntető pontok szöveg megjelenik, ha van egy penaltyPoints tartalmazó csapat', async () => {
     const rows = ref([]);
 
     const { isVisible, text } = useAdditionalText(rows, 'penaltyPoints', mockT);
@@ -173,7 +171,7 @@ describe('useAdditionalText', () => {
     expect(text.value).toBe('* Fegyelmi Bizottság döntése alapján: TeamA csapatától 2 pont levonva.');
   });
 
-  it('Büntető pontok szöveg megjelenik - és vesszővel van elválasztva -, ha van több penaltyPoints tartalmazó csapat', async () => {
+  it('büntető pontok szöveg megjelenik - és vesszővel van elválasztva -, ha van több penaltyPoints tartalmazó csapat', async () => {
     const rows = ref([]);
 
     const { isVisible, text } = useAdditionalText(rows, 'penaltyPoints', mockT);
@@ -199,11 +197,11 @@ describe('useAdditionalText', () => {
 
     expect(isVisible.value).toBe(true);
     expect(text.value).toBe(
-      '* Fegyelmi Bizottság döntése alapján: TeamA csapatától 2 pont, TeamB csapatától 1 pont levonva.'
+      '* Fegyelmi Bizottság döntése alapján: TeamA csapatától 2 pont, TeamB csapatától 1 pont levonva.',
     );
   });
 
-  it('Büntető pontok pozitív egész számként jelenik meg, ha eredetileg negatív szám', async () => {
+  it('büntető pontok pozitív egész számként jelenik meg, ha eredetileg negatív szám', async () => {
     const rows = ref([]);
 
     const { isVisible, text } = useAdditionalText(rows, 'penaltyPoints', mockT);

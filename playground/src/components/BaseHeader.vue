@@ -4,12 +4,14 @@ import { store } from '../store.js';
 
 <template>
   <header class="flex items-center p-3 bg-slate-900 mb-5">
-    <RouterLink to="/" class="text-slate-300 mr-10">Back</RouterLink>
+    <RouterLink to="/" class="text-slate-300 mr-10">
+      Back
+    </RouterLink>
     <ul class="flex gap-3">
-      <li v-for="locale in store.locales">
+      <li v-for="locale in store.locales" :key="locale">
         <a
           href="#"
-          :class="['text-slate-300', { 'text-white font-bold': store.locale === locale }]"
+          class="text-slate-300" :class="[{ 'text-white font-bold': store.locale === locale }]"
           @click.prevent="store.setLocale(locale)"
         >
           {{ locale }}

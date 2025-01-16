@@ -1,30 +1,34 @@
 /**
  * Append element to target position
  *
- * @param el
- * @param prop
+ * @param element
+ * @param targetSelector
  */
-export const appendTo = (element, targetSelector = 'body') => {
-  if (!element) return;
+export function appendTo(element, targetSelector = 'body') {
+  if (!element)
+    return;
   if (typeof targetSelector !== 'string') {
     targetSelector?.append(element);
     return;
   }
   const target = document.querySelector(targetSelector);
   target?.append(element);
-};
+}
 
 export function sortByDomNode(nodes, resolveKey = () => ({})) {
   return nodes.slice().sort((aItem, zItem) => {
-    let a = resolveKey(aItem);
-    let z = resolveKey(zItem);
+    const a = resolveKey(aItem);
+    const z = resolveKey(zItem);
 
-    if (a === null || z === null) return 0;
+    if (a === null || z === null)
+      return 0;
 
-    let position = a.compareDocumentPosition(z);
+    const position = a.compareDocumentPosition(z);
 
-    if (position & Node.DOCUMENT_POSITION_FOLLOWING) return -1;
-    if (position & Node.DOCUMENT_POSITION_PRECEDING) return 1;
+    if (position & Node.DOCUMENT_POSITION_FOLLOWING)
+      return -1;
+    if (position & Node.DOCUMENT_POSITION_PRECEDING)
+      return 1;
     return 0;
   });
 }

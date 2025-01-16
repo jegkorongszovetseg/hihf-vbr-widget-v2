@@ -1,9 +1,9 @@
-import { ref, watch } from 'vue';
-import { noop, watchOnce } from '@vueuse/core';
-import { pick, head, last, sortBy, indexOf } from 'ramda';
 import { isBetween } from '@mjsz-vbr-elements/core/utils';
+import { noop, watchOnce } from '@vueuse/core';
+import { head, indexOf, last, pick, sortBy } from 'ramda';
+import { ref, watch } from 'vue';
 
-export const useCollectMonths = (rows = [], locale = 'hu', onUpdated = noop) => {
+export function useCollectMonths(rows = [], locale = 'hu', onUpdated = noop) {
   const months = ref([]);
   const selectedMonth = ref(null);
   const filtered = ref([]);
@@ -13,7 +13,8 @@ export const useCollectMonths = (rows = [], locale = 'hu', onUpdated = noop) => 
       const gameDate = new Date(game.gameDate);
       const key = new Intl.DateTimeFormat('en-GB', { month: 'long' }).format(gameDate)?.toLowerCase();
       const month = new Intl.DateTimeFormat(locale.value, { month: 'long' }).format(gameDate);
-      if (!acc[key]) acc[key] = { value: gameDate.getMonth(), name: capitalizeFirstLetter(month) };
+      if (!acc[key])
+        acc[key] = { value: gameDate.getMonth(), name: capitalizeFirstLetter(month) };
       return acc;
     }, {});
     months.value = Object.values(filtered.value);
@@ -37,7 +38,7 @@ export const useCollectMonths = (rows = [], locale = 'hu', onUpdated = noop) => 
     months,
     selectedMonth,
   };
-};
+}
 
 function capitalizeFirstLetter(string) {
   return string[0].toUpperCase() + string.slice(1);

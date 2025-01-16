@@ -1,8 +1,8 @@
 <script setup>
-import { reactive, computed } from 'vue';
-import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
-import { useLazyLoadingState, useError, useServices, usePage, useSort } from '@mjsz-vbr-elements/core/composables';
+import { useError, useLazyLoadingState, usePage, useServices, useSort } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
+import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
+import { computed, reactive } from 'vue';
 import { transformSeasons } from '../internal';
 import { transformPlayers } from './internal';
 
@@ -52,7 +52,7 @@ const { isLoading: seasonsLoading, execute: fetchSeasons } = useServices({
     apiKey: props.apiKey,
     params: { championshipName: state.championshipName },
   },
-  transform: (res) => transformSeasons(res, state),
+  transform: res => transformSeasons(res, state),
   onError,
 });
 
@@ -68,7 +68,7 @@ const {
       championshipId: state.championshipId,
     })),
   },
-  transform: (data) => transformPlayers(data),
+  transform: data => transformPlayers(data),
   onError,
 });
 
@@ -81,28 +81,28 @@ const convertedRows = computed(() =>
     .sorted(sort)
     .filter(state.query, [['name']])
     .pagination(page.value, props.limit)
-    .value()
+    .value(),
 );
 
 const range = computed(() => {
   return [(page.value - 1) * props.limit + 1, Math.min(page.value * props.limit, convertedRows.value.totalItems)];
 });
 
-const changeSeason = (value) => {
+function changeSeason(value) {
   onPaginatorChange(1);
   state.championshipId = value;
   params.championshipId = value;
   state.query = '';
   params.query = null;
   useAsyncQueue([fetchPlayers]);
-};
+}
 
-const onInput = (event) => {
+function onInput(event) {
   const { value } = event.target;
   onPaginatorChange(1);
   state.query = value;
   params.query = value;
-};
+}
 </script>
 
 <template>
@@ -119,5 +119,5 @@ const onInput = (event) => {
       changeSeason,
       onPaginatorChange,
     }"
-  ></slot>
+  />
 </template>

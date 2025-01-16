@@ -1,9 +1,9 @@
 <script setup>
-import { computed, reactive } from 'vue';
-import { useAsyncQueue } from '@vueuse/core';
-import { omit, path, pipe } from 'ramda';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
 import { convert, sortGames } from '@mjsz-vbr-elements/core/utils';
+import { useAsyncQueue } from '@vueuse/core';
+import { omit, path, pipe } from 'ramda';
+import { computed, reactive } from 'vue';
 import { transformSeasons, transformSections } from '../../utils/transformers';
 import { transformRegistration } from './schedule-cup.internal';
 
@@ -55,7 +55,7 @@ const { isLoading: seasonsLoading, execute: fetchSeasons } = useServices({
     apiKey: props.apiKey,
     params: { championshipName: props.championshipName },
   },
-  transform: (res) => transformSeasons(res, state),
+  transform: res => transformSeasons(res, state),
   onError,
 });
 
@@ -65,7 +65,7 @@ const { isLoading: sectionLoading, execute: fetchSection } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId })),
   },
-  transform: (res) => transformSections(res, state),
+  transform: res => transformSections(res, state),
   onError,
 });
 
@@ -79,7 +79,7 @@ const {
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId, phaseId: state.phaseId })),
   },
-  transform: (data) => pipe(sortGames, transformRegistration(state.championshipId))(data),
+  transform: data => pipe(sortGames, transformRegistration(state.championshipId))(data),
   onError,
 });
 

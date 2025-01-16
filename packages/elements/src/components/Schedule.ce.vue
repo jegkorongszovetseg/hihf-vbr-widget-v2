@@ -1,24 +1,23 @@
 <script setup>
-import { computed, ref, unref, watch } from 'vue';
-import { useAsyncState, useDocumentVisibility, useTimeoutPoll } from '@vueuse/core';
-import { pick } from 'ramda';
-import { useErrorProvider, usePage, fetchVBRData } from '@mjsz-vbr-elements/core/composables';
+import { baseProps, gameProps, playerStatsProps, REFRESH_DELAY, teamStatsProps } from '@mjsz-vbr-elements/core';
 import {
-  convert,
-  sortGames,
-  getLocalTimezone,
-  offsetName,
-  externalGameLinkResolver,
-} from '@mjsz-vbr-elements/core/utils';
-import { REFRESH_DELAY } from '@mjsz-vbr-elements/core';
-import {
+  ErrorNotice,
   I18NProvider,
   Paginator,
-  ErrorNotice,
-  TimezoneSelector,
   ScheduleTable,
+  TimezoneSelector,
 } from '@mjsz-vbr-elements/core/components';
-import { baseProps, playerStatsProps, teamStatsProps, gameProps } from '@mjsz-vbr-elements/core';
+import { fetchVBRData, useErrorProvider, usePage } from '@mjsz-vbr-elements/core/composables';
+import {
+  convert,
+  externalGameLinkResolver,
+  getLocalTimezone,
+  offsetName,
+  sortGames,
+} from '@mjsz-vbr-elements/core/utils';
+import { useAsyncState, useDocumentVisibility, useTimeoutPoll } from '@vueuse/core';
+import { pick } from 'ramda';
+import { computed, ref, unref, watch } from 'vue';
 
 const props = defineProps({
   ...baseProps,
@@ -32,7 +31,7 @@ const props = defineProps({
   initialPage: {
     type: Number,
     default: 1,
-    validator: (value) => value >= 1,
+    validator: value => value >= 1,
   },
 
   autoInitialPage: {
@@ -71,9 +70,10 @@ const {
     immediate: !props.autoRefresh,
     onError: (error) => {
       onError(error);
+      // eslint-disable-next-line no-use-before-define
       pause?.();
     },
-  }
+  },
 );
 
 const rows = computed(() => sortGames(rawRows.value));
@@ -102,18 +102,19 @@ if (props.autoRefresh) {
   resume();
   const visibility = useDocumentVisibility();
   watch(visibility, (visible) => {
-    if (visible === 'visible') return resume();
+    if (visible === 'visible')
+      return resume();
     pause();
   });
 }
 
 const totalItems = computed(() => convertedRows.value?.totalItems);
 
-const onTimezoneChange = (tz) => {
+function onTimezoneChange(tz) {
   timezone.value = tz;
-};
+}
 
-const resolveExternalGameLink = (gameId) => externalGameLinkResolver(props.externalGameResolver, { gameId });
+const resolveExternalGameLink = gameId => externalGameLinkResolver(props.externalGameResolver, { gameId });
 const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? '_blank' : '_self'));
 </script>
 
@@ -152,7 +153,11 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/paginator.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/dropdown.css"></style>

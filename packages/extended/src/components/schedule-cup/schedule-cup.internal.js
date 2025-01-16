@@ -38,8 +38,10 @@ export const COLUMNS_SCHEDULE = {
   },
 };
 
-export const transformRegistration = (championshipId) => (data) =>
-  map((r) => ({
-    ...r,
-    ...(r.registration && { registration: `${r.registration}/cid/${championshipId}` }),
-  }))(data);
+export function transformRegistration(championshipId) {
+  return data =>
+    map(r => ({
+      ...r,
+      ...(r.registration && { registration: `${r.registration}/cid/${championshipId}` }),
+    }))(data);
+}

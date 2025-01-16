@@ -1,6 +1,6 @@
 import { resolve } from 'node:path';
-import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite';
 import banner from 'vite-plugin-banner';
 import { compressConfig } from '../../compress.config';
 
@@ -16,7 +16,7 @@ export default defineConfig({
     vue(),
     banner({
       content: `/**\n * name: ${pkg.name}\n * version: v${pkg.version} - ${new Date().toLocaleString(
-        'en-GB'
+        'en-GB',
       )}\n * (c) ${new Date().getFullYear()}\n * description: ${pkg.description}\n * author: ${pkg.author}\n */`,
     }),
     ...compressConfig,
@@ -43,7 +43,7 @@ export default defineConfig({
       output: {
         exports: 'named',
         globals: {
-          vue: 'Vue',
+          'vue': 'Vue',
           '@mjsz-vbr-elements/core': 'MjszVbrElementsCore',
           '@mjsz-vbr-elements/core/utils': 'MjszVbrElementsCore',
           '@mjsz-vbr-elements/core/columns': 'MjszVbrElementsCore',
@@ -53,5 +53,9 @@ export default defineConfig({
         },
       },
     },
+  },
+
+  test: {
+    environment: 'happy-dom',
   },
 });

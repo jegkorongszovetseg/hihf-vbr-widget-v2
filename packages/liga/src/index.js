@@ -1,14 +1,14 @@
 import { defineCustomElement } from 'vue';
 
 import {
+  PlayerLiga,
+  PlayersLiga,
   Playoffs,
-  Statistics,
   ScheduleLiga,
   StandingsLiga,
-  TeamsLiga,
+  Statistics,
   TeamLiga,
-  PlayersLiga,
-  PlayerLiga,
+  TeamsLiga,
 } from './components';
 
 const StatisticsCE = defineCustomElement(Statistics);
@@ -21,22 +21,22 @@ const PlayersLigaCE = defineCustomElement(PlayersLiga);
 const PlayerLigaCE = defineCustomElement(PlayerLiga);
 
 export {
-  Statistics,
-  ScheduleLiga,
-  Playoffs,
-  StandingsLiga,
-  TeamsLiga,
-  TeamLiga,
-  PlayersLiga,
   PlayerLiga,
-  StatisticsCE,
-  ScheduleLigaCE,
-  PlayoffsCE,
-  StandingsLigaCE,
-  TeamsLigaCE,
-  TeamLigaCE,
-  PlayersLigaCE,
   PlayerLigaCE,
+  PlayersLiga,
+  PlayersLigaCE,
+  Playoffs,
+  PlayoffsCE,
+  ScheduleLiga,
+  ScheduleLigaCE,
+  StandingsLiga,
+  StandingsLigaCE,
+  Statistics,
+  StatisticsCE,
+  TeamLiga,
+  TeamLigaCE,
+  TeamsLiga,
+  TeamsLigaCE,
 };
 
 export function register() {

@@ -1,25 +1,30 @@
 <script setup>
-import { useMainClass, useI18n } from '@mjsz-vbr-elements/core/composables';
+import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import IconRight from '@mjsz-vbr-elements/shared/icons/IconRight';
 
 const props = defineProps({
+  title: {
+    type: String,
+    default: '',
+  },
+
   externalScheduleUrl: {
     type: String,
     default: '',
   },
 });
 
-const emit = defineEmits(['navigate-to']);
-
-const { t } = useI18n();
+const emit = defineEmits(['navigateTo']);
 
 function onNavigate() {
-  emit('navigate-to', { url: props.externalScheduleUrl, target: '_self' });
+  emit('navigateTo', { url: props.externalScheduleUrl, target: '_self' });
 }
 </script>
 
 <template>
   <div :class="useMainClass('games-timeline-schedule-link')">
-    <button type="button" @click="onNavigate">{{ t('gamesTimeline.allSchedule') }}<IconRight /></button>
+    <button type="button" @click="onNavigate">
+      {{ title }}<IconRight />
+    </button>
   </div>
 </template>

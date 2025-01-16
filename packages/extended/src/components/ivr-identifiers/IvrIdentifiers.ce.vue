@@ -1,12 +1,10 @@
 <script setup>
-import { I18NProvider, ErrorProvider, ErrorNotice } from '@mjsz-vbr-elements/core/components';
+import { ErrorNotice, ErrorProvider, I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
+import en from '../../locales/en.json';
+import hu from '../../locales/hu.json';
 import DataProvider from './DataProvider.vue';
 import Selector from './Selector.vue';
-import hu from '../../locales/hu.json';
-import en from '../../locales/en.json';
-
-const messages = { en, hu };
 
 const props = defineProps({
   locale: {
@@ -19,14 +17,17 @@ const props = defineProps({
     default: '',
   },
 });
+
+const messages = { en, hu };
 </script>
+
 <template>
-  <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
-    <ErrorProvider v-slot:default="{ error, hasError }">
+  <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
+    <ErrorProvider v-slot="{ error, hasError }">
       <ErrorNotice v-if="hasError" :error="error" />
 
       <DataProvider
-        v-slot:default="{
+        v-slot="{
           seasonsList,
           seasonId,
           championshipList,
@@ -96,7 +97,9 @@ const props = defineProps({
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
 
 <style scoped>

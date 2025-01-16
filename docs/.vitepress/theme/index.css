@@ -27,15 +27,15 @@ mjsz-vbr-game-timeline {
   --vbr-widget-primary-color-800: #1f2937;
   --vbr-widget-primary-color-900: #111827;
 
-  --vbr-widget-secondary-color-100: #DBEAFE;
-  --vbr-widget-secondary-color-200: #BFDBFE;
-  --vbr-widget-secondary-color-300: #93C5FD;
-  --vbr-widget-secondary-color-400: #818CF8;
-  --vbr-widget-secondary-color-500: #3B82F6;
-  --vbr-widget-secondary-color-600: #2563EB;
-  --vbr-widget-secondary-color-700: #1D4ED8;
-  --vbr-widget-secondary-color-800: #1E40AF;
-  --vbr-widget-secondary-color-900: #1E3A8A;
+  --vbr-widget-secondary-color-100: #dbeafe;
+  --vbr-widget-secondary-color-200: #bfdbfe;
+  --vbr-widget-secondary-color-300: #93c5fd;
+  --vbr-widget-secondary-color-400: #818cf8;
+  --vbr-widget-secondary-color-500: #3b82f6;
+  --vbr-widget-secondary-color-600: #2563eb;
+  --vbr-widget-secondary-color-700: #1d4ed8;
+  --vbr-widget-secondary-color-800: #1e40af;
+  --vbr-widget-secondary-color-900: #1e3a8a;
 
   --vbr-widget-tab-btn-color: var(--vbr-widget-primary-color-400);
   --vbr-widget-tab-btn-active-border-color: var(--vbr-widget-secondary-color-500);

@@ -3,7 +3,8 @@ import { computed, toValue } from 'vue';
 export function useTeamColors(gameData) {
   const colors = computed(() => {
     const { homeTeam, awayTeam } = toValue(gameData);
-    if (!homeTeam?.color || !awayTeam?.color) return {};
+    if (!homeTeam?.color || !awayTeam?.color)
+      return {};
 
     return {
       '--vbr-widget-gamecenter-home-team-identifier-color': `#${homeTeam.color}`,

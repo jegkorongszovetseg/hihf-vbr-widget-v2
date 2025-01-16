@@ -1,5 +1,5 @@
 import { defineCustomElement } from 'vue';
-import { Calendar, GamesTimeline, ScheduleCup, IVRIdentifiers, Championship, StandingsSelector } from './components';
+import { Calendar, Championship, GamesTimeline, IVRIdentifiers, ScheduleCup, StandingsSelector } from './components';
 
 const CalendarCE = defineCustomElement(Calendar);
 const ChampionshipCE = defineCustomElement(Championship);
@@ -10,16 +10,16 @@ const StandingsSelectorCE = defineCustomElement(StandingsSelector);
 
 export {
   Calendar,
-  Championship,
-  ScheduleCup,
-  IVRIdentifiers,
-  GamesTimeline,
-  StandingsSelector,
-  ChampionshipCE,
-  ScheduleCupCE,
-  IVRIdentifiersCE,
   CalendarCE,
+  Championship,
+  ChampionshipCE,
+  GamesTimeline,
   GamesTimelineCE,
+  IVRIdentifiers,
+  IVRIdentifiersCE,
+  ScheduleCup,
+  ScheduleCupCE,
+  StandingsSelector,
   StandingsSelectorCE,
 };
 

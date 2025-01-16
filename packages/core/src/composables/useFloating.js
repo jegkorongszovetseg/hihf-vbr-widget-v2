@@ -1,5 +1,5 @@
+import { arrow as arrowCore, autoUpdate, computePosition } from '@floating-ui/dom';
 import { isRef, ref, unref, watch } from 'vue';
-import { autoUpdate, computePosition, arrow as arrowCore } from '@floating-ui/dom';
 import { appendTo } from '../utils/dom';
 
 export function useFloating({ middleware, placement = null, strategy, append, enabled }) {
@@ -14,14 +14,14 @@ export function useFloating({ middleware, placement = null, strategy, append, en
   const _autoUpdate = ref(null);
 
   const update = () => {
-    if (!reference.value || !floating.value) return;
+    if (!reference.value || !floating.value)
+      return;
 
     computePosition(reference.value, floating.value, {
       middleware,
       placement,
       strategy,
     }).then((data) => {
-      // console.log(data);
       x.value = data.x;
       y.value = data.y;
       _strategy.value = data.strategy;
@@ -40,26 +40,30 @@ export function useFloating({ middleware, placement = null, strategy, append, en
       append: unref(append),
     }),
     ({ floating, append }) => {
-      if (append) appendTo(floating, append);
+      if (append)
+        appendTo(floating, append);
       update();
     },
-    { flush: 'post' }
+    { flush: 'post' },
   );
 
   watch(
     enabled,
     (enabled) => {
-      if (!reference.value || !floating.value) return;
-      if (!enabled) return clean();
+      if (!reference.value || !floating.value)
+        return;
+
+      if (!enabled)
+        return clean();
       _autoUpdate.value = autoUpdate(reference.value, floating.value, update, {});
     },
-    { flush: 'post' }
+    { flush: 'post' },
   );
 
-  const clean = () => {
+  function clean() {
     _autoUpdate.value?.();
     _autoUpdate.value = null;
-  };
+  }
 
   return {
     x,
@@ -74,7 +78,7 @@ export function useFloating({ middleware, placement = null, strategy, append, en
   };
 }
 
-export const arrow = (options) => {
+export function arrow(options) {
   const { element, padding } = options;
 
   return {
@@ -87,11 +91,12 @@ export const arrow = (options) => {
         }
 
         return {};
-      } else if (element) {
+      }
+      else if (element) {
         return arrowCore({ element, padding }).fn(args);
       }
 
       return {};
     },
   };
-};
+}

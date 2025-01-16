@@ -1,7 +1,7 @@
 <script setup>
 import * as Columns from '@mjsz-vbr-elements/core/columns';
+import { omit, path, split } from 'ramda';
 import hu from '../../../packages/core/src/locales/hu.json';
-import { path, split, omit } from 'ramda';
 
 const props = defineProps({
   name: {
@@ -26,6 +26,7 @@ const cols = Object.keys(excludedColumns).reduce((acc, columnName) => {
   return acc;
 }, []);
 </script>
+
 <template>
   <div>
     <table>
@@ -36,7 +37,7 @@ const cols = Object.keys(excludedColumns).reduce((acc, columnName) => {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="col in cols">
+        <tr v-for="col in cols" :key="col.name">
           <td>{{ col.name }}</td>
           <td>{{ col.description }}</td>
         </tr>

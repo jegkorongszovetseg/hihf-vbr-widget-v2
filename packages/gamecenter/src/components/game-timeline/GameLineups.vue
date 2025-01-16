@@ -1,10 +1,10 @@
 <script setup>
-import { computed } from 'vue';
-import { useMainClass, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { Image } from '@mjsz-vbr-elements/core/components';
+import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { playerName } from '@mjsz-vbr-elements/core/utils';
 import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
-import { pickCoaches, groupLinesByTeams } from './internal';
+import { computed } from 'vue';
+import { groupLinesByTeams, pickCoaches } from './internal';
 
 const props = defineProps({
   data: {
@@ -45,22 +45,28 @@ const awayCoaches = computed(() => pickCoaches(props.gameOfficials?.gameTeamMemb
 
 // const referees = computed(() => pickReferees(props.gameOfficials?.gameOfficials));
 </script>
+
 <template>
   <div :class="useMainClass('gamecenter-timeline-lineups')">
-    <template v-for="(type, index) in teamsPlayers">
-      <h2 class="is-heading-2">{{ t(`rows.row-${index}`) }}</h2>
+    <template v-for="(type, index) in teamsPlayers" :key="index">
+      <h2 class="is-heading-2">
+        {{ t(`rows.row-${index}`) }}
+      </h2>
       <div class="is-container">
         <div
           v-for="(row, key) in type"
+          :key="key"
           :class="[useMainClass('gamecenter-timeline-lineups-lines'), { 'is-away-team': key === 'away' }]"
         >
-          <ul v-for="player in row" :key="player.position" :class="['is-player-wrapper', `is-${player.position}`]">
+          <ul v-for="player in row" :key="player.position" class="is-player-wrapper" :class="[`is-${player.position}`]">
             <li><Image :src="player.player.picture" /></li>
             <li>{{ player.number }}</li>
             <li>
               {{ playerName(player)?.name ?? '' }}
               <ul>
-                <li v-for="i in player.goal"><IconHockeyPuck /></li>
+                <li v-for="i in player.goal" :key="i">
+                  <IconHockeyPuck />
+                </li>
               </ul>
             </li>
             <li>{{ player.position }}</li>
@@ -69,9 +75,11 @@ const awayCoaches = computed(() => pickCoaches(props.gameOfficials?.gameTeamMemb
       </div>
     </template>
 
-    <hr />
+    <hr>
 
-    <h2 class="is-heading-2">{{ t('title.coaches') }}</h2>
+    <h2 class="is-heading-2">
+      {{ t('title.coaches') }}
+    </h2>
     <div class="is-container">
       <div :class="useMainClass('gamecenter-timeline-lineups-lines-simple')">
         <ul v-for="(person, key) in homeCoaches" :key="person.role" class="is-official-person-container is-home-team">

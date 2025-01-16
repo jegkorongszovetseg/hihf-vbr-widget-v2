@@ -1,8 +1,8 @@
-import { ref, watch, computed, unref } from 'vue';
-import { useIntervalFn, useTimeoutPoll } from '@vueuse/core';
-import { isEmpty } from 'ramda';
 import { useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
 import { convertMinToSec } from '@mjsz-vbr-elements/core/utils';
+import { useIntervalFn, useTimeoutPoll } from '@vueuse/core';
+import { isEmpty } from 'ramda';
+import { computed, ref, unref, watch } from 'vue';
 import { callFunctions, rawPeriodIndex } from './internal.js';
 
 const DEAFULT_PERIOD_LENGTH_MIN = 20;
@@ -17,7 +17,7 @@ export function handleServices(options = {}) {
   const { resume, pause, isActive } = useTimeoutPoll(
     () => callFunctions(getGameData, getGameStats, getEvents),
     interval,
-    { immediate: false }
+    { immediate: false },
   );
 
   const { pause: pauseGameData } = useIntervalFn(() => getGameData(), LAZY_INTERVAL, {
@@ -31,7 +31,7 @@ export function handleServices(options = {}) {
     {
       immediate: false,
       immediateCallback: true,
-    }
+    },
   );
   useVisibilityChange(isRefreshable, resume, pause);
 
@@ -75,7 +75,7 @@ export function usePeriodTime(gameData = {}) {
 
   const value = computed(() => {
     const gameDateValue = unref(gameData);
-    const fromPeriodTime = periodLengthSec.value - parseInt(gameDateValue.periodTime, 10) * 60;
+    const fromPeriodTime = periodLengthSec.value - Number.parseInt(gameDateValue.periodTime, 10) * 60;
 
     let periodCount = rawPeriodIndex(unref(gameData)) - 1;
     if (gameDateValue.isOvertime || gameDateValue.isShootout) {
@@ -102,8 +102,9 @@ export function useApiErrors() {
   }
 
   function remove(key) {
-    if (isEmpty(errors.value)) return;
-    const index = errors.value.findIndex((error) => error.key === key);
+    if (isEmpty(errors.value))
+      return;
+    const index = errors.value.findIndex(error => error.key === key);
     errors.value.splice(index, 1);
   }
 

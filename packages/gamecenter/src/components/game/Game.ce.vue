@@ -1,23 +1,19 @@
 <script setup>
-import { computed } from 'vue';
-import { compose, groupBy, prop, reverse, isEmpty, reject, propEq } from 'ramda';
+import { ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
+import { useMainClass, useServices } from '@mjsz-vbr-elements/core/composables';
 import { useUrlSearchParams } from '@vueuse/core';
-import { useServices, useMainClass } from '@mjsz-vbr-elements/core/composables';
-import { I18NProvider, ErrorNotice } from '@mjsz-vbr-elements/core/components';
-import { handleServices, useApiErrors } from './composables';
-import GameData from './GameData.vue';
-import GameStats from './GameStats.vue';
-import GameEvents from './GameEvents.vue';
-import GamePlayersStats from './GamePlayersStats.vue';
-import GameGoaliesStats from './GameGoaliesStats.vue';
-import GameOfficials from './GameOfficials.vue';
-import GameTeamsOfficials from './GameTeamOfficials.vue';
+import { compose, groupBy, isEmpty, prop, propEq, reject, reverse } from 'ramda';
+import { computed } from 'vue';
 import CommonEn from '../../locales/en/common.json';
 import CommonHu from '../../locales/hu/common.json';
-
-const messages = { en: CommonEn, hu: CommonHu };
-
-const REFRESH_DELAY = 30000;
+import { handleServices, useApiErrors } from './composables';
+import GameData from './GameData.vue';
+import GameEvents from './GameEvents.vue';
+import GameGoaliesStats from './GameGoaliesStats.vue';
+import GameOfficials from './GameOfficials.vue';
+import GamePlayersStats from './GamePlayersStats.vue';
+import GameStats from './GameStats.vue';
+import GameTeamsOfficials from './GameTeamOfficials.vue';
 
 const props = defineProps({
   locale: {
@@ -36,6 +32,10 @@ const props = defineProps({
   },
 });
 
+const messages = { en: CommonEn, hu: CommonHu };
+
+const REFRESH_DELAY = 30000;
+
 const searchParams = useUrlSearchParams('history');
 
 const { errors, add: addApiError, remove: removeApiError } = useApiErrors();
@@ -48,7 +48,7 @@ const { state: gameData, execute: getGameData } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  onError: (e) => addApiError('gameData', e),
+  onError: e => addApiError('gameData', e),
   onSuccess: () => removeApiError('gameData'),
 });
 
@@ -58,9 +58,9 @@ const { state: gameEvents, execute: getEvents } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  transform: (data) =>
+  transform: data =>
     compose(groupBy(prop('eventPeriod')), reverse, reject(propEq('Period', 'type')))(data?.isEmpty ? [] : data),
-  onError: (e) => addApiError('gameEvents', e),
+  onError: e => addApiError('gameEvents', e),
   onSuccess: () => removeApiError('gameEvents'),
 });
 
@@ -70,7 +70,7 @@ const { state: gameStats, execute: getGameStats } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  onError: (e) => addApiError('gameStats', e),
+  onError: e => addApiError('gameStats', e),
   onSuccess: () => removeApiError('gameStats'),
 });
 
@@ -80,7 +80,7 @@ const { state: gameOfficials, execute: getGameOfficials } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  onError: (e) => addApiError('gameOfficials', e),
+  onError: e => addApiError('gameOfficials', e),
   onSuccess: () => removeApiError('gameOfficials'),
 });
 
@@ -93,7 +93,7 @@ handleServices({
 
 <template>
   <div :class="useMainClass('gamecenter')">
-    <I18NProvider :locale="props.locale" :messages="messages" #default="{ t }">
+    <I18NProvider :locale="props.locale" :messages="messages">
       <ErrorNotice v-for="error in errors" :key="error.key" :error="error" />
 
       <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
@@ -135,8 +135,13 @@ handleServices({
 </template>
 
 <style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/game-center.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+
 <style src="@mjsz-vbr-elements/shared/css/progress.css"></style>

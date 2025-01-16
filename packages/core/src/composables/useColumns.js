@@ -1,8 +1,8 @@
+import { keys, map, omit, split, trim } from 'ramda';
 import { computed, ref, unref } from 'vue';
-import { map, keys, trim, omit, split } from 'ramda';
 import { useI18n } from './useI18n';
 
-export const useColumns = (columns, hiddenColumns = '', variables = {}) => {
+export function useColumns(columns, hiddenColumns = '', variables = {}) {
   const errorRef = ref('');
   const { t } = useI18n();
 
@@ -11,14 +11,15 @@ export const useColumns = (columns, hiddenColumns = '', variables = {}) => {
       try {
         const columnsToHide = validateColumnsName(unref(columns), unref(hiddenColumns));
         return omit(columnsToHide, unref(columns));
-      } catch (err) {
+      }
+      catch (err) {
         errorRef.value = err;
       }
     }
     return unref(columns);
   });
 
-  const convert = (column) => ({
+  const convert = column => ({
     ...column,
     ...(column.label && { label: t(column.label ?? '', unref(variables)) }),
     ...(column.tooltip && { tooltip: t(column.tooltip ?? '') }),
@@ -28,15 +29,16 @@ export const useColumns = (columns, hiddenColumns = '', variables = {}) => {
     columns: converted,
     error: errorRef,
   };
-};
+}
 
-export const validateColumnsName = (columns, hiddenColumns = '') => {
+export function validateColumnsName(columns, hiddenColumns = '') {
   const hiddenColumnsArray = map(trim, split(',', hiddenColumns));
   const columnsArray = keys(columns);
-  if (hiddenColumnsArray[0] === '') return resolve([]);
-  const index = hiddenColumnsArray.findIndex((column) => !columnsArray.includes(column));
+  if (hiddenColumnsArray[0] === '')
+    return [];
+  const index = hiddenColumnsArray.findIndex(column => !columnsArray.includes(column));
   if (index > -1) {
     throw hiddenColumnsArray[index];
   }
   return hiddenColumnsArray;
-};
+}

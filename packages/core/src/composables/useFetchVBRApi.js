@@ -1,8 +1,8 @@
-import { unref } from 'vue';
 import { isEmpty } from 'ramda';
+import { unref } from 'vue';
 import { VBR_API_BASE_URL } from '../constants';
 
-export const fetchVBRData = async (route, apiKey, data) => {
+export async function fetchVBRData(route, apiKey, data) {
   const url = `${VBR_API_BASE_URL}${unref(route)}${isEmpty(data) ? '' : `?${objectToQueryString(data)}`}`;
   return new Promise((resolve, reject) => {
     fetch(url, {
@@ -17,23 +17,26 @@ export const fetchVBRData = async (route, apiKey, data) => {
         return response.json();
       })
       .then((response) => {
-        if (response.error) return reject(response);
+        if (response.error)
+          return reject(response);
         resolve(response.data);
       })
       .catch((error) => {
         reject(error);
       });
   });
-};
+}
 
-const objectToQueryString = (obj) => {
+function objectToQueryString(obj) {
   return Object.keys(obj)
-    .map((key) => key + '=' + obj[key])
+    .map(key => `${key}=${obj[key]}`)
     .join('&');
-};
+}
 
-const resolveApiKey = (apiKey) => {
-  if (apiKey) return apiKey;
-  if (window.__MJSZ_VBR_WIDGET__?.apiKey) return window.__MJSZ_VBR_WIDGET__.apiKey;
+function resolveApiKey(apiKey) {
+  if (apiKey)
+    return apiKey;
+  if (window.__MJSZ_VBR_WIDGET__?.apiKey)
+    return window.__MJSZ_VBR_WIDGET__.apiKey;
   return '';
-};
+}

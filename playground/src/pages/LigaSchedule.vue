@@ -1,13 +1,12 @@
 <script setup>
 import { store } from '../store.js';
-import { ScheduleLiga } from '@mjsz-vbr-elements/liga';
-import '../../../packages/shared/dist/css/common.css';
-import '../../../packages/shared/dist/css/typography.css';
-import '../../../packages/shared/dist/css/cards.css';
-import '../../../packages/shared/dist/css/grid.css';
-import '../../../packages/shared/dist/css/forms.css';
+// import '../../../packages/shared/dist/css/common.css';
+// import '../../../packages/shared/dist/css/typography.css';
+// import '../../../packages/shared/dist/css/cards.css';
+// import '../../../packages/shared/dist/css/grid.css';
+// import '../../../packages/shared/dist/css/forms.css';
 
-const gameLinkResolver = '/GameCenter?gameId={gameId}'
+const gameLinkResolver = '/GameCenter?gameId={gameId}';
 </script>
 
 <template>

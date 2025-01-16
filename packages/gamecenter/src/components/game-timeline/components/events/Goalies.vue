@@ -2,8 +2,8 @@
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import IconArrowDown from '@mjsz-vbr-elements/shared/icons/IconArrowDown';
 import IconArrowUp from '@mjsz-vbr-elements/shared/icons/IconArrowUp';
-import TeamLogo from './TeamLogo.vue';
 import GameEventLayout from '../GameEventLayout.vue';
+import TeamLogo from './TeamLogo.vue';
 
 defineProps({
   event: {
@@ -22,7 +22,9 @@ const { t } = useI18n();
 
 <template>
   <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam" :event-type="event.type" :event="event">
-    <template #title> {{ t('eventType.Kapus') }} - {{ t(`eventType.goalie.${event.gkDirection}`) }} </template>
+    <template #title>
+      {{ t('eventType.Kapus') }} - {{ t(`eventType.goalie.${event.gkDirection}`) }}
+    </template>
 
     <template #details-list>
       <ul class="is-details-list">
@@ -33,7 +35,7 @@ const { t } = useI18n();
     </template>
 
     <template #team-logo>
-      <TeamLogo :name="event.team.longName" :logo="event.team.logo" :key="event.team.id" :is-home-team="isHomeTeam" />
+      <TeamLogo :key="event.team.id" :name="event.team.longName" :logo="event.team.logo" :is-home-team="isHomeTeam" />
     </template>
 
     <template #event-type-icon>

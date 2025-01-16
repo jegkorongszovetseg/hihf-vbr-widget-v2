@@ -1,27 +1,27 @@
-import { sortBy, prop } from 'ramda';
 import {
+  COLUMNS_FIELD_PLAYERS,
+  COLUMNS_FIELD_PLAYERS_PENALTY,
   COLUMNS_GOALIES,
   COLUMNS_SCHEDULE,
-  COLUMNS_STANDINGS_P_3,
-  COLUMNS_FIELD_PLAYERS,
-  COLUMNS_TEAMS_FAIRPLAY,
-  COLUMNS_TEAMS_POWERPLAY,
   COLUMNS_SCORING_EFFICIENCY,
+  COLUMNS_STANDINGS_P_3,
+  COLUMNS_TEAMS_FAIRPLAY,
   COLUMNS_TEAMS_PENALTY_KILLING,
-  COLUMNS_FIELD_PLAYERS_PENALTY,
+  COLUMNS_TEAMS_POWERPLAY,
 } from '@mjsz-vbr-elements/core/columns';
 import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core/constants';
+import { prop, sortBy } from 'ramda';
 
 export const PANEL_SCHEDULE = 'schedule';
 export const PANEL_STANDINGS = 'standings';
 export const PANEL_PLAYERS = 'players';
 export const PANEL_TEAMS = 'teams';
 
-export const transformSections = (sections, state) => {
+export function transformSections(sections, state) {
   state.championships = sortBy(prop('sectionId'))(sections);
   state.selectedChampionshipId = state.championships?.[0]?.sectionId;
   state.phaseId = sections?.[0]?.phases[0]?.phaseId;
-};
+}
 
 export const ALL_REPORTS_MAP = new Map()
   .set('schedule', {
@@ -131,7 +131,7 @@ export const ALL_REPORTS_MAP = new Map()
     },
   });
 
-export const PLAYERS_REPORTS_SELECT = (t) => {
+export function PLAYERS_REPORTS_SELECT(t) {
   return [
     {
       name: t('report.points'),
@@ -162,9 +162,9 @@ export const PLAYERS_REPORTS_SELECT = (t) => {
       value: 'goaliesunderlimit',
     },
   ];
-};
+}
 
-export const TEAMS_REPORTS_SELECT = (t) => {
+export function TEAMS_REPORTS_SELECT(t) {
   return [
     // {
     //   name: t('report.teamAttendance'),
@@ -187,4 +187,4 @@ export const TEAMS_REPORTS_SELECT = (t) => {
       value: 'teamScoringEfficiency',
     },
   ];
-};
+}

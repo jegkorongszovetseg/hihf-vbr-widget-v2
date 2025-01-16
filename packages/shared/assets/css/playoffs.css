@@ -3,10 +3,9 @@
 .playoffs {
   .table-grid {
     display: grid;
-    grid-template-columns: 60px 160px minmax(60px, 0.41fr) minmax(160px, 1fr) minmax(40px, 60px) 70px minmax(160px, 1fr) minmax(
-        180px,
-        0.9fr
-      );
+    grid-template-columns:
+      60px 160px minmax(60px, 0.41fr) minmax(160px, 1fr) minmax(40px, 60px) 70px minmax(160px, 1fr)
+      minmax(180px, 0.9fr);
     color: var(--vbr-widget-table-color);
 
     &:nth-child(odd) > div {
@@ -53,7 +52,7 @@
 
     .label {
       padding: 3px 6px;
-      font-size: 11px;
+      font-size: var(--vbr-widget-typography-font-size-100);
       font-weight: 700;
       color: var(--vbr-widget-table-label-color);
       background-color: var(--vbr-widget-table-label-bg-color);
@@ -84,7 +83,7 @@
   .section-title {
     padding: 10px;
     text-align: center;
-    font-size: 16px;
+    font-size: var(--vbr-widget-typography-font-size-500);
     font-weight: 700;
     color: var(--vbr-widget-primary-color-100);
     background-color: var(--vbr-widget-primary-color-700);
@@ -131,7 +130,7 @@
     }
 
     .is-team-name {
-      font-size: 20px;
+      font-size: var(--vbr-widget-typography-font-size-700);
       font-weight: 700;
       color: var(--vbr-widget-primary-color-800);
     }

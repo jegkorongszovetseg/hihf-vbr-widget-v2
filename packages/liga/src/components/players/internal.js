@@ -1,4 +1,4 @@
-import { compose, sortBy, prop, map } from 'ramda';
 import { playerName, teamName } from '@mjsz-vbr-elements/core/utils';
+import { compose, map, prop, sortBy } from 'ramda';
 
-export const transformPlayers = (data) => compose(sortBy(prop('name')), map(compose(playerName, teamName)))(data);
+export const transformPlayers = data => compose(sortBy(prop('name')), map(compose(playerName, teamName)))(data);

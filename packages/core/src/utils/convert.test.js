@@ -1,14 +1,14 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { convertPhaseName } from './convert';
 
 describe('convertPhaseName', () => {
-  test('A phases üres []', () => {
+  it('a phases üres []', () => {
     const phases = [];
     const phaseName = convertPhaseName(phases);
     expect(phaseName).toStrictEqual([]);
   });
 
-  test('A phaseName és a phaseTypeName megegyezik és van phaseSubTypeName', () => {
+  it('a phaseName és a phaseTypeName megegyezik és van phaseSubTypeName', () => {
     const phases = [
       {
         phaseId: 45307,
@@ -27,7 +27,7 @@ describe('convertPhaseName', () => {
     expect(phaseName).toStrictEqual([{ phaseId: 45307, phaseName: 'Alapszakasz-Észak' }]);
   });
 
-  test('Csak phaseName és phaseTypeName van de nincs phaseSubTypeName', () => {
+  it('csak phaseName és phaseTypeName van de nincs phaseSubTypeName', () => {
     const phases = [
       {
         phaseId: 45307,
@@ -43,7 +43,7 @@ describe('convertPhaseName', () => {
     expect(phaseName).toStrictEqual([{ phaseId: 45307, phaseName: 'Alapszakasz' }]);
   });
 
-  test('A phaseName és a phaseTypeName nem egyezik meg és van phaseSubTypeName', () => {
+  it('a phaseName és a phaseTypeName nem egyezik meg és van phaseSubTypeName', () => {
     const phases = [
       {
         phaseId: 45307,
@@ -62,7 +62,7 @@ describe('convertPhaseName', () => {
     expect(phaseName).toStrictEqual([{ phaseId: 45307, phaseName: 'Alapszakasz-1. forduló-Észak' }]);
   });
 
-  test('Csak phaseName van', () => {
+  it('csak phaseName van', () => {
     const phases = [
       {
         phaseId: 45307,
@@ -75,7 +75,7 @@ describe('convertPhaseName', () => {
     expect(phaseName).toStrictEqual([{ phaseId: 45307, phaseName: 'Alapszakasz' }]);
   });
 
-  test('A phaseName és a phaseTypeName nem egyezik meg és nincs phaseSubTypeName', () => {
+  it('a phaseName és a phaseTypeName nem egyezik meg és nincs phaseSubTypeName', () => {
     const phases = [
       {
         phaseId: 45307,

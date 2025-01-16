@@ -1,39 +1,45 @@
-import { head, last, compose, ascend, descend, map, pick, prop, sort, path, reject, includes } from 'ramda';
-import { InvalidSeasonName, WidgetError } from '@mjsz-vbr-elements/core/utils';
 import { SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
+import { InvalidSeasonName, WidgetError } from '@mjsz-vbr-elements/core/utils';
+import { ascend, compose, descend, head, last, map, path, pick, prop, reject, sort } from 'ramda';
 
-export const transformSeasons = (seasons, state) => {
-  if (seasons.length === 0) throw new WidgetError(InvalidSeasonName.message, InvalidSeasonName.options);
+export function transformSeasons(seasons, state) {
+  if (seasons.length === 0)
+    throw new WidgetError(InvalidSeasonName.message, InvalidSeasonName.options);
   state.seasons = convertSeasons(seasons);
-  if (!state.championshipId) state.championshipId = head(state.seasons).championshipId;
-};
+  if (!state.championshipId)
+    state.championshipId = head(state.seasons).championshipId;
+}
 
-export const transformSections = (sections, state) => {
+export function transformSections(sections, state) {
   state.sections = path([0, 'phases'], sections);
   state.section = compose(prop('phaseName'), head)(state.sections);
-};
+}
 
-export const transformStandingSections = (sections, state) => {
+export function transformStandingSections(sections, state) {
   const phaseNames = (p) => {
     return ['Rájátszás', 'Újrajátszandó'].includes(p.phaseName);
   };
   state.sections = compose(reject(phaseNames), path([0, 'phases']))(sections);
   state.section = compose(prop('phaseName'), head)(state.sections);
-};
+}
 
-export const transformPhases = (sections, state) => {
+export function transformPhases(sections, state) {
   state.sections = [...sections];
-  if (!state.section) state.section = compose(prop('name'), last)(state.sections);
-};
+  if (!state.section)
+    state.section = compose(prop('name'), last)(state.sections);
+}
 
-export const transformTeams = (teams, state) => {
+export function convertTeams(teams) {
+  return sort(ascend(prop('teamName')), teams);
+}
+
+export function transformTeams(teams, state) {
   state.teams = convertTeams(teams);
-};
+}
 
-export const convertSeasons = (seasons) =>
-  compose(sort(descend(prop('seasonName'))), map(pick(['championshipId', 'seasonName'])))(seasons);
-
-export const convertTeams = (teams) => sort(ascend(prop('teamName')), teams);
+export function convertSeasons(seasons) {
+  return compose(sort(descend(prop('seasonName'))), map(pick(['championshipId', 'seasonName'])))(seasons);
+}
 
 export const COLUMNS_PLAYERS = {
   jerseyNr: {

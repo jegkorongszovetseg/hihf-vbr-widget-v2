@@ -1,9 +1,9 @@
 <script setup>
+import { useColumns, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { computed } from 'vue';
-import { useMainClass, useColumns } from '@mjsz-vbr-elements/core/composables';
 import GameDataTable from '../common/GameDataTable.vue';
 import GamePlayerStatsProvider from './components/GamePlayerStatsProvider.vue';
-import { PLAYER_STATS_COLUMNS, convertPlayersTOI } from './internal';
+import { convertPlayersTOI, PLAYER_STATS_COLUMNS } from './internal';
 
 const props = defineProps({
   data: {
@@ -35,9 +35,10 @@ const { columns } = useColumns(PLAYER_STATS_COLUMNS);
 const homePlayers = computed(() => convertPlayersTOI(props.data?.[props.homeTeamId] ?? []));
 const awayPlayers = computed(() => convertPlayersTOI(props.data?.[props.awayTeamId] ?? []));
 </script>
+
 <template>
   <div :class="useMainClass('gamecenter-data-column')">
-    <GamePlayerStatsProvider :rows="homePlayers" #default="{ rows, sort, onSort }">
+    <GamePlayerStatsProvider v-slot="{ rows, sort, onSort }" :rows="homePlayers">
       <GameDataTable
         :class="useMainClass('gamecenter-data-table')"
         :columns="columns"
@@ -47,7 +48,7 @@ const awayPlayers = computed(() => convertPlayersTOI(props.data?.[props.awayTeam
         @sort="onSort"
       />
     </GamePlayerStatsProvider>
-    <GamePlayerStatsProvider :rows="awayPlayers" #default="{ rows, sort, onSort }">
+    <GamePlayerStatsProvider v-slot="{ rows, sort, onSort }" :rows="awayPlayers">
       <GameDataTable
         :class="useMainClass('gamecenter-data-table')"
         :columns="columns"

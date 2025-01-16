@@ -1,6 +1,6 @@
 <script setup>
+import { FloatingPanel, Image } from '@mjsz-vbr-elements/core/components';
 import { computed, ref } from 'vue';
-import { Image, FloatingPanel } from '@mjsz-vbr-elements/core/components';
 import { DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from '../../../game/internal';
 
 const props = defineProps({
@@ -26,12 +26,12 @@ const defaultSrc = computed(() => (props.isHomeTeam ? DEAFULT_LOGO_TEAM_A : DEAF
 
 <template>
   <FloatingPanel
+    v-slot="{ setRef, events }"
     :offset="2"
     placement="top"
     theme="tooltip"
     :content="name"
     :append-to="tooltipContainer"
-    v-slot:default="{ setRef, events }"
   >
     <span :ref="setRef" :tabindex="0" :aria-label="name" v-on="events">
       <Image :src="logo" :default-src="defaultSrc" />

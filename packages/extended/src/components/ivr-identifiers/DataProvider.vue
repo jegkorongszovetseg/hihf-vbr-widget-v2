@@ -1,8 +1,7 @@
 <script setup>
-import { computed, reactive } from 'vue';
-import { useAsyncQueue } from '@vueuse/core';
-import { path } from 'ramda';
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
+import { useAsyncQueue } from '@vueuse/core';
+import { computed, reactive } from 'vue';
 import { transformAllSeason, transformSeasons, transformSections } from './internal';
 
 const props = defineProps({
@@ -38,7 +37,7 @@ const { isLoading: allSeasonsLoading, execute: fetchAllSeasons } = useServices({
     apiKey: props.apiKey,
     params: {},
   },
-  transform: (res) => transformAllSeason(res, state),
+  transform: res => transformAllSeason(res, state),
   onError,
 });
 
@@ -48,7 +47,7 @@ const { isLoading: seasonsLoading, execute: fetchSeasons } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ seasonId: state.seasonId })),
   },
-  transform: (res) => transformSeasons(res, state),
+  transform: res => transformSeasons(res, state),
   onError,
 });
 
@@ -61,11 +60,11 @@ const {
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId })),
   },
-  transform: (res) => transformSections(res, state),
+  transform: res => transformSections(res, state),
   onError,
 });
 
-const phaseData = computed(()=> state.sections?.find((section)=>section.sectionId === state.sectionId)?.phases ?? [])
+const phaseData = computed(() => state.sections?.find(section => section.sectionId === state.sectionId)?.phases ?? []);
 
 useAsyncQueue([fetchAllSeasons, fetchSeasons, fetchSections]);
 

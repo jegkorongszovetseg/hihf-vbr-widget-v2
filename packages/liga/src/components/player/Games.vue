@@ -1,7 +1,7 @@
 <script setup>
-import { computed } from 'vue';
 import { useColumns } from '@mjsz-vbr-elements/core/composables';
-import { offsetName, externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
+import { externalGameLinkResolver, offsetName } from '@mjsz-vbr-elements/core/utils';
+import { computed } from 'vue';
 import GamesDataTable from '../common/GamesDataTable.vue';
 
 const props = defineProps({
@@ -39,9 +39,9 @@ const props = defineProps({
 const { columns } = useColumns(
   computed(() => props.columns),
   null,
-  computed(() => ({ offsetName: offsetName(new Date(), null, 'hu') }))
+  computed(() => ({ offsetName: offsetName(new Date(), null, 'hu') })),
 );
-const resolveExternalGameLink = (params) => externalGameLinkResolver(props.gameResolver, params);
+const resolveExternalGameLink = params => externalGameLinkResolver(props.gameResolver, params);
 </script>
 
 <template>

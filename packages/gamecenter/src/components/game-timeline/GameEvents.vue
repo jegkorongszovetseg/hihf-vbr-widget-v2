@@ -2,7 +2,7 @@
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import GameEvent from './components/GameEvent.vue';
 
-const props = defineProps({
+defineProps({
   gameEvents: {
     type: Array,
     required: true,

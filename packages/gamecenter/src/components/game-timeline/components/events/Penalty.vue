@@ -1,7 +1,7 @@
 <script setup>
-import { computed } from 'vue';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import IconWhistle from '@mjsz-vbr-elements/shared/icons/IconWhistle';
+import { computed } from 'vue';
 import { convertPenaltyCause } from '../../../game/internal';
 import GameEventLayout from '../GameEventLayout.vue';
 import TeamLogo from './TeamLogo.vue';
@@ -29,9 +29,13 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
       {{ t('eventType.Kiállítás') }}
       <template v-if="event.penaltyLength !== 0">
         {{ t('events.penaltyLength', [event.penaltyLength]) }}
-        <template v-if="event.penaltyEnd"> ({{ event.penaltyEnd }}) </template>
+        <template v-if="event.penaltyEnd">
+          ({{ event.penaltyEnd }})
+        </template>
       </template>
-      <template v-if="event.perc === 0">PS</template>
+      <template v-if="event.perc === 0">
+        PS
+      </template>
     </template>
 
     <template #details-list>
@@ -50,7 +54,7 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
     </template>
 
     <template #team-logo>
-      <TeamLogo :name="event.team.longName" :logo="event.team.logo" :key="event.team.id" :is-home-team="isHomeTeam" />
+      <TeamLogo :key="event.team.id" :name="event.team.longName" :logo="event.team.logo" :is-home-team="isHomeTeam" />
     </template>
 
     <template #event-type-icon>

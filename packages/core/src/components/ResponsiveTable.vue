@@ -7,5 +7,7 @@ const mainClassName = useMainClass('table-responsive');
 </script>
 
 <template>
-  <div ref="el" :class="mainClassName"><slot :el="el" /></div>
+  <div ref="el" :class="mainClassName">
+    <slot :el="el" />
+  </div>
 </template>

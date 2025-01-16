@@ -1,6 +1,6 @@
-import { ref, watch, unref } from 'vue';
 import { watchOnce } from '@vueuse/core';
 import { filter, prop } from 'ramda';
+import { ref, unref, watch } from 'vue';
 
 export function useAdditionalText(rows, key, t, locale) {
   const text = ref('');
@@ -12,13 +12,14 @@ export function useAdditionalText(rows, key, t, locale) {
     const visibility = inheritedTeams.length > 0;
     isVisible.value = visibility;
 
-    if (!visibility) return (text.value = '');
+    if (!visibility)
+      return (text.value = '');
 
-    const teamObject = inheritedTeams.map((row) => ({
+    const teamObject = inheritedTeams.map(row => ({
       team: row.team.longName,
       points: Math.abs(prop(key, row)),
     }));
-    const convertedToText = teamObject.map((row) => t(`additionalText.${key}.content`, row)).join(', ');
+    const convertedToText = teamObject.map(row => t(`additionalText.${key}.content`, row)).join(', ');
     text.value = [
       t(`additionalText.${key}.prependix`),
       convertedToText,
@@ -28,7 +29,10 @@ export function useAdditionalText(rows, key, t, locale) {
 
   watchOnce(rows, createText);
 
-  watch(locale, () => createText(unref(rows)));
+  watch(
+    () => unref(locale),
+    () => createText(unref(rows)),
+  );
 
   return {
     text,

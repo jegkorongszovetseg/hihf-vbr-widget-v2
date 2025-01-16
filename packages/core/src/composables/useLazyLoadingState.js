@@ -1,5 +1,5 @@
-import { computed, ref, unref, watch } from 'vue';
 import { useTimeoutFn } from '@vueuse/core';
+import { computed, ref, unref, watch } from 'vue';
 
 export function useLazyLoadingState(task = [], options = {}) {
   const { delay = 0 } = options;
@@ -9,7 +9,7 @@ export function useLazyLoadingState(task = [], options = {}) {
   const state = computed(() => {
     const _task = unref(task);
     if (Array.isArray(_task)) {
-      return _task.map((item) => unref(item)).some(Boolean);
+      return _task.map(item => unref(item)).some(Boolean);
     }
     return _task;
   });
@@ -21,11 +21,12 @@ export function useLazyLoadingState(task = [], options = {}) {
   watch(
     state,
     (_state) => {
-      if (_state) return start();
+      if (_state)
+        return start();
       stop();
       isLoding.value = false;
     },
-    { immediate: true, deep: true }
+    { immediate: true, deep: true },
   );
 
   return isLoding;

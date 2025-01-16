@@ -1,10 +1,10 @@
 <script setup>
+import { useColumns, useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { computed } from 'vue';
-import {useI18n,  useMainClass, useColumns } from '@mjsz-vbr-elements/core/composables';
 import GameDataTable from '../common/GameDataTable.vue';
-import GamePlayerStatsProvider from '../game/components/GamePlayerStatsProvider.vue';
 import GameGolaiesStatsProvider from '../game/components/GameGoaliesStatsProvider.vue';
-import { PLAYER_STATS_COLUMNS, GOALIES_STATS_COLUMNS, convertPlayersTOI } from '../game/internal';
+import GamePlayerStatsProvider from '../game/components/GamePlayerStatsProvider.vue';
+import { convertPlayersTOI, GOALIES_STATS_COLUMNS, PLAYER_STATS_COLUMNS } from '../game/internal';
 import { transformGoalieStats } from './internal';
 
 const props = defineProps({
@@ -45,11 +45,13 @@ const awayGoalies = computed(() => transformGoalieStats(props.data?.goalies?.[pr
 </script>
 
 <template>
-  <h2 class="is-heading-2">{{ t('title.fieldPlayers') }}</h2>
+  <h2 class="is-heading-2">
+    {{ t('title.fieldPlayers') }}
+  </h2>
   <div :class="useMainClass('gamecenter-data-column')">
-    <GamePlayerStatsProvider :rows="homePlayers" #default="{ rows, sort, onSort }">
+    <GamePlayerStatsProvider v-slot="{ rows, sort, onSort }" :rows="homePlayers">
       <GameDataTable
-        :class="[useMainClass('gamecenter-timeline-data-table'), 'is-home-team']"
+        class="is-home-team" :class="[useMainClass('gamecenter-timeline-data-table')]"
         :columns="columns"
         :rows="rows"
         :title="homeTeamName"
@@ -57,9 +59,9 @@ const awayGoalies = computed(() => transformGoalieStats(props.data?.goalies?.[pr
         @sort="onSort"
       />
     </GamePlayerStatsProvider>
-    <GamePlayerStatsProvider :rows="awayPlayers" #default="{ rows, sort, onSort }">
+    <GamePlayerStatsProvider v-slot="{ rows, sort, onSort }" :rows="awayPlayers">
       <GameDataTable
-        :class="[useMainClass('gamecenter-timeline-data-table'), 'is-away-team']"
+        class="is-away-team" :class="[useMainClass('gamecenter-timeline-data-table')]"
         :columns="columns"
         :rows="rows"
         :title="awayTeamName"
@@ -69,19 +71,21 @@ const awayGoalies = computed(() => transformGoalieStats(props.data?.goalies?.[pr
     </GamePlayerStatsProvider>
   </div>
 
-  <h2 class="is-heading-2">{{ t('title.goalies') }}</h2>
+  <h2 class="is-heading-2">
+    {{ t('title.goalies') }}
+  </h2>
   <div :class="useMainClass('gamecenter-data-columns')">
-    <GameGolaiesStatsProvider :rows="homeGoalies" #default="{ rows }">
+    <GameGolaiesStatsProvider v-slot="{ rows }" :rows="homeGoalies">
       <GameDataTable
-        :class="[useMainClass('gamecenter-timeline-data-table'), 'is-home-team']"
+        class="is-home-team" :class="[useMainClass('gamecenter-timeline-data-table')]"
         :columns="goliesColumns"
         :rows="rows"
         :title="homeTeamName"
       />
     </GameGolaiesStatsProvider>
-    <GameGolaiesStatsProvider :rows="awayGoalies" #default="{ rows }">
+    <GameGolaiesStatsProvider v-slot="{ rows }" :rows="awayGoalies">
       <GameDataTable
-        :class="[useMainClass('gamecenter-timeline-data-table'), 'is-away-team']"
+        class="is-away-team" :class="[useMainClass('gamecenter-timeline-data-table')]"
         :columns="goliesColumns"
         :rows="rows"
         :title="awayTeamName"

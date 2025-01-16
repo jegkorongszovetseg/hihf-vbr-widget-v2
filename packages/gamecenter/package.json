@@ -1,26 +1,26 @@
 {
   "name": "@mjsz-vbr-elements/gamecenter",
-  "description": "Data visualization for MJSZ VBR",
+  "type": "module",
+  "version": "2.11.3",
   "private": false,
-  "version": "2.9.1",
+  "description": "Data visualization for MJSZ VBR",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
-  "type": "module",
-  "module": "./dist/index.js",
-  "files": [
-    "dist"
-  ],
   "exports": {
     ".": {
       "import": "./dist/index.js"
     }
   },
+  "module": "./dist/index.js",
+  "unpkg": "./dist/index.iife.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
-  "unpkg": "./dist/index.iife.js",
   "dependencies": {
     "@mjsz-vbr-elements/core": "workspace:^",
     "@mjsz-vbr-elements/shared": "workspace:^",
@@ -32,6 +32,6 @@
     "@vitejs/plugin-vue": "^5.2.1",
     "vite": "^6.0.7",
     "vite-plugin-banner": "^0.8.0",
-    "vite-plugin-compression": "^0.5.1"
+    "vite-plugin-compression2": "^1.3.3"
   }
 }

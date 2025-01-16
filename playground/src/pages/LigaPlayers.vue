@@ -1,14 +1,13 @@
 <script setup>
 import { store } from '../store.js';
-import { PlayersLiga } from '@mjsz-vbr-elements/liga';
-import '../../../packages/shared/dist/css/common.css';
-import '../../../packages/shared/dist/css/typography.css';
-import '../../../packages/shared/dist/css/cards.css';
-import '../../../packages/shared/dist/css/grid.css';
-import '../../../packages/shared/dist/css/forms.css';
-import '../../../packages/shared/dist/css/responsive-table.css';
-import '../../../packages/shared/dist/css/table.css';
-import '../../../packages/shared/dist/css/paginator.css';
+// import '../../../packages/shared/dist/css/common.css';
+// import '../../../packages/shared/dist/css/typography.css';
+// import '../../../packages/shared/dist/css/cards.css';
+// import '../../../packages/shared/dist/css/grid.css';
+// import '../../../packages/shared/dist/css/forms.css';
+// import '../../../packages/shared/dist/css/responsive-table.css';
+// import '../../../packages/shared/dist/css/table.css';
+// import '../../../packages/shared/dist/css/paginator.css';
 
 const playerResolver = `LigaPlayer?playerId={player.playerId}&championshipId={championshipId}`;
 const teamResolver = `LigaTeam?teamId={team.id}&championshipId={championshipId}`;
