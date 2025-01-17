@@ -1,18 +1,31 @@
 <script setup>
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
 import IconMore from '@mjsz-vbr-elements/shared/icons/IconMore';
+
+defineProps({
+  data: {
+    type: Array,
+    default: () => [],
+  },
+});
+
+const emit = defineEmits(['change']);
 </script>
 
 <template>
   <div>
     <FloatingPanel :offset="2" placement="bottom-end" theme="content">
-      <template v-slot:default="{ setRef, show, hide }">
-        <button type="button" :ref="setRef" @click.stop="show" @focus="show" @blur="hide">
+      <template #default="{ setRef, show, hide }">
+        <button :ref="setRef" type="button" @click.stop="show" @focus="show" @blur="hide">
           <IconMore style="width: 20px" />
         </button>
       </template>
-      <template v-slot:content>
-        <div>list of championships</div>
+      <template #content>
+        <ul>
+          <li v-for="item in data" :key="item.championshipId" @click="emit('change', item)">
+            {{ item.name }}
+          </li>
+        </ul>
       </template>
     </FloatingPanel>
   </div>

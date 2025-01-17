@@ -202,6 +202,43 @@ export const COLUMNS_STANDINGS_P_2 = {
   },
 };
 
+export const COLUMNS_SHORT = {
+  index: {
+    label: '#',
+    class: 'is-text-left',
+  },
+  teamLogo: {
+    label: '',
+    class: 'is-has-image',
+  },
+  teamName: {
+    label: 'table.team.short',
+    tooltip: 'table.team.tooltip',
+    class: 'is-text-left is-w-auto is-text-bold',
+  },
+  gamesPlayed: {
+    label: 'table.game.short',
+    tooltip: 'table.game.tooltip',
+  },
+  w: {
+    label: 'table.wins.short',
+    tooltip: 'table.wins.tooltip',
+  },
+  l: {
+    label: 'table.losses.short',
+    tooltip: 'table.losses.tooltip',
+  },
+  gd: {
+    label: 'table.goalDiff.short',
+    tooltip: 'table.goalDiff.tooltip',
+  },
+  points: {
+    label: 'table.points.short',
+    tooltip: 'table.points.tooltip',
+    class: 'is-text-bold',
+  },
+};
+
 export const COLUMNS_FIELD_PLAYERS = {
   index: {
     label: '#',

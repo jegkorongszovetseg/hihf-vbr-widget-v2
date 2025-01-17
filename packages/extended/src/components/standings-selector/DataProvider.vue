@@ -1,7 +1,8 @@
 <script setup>
-import { reactive } from 'vue';
-import { head } from 'ramda';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
+import { convert } from '@mjsz-vbr-elements/core/utils';
+import { head } from 'ramda';
+import { computed, reactive } from 'vue';
 
 const props = defineProps({
   apiKey: {
@@ -18,9 +19,11 @@ const props = defineProps({
 const service = reactive({
   championshipId: head(props.data).championshipId,
   phaseId: head(props.data).phaseId,
-})
+  championshipName: head(props.data).name,
+  phaseName: head(props.data).phase,
+});
 
-const { state, execute } = useServices({
+const { state: rows, execute } = useServices({
   options: {
     path: '/v2/standings',
     apiKey: props.apiKey,
@@ -32,10 +35,21 @@ const { state, execute } = useServices({
 
 execute();
 
+const convertedRows = computed(() => {
+  return convert(rows.value).addContinuousIndex().value();
+});
+
+function onChange({ championshipId, phaseId, name, phase }) {
+  service.championshipId = championshipId;
+  service.phaseId = phaseId;
+  service.championshipName = name;
+  service.phaseName = phase;
+  execute();
+}
 </script>
 
 <template>
-  <slot v-bind="{ state }" />
+  <slot v-bind="{ state: convertedRows, ...service, onChange }" />
 </template>
 
 <style lang="scss" scoped></style>
