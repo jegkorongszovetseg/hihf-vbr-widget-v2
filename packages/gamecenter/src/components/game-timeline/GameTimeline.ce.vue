@@ -1,6 +1,6 @@
 <script setup>
 import { ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
-import { useMainClass, useServices } from '@mjsz-vbr-elements/core/composables';
+import { useServices } from '@mjsz-vbr-elements/core/composables';
 import { useIntersectionObserver, useUrlSearchParams } from '@vueuse/core';
 import { isEmpty } from 'ramda';
 import { computed, ref } from 'vue';
@@ -114,7 +114,7 @@ const colors = useTeamColors(gameData);
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-timeline')" :style="colors">
+  <div class="gamecenter-timeline" :style="colors">
     <I18NProvider :locale="props.locale" :messages="messages">
       <ErrorNotice v-for="error in errors" :key="error.key" :error="error" />
 

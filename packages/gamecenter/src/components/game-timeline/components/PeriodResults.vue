@@ -1,6 +1,4 @@
 <script setup>
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
-
 defineProps({
   results: {
     type: Object,
@@ -20,7 +18,7 @@ defineProps({
 </script>
 
 <template>
-  <table :class="useMainClass('period-results')">
+  <table class="period-results">
     <tbody>
       <tr>
         <td><span class="is-home-team" /></td>

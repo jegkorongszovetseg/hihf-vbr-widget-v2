@@ -1,5 +1,4 @@
 <script setup>
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import {
   EVENT_TYPE_GOAL,
   EVENT_TYPE_GOALIE,
@@ -35,7 +34,7 @@ defineProps({
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-timeline-game-event')" :data-team="isHomeTeam ? 'home' : 'away'">
+  <div class="gamecenter-timeline-game-event" :data-team="isHomeTeam ? 'home' : 'away'">
     <div class="is-timeline" />
     <div
       class="is-details-container" :class="[

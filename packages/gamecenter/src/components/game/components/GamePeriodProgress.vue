@@ -1,5 +1,4 @@
 <script setup>
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { computed } from 'vue';
 import { usePeriodTime } from '../composables';
 
@@ -14,11 +13,9 @@ const { max, value } = usePeriodTime(computed(() => props.gameData));
 </script>
 
 <template>
-  <div :class="useMainClass('progress')">
+  <div class="progress">
     <div
-      :class="`${useMainClass('progress-bar')} ${useMainClass('progress-bar-stripped')} ${useMainClass(
-        'progress-bar-animated',
-      )}`"
+      class="progress-bar progress-bar-stripped progress-bar-animated"
       role="progressbar"
       :style="`width: ${(value / max) * 100}%`"
       :aria-valuenow="value"

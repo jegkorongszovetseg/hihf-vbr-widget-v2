@@ -1,5 +1,5 @@
 <script setup>
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { useUrlSearchParams } from '@vueuse/core';
 import { TAB_EVENTS, TAB_LINEUPS, TAB_OFFICIALS, TAB_PLAYER_STATS, TAB_TEAM_STATS } from './constants';
 
@@ -31,33 +31,33 @@ function onTabChange(value) {
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-timeline-tab-buttons')">
+  <div class="gamecenter-timeline-tab-buttons">
     <button
-      :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_EVENTS }]"
+      class="tab-button" :class="{ 'is-active': activeTab === TAB_EVENTS }"
       @click="onTabChange(TAB_EVENTS)"
     >
       {{ t('menu.events') }}
     </button>
     <button
-      :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_LINEUPS }]"
+      class="tab-button" :class="{ 'is-active': activeTab === TAB_LINEUPS }"
       @click="onTabChange(TAB_LINEUPS)"
     >
       {{ t('menu.lineups') }}
     </button>
     <button
-      :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_TEAM_STATS }]"
+      class="tab-button" :class="{ 'is-active': activeTab === TAB_TEAM_STATS }"
       @click="onTabChange(TAB_TEAM_STATS)"
     >
       {{ t('menu.teamStats') }}
     </button>
     <button
-      :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_PLAYER_STATS }]"
+      class="tab-button" :class="{ 'is-active': activeTab === TAB_PLAYER_STATS }"
       @click="onTabChange(TAB_PLAYER_STATS)"
     >
       {{ t('menu.playerStats') }}
     </button>
     <button
-      :class="[useMainClass('tab-button'), { 'is-active': activeTab === TAB_OFFICIALS }]"
+      class="tab-button" :class="{ 'is-active': activeTab === TAB_OFFICIALS }"
       @click="onTabChange(TAB_OFFICIALS)"
     >
       {{ t('menu.officials') }}

@@ -1,5 +1,5 @@
 <script setup>
-import { useColumns, useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { computed } from 'vue';
 import { convertTeamMembersToRows } from '../../utils/convert-official-persons';
 import GameDataTable from '../common/GameDataTable.vue';
@@ -31,15 +31,15 @@ const awayTeamMembers = computed(() => convertTeamMembersToRows(props.gameOffici
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-data-columns')">
+  <div class="gamecenter-data-columns">
     <GameDataTable
-      :class="useMainClass('gamecenter-data-table')"
+      class="gamecenter-data-table"
       :columns="columns"
       :rows="homeTeamMembers"
       :title="homeTeamName"
     />
     <GameDataTable
-      :class="useMainClass('gamecenter-data-table')"
+      class="gamecenter-data-table"
       :columns="columns"
       :rows="awayTeamMembers"
       :title="awayTeamName"
