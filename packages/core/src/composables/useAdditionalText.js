@@ -1,4 +1,3 @@
-import { watchOnce } from '@vueuse/core';
 import { filter, prop } from 'ramda';
 import { ref, unref, watch } from 'vue';
 
@@ -27,7 +26,7 @@ export function useAdditionalText(rows, key, t, locale) {
     ].join(' ');
   };
 
-  watchOnce(rows, createText);
+  watch(rows, createText, { immediate: true });
 
   watch(
     () => unref(locale),

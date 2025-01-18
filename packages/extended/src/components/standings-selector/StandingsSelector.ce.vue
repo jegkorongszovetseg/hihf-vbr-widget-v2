@@ -1,7 +1,8 @@
 <script setup>
 import { COLUMNS_SHORT } from '@mjsz-vbr-elements/core';
-import { ErrorNotice, ErrorProvider, I18NProvider, StatisticsTable } from '@mjsz-vbr-elements/core/components';
+import { AdditionalStandingsText, ErrorNotice, ErrorProvider, I18NProvider, StatisticsTable } from '@mjsz-vbr-elements/core/components';
 import { useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { ref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
 import ChampionshipSelector from './ChampionshipSelector.vue';
@@ -37,11 +38,20 @@ const test = [
   {
     name: 'Andersen Liga',
     phase: 'Alapszakasz',
-    championshipId: 3783,
-    phaseId: 45658,
+    championshipId: 3770,
+    phaseId: 45661,
+    isPlayoffs: false,
+  },
+  {
+    name: 'Erste Liga',
+    phase: 'Alapszakasz',
+    championshipId: 3450,
+    phaseId: 45196,
     isPlayoffs: false,
   },
 ];
+
+const tooltipContainer = ref(null);
 </script>
 
 <template>
@@ -49,7 +59,7 @@ const test = [
     <ErrorProvider v-slot="{ error, hasError }">
       <ErrorNotice v-if="hasError" :error="error" />
 
-      <DataProvider v-slot="{ state, phaseName, championshipName, onChange }" :data="test">
+      <DataProvider v-slot="{ convertedRows, isLoading, phaseName, championshipName, onChange }" :data="test">
         <div :class="useMainClass('standings-selector')">
           <dl>
             <dt>{{ championshipName }}</dt>
@@ -57,14 +67,17 @@ const test = [
             <ChampionshipSelector class="is-championship-selector" :data="test" @change="onChange" />
           </dl>
 
-          <!-- :is-loading="isLoading"
-          :hide-columns="props.hideColumns"
-          :is-team-linked="isTeamLinked"
-          :append-to="tooltipContainer" -->
-          <StatisticsTable :columns="COLUMNS_SHORT" :rows="state.rows" :external-team-resolver="() => {}" />
+          <!--
+            :is-team-linked="isTeamLinked"
+           -->
+          <StatisticsTable :is-loading="isLoading" :columns="COLUMNS_SHORT" :rows="convertedRows.rows" :append-to="tooltipContainer" :external-team-resolver="() => {}" />
+
+          <AdditionalStandingsText :rows="convertedRows.rows" additional-key="inheritedPoints" />
+          <AdditionalStandingsText :rows="convertedRows.rows" additional-key="penaltyPoints" />
 
           <!-- <pre>{{ props.data }}</pre> -->
         </div>
+        <div ref="tooltipContainer" />
       </DataProvider>
     </ErrorProvider>
   </I18NProvider>

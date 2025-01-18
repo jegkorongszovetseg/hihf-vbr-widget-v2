@@ -23,11 +23,11 @@ const service = reactive({
   phaseName: head(props.data).phase,
 });
 
-const { state: rows, execute } = useServices({
+const { state, isLoading, execute } = useServices({
   options: {
     path: '/v2/standings',
     apiKey: props.apiKey,
-    params: { championshipId: service.championshipId, phaseId: service.phaseId },
+    params: computed(() => ({ championshipId: service.championshipId, phaseId: service.phaseId })),
   },
   // transform: (res) => transformSeasons(res, state),
   // onError,
@@ -36,7 +36,7 @@ const { state: rows, execute } = useServices({
 execute();
 
 const convertedRows = computed(() => {
-  return convert(rows.value).addContinuousIndex().value();
+  return convert(state.value).addContinuousIndex().value();
 });
 
 function onChange({ championshipId, phaseId, name, phase }) {
@@ -49,7 +49,7 @@ function onChange({ championshipId, phaseId, name, phase }) {
 </script>
 
 <template>
-  <slot v-bind="{ state: convertedRows, ...service, onChange }" />
+  <slot v-bind="{ convertedRows, isLoading, ...service, onChange }" />
 </template>
 
 <style lang="scss" scoped></style>
