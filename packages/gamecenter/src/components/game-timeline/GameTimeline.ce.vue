@@ -173,16 +173,16 @@ const colors = useTeamColors(gameData);
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/progress.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/progress.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/game-center-timeline.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/game-center-timeline.scss" lang="scss"></style>

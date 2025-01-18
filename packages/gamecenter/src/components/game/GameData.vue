@@ -1,6 +1,6 @@
 <script setup>
 import { Image } from '@mjsz-vbr-elements/core/components';
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
 import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
 import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
@@ -23,7 +23,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-game-data')">
+  <div class="gamecenter-game-data">
     <div class="is-title-container">
       <div v-once class="is-title">
         {{ gameData.championshipName }} - {{ gameData.divisionName }} - {{ gameData.gameName }} /
