@@ -1,6 +1,5 @@
 <script setup>
 import { ErrorNotice, ErrorProvider, I18NProvider } from '@mjsz-vbr-elements/core/components';
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
 import DataProvider from './DataProvider.vue';
@@ -73,7 +72,7 @@ const messages = { en, hu };
             <section class="is-mb-5">
               <label for="sections">{{ t('selection.sections') }}:</label>
 
-              <div id="sections" :class="[useMainClass('toggle-group')]">
+              <div id="sections" class="toggle-group">
                 <template v-for="section in sections" :key="section.sectionId">
                   <button
                     :class="{ 'is-active': section.sectionId === sectionId }"

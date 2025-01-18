@@ -1,6 +1,6 @@
 <script setup>
 import { BaseSelect } from '@mjsz-vbr-elements/core/components';
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { useVModels } from '@vueuse/core';
 
 const props = defineProps({
@@ -34,7 +34,7 @@ const { seasonId, championshipId } = useVModels(props, emit);
 
 <template>
   <div class="is-mb-5">
-    <label for="season" :class="useMainClass('label')">{{ t('selection.seasons') }}</label>
+    <label for="season" class="label">{{ t('selection.seasons') }}</label>
     <BaseSelect id="season" v-model="seasonId">
       <option v-for="season in seasonsList" :key="season.id" :value="season.id">
         {{ season.seasonName }}
@@ -42,7 +42,7 @@ const { seasonId, championshipId } = useVModels(props, emit);
     </BaseSelect>
   </div>
   <div>
-    <label for="season" :class="useMainClass('label')">{{ t('selection.championships') }}</label>
+    <label for="season" class="label">{{ t('selection.championships') }}</label>
     <BaseSelect id="season" v-model="championshipId">
       <option
         v-for="championship in championshipList"

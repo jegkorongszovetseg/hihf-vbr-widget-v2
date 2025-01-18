@@ -9,7 +9,7 @@ import pkg from './package.json';
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    dedupe: ['@mjsz-vbr-elements/shared'],
+    dedupe: ['@mjsz-vbr-elements/shared/*'],
   },
   plugins: [
     vue(),

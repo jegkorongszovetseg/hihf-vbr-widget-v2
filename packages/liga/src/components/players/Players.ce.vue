@@ -6,7 +6,6 @@ import {
   Paginator,
   SeasonSelector,
 } from '@mjsz-vbr-elements/core/components';
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { externalPlayerLinkResolver, externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { ref } from 'vue';
 import en from '../../locales/en.json';
@@ -88,8 +87,8 @@ const externalTeamLink = params => externalTeamLinkResolver(props.externalTeamRe
             @on-change-season="changeSeason"
           >
             <div>
-              <label for="player" :class="useMainClass('label')">{{ t('selection.filterName') }}</label>
-              <input id="player" type="text" :class="useMainClass('base-input')" :value="query" @input="onInput">
+              <label for="player" class="label">{{ t('selection.filterName') }}</label>
+              <input id="player" type="text" class="base-input" :value="query" @input="onInput">
             </div>
           </SeasonSelector>
 
@@ -159,7 +158,7 @@ const externalTeamLink = params => externalTeamLinkResolver(props.externalTeamRe
 
 <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
+<!-- <style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style> -->
 
 <style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
 
@@ -169,6 +168,6 @@ const externalTeamLink = params => externalTeamLinkResolver(props.externalTeamRe
 
 <style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>

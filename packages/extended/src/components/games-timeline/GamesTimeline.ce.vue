@@ -4,7 +4,7 @@ import { useServices, useVisibilityChange } from '@mjsz-vbr-elements/core/compos
 import { format, getLocalTimezone, isAfter, offsetName } from '@mjsz-vbr-elements/core/utils';
 import { useIntervalFn } from '@vueuse/core';
 import { isEmpty } from 'ramda';
-import { computed, ref, triggerRef, useCssModule } from 'vue';
+import { computed, ref, triggerRef } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
 import Carousel from './Carousel.vue';
@@ -40,8 +40,6 @@ const props = defineProps({
     default: '',
   },
 });
-
-const commonClasses = useCssModule('common');
 
 const messages = { en, hu };
 const timezone = getLocalTimezone();
@@ -164,7 +162,6 @@ function onTryAgain() {
         </CarouselItem>
       </template>
     </Carousel>
-    <pre>{{ commonClasses }}</pre>
   </I18NProvider>
 </template>
 

@@ -9,7 +9,6 @@ vi.mock('@mjsz-vbr-elements/core/composables', () => {
         t: t => t,
       };
     },
-    useMainClass: t => t,
   };
 });
 

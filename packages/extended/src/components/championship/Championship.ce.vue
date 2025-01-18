@@ -8,7 +8,6 @@ import {
   // TimezoneSelector,
   StatisticsTable,
 } from '@mjsz-vbr-elements/core/components';
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import {
   externalGameLinkResolver,
   externalTeamLinkResolver,
@@ -58,8 +57,6 @@ const props = defineProps({
 const tooltipContainer = ref(null);
 const timezone = ref(getLocalTimezone());
 const currentOffsetName = computed(() => offsetName(new Date(), unref(timezone), props.locale));
-const tabButtonClasses = useMainClass('tab-button');
-const sectionSelectorMainClass = useMainClass('section-selector');
 
 const messages = { en, hu };
 
@@ -108,11 +105,11 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
         >
           <SeasonSelector :seasons="seasons" :championship-id="championshipId" @update:championship-id="changeSeason" />
 
-          <div :class="sectionSelectorMainClass">
+          <div class="section-selector">
             <button
               v-for="rawChampionships in championships"
               :key="rawChampionships.phaseId"
-              :class="[tabButtonClasses, { 'is-active': rawChampionships.sectionId === selectedChampionshipId }]"
+              class="tab-button" :class="{ 'is-active': rawChampionships.sectionId === selectedChampionshipId }"
               @click="changeChampionship(rawChampionships.sectionId)"
             >
               {{ rawChampionships.sectionName }}
@@ -129,27 +126,27 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
             @update:report="onChangeReport"
           />
 
-          <div :class="sectionSelectorMainClass">
+          <div class="section-selector">
             <button
-              :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_SCHEDULE }]"
+              class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_SCHEDULE }"
               @click="changePanel(PANEL_SCHEDULE)"
             >
               {{ t('selection.schedule') }}
             </button>
             <button
-              :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_STANDINGS }]"
+              class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_STANDINGS }"
               @click="changePanel(PANEL_STANDINGS)"
             >
               {{ t('selection.standings') }}
             </button>
             <button
-              :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_PLAYERS }]"
+              class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_PLAYERS }"
               @click="changePanel(PANEL_PLAYERS)"
             >
               {{ t('selection.playerStats') }}
             </button>
             <button
-              :class="[tabButtonClasses, { 'is-active': selectedPanel === PANEL_TEAMS }]"
+              class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_TEAMS }"
               @click="changePanel(PANEL_TEAMS)"
             >
               {{ t('selection.teamStats') }}

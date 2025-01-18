@@ -1,6 +1,6 @@
 <script setup>
 import { I18NProvider, Image, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
-import { useMainClass, useServices } from '@mjsz-vbr-elements/core/composables';
+import { useServices } from '@mjsz-vbr-elements/core/composables';
 import { externalGameLinkResolver, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
 import { computed } from 'vue';
 import en from '../../locales/en.json';
@@ -48,13 +48,13 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
 </script>
 
 <template>
-  <div :class="useMainClass('playoffs')">
+  <div class="playoffs">
     <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
       <div v-for="playoff in playoffs" :key="`${playoff.divisionStage2Name}-${playoff.divisionStageNumber}`">
         <div class="mjsz-vbr-section-title">
           {{ t(`playoffs.${playoff.divisionStage2Name}`) }}-{{ playoff.divisionStageNumber }}
         </div>
-        <div :class="useMainClass('section-details')">
+        <div class="section-details">
           <div class="is-team-name is-right">
             {{ playoff.homeTeam?.longName }}
           </div>
@@ -76,7 +76,7 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
           <div
             v-for="game in playoff.games"
             :key="game.id"
-            :class="[useMainClass('table-grid'), { 'is-optional': game.optional }]"
+            class="table-grid" :class="{ 'is-optional': game.optional }"
           >
             <div>{{ game.gameName }}</div>
             <div>{{ formatGameDate(game.gameDate) }}</div>
@@ -138,4 +138,4 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
 
 <!-- <style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style> -->
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>

@@ -1,6 +1,6 @@
 <script setup>
 import { BaseSelect } from '@mjsz-vbr-elements/core/components';
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { useVModels } from '@vueuse/core';
 
 const props = defineProps({
@@ -35,12 +35,6 @@ const emit = defineEmits(['update:phaseId', 'update:report']);
 const { t } = useI18n();
 
 const { phaseId, report } = useVModels(props, emit);
-
-const baseLabelClass = useMainClass('label');
-
-// const currentReportList = computed(() =>
-//   report.report === PANEL_PLAYERS ? PLAYERS_REPORTS_SELECT(t) : TEAMS_REPORTS_SELECT(t)
-// );
 </script>
 
 <template>
@@ -57,7 +51,7 @@ const baseLabelClass = useMainClass('label');
       </BaseSelect>
     </div>
     <div v-if="isReportsVisible">
-      <label for="report" :class="baseLabelClass">{{ t('selection.report') }}</label>
+      <label for="report" class="label">{{ t('selection.report') }}</label>
       <BaseSelect id="report" v-model="report">
         <option v-for="{ value, name } in reports" :key="value" :value="value">
           {{ name }}
