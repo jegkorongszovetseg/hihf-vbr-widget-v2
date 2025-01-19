@@ -9,8 +9,7 @@ import pkg from './package.json';
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    // dedupe: ['@mjsz-vbr-elements/shared', '@mjsz-vbr-elements/shared/css/*.scss'],
-    dedupe: ['@mjsz-vbr-elements/shared', '@mjsz-vbr-elements/shared/css/*.scss', '@mjsz-vbr-elements/shared/css/paginator.scss', '@mjsz-vbr-elements/shared/css/cards.scss'],
+    dedupe: ['@mjsz-vbr-elements/shared'],
   },
 
   plugins: [
