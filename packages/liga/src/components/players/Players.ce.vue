@@ -160,7 +160,7 @@ const externalTeamLink = params => externalTeamLinkResolver(props.externalTeamRe
 
 <style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/cards.scss?a=3" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
 
 <style src="@mjsz-vbr-elements/shared/css/paginator.scss" lang="scss"></style>
 

@@ -61,34 +61,6 @@ const currentOffsetName = computed(() => offsetName(new Date(), timezone.value, 
   </I18NProvider>
 </template>
 
-<!-- <style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/common.scss';
-</style>
-
-<style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/typography.css';
-</style>
-
-<style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/forms.css';
-</style>
-
-<style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/grid.css';
-</style>
-
-<style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/responsive-table.css';
-</style>
-
-<style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/table.css';
-</style>
-
-<style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/dropdown.css';
-</style> -->
-
 <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
 <style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
@@ -101,4 +73,4 @@ const currentOffsetName = computed(() => offsetName(new Date(), timezone.value, 
 
 <style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/dropdown.scss?a=sc" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/dropdown.scss" lang="scss"></style>

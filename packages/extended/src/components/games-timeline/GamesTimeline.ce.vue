@@ -168,11 +168,3 @@ function onTryAgain() {
 <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
 <style src="@mjsz-vbr-elements/shared/css/games-timeline.scss" lang="scss"></style>
-
-<!-- <style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/common.scss';
-</style>
-
-<style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/games-timeline.css';
-</style> -->

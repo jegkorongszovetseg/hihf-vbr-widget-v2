@@ -128,12 +128,12 @@ const externalTeamLink = teamId => externalTeamLinkResolver(props.externalTeamRe
 
 <style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/cards.scss?a=sl" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss?a=sl" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
 
 <style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss?a=sl" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss?a=sl" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>

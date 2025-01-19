@@ -116,26 +116,10 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
   </div>
 </template>
 
-<!-- <style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/common.scss';
-</style> -->
-
-<!-- <style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/playoffs.css';
-</style> -->
-
-<!-- <style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/responsive-table.css';
-</style>
-
-<style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/table.css';
-</style> -->
-
 <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
 <style src="@mjsz-vbr-elements/shared/css/playoffs.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss?a=2" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss?a=2" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>

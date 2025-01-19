@@ -137,14 +137,14 @@ const externalGameLink = params => externalGameLinkResolver(props.externalGameRe
 
 <style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/cards.scss?a=t" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
 
 <style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss?a=t" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
 
 <style src="@mjsz-vbr-elements/shared/css/teams.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss?a=t" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss?a=t" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>

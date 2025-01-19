@@ -101,18 +101,6 @@ const messages = { en, hu };
 
 <style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
 
-<!-- <style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/common.scss';
-</style>
-
-<style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/typography.css';
-</style>
-
-<style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/forms.css';
-</style> -->
-
 <style scoped>
 .main-layout {
   display: flex;
