@@ -178,18 +178,14 @@ const tooltipContainer = ref(null);
 
 <style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/forms.scss?a=p" lang="scss"></style>
 
 <style src="@mjsz-vbr-elements/shared/css/teams.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/cards.scss?a=p" lang="scss"></style>
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/paginator.scss" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/paginator.scss?a=p" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.scss?a=p" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
-
-<!-- <style lang="scss">
-@use '@mjsz-vbr-elements/shared/css/paginator.scss';
-</style> -->
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss?a=p" lang="scss"></style>

@@ -241,7 +241,7 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
 
 <style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/dropdown.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/dropdown.scss?a=ch" lang="scss"></style>
 
 <style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
 

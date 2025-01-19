@@ -51,7 +51,7 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
   <div class="playoffs">
     <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
       <div v-for="playoff in playoffs" :key="`${playoff.divisionStage2Name}-${playoff.divisionStageNumber}`">
-        <div class="mjsz-vbr-section-title">
+        <div class="section-title">
           {{ t(`playoffs.${playoff.divisionStage2Name}`) }}-{{ playoff.divisionStageNumber }}
         </div>
         <div class="section-details">
@@ -134,8 +134,8 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
 
 <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/playoffs.scss" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/playoffs.scss" lang="scss"></style>
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss?a=2" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.scss?a=2" lang="scss"></style>

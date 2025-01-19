@@ -101,4 +101,4 @@ const currentOffsetName = computed(() => offsetName(new Date(), timezone.value, 
 
 <style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/dropdown.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/dropdown.scss?a=sc" lang="scss"></style>
