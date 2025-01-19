@@ -2,7 +2,6 @@
 import IconLeft from '@mjsz-vbr-elements/shared/icons/IconLeft';
 import IconRight from '@mjsz-vbr-elements/shared/icons/IconRight';
 import { computed } from 'vue';
-import { useMainClass } from '../composables/useMainClass';
 import usePagination from '../composables/usePagination';
 
 const props = defineProps({
@@ -48,8 +47,6 @@ const props = defineProps({
 
 const emit = defineEmits(['change']);
 
-const mainClassName = useMainClass('paginator');
-
 const { page, pageCount, range, goTo, pageStep } = usePagination({
   currentPage: computed(() => props.page),
   totalItems: computed(() => props.totalItems),
@@ -60,7 +57,7 @@ const { page, pageCount, range, goTo, pageStep } = usePagination({
 </script>
 
 <template>
-  <div v-if="pageCount > 1" :class="mainClassName">
+  <div v-if="pageCount > 1" class="paginator">
     <button type="button" :disabled="page === 1" @click="pageStep(-1)">
       <slot name="prev">
         <IconLeft class="icon paginator-left" />

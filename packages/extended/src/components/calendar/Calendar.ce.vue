@@ -7,7 +7,6 @@ import {
   I18NProvider,
   LoadingIndicator,
 } from '@mjsz-vbr-elements/core/components';
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { externalGameLinkResolver, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
 import { computed, ref } from 'vue';
 import en from '../../locales/en.json';
@@ -39,8 +38,6 @@ const messages = { en, hu };
 
 const timezone = ref(getLocalTimezone());
 
-const tabButtonClasses = useMainClass('tab-button');
-
 const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? '_blank' : '_self'));
 
 const resolveExternalGameLink = game => externalGameLinkResolver(props.externalGameResolver || '/game/id/{id}', game);
@@ -69,44 +66,32 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
       >
         <div id="top" class="flex overflow-x-auto is-mb-5">
           <button
-            class="basis-[fit-content] shrink-0" :class="[
-              tabButtonClasses,
-              { 'is-active': selectedPanel === PANEL_GAMES_PLAYED },
-            ]"
+            class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_GAMES_PLAYED }"
             @click="changePanel(PANEL_GAMES_PLAYED)"
           >
             {{ t('calendar.gamesPlayed') }}
           </button>
           <button
-            class="basis-[fit-content] shrink-0" :class="[
-              tabButtonClasses,
-              { 'is-active': selectedPanel === PANEL_TODAYS_GAMES },
-            ]"
+            class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_TODAYS_GAMES }"
             @click="changePanel(PANEL_TODAYS_GAMES)"
           >
             {{ t('calendar.todaysGames') }}
           </button>
           <button
-            class="basis-[fit-content] shrink-0" :class="[
-              tabButtonClasses,
-              { 'is-active': selectedPanel === PANEL_NEXT_GAMES },
-            ]"
+            class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_NEXT_GAMES }"
             @click="changePanel(PANEL_NEXT_GAMES)"
           >
             {{ t('calendar.nextGames') }}
           </button>
           <button
-            class="basis-[fit-content] shrink-0" :class="[
-              tabButtonClasses,
-              { 'is-active': selectedPanel === PANEL_WEEK_GAMES },
-            ]"
+            class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_WEEK_GAMES }"
             @click="changePanel(PANEL_WEEK_GAMES)"
           >
             {{ t('calendar.weekGames') }}
           </button>
         </div>
 
-        <div :class="[useMainClass('toggle-group')]">
+        <div class="toggle-group">
           <button
             v-for="month in months"
             :key="month.id"
@@ -156,10 +141,10 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
   </I18NProvider>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>

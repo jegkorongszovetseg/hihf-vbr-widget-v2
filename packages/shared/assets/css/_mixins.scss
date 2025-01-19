@@ -1,4 +1,4 @@
-@define-mixin ResetTable {
+@mixin ResetTable {
   border-collapse: collapse;
   border-spacing: 0;
 
@@ -19,32 +19,32 @@
   }
 }
 
-@define-mixin mobile {
+@mixin mobile {
   @media all and (min-width: 576px) {
-    @mixin-content;
+    @content;
   }
 }
 
-@define-mixin tablet {
+@mixin tablet {
   @media all and (min-width: 768px) {
-    @mixin-content;
+    @content;
   }
 }
 
-@define-mixin desktop {
+@mixin desktop {
   @media all and (min-width: 992px) {
-    @mixin-content;
+    @content;
   }
 }
 
-@define-mixin small-desktop {
+@mixin small-desktop {
   @media all and (min-width: 1200px) {
-    @mixin-content;
+    @content;
   }
 }
 
 /* --vbr-widget-typography-font-size-50
 --vbr-widget-typography-font-lineheight-50 */
-@define-mixin calcLineHeight $variant {
-  --vbr-widget-typography-font-lineheight-$(variant): calc(var(--vbr-widget-typography-font-size-$(variant)) * 1.628);
+@mixin calcLineHeight($variant) {
+  --vbr-widget-typography-font-lineheight-#{$variant}: calc(var(--vbr-widget-typography-font-size-$(variant)) * 1.628);
 }

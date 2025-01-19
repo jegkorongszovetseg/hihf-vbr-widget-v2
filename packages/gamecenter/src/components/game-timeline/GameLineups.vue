@@ -1,6 +1,6 @@
 <script setup>
 import { Image } from '@mjsz-vbr-elements/core/components';
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { playerName } from '@mjsz-vbr-elements/core/utils';
 import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
 import { computed } from 'vue';
@@ -47,7 +47,7 @@ const awayCoaches = computed(() => pickCoaches(props.gameOfficials?.gameTeamMemb
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-timeline-lineups')">
+  <div class="gamecenter-timeline-lineups">
     <template v-for="(type, index) in teamsPlayers" :key="index">
       <h2 class="is-heading-2">
         {{ t(`rows.row-${index}`) }}
@@ -56,7 +56,7 @@ const awayCoaches = computed(() => pickCoaches(props.gameOfficials?.gameTeamMemb
         <div
           v-for="(row, key) in type"
           :key="key"
-          :class="[useMainClass('gamecenter-timeline-lineups-lines'), { 'is-away-team': key === 'away' }]"
+          class="gamecenter-timeline-lineups-lines" :class="[{ 'is-away-team': key === 'away' }]"
         >
           <ul v-for="player in row" :key="player.position" class="is-player-wrapper" :class="[`is-${player.position}`]">
             <li><Image :src="player.player.picture" /></li>
@@ -81,14 +81,14 @@ const awayCoaches = computed(() => pickCoaches(props.gameOfficials?.gameTeamMemb
       {{ t('title.coaches') }}
     </h2>
     <div class="is-container">
-      <div :class="useMainClass('gamecenter-timeline-lineups-lines-simple')">
+      <div class="gamecenter-timeline-lineups-lines-simple">
         <ul v-for="(person, key) in homeCoaches" :key="person.role" class="is-official-person-container is-home-team">
           <li><Image :src="person.picture" /></li>
           <li>{{ person.name }}</li>
           <li>{{ t(`teamMembers.${key}`) }}</li>
         </ul>
       </div>
-      <div :class="useMainClass('gamecenter-timeline-lineups-lines-simple')">
+      <div class="gamecenter-timeline-lineups-lines-simple">
         <ul v-for="(person, key) in awayCoaches" :key="person.role" class="is-official-person-container is-away-team">
           <li><Image :src="person.picture" /></li>
           <li>{{ person.name }}</li>

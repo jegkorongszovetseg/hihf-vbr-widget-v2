@@ -1,6 +1,4 @@
 <script setup>
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
-
 defineProps({
   score: {
     type: Number,
@@ -10,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <div :class="useMainClass('score-display')">
+  <div class="score-display">
     <div class="is-score">
       <transition name="is-slide-transition">
         <span :key="score">{{ score }}</span>

@@ -1,5 +1,4 @@
 <script setup>
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { computed } from 'vue';
 
 const props = defineProps({
@@ -34,7 +33,7 @@ const barWidthEnd = computed(() => ({ width: `${(props.valueEnd / props.max) * 1
 </script>
 
 <template>
-  <div :class="useMainClass('statistics-double-bar')">
+  <div class="statistics-double-bar">
     <div class="is-value is-value-start">
       <slot name="value-start">
         {{ valueStart }}

@@ -4,7 +4,6 @@ export * from './composables/useErrors';
 export * from './composables/useFetchVBRApi';
 export * from './composables/useI18n';
 export * from './composables/useLazyLoadingState';
-export * from './composables/useMainClass';
 export * from './composables/usePage';
 export * from './composables/usePagination';
 export * from './composables/useScrollToGameDate';

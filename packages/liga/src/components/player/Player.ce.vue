@@ -1,6 +1,5 @@
 <script setup>
 import { ErrorNotice, ErrorProvider, I18NProvider, Image } from '@mjsz-vbr-elements/core/components';
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { ref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
@@ -79,7 +78,7 @@ const tooltipContainer = ref(null);
           <h1 class="is-heading-1 is-uppercase">
             {{ playerData.name }}
           </h1>
-          <div :class="useMainClass('main-image-wrapper')" style="--overlay-size: 180px">
+          <div class="main-image-wrapper" style="--overlay-size: 180px">
             <div class="is-main-image">
               <Image
                 :key="playerData.player?.playerId"
@@ -104,14 +103,14 @@ const tooltipContainer = ref(null);
           <div class="is-mt-5">
             <button
               type="button"
-              :class="[useMainClass('tab-button'), { 'is-active': pane === PANE_GAMES }]"
+              class="tab-button" :class="{ 'is-active': pane === PANE_GAMES }"
               @click="onChangePane(PANE_GAMES)"
             >
               {{ t('players.games') }}
             </button>
             <button
               type="button"
-              :class="[useMainClass('tab-button'), { 'is-active': pane === PANE_SEASONS }]"
+              class="tab-button" :class="{ 'is-active': pane === PANE_SEASONS }"
               @click="onChangePane(PANE_SEASONS)"
             >
               {{ t('players.seasons') }}
@@ -141,20 +140,20 @@ const tooltipContainer = ref(null);
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/teams.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/teams.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/paginator.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/paginator.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>

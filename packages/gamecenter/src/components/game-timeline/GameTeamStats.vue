@@ -1,5 +1,5 @@
 <script setup>
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { convertSecToMin } from '@mjsz-vbr-elements/core/utils';
 import { computed } from 'vue';
 import StatisticsDoubleBar from './components/StatisticsDoubleBar.vue';
@@ -34,7 +34,7 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-timeline-team-stats')">
+  <div class="gamecenter-timeline-team-stats">
     <h1 class="is-heading-2">
       {{ t('teamsStats.sog') }}
     </h1>

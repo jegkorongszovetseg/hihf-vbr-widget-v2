@@ -1,5 +1,5 @@
 <script setup>
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import IconWarning from '@mjsz-vbr-elements/shared/icons/IconWarning';
 
 const emit = defineEmits(['tryAgain']);
@@ -12,7 +12,7 @@ function onTryAgain() {
 </script>
 
 <template>
-  <div :class="useMainClass('games-timeline-error-indicator')">
+  <div class="games-timeline-error-indicator">
     <IconWarning />
     <div>{{ t('gamesTimeline.errorText') }}</div>
     <button type="button" @click="onTryAgain">

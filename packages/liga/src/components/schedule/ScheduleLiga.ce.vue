@@ -7,7 +7,6 @@ import {
   LoadingIndicator,
   TimezoneSelector,
 } from '@mjsz-vbr-elements/core/components';
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { externalGameLinkResolver, format, getLocalTimezone, offsetName } from '@mjsz-vbr-elements/core/utils';
 import { unrefElement } from '@vueuse/core';
 import { computed, ref, unref } from 'vue';
@@ -127,18 +126,18 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
             @update:selected-team="changeTeam"
             @update:selected-team-game-type="changeTeamType"
           />
-          <div :class="useMainClass('section-selector')">
+          <div class="section-selector">
             <button
               v-for="rawSection in sections"
               :key="rawSection.id"
-              :class="[useMainClass('tab-button'), { 'is-active': rawSection.name === section }]"
+              class="tab-button" :class="{ 'is-active': rawSection.name === section }"
               @click="changeSection(rawSection.name)"
             >
               {{ rawSection.name }}
             </button>
           </div>
 
-          <div v-if="subPhases.length > 1" :class="[useMainClass('toggle-group')]">
+          <div v-if="subPhases.length > 1" class="toggle-group">
             <button :class="{ 'is-active': subPhase === '' }" @click="changeSubSection('')">
               {{ t('common.all') }}
             </button>
@@ -184,12 +183,12 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>

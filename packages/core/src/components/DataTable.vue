@@ -5,7 +5,6 @@ import IconSortDesc from '@mjsz-vbr-elements/shared/icons/IconSortDesc';
 import { computed, toRefs } from 'vue';
 import { useI18n } from '../composables/useI18n';
 import { useLazyLoadingState } from '../composables/useLazyLoadingState';
-import { useMainClass } from '../composables/useMainClass';
 import { LAZY_LOADING_STATE_DELAY, SORT_STATE_ASCEND, SORT_STATE_DESCEND, SORT_STATE_ORIGINAL } from '../constants.js';
 import FloatingPanel from './FloatingPanel.vue';
 
@@ -41,7 +40,6 @@ const { isLoading, appendTo } = toRefs(props);
 const isLazyLoadingState = useLazyLoadingState(isLoading, { delay: LAZY_LOADING_STATE_DELAY });
 
 const { t } = useI18n();
-const mainClassName = useMainClass('table');
 
 const columns = computed(() => props.columns);
 const columnCount = computed(() => Object.keys(props.columns).length);
@@ -54,7 +52,7 @@ function sortBy(column, prop) {
 </script>
 
 <template>
-  <table :class="mainClassName">
+  <table class="table">
     <thead>
       <tr>
         <template v-for="(column, prop) in columns" :key="prop">

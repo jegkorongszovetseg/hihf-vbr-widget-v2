@@ -1,5 +1,5 @@
 <script setup>
-import { useColumns, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useColumns } from '@mjsz-vbr-elements/core/composables';
 import { computed } from 'vue';
 import GameDataTable from '../common/GameDataTable.vue';
 import GamePlayerStatsProvider from './components/GamePlayerStatsProvider.vue';
@@ -37,10 +37,10 @@ const awayPlayers = computed(() => convertPlayersTOI(props.data?.[props.awayTeam
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-data-column')">
+  <div class="gamecenter-data-column">
     <GamePlayerStatsProvider v-slot="{ rows, sort, onSort }" :rows="homePlayers">
       <GameDataTable
-        :class="useMainClass('gamecenter-data-table')"
+        class="gamecenter-data-table"
         :columns="columns"
         :rows="rows"
         :title="homeTeamName"
@@ -50,7 +50,7 @@ const awayPlayers = computed(() => convertPlayersTOI(props.data?.[props.awayTeam
     </GamePlayerStatsProvider>
     <GamePlayerStatsProvider v-slot="{ rows, sort, onSort }" :rows="awayPlayers">
       <GameDataTable
-        :class="useMainClass('gamecenter-data-table')"
+        class="gamecenter-data-table"
         :columns="columns"
         :rows="rows"
         :title="awayTeamName"

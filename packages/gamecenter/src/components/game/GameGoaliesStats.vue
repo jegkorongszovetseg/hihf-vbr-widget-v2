@@ -1,5 +1,5 @@
 <script setup>
-import { useColumns, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useColumns } from '@mjsz-vbr-elements/core/composables';
 import { descend, prop, sortWith } from 'ramda';
 import { computed } from 'vue';
 import GameDataTable from '../common/GameDataTable.vue';
@@ -40,10 +40,10 @@ const awayPlayers = computed(() => transform(props.data?.[props.awayTeamId] ?? [
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-data-columns')">
+  <div class="gamecenter-data-columns">
     <GameGolaiesStatsProvider v-slot="{ rows }" :rows="homePlayers">
       <GameDataTable
-        :class="useMainClass('gamecenter-data-table')"
+        class="gamecenter-data-table"
         :columns="columns"
         :rows="rows"
         :title="homeTeamName"
@@ -51,7 +51,7 @@ const awayPlayers = computed(() => transform(props.data?.[props.awayTeamId] ?? [
     </GameGolaiesStatsProvider>
     <GameGolaiesStatsProvider v-slot="{ rows }" :rows="awayPlayers">
       <GameDataTable
-        :class="useMainClass('gamecenter-data-table')"
+        class="gamecenter-data-table"
         :columns="columns"
         :rows="rows"
         :title="awayTeamName"

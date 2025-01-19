@@ -1,6 +1,5 @@
 <script setup>
 import { ErrorNotice, ErrorProvider, I18NProvider, Image } from '@mjsz-vbr-elements/core/components';
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { externalGameLinkResolver, externalPlayerLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
@@ -72,7 +71,7 @@ const externalGameLink = params => externalGameLinkResolver(props.externalGameRe
           <h1 class="is-heading-1 is-uppercase is-mb-5">
             {{ teamInfo?.team?.longName }}
           </h1>
-          <div :class="useMainClass('main-image-wrapper')" style="--overlay-radius: 0px">
+          <div class="main-image-wrapper" style="--overlay-radius: 0px">
             <div class="is-main-image">
               <Image
                 :key="teamInfo?.team?.id"
@@ -87,25 +86,25 @@ const externalGameLink = params => externalGameLinkResolver(props.externalGameRe
 
           <div class="is-mt-5">
             <button
-              :class="[useMainClass('tab-button'), { 'is-active': page === PAGE_INFO }]"
+              class="tab-button" :class="{ 'is-active': page === PAGE_INFO }"
               @click="onChangePage(PAGE_INFO)"
             >
               {{ t('teams.tabs.teamInfo') }}
             </button>
             <button
-              :class="[useMainClass('tab-button'), { 'is-active': page === PAGE_GAMES }]"
+              class="tab-button" :class="{ 'is-active': page === PAGE_GAMES }"
               @click="onChangePage(PAGE_GAMES)"
             >
               {{ t('teams.tabs.games') }}
             </button>
             <button
-              :class="[useMainClass('tab-button'), { 'is-active': page === PAGE_PLAYER_STATS }]"
+              class="tab-button" :class="{ 'is-active': page === PAGE_PLAYER_STATS }"
               @click="onChangePage(PAGE_PLAYER_STATS)"
             >
               {{ t('teams.playerStats') }}
             </button>
             <button
-              :class="[useMainClass('tab-button'), { 'is-active': page === PAGE_ROSTER }]"
+              class="tab-button" :class="{ 'is-active': page === PAGE_ROSTER }"
               @click="onChangePage(PAGE_ROSTER)"
             >
               {{ t('teams.roster') }}
@@ -134,18 +133,18 @@ const externalGameLink = params => externalGameLinkResolver(props.externalGameRe
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/teams.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/teams.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
