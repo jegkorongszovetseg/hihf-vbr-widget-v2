@@ -43,8 +43,6 @@
   }
 }
 
-/* --vbr-widget-typography-font-size-50
---vbr-widget-typography-font-lineheight-50 */
 @mixin calcLineHeight($variant) {
-  --vbr-widget-typography-font-lineheight-#{$variant}: calc(var(--vbr-widget-typography-font-size-$(variant)) * 1.628);
+  --vbr-widget-typography-font-lineheight-#{$variant}: calc(var(--vbr-widget-typography-font-size-#{$variant}) * 1.628);
 }

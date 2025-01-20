@@ -7,6 +7,11 @@ defineProps({
     type: Array,
     default: () => [],
   },
+
+  selected: {
+    type: [String, Number],
+    default: '',
+  },
 });
 
 const emit = defineEmits(['change']);
@@ -14,15 +19,21 @@ const emit = defineEmits(['change']);
 
 <template>
   <div>
-    <FloatingPanel :offset="2" placement="bottom-end" theme="content">
+    <FloatingPanel :offset="2" placement="bottom-end" theme="content" :is-arrow-visible="false">
       <template #default="{ setRef, show, hide }">
         <button :ref="setRef" type="button" @click.stop="show" @focus="show" @blur="hide">
           <IconMore style="width: 20px" />
         </button>
       </template>
       <template #content>
-        <ul>
-          <li v-for="item in data" :key="item.championshipId" @click="emit('change', item)">
+        <ul class="is-dropdown-menu">
+          <li
+            v-for="item in data"
+            :key="item.championshipId"
+            class="is-dropdown-item"
+            :class="{ 'is-selected': selected === item.phaseId }"
+            @click="emit('change', item)"
+          >
             {{ item.name }}
           </li>
         </ul>

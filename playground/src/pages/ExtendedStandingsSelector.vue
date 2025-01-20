@@ -2,10 +2,12 @@
 import { StandingsSelector } from '@mjsz-vbr-elements/extended';
 
 import { store } from '../store.js';
-// import '../../../packages/shared/dist/css/common.css';
-// import '../../../packages/shared/dist/css/responsive-table.css';
-// import '../../../packages/shared/dist/css/table.css';
-// import '../../../packages/shared/dist/css/standings-selector.css';
+import '../../../packages/shared/assets/css/common.scss';
+import '../../../packages/shared/assets/css/responsive-table.scss';
+import '../../../packages/shared/assets/css/table.scss';
+import '../../../packages/shared/assets/css/standings-selector.scss';
+import '../../../packages/shared/assets/css/dropdown.scss';
+import '../../../packages/shared/assets/css/typography.scss';
 </script>
 
 <template>

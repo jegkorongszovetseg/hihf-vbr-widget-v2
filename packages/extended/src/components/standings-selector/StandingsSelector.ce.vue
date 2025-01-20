@@ -1,7 +1,6 @@
 <script setup>
 import { COLUMNS_SHORT } from '@mjsz-vbr-elements/core';
 import { AdditionalStandingsText, ErrorNotice, ErrorProvider, I18NProvider, StatisticsTable } from '@mjsz-vbr-elements/core/components';
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { ref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
@@ -43,7 +42,7 @@ const test = [
     isPlayoffs: false,
   },
   {
-    name: 'Erste Liga',
+    name: 'Erste Liga 2013-2014',
     phase: 'Alapszakasz',
     championshipId: 3450,
     phaseId: 45196,
@@ -59,18 +58,21 @@ const tooltipContainer = ref(null);
     <ErrorProvider v-slot="{ error, hasError }">
       <ErrorNotice v-if="hasError" :error="error" />
 
-      <DataProvider v-slot="{ convertedRows, isLoading, phaseName, championshipName, onChange }" :data="test">
-        <div :class="useMainClass('standings-selector')">
+      <DataProvider v-slot="{ convertedRows, isLoading, phaseName, championshipName, phaseId, onChange }" :data="test">
+        <div class="standings-selector">
           <dl>
             <dt>{{ championshipName }}</dt>
             <dd>{{ phaseName }}</dd>
-            <ChampionshipSelector class="is-championship-selector" :data="test" @change="onChange" />
+            <ChampionshipSelector class="is-championship-selector" :data="test" :selected="phaseId" @change="onChange" />
           </dl>
 
-          <!--
-            :is-team-linked="isTeamLinked"
-           -->
-          <StatisticsTable :is-loading="isLoading" :columns="COLUMNS_SHORT" :rows="convertedRows.rows" :append-to="tooltipContainer" :external-team-resolver="() => {}" />
+          <StatisticsTable
+            :is-loading="isLoading"
+            :columns="COLUMNS_SHORT"
+            :rows="convertedRows.rows"
+            :append-to="tooltipContainer"
+            :external-team-resolver="() => {}"
+          />
 
           <AdditionalStandingsText :rows="convertedRows.rows" additional-key="inheritedPoints" />
           <AdditionalStandingsText :rows="convertedRows.rows" additional-key="penaltyPoints" />
@@ -83,10 +85,14 @@ const tooltipContainer = ref(null);
   </I18NProvider>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/standings-selector.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/standings-selector.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
+
+<style src="@mjsz-vbr-elements/shared/css/dropdown.scss" lang="scss"></style>
+
+<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>

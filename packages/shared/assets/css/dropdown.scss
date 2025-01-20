@@ -20,10 +20,20 @@
     white-space: nowrap;
     background-color: transparent;
     border: 0;
+    cursor: pointer;
 
     &:hover {
       color: var(--vbr-widget-dropdown-item-hover-color);
       background-color: var(--vbr-widget-dropdown-item-hover-bg-color);
+    }
+
+    &.is-selected {
+      color: var(--vbr-widget-dropdown-item-selected-color);
+      background-color: var(--vbr-widget-dropdown-item-selected-hover-bg-color);
+
+      &:hover {
+        background-color: var(--vbr-widget-dropdown-item-selected-hover-bg-color);
+      }
     }
 
     svg {
