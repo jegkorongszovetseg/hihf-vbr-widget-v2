@@ -1,6 +1,6 @@
 <script setup>
 import { ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
-import { useMainClass, useServices } from '@mjsz-vbr-elements/core/composables';
+import { useServices } from '@mjsz-vbr-elements/core/composables';
 import { useUrlSearchParams } from '@vueuse/core';
 import { compose, groupBy, isEmpty, prop, propEq, reject, reverse } from 'ramda';
 import { computed } from 'vue';
@@ -92,7 +92,7 @@ handleServices({
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter')">
+  <div class="gamecenter">
     <I18NProvider :locale="props.locale" :messages="messages">
       <ErrorNotice v-for="error in errors" :key="error.key" :error="error" />
 
@@ -134,14 +134,14 @@ handleServices({
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/game-center.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/game-center.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/progress.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/progress.scss" lang="scss"></style>

@@ -1,6 +1,6 @@
 <script setup>
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import IconMore from '@mjsz-vbr-elements/shared/icons/IconMore';
 import { computed } from 'vue';
 import GameStatsContainer from './components/GameStatsContainer.vue';
@@ -49,8 +49,8 @@ const dvgPercent = computed(() => buildDvgPercent(props.gameStats?.teamPowerPlay
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-game-stats')">
-    <div :class="useMainClass('gamecenter-game-stats-container-wrapper')">
+  <div class="gamecenter-game-stats">
+    <div class="gamecenter-game-stats-container-wrapper">
       <GameStatsContainer :title="t('teamsStats.sog')" :data="sog" />
       <GameStatsContainer :title="t('teamsStats.saves')" :data="saves" />
       <GameStatsContainer :title="t('teamsStats.pim')" :data="pim" />

@@ -1,7 +1,6 @@
 <script setup>
 import { computed } from 'vue';
 import { i18n, useI18n } from '../composables/useI18n';
-import { useMainClass } from '../composables/useMainClass';
 import { AVAILABLE_TIMEZONES_BY_COUNTRY } from '../constants.js';
 import { getLocalTimezone, offsetName } from '../utils/datetime';
 
@@ -19,7 +18,6 @@ const props = defineProps({
 const emit = defineEmits(['change']);
 
 const { t } = useI18n();
-const mainClass = useMainClass('timezone-selector');
 
 const localZoneName = computed(() => offsetName(new Date(), null, props.locale));
 const localTimeZone = getLocalTimezone();
@@ -37,7 +35,7 @@ const onChangeTimezone = tz => emit('change', tz);
 </script>
 
 <template>
-  <div :class="mainClass">
+  <div class="timezone-selector">
     <i18n path="common.selectTimezone" tag="span">
       <template #timezone>
         <a href="#" @click.prevent="onChangeTimezone(localTimeZone)">{{ localZoneName }}</a>

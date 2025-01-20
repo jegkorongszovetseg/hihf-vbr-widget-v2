@@ -1,6 +1,6 @@
 <script setup>
 import { Image } from '@mjsz-vbr-elements/core/components';
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import IconBroadcast from '@mjsz-vbr-elements/shared/icons/IconBroadcast';
 import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
 import { noop } from '@vueuse/core';
@@ -30,7 +30,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <div :class="[useMainClass('card-item'), { 'is-optional': game.optional }]">
+  <div class="card-item" :class="{ 'is-optional': game.optional }">
     <div class="is-info is-text-base">
       {{ game.gameName }} - {{ game.divisionName }} - {{ game.location.locationName }}
       <template v-if="game.broadcast">

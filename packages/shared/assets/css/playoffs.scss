@@ -1,4 +1,4 @@
-@import './mixins.css';
+@use './_mixins.scss' as *;
 
 .playoffs {
   .table-grid {
@@ -97,7 +97,7 @@
     padding: 20px;
     background-color: var(--vbr-widget-primary-color-50);
 
-    @mixin mobile {
+    @include mobile {
       grid-template-columns: 1fr fit-content(100px) fit-content(100px) fit-content(100px) 1fr;
     }
 

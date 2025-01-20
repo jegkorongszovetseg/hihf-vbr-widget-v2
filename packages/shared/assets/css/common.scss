@@ -1,5 +1,5 @@
-@import './reset.css';
-@import './variables.css';
+@use './_reset.scss';
+@use './variables.scss';
 
 html,
 body {

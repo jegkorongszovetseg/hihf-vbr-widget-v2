@@ -1,5 +1,5 @@
 <script setup>
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { compose, join, map, reject } from 'ramda';
 import { computed } from 'vue';
 import GameStatsContainer from './components/GameStatsContainer.vue';
@@ -38,8 +38,8 @@ const linesmen = computed(() =>
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-game-stats')">
-    <div :class="useMainClass('gamecenter-game-stats-container-wrapper')">
+  <div class="gamecenter-game-stats">
+    <div class="gamecenter-game-stats-container-wrapper">
       <GameStatsContainer :title="t('gameStats.referees')" :data="referees" />
       <GameStatsContainer :title="t('gameStats.linesmen')" :data="linesmen" />
       <GameStatsContainer :title="t('gameStats.attendance')" :data="gameData?.attendance ?? 0" />

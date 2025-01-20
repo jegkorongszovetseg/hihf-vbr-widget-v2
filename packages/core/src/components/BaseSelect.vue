@@ -1,6 +1,5 @@
 <script setup>
 import { computed } from 'vue';
-import { useMainClass } from '../composables/useMainClass';
 
 const props = defineProps({
   modelValue: {
@@ -10,13 +9,12 @@ const props = defineProps({
 });
 
 const emits = defineEmits(['update:modelValue']);
-const baseInputClass = useMainClass('base-input');
 
 const value = computed({ get: () => props.modelValue, set: value => emits('update:modelValue', value) });
 </script>
 
 <template>
-  <select v-model="value" class="is-select" :class="[baseInputClass]">
+  <select v-model="value" class="base-input is-select">
     <slot />
   </select>
 </template>

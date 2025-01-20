@@ -1,4 +1,4 @@
-@import './mixins.css';
+@use './_mixins.scss' as *;
 
 :root,
 :host {
@@ -50,17 +50,17 @@
   --vbr-widget-typography-font-size-900: 1.75rem; /* 28px */
   --vbr-widget-typography-font-size-950: 2rem; /* 32px */
 
-  @mixin calcLineHeight 50;
-  @mixin calcLineHeight 100;
-  @mixin calcLineHeight 200;
-  @mixin calcLineHeight 300;
-  @mixin calcLineHeight 400;
-  @mixin calcLineHeight 500;
-  @mixin calcLineHeight 600;
-  @mixin calcLineHeight 700;
-  @mixin calcLineHeight 800;
-  @mixin calcLineHeight 900;
-  @mixin calcLineHeight 950;
+  @include calcLineHeight(50);
+  @include calcLineHeight(100);
+  @include calcLineHeight(200);
+  @include calcLineHeight(300);
+  @include calcLineHeight(400);
+  @include calcLineHeight(500);
+  @include calcLineHeight(600);
+  @include calcLineHeight(700);
+  @include calcLineHeight(800);
+  @include calcLineHeight(900);
+  @include calcLineHeight(950);
 
   --vbr-widget-typography-heading-weight: 500;
 

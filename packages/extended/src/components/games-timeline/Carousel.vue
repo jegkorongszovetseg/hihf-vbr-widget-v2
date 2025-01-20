@@ -1,5 +1,4 @@
 <script setup>
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { sortByDomNode } from '@mjsz-vbr-elements/core/utils';
 import IconLeft from '@mjsz-vbr-elements/shared/icons/IconLeft';
 import IconRight from '@mjsz-vbr-elements/shared/icons/IconRight';
@@ -79,7 +78,7 @@ function onScrollend() {
 </script>
 
 <template>
-  <div :class="useMainClass('games-timeline')">
+  <div class="games-timeline">
     <button type="button" :disabled="arrivedState.left" @click="prev">
       <IconLeft />
     </button>

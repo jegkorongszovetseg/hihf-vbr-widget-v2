@@ -40,6 +40,7 @@ const props = defineProps({
     default: '',
   },
 });
+
 const messages = { en, hu };
 const timezone = getLocalTimezone();
 
@@ -164,6 +165,6 @@ function onTryAgain() {
   </I18NProvider>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/games-timeline.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/games-timeline.scss" lang="scss"></style>

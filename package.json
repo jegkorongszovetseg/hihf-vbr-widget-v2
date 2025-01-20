@@ -1,7 +1,7 @@
 {
   "name": "@mjsz-vbr-elements/monorepo",
   "type": "module",
-  "version": "2.11.3",
+  "version": "2.12.0",
   "private": true,
   "packageManager": "pnpm@9.15.3",
   "description": "Data visualization for MJSZ VBR",
@@ -36,6 +36,11 @@
     "lint-staged": "^15.3.0",
     "simple-git-hooks": "^2.11.1",
     "vitest": "^2.1.8"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@vitejs/plugin-vue": "patches/@vitejs__plugin-vue.patch"
+    }
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

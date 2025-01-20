@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { useI18n, useMainClass } from '../composables';
+import { useI18n } from '../composables';
 import BaseSelect from './BaseSelect.vue';
 
 const props = defineProps({
@@ -51,7 +51,7 @@ function changeSection(id) {
 <template>
   <div class="g-row g-gap-normal is-mb-5">
     <div>
-      <label for="season" :class="useMainClass('label')">{{ t('selection.season') }}</label>
+      <label for="season" class="label">{{ t('selection.season') }}</label>
       <BaseSelect id="season" v-model="championshipId">
         <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">
           {{ season.seasonName }}
@@ -64,7 +64,7 @@ function changeSection(id) {
     <button
       v-for="section in sections"
       :key="section.phaseId"
-      :class="[useMainClass('tab-button'), { 'is-active': section.sectionId === sectionId }]"
+      class="tab-button" :class="{ 'is-active': section.sectionId === sectionId }"
       @click="changeSection(section)"
     >
       {{ section.sectionName }}

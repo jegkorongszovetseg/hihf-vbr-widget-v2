@@ -1,6 +1,6 @@
 <script setup>
 import { BaseSelect } from '@mjsz-vbr-elements/core/components';
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { computed } from 'vue';
 
 const props = defineProps({
@@ -46,7 +46,7 @@ function changeSection(id) {
 <template>
   <div class="g-row">
     <div>
-      <label for="season" :class="useMainClass('label')">{{ t('selection.season') }}</label>
+      <label for="season" class="label">{{ t('selection.season') }}</label>
       <BaseSelect id="season" v-model="championshipId">
         <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">
           {{ season.seasonName }}
@@ -58,7 +58,7 @@ function changeSection(id) {
     <button
       v-for="section in sections"
       :key="section.phaseId"
-      :class="[useMainClass('tab-button'), { 'is-active': section.sectionId === sectionId }]"
+      class="tab-button" :class="{ 'is-active': section.sectionId === sectionId }"
       @click="changeSection(section)"
     >
       {{ section.sectionName }}

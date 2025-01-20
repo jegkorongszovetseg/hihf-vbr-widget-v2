@@ -1,5 +1,4 @@
 <script setup>
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import IconRight from '@mjsz-vbr-elements/shared/icons/IconRight';
 
 const props = defineProps({
@@ -22,7 +21,7 @@ function onNavigate() {
 </script>
 
 <template>
-  <div :class="useMainClass('games-timeline-schedule-link')">
+  <div class="games-timeline-schedule-link">
     <button type="button" @click="onNavigate">
       {{ title }}<IconRight />
     </button>

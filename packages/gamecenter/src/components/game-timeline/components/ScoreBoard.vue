@@ -1,6 +1,6 @@
 <script setup>
 import { Image } from '@mjsz-vbr-elements/core/components';
-import { useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { convertPeriodName } from '../../game/internal';
 
 defineProps({
@@ -14,7 +14,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-timeline-score-board')">
+  <div class="gamecenter-timeline-score-board">
     <div class="is-team is-home-team">
       {{ gameData.homeTeam?.longName }}
     </div>

@@ -4,5 +4,5 @@
     "composite": true,
     "outDir": "./dist"
   },
-  "include": ["./src/*", "./src/components/*", "./src/composables/*", "./src/utils/*"]
+  "include": ["./src/*", "./src/components/*", "./src/composables/*", "./src/utils/*", "./src/locales/*.json"]
 }

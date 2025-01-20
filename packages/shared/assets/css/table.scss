@@ -1,7 +1,7 @@
-@import './mixins.css';
+@use './_mixins.scss' as *;
 
 .table {
-  @add-mixin ResetTable;
+  @include ResetTable;
   color: var(--vbr-widget-table-color);
   background-color: var(--vbr-widget-table-default-bg-color);
 

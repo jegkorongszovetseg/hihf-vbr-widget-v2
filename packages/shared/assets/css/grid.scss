@@ -1,4 +1,4 @@
-@import './mixins.css';
+@use './_mixins.scss' as *;
 
 .g-row {
   display: flex;
@@ -45,7 +45,7 @@
   display: grid;
   grid-template-columns: var(--columns);
 
-  @add-mixin tablet {
+  @include tablet {
     grid-template-columns: var(--columns-tablet);
   }
 }

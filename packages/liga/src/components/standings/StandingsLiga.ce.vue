@@ -6,7 +6,6 @@ import {
   ErrorProvider,
   I18NProvider,
 } from '@mjsz-vbr-elements/core/components';
-import { useMainClass } from '@mjsz-vbr-elements/core/composables';
 import { externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { ref } from 'vue';
 import en from '../../locales/en.json';
@@ -72,18 +71,18 @@ const externalTeamLink = teamId => externalTeamLinkResolver(props.externalTeamRe
           :championship-name="championshipName"
         >
           <Selector :seasons="seasons" :championship-id="championshipId" @update:championship-id="changeSeason" />
-          <div :class="useMainClass('section-selector')">
+          <div class="section-selector">
             <button
               v-for="rawSection in sections"
               :key="rawSection.phaseId"
-              :class="[useMainClass('tab-button'), { 'is-active': rawSection.phaseName === section }]"
+              class="tab-button" :class="{ 'is-active': rawSection.phaseName === section }"
               @click="changeSection(rawSection.phaseName)"
             >
               {{ rawSection.phaseName }}
             </button>
           </div>
 
-          <div v-if="isLiveStandingsActive" :class="useMainClass('toggle-group')">
+          <div v-if="isLiveStandingsActive" class="toggle-group">
             <button :class="{ 'is-active': standingsType === TOGGLE_LIVE }" @click="onChangeStandingsType(TOGGLE_LIVE)">
               {{ t('standings.live') }}
             </button>
@@ -125,16 +124,16 @@ const externalTeamLink = teamId => externalTeamLinkResolver(props.externalTeamRe
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/grid.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/forms.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/cards.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/common.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/typography.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>

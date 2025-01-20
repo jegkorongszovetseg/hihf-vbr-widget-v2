@@ -1,5 +1,5 @@
 <script setup>
-import { useColumns, useI18n, useMainClass } from '@mjsz-vbr-elements/core/composables';
+import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { computed } from 'vue';
 import { convertTeamMembersToRows } from '../../utils/convert-official-persons';
 import GameDataTable from '../common/GameDataTable.vue';
@@ -36,19 +36,19 @@ const convertedGameOfficials = computed(() => convertGameOfficials(props.gameOff
 </script>
 
 <template>
-  <div :class="useMainClass('gamecenter-timeline-game-officials')">
+  <div class="gamecenter-timeline-game-officials">
     <h2 class="is-heading-2">
       {{ t('title.teamOfficials') }}
     </h2>
     <div class="is-game-officials-container">
       <GameDataTable
-        class="is-home-team" :class="[useMainClass('gamecenter-timeline-data-table')]"
+        class="is-home-team gamecenter-timeline-data-table"
         :columns="columns"
         :rows="homeTeamMembers"
         :title="homeTeamName"
       />
       <GameDataTable
-        class="is-away-team" :class="[useMainClass('gamecenter-timeline-data-table')]"
+        class="is-away-team gamecenter-timeline-data-table"
         :columns="columns"
         :rows="awayTeamMembers"
         :title="awayTeamName"
@@ -62,7 +62,7 @@ const convertedGameOfficials = computed(() => convertGameOfficials(props.gameOff
     <div class="is-game-officials-container">
       <template v-for="(group, key) in convertedGameOfficials" :key="key">
         <GameDataTable
-          :class="useMainClass('gamecenter-timeline-data-table')"
+          class="gamecenter-timeline-data-table"
           :columns="gameOffiacialsColumns"
           :rows="group"
           :title="t(`roleType.${key}`)"
