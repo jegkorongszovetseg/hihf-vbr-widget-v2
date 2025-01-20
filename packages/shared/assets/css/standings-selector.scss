@@ -8,6 +8,7 @@
 
   dt {
     grid-area: title;
+    padding: var(--vbr-widget-standings-selector-title-padding);
     font-size: var(--vbr-widget-standings-selector-title-size);
     font-weight: var(--vbr-widget-standings-selector-title-weight);
     color: var(--vbr-widget-standings-selector-title-color);
@@ -15,10 +16,9 @@
   }
 
   dd {
-    padding-block: 0.125em;
+    padding: var(--vbr-widget-standings-selector-subtitle-padding);
     grid-area: subtitle;
     font-size: var(--vbr-widget-standings-selector-subtitle-size);
-    line-height: var(--vbr-widget-standings-selector-subtitle-lineheight);
     color: var(--vbr-widget-standings-selector-subtitle-color);
     border-top: 1px solid var(--vbr-widget-standings-selector-subtitle-border-color);
     border-bottom: 1px solid var(--vbr-widget-standings-selector-subtitle-border-color);

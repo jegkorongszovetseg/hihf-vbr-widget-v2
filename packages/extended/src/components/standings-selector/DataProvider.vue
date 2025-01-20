@@ -3,6 +3,7 @@ import { useServices } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
 import { head } from 'ramda';
 import { computed, reactive } from 'vue';
+import { transformStandings } from './internal';
 
 const props = defineProps({
   apiKey: {
@@ -29,7 +30,7 @@ const { state, isLoading, execute } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: service.championshipId, phaseId: service.phaseId })),
   },
-  // transform: (res) => transformSeasons(res, state),
+  transform: res => transformStandings(res),
   // onError,
 });
 

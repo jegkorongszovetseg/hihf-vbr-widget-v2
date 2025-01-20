@@ -220,6 +220,14 @@
       text-align: right;
     }
 
+    &.is-text-italic {
+      font-style: italic;
+    }
+
+    &.is-text-light {
+      opacity: 0.6;
+    }
+
     &.is-has-image {
       padding: 0 2px;
     }
@@ -246,14 +254,16 @@
     }
   }
 
-  tr:focus-within,
-  tr:hover {
-    color: var(--vbr-widget-table-hover-color);
-    background-color: var(--vbr-widget-table-hover-bg-color);
+  tbody {
+    tr:focus-within,
+    tr:hover {
+      color: var(--vbr-widget-table-hover-color);
+      background-color: var(--vbr-widget-table-hover-bg-color);
 
-    td.is-active {
-      color: var(--vbr-widget-table-active-hover-color);
-      background-color: var(--vbr-widget-table-active-hover-bg-color);
+      td.is-active {
+        color: var(--vbr-widget-table-active-hover-color);
+        background-color: var(--vbr-widget-table-active-hover-bg-color);
+      }
     }
   }
 }

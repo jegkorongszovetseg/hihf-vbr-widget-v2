@@ -202,10 +202,10 @@ export const COLUMNS_STANDINGS_P_2 = {
   },
 };
 
-export const COLUMNS_SHORT = {
+export const COLUMNS_STANDINGS_SHORT = {
   index: {
     label: '#',
-    class: 'is-text-left',
+    class: 'is-text-left is-text-italic is-text-light',
   },
   teamLogo: {
     label: '',
@@ -219,18 +219,22 @@ export const COLUMNS_SHORT = {
   gamesPlayed: {
     label: 'table.game.short',
     tooltip: 'table.game.tooltip',
+    class: 'is-text-light',
   },
   w: {
     label: 'table.wins.short',
     tooltip: 'table.wins.tooltip',
+    class: 'is-text-light',
   },
   l: {
     label: 'table.losses.short',
     tooltip: 'table.losses.tooltip',
+    class: 'is-text-light',
   },
   gd: {
     label: 'table.goalDiff.short',
     tooltip: 'table.goalDiff.tooltip',
+    class: 'is-text-light',
   },
   points: {
     label: 'table.points.short',

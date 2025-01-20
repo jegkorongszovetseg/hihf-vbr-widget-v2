@@ -1,5 +1,5 @@
 <script setup>
-import { COLUMNS_SHORT } from '@mjsz-vbr-elements/core';
+import { COLUMNS_STANDINGS_SHORT } from '@mjsz-vbr-elements/core';
 import { AdditionalStandingsText, ErrorNotice, ErrorProvider, I18NProvider, StatisticsTable } from '@mjsz-vbr-elements/core/components';
 import { ref } from 'vue';
 import en from '../../locales/en.json';
@@ -22,33 +22,10 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+
 });
 
 const messages = { en, hu };
-
-const test = [
-  {
-    name: 'Erste Liga',
-    phase: 'Alapszakasz',
-    championshipId: 3783,
-    phaseId: 45658,
-    isPlayoffs: false,
-  },
-  {
-    name: 'Andersen Liga',
-    phase: 'Alapszakasz',
-    championshipId: 3770,
-    phaseId: 45661,
-    isPlayoffs: false,
-  },
-  {
-    name: 'Erste Liga 2013-2014',
-    phase: 'Alapszakasz',
-    championshipId: 3450,
-    phaseId: 45196,
-    isPlayoffs: false,
-  },
-];
 
 const tooltipContainer = ref(null);
 </script>
@@ -58,17 +35,17 @@ const tooltipContainer = ref(null);
     <ErrorProvider v-slot="{ error, hasError }">
       <ErrorNotice v-if="hasError" :error="error" />
 
-      <DataProvider v-slot="{ convertedRows, isLoading, phaseName, championshipName, phaseId, onChange }" :data="test">
+      <DataProvider v-slot="{ convertedRows, isLoading, phaseName, championshipName, phaseId, onChange }" :data="data">
         <div class="standings-selector">
           <dl>
             <dt>{{ championshipName }}</dt>
             <dd>{{ phaseName }}</dd>
-            <ChampionshipSelector class="is-championship-selector" :data="test" :selected="phaseId" @change="onChange" />
+            <ChampionshipSelector class="is-championship-selector" :data="data" :selected="phaseId" :target="tooltipContainer" @change="onChange" />
           </dl>
 
           <StatisticsTable
             :is-loading="isLoading"
-            :columns="COLUMNS_SHORT"
+            :columns="COLUMNS_STANDINGS_SHORT"
             :rows="convertedRows.rows"
             :append-to="tooltipContainer"
             :external-team-resolver="() => {}"

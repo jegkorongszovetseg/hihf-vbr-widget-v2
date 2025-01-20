@@ -12,32 +12,35 @@ defineProps({
     type: [String, Number],
     default: '',
   },
+
+  target: {
+    type: Object,
+    default: () => ({}),
+  },
 });
 
 const emit = defineEmits(['change']);
 </script>
 
 <template>
-  <div>
-    <FloatingPanel :offset="2" placement="bottom-end" theme="content" :is-arrow-visible="false">
-      <template #default="{ setRef, show, hide }">
-        <button :ref="setRef" type="button" @click.stop="show" @focus="show" @blur="hide">
-          <IconMore style="width: 20px" />
-        </button>
-      </template>
-      <template #content>
-        <ul class="is-dropdown-menu">
-          <li
-            v-for="item in data"
-            :key="item.championshipId"
-            class="is-dropdown-item"
-            :class="{ 'is-selected': selected === item.phaseId }"
-            @click="emit('change', item)"
-          >
-            {{ item.name }}
-          </li>
-        </ul>
-      </template>
-    </FloatingPanel>
-  </div>
+  <FloatingPanel :offset="2" placement="bottom-end" theme="content" :append-to="target" :is-arrow-visible="false">
+    <template #default="{ setRef, show, hide }">
+      <button :ref="setRef" type="button" @click.stop="show" @focus="show" @blur="hide">
+        <IconMore style="width: 20px" />
+      </button>
+    </template>
+    <template #content>
+      <ul class="is-dropdown-menu">
+        <li
+          v-for="item in data"
+          :key="item.championshipId"
+          class="is-dropdown-item"
+          :class="{ 'is-selected': selected === item.phaseId }"
+          @click="emit('change', item)"
+        >
+          {{ item.name }}
+        </li>
+      </ul>
+    </template>
+  </FloatingPanel>
 </template>
