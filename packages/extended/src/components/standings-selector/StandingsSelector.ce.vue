@@ -1,7 +1,7 @@
 <script setup>
 import { COLUMNS_STANDINGS_SHORT } from '@mjsz-vbr-elements/core';
 import { AdditionalStandingsText, ErrorNotice, ErrorProvider, I18NProvider, StatisticsTable } from '@mjsz-vbr-elements/core/components';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
 import ChampionshipSelector from './ChampionshipSelector.vue';
@@ -19,7 +19,7 @@ const props = defineProps({
   },
 
   data: {
-    type: Array,
+    type: [Array, String],
     default: () => [],
   },
 
@@ -28,6 +28,8 @@ const props = defineProps({
 const messages = { en, hu };
 
 const tooltipContainer = ref(null);
+
+const normalizedData = computed(() => typeof props.data === 'string' ? JSON.parse(props.data) : props.data);
 </script>
 
 <template>
@@ -35,12 +37,12 @@ const tooltipContainer = ref(null);
     <ErrorProvider v-slot="{ error, hasError }">
       <ErrorNotice v-if="hasError" :error="error" />
 
-      <DataProvider v-slot="{ convertedRows, isLoading, phaseName, championshipName, phaseId, onChange }" :data="data">
+      <DataProvider v-slot="{ convertedRows, isLoading, phaseName, championshipName, phaseId, onChange }" :data="normalizedData">
         <div class="standings-selector">
           <dl>
             <dt>{{ t('selection.standings') }}</dt>
             <dd>{{ championshipName }} - {{ phaseName }}</dd>
-            <ChampionshipSelector class="is-championship-selector" :data="data" :selected="phaseId" :target="tooltipContainer" @change="onChange" />
+            <ChampionshipSelector class="is-championship-selector" :data="normalizedData" :selected="phaseId" :target="tooltipContainer" @change="onChange" />
           </dl>
 
           <StatisticsTable

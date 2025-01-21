@@ -9,35 +9,36 @@ import { store } from '../store.js';
 // import '../../../packages/shared/assets/css/dropdown.scss';
 // import '../../../packages/shared/assets/css/typography.scss';
 
-const data = [
-  {
-    name: 'Erste Liga',
-    phase: 'Alapszakasz',
-    championshipId: 3783,
-    phaseId: 45658,
-    isPlayoffs: false,
-  },
-  {
-    name: 'Andersen Liga',
-    phase: 'Alapszakasz',
-    championshipId: 3770,
-    phaseId: 45661,
-    isPlayoffs: false,
-  },
-  {
-    name: 'Erste Liga 2013-2014',
-    phase: 'Alapszakasz',
-    championshipId: 3450,
-    phaseId: 45196,
-    isPlayoffs: false,
-  },
-];
+// const data = [
+//   {
+//     name: 'Erste Liga',
+//     phase: 'Alapszakasz',
+//     championshipId: 3783,
+//     phaseId: 45658,
+//     isPlayoffs: false,
+//   },
+//   {
+//     name: 'Andersen Liga',
+//     phase: 'Alapszakasz',
+//     championshipId: 3770,
+//     phaseId: 45661,
+//     isPlayoffs: false,
+//   },
+//   {
+//     name: 'Erste Liga 2013-2014',
+//     phase: 'Alapszakasz',
+//     championshipId: 3450,
+//     phaseId: 45196,
+//     isPlayoffs: false,
+//   },
+// ];
+const data2 = '[{"name":"Erste Liga","phase":"Alapszakasz","championshipId":3783,"phaseId":45658,"isPlayoffs":false},{"name":"Andersen Liga","phase":"Alapszakasz","championshipId":3770,"phaseId":45661,"isPlayoffs":false},{"name":"Erste Liga 2013-2014","phase":"Alapszakasz","championshipId":3450,"phaseId":45196,"isPlayoffs":false}]';
 </script>
 
 <template>
   <div style="width: 50%; margin: 0 auto">
     <!-- <StandingsSelector :locale="store.locale" :data="data" /> -->
-    <mjsz-vbr-standings-selector :locale="store.locale" :data="data" />
+    <mjsz-vbr-standings-selector :locale="store.locale" :data="data2" />
   </div>
 </template>
 

@@ -2,6 +2,10 @@
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
 import IconMore from '@mjsz-vbr-elements/shared/icons/IconMore';
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 defineProps({
   data: {
     type: Array,
