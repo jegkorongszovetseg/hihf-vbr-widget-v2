@@ -47,7 +47,7 @@ mjsz-vbr-standings-selector {
   --vbr-widget-standings-selector-title-color: var(--vbr-widget-primary-color-900);
   --vbr-widget-standings-selector-title-weight: 700;
   --vbr-widget-standings-selector-title-transform: uppercase;
-  --vbr-widget-standings-selector-subtitle-size: 15px;
+  --vbr-widget-standings-selector-subtitle-size: 16px;
 
   --vbr-widget-table-default-bg-color: transparent;
   --vbr-widget-table-header-bg-color: linear-gradient(
