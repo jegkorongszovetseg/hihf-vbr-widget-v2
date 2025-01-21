@@ -1,0 +1,30 @@
+.standings-selector {
+  dl {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 'title selector' 'subtitle subtitle';
+    align-items: center;
+  }
+
+  dt {
+    grid-area: title;
+    padding: var(--vbr-widget-standings-selector-title-padding);
+    font-size: var(--vbr-widget-standings-selector-title-size);
+    font-weight: var(--vbr-widget-standings-selector-title-weight);
+    color: var(--vbr-widget-standings-selector-title-color);
+    text-transform: var(--vbr-widget-standings-selector-title-transform);
+  }
+
+  dd {
+    padding: var(--vbr-widget-standings-selector-subtitle-padding);
+    grid-area: subtitle;
+    font-size: var(--vbr-widget-standings-selector-subtitle-size);
+    color: var(--vbr-widget-standings-selector-subtitle-color);
+    border-top: 1px solid var(--vbr-widget-standings-selector-subtitle-border-color);
+    border-bottom: 1px solid var(--vbr-widget-standings-selector-subtitle-border-color);
+  }
+
+  .is-championship-selector {
+    grid-area: selector;
+  }
+}

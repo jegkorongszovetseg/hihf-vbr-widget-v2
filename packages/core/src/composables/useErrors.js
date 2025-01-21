@@ -56,7 +56,7 @@ export function useError() {
 function useErrorProviderContext() {
   const api = inject(ErrorProviderContext, null);
   if (api === null) {
-    throw new Error('Privider is missing a parent component.');
+    throw new Error('Provider is missing a parent component.');
   }
   return api;
 }

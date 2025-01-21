@@ -34,6 +34,11 @@ const props = defineProps({
     type: Number,
     default: 2,
   },
+
+  isArrowVisible: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const open = ref(false);
@@ -97,6 +102,7 @@ onClickOutside(floating, (event) => {
           {{ content }}
         </slot>
         <div
+          v-if="isArrowVisible"
           ref="arrowRef"
           class="is-arrow"
           :style="{

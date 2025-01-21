@@ -90,7 +90,7 @@
   --vbr-widget-table-active-hover-bg-color: var(--vbr-widget-secondary-color-400);
   --vbr-widget-table-portrait-border-color: var(--vbr-widget-primary-color-100);
   --vbr-widget-table-portrait-bg-color: var(--vbr-widget-primary-color-50);
-  --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-600);
+  --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-400);
   --vbr-widget-table-cell-dark-color: var(--vbr-widget-primary-color-900);
   --vbr-widget-table-stripped-bg-color: #f8f9fa;
   --vbr-widget-table-label-color: var(--vbr-widget-primary-color-500);
@@ -119,6 +119,8 @@
   --vbr-widget-dropdown-item-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-dropdown-item-hover-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-dropdown-item-hover-bg-color: var(--vbr-widget-primary-color-50);
+  --vbr-widget-dropdown-item-selected-color: var(--vbr-widget-secondary-color-700);
+  --vbr-widget-dropdown-item-selected-hover-bg-color: var(--vbr-widget-secondary-color-100);
 
   --vbr-widget-error-notice-bg-color: var(--vbr-widget-danger-color-50);
   --vbr-widget-error-notice-border-color: var(--vbr-widget-danger-color-100);
@@ -247,4 +249,14 @@
   --vbr-widget-games-timeline-arrow-border-color: var(--vbr-widget-primary-color-100);
   --vbr-widget-games-timeline-external-link-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-games-timeline-external-link-size: var(--vbr-widget-typography-font-size-200);
+
+  --vbr-widget-standings-selector-title-size: var(--vbr-widget-typography-font-size-700);
+  --vbr-widget-standings-selector-title-color: var(--vbr-widget-primary-color-900);
+  --vbr-widget-standings-selector-title-weight: 700;
+  --vbr-widget-standings-selector-title-transform: uppercase;
+  --vbr-widget-standings-selector-title-padding: 0 0.625em 0.5625em;
+  --vbr-widget-standings-selector-subtitle-size: var(--vbr-widget-typography-font-size-500);
+  --vbr-widget-standings-selector-subtitle-padding: 0.25em 0.625em;
+  --vbr-widget-standings-selector-subtitle-color: var(--vbr-widget-primary-color-500);
+  --vbr-widget-standings-selector-subtitle-border-color: var(--vbr-widget-primary-color-200);
 }
