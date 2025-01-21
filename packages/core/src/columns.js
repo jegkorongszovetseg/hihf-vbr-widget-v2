@@ -4,7 +4,7 @@ export const COLUMNS_SCHEDULE = {
   gameName: {
     label: 'table.gameName.short',
     tooltip: 'table.gameName.tooltip',
-    class: 'is-text-left',
+    class: 'is-text-left is-text-light',
   },
   gameDateDate: {
     label: 'table.gameDate.short',
