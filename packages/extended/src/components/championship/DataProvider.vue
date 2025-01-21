@@ -20,7 +20,7 @@ import {
   teamName,
 } from '@mjsz-vbr-elements/core/utils';
 import { noop, useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
-import { head } from 'ramda';
+import { head, prop, sortBy } from 'ramda';
 import { computed, reactive, toRef, unref } from 'vue';
 import { transformSeasons } from '../internal';
 import {
@@ -61,6 +61,11 @@ const props = defineProps({
 
   timezone: {
     type: String,
+    default: '',
+  },
+
+  initialPhaseId: {
+    type: [Number, String],
     default: '',
   },
 });
@@ -111,7 +116,7 @@ const { isLoading: sectionLoading, execute: fetchSection } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId })),
   },
-  transform: res => transformSections(res, state),
+  transform: res => transformSections(res, state, props.initialPhaseId),
   onError,
 });
 
@@ -140,7 +145,7 @@ const currentReportList = computed(() =>
 
 const phases = computed(() => {
   const championship = state.championships.find(item => item.sectionId === state.selectedChampionshipId);
-  return convertPhaseName(championship?.phases ?? []);
+  return convertPhaseName(sortBy(prop('phaseId'))(championship?.phases ?? []));
 });
 
 const currentLimit = computed(() => (state.selectedPanel === PANEL_SCHEDULE ? 0 : props.limit));
