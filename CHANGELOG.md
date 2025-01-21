@@ -1,3 +1,8 @@
+## [2.13.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.13.0...v2.13.1) (2025-01-21)
+
+### Bug Fixes
+
+* **extended/StandingsSelector:** Data prop már stringet is elfogad ([dcfc42c](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/dcfc42c683622a5f3569b2db503aa67d460cb76d))
 ## [2.13.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.12.0...v2.13.0) (2025-01-21)
 ## [2.12.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.11.3...v2.12.0) (2025-01-19)
 ## [2.11.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.11.2...v2.11.3) (2025-01-15)
