@@ -53,8 +53,6 @@ const tooltipContainer = ref(null);
 
           <AdditionalStandingsText :rows="convertedRows.rows" additional-key="inheritedPoints" />
           <AdditionalStandingsText :rows="convertedRows.rows" additional-key="penaltyPoints" />
-
-          <!-- <pre>{{ props.data }}</pre> -->
         </div>
         <div ref="tooltipContainer" />
       </DataProvider>

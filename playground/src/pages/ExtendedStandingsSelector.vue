@@ -50,8 +50,15 @@ mjsz-vbr-standings-selector {
   --vbr-widget-standings-selector-subtitle-size: 15px;
 
   --vbr-widget-table-default-bg-color: transparent;
-  --vbr-widget-table-header-bg-color: transparent;
+  --vbr-widget-table-header-bg-color: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 98%,
+    rgba(0, 0, 0, 0.2) 98%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
   --vbr-widget-table-header-font-size: 11px;
   --vbr-widget-table-header-hover-bg-color: transparent;
+  --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-300);
 }
 </style>
