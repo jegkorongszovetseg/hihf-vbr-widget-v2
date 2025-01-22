@@ -6,6 +6,7 @@ import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
 import ChampionshipSelector from './ChampionshipSelector.vue';
 import DataProvider from './DataProvider.vue';
+import PlayoffsList from './PlayoffsList.vue';
 
 const props = defineProps({
   locale: {
@@ -37,15 +38,18 @@ const normalizedData = computed(() => typeof props.data === 'string' ? JSON.pars
     <ErrorProvider v-slot="{ error, hasError }">
       <ErrorNotice v-if="hasError" :error="error" />
 
-      <DataProvider v-slot="{ convertedRows, isLoading, phaseName, championshipName, phaseId, onChange }" :data="normalizedData">
+      <DataProvider v-slot="{ convertedRows, isLoading, phaseName, championshipName, phaseId, isPlayoffs, onChange }" :data="normalizedData">
         <div class="standings-selector">
           <dl class="standings-selector-title">
             <dt>{{ championshipName }}</dt>
             <dd>&nbsp;-&nbsp;{{ phaseName }}</dd>
-            <ChampionshipSelector :data="normalizedData" :selected="phaseId" :target="tooltipContainer" @change="onChange" />
+            <ChampionshipSelector v-if="normalizedData.length > 1" :data="normalizedData" :selected="phaseId" :target="tooltipContainer" @change="onChange" />
           </dl>
 
+          <PlayoffsList v-if="isPlayoffs" :playoffs="convertedRows.rows" :is-loading="isLoading" />
+
           <StatisticsTable
+            v-else
             :is-loading="isLoading"
             :columns="COLUMNS_STANDINGS_SHORT"
             :rows="convertedRows.rows"
@@ -73,3 +77,5 @@ const normalizedData = computed(() => typeof props.data === 'string' ? JSON.pars
 <style src="@mjsz-vbr-elements/shared/css/dropdown.scss" lang="scss"></style>
 
 <style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
+
+<style src="@mjsz-vbr-elements/shared/css/playoffs.scss" lang="scss"></style>

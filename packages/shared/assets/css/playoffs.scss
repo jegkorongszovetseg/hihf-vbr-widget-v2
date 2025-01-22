@@ -139,3 +139,62 @@
     }
   }
 }
+
+.playoffs-minimal {
+  --logo-size: 30px;
+
+  display: grid;
+  gap: 8px;
+
+  .is-phase {
+    .is-title {
+      font-size: var(--vbr-widget-typography-font-size-400);
+      color: var(--vbr-widget-primary-color-500);
+      font-weight: 700;
+      background: var(--vbr-widget-primary-color-50);
+      text-align: center;
+      padding-block: 4px;
+    }
+
+    ul {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) var(--logo-size) auto var(--logo-size) minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+    }
+
+    li {
+      padding-block: 8px;
+
+      &:first-of-type {
+        text-align: end;
+      }
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+    }
+
+    .is-team {
+      font-weight: 700;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      .is-team-name-short {
+        display: none;
+      }
+
+      @container table-wrapper (max-width: 360px) {
+        .is-team-name-long {
+          display: none;
+        }
+        .is-team-name-short {
+          display: block;
+        }
+      }
+    }
+  }
+}
