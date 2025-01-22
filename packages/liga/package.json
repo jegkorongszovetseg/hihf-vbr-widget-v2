@@ -22,14 +22,14 @@
   "dependencies": {
     "@mjsz-vbr-elements/core": "workspace:^",
     "@mjsz-vbr-elements/shared": "workspace:^",
-    "@vueuse/core": "^12.4.0",
+    "@vueuse/core": "^12.5.0",
     "ramda": "^0.30.1",
     "vue": "^3.5.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
     "sass-embedded": "^1.83.4",
-    "vite": "^6.0.7",
+    "vite": "^6.0.11",
     "vite-plugin-banner": "^0.8.0",
     "vite-plugin-compression2": "^1.3.3"
   }
