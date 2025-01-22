@@ -3,7 +3,7 @@
   "type": "module",
   "version": "2.14.0",
   "private": true,
-  "packageManager": "pnpm@9.15.3",
+  "packageManager": "pnpm@9.15.4",
   "description": "Data visualization for MJSZ VBR",
   "workspaces": [
     "packages/*",
@@ -26,16 +26,16 @@
     "publish:release": "pnpm run build && pnpm -r publish --access public"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.14.0",
+    "@antfu/eslint-config": "^3.16.0",
     "@vue/test-utils": "^2.4.6",
-    "bumpp": "^9.10.0",
+    "bumpp": "^9.10.2",
     "conventional-changelog-cli": "^5.0.0",
     "eslint": "^9.18.0",
     "eslint-plugin-format": "^1.0.1",
-    "happy-dom": "^16.5.3",
-    "lint-staged": "^15.3.0",
+    "happy-dom": "^16.7.2",
+    "lint-staged": "^15.4.1",
     "simple-git-hooks": "^2.11.1",
-    "vitest": "^2.1.8"
+    "vitest": "^3.0.3"
   },
   "pnpm": {
     "patchedDependencies": {
