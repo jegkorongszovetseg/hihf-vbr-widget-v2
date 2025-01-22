@@ -236,7 +236,7 @@
   }
 
   tr:nth-child(even) {
-    background-color: var(--vbr-widget-table-stripped-bg-color);
+    background: var(--vbr-widget-table-stripped-bg-color);
 
     td.is-active {
       background-color: var(--vbr-widget-table-active-even-bg-color);

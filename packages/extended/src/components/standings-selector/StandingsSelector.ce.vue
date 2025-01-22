@@ -33,16 +33,16 @@ const normalizedData = computed(() => typeof props.data === 'string' ? JSON.pars
 </script>
 
 <template>
-  <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
+  <I18NProvider :locale="props.locale" :messages="messages">
     <ErrorProvider v-slot="{ error, hasError }">
       <ErrorNotice v-if="hasError" :error="error" />
 
       <DataProvider v-slot="{ convertedRows, isLoading, phaseName, championshipName, phaseId, onChange }" :data="normalizedData">
         <div class="standings-selector">
-          <dl>
-            <dt>{{ t('selection.standings') }}</dt>
-            <dd>{{ championshipName }} - {{ phaseName }}</dd>
-            <ChampionshipSelector class="is-championship-selector" :data="normalizedData" :selected="phaseId" :target="tooltipContainer" @change="onChange" />
+          <dl class="standings-selector-title">
+            <dt>{{ championshipName }}</dt>
+            <dd>&nbsp;-&nbsp;{{ phaseName }}</dd>
+            <ChampionshipSelector :data="normalizedData" :selected="phaseId" :target="tooltipContainer" @change="onChange" />
           </dl>
 
           <StatisticsTable

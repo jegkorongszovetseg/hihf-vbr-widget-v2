@@ -1,6 +1,6 @@
 <script setup>
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
-import IconMore from '@mjsz-vbr-elements/shared/icons/IconMore';
+import IconMenu from '@mjsz-vbr-elements/shared/icons/IconMenu';
 
 defineOptions({
   inheritAttrs: false,
@@ -30,7 +30,7 @@ const emit = defineEmits(['change']);
   <FloatingPanel :offset="2" placement="bottom-end" theme="content" :append-to="target" :is-arrow-visible="false">
     <template #default="{ setRef, show, hide }">
       <button :ref="setRef" type="button" @click.stop="show" @focus="show" @blur="hide">
-        <IconMore style="width: 20px" />
+        <IconMenu style="display: block; height: 20px;" />
       </button>
     </template>
     <template #content>
