@@ -1,3 +1,8 @@
+## [2.14.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.13.1...v2.14.0) (2025-01-22)
+
+### Bug Fixes
+
+* **gamecenter/GameTimeline:** Kapus csere ikon javítás és ArrowUp ikon csere ([a6472aa](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/a6472aa18e68163816b644163f35c9fc773eec38))
 ## [2.13.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.13.0...v2.13.1) (2025-01-21)
 
 ### Bug Fixes
