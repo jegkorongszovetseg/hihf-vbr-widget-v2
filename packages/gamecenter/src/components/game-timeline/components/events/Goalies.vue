@@ -2,6 +2,7 @@
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import IconArrowDown from '@mjsz-vbr-elements/shared/icons/IconArrowDown';
 import IconArrowUp from '@mjsz-vbr-elements/shared/icons/IconArrowUp';
+import IconChange from '@mjsz-vbr-elements/shared/icons/IconChange';
 import GameEventLayout from '../GameEventLayout.vue';
 import TeamLogo from './TeamLogo.vue';
 
@@ -39,9 +40,9 @@ const { t } = useI18n();
     </template>
 
     <template #event-type-icon>
-      <IconArrowUp v-if="event.gkDirection === 'CSERE'" width="24" height="24" class="is-goalie-in-icon" />
+      <IconChange v-if="event.gkDirection === 'CSERE'" width="24" height="24" class="is-goalie-in-icon" />
       <IconArrowUp v-if="event.gkDirection === 'BE'" width="24" height="24" class="is-goalie-in-icon" />
-      <IconArrowDown v-else width="24" height="24" class="is-goalie-out-icon" />
+      <IconArrowDown v-if="event.gkDirection === 'KI'" width="24" height="24" class="is-goalie-out-icon" />
     </template>
   </GameEventLayout>
 </template>
