@@ -17,10 +17,13 @@ export const PANEL_STANDINGS = 'standings';
 export const PANEL_PLAYERS = 'players';
 export const PANEL_TEAMS = 'teams';
 
-export function transformSections(sections, state) {
+export function transformSections(sections, state, initialPhaseId = null) {
   state.championships = sortBy(prop('sectionId'))(sections);
   state.selectedChampionshipId = state.championships?.[0]?.sectionId;
-  state.phaseId = sections?.[0]?.phases[0]?.phaseId;
+  const phases = sortBy(prop('phaseId'))(sections?.[0]?.phases ?? []);
+  const index = phases.findIndex(item => item.phaseId === Number(initialPhaseId));
+
+  state.phaseId = index > -1 ? Number(initialPhaseId) : phases[0]?.phaseId;
 }
 
 export const ALL_REPORTS_MAP = new Map()

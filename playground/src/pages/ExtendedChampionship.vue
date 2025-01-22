@@ -1,20 +1,21 @@
 <script setup>
-// DEV:
+// import { Championship } from '@mjsz-vbr-elements/extended';
 import { store } from '../store.js';
-// import '../../../packages/shared/dist/css/common.css';
-// import '../../../packages/shared/dist/css/responsive-table.css';
-// import '../../../packages/shared/dist/css/table.css';
-// import '../../../packages/shared/dist/css/grid.css';
-// import '../../../packages/shared/dist/css/typography.css';
-// import '../../../packages/shared/dist/css/cards.css';
-// import '../../../packages/shared/dist/css/forms.css';
-// import '../../../packages/shared/dist/css/dropdown.css';
-// import '../../../packages/shared/dist/css/paginator.css';
+// DEV:
+import '../../../packages/shared/assets/css/common.scss';
+import '../../../packages/shared/assets/css/responsive-table.scss';
+import '../../../packages/shared/assets/css/table.scss';
+import '../../../packages/shared/assets/css/grid.scss';
+import '../../../packages/shared/assets/css/typography.scss';
+import '../../../packages/shared/assets/css/cards.scss';
+import '../../../packages/shared/assets/css/forms.scss';
+import '../../../packages/shared/assets/css/dropdown.scss';
+import '../../../packages/shared/assets/css/paginator.scss';
 </script>
 
 <template>
   <div class="p-5">
-    <!-- <Championship :locale="store.locale" championship-name="U-14 Bajnokság" /> -->
-    <mjsz-vbr-championship :locale="store.locale" championship-name="Szupermini Bajnokság" />
+    <!-- <Championship :locale="store.locale" championship-name="Magyar Kupa" initial-phase-id="45856" /> -->
+    <mjsz-vbr-championship :locale="store.locale" championship-name="Magyar Kupa" :initial-phase-id="45856" />
   </div>
 </template>

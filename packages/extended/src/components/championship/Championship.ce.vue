@@ -52,6 +52,11 @@ const props = defineProps({
     type: Number,
     default: 20,
   },
+
+  initialPhaseId: {
+    type: [Number, String],
+    default: '',
+  },
 });
 
 const tooltipContainer = ref(null);
@@ -102,6 +107,7 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
           :timezone="timezone"
           :championship-name="championshipName"
           :limit="limit"
+          :initial-phase-id="initialPhaseId"
         >
           <SeasonSelector :seasons="seasons" :championship-id="championshipId" @update:championship-id="changeSeason" />
 
