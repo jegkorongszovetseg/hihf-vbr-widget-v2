@@ -2,7 +2,11 @@
   "errors": {
     "undefined-column": "A(z) {column} oszlop nem létezik!",
     "invalid-season-name": "Érvénytelen szezon név",
-    "api-key-not-found": "API Kulcs nem megfelelő"
+    "api-key-not-found": "API Kulcs nem megfelelő",
+    "gameData": "Game Data: {0}",
+    "gameStats": "Game Stats: {0}",
+    "gameEvents": "Game Events: {0}",
+    "gameOfficials": "Game Officials: {0}"
   },
   "common": {
     "loading": "Töltődés...",
