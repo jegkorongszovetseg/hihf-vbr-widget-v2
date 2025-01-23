@@ -255,4 +255,11 @@
   --vbr-widget-standings-selector-title-transform: none;
   --vbr-widget-standings-selector-title-padding: 0 0.625em 0.5625em;
   --vbr-widget-standings-selector-title-bg-color: transparent;
+
+  --vbr-widget-standings-selector-section-title-bg: var(--vbr-widget-primary-color-50);
+  --vbr-widget-standings-selector-section-title-size: var(--vbr-widget-typography-font-size-400);
+  --vbr-widget-standings-selector-section-title-color: var(--vbr-widget-primary-color-700);
+  --vbr-widget-standings-selector-section-title-padding: 0.25em 0;
+  --vbr-widget-standings-selector-section-logo-size: 30px;
+  --vbr-widget-standings-selector-section-team-color: var(--vbr-widget-primary-color-900);
 }

@@ -14,8 +14,8 @@ const data = [
   {
     name: 'Erste Liga 2013-2014',
     phase: 'Rájátszás',
+    path: '/',
     championshipId: 3450,
-    phaseId: 45196,
     isPlayoffs: true,
   },
   {
@@ -23,14 +23,12 @@ const data = [
     phase: 'Alapszakasz',
     championshipId: 3783,
     phaseId: 45658,
-    isPlayoffs: false,
   },
   {
     name: 'Andersen Liga',
     phase: 'Alapszakasz',
     championshipId: 3770,
     phaseId: 45661,
-    isPlayoffs: false,
   },
 
 ];
@@ -68,5 +66,15 @@ mjsz-vbr-standings-selector {
   --vbr-widget-table-header-hover-bg-color: transparent;
   --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-300);
   --vbr-widget-table-stripped-bg-color: transparent;
+
+  /* --vbr-widget-standings-selector-section-title-bg: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.2) 4%,
+    rgba(255, 255, 255, 0) 4%,
+    rgba(255, 255, 255, 0) 96%,
+    rgba(0, 0, 0, 0.2) 96%,
+    rgba(0, 0, 0, 0.2) 100%
+  ); */
 }
 </style>

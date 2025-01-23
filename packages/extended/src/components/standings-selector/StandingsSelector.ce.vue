@@ -1,6 +1,7 @@
 <script setup>
 import { COLUMNS_STANDINGS_SHORT } from '@mjsz-vbr-elements/core';
 import { AdditionalStandingsText, ErrorNotice, ErrorProvider, I18NProvider, StatisticsTable } from '@mjsz-vbr-elements/core/components';
+import IconRight from '@mjsz-vbr-elements/shared/icons/IconRight';
 import { computed, ref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
@@ -36,15 +37,14 @@ const normalizedData = computed(() => typeof props.data === 'string' ? JSON.pars
 <template>
   <I18NProvider :locale="props.locale" :messages="messages">
     <ErrorProvider v-slot="{ error, hasError }">
-      <ErrorNotice v-if="hasError" :error="error" />
-
-      <DataProvider v-slot="{ convertedRows, isLoading, phaseName, championshipName, phaseId, isPlayoffs, onChange }" :data="normalizedData">
+      <DataProvider v-slot="{ convertedRows, isLoading, path, phaseName, componentProps, championshipName, phaseId, isPlayoffs, onChange }" :data="normalizedData">
         <div class="standings-selector">
-          <dl class="standings-selector-title">
-            <dt>{{ championshipName }}</dt>
-            <dd>&nbsp;-&nbsp;{{ phaseName }}</dd>
+          <div class="standings-selector-title">
+            <component :is="componentProps.tag" v-bind="componentProps.props" class="is-title-text">
+              <b>{{ championshipName }}</b>&nbsp;-&nbsp;{{ phaseName }}&nbsp;<IconRight v-if="Boolean(path)" />
+            </component>
             <ChampionshipSelector v-if="normalizedData.length > 1" :data="normalizedData" :selected="phaseId" :target="tooltipContainer" @change="onChange" />
-          </dl>
+          </div>
 
           <PlayoffsList v-if="isPlayoffs" :playoffs="convertedRows.rows" :is-loading="isLoading" />
 
@@ -62,6 +62,7 @@ const normalizedData = computed(() => typeof props.data === 'string' ? JSON.pars
         </div>
         <div ref="tooltipContainer" />
       </DataProvider>
+      <ErrorNotice v-if="hasError" :error="error" />
     </ErrorProvider>
   </I18NProvider>
 </template>

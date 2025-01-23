@@ -20,9 +20,9 @@ const { t } = useI18n();
 <template>
   <ResponsiveTable class="playoffs-minimal">
     <LoadingIndicator v-if="isLoading" />
-    <div v-for="playoff in playoffs" :key="`${playoff.divisionStage2Name}-${playoff.divisionStageNumber}`" class="is-phase">
-      <div class="is-title">
-        {{ t(`playoffs.${playoff.divisionStage2Name}`) }}<span v-if="playoff.divisionStageNumber"> - {{ playoff.divisionStageNumber }}</span>
+    <div v-for="playoff in playoffs" :key="`${playoff.divisionStage2Name}-${playoff.divisionStageNumber}`" class="section">
+      <div class="section-title">
+        {{ t(`playoffs.${playoff.divisionStage2Name}${playoff.divisionStageNumber || ''}`) }}
       </div>
       <ul>
         <li class="is-team">

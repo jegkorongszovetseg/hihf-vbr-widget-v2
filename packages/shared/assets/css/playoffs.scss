@@ -141,24 +141,26 @@
 }
 
 .playoffs-minimal {
-  --logo-size: 30px;
-
   display: grid;
   gap: 8px;
 
-  .is-phase {
-    .is-title {
-      font-size: var(--vbr-widget-typography-font-size-400);
-      color: var(--vbr-widget-primary-color-500);
+  .section {
+    .section-title {
+      font-size: var(--vbr-widget-standings-selector-section-title-size);
+      color: var(--vbr-widget-standings-selector-section-title-color);
       font-weight: 700;
-      background: var(--vbr-widget-primary-color-50);
+      background: var(--vbr-widget-standings-selector-section-title-bg);
       text-align: center;
-      padding-block: 4px;
+      padding: var(--vbr-widget-standings-selector-section-title-padding);
     }
 
     ul {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) var(--logo-size) auto var(--logo-size) minmax(0, 1fr);
+      grid-template-columns:
+        minmax(0, 1fr) var(--vbr-widget-standings-selector-section-logo-size) auto var(
+          --vbr-widget-standings-selector-section-logo-size
+        )
+        minmax(0, 1fr);
       gap: 12px;
       align-items: center;
     }
@@ -179,6 +181,7 @@
 
     .is-team {
       font-weight: 700;
+      color: var(--vbr-widget-standings-selector-section-team-color);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;

@@ -1,5 +1,5 @@
 <script setup>
-import { useServices } from '@mjsz-vbr-elements/core/composables';
+import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
 import { head } from 'ramda';
 import { computed, reactive } from 'vue';
@@ -16,13 +16,15 @@ const props = defineProps({
     default: () => [],
   },
 });
+const { onError, reset } = useError();
 
 const service = reactive({
   championshipId: head(props.data).championshipId,
   phaseId: head(props.data).phaseId,
+  path: head(props.data)?.path ?? '',
   championshipName: head(props.data).name,
-  phaseName: head(props.data).phase,
-  isPlayoffs: head(props.data).isPlayoffs,
+  phaseName: head(props.data)?.phase ?? null,
+  isPlayoffs: head(props.data)?.isPlayoffs ?? false,
 });
 
 const { state, isLoading, execute } = useServices({
@@ -31,35 +33,34 @@ const { state, isLoading, execute } = useServices({
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: service.championshipId, ...(!service.isPlayoffs && { phaseId: service.phaseId }) })),
     resetOnExecute: true,
+    immediate: true,
   },
   transform: res => transformStandings(res),
-  // onError,
+  onError,
 });
 
-// const { state: playoffs, execute: fetchPlayoffs } = useServices({
-//   options: {
-//     path: '/v2/playoffs-tree',
-//     apiKey: props.apiKey,
-//     params: computed(() => ({ championshipId: service.championshipId })),
-//   },
-// });
+const convertedRows = computed(() => convert(state.value).addContinuousIndex().value());
 
-execute();
+const componentProps = computed(() => ({
+  tag: service.path ? 'a' : 'p',
+  props: {
+    ...(service.path && { href: service.path }),
+  },
+}));
 
-const convertedRows = computed(() => {
-  return convert(state.value).addContinuousIndex().value();
-});
-
-function onChange({ championshipId, phaseId, name, phase, isPlayoffs }) {
+function onChange({ championshipId, phaseId, name, path, phase, isPlayoffs }) {
   service.championshipId = championshipId;
+  service.path = path || '';
   service.phaseId = phaseId;
   service.championshipName = name;
   service.phaseName = phase;
-  service.isPlayoffs = isPlayoffs;
+  service.isPlayoffs = isPlayoffs || false;
+
+  reset();
   execute();
 }
 </script>
 
 <template>
-  <slot v-bind="{ convertedRows, isLoading, ...service, onChange }" />
+  <slot v-bind="{ convertedRows, isLoading, ...service, componentProps, onChange }" />
 </template>
