@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import { compose, join, map, reject } from 'ramda';
+import { compose, isEmpty, join, map, reject } from 'ramda';
 import { computed } from 'vue';
 import GameStatsContainer from './components/GameStatsContainer.vue';
 
