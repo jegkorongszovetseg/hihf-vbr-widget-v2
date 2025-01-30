@@ -38,7 +38,7 @@ const linesmen = computed(() =>
 </script>
 
 <template>
-  <div class="gamecenter-game-stats">
+  <div v-if="!isEmpty(referees) || !isEmpty(linesmen)" class="gamecenter-game-stats">
     <div class="gamecenter-game-stats-container-wrapper">
       <GameStatsContainer :title="t('gameStats.referees')" :data="referees" />
       <GameStatsContainer :title="t('gameStats.linesmen')" :data="linesmen" />
