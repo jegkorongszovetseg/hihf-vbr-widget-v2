@@ -40,7 +40,7 @@ const searchParams = useUrlSearchParams('history');
 
 const { errors, add: addApiError, remove: removeApiError } = useApiErrors();
 
-const gameId = computed(() => searchParams?.gameid ?? props.gameId);
+const gameId = computed(() => searchParams.gameId || searchParams.gameid || searchParams['game-id'] || props.gameId);
 
 const { state: gameData, execute: getGameData } = useServices({
   options: {
@@ -98,9 +98,9 @@ handleServices({
 
       <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
 
-      <template v-if="gameData?.gameStatus > 0">
-        <GameOfficials v-if="!isEmpty(gameData)" :game-data="gameData" :game-officials="gameOfficials" />
+      <GameOfficials v-if="!isEmpty(gameData)" :game-data="gameData" :game-officials="gameOfficials" />
 
+      <template v-if="gameData?.gameStatus > 0">
         <GameStats v-if="!isEmpty(gameStats)" :game-data="gameData" :game-stats="gameStats" />
 
         <GameEvents v-if="!isEmpty(gameEvents) && !isEmpty(gameData)" :game-events="gameEvents" :game-data="gameData" />

@@ -42,7 +42,7 @@ const linesmen = computed(() =>
     <div class="gamecenter-game-stats-container-wrapper">
       <GameStatsContainer :title="t('gameStats.referees')" :data="referees" />
       <GameStatsContainer :title="t('gameStats.linesmen')" :data="linesmen" />
-      <GameStatsContainer :title="t('gameStats.attendance')" :data="gameData?.attendance ?? 0" />
+      <GameStatsContainer v-if="gameData.attendance" :title="t('gameStats.attendance')" :data="gameData?.attendance ?? 0" />
     </div>
   </div>
 </template>
