@@ -83,10 +83,10 @@ export function getMonthsBetweenDates(startDate, endDate, direction, locale = 'h
   const months = [];
   const currentDate = startDate;
 
-  // eslint-disable-next-line no-unmodified-loop-condition
-  while (currentDate <= endDate) {
+  while (currentDate.getTime() <= endDate.getTime()) {
     const month = currentDate.toLocaleString(locale, { month: 'short' });
     setMonthObject(month);
+    currentDate.setDate(1);
     currentDate.setMonth(currentDate.getMonth() + 1);
   }
 
