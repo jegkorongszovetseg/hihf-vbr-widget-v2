@@ -1,3 +1,8 @@
+## [2.14.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.14.0...v2.14.1) (2025-01-30)
+
+### Bug Fixes
+
+* **extened/calendar:** Hiányzó hónapok javítása ([1ded7f8](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/1ded7f884e0b72c8b41f949dc29ab0501914adb2))
 ## [2.14.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.13.1...v2.14.0) (2025-01-22)
 
 ### Bug Fixes
