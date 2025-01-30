@@ -20,7 +20,10 @@ export function handleServices(options = {}) {
     { immediate: false },
   );
 
-  const { pause: pauseGameData } = useIntervalFn(() => getGameData(), LAZY_INTERVAL, {
+  const { pause: pauseGameData } = useIntervalFn(() => {
+    getGameData();
+    getGameOfficials();
+  }, LAZY_INTERVAL, {
     immediate: true,
     immediateCallback: true,
   });
