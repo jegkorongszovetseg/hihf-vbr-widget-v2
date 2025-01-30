@@ -1,3 +1,8 @@
+## [2.14.5](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.14.4...v2.14.5) (2025-01-30)
+
+### Bug Fixes
+
+* **gamecenter/game:** Hiányzó import javítása ([85b0862](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/85b0862d11b4338cf399f8b086b3fa61b246242f))
 ## [2.14.4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.14.3...v2.14.4) (2025-01-30)
 
 ### Bug Fixes
