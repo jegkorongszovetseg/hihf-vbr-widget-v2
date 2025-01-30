@@ -1,7 +1,7 @@
 {
   "name": "@mjsz-vbr-elements/core",
   "type": "module",
-  "version": "2.14.3",
+  "version": "2.14.4",
   "private": false,
   "description": "Data visualization for MJSZ VBR",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
