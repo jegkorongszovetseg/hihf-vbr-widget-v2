@@ -5,7 +5,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <div style="text-align: center">
+  <div class="loading-indicator">
     {{ t('common.loading') }}
   </div>
 </template>

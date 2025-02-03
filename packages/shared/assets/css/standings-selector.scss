@@ -1,7 +1,7 @@
 .standings-selector {
   &-title {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto;
     align-items: center;
     padding: var(--vbr-widget-standings-selector-title-padding);
     text-transform: var(--vbr-widget-standings-selector-title-transform);
@@ -10,7 +10,10 @@
     background: var(--vbr-widget-standings-selector-title-bg-color);
   }
 
-  dt {
-    font-weight: 700;
+  .is-title-text {
+    svg {
+      height: 16px;
+      vertical-align: middle;
+    }
   }
 }

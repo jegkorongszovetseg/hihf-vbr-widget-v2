@@ -1,5 +1,5 @@
 <script setup>
-import { useServices } from '@mjsz-vbr-elements/core/composables';
+import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
 import { head } from 'ramda';
 import { computed, reactive } from 'vue';
@@ -16,41 +16,51 @@ const props = defineProps({
     default: () => [],
   },
 });
+const { onError, reset } = useError();
 
 const service = reactive({
   championshipId: head(props.data).championshipId,
   phaseId: head(props.data).phaseId,
+  path: head(props.data)?.path ?? '',
   championshipName: head(props.data).name,
-  phaseName: head(props.data).phase,
+  phaseName: head(props.data)?.phase ?? null,
+  isPlayoffs: head(props.data)?.isPlayoffs ?? false,
 });
 
 const { state, isLoading, execute } = useServices({
   options: {
-    path: '/v2/standings',
+    path: computed(() => service.isPlayoffs ? '/v2/playoffs-tree' : '/v2/standings'),
     apiKey: props.apiKey,
-    params: computed(() => ({ championshipId: service.championshipId, phaseId: service.phaseId })),
+    params: computed(() => ({ championshipId: service.championshipId, ...(!service.isPlayoffs && { phaseId: service.phaseId }) })),
+    resetOnExecute: true,
+    immediate: true,
   },
   transform: res => transformStandings(res),
-  // onError,
+  onError,
 });
 
-execute();
+const convertedRows = computed(() => convert(state.value).addContinuousIndex().value());
 
-const convertedRows = computed(() => {
-  return convert(state.value).addContinuousIndex().value();
-});
+const componentProps = computed(() => ({
+  tag: service.path ? 'a' : 'p',
+  props: {
+    ...(service.path && { href: service.path }),
+  },
+}));
 
-function onChange({ championshipId, phaseId, name, phase }) {
+function onChange({ championshipId, phaseId, name, path, phase, isPlayoffs }) {
   service.championshipId = championshipId;
+  service.path = path || '';
   service.phaseId = phaseId;
   service.championshipName = name;
   service.phaseName = phase;
+  service.isPlayoffs = isPlayoffs || false;
+
+  reset();
   execute();
 }
 </script>
 
 <template>
-  <slot v-bind="{ convertedRows, isLoading, ...service, onChange }" />
+  <slot v-bind="{ convertedRows, isLoading, ...service, componentProps, onChange }" />
 </template>
-
-<style lang="scss" scoped></style>

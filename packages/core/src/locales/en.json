@@ -2,7 +2,11 @@
   "errors": {
     "undefined-column": "The {column} column is not exists!",
     "invalid-season-name": "Invalid season name",
-    "api-key-not-found": "API Key not found"
+    "api-key-not-found": "API Key not found",
+    "gameData": "Game Data: {0}",
+    "gameStats": "Game Stats: {0}",
+    "gameEvents": "Game Events: {0}",
+    "gameOfficials": "Game Officials : {0}"
   },
   "common": {
     "loading": "Loading...",

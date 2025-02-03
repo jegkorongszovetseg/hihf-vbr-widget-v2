@@ -13,9 +13,9 @@ const props = defineProps({
 const { t, hasTranslation } = useI18n();
 
 const errorMessage = computed(() => {
-  if (!hasTranslation(`errors.${props.error.key}`))
-    return `${props.error.key}: ${props.error?.message}`;
-  return t(`errors.${props.error.key}`, props.error.cause);
+  if (hasTranslation(`errors.${props.error.key}`))
+    return t(`errors.${props.error.key}`, props.error.cause || [props.error?.message]);
+  return props.error?.message;
 });
 </script>
 

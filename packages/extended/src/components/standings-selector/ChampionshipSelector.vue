@@ -42,7 +42,7 @@ const emit = defineEmits(['change']);
           :class="{ 'is-selected': selected === item.phaseId }"
           @click="emit('change', item)"
         >
-          {{ item.name }}
+          {{ item.name }} - {{ item.phase }}
         </li>
       </ul>
     </template>
