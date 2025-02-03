@@ -34,9 +34,9 @@ const statusText = computed(() => {
 });
 
 function navigateTo() {
-  const { externalUrl, id } = props.gameData;
-  if (externalUrl)
-    return emit('navigateTo', { url: externalUrl, target: '_blank' });
+  const { externalGameUrl, id } = props.gameData;
+  if (externalGameUrl)
+    return emit('navigateTo', { url: externalGameUrl, target: '_blank' });
   const url = externalGameLinkResolver(props.externalGameResolver, { gameId: id });
   emit('navigateTo', { url, target: '_self' });
 }
