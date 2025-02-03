@@ -1,3 +1,13 @@
+## [2.15.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.14.5...v2.15.0) (2025-02-03)
+
+### Features
+
+* **extended/games-timeline:** Külső hivatkozás kezelése ([cb45cef](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/cb45cefcc1384f9933e14333acd86a31d1763e86))
+* **LoadingIndicator:** Minimális stílus hozzádása ([938bf2d](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/938bf2ddfc57d3e418269af0e55510b632e8bcfc))
+
+### Bug Fixes
+
+* **core/ErrorNotice:** Dupla kulcsok javítása a hibaüzenetekben ([4c4cdc0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/4c4cdc0bf51be73a424170e5bf423463e70ebddd))
 ## [2.14.5](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.14.4...v2.14.5) (2025-01-30)
 
 ### Bug Fixes
