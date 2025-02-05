@@ -38,7 +38,7 @@ const { t } = useI18n();
 <template>
   <div class="card-item" :class="{ 'is-optional': game.optional }">
     <div class="is-info is-text-sm">
-      {{ game.gameName }} - {{ game.championshipName }} - {{ game.divisionName }} - {{ game.location.locationName }}
+      <a :href="gameLink(game)">{{ game.gameName }}</a>&nbsp;- {{ game.championshipName }} - {{ game.divisionName }} - {{ game.location.locationName }}
       <template v-if="game.broadcast">
         -&nbsp;<IconBroadcast height="16" />&nbsp;
       </template>
@@ -63,13 +63,19 @@ const { t } = useI18n();
         <span v-if="game.isShootout" class="is-badge is-invert">{{ t('common.shootoutShort') }}</span>
         <span v-if="game.seriesStandings" class="is-badge">{{ game.seriesStandings }}</span>
       </div> -->
+      <span v-if="game.gameStatus === 0" class="is-text-xl is-text-bold">
+        - : -
+      </span>
       <a :href="gameLink(game)" :target="target">
+
         <span v-if="game.gameStatus > 0 && game.gameStatus < 3" class="is-text-xl is-text-bold">
-          {{ game.homeTeamScore }} - {{ game.awayTeamScore }}
+          {{ game.homeTeamScore }} : {{ game.awayTeamScore }}
         </span>
+
         <span v-if="game.gameStatus === 3" class="is-text-xl is-text-bold">
           {{ t('game.status.jury') }}
         </span>
+
         <span v-if="game.gameStatus === 4" class="is-text-xl is-text-bold">
           {{ t('game.status.delayed') }}
         </span>

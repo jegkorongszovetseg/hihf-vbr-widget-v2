@@ -9,6 +9,8 @@ import { templateReplacer } from './string';
 const getSettingVariable = (key = '') => window?.__MJSZ_VBR_WIDGET__?.[key];
 
 export function externalGameLinkResolver(rawResolver, params = {}) {
+  if (params.externalGameUrl)
+    return params.externalGameUrl;
   const resolver = getSettingVariable('gameResolver') || rawResolver;
   if (typeof resolver === 'function')
     return resolver(params);
