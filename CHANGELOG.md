@@ -1,3 +1,9 @@
+## [2.16.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.15.0...v2.16.0) (2025-02-05)
+
+### Features
+
+* **extended/calendar:** Külső linkek kezelése ([5924377](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/5924377088be482b9db09133850eb0c9f50d9b61))
+* **liga/schedule:** Eredmény elválasztó csere ([3b6f36f](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/3b6f36fea36d167e29b539b2b2cd68ceaf9ba56b))
 ## [2.15.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.14.5...v2.15.0) (2025-02-03)
 
 ### Features
