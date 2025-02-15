@@ -1,3 +1,3 @@
 # CSS változók
 
-<<< ../../packages/shared/assets/css/variables.scss{css}
+<<< ../../packages/shared/dist/variables.css{css}
