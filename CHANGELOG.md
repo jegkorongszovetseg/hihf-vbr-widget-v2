@@ -1,3 +1,8 @@
+## [2.17.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.16.0...v2.17.0) (2025-02-15)
+
+### Features
+
+* **liga/playoffs:** Töltődés kijelzése és hosszú csapatnevek kezelése ([40dfd2b](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/40dfd2bd073c911bc88caafe9f3187e7e2345101))
 ## [2.16.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.15.0...v2.16.0) (2025-02-05)
 
 ### Features
