@@ -12,6 +12,13 @@ import '../../../packages/shared/assets/css/playoffs.scss';
 
 const data = [
   {
+    name: 'OB1',
+    phase: 'Rájátszás',
+    path: '/',
+    championshipId: 3824,
+    isPlayoffs: true,
+  },
+  {
     name: 'Erste Liga 2013-2014',
     phase: 'Rájátszás',
     path: '/',

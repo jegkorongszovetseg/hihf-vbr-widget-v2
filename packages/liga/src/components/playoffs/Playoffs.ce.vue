@@ -1,5 +1,5 @@
 <script setup>
-import { I18NProvider, Image, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
+import { I18NProvider, Image, LoadingIndicator, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
 import { externalGameLinkResolver, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
 import { computed } from 'vue';
@@ -25,7 +25,7 @@ const props = defineProps({
 
 const DEFAULT_LIGA_GAME_RESOLVER = '/game/id/{gameId}';
 
-const { state: playoffs, execute } = useServices({
+const { state: playoffs, isLoading, execute } = useServices({
   options: {
     path: '/v2/playoffs-tree',
     apiKey: props.apiKey,
@@ -50,6 +50,7 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
 <template>
   <div class="playoffs">
     <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
+      <LoadingIndicator v-if="isLoading" />
       <div v-for="playoff in playoffs" :key="`${playoff.divisionStage2Name}-${playoff.divisionStageNumber}`">
         <div class="section-title">
           {{ t(`playoffs.${playoff.divisionStage2Name}`) }}-{{ playoff.divisionStageNumber }}

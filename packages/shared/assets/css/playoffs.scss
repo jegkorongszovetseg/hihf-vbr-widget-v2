@@ -65,6 +65,9 @@
 
     .is-team-name-long {
       display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .is-team-name-short {
       display: none;
@@ -103,6 +106,9 @@
 
     .is-team-name-long {
       display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .is-team-name-short {
       display: none;

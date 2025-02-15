@@ -4,6 +4,6 @@ import { store } from '../store.js';
 
 <template>
   <div class="p-5">
-    <mjsz-vbr-playoffs :locale="store.locale" championship-id="3450" />
+    <mjsz-vbr-playoffs :locale="store.locale" championship-id="3824" />
   </div>
 </template>
