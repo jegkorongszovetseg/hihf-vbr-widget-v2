@@ -106,6 +106,10 @@
       "short": "S",
       "tooltip": "Shots on Goal"
     },
+    "so": {
+      "short": "SO",
+      "tooltip": "Shutouts"
+    },
     "sogPercent": {
       "short": "S%",
       "tooltip": "Shooting percentage"
