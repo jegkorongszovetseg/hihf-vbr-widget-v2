@@ -1,0 +1,13 @@
+.liga-top-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  gap: 30px;
+}
+
+.top-list-container {
+  li {
+    display: grid;
+    grid-template-columns: 30px 1fr auto;
+    gap: 0.5rem;
+  }
+}
