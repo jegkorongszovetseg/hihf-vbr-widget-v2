@@ -1,3 +1,8 @@
+## [2.18.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.17.0...v2.18.0) (2025-02-25)
+
+### Features
+
+* **goalies:** Kapusok Shutouts statisztika hozzáadása ([4c531b6](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/4c531b6bea45b6de2992f513cce93cdb73b971ef))
 ## [2.17.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.16.0...v2.17.0) (2025-02-15)
 
 ### Features
