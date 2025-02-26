@@ -28,6 +28,11 @@ const props = defineProps({
     default: '',
   },
 
+  limit: {
+    type: [Number, String],
+    default: 3,
+  },
+
   externalTeamResolver: {
     type: String,
     default: '',
@@ -81,46 +86,50 @@ const isLoading = useArraySome([isPlayersStatsLoading, isGoaliesStatsLoading, is
 const points = computed(() => convert(playersStats.value).sorted({
   sortTarget: 'points',
   orders: [{ target: 'points', direction: SORT_STATE_DESCEND }, { target: 'goals', direction: SORT_STATE_DESCEND }],
-}).slice().playerName().value());
+}).slice(props.limit).playerName().value());
 
 const goals = computed(() => convert(playersStats.value).sorted({
   sortTarget: 'goals',
   orders: [{ target: 'goals', direction: SORT_STATE_DESCEND }, { target: 'assists', direction: SORT_STATE_DESCEND }],
-}).slice().playerName().value());
+}).slice(props.limit).playerName().value());
 
 const assists = computed(() => convert(playersStats.value).sorted({
   sortTarget: 'assists',
   orders: [{ target: 'assists', direction: SORT_STATE_DESCEND }, { target: 'goals', direction: SORT_STATE_DESCEND }],
-}).slice().playerName().value());
+}).slice(props.limit).playerName().value());
 
 const plusMinus = computed(() => convert(playersStats.value).sorted({
   sortTarget: 'plusMinus',
   orders: [{ target: 'plusMinus', direction: SORT_STATE_DESCEND }],
-}).slice().playerName().value());
+}).slice(props.limit).playerName().value());
 
 const goalies = computed(() => convert(goaliesStats.value).sorted({
   sortTarget: 'svsPercent',
   orders: [{ target: 'svsPercent', direction: SORT_STATE_DESCEND }],
-}).slice().playerName().value());
+}).slice(props.limit).playerName().value());
 
 const penalty = computed(() => convert(penaltyStats.value).sorted({
   sortTarget: 'pim',
   orders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
-}).slice().playerName().value());
+}).slice(props.limit).playerName().value());
 </script>
 
 <template>
-  <I18NProvider :locale="props.locale" :messages="messages">
-    <LoadingIndicator v-if="isLoading" />
+  <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
     <div class="liga-top-list">
-      <TopListContainer title="Pontok" :list="points.rows" data-key="points" />
-      <TopListContainer title="Gólok" :list="goals.rows" data-key="goals" />
-      <TopListContainer title="Gólpasszok" :list="assists.rows" data-key="assists" />
-      <TopListContainer title="Kapusok" :list="goalies.rows" data-key="svsPercent" />
-      <TopListContainer title="Büntetések" :list="penalty.rows" data-key="pim" />
-      <TopListContainer title="+/-" :list="plusMinus.rows" data-key="plusMinus" />
+      <LoadingIndicator v-if="isLoading" />
+      <div v-else class="liga-top-list-wrapper">
+        <TopListContainer :title="t('report.points')" :list="points.rows" data-key="points" />
+        <TopListContainer :title="t('report.goals')" :list="goals.rows" data-key="goals" />
+        <TopListContainer :title="t('report.assists')" :list="assists.rows" data-key="assists" />
+        <TopListContainer :title="t('report.goalies')" :list="goalies.rows" data-key="svsPercent" />
+        <TopListContainer :title="t('report.penalties')" :list="penalty.rows" data-key="pim" />
+        <TopListContainer title="+/-" :list="plusMinus.rows" data-key="plusMinus" />
+      </div>
     </div>
   </I18NProvider>
 </template>
+
+<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
 <style src="@mjsz-vbr-elements/shared/css/top-list.scss" lang="scss"></style>
