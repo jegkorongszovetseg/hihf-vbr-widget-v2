@@ -4,11 +4,14 @@ import { store } from '../store.js';
 
 // import '../../../packages/shared/assets/css/common.scss';
 // import '../../../packages/shared/assets/css/top-list.scss';
+
+const playerResolver = `LigaPlayer?playerId={player.playerId}&championshipId={championshipId}`;
+const teamResolver = `LigaTeam?teamId={team.id}&championshipId={championshipId}`;
 </script>
 
 <template>
   <div>
     <!-- <TopListLiga :locale="store.locale" championship-id="3783" :limit="5" /> -->
-    <mjsz-vbr-top-list-liga :locale="store.locale" championship-id="3783" />
+    <mjsz-vbr-top-list-liga :locale="store.locale" championship-id="3783" :external-team-resolver="teamResolver" :external-player-resolver="playerResolver" />
   </div>
 </template>

@@ -5,7 +5,7 @@ import {
   LoadingIndicator,
 } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
-import { convert } from '@mjsz-vbr-elements/core/utils';
+import { convert, externalPlayerLinkResolver, externalStatisticLinkResolver, externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { useArraySome } from '@vueuse/core';
 import { computed } from 'vue';
 import en from '../../locales/en.json';
@@ -112,6 +112,10 @@ const penalty = computed(() => convert(penaltyStats.value).sorted({
   sortTarget: 'pim',
   orders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
 }).slice(props.limit).playerName().value());
+
+const externalPlayerLink = params => externalPlayerLinkResolver(props.externalPlayerResolver, { ...params, championshipId: props.championshipId });
+const externalTeamLink = params => externalTeamLinkResolver(props.externalTeamResolver, { ...params, championshipId: props.championshipId });
+const externalStatsLink = id => externalStatisticLinkResolver('/stats?report={id}', { id });
 </script>
 
 <template>
@@ -119,12 +123,12 @@ const penalty = computed(() => convert(penaltyStats.value).sorted({
     <div class="liga-top-list">
       <LoadingIndicator v-if="isLoading" />
       <div v-else class="liga-top-list-wrapper">
-        <TopListContainer :title="t('report.points')" :list="points.rows" data-key="points" />
-        <TopListContainer :title="t('report.goals')" :list="goals.rows" data-key="goals" />
-        <TopListContainer :title="t('report.assists')" :list="assists.rows" data-key="assists" />
-        <TopListContainer :title="t('report.goalies')" :list="goalies.rows" data-key="svsPercent" />
-        <TopListContainer :title="t('report.penalties')" :list="penalty.rows" data-key="pim" />
-        <TopListContainer title="+/-" :list="plusMinus.rows" data-key="plusMinus" />
+        <TopListContainer :title="t('report.points')" :list="points.rows" data-key="points" external-id="points" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
+        <TopListContainer :title="t('report.goals')" :list="goals.rows" data-key="goals" external-id="goals" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
+        <TopListContainer :title="t('report.assists')" :list="assists.rows" data-key="assists" external-id="assists" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
+        <TopListContainer :title="t('report.goalies')" :list="goalies.rows" data-key="svsPercent" external-id="goalies" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
+        <TopListContainer :title="t('report.penalties')" :list="penalty.rows" data-key="pim" external-id="playerspenalties" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
+        <TopListContainer title="+/-" :list="plusMinus.rows" data-key="plusMinus" external-id="plusminus" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
       </div>
     </div>
   </I18NProvider>
