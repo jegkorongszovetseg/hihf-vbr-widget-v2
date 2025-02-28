@@ -1,5 +1,6 @@
 <script setup>
 import { Image } from '@mjsz-vbr-elements/core/components';
+import { DEFAULT_PORTRAIT_IMAGE_URL } from '@mjsz-vbr-elements/core/constants';
 import IconRight from '@mjsz-vbr-elements/shared/icons/IconRight';
 import { noop } from '@vueuse/core';
 
@@ -50,7 +51,7 @@ defineProps({
     <ul>
       <li v-for="(player, index) in list" :key="player.player.playerId" :class="{ 'is-large': index === 0 }">
         <div class="is-images">
-          <Image class="is-player" :src="player.player.picture" />
+          <Image class="is-player" :src="player.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
         </div>
         <a :href="playerResolver(player)" class="is-player">{{ player.name }}</a>
         <a :href="teamResolver(player)" class="is-team">{{ player.team.longName }}</a>

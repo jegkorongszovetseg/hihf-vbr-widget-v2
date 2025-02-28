@@ -80,10 +80,11 @@
       .is-player {
         overflow: hidden;
         border-radius: 50%;
-        border: 1px solid #f1f1f1;
+        border: 1px solid var(--vbr-widget-top-list-image-border-color);
         display: block;
         width: 24px;
         aspect-ratio: 1;
+        background-color: var(--vbr-widget-top-list-image-bg-color);
       }
 
       // .is-team {

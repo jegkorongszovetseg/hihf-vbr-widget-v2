@@ -115,7 +115,7 @@ const penalty = computed(() => convert(penaltyStats.value).sorted({
 
 const externalPlayerLink = params => externalPlayerLinkResolver(props.externalPlayerResolver, { ...params, championshipId: props.championshipId });
 const externalTeamLink = params => externalTeamLinkResolver(props.externalTeamResolver, { ...params, championshipId: props.championshipId });
-const externalStatsLink = id => externalStatisticLinkResolver('/stats?report={id}', { id });
+const externalStatsLink = id => externalStatisticLinkResolver(props.externalStatisticResolver, { id });
 </script>
 
 <template>
