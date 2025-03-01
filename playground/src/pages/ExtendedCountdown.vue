@@ -16,7 +16,9 @@ import '../../../packages/shared/assets/css/countdown.scss';
 </script>
 
 <template>
-  <div class="p-5 w-[290px] resize m-auto">
-    <mjsz-vbr-countdown :locale="store.locale" :game-id="81776" />
+  <div class="p-5">
+    <div class="resize-x m-auto max-w-[460px] overflow-hidden">
+      <mjsz-vbr-countdown :locale="store.locale" :game-id="81776" />
+    </div>
   </div>
 </template>

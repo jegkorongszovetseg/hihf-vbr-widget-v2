@@ -235,7 +235,7 @@
   }
 
   .is-slide-transition-enter-from {
-    transform: translateY(-100%);
+    transform: translateY(100%);
   }
 
   .is-slide-transition-enter-to {
@@ -247,6 +247,6 @@
   }
 
   .is-slide-transition-leave-to {
-    transform: translateY(100%);
+    transform: translateY(-100%);
   }
 }

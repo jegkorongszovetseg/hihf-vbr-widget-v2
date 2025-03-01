@@ -34,9 +34,9 @@ export function countdown(_targetDate, onFinished = noop) {
 
 export function splitDate(distance) {
   return {
-    days: Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0'),
-    hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0'),
-    minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0'),
-    seconds: Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0'),
+    days: Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0').split(''),
+    hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0').split(''),
+    minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0').split(''),
+    seconds: Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0').split(''),
   };
 }

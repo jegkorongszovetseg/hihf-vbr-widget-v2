@@ -1,12 +1,14 @@
 <script setup>
-import { I18NProvider } from '@mjsz-vbr-elements/core/components';
+import { I18NProvider, Image } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
+import { format } from '@mjsz-vbr-elements/core/utils';
 import { useIntervalFn } from '@vueuse/core';
 import { isEmpty } from 'ramda';
 import { computed } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
 import { countdown } from './internal';
+import Number from './Number.vue';
 
 const props = defineProps({
   locale: {
@@ -78,37 +80,44 @@ function startGame(game) {
       <div v-else class="game-countdown-container">
         <div>
           <div>Nap</div>
-          <div class="number">
-            {{ date.days }}
+          <div style="display: flex;">
+            <Number :number="date.days[0]" />
+            <Number :number="date.days[1]" />
           </div>
         </div>
         <div>
           <div>Óra</div>
-          <div class="number">
-            {{ date.hours }}
+          <div style="display: flex;">
+            <Number :number="date.hours[0]" />
+            <Number :number="date.hours[1]" />
           </div>
         </div>
         <div>
           <div>Perc</div>
-          <div class="number">
-            {{ date.minutes }}
+          <div style="display: flex;">
+            <Number :number="date.minutes[0]" />
+            <Number :number="date.minutes[1]" />
           </div>
         </div>
 
         <div>
           <div>Másodperc</div>
-          <div class="number">
-            {{ date.seconds }}
+          <div style="display: flex;">
+            <Number :number="date.seconds[0]" />
+            <Number :number="date.seconds[1]" />
           </div>
         </div>
       </div>
 
       <div class="game-countdown-gamedata">
-        <span>I</span>
-        <span>{{ game.homeTeam?.longName }}</span>
-        <span>-</span>
-        <span>{{ game.awayTeam?.longName }}</span>
-        <span>I</span>
+        <div class="is-game-date">
+          {{ format(game.gameDate, 'L dddd - HH:mm', null, locale) }}
+        </div>
+        <Image v-if="game.homeTeam?.logo" class="is-home-team-logo" :src="game.homeTeam.logo" />
+        <span class="is-home-team">{{ game.homeTeam?.longName }}</span>
+        <span class="is-separator">-</span>
+        <span class="is-away-team">{{ game.awayTeam?.longName }}</span>
+        <Image v-if="game.awayTeam?.logo" class="is-away-team-logo" :src="game.awayTeam.logo" />
       </div>
     </div>
   </I18NProvider>
