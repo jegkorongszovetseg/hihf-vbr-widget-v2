@@ -1,0 +1,44 @@
+.game-countdown {
+  display: grid;
+  grid-template-rows: 2rem 1fr 4rem;
+
+  .game-countdown-title {
+    text-align: center;
+    font-size: 14px;
+    line-height: 2rem;
+    color: var(--vbr-widget-primary-color-200);
+    background-color: var(--vbr-widget-primary-color-900);
+  }
+
+  .game-countdown-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+    padding: 1rem;
+
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--vbr-widget-primary-color-400);
+    background-color: var(--vbr-widget-primary-color-800);
+  }
+
+  .game-countdown-gamedata {
+    display: grid;
+    grid-template-columns: 40px 1fr 20px 1fr 40px;
+    align-items: center;
+    padding-inline: 1rem;
+    background-color: var(--vbr-widget-primary-color-700);
+    font-size: var(--vbr-widget-typography-font-size-400);
+    font-weight: 700;
+    line-height: var(--vbr-widget-typography-font-lineheight-400);
+    color: var(--vbr-widget-primary-color-200);
+  }
+
+  .number {
+    font-size: 50px;
+    line-height: 1;
+    font-weight: 700;
+    color: var(--vbr-widget-live-game-color);
+  }
+}
