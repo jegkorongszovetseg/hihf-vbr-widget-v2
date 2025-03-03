@@ -48,6 +48,10 @@
       font-size: clamp(2rem, 10vw, 5rem);
     }
 
+    :is(.is-home-score, .is-away-score) {
+      display: flex;
+    }
+
     .is-home-score {
       grid-area: home-score;
     }
