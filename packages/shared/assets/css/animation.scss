@@ -1,0 +1,39 @@
+.slide-increase {
+  &-enter-active,
+  &-leave-active {
+    transition: all 800ms var(--ease-spring-1);
+  }
+
+  &-enter-from {
+    transform: translateY(100%);
+  }
+
+  &-enter-to,
+  &-leave-from {
+    transform: translateY(0);
+  }
+
+  &-leave-to {
+    transform: translateY(-100%);
+  }
+}
+
+.slide-decrease {
+  &-enter-active,
+  &-leave-active {
+    transition: all 800ms var(--ease-spring-1);
+  }
+
+  &-enter-from {
+    transform: translateY(-100%);
+  }
+
+  &-enter-to,
+  &-leave-from {
+    transform: translateY(0);
+  }
+
+  &-leave-to {
+    transform: translateY(100%);
+  }
+}
