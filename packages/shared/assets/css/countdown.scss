@@ -2,23 +2,23 @@
   --title-height: 2rem;
 
   display: grid;
-  grid-template-rows: var(--title-height) 1fr 4rem;
+  grid-template-rows: var(--vbr-widget-countdown-title-height) 1fr var(--vbr-widget-countdown-gamedata-height);
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
 
   .game-countdown-title {
     text-align: center;
     font-size: var(--vbr-widget-typography-font-size-300);
     font-weight: 700;
-    line-height: var(--title-height);
+    line-height: var(--vbr-widget-countdown-title-height);
     color: var(--vbr-widget-primary-color-200);
-    background-color: var(--vbr-widget-primary-color-900);
+    background-color: var(--vbr-widget-countdown-title-bg);
   }
 
   .game-countdown-container {
     display: grid;
     grid-template-areas: 'stack';
     place-items: center;
-    background-color: var(--vbr-widget-primary-color-800);
+    background-color: var(--vbr-widget-countdown-result-bg);
 
     > div {
       visibility: hidden;
@@ -104,7 +104,7 @@
     align-content: center;
     align-items: center;
     padding-inline: 1rem;
-    background-color: var(--vbr-widget-primary-color-700);
+    background-color: var(--vbr-widget-countdown-gamedata-bg);
     font-size: var(--vbr-widget-typography-font-size-500);
     font-weight: 700;
     line-height: var(--vbr-widget-typography-font-lineheight-400);
