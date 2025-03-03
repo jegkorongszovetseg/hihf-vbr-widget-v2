@@ -4,7 +4,6 @@ import { I18NProvider, Image } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
 import { externalGameLinkResolver, format } from '@mjsz-vbr-elements/core/utils';
 import { useIntervalFn } from '@vueuse/core';
-// import { useInterval, useIntervalFn } from '@vueuse/core';
 import { isEmpty } from 'ramda';
 import { computed } from 'vue';
 import en from '../../locales/en.json';
@@ -55,23 +54,16 @@ const { pause, resume } = useIntervalFn(() => {
   execute();
 }, 30000, { immediate: false });
 
-// Test goals
-// const counter = useInterval(1000);
-// const counter2 = useInterval(1500);
-
 const homeScore = computed(() => {
   const score = game.value.homeTeamScore || 0;
-  // const score = counter.value;
   return score.toString().padStart(2, '0').split('');
 });
 const awayScore = computed(() => {
   const score = game.value.awayTeamScore || 0;
-  // const score = counter2.value;
   return score.toString().padStart(2, '0').split('');
 });
 
 const { date, finished } = countdown(computed(() => {
-  // return new Date(2025, 2, 2, 12, 31, 0);
   return game.value.gameDate;
 }), () => resume());
 
