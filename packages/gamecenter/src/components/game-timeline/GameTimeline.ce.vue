@@ -1,7 +1,7 @@
 <script setup>
 import { ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
-import { useIntersectionObserver, useUrlSearchParams } from '@vueuse/core';
+import { useUrlSearchParams } from '@vueuse/core';
 import { isEmpty } from 'ramda';
 import { computed, ref } from 'vue';
 import commonEN from '../../locales/en/common.json';
@@ -9,7 +9,7 @@ import extendeEN from '../../locales/en/extended.json';
 import commonHU from '../../locales/hu/common.json';
 import extendedHU from '../../locales/hu/extended.json';
 import { handleServices, useApiErrors } from '../game/composables';
-import ScoreBoard from './components/ScoreBoard.vue';
+// import ScoreBoard from './components/ScoreBoard.vue';
 import { useTeamColors } from './composables/use-team-colors';
 import { TAB_EVENTS, TAB_LINEUPS, TAB_OFFICIALS, TAB_PLAYER_STATS, TAB_TEAM_STATS } from './constants';
 import GameData from './GameData.vue';
@@ -43,20 +43,20 @@ const messages = { en: { ...commonEN, ...extendeEN }, hu: { ...commonHU, ...exte
 const REFRESH_DELAY = 30000;
 
 const contentElementRef = ref(null);
-const isScoreBoardVisible = ref(false);
+// const isScoreBoardVisible = ref(false);
 
 const searchParams = useUrlSearchParams('history');
 const activeTab = ref(searchParams.tab || TAB_EVENTS);
 
-useIntersectionObserver(
-  contentElementRef,
-  ([{ isIntersecting }]) => {
-    isScoreBoardVisible.value = !isIntersecting;
-  },
-  {
-    threshold: 0.25,
-  },
-);
+// useIntersectionObserver(
+//   contentElementRef,
+//   ([{ isIntersecting }]) => {
+//     isScoreBoardVisible.value = !isIntersecting;
+//   },
+//   {
+//     threshold: 0.25,
+//   },
+// );
 
 const { errors, add: addApiError, remove: removeApiError } = useApiErrors();
 
@@ -118,11 +118,11 @@ const colors = useTeamColors(gameData);
     <I18NProvider :locale="props.locale" :messages="messages">
       <ErrorNotice v-for="error in errors" :key="error.key" :error="error" />
 
-      <ScoreBoard
+      <!-- <ScoreBoard
         v-if="gameData?.gameStatus === 1"
         :class="{ 'is-visible': isScoreBoardVisible }"
         :game-data="gameData"
-      />
+      /> -->
 
       <GameData
         v-if="!isEmpty(gameData)"
