@@ -1,3 +1,8 @@
+## [2.19.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.19.1...v2.19.2) (2025-03-04)
+
+### Bug Fixes
+
+* **gamecenter/timeline:** Élő eredményjelző kikapcsolása  safari hiba miatt ([617b4e7](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/617b4e7a1d589407cb986e573d2b29314da05883))
 ## [2.19.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.19.0...v2.19.1) (2025-03-03)
 ## [2.19.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.18.0...v2.19.0) (2025-03-03)
 ## [2.18.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.17.0...v2.18.0) (2025-02-25)
