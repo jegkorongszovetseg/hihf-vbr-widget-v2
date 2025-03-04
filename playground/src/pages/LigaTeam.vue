@@ -1,5 +1,9 @@
 <script setup>
+import { useLigaCss } from '../composables/use-liga-css';
 import { store } from '../store.js';
+
+useLigaCss();
+
 // import '../../../packages/shared/dist/css/common.css';
 // import '../../../packages/shared/dist/css/typography.css';
 // import '../../../packages/shared/dist/css/cards.css';

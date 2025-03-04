@@ -1,5 +1,8 @@
 <script setup>
+import { useLigaCss } from '../composables/use-liga-css';
 import { store } from '../store.js';
+
+useLigaCss();
 </script>
 
 <template>
