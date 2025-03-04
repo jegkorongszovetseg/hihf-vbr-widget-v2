@@ -1,3 +1,11 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 15px;
+}
+
 * {
   --vbr-widget-typography-font-size-50: 10px;
   --vbr-widget-typography-font-size-100: 11px;
@@ -29,15 +37,15 @@ body.liga {
     --vbr-widget-primary-color-800: #1f2937;
     --vbr-widget-primary-color-900: #111827;
 
-    --vbr-widget-secondary-color-100: #dbeafe;
-    --vbr-widget-secondary-color-200: #bfdbfe;
-    --vbr-widget-secondary-color-300: #93c5fd;
-    --vbr-widget-secondary-color-400: #818cf8;
-    --vbr-widget-secondary-color-500: #3b82f6;
-    --vbr-widget-secondary-color-600: #2563eb;
-    --vbr-widget-secondary-color-700: #1d4ed8;
-    --vbr-widget-secondary-color-800: #1e40af;
-    --vbr-widget-secondary-color-900: #1e3a8a;
+    --vbr-widget-secondary-color-100: #bbdefb;
+    --vbr-widget-secondary-color-200: #90caf9;
+    --vbr-widget-secondary-color-300: #64b5f6;
+    --vbr-widget-secondary-color-400: #42a5f5;
+    --vbr-widget-secondary-color-500: #2196f3;
+    --vbr-widget-secondary-color-600: #1e88e5;
+    --vbr-widget-secondary-color-700: #1976d2;
+    --vbr-widget-secondary-color-800: #1565c0;
+    --vbr-widget-secondary-color-900: #0d47a1;
 
     --vbr-widget-tab-btn-color: var(--vbr-widget-primary-color-400);
     --vbr-widget-tab-btn-active-border-color: var(--vbr-widget-secondary-color-500);
@@ -45,6 +53,7 @@ body.liga {
     --vbr-widget-table-header-bg-color: var(--vbr-widget-secondary-color-500);
     --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-secondary-color-600);
     --vbr-widget-table-header-color: var(--vbr-widget-secondary-color-200);
+    --vbr-widget-table-header-active-bg-color: var(--vbr-widget-secondary-color-800);
     --vbr-widget-table-zero-color: var(--vbr-widget-primary-color-400);
     --vbr-widget-table-stripped-bg-color: #f6f6f6;
 
