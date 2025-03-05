@@ -86,10 +86,10 @@
   .section-title {
     padding: 10px;
     text-align: center;
-    font-size: var(--vbr-widget-typography-font-size-500);
+    font-size: var(--vbr-widget-playoffs-header-size);
     font-weight: 700;
-    color: var(--vbr-widget-primary-color-100);
-    background-color: var(--vbr-widget-primary-color-700);
+    color: var(--vbr-widget-playoffs-header-color);
+    background-color: var(--vbr-widget-playoffs-header-bg);
   }
   .section-details {
     display: grid;
@@ -98,7 +98,7 @@
     justify-items: center;
     gap: 20px;
     padding: 20px;
-    background-color: var(--vbr-widget-primary-color-50);
+    background-color: var(--vbr-widget-playoffs-details-bg);
 
     @include mobile {
       grid-template-columns: 1fr fit-content(100px) fit-content(100px) fit-content(100px) 1fr;

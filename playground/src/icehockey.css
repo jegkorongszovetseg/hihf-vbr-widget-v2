@@ -1,3 +1,4 @@
+// html/body Jégkorongos oldalak hibás beállítása
 html {
   font-size: 10px;
 }
@@ -52,7 +53,7 @@ body.liga {
 
     --vbr-widget-table-header-bg-color: var(--vbr-widget-secondary-color-500);
     --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-secondary-color-600);
-    --vbr-widget-table-header-color: var(--vbr-widget-secondary-color-200);
+    --vbr-widget-table-header-color: var(--vbr-widget-secondary-color-100);
     --vbr-widget-table-header-active-bg-color: var(--vbr-widget-secondary-color-800);
     --vbr-widget-table-zero-color: var(--vbr-widget-primary-color-400);
     --vbr-widget-table-stripped-bg-color: #f6f6f6;
@@ -61,6 +62,17 @@ body.liga {
     --vbr-widget-gamecenter-card-event-goal-border-color: var(--vbr-widget-primary-color-700);
     --vbr-widget-gamecenter-card-event-goal-bg-color: var(--vbr-widget-primary-color-700);
     --vbr-widget-gamecenter-card-tertiary-color: var(--vbr-widget-primary-color-400);
+
+    --vbr-widget-paginator-border-color: var(--vbr-widget-primary-color-300);
+    --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-300);
+    --vbr-widget-paginator-active-bg-color: var(--vbr-widget-secondary-color-500);
+
+    --vbr-widget-toggle-group-btn-bg-color: var(--vbr-widget-primary-color-200);
+    --vbr-widget-toggle-group-btn-active-bg-color: var(--vbr-widget-secondary-color-500);
+
+    --vbr-widget-playoffs-header-bg: var(--vbr-widget-secondary-color-500);
+    --vbr-widget-playoffs-header-color: var(--vbr-widget-primary-color-50);
+    --vbr-widget-playoffs-details-bg: var(--vbr-widget-secondary-color-100);
   }
 }
 
