@@ -105,9 +105,7 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
               </a>
             </div>
             <div>
-              <span v-if="game.isOvertime" class="label">{{ t('common.overtimeShort') }}</span>
-              <span v-if="game.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
-              <span v-if="game.seriesStandings" class="label">{{ game.seriesStandings }}</span>
+              <span v-if="game.seriesStandings" class="is-badge is-dark">{{ game.seriesStandings }}</span>
             </div>
             <div class="is-text-bold">
               <span class="is-team-name-long">{{ game.awayTeam?.longName }}</span>
