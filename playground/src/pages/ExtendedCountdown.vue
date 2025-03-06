@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { useLigaCss } from '../composables/use-liga-css';
 // import { Countdown } from '@mjsz-vbr-elements/extended';
 import { store } from '../store.js';
 // DEV:
@@ -8,6 +9,8 @@ import '../../../packages/shared/assets/css/countdown.scss';
 import '../../../packages/shared/assets/css/animation.scss';
 // finished: 78093
 // lesz: 81776
+
+useLigaCss();
 
 const isResizeable = ref(true);
 </script>
