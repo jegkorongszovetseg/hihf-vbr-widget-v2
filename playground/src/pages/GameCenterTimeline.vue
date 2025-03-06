@@ -2,7 +2,7 @@
 // DEV:
 import { store } from '../store.js';
 // import '../../../packages/shared/dist/css/common.css';
-// import '../../../packages/shared/dist/css/game-center-timeline.css';
+import '../../../packages/shared/assets/css/game-center-timeline.scss';
 // import '../../../packages/shared/dist/css/responsive-table.css';
 // import '../../../packages/shared/dist/css/table.css';
 // import '../../../packages/shared/dist/css/forms.css';

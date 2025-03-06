@@ -1,16 +1,16 @@
 <script setup>
-import { Image } from '@mjsz-vbr-elements/core/components';
+// import { Image } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
 import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
 import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
-import { computed } from 'vue';
-import GamePeriodProgress from '../game/components/GamePeriodProgress.vue';
-import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from '../game/internal';
-import PeriodResults from './components/PeriodResults.vue';
-import { buildPeriodResultsByTeam, filterGoalScorers } from './internal';
+// import { computed } from 'vue';
+// import GamePeriodProgress from '../game/components/GamePeriodProgress.vue';
+// import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from '../game/internal';
+// import PeriodResults from './components/PeriodResults.vue';
+// import { buildPeriodResultsByTeam, filterGoalScorers } from './internal';
 
-const props = defineProps({
+defineProps({
   gameData: {
     type: Object,
     required: true,
@@ -29,9 +29,9 @@ const props = defineProps({
 
 const { t } = useI18n();
 
-const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gameData.periodResults));
-const homeGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.homeTeam.id));
-const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.awayTeam.id));
+// const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gameData.periodResults));
+// const homeGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.homeTeam.id));
+// const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.awayTeam.id));
 </script>
 
 <template>
@@ -68,8 +68,7 @@ const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.
         </a>
       </div>
     </div>
-
-    <div class="is-teams-and-results">
+    <!-- <div class="is-teams-and-results">
       <div>
         <Image v-once :src="gameData.homeTeam.logo" class="is-team-logo" :default-src="DEAFULT_LOGO_TEAM_A" />
         <h1 class="is-team-name">
@@ -130,6 +129,6 @@ const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>

@@ -5,7 +5,6 @@
   container-type: inline-size;
 
   &-game-data {
-    margin-bottom: 30px;
     text-align: center;
 
     .is-teams-and-results {
@@ -19,6 +18,62 @@
       @include mobile {
         grid-template-columns: repeat(3, 1fr);
       }
+    }
+
+    .is-external-contents {
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      a {
+        display: flex;
+        align-items: center;
+        font-size: var(--vbr-widget-gamecenter-local-gamedate-size);
+
+        &:after {
+          content: '/';
+          margin: 0 5px;
+        }
+
+        &:last-of-type:after {
+          content: '';
+        }
+      }
+
+      .is-icon {
+        margin-right: 5px;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+      }
+    }
+
+    .is-attendance {
+      font-size: var(--vbr-widget-typography-font-size-400);
+      line-height: var(--vbr-widget-typography-font-lineheight-600);
+      color: var(--vbr-widget-primary-color-500);
+    }
+  }
+
+  &-score-board {
+    position: sticky;
+    top: -1px;
+    z-index: 10;
+    transition: all 280ms ease-out;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: start;
+    row-gap: 1rem;
+    background-color: var(--vbr-widget-primary-color-0);
+
+    margin-bottom: 30px;
+    text-align: center;
+
+    @include mobile {
+      grid-template-columns: repeat(3, 1fr);
     }
 
     .is-title-container {
@@ -82,41 +137,6 @@
       color: var(--vbr-widget-live-game-color);
     }
 
-    .is-external-contents {
-      padding: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      a {
-        display: flex;
-        align-items: center;
-        font-size: var(--vbr-widget-gamecenter-local-gamedate-size);
-
-        &:after {
-          content: '/';
-          margin: 0 5px;
-        }
-
-        &:last-of-type:after {
-          content: '';
-        }
-      }
-
-      .is-icon {
-        margin-right: 5px;
-        display: inline-block;
-        width: 15px;
-        height: 15px;
-      }
-    }
-
-    .is-attendance {
-      font-size: var(--vbr-widget-typography-font-size-400);
-      line-height: var(--vbr-widget-typography-font-lineheight-600);
-      color: var(--vbr-widget-primary-color-500);
-    }
-
     .is-goal-scorers {
       font-size: var(--vbr-widget-typography-font-size-200);
       font-weight: 700;
@@ -127,67 +147,12 @@
         font-weight: 400;
       }
     }
-  }
 
-  &-score-board {
-    /* display: grid; */
-    grid-template-columns: 50px auto auto auto 50px;
-    grid-template-rows: 50px;
-    align-items: center;
-    justify-items: center;
-    gap: 1rem;
-    padding: 0.5rem;
-    width: 100%;
-    color: #fff;
-    background-color: var(--vbr-widget-primary-color-700);
-    position: sticky;
-    top: 0;
-    display: none;
-    z-index: 100;
+    &.is-pinned {
+      background-color: aqua;
 
-    &.is-visible {
-      display: grid;
-    }
-
-    .is-score {
-      font-size: var(--vbr-widget-typography-font-size-950);
-      font-weight: 700;
-    }
-
-    .is-team {
-      display: none;
-      font-size: var(--vbr-widget-typography-font-size-500);
-      font-weight: 700;
-      color: var(--vbr-widget-primary-color-100);
-    }
-
-    .is-home-team {
-      justify-self: end;
-      text-align: right;
-    }
-
-    .is-away-team {
-      justify-self: start;
-    }
-
-    .is-game-status {
-      font-size: var(--vbr-widget-typography-font-size-200);
-      font-weight: 500;
-      text-transform: uppercase;
-      color: var(--vbr-widget-live-game-color);
-    }
-
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    @include mobile {
-      grid-template-columns: 1fr 50px auto auto auto 50px 1fr;
-
-      .is-team {
-        display: block;
+      .is-goal-scorers {
+        display: none;
       }
     }
   }
