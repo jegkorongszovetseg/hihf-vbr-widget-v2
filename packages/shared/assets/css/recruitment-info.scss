@@ -34,13 +34,12 @@
   ul {
     display: grid;
     grid-template-columns: max-content 1fr;
-    gap: 8px 16px;
+    gap: 10px 16px;
     padding: 0 1em 1em 1em;
   }
 
   li {
     display: contents;
-
     color: var(--vbr-widget-primary-color-300);
 
     > div {
@@ -51,6 +50,10 @@
 
 .recruitment-info-filter {
   margin-block-end: 1rem;
+
+  input {
+    max-width: 38%;
+  }
 }
 
 .no-result {

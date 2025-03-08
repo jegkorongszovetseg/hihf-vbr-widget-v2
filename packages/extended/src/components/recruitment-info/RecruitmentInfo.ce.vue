@@ -44,7 +44,6 @@ const query = ref('');
 
 const { page, change: onPaginatorChange } = usePage();
 
-// filter ['organizationAddresses', 'headquarter', 'city']
 const convertedRows = computed(() =>
   convert(state.value)
     .filter(query.value, ['organizationName', 'city'])
