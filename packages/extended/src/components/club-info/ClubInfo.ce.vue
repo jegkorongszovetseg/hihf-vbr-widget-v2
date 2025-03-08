@@ -55,13 +55,19 @@ const convertedRows = computed(() =>
 
 <template>
   <I18NProvider v-slot="{ t }" :locale="locale" :messages="messages">
-    <LoadingIndicator v-if="isLoading" />
-    <div>
+    <div class="club-info-filter">
       <label for="organization" class="label">{{ t('selection.filter') }}</label>
-      <input id="organization" v-model="query" type="text" class="base-input">
+      <input id="organization" v-model="query" :placeholder="t('clubInfo.filterByNameAndLocation')" type="text" class="base-input">
     </div>
-    <details v-for="(item, index) in convertedRows.rows" :key="item?.organizationName" class="is-card club-info-card">
-      <summary><strong>{{ index }} - {{ item?.organizationName }} ({{ item?.recruitment?.recruitmentTeamName }})</strong></summary>
+
+    <LoadingIndicator v-if="isLoading" />
+
+    <div v-if="state.length > 0 && convertedRows.rows.length === 0" class="no-result">
+      {{ t('clubInfo.noResult') }}
+    </div>
+
+    <details v-for="item in convertedRows.rows" :key="item?.organizationName" class="club-info-card">
+      <summary><strong>{{ item?.organizationName }} ({{ item?.recruitment?.recruitmentTeamName }})</strong></summary>
       <ul>
         <li v-for="(recruitment, key) in item.recruitment" :key="key">
           <span>{{ key }}:</span> <div v-html="recruitment" />

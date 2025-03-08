@@ -13,6 +13,7 @@
     "noPhases": "Nincsenek szakaszok",
     "teams": "Csapatok",
     "filterName": "Szűrés névre",
+    "filter": "Szűrés",
     "players": "Játékosok",
     "month": "Hónap",
     "homeOrAway": "Hazai vagy Vendég",
@@ -81,5 +82,9 @@
     "hours": "Óra",
     "minutes": "Perc",
     "seconds": "Másodperc"
+  },
+  "clubInfo": {
+    "filterByNameAndLocation": "Szűrés név vagy település szerint",
+    "noResult": "Nincs megjeleníthető találat"
   }
 }

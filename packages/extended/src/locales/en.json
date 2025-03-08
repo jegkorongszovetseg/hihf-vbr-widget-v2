@@ -13,6 +13,7 @@
     "noPhases": "No Phases",
     "teams": "Teams",
     "filterName": "Filter by Name",
+    "filter": "Filter",
     "players": "Players",
     "month": "Month",
     "homeOrAway": "Home or Away",
@@ -81,5 +82,9 @@
     "hours": "Hours",
     "minutes": "Minutes",
     "seconds": "Seconds"
+  },
+  "clubInfo": {
+    "filterByNameAndLocation": "Filter by name or location",
+    "noResult": "No results to display"
   }
 }
