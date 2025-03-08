@@ -1,0 +1,18 @@
+.club-info-card {
+  ul {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 8px 16px;
+    margin-block-start: 16px;
+  }
+
+  li {
+    display: contents;
+
+    color: var(--vbr-widget-primary-color-300);
+
+    > div {
+      color: var(--vbr-widget-primary-color-900);
+    }
+  }
+}
