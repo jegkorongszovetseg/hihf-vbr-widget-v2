@@ -83,7 +83,7 @@
     "minutes": "Perc",
     "seconds": "Másodperc"
   },
-  "clubInfo": {
+  "recruitmentInfo": {
     "filterByNameAndLocation": "Szűrés név vagy település szerint",
     "noResult": "Nincs megjeleníthető találat"
   }

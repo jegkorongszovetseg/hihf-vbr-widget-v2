@@ -55,18 +55,18 @@ const convertedRows = computed(() =>
 
 <template>
   <I18NProvider v-slot="{ t }" :locale="locale" :messages="messages">
-    <div class="club-info-filter">
+    <div class="recruitment-info-filter">
       <label for="organization" class="label">{{ t('selection.filter') }}</label>
-      <input id="organization" v-model="query" :placeholder="t('clubInfo.filterByNameAndLocation')" type="text" class="base-input">
+      <input id="organization" v-model="query" :placeholder="t('recruitmentInfo.filterByNameAndLocation')" type="text" class="base-input">
     </div>
 
     <LoadingIndicator v-if="isLoading" />
 
     <div v-if="state.length > 0 && convertedRows.rows.length === 0" class="no-result">
-      {{ t('clubInfo.noResult') }}
+      {{ t('recruitmentInfo.noResult') }}
     </div>
 
-    <details v-for="item in convertedRows.rows" :key="item?.organizationName" class="club-info-card">
+    <details v-for="item in convertedRows.rows" :key="item?.organizationName" class="recruitment-info-card">
       <summary><strong>{{ item?.organizationName }} ({{ item?.recruitment?.recruitmentTeamName }})</strong></summary>
       <ul>
         <li v-for="(recruitment, key) in item.recruitment" :key="key">
@@ -86,7 +86,7 @@ const convertedRows = computed(() =>
 
 <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
 
-<style src="@mjsz-vbr-elements/shared/css/clubinfo.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/recruitment-info.scss" lang="scss"></style>
 
 <style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
 
