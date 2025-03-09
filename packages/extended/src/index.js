@@ -1,5 +1,5 @@
 import { defineCustomElement } from 'vue';
-import { Calendar, Championship, GamesTimeline, IVRIdentifiers, ScheduleCup, StandingsSelector } from './components';
+import { Calendar, Championship, Countdown, GamesTimeline, IVRIdentifiers, ScheduleCup, StandingsSelector } from './components';
 
 const CalendarCE = defineCustomElement(Calendar);
 const ChampionshipCE = defineCustomElement(Championship);
@@ -7,12 +7,15 @@ const ScheduleCupCE = defineCustomElement(ScheduleCup);
 const IVRIdentifiersCE = defineCustomElement(IVRIdentifiers);
 const GamesTimelineCE = defineCustomElement(GamesTimeline);
 const StandingsSelectorCE = defineCustomElement(StandingsSelector);
+const CountdownCE = defineCustomElement(Countdown);
 
 export {
   Calendar,
   CalendarCE,
   Championship,
   ChampionshipCE,
+  Countdown,
+  CountdownCE,
   GamesTimeline,
   GamesTimelineCE,
   IVRIdentifiers,
@@ -30,6 +33,7 @@ export function register() {
   customElements.define('mjsz-vbr-ibr-identifiers', IVRIdentifiersCE);
   customElements.define('mjsz-vbr-games-timeline', GamesTimelineCE);
   customElements.define('mjsz-vbr-standings-selector', StandingsSelectorCE);
+  customElements.define('mjsz-vbr-countdown', CountdownCE);
 }
 
 export default {

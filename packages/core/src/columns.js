@@ -525,6 +525,11 @@ export const COLUMNS_GOALIES = {
     tooltip: 'table.gpi.tooltip',
     sortOrders: [{ target: 'gpi', direction: SORT_STATE_DESCEND }],
   },
+  so: {
+    label: 'table.so.short',
+    tooltip: 'table.so.tooltip',
+    sortOrders: [{ target: 'so', direction: SORT_STATE_DESCEND }],
+  },
   mipMin: {
     label: 'table.toi.short',
     tooltip: 'table.toi.tooltip',

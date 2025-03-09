@@ -75,5 +75,11 @@
     "allSchedule": "Teljes menetrend",
     "errorText": "Valami hiba történt!",
     "errorCta": "Próbáld újra"
+  },
+  "countdown": {
+    "days": "Nap",
+    "hours": "Óra",
+    "minutes": "Perc",
+    "seconds": "Másodperc"
   }
 }

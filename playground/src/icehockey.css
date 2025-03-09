@@ -1,0 +1,127 @@
+// html/body Jégkorongos oldalak hibás beállítása
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 15px;
+}
+
+* {
+  --vbr-widget-typography-font-size-50: 10px;
+  --vbr-widget-typography-font-size-100: 11px;
+  --vbr-widget-typography-font-size-200: 12px;
+  --vbr-widget-typography-font-size-300: 13px;
+  --vbr-widget-typography-font-size-400: 14px;
+  --vbr-widget-typography-font-size-500: 16px;
+  --vbr-widget-typography-font-size-600: 18px;
+  --vbr-widget-typography-font-size-700: 20px;
+  --vbr-widget-typography-font-size-800: 24px;
+  --vbr-widget-typography-font-size-900: 28px;
+  --vbr-widget-typography-font-size-950: 32px;
+
+  --vbr-widget-gamecenter-result-size: 110px;
+  --vbr-widget-gamecenter-title-size: 16px;
+}
+
+body.liga {
+  * {
+    --vbr-widget-primary-color-0: #ffffff;
+    --vbr-widget-primary-color-50: #f9fafb;
+    --vbr-widget-primary-color-100: #f3f4f6;
+    --vbr-widget-primary-color-200: #e5e7eb;
+    --vbr-widget-primary-color-300: #d1d5db;
+    --vbr-widget-primary-color-400: #9ca3af;
+    --vbr-widget-primary-color-500: #6b7280;
+    --vbr-widget-primary-color-600: #4b5563;
+    --vbr-widget-primary-color-700: #374151;
+    --vbr-widget-primary-color-800: #1f2937;
+    --vbr-widget-primary-color-900: #111827;
+
+    --vbr-widget-secondary-color-50: #e3f2fd;
+    --vbr-widget-secondary-color-100: #bbdefb;
+    --vbr-widget-secondary-color-200: #90caf9;
+    --vbr-widget-secondary-color-300: #64b5f6;
+    --vbr-widget-secondary-color-400: #42a5f5;
+    --vbr-widget-secondary-color-500: #2196f3;
+    --vbr-widget-secondary-color-600: #1e88e5;
+    --vbr-widget-secondary-color-700: #1976d2;
+    --vbr-widget-secondary-color-800: #1565c0;
+    --vbr-widget-secondary-color-900: #0d47a1;
+
+    --vbr-widget-tab-btn-color: var(--vbr-widget-primary-color-400);
+    --vbr-widget-tab-btn-active-border-color: var(--vbr-widget-secondary-color-500);
+
+    --vbr-widget-table-header-bg-color: var(--vbr-widget-secondary-color-500);
+    --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-secondary-color-600);
+    --vbr-widget-table-header-color: var(--vbr-widget-secondary-color-100);
+    --vbr-widget-table-header-active-bg-color: var(--vbr-widget-secondary-color-800);
+    --vbr-widget-table-zero-color: var(--vbr-widget-primary-color-400);
+    --vbr-widget-table-stripped-bg-color: #f6f6f6;
+
+    --vbr-widget-gamecenter-card-border-color: var(--vbr-widget-primary-color-300);
+    --vbr-widget-gamecenter-card-event-goal-border-color: var(--vbr-widget-primary-color-700);
+    --vbr-widget-gamecenter-card-event-goal-bg-color: var(--vbr-widget-primary-color-700);
+    --vbr-widget-gamecenter-card-tertiary-color: var(--vbr-widget-primary-color-400);
+
+    --vbr-widget-paginator-border-color: var(--vbr-widget-primary-color-300);
+    --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-300);
+    --vbr-widget-paginator-active-bg-color: var(--vbr-widget-secondary-color-500);
+
+    --vbr-widget-toggle-group-btn-bg-color: var(--vbr-widget-primary-color-200);
+    --vbr-widget-toggle-group-btn-active-bg-color: var(--vbr-widget-secondary-color-500);
+
+    --vbr-widget-playoffs-header-bg: var(--vbr-widget-secondary-color-500);
+    --vbr-widget-playoffs-header-color: var(--vbr-widget-primary-color-50);
+    --vbr-widget-playoffs-details-bg: var(--vbr-widget-secondary-color-50);
+
+    --vbr-widget-countdown-title-bg: var(--vbr-widget-primary-color-900);
+    --vbr-widget-countdown-gamedata-bg: var(--vbr-widget-primary-color-700);
+    --vbr-widget-countdown-result-bg: var(--vbr-widget-primary-color-800);
+  }
+}
+
+mjsz-vbr-team-liga,
+mjsz-vbr-player-liga {
+  --vbr-widget-typography-heading-1-size: 35px;
+  --vbr-widget-typography-heading-2-size: 28px;
+  --vbr-widget-main-image-wrapper-horizontal-margin: -15px;
+}
+
+mjsz-vbr-schedule-liga {
+  --vbr-widget-sticky-top-offset: 50px;
+
+  @media all and (min-width: 768px) {
+    --vbr-widget-sticky-top-offset: 0;
+  }
+}
+
+mjsz-vbr-standings-selector {
+  --vbr-widget-standings-selector-title-size: 16px;
+  --vbr-widget-standings-selector-title-color: var(--vbr-widget-primary-color-700);
+  --vbr-widget-standings-selector-title-bg-color: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 96%,
+    rgba(0, 0, 0, 0.2) 96%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+
+  --vbr-widget-table-default-bg-color: transparent;
+  --vbr-widget-table-header-bg-color: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 96%,
+    rgba(0, 0, 0, 0.2) 96%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  --vbr-widget-table-header-font-size: 11px;
+  --vbr-widget-table-header-hover-bg-color: transparent;
+  --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-400);
+  --vbr-widget-table-stripped-bg-color: transparent;
+}
+
+mjsz-vbr-countdown {
+  --vbr-widget-countdown-title-height: 32px;
+  --vbr-widget-countdown-gamedata-height: 64px;
+}

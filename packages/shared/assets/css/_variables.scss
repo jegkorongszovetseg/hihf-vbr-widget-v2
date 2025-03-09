@@ -38,7 +38,7 @@
   --vbr-widget-live-game-color: #8bc34a;
   --vbr-widget-neutral-color: #ffc107;
 
-  --vbr-widget-typography-font-size-50: 0.6275rem; /* 10px */
+  --vbr-widget-typography-font-size-50: 0.625rem; /* 10px */
   --vbr-widget-typography-font-size-100: 0.6875rem; /* 11px */
   --vbr-widget-typography-font-size-200: 0.75rem; /* 12px */
   --vbr-widget-typography-font-size-300: 0.8125rem; /* 13px */
@@ -71,6 +71,9 @@
   --vbr-widget-typography-heading-5-size: var(--vbr-widget-typography-font-size-400);
   --vbr-widget-typography-heading-6-size: var(--vbr-widget-typography-font-size-200);
 
+  --vbr-widget-link-color: var(--vbr-widget-secondary-color-700);
+  --vbr-widget-hover-color: var(--vbr-widget-secondary-color-900);
+
   --vbr-widget-table-header-font-size: var(--vbr-widget-typography-font-size-200);
   --vbr-widget-table-default-column-width: 30px;
   --vbr-widget-table-default-bg-color: var(--vbr-widget-primary-color-0);
@@ -79,7 +82,7 @@
   --vbr-widget-table-header-bg-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-primary-color-700);
   --vbr-widget-table-header-color: var(--vbr-widget-primary-color-200);
-  --vbr-widget-table-table-header-active-bg-color: var(--vbr-widget-primary-color-700);
+  --vbr-widget-table-header-active-bg-color: var(--vbr-widget-primary-color-700);
   --vbr-widget-table-header-active-color: var(--vbr-widget-primary-color-0);
   --vbr-widget-table-hover-color: var(--vbr-widget-secondary-color-900);
   --vbr-widget-table-hover-bg-color: var(--vbr-widget-secondary-color-100);
@@ -125,9 +128,6 @@
   --vbr-widget-error-notice-bg-color: var(--vbr-widget-danger-color-50);
   --vbr-widget-error-notice-border-color: var(--vbr-widget-danger-color-100);
   --vbr-widget-error-notice-color: var(--vbr-widget-danger-color-700);
-
-  --vbr-widget-link-color: var(--vbr-widget-secondary-color-700);
-  --vbr-widget-hover-color: var(--vbr-widget-secondary-color-900);
 
   --vbr-widget-base-input-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-base-input-font-size: var(--vbr-widget-typography-font-size-400);
@@ -270,4 +270,44 @@
   --vbr-widget-top-list-player-separator-color: var(--vbr-widget-primary-color-800);
   --vbr-widget-top-list-image-border-color: var(--vbr-widget-primary-color-600);
   --vbr-widget-top-list-image-bg-color: var(--vbr-widget-primary-color-800);
+
+  --vbr-widget-countdown-title-height: 2rem;
+  --vbr-widget-countdown-title-bg: var(--vbr-widget-primary-color-900);
+  --vbr-widget-countdown-gamedata-height: 4rem;
+  --vbr-widget-countdown-gamedata-bg: var(--vbr-widget-primary-color-700);
+  --vbr-widget-countdown-result-bg: var(--vbr-widget-primary-color-800);
+
+  --vbr-widget-playoffs-header-bg: var(--vbr-widget-primary-color-800);
+  --vbr-widget-playoffs-header-color: var(--vbr-widget-primary-color-800);
+  --vbr-widget-playoffs-header-size: var(--vbr-widget-typography-font-size-500);
+  --vbr-widget-playoffs-details-bg: var(--vbr-widget-primary-color-50);
+
+  --ease-spring-1: linear(
+    0,
+    0.009,
+    0.035 2.1%,
+    0.141,
+    0.281 6.7%,
+    0.723 12.9%,
+    0.938 16.7%,
+    1.017,
+    1.077,
+    1.121,
+    1.149 24.3%,
+    1.159,
+    1.163,
+    1.161,
+    1.154 29.9%,
+    1.129 32.8%,
+    1.051 39.6%,
+    1.017 43.1%,
+    0.991,
+    0.977 51%,
+    0.974 53.8%,
+    0.975 57.1%,
+    0.997 69.8%,
+    1.003 76.9%,
+    1.004 83.8%,
+    1
+  );
 }

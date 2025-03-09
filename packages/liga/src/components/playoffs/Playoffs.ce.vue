@@ -1,4 +1,5 @@
 <script setup>
+import { gameProps } from '@mjsz-vbr-elements/core';
 import { I18NProvider, Image, LoadingIndicator, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
 import { externalGameLinkResolver, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
@@ -21,6 +22,9 @@ const props = defineProps({
     type: Number,
     default: 0,
   },
+
+  // externalGameResolver, isGameTargetExternal
+  ...gameProps,
 });
 
 const DEFAULT_LIGA_GAME_RESOLVER = '/game/id/{gameId}';
@@ -40,8 +44,10 @@ const timezone = getLocalTimezone();
 const messages = { en, hu };
 
 function externalGameResolver(game) {
-  return externalGameLinkResolver(props.externalGameLink || DEFAULT_LIGA_GAME_RESOLVER, game);
+  return externalGameLinkResolver(props.externalGameResolver || DEFAULT_LIGA_GAME_RESOLVER, game);
 }
+
+const externalGameTarget = computed(() => props.isGameTargetExternal ? '_blank' : '_self');
 
 const formatGameDate = date => format(date, 'L dddd', timezone, props.locale);
 const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
@@ -53,7 +59,7 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
       <LoadingIndicator v-if="isLoading" />
       <div v-for="playoff in playoffs" :key="`${playoff.divisionStage2Name}-${playoff.divisionStageNumber}`">
         <div class="section-title">
-          {{ t(`playoffs.${playoff.divisionStage2Name}`) }}-{{ playoff.divisionStageNumber }}
+          {{ t(`playoffs.${playoff.divisionStage2Name}`) }}<span v-if="playoff.divisionStageNumber">-{{ playoff.divisionStageNumber }}</span>
         </div>
         <div class="section-details">
           <div class="is-team-name is-right">
@@ -91,7 +97,7 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
               <a
                 v-else
                 :href="externalGameResolver(game)"
-                target="_blank"
+                :target="externalGameTarget"
                 class="is-text-bold"
                 :class="[{ 'is-text-dark': game.gameStatus !== 1, 'is-text-accent': game.gameStatus === 1 }]"
               >
@@ -99,9 +105,7 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
               </a>
             </div>
             <div>
-              <span v-if="game.isOvertime" class="label">{{ t('common.overtimeShort') }}</span>
-              <span v-if="game.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
-              <span v-if="game.seriesStandings" class="label">{{ game.seriesStandings }}</span>
+              <span v-if="game.seriesStandings" class="is-badge is-dark">{{ game.seriesStandings }}</span>
             </div>
             <div class="is-text-bold">
               <span class="is-team-name-long">{{ game.awayTeam?.longName }}</span>

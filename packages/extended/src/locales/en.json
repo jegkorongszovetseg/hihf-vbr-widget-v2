@@ -75,5 +75,11 @@
     "allSchedule": "Games Schedule",
     "errorText": "Something went wrong!",
     "errorCta": "Try Again"
+  },
+  "countdown": {
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds"
   }
 }
