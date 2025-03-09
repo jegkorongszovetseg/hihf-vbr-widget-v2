@@ -9,6 +9,8 @@ export const DEFAULT_EXTERNAL_PLAYER_URL
 export const DEFAULT_EXTERNAL_TEAM_URL
   = 'https://www.ersteliga.hu/stats/team/?teamId={team.id}&championshipId={championshipId}';
 
+export const DEFAULT_EXTERNAL_STATISTIC_URL = 'https://www.ersteliga.hu/stats?report={id}';
+
 export const FLAG_BASE_URL = 'https://api.icehockey.hu/static/api/flag';
 
 export const SORT_STATE_ORIGINAL = 'original';
