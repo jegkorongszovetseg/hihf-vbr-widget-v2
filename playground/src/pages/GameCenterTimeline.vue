@@ -1,4 +1,5 @@
 <script setup>
+import { useLigaCss } from '../composables/use-liga-css';
 // DEV:
 import { store } from '../store.js';
 // import '../../../packages/shared/dist/css/common.css';
@@ -7,6 +8,8 @@ import { store } from '../store.js';
 // import '../../../packages/shared/dist/css/table.css';
 // import '../../../packages/shared/dist/css/forms.css';
 // import '../../../packages/shared/dist/css/progress.css';
+
+useLigaCss();
 </script>
 
 <template>
