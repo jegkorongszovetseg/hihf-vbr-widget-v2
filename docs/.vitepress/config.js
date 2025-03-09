@@ -54,9 +54,10 @@ export default defineConfig(({ mode }) => {
             items: [
               { text: 'Bajnokságok', link: '/widget/extended-championship' },
               { text: 'Kupa Menetrend', link: '/widget/extended-cup-schedule' },
-              { text: 'Visszaszámláló', link: '/widget/extended-countdown' },
               { text: 'Mérkőzés idővonal', link: '/widget/extended-games-timeline' },
+              { text: 'Toborzási Információk', link: '/widget/extended-recruitment-info' },
               { text: 'Versenynaptár', link: '/widget/extended-calendar' },
+              { text: 'Visszaszámláló', link: '/widget/extended-countdown' },
             ],
           },
           {
