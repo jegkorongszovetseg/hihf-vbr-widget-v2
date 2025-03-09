@@ -1,7 +1,7 @@
 {
   "name": "@mjsz-vbr-elements/shared",
   "type": "module",
-  "version": "2.19.1",
+  "version": "2.19.2",
   "private": false,
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
