@@ -114,7 +114,7 @@ mjsz-vbr-top-list-liga {
   --vbr-widget-tab-btn-active-border-color: var(--vbr-widget-primary-color-0) !important;
 
   --vbr-widget-link-color: var(--vbr-widget-secondary-color-100);
-  --vbr-widget-hover-color: var(--vbr-widget-secondary-color-50);
+  --vbr-widget-hover-color: var(--vbr-widget-primary-color-0);
 
   --vbr-widget-loading-indicator-text-color: var(--vbr-widget-secondary-color-100);
 }

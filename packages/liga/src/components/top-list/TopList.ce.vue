@@ -31,11 +31,6 @@ const props = defineProps({
     default: '',
   },
 
-  phaseBaseId: {
-    type: String,
-    default: '',
-  },
-
   limit: {
     type: [Number, String],
     default: 3,
