@@ -8,7 +8,7 @@ import {
 import { useErrorProvider, useServices } from '@mjsz-vbr-elements/core/composables';
 import { convert, externalPlayerLinkResolver, externalStatisticLinkResolver, externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { useArraySome } from '@vueuse/core';
-import { last } from 'ramda';
+import { isEmpty, last } from 'ramda';
 import { computed, ref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
@@ -169,28 +169,27 @@ function onRetry() {
         <ErrorNotice :error="error" use-retry @retry="onRetry" />
       </div>
       <template v-else>
-        <LoadingIndicator v-if="isLoading" />
-        <template v-else>
-          <div>
-            <button
-              v-for="section in sections"
-              :key="section.phaseBaseId"
-              class="tab-button" :class="{ 'is-active': section.phaseBaseId === phaseBaseId }"
-              @click="onChangeSection(section.phaseBaseId)"
-            >
-              {{ section.phaseName }}
-            </button>
-          </div>
+        <div v-if="!isEmpty(sections) && sections.length > 1">
+          <button
+            v-for="section in sections"
+            :key="section.phaseBaseId"
+            class="tab-button" :class="{ 'is-active': section.phaseBaseId === phaseBaseId }"
+            @click="onChangeSection(section.phaseBaseId)"
+          >
+            {{ section.phaseName }}
+          </button>
+        </div>
 
-          <div class="liga-top-list-wrapper">
-            <TopListContainer :title="t('report.points')" :list="points.rows" data-key="points" external-id="points" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
-            <TopListContainer :title="t('report.goals')" :list="goals.rows" data-key="goals" external-id="goals" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
-            <TopListContainer :title="t('report.assists')" :list="assists.rows" data-key="assists" external-id="assists" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
-            <TopListContainer :title="t('report.goalies')" :list="goalies.rows" data-key="svsPercent" external-id="goalies" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
-            <TopListContainer :title="t('report.penalties')" :list="penalty.rows" data-key="pim" external-id="playerspenalties" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
-            <TopListContainer title="+/-" :list="plusMinus.rows" data-key="plusMinus" external-id="plusminus" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
-          </div>
-        </template>
+        <LoadingIndicator v-if="isLoading" />
+
+        <div v-else class="liga-top-list-wrapper">
+          <TopListContainer :title="t('report.points')" :list="points.rows" data-key="points" external-id="points" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
+          <TopListContainer :title="t('report.goals')" :list="goals.rows" data-key="goals" external-id="goals" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
+          <TopListContainer :title="t('report.assists')" :list="assists.rows" data-key="assists" external-id="assists" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
+          <TopListContainer :title="t('report.goalies')" :list="goalies.rows" data-key="svsPercent" external-id="goalies" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
+          <TopListContainer :title="t('report.penalties')" :list="penalty.rows" data-key="pim" external-id="playerspenalties" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
+          <TopListContainer title="+/-" :list="plusMinus.rows" data-key="plusMinus" external-id="plusminus" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
+        </div>
       </template>
     </div>
   </I18NProvider>
