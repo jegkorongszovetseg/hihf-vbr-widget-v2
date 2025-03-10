@@ -96,6 +96,13 @@ mjsz-vbr-schedule-liga {
   }
 }
 
+mjsz-vbr-top-list-liga {
+  --vbr-widget-tab-btn-bg-color: transparent;
+  --vbr-widget-tab-btn-hover-bg-color: transparent;
+  --vbr-widget-tab-btn-active-color: var(--vbr-widget-secondary-color-50);
+  --vbr-widget-tab-btn-active-bg-color: transparent;
+}
+
 mjsz-vbr-standings-selector {
   --vbr-widget-standings-selector-title-size: 16px;
   --vbr-widget-standings-selector-title-color: var(--vbr-widget-primary-color-700);

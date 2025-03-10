@@ -18,7 +18,8 @@
     "overtimeShort": "OT",
     "all": "All",
     "report": "Report Sheet",
-    "video": "Video"
+    "video": "Video",
+    "retry": "Try Again"
   },
   "additionalText": {
     "inheritedPoints": {

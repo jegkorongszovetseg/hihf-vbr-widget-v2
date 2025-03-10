@@ -101,7 +101,7 @@ export function convert(data = []) {
     playerName() {
       this.result = this.result.map(row => ({
         ...row,
-        name: `${row.lastName} ${row.firstName}`,
+        name: buildPlayerName(row),
       }));
       return this;
     },
@@ -150,6 +150,11 @@ export function convert(data = []) {
       this.result = groupBy((row) => {
         return format(row.gameDate, 'YYYY-MM-DD');
       })(this.result);
+      return this;
+    },
+
+    slice(limit = 3) {
+      this.result = this.result.slice(0, limit);
       return this;
     },
   };
@@ -315,4 +320,13 @@ export function convertPhaseName(phases) {
       ...(phase.phaseSubType?.phaseSubTypeName && { phaseSubTypeName: phase.phaseSubType.phaseSubTypeName }),
     }).join('-'),
   }));
+}
+
+function buildPlayerName(row) {
+  if (!row.player)
+    return `${row.lastName} ${row.firstName}`;
+
+  if (row.player.nationality.includes('hu'))
+    return `${row.player.lastName} ${row.player.firstName}`;
+  return `${row.player.lastName}, ${row.player.firstName}`;
 }

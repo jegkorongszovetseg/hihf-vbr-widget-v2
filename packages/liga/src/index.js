@@ -9,6 +9,7 @@ import {
   Statistics,
   TeamLiga,
   TeamsLiga,
+  TopListLiga,
 } from './components';
 
 const StatisticsCE = defineCustomElement(Statistics);
@@ -19,6 +20,7 @@ const TeamsLigaCE = defineCustomElement(TeamsLiga);
 const TeamLigaCE = defineCustomElement(TeamLiga);
 const PlayersLigaCE = defineCustomElement(PlayersLiga);
 const PlayerLigaCE = defineCustomElement(PlayerLiga);
+const TopListLigaCE = defineCustomElement(TopListLiga);
 
 export {
   PlayerLiga,
@@ -37,6 +39,8 @@ export {
   TeamLigaCE,
   TeamsLiga,
   TeamsLigaCE,
+  TopListLiga,
+  TopListLigaCE,
 };
 
 export function register() {
@@ -48,6 +52,7 @@ export function register() {
   customElements.define('mjsz-vbr-players-liga', PlayersLigaCE);
   customElements.define('mjsz-vbr-player-liga', PlayerLigaCE);
   customElements.define('mjsz-vbr-team-liga', TeamLigaCE);
+  customElements.define('mjsz-vbr-top-list-liga', TopListLigaCE);
 }
 
 export default {

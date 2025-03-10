@@ -105,14 +105,15 @@ a {
   display: flex;
   align-items: center;
   justify-items: flex-start;
+  gap: 15px;
   margin: 10px 0;
   padding: 10px 20px;
   background-color: var(--vbr-widget-error-notice-bg-color);
   color: var(--vbr-widget-error-notice-color);
   border: 1px solid var(--vbr-widget-error-notice-border-color);
 
-  .icon {
-    margin-right: 15px;
+  button {
+    text-decoration: underline;
   }
 }
 
