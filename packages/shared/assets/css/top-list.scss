@@ -5,6 +5,11 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
   }
+
+  &-selector {
+    border-block-end: 1px solid var(--vbr-widget-top-list-selector-border-color);
+    margin-inline: 16px;
+  }
 }
 
 .top-list-container {
@@ -86,21 +91,6 @@
         aspect-ratio: 1;
         background-color: var(--vbr-widget-top-list-image-bg-color);
       }
-
-      // .is-team {
-      //   grid-column: 1/2;
-      //   grid-row: 2/-1;
-      //   overflow: hidden;
-      //   border-radius: 50%;
-      //   background-color: white;
-      //   border: 2px solid var(--vbr-widget-top-list-bg-color);
-      //   transform: translate(-30%, 30%);
-
-      //   img {
-      //     display: block;
-      //     width: 100%;
-      //   }
-      // }
     }
   }
 }

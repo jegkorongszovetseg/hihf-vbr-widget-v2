@@ -169,7 +169,7 @@ function onRetry() {
         <ErrorNotice :error="error" use-retry @retry="onRetry" />
       </div>
       <template v-else>
-        <div v-if="!isEmpty(sections) && sections.length > 1">
+        <div v-if="!isEmpty(sections) && sections.length > 1" class="liga-top-list-selector">
           <button
             v-for="section in sections"
             :key="section.phaseBaseId"
