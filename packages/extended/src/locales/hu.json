@@ -85,6 +85,14 @@
   },
   "recruitmentInfo": {
     "filterByNameAndLocation": "Szűrés név vagy település szerint",
-    "noResult": "Nincs megjeleníthető találat"
+    "noResult": "Nincs megjeleníthető találat",
+    "recruitmentName": "Szervezet neve",
+    "recruitmentTeamName": "Csapat név",
+    "recruitmentArenaName": "Jégpálya",
+    "recruitmentArenaAddress": "Jégpálya címe",
+    "recruitmentContactName": "Kapcsolattartó",
+    "recruitmentContactPhone": "Telefonszám",
+    "recruitmentContactEmail": "E-mail",
+    "recruitmentContactUrl": "Honlap"
   }
 }

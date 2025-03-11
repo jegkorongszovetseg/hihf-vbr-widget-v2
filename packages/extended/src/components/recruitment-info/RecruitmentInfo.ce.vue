@@ -78,7 +78,7 @@ const range = computed(() => {
       </summary>
       <ul>
         <li v-for="(recruitment, key) in item.recruitment" :key="key">
-          <span>{{ key }}:</span> <div v-html="recruitment" />
+          <span>{{ t(`recruitmentInfo.${key}`) }}:</span> <div v-html="recruitment" />
         </li>
       </ul>
     </details>
