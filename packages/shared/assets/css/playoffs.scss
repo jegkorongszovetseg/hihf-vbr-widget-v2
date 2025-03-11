@@ -4,12 +4,16 @@
   .table-grid {
     display: grid;
     grid-template-columns:
-      60px 160px minmax(60px, 0.41fr) minmax(160px, 1fr) minmax(40px, 60px) 70px minmax(160px, 1fr)
-      minmax(180px, 0.9fr);
+      70px 160px 60px minmax(160px, 1fr) minmax(40px, 60px) 30px minmax(160px, 1fr)
+      minmax(180px, 1.2fr);
     color: var(--vbr-widget-table-color);
 
     &:nth-child(odd) > div {
       background-color: var(--vbr-widget-table-stripped-bg-color);
+    }
+
+    &:hover > div {
+      background-color: var(--vbr-widget-table-hover-bg-color);
     }
 
     &.is-optional {
@@ -21,7 +25,7 @@
     }
 
     .is-truncate {
-      overflow: visible;
+      overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
@@ -50,19 +54,6 @@
       color: var(--vbr-widget-secondary-color-500);
     }
 
-    .label {
-      padding: 3px 6px;
-      font-size: var(--vbr-widget-typography-font-size-100);
-      font-weight: 700;
-      color: var(--vbr-widget-table-label-color);
-      background-color: var(--vbr-widget-table-label-bg-color);
-      border-radius: 2px;
-
-      &:not(:last-of-type) {
-        margin-right: 3px;
-      }
-    }
-
     .is-team-name-long {
       display: block;
       overflow: hidden;
@@ -86,10 +77,10 @@
   .section-title {
     padding: 10px;
     text-align: center;
-    font-size: var(--vbr-widget-typography-font-size-500);
+    font-size: var(--vbr-widget-playoffs-header-size);
     font-weight: 700;
-    color: var(--vbr-widget-primary-color-100);
-    background-color: var(--vbr-widget-primary-color-700);
+    color: var(--vbr-widget-playoffs-header-color);
+    background-color: var(--vbr-widget-playoffs-header-bg);
   }
   .section-details {
     display: grid;
@@ -98,7 +89,7 @@
     justify-items: center;
     gap: 20px;
     padding: 20px;
-    background-color: var(--vbr-widget-primary-color-50);
+    background-color: var(--vbr-widget-playoffs-details-bg);
 
     @include mobile {
       grid-template-columns: 1fr fit-content(100px) fit-content(100px) fit-content(100px) 1fr;

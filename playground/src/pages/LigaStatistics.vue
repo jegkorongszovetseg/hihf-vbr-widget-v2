@@ -1,5 +1,9 @@
 <script setup>
+import { useLigaCss } from '../composables/use-liga-css';
 import { store } from '../store.js';
+
+useLigaCss();
+
 // DEV:
 // import { Statistics } from '@mjsz-vbr-elements/liga';
 // import '../../../packages/shared/dist/css/common.css';

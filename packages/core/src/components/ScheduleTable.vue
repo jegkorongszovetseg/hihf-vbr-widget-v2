@@ -83,18 +83,22 @@ const { t } = useI18n();
       :append-to="tooltipContainer || rootElement"
     >
       <template #cell-homeTeamName="{ row }">
-        <span class="is-team-name-long">{{ row.homeTeam.longName }}</span>
-        <span class="is-team-name-short">{{ row.homeTeam.shortName }}</span>
+        <template v-if="row.homeTeam">
+          <span class="is-team-name-long">{{ row.homeTeam.longName }}</span>
+          <span class="is-team-name-short">{{ row.homeTeam.shortName }}</span>
+        </template>
       </template>
       <template #cell-awayTeamName="{ row }">
-        <span class="is-team-name-long">{{ row.awayTeam.longName }}</span>
-        <span class="is-team-name-short">{{ row.awayTeam.shortName }}</span>
+        <template v-if="row.awayTeam">
+          <span class="is-team-name-long">{{ row.awayTeam.longName }}</span>
+          <span class="is-team-name-short">{{ row.awayTeam.shortName }}</span>
+        </template>
       </template>
       <template #cell-homeTeamLogo="{ row }">
-        <Image :key="row.homeTeam.id" class="is-logo-image is-right" :src="row.homeTeam.logo" />
+        <Image v-if="row.homeTeam" :key="row.homeTeam.id" class="is-logo-image is-right" :src="row.homeTeam.logo" />
       </template>
       <template #cell-awayTeamLogo="{ row }">
-        <Image :key="row.awayTeam.id" class="is-logo-image is-right" :src="row.awayTeam.logo" />
+        <Image v-if="row.awayTeam" :key="row.awayTeam.id" class="is-logo-image is-right" :src="row.awayTeam.logo" />
       </template>
       <template #cell-gameResult="{ row }">
         <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>

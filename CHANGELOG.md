@@ -1,3 +1,9 @@
+## [2.20.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.20.0...v2.20.1) (2025-03-11)
+
+### Bug Fixes
+
+* **schedule:** Hiányzó csapat nevek kezelése ([d6d8afc](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/d6d8afc7900fe27b25caaadcc8b2b6efa778e19b))
+## [2.20.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.19.2...v2.20.0) (2025-03-09)
 ## [2.19.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.19.1...v2.19.2) (2025-03-04)
 
 ### Bug Fixes

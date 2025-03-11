@@ -7,7 +7,7 @@ import { store } from '../store.js';
     <mjsz-vbr-schedule
       :locale="store.locale"
       championship-id="3783"
-      phase-id="45658"
+      division="Rájátszás"
       auto-initial-page
       auto-refresh
       is-target-external
