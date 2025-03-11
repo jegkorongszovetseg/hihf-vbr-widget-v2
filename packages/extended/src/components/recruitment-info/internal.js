@@ -3,11 +3,11 @@ import { omit, path, pick } from 'ramda';
 export function transformData(data) {
   return data.filter(filterOrganization)
     .map(buildRecruitmentData)
-    .map(pickCity);
+    .map(pickSearchKeys);
 }
 
 function filterOrganization(item) {
-  return item.organizationType === 'Sportegyesület';
+  return item.organizationType === 'Sportegyesület' && item.organizationCountry === 'Magyarország';
 }
 
 function buildRecruitmentData(data) {
@@ -22,10 +22,11 @@ function buildRecruitmentData(data) {
   };
 }
 
-function pickCity(data) {
+function pickSearchKeys(data) {
   return {
     ...data,
     city: path(['organizationAddresses', 'headquarter', 'city'], data) || '',
+    recruitmentTeamName: path(['recruitment', 'recruitmentTeamName'], data) || '',
   };
 }
 

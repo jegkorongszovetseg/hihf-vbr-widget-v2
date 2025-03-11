@@ -1,5 +1,5 @@
 <script setup>
-import { I18NProvider, LoadingIndicator, Paginator } from '@mjsz-vbr-elements/core/components';
+import { I18NProvider, Image, LoadingIndicator, Paginator } from '@mjsz-vbr-elements/core/components';
 import { usePage, useServices } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
 import { computed, ref } from 'vue';
@@ -46,10 +46,14 @@ const { page, change: onPaginatorChange } = usePage();
 
 const convertedRows = computed(() =>
   convert(state.value)
-    .filter(query.value, ['organizationName', 'city'])
+    .filter(query.value, ['organizationName', 'city', 'recruitmentTeamName'])
     .pagination(page.value, props.limit)
     .value(),
 );
+
+const range = computed(() => {
+  return [(page.value - 1) * props.limit + 1, Math.min(page.value * props.limit, convertedRows.value.totalItems)];
+});
 </script>
 
 <template>
@@ -65,21 +69,31 @@ const convertedRows = computed(() =>
       {{ t('recruitmentInfo.noResult') }}
     </div>
 
-    <details v-for="item in convertedRows.rows" :key="item?.organizationName" class="recruitment-info-card">
-      <summary><strong>{{ item?.organizationName }} ({{ item?.recruitment?.recruitmentTeamName }})</strong></summary>
+    <details v-for="item in convertedRows.rows" :key="item.organizationName" class="recruitment-info-card">
+      <summary>
+        <div>
+          <Image :src="`https://ivr-api.icehockey.hu${item.organizationLogo}`" default-src="data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg' fill='%23cfd8dc'%3E%3Ccircle cx='15' cy='15' r='15' /%3E%3C/svg%3E" />
+        </div>
+        <strong>{{ item.organizationName }} <span v-if="item.recruitment?.recruitmentTeamName">({{ item.recruitment?.recruitmentTeamName }})</span></strong>
+      </summary>
       <ul>
         <li v-for="(recruitment, key) in item.recruitment" :key="key">
           <span>{{ key }}:</span> <div v-html="recruitment" />
         </li>
       </ul>
     </details>
-    <Paginator
-      :page="page"
-      :items-per-page="props.limit"
-      :total-items="convertedRows.totalItems"
-      :range-length="5"
-      @change="onPaginatorChange"
-    />
+    <div class="recruitment-paginator-container">
+      <Paginator
+        :page="page"
+        :items-per-page="props.limit"
+        :total-items="convertedRows.totalItems"
+        :range-length="5"
+        @change="onPaginatorChange"
+      />
+      <div v-if="convertedRows.totalItems > 0" style="text-align: right">
+        {{ range.join('-') }} / {{ convertedRows.totalItems }} db
+      </div>
+    </div>
   </I18NProvider>
 </template>
 
@@ -90,5 +104,3 @@ const convertedRows = computed(() =>
 <style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
 
 <style src="@mjsz-vbr-elements/shared/css/paginator.scss" lang="scss"></style>
-
-<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
