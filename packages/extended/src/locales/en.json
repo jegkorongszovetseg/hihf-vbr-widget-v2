@@ -13,6 +13,7 @@
     "noPhases": "No Phases",
     "teams": "Teams",
     "filterName": "Filter by Name",
+    "filter": "Filter",
     "players": "Players",
     "month": "Month",
     "homeOrAway": "Home or Away",
@@ -81,5 +82,17 @@
     "hours": "Hours",
     "minutes": "Minutes",
     "seconds": "Seconds"
+  },
+  "recruitmentInfo": {
+    "filterByNameAndLocation": "Filter by name or location",
+    "noResult": "No results to display",
+    "recruitmentName": "Name",
+    "recruitmentTeamName": "Team name",
+    "recruitmentArenaName": "Icerink",
+    "recruitmentArenaAddress": "Icerink address",
+    "recruitmentContactName": "Contact",
+    "recruitmentContactPhone": "Phone",
+    "recruitmentContactEmail": "E-mail",
+    "recruitmentContactUrl": "Website"
   }
 }

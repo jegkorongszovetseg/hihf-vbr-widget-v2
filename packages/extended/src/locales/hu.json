@@ -13,6 +13,7 @@
     "noPhases": "Nincsenek szakaszok",
     "teams": "Csapatok",
     "filterName": "Szűrés névre",
+    "filter": "Szűrés",
     "players": "Játékosok",
     "month": "Hónap",
     "homeOrAway": "Hazai vagy Vendég",
@@ -81,5 +82,17 @@
     "hours": "Óra",
     "minutes": "Perc",
     "seconds": "Másodperc"
+  },
+  "recruitmentInfo": {
+    "filterByNameAndLocation": "Szűrés név vagy település szerint",
+    "noResult": "Nincs megjeleníthető találat",
+    "recruitmentName": "Szervezet neve",
+    "recruitmentTeamName": "Csapat név",
+    "recruitmentArenaName": "Jégpálya",
+    "recruitmentArenaAddress": "Jégpálya címe",
+    "recruitmentContactName": "Kapcsolattartó",
+    "recruitmentContactPhone": "Telefonszám",
+    "recruitmentContactEmail": "E-mail",
+    "recruitmentContactUrl": "Honlap"
   }
 }
