@@ -26,11 +26,12 @@ const props = defineProps({
 
 const messages = { en, hu };
 
-const { onError, error, hasError } = useErrorProvider();
+const { onError, error, hasError, reset } = useErrorProvider();
 
 const {
   state,
   isLoading,
+  execute,
 } = useServices({
   options: {
     path: '/v2/club-info',
@@ -57,19 +58,20 @@ const range = computed(() => {
   return [(page.value - 1) * props.limit + 1, Math.min(page.value * props.limit, convertedRows.value.totalItems)];
 });
 
-// function onReTry() {
-//   console.log('RE-TRY');
-// }
+function onReTry() {
+  reset();
+  execute();
+}
 </script>
 
 <template>
   <I18NProvider v-slot="{ t }" :locale="locale" :messages="messages">
     <div class="recruitment-info-filter">
       <label for="organization" class="label">{{ t('selection.filter') }}</label>
-      <input id="organization" v-model="query" :placeholder="t('recruitmentInfo.filterByNameAndLocation')" type="text" class="base-input">
+      <input id="organization" v-model="query" :placeholder="t('recruitmentInfo.filterByNameAndLocation')" type="text" autocomplete="off" class="base-input">
     </div>
 
-    <ErrorNotice v-if="hasError" :error="error" />
+    <ErrorNotice v-if="hasError" :error="error" use-retry @retry="onReTry" />
 
     <LoadingIndicator v-if="isLoading" />
 
