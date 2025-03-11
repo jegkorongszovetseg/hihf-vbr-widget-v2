@@ -4,8 +4,8 @@
   .table-grid {
     display: grid;
     grid-template-columns:
-      70px 160px minmax(60px, 0.41fr) minmax(160px, 1fr) minmax(40px, 60px) 30px minmax(160px, 1fr)
-      minmax(180px, 0.9fr);
+      70px 160px 60px minmax(160px, 1fr) minmax(40px, 60px) 30px minmax(160px, 1fr)
+      minmax(180px, 1.2fr);
     color: var(--vbr-widget-table-color);
 
     &:nth-child(odd) > div {
