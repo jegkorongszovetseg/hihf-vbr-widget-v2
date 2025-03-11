@@ -2,7 +2,7 @@
 import { ErrorNotice, I18NProvider, Image, LoadingIndicator, Paginator } from '@mjsz-vbr-elements/core/components';
 import { useErrorProvider, usePage, useServices } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
 import { transformData } from './internal';
@@ -58,6 +58,11 @@ const range = computed(() => {
   return [(page.value - 1) * props.limit + 1, Math.min(page.value * props.limit, convertedRows.value.totalItems)];
 });
 
+watch(query, () => {
+  if (page.value !== 1)
+    page.value = 1;
+});
+
 function onReTry() {
   reset();
   execute();
@@ -81,9 +86,7 @@ function onReTry() {
 
     <details v-for="item in convertedRows.rows" :key="item.organizationName" class="recruitment-info-card">
       <summary>
-        <div>
-          <Image :src="`https://ivr-api.icehockey.hu${item.organizationLogo}`" default-src="data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg' fill='%23cfd8dc'%3E%3Ccircle cx='15' cy='15' r='15' /%3E%3C/svg%3E" />
-        </div>
+        <Image :src="`https://ivr-api.icehockey.hu${item.organizationLogo}`" default-src="data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg' fill='%23cfd8dc'%3E%3Ccircle cx='15' cy='15' r='15' /%3E%3C/svg%3E" />
         <strong>{{ item.organizationName }} <span v-if="item.recruitment?.recruitmentTeamName">({{ item.recruitment?.recruitmentTeamName }})</span></strong>
       </summary>
       <ul>
