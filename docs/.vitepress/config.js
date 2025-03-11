@@ -70,6 +70,7 @@ export default defineConfig(({ mode }) => {
               { text: 'Csapat', link: '/widget/liga-team' },
               { text: 'Játékosok', link: '/widget/liga-players' },
               { text: 'Játékos', link: '/widget/liga-player' },
+              { text: 'Top List', link: '/widget/liga-top-list' },
             ],
           },
           {

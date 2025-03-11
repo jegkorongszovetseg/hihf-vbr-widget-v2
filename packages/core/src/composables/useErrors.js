@@ -41,6 +41,7 @@ export function useErrorProvider() {
     hasError: computed(() => errorMessage.value.length > 0),
     message: errorMessage,
     error: errorObject,
+    reset,
     onError,
   };
 }

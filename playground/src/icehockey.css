@@ -96,6 +96,29 @@ mjsz-vbr-schedule-liga {
   }
 }
 
+mjsz-vbr-top-list-liga {
+  --vbr-widget-top-list-bg-color: var(--vbr-widget-secondary-color-500);
+  --vbr-widget-top-list-title-separator-color: var(--vbr-widget-secondary-color-300);
+  --vbr-widget-top-list-player-separator-color: var(--vbr-widget-secondary-color-400);
+  --vbr-widget-top-list-image-border-color: var(--vbr-widget-secondary-color-300);
+  --vbr-widget-top-list-image-bg-color: var(--vbr-widget-secondary-color-400);
+  --vbr-widget-top-list-selector-border-color: var(--vbr-widget-secondary-color-300);
+  --vbr-widget-top-list-value-color: var(--vbr-widget-secondary-color-100);
+
+  --vbr-widget-tab-btn-color: var(--vbr-widget-secondary-color-200) !important;
+  --vbr-widget-tab-btn-bg-color: transparent;
+  --vbr-widget-tab-btn-hover-color: var(--vbr-widget-secondary-color-50);
+  --vbr-widget-tab-btn-hover-bg-color: transparent;
+  --vbr-widget-tab-btn-active-color: var(--vbr-widget-secondary-color-50);
+  --vbr-widget-tab-btn-active-bg-color: transparent;
+  --vbr-widget-tab-btn-active-border-color: var(--vbr-widget-primary-color-0) !important;
+
+  --vbr-widget-link-color: var(--vbr-widget-secondary-color-100);
+  --vbr-widget-hover-color: var(--vbr-widget-primary-color-0);
+
+  --vbr-widget-loading-indicator-text-color: var(--vbr-widget-secondary-color-100);
+}
+
 mjsz-vbr-standings-selector {
   --vbr-widget-standings-selector-title-size: 16px;
   --vbr-widget-standings-selector-title-color: var(--vbr-widget-primary-color-700);
