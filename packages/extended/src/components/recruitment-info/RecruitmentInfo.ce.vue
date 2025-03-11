@@ -1,6 +1,6 @@
 <script setup>
-import { I18NProvider, Image, LoadingIndicator, Paginator } from '@mjsz-vbr-elements/core/components';
-import { usePage, useServices } from '@mjsz-vbr-elements/core/composables';
+import { ErrorNotice, I18NProvider, Image, LoadingIndicator, Paginator } from '@mjsz-vbr-elements/core/components';
+import { useErrorProvider, usePage, useServices } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
 import { computed, ref } from 'vue';
 import en from '../../locales/en.json';
@@ -26,6 +26,8 @@ const props = defineProps({
 
 const messages = { en, hu };
 
+const { onError, error, hasError } = useErrorProvider();
+
 const {
   state,
   isLoading,
@@ -37,7 +39,7 @@ const {
     immediate: true,
   },
   transform: transformData,
-  // onError,
+  onError,
 });
 
 const query = ref('');
@@ -54,6 +56,10 @@ const convertedRows = computed(() =>
 const range = computed(() => {
   return [(page.value - 1) * props.limit + 1, Math.min(page.value * props.limit, convertedRows.value.totalItems)];
 });
+
+// function onReTry() {
+//   console.log('RE-TRY');
+// }
 </script>
 
 <template>
@@ -62,6 +68,8 @@ const range = computed(() => {
       <label for="organization" class="label">{{ t('selection.filter') }}</label>
       <input id="organization" v-model="query" :placeholder="t('recruitmentInfo.filterByNameAndLocation')" type="text" class="base-input">
     </div>
+
+    <ErrorNotice v-if="hasError" :error="error" />
 
     <LoadingIndicator v-if="isLoading" />
 
