@@ -70,7 +70,7 @@ const {
     immediate: !props.autoRefresh,
     onError: (error) => {
       onError(error);
-      // eslint-disable-next-line no-use-before-define
+      // eslint-disable-next-line ts/no-use-before-define
       pause?.();
     },
   },

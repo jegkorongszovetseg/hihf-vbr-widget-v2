@@ -42,9 +42,11 @@ const { t } = useI18n();
     </div>
 
     <div class="is-home-team is-text-base">
-      <span class="is-team-name-short">{{ game.homeTeam.shortName }}</span>
-      <span class="is-team-name-long">{{ game.homeTeam.longName }}</span>
-      <Image :key="game.homeTeam.id" class="is-logo-image" :src="game.homeTeam.logo" />
+      <template v-if="game.homeTeam">
+        <span class="is-team-name-short">{{ game.homeTeam.shortName }}</span>
+        <span class="is-team-name-long">{{ game.homeTeam.longName }}</span>
+        <Image :key="game.homeTeam.id" class="is-logo-image" :src="game.homeTeam.logo" />
+      </template>
     </div>
 
     <div class="is-game-data" :class="[{ 'is-live': game.gameStatus === 1 }]">
@@ -79,9 +81,11 @@ const { t } = useI18n();
     </div>
 
     <div class="is-away-team is-text-base">
-      <Image :key="game.awayTeam.id" class="is-logo-image" :src="game.awayTeam.logo" />
-      <span class="is-team-name-short">{{ game.awayTeam.shortName }}</span>
-      <span class="is-team-name-long">{{ game.awayTeam.longName }}</span>
+      <template v-if="game.awayTeam">
+        <Image :key="game.awayTeam.id" class="is-logo-image" :src="game.awayTeam.logo" />
+        <span class="is-team-name-short">{{ game.awayTeam.shortName }}</span>
+        <span class="is-team-name-long">{{ game.awayTeam.longName }}</span>
+      </template>
     </div>
   </div>
 </template>
