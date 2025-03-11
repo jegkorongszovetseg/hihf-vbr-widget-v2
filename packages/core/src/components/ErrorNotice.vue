@@ -8,7 +8,14 @@ const props = defineProps({
     type: Object,
     default: () => ({}),
   },
+
+  useRetry: {
+    type: Boolean,
+    default: false,
+  },
 });
+
+defineEmits(['retry']);
 
 const { t, hasTranslation } = useI18n();
 
@@ -23,5 +30,6 @@ const errorMessage = computed(() => {
   <div class="error-notice">
     <IconWarning class="icon" width="20" height="20" />
     <span>{{ errorMessage }}</span>
+    <button v-if="useRetry" type="button" @click="$emit('retry')" v-text="t('common.retry')" />
   </div>
 </template>

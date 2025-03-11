@@ -236,6 +236,8 @@
 
   --vbr-widget-sticky-top-offset: 0;
 
+  --vbr-widget-loading-indicator-text-color: var(--vbr-widget-hover-color);
+
   --vbr-widget-games-timeline-game-date-size: var(--vbr-widget-typography-font-size-100);
   --vbr-widget-games-timeline-game-date-color: var(--vbr-widget-primary-color-500);
   --vbr-widget-games-timeline-game-team-color: var(--vbr-widget-primary-color-700);
@@ -262,6 +264,15 @@
   --vbr-widget-standings-selector-section-title-padding: 0.25em 0;
   --vbr-widget-standings-selector-section-logo-size: 30px;
   --vbr-widget-standings-selector-section-team-color: var(--vbr-widget-primary-color-900);
+
+  --vbr-widget-top-list-bg-color: var(--vbr-widget-primary-color-900);
+  --vbr-widget-top-list-title-color: var(--vbr-widget-primary-color-50);
+  --vbr-widget-top-list-title-separator-color: var(--vbr-widget-primary-color-700);
+  --vbr-widget-top-list-value-color: var(--vbr-widget-primary-color-300);
+  --vbr-widget-top-list-player-separator-color: var(--vbr-widget-primary-color-800);
+  --vbr-widget-top-list-image-border-color: var(--vbr-widget-primary-color-600);
+  --vbr-widget-top-list-image-bg-color: var(--vbr-widget-primary-color-800);
+  --vbr-widget-top-list-selector-border-color: var(--vbr-widget-primary-color-400);
 
   --vbr-widget-countdown-title-height: 2rem;
   --vbr-widget-countdown-title-bg: var(--vbr-widget-primary-color-900);

@@ -18,7 +18,8 @@
     "overtimeShort": "OT",
     "all": "Mind",
     "report": "Jegyzőkönyv",
-    "video": "Videó"
+    "video": "Videó",
+    "retry": "Újra"
   },
   "additionalText": {
     "inheritedPoints": {

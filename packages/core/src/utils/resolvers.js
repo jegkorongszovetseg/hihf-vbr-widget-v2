@@ -1,6 +1,7 @@
 import {
   DEFAULT_EXTERNAL_GAME_URL,
   DEFAULT_EXTERNAL_PLAYER_URL,
+  DEFAULT_EXTERNAL_STATISTIC_URL,
   DEFAULT_EXTERNAL_TEAM_URL,
   FLAG_BASE_URL,
 } from '../constants';
@@ -41,6 +42,16 @@ export function externalPlayerLinkResolver(rawResolver, params = {}) {
     return encodeURI(templateReplacer(resolver, params));
 
   return encodeURI(templateReplacer(DEFAULT_EXTERNAL_PLAYER_URL, params));
+}
+
+export function externalStatisticLinkResolver(resolver, params = {}) {
+  if (typeof resolver === 'function')
+    return resolver(params);
+
+  if (resolver)
+    return encodeURI(templateReplacer(resolver, params));
+
+  return encodeURI(templateReplacer(DEFAULT_EXTERNAL_STATISTIC_URL, params));
 }
 
 export const flagResolver = (countryCode, type = '1x1') => `${FLAG_BASE_URL}/flag:${countryCode}-${type}.svg`;
