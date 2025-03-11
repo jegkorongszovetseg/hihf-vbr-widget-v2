@@ -1,3 +1,8 @@
+## [2.21.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.20.1...v2.21.0) (2025-03-11)
+
+### Bug Fixes
+
+* **liga/playoffs:** Oszlop szélességek javítása ([7c82a61](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/7c82a61ca3322236b03131c6ed0d07988029aaa8))
 ## [2.20.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.20.0...v2.20.1) (2025-03-11)
 
 ### Bug Fixes
