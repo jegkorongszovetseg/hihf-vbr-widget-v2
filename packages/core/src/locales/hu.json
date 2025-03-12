@@ -35,6 +35,7 @@
   },
   "table": {
     "blank": "#",
+    "info": "{min} - {max} / {total} db",
     "team": {
       "short": "Csapat",
       "tooltip": "Csapatnév"

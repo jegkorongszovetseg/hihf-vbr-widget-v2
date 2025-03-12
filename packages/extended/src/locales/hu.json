@@ -86,7 +86,6 @@
   "recruitmentInfo": {
     "filterByNameAndLocation": "Szűrés név vagy település szerint",
     "noResult": "Nincs megjeleníthető találat",
-    "recruitmentName": "Szervezet neve",
     "recruitmentTeamName": "Csapat név",
     "recruitmentArenaName": "Jégpálya",
     "recruitmentArenaAddress": "Jégpálya címe",

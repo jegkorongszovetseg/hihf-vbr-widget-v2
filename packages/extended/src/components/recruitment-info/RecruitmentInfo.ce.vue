@@ -104,7 +104,7 @@ function onReTry() {
         @change="onPaginatorChange"
       />
       <div v-if="convertedRows.totalItems > 0" style="text-align: right">
-        {{ range.join('-') }} / {{ convertedRows.totalItems }} db
+        {{ t('table.info', { min: range[0], max: range[1], total: convertedRows.totalItems }) }}
       </div>
     </div>
   </I18NProvider>

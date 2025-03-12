@@ -1,17 +1,21 @@
 import { omit, path, pick } from 'ramda';
 
+const VALID_ORGANIZATION_TYPES = ['sportegyesület', 'sportvállalkozás', 'alapítvány', 'sportiskola'];
+
 export function transformData(data) {
   return data.filter(filterOrganization)
     .map(buildRecruitmentData)
-    .map(pickSearchKeys);
+    .map(pickSearchKeys)
+    .sort(sortOrganizations);
 }
 
-function filterOrganization(item) {
-  return item.organizationType === 'Sportegyesület' && item.organizationCountry === 'Magyarország';
+function filterOrganization({ organizationType, organizationCountry }) {
+  return VALID_ORGANIZATION_TYPES.includes((organizationType || '').toLowerCase()) && organizationCountry === 'Magyarország';
 }
 
 function buildRecruitmentData(data) {
-  const recruitmentKeys = Object.keys(data).filter(key => key.startsWith('recruitment'));
+  const recruitmentKeys = Object.keys(data).filter(key => key.startsWith('recruitment') && key !== 'recruitmentName');
+
   const recruitments = pick(recruitmentKeys, data);
   const convertedRecruitments = convertLinks(recruitments);
   return {
@@ -41,4 +45,14 @@ function handleURL(url) {
   if (url.startsWith('http'))
     return `<a href="${url}" target="_blank">${url}</a>`;
   return `<a href="https://${url}" target="_blank">${url}</a>`;
+}
+
+function sortOrganizations(a, b) {
+  const nameA = a.organizationName.toUpperCase();
+  const nameB = b.organizationName.toUpperCase();
+  if (nameA < nameB)
+    return -1;
+  if (nameA > nameB)
+    return 1;
+  return 0;
 }
