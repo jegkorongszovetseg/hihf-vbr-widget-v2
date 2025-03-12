@@ -11,8 +11,8 @@ export function toKebabCase(str) {
 }
 
 // Example: 'https://www.example.com/api/{step}/{id}'
-export const templateReplacer = function (tpl = '', data = {}) {
+export function templateReplacer(tpl = '', data = {}) {
   return tpl.replace(/\{([^}]+)\}/g, (_, $2) => {
     return path(split('.', $2), data);
   });
-};
+}
