@@ -17,7 +17,7 @@ export function handleServices(options = {}) {
   const { resume, pause, isActive } = useTimeoutPoll(
     () => callFunctions(getGameData, getGameStats, getEvents),
     interval,
-    { immediate: false },
+    { immediate: false, immediateCallback: true },
   );
 
   const { pause: pauseGameData } = useIntervalFn(() => {
@@ -33,7 +33,7 @@ export function handleServices(options = {}) {
     LAZY_INTERVAL,
     {
       immediate: false,
-      immediateCallback: true,
+      immediateCallback: false,
     },
   );
   useVisibilityChange(isRefreshable, resume, pause);
