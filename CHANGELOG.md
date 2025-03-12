@@ -1,3 +1,8 @@
+## [2.22.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.22.0...v2.22.1) (2025-03-12)
+
+### Bug Fixes
+
+* **gamecenter/game:** Kezdő eseményeg meghívása első betöltéskor ([ead4f10](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/ead4f10a0639b65319a3438131296609c243b7bb))
 ## [2.22.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.21.1...v2.22.0) (2025-03-12)
 ## [2.21.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.21.0...v2.21.1) (2025-03-12)
 
