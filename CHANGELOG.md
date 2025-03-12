@@ -1,3 +1,8 @@
+## [2.21.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.21.0...v2.21.1) (2025-03-12)
+
+### Bug Fixes
+
+* **extended/recruitment-info:** Logo méret javítás és szöveg igazítás ([2835dad](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/2835dad708a9d3baf8d68ad285ad4bbfdde6fcc5))
 ## [2.21.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.20.1...v2.21.0) (2025-03-11)
 
 ### Bug Fixes
