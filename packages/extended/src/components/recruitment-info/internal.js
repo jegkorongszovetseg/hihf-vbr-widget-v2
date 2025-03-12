@@ -1,17 +1,20 @@
 import { omit, path, pick } from 'ramda';
 
+const VALID_ORGANIZATION_TYPES = ['sportegyesület', 'sportvállalkozás', 'alapítvány', 'sportiskola'];
+
 export function transformData(data) {
   return data.filter(filterOrganization)
     .map(buildRecruitmentData)
     .map(pickSearchKeys);
 }
 
-function filterOrganization(item) {
-  return item.organizationType === 'Sportegyesület' && item.organizationCountry === 'Magyarország';
+function filterOrganization({ organizationType, organizationCountry }) {
+  return VALID_ORGANIZATION_TYPES.includes((organizationType || '').toLowerCase()) && organizationCountry === 'Magyarország';
 }
 
 function buildRecruitmentData(data) {
-  const recruitmentKeys = Object.keys(data).filter(key => key.startsWith('recruitment'));
+  const recruitmentKeys = Object.keys(data).filter(key => key.startsWith('recruitment') && key !== 'recruitmentName');
+
   const recruitments = pick(recruitmentKeys, data);
   const convertedRecruitments = convertLinks(recruitments);
   return {
