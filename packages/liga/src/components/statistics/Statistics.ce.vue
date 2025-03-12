@@ -49,7 +49,7 @@ const resolveExternalPlayerLink = playerId => externalPlayerLinkResolver(props.e
 
 <template>
   <div>
-    <I18NProvider :locale="props.locale" :messages="messages">
+    <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
       <ErrorProvider v-slot="{ hasError, error }">
         <StatisticsProvider
           v-slot="{
@@ -96,7 +96,7 @@ const resolveExternalPlayerLink = playerId => externalPlayerLinkResolver(props.e
               @change="onPaginatorChange"
             />
             <div v-if="rows.totalItems > 0" style="flex-grow: 1; text-align: right">
-              {{ range.join('-') }} / {{ rows.totalItems }} db
+              {{ t('table.info', { min: range[0], max: range[1], total: rows.totalItems }) }}
             </div>
           </div>
 

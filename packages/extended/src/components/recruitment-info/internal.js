@@ -5,7 +5,8 @@ const VALID_ORGANIZATION_TYPES = ['sportegyesület', 'sportvállalkozás', 'alap
 export function transformData(data) {
   return data.filter(filterOrganization)
     .map(buildRecruitmentData)
-    .map(pickSearchKeys);
+    .map(pickSearchKeys)
+    .sort(sortOrganizations);
 }
 
 function filterOrganization({ organizationType, organizationCountry }) {
@@ -44,4 +45,14 @@ function handleURL(url) {
   if (url.startsWith('http'))
     return `<a href="${url}" target="_blank">${url}</a>`;
   return `<a href="https://${url}" target="_blank">${url}</a>`;
+}
+
+function sortOrganizations(a, b) {
+  const nameA = a.organizationName.toUpperCase();
+  const nameB = b.organizationName.toUpperCase();
+  if (nameA < nameB)
+    return -1;
+  if (nameA > nameB)
+    return 1;
+  return 0;
 }
