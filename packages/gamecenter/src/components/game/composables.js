@@ -1,6 +1,6 @@
 import { useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
 import { convertMinToSec } from '@mjsz-vbr-elements/core/utils';
-import { useIntervalFn, useTimeoutPoll } from '@vueuse/core';
+import { useTimeoutPoll } from '@vueuse/core';
 import { isEmpty } from 'ramda';
 import { computed, ref, unref, watch } from 'vue';
 import { callFunctions, rawPeriodIndex } from './internal.js';
@@ -20,22 +20,24 @@ export function handleServices(options = {}) {
     { immediate: false, immediateCallback: true },
   );
 
-  const { pause: pauseGameData } = useIntervalFn(() => {
-    getGameData();
-    getGameOfficials();
-  }, LAZY_INTERVAL, {
-    immediate: true,
-    immediateCallback: true,
-  });
+  const { pause: pauseGameData } = useTimeoutPoll(
+    () => getGameData(),
+    LAZY_INTERVAL,
+    {
+      immediate: true,
+      immediateCallback: true,
+    },
+  );
 
-  const { resume: resumeGameOfficials, pause: pauseGameOfficials } = useIntervalFn(
+  const { pause: pauseGameOfficials } = useTimeoutPoll(
     () => getGameOfficials(),
     LAZY_INTERVAL,
     {
-      immediate: false,
-      immediateCallback: false,
+      immediate: true,
+      immediateCallback: true,
     },
   );
+
   useVisibilityChange(isRefreshable, resume, pause);
 
   watch(data, (data) => {
@@ -45,13 +47,12 @@ export function handleServices(options = {}) {
 
     if (data.gameStatus === 1 && !isActive.value) {
       pauseGameData();
-      resumeGameOfficials();
       resume();
       isRefreshable.value = true;
     }
     if (data.gameStatus > 1) {
       isRefreshable.value = false;
-      callFunctions(getGameStats, getEvents, getGameOfficials);
+      callFunctions(getGameStats, getEvents);
       pauseGameData();
       pauseGameOfficials();
       pause();
