@@ -74,3 +74,15 @@ Ha szükséges NPM login:
 ```sh
 npm login
 ```
+
+# jsdelivr
+
+Purge cache: [tool](https://www.jsdelivr.com/tools/purge)
+
+```
+https://cdn.jsdelivr.net/npm/@mjsz-vbr-elements/core
+https://cdn.jsdelivr.net/npm/@mjsz-vbr-elements/elements
+https://cdn.jsdelivr.net/npm/@mjsz-vbr-elements/extended
+https://cdn.jsdelivr.net/npm/@mjsz-vbr-elements/liga
+https://cdn.jsdelivr.net/npm/@mjsz-vbr-elements/gamecenter
+```
