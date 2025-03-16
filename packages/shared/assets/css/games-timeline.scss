@@ -112,6 +112,9 @@
 
   time {
     grid-area: gamedate;
+    display: flex;
+    align-items: center;
+    gap: 4px;
     font-size: var(--vbr-widget-games-timeline-game-date-size);
     font-weight: 700;
     color: var(--vbr-widget-games-timeline-game-date-color);
