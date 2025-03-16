@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { ref } from 'vue';
+import { createApp, ref } from 'vue';
 import { handleServices } from './composables';
 
 describe('game/composables', () => {
@@ -16,12 +16,19 @@ describe('game/composables', () => {
     it('mérkőzés nem kezdődött el', async () => {
       const gameData = ref({});
 
-      handleServices({
+      withSetup(() => handleServices({
         data: gameData,
         services: { getGameData, getGameStats, getEvents, getGameOfficials },
         interval: 30000,
-      });
+      }));
+
+      // handleServices({
+      //   data: gameData,
+      //   services: { getGameData, getGameStats, getEvents, getGameOfficials },
+      //   interval: 30000,
+      // });
       // console.log(getGameData.mock.calls);
+      expect(getGameData).toBeCalled();
       await vi.advanceTimersByTimeAsync(1000);
       expect(getGameData).toBeCalled();
 
@@ -40,20 +47,21 @@ describe('game/composables', () => {
   });
 });
 
-// export function withSetup(composable) {
-//   const app = createApp({
+export function withSetup(composable) {
+  let result;
+  const app = createApp({
 
-//     setup() {
-//       result = composable();
-//       return () => {};
-//     },
-//   });
+    setup() {
+      result = composable();
+      return () => {};
+    },
+  });
 
-//   app.mount(
-//     document.createElement('div'),
-//   );
-//   return [
-//     result,
-//     app,
-//   ];
-// }
+  // app.mount(
+  //   document.createElement('div'),
+  // );
+  return [
+    result,
+    app,
+  ];
+}

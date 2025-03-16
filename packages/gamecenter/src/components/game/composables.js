@@ -2,34 +2,37 @@ import { useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
 import { convertMinToSec } from '@mjsz-vbr-elements/core/utils';
 import { useTimeoutPoll } from '@vueuse/core';
 import { isEmpty } from 'ramda';
-import { computed, ref, unref, watch } from 'vue';
+import { computed, ref, shallowRef, unref, watch } from 'vue';
 import { callFunctions, rawPeriodIndex } from './internal.js';
 
 const DEAFULT_PERIOD_LENGTH_MIN = 20;
+const INTERVAL = 1000 * 10; // 1000 * 30;
 const LAZY_INTERVAL = 1000 * 60 * 5;
 
 export function handleServices(options = {}) {
-  const { data, interval, services } = options;
+  const { data, services } = options;
   const { getGameData, getGameStats, getEvents, getGameOfficials } = services;
+
+  const interval = shallowRef(LAZY_INTERVAL);
 
   const isRefreshable = ref(true);
 
-  const { resume, pause, isActive } = useTimeoutPoll(
-    () => callFunctions(getGameData, getGameStats, getEvents),
-    interval,
-    { immediate: false, immediateCallback: true },
-  );
+  // const { resume, pause, isActive } = useTimeoutPoll(
+  //   () => callFunctions(getGameData, getGameStats, getEvents),
+  //   interval,
+  //   { immediate: false, immediateCallback: true },
+  // );
 
-  const { pause: pauseGameData } = useTimeoutPoll(
+  const { resume: resumGameData, pause: pauseGameData } = useTimeoutPoll(
     () => getGameData(),
-    LAZY_INTERVAL,
+    interval,
     {
       immediate: true,
-      immediateCallback: true,
+      // immediateCallback: true,
     },
   );
 
-  const { pause: pauseGameOfficials } = useTimeoutPoll(
+  const { resume: resumGameOfficials, pause: pauseGameOfficials } = useTimeoutPoll(
     () => getGameOfficials(),
     LAZY_INTERVAL,
     {
@@ -38,30 +41,63 @@ export function handleServices(options = {}) {
     },
   );
 
-  useVisibilityChange(isRefreshable, resume, pause);
+  const { resume: resumeGameEvents, pause: pauseGameEvents, isActive: isGameEventsActive } = useTimeoutPoll(
+    () => getEvents(),
+    interval,
+    {
+      immediate: false,
+      immediateCallback: true,
+    },
+  );
+
+  const { resume: resumeGameStats, pause: pauseGameStats, isActive: isGameStatsActive } = useTimeoutPoll(
+    () => getGameStats(),
+    interval,
+    {
+      immediate: false,
+      immediateCallback: true,
+    },
+  );
+
+  useVisibilityChange(isRefreshable, () => {
+    resumGameData();
+    resumGameOfficials();
+    resumeGameEvents();
+    resumeGameStats();
+    getGameData();
+  }, () => {
+    pauseGameData();
+    pauseGameOfficials();
+    pauseGameEvents();
+    pauseGameStats();
+  });
 
   watch(data, (data) => {
-    if (data.gameStatus < 1) {
+    data.gameStatus = 0;
+
+    if (data.gameStatus === 0) {
       isRefreshable.value = false;
     }
 
-    if (data.gameStatus === 1 && !isActive.value) {
-      pauseGameData();
-      resume();
+    if (data.gameStatus === 1 && !isGameEventsActive.value && !isGameStatsActive.value) {
       isRefreshable.value = true;
+      pauseGameData();
+      interval.value = INTERVAL;
+      resumGameData();
+      resumeGameEvents();
+      resumeGameStats();
     }
     if (data.gameStatus > 1) {
       isRefreshable.value = false;
       callFunctions(getGameStats, getEvents);
       pauseGameData();
       pauseGameOfficials();
-      pause();
+      pauseGameEvents();
+      pauseGameStats();
     }
   });
 
-  return {
-    pause,
-  };
+  getGameData();
 }
 
 // actualTime: "60:00"
