@@ -2,6 +2,7 @@
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
+import IconLaunch from '@mjsz-vbr-elements/shared/icons/IconLaunch';
 import { computed } from 'vue';
 import { isPeriodTimeVisible } from './internal';
 import ScoreDisplay from './ScoreDisplay.vue';
@@ -47,6 +48,7 @@ function navigateTo() {
     <time>{{ gameData.gameDateTime }}
       <span v-if="gameData.isShootout" class="is-badge">{{ t('common.shootoutShort') }}</span>
       <span v-if="gameData.isOvertime" class="is-badge">{{ t('common.overtimeShort') }}</span>
+      <IconLaunch v-if="gameData.externalGameUrl" width="14" height="14" />
     </time>
     <div class="is-home-team-logo">
       <Image :src="gameData.homeTeam.logo" class="is-team-logo" />
