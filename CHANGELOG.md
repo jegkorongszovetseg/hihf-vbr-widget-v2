@@ -1,3 +1,8 @@
+## [2.23.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.23.0...v2.23.1) (2025-03-16)
+
+### Bug Fixes
+
+* **liga/playoffs:** Szakas fejléc betűszín javítás ([9d163bc](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/9d163bc3b749354f1ce91fc8c9b4c56f13c97cab))
 ## [2.23.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.22.2...v2.23.0) (2025-03-16)
 ## [2.22.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.22.1...v2.22.2) (2025-03-14)
 ## [2.22.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.22.0...v2.22.1) (2025-03-12)
