@@ -1,3 +1,8 @@
+## [2.23.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.23.1...v2.23.2) (2025-03-16)
+
+### Bug Fixes
+
+* **gamecenter/game:** Firissítési intervallum állítása ([e9d30f3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/e9d30f3bc67f9c68ea6419c62e1687fb7f596f03))
 ## [2.23.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.23.0...v2.23.1) (2025-03-16)
 
 ### Bug Fixes
