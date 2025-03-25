@@ -87,7 +87,7 @@ function onReTry() {
     <details v-for="item in convertedRows.rows" :key="item.organizationName" class="recruitment-info-card">
       <summary>
         <Image :src="`https://ivr-api.icehockey.hu${item.organizationLogo}`" default-src="data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg' fill='%23cfd8dc'%3E%3Ccircle cx='15' cy='15' r='15' /%3E%3C/svg%3E" />
-        <strong>{{ item.organizationName }} <span v-if="item.recruitment?.recruitmentTeamName">({{ item.recruitment?.recruitmentTeamName }})</span></strong>
+        <strong>{{ item.organizationName }} <span v-if="item.recruitmentTeamName">({{ item.recruitmentTeamName }})</span></strong>
       </summary>
       <ul>
         <li v-for="(recruitment, key) in item.recruitment" :key="key">

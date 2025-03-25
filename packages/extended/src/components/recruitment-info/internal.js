@@ -14,7 +14,7 @@ function filterOrganization({ organizationType, organizationCountry }) {
 }
 
 function buildRecruitmentData(data) {
-  const recruitmentKeys = Object.keys(data).filter(key => key.startsWith('recruitment') && key !== 'recruitmentName');
+  const recruitmentKeys = Object.keys(data).filter(key => key.startsWith('recruitment') && key !== 'recruitmentName' && key !== 'recruitmentTeamName');
 
   const recruitments = pick(recruitmentKeys, data);
   const convertedRecruitments = convertLinks(recruitments);
@@ -30,7 +30,7 @@ function pickSearchKeys(data) {
   return {
     ...data,
     city: path(['organizationAddresses', 'headquarter', 'city'], data) || '',
-    recruitmentTeamName: path(['recruitment', 'recruitmentTeamName'], data) || '',
+    recruitmentTeamName: data.recruitmentTeamName || '',
   };
 }
 
