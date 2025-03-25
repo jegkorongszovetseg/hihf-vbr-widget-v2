@@ -1,3 +1,8 @@
+## [2.23.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.23.2...v2.23.3) (2025-03-25)
+
+### Features
+
+* **extended/recruitment-info:** Csapatnevek kivétele a listából ([fec8751](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/fec8751eac5f0ca9f17e17e74aca808e4b45411b))
 ## [2.23.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.23.1...v2.23.2) (2025-03-16)
 
 ### Bug Fixes
