@@ -34,7 +34,7 @@ const {
   execute,
 } = useServices({
   options: {
-    path: '/v2/club-info',
+    path: '/v2/recruitment-info',
     apiKey: props.apiKey,
     params: {},
     immediate: true,
@@ -49,7 +49,7 @@ const { page, change: onPaginatorChange } = usePage();
 
 const convertedRows = computed(() =>
   convert(state.value)
-    .filter(query.value, ['organizationName', 'city', 'recruitmentTeamName'])
+    .filter(query.value, ['organizationName', 'recruitmentCity', 'recruitmentTeamName'])
     .pagination(page.value, props.limit)
     .value(),
 );
