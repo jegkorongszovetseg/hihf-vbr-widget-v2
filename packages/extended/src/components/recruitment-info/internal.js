@@ -1,20 +1,14 @@
-import { omit, path, pick } from 'ramda';
-
-const VALID_ORGANIZATION_TYPES = ['sportegyesület', 'sportvállalkozás', 'alapítvány', 'sportiskola'];
+import { omit, pick } from 'ramda';
 
 export function transformData(data) {
-  return data.filter(filterOrganization)
+  return data
     .map(buildRecruitmentData)
     .map(pickSearchKeys)
     .sort(sortOrganizations);
 }
 
-function filterOrganization({ organizationType, organizationCountry }) {
-  return VALID_ORGANIZATION_TYPES.includes((organizationType || '').toLowerCase()) && organizationCountry === 'Magyarország';
-}
-
 function buildRecruitmentData(data) {
-  const recruitmentKeys = Object.keys(data).filter(key => key.startsWith('recruitment') && key !== 'recruitmentName' && key !== 'recruitmentTeamName');
+  const recruitmentKeys = Object.keys(data).filter(key => key.startsWith('recruitment') && key !== 'recruitmentName' && key !== 'recruitmentTeamName' && key !== 'recruitmentCity');
 
   const recruitments = pick(recruitmentKeys, data);
   const convertedRecruitments = convertLinks(recruitments);
@@ -29,7 +23,6 @@ function buildRecruitmentData(data) {
 function pickSearchKeys(data) {
   return {
     ...data,
-    city: path(['organizationAddresses', 'headquarter', 'city'], data) || '',
     recruitmentTeamName: data.recruitmentTeamName || '',
   };
 }
