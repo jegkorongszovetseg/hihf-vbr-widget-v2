@@ -1,0 +1,35 @@
+diff --git a/dist/index.cjs b/dist/index.cjs
+index 3439ef5ffee37f73f39e3451d1971af67f9b9cc2..21c82dde5343f835c93ea0cf53ece68beffae816 100644
+--- a/dist/index.cjs
++++ b/dist/index.cjs
+@@ -2819,7 +2819,7 @@ async function transformStyle(code, descriptor, index, options, pluginContext, f
+     id: `data-v-${descriptor.id}`,
+     isProd: options.isProduction,
+     source: code,
+-    scoped: block.scoped,
++    scoped: block?.scoped,
+     ...options.cssDevSourcemap ? {
+       postcssOptions: {
+         map: {
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 6c18c291efbda51454ee5a3d30ed0368e7a4688e..495a9eb046c107ab61f145df214e894f524e3dea 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -2806,7 +2806,7 @@ async function transformStyle(code, descriptor, index, options, pluginContext, f
+     id: `data-v-${descriptor.id}`,
+     isProd: options.isProduction,
+     source: code,
+-    scoped: block.scoped,
++    scoped: block?.scoped,
+     ...options.cssDevSourcemap ? {
+       postcssOptions: {
+         map: {
+@@ -2839,7 +2839,7 @@ async function transformStyle(code, descriptor, index, options, pluginContext, f
+   return {
+     code: result.code,
+     map,
+-    meta: block.scoped && !descriptor.isTemp ? {
++    meta: block?.scoped && !descriptor.isTemp ? {
+       vite: {
+         cssScopeTo: [descriptor.filename, "default"]
+       }

@@ -3,7 +3,7 @@
   "type": "module",
   "version": "2.24.0",
   "private": true,
-  "packageManager": "pnpm@9.15.9",
+  "packageManager": "pnpm@10.8.0",
   "description": "Data visualization for MJSZ VBR",
   "workspaces": [
     "packages/*",
@@ -26,21 +26,25 @@
     "publish:release": "pnpm run build && pnpm -r publish --access public"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.10.0",
+    "@antfu/eslint-config": "^4.12.0",
     "@vue/test-utils": "^2.4.6",
     "bumpp": "^10.1.0",
     "conventional-changelog-cli": "^5.0.0",
-    "eslint": "^9.22.0",
+    "eslint": "^9.24.0",
     "eslint-plugin-format": "^1.0.1",
     "happy-dom": "^17.4.4",
-    "lint-staged": "^15.4.3",
-    "simple-git-hooks": "^2.11.1",
-    "vitest": "^3.0.8"
+    "lint-staged": "^15.5.1",
+    "simple-git-hooks": "^2.12.1",
+    "vitest": "^3.1.1"
   },
   "pnpm": {
     "patchedDependencies": {
-      "@vitejs/plugin-vue": "patches/@vitejs__plugin-vue.patch"
-    }
+      "@vitejs/plugin-vue": "/Users/astegner/Develop/projects/hihf-vbr-widget-v2/patches/@vitejs__plugin-vue.patch",
+      "@vitejs/plugin-vue@5.2.3": "patches/@vitejs__plugin-vue@5.2.3.patch"
+    },
+    "onlyBuiltDependencies": [
+      "simple-git-hooks"
+    ]
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
