@@ -1,5 +1,5 @@
 diff --git a/dist/index.mjs b/dist/index.mjs
-index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135f5b93f9d 100644
+index 25e4ae602dc8ca60bf5ca99147158b569271ed63..7d8703aa1456261f1aa6ae8e6739a8fa2e26b87b 100644
 --- a/dist/index.mjs
 +++ b/dist/index.mjs
 @@ -1,5 +1,11 @@
@@ -13,14 +13,14 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 +  createFilter,
 +} from 'vite';
  import { shallowRef, computed } from 'vue';
+ import { exactRegex, makeIdFiltersToMatchWithQuery } from '@rolldown/pluginutils';
  import { createRequire } from 'node:module';
- import path from 'node:path';
-@@ -7,30 +13,29 @@ import crypto from 'node:crypto';
+@@ -8,30 +14,29 @@ import crypto from 'node:crypto';
  import require$$0 from 'tty';
  import require$$1 from 'util';
  
--const version = "5.2.1";
-+const version = '5.2.1';
+-const version = "6.0.0";
++const version = '6.0.0';
  
  function resolveCompiler(root) {
    const compiler = tryResolveCompiler(root) || tryResolveCompiler();
@@ -52,7 +52,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
  }
  
  function parseVueRequest(id) {
-@@ -53,41 +58,34 @@ function parseVueRequest(id) {
+@@ -54,41 +59,34 @@ function parseVueRequest(id) {
    }
    return {
      filename,
@@ -107,7 +107,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
    }
    (hmr ? hmrCache : cache).set(filename, descriptor);
    return { descriptor, errors };
-@@ -109,12 +107,7 @@ function getDescriptor(filename, options, createIfNotFound = true, hmr = false,
+@@ -110,12 +108,7 @@ function getDescriptor(filename, options, createIfNotFound = true, hmr = false,
      return _cache.get(filename);
    }
    if (createIfNotFound) {
@@ -121,7 +121,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
      if (errors.length && !hmr) {
        throw errors[0];
      }
-@@ -130,15 +123,15 @@ function getSrcDescriptor(filename, query) {
+@@ -131,16 +124,16 @@ function getSrcDescriptor(filename, query) {
  function getTempSrcDescriptor(filename, query) {
    return {
      filename,
@@ -134,28 +134,21 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 -          start: { line: 0, column: 0 }
 -        }
 -      }
--    ]
 +          start: { line: 0, column: 0 },
 +        },
 +      },
-+    ],
+     ],
+-    isTemp: true
++    isTemp: true,
    };
  }
  function setSrcDescriptor(filename, entry, scoped) {
-@@ -148,52 +141,45 @@ function setSrcDescriptor(filename, entry, scoped) {
-   }
+@@ -151,48 +144,40 @@ function setSrcDescriptor(filename, entry, scoped) {
    cache.set(filename, entry);
  }
--const hash = (
-+const hash =
-   // eslint-disable-next-line n/no-unsupported-features/node-builtins -- crypto.hash is supported in Node 21.7.0+, 20.12.0+
--  crypto.hash ?? ((algorithm, data, outputEncoding) => crypto.createHash(algorithm).update(data).digest(outputEncoding))
--);
-+  crypto.hash ??
-+  ((algorithm, data, outputEncoding) => crypto.createHash(algorithm).update(data).digest(outputEncoding));
  function getHash(text) {
--  return hash("sha256", text, "hex").substring(0, 8);
-+  return hash('sha256', text, 'hex').substring(0, 8);
+-  return crypto.hash("sha256", text, "hex").substring(0, 8);
++  return crypto.hash('sha256', text, 'hex').substring(0, 8);
  }
  
  function slash(path) {
@@ -196,20 +189,21 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
    return rollupError;
  }
  
- async function transformTemplateAsModule(code, descriptor, options, pluginContext, ssr, customElement) {
+ async function transformTemplateAsModule(code, filename, descriptor, options, pluginContext, ssr, customElement) {
 -  const result = compile(
 -    code,
+-    filename,
 -    descriptor,
 -    options,
 -    pluginContext,
 -    ssr,
 -    customElement
 -  );
-+  const result = compile(code, descriptor, options, pluginContext, ssr, customElement);
++  const result = compile(code, filename, descriptor, options, pluginContext, ssr, customElement);
    let returnCode = result.code;
    if (options.devServer && options.devServer.config.server.hmr !== false && !ssr && !options.isProduction) {
      returnCode += `
-@@ -203,24 +189,14 @@ import.meta.hot.accept(({ render }) => {
+@@ -202,46 +187,35 @@ import.meta.hot.accept(({ render }) => {
    }
    return {
      code: returnCode,
@@ -220,13 +214,14 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
  function transformTemplateInMain(code, descriptor, options, pluginContext, ssr, customElement) {
 -  const result = compile(
 -    code,
+-    descriptor.filename,
 -    descriptor,
 -    options,
 -    pluginContext,
 -    ssr,
 -    customElement
 -  );
-+  const result = compile(code, descriptor, options, pluginContext, ssr, customElement);
++  const result = compile(code, descriptor.filename, descriptor, options, pluginContext, ssr, customElement);
    return {
      ...result,
 -    code: result.code.replace(
@@ -236,11 +231,10 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 +    code: result.code.replace(/\nexport (function|const) (render|ssrRender)/, '\n$1 _sfc_$2'),
    };
  }
- function compile(code, descriptor, options, pluginContext, ssr, customElement) {
-@@ -228,21 +204,21 @@ function compile(code, descriptor, options, pluginContext, ssr, customElement) {
+ function compile(code, filename, descriptor, options, pluginContext, ssr, customElement) {
    resolveScript(descriptor, options, ssr, customElement);
    const result = options.compiler.compileTemplate({
-     ...resolveTemplateCompilerOptions(descriptor, options, ssr),
+     ...resolveTemplateCompilerOptions(descriptor, options, filename, ssr),
 -    source: code
 +    source: code,
    });
@@ -268,8 +262,8 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
      );
    }
    return result;
-@@ -257,24 +233,28 @@ function resolveTemplateCompilerOptions(descriptor, options, ssr) {
-   const { id, filename, cssVars } = descriptor;
+@@ -256,24 +230,28 @@ function resolveTemplateCompilerOptions(descriptor, options, filename, ssr) {
+   const { id, cssVars } = descriptor;
    let transformAssetUrls = options.template?.transformAssetUrls;
    let assetUrlOptions;
 -  if (transformAssetUrls === false) ; else if (options.devServer) {
@@ -303,7 +297,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
        };
      } else {
        transformAssetUrls = { ...assetUrlOptions, ...transformAssetUrls };
-@@ -283,16 +263,16 @@ function resolveTemplateCompilerOptions(descriptor, options, ssr) {
+@@ -282,16 +260,16 @@ function resolveTemplateCompilerOptions(descriptor, options, filename, ssr) {
      transformAssetUrls = assetUrlOptions;
    }
    let preprocessOptions = block.lang && options.template?.preprocessOptions;
@@ -325,7 +319,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
    }
    return {
      ...options.template,
-@@ -306,20 +286,20 @@ function resolveTemplateCompilerOptions(descriptor, options, ssr) {
+@@ -307,20 +285,20 @@ function resolveTemplateCompilerOptions(descriptor, options, filename, ssr) {
      ssr,
      ssrCssVars: cssVars,
      transformAssetUrls,
@@ -350,7 +344,17 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
      if (minor >= 4 && patch >= 3) {
        return true;
      }
-@@ -369,7 +349,7 @@ function resolveScript(descriptor, options, ssr, customElement) {
+@@ -365,16 +343,11 @@ function resolveScript(descriptor, options, ssr, customElement) {
+     id: descriptor.id,
+     isProd: options.isProduction,
+     inlineTemplate: isUseInlineTemplate(descriptor, options),
+-    templateOptions: resolveTemplateCompilerOptions(
+-      descriptor,
+-      options,
+-      descriptor.filename,
+-      ssr
+-    ),
++    templateOptions: resolveTemplateCompilerOptions(descriptor, options, descriptor.filename, ssr),
      sourceMap: options.sourceMap,
      genDefaultAs: canInlineMain(descriptor, options) ? scriptIdentifier : void 0,
      customElement,
@@ -359,7 +363,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
    });
    if (!options.isProduction && resolved?.deps) {
      for (const [key, sfcs] of typeDepToSFCMap) {
-@@ -394,10 +374,10 @@ function canInlineMain(descriptor, options) {
+@@ -399,10 +372,10 @@ function canInlineMain(descriptor, options) {
      return false;
    }
    const lang = descriptor.script?.lang || descriptor.scriptSetup?.lang;
@@ -372,7 +376,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
      return true;
    }
    return false;
-@@ -409,183 +389,173 @@ const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+@@ -414,183 +387,173 @@ const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
  const intToChar = new Uint8Array(64); // 64 possible chars.
  const charToInt = new Uint8Array(128); // z is 122 in ASCII
  for (let i = 0; i < chars.length; i++) {
@@ -396,7 +400,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 -    const shouldNegate = value & 1;
 -    value >>>= 1;
 -    if (shouldNegate) {
--        value = -0x80000000 | -value;
+-        value = -2147483648 | -value;
 -    }
 -    return relative + value;
 +  let value = 0;
@@ -411,7 +415,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 +  const shouldNegate = value & 1;
 +  value >>>= 1;
 +  if (shouldNegate) {
-+    value = -0x80000000 | -value;
++    value = -2147483648 | -value;
 +  }
 +  return relative + value;
  }
@@ -694,7 +698,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
  }
  
  // Matches the scheme of a URL, eg "http://"
-@@ -612,353 +582,343 @@ const urlRegex = /^([\w+.-]+:)\/\/([^@/#?]*@)?([^:/#?]*)(:\d+)?(\/[^#?]*)?(\?[^#
+@@ -617,353 +580,343 @@ const urlRegex = /^([\w+.-]+:)\/\/([^@/#?]*@)?([^:/#?]*)(:\d+)?(\/[^#?]*)?(\?[^#
   */
  const fileRegex = /^file:(?:\/\/((?![a-z]:)[^/#?]*)?)?(\/?[^#?]*)(\?[^#]*)?(#.*)?/i;
  function isAbsoluteUrl(input) {
@@ -1039,7 +1043,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 +      case 6 /* SchemeRelative */:
 +        // The input doesn't have a schema at least, so we need to copy at least that over.
 +        url.scheme = baseUrl.scheme;
-     }
++    }
 +    if (baseType > inputType) inputType = baseType;
 +  }
 +  normalizePath(url, inputType);
@@ -1061,7 +1065,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 +        return './' + path + queryHash;
 +      }
 +      return path + queryHash;
-+    }
+     }
 +    case 5 /* AbsolutePath */:
 +      return url.path + queryHash;
 +    default:
@@ -1302,7 +1306,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
  }
  
  /**
-@@ -970,36 +930,35 @@ function eachMapping(map, cb) {
+@@ -975,36 +928,35 @@ function eachMapping(map, cb) {
   * and there are never duplicates.
   */
  class SetArray {
@@ -1351,7 +1355,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
  }
  
  const COLUMN = 0;
-@@ -1013,163 +972,176 @@ const NO_NAME = -1;
+@@ -1014,132 +966,147 @@ const NO_NAME = -1;
   * Provides the state to generate a sourcemap.
   */
  class GenMapping {
@@ -1460,17 +1464,12 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 -    const line = getLine(mappings, genLine);
 -    const index = getColumnIndex(line, genColumn);
 -    if (!source) {
--        if (skipable && skipSourceless(line, index))
--            return;
 -        return insert(line, index, [genColumn]);
 -    }
 -    const sourcesIndex = put(sources, source);
 -    const namesIndex = name ? put(names, name) : NO_NAME;
 -    if (sourcesIndex === sourcesContent.length)
 -        sourcesContent[sourcesIndex] = content !== null && content !== void 0 ? content : null;
--    if (skipable && skipSource(line, index, sourcesIndex, sourceLine, sourceColumn, namesIndex)) {
--        return;
--    }
 -    return insert(line, index, name
 -        ? [genColumn, sourcesIndex, sourceLine, sourceColumn, namesIndex]
 -        : [genColumn, sourcesIndex, sourceLine, sourceColumn]);
@@ -1478,16 +1477,12 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 +  const line = getLine(mappings, genLine);
 +  const index = getColumnIndex(line, genColumn);
 +  if (!source) {
-+    if (skipable && skipSourceless(line, index)) return;
 +    return insert(line, index, [genColumn]);
 +  }
 +  const sourcesIndex = put(sources, source);
 +  const namesIndex = name ? put(names, name) : NO_NAME;
 +  if (sourcesIndex === sourcesContent.length)
 +    sourcesContent[sourcesIndex] = content !== null && content !== void 0 ? content : null;
-+  if (skipable && skipSource(line, index, sourcesIndex, sourceLine, sourceColumn, namesIndex)) {
-+    return;
-+  }
 +  return insert(
 +    line,
 +    index,
@@ -1552,53 +1547,6 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 -        put(setarr, array[i]);
 +  for (let i = 0; i < array.length; i++) put(setarr, array[i]);
  }
- function skipSourceless(line, index) {
--    // The start of a line is already sourceless, so adding a sourceless segment to the beginning
--    // doesn't generate any useful information.
--    if (index === 0)
--        return true;
--    const prev = line[index - 1];
--    // If the previous segment is also sourceless, then adding another sourceless segment doesn't
--    // genrate any new information. Else, this segment will end the source/named segment and point to
--    // a sourceless position, which is useful.
--    return prev.length === 1;
-+  // The start of a line is already sourceless, so adding a sourceless segment to the beginning
-+  // doesn't generate any useful information.
-+  if (index === 0) return true;
-+  const prev = line[index - 1];
-+  // If the previous segment is also sourceless, then adding another sourceless segment doesn't
-+  // genrate any new information. Else, this segment will end the source/named segment and point to
-+  // a sourceless position, which is useful.
-+  return prev.length === 1;
- }
- function skipSource(line, index, sourcesIndex, sourceLine, sourceColumn, namesIndex) {
--    // A source/named segment at the start of a line gives position at that genColumn
--    if (index === 0)
--        return false;
--    const prev = line[index - 1];
--    // If the previous segment is sourceless, then we're transitioning to a source.
--    if (prev.length === 1)
--        return false;
--    // If the previous segment maps to the exact same source position, then this segment doesn't
--    // provide any new position information.
--    return (sourcesIndex === prev[SOURCES_INDEX] &&
--        sourceLine === prev[SOURCE_LINE] &&
--        sourceColumn === prev[SOURCE_COLUMN] &&
--        namesIndex === (prev.length === 5 ? prev[NAMES_INDEX] : NO_NAME));
-+  // A source/named segment at the start of a line gives position at that genColumn
-+  if (index === 0) return false;
-+  const prev = line[index - 1];
-+  // If the previous segment is sourceless, then we're transitioning to a source.
-+  if (prev.length === 1) return false;
-+  // If the previous segment maps to the exact same source position, then this segment doesn't
-+  // provide any new position information.
-+  return (
-+    sourcesIndex === prev[SOURCES_INDEX] &&
-+    sourceLine === prev[SOURCE_LINE] &&
-+    sourceColumn === prev[SOURCE_COLUMN] &&
-+    namesIndex === (prev.length === 5 ? prev[NAMES_INDEX] : NO_NAME)
-+  );
- }
  function addMappingInternal(skipable, map, mapping) {
 -    const { generated, source, original, name, content } = mapping;
 -    if (!source) {
@@ -1636,7 +1584,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
  
  /**
   * Helpers.
-@@ -1178,734 +1150,759 @@ var browser = {exports: {}};
+@@ -1148,753 +1115,778 @@ var browser = {exports: {}};
  var ms;
  var hasRequiredMs;
  
@@ -2137,24 +2085,62 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 -			createDebug.names = [];
 -			createDebug.skips = [];
 -
--			let i;
--			const split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
--			const len = split.length;
+-			const split = (typeof namespaces === 'string' ? namespaces : '')
+-				.trim()
+-				.replace(/\s+/g, ',')
+-				.split(',')
+-				.filter(Boolean);
 -
--			for (i = 0; i < len; i++) {
--				if (!split[i]) {
--					// ignore empty strings
--					continue;
--				}
--
--				namespaces = split[i].replace(/\*/g, '.*?');
--
--				if (namespaces[0] === '-') {
--					createDebug.skips.push(new RegExp('^' + namespaces.slice(1) + '$'));
+-			for (const ns of split) {
+-				if (ns[0] === '-') {
+-					createDebug.skips.push(ns.slice(1));
 -				} else {
--					createDebug.names.push(new RegExp('^' + namespaces + '$'));
+-					createDebug.names.push(ns);
 -				}
 -			}
+-		}
+-
+-		/**
+-		 * Checks if the given string matches a namespace template, honoring
+-		 * asterisks as wildcards.
+-		 *
+-		 * @param {String} search
+-		 * @param {String} template
+-		 * @return {Boolean}
+-		 */
+-		function matchesTemplate(search, template) {
+-			let searchIndex = 0;
+-			let templateIndex = 0;
+-			let starIndex = -1;
+-			let matchIndex = 0;
+-
+-			while (searchIndex < search.length) {
+-				if (templateIndex < template.length && (template[templateIndex] === search[searchIndex] || template[templateIndex] === '*')) {
+-					// Match character or proceed with wildcard
+-					if (template[templateIndex] === '*') {
+-						starIndex = templateIndex;
+-						matchIndex = searchIndex;
+-						templateIndex++; // Skip the '*'
+-					} else {
+-						searchIndex++;
+-						templateIndex++;
+-					}
+-				} else if (starIndex !== -1) { // eslint-disable-line no-negated-condition
+-					// Backtrack to the last '*' and try to match more characters
+-					templateIndex = starIndex + 1;
+-					matchIndex++;
+-					searchIndex = matchIndex;
+-				} else {
+-					return false; // No match
+-				}
+-			}
+-
+-			// Handle trailing '*' in template
+-			while (templateIndex < template.length && template[templateIndex] === '*') {
+-				templateIndex++;
+-			}
+-
+-			return templateIndex === template.length;
 -		}
 -
 -		/**
@@ -2165,8 +2151,8 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 -		*/
 -		function disable() {
 -			const namespaces = [
--				...createDebug.names.map(toNamespace),
--				...createDebug.skips.map(toNamespace).map(namespace => '-' + namespace)
+-				...createDebug.names,
+-				...createDebug.skips.map(namespace => '-' + namespace)
 -			].join(',');
 -			createDebug.enable('');
 -			return namespaces;
@@ -2180,39 +2166,19 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 -		* @api public
 -		*/
 -		function enabled(name) {
--			if (name[name.length - 1] === '*') {
--				return true;
--			}
--
--			let i;
--			let len;
--
--			for (i = 0, len = createDebug.skips.length; i < len; i++) {
--				if (createDebug.skips[i].test(name)) {
+-			for (const skip of createDebug.skips) {
+-				if (matchesTemplate(name, skip)) {
 -					return false;
 -				}
 -			}
 -
--			for (i = 0, len = createDebug.names.length; i < len; i++) {
--				if (createDebug.names[i].test(name)) {
+-			for (const ns of createDebug.names) {
+-				if (matchesTemplate(name, ns)) {
 -					return true;
 -				}
 -			}
 -
 -			return false;
--		}
--
--		/**
--		* Convert regexp to namespace
--		*
--		* @param {RegExp} regxep
--		* @return {String} namespace
--		* @api private
--		*/
--		function toNamespace(regexp) {
--			return regexp.toString()
--				.substring(2, regexp.toString().length - 2)
--				.replace(/\.\*\?$/, '*');
 -		}
 -
 -		/**
@@ -2414,24 +2380,66 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 +      createDebug.names = [];
 +      createDebug.skips = [];
 +
-+      let i;
-+      const split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
-+      const len = split.length;
++      const split = (typeof namespaces === 'string' ? namespaces : '')
++        .trim()
++        .replace(/\s+/g, ',')
++        .split(',')
++        .filter(Boolean);
 +
-+      for (i = 0; i < len; i++) {
-+        if (!split[i]) {
-+          // ignore empty strings
-+          continue;
-+        }
-+
-+        namespaces = split[i].replace(/\*/g, '.*?');
-+
-+        if (namespaces[0] === '-') {
-+          createDebug.skips.push(new RegExp('^' + namespaces.slice(1) + '$'));
++      for (const ns of split) {
++        if (ns[0] === '-') {
++          createDebug.skips.push(ns.slice(1));
 +        } else {
-+          createDebug.names.push(new RegExp('^' + namespaces + '$'));
++          createDebug.names.push(ns);
 +        }
 +      }
++    }
++
++    /**
++     * Checks if the given string matches a namespace template, honoring
++     * asterisks as wildcards.
++     *
++     * @param {String} search
++     * @param {String} template
++     * @return {Boolean}
++     */
++    function matchesTemplate(search, template) {
++      let searchIndex = 0;
++      let templateIndex = 0;
++      let starIndex = -1;
++      let matchIndex = 0;
++
++      while (searchIndex < search.length) {
++        if (
++          templateIndex < template.length &&
++          (template[templateIndex] === search[searchIndex] || template[templateIndex] === '*')
++        ) {
++          // Match character or proceed with wildcard
++          if (template[templateIndex] === '*') {
++            starIndex = templateIndex;
++            matchIndex = searchIndex;
++            templateIndex++; // Skip the '*'
++          } else {
++            searchIndex++;
++            templateIndex++;
++          }
++        } else if (starIndex !== -1) {
++          // eslint-disable-line no-negated-condition
++          // Backtrack to the last '*' and try to match more characters
++          templateIndex = starIndex + 1;
++          matchIndex++;
++          searchIndex = matchIndex;
++        } else {
++          return false; // No match
++        }
++      }
++
++      // Handle trailing '*' in template
++      while (templateIndex < template.length && template[templateIndex] === '*') {
++        templateIndex++;
++      }
++
++      return templateIndex === template.length;
 +    }
 +
 +    /**
@@ -2441,10 +2449,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 +     * @api public
 +     */
 +    function disable() {
-+      const namespaces = [
-+        ...createDebug.names.map(toNamespace),
-+        ...createDebug.skips.map(toNamespace).map((namespace) => '-' + namespace),
-+      ].join(',');
++      const namespaces = [...createDebug.names, ...createDebug.skips.map((namespace) => '-' + namespace)].join(',');
 +      createDebug.enable('');
 +      return namespaces;
 +    }
@@ -2457,40 +2462,19 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 +     * @api public
 +     */
 +    function enabled(name) {
-+      if (name[name.length - 1] === '*') {
-+        return true;
-+      }
-+
-+      let i;
-+      let len;
-+
-+      for (i = 0, len = createDebug.skips.length; i < len; i++) {
-+        if (createDebug.skips[i].test(name)) {
++      for (const skip of createDebug.skips) {
++        if (matchesTemplate(name, skip)) {
 +          return false;
 +        }
 +      }
 +
-+      for (i = 0, len = createDebug.names.length; i < len; i++) {
-+        if (createDebug.names[i].test(name)) {
++      for (const ns of createDebug.names) {
++        if (matchesTemplate(name, ns)) {
 +          return true;
 +        }
 +      }
 +
 +      return false;
-+    }
-+
-+    /**
-+     * Convert regexp to namespace
-+     *
-+     * @param {RegExp} regxep
-+     * @return {String} namespace
-+     * @api private
-+     */
-+    function toNamespace(regexp) {
-+      return regexp
-+        .toString()
-+        .substring(2, regexp.toString().length - 2)
-+        .replace(/\.\*\?$/, '*');
 +    }
 +
 +    /**
@@ -2663,6 +2647,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 -
 -			// Is webkit? http://stackoverflow.com/a/16459606/376773
 -			// document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
+-			// eslint-disable-next-line no-return-assign
 -			return (typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
 -				// Is firebug? http://stackoverflow.com/a/398120/376773
 -				(typeof window !== 'undefined' && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
@@ -2752,7 +2737,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 -		function load() {
 -			let r;
 -			try {
--				r = exports.storage.getItem('debug');
+-				r = exports.storage.getItem('debug') || exports.storage.getItem('DEBUG') ;
 -			} catch (error) {
 -				// Swallow
 -				// XXX (@Qix-) should we be logging these?
@@ -2951,6 +2936,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 +
 +      // Is webkit? http://stackoverflow.com/a/16459606/376773
 +      // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
++      // eslint-disable-next-line no-return-assign
 +      return (
 +        (typeof document !== 'undefined' &&
 +          document.documentElement &&
@@ -3054,7 +3040,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 +    function load() {
 +      let r;
 +      try {
-+        r = exports.storage.getItem('debug');
++        r = exports.storage.getItem('debug') || exports.storage.getItem('DEBUG');
 +      } catch (error) {
 +        // Swallow
 +        // XXX (@Qix-) should we be logging these?
@@ -3113,7 +3099,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
  
  /**
   * Module dependencies.
-@@ -1913,271 +1910,200 @@ var node = {exports: {}};
+@@ -1902,271 +1894,200 @@ var node = {exports: {}};
  
  var hasRequiredNode;
  
@@ -3579,27 +3565,40 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
  }
  
  /**
-@@ -2186,15 +2112,15 @@ function requireNode () {
-  */
+@@ -2176,21 +2097,21 @@ function requireNode () {
  
- if (typeof process === 'undefined' || process.type === 'renderer' || process.browser === true || process.__nwjs) {
--	src.exports = requireBrowser();
-+  src.exports = requireBrowser();
- } else {
--	src.exports = requireNode();
-+  src.exports = requireNode();
+ var hasRequiredSrc;
+ 
+-function requireSrc () {
+-	if (hasRequiredSrc) return src.exports;
+-	hasRequiredSrc = 1;
+-	if (typeof process === 'undefined' || process.type === 'renderer' || process.browser === true || process.__nwjs) {
+-		src.exports = requireBrowser();
+-	} else {
+-		src.exports = requireNode();
+-	}
+-	return src.exports;
++function requireSrc() {
++  if (hasRequiredSrc) return src.exports;
++  hasRequiredSrc = 1;
++  if (typeof process === 'undefined' || process.type === 'renderer' || process.browser === true || process.__nwjs) {
++    src.exports = requireBrowser();
++  } else {
++    src.exports = requireNode();
++  }
++  return src.exports;
  }
  
- var srcExports = src.exports;
+ var srcExports = requireSrc();
 -const _debug = /*@__PURE__*/getDefaultExportFromCjs(srcExports);
 +const _debug = /*@__PURE__*/ getDefaultExportFromCjs(srcExports);
  
 -const debug = _debug("vite:hmr");
 +const debug = _debug('vite:hmr');
  const directRequestRE = /(?:\?|&)direct\b/;
- async function handleHotUpdate({ file, modules, read }, options, customElement) {
+ async function handleHotUpdate({ file, modules, read }, options, customElement, typeDepModules) {
    const prevDescriptor = getDescriptor(file, options, false, true);
-@@ -2214,11 +2140,7 @@ async function handleHotUpdate({ file, modules, read }, options, customElement)
+@@ -2210,11 +2131,7 @@ async function handleHotUpdate({ file, modules, read }, options, customElement,
    }
    if (!isEqualBlock(descriptor.template, prevDescriptor.template)) {
      if (!scriptChanged) {
@@ -3612,7 +3611,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
      }
      affectedModules.add(templateModule);
      needRerender = true;
-@@ -2226,7 +2148,7 @@ async function handleHotUpdate({ file, modules, read }, options, customElement)
+@@ -2222,7 +2139,7 @@ async function handleHotUpdate({ file, modules, read }, options, customElement,
    let didUpdateStyle = false;
    const prevStyles = prevDescriptor.styles || [];
    const nextStyles = descriptor.styles || [];
@@ -3621,7 +3620,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
      affectedModules.add(mainModule);
    }
    if (prevStyles.some((s) => s.scoped) !== nextStyles.some((s) => s.scoped)) {
-@@ -2239,11 +2161,14 @@ async function handleHotUpdate({ file, modules, read }, options, customElement)
+@@ -2235,11 +2152,14 @@ async function handleHotUpdate({ file, modules, read }, options, customElement,
      if (!prev || !isEqualBlock(prev, next)) {
        didUpdateStyle = true;
        const mod = modules.find(
@@ -3638,7 +3637,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
            affectedModules.add(mainModule);
          }
        } else {
-@@ -2263,9 +2188,7 @@ async function handleHotUpdate({ file, modules, read }, options, customElement)
+@@ -2259,9 +2179,7 @@ async function handleHotUpdate({ file, modules, read }, options, customElement,
        const prev = prevCustoms[i];
        const next = nextCustoms[i];
        if (!prev || !isEqualBlock(prev, next)) {
@@ -3649,7 +3648,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
          if (mod) {
            affectedModules.add(mod);
          } else {
-@@ -2280,9 +2203,7 @@ async function handleHotUpdate({ file, modules, read }, options, customElement)
+@@ -2276,9 +2194,7 @@ async function handleHotUpdate({ file, modules, read }, options, customElement,
      if (!templateModule) {
        affectedModules.add(mainModule);
      } else if (mainModule && !affectedModules.has(mainModule)) {
@@ -3660,7 +3659,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
        styleImporters.forEach((m) => affectedModules.add(m));
      }
    }
-@@ -2290,24 +2211,20 @@ async function handleHotUpdate({ file, modules, read }, options, customElement)
+@@ -2286,16 +2202,14 @@ async function handleHotUpdate({ file, modules, read }, options, customElement,
      updateType.push(`style`);
    }
    if (updateType.length) {
@@ -3673,25 +3672,14 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 -    debug(`[vue:update(${updateType.join("&")})] ${file}`);
 +    debug(`[vue:update(${updateType.join('&')})] ${file}`);
    }
-   return [...affectedModules].filter(Boolean);
+-  return [...affectedModules, ...typeDepModules || []].filter(
+-    Boolean
+-  );
++  return [...affectedModules, ...(typeDepModules || [])].filter(Boolean);
  }
  function isEqualBlock(a, b) {
--  if (!a && !b)
--    return true;
--  if (!a || !b)
--    return false;
--  if (a.src && b.src && a.src === b.src)
--    return true;
--  if (a.content !== b.content)
--    return false;
-+  if (!a && !b) return true;
-+  if (!a || !b) return false;
-+  if (a.src && b.src && a.src === b.src) return true;
-+  if (a.content !== b.content) return false;
-   const keysA = Object.keys(a.attrs);
-   const keysB = Object.keys(b.attrs);
-   if (keysA.length !== keysB.length) {
-@@ -2316,13 +2233,19 @@ function isEqualBlock(a, b) {
+   if (!a && !b) return true;
+@@ -2310,13 +2224,19 @@ function isEqualBlock(a, b) {
    return keysA.every((key) => a.attrs[key] === b.attrs[key]);
  }
  function isOnlyTemplateChanged(prev, next) {
@@ -3713,7 +3701,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
      return obj1 === obj2;
    }
    const keys1 = Object.keys(obj1);
-@@ -2334,17 +2257,14 @@ function deepEqual(obj1, obj2, excludeProps = [], deepParentsOfObj1 = []) {
+@@ -2328,17 +2248,14 @@ function deepEqual(obj1, obj2, excludeProps = [], deepParentsOfObj1 = []) {
      if (excludeProps.includes(key)) {
        continue;
      }
@@ -3733,7 +3721,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
      return prev === next;
    }
    if (prev.length !== next.length) {
-@@ -2356,19 +2276,19 @@ function isEqualAst(prev, next) {
+@@ -2350,19 +2267,19 @@ function isEqualAst(prev, next) {
      if (
        // deep equal, but ignore start/end/loc/range/leadingComments/trailingComments/innerComments
        !deepEqual(prevNode, nextNode, [
@@ -3763,7 +3751,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
        ])
      ) {
        return false;
-@@ -2382,7 +2302,10 @@ function hasScriptChanged(prev, next) {
+@@ -2376,7 +2293,10 @@ function hasScriptChanged(prev, next) {
    if (!isEqualBlock(prev.script, next.script) && !isEqualAst(prevScript?.scriptAst, nextScript?.scriptAst)) {
      return true;
    }
@@ -3775,7 +3763,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
      return true;
    }
    const prevResolvedScript = getResolvedScript(prev, false);
-@@ -2393,9 +2316,11 @@ function hasScriptChanged(prev, next) {
+@@ -2387,9 +2307,11 @@ function hasScriptChanged(prev, next) {
    return false;
  }
  function getMainModule(modules) {
@@ -3790,7 +3778,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
  }
  function getScriptModule(modules) {
    return modules.find((m) => /type=script.*&lang\.\w+$/.test(m.url));
-@@ -2413,7 +2338,7 @@ function handleTypeDepChange(affectedComponents, { modules, server: { moduleGrap
+@@ -2407,7 +2329,7 @@ function handleTypeDepChange(affectedComponents, { modules, server: { moduleGrap
    return [...modules, ...affected];
  }
  
@@ -3799,7 +3787,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
  const helperCode = `
  export default (sfc, props) => {
    const target = sfc.__vccOpts || sfc;
-@@ -2440,13 +2365,11 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
+@@ -2434,13 +2356,11 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
        // `hmrContext.read` is overwritten so handleHotUpdate() is dealing with
        // post-transform code, so we populate the descriptor with post-transform
        // code here as well.
@@ -3815,7 +3803,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
      return null;
    }
    const attachedProps = [];
-@@ -2456,10 +2379,10 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
+@@ -2450,10 +2370,10 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
      options,
      pluginContext,
      ssr,
@@ -3828,7 +3816,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
    let templateMap = void 0;
    if (hasTemplateImport) {
      ({ code: templateCode, map: templateMap } = await genTemplateCode(
-@@ -2467,53 +2390,38 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
+@@ -2461,53 +2381,38 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
        options,
        pluginContext,
        ssr,
@@ -3892,7 +3880,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
        );
      }
      output.push(
-@@ -2525,23 +2433,19 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
+@@ -2519,23 +2424,19 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
        `  } else {`,
        `    __VUE_HMR_RUNTIME__.reload(updated.__hmrId, updated)`,
        `  }`,
@@ -3920,12 +3908,24 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
      );
    }
    let resolvedMap = void 0;
-@@ -2550,23 +2454,22 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
+@@ -2543,21 +2444,21 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
+     if (templateMap) {
+       const from = scriptMap ?? {
+         file: filename,
+-        sourceRoot: "",
++        sourceRoot: '',
+         version: 3,
+         sources: [],
+         sourcesContent: [],
+         names: [],
+-        mappings: ""
++        mappings: '',
+       };
        const gen = fromMap(
          // version property of result.map is declared as string
          // but actually it is `3`
--        scriptMap
-+        scriptMap,
+-        from
++        from,
        );
        const tracer = new TraceMap(
          // same above
@@ -3934,11 +3934,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
        );
        const offset = (scriptCode.match(/\r?\n/g)?.length ?? 0) + 1;
        eachMapping(tracer, (m) => {
--        if (m.source == null)
--          return;
-+        if (m.source == null) return;
-         addMapping(gen, {
-           source: m.source,
+@@ -2567,8 +2468,8 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
            original: { line: m.originalLine, column: m.originalColumn },
            generated: {
              line: m.generatedLine + offset,
@@ -3949,7 +3945,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
          });
        });
        resolvedMap = toEncodedMap(gen);
-@@ -2580,24 +2483,24 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
+@@ -2582,10 +2483,10 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
    } else {
      output.push(
        `import _export_sfc from '${EXPORT_HELPER_ID}'`,
@@ -3961,26 +3957,43 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 +  let resolvedCode = output.join('\n');
    const lang = descriptor.scriptSetup?.lang || descriptor.script?.lang;
    if (lang && /tsx?$/.test(lang) && !descriptor.script?.src) {
-     const { code: code2, map } = await transformWithEsbuild(
-       resolvedCode,
-       filename,
-       {
--        target: "esnext",
-+        target: 'esnext',
-         // #430 support decorators in .vue file
-         // target can be overridden by esbuild config target
-         ...options.devServer?.config.esbuild,
--        loader: "ts",
--        sourcemap: options.sourceMap
-+        loader: 'ts',
-+        sourcemap: options.sourceMap,
-       },
--      resolvedMap
-+      resolvedMap,
-     );
-     resolvedCode = code2;
-     resolvedMap = resolvedMap ? map : resolvedMap;
-@@ -2605,46 +2508,34 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
+     const { transformWithOxc } = await import('vite');
+@@ -2598,10 +2499,10 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
+           // target can be overridden by oxc config target
+           // @ts-ignore Rolldown-specific
+           ...options.devServer?.config.oxc,
+-          lang: "ts",
+-          sourcemap: options.sourceMap
++          lang: 'ts',
++          sourcemap: options.sourceMap,
+         },
+-        resolvedMap
++        resolvedMap,
+       );
+       resolvedCode = code2;
+       resolvedMap = resolvedMap ? map : resolvedMap;
+@@ -2610,15 +2511,15 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
+         resolvedCode,
+         filename,
+         {
+-          target: "esnext",
+-          charset: "utf8",
++          target: 'esnext',
++          charset: 'utf8',
+           // #430 support decorators in .vue file
+           // target can be overridden by esbuild config target
+           ...options.devServer?.config.esbuild,
+-          loader: "ts",
+-          sourcemap: options.sourceMap
++          loader: 'ts',
++          sourcemap: options.sourceMap,
+         },
+-        resolvedMap
++        resolvedMap,
+       );
+       resolvedCode = code2;
+       resolvedMap = resolvedMap ? map : resolvedMap;
+@@ -2627,51 +2528,39 @@ async function transformMain(code, filename, options, pluginContext, ssr, custom
    return {
      code: resolvedCode,
      map: resolvedMap || {
@@ -4038,7 +4051,13 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
      };
    }
  }
-@@ -2656,12 +2547,16 @@ async function genScriptCode(descriptor, options, pluginContext, ssr, customElem
+ async function genScriptCode(descriptor, options, pluginContext, ssr, customElement) {
+-  const vaporFlag = descriptor.vapor ? "__vapor: true" : "";
++  const vaporFlag = descriptor.vapor ? '__vapor: true' : '';
+   let scriptCode = `const ${scriptIdentifier} = { ${vaporFlag} }`;
+   let map;
+   const script = resolveScript(descriptor, options, ssr, customElement);
+@@ -2679,12 +2568,16 @@ async function genScriptCode(descriptor, options, pluginContext, ssr, customElem
      if (canInlineMain(descriptor, options)) {
        if (!options.compiler.version) {
          const userPlugins = options.script?.babelParserPlugins || [];
@@ -4061,7 +4080,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
        } else {
          scriptCode = script.content;
        }
-@@ -2671,7 +2566,7 @@ async function genScriptCode(descriptor, options, pluginContext, ssr, customElem
+@@ -2694,7 +2587,7 @@ async function genScriptCode(descriptor, options, pluginContext, ssr, customElem
          await linkSrcToDescriptor(script.src, descriptor, pluginContext, false);
        }
        const src = script.src || descriptor.filename;
@@ -4070,7 +4089,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
        const attrsQuery = attrsToQuery(script.attrs, langFallback);
        const srcQuery = script.src ? `&src=true` : ``;
        const query = `?vue&type=script${srcQuery}${attrsQuery}`;
-@@ -2682,7 +2577,7 @@ export * from ${request}`;
+@@ -2705,7 +2598,7 @@ export * from ${request}`;
    }
    return {
      code: scriptCode,
@@ -4079,7 +4098,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
    };
  }
  async function genStyleCode(descriptor, pluginContext, customElement, attachedProps) {
-@@ -2692,39 +2587,26 @@ async function genStyleCode(descriptor, pluginContext, customElement, attachedPr
+@@ -2715,39 +2608,26 @@ async function genStyleCode(descriptor, pluginContext, customElement, attachedPr
      for (let i = 0; i < descriptor.styles.length; i++) {
        const style = descriptor.styles[i];
        if (style.src) {
@@ -4114,7 +4133,8 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 -        );
 +        const [importCode, nameMap] = genCSSModulesCode(i, styleRequest, style.module);
          stylesCode += importCode;
-         Object.assign(cssModulesMap || (cssModulesMap = {}), nameMap);
+-        Object.assign(cssModulesMap ||= {}, nameMap);
++        Object.assign((cssModulesMap ||= {}), nameMap);
        } else {
          if (customElement) {
            stylesCode += `
@@ -4125,7 +4145,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
          } else {
            stylesCode += `
  import ${JSON.stringify(styleRequest)}`;
-@@ -2732,18 +2614,18 @@ import ${JSON.stringify(styleRequest)}`;
+@@ -2755,18 +2635,18 @@ import ${JSON.stringify(styleRequest)}`;
        }
      }
      if (customElement) {
@@ -4152,7 +4172,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
      stylesCode += `
  const cssModules = ${mappingCode}`;
      attachedProps.push([`__cssModules`, `cssModules`]);
-@@ -2752,16 +2634,16 @@ const cssModules = ${mappingCode}`;
+@@ -2775,16 +2655,16 @@ const cssModules = ${mappingCode}`;
  }
  function genCSSModulesCode(index, request, moduleName) {
    const styleVar = `style${index}`;
@@ -4173,7 +4193,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
    for (let index = 0; index < descriptor.customBlocks.length; index++) {
      const block = descriptor.customBlocks[index];
      if (block.src) {
-@@ -2781,18 +2663,9 @@ async function genCustomBlockCode(descriptor, pluginContext) {
+@@ -2804,18 +2684,9 @@ async function genCustomBlockCode(descriptor, pluginContext) {
  }
  async function linkSrcToDescriptor(src, descriptor, pluginContext, scoped) {
    const srcFile = (await pluginContext.resolve(src, descriptor.filename))?.id || src;
@@ -4195,7 +4215,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
  function attrsToQuery(attrs, langFallback, forceLangFallback = false) {
    let query = ``;
    for (const name in attrs) {
-@@ -2802,7 +2675,8 @@ function attrsToQuery(attrs, langFallback, forceLangFallback = false) {
+@@ -2825,7 +2696,8 @@ function attrsToQuery(attrs, langFallback, forceLangFallback = false) {
      }
    }
    if (langFallback || attrs.lang) {
@@ -4205,7 +4225,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
    }
    return query;
  }
-@@ -2815,16 +2689,18 @@ async function transformStyle(code, descriptor, index, options, pluginContext, f
+@@ -2838,16 +2710,18 @@ async function transformStyle(code, descriptor, index, options, pluginContext, f
      id: `data-v-${descriptor.id}`,
      isProd: options.isProduction,
      source: code,
@@ -4216,7 +4236,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 -          from: filename,
 -          inline: false,
 -          annotation: false
-+    scoped: block?.scoped ?? false,
++    scoped: block?.scoped,
 +    ...(options.cssDevSourcemap
 +      ? {
 +          postcssOptions: {
@@ -4233,7 +4253,7 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
    });
    if (result.errors.length) {
      result.errors.forEach((error) => {
-@@ -2832,29 +2708,31 @@ async function transformStyle(code, descriptor, index, options, pluginContext, f
+@@ -2855,55 +2729,58 @@ async function transformStyle(code, descriptor, index, options, pluginContext, f
          error.loc = {
            file: descriptor.filename,
            line: error.line + block.loc.start.line,
@@ -4261,8 +4281,20 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 +    : { mappings: '' };
    return {
      code: result.code,
--    map
-+    map,
+     map,
+-    meta: block.scoped && !descriptor.isTemp ? {
+-      vite: {
+-        cssScopeTo: [descriptor.filename, "default"]
+-      }
+-    } : void 0
++    meta:
++      block?.scoped && !descriptor.isTemp
++        ? {
++            vite: {
++              cssScopeTo: [descriptor.filename, 'default'],
++            },
++          }
++        : void 0,
    };
  }
  
@@ -4273,32 +4305,53 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 +    isProduction: process.env.NODE_ENV === 'production',
      compiler: null,
      // to be set in buildStart
-     include: /\.vue$/,
-@@ -2862,17 +2740,15 @@ function vuePlugin(rawOptions = {}) {
+     customElement: /\.ce\.vue$/,
      ...rawOptions,
      root: process.cwd(),
      sourceMap: true,
 -    cssDevSourcemap: false
 +    cssDevSourcemap: false,
    });
--  const filter = computed(
--    () => createFilter(options.value.include, options.value.exclude)
+-  const include = shallowRef(
+-    rawOptions.include ?? /\.vue$/
 -  );
-+  const filter = computed(() => createFilter(options.value.include, options.value.exclude));
++  const include = shallowRef(rawOptions.include ?? /\.vue$/);
+   const exclude = shallowRef(rawOptions.exclude);
+   let optionsHookIsCalled = false;
+   const filter = computed(() => createFilter(include.value, exclude.value));
    const customElementFilter = computed(() => {
      const customElement = options.value.features?.customElement || options.value.customElement;
 -    return typeof customElement === "boolean" ? () => customElement : createFilter(customElement);
 +    return typeof customElement === 'boolean' ? () => customElement : createFilter(customElement);
    });
-   return {
+   let transformCachedModule = false;
+   const plugin = {
 -    name: "vite:vue",
 +    name: 'vite:vue',
      api: {
        get options() {
          return options.value;
-@@ -2880,13 +2756,13 @@ function vuePlugin(rawOptions = {}) {
-       set options(value) {
-         options.value = value;
+@@ -2916,9 +2793,7 @@ function vuePlugin(rawOptions = {}) {
+       },
+       set include(value) {
+         if (optionsHookIsCalled) {
+-          throw new Error(
+-            "include cannot be updated after `options` hook is called"
+-          );
++          throw new Error('include cannot be updated after `options` hook is called');
+         }
+         include.value = value;
+       },
+@@ -2927,19 +2802,17 @@ function vuePlugin(rawOptions = {}) {
+       },
+       set exclude(value) {
+         if (optionsHookIsCalled) {
+-          throw new Error(
+-            "exclude cannot be updated after `options` hook is called"
+-          );
++          throw new Error('exclude cannot be updated after `options` hook is called');
+         }
+         exclude.value = value;
        },
 -      version
 +      version,
@@ -4314,32 +4367,55 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
        });
        if (options.value.compiler.invalidateTypeCache) {
          options.value.compiler.invalidateTypeCache(ctx.file);
-@@ -2895,46 +2771,49 @@ function vuePlugin(rawOptions = {}) {
-         return handleTypeDepChange(typeDepToSFCMap.get(ctx.file), ctx);
+@@ -2947,77 +2820,71 @@ function vuePlugin(rawOptions = {}) {
+       let typeDepModules;
+       const matchesFilter = filter.value(ctx.file);
+       if (typeDepToSFCMap.has(ctx.file)) {
+-        typeDepModules = handleTypeDepChange(
+-          typeDepToSFCMap.get(ctx.file),
+-          ctx
+-        );
++        typeDepModules = handleTypeDepChange(typeDepToSFCMap.get(ctx.file), ctx);
+         if (!matchesFilter) return typeDepModules;
        }
-       if (filter.value(ctx.file)) {
+       if (matchesFilter) {
 -        return handleHotUpdate(
 -          ctx,
 -          options.value,
--          customElementFilter.value(ctx.file)
+-          customElementFilter.value(ctx.file),
+-          typeDepModules
 -        );
-+        return handleHotUpdate(ctx, options.value, customElementFilter.value(ctx.file));
++        return handleHotUpdate(ctx, options.value, customElementFilter.value(ctx.file), typeDepModules);
        }
      },
      config(config) {
+       const parseDefine = (v) => {
+         try {
+-          return typeof v === "string" ? JSON.parse(v) : v;
++          return typeof v === 'string' ? JSON.parse(v) : v;
+         } catch (err) {
+           return v;
+         }
+       };
        return {
          resolve: {
 -          dedupe: config.build?.ssr ? [] : ["vue"]
 +          dedupe: config.build?.ssr ? [] : ['vue'],
          },
          define: {
-           __VUE_OPTIONS_API__: !!((options.value.features?.optionsAPI ?? true) || config.define?.__VUE_OPTIONS_API__),
-           __VUE_PROD_DEVTOOLS__: !!(options.value.features?.prodDevtools || config.define?.__VUE_PROD_DEVTOOLS__),
--          __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: !!(options.value.features?.prodHydrationMismatchDetails || config.define?.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__)
-+          __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: !!(
-+            options.value.features?.prodHydrationMismatchDetails ||
-+            config.define?.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__
-+          ),
+-          __VUE_OPTIONS_API__: options.value.features?.optionsAPI ?? parseDefine(config.define?.__VUE_OPTIONS_API__) ?? true,
+-          __VUE_PROD_DEVTOOLS__: (options.value.features?.prodDevtools || parseDefine(config.define?.__VUE_PROD_DEVTOOLS__)) ?? false,
+-          __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: (options.value.features?.prodHydrationMismatchDetails || parseDefine(
+-            config.define?.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__
+-          )) ?? false
++          __VUE_OPTIONS_API__:
++            options.value.features?.optionsAPI ?? parseDefine(config.define?.__VUE_OPTIONS_API__) ?? true,
++          __VUE_PROD_DEVTOOLS__:
++            (options.value.features?.prodDevtools || parseDefine(config.define?.__VUE_PROD_DEVTOOLS__)) ?? false,
++          __VUE_PROD_HYDRATION_MISMATCH_DETAILS__:
++            (options.value.features?.prodHydrationMismatchDetails ||
++              parseDefine(config.define?.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__)) ??
++            false,
          },
          ssr: {
            // @ts-ignore -- config.legacy.buildSsrCjsExternalHeuristics will be removed in Vite 5
@@ -4364,8 +4440,37 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
 +          !config.isProduction
 +        ),
        };
+       const _warn = config.logger.warn;
+       config.logger.warn = (...args) => {
+         const msg = args[0];
+-        if (msg.match(
+-          /\[lightningcss\] '(deep|slotted|global)' is not recognized as a valid pseudo-/
+-        )) {
++        if (msg.match(/\[lightningcss\] '(deep|slotted|global)' is not recognized as a valid pseudo-/)) {
+           return;
+         }
+         _warn(...args);
+       };
+-      transformCachedModule = config.command === "build" && options.value.sourceMap && config.build.watch != null;
++      transformCachedModule = config.command === 'build' && options.value.sourceMap && config.build.watch != null;
      },
-     configureServer(server) {
+     options() {
+       optionsHookIsCalled = true;
+       plugin.transform.filter = {
+         id: {
+-          include: [
+-            ...makeIdFiltersToMatchWithQuery(ensureArray(include.value)),
+-            /[?&]vue\b/
+-          ],
+-          exclude: exclude.value
+-        }
++          include: [...makeIdFiltersToMatchWithQuery(ensureArray(include.value)), /[?&]vue\b/],
++          exclude: exclude.value,
++        },
+       };
+     },
+     shouldTransformCachedModule({ id }) {
+@@ -3030,16 +2897,16 @@ function vuePlugin(rawOptions = {}) {
        options.value.devServer = server;
      },
      buildStart() {
@@ -4377,85 +4482,128 @@ index 739335e4bad7f9356669f2d585cb44435fc615d6..fee060585c0e465b108de686e932c135
            compiler.invalidateTypeCache(file);
          });
        }
-@@ -2955,20 +2834,15 @@ function vuePlugin(rawOptions = {}) {
-       const { filename, query } = parseVueRequest(id);
-       if (query.vue) {
-         if (query.src) {
--          return fs.readFileSync(filename, "utf-8");
-+          return fs.readFileSync(filename, 'utf-8');
+     },
+     resolveId: {
+       filter: {
+-        id: [exactRegex(EXPORT_HELPER_ID), /[?&]vue\b/]
++        id: [exactRegex(EXPORT_HELPER_ID), /[?&]vue\b/],
+       },
+       handler(id) {
+         if (id === EXPORT_HELPER_ID) {
+@@ -3048,11 +2915,11 @@ function vuePlugin(rawOptions = {}) {
+         if (parseVueRequest(id).query.vue) {
+           return id;
          }
-         const descriptor = getDescriptor(filename, options.value);
-         let block;
--        if (query.type === "script") {
--          block = resolveScript(
--            descriptor,
+-      }
++      },
+     },
+     load: {
+       filter: {
+-        id: [exactRegex(EXPORT_HELPER_ID), /[?&]vue\b/]
++        id: [exactRegex(EXPORT_HELPER_ID), /[?&]vue\b/],
+       },
+       handler(id, opt) {
+         if (id === EXPORT_HELPER_ID) {
+@@ -3062,20 +2929,15 @@ function vuePlugin(rawOptions = {}) {
+         const { filename, query } = parseVueRequest(id);
+         if (query.vue) {
+           if (query.src) {
+-            return fs.readFileSync(filename, "utf-8");
++            return fs.readFileSync(filename, 'utf-8');
+           }
+           const descriptor = getDescriptor(filename, options.value);
+           let block;
+-          if (query.type === "script") {
+-            block = resolveScript(
+-              descriptor,
+-              options.value,
+-              ssr,
+-              customElementFilter.value(filename)
+-            );
+-          } else if (query.type === "template") {
++          if (query.type === 'script') {
++            block = resolveScript(descriptor, options.value, ssr, customElementFilter.value(filename));
++          } else if (query.type === 'template') {
+             block = descriptor.template;
+-          } else if (query.type === "style") {
++          } else if (query.type === 'style') {
+             block = descriptor.styles[query.index];
+           } else if (query.index != null) {
+             block = descriptor.customBlocks[query.index];
+@@ -3083,11 +2945,11 @@ function vuePlugin(rawOptions = {}) {
+           if (block) {
+             return {
+               code: block.content,
+-              map: block.map
++              map: block.map,
+             };
+           }
+         }
+-      }
++      },
+     },
+     transform: {
+       // filter is set in options() hook
+@@ -3101,20 +2963,15 @@ function vuePlugin(rawOptions = {}) {
+           return;
+         }
+         if (!query.vue) {
+-          return transformMain(
+-            code,
+-            filename,
 -            options.value,
+-            this,
 -            ssr,
 -            customElementFilter.value(filename)
 -          );
--        } else if (query.type === "template") {
-+        if (query.type === 'script') {
-+          block = resolveScript(descriptor, options.value, ssr, customElementFilter.value(filename));
-+        } else if (query.type === 'template') {
-           block = descriptor.template;
--        } else if (query.type === "style") {
-+        } else if (query.type === 'style') {
-           block = descriptor.styles[query.index];
-         } else if (query.index != null) {
-           block = descriptor.customBlocks[query.index];
-@@ -2976,7 +2850,7 @@ function vuePlugin(rawOptions = {}) {
-         if (block) {
-           return {
-             code: block.content,
--            map: block.map
-+            map: block.map,
-           };
++          return transformMain(code, filename, options.value, this, ssr, customElementFilter.value(filename));
+         } else {
+-          const descriptor = query.src ? getSrcDescriptor(filename, query) || getTempSrcDescriptor(filename, query) : getDescriptor(filename, options.value);
++          const descriptor = query.src
++            ? getSrcDescriptor(filename, query) || getTempSrcDescriptor(filename, query)
++            : getDescriptor(filename, options.value);
+           if (query.src) {
+             this.addWatchFile(filename);
+           }
+-          if (query.type === "template") {
++          if (query.type === 'template') {
+             return transformTemplateAsModule(
+               code,
+               filename,
+@@ -3122,21 +2979,14 @@ function vuePlugin(rawOptions = {}) {
+               options.value,
+               this,
+               ssr,
+-              customElementFilter.value(filename)
+-            );
+-          } else if (query.type === "style") {
+-            return transformStyle(
+-              code,
+-              descriptor,
+-              Number(query.index || 0),
+-              options.value,
+-              this,
+-              filename
++              customElementFilter.value(filename),
+             );
++          } else if (query.type === 'style') {
++            return transformStyle(code, descriptor, Number(query.index || 0), options.value, this, filename);
+           }
          }
-       }
-@@ -2991,37 +2865,25 @@ function vuePlugin(rawOptions = {}) {
-         return;
-       }
-       if (!query.vue) {
--        return transformMain(
--          code,
--          filename,
--          options.value,
--          this,
--          ssr,
--          customElementFilter.value(filename)
--        );
-+        return transformMain(code, filename, options.value, this, ssr, customElementFilter.value(filename));
-       } else {
--        const descriptor = query.src ? getSrcDescriptor(filename, query) || getTempSrcDescriptor(filename, query) : getDescriptor(filename, options.value);
--        if (query.type === "template") {
-+        const descriptor = query.src
-+          ? getSrcDescriptor(filename, query) || getTempSrcDescriptor(filename, query)
-+          : getDescriptor(filename, options.value);
-+        if (query.type === 'template') {
-           return transformTemplateAsModule(
-             code,
-             descriptor,
-             options.value,
-             this,
-             ssr,
--            customElementFilter.value(filename)
--          );
--        } else if (query.type === "style") {
--          return transformStyle(
--            code,
--            descriptor,
--            Number(query.index || 0),
--            options.value,
--            this,
--            filename
-+            customElementFilter.value(filename),
-           );
-+        } else if (query.type === 'style') {
-+          return transformStyle(code, descriptor, Number(query.index || 0), options.value, this, filename);
-         }
-       }
+-      }
 -    }
++      },
 +    },
    };
+   return plugin;
  }
+@@ -3148,7 +2998,7 @@ function vuePluginCjs(options) {
+ }
+ Object.assign(vuePluginCjs, {
+   default: vuePluginCjs,
+-  parseVueRequest
++  parseVueRequest,
+ });
  
+-export { vuePlugin as default, vuePluginCjs as "module.exports", parseVueRequest };
++export { vuePlugin as default, vuePluginCjs as 'module.exports', parseVueRequest };
