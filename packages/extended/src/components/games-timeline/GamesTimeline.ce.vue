@@ -48,7 +48,7 @@ let gameDataIntervals = [];
 
 const error = ref(false);
 
-const { state: games, execute } = useServices({
+const { isLoading, state: games, execute } = useServices({
   options: {
     path: props.servicePath,
     apiKey: props.apiKey,
@@ -135,14 +135,18 @@ function onTryAgain() {
 <template>
   <I18NProvider v-slot="{ t }" :locale="locale" :messages="messages">
     <Carousel :initial-index="initialIndex">
-      <div v-if="isEmpty(games) && !error" style="width: 100%">
+      <div v-if="!error && isLoading" style="width: 100%">
         <LoadingIndicator />
       </div>
       <TrayAgain v-else-if="error && isEmpty(games)" @try-again="onTryAgain" />
+      <div v-else-if="convertedGames.length === 0" class="is-no-games">
+        {{ t('gamesTimeline.noGames') }}
+      </div>
       <template v-else>
         <CarouselItem>
           <ExternalSchedule :external-schedule-url="externalScheduleUrl" :title="t('gamesTimeline.allSchedule')" @navigate-to="navigateTo" />
         </CarouselItem>
+
         <CarouselItem
           v-for="game in convertedGames"
           :key="game.id"

@@ -92,6 +92,12 @@
       opacity: 0;
     }
   }
+
+  .is-no-games {
+    width: 100%;
+    text-align: center;
+    color: var(--vbr-widget-games-timeline-game-date-color);
+  }
 }
 
 .games-timeline-game {

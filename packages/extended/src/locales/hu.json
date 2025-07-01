@@ -75,7 +75,8 @@
   "gamesTimeline": {
     "allSchedule": "Teljes menetrend",
     "errorText": "Valami hiba történt!",
-    "errorCta": "Próbáld újra"
+    "errorCta": "Próbáld újra",
+    "noGames": "Nincs megjeleníthető mérkőzés"
   },
   "countdown": {
     "days": "Nap",

@@ -1,3 +1,8 @@
+## [2.24.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.24.0...v2.24.1) (2025-05-13)
+
+### Bug Fixes
+
+* **extended/games-timeline:** Display text when there are no games ([94d62c4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/94d62c4fcd1d12646f3aaf89bb797297731350de))
 ## [2.24.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.23.3...v2.24.0) (2025-04-03)
 ## [2.23.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.23.2...v2.23.3) (2025-03-25)
 

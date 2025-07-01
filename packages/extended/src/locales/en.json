@@ -75,7 +75,8 @@
   "gamesTimeline": {
     "allSchedule": "Games Schedule",
     "errorText": "Something went wrong!",
-    "errorCta": "Try Again"
+    "errorCta": "Try Again",
+    "noGames": "No games can be displayed"
   },
   "countdown": {
     "days": "Days",
