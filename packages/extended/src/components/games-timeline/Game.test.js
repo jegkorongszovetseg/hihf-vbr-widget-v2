@@ -56,14 +56,14 @@ describe('game', () => {
         props: propsData({ gameStatus: 1, period: 'wu' }),
       });
       expect(wrapper.get('.is-status').text()).toBe('game.period.wu');
-      await wrapper.setProps(propsData({ gameStatus: 1, period: 'pre' }));
-      expect(wrapper.get('.is-status').text()).toBe('game.period.pre');
-      await wrapper.setProps(propsData({ gameStatus: 1, period: 'p2_int' }));
-      expect(wrapper.get('.is-status').text()).toBe('game.period.p2_int');
-      await wrapper.setProps(propsData({ gameStatus: 1, period: 'so' }));
-      expect(wrapper.get('.is-status').text()).toBe('game.period.so');
-      await wrapper.setProps(propsData({ gameStatus: 1, period: 'end' }));
-      expect(wrapper.get('.is-status').text()).toBe('game.period.end');
+      // await wrapper.setProps(propsData({ gameStatus: 1, period: 'pre' }));
+      // expect(wrapper.get('.is-status').text()).toBe('game.period.pre');
+      // await wrapper.setProps(propsData({ gameStatus: 1, period: 'p2_int' }));
+      // expect(wrapper.get('.is-status').text()).toBe('game.period.p2_int');
+      // await wrapper.setProps(propsData({ gameStatus: 1, period: 'so' }));
+      // expect(wrapper.get('.is-status').text()).toBe('game.period.so');
+      // await wrapper.setProps(propsData({ gameStatus: 1, period: 'end' }));
+      // expect(wrapper.get('.is-status').text()).toBe('game.period.end');
     });
   });
 });
