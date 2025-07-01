@@ -23,15 +23,15 @@
   "dependencies": {
     "@mjsz-vbr-elements/core": "workspace:^",
     "@mjsz-vbr-elements/shared": "workspace:^",
-    "@vueuse/core": "^13.1.0",
-    "ramda": "^0.30.1",
-    "vue": "^3.5.13"
+    "@vueuse/core": "^13.4.0",
+    "ramda": "^0.31.3",
+    "vue": "^3.5.17"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.4",
-    "sass-embedded": "^1.88.0",
-    "vite": "^6.3.5",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "sass-embedded": "^1.89.2",
+    "vite": "^7.0.0",
     "vite-plugin-banner": "^0.8.1",
-    "vite-plugin-compression2": "^1.3.3"
+    "vite-plugin-compression2": "^2.2.0"
   }
 }

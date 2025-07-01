@@ -38,19 +38,19 @@
     "build:browser": "vite build -c ./build-browser.config.js --emptyOutDir false"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.7.0",
+    "@floating-ui/dom": "^1.7.2",
     "@lostui/utils": "^0.0.4",
     "@mjsz-vbr-elements/shared": "workspace:^",
-    "@vueuse/core": "^13.1.0",
+    "@vueuse/core": "^13.4.0",
     "@xstate/fsm": "^2.1.0",
     "dayjs": "^1.11.13",
-    "ramda": "^0.30.1",
-    "vue": "^3.5.13"
+    "ramda": "^0.31.3",
+    "vue": "^3.5.17"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.4",
-    "vite": "^6.3.5",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "vite": "^7.0.0",
     "vite-plugin-banner": "^0.8.1",
-    "vite-plugin-compression2": "^1.3.3"
+    "vite-plugin-compression2": "^2.2.0"
   }
 }
