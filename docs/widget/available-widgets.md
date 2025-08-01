@@ -28,7 +28,7 @@
 | [mjsz-vbr-championship](/widget/extended-championship)     | + Több lekérdezés              | Egy adott bajnokság minden statiszkijája      |
 | [mjsz-vbr-schedule-cup](/widget/extended-cup-schedule)     | vbr/v2/games-list              | Egy adott bajnokság kupa rendszerű mérkőzései |
 | [mjsz-vbr-games-timeline](/widget/extended-games-timeline) | Állítható                      | Mérkőzések indővonal szerű megjelenítése      |
-| [mjsz-vbr-calendar](/widget/extended-calendar)             | vbr/v2/game-calendar           | Versenynaptár                                 |
+| [mjsz-vbr-calendar](/widget/extended-calendar)             | vbr/v2/calendar                | Versenynaptár                                 |
 | [mjsz-vbr-countdown](/widget/extended-countdown)           | vbr/v2/game-data               | Mérkőzés kezdés visszaszámláló                |
 
 ## Liga
