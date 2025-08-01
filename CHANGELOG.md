@@ -1,3 +1,8 @@
+## [2.25.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.25.1...v2.25.2) (2025-08-01)
+
+### Bug Fixes
+
+* **extended/game-calendar:** Change calendar api path v2 ([c602f43](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/c602f43ed24125b64a586130852ef04dac335064))
 ## [2.25.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.25.0...v2.25.1) (2025-08-01)
 
 ### Bug Fixes
