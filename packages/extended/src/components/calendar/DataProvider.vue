@@ -65,7 +65,7 @@ const {
   execute: fetchGames,
 } = useServices({
   options: {
-    path: '/v2/games-calendar',
+    path: '/v2/game-calendar',
     apiKey: props.apiKey,
     params: computed(() => ({
       seasonId: props.seasonId,
