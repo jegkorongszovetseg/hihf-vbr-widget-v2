@@ -134,7 +134,7 @@ function onTryAgain() {
 
 <template>
   <I18NProvider v-slot="{ t }" :locale="locale" :messages="messages">
-    <Carousel :initial-index="initialIndex">
+    <Carousel :key="isLoading" :initial-index="initialIndex">
       <div v-if="!error && isLoading" style="width: 100%">
         <LoadingIndicator />
       </div>

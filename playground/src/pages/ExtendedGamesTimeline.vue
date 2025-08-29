@@ -1,20 +1,21 @@
 <script setup>
+// import { GamesTimeline } from '@mjsz-vbr-elements/extended';
 import { store } from '../store.js';
-// import '../../../packages/shared/dist/css/common.css';
-// import '../../../packages/shared/dist/css/games-timeline.css';
+// import '../../../packages/shared/assets/css/common.scss';
+// import '../../../packages/shared/assets/css/games-timeline.scss';
 </script>
 
 <template>
   <div style="height: 110px; outline: 1px solid #ccc">
     <!-- <GamesTimeline
       :locale="store.locale"
-      service-path="/v2/championship-calendar?championshipId=3722"
+      service-path="/v2/public-calendar?seasonId=218"
       external-game-resolver="/GameCenterTimeline?gameid={gameId}"
       external-schedule-url="/ExtendedCalendar"
     /> -->
     <mjsz-vbr-games-timeline
       :locale="store.locale"
-      service-path="/v2/public-calendar?seasonId=217"
+      service-path="/v2/public-calendar?seasonId=218"
       external-game-resolver="/GameCenterTimeline?gameid={gameId}"
       external-schedule-url="/ExtendedCalendar"
     />
