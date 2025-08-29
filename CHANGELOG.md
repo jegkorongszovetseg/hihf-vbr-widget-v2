@@ -1,3 +1,8 @@
+## [2.25.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.25.2...v2.25.3) (2025-08-29)
+
+### Bug Fixes
+
+* **extended/games-timeline:** Fix game item position after tab change ([5dc1a83](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/5dc1a837132fddc38b3a19c88619304fb1c1fdb3))
 ## [2.25.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.25.1...v2.25.2) (2025-08-01)
 
 ### Bug Fixes
