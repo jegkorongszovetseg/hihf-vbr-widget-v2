@@ -129,6 +129,7 @@ const colors = useTeamColors(gameData);
         ref="contentElementRef"
         :game-events="gameEvents"
         :game-data="gameData"
+        :game-id="gameId"
         :locale="locale"
       />
 
