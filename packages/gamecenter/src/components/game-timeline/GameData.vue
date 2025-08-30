@@ -4,6 +4,7 @@ import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
 import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
 import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
+import { useWebSocket } from '@vueuse/core';
 import { computed } from 'vue';
 import GamePeriodProgress from '../game/components/GamePeriodProgress.vue';
 import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from '../game/internal';
@@ -25,6 +26,11 @@ const props = defineProps({
     type: String,
     default: 'hu',
   },
+
+  gameId: {
+    type: [Number, String],
+    default: 0,
+  },
 });
 
 const { t } = useI18n();
@@ -32,6 +38,14 @@ const { t } = useI18n();
 const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gameData.periodResults));
 const homeGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.homeTeam.id));
 const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.awayTeam.id));
+
+// useWebSocket(`ws://localhost:3007/socket/vbr/v2/game-data?gameid=${props.gameId}`);
+const { data } = useWebSocket(`ws://localhost:3007/socket/vbr/v2/game-attendance?gameid=${props.gameId}`, {
+  autoReconnect: true,
+  // heartbeat: true,
+});
+
+const visitors = computed(() => JSON.parse(data.value)?.visitor ?? 0);
 </script>
 
 <template>
@@ -110,6 +124,9 @@ const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.
 
         <p v-if="gameData.attendance" class="is-attendance">
           {{ t('gameData.attendance', [gameData.attendance]) }}
+        </p>
+        <p v-if="visitors" class="is-attendance">
+          {{ t('gameData.attendance', [visitors]) }}
         </p>
 
         <PeriodResults
