@@ -4,8 +4,8 @@ import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
 import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
 import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
-import { useWebSocket } from '@vueuse/core';
-import { computed } from 'vue';
+import { computed, toRefs } from 'vue';
+import { useAttendanceSocket } from '../../composables/use-attendance-socket';
 import GamePeriodProgress from '../game/components/GamePeriodProgress.vue';
 import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from '../game/internal';
 import PeriodResults from './components/PeriodResults.vue';
@@ -33,19 +33,21 @@ const props = defineProps({
   },
 });
 
+const { gameData } = toRefs(props);
+
 const { t } = useI18n();
 
 const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gameData.periodResults));
 const homeGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.homeTeam.id));
 const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.awayTeam.id));
 
-// useWebSocket(`ws://localhost:3007/socket/vbr/v2/game-data?gameid=${props.gameId}`);
-const { data } = useWebSocket(`ws://localhost:3007/socket/vbr/v2/game-attendance?gameid=${props.gameId}`, {
-  autoReconnect: true,
-  // heartbeat: true,
-});
+const { visitors, visitorsLabelKey } = useAttendanceSocket(gameData, props.gameId);
 
-const visitors = computed(() => JSON.parse(data.value)?.visitor ?? 0);
+const attendanceLabel = computed(() => {
+  if (gameData.value.gameStatus <= 1)
+    return t(visitorsLabelKey.value, [visitors.value]);
+  return gameData.value?.attendance ?? 0;
+});
 </script>
 
 <template>
@@ -122,11 +124,8 @@ const visitors = computed(() => JSON.parse(data.value)?.visitor ?? 0);
           <span v-else>{{ gameData.awayTeamScore }}</span>
         </div>
 
-        <p v-if="gameData.attendance" class="is-attendance">
-          {{ t('gameData.attendance', [gameData.attendance]) }}
-        </p>
-        <p v-if="visitors" class="is-attendance">
-          {{ t('gameData.attendance', [visitors]) }}
+        <p class="is-attendance">
+          {{ attendanceLabel }}
         </p>
 
         <PeriodResults

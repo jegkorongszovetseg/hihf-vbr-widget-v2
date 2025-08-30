@@ -2,7 +2,7 @@
 import { ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
 import { useUrlSearchParams } from '@vueuse/core';
-import { compose, groupBy, isEmpty, prop, propEq, reject, reverse } from 'ramda';
+import { compose, groupBy, isEmpty, isNotEmpty, prop, propEq, reject, reverse } from 'ramda';
 import { computed } from 'vue';
 import CommonEn from '../../locales/en/common.json';
 import CommonHu from '../../locales/hu/common.json';
@@ -98,7 +98,7 @@ handleServices({
 
       <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
 
-      <GameOfficials v-if="!isEmpty(gameData)" :game-data="gameData" :game-officials="gameOfficials" />
+      <GameOfficials v-if="isNotEmpty(gameData)" :game-data="gameData" :game-officials="gameOfficials" :game-id="gameId" />
 
       <template v-if="gameData?.gameStatus > 0">
         <GameStats v-if="!isEmpty(gameStats)" :game-data="gameData" :game-stats="gameStats" />
