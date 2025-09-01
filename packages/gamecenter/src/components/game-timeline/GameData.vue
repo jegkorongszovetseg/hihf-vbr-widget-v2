@@ -33,7 +33,7 @@ const props = defineProps({
   },
 });
 
-const { gameData } = toRefs(props);
+const { gameData, websocketUrl } = toRefs(props);
 
 const { t } = useI18n();
 
@@ -41,7 +41,7 @@ const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gam
 const homeGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.homeTeam.id));
 const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.awayTeam.id));
 
-const { visitorsLabel, isVisible: isVisitorsLabelVisible } = useAttendanceSocket(props.websocketUrl, gameData);
+const { visitorsLabel, isVisible: isVisitorsLabelVisible } = useAttendanceSocket(websocketUrl, gameData);
 
 const attendanceLabel = computed(() => {
   if (gameData.value.gameStatus <= 1)

@@ -5,7 +5,7 @@ import { computed, unref, watch } from 'vue';
 export function useAttendanceSocket(path, gameData) {
   const { t } = useI18n();
 
-  const { data, open, close } = useWebSocket(path, {
+  const { data, open, close } = useWebSocket(unref(path), {
     // autoReconnect: true,
     // heartbeat: true,
     immediate: false,
