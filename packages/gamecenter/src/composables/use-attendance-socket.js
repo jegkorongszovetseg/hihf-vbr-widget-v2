@@ -13,12 +13,7 @@ export function useAttendanceSocket(path, gameData) {
 
   const visitors = computed(() => JSON.parse(data.value)?.visitor ?? 0);
 
-  const visitorsLabelKey = computed(() => {
-    const status = unref(gameData).gameStatus;
-    if (status === 0)
-      return 'gameData.visitorsWaiting';
-    return 'gameData.visitors';
-  });
+  const isVisible = computed(() => visitors.value > 0);
 
   const visitorsLabel = computed(() => {
     const status = unref(gameData).gameStatus;
@@ -37,7 +32,7 @@ export function useAttendanceSocket(path, gameData) {
 
   return {
     visitors,
+    isVisible,
     visitorsLabel,
-    visitorsLabelKey,
   };
 }

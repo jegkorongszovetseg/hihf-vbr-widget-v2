@@ -41,12 +41,12 @@ const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gam
 const homeGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.homeTeam.id));
 const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.awayTeam.id));
 
-const { visitorsLabel } = useAttendanceSocket(props.websocketUrl, gameData);
+const { visitorsLabel, isVisible: isVisitorsLabelVisible } = useAttendanceSocket(props.websocketUrl, gameData);
 
 const attendanceLabel = computed(() => {
   if (gameData.value.gameStatus <= 1)
     return visitorsLabel.value;
-  return gameData.value?.attendance ?? 0;
+  return t('gameData.attendance', [gameData.value?.attendance ?? 0]);
 });
 </script>
 
@@ -124,7 +124,7 @@ const attendanceLabel = computed(() => {
           <span v-else>{{ gameData.awayTeamScore }}</span>
         </div>
 
-        <p class="is-attendance">
+        <p v-if="isVisitorsLabelVisible || gameData?.attendance" class="is-attendance">
           {{ attendanceLabel }}
         </p>
 
