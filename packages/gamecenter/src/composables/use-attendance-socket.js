@@ -1,10 +1,12 @@
+import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { useWebSocket } from '@vueuse/core';
 import { computed, unref, watch } from 'vue';
-import { getWebsocketURL } from '../utils/get-websocket-url';
 
-export function useAttendanceSocket(gameData, gameId) {
-  const { data, open, close } = useWebSocket(getWebsocketURL(`/socket/vbr/v2/game-attendance?gameid=${gameId}`), {
-    autoReconnect: true,
+export function useAttendanceSocket(path, gameData) {
+  const { t } = useI18n();
+
+  const { data, open, close } = useWebSocket(path, {
+    // autoReconnect: true,
     // heartbeat: true,
     immediate: false,
   });
@@ -18,6 +20,13 @@ export function useAttendanceSocket(gameData, gameId) {
     return 'gameData.visitors';
   });
 
+  const visitorsLabel = computed(() => {
+    const status = unref(gameData).gameStatus;
+    if (status === 0)
+      return t('gameData.visitorsWaiting', [visitors.value]);
+    return t('gameData.visitors', [visitors.value]);
+  });
+
   watch(() => unref(gameData).gameStatus, (status) => {
     if (status <= 1)
       return open();
@@ -28,6 +37,7 @@ export function useAttendanceSocket(gameData, gameId) {
 
   return {
     visitors,
+    visitorsLabel,
     visitorsLabelKey,
   };
 }

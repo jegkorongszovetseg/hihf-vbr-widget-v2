@@ -4,10 +4,12 @@ import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
 import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
 import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
+import { toRefs } from 'vue';
+import { useAttendanceSocket } from '../../composables/use-attendance-socket';
 import GamePeriodProgress from './components/GamePeriodProgress.vue';
 import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from './internal';
 
-defineProps({
+const props = defineProps({
   gameData: {
     type: Object,
     required: true,
@@ -17,9 +19,18 @@ defineProps({
     type: String,
     default: 'hu',
   },
+
+  websocketUrl: {
+    type: String,
+    default: '',
+  },
 });
 
+const { gameData } = toRefs(props);
+
 const { t } = useI18n();
+
+const { visitorsLabel } = useAttendanceSocket(props.websocketUrl, gameData);
 </script>
 
 <template>
@@ -55,6 +66,9 @@ const { t } = useI18n();
           {{ t('video') }}
         </a>
       </div>
+      <p v-if="gameData.gameStatus <= 1" class="is-live-vistors">
+        {{ visitorsLabel }}
+      </p>
     </div>
 
     <div class="is-teams-and-results">

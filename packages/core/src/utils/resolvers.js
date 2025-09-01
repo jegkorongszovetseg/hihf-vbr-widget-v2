@@ -55,3 +55,11 @@ export function externalStatisticLinkResolver(resolver, params = {}) {
 }
 
 export const flagResolver = (countryCode, type = '1x1') => `${FLAG_BASE_URL}/flag:${countryCode}-${type}.svg`;
+
+export function resolveApiKey(apiKey) {
+  if (apiKey)
+    return apiKey;
+  if (getSettingVariable('apiKey'))
+    return getSettingVariable('apiKey');
+  return '';
+}

@@ -2,7 +2,8 @@
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { compose, isEmpty, join, map, reject } from 'ramda';
 import { computed, toRefs } from 'vue';
-import { useAttendanceSocket } from '../../composables/use-attendance-socket';
+// import { useAttendanceSocket } from '../../composables/use-attendance-socket';
+// import { getWebsocketURL } from '../../utils/get-websocket-url';
 import GameStatsContainer from './components/GameStatsContainer.vue';
 
 const props = defineProps({
@@ -16,21 +17,21 @@ const props = defineProps({
     required: true,
   },
 
-  gameId: {
-    type: [Number, String],
-    default: 0,
-  },
+  // gameId: {
+  //   type: [Number, String],
+  //   default: 0,
+  // },
 });
 
 const { gameData } = toRefs(props);
 
 const { t } = useI18n();
 
-const { visitors, visitorsLabelKey } = useAttendanceSocket(gameData, props.gameId);
+// const { visitors, visitorsLabelKey } = useAttendanceSocket(getWebsocketURL(`/socket/vbr/v2/game-attendance?gameid=${props.gameId}`), gameData);
 
 const attendanceData = computed(() => {
-  if (gameData.value.gameStatus <= 1)
-    return t(visitorsLabelKey.value, [visitors.value]);
+  // if (gameData.value.gameStatus <= 1)
+  //   return t(visitorsLabelKey.value, [visitors.value]);
   return gameData.value?.attendance ?? 0;
 });
 
@@ -58,7 +59,7 @@ const linesmen = computed(() =>
     <div class="gamecenter-game-stats-container-wrapper">
       <GameStatsContainer :title="t('gameStats.referees')" :data="referees" />
       <GameStatsContainer :title="t('gameStats.linesmen')" :data="linesmen" />
-      <GameStatsContainer :title="t('gameStats.attendance')" :data="attendanceData" />
+      <GameStatsContainer v-if="gameData.attendance" :title="t('gameStats.attendance')" :data="attendanceData" />
     </div>
   </div>
 </template>

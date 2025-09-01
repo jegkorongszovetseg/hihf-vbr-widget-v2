@@ -27,9 +27,9 @@ const props = defineProps({
     default: 'hu',
   },
 
-  gameId: {
-    type: [Number, String],
-    default: 0,
+  websocketUrl: {
+    type: String,
+    default: '',
   },
 });
 
@@ -41,11 +41,11 @@ const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gam
 const homeGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.homeTeam.id));
 const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.awayTeam.id));
 
-const { visitors, visitorsLabelKey } = useAttendanceSocket(gameData, props.gameId);
+const { visitorsLabel } = useAttendanceSocket(props.websocketUrl, gameData);
 
 const attendanceLabel = computed(() => {
   if (gameData.value.gameStatus <= 1)
-    return t(visitorsLabelKey.value, [visitors.value]);
+    return visitorsLabel.value;
   return gameData.value?.attendance ?? 0;
 });
 </script>
