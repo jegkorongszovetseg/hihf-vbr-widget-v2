@@ -6,8 +6,9 @@ export function useAttendanceSocket(path, gameData) {
   const { t } = useI18n();
 
   const { data, open, close } = useWebSocket(unref(path), {
-    // autoReconnect: true,
-    // heartbeat: true,
+    autoReconnect: {
+      retries: 3,
+    },
     immediate: false,
   });
 
