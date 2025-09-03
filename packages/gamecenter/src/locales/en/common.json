@@ -55,6 +55,11 @@
     "Hosszabbítás": "Overtime",
     "Büntetők": "Shoot Out"
   },
+  "gameData": {
+    "attendance": "{0} attending",
+    "visitorsWaiting": "{0} waiting",
+    "visitors": "{0} watching now"
+  },
   "gameStats": {
     "referees": "Referees",
     "linesmen": "Linesmen",

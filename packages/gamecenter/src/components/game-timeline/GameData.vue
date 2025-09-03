@@ -4,7 +4,8 @@ import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
 import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
 import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
-import { computed } from 'vue';
+import { computed, toRefs } from 'vue';
+import { useAttendanceSocket } from '../../composables/use-attendance-socket';
 import GamePeriodProgress from '../game/components/GamePeriodProgress.vue';
 import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from '../game/internal';
 import PeriodResults from './components/PeriodResults.vue';
@@ -25,13 +26,29 @@ const props = defineProps({
     type: String,
     default: 'hu',
   },
+
+  websocketUrl: {
+    type: String,
+    default: '',
+  },
 });
+
+const { gameData, websocketUrl } = toRefs(props);
 
 const { t } = useI18n();
 
 const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gameData.periodResults));
 const homeGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.homeTeam.id));
 const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.awayTeam.id));
+
+useAttendanceSocket(websocketUrl, gameData);
+// const { visitorsLabel, isVisible: isVisitorsLabelVisible } = useAttendanceSocket(websocketUrl, gameData);
+
+const attendanceLabel = computed(() => {
+  // if (gameData.value.gameStatus <= 1)
+  //   return visitorsLabel.value;
+  return t('gameData.attendance', [gameData.value?.attendance ?? 0]);
+});
 </script>
 
 <template>
@@ -108,8 +125,9 @@ const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.
           <span v-else>{{ gameData.awayTeamScore }}</span>
         </div>
 
-        <p v-if="gameData.attendance" class="is-attendance">
-          {{ t('gameData.attendance', [gameData.attendance]) }}
+        <!-- <p v-if="isVisitorsLabelVisible || gameData?.attendance" class="is-attendance"> -->
+        <p v-if="gameData?.attendance" class="is-attendance">
+          {{ attendanceLabel }}
         </p>
 
         <PeriodResults

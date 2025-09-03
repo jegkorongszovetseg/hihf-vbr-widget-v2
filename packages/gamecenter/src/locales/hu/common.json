@@ -55,6 +55,11 @@
     "Hosszabbítás": "Hosszabbítás",
     "Büntetők": "Szétlövés"
   },
+  "gameData": {
+    "attendance": "{0} néző",
+    "visitorsWaiting": "{0} néző várakozik",
+    "visitors": "{0} néző jelenleg"
+  },
   "gameStats": {
     "referees": "Játékvezető",
     "linesmen": "Vonalbíró",

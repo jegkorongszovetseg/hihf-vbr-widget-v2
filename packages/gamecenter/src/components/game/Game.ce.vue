@@ -1,11 +1,13 @@
 <script setup>
 import { ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
+import { resolveApiKey } from '@mjsz-vbr-elements/core/utils';
 import { useUrlSearchParams } from '@vueuse/core';
-import { compose, groupBy, isEmpty, prop, propEq, reject, reverse } from 'ramda';
+import { compose, groupBy, isEmpty, isNotEmpty, prop, propEq, reject, reverse } from 'ramda';
 import { computed } from 'vue';
 import CommonEn from '../../locales/en/common.json';
 import CommonHu from '../../locales/hu/common.json';
+import { getWebsocketURL } from '../../utils/get-websocket-url';
 import { handleServices, useApiErrors } from './composables';
 import GameData from './GameData.vue';
 import GameEvents from './GameEvents.vue';
@@ -89,6 +91,9 @@ handleServices({
   services: { getGameData, getGameStats, getEvents, getGameOfficials },
   interval: REFRESH_DELAY,
 });
+
+const resolvedApiKey = resolveApiKey(props.apiKey);
+const websocketURL = computed(() => getWebsocketURL(`/socket/vbr/v2/game-attendance?gameid=${gameId.value}&apiKey=${resolvedApiKey}`));
 </script>
 
 <template>
@@ -96,9 +101,9 @@ handleServices({
     <I18NProvider :locale="props.locale" :messages="messages">
       <ErrorNotice v-for="error in errors" :key="error.key" :error="error" />
 
-      <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" />
+      <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" :websocket-url="websocketURL" />
 
-      <GameOfficials v-if="!isEmpty(gameData)" :game-data="gameData" :game-officials="gameOfficials" />
+      <GameOfficials v-if="isNotEmpty(gameData)" :game-data="gameData" :game-officials="gameOfficials" />
 
       <template v-if="gameData?.gameStatus > 0">
         <GameStats v-if="!isEmpty(gameStats)" :game-data="gameData" :game-stats="gameStats" />

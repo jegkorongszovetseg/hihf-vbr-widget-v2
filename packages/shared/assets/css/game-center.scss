@@ -77,6 +77,12 @@
       color: var(--vbr-widget-live-game-color);
     }
 
+    .is-live-vistors {
+      padding-block: 8px;
+      font-size: var(--vbr-widget-gamecenter-local-gamedate-size);
+      color: var(--vbr-widget-gamecenter-local-gamedate-color);
+    }
+
     .is-external-contents {
       padding: 5px;
       display: flex;
