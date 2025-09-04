@@ -92,7 +92,7 @@ handleServices({
 });
 
 const resolvedApiKey = resolveApiKey(props.apiKey);
-const websocketURL = computed(() => getWebsocketURL(`/socket/vbr/v2/game-attendance?gameid=${gameId.value}&apiKey=${resolvedApiKey}`));
+const websocketURL = computed(() => getWebsocketURL(`/v2/game-attendance?gameid=${gameId.value}&apiKey=${resolvedApiKey}`));
 </script>
 
 <template>
