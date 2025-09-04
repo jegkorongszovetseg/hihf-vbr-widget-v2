@@ -25,12 +25,11 @@ const props = defineProps({
   },
 });
 
-const { gameData } = toRefs(props);
-// const { gameData, websocketUrl } = toRefs(props);
+const { gameData, websocketUrl } = toRefs(props);
 
 const { t } = useI18n();
 
-// useAttendanceSocket(websocketUrl, gameData);
+useAttendanceSocket(websocketUrl, gameData);
 // const { visitorsLabel, isVisible: isVisitorsLabelVisible } = useAttendanceSocket(websocketUrl, gameData);
 </script>
 
