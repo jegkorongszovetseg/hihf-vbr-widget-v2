@@ -1,13 +1,12 @@
 <script setup>
 import { ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
-import { resolveApiKey } from '@mjsz-vbr-elements/core/utils';
+import { getWebsocketURL, resolveApiKey } from '@mjsz-vbr-elements/core/utils';
 import { useUrlSearchParams } from '@vueuse/core';
 import { compose, groupBy, isEmpty, isNotEmpty, prop, propEq, reject, reverse } from 'ramda';
 import { computed } from 'vue';
 import CommonEn from '../../locales/en/common.json';
 import CommonHu from '../../locales/hu/common.json';
-import { getWebsocketURL } from '../../utils/get-websocket-url';
 import { handleServices, useApiErrors } from './composables';
 import GameData from './GameData.vue';
 import GameEvents from './GameEvents.vue';

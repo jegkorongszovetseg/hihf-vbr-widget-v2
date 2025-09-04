@@ -1,7 +1,7 @@
 <script setup>
 import { ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
-import { resolveApiKey } from '@mjsz-vbr-elements/core/utils';
+import { getWebsocketURL, resolveApiKey } from '@mjsz-vbr-elements/core/utils';
 import { useUrlSearchParams } from '@vueuse/core';
 import { isEmpty } from 'ramda';
 import { computed, ref } from 'vue';
@@ -9,7 +9,6 @@ import commonEN from '../../locales/en/common.json';
 import extendeEN from '../../locales/en/extended.json';
 import commonHU from '../../locales/hu/common.json';
 import extendedHU from '../../locales/hu/extended.json';
-import { getWebsocketURL } from '../../utils/get-websocket-url';
 import { handleServices, useApiErrors } from '../game/composables';
 // import ScoreBoard from './components/ScoreBoard.vue';
 import { useTeamColors } from './composables/use-team-colors';
