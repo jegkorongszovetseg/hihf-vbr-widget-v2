@@ -5,7 +5,6 @@ import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
 import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
 import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
 import { computed, toRefs } from 'vue';
-import { useAttendanceSocket } from '../../composables/use-attendance-socket';
 import GamePeriodProgress from '../game/components/GamePeriodProgress.vue';
 import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from '../game/internal';
 import PeriodResults from './components/PeriodResults.vue';
@@ -33,7 +32,8 @@ const props = defineProps({
   },
 });
 
-const { gameData, websocketUrl } = toRefs(props);
+const { gameData } = toRefs(props);
+// const { gameData, websocketUrl } = toRefs(props);
 
 const { t } = useI18n();
 
@@ -41,7 +41,7 @@ const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gam
 const homeGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.homeTeam.id));
 const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.awayTeam.id));
 
-useAttendanceSocket(websocketUrl, gameData);
+// useAttendanceSocket(websocketUrl, gameData);
 // const { visitorsLabel, isVisible: isVisitorsLabelVisible } = useAttendanceSocket(websocketUrl, gameData);
 
 const attendanceLabel = computed(() => {
