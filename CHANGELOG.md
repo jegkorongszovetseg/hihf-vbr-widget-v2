@@ -1,3 +1,8 @@
+## [2.26.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.26.2...v2.26.3) (2025-09-04)
+
+### Bug Fixes
+
+* **gamecenter:** Enabled web socket for gamecenter ([6bba7fd](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/6bba7fd51f8d359bdbcc90e4a030e532c1111a9e))
 ## [2.26.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.26.1...v2.26.2) (2025-09-04)
 
 ### Bug Fixes
