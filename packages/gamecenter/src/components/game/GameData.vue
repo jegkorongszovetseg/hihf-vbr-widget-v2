@@ -5,6 +5,7 @@ import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
 import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
 import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
 import { toRefs } from 'vue';
+import { useAttendanceSocket } from '../../composables/use-attendance-socket';
 import GamePeriodProgress from './components/GamePeriodProgress.vue';
 import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from './internal';
 
