@@ -1,3 +1,8 @@
+## [2.26.4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.26.3...v2.26.4) (2025-09-04)
+
+### Bug Fixes
+
+* **gamecenter:** Fix useAttendanceSocket comosable import ([ca091f4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/ca091f42ad4e4d0ac842f36e2523f7b507408f40))
 ## [2.26.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.26.2...v2.26.3) (2025-09-04)
 
 ### Bug Fixes
