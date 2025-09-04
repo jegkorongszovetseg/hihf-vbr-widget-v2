@@ -1,3 +1,8 @@
+## [2.26.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.26.0...v2.26.1) (2025-09-04)
+
+### Bug Fixes
+
+* **gamecenter:** Fix web socket url handling ([000a864](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/000a8647fea0f3c6bf2c9341e6c4b36fd3d388ce))
 ## [2.26.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.25.3...v2.26.0) (2025-09-03)
 ## [2.25.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.25.2...v2.25.3) (2025-08-29)
 
