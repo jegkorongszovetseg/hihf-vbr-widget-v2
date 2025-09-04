@@ -1,3 +1,8 @@
+## [2.26.5](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.26.4...v2.26.5) (2025-09-04)
+
+### Bug Fixes
+
+* **core/utils:** Use wss in getWebsocketURL util ([7444dce](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/7444dceb3615d41712e61bf1b27d55a7488ae872))
 ## [2.26.4](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.26.3...v2.26.4) (2025-09-04)
 
 ### Bug Fixes
