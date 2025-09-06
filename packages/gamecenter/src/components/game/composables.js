@@ -6,7 +6,7 @@ import { computed, ref, unref, watch } from 'vue';
 import { callFunctions, rawPeriodIndex } from './internal.js';
 
 const DEAFULT_PERIOD_LENGTH_MIN = 20;
-const INTERVAL = 1000 * 30;
+const INTERVAL = 1000 * 60 * 5; // 5perc
 const LAZY_INTERVAL = 1000 * 60 * 5;
 
 export function handleServices(options = {}) {
