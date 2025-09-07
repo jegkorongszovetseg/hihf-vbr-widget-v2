@@ -6,7 +6,7 @@ import { computed, ref, unref, watch } from 'vue';
 import { callFunctions, rawPeriodIndex } from './internal.js';
 
 const DEAFULT_PERIOD_LENGTH_MIN = 20;
-const INTERVAL = 1000 * 60 * 5; // 5perc
+const INTERVAL = 1000 * 30;
 const LAZY_INTERVAL = 1000 * 60 * 5;
 
 export function handleServices(options = {}) {
@@ -16,7 +16,7 @@ export function handleServices(options = {}) {
   const isRefreshable = ref(false);
 
   const { resume, pause, isActive } = useTimeoutPoll(
-    () => callFunctions(getGameData, getGameStats, getEvents),
+    () => callFunctions(getGameStats, getEvents),
     INTERVAL,
     { immediate: false, immediateCallback: false },
   );
