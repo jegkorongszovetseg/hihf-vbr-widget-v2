@@ -10,7 +10,7 @@ export function useGameDataSocket(path, gameData) {
     onMessage: (_, event) => {
       const eventData = event.data;
       const updateEventData = JSON.parse(eventData);
-      if (updateEventData.type === 'welcome')
+      if (updateEventData.event === 'welcome')
         return;
       gameData.value = updateEventData.message;
     },
