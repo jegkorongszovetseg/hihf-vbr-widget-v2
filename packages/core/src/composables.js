@@ -2,6 +2,7 @@ export * from './composables/useAdditionalText';
 export * from './composables/useColumns';
 export * from './composables/useErrors';
 export * from './composables/useFetchVBRApi';
+export * from './composables/useGameDataSocket';
 export * from './composables/useI18n';
 export * from './composables/useLazyLoadingState';
 export * from './composables/usePage';

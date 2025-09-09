@@ -16,7 +16,7 @@ export function handleServices(options = {}) {
   const isRefreshable = ref(false);
 
   const { resume, pause, isActive } = useTimeoutPoll(
-    () => callFunctions(getGameData, getGameStats, getEvents),
+    () => callFunctions(getGameStats, getEvents),
     INTERVAL,
     { immediate: false, immediateCallback: false },
   );
