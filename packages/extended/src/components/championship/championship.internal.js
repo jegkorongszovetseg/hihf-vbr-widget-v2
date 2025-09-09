@@ -5,6 +5,7 @@ import {
   COLUMNS_SCHEDULE,
   COLUMNS_SCORING_EFFICIENCY,
   COLUMNS_STANDINGS_P_3,
+  COLUMNS_STANDINGS_P_PER,
   COLUMNS_TEAMS_FAIRPLAY,
   COLUMNS_TEAMS_PENALTY_KILLING,
   COLUMNS_TEAMS_POWERPLAY,
@@ -29,17 +30,17 @@ export function transformSections(sections, state, initialPhaseId = null) {
 export const ALL_REPORTS_MAP = new Map()
   .set('schedule', {
     api: '/v2/games-list',
-    columns: COLUMNS_SCHEDULE,
+    columns: () => COLUMNS_SCHEDULE,
     sort: {},
   })
   .set('standings', {
     api: '/v2/standings',
-    columns: COLUMNS_STANDINGS_P_3,
+    columns: allPeriod => allPeriod ? COLUMNS_STANDINGS_P_PER : COLUMNS_STANDINGS_P_3,
     sort: {},
   })
   .set('points', {
     api: '/v2/players-stats',
-    columns: COLUMNS_FIELD_PLAYERS,
+    columns: () => COLUMNS_FIELD_PLAYERS,
     sort: {
       sortTarget: 'points',
       orders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
@@ -47,7 +48,7 @@ export const ALL_REPORTS_MAP = new Map()
   })
   .set('goals', {
     api: '/v2/players-stats',
-    columns: COLUMNS_FIELD_PLAYERS,
+    columns: () => COLUMNS_FIELD_PLAYERS,
     sort: {
       sortTarget: 'goals',
       orders: [
@@ -58,7 +59,7 @@ export const ALL_REPORTS_MAP = new Map()
   })
   .set('assists', {
     api: '/v2/players-stats',
-    columns: COLUMNS_FIELD_PLAYERS,
+    columns: () => COLUMNS_FIELD_PLAYERS,
     sort: {
       sortTarget: 'assists',
       orders: [
@@ -69,7 +70,7 @@ export const ALL_REPORTS_MAP = new Map()
   })
   .set('plusminus', {
     api: '/v2/players-stats',
-    columns: COLUMNS_FIELD_PLAYERS,
+    columns: () => COLUMNS_FIELD_PLAYERS,
     sort: {
       sortTarget: 'plusMinus',
       orders: [{ target: 'plusMinus', direction: SORT_STATE_DESCEND }],
@@ -77,7 +78,7 @@ export const ALL_REPORTS_MAP = new Map()
   })
   .set('playerspenalties', {
     api: '/v2/players-penalty',
-    columns: COLUMNS_FIELD_PLAYERS_PENALTY,
+    columns: () => COLUMNS_FIELD_PLAYERS_PENALTY,
     sort: {
       sortTarget: 'pim',
       orders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
@@ -86,7 +87,7 @@ export const ALL_REPORTS_MAP = new Map()
   .set('goalies', {
     api: '/v2/players-goalie',
     params: { more: true },
-    columns: COLUMNS_GOALIES,
+    columns: () => COLUMNS_GOALIES,
     sort: {
       sortTarget: 'svsPercent',
       orders: [{ target: 'svsPercent', direction: SORT_STATE_DESCEND }],
@@ -95,7 +96,7 @@ export const ALL_REPORTS_MAP = new Map()
   .set('goaliesunderlimit', {
     api: '/v2/players-goalie',
     params: { less: true },
-    columns: COLUMNS_GOALIES,
+    columns: () => COLUMNS_GOALIES,
     sort: {
       sortTarget: 'svsPercent',
       orders: [{ target: 'svsPercent', direction: SORT_STATE_DESCEND }],
@@ -103,7 +104,7 @@ export const ALL_REPORTS_MAP = new Map()
   })
   .set('teamFairplay', {
     api: '/v2/team-fairplay',
-    columns: COLUMNS_TEAMS_FAIRPLAY,
+    columns: () => COLUMNS_TEAMS_FAIRPLAY,
     sort: {
       sortTarget: 'pim',
       orders: [{ target: 'pim', direction: SORT_STATE_DESCEND }],
@@ -111,7 +112,7 @@ export const ALL_REPORTS_MAP = new Map()
   })
   .set('teamPenaltiKilling', {
     api: '/v2/team-powerplay',
-    columns: COLUMNS_TEAMS_PENALTY_KILLING,
+    columns: () => COLUMNS_TEAMS_PENALTY_KILLING,
     sort: {
       sortTarget: 'pkPercent',
       orders: [{ target: 'pkPercent', direction: SORT_STATE_DESCEND }],
@@ -119,7 +120,7 @@ export const ALL_REPORTS_MAP = new Map()
   })
   .set('teamPowerplay', {
     api: '/v2/team-powerplay',
-    columns: COLUMNS_TEAMS_POWERPLAY,
+    columns: () => COLUMNS_TEAMS_POWERPLAY,
     sort: {
       sortTarget: 'ppPercent',
       orders: [{ target: 'ppPercent', direction: SORT_STATE_DESCEND }],
@@ -127,7 +128,7 @@ export const ALL_REPORTS_MAP = new Map()
   })
   .set('teamScoringEfficiency', {
     api: '/v2/team-scoring-efficiency',
-    columns: COLUMNS_SCORING_EFFICIENCY,
+    columns: () => COLUMNS_SCORING_EFFICIENCY,
     sort: {
       sortTarget: 'sp',
       orders: [{ target: 'sp', direction: SORT_STATE_DESCEND }],

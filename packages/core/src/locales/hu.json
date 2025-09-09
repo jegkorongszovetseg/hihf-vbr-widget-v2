@@ -44,6 +44,10 @@
       "short": "GP",
       "tooltip": "Mérkőzésszám"
     },
+    "pper": {
+      "short": "PPer",
+      "tooltip": "Összes lejátszott játékrész"
+    },
     "wins": {
       "short": "W",
       "tooltip": "Győzelem"

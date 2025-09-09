@@ -68,6 +68,11 @@ const props = defineProps({
     type: [Number, String],
     default: '',
   },
+
+  allPeriodVisible: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const params = useUrlSearchParams('history');
@@ -211,7 +216,7 @@ function setFetchData(value) {
 
   state.api = report.api;
   state.apiParams = report.params;
-  state.columns = report.columns;
+  state.columns = report.columns(props.allPeriodVisible);
   sort.sortTarget = report.sort?.sortTarget ?? '';
   sort.orders = report.sort?.orders ?? [];
   fetchData();

@@ -44,6 +44,10 @@
       "short": "GP",
       "tooltip": "Game Played"
     },
+    "pper": {
+      "short": "PPer",
+      "tooltip": "Total game period"
+    },
     "wins": {
       "short": "W",
       "tooltip": "Wins"

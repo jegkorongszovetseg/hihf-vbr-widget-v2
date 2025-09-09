@@ -16,6 +16,7 @@ import '../../../packages/shared/assets/css/paginator.scss';
 <template>
   <div class="p-5">
     <!-- <Championship :locale="store.locale" championship-name="Magyar Kupa" initial-phase-id="45856" /> -->
-    <mjsz-vbr-championship :locale="store.locale" championship-name="Magyar Kupa" :initial-phase-id="45856" />
+    <!-- <mjsz-vbr-championship :locale="store.locale" championship-name="Magyar Kupa" :initial-phase-id="45856" /> -->
+    <mjsz-vbr-championship :locale="store.locale" championship-name="U-12 Bajnokság" initial-phase-id="46165" all-period-visible />
   </div>
 </template>

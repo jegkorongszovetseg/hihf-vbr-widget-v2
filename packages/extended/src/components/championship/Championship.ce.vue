@@ -57,6 +57,11 @@ const props = defineProps({
     type: [Number, String],
     default: '',
   },
+
+  allPeriodVisible: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const tooltipContainer = ref(null);
@@ -108,6 +113,7 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
           :championship-name="championshipName"
           :limit="limit"
           :initial-phase-id="initialPhaseId"
+          :all-period-visible="allPeriodVisible"
         >
           <SeasonSelector :seasons="seasons" :championship-id="championshipId" @update:championship-id="changeSeason" />
 

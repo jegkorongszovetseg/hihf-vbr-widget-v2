@@ -138,6 +138,93 @@ export const COLUMNS_STANDINGS_P_3 = {
   },
 };
 
+export const COLUMNS_STANDINGS_P_PER = {
+  index: {
+    label: 'table.blank',
+    class: 'is-text-left',
+  },
+  teamLogo: {
+    label: '',
+    class: 'is-has-image',
+  },
+  teamName: {
+    label: 'table.team.short',
+    tooltip: 'table.team.tooltip',
+    class: 'is-text-left is-w-auto is-text-bold',
+    sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
+  },
+  gamesPlayed: {
+    label: 'table.game.short',
+    tooltip: 'table.game.tooltip',
+    sortOrders: [{ target: 'gamesPlayed', direction: SORT_STATE_DESCEND }],
+  },
+  pper: {
+    label: 'table.pper.short',
+    tooltip: 'table.pper.tooltip',
+    sortOrders: [{ target: 'pper', direction: SORT_STATE_DESCEND }],
+  },
+  w: {
+    label: 'table.wins.short',
+    tooltip: 'table.wins.tooltip',
+    sortOrders: [
+      { target: 'w', direction: SORT_STATE_DESCEND },
+      { target: 'otw', direction: SORT_STATE_DESCEND },
+    ],
+  },
+  otw: {
+    label: 'table.otw.short',
+    tooltip: 'table.otw.tooltip',
+    sortOrders: [{ target: 'otw', direction: SORT_STATE_DESCEND }],
+  },
+  sow: {
+    label: 'table.sow.short',
+    tooltip: 'table.sow.tooltip',
+    sortOrders: [{ target: 'sow', direction: SORT_STATE_DESCEND }],
+  },
+  sol: {
+    label: 'table.sol.short',
+    tooltip: 'table.sol.tooltip',
+    sortOrders: [{ target: 'sol', direction: SORT_STATE_DESCEND }],
+  },
+  otl: {
+    label: 'table.otl.short',
+    tooltip: 'table.otl.tooltip',
+    sortOrders: [{ target: 'otl', direction: SORT_STATE_ASCEND }],
+  },
+  l: {
+    label: 'table.losses.short',
+    tooltip: 'table.losses.tooltip',
+    sortOrders: [{ target: 'l', direction: SORT_STATE_ASCEND }],
+  },
+  gf: {
+    label: 'table.goalFor.short',
+    tooltip: 'table.goalFor.tooltip',
+    sortOrders: [{ target: 'gf', direction: SORT_STATE_DESCEND }],
+  },
+  ga: {
+    label: 'table.goalAgainst.short',
+    tooltip: 'table.goalAgainst.tooltip',
+    sortOrders: [{ target: 'ga', direction: SORT_STATE_ASCEND }],
+  },
+  gd: {
+    label: 'table.goalDiff.short',
+    tooltip: 'table.goalDiff.tooltip',
+    sortOrders: [{ target: 'gd', direction: SORT_STATE_DESCEND }],
+  },
+  points: {
+    label: 'table.points.short',
+    tooltip: 'table.points.tooltip',
+    class: 'is-text-bold',
+    sortOrders: [
+      { target: 'points', direction: SORT_STATE_DESCEND },
+      { target: 'gamesPlayed', direction: SORT_STATE_ASCEND },
+      { target: 'w', direction: SORT_STATE_DESCEND },
+      { target: 'gd', direction: SORT_STATE_DESCEND },
+      { target: 'gf', direction: SORT_STATE_DESCEND },
+    ],
+  },
+};
+
 export const COLUMNS_STANDINGS_P_2 = {
   index: {
     label: '#',
