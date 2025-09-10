@@ -46,7 +46,7 @@
     },
     "pper": {
       "short": "PPer",
-      "tooltip": "Total game period"
+      "tooltip": "Total periods played"
     },
     "wins": {
       "short": "W",
