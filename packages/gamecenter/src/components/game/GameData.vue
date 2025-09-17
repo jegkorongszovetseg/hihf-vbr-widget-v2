@@ -30,8 +30,7 @@ const { gameData, websocketUrl } = toRefs(props);
 
 const { t } = useI18n();
 
-useAttendanceSocket(websocketUrl, gameData);
-// const { visitorsLabel, isVisible: isVisitorsLabelVisible } = useAttendanceSocket(websocketUrl, gameData);
+const { visitorsLabel, isVisible: isVisitorsLabelVisible } = useAttendanceSocket(websocketUrl, gameData);
 </script>
 
 <template>
@@ -67,9 +66,9 @@ useAttendanceSocket(websocketUrl, gameData);
           {{ t('video') }}
         </a>
       </div>
-      <!-- <p v-if="gameData.gameStatus <= 1 && isVisitorsLabelVisible" class="is-live-vistors">
+      <p v-if="gameData.gameStatus <= 1 && isVisitorsLabelVisible" class="is-live-vistors">
         {{ visitorsLabel }}
-      </p> -->
+      </p>
     </div>
 
     <div class="is-teams-and-results">
