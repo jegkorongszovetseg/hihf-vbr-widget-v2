@@ -1,6 +1,6 @@
 <script setup>
 import { ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
-import { useServices } from '@mjsz-vbr-elements/core/composables';
+import { useGameDataSocket, useServices } from '@mjsz-vbr-elements/core/composables';
 import { getWebsocketURL, resolveApiKey } from '@mjsz-vbr-elements/core/utils';
 import { useUrlSearchParams } from '@vueuse/core';
 import { isEmpty } from 'ramda';
@@ -40,8 +40,6 @@ const props = defineProps({
 });
 
 const messages = { en: { ...commonEN, ...extendeEN }, hu: { ...commonHU, ...extendedHU } };
-
-const REFRESH_DELAY = 30000;
 
 const contentElementRef = ref(null);
 // const isScoreBoardVisible = ref(false);
@@ -108,13 +106,14 @@ const { state: gameOfficials, execute: getGameOfficials } = useServices({
 handleServices({
   data: gameData,
   services: { getGameData, getGameStats, getEvents, getGameOfficials },
-  interval: REFRESH_DELAY,
 });
 
 const colors = useTeamColors(gameData);
 
 const resolvedApiKey = resolveApiKey(props.apiKey);
 const websocketURL = computed(() => getWebsocketURL(`/v2/game-attendance?gameid=${gameId.value}&apiKey=${resolvedApiKey}`));
+
+useGameDataSocket(getWebsocketURL(`/v2/game-data?gameid=${gameId.value}&apiKey=${resolvedApiKey}`), gameData);
 </script>
 
 <template>
