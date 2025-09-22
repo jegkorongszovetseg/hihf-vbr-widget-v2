@@ -1,4 +1,5 @@
-import { convertMinToSec, playerName } from '@mjsz-vbr-elements/core';
+import { convertMinToSec, playerName, useVisibilityChange } from '@mjsz-vbr-elements/core';
+import { useTimeoutPoll } from '@vueuse/core';
 import {
   allPass,
   compose,
@@ -19,6 +20,11 @@ import {
   trim,
   values,
 } from 'ramda';
+// import { useVisibilityChange } from '../../../../core/src/composables';
+import { callFunctions } from '../game/internal';
+
+const INTERVAL = 1000 * 30;
+const LAZY_INTERVAL = 1000 * 60 * 5;
 
 let i = 0;
 function generateId() {
@@ -226,4 +232,57 @@ export function filterGoalScorers(events, teamId) {
 
   const sorted = sortBy(prop('eventTimeSec'), values(reduced));
   return sorted;
+}
+
+export function handleServices(options = {}) {
+  const { data, services } = options;
+  const { getGameData, getGameStats, getEvents, getGameOfficials } = services;
+
+  const isRefreshable = ref(false);
+
+  const { resume, pause, isActive } = useTimeoutPoll(
+    () => callFunctions(getGameStats, getEvents),
+    INTERVAL,
+    { immediate: false, immediateCallback: false },
+  );
+
+  useTimeoutPoll(
+    () => getGameData(),
+    LAZY_INTERVAL,
+    {
+      immediate: true,
+      immediateCallback: true,
+    },
+  );
+
+  const { pause: pauseGameOfficials } = useTimeoutPoll(
+    () => getGameOfficials(),
+    LAZY_INTERVAL,
+    {
+      immediate: true,
+      immediateCallback: true,
+    },
+  );
+
+  useVisibilityChange(isRefreshable, () => {
+    resume();
+    getGameData();
+  }, () => {
+    pause();
+  });
+
+  watch(data, (data) => {
+    if (data.gameStatus === 1 && !isActive.value) {
+      isRefreshable.value = true;
+      pauseGameOfficials();
+      resume();
+      getGameStats();
+      getEvents();
+    }
+    if (data.gameStatus > 1) {
+      isRefreshable.value = false;
+      callFunctions(getGameStats, getEvents);
+      pauseGameOfficials();
+    }
+  });
 }

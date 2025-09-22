@@ -21,7 +21,7 @@ export function handleServices(options = {}) {
     { immediate: false, immediateCallback: false },
   );
 
-  useTimeoutPoll(
+  const { pause: pauseGameData } = useTimeoutPoll(
     () => getGameData(),
     LAZY_INTERVAL,
     {
@@ -49,6 +49,7 @@ export function handleServices(options = {}) {
   watch(data, (data) => {
     if (data.gameStatus === 1 && !isActive.value) {
       isRefreshable.value = true;
+      pauseGameData();
       pauseGameOfficials();
       resume();
       getGameStats();
@@ -57,6 +58,7 @@ export function handleServices(options = {}) {
     if (data.gameStatus > 1) {
       isRefreshable.value = false;
       callFunctions(getGameStats, getEvents);
+      pauseGameData();
       pauseGameOfficials();
     }
   });

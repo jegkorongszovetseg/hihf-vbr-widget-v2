@@ -9,7 +9,7 @@ import commonEN from '../../locales/en/common.json';
 import extendeEN from '../../locales/en/extended.json';
 import commonHU from '../../locales/hu/common.json';
 import extendedHU from '../../locales/hu/extended.json';
-import { handleServices, useApiErrors } from '../game/composables';
+import { useApiErrors } from '../game/composables';
 // import ScoreBoard from './components/ScoreBoard.vue';
 import { useTeamColors } from './composables/use-team-colors';
 import { TAB_EVENTS, TAB_LINEUPS, TAB_OFFICIALS, TAB_PLAYER_STATS, TAB_TEAM_STATS } from './constants';
@@ -20,7 +20,7 @@ import GameOfficials from './GameOfficials.vue';
 import GamePlayerStats from './GamePlayerStats.vue';
 import GameTabs from './GameTabs.vue';
 import GameTeamStats from './GameTeamStats.vue';
-import { transformEvents } from './internal';
+import { handleServices, transformEvents } from './internal';
 
 const props = defineProps({
   locale: {
