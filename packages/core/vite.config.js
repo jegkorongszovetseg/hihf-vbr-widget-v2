@@ -21,9 +21,9 @@ export default defineConfig({
     lib: {
       entry: [
         resolve(__dirname, 'src/index.js'),
-        resolve(__dirname, 'src/components.js'),
-        resolve(__dirname, 'src/composables.js'),
-        resolve(__dirname, 'src/utils.js'),
+        resolve(__dirname, 'src/components/index.js'),
+        resolve(__dirname, 'src/composables/index.js'),
+        resolve(__dirname, 'src/utils/index.js'),
         resolve(__dirname, 'src/columns.js'),
         resolve(__dirname, 'src/constants.js'),
       ],
