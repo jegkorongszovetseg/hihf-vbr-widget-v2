@@ -20,7 +20,7 @@ import {
   trim,
   values,
 } from 'ramda';
-// import { useVisibilityChange } from '../../../../core/src/composables';
+import { ref, watch } from 'vue';
 import { callFunctions } from '../game/internal';
 
 const INTERVAL = 1000 * 30;
