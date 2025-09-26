@@ -45,7 +45,7 @@
     "@xstate/fsm": "^2.1.0",
     "dayjs": "^1.11.13",
     "ramda": "^0.31.3",
-    "vue": "^3.5.17"
+    "vue": "^3.5.22"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.0",
