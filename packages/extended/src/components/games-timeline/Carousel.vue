@@ -65,7 +65,7 @@ function next() {
 }
 
 function updateScrollPosition(options) {
-  currentElement.value?.scrollIntoView({ inline: 'start', block: 'nearest', ...options });
+  currentElement.value?.scrollIntoView({ inline: 'start', block: 'nearest', container: 'nearest', ...options });
 }
 
 function onScrollend() {
