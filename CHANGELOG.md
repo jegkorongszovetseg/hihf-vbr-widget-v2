@@ -1,3 +1,8 @@
+## [2.29.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.29.1...v2.29.2) (2025-09-26)
+
+### Features
+
+* Dump vue version to 3.5.22 ([ac728f0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/ac728f080f05ecb5398ad5466c51e209ec9b7153))
 ## [2.29.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.29.0...v2.29.1) (2025-09-23)
 ## [2.29.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.28.0...v2.29.0) (2025-09-19)
 ## [2.28.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.27.0...v2.28.0) (2025-09-16)
