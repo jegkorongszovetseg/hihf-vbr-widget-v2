@@ -2,7 +2,7 @@
 import { I18NProvider, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
 import { useServices, useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
 import { format, getLocalTimezone, isAfter, offsetName } from '@mjsz-vbr-elements/core/utils';
-import { useIntervalFn } from '@vueuse/core';
+import { refDebounced, useIntervalFn } from '@vueuse/core';
 import { isEmpty } from 'ramda';
 import { computed, ref, triggerRef } from 'vue';
 import en from '../../locales/en.json';
@@ -63,6 +63,7 @@ const { isLoading, state: games, execute } = useServices({
 });
 
 const { resume, pause } = useIntervalFn(execute, 1000 * 60 * 5);
+const isLoadingDebounced = refDebounced(isLoading, 500);
 
 useVisibilityChange(
   true,
@@ -134,8 +135,8 @@ function onTryAgain() {
 
 <template>
   <I18NProvider v-slot="{ t }" :locale="locale" :messages="messages">
-    <Carousel :key="isLoading" :initial-index="initialIndex">
-      <div v-if="!error && isLoading" style="width: 100%">
+    <Carousel :key="isLoadingDebounced" :initial-index="initialIndex">
+      <div v-if="!error && isLoadingDebounced" style="width: 100%">
         <LoadingIndicator />
       </div>
       <TrayAgain v-else-if="error && isEmpty(games)" @try-again="onTryAgain" />
@@ -143,7 +144,7 @@ function onTryAgain() {
         {{ t('gamesTimeline.noGames') }}
       </div>
       <template v-else>
-        <CarouselItem>
+        <CarouselItem v-once>
           <ExternalSchedule :external-schedule-url="externalScheduleUrl" :title="t('gamesTimeline.allSchedule')" @navigate-to="navigateTo" />
         </CarouselItem>
 
@@ -161,7 +162,7 @@ function onTryAgain() {
         >
           <Game :game-data="game" :external-game-resolver="externalGameResolver" @navigate-to="navigateTo" />
         </CarouselItem>
-        <CarouselItem>
+        <CarouselItem v-once>
           <ExternalSchedule :external-schedule-url="externalScheduleUrl" :title="t('gamesTimeline.allSchedule')" @navigate-to="navigateTo" />
         </CarouselItem>
       </template>

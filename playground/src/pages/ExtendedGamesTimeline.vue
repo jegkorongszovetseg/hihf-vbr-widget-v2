@@ -19,5 +19,6 @@ import { store } from '../store.js';
       external-game-resolver="/GameCenterTimeline?gameid={gameId}"
       external-schedule-url="/ExtendedCalendar"
     />
+    <div style="height: 1000px;" />
   </div>
 </template>
