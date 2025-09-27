@@ -73,9 +73,9 @@ const { visitorsLabel, isVisible: isVisitorsLabelVisible } = useAttendanceSocket
 
     <div class="is-teams-and-results">
       <div v-once>
-        <Image :src="gameData.homeTeam.logo" class="is-team-logo" :default-src="DEAFULT_LOGO_TEAM_A" />
+        <Image :src="gameData.homeTeam?.logo" class="is-team-logo" :default-src="DEAFULT_LOGO_TEAM_A" />
         <h1 class="is-team-name">
-          {{ gameData.homeTeam.longName }}
+          {{ gameData.homeTeam?.longName }}
         </h1>
       </div>
       <div>
@@ -109,9 +109,9 @@ const { visitorsLabel, isVisible: isVisitorsLabelVisible } = useAttendanceSocket
         </p>
       </div>
       <div v-once>
-        <Image :src="gameData.awayTeam.logo" :default-src="DEAFULT_LOGO_TEAM_B" class="is-team-logo" />
+        <Image :src="gameData.awayTeam?.logo" :default-src="DEAFULT_LOGO_TEAM_B" class="is-team-logo" />
         <h1 class="is-team-name">
-          {{ gameData.awayTeam.longName }}
+          {{ gameData.awayTeam?.longName }}
         </h1>
       </div>
     </div>

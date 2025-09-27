@@ -38,8 +38,8 @@ const { gameData, websocketUrl } = toRefs(props);
 const { t } = useI18n();
 
 const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gameData.periodResults));
-const homeGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.homeTeam.id));
-const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.awayTeam.id));
+const homeGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.homeTeam?.id));
+const awayGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.awayTeam?.id));
 
 const { visitorsLabel, isVisible: isVisitorsLabelVisible } = useAttendanceSocket(websocketUrl, gameData);
 
@@ -87,9 +87,9 @@ const attendanceLabel = computed(() => {
 
     <div class="is-teams-and-results">
       <div>
-        <Image v-once :src="gameData.homeTeam.logo" class="is-team-logo" :default-src="DEAFULT_LOGO_TEAM_A" />
+        <Image v-once :src="gameData.homeTeam?.logo" class="is-team-logo" :default-src="DEAFULT_LOGO_TEAM_A" />
         <h1 class="is-team-name">
-          {{ gameData.homeTeam.longName }}
+          {{ gameData.homeTeam?.longName }}
         </h1>
         <ul class="is-goal-scorers">
           <li v-for="person in homeGoalScorer" :key="person.id">
@@ -131,14 +131,14 @@ const attendanceLabel = computed(() => {
         <PeriodResults
           v-if="gameData.gameStatus > 0"
           :results="convertedPeriodResults"
-          :home-team-name="gameData.homeTeam.shortName"
-          :away-team-name="gameData.awayTeam.shortName"
+          :home-team-name="gameData.homeTeam?.shortName"
+          :away-team-name="gameData.awayTeam?.shortName"
         />
       </div>
       <div>
-        <Image v-once :src="gameData.awayTeam.logo" :default-src="DEAFULT_LOGO_TEAM_B" class="is-team-logo" />
+        <Image v-once :src="gameData.awayTeam?.logo" :default-src="DEAFULT_LOGO_TEAM_B" class="is-team-logo" />
         <h1 class="is-team-name">
-          {{ gameData.awayTeam.longName }}
+          {{ gameData.awayTeam?.longName }}
         </h1>
         <ul class="is-goal-scorers">
           <li v-for="person in awayGoalScorer" :key="person.id">
