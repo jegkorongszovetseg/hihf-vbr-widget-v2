@@ -1,3 +1,9 @@
+## [2.29.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.29.2...v2.29.3) (2025-10-01)
+
+### Bug Fixes
+
+* **gamecenter/timeline:** Fix preparation time ([fe67db6](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/fe67db689575ec797fcb3991d5497b7f7b543d2f))
+* **gamecenter:** Error if home team or away team is null ([174c011](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/174c0112e457b885d28f0fc1c4ba16b99b2cc4e3))
 ## [2.29.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.29.1...v2.29.2) (2025-09-26)
 
 ### Features
