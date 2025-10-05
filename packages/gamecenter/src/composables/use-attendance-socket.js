@@ -1,5 +1,5 @@
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import { useWebSocket } from '@vueuse/core';
+import { refThrottled, useWebSocket } from '@vueuse/core';
 import { computed, unref, watch } from 'vue';
 
 export function useAttendanceSocket(path, gameData) {
@@ -12,7 +12,8 @@ export function useAttendanceSocket(path, gameData) {
     immediate: false,
   });
 
-  const visitors = computed(() => JSON.parse(data.value)?.visitor ?? 0);
+  const visitorsRaw = computed(() => JSON.parse(data.value)?.visitor ?? 0);
+  const visitors = refThrottled(visitorsRaw, 5000);
 
   const isVisible = computed(() => visitors.value > 0);
 
