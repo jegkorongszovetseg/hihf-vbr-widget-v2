@@ -1,3 +1,9 @@
+## [2.30.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.29.3...v2.30.0) (2025-10-06)
+
+### Features
+
+* **extended/championship:** Filter unneeded championships ([d5f5e45](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/d5f5e458d738264f70df2802fc044e64875b54de))
+* **gamecenter:** Use throttle for display visitors ([0e843cc](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/0e843cc6bc5d3d95a1df9d7e76217cdce20b5264))
 ## [2.29.3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.29.2...v2.29.3) (2025-10-01)
 
 ### Bug Fixes
