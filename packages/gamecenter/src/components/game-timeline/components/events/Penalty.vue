@@ -26,15 +26,15 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
 <template>
   <GameEventLayout :timestamp="event.eventTime" :is-home-team="isHomeTeam" :event-type="event.type">
     <template #title>
-      {{ t('eventType.Kiállítás') }}
-      <template v-if="event.penaltyLength !== 0">
+      <span v-if="!event.ps">{{ t('eventType.Kiállítás') }}&nbsp;</span>
+      <template v-if="event.penaltyLength">
         {{ t('events.penaltyLength', [event.penaltyLength]) }}
         <template v-if="event.penaltyEnd">
           ({{ event.penaltyEnd }})
         </template>
       </template>
-      <template v-if="event.perc === 0">
-        PS
+      <template v-if="event.ps">
+        {{ t('penalties.PS') }}
       </template>
     </template>
 

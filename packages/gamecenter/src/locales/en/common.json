@@ -141,6 +141,7 @@
     "MATCH": "Match penalty",
     "FIGHT": "Fighting",
     "DANG": "Dangerous Equipment",
-    "LATE-H": "Late Hit"
+    "LATE-H": "Late Hit",
+    "PS": "Penalty shot"
   }
 }
