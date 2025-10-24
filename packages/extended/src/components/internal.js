@@ -1,5 +1,4 @@
-import { convertSeasons, convertTeams, head, InvalidSeasonName, selectFirstPhaseName, WidgetError } from '@mjsz-vbr-elements/core/utils';
-import { path } from 'ramda';
+import { convertSeasons, convertTeams, head, InvalidSeasonName, path, selectFirstPhaseName, WidgetError } from '@mjsz-vbr-elements/core/utils';
 
 export function transformSeasons(seasons, state) {
   if (seasons.length === 0)
@@ -11,9 +10,7 @@ export function transformSeasons(seasons, state) {
 
 export function transformSections(sections, state) {
   state.sections = path([0, 'phases'], sections);
-  // if (state.sections && !state.sections.includes(state.section)) {
   state.section = selectFirstPhaseName(state.sections);
-  // }
 }
 
 export function transformTeams(teams, state) {

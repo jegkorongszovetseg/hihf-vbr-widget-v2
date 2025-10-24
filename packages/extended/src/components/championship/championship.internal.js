@@ -13,8 +13,8 @@ import {
 import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core/constants';
 import {
   filterAndSortSections,
+  sortByPhaseId,
 } from '@mjsz-vbr-elements/core/utils';
-import { prop, sortBy } from 'ramda';
 
 export const PANEL_SCHEDULE = 'schedule';
 export const PANEL_STANDINGS = 'standings';
@@ -26,7 +26,7 @@ export function transformSections(sections, state, initialPhaseId = null) {
   state.championships = filteredSections;
   state.selectedChampionshipId = state.championships?.[0]?.sectionId;
 
-  const phases = sortBy(prop('phaseId'))(filteredSections?.[0]?.phases ?? []);
+  const phases = sortByPhaseId(filteredSections?.[0]?.phases ?? []);
   const index = phases.findIndex(item => item.phaseId === Number(initialPhaseId));
 
   state.phaseId = index > -1 ? Number(initialPhaseId) : phases[0]?.phaseId;

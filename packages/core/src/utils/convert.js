@@ -348,3 +348,5 @@ export const filterAndSortSections = compose(sortBy(prop('sectionId')), reject(c
 export const selectFirstSectionId = compose(prop('sectionId'), head);
 
 export const selectFirstPhaseName = compose(prop('phaseName'), head);
+
+export const sortByPhaseId = sortBy(prop('phaseId'));
