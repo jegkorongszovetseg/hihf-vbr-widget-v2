@@ -2,9 +2,8 @@
 import { gameProps } from '@mjsz-vbr-elements/core';
 import { I18NProvider, Image } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
-import { externalGameLinkResolver, format } from '@mjsz-vbr-elements/core/utils';
+import { externalGameLinkResolver, format, isEmpty } from '@mjsz-vbr-elements/core/utils';
 import { useIntervalFn } from '@vueuse/core';
-import { isEmpty } from 'ramda';
 import { computed } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';

@@ -1,9 +1,8 @@
 <script setup>
 import { I18NProvider, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
 import { useServices, useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
-import { format, getLocalTimezone, isAfter, offsetName } from '@mjsz-vbr-elements/core/utils';
+import { format, getLocalTimezone, isAfter, isEmpty, offsetName } from '@mjsz-vbr-elements/core/utils';
 import { refDebounced, useIntervalFn } from '@vueuse/core';
-import { isEmpty } from 'ramda';
 import { computed, ref, triggerRef } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';

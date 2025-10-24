@@ -8,16 +8,21 @@ import {
   equals,
   filter,
   groupBy,
+  head,
   ifElse,
   includes,
+  isEmpty,
   lensProp,
   map,
   over,
   path,
+  pick,
   pipe,
   prop,
+  reject,
   replace,
   sort,
+  sortBy,
   sortWith,
   toLower,
 } from 'ramda';
@@ -330,3 +335,16 @@ function buildPlayerName(row) {
     return `${row.player.lastName} ${row.player.firstName}`;
   return `${row.player.lastName}, ${row.player.firstName}`;
 }
+
+export const convertSeasons = compose(
+  sort(descend(prop('seasonName'))),
+  map(pick(['championshipId', 'seasonName'])),
+);
+
+export const convertTeams = teams => sort(ascend(prop('teamName')), teams);
+
+export const filterAndSortSections = compose(sortBy(prop('sectionId')), reject(compose(isEmpty, prop('phases'))));
+
+export const selectFirstSectionId = compose(prop('sectionId'), head);
+
+export const selectFirstPhaseName = compose(prop('phaseName'), head);

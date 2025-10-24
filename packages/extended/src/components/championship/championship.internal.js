@@ -11,18 +11,19 @@ import {
   COLUMNS_TEAMS_POWERPLAY,
 } from '@mjsz-vbr-elements/core/columns';
 import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core/constants';
-import { compose, isEmpty, prop, reject, sortBy } from 'ramda';
+import {
+  filterAndSortSections,
+} from '@mjsz-vbr-elements/core/utils';
+import { prop, sortBy } from 'ramda';
 
 export const PANEL_SCHEDULE = 'schedule';
 export const PANEL_STANDINGS = 'standings';
 export const PANEL_PLAYERS = 'players';
 export const PANEL_TEAMS = 'teams';
 
-const filterAndSortSections = compose(sortBy(prop('sectionId')), reject(compose(isEmpty, prop('phases'))));
-
 export function transformSections(sections, state, initialPhaseId = null) {
   const filteredSections = filterAndSortSections(sections);
-  state.championships = filterAndSortSections(filteredSections);
+  state.championships = filteredSections;
   state.selectedChampionshipId = state.championships?.[0]?.sectionId;
 
   const phases = sortBy(prop('phaseId'))(filteredSections?.[0]?.phases ?? []);

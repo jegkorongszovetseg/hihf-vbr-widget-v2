@@ -13,6 +13,7 @@ import {
   convertPhaseName,
   convertTimesMinToMinSec,
   convertTimesSecToMin,
+  head,
   playerName,
   rawConvert,
   scheduleOptionalRowClass,
@@ -20,7 +21,7 @@ import {
   teamName,
 } from '@mjsz-vbr-elements/core/utils';
 import { noop, useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
-import { head, prop, sortBy } from 'ramda';
+import { prop, sortBy } from 'ramda';
 import { computed, reactive, toRef, unref } from 'vue';
 import { transformSeasons } from '../internal';
 import {

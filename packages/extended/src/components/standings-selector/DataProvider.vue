@@ -1,7 +1,6 @@
 <script setup>
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
-import { convert } from '@mjsz-vbr-elements/core/utils';
-import { head } from 'ramda';
+import { convert, head } from '@mjsz-vbr-elements/core/utils';
 import { computed, reactive } from 'vue';
 import { transformStandings } from './internal';
 

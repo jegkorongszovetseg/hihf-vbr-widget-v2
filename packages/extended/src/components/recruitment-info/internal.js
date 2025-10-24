@@ -1,4 +1,4 @@
-import { omit, pick } from 'ramda';
+import { omit, pick } from '@mjsz-vbr-elements/core/utils';
 
 export function transformData(data) {
   return data

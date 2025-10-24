@@ -1,3 +1,1 @@
-import * as ramda from 'ramda';
-
-export const pick = ramda.pick;
+export { head, isEmpty, last, omit, path, pick, pipe, prop, sum } from 'ramda';
