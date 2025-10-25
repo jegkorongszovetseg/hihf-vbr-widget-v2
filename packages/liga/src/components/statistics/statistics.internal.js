@@ -10,7 +10,6 @@ import {
   COLUMNS_TEAMS_PENALTY_KILLING,
   COLUMNS_TEAMS_POWERPLAY,
 } from '@mjsz-vbr-elements/core/columns';
-import { ascend, compose, descend, map, pick, prop, sort } from 'ramda';
 
 export const REPORT_TYPE_PLAYERS = 'players';
 export const REPORT_TYPE_TEAMS = 'teams';
@@ -190,12 +189,6 @@ export function TEAMS_REPORTS_SELECT(t) {
     },
   ];
 }
-
-export function convertSeasons(seasons) {
-  return compose(sort(descend(prop('championshipId'))), map(pick(['championshipId', 'seasonName'])))(seasons);
-}
-
-export const convertTeams = teams => sort(ascend(prop('teamName')), teams);
 
 export function setDefaultReport(params) {
   if (params.report)

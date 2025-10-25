@@ -2,7 +2,7 @@
 import { DataTable, Image, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { DEFAULT_PORTRAIT_IMAGE_URL } from '@mjsz-vbr-elements/core/constants';
-import { omit } from 'ramda';
+import { omit } from '@mjsz-vbr-elements/core/utils';
 import { ref } from 'vue';
 import { COLUMNS_PLAYER_SEASON_STATS } from '../../internal.js';
 

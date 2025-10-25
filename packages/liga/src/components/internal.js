@@ -1,6 +1,6 @@
-import { SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
-import { InvalidSeasonName, WidgetError } from '@mjsz-vbr-elements/core/utils';
-import { ascend, compose, descend, head, last, map, path, pick, prop, reject, sort } from 'ramda';
+import { SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core/constants';
+import { convertSeasons, convertTeams, head, InvalidSeasonName, selectFirstPhaseName, selectLastSections, WidgetError } from '@mjsz-vbr-elements/core/utils';
+import { compose, path, reject } from 'ramda';
 
 export function transformSeasons(seasons, state) {
   if (seasons.length === 0)
@@ -10,35 +10,21 @@ export function transformSeasons(seasons, state) {
     state.championshipId = head(state.seasons).championshipId;
 }
 
-export function transformSections(sections, state) {
-  state.sections = path([0, 'phases'], sections);
-  state.section = compose(prop('phaseName'), head)(state.sections);
-}
-
 export function transformStandingSections(sections, state) {
-  const phaseNames = (p) => {
-    return ['Rájátszás', 'Újrajátszandó'].includes(p.phaseName);
-  };
+  const phaseNames = p => ['Rájátszás', 'Újrajátszandó'].includes(p.phaseName);
+
   state.sections = compose(reject(phaseNames), path([0, 'phases']))(sections);
-  state.section = compose(prop('phaseName'), head)(state.sections);
+  state.section = selectFirstPhaseName(state.sections);
 }
 
 export function transformPhases(sections, state) {
   state.sections = [...sections];
   if (!state.section)
-    state.section = compose(prop('name'), last)(state.sections);
-}
-
-export function convertTeams(teams) {
-  return sort(ascend(prop('teamName')), teams);
+    state.section = selectLastSections(state.sections);
 }
 
 export function transformTeams(teams, state) {
   state.teams = convertTeams(teams);
-}
-
-export function convertSeasons(seasons) {
-  return compose(sort(descend(prop('seasonName'))), map(pick(['championshipId', 'seasonName'])))(seasons);
 }
 
 export const COLUMNS_PLAYERS = {

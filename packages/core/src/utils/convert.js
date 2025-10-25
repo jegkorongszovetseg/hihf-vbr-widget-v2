@@ -12,6 +12,7 @@ import {
   ifElse,
   includes,
   isEmpty,
+  last,
   lensProp,
   map,
   over,
@@ -350,3 +351,7 @@ export const selectFirstSectionId = compose(prop('sectionId'), head);
 export const selectFirstPhaseName = compose(prop('phaseName'), head);
 
 export const sortByPhaseId = sortBy(prop('phaseId'));
+
+export const transformPlayers = data => compose(sortBy(prop('name')), map(compose(playerName, teamName), data));
+
+export const selectLastSections = compose(prop('name'), last);
