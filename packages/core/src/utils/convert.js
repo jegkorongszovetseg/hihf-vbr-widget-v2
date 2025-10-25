@@ -12,6 +12,7 @@ import {
   ifElse,
   includes,
   isEmpty,
+  join,
   last,
   lensProp,
   map,
@@ -20,12 +21,17 @@ import {
   pick,
   pipe,
   prop,
+  propEq,
   reject,
   replace,
+  reverse,
   sort,
   sortBy,
   sortWith,
+  split,
+  test,
   toLower,
+  toUpper,
 } from 'ramda';
 import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../constants.js';
 import { convertMinToMinSec, convertMinToSec, convertSecToMin, format } from './datetime.js';
@@ -355,3 +361,17 @@ export const sortByPhaseId = sortBy(prop('phaseId'));
 export const transformPlayers = data => compose(sortBy(prop('name')), map(compose(playerName, teamName), data));
 
 export const selectLastSections = compose(prop('name'), last);
+
+export const convertPenaltyCauseName = compose(toUpper, replace('_', '-'));
+
+export const convertPeriodResults = compose(reject(test(/-:-/)), split(','));
+
+export const sortByStartingFive = sortWith([descend(prop('startingFive'))]);
+
+export const joinOfficals = compose(
+  join(', '),
+  map(item => `${item.lastName} ${item.firstName}`),
+  reject(item => !item),
+);
+
+export const convertGameEvents = compose(groupBy(prop('eventPeriod')), reverse, reject(propEq('Period', 'type')));

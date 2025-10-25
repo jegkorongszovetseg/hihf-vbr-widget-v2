@@ -1,1 +1,1 @@
-export { head, isEmpty, last, omit, path, pick, pipe, prop, sum } from 'ramda';
+export { head, isEmpty, isNotEmpty, last, mergeLeft, omit, path, pick, pipe, prop, propEq, reject, sum } from 'ramda';

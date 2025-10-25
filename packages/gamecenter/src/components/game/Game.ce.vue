@@ -1,9 +1,8 @@
 <script setup>
 import { ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
-import { getWebsocketURL, resolveApiKey } from '@mjsz-vbr-elements/core/utils';
+import { getWebsocketURL, isNotEmpty, resolveApiKey } from '@mjsz-vbr-elements/core/utils';
 import { useUrlSearchParams } from '@vueuse/core';
-import { compose, groupBy, isEmpty, isNotEmpty, prop, propEq, reject, reverse } from 'ramda';
 import { computed } from 'vue';
 import CommonEn from '../../locales/en/common.json';
 import CommonHu from '../../locales/hu/common.json';
@@ -59,8 +58,7 @@ const { state: gameEvents, execute: getEvents } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  transform: data =>
-    compose(groupBy(prop('eventPeriod')), reverse, reject(propEq('Period', 'type')))(data?.isEmpty ? [] : data),
+  transform: data => convertGameEvents(data?.isEmpty ? [] : data),
   onError: e => addApiError('gameEvents', e),
   onSuccess: () => removeApiError('gameEvents'),
 });
@@ -100,17 +98,17 @@ const websocketURL = computed(() => getWebsocketURL(`/v2/game-attendance?gameid=
     <I18NProvider :locale="props.locale" :messages="messages">
       <ErrorNotice v-for="error in errors" :key="error.key" :error="error" />
 
-      <GameData v-if="!isEmpty(gameData)" :game-data="gameData" :locale="props.locale" :websocket-url="websocketURL" />
+      <GameData v-if="isNotEmpty(gameData)" :game-data="gameData" :locale="props.locale" :websocket-url="websocketURL" />
 
       <GameOfficials v-if="isNotEmpty(gameData)" :game-data="gameData" :game-officials="gameOfficials" />
 
       <template v-if="gameData?.gameStatus > 0">
-        <GameStats v-if="!isEmpty(gameStats)" :game-data="gameData" :game-stats="gameStats" />
+        <GameStats v-if="isNotEmpty(gameStats)" :game-data="gameData" :game-stats="gameStats" />
 
-        <GameEvents v-if="!isEmpty(gameEvents) && !isEmpty(gameData)" :game-events="gameEvents" :game-data="gameData" />
+        <GameEvents v-if="isNotEmpty(gameEvents) && isNotEmpty(gameData)" :game-events="gameEvents" :game-data="gameData" />
 
         <GamePlayersStats
-          v-if="!isEmpty(gameStats)"
+          v-if="isNotEmpty(gameStats)"
           :data="gameStats.players"
           :home-team-id="gameData.homeTeam.id"
           :home-team-name="gameData.homeTeam.longName"
@@ -119,7 +117,7 @@ const websocketURL = computed(() => getWebsocketURL(`/v2/game-attendance?gameid=
         />
 
         <GameGoaliesStats
-          v-if="!isEmpty(gameStats)"
+          v-if="isNotEmpty(gameStats)"
           :data="gameStats.goalies"
           :home-team-id="gameData.homeTeam.id"
           :home-team-name="gameData.homeTeam.longName"
@@ -128,7 +126,7 @@ const websocketURL = computed(() => getWebsocketURL(`/v2/game-attendance?gameid=
         />
 
         <GameTeamsOfficials
-          v-if="!isEmpty(gameOfficials) && !isEmpty(gameData)"
+          v-if="isNotEmpty(gameOfficials) && isNotEmpty(gameData)"
           :game-officials="gameOfficials"
           :home-team-name="gameData.homeTeam.longName"
           :away-team-name="gameData.awayTeam.longName"

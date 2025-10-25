@@ -1,7 +1,6 @@
 <script setup>
 import { useSort } from '@mjsz-vbr-elements/core/composables';
-import { convert, playerName, rawConvert, upperCase } from '@mjsz-vbr-elements/core/utils';
-import { propEq, reject } from 'ramda';
+import { convert, playerName, propEq, rawConvert, reject, upperCase } from '@mjsz-vbr-elements/core/utils';
 import { computed } from 'vue';
 
 const props = defineProps({

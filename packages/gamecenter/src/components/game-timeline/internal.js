@@ -1,9 +1,8 @@
-import { convertMinToSec, playerName, useVisibilityChange } from '@mjsz-vbr-elements/core';
+import { convertMinToSec, playerName, useVisibilityChange } from '@mjsz-vbr-elements/core/utils';
 import { useTimeoutPoll } from '@vueuse/core';
 import {
   allPass,
   compose,
-  descend,
   filter,
   groupBy,
   map,
@@ -15,7 +14,6 @@ import {
   replace,
   reverse,
   sortBy,
-  sortWith,
   split,
   trim,
   values,
@@ -198,8 +196,6 @@ export function convertGameOfficials(data, t) {
 
   return groupBy(prop('type'), map(convertName, sortBy(sortByType, values(data))));
 }
-
-export const transformGoalieStats = sortWith([descend(prop('startingFive'))]);
 
 export function pickCoaches(data) {
   return compose(map(playerName), pick(['headCoach', 'secondCoach']))(data);

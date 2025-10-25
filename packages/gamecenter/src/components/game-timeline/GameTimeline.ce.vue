@@ -1,9 +1,8 @@
 <script setup>
 import { ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { useGameDataSocket, useServices } from '@mjsz-vbr-elements/core/composables';
-import { getWebsocketURL, resolveApiKey } from '@mjsz-vbr-elements/core/utils';
+import { getWebsocketURL, isEmpty, resolveApiKey } from '@mjsz-vbr-elements/core/utils';
 import { useUrlSearchParams } from '@vueuse/core';
-import { isEmpty } from 'ramda';
 import { computed, ref } from 'vue';
 import commonEN from '../../locales/en/common.json';
 import extendeEN from '../../locales/en/extended.json';

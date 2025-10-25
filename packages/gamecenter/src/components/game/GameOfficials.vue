@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import { compose, isEmpty, join, map, reject } from 'ramda';
+import { isEmpty } from '@mjsz-vbr-elements/core/utils';
 import { computed, toRefs } from 'vue';
 import GameStatsContainer from './components/GameStatsContainer.vue';
 
@@ -25,18 +25,10 @@ const attendanceData = computed(() => {
 });
 
 const referees = computed(() =>
-  compose(
-    join(', '),
-    map(item => `${item.lastName} ${item.firstName}`),
-    reject(item => !item),
-  )([props.gameOfficials?.gameOfficials?.first_referee, props.gameOfficials?.gameOfficials?.second_referee]),
+  joinOfficals([props.gameOfficials?.gameOfficials?.first_referee, props.gameOfficials?.gameOfficials?.second_referee]),
 );
 const linesmen = computed(() =>
-  compose(
-    join(', '),
-    map(item => `${item.lastName} ${item.firstName}`),
-    reject(item => !item),
-  )([
+  joinOfficals([
     props.gameOfficials?.gameOfficials?.first_line_judge,
     props.gameOfficials?.gameOfficials?.second_line_judge,
   ]),
