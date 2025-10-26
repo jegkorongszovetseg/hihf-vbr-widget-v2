@@ -1,4 +1,7 @@
-import { ascend, clone, descend, prop, sortWith } from 'ramda';
+import {
+  clone,
+  standingTableSort,
+} from '@mjsz-vbr-elements/core/utils';
 import { computed, unref } from 'vue';
 
 export const TOGGLE_LIVE = 'live';
@@ -121,13 +124,7 @@ function additionalPoints(score, game) {
 }
 
 function positionDifference(originalStandings, convertedTable) {
-  const sortedTable = sortWith([
-    descend(prop('points')),
-    ascend(prop('gamesPlayed')),
-    descend(prop('w')),
-    descend(prop('gd')),
-    descend(prop('gf')),
-  ])(convertedTable);
+  const sortedTable = standingTableSort(convertedTable);
 
   return sortedTable.map((team) => {
     const originalIndex = originalStandings.findIndex(row => team.team.id === row.team.id);

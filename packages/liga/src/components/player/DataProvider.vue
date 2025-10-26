@@ -1,13 +1,11 @@
 <script setup>
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
-import { getLocalTimezone, omit, pick } from '@mjsz-vbr-elements/core/utils';
+import { getLocalTimezone, omit, pick, removeCurrentFromSeasonStats, transformCurrentSeasonStats } from '@mjsz-vbr-elements/core/utils';
 import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
 import { computed, reactive } from 'vue';
 import { COLUMNS_GAMES, COLUMNS_PLAYER_SEASON_STATS } from '../internal';
 import {
   PANE_GAMES,
-  removeCurrentFromSeasonStats,
-  transformCurrentSeasonStats,
   transformGames,
   transformPlayerData,
   transformSeasonStats,

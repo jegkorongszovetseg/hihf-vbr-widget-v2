@@ -10,13 +10,16 @@ import {
   convertTimesSecToMin,
   head,
   InvalidSeasonName,
+  path,
+  pick,
   playerName,
+  prop,
   rawConvert,
+  sortBy,
   teamName,
   WidgetError,
 } from '@mjsz-vbr-elements/core/utils';
 import { useUrlSearchParams } from '@vueuse/core';
-import { path, pick, prop, sortBy } from 'ramda';
 import { computed, reactive, unref } from 'vue';
 import {
   PLAYERS_REPORTS_SELECT,

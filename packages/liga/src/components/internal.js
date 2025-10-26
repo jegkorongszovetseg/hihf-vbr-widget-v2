@@ -1,6 +1,5 @@
 import { SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core/constants';
-import { convertSeasons, convertTeams, head, InvalidSeasonName, selectFirstPhaseName, selectLastSections, WidgetError } from '@mjsz-vbr-elements/core/utils';
-import { compose, path, reject } from 'ramda';
+import { convertSeasons, convertTeams, head, InvalidSeasonName, removeUnneededPhases, selectFirstPhaseName, selectLastSections, WidgetError } from '@mjsz-vbr-elements/core/utils';
 
 export function transformSeasons(seasons, state) {
   if (seasons.length === 0)
@@ -11,9 +10,7 @@ export function transformSeasons(seasons, state) {
 }
 
 export function transformStandingSections(sections, state) {
-  const phaseNames = p => ['Rájátszás', 'Újrajátszandó'].includes(p.phaseName);
-
-  state.sections = compose(reject(phaseNames), path([0, 'phases']))(sections);
+  state.sections = removeUnneededPhases(sections);
   state.section = selectFirstPhaseName(state.sections);
 }
 

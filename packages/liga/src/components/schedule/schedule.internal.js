@@ -1,6 +1,5 @@
-import { head, isBetween, last, pick } from '@mjsz-vbr-elements/core/utils';
+import { head, isBetween, last, pick, sortBy } from '@mjsz-vbr-elements/core/utils';
 import { noop, watchOnce } from '@vueuse/core';
-import { sortBy } from 'ramda';
 import { ref, watch } from 'vue';
 
 export function useCollectMonths(rows = [], locale = 'hu', onUpdated = noop) {

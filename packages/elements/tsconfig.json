@@ -5,8 +5,8 @@
     "baseUrl": ".",
     "rootDir": "./src",
     "paths": {
-      // "@mjsz-vbr-elements/core": ["../core/src/index.js"],
-      // "@mjsz-vbr-elements/core/*": ["../core/src/*"],
+      "@mjsz-vbr-elements/core": ["../core/src/index.js"],
+      "@mjsz-vbr-elements/core/*": ["../core/src/*"],
       "@mjsz-vbr-elements/shared": ["../shared/index.js"],
       "@mjsz-vbr-elements/shared/*": ["../shared/*"]
     },
