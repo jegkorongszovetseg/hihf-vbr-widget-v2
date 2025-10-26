@@ -1,7 +1,7 @@
 <script setup>
 import { ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
-import { getWebsocketURL, isNotEmpty, resolveApiKey } from '@mjsz-vbr-elements/core/utils';
+import { convertGameEvents, getWebsocketURL, isNotEmpty, resolveApiKey } from '@mjsz-vbr-elements/core/utils';
 import { useUrlSearchParams } from '@vueuse/core';
 import { computed } from 'vue';
 import CommonEn from '../../locales/en/common.json';

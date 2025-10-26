@@ -9,7 +9,6 @@ import {
   equals,
   filter,
   groupBy,
-  // has,
   head,
   ifElse,
   includes,
@@ -371,7 +370,7 @@ export const sortByPhaseId = sortBy(prop('phaseId'));
 
 export const transformPlayers = data => compose(sortBy(prop('name')), map(compose(playerName, teamName)))(data);
 
-export const selectLastSections = compose(prop('name'), last);
+export const selectLastSections = compose(prop('phaseName'), last);
 
 export const convertPenaltyCauseName = compose(toUpper, replace('_', '-'));
 
@@ -452,19 +451,6 @@ export function mergePlayerStats({ goalieStats, fieldPlayers, playersPenalty }) 
 }
 
 export const transformFieledPlayersStats = curry((row, teamId) => pipe(filter(pathEq(teamId, ['team', 'id'])), map(playerName))(row));
-
-// export const convertAddress = compose(
-//   join(' '),
-//   values,
-//   over(
-//     lensProp('city'),
-//     when(
-//       has('city'),
-//       replace(/$/, ','),
-//     ),
-//   ),
-//   omit(['type']),
-// );
 
 export function convertAddress(data) {
   const addCommaToCityName = data.city ? over(lensProp('city'), replace(/$/, ',')) : () => ({});

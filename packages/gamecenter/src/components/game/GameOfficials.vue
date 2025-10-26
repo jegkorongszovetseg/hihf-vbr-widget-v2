@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import { isEmpty } from '@mjsz-vbr-elements/core/utils';
+import { isEmpty, joinOfficals } from '@mjsz-vbr-elements/core/utils';
 import { computed, toRefs } from 'vue';
 import GameStatsContainer from './components/GameStatsContainer.vue';
 
