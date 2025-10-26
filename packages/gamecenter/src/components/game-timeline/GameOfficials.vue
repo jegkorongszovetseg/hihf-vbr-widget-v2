@@ -1,11 +1,11 @@
 <script setup>
 import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
+import { convertGameOfficials } from '@mjsz-vbr-elements/core/utils';
 import { computed } from 'vue';
 import { convertTeamMembersToRows } from '../../utils/convert-official-persons';
 import GameDataTable from '../common/GameDataTable.vue';
 import { TEAM_OFFICIALS_COLUMNS } from '../game/internal';
 import { GAME_OFFICIALS_COLUMNS } from './constants';
-import { convertGameOfficials } from './internal';
 
 const props = defineProps({
   gameOfficials: {

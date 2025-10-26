@@ -1,4 +1,4 @@
-import { playerName } from '@mjsz-vbr-elements/core';
+import { playerName } from '@mjsz-vbr-elements/core/utils';
 
 export function convertTeamMembersToRows(data, t) {
   const members = Object.keys(data).map((key) => {

@@ -1,4 +1,5 @@
 import {
+  allPass,
   always,
   anyPass,
   ascend,
@@ -18,6 +19,7 @@ import {
   map,
   over,
   path,
+  pathEq,
   pick,
   pipe,
   prop,
@@ -32,9 +34,11 @@ import {
   test,
   toLower,
   toUpper,
+  trim,
 } from 'ramda';
 import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../constants.js';
 import { convertMinToMinSec, convertMinToSec, convertSecToMin, format } from './datetime.js';
+import { generateId } from './generate-id.js';
 
 export function convert(data = []) {
   return {
@@ -366,6 +370,8 @@ export const convertPenaltyCauseName = compose(toUpper, replace('_', '-'));
 
 export const convertPeriodResults = compose(reject(test(/-:-/)), split(','));
 
+export const convertPeriodResultsToArray = compose(map(split(':')), map(trim), split(','), replace(/^\(|\)$/g, ''));
+
 export const sortByStartingFive = sortWith([descend(prop('startingFive'))]);
 
 export const joinOfficals = compose(
@@ -375,3 +381,24 @@ export const joinOfficals = compose(
 );
 
 export const convertGameEvents = compose(groupBy(prop('eventPeriod')), reverse, reject(propEq('Period', 'type')));
+
+export const groupLines = groupBy(prop('row'));
+
+export const filterGoalScorersFromEvents = (events, teamId) => filter(allPass([pathEq(teamId, ['team', 'id']), propEq('Gól', 'type')]), reverse(events));
+
+export const pickCoaches = compose(map(playerName), pick(['headCoach', 'secondCoach']));
+
+export const transformEventsForGameTimeline = compose(reverse, map(event => ({ ...event, eventId: event.eventId ? event.eventId : generateId() })));
+
+export const sortByEventTimeSec = reduced => sortBy(prop('eventTimeSec'), Object.values(reduced));
+
+export function convertGameOfficials(data, t) {
+  const sortByType = (item) => {
+    const index = ['first_referee', 'second_referee', 'first_line_judge', 'second_line_judge'].indexOf(item.role);
+    return index > -1 ? index : 4;
+  };
+
+  const convertName = item => ({ ...playerName(item), role: t(`role.${item.role}`) });
+
+  return groupBy(prop('type'), map(convertName, sortBy(sortByType, Object.values(data))));
+}
