@@ -1,3 +1,8 @@
+## [2.30.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.30.1...v2.30.2) (2025-10-24)
+
+### Bug Fixes
+
+* **gamecenter/game:** Refresh gameData if game is live ([37202d3](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/37202d393d1abf0a32de1ec44d4a90dfc284ac12))
 ## [2.30.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.30.0...v2.30.1) (2025-10-17)
 ## [2.30.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.29.3...v2.30.0) (2025-10-06)
 
