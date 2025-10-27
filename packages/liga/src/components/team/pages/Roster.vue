@@ -1,6 +1,6 @@
 <script setup>
 import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
-import { omit } from 'ramda';
+import { omit } from '@mjsz-vbr-elements/core/utils';
 import { ref } from 'vue';
 import PlayersDataTable from '../../common/PlayersDataTable.vue';
 import { COLUMNS_PLAYERS } from '../../internal';

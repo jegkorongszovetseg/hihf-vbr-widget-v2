@@ -1,9 +1,8 @@
 <script setup>
 import { ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { useGameDataSocket, useServices } from '@mjsz-vbr-elements/core/composables';
-import { getWebsocketURL, resolveApiKey } from '@mjsz-vbr-elements/core/utils';
+import { getWebsocketURL, isEmpty, resolveApiKey, transformEventsForGameTimeline } from '@mjsz-vbr-elements/core/utils';
 import { useUrlSearchParams } from '@vueuse/core';
-import { isEmpty } from 'ramda';
 import { computed, ref } from 'vue';
 import commonEN from '../../locales/en/common.json';
 import extendeEN from '../../locales/en/extended.json';
@@ -20,7 +19,7 @@ import GameOfficials from './GameOfficials.vue';
 import GamePlayerStats from './GamePlayerStats.vue';
 import GameTabs from './GameTabs.vue';
 import GameTeamStats from './GameTeamStats.vue';
-import { handleServices, transformEvents } from './internal';
+import { handleServices } from './internal';
 
 const props = defineProps({
   locale: {
@@ -77,7 +76,7 @@ const { state: gameEvents, execute: getEvents } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  transform: data => transformEvents(data),
+  transform: data => transformEventsForGameTimeline(data),
 
   onError: e => addApiError('gameEvents', e),
   onSuccess: () => removeApiError('gameEvents'),

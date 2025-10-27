@@ -1,7 +1,6 @@
 import { useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
-import { convertMinToSec } from '@mjsz-vbr-elements/core/utils';
+import { convertMinToSec, isEmpty } from '@mjsz-vbr-elements/core/utils';
 import { useTimeoutPoll } from '@vueuse/core';
-import { isEmpty } from 'ramda';
 import { computed, ref, unref, watch } from 'vue';
 import { callFunctions, rawPeriodIndex } from './internal.js';
 

@@ -22,7 +22,7 @@ const gameLinkResolver = '/GameCenter?gameId={gameId}';
       championship-name="Erste Liga"
       timezone-selector
       :external-game-resolver="gameLinkResolver"
-      :scroll-to-game-date="true"
+      scroll-to-game-date="true"
     />
   </div>
 </template>

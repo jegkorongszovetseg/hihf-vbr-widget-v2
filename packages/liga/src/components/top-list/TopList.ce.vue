@@ -6,9 +6,8 @@ import {
   LoadingIndicator,
 } from '@mjsz-vbr-elements/core/components';
 import { useErrorProvider, useServices } from '@mjsz-vbr-elements/core/composables';
-import { convert, externalPlayerLinkResolver, externalStatisticLinkResolver, externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
+import { convert, externalPlayerLinkResolver, externalStatisticLinkResolver, externalTeamLinkResolver, isEmpty, last } from '@mjsz-vbr-elements/core/utils';
 import { useArraySome } from '@vueuse/core';
-import { isEmpty, last } from 'ramda';
 import { computed, ref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';

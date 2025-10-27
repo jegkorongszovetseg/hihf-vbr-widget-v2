@@ -24,7 +24,6 @@
     "@mjsz-vbr-elements/core": "workspace:^",
     "@mjsz-vbr-elements/shared": "workspace:^",
     "@vueuse/core": "^13.4.0",
-    "ramda": "^0.31.3",
     "vue": "^3.5.22"
   },
   "devDependencies": {

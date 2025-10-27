@@ -13,10 +13,10 @@ import {
   externalGameLinkResolver,
   getLocalTimezone,
   offsetName,
+  pick,
   sortGames,
 } from '@mjsz-vbr-elements/core/utils';
 import { useAsyncState, useDocumentVisibility, useTimeoutPoll } from '@vueuse/core';
-import { pick } from 'ramda';
 import { computed, ref, unref, watch } from 'vue';
 
 const props = defineProps({

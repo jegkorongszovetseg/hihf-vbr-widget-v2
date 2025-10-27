@@ -1,4 +1,5 @@
 import {
+  allPass,
   always,
   anyPass,
   ascend,
@@ -8,21 +9,42 @@ import {
   equals,
   filter,
   groupBy,
+  head,
   ifElse,
   includes,
+  indexBy,
+  innerJoin,
+  isEmpty,
+  join,
+  last,
   lensProp,
   map,
+  mergeLeft,
+  mergeWith,
+  omit,
   over,
   path,
+  pathEq,
+  pick,
   pipe,
   prop,
+  propEq,
+  reject,
   replace,
+  reverse,
   sort,
+  sortBy,
   sortWith,
+  split,
+  test,
   toLower,
+  toUpper,
+  trim,
+  values,
 } from 'ramda';
 import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../constants.js';
 import { convertMinToMinSec, convertMinToSec, convertSecToMin, format } from './datetime.js';
+import { generateId } from './generate-id.js';
 
 export function convert(data = []) {
   return {
@@ -329,4 +351,124 @@ function buildPlayerName(row) {
   if (row.player.nationality.includes('hu'))
     return `${row.player.lastName} ${row.player.firstName}`;
   return `${row.player.lastName}, ${row.player.firstName}`;
+}
+
+export const convertSeasons = compose(
+  sort(descend(prop('seasonName'))),
+  map(pick(['championshipId', 'seasonName'])),
+);
+
+export const convertTeams = teams => sort(ascend(prop('teamName')), teams);
+
+export const filterAndSortSections = compose(sortBy(prop('sectionId')), reject(compose(isEmpty, prop('phases'))));
+
+export const selectFirstSectionId = compose(prop('sectionId'), head);
+
+export const selectFirstPhaseName = compose(prop('phaseName'), head);
+
+export const sortByPhaseId = sortBy(prop('phaseId'));
+
+export const transformPlayers = data => compose(sortBy(prop('name')), map(compose(playerName, teamName)))(data);
+
+export const selectLastSections = compose(prop('phaseName'), last);
+
+export const convertPenaltyCauseName = compose(toUpper, replace('_', '-'));
+
+export const convertPeriodResults = compose(reject(test(/-:-/)), split(','));
+
+export const convertPeriodResultsToArray = compose(map(split(':')), map(trim), split(','), replace(/^\(|\)$/g, ''));
+
+export const sortByStartingFive = sortWith([descend(prop('startingFive'))]);
+
+export const joinOfficals = compose(
+  join(', '),
+  map(item => `${item.lastName} ${item.firstName}`),
+  reject(item => !item),
+);
+
+export const convertGameEvents = compose(groupBy(prop('eventPeriod')), reverse, reject(propEq('Period', 'type')));
+
+export const groupLines = groupBy(prop('row'));
+
+export const filterGoalScorersFromEvents = (events, teamId) => filter(allPass([pathEq(teamId, ['team', 'id']), propEq('Gól', 'type')]), reverse(events));
+
+export const pickCoaches = compose(map(playerName), pick(['headCoach', 'secondCoach']));
+
+export const transformEventsForGameTimeline = compose(reverse, map(event => ({ ...event, eventId: event.eventId ? event.eventId : generateId() })));
+
+export const sortByEventTimeSec = reduced => sortBy(prop('eventTimeSec'), Object.values(reduced));
+
+export function convertGameOfficials(data, t) {
+  const sortByType = (item) => {
+    const index = ['first_referee', 'second_referee', 'first_line_judge', 'second_line_judge'].indexOf(item.role);
+    return index > -1 ? index : 4;
+  };
+
+  const convertName = item => ({ ...playerName(item), role: t(`role.${item.role}`) });
+
+  return groupBy(prop('type'), map(convertName, sortBy(sortByType, Object.values(data))));
+}
+
+export const standingTableSort = sortWith([
+  descend(prop('points')),
+  ascend(prop('gamesPlayed')),
+  descend(prop('w')),
+  descend(prop('gd')),
+  descend(prop('gf')),
+]);
+
+export const removeCurrentFromSeasonStats = (championshipId, data) => reject(propEq(championshipId, 'championshipId'), data);
+
+export const transformCurrentSeasonStats = (championshipId, data) => filter(propEq(championshipId, 'championshipId'), data);
+
+export const removeUnneededPhases = compose(reject(p => ['Rájátszás', 'Újrajátszandó'].includes(p.phaseName)), path([0, 'phases']));
+
+export const transformRosters = compose(
+  groupBy(groupByPosition),
+  sortBy((d) => {
+    if (['ld', 'rd', 'd'].includes(d.position?.toLowerCase()))
+      return 1;
+    if (['lw', 'rw', 'c'].includes(d.position?.toLowerCase()))
+      return 2;
+    return 0;
+  }),
+  sortBy(sortByJerseyNumber),
+  map(compose(playerName, teamName, upperCase(['position']))),
+);
+
+export function mergePlayerStats({ goalieStats, fieldPlayers, playersPenalty }) {
+  const goaliesIds = map(path(['player', 'playerId']))(goalieStats);
+  const rejectGoalies = r => goaliesIds.includes(r.player.playerId);
+  const withoutGoalies = reject(rejectGoalies, playersPenalty);
+  const onlyGoalies = innerJoin((record, id) => record.player.playerId === id, playersPenalty, goaliesIds);
+
+  const mergedFieldPlayers = mergeArrayByTeamId(fieldPlayers, withoutGoalies);
+  const mergedGoalies = mergeArrayByTeamId(goalieStats, onlyGoalies);
+  return {
+    fieldPlayers: localeSort(mergedFieldPlayers),
+    goalies: localeSort(mergedGoalies),
+  };
+}
+
+export const transformFieledPlayersStats = curry((row, teamId) => pipe(filter(pathEq(teamId, ['team', 'id'])), map(playerName))(row));
+
+export function convertAddress(data) {
+  const addCommaToCityName = data.city ? over(lensProp('city'), replace(/$/, ',')) : () => ({});
+  return compose(join(' '), values, addCommaToCityName, omit(['type']))(data);
+}
+
+function groupByPosition(data) {
+  if (['ld', 'rd'].includes(data.position?.toLowerCase()))
+    return 'defenders';
+  if (['lw', 'rw', 'c'].includes(data.position?.toLowerCase()))
+    return 'forwards';
+  return 'goalies';
+}
+
+function sortByJerseyNumber(d) {
+  return Number(d.jerseyNr);
+}
+
+function mergeArrayByTeamId(a, b) {
+  return values(mergeWith(mergeLeft, indexBy(path(['player', 'playerId']), a), indexBy(path(['player', 'playerId']), b)));
 }

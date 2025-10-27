@@ -1,8 +1,7 @@
 <script setup>
 import { FloatingPanel, Image } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import { flagResolver } from '@mjsz-vbr-elements/core/utils';
-import { isEmpty } from 'ramda';
+import { flagResolver, isEmpty } from '@mjsz-vbr-elements/core/utils';
 
 defineProps({
   data: {

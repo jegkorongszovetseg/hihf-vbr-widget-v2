@@ -1,16 +1,18 @@
-import { head, pipe, prop } from 'ramda';
+import { head, prop } from '@mjsz-vbr-elements/core/utils';
+
+const getFirstProp = key => data => prop(key, head(data));
 
 export function transformAllSeason(data, state) {
   state.seasonsList = data;
-  state.seasonId = pipe(head, prop('id'))(data);
+  state.seasonId = getFirstProp('id')(data);
 }
 
 export function transformSeasons(data, state) {
   state.championshipList = data;
-  state.championshipId = pipe(head, prop('championshipId'))(data);
+  state.championshipId = getFirstProp('championshipId')(data);
 }
 
 export function transformSections(data, state) {
   state.sections = data;
-  state.sectionId = pipe(head, prop('sectionId'))(data);
+  state.sectionId = getFirstProp('sectionId')(data);
 }

@@ -13,14 +13,15 @@ import {
   convertPhaseName,
   convertTimesMinToMinSec,
   convertTimesSecToMin,
+  head,
   playerName,
   rawConvert,
   scheduleOptionalRowClass,
+  sortByPhaseId,
   sortGames,
   teamName,
 } from '@mjsz-vbr-elements/core/utils';
 import { noop, useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
-import { head, prop, sortBy } from 'ramda';
 import { computed, reactive, toRef, unref } from 'vue';
 import { transformSeasons } from '../internal';
 import {
@@ -150,7 +151,7 @@ const currentReportList = computed(() =>
 
 const phases = computed(() => {
   const championship = state.championships.find(item => item.sectionId === state.selectedChampionshipId);
-  return convertPhaseName(sortBy(prop('phaseId'))(championship?.phases ?? []));
+  return convertPhaseName(sortByPhaseId(championship?.phases ?? []));
 });
 
 const currentLimit = computed(() => (state.selectedPanel === PANEL_SCHEDULE ? 0 : props.limit));

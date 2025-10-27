@@ -1,7 +1,6 @@
 <script setup>
 import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
-import { offsetName } from '@mjsz-vbr-elements/core/utils';
-import { pick } from 'ramda';
+import { offsetName, pick } from '@mjsz-vbr-elements/core/utils';
 import { computed, ref } from 'vue';
 import GamesDataTable from '../../common/GamesDataTable.vue';
 import { COLUMNS_GAMES } from '../../internal.js';

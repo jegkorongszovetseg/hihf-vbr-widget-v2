@@ -1,5 +1,3 @@
-import { map } from 'ramda';
-
 export const COLUMNS_SCHEDULE = {
   gameName: {
     label: 'table.gameName.short',
@@ -40,8 +38,8 @@ export const COLUMNS_SCHEDULE = {
 
 export function transformRegistration(championshipId) {
   return data =>
-    map(r => ({
+    data.map(r => ({
       ...r,
       ...(r.registration && { registration: `${r.registration}/cid/${championshipId}` }),
-    }))(data);
+    }));
 }
