@@ -1,3 +1,8 @@
+## [2.31.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.31.0...v2.31.1) (2025-10-27)
+
+### Bug Fixes
+
+* useVisibilityChange composable import in game-timeline ([b388437](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/b38843737a2431a26016dfa68b6861008554c081))
 ## [2.31.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.30.2...v2.31.0) (2025-10-27)
 ## [2.30.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.30.1...v2.30.2) (2025-10-24)
 
