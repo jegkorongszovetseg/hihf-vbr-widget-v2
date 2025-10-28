@@ -5,17 +5,13 @@ import { store } from '../store.js';
 
 const mode = useColorMode({ emitAuto: true });
 
-// function onClickColorMode() {
-//   mode.value = 'dark';
-// }
-
 const { state, next } = useCycleList(['dark', 'light', 'auto'], { initialValue: mode });
 
 watchEffect(() => mode.value = state.value);
 </script>
 
 <template>
-  <header class="flex items-center p-3 bg-slate-900 mb-5">
+  <header class="flex items-center p-3 bg-slate-900 dark:bg-slate-100 mb-5">
     <RouterLink to="/" class="text-slate-300 mr-10">
       Back
     </RouterLink>

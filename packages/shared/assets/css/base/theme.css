@@ -1,5 +1,11 @@
 @import 'font.css';
+@import 'color.primary.css';
 
 :host {
-  --vbr-widget-table-header-bg-color: var(--vbr-widget-primary-color-800);
+  --vbr-widget-table-header-bg-color: light-dark(hsl(var(--blue-5-hsl)), hsl(var(--blue-1-hsl)));
+  /* --vbr-widget-table-header-bg-color: blue; */
+}
+
+:host-context(.dark) {
+  color-scheme: only dark;
 }
