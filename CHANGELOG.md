@@ -1,3 +1,8 @@
+## [2.31.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.31.1...v2.31.2) (2025-10-28)
+
+### Bug Fixes
+
+* **extended/ScheduleCup:** Jelentkezés link use valid chapionshipId ([1a092cc](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/1a092cc651d3226f7f727c22c5225828b506a23d))
 ## [2.31.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.31.0...v2.31.1) (2025-10-27)
 
 ### Bug Fixes
