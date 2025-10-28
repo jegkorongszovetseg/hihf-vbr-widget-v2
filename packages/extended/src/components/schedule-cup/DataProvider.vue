@@ -78,7 +78,7 @@ const {
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId, phaseId: state.phaseId })),
   },
-  transform: pipe(sortGames, transformRegistration(state.championshipId)),
+  transform: data => pipe(sortGames, transformRegistration(state.championshipId))(data),
   onError,
 });
 
