@@ -1,4 +1,5 @@
-import { convertMinToSec, convertPeriodResultsToArray, filterGoalScorersFromEvents, groupLines, pick, sortByEventTimeSec, useVisibilityChange } from '@mjsz-vbr-elements/core/utils';
+import { useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
+import { convertMinToSec, convertPeriodResultsToArray, filterGoalScorersFromEvents, groupLines, pick, sortByEventTimeSec } from '@mjsz-vbr-elements/core/utils';
 import { useTimeoutPoll } from '@vueuse/core';
 import { ref, watch } from 'vue';
 import { callFunctions } from '../game/internal';

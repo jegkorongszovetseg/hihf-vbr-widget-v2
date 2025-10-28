@@ -1,0 +1,5 @@
+@import 'font.css';
+
+:host {
+  --vbr-widget-table-header-bg-color: var(--vbr-widget-primary-color-800);
+}
