@@ -1,0 +1,50 @@
+@layer components {
+  :where(.floating-content) {
+    &.is-tooltip {
+      background-color: var(--vbr-widget-tooltip-bg-color);
+      color: var(--vbr-widget-tooltip-color);
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: var(--vbr-radius-2);
+      font-size: var(--vbr-widget-tooltip-font-size);
+      white-space: nowrap;
+      pointer-events: none;
+
+      .is-arrow {
+        background-color: var(--vbr-widget-tooltip-bg-color);
+      }
+    }
+
+    &.is-content {
+      border-radius: var(--vbr-radius-2);
+      box-shadow: 2px 14px 23px 0px rgba(0, 0, 0, 0.25);
+
+      .is-arrow {
+        background-color: var(--vbr-widget-primary-color-50);
+      }
+    }
+
+    .is-arrow {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      transform: rotate(45deg);
+
+      [data-placement^='top'] & {
+        bottom: -4px;
+      }
+
+      [data-placement^='bottom'] & {
+        top: -4px;
+      }
+
+      [data-placement^='left'] & {
+        right: -4px;
+      }
+
+      [data-placement^='right'] & {
+        left: -4px;
+      }
+    }
+  }
+}

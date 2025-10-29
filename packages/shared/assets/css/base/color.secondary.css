@@ -1,0 +1,11 @@
+:where(:host) {
+  --vbr-secondary-color-100: #dcedc8;
+  --vbr-secondary-color-200: #badb94;
+  --vbr-secondary-color-300: #aed581;
+  --vbr-secondary-color-400: #9ccc65;
+  --vbr-secondary-color-500: #8bc34a;
+  --vbr-secondary-color-700: #689f38;
+  --vbr-secondary-color-800: #558b2f;
+  --vbr-secondary-color-900: #33691e;
+  --vbr-secondary-color-950: #14290c;
+}

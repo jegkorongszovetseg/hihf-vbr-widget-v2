@@ -152,7 +152,9 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
   </div>
 </template>
 
-<style src="../../../shared/assets/css/base/theme.css"></style>
+<style src="../../../shared/assets/css/core.css"></style>
+
+<style src="../../../shared/assets/css/components/floating-content.css"></style>
 
 <!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
 
