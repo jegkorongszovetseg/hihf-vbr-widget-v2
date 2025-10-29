@@ -4,8 +4,8 @@
       background-color: var(--vbr-widget-tooltip-bg-color);
       color: var(--vbr-widget-tooltip-color);
       font-weight: bold;
-      padding: 5px 10px;
-      border-radius: var(--vbr-radius-2);
+      padding: var(--size-2) var(--size-3);
+      border-radius: var(--radius-2);
       font-size: var(--vbr-widget-tooltip-font-size);
       white-space: nowrap;
       pointer-events: none;
@@ -16,8 +16,9 @@
     }
 
     &.is-content {
-      border-radius: var(--vbr-radius-2);
-      box-shadow: 2px 14px 23px 0px rgba(0, 0, 0, 0.25);
+      border-radius: var(--radius-2);
+      /* box-shadow: 2px 14px 23px 0px rgba(0, 0, 0, 0.25); */
+      box-shadow: var(--shadow-6);
 
       .is-arrow {
         background-color: var(--vbr-widget-primary-color-50);

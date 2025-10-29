@@ -1,14 +1,14 @@
 :where(:host) {
   --size-000: -0.5rem;
   --size-00: -0.25rem;
-  --size-1: 0.25rem;
-  --size-2: 0.5rem;
-  --size-3: 1rem;
-  --size-4: 1.25rem;
-  --size-5: 1.5rem;
-  --size-6: 1.75rem;
-  --size-7: 2rem;
-  --size-8: 3rem;
+  --size-1: 2px;
+  --size-2: 4px;
+  --size-3: 8px;
+  --size-4: 12px;
+  --size-5: 16px;
+  --size-6: 24px;
+  --size-7: 28px;
+  --size-8: 32px;
   --size-9: 4rem;
   --size-10: 5rem;
   --size-11: 7.5rem;

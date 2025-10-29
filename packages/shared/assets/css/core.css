@@ -6,6 +6,10 @@
 @import 'base/borders.css';
 @import 'base/font.css';
 @import 'base/sizes.css';
+@import 'base/shadow.css';
+
+/* Normalize */
+@import 'core/normalize.css';
 
 /* Theme */
-@import 'base/theme.css';
+@import 'theme.css';

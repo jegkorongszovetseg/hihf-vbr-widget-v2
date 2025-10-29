@@ -8,20 +8,22 @@
   }
 
   :host {
+    font-family: 'Roboto Condensed', Avenir, Helvetica, Arial, sans-serif;
+
     --vbr-widget-typography-heading-weight: 500;
 
     /* Table */
     --vbr-widget-table-header-font-size: var(--vbr-widget-typography-font-size-200);
     --vbr-widget-table-default-column-width: 30px;
-    --vbr-widget-table-default-bg-color: light-dark(var(--vbr-primary-color-0), var(--vbr-primary-color-900));
+    --vbr-widget-table-default-bg-color: light-dark(var(--vbr-color-white), var(--vbr-primary-color-900));
     --vbr-widget-table-color: light-dark(var(--vbr-primary-color-800), var(--vbr-primary-color-200));
     --vbr-widget-table-neutral-color: light-dark(var(--vbr-primary-color-300), var(--vbr-primary-color-700));
     --vbr-widget-table-header-bg-color: light-dark(var(--vbr-primary-color-800), var(--vbr-primary-color-200));
     --vbr-widget-table-header-color: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-800));
     --vbr-widget-table-header-hover-bg-color: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-300));
     --vbr-widget-table-header-active-bg-color: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-300));
-    --vbr-widget-table-header-active-color: light-dark(var(--vbr-primary-color-0), var(--vbr-primary-color-900));
-    --vbr-widget-table-hover-color: light-dark(var(--vbr-primary-color-900), var(--vbr-primary-color-0));
+    --vbr-widget-table-header-active-color: light-dark(var(--vbr-color-white), var(--vbr-primary-color-900));
+    --vbr-widget-table-hover-color: light-dark(var(--vbr-primary-color-900), var(--vbr-color-white));
     --vbr-widget-table-hover-bg-color: light-dark(var(--vbr-secondary-color-100), var(--vbr-primary-color-950));
     --vbr-widget-table-active-color: light-dark(var(--vbr-secondary-color-900), var(--vbr-secondary-color-100));
     --vbr-widget-table-active-bg-color: light-dark(var(--vbr-secondary-color-200), var(--vbr-secondary-color-800));
@@ -35,7 +37,6 @@
     --vbr-widget-table-portrait-bg-color: light-dark(var(--vbr-primary-color-50), var(--vbr-primary-color-900));
     --vbr-widget-table-cell-light-color: light-dark(var(--vbr-primary-color-400), var(--vbr-primary-color-500));
     --vbr-widget-table-cell-dark-color: light-dark(var(--vbr-primary-color-900), var(--vbr-primary-color-100));
-    /* --vbr-widget-table-stripped-bg-color: #f8f9fa; */
     --vbr-widget-table-stripped-bg-color: light-dark(
       hsl(from var(--vbr-primary-color-50) h s calc(l + 3)),
       hsl(from var(--vbr-primary-color-900) h s calc(l + 2))
@@ -47,8 +48,18 @@
     --vbr-widget-table-zero-color: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-800));
 
     /* Tooltip */
-    --vbr-widget-tooltip-font-size: var(--vbr-font-size-200);
+    --vbr-widget-tooltip-font-size: var(--font-size-200);
     --vbr-widget-tooltip-color: light-dark(white, black);
     --vbr-widget-tooltip-bg-color: light-dark(black, white);
+
+    /* Paginator */
+    --vbr-widget-paginator-color: var(--vbr-primary-color-500);
+    --vbr-widget-paginator-bg-color: light-dark(var(--vbr-color-white), var(--vbr-color-black));
+    --vbr-widget-paginator-hover-color: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-300));
+    --vbr-widget-paginator-hover-bg-color: light-dark(var(--vbr-primary-color-100), var(--vbr-primary-color-900));
+    --vbr-widget-paginator-border-color: light-dark(var(--vbr-primary-color-100), var(--vbr-primary-color-800));
+    --vbr-widget-paginator-active-color: light-dark(var(--vbr-color-white), var(--vbr-color-black));
+    --vbr-widget-paginator-active-bg-color: light-dark(var(--vbr-primary-color-900), var(--vbr-primary-color-50));
+    --vbr-widget-paginator-disabled-color: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-800));
   }
 }

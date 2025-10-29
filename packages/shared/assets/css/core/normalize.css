@@ -1,0 +1,5 @@
+@layer normalize {
+  :where(img, svg, video, canvas, audio, iframe, embed, object) {
+    display: inline-block;
+  }
+}

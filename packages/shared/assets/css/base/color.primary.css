@@ -1,4 +1,7 @@
 :where(:host) {
+  --vbr-color-white: #fff;
+  --vbr-color-black: #000;
+
   --vbr-primary-color-0: #ffffff;
   --vbr-primary-color-50: #eceff1;
   --vbr-primary-color-100: #cfd8dc;
