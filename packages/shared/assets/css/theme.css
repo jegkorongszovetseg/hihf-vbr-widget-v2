@@ -53,13 +53,17 @@
     --vbr-widget-tooltip-bg-color: light-dark(black, white);
 
     /* Paginator */
-    --vbr-widget-paginator-color: var(--vbr-primary-color-500);
-    --vbr-widget-paginator-bg-color: light-dark(var(--vbr-color-white), var(--vbr-color-black));
+    --vbr-widget-paginator-color: light-dark(var(--vbr-primary-color-500), var(--vbr-primary-color-400));
+    --vbr-widget-paginator-bg-color: light-dark(var(--vbr-color-white), var(--vbr-primary-color-950));
     --vbr-widget-paginator-hover-color: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-300));
     --vbr-widget-paginator-hover-bg-color: light-dark(var(--vbr-primary-color-100), var(--vbr-primary-color-900));
-    --vbr-widget-paginator-border-color: light-dark(var(--vbr-primary-color-100), var(--vbr-primary-color-800));
+    --vbr-widget-paginator-border-color: light-dark(var(--vbr-primary-color-100), var(--vbr-primary-color-700));
     --vbr-widget-paginator-active-color: light-dark(var(--vbr-color-white), var(--vbr-color-black));
     --vbr-widget-paginator-active-bg-color: light-dark(var(--vbr-primary-color-900), var(--vbr-primary-color-50));
-    --vbr-widget-paginator-disabled-color: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-800));
+    --vbr-widget-paginator-disabled-color: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-600));
+
+    /* Timezone selector */
+    --vbr-widget-timezone-selector-color: light-dark(var(--vbr-primary-color-500), var(--vbr-primary-color-500));
+    --vbr-widget-timezone-selector-font-size: var(--font-size-300);
   }
 }

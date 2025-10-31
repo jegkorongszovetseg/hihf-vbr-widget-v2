@@ -4,7 +4,7 @@
       background-color: var(--vbr-widget-tooltip-bg-color);
       color: var(--vbr-widget-tooltip-color);
       font-weight: bold;
-      padding: var(--size-2) var(--size-3);
+      padding: var(--size-4) var(--size-8);
       border-radius: var(--radius-2);
       font-size: var(--vbr-widget-tooltip-font-size);
       white-space: nowrap;

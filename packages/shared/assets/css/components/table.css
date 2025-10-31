@@ -2,9 +2,9 @@
   :where(table) {
     border-collapse: collapse;
     display: block;
-    margin: var(--size-3) 0;
     max-inline-size: 100%;
     position: relative;
+    background-color: var(--vbr-widget-table-default-bg-color);
 
     /* Rows */
     tr {
@@ -14,25 +14,55 @@
       &:hover {
         background-color: oklch(from var(--surface-filled) l c h / 75%);
       }
+
+      &:nth-child(even) {
+        background: var(--vbr-widget-table-stripped-bg-color);
+
+        td.is-active {
+          background-color: var(--vbr-widget-table-active-even-bg-color);
+        }
+      }
     }
 
     /* Cells */
     th,
     td {
-      border: 1px solid var(--border-color);
-      padding: var(--size-1) var(--size-2);
+      padding: var(--size-8);
+      white-space: nowrap;
     }
 
     th {
-      background-color: var(--surface-filled);
-      color: var(--text-color-1);
-      font-size: var(--font-size-sm, 0.75rem);
-      font-weight: 600;
-      text-align: start;
+      background: var(--vbr-widget-table-header-bg-color);
+      color: var(--vbr-widget-table-header-color);
+      font-size: var(--vbr-widget-table-header-font-size);
+      font-weight: 700;
+      text-align: center;
+
+      &:focus-visible,
+      &:hover {
+        background-color: var(--vbr-widget-table-header-hover-bg-color);
+        outline: none;
+      }
     }
 
     td {
       font-size: var(--font-size-sm, 0.75rem);
+
+      .is-team-name-long {
+        display: block;
+      }
+      .is-team-name-short {
+        display: none;
+      }
+
+      @container table-wrapper (max-width: 768px) {
+        .is-team-name-long {
+          display: none;
+        }
+        .is-team-name-short {
+          display: block;
+        }
+      }
     }
 
     /* Caption */

@@ -1,4 +1,4 @@
-@layer normalize, theme, components;
+@layer normalize, theme, components, utils;
 
 /* Base */
 @import 'base/color.primary.css';
@@ -13,3 +13,6 @@
 
 /* Theme */
 @import 'theme.css';
+
+/* Utils */
+@import 'core/utils.css';

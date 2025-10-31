@@ -10,5 +10,5 @@ body {
 }
 
 html.dark {
-  background-color: black;
+  background-color: oklch(12.9% 0.042 264.695);
 }

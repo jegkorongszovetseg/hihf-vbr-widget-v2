@@ -160,9 +160,13 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
 
 <style src="../../../shared/assets/css/components/responsive-table.css"></style>
 
+<style src="../../../shared/assets/css/components/timezone-selector.css"></style>
+
+<style src="../../../shared/assets/css/components/table.css"></style>
+
 <!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<!-- <style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style> -->
 
 <!-- <style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style> -->
 

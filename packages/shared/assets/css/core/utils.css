@@ -1,0 +1,25 @@
+@layer utils {
+  .is-text-left {
+    text-align: start;
+  }
+
+  .is-text-right {
+    text-align: end;
+  }
+
+  .is-text-bold {
+    font-weight: 700;
+  }
+
+  .is-text-italic {
+    font-style: italic;
+  }
+
+  .is-w-auto {
+    width: auto;
+  }
+
+  .is-text-xl {
+    font-size: var(--font-size-700);
+  }
+}
