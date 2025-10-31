@@ -1,6 +1,10 @@
 @use './_reset.scss';
 @use './_variables.scss';
 
+:host-context(.dark) {
+  color-scheme: only dark;
+}
+
 html,
 body {
   -webkit-font-smoothing: antialiased;
@@ -122,6 +126,7 @@ a {
   color: var(--vbr-widget-timezone-selector-color);
   font-size: var(--vbr-widget-timezone-selector-font-size);
   font-weight: 500;
+  background-color: light-dark(red, blue);
 
   .is-active {
     font-weight: 700;

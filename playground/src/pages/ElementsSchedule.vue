@@ -6,10 +6,9 @@ import { store } from '../store.js';
   <div class="p-5">
     <mjsz-vbr-schedule
       :locale="store.locale"
-      championship-id="3783"
-      division="Rájátszás"
+      championship-id="3898"
+      division="Alapszakasz"
       auto-initial-page
-      auto-refresh
       is-target-external
       timezone-selector
     />

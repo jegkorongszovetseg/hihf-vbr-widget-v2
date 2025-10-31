@@ -95,10 +95,10 @@ const { t } = useI18n();
         </template>
       </template>
       <template #cell-homeTeamLogo="{ row }">
-        <Image v-if="row.homeTeam" :key="row.homeTeam.id" class="is-logo-image is-right" :src="row.homeTeam.logo" />
+        <Image v-if="row.homeTeam" :key="row.homeTeam.id" class="is-logo-image" :src="row.homeTeam.logo" />
       </template>
       <template #cell-awayTeamLogo="{ row }">
-        <Image v-if="row.awayTeam" :key="row.awayTeam.id" class="is-logo-image is-right" :src="row.awayTeam.logo" />
+        <Image v-if="row.awayTeam" :key="row.awayTeam.id" class="is-logo-image" :src="row.awayTeam.logo" />
       </template>
       <template #cell-gameResult="{ row }">
         <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>
@@ -126,7 +126,7 @@ const { t } = useI18n();
       <template #cell-more="{ row }">
         <FloatingPanel :offset="2" placement="left" theme="content" :append-to="rootElement">
           <template #default="{ setRef, show, hide }">
-            <button :ref="setRef" @click.stop="show" @focus="show" @blur="hide">
+            <button :ref="setRef" aria-label="more" class="icon-button" @click.stop="show" @focus="show" @blur="hide">
               <IconMore />
             </button>
           </template>

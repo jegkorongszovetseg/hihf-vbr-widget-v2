@@ -1,0 +1,22 @@
+:where(:host) {
+  --font-size-50: 0.625rem; /* 10px */
+  --font-size-100: 0.6875rem; /* 11px */
+  --font-size-200: 0.75rem; /* 12px */
+  --font-size-300: 0.8125rem; /* 13px */
+  --font-size-400: 0.875rem; /* 14px */
+  --font-size-500: 1rem; /* 16px */
+  --font-size-600: 1.125rem; /* 18px */
+  --font-size-700: 1.25rem; /* 20px */
+  --font-size-800: 1.5rem; /* 24px */
+  --font-size-900: 1.75rem; /* 28px */
+  --font-size-950: 2rem; /* 32px */
+
+  --font-lineheight-50: 0.95;
+  --font-lineheight-100: 1;
+  --font-lineheight-200: 1.1;
+  --font-lineheight-300: 1.25;
+  --font-lineheight-400: 1.375;
+  --font-lineheight-500: 1.5;
+  --font-lineheight-600: 1.75;
+  --font-lineheight-700: 2;
+}

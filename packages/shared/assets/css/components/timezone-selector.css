@@ -1,0 +1,12 @@
+@layer components {
+  :where(.timezone-selector) {
+    padding: 3px 0;
+    color: var(--vbr-widget-timezone-selector-color);
+    font-size: var(--vbr-widget-timezone-selector-font-size);
+    font-weight: 500;
+
+    .is-active {
+      font-weight: 700;
+    }
+  }
+}

@@ -2,6 +2,8 @@
 
 :root,
 :host {
+  color-scheme: light dark;
+
   font-family: 'Roboto Condensed', Avenir, Helvetica, Arial, sans-serif;
 
   --vbr-widget-primary-color-0: #ffffff;
@@ -313,4 +315,8 @@
     1.004 83.8%,
     1
   );
+
+  html.dark {
+    color-scheme: dark;
+  }
 }

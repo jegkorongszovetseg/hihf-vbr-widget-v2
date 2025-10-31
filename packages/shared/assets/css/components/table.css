@@ -1,0 +1,143 @@
+@layer components {
+  :where(table) {
+    border-collapse: collapse;
+    max-inline-size: 100%;
+    position: relative;
+    color: var(--vbr-widget-table-color);
+    background-color: var(--vbr-widget-table-default-bg-color);
+
+    /* Rows */
+    tr {
+      background-color: var(--surface-default);
+      border-top: 1px solid var(--border-color);
+
+      &:hover {
+        background-color: oklch(from var(--surface-filled) l c h / 75%);
+      }
+
+      &:nth-child(even) {
+        background: var(--vbr-widget-table-stripped-bg-color);
+
+        td.is-active {
+          background-color: var(--vbr-widget-table-active-even-bg-color);
+        }
+      }
+    }
+
+    /* Cells */
+    :is(th, td) {
+      padding: var(--size-8);
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    th {
+      background: var(--vbr-widget-table-header-bg-color);
+      color: var(--vbr-widget-table-header-color);
+      font-size: var(--vbr-widget-table-header-font-size);
+      font-weight: 700;
+      text-align: center;
+      width: var(--vbr-widget-table-default-column-width);
+
+      &:focus-visible,
+      &:hover {
+        background-color: var(--vbr-widget-table-header-hover-bg-color);
+        outline: none;
+      }
+
+      &.is-sortable {
+        position: relative;
+        cursor: pointer;
+
+        .is-icon-sort {
+          opacity: 0.5;
+        }
+      }
+
+      &.is-active {
+        background-color: var(--vbr-widget-table-header-active-bg-color);
+        color: var(--vbr-widget-table-header-active-color);
+
+        .is-icon-sort {
+          opacity: 1;
+        }
+      }
+
+      .is-icon-sort {
+        width: var(--size-12);
+        height: var(--size-12);
+        margin-inline-start: var(--size-5);
+      }
+    }
+
+    td {
+      &.is-active {
+        font-weight: 700;
+        color: var(--vbr-widget-table-active-color);
+        background: var(--vbr-widget-table-active-bg-color);
+      }
+
+      &.has-avatar {
+        .avatar {
+          --_width: var(--vbr-widget-table-cell-portrait-size);
+        }
+      }
+
+      &[data-value='0'],
+      &.is-zero {
+        color: var(--vbr-widget-table-zero-color);
+      }
+
+      .is-logo-image {
+        display: inline-block;
+        vertical-align: middle;
+        width: var(--vbr-widget-table-cell-logo-size);
+        height: var(--vbr-widget-table-cell-logo-size);
+      }
+
+      .is-duplicated {
+        color: var(--vbr-widget-table-neutral-color);
+      }
+
+      .is-team-name-long {
+        display: block;
+      }
+
+      .is-team-name-short {
+        display: none;
+      }
+
+      @container table-wrapper (max-width: 768px) {
+        .is-team-name-long {
+          display: none;
+        }
+        .is-team-name-short {
+          display: block;
+        }
+      }
+    }
+
+    /* Caption */
+    caption {
+      caption-side: bottom;
+      color: var(--vbr-widget-table-caption-color);
+      font-size: var(--vbr-widget-table-caption-font-size, 0.75rem);
+      padding: var(--size-12) 0;
+      text-align: start;
+    }
+
+    /* Body */
+    tbody {
+      tr:focus-within,
+      tr:hover {
+        color: var(--vbr-widget-table-hover-color);
+        background-color: var(--vbr-widget-table-hover-bg-color);
+
+        td.is-active {
+          color: var(--vbr-widget-table-active-hover-color);
+          background-color: var(--vbr-widget-table-active-hover-bg-color);
+        }
+      }
+    }
+  }
+}

@@ -110,6 +110,7 @@ function sortBy(column, prop) {
         <td
           v-for="(_, prop) in columns"
           :key="prop"
+          :data-value="row[prop]"
           :class="[
             [_.class],
             {
@@ -142,5 +143,8 @@ function sortBy(column, prop) {
         </td>
       </tr>
     </tfoot>
+    <caption v-if="$slots.caption">
+      <slot name="caption" />
+    </caption>
   </table>
 </template>
