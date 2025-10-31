@@ -482,7 +482,7 @@ export const COLUMNS_FIELD_PLAYERS_TOI = {
   },
   playerPortrait: {
     label: '',
-    class: 'is-has-image',
+    class: 'has-avatar',
   },
   name: {
     label: 'table.name.short',
@@ -584,7 +584,7 @@ export const COLUMNS_GOALIES = {
   },
   playerPortrait: {
     label: '',
-    class: 'is-has-image',
+    class: 'has-avatar',
   },
   name: {
     label: 'table.name.short',
@@ -661,7 +661,7 @@ export const COLUMNS_PLAYERS_NATIONAL = {
   },
   playerPortrait: {
     label: '',
-    class: 'is-has-image',
+    class: 'has-avatar',
   },
   name: {
     label: 'table.name.short',

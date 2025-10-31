@@ -37,6 +37,7 @@
       font-size: var(--vbr-widget-table-header-font-size);
       font-weight: 700;
       text-align: center;
+      width: var(--vbr-widget-table-default-column-width);
 
       &:focus-visible,
       &:hover {

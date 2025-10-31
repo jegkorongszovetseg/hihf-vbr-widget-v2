@@ -126,7 +126,7 @@ const { t } = useI18n();
       <template #cell-more="{ row }">
         <FloatingPanel :offset="2" placement="left" theme="content" :append-to="rootElement">
           <template #default="{ setRef, show, hide }">
-            <button :ref="setRef" @click.stop="show" @focus="show" @blur="hide">
+            <button :ref="setRef" aria-label="more" class="icon-button" @click.stop="show" @focus="show" @blur="hide">
               <IconMore />
             </button>
           </template>

@@ -189,7 +189,7 @@ const onSort = payload => emit('sort', payload);
         <LoadingIndicator />
       </template>
 
-      <template #caption>
+      <template v-if="$slots.caption" #caption>
         <slot name="caption" />
       </template>
     </DataTable>

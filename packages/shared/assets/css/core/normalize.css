@@ -11,6 +11,14 @@
     scrollbar-width: thin;
   }
 
+  :where(input, button, textarea),
+  :where(input[type='file'])::-webkit-file-upload-button {
+    color: inherit;
+    font-size: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+  }
+
   :where(img, svg, video, canvas, audio, iframe, embed, object) {
     display: inline-block;
   }
