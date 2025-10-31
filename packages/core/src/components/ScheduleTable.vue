@@ -95,10 +95,10 @@ const { t } = useI18n();
         </template>
       </template>
       <template #cell-homeTeamLogo="{ row }">
-        <Image v-if="row.homeTeam" :key="row.homeTeam.id" class="is-logo-image is-right" :src="row.homeTeam.logo" />
+        <Image v-if="row.homeTeam" :key="row.homeTeam.id" class="is-logo-image" :src="row.homeTeam.logo" />
       </template>
       <template #cell-awayTeamLogo="{ row }">
-        <Image v-if="row.awayTeam" :key="row.awayTeam.id" class="is-logo-image is-right" :src="row.awayTeam.logo" />
+        <Image v-if="row.awayTeam" :key="row.awayTeam.id" class="is-logo-image" :src="row.awayTeam.logo" />
       </template>
       <template #cell-gameResult="{ row }">
         <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>

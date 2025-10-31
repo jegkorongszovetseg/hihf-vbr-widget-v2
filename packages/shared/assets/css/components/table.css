@@ -1,9 +1,9 @@
 @layer components {
   :where(table) {
     border-collapse: collapse;
-    display: block;
     max-inline-size: 100%;
     position: relative;
+    color: var(--vbr-widget-table-color);
     background-color: var(--vbr-widget-table-default-bg-color);
 
     /* Rows */
@@ -25,10 +25,10 @@
     }
 
     /* Cells */
-    th,
-    td {
+    :is(th, td) {
       padding: var(--size-8);
       white-space: nowrap;
+      text-align: center;
     }
 
     th {
@@ -43,14 +43,65 @@
         background-color: var(--vbr-widget-table-header-hover-bg-color);
         outline: none;
       }
+
+      &.is-sortable {
+        position: relative;
+        cursor: pointer;
+
+        .is-icon-sort {
+          opacity: 0.5;
+        }
+      }
+
+      &.is-active {
+        background-color: var(--vbr-widget-table-header-active-bg-color);
+        color: var(--vbr-widget-table-header-active-color);
+
+        .is-icon-sort {
+          opacity: 1;
+        }
+      }
+
+      .is-icon-sort {
+        width: var(--size-12);
+        height: var(--size-12);
+        margin-inline-start: var(--size-5);
+      }
     }
 
     td {
-      font-size: var(--font-size-sm, 0.75rem);
+      &.is-active {
+        font-weight: 700;
+        color: var(--vbr-widget-table-active-color);
+        background: var(--vbr-widget-table-active-bg-color);
+      }
+
+      &.has-avatar {
+        .avatar {
+          --_width: var(--vbr-widget-table-cell-portrait-size);
+        }
+      }
+
+      &[data-value='0'],
+      &.is-zero {
+        color: var(--vbr-widget-table-zero-color);
+      }
+
+      .is-logo-image {
+        display: inline-block;
+        vertical-align: middle;
+        width: var(--vbr-widget-table-cell-logo-size);
+        height: var(--vbr-widget-table-cell-logo-size);
+      }
+
+      .is-duplicated {
+        color: var(--vbr-widget-table-neutral-color);
+      }
 
       .is-team-name-long {
         display: block;
       }
+
       .is-team-name-short {
         display: none;
       }
@@ -68,53 +119,22 @@
     /* Caption */
     caption {
       caption-side: bottom;
-      color: var(--text-color-2);
-      font-size: var(--font-size-sm, 0.75rem);
-      padding: var(--size-2) 0;
+      color: var(--vbr-widget-table-caption-color);
+      font-size: var(--vbr-widget-table-caption-font-size, 0.75rem);
+      padding: var(--size-12) 0;
       text-align: start;
     }
 
-    /* Footer */
-    tfoot {
-      border-top: 2px solid var(--border-color);
+    /* Body */
+    tbody {
+      tr:focus-within,
+      tr:hover {
+        color: var(--vbr-widget-table-hover-color);
+        background-color: var(--vbr-widget-table-hover-bg-color);
 
-      tr {
-        background-color: var(--surface-filled);
-      }
-
-      td {
-        color: var(--text-color-1);
-        font-weight: 600;
-      }
-    }
-
-    /* Column group */
-    colgroup col {
-      border: none;
-    }
-
-    @container (width < 60ch) {
-      th,
-      td {
-        padding: var(--size-1) 0.875rem;
-      }
-    }
-
-    /* Dense */
-    &.dense {
-      th,
-      td {
-        padding: var(--size-1) var(--size-2);
-      }
-
-      caption {
-        padding: var(--size-1) 0;
-      }
-
-      @container (width < 60ch) {
-        th,
-        td {
-          padding: var(--size-1) var(--size-2);
+        td.is-active {
+          color: var(--vbr-widget-table-active-hover-color);
+          background-color: var(--vbr-widget-table-active-hover-bg-color);
         }
       }
     }

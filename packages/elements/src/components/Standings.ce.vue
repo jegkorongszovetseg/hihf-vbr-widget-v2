@@ -66,20 +66,30 @@ function resolveExternalTeamLink(params) {
         :is-team-linked="isTeamLinked"
         :append-to="tooltipContainer"
         @sort="onSort"
-      />
-
-      <AdditionalStandingsText :rows="convertedRows.rows" additional-key="inheritedPoints" />
-      <AdditionalStandingsText :rows="convertedRows.rows" additional-key="penaltyPoints" />
+      >
+        <template #caption>
+          <AdditionalStandingsText :rows="convertedRows.rows" additional-key="inheritedPoints" />
+          <AdditionalStandingsText :rows="convertedRows.rows" additional-key="penaltyPoints" />
+        </template>
+      </StatisticsTable>
 
       <div ref="tooltipContainer" />
     </I18NProvider>
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/responsive-table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
+
+<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
+
+<!-- <style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style> -->
+
+<!-- <style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style> -->
+
+<!-- <style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style> -->

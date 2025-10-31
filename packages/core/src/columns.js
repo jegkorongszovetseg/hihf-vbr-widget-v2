@@ -337,7 +337,7 @@ export const COLUMNS_FIELD_PLAYERS = {
   },
   playerPortrait: {
     label: '',
-    class: 'is-has-image',
+    class: 'has-avatar',
   },
   name: {
     label: 'table.name.short',
@@ -405,7 +405,7 @@ export const COLUMNS_FIELD_PLAYERS_PENALTY = {
   },
   playerPortrait: {
     label: '',
-    class: 'is-has-image',
+    class: 'has-avatar',
   },
   name: {
     label: 'table.name.short',

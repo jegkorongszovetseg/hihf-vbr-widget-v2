@@ -121,7 +121,7 @@ const onSort = payload => emit('sort', payload);
       </template>
 
       <template #cell-playerPortrait="{ row }">
-        <div class="is-portrait-image">
+        <div class="avatar">
           <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
         </div>
       </template>
@@ -187,6 +187,10 @@ const onSort = payload => emit('sort', payload);
 
       <template #loading>
         <LoadingIndicator />
+      </template>
+
+      <template #caption>
+        <slot name="caption" />
       </template>
     </DataTable>
   </ResponsiveTable>

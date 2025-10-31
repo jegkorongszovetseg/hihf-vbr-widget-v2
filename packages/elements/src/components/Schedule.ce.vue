@@ -152,17 +152,17 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
   </div>
 </template>
 
-<style src="../../../shared/assets/css/core.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="../../../shared/assets/css/components/floating-content.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
 
-<style src="../../../shared/assets/css/components/paginator.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/paginator.css" />
 
-<style src="../../../shared/assets/css/components/responsive-table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/responsive-table.css" />
 
-<style src="../../../shared/assets/css/components/timezone-selector.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/table.css" />
 
-<style src="../../../shared/assets/css/components/table.css"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/timezone-selector.css" />
 
 <!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
 

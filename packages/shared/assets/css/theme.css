@@ -45,7 +45,9 @@
     --vbr-widget-table-label-bg-color: light-dark(var(--vbr-primary-color-50), var(--vbr-primary-color-900));
     --vbr-widget-table-cell-logo-size: 20px;
     --vbr-widget-table-cell-portrait-size: 26px;
-    --vbr-widget-table-zero-color: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-800));
+    --vbr-widget-table-zero-color: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-600));
+    --vbr-widget-table-caption-color: light-dark(var(--vbr-primary-color-400), var(--vbr-primary-color-600));
+    --vbr-widget-table-caption-font-size: var(--font-size-200);
 
     /* Tooltip */
     --vbr-widget-tooltip-font-size: var(--font-size-200);
@@ -65,5 +67,7 @@
     /* Timezone selector */
     --vbr-widget-timezone-selector-color: light-dark(var(--vbr-primary-color-500), var(--vbr-primary-color-500));
     --vbr-widget-timezone-selector-font-size: var(--font-size-300);
+
+    --vbr-widget-avatar-border-color: light-dark(var(--vbr-primary-color-100), var(--vbr-primary-color-700));
   }
 }

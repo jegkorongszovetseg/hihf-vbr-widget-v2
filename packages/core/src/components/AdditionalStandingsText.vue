@@ -21,5 +21,5 @@ const { isVisible, text } = useAdditionalText(rows, props.additionalKey, t, loca
 </script>
 
 <template>
-  <div v-if="isVisible" class="is-text-xs is-text-light is-mt-5 is-mb-5" v-text="text" />
+  <div v-if="isVisible" v-text="text" />
 </template>
