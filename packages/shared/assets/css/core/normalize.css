@@ -22,4 +22,13 @@
   :where(img, svg, video, canvas, audio, iframe, embed, object) {
     display: inline-block;
   }
+
+  :where(img, svg, video) {
+    block-size: auto;
+    /* max-inline-size: 100%; */
+  }
+
+  :where(svg:not([width])) {
+    inline-size: var(--size-16);
+  }
 }

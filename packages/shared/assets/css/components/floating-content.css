@@ -16,12 +16,13 @@
     }
 
     &.is-content {
+      background-color: var(--vbr-widget-floating-content-bg-color);
       border-radius: var(--radius-2);
-      /* box-shadow: 2px 14px 23px 0px rgba(0, 0, 0, 0.25); */
       box-shadow: var(--shadow-6);
+      overflow: clip;
 
       .is-arrow {
-        background-color: var(--vbr-widget-primary-color-50);
+        background-color: var(--vbr-widget-floating-content-bg-color);
       }
     }
 
@@ -41,6 +42,7 @@
 
       [data-placement^='left'] & {
         right: -4px;
+        clip-path: polygon(100% 0, 0 0, 100% 100%);
       }
 
       [data-placement^='right'] & {

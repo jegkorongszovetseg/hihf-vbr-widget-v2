@@ -131,21 +131,29 @@ const { t } = useI18n();
             </button>
           </template>
           <template #content>
-            <ul class="is-dropdown-menu">
+            <ul class="list">
               <li>
                 <a
                   :href="externalGameResolver(row.gameId)"
                   class="is-dropdown-item"
                   :target="externalGameResolverTarget"
                 >
-                  <IconSheet width="14" />
-                  {{ t('common.report') }}
+                  <div class="start">
+                    <IconSheet />
+                  </div>
+                  <div class="text">
+                    {{ t('common.report') }}
+                  </div>
                 </a>
               </li>
               <li v-if="row.video">
                 <a :href="row.video" class="is-dropdown-item" target="_blank">
-                  <IconYoutube width="14" />
-                  {{ t('common.video') }}
+                  <div class="start">
+                    <IconYoutube />
+                  </div>
+                  <div class="text">
+                    {{ t('common.video') }}
+                  </div>
                 </a>
               </li>
             </ul>
