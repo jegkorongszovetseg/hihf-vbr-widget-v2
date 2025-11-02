@@ -34,10 +34,12 @@
 
       [data-placement^='top'] & {
         bottom: -4px;
+        clip-path: polygon(80% 0, 100% 0, 100% 100%, 0 100%, 0 80%);
       }
 
       [data-placement^='bottom'] & {
         top: -4px;
+        clip-path: polygon(100% 0, 0 0, 0 100%);
       }
 
       [data-placement^='left'] & {
@@ -47,6 +49,7 @@
 
       [data-placement^='right'] & {
         left: -4px;
+        clip-path: polygon(100% 0, 0 0, 0 100%);
       }
     }
   }

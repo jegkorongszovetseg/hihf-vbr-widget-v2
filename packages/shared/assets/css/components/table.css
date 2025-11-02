@@ -37,7 +37,7 @@
       font-size: var(--vbr-widget-table-header-font-size);
       font-weight: 700;
       text-align: center;
-      /* min-inline-size: var(--vbr-widget-table-default-column-width); */
+      width: var(--vbr-widget-table-default-column-width);
 
       &:focus-visible,
       &:hover {
@@ -61,6 +61,11 @@
         .is-icon-sort {
           opacity: 1;
         }
+      }
+
+      &.is-has-image,
+      &.has-avatar {
+        width: 0;
       }
 
       .is-icon-sort {
@@ -88,6 +93,10 @@
         color: var(--vbr-widget-table-zero-color);
       }
 
+      /* &:has(.is-logo-image) {
+        padding-inline-end: 0;
+      } */
+
       .is-logo-image {
         display: inline-block;
         vertical-align: middle;
@@ -97,6 +106,15 @@
 
       .is-duplicated {
         color: var(--vbr-widget-table-neutral-color);
+      }
+
+      .badge {
+        --_bg-color: var(--vbr-widget-table-label-bg-color);
+        --_color: var(--vbr-widget-table-label-color);
+      }
+
+      .icon-button {
+        --_hover-bg-color: var(--vbr-widget-popover-trigger-hover-bg-color);
       }
 
       .is-team-name-long {

@@ -1,0 +1,15 @@
+@layer components {
+  :where(.badge) {
+    --_bg-color: var(--surface-tonal, white);
+    --_color: var(--text-color-1, black);
+
+    padding: var(--size-2) var(--size-6);
+    display: inline-flex;
+    gap: var(--size-2);
+    font-size: var(--font-size-100);
+    font-weight: 700;
+    color: var(--_color);
+    background-color: var(--_bg-color);
+    border-radius: var(--radius-2);
+  }
+}

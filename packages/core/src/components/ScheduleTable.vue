@@ -112,9 +112,9 @@ const { t } = useI18n();
         </a>
       </template>
       <template #cell-gameResultType="{ row }">
-        <span v-if="row.isOvertime" class="label">{{ t('common.overtimeShort') }}</span>
-        <span v-if="row.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
-        <span v-if="row.seriesStandings" class="label">{{ row.seriesStandings }}</span>
+        <span v-if="row.isOvertime" class="badge">{{ t('common.overtimeShort') }}</span>
+        <span v-if="row.isShootout" class="badge">{{ t('common.shootoutShort') }}</span>
+        <span v-if="row.seriesStandings" class="badge">{{ row.seriesStandings }}</span>
       </template>
       <template #cell-broadcast="{ row }">
         <IconBroadcast v-if="row.broadcast" />

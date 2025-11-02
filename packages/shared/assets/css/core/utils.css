@@ -22,4 +22,8 @@
   .is-text-xl {
     font-size: var(--font-size-700);
   }
+
+  .is-text-dark {
+    color: var(--vbr-widget-text-dark-color);
+  }
 }
