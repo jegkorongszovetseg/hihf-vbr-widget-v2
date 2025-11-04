@@ -31,4 +31,35 @@
   :where(svg:not([width])) {
     inline-size: var(--size-16);
   }
+
+  :where(input, button, textarea),
+  :where(input[type='file'])::-webkit-file-upload-button {
+    color: inherit;
+    font-size: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+  }
+
+  :where(
+    a[href],
+    area,
+    button,
+    [role='button'],
+    input,
+    label[for],
+    select,
+    summary,
+    textarea,
+    [tabindex]:not([tabindex*='-'])
+  ) {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  :where(:not(fieldset, progress, meter)) {
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    border-style: solid;
+    border-width: 0;
+  }
 }

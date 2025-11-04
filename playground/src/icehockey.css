@@ -12,6 +12,8 @@ html.icehockey {
   }
 
   * {
+    font-family: 'Roboto Condensed', Avenir, Helvetica, Arial, sans-serif;
+
     --font-size-50: 10px;
     --font-size-100: 11px;
     --font-size-200: 12px;

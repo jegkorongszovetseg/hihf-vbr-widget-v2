@@ -1,0 +1,12 @@
+@layer components {
+  :where(.form-field) {
+    label {
+      display: block;
+      font-size: var(--vbr-widget-form-label-font-size);
+      line-height: var(--font-lineheight-50);
+      color: var(--vbr-widget-form-label-color);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+  }
+}

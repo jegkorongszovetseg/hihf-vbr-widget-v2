@@ -1,0 +1,78 @@
+@layer components {
+  :where(nav.tabs) {
+    & > [role='tablist'] {
+      button {
+        outline-color: transparent;
+        outline-offset: -4px;
+
+        &[aria-selected='true'] {
+          &:focus-visible {
+            outline: 2px solid blue;
+          }
+        }
+      }
+    }
+
+    /* Underlined */
+    &.underlined {
+      /* Tab list */
+      & > [role='tablist'] {
+        border-bottom: 1px solid var(---vbr-widget-border-muted);
+
+        button {
+          background: transparent;
+          color: var(--vbr-widget-tab-btn-color);
+          font-weight: var(--vbr-widget-tab-btn-font-weight);
+          line-height: var(--font-lineheight-4);
+          padding: var(--size-8) var(--size-16);
+          text-transform: var(--vbr-widget-tab-btn-text-transform);
+
+          &:focus-visible {
+            border-radius: 0;
+          }
+
+          &[aria-selected='true'] {
+            border-block-end: 3px solid var(--vbr-widget-tab-btn-active-border-color);
+            color: var(--vbr-widget-tab-btn-active-color);
+          }
+
+          &[aria-selected='false']:hover {
+            color: var(--vbr-widget-tab-btn-hover-color);
+            /* background-color: var(--vbr-widget-tab-btn-hover-bg-color); */
+          }
+        }
+      }
+    }
+
+    /* Filled */
+    &.filled {
+      & > [role='tablist'] {
+        display: flex;
+        gap: var(--vbr-widget-toggle-group-gap);
+        border: var(--vbr-widget-toggle-group-border-width) solid var(--vbr-widget-border-muted);
+        border-radius: calc(var(--vbr-widget-toggle-group-btn-radius) + var(--vbr-widget-toggle-group-nav-padding));
+        overflow: hidden;
+        padding: var(--vbr-widget-toggle-group-nav-padding);
+        width: fit-content;
+
+        button {
+          background-color: var(--vbr-widget-toggle-group-btn-bg-color);
+          border-radius: var(--vbr-widget-toggle-group-btn-radius);
+          font-size: var(--vbr-widget-toggle-group-btn-size);
+          color: var(--vbr-widget-toggle-group-btn-color);
+          /* line-height: var(--font-lineheight-4); */
+          padding: var(--vbr-widget-toggle-group-btn-padding);
+
+          /* &:hover {
+            background-color: var(--vbr-widget-toggle-group-btn-active-bg-color);
+          } */
+
+          &[aria-selected='true'] {
+            color: var(--vbr-widget-toggle-group-btn-active-color);
+            background-color: var(--vbr-widget-toggle-group-btn-active-bg-color);
+          }
+        }
+      }
+    }
+  }
+}

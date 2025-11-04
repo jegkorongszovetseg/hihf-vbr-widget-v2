@@ -1,5 +1,5 @@
 <script setup>
-import { BaseSelect } from '@mjsz-vbr-elements/core/components';
+import { BaseSelect, FormField } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { computed } from 'vue';
 
@@ -45,23 +45,40 @@ function changeSection(id) {
 
 <template>
   <div class="g-row">
-    <div>
-      <label for="season" class="label">{{ t('selection.season') }}</label>
+    <FormField :label="t('selection.season')" name="season">
       <BaseSelect id="season" v-model="championshipId">
         <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">
           {{ season.seasonName }}
         </option>
       </BaseSelect>
+    </FormField>
+  </div>
+  <nav class="tabs filled">
+    <div role="tablist" :aria-label="t('selection.sections')">
+      <button
+        v-for="section in sections"
+        :key="section.phaseId"
+        role="tab"
+        :aria-selected="section.sectionId === sectionId "
+        class="tab-button" :class="{ 'is-active': section.sectionId === sectionId }"
+        @click="changeSection(section)"
+      >
+        {{ section.sectionName }}
+      </button>
     </div>
-  </div>
-  <div>
-    <button
-      v-for="section in sections"
-      :key="section.phaseId"
-      class="tab-button" :class="{ 'is-active': section.sectionId === sectionId }"
-      @click="changeSection(section)"
-    >
-      {{ section.sectionName }}
-    </button>
-  </div>
+  </nav>
+  <nav class="tabs underlined">
+    <div role="tablist" :aria-label="t('selection.sections')">
+      <button
+        v-for="section in sections"
+        :key="section.phaseId"
+        role="tab"
+        :aria-selected="section.sectionId === sectionId "
+        class="tab-button" :class="{ 'is-active': section.sectionId === sectionId }"
+        @click="changeSection(section)"
+      >
+        {{ section.sectionName }}
+      </button>
+    </div>
+  </nav>
 </template>
