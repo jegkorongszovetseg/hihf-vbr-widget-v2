@@ -53,7 +53,7 @@ function changeSection(id) {
       </BaseSelect>
     </FormField>
   </div>
-  <nav class="tabs filled">
+  <!-- <nav class="tabs filled">
     <div role="tablist" :aria-label="t('selection.sections')">
       <button
         v-for="section in sections"
@@ -66,7 +66,7 @@ function changeSection(id) {
         {{ section.sectionName }}
       </button>
     </div>
-  </nav>
+  </nav> -->
   <nav class="tabs underlined">
     <div role="tablist" :aria-label="t('selection.sections')">
       <button

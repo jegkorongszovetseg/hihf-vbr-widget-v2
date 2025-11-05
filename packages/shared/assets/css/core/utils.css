@@ -7,6 +7,10 @@
     text-align: end;
   }
 
+  .is-text-center {
+    text-align: center;
+  }
+
   .is-text-bold {
     font-weight: 700;
   }
@@ -25,5 +29,19 @@
 
   .is-text-dark {
     color: var(--vbr-widget-text-dark-color);
+  }
+
+  .text-muted {
+    color: var(--vbr-widget-text-color-muted);
+  }
+
+  .mb-md {
+    margin-block-end: var(--size-16);
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    align-items: center;
   }
 }

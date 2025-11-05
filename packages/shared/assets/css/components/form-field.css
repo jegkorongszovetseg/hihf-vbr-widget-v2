@@ -1,9 +1,32 @@
 @layer components {
   :where(.form-field) {
+    --_border-color: var(--vbr-widget-input-border-color);
+    --_bg-color: var(--vbr-widget-input-bg-color);
+    --_color: var(--vbr-widget-input-color);
+    --_field-padding-block: var(--size-4);
+    --_field-padding-inline: var(--size-8);
+
+    contain: layout;
+    position: relative;
+
+    & input,
+    & select {
+      min-inline-size: 0;
+      font-family: inherit;
+      font-size: var(--vbr-widget-input-font-size);
+      color: var(--_color);
+      /* inline-size: 100%; */
+      line-height: var(--font-lineheight-100);
+      background-color: var(--_bg-color);
+      border: var(--field-border-width, 1px) solid var(--_border-color);
+      border-radius: var(--vbr-widget-input-border-radius);
+      padding: var(--_field-padding-block) var(--_field-padding-inline);
+    }
+
     label {
       display: block;
       font-size: var(--vbr-widget-form-label-font-size);
-      line-height: var(--font-lineheight-50);
+      line-height: var(--font-lineheight-600);
       color: var(--vbr-widget-form-label-color);
       text-transform: uppercase;
       font-weight: 700;

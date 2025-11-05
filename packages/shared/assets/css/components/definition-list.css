@@ -1,0 +1,69 @@
+@layer components {
+  :where(.definition-list) {
+    --_border-style: solid;
+    --_border-width: 1px;
+    --_border-color: var(--vbr-widget-border-muted);
+
+    display: grid;
+    gap: var(--size-8);
+    padding: 0;
+
+    &.dotted {
+      --_border-style: dotted;
+      --_border-width: 2px;
+    }
+
+    li {
+      display: grid;
+      margin: 0;
+      padding: 0;
+
+      .term {
+        display: block;
+        font-weight: 700;
+        overflow: hidden;
+        position: relative;
+        color: var(--vbr-widget-text-color-muted);
+      }
+
+      hr {
+        display: none;
+        margin: 0;
+      }
+    }
+
+    @container (width > 30ch) {
+      gap: var(--size-8);
+
+      li {
+        align-items: baseline;
+        display: grid;
+        gap: var(--size-8);
+        grid-template-columns: 1fr auto;
+
+        &:has(hr) {
+          grid-template-columns: auto 1fr auto;
+        }
+
+        hr {
+          background-color: transparent;
+          border-block-end: var(--_border-width) var(--_border-style) var(--_border-color);
+          block-size: 2px;
+          display: block;
+        }
+
+        .term {
+          inline-size: max-content;
+
+          &::after {
+            display: inline-block;
+          }
+        }
+        .description {
+          color: var(--text-color-2);
+          text-align: end;
+        }
+      }
+    }
+  }
+}

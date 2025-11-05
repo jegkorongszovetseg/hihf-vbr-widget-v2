@@ -5,11 +5,15 @@
         outline-color: transparent;
         outline-offset: -4px;
 
-        &[aria-selected='true'] {
+        &:focus-visible {
+          outline: 2px solid blue;
+        }
+
+        /* &[aria-selected='true'] {
           &:focus-visible {
             outline: 2px solid blue;
           }
-        }
+        } */
       }
     }
 
