@@ -2,7 +2,7 @@ export const COLUMNS_SCHEDULE = {
   gameName: {
     label: 'table.gameName.short',
     tooltip: 'table.gameName.tooltip',
-    class: 'is-text-left is-text-light',
+    class: 'is-text-left text-dimmed',
   },
   gameDateDate: {
     label: 'table.gameDate.short',
@@ -17,7 +17,7 @@ export const COLUMNS_SCHEDULE = {
   divisionName: {
     label: 'table.section.short',
     tooltip: 'table.section.tooltip',
-    class: 'is-has-image is-text-light',
+    class: 'is-has-image text-dimmed',
   },
   homeTeamName: {
     label: 'table.organizer.short',

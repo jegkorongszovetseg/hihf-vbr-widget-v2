@@ -168,12 +168,12 @@ const onSort = payload => emit('sort', payload);
       </template>
 
       <template #cell-gameResult="{ row }">
-        <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>
+        <span v-if="row.gameStatus === 0" class="text-highlighted">-:-</span>
         <a
           v-else
           :href="externalGameResolver(row)"
           :target="externalGameResolverTarget"
-          :class="{ 'is-text-dark': row.gameStatus !== 1, 'is-text-accent': row.gameStatus === 1 }"
+          :class="{ 'text-highlighted': row.gameStatus !== 1, 'is-text-accent': row.gameStatus === 1 }"
         >
           {{ row.homeTeamScore }}:{{ row.awayTeamScore }}
         </a>

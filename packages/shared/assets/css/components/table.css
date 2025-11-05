@@ -90,7 +90,7 @@
 
       &[data-value='0'],
       &.is-zero {
-        color: var(--vbr-widget-table-zero-color);
+        color: var(--vbr-widget-text-color-faded);
       }
 
       /* &:has(.is-logo-image) {

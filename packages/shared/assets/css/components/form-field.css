@@ -26,8 +26,8 @@
     label {
       display: block;
       font-size: var(--vbr-widget-form-label-font-size);
-      line-height: var(--font-lineheight-600);
-      color: var(--vbr-widget-form-label-color);
+      line-height: var(--font-lineheight-700);
+      color: var(--vbr-widget-text-color-muted);
       text-transform: uppercase;
       font-weight: 700;
     }

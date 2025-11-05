@@ -4,7 +4,7 @@ export const COLUMNS_SCHEDULE = {
   gameName: {
     label: 'table.gameName.short',
     tooltip: 'table.gameName.tooltip',
-    class: 'is-text-left is-text-light',
+    class: 'is-text-left text-dimmed',
   },
   gameDateDate: {
     label: 'table.gameDate.short',
@@ -292,7 +292,7 @@ export const COLUMNS_STANDINGS_P_2 = {
 export const COLUMNS_STANDINGS_SHORT = {
   index: {
     label: '#',
-    class: 'is-text-left is-text-italic is-text-light',
+    class: 'is-text-left is-text-italic text-dimmed',
   },
   teamLogo: {
     label: '',
@@ -306,22 +306,22 @@ export const COLUMNS_STANDINGS_SHORT = {
   gamesPlayed: {
     label: 'table.game.short',
     tooltip: 'table.game.tooltip',
-    class: 'is-text-light',
+    class: 'text-dimmed',
   },
   w: {
     label: 'table.wins.short',
     tooltip: 'table.wins.tooltip',
-    class: 'is-text-light',
+    class: 'text-dimmed',
   },
   l: {
     label: 'table.losses.short',
     tooltip: 'table.losses.tooltip',
-    class: 'is-text-light',
+    class: 'text-dimmed',
   },
   gd: {
     label: 'table.goalDiff.short',
     tooltip: 'table.goalDiff.tooltip',
-    class: 'is-text-light',
+    class: 'text-dimmed',
   },
   points: {
     label: 'table.points.short',

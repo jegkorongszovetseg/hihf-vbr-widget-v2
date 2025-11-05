@@ -78,21 +78,21 @@
     }
 
     &.is-zero {
-      color: var(--vbr-widget-table-zero-color);
+      color: var(--vbr-widget-text-color-faded);
     }
 
     &.is-possible-empty:empty:before {
       content: '0';
-      color: var(--vbr-widget-table-zero-color);
+      color: var(--vbr-widget-text-color-faded);
     }
 
-    .is-text-light,
-    &.is-text-light {
+    .text-dimmed,
+    &.text-dimmed {
       color: var(--vbr-widget-table-cell-light-color);
     }
 
-    .is-text-dark,
-    &.is-text-dark {
+    .text-highlighted,
+    &.text-highlighted {
       color: var(--vbr-widget-table-cell-dark-color);
     }
 

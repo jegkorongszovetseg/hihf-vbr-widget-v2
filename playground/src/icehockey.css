@@ -72,7 +72,7 @@ body.liga {
     --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-secondary-color-600);
     --vbr-widget-table-header-color: var(--vbr-widget-secondary-color-100);
     --vbr-widget-table-header-active-bg-color: var(--vbr-widget-secondary-color-800);
-    --vbr-widget-table-zero-color: var(--vbr-widget-primary-color-400);
+    --vbr-widget-text-color-faded: var(--vbr-widget-primary-color-400);
     --vbr-widget-table-stripped-bg-color: #f6f6f6;
 
     --vbr-widget-gamecenter-card-border-color: var(--vbr-widget-primary-color-300);

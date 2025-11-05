@@ -93,13 +93,13 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
               <span class="is-team-name-short">{{ game.homeTeam?.shortName }}</span>
             </div>
             <div class="is-text-center">
-              <span v-if="game.gameStatus === 0" class="is-text-dark">-:-</span>
+              <span v-if="game.gameStatus === 0" class="text-highlighted">-:-</span>
               <a
                 v-else
                 :href="externalGameResolver(game)"
                 :target="externalGameTarget"
                 class="is-text-bold"
-                :class="[{ 'is-text-dark': game.gameStatus !== 1, 'is-text-accent': game.gameStatus === 1 }]"
+                :class="[{ 'text-highlighted': game.gameStatus !== 1, 'is-text-accent': game.gameStatus === 1 }]"
               >
                 {{ game.homeTeamScore }}:{{ game.awayTeamScore }}
               </a>
@@ -111,7 +111,7 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
               <span class="is-team-name-long">{{ game.awayTeam?.longName }}</span>
               <span class="is-team-name-short">{{ game.awayTeam?.shortName }}</span>
             </div>
-            <div class="is-text-light is-truncate is-text-right">
+            <div class="text-dimmed is-truncate is-text-right">
               {{ game.location?.locationName ?? '' }}
             </div>
           </div>

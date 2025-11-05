@@ -27,12 +27,20 @@
     font-size: var(--font-size-700);
   }
 
-  .is-text-dark {
-    color: var(--vbr-widget-text-dark-color);
+  .text-faded {
+    color: var(--vbr-widget-text-color-faded);
+  }
+
+  .text-dimmed {
+    color: var(--vbr-widget-text-color-dimmed);
   }
 
   .text-muted {
     color: var(--vbr-widget-text-color-muted);
+  }
+
+  .text-highlighted {
+    color: var(--vbr-widget-text-color-highlighted);
   }
 
   .mb-md {

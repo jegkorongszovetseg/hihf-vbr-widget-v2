@@ -83,7 +83,7 @@ export const COLUMNS_GAMES = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-text-light',
+    class: 'is-text-left text-dimmed',
   },
   gameResult: {
     label: 'table.result.short',
@@ -97,7 +97,7 @@ export const COLUMNS_GAMES = {
   opponent: {
     label: 'table.opponent.short',
     tooltip: 'table.opponent.tooltip',
-    class: 'is-text-left is-text-light',
+    class: 'is-text-left text-dimmed',
   },
   resultType: {
     label: 'table.resultType.short',
@@ -194,7 +194,7 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
   season: {
     label: 'table.season.short',
     tooltip: 'table.season.tooltip',
-    class: 'is-text-left is-text-light',
+    class: 'is-text-left text-dimmed',
   },
   teamName: {
     label: 'table.team.short',
