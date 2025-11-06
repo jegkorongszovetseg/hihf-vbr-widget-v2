@@ -133,25 +133,13 @@
 
     /* Games Timeline */
     --vbr-widget-games-timeline-game-date-size: var(--font-size-100);
-    --vbr-widget-games-timeline-game-date-color: var(--vbr-widget-text-color-muted);
-    --vbr-widget-games-timeline-game-team-color: var(--vbr-widget-text-color-default);
     --vbr-widget-games-timeline-game-team-size: var(--font-size-300);
-    --vbr-widget-games-timeline-game-status-color: var(--vbr-widget-text-color-dimmed);
     --vbr-widget-games-timeline-game-status-size: var(--font-size-200);
-    --vbr-widget-games-timeline-game-hover-bg-color: linear-gradient(#fff, #f5f6f7 50%, #fff);
-    --vbr-widget-games-timeline-arrow-color: var(--vbr-widget-text-color-dimmed);
-    --vbr-widget-games-timeline-arrow-hover-color: var(--vbr-widget-text-color-muted);
-    --vbr-widget-games-timeline-arrow-disabled-color: var(--vbr-widget-text-color-faded);
-    --vbr-widget-games-timeline-arrow-border-color: var(--vbr-widget-text-color-faded);
-    --vbr-widget-games-timeline-external-link-color: var(--vbr-widget-text-color-muted);
-    --vbr-widget-games-timeline-external-link-size: var(--font-size-200);
-
-    --vbr-widget-games-timeline-score-color: light-dark(var(--vbr-primary-color-950), var(--vbr-primary-color-100));
-    --vbr-widget-games-timeline-score-bg-color: light-dark(var(--vbr-primary-color-50), var(--vbr-primary-color-900));
-  }
-
-  :where(html) {
-    accent-color: var(--vbr-widget-link-color);
+    --vbr-widget-games-timeline-game-hover-bg-color: linear-gradient(
+      light-dark(var(--vbr-color-white), var(--vbr-primary-color-950)),
+      light-dark(#f5f6f7, #1d262a) 50%,
+      light-dark(var(--vbr-color-white), var(--vbr-primary-color-950))
+    );
   }
 
   :where(a[href]) {

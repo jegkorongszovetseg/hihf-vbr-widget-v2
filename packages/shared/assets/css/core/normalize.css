@@ -72,6 +72,13 @@
     border-width: 0;
   }
 
+  :where(button) {
+    appearance: button;
+    -webkit-appearance: button;
+    background-color: transparent;
+    background-image: none;
+  }
+
   :where(pre) {
     margin: 0;
   }

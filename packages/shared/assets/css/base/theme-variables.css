@@ -17,6 +17,7 @@
   --vbr-widget-bg-inverted: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-100));
 
   /* Border */
-  --vbr-widget-border-muted: light-dark(var(--vbr-primary-color-100), var(--vbr-primary-color-800));
+  --vbr-widget-border-faded: light-dark(var(--vbr-primary-color-100), var(--vbr-primary-color-800));
+  --vbr-widget-border-muted: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-700));
   --vbr-widget-border-highlighted: var(--vbr-secondary-color-500);
 }

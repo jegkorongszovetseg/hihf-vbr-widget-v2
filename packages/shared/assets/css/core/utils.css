@@ -39,6 +39,10 @@
     color: var(--vbr-widget-text-color-muted);
   }
 
+  .text-toned {
+    color: var(--vbr-widget-text-color-toned);
+  }
+
   .text-highlighted {
     color: var(--vbr-widget-text-color-highlighted);
   }

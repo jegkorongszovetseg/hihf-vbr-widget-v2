@@ -10,5 +10,6 @@ body {
 }
 
 html.dark {
-  background-color: oklch(12.9% 0.042 264.695);
+  /* background-color: oklch(12.9% 0.042 264.695); */
+  background-color: #182024;
 }
