@@ -78,12 +78,12 @@
     }
 
     &.is-zero {
-      color: var(--vbr-widget-text-color-faded);
+      color: var(--vbr-widget-text-faded);
     }
 
     &.is-possible-empty:empty:before {
       content: '0';
-      color: var(--vbr-widget-text-color-faded);
+      color: var(--vbr-widget-text-faded);
     }
 
     .text-dimmed,

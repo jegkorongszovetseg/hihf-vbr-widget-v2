@@ -23,7 +23,7 @@
         font-weight: 700;
         overflow: hidden;
         position: relative;
-        color: var(--vbr-widget-text-color-muted);
+        color: var(--vbr-widget-text-muted);
       }
 
       hr {

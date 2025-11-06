@@ -8,7 +8,7 @@
 
     contain: layout;
     position: relative;
-    color: var(--vbr-widget-text-color-default);
+    color: var(--vbr-widget-text-default);
 
     & pre,
     & input,
@@ -33,7 +33,7 @@
       display: block;
       font-size: var(--vbr-widget-form-label-font-size);
       line-height: var(--font-lineheight-700);
-      color: var(--vbr-widget-text-color-muted);
+      color: var(--vbr-widget-text-muted);
       text-transform: uppercase;
       font-weight: 700;
     }

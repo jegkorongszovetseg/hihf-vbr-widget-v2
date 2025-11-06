@@ -28,23 +28,23 @@
   }
 
   .text-faded {
-    color: var(--vbr-widget-text-color-faded);
+    color: var(--vbr-widget-text-faded);
   }
 
   .text-dimmed {
-    color: var(--vbr-widget-text-color-dimmed);
+    color: var(--vbr-widget-text-dimmed);
   }
 
   .text-muted {
-    color: var(--vbr-widget-text-color-muted);
+    color: var(--vbr-widget-text-muted);
   }
 
   .text-toned {
-    color: var(--vbr-widget-text-color-toned);
+    color: var(--vbr-widget-text-toned);
   }
 
   .text-highlighted {
-    color: var(--vbr-widget-text-color-highlighted);
+    color: var(--vbr-widget-text-highlighted);
   }
 
   .mb-md {

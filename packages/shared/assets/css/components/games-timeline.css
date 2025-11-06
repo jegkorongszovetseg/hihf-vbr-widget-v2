@@ -51,20 +51,20 @@
         display: block;
         height: 22px;
         width: 22px;
-        color: var(--vbr-widget-text-color-dimmed);
+        color: var(--vbr-widget-text-dimmed);
         transition: all 0.2s;
       }
 
       &:hover {
         svg {
-          color: var(--vbr-widget-text-color-muted);
+          color: var(--vbr-widget-text-muted);
         }
       }
 
       &:disabled {
         cursor: not-allowed;
         svg {
-          color: var(--vbr-widget-text-color-faded);
+          color: var(--vbr-widget-text-faded);
         }
       }
 
@@ -97,7 +97,7 @@
     .is-no-games {
       width: 100%;
       text-align: center;
-      color: var(--vbr-widget-text-color-muted);
+      color: var(--vbr-widget-text-muted);
     }
   }
 
@@ -124,7 +124,7 @@
       gap: 4px;
       font-size: var(--vbr-widget-games-timeline-game-date-size);
       font-weight: 700;
-      color: var(--vbr-widget-text-color-muted);
+      color: var(--vbr-widget-text-muted);
     }
 
     .is-home-team-logo {
@@ -145,7 +145,7 @@
       justify-self: start;
       font-size: var(--vbr-widget-games-timeline-game-team-size);
       font-weight: 700;
-      color: var(--vbr-widget-text-color-default);
+      color: var(--vbr-widget-text-default);
       overflow: hidden;
       width: 100%;
       text-overflow: ellipsis;
@@ -168,7 +168,7 @@
     .is-status {
       grid-area: status;
       font-size: var(--vbr-widget-games-timeline-game-status-size);
-      color: var(--vbr-widget-text-color-dimmed);
+      color: var(--vbr-widget-text-dimmed);
       overflow: hidden;
       width: 100%;
       text-overflow: ellipsis;
@@ -192,7 +192,7 @@
       font-size: var(--font-size-200);
       font-weight: 700;
       text-transform: uppercase;
-      color: var(--vbr-widget-text-color-toned);
+      color: var(--vbr-widget-text-toned);
 
       svg {
         display: inline-block;

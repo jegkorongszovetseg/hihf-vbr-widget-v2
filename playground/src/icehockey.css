@@ -64,12 +64,12 @@ body.liga {
     --vbr-secondary-color-800: #1565c0;
     --vbr-secondary-color-900: #0d47a1;
 
-    /* --vbr-widget-text-color-faded: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-600));
-    --vbr-widget-text-color-dimmed: light-dark(var(--vbr-primary-color-400), var(--vbr-primary-color-500));
-    --vbr-widget-text-color-muted: light-dark(var(--vbr-primary-color-500), var(--vbr-primary-color-400));
-    --vbr-widget-text-color-toned: light-dark(var(--vbr-primary-color-600), var(--vbr-primary-color-300));
-    --vbr-widget-text-color-default: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-200));
-    --vbr-widget-text-color-highlighted: light-dark(var(--vbr-primary-color-900), var(--vbr-primary-color-50)); */
+    /* --vbr-widget-text-faded: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-600));
+    --vbr-widget-text-dimmed: light-dark(var(--vbr-primary-color-400), var(--vbr-primary-color-500));
+    --vbr-widget-text-muted: light-dark(var(--vbr-primary-color-500), var(--vbr-primary-color-400));
+    --vbr-widget-text-toned: light-dark(var(--vbr-primary-color-600), var(--vbr-primary-color-300));
+    --vbr-widget-text-default: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-200));
+    --vbr-widget-text-highlighted: light-dark(var(--vbr-primary-color-900), var(--vbr-primary-color-50)); */
 
     --vbr-widget-bg-inverted: light-dark(var(--vbr-secondary-color-900), var(--vbr-secondary-color-100));
 
@@ -105,7 +105,7 @@ body.liga {
     --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-secondary-color-600);
     --vbr-widget-table-header-color: var(--vbr-widget-secondary-color-100);
     --vbr-widget-table-header-active-bg-color: var(--vbr-widget-secondary-color-800);
-    --vbr-widget-text-color-faded: var(--vbr-widget-primary-color-400);
+    --vbr-widget-text-faded: var(--vbr-widget-primary-color-400);
     --vbr-widget-table-stripped-bg-color: #f6f6f6; */
 
     /* --vbr-widget-gamecenter-card-border-color: var(--vbr-widget-primary-color-300);
