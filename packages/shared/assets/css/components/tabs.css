@@ -21,7 +21,7 @@
     &.underlined {
       /* Tab list */
       & > [role='tablist'] {
-        border-bottom: 1px solid var(---vbr-widget-border-muted);
+        border-bottom: 1px solid var(--vbr-widget-border-muted);
 
         button {
           background: transparent;

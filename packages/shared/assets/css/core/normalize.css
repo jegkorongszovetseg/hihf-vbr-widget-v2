@@ -71,4 +71,8 @@
     border-style: solid;
     border-width: 0;
   }
+
+  :where(pre) {
+    margin: 0;
+  }
 }

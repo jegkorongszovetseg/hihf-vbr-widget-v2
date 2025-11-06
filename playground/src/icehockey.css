@@ -135,7 +135,7 @@ mjsz-vbr-top-list-liga {
   --vbr-widget-loading-indicator-text-color: var(--vbr-widget-secondary-color-100);
 }
 
-mjsz-vbr-standings-selector {
+/* mjsz-vbr-standings-selector {
   --vbr-widget-standings-selector-title-size: 16px;
   --vbr-widget-standings-selector-title-color: var(--vbr-widget-primary-color-700);
   --vbr-widget-standings-selector-title-bg-color: linear-gradient(
@@ -158,9 +158,9 @@ mjsz-vbr-standings-selector {
   --vbr-widget-table-header-hover-bg-color: transparent;
   --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-400);
   --vbr-widget-table-stripped-bg-color: transparent;
-}
+} */
 
-mjsz-vbr-countdown {
+/* mjsz-vbr-countdown {
   --vbr-widget-countdown-title-height: 32px;
   --vbr-widget-countdown-gamedata-height: 64px;
-}
+} */

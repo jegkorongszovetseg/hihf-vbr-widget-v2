@@ -183,7 +183,7 @@ function changeSeason(value) {
 }
 
 function changeChampionship(value) {
-  state.selectedChampionshipId = value;
+  state.selectedChampionshipId = value.sectionId;
   state.phaseId = phases.value[0]?.phaseId ?? null;
   fetchData();
 }

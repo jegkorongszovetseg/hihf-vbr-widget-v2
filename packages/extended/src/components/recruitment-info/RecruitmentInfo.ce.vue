@@ -71,11 +71,6 @@ function onReTry() {
 
 <template>
   <I18NProvider v-slot="{ t }" :locale="locale" :messages="messages">
-    <!-- <div class="recruitment-info-filter">
-      <label for="organization" class="label">{{ t('selection.filter') }}</label>
-      <input id="organization" v-model="query" :placeholder="t('recruitmentInfo.filterByNameAndLocation')" type="text" autocomplete="off" class="base-input">
-    </div> -->
-
     <FormField :label="t('selection.filter')" name="filter" class="mb-md">
       <input id="filter" v-model="query" :placeholder="t('recruitmentInfo.filterByNameAndLocation')" type="text" autocomplete="off">
     </FormField>

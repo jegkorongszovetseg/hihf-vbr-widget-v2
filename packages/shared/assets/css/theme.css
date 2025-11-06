@@ -12,17 +12,6 @@
 
     /* --vbr-widget-typography-heading-weight: 500; */
 
-    --vbr-widget-text-color-faded: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-600));
-    --vbr-widget-text-color-dimmed: light-dark(var(--vbr-primary-color-400), var(--vbr-primary-color-500));
-    --vbr-widget-text-color-muted: light-dark(var(--vbr-primary-color-500), var(--vbr-primary-color-400));
-    --vbr-widget-text-color-toned: light-dark(var(--vbr-primary-color-600), var(--vbr-primary-color-300));
-    --vbr-widget-text-color-highlighted: light-dark(var(--vbr-primary-color-900), var(--vbr-primary-color-50));
-
-    --vbr-widget-bg-highlighted: var(--vbr-secondary-color-500);
-
-    --vbr-widget-border-muted: light-dark(var(--vbr-primary-color-100), var(--vbr-primary-color-800));
-    --vbr-widget-border-highlighted: var(--vbr-secondary-color-500);
-
     /* Link */
     --vbr-widget-link-color: light-dark(var(--vbr-secondary-color-700), var(--vbr-secondary-color-400));
     --vbr-widget-link-hover-color: light-dark(var(--vbr-secondary-color-900), var(--vbr-secondary-color-200));
@@ -104,7 +93,6 @@
     --vbr-widget-form-label-font-size: var(--font-size-200);
 
     /* Tabs */
-    /* --vbr-widget-tab-nav-border: 1px; */
     --vbr-widget-tab-btn-font-size: var(--font-size-500);
     --vbr-widget-tab-btn-font-weight: 500;
     /* --vbr-widget-tab-btn-bg-color: var(--vbr-color-white); */
@@ -121,8 +109,8 @@
 
     /* Toggle */
     --vbr-widget-toggle-group-gap: var(--size-6);
-    --vbr-widget-toggle-group-nav-padding: var(--size-6);
-    --vbr-widget-toggle-group-border-width: var(--size-1);
+    --vbr-widget-toggle-group-nav-padding: 0;
+    --vbr-widget-toggle-group-border-width: 0;
     --vbr-widget-toggle-group-btn-padding: var(--size-4) var(--size-8);
     --vbr-widget-toggle-group-btn-size: var(--font-size-400);
     --vbr-widget-toggle-group-btn-color: light-dark(var(--vbr-primary-color-900), var(--vbr-primary-color-100));
@@ -142,6 +130,21 @@
     --vbr-widget-card-color: light-dark(var(--vbr-primary-color-950), var(--vbr-primary-color-200));
     --vbr-widget-card-bg-color: light-dark(var(--vbr-color-white), var(--vbr-primary-color-950));
     --vbr-widget-card-tonal-active-bg-color: light-dark(var(--vbr-primary-color-50), var(--vbr-primary-color-900));
+
+    /* Games Timeline */
+    --vbr-widget-games-timeline-game-date-size: var(--font-size-100);
+    --vbr-widget-games-timeline-game-date-color: var(--vbr-primary-color-500);
+    --vbr-widget-games-timeline-game-team-color: var(--primary-color-700);
+    --vbr-widget-games-timeline-game-team-size: var(--font-size-300);
+    --vbr-widget-games-timeline-game-status-color: var(--vbr-primary-color-300);
+    --vbr-widget-games-timeline-game-status-size: var(--font-size-200);
+    --vbr-widget-games-timeline-game-hover-bg-color: linear-gradient(#fff, #f5f6f7 50%, #fff);
+    --vbr-widget-games-timeline-arrow-color: var(--vbr-primary-color-300);
+    --vbr-widget-games-timeline-arrow-hover-color: var(--vbr-primary-color-500);
+    --vbr-widget-games-timeline-arrow-disabled-color: var(--vbr-primary-color-100);
+    --vbr-widget-games-timeline-arrow-border-color: var(--vbr-primary-color-100);
+    --vbr-widget-games-timeline-external-link-color: var(--vbr-primary-color-500);
+    --vbr-widget-games-timeline-external-link-size: var(--vbr-widget-font-size-200);
   }
 
   :where(html) {

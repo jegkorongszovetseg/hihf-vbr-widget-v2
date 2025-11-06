@@ -13,7 +13,7 @@ defineProps({
 
 <template>
   <div class="form-field">
-    <label :for="name" class="label">{{ label }}</label>
+    <label :for="name">{{ label }}</label>
     <slot />
   </div>
 </template>

@@ -51,5 +51,12 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     align-items: center;
+    gap: var(--size-16);
+  }
+
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--size-16);
   }
 }
