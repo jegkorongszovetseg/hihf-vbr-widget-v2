@@ -11,5 +11,3 @@ export function useIcehockeyClasses(enabled: Ref<boolean>) {
     removeClass();
   });
 }
-
-// window?.document.querySelector('html')

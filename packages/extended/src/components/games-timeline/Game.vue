@@ -46,8 +46,8 @@ function navigateTo() {
 <template>
   <div class="games-timeline-game" @click="navigateTo">
     <time>{{ gameData.gameDateTime }}
-      <span v-if="gameData.isShootout" class="is-badge">{{ t('common.shootoutShort') }}</span>
-      <span v-if="gameData.isOvertime" class="is-badge">{{ t('common.overtimeShort') }}</span>
+      <span v-if="gameData.isShootout" class="badge xs">{{ t('common.shootoutShort') }}</span>
+      <span v-if="gameData.isOvertime" class="badge xs">{{ t('common.overtimeShort') }}</span>
       <IconLaunch v-if="gameData.externalGameUrl" width="14" height="14" />
     </time>
     <div class="is-home-team-logo">
@@ -59,7 +59,7 @@ function navigateTo() {
     <div class="is-home-team-score">
       <ScoreDisplay
         v-if="gameData.homeTeamScore != null"
-        class="is-badge is-extra-large" :class="[gameData.gameStatus === 1 ? 'is-green' : 'is-dark']"
+        class="badge lg" :class="[gameData.gameStatus === 1 ? 'live' : 'inverted']"
         :score="gameData.homeTeamScore"
       >
         {{ gameData.homeTeamScore }}
@@ -75,7 +75,7 @@ function navigateTo() {
       <ScoreDisplay
         v-if="gameData.awayTeamScore != null"
         :score="gameData.awayTeamScore"
-        class="is-badge is-extra-large" :class="[gameData.gameStatus === 1 ? 'is-green' : 'is-dark']"
+        class="badge lg" :class="[gameData.gameStatus === 1 ? 'live' : 'inverted']"
       >
         {{ gameData.awayTeamScore }}
       </ScoreDisplay>

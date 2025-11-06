@@ -1,9 +1,9 @@
 @layer components {
   :where(.badge) {
-    --_bg-color: var(--surface-tonal, white);
-    --_color: var(--text-color-1, black);
+    --_bg-color: var(--vbr-widget-bg-muted);
+    --_color: var(--vbr-widget-text-color-muted);
 
-    padding: var(--size-2) var(--size-6);
+    padding: var(--size-2) var(--size-4);
     display: inline-flex;
     gap: var(--size-2);
     font-size: var(--font-size-100);
@@ -11,5 +11,25 @@
     color: var(--_color);
     background-color: var(--_bg-color);
     border-radius: var(--radius-2);
+
+    /* Variant */
+    &.inverted {
+      --_bg-color: var(--vbr-widget-bg-inverted);
+      --_color: var(--vbr-widget-text-color-inverted);
+    }
+
+    &.live {
+      --_bg-color: var(--vbr-widget-text-live);
+      --_color: var(--vbr-color-white);
+    }
+
+    /* Size */
+    &.xs {
+      font-size: var(--font-size-50);
+    }
+    &.lg {
+      font-size: var(--font-size-300);
+      padding: var(--size-4) var(--size-6);
+    }
   }
 }

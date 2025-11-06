@@ -2,9 +2,11 @@
 import { useColorMode, useCycleList } from '@vueuse/core';
 import { ref, watchEffect } from 'vue';
 import { useIcehockeyClasses } from '../composables/use-icehockey-classes';
+import { useLigaCss } from '../composables/use-liga-css';
 import { store } from '../store.js';
 
 const isIcehockeyClassesActive = ref(false);
+const isLigaClassesActive = ref(false);
 
 const mode = useColorMode({ emitAuto: true });
 
@@ -13,6 +15,8 @@ const { state, next } = useCycleList(['dark', 'light', 'auto'], { initialValue: 
 watchEffect(() => mode.value = state.value);
 
 useIcehockeyClasses(isIcehockeyClassesActive);
+
+useLigaCss(isLigaClassesActive);
 </script>
 
 <template>
@@ -37,6 +41,10 @@ useIcehockeyClasses(isIcehockeyClassesActive);
     <div>
       <input id="icehockey" v-model="isIcehockeyClassesActive" type="checkbox">
       <label for="icehockey" class="text-slate-300 dark:text-slate-700 ml-2">Use Icehockey Classes</label>
+    </div>
+    <div>
+      <input id="liga" v-model="isLigaClassesActive" type="checkbox">
+      <label for="liga" class="text-slate-300 dark:text-slate-700 ml-2">Use Liga Classes</label>
     </div>
   </header>
 </template>

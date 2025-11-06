@@ -42,6 +42,39 @@ html.icehockey {
 
 body.liga {
   * {
+    --vbr-widget-primary-color-50: #f9fafb;
+    --vbr-primary-color-100: #f3f4f6;
+    --vbr-primary-color-200: #e5e7eb;
+    --vbr-primary-color-300: #d1d5db;
+    --vbr-primary-color-400: #9ca3af;
+    --vbr-primary-color-500: #6b7280;
+    --vbr-primary-color-600: #4b5563;
+    --vbr-primary-color-700: #374151;
+    --vbr-primary-color-800: #1f2937;
+    --vbr-primary-color-900: #111827;
+
+    --vbr-secondary-color-50: #e3f2fd;
+    --vbr-secondary-color-100: #bbdefb;
+    --vbr-secondary-color-200: #90caf9;
+    --vbr-secondary-color-300: #64b5f6;
+    --vbr-secondary-color-400: #42a5f5;
+    --vbr-secondary-color-500: #2196f3;
+    --vbr-secondary-color-600: #1e88e5;
+    --vbr-secondary-color-700: #1976d2;
+    --vbr-secondary-color-800: #1565c0;
+    --vbr-secondary-color-900: #0d47a1;
+
+    --vbr-widget-text-color-faded: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-600));
+    --vbr-widget-text-color-dimmed: light-dark(var(--vbr-primary-color-400), var(--vbr-primary-color-500));
+    --vbr-widget-text-color-muted: light-dark(var(--vbr-primary-color-500), var(--vbr-primary-color-400));
+    --vbr-widget-text-color-toned: light-dark(var(--vbr-primary-color-600), var(--vbr-primary-color-300));
+    --vbr-widget-text-color-default: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-200));
+    --vbr-widget-text-color-highlighted: light-dark(var(--vbr-primary-color-900), var(--vbr-primary-color-50));
+
+    --vbr-widget-bg-inverted: light-dark(var(--vbr-secondary-color-900), var(--vbr-secondary-color-100));
+
+    /* Old */
+
     --vbr-widget-primary-color-0: #ffffff;
     --vbr-widget-primary-color-50: #f9fafb;
     --vbr-widget-primary-color-100: #f3f4f6;

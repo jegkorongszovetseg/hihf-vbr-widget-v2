@@ -133,18 +133,21 @@
 
     /* Games Timeline */
     --vbr-widget-games-timeline-game-date-size: var(--font-size-100);
-    --vbr-widget-games-timeline-game-date-color: var(--vbr-primary-color-500);
-    --vbr-widget-games-timeline-game-team-color: var(--primary-color-700);
+    --vbr-widget-games-timeline-game-date-color: var(--vbr-widget-text-color-muted);
+    --vbr-widget-games-timeline-game-team-color: var(--vbr-widget-text-color-default);
     --vbr-widget-games-timeline-game-team-size: var(--font-size-300);
-    --vbr-widget-games-timeline-game-status-color: var(--vbr-primary-color-300);
+    --vbr-widget-games-timeline-game-status-color: var(--vbr-widget-text-color-dimmed);
     --vbr-widget-games-timeline-game-status-size: var(--font-size-200);
     --vbr-widget-games-timeline-game-hover-bg-color: linear-gradient(#fff, #f5f6f7 50%, #fff);
-    --vbr-widget-games-timeline-arrow-color: var(--vbr-primary-color-300);
-    --vbr-widget-games-timeline-arrow-hover-color: var(--vbr-primary-color-500);
-    --vbr-widget-games-timeline-arrow-disabled-color: var(--vbr-primary-color-100);
-    --vbr-widget-games-timeline-arrow-border-color: var(--vbr-primary-color-100);
-    --vbr-widget-games-timeline-external-link-color: var(--vbr-primary-color-500);
-    --vbr-widget-games-timeline-external-link-size: var(--vbr-widget-font-size-200);
+    --vbr-widget-games-timeline-arrow-color: var(--vbr-widget-text-color-dimmed);
+    --vbr-widget-games-timeline-arrow-hover-color: var(--vbr-widget-text-color-muted);
+    --vbr-widget-games-timeline-arrow-disabled-color: var(--vbr-widget-text-color-faded);
+    --vbr-widget-games-timeline-arrow-border-color: var(--vbr-widget-text-color-faded);
+    --vbr-widget-games-timeline-external-link-color: var(--vbr-widget-text-color-muted);
+    --vbr-widget-games-timeline-external-link-size: var(--font-size-200);
+
+    --vbr-widget-games-timeline-score-color: light-dark(var(--vbr-primary-color-950), var(--vbr-primary-color-100));
+    --vbr-widget-games-timeline-score-bg-color: light-dark(var(--vbr-primary-color-50), var(--vbr-primary-color-900));
   }
 
   :where(html) {

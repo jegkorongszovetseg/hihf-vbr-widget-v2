@@ -176,3 +176,5 @@ function onTryAgain() {
 <style src="@mjsz-vbr-elements/shared/css/core.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/games-timeline.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
