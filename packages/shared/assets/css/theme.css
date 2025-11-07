@@ -10,8 +10,6 @@
   :host {
     font-family: inherit;
 
-    /* --vbr-widget-typography-heading-weight: 500; */
-
     /* Link */
     --vbr-widget-link-color: light-dark(var(--vbr-secondary-color-700), var(--vbr-secondary-color-400));
     --vbr-widget-link-hover-color: light-dark(var(--vbr-secondary-color-900), var(--vbr-secondary-color-200));
@@ -144,6 +142,14 @@
         50%,
       light-dark(var(--vbr-color-white), var(--vbr-primary-color-950))
     );
+
+    /* Countdown */
+    --vbr-widget-countdown-title-height: calc(var(--size-16) * 2);
+    --vbr-widget-countdown-title-bg: light-dark(var(--vbr-primary-color-900), var(--vbr-primary-color-100));
+    --vbr-widget-countdown-gamedata-height: calc(var(--size-16) * 4);
+    --vbr-widget-countdown-active-color: light-dark(var(--vbr-secondary-color-500), var(--vbr-secondary-color-800));
+    --vbr-widget-countdown-gamedata-bg: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-300));
+    --vbr-widget-countdown-result-bg: light-dark(var(--vbr-primary-color-800), var(--vbr-primary-color-200));
   }
 
   :where(a[href]) {

@@ -35,6 +35,8 @@ html.icehockey {
     --size-16: 16px;
     --size-24: 24px;
 
+    --vbr-widget-countdown-title-height: 32px;
+
     /* --vbr-widget-gamecenter-result-size: 110px;
     --vbr-widget-gamecenter-title-size: 16px; */
   }
