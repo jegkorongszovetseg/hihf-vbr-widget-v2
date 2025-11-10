@@ -8,6 +8,7 @@
     gap: var(--size-2);
     font-size: var(--font-size-100);
     font-weight: 700;
+    line-height: var(--font-lineheight-300);
     color: var(--_color);
     background-color: var(--_bg-color);
     border-radius: var(--radius-2);

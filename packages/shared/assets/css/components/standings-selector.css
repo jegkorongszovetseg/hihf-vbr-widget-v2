@@ -7,8 +7,8 @@
     --vbr-widget-standings-selector-title-bg-color: transparent;
 
     --vbr-widget-standings-selector-section-title-bg: light-dark(
-      var(--vbr-widget-primary-color-50),
-      var(--vbr-widget-primary-color-950)
+      var(--vbr-primary-color-50),
+      var(--vbr-primary-color-900)
     );
     --vbr-widget-standings-selector-section-title-size: var(--font-size-400);
     --vbr-widget-standings-selector-section-title-color: light-dark(

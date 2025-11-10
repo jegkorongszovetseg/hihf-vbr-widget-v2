@@ -246,3 +246,5 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
 <style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/avatar.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />

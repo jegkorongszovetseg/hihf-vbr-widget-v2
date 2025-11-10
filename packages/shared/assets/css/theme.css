@@ -12,6 +12,7 @@
 
     /* Special Colors */
     --vbr-widget-text-live: #8bc34a;
+    --vbr-error: #fb2c36;
 
     /* Link */
     --vbr-widget-link-color: light-dark(var(--vbr-secondary-color-700), var(--vbr-secondary-color-400));

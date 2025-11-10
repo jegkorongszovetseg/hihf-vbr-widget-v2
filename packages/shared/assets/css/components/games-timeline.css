@@ -226,7 +226,7 @@
     width: 100%;
     font-size: var(--font-size-400);
     font-weight: 500;
-    color: var(--vbr-widget-error-notice-color);
+    color: var(--vbr-error);
 
     svg {
       display: block;
