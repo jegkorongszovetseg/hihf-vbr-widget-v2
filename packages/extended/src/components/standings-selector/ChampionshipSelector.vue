@@ -28,21 +28,27 @@ const emit = defineEmits(['change']);
 
 <template>
   <FloatingPanel :offset="2" placement="bottom-end" theme="content" :append-to="target" :is-arrow-visible="false">
-    <template #default="{ setRef, show, hide }">
-      <button :ref="setRef" type="button" @click.stop="show" @focus="show" @blur="hide">
+    <template #default="{ setRef, toggle }">
+      <button :ref="setRef" type="button" @click="toggle">
         <IconMenu style="display: block; height: 20px;" />
       </button>
     </template>
-    <template #content>
-      <ul class="is-dropdown-menu">
+    <template #content="{ close }">
+      <ul class="list">
         <li
           v-for="item in data"
           :key="item.championshipId"
-          class="is-dropdown-item"
-          :class="{ 'is-selected': selected === item.phaseId }"
-          @click="emit('change', item)"
         >
-          {{ item.name }} - {{ item.phase }}
+          <button
+            :class="{ 'is-selected': selected === item.phaseId }"
+            :aria-selected="selected === item.phaseId"
+            type="button"
+            @click="emit('change', { item, close: close($event) })"
+          >
+            <div class="text">
+              {{ item.name }} - {{ item.phase }}
+            </div>
+          </button>
         </li>
       </ul>
     </template>

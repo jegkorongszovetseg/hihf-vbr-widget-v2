@@ -1,0 +1,74 @@
+@layer components.variables {
+  :where(:host) {
+    --vbr-widget-playoffs-header-bg: var(--vbr-primary-color-800);
+    --vbr-widget-playoffs-header-color: var(--vbr-primary-color-100);
+    --vbr-widget-playoffs-header-size: var(--font-size-500);
+    --vbr-widget-playoffs-details-bg: var(--vbr-primary-color-50);
+  }
+}
+
+@layer components {
+  :where(.playoffs) {
+    .section-title {
+      padding: 10px;
+      text-align: center;
+      font-size: var(--vbr-widget-playoffs-header-size);
+      font-weight: 700;
+      color: var(--vbr-widget-playoffs-header-color);
+      background-color: var(--vbr-widget-playoffs-header-bg);
+    }
+    .section-details {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      justify-items: center;
+      gap: 20px;
+      padding: 20px;
+      background-color: var(--vbr-widget-playoffs-details-bg);
+
+      @include mobile {
+        grid-template-columns: 1fr fit-content(100px) fit-content(100px) fit-content(100px) 1fr;
+      }
+
+      .is-team-name-long {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .is-team-name-short {
+        display: none;
+      }
+
+      @container section-details (max-width: 768px) {
+        .is-team-name-long {
+          display: none;
+        }
+        .is-team-name-short {
+          display: block;
+        }
+      }
+
+      .is-logo-image {
+        width: 70px;
+        height: 70px;
+      }
+
+      .is-result {
+        font-size: 4rem;
+        font-weight: 700;
+        text-align: center;
+        color: var(--vbr-primary-color-800);
+      }
+
+      .is-team-name {
+        font-size: var(--font-size-700);
+        font-weight: 700;
+        color: var(--vbr-primary-color-800);
+      }
+      .is-right {
+        text-align: right;
+      }
+    }
+  }
+}

@@ -1,9 +1,19 @@
+@layer components.variables {
+  :where(:host) {
+    --vbr-widget-list-item-font-size: var(--font-size-400);
+    --vbr-widget-list-item-color: light-dark(var(--vbr-primary-color-500), var(--vbr-primary-color-200));
+    --vbr-widget-list-item-hover-color: light-dark(var(--vbr-primary-color-800), var(--vbr-primary-color-50));
+    --vbr-widget-list-item-hover-bg-color: light-dark(var(--vbr-primary-color-50), var(--vbr-primary-color-900));
+    --vbr-widget-list-item-selected-color: light-dark(var(--vbr-secondary-color-700), var(--vbr-secondary-color-300));
+  }
+}
 @layer components {
   :where(.list) {
     /* --_bg-color: transparent; */
 
     /* background-color: var(--_bg-color); */
     list-style: none;
+    margin: 0;
     padding: var(--size-4);
 
     @media (pointer: coarse) {
@@ -107,7 +117,7 @@
         inline-size: 100%;
         margin: 0;
         /* min-block-size: 36px; */
-        outline-offset: -3px;
+        outline-offset: -1px;
         font-size: var(--vbr-widget-list-item-font-size);
         padding: var(--size-2) var(--size-8);
         text-align: start;
@@ -115,9 +125,15 @@
         border-radius: var(--radius-1);
         z-index: 0;
 
+        &:focus,
+        &:focus-visible,
         &:hover {
           color: var(--vbr-widget-list-item-hover-color);
           background-color: var(--vbr-widget-list-item-hover-bg-color);
+        }
+
+        &[aria-selected='true'] {
+          color: var(--vbr-widget-list-item-selected-color);
         }
 
         /* Text */

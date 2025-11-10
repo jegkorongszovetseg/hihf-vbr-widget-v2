@@ -2,13 +2,13 @@
 // import { StandingsSelector } from '@mjsz-vbr-elements/extended';
 
 import { store } from '../store.js';
-import '../../../packages/shared/assets/css/common.scss';
-import '../../../packages/shared/assets/css/responsive-table.scss';
-import '../../../packages/shared/assets/css/table.scss';
-import '../../../packages/shared/assets/css/standings-selector.scss';
-import '../../../packages/shared/assets/css/dropdown.scss';
-import '../../../packages/shared/assets/css/typography.scss';
-import '../../../packages/shared/assets/css/playoffs.scss';
+// import '../../../packages/shared/assets/css/common.scss';
+// import '../../../packages/shared/assets/css/responsive-table.scss';
+// import '../../../packages/shared/assets/css/table.scss';
+// import '../../../packages/shared/assets/css/standings-selector.scss';
+// import '../../../packages/shared/assets/css/dropdown.scss';
+// import '../../../packages/shared/assets/css/typography.scss';
+// import '../../../packages/shared/assets/css/playoffs.scss';
 
 const data = [
   {
@@ -49,7 +49,7 @@ const data = [
   </div>
 </template>
 
-<style>
+<!-- <style>
 mjsz-vbr-standings-selector {
   --vbr-widget-standings-selector-title-size: 16px;
   --vbr-widget-standings-selector-title-color: var(--vbr-widget-primary-color-700);
@@ -84,4 +84,4 @@ mjsz-vbr-standings-selector {
     rgba(0, 0, 0, 0.2) 100%
   ); */
 }
-</style>
+</style> -->

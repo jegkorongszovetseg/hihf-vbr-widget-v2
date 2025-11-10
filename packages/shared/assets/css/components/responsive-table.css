@@ -6,7 +6,7 @@
     width: 100%;
     overflow-x: auto;
 
-    table {
+    :where(table) {
       width: 100%;
     }
   }

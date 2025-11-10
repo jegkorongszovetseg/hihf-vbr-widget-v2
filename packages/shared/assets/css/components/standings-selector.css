@@ -1,0 +1,95 @@
+@layer components.variables {
+  :where(:host) {
+    --vbr-widget-standings-selector-title-size: var(--font-size-500);
+    --vbr-widget-standings-selector-title-color: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-300));
+    --vbr-widget-standings-selector-title-transform: none;
+    --vbr-widget-standings-selector-title-padding: 0 0.625em 0.5625em;
+    --vbr-widget-standings-selector-title-bg-color: transparent;
+
+    /* --vbr-widget-standings-selector-section-title-bg: light-dark(
+      var(--vbr-widget-primary-color-50),
+      var(--vbr-widget-primary-color-950)
+    ); */
+    --vbr-widget-standings-selector-section-title-size: var(--font-size-400);
+    --vbr-widget-standings-selector-section-title-color: light-dark(
+      var(--vbr-primary-color-700),
+      var(--vbr-primary-color-300)
+    );
+    --vbr-widget-standings-selector-section-title-padding: 0.25em 0;
+    --vbr-widget-standings-selector-section-logo-size: 30px;
+    --vbr-widget-standings-selector-section-team-color: var(--vbr-primary-color-900);
+  }
+}
+
+@layer components {
+  :where(.standings-selector) {
+    .standings-selector-title {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: var(--vbr-widget-standings-selector-title-padding);
+      text-transform: var(--vbr-widget-standings-selector-title-transform);
+      font-size: var(--vbr-widget-standings-selector-title-size);
+      color: var(--vbr-widget-standings-selector-title-color);
+      background: var(--vbr-widget-standings-selector-title-bg-color);
+    }
+
+    .is-title-text {
+      svg {
+        height: 16px;
+        vertical-align: middle;
+      }
+    }
+
+    :where(.playoffs) {
+      ul {
+        display: grid;
+        grid-template-columns:
+          minmax(0, 1fr) var(--vbr-widget-standings-selector-section-logo-size) auto var(
+            --vbr-widget-standings-selector-section-logo-size
+          )
+          minmax(0, 1fr);
+        gap: 12px;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        padding-block: 8px;
+
+        &:first-of-type {
+          text-align: end;
+        }
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1;
+      }
+
+      .is-team {
+        font-weight: 700;
+        color: var(--vbr-widget-standings-selector-section-team-color);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        .is-team-name-short {
+          display: none;
+        }
+
+        @container table-wrapper (max-width: 360px) {
+          .is-team-name-long {
+            display: none;
+          }
+          .is-team-name-short {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
