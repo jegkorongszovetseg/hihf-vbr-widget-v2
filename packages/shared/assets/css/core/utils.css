@@ -63,4 +63,23 @@
     flex-wrap: wrap;
     gap: var(--size-16);
   }
+
+  .responsive-team-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    .team-name-short {
+      display: none;
+    }
+
+    @container table-wrapper (max-width: 360px) {
+      .team-name-long {
+        display: none;
+      }
+      .team-name-short {
+        display: block;
+      }
+    }
+  }
 }

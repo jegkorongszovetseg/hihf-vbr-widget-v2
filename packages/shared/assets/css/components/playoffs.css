@@ -30,7 +30,7 @@
         grid-template-columns: 1fr fit-content(100px) fit-content(100px) fit-content(100px) 1fr;
       }
 
-      .is-team-name-long {
+      /* .is-team-name-long {
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -47,7 +47,7 @@
         .is-team-name-short {
           display: block;
         }
-      }
+      } */
 
       .is-logo-image {
         width: 70px;
