@@ -1,3 +1,10 @@
+@layer components.variables {
+  :where(:host) {
+    --vbr-widget-timezone-selector-color: light-dark(var(--vbr-primary-color-500), var(--vbr-primary-color-500));
+    --vbr-widget-timezone-selector-font-size: var(--font-size-300);
+  }
+}
+
 @layer components {
   :where(.timezone-selector) {
     padding: 3px 0;

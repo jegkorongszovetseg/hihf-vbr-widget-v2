@@ -1,3 +1,20 @@
+@layer components.variables {
+  :where(:host) {
+    --vbr-widget-games-timeline-game-date-size: var(--font-size-100);
+    --vbr-widget-games-timeline-game-team-size: var(--font-size-300);
+    --vbr-widget-games-timeline-game-status-size: var(--font-size-200);
+    --vbr-widget-games-timeline-game-hover-bg-color: linear-gradient(
+      light-dark(var(--vbr-color-white), var(--vbr-primary-color-950)),
+      light-dark(
+          hsl(from var(--vbr-color-white) h s calc(l - 5)),
+          hsl(from var(--vbr-primary-color-950) h s calc(l + 5))
+        )
+        50%,
+      light-dark(var(--vbr-color-white), var(--vbr-primary-color-950))
+    );
+  }
+}
+
 @layer components {
   :where(.games-timeline) {
     display: grid;

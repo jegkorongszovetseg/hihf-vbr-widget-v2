@@ -1,3 +1,9 @@
+@layer components.variables {
+  :where(:host) {
+    --vbr-widget-avatar-border-color: light-dark(var(--vbr-primary-color-100), var(--vbr-primary-color-700));
+  }
+}
+
 @layer components {
   :where(.avatar) {
     --_width: 20px;
