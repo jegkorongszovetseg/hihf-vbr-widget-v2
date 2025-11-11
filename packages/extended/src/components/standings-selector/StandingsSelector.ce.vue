@@ -80,3 +80,5 @@ const normalizedData = computed(() => typeof props.data === 'string' ? JSON.pars
 <style src="@mjsz-vbr-elements/shared/css/components/list.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/icon-button.css" />

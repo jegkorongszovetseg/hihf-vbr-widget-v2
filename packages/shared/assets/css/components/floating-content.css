@@ -1,3 +1,12 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-tooltip-font-size: var(--font-size-200);
+    --mvw-tooltip-color: light-dark(white, black);
+    --mvw-tooltip-bg-color: light-dark(black, white);
+    --mvw-floating-content-bg-color: light-dark(white, var(--mvw-primary-color-700));
+  }
+}
+
 @layer components {
   :where(.floating-content) {
     &.is-tooltip {

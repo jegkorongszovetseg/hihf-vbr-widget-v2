@@ -40,14 +40,8 @@
     /* --Components-- */
 
     /* Trigger */
-    --mvw-popover-trigger-hover-bg-color: light-dark(var(--mvw-secondary-color-200), var(--mvw-primary-color-800));
+    /* --mvw-popover-trigger-hover-bg-color: light-dark(var(--mvw-secondary-color-200), var(--mvw-primary-color-800)); */
     /* --mvw-popover-trigger-focus-bg-color: var(--mvw-secondary-color-300); */
-
-    /* Tooltip */
-    --mvw-tooltip-font-size: var(--font-size-200);
-    --mvw-tooltip-color: light-dark(white, black);
-    --mvw-tooltip-bg-color: light-dark(black, white);
-    --mvw-floating-content-bg-color: light-dark(white, var(--mvw-primary-color-700));
   }
 
   :where(a[href]) {

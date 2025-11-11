@@ -1,7 +1,7 @@
 @layer components {
   :where(.icon-button) {
     /* --_text-color: inherit; */
-    --_hover-bg-color: inherit;
+    --_hover-bg-color: color-mix(in oklab, light-dark(var(--mvw-color-black), var(--mvw-color-white)) 10%, transparent);
 
     align-items: center;
     aspect-ratio: 1;

@@ -148,10 +148,6 @@
         --_color: var(--mvw-table-label-color);
       }
 
-      .icon-button {
-        --_hover-bg-color: var(--mvw-popover-trigger-hover-bg-color);
-      }
-
       .is-team-name-long {
         display: block;
       }
