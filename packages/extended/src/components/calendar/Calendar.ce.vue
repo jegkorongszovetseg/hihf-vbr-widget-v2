@@ -116,7 +116,7 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
           </div>
         </nav>
 
-        <div v-if="games.totalItems === 0 && !isLoading" class="is-text-center">
+        <div v-if="games.totalItems === 0 && !isLoading" class="text-center">
           {{ t('calendar.noGame') }}
         </div>
 

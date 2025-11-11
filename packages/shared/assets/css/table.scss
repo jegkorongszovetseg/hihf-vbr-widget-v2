@@ -11,11 +11,11 @@
     vertical-align: middle;
     text-align: center;
 
-    &.is-text-left {
+    &.text-start {
       text-align: left;
     }
 
-    &.is-text-right {
+    &.text-end {
       text-align: right;
     }
   }
@@ -59,7 +59,7 @@
       position: relative;
     }
 
-    &.is-w-auto {
+    &.w-auto {
       width: auto;
     }
 
@@ -120,15 +120,15 @@
       }
     }
 
-    &.is-text-bold {
+    &.font-bold {
       font-weight: 700;
     }
 
-    &.is-text-italic {
+    &.italic {
       font-style: italic;
     }
 
-    &.is-text-xl {
+    &.text-xl {
       font-size: var(--vbr-widget-typography-font-size-700);
     }
 
@@ -136,7 +136,7 @@
       color: var(--vbr-widget-secondary-color-500);
     }
 
-    &.is-w-auto {
+    &.w-auto {
       width: auto;
     }
 

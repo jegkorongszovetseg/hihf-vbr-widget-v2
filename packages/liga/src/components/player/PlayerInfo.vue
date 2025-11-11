@@ -21,7 +21,7 @@ const { t } = useI18n();
 <template>
   <div v-if="!isEmpty(data)" style="text-align: center">
     <h2 v-once class="is-heading-2">
-      {{ data.name }} <span class="is-text-italic">#{{ data.jerseyNr }}</span>
+      {{ data.name }} <span class="italic">#{{ data.jerseyNr }}</span>
     </h2>
     <div style="display: flex; align-items: center; justify-content: center">
       {{ data.birthDate }} ({{ t('players.age', { years: data.age }) }}) /&nbsp;

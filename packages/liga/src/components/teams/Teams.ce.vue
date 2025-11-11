@@ -64,7 +64,7 @@ function externalTeamLink(teamId, championshipId) {
 
           <ul v-else class="wrapped-grid" style="--min-width: 80px; --max-width: 160px">
             <li v-for="team in teams" :key="team.teamId">
-              <a :href="externalTeamLink(team.teamId, championshipId)" class="is-text-lg is-text-bold">
+              <a :href="externalTeamLink(team.teamId, championshipId)" class="is-text-lg font-bold">
                 <Image :key="team.teamId" class="is-team-logo" :src="team.teamLogo" />
                 {{ team.teamName }}
               </a>

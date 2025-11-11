@@ -81,7 +81,7 @@ function onReTry() {
 
     <div
       v-if="state.length > 0 && convertedRows.rows.length === 0"
-      class="text-muted is-text-center is-text-bold"
+      class="text-muted text-center font-bold"
     >
       {{ t('recruitmentInfo.noResult') }}
     </div>

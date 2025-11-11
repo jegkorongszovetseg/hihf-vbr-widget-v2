@@ -26,7 +26,7 @@ const { t } = useI18n();
           {{ t(`playoffs.${playoff.divisionStage2Name}${playoff.divisionStageNumber || ''}`) }}
         </div>
         <ul>
-          <li class="responsive-team-name is-text-bold text-highlighted">
+          <li class="responsive-team-name font-bold text-highlighted">
             <div>
               <span class="team-name-short">{{ playoff.homeTeam.shortName }}</span>
               <span class="team-name-long">{{ playoff.homeTeam.longName }}</span>
@@ -35,7 +35,7 @@ const { t } = useI18n();
           <li><Image :src="playoff.homeTeam.logo" /></li>
           <li><span class="badge lg inverted">{{ playoff.seriesStandings }}</span></li>
           <li><Image :src="playoff.awayTeam.logo" /></li>
-          <li class="responsive-team-name is-text-bold text-highlighted">
+          <li class="responsive-team-name font-bold text-highlighted">
             <div>
               <span class="team-name-short">{{ playoff.awayTeam.shortName }}</span>
               <span class="team-name-long">{{ playoff.awayTeam.longName }}</span>

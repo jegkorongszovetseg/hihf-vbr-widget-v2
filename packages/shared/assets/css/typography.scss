@@ -1,15 +1,15 @@
-.is-text-right {
+.text-end {
   text-align: right;
 }
-.is-text-center {
+.text-center {
   text-align: center;
 }
 
-.is-text-bold {
+.font-bold {
   font-weight: 700;
 }
 
-.is-text-italic {
+.italic {
   font-style: italic;
 }
 
@@ -29,7 +29,7 @@
   font-size: var(--vbr-widget-typography-font-size-600);
   line-height: var(--vbr-widget-typography-font-lineheight-600);
 }
-.is-text-xl {
+.text-xl {
   font-size: var(--vbr-widget-typography-font-size-700);
   line-height: var(--vbr-widget-typography-font-lineheight-700);
 }

@@ -8,22 +8,22 @@ export const PAGE_ROSTER = 'Roster';
 export const COLUMNS_TEAM_INFO = {
   teamKeyIntl: {
     label: 'table.blank',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   teamValue: {
     label: 'table.blank',
-    class: 'is-text-left',
+    class: 'text-start',
   },
 };
 
 export const COLUMNS_TEAM_INFO_ICERINK = {
   teamKey: {
     label: 'table.blank',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   teamValue: {
     label: 'table.blank',
-    class: 'is-text-left',
+    class: 'text-start',
   },
 };
 

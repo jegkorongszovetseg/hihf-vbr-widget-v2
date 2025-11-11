@@ -1,35 +1,31 @@
 @layer utils {
-  .is-text-left {
-    text-align: start;
-  }
-
-  .text-end,
-  .is-text-right {
-    text-align: end;
-  }
-
-  .text-center,
-  .is-text-center {
-    text-align: center;
-  }
-
-  .is-text-bold {
+  /* Font */
+  .font-bold {
     font-weight: 700;
   }
 
-  .is-text-italic {
+  .italic {
     font-style: italic;
   }
 
-  .is-w-auto {
-    width: auto;
+  /* Text */
+  .text-start {
+    text-align: start;
+  }
+
+  .text-end {
+    text-align: end;
+  }
+
+  .text-center {
+    text-align: center;
   }
 
   .text-sm {
     font-size: var(--font-size-400);
   }
 
-  .is-text-xl {
+  .text-xl {
     font-size: var(--font-size-700);
   }
 
@@ -51,6 +47,11 @@
 
   .text-highlighted {
     color: var(--vbr-widget-text-highlighted);
+  }
+
+  /* Size */
+  .w-auto {
+    width: auto;
   }
 
   .mb-md {

@@ -56,13 +56,13 @@ const { t } = useI18n();
         <span v-if="game.seriesStandings" class="is-badge">{{ game.seriesStandings }}</span>
       </div>
       <a :href="gameLink(game)" :target="target">
-        <span v-if="game.gameStatus > 0 && game.gameStatus < 3" class="is-text-xl is-text-bold">
+        <span v-if="game.gameStatus > 0 && game.gameStatus < 3" class="text-xl font-bold">
           {{ game.homeTeamScore }} : {{ game.awayTeamScore }}
         </span>
-        <span v-if="game.gameStatus === 3" class="is-text-xl is-text-bold">
+        <span v-if="game.gameStatus === 3" class="text-xl font-bold">
           {{ t('game.status.jury') }}
         </span>
-        <span v-if="game.gameStatus === 4" class="is-text-xl is-text-bold">
+        <span v-if="game.gameStatus === 4" class="text-xl font-bold">
           {{ t('game.status.delayed') }}
         </span>
         <span v-if="game.gameStatus === 0">

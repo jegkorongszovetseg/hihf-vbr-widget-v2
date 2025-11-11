@@ -52,7 +52,7 @@ const { t } = useI18n();
     </div>
 
     <div class="responsive-team-name" style="grid-area: home-team">
-      <div class="text-end text-highlighted is-text-bold">
+      <div class="text-end text-highlighted font-bold">
         <span class="team-name-short">{{ game.homeTeam.shortName }}</span>
         <span class="team-name-long">{{ game.homeTeam.longName }}</span>
       </div>
@@ -67,20 +67,20 @@ const { t } = useI18n();
         <span v-if="game.isShootout" class="badge is-invert">{{ t('common.shootoutShort') }}</span>
         <span v-if="game.seriesStandings" class="is-badge">{{ game.seriesStandings }}</span>
       </div> -->
-      <span v-if="game.gameStatus === 0" class="is-text-xl is-text-bold">
+      <span v-if="game.gameStatus === 0" class="text-xl font-bold">
         - : -
       </span>
       <a :href="gameLink(game)" :target="target">
 
-        <span v-if="game.gameStatus > 0 && game.gameStatus < 3" class="is-text-xl is-text-bold">
+        <span v-if="game.gameStatus > 0 && game.gameStatus < 3" class="text-xl font-bold">
           {{ game.homeTeamScore }} : {{ game.awayTeamScore }}
         </span>
 
-        <span v-if="game.gameStatus === 3" class="is-text-xl is-text-bold">
+        <span v-if="game.gameStatus === 3" class="text-xl font-bold">
           {{ t('game.status.jury') }}
         </span>
 
-        <span v-if="game.gameStatus === 4" class="is-text-xl is-text-bold">
+        <span v-if="game.gameStatus === 4" class="text-xl font-bold">
           {{ t('game.status.delayed') }}
         </span>
       </a>
@@ -95,7 +95,7 @@ const { t } = useI18n();
       <Image :key="game.awayTeam.id" :src="game.awayTeam.logo" />
     </div>
     <div class="responsive-team-name" style="grid-area: away-team">
-      <div class="text-highlighted is-text-bold">
+      <div class="text-highlighted font-bold">
         <span v-if="Array.isArray(game.awayTeam)">Torna</span>
         <span class="team-name-short">{{ game.awayTeam.shortName }}</span>
         <span class="team-name-long">{{ game.awayTeam.longName }}</span>
