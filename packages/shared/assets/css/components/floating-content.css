@@ -19,7 +19,6 @@
       background-color: var(--mvw-floating-content-bg-color);
       border-radius: var(--radius-2);
       box-shadow: var(--shadow-6);
-      overflow: clip;
 
       .is-arrow {
         background-color: var(--mvw-floating-content-bg-color);
@@ -27,7 +26,6 @@
     }
 
     .is-arrow {
-      position: absolute;
       width: 8px;
       height: 8px;
       transform: rotate(45deg);
@@ -52,5 +50,16 @@
         clip-path: polygon(100% 0, 0 0, 0 100%);
       }
     }
+  }
+
+  .transition-fade-enter-active,
+  .transition-fade-leave-active {
+    transition: all 0.7s var(--ease-spring-1);
+  }
+
+  .transition-fade-enter-from,
+  .transition-fade-leave-to {
+    opacity: 0;
+    transform: translateY(5px);
   }
 }

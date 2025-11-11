@@ -105,7 +105,7 @@ function toggle() {
       left: x ? `${x}px` : '',
     }"
   >
-    <transition name="transition-fade" mode="out-in">
+    <transition name="transition-fade">
       <div v-if="open" class="floating-content" :class="[[`is-${props.theme}`]]">
         <slot name="content" :close="hide">
           {{ content }}

@@ -49,7 +49,6 @@
       align-items: center;
       display: flex;
       gap: var(--size-8);
-      /* justify-content: space-between; */
       list-style: none;
 
       &::marker,
@@ -62,7 +61,7 @@
       }
 
       svg {
-        transition: rotate 0.3s var(--ease-1, ease);
+        transition: rotate 0.8s var(--ease-spring-1, ease);
       }
     }
 
