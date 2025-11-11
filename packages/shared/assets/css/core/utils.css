@@ -54,10 +54,32 @@
     width: auto;
   }
 
+  .mb-sm {
+    margin-block-end: var(--size-8);
+  }
   .mb-md {
     margin-block-end: var(--size-16);
   }
+  .mt-md {
+    margin-block-start: var(--size-16);
+  }
+  .mt-lg {
+    margin-block-start: var(--size-24);
+  }
+  .mt-xl {
+    margin-block-start: calc(var(--size-16) * 2);
+  }
 
+  /* Display */
+  .flex {
+    display: flex;
+  }
+
+  .block {
+    display: block;
+  }
+
+  /* Layout */
   .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));

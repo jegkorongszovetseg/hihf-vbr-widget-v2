@@ -64,8 +64,8 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
         :season-id="seasonId"
         :api-key="apiKey"
       >
-        <nav class="tabs underlined">
-          <div id="top" role="tablist" :aria-label="t('selection.sections')" class="flex overflow-x-auto is-mb-5">
+        <nav class="tabs underlined mb-md">
+          <div id="top" role="tablist" :aria-label="t('selection.sections')" class="flex overflow-x-auto">
             <button
               role="tab"
               type="button"
@@ -124,7 +124,7 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
           <LoadingIndicator v-if="isLoading" />
 
           <div v-for="(gameDay, key) in games.rows" :key="key" :data-gamedate="key">
-            <span class="h6 text-highlighted">{{ format(new Date(key), 'LL dddd', timezone, locale) }}</span>
+            <span class="block h6 text-highlighted mt-xl mb-md">{{ format(new Date(key), 'LL dddd', timezone, locale) }}</span>
             <div class="card">
               <template v-for="game in gameDay" :key="game.id">
                 <GameItem

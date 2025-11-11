@@ -62,15 +62,10 @@ const { t } = useI18n();
     </div>
 
     <div class="text-center" :class="[{ 'is-live': game.gameStatus === 1 }]" style="grid-area: game-data">
-      <!-- <div>
-        <span v-if="game.isOvertime" class="badge is-invert">{{ t('common.overtimeShort') }}</span>
-        <span v-if="game.isShootout" class="badge is-invert">{{ t('common.shootoutShort') }}</span>
-        <span v-if="game.seriesStandings" class="is-badge">{{ game.seriesStandings }}</span>
-      </div> -->
-      <span v-if="game.gameStatus === 0" class="text-xl font-bold">
+      <span v-if="game.gameStatus === 0" class="text-xl font-bold text-highlighted">
         - : -
       </span>
-      <a :href="gameLink(game)" :target="target">
+      <a :href="gameLink(game)" :target="target" class="game-result">
 
         <span v-if="game.gameStatus > 0 && game.gameStatus < 3" class="text-xl font-bold">
           {{ game.homeTeamScore }} : {{ game.awayTeamScore }}
