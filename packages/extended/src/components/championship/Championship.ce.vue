@@ -138,6 +138,7 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
             <div role="tablist" :aria-label="t('selection.sections')">
               <button
                 role="tab"
+                type="button"
                 :aria-selected="selectedPanel === PANEL_SCHEDULE"
                 @click="changePanel(PANEL_SCHEDULE)"
               >
@@ -145,6 +146,7 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
               </button>
               <button
                 role="tab"
+                type="button"
                 :aria-selected="selectedPanel === PANEL_STANDINGS"
                 @click="changePanel(PANEL_STANDINGS)"
               >
@@ -152,6 +154,7 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
               </button>
               <button
                 role="tab"
+                type="button"
                 :aria-selected="selectedPanel === PANEL_PLAYERS"
                 @click="changePanel(PANEL_PLAYERS)"
               >
@@ -159,6 +162,7 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
               </button>
               <button
                 role="tab"
+                type="button"
                 :aria-selected="selectedPanel === PANEL_TEAMS"
                 @click="changePanel(PANEL_TEAMS)"
               >

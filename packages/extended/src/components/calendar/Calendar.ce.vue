@@ -64,45 +64,57 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
         :season-id="seasonId"
         :api-key="apiKey"
       >
-        <div id="top" class="flex overflow-x-auto is-mb-5">
-          <button
-            class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_GAMES_PLAYED }"
-            @click="changePanel(PANEL_GAMES_PLAYED)"
-          >
-            {{ t('calendar.gamesPlayed') }}
-          </button>
-          <button
-            class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_TODAYS_GAMES }"
-            @click="changePanel(PANEL_TODAYS_GAMES)"
-          >
-            {{ t('calendar.todaysGames') }}
-          </button>
-          <button
-            class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_NEXT_GAMES }"
-            @click="changePanel(PANEL_NEXT_GAMES)"
-          >
-            {{ t('calendar.nextGames') }}
-          </button>
-          <button
-            class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_WEEK_GAMES }"
-            @click="changePanel(PANEL_WEEK_GAMES)"
-          >
-            {{ t('calendar.weekGames') }}
-          </button>
-        </div>
+        <nav class="tabs underlined">
+          <div id="top" role="tablist" :aria-label="t('selection.sections')" class="flex overflow-x-auto is-mb-5">
+            <button
+              role="tab"
+              type="button"
+              :aria-selected="selectedPanel === PANEL_GAMES_PLAYED"
+              @click="changePanel(PANEL_GAMES_PLAYED)"
+            >
+              {{ t('calendar.gamesPlayed') }}
+            </button>
+            <button
+              role="tab"
+              type="button"
+              :aria-selected="selectedPanel === PANEL_TODAYS_GAMES"
+              @click="changePanel(PANEL_TODAYS_GAMES)"
+            >
+              {{ t('calendar.todaysGames') }}
+            </button>
+            <button
+              role="tab"
+              type="button"
+              :aria-selected="selectedPanel === PANEL_NEXT_GAMES"
+              @click="changePanel(PANEL_NEXT_GAMES)"
+            >
+              {{ t('calendar.nextGames') }}
+            </button>
+            <button
+              role="tab"
+              type="button"
+              :aria-selected="selectedPanel === PANEL_WEEK_GAMES"
+              @click="changePanel(PANEL_WEEK_GAMES)"
+            >
+              {{ t('calendar.weekGames') }}
+            </button>
+          </div>
+        </nav>
 
-        <div class="toggle-group">
-          <button
-            v-for="month in months"
-            :key="month.id"
-            type="button"
-            :class="{ 'is-active': selectedMonth === month.id }"
-            :disabled="isLoading"
-            @click="setMonth(month)"
-          >
-            {{ month.name }}
-          </button>
-        </div>
+        <nav class="tabs filled">
+          <div role="tablist" :aria-label="t('selection.sections')">
+            <button
+              v-for="month in months"
+              :key="month.id"
+              type="button"
+              :aria-selected="selectedMonth === month.id"
+              :disabled="isLoading"
+              @click="setMonth(month)"
+            >
+              {{ month.name }}
+            </button>
+          </div>
+        </nav>
 
         <div v-if="games.totalItems === 0 && !isLoading" class="is-text-center">
           {{ t('calendar.noGame') }}
@@ -112,8 +124,8 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
           <LoadingIndicator v-if="isLoading" />
 
           <div v-for="(gameDay, key) in games.rows" :key="key" :data-gamedate="key">
-            <span class="is-text-base">{{ format(new Date(key), 'LL dddd', timezone, locale) }}</span>
-            <div class="is-card">
+            <span class="h6 text-highlighted">{{ format(new Date(key), 'LL dddd', timezone, locale) }}</span>
+            <div class="card">
               <template v-for="game in gameDay" :key="game.id">
                 <GameItem
                   :game="game"
@@ -141,10 +153,49 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
   </I18NProvider>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<!-- <style scoped>
+@layer components {
+  :where(.card-item) {
+    display: grid;
+    grid-gap: var(--size-16);
+    grid-template-columns: 2fr 20px 1fr 20px 2fr;
+    grid-template-areas: 'name name name name name' 'date date date date date' 'home-team home-team-logo game-data away-team-logo away-team';
+    padding: var(--size-16);
+    align-items: center;
 
-<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
+    &:not(:last-of-type) {
+      border-bottom: 1px solid var(--vbr-primary-color-100);
+    }
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+    .is-logo-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+    }
 
-<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
+    @container card-wrapper (width > 768px) {
+      grid-template-columns: 2fr 40px 1fr 40px 2fr;
+    }
+  }
+}
+</style> -->
+
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/card.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/typography.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/game-item.css" />
+
+<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
+
+<!-- <style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style> -->
+
+<!-- <style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style> -->
+
+<!-- <style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style> -->

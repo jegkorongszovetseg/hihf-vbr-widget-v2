@@ -37,7 +37,7 @@ const { t } = useI18n();
 
 <template>
   <div class="card-item" :class="{ 'is-optional': game.optional }">
-    <div class="is-info is-text-sm">
+    <div class="text-muted text-sm text-center" style="grid-area: name">
       <a :href="gameLink(game)">{{ game.gameName }}</a>&nbsp;- {{ game.championshipName }} - {{ game.divisionName }} - {{ game.location.locationName }}
       <template v-if="game.broadcast">
         -&nbsp;<IconBroadcast height="16" />&nbsp;
@@ -47,20 +47,24 @@ const { t } = useI18n();
       </template>
     </div>
 
-    <div class="is-info is-text-sm">
+    <div class="text-muted text-sm text-center" style="grid-area: date">
       {{ format(game.gameDate, 'L LT', null, locale) }} ({{ offsetName(game.gameDate, timezone, locale) }})
     </div>
 
-    <div class="is-home-team is-text-base">
-      <span class="is-team-name-short">{{ game.homeTeam.shortName }}</span>
-      <span class="is-team-name-long">{{ game.homeTeam.longName }}</span>
+    <div class="responsive-team-name" style="grid-area: home-team">
+      <div class="text-end text-highlighted is-text-bold">
+        <span class="team-name-short">{{ game.homeTeam.shortName }}</span>
+        <span class="team-name-long">{{ game.homeTeam.longName }}</span>
+      </div>
+    </div>
+    <div style="grid-area: home-team-logo">
       <Image :key="game.homeTeam.id" class="is-logo-image" :src="game.homeTeam.logo" />
     </div>
 
-    <div class="is-game-data" :class="[{ 'is-live': game.gameStatus === 1 }]">
-      <!-- <div class="g-row">
-        <span v-if="game.isOvertime" class="is-badge is-invert">{{ t('common.overtimeShort') }}</span>
-        <span v-if="game.isShootout" class="is-badge is-invert">{{ t('common.shootoutShort') }}</span>
+    <div class="text-center" :class="[{ 'is-live': game.gameStatus === 1 }]" style="grid-area: game-data">
+      <!-- <div>
+        <span v-if="game.isOvertime" class="badge is-invert">{{ t('common.overtimeShort') }}</span>
+        <span v-if="game.isShootout" class="badge is-invert">{{ t('common.shootoutShort') }}</span>
         <span v-if="game.seriesStandings" class="is-badge">{{ game.seriesStandings }}</span>
       </div> -->
       <span v-if="game.gameStatus === 0" class="is-text-xl is-text-bold">
@@ -81,17 +85,21 @@ const { t } = useI18n();
         </span>
       </a>
       <template v-if="game.gameStatus > 0">
-        <div class="is-text-sm is-info is-whitespace-nowrap">
+        <div class="text-sm text-muted is-whitespace-nowrap">
           {{ game.periodResults }}
         </div>
       </template>
     </div>
 
-    <div class="is-away-team is-text-base">
-      <span v-if="Array.isArray(game.awayTeam)">Torna</span>
-      <Image :key="game.awayTeam.id" class="is-logo-image" :src="game.awayTeam.logo" />
-      <span class="is-team-name-short">{{ game.awayTeam.shortName }}</span>
-      <span class="is-team-name-long">{{ game.awayTeam.longName }}</span>
+    <div style="grid-area: away-team-logo">
+      <Image :key="game.awayTeam.id" :src="game.awayTeam.logo" />
+    </div>
+    <div class="responsive-team-name" style="grid-area: away-team">
+      <div class="text-highlighted is-text-bold">
+        <span v-if="Array.isArray(game.awayTeam)">Torna</span>
+        <span class="team-name-short">{{ game.awayTeam.shortName }}</span>
+        <span class="team-name-long">{{ game.awayTeam.longName }}</span>
+      </div>
     </div>
   </div>
 </template>

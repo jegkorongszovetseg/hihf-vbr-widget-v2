@@ -1,8 +1,10 @@
 @layer components {
   :where(.card) {
     container-type: inline-size;
+    container-name: card-wrapper;
 
-    background-color: white;
+    padding: var(--size-16);
+    background-color: light-dark(var(--vbr-color-white), var(--vbr-primary-color-900));
     border-radius: var(--radius-2);
     box-shadow: var(--shadow-3);
   }

@@ -1,0 +1,32 @@
+@layer components {
+  :where(.card-item) {
+    display: grid;
+    grid-gap: var(--size-8);
+    grid-template-columns: 1fr 20px 0.5fr 20px 1fr;
+    grid-template-areas: 'name name name name name' 'date date date date date' 'home-team home-team-logo game-data away-team-logo away-team';
+    padding: var(--size-16);
+    align-items: center;
+
+    &:not(:last-of-type) {
+      border-bottom: 1px solid var(--vbr-widget-border-faded);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+    }
+
+    a[href] {
+      color: var(--vbr-widget-text-highlighted);
+    }
+
+    a[href].is-live {
+      color: var(--vbr-widget-text-live);
+    }
+
+    @container card-wrapper (width > 768px) {
+      grid-template-columns: 2fr 40px 1fr 40px 2fr;
+    }
+  }
+}

@@ -3,10 +3,12 @@
     text-align: start;
   }
 
+  .text-end,
   .is-text-right {
     text-align: end;
   }
 
+  .text-center,
   .is-text-center {
     text-align: center;
   }
@@ -21,6 +23,10 @@
 
   .is-w-auto {
     width: auto;
+  }
+
+  .text-sm {
+    font-size: var(--font-size-400);
   }
 
   .is-text-xl {
@@ -65,20 +71,25 @@
   }
 
   .responsive-team-name {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    container-type: inline-size;
+    container-name: team-name;
 
-    .team-name-short {
-      display: none;
-    }
+    > * {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
-    @container table-wrapper (max-width: 360px) {
-      .team-name-long {
+      .team-name-short {
         display: none;
       }
-      .team-name-short {
-        display: block;
+
+      @container team-name (max-width: 200px) {
+        .team-name-long {
+          display: none;
+        }
+        .team-name-short {
+          display: block;
+        }
       }
     }
   }
