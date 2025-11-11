@@ -1,38 +1,35 @@
 @layer components.variables {
   :where(:host) {
     /* Table */
-    --vbr-widget-table-header-font-size: var(--font-size-200);
-    --vbr-widget-table-default-column-width: 40px;
-    --vbr-widget-table-default-bg-color: light-dark(var(--vbr-color-white), var(--vbr-primary-color-900));
-    --vbr-widget-table-color: light-dark(var(--vbr-primary-color-800), var(--vbr-primary-color-200));
-    --vbr-widget-table-neutral-color: light-dark(var(--vbr-primary-color-300), var(--vbr-primary-color-700));
-    --vbr-widget-table-header-bg-color: light-dark(var(--vbr-primary-color-800), var(--vbr-primary-color-200));
-    --vbr-widget-table-header-color: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-800));
-    --vbr-widget-table-header-hover-bg-color: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-300));
-    --vbr-widget-table-header-active-bg-color: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-300));
-    --vbr-widget-table-header-active-color: light-dark(var(--vbr-color-white), var(--vbr-primary-color-900));
-    --vbr-widget-table-hover-color: light-dark(var(--vbr-primary-color-900), var(--vbr-color-white));
-    --vbr-widget-table-hover-bg-color: light-dark(var(--vbr-secondary-color-100), var(--vbr-primary-color-950));
-    --vbr-widget-table-active-color: light-dark(var(--vbr-secondary-color-900), var(--vbr-secondary-color-100));
-    --vbr-widget-table-active-bg-color: light-dark(var(--vbr-secondary-color-200), var(--vbr-secondary-color-800));
-    --vbr-widget-table-active-even-bg-color: light-dark(var(--vbr-secondary-color-300), var(--vbr-secondary-color-700));
-    --vbr-widget-table-active-hover-color: light-dark(var(--vbr-secondary-color-900), var(--vbr-secondary-color-100));
-    --vbr-widget-table-active-hover-bg-color: light-dark(
-      var(--vbr-secondary-color-400),
-      var(--vbr-secondary-color-500)
+    --mvw-table-header-font-size: var(--font-size-200);
+    --mvw-table-default-column-width: 40px;
+    --mvw-table-default-bg-color: light-dark(var(--mvw-color-white), var(--mvw-primary-color-900));
+    --mvw-table-color: light-dark(var(--mvw-primary-color-800), var(--mvw-primary-color-200));
+    --mvw-table-neutral-color: light-dark(var(--mvw-primary-color-300), var(--mvw-primary-color-700));
+    --mvw-table-header-bg-color: light-dark(var(--mvw-primary-color-800), var(--mvw-primary-color-200));
+    --mvw-table-header-color: light-dark(var(--mvw-primary-color-200), var(--mvw-primary-color-800));
+    --mvw-table-header-hover-bg-color: light-dark(var(--mvw-primary-color-700), var(--mvw-primary-color-300));
+    --mvw-table-header-active-bg-color: light-dark(var(--mvw-primary-color-700), var(--mvw-primary-color-300));
+    --mvw-table-header-active-color: light-dark(var(--mvw-color-white), var(--mvw-primary-color-900));
+    --mvw-table-hover-color: light-dark(var(--mvw-primary-color-900), var(--mvw-color-white));
+    --mvw-table-hover-bg-color: light-dark(var(--mvw-secondary-color-100), var(--mvw-primary-color-950));
+    --mvw-table-active-color: light-dark(var(--mvw-secondary-color-900), var(--mvw-secondary-color-100));
+    --mvw-table-active-bg-color: light-dark(var(--mvw-secondary-color-200), var(--mvw-secondary-color-800));
+    --mvw-table-active-even-bg-color: light-dark(var(--mvw-secondary-color-300), var(--mvw-secondary-color-700));
+    --mvw-table-active-hover-color: light-dark(var(--mvw-secondary-color-900), var(--mvw-secondary-color-100));
+    --mvw-table-active-hover-bg-color: light-dark(var(--mvw-secondary-color-400), var(--mvw-secondary-color-500));
+    --mvw-table-portrait-border-color: light-dark(var(--mvw-primary-color-100), var(--mvw-primary-color-900));
+    --mvw-table-portrait-bg-color: light-dark(var(--mvw-primary-color-50), var(--mvw-primary-color-900));
+    --mvw-table-stripped-bg-color: light-dark(
+      hsl(from var(--mvw-primary-color-50) h s calc(l + 3)),
+      hsl(from var(--mvw-primary-color-900) h s calc(l + 2))
     );
-    --vbr-widget-table-portrait-border-color: light-dark(var(--vbr-primary-color-100), var(--vbr-primary-color-900));
-    --vbr-widget-table-portrait-bg-color: light-dark(var(--vbr-primary-color-50), var(--vbr-primary-color-900));
-    --vbr-widget-table-stripped-bg-color: light-dark(
-      hsl(from var(--vbr-primary-color-50) h s calc(l + 3)),
-      hsl(from var(--vbr-primary-color-900) h s calc(l + 2))
-    );
-    --vbr-widget-table-label-color: light-dark(var(--vbr-primary-color-500), var(--vbr-primary-color-400));
-    --vbr-widget-table-label-bg-color: light-dark(var(--vbr-primary-color-50), var(--vbr-primary-color-900));
-    --vbr-widget-table-cell-logo-size: 20px;
-    --vbr-widget-table-cell-portrait-size: 26px;
-    --vbr-widget-table-caption-color: light-dark(var(--vbr-primary-color-400), var(--vbr-primary-color-600));
-    --vbr-widget-table-caption-font-size: var(--font-size-200);
+    --mvw-table-label-color: light-dark(var(--mvw-primary-color-500), var(--mvw-primary-color-400));
+    --mvw-table-label-bg-color: light-dark(var(--mvw-primary-color-50), var(--mvw-primary-color-900));
+    --mvw-table-cell-logo-size: 20px;
+    --mvw-table-cell-portrait-size: 26px;
+    --mvw-table-caption-color: light-dark(var(--mvw-primary-color-400), var(--mvw-primary-color-600));
+    --mvw-table-caption-font-size: var(--font-size-200);
   }
 }
 
@@ -41,8 +38,8 @@
     border-collapse: collapse;
     max-inline-size: 100%;
     position: relative;
-    color: var(--vbr-widget-table-color);
-    background-color: var(--vbr-widget-table-default-bg-color);
+    color: var(--mvw-table-color);
+    background-color: var(--mvw-table-default-bg-color);
 
     /* Rows */
     tr {
@@ -54,10 +51,10 @@
       }
 
       &:nth-child(even) {
-        background: var(--vbr-widget-table-stripped-bg-color);
+        background: var(--mvw-table-stripped-bg-color);
 
         td.is-active {
-          background-color: var(--vbr-widget-table-active-even-bg-color);
+          background-color: var(--mvw-table-active-even-bg-color);
         }
       }
     }
@@ -70,16 +67,16 @@
     }
 
     th {
-      background: var(--vbr-widget-table-header-bg-color);
-      color: var(--vbr-widget-table-header-color);
-      font-size: var(--vbr-widget-table-header-font-size);
+      background: var(--mvw-table-header-bg-color);
+      color: var(--mvw-table-header-color);
+      font-size: var(--mvw-table-header-font-size);
       font-weight: 700;
       text-align: center;
-      width: var(--vbr-widget-table-default-column-width);
+      width: var(--mvw-table-default-column-width);
 
       &:focus-visible,
       &:hover {
-        background-color: var(--vbr-widget-table-header-hover-bg-color);
+        background-color: var(--mvw-table-header-hover-bg-color);
         outline: none;
       }
 
@@ -93,8 +90,8 @@
       }
 
       &.is-active {
-        background-color: var(--vbr-widget-table-header-active-bg-color);
-        color: var(--vbr-widget-table-header-active-color);
+        background-color: var(--mvw-table-header-active-bg-color);
+        color: var(--mvw-table-header-active-color);
 
         .is-icon-sort {
           opacity: 1;
@@ -116,19 +113,19 @@
     td {
       &.is-active {
         font-weight: 700;
-        color: var(--vbr-widget-table-active-color);
-        background: var(--vbr-widget-table-active-bg-color);
+        color: var(--mvw-table-active-color);
+        background: var(--mvw-table-active-bg-color);
       }
 
       &.has-avatar {
         .avatar {
-          --_width: var(--vbr-widget-table-cell-portrait-size);
+          --_width: var(--mvw-table-cell-portrait-size);
         }
       }
 
       &[data-value='0'],
       &.is-zero {
-        color: var(--vbr-widget-text-faded);
+        color: var(--mvw-text-faded);
       }
 
       /* &:has(.is-logo-image) {
@@ -138,21 +135,21 @@
       .is-logo-image {
         display: inline-block;
         vertical-align: middle;
-        width: var(--vbr-widget-table-cell-logo-size);
-        height: var(--vbr-widget-table-cell-logo-size);
+        width: var(--mvw-table-cell-logo-size);
+        height: var(--mvw-table-cell-logo-size);
       }
 
       .is-duplicated {
-        color: var(--vbr-widget-table-neutral-color);
+        color: var(--mvw-table-neutral-color);
       }
 
       .badge {
-        --_bg-color: var(--vbr-widget-table-label-bg-color);
-        --_color: var(--vbr-widget-table-label-color);
+        --_bg-color: var(--mvw-table-label-bg-color);
+        --_color: var(--mvw-table-label-color);
       }
 
       .icon-button {
-        --_hover-bg-color: var(--vbr-widget-popover-trigger-hover-bg-color);
+        --_hover-bg-color: var(--mvw-popover-trigger-hover-bg-color);
       }
 
       .is-team-name-long {
@@ -176,8 +173,8 @@
     /* Caption */
     caption {
       caption-side: bottom;
-      color: var(--vbr-widget-table-caption-color);
-      font-size: var(--vbr-widget-table-caption-font-size, 0.75rem);
+      color: var(--mvw-table-caption-color);
+      font-size: var(--mvw-table-caption-font-size, 0.75rem);
       padding: var(--size-12) 0;
       text-align: start;
     }
@@ -186,12 +183,12 @@
     tbody {
       tr:focus-within,
       tr:hover {
-        color: var(--vbr-widget-table-hover-color);
-        background-color: var(--vbr-widget-table-hover-bg-color);
+        color: var(--mvw-table-hover-color);
+        background-color: var(--mvw-table-hover-bg-color);
 
         td.is-active {
-          color: var(--vbr-widget-table-active-hover-color);
-          background-color: var(--vbr-widget-table-active-hover-bg-color);
+          color: var(--mvw-table-active-hover-color);
+          background-color: var(--mvw-table-active-hover-bg-color);
         }
       }
     }

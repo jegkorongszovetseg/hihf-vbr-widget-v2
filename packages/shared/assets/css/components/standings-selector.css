@@ -1,22 +1,19 @@
 @layer components.variables {
   :where(:host) {
-    --vbr-widget-standings-selector-title-size: var(--font-size-500);
-    --vbr-widget-standings-selector-title-color: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-300));
-    --vbr-widget-standings-selector-title-transform: none;
-    --vbr-widget-standings-selector-title-padding: 0 0.625em 0.5625em;
-    --vbr-widget-standings-selector-title-bg-color: transparent;
+    --mvw-standings-selector-title-size: var(--font-size-500);
+    --mvw-standings-selector-title-color: light-dark(var(--mvw-primary-color-700), var(--mvw-primary-color-300));
+    --mvw-standings-selector-title-transform: none;
+    --mvw-standings-selector-title-padding: 0 0.625em 0.5625em;
+    --mvw-standings-selector-title-bg-color: transparent;
 
-    --vbr-widget-standings-selector-section-title-bg: light-dark(
-      var(--vbr-primary-color-50),
-      var(--vbr-primary-color-900)
+    --mvw-standings-selector-section-title-bg: light-dark(var(--mvw-primary-color-50), var(--mvw-primary-color-900));
+    --mvw-standings-selector-section-title-size: var(--font-size-400);
+    --mvw-standings-selector-section-title-color: light-dark(
+      var(--mvw-primary-color-700),
+      var(--mvw-primary-color-300)
     );
-    --vbr-widget-standings-selector-section-title-size: var(--font-size-400);
-    --vbr-widget-standings-selector-section-title-color: light-dark(
-      var(--vbr-primary-color-700),
-      var(--vbr-primary-color-300)
-    );
-    --vbr-widget-standings-selector-section-title-padding: var(--size-8);
-    --vbr-widget-standings-selector-section-logo-size: 30px;
+    --mvw-standings-selector-section-title-padding: var(--size-8);
+    --mvw-standings-selector-section-logo-size: 30px;
   }
 }
 
@@ -26,11 +23,11 @@
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: center;
-      padding: var(--vbr-widget-standings-selector-title-padding);
-      text-transform: var(--vbr-widget-standings-selector-title-transform);
-      font-size: var(--vbr-widget-standings-selector-title-size);
-      color: var(--vbr-widget-standings-selector-title-color);
-      background: var(--vbr-widget-standings-selector-title-bg-color);
+      padding: var(--mvw-standings-selector-title-padding);
+      text-transform: var(--mvw-standings-selector-title-transform);
+      font-size: var(--mvw-standings-selector-title-size);
+      color: var(--mvw-standings-selector-title-color);
+      background: var(--mvw-standings-selector-title-bg-color);
     }
 
     .is-title-text {
@@ -44,8 +41,8 @@
       ul {
         display: grid;
         grid-template-columns:
-          minmax(0, 1fr) var(--vbr-widget-standings-selector-section-logo-size) auto var(
-            --vbr-widget-standings-selector-section-logo-size
+          minmax(0, 1fr) var(--mvw-standings-selector-section-logo-size) auto var(
+            --mvw-standings-selector-section-logo-size
           )
           minmax(0, 1fr);
         gap: 12px;
@@ -70,10 +67,10 @@
       }
 
       .section-title {
-        padding: var(--vbr-widget-standings-selector-section-title-padding);
-        color: var(--vbr-widget-standings-selector-section-title-color);
-        background-color: var(--vbr-widget-standings-selector-section-title-bg);
-        font-size: var(--vbr-widget-standings-selector-section-title-size);
+        padding: var(--mvw-standings-selector-section-title-padding);
+        color: var(--mvw-standings-selector-section-title-color);
+        background-color: var(--mvw-standings-selector-section-title-bg);
+        font-size: var(--mvw-standings-selector-section-title-size);
         font-weight: 700;
         text-align: center;
       }

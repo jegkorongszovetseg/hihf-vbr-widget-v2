@@ -1,9 +1,9 @@
 @layer components.variables {
   :where(:host) {
-    --vbr-widget-playoffs-header-bg: var(--vbr-primary-color-800);
-    --vbr-widget-playoffs-header-color: var(--vbr-primary-color-100);
-    --vbr-widget-playoffs-header-size: var(--font-size-500);
-    --vbr-widget-playoffs-details-bg: var(--vbr-primary-color-50);
+    --mvw-playoffs-header-bg: var(--mvw-primary-color-800);
+    --mvw-playoffs-header-color: var(--mvw-primary-color-100);
+    --mvw-playoffs-header-size: var(--font-size-500);
+    --mvw-playoffs-details-bg: var(--mvw-primary-color-50);
   }
 }
 
@@ -12,10 +12,10 @@
     .section-title {
       padding: 10px;
       text-align: center;
-      font-size: var(--vbr-widget-playoffs-header-size);
+      font-size: var(--mvw-playoffs-header-size);
       font-weight: 700;
-      color: var(--vbr-widget-playoffs-header-color);
-      background-color: var(--vbr-widget-playoffs-header-bg);
+      color: var(--mvw-playoffs-header-color);
+      background-color: var(--mvw-playoffs-header-bg);
     }
     .section-details {
       display: grid;
@@ -24,7 +24,7 @@
       justify-items: center;
       gap: 20px;
       padding: 20px;
-      background-color: var(--vbr-widget-playoffs-details-bg);
+      background-color: var(--mvw-playoffs-details-bg);
 
       @include mobile {
         grid-template-columns: 1fr fit-content(100px) fit-content(100px) fit-content(100px) 1fr;
@@ -58,13 +58,13 @@
         font-size: 4rem;
         font-weight: 700;
         text-align: center;
-        color: var(--vbr-primary-color-800);
+        color: var(--mvw-primary-color-800);
       }
 
       .is-team-name {
         font-size: var(--font-size-700);
         font-weight: 700;
-        color: var(--vbr-primary-color-800);
+        color: var(--mvw-primary-color-800);
       }
       .is-right {
         text-align: right;

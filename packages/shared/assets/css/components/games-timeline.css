@@ -1,16 +1,16 @@
 @layer components.variables {
   :where(:host) {
-    --vbr-widget-games-timeline-game-date-size: var(--font-size-100);
-    --vbr-widget-games-timeline-game-team-size: var(--font-size-300);
-    --vbr-widget-games-timeline-game-status-size: var(--font-size-200);
-    --vbr-widget-games-timeline-game-hover-bg-color: linear-gradient(
-      light-dark(var(--vbr-color-white), var(--vbr-primary-color-950)),
+    --mvw-games-timeline-game-date-size: var(--font-size-100);
+    --mvw-games-timeline-game-team-size: var(--font-size-300);
+    --mvw-games-timeline-game-status-size: var(--font-size-200);
+    --mvw-games-timeline-game-hover-bg-color: linear-gradient(
+      light-dark(var(--mvw-color-white), var(--mvw-primary-color-950)),
       light-dark(
-          hsl(from var(--vbr-color-white) h s calc(l - 5)),
-          hsl(from var(--vbr-primary-color-950) h s calc(l + 5))
+          hsl(from var(--mvw-color-white) h s calc(l - 5)),
+          hsl(from var(--mvw-primary-color-950) h s calc(l + 5))
         )
         50%,
-      light-dark(var(--vbr-color-white), var(--vbr-primary-color-950))
+      light-dark(var(--mvw-color-white), var(--mvw-primary-color-950))
     );
   }
 }
@@ -68,20 +68,20 @@
         display: block;
         height: 22px;
         width: 22px;
-        color: var(--vbr-widget-text-dimmed);
+        color: var(--mvw-text-dimmed);
         transition: all 0.2s;
       }
 
       &:hover {
         svg {
-          color: var(--vbr-widget-text-muted);
+          color: var(--mvw-text-muted);
         }
       }
 
       &:disabled {
         cursor: not-allowed;
         svg {
-          color: var(--vbr-widget-text-faded);
+          color: var(--mvw-text-faded);
         }
       }
 
@@ -96,12 +96,12 @@
 
       &:first-of-type:after {
         right: 0;
-        border-right: 1px solid var(--vbr-widget-border-faded);
+        border-right: 1px solid var(--mvw-border-faded);
         box-shadow: 1px 0 3px 0 rgba(0, 0, 0, 0.1);
       }
       &:last-of-type:before {
         left: 0;
-        border-left: 1px solid var(--vbr-widget-border-faded);
+        border-left: 1px solid var(--mvw-border-faded);
         box-shadow: -1px 0 3px 0 rgba(0, 0, 0, 0.1);
       }
 
@@ -114,7 +114,7 @@
     .is-no-games {
       width: 100%;
       text-align: center;
-      color: var(--vbr-widget-text-muted);
+      color: var(--mvw-text-muted);
     }
   }
 
@@ -131,7 +131,7 @@
     cursor: pointer;
 
     &:hover {
-      background-image: var(--vbr-widget-games-timeline-game-hover-bg-color);
+      background-image: var(--mvw-games-timeline-game-hover-bg-color);
     }
 
     time {
@@ -139,9 +139,9 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      font-size: var(--vbr-widget-games-timeline-game-date-size);
+      font-size: var(--mvw-games-timeline-game-date-size);
       font-weight: 700;
-      color: var(--vbr-widget-text-muted);
+      color: var(--mvw-text-muted);
     }
 
     .is-home-team-logo {
@@ -160,9 +160,9 @@
 
     :is(.is-home-team-name, .is-away-team-name) {
       justify-self: start;
-      font-size: var(--vbr-widget-games-timeline-game-team-size);
+      font-size: var(--mvw-games-timeline-game-team-size);
       font-weight: 700;
-      color: var(--vbr-widget-text-default);
+      color: var(--mvw-text-default);
       overflow: hidden;
       width: 100%;
       text-overflow: ellipsis;
@@ -184,8 +184,8 @@
 
     .is-status {
       grid-area: status;
-      font-size: var(--vbr-widget-games-timeline-game-status-size);
-      color: var(--vbr-widget-text-dimmed);
+      font-size: var(--mvw-games-timeline-game-status-size);
+      color: var(--mvw-text-dimmed);
       overflow: hidden;
       width: 100%;
       text-overflow: ellipsis;
@@ -200,7 +200,7 @@
     height: 100%;
 
     &:hover {
-      background-image: var(--vbr-widget-games-timeline-game-hover-bg-color);
+      background-image: var(--mvw-games-timeline-game-hover-bg-color);
     }
 
     button {
@@ -209,7 +209,7 @@
       font-size: var(--font-size-200);
       font-weight: 700;
       text-transform: uppercase;
-      color: var(--vbr-widget-text-toned);
+      color: var(--mvw-text-toned);
 
       svg {
         display: inline-block;
@@ -226,7 +226,7 @@
     width: 100%;
     font-size: var(--font-size-400);
     font-weight: 500;
-    color: var(--vbr-error);
+    color: var(--mvw-error);
 
     svg {
       display: block;

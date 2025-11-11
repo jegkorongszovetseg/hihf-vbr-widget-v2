@@ -6,14 +6,14 @@
     grid-template-columns:
       70px 160px 60px minmax(160px, 1fr) minmax(40px, 60px) 30px minmax(160px, 1fr)
       minmax(180px, 1.2fr);
-    color: var(--vbr-widget-table-color);
+    color: var(--mvw-table-color);
 
     &:nth-child(odd) > div {
-      background-color: var(--vbr-widget-table-stripped-bg-color);
+      background-color: var(--mvw-table-stripped-bg-color);
     }
 
     &:hover > div {
-      background-color: var(--vbr-widget-table-hover-bg-color);
+      background-color: var(--mvw-table-hover-bg-color);
     }
 
     &.is-optional {
@@ -43,15 +43,15 @@
     }
 
     .text-dimmed {
-      color: var(--vbr-widget-table-cell-light-color);
+      color: var(--mvw-table-cell-light-color);
     }
 
     .text-highlighted {
-      color: var(--vbr-widget-table-cell-dark-color);
+      color: var(--mvw-table-cell-dark-color);
     }
 
     .is-text-accent {
-      color: var(--vbr-widget-secondary-color-500);
+      color: var(--mvw-secondary-color-500);
     }
 
     .is-team-name-long {
@@ -77,10 +77,10 @@
   .section-title {
     padding: 10px;
     text-align: center;
-    font-size: var(--vbr-widget-playoffs-header-size);
+    font-size: var(--mvw-playoffs-header-size);
     font-weight: 700;
-    color: var(--vbr-widget-playoffs-header-color);
-    background-color: var(--vbr-widget-playoffs-header-bg);
+    color: var(--mvw-playoffs-header-color);
+    background-color: var(--mvw-playoffs-header-bg);
   }
   .section-details {
     display: grid;
@@ -89,7 +89,7 @@
     justify-items: center;
     gap: 20px;
     padding: 20px;
-    background-color: var(--vbr-widget-playoffs-details-bg);
+    background-color: var(--mvw-playoffs-details-bg);
 
     @include mobile {
       grid-template-columns: 1fr fit-content(100px) fit-content(100px) fit-content(100px) 1fr;
@@ -123,13 +123,13 @@
       font-size: 4rem;
       font-weight: 700;
       text-align: center;
-      color: var(--vbr-widget-primary-color-800);
+      color: var(--mvw-primary-color-800);
     }
 
     .is-team-name {
-      font-size: var(--vbr-widget-typography-font-size-700);
+      font-size: var(--mvw-typography-font-size-700);
       font-weight: 700;
-      color: var(--vbr-widget-primary-color-800);
+      color: var(--mvw-primary-color-800);
     }
     .is-right {
       text-align: right;
@@ -143,19 +143,19 @@
 
   .section {
     .section-title {
-      font-size: var(--vbr-widget-standings-selector-section-title-size);
-      color: var(--vbr-widget-standings-selector-section-title-color);
+      font-size: var(--mvw-standings-selector-section-title-size);
+      color: var(--mvw-standings-selector-section-title-color);
       font-weight: 700;
-      background: var(--vbr-widget-standings-selector-section-title-bg);
+      background: var(--mvw-standings-selector-section-title-bg);
       text-align: center;
-      padding: var(--vbr-widget-standings-selector-section-title-padding);
+      padding: var(--mvw-standings-selector-section-title-padding);
     }
 
     ul {
       display: grid;
       grid-template-columns:
-        minmax(0, 1fr) var(--vbr-widget-standings-selector-section-logo-size) auto var(
-          --vbr-widget-standings-selector-section-logo-size
+        minmax(0, 1fr) var(--mvw-standings-selector-section-logo-size) auto var(
+          --mvw-standings-selector-section-logo-size
         )
         minmax(0, 1fr);
       gap: 12px;
@@ -178,7 +178,7 @@
 
     .is-team {
       font-weight: 700;
-      color: var(--vbr-widget-standings-selector-section-team-color);
+      color: var(--mvw-standings-selector-section-team-color);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;

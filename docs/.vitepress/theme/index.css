@@ -1,53 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
 mjsz-vbr-schedule-liga {
-  --vbr-widget-sticky-top-offset: 50px;
+  --mvw-sticky-top-offset: 50px;
 
   @media all and (min-width: 960px) {
-    --vbr-widget-sticky-top-offset: 112px;
+    --mvw-sticky-top-offset: 112px;
   }
 
   @media all and (min-width: 1280px) {
-    --vbr-widget-sticky-top-offset: 63px;
+    --mvw-sticky-top-offset: 63px;
   }
 }
 
 mjsz-vbr-game-timeline {
   font-family: 'Roboto Condensed', Avenir, Helvetica, Arial, sans-serif;
 
-  --vbr-widget-primary-color-0: #ffffff;
-  --vbr-widget-primary-color-50: #f9fafb;
-  --vbr-widget-primary-color-100: #f3f4f6;
-  --vbr-widget-primary-color-200: #e5e7eb;
-  --vbr-widget-primary-color-300: #d1d5db;
-  --vbr-widget-primary-color-400: #9ca3af;
-  --vbr-widget-primary-color-500: #6b7280;
-  --vbr-widget-primary-color-600: #4b5563;
-  --vbr-widget-primary-color-700: #374151;
-  --vbr-widget-primary-color-800: #1f2937;
-  --vbr-widget-primary-color-900: #111827;
+  --mvw-primary-color-0: #ffffff;
+  --mvw-primary-color-50: #f9fafb;
+  --mvw-primary-color-100: #f3f4f6;
+  --mvw-primary-color-200: #e5e7eb;
+  --mvw-primary-color-300: #d1d5db;
+  --mvw-primary-color-400: #9ca3af;
+  --mvw-primary-color-500: #6b7280;
+  --mvw-primary-color-600: #4b5563;
+  --mvw-primary-color-700: #374151;
+  --mvw-primary-color-800: #1f2937;
+  --mvw-primary-color-900: #111827;
 
-  --vbr-widget-secondary-color-100: #dbeafe;
-  --vbr-widget-secondary-color-200: #bfdbfe;
-  --vbr-widget-secondary-color-300: #93c5fd;
-  --vbr-widget-secondary-color-400: #818cf8;
-  --vbr-widget-secondary-color-500: #3b82f6;
-  --vbr-widget-secondary-color-600: #2563eb;
-  --vbr-widget-secondary-color-700: #1d4ed8;
-  --vbr-widget-secondary-color-800: #1e40af;
-  --vbr-widget-secondary-color-900: #1e3a8a;
+  --mvw-secondary-color-100: #dbeafe;
+  --mvw-secondary-color-200: #bfdbfe;
+  --mvw-secondary-color-300: #93c5fd;
+  --mvw-secondary-color-400: #818cf8;
+  --mvw-secondary-color-500: #3b82f6;
+  --mvw-secondary-color-600: #2563eb;
+  --mvw-secondary-color-700: #1d4ed8;
+  --mvw-secondary-color-800: #1e40af;
+  --mvw-secondary-color-900: #1e3a8a;
 
-  --vbr-widget-tab-btn-color: var(--vbr-widget-primary-color-400);
-  --vbr-widget-tab-btn-active-border-color: var(--vbr-widget-secondary-color-500);
+  --mvw-tab-btn-color: var(--mvw-primary-color-400);
+  --mvw-tab-btn-active-border-color: var(--mvw-secondary-color-500);
 
-  --vbr-widget-table-header-bg-color: var(--vbr-widget-secondary-color-500);
-  --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-secondary-color-600);
-  --vbr-widget-table-header-color: var(--vbr-widget-secondary-color-200);
-  --vbr-widget-text-faded: var(--vbr-widget-primary-color-400);
-  --vbr-widget-table-stripped-bg-color: #f6f6f6;
+  --mvw-table-header-bg-color: var(--mvw-secondary-color-500);
+  --mvw-table-header-hover-bg-color: var(--mvw-secondary-color-600);
+  --mvw-table-header-color: var(--mvw-secondary-color-200);
+  --mvw-text-faded: var(--mvw-primary-color-400);
+  --mvw-table-stripped-bg-color: #f6f6f6;
 
-  --vbr-widget-gamecenter-card-border-color: var(--vbr-widget-primary-color-300);
-  --vbr-widget-gamecenter-card-event-goal-border-color: var(--vbr-widget-primary-color-700);
-  --vbr-widget-gamecenter-card-event-goal-bg-color: var(--vbr-widget-primary-color-700);
-  --vbr-widget-gamecenter-card-tertiary-color: var(--vbr-widget-primary-color-400);
+  --mvw-gamecenter-card-border-color: var(--mvw-primary-color-300);
+  --mvw-gamecenter-card-event-goal-border-color: var(--mvw-primary-color-700);
+  --mvw-gamecenter-card-event-goal-bg-color: var(--mvw-primary-color-700);
+  --mvw-gamecenter-card-tertiary-color: var(--mvw-primary-color-400);
 }

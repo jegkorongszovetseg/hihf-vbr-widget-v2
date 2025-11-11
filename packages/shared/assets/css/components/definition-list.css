@@ -2,7 +2,7 @@
   :where(.definition-list) {
     --_border-style: solid;
     --_border-width: 1px;
-    --_border-color: var(--vbr-widget-border-muted);
+    --_border-color: var(--mvw-border-muted);
 
     display: grid;
     gap: var(--size-8);
@@ -23,7 +23,7 @@
         font-weight: 700;
         overflow: hidden;
         position: relative;
-        color: var(--vbr-widget-text-muted);
+        color: var(--mvw-text-muted);
       }
 
       hr {

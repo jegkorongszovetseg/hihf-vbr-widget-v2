@@ -2,8 +2,8 @@
 
 .table {
   @include ResetTable;
-  color: var(--vbr-widget-table-color);
-  background-color: var(--vbr-widget-table-default-bg-color);
+  color: var(--mvw-table-color);
+  background-color: var(--mvw-table-default-bg-color);
 
   :is(th, td) {
     padding: 8px;
@@ -21,15 +21,15 @@
   }
 
   th {
-    width: var(--vbr-widget-table-default-column-width);
-    background: var(--vbr-widget-table-header-bg-color);
-    font-size: var(--vbr-widget-table-header-font-size);
+    width: var(--mvw-table-default-column-width);
+    background: var(--mvw-table-header-bg-color);
+    font-size: var(--mvw-table-header-font-size);
     font-weight: 700;
-    color: var(--vbr-widget-table-header-color);
+    color: var(--mvw-table-header-color);
 
     &:focus-visible,
     &:hover {
-      background-color: var(--vbr-widget-table-header-hover-bg-color);
+      background-color: var(--mvw-table-header-hover-bg-color);
       outline: none;
     }
 
@@ -43,8 +43,8 @@
     }
 
     &.is-active {
-      background-color: var(--vbr-widget-table-header-active-bg-color);
-      color: var(--vbr-widget-table-header-active-color);
+      background-color: var(--mvw-table-header-active-bg-color);
+      color: var(--mvw-table-header-active-color);
 
       .icon-sort {
         opacity: 1;
@@ -73,49 +73,49 @@
   td {
     &.is-active {
       font-weight: 700;
-      color: var(--vbr-widget-table-active-color);
-      background: var(--vbr-widget-table-active-bg-color);
+      color: var(--mvw-table-active-color);
+      background: var(--mvw-table-active-bg-color);
     }
 
     &.is-zero {
-      color: var(--vbr-widget-text-faded);
+      color: var(--mvw-text-faded);
     }
 
     &.is-possible-empty:empty:before {
       content: '0';
-      color: var(--vbr-widget-text-faded);
+      color: var(--mvw-text-faded);
     }
 
     .text-dimmed,
     &.text-dimmed {
-      color: var(--vbr-widget-table-cell-light-color);
+      color: var(--mvw-table-cell-light-color);
     }
 
     .text-highlighted,
     &.text-highlighted {
-      color: var(--vbr-widget-table-cell-dark-color);
+      color: var(--mvw-table-cell-dark-color);
     }
 
     .is-logo-image {
       display: inline-block;
       vertical-align: middle;
-      width: var(--vbr-widget-table-cell-logo-size);
-      height: var(--vbr-widget-table-cell-logo-size);
+      width: var(--mvw-table-cell-logo-size);
+      height: var(--mvw-table-cell-logo-size);
     }
 
     .is-portrait-image {
       display: inline-block;
       vertical-align: middle;
-      width: var(--vbr-widget-table-cell-portrait-size);
-      height: var(--vbr-widget-table-cell-portrait-size);
+      width: var(--mvw-table-cell-portrait-size);
+      height: var(--mvw-table-cell-portrait-size);
       object-fit: cover;
       object-position: top;
       overflow: hidden;
       border-radius: 100%;
-      border: 1px solid var(--vbr-widget-primary-color-100);
+      border: 1px solid var(--mvw-primary-color-100);
 
       img {
-        width: var(--vbr-widget-table-cell-portrait-size);
+        width: var(--mvw-table-cell-portrait-size);
         height: auto;
       }
     }
@@ -129,11 +129,11 @@
     }
 
     &.text-xl {
-      font-size: var(--vbr-widget-typography-font-size-700);
+      font-size: var(--mvw-typography-font-size-700);
     }
 
     .is-text-accent {
-      color: var(--vbr-widget-secondary-color-500);
+      color: var(--mvw-secondary-color-500);
     }
 
     &.w-auto {
@@ -147,12 +147,12 @@
 
     &.is-text-positive,
     .is-text-positive {
-      color: var(--vbr-widget-live-game-color);
+      color: var(--mvw-live-game-color);
     }
 
     &.is-text-negative,
     .is-text-negative {
-      color: var(--vbr-widget-danger-color-a400);
+      color: var(--mvw-danger-color-a400);
     }
 
     &.is-has-image {
@@ -160,7 +160,7 @@
     }
 
     .is-duplicated {
-      color: var(--vbr-widget-table-neutral-color);
+      color: var(--mvw-table-neutral-color);
     }
 
     svg {
@@ -176,12 +176,12 @@
       background-color: transparent;
 
       &:hover {
-        background-color: var(--vbr-widget-popover-trigger-hover-bg-color);
+        background-color: var(--mvw-popover-trigger-hover-bg-color);
       }
 
       &:active,
       &:focus {
-        background-color: var(--vbr-widget-popover-trigger-focus-bg-color);
+        background-color: var(--mvw-popover-trigger-focus-bg-color);
       }
     }
 
@@ -191,10 +191,10 @@
 
     .label {
       padding: 3px 6px;
-      font-size: var(--vbr-widget-typography-font-size-100);
+      font-size: var(--mvw-typography-font-size-100);
       font-weight: 700;
-      color: var(--vbr-widget-table-label-color);
-      background-color: var(--vbr-widget-table-label-bg-color);
+      color: var(--mvw-table-label-color);
+      background-color: var(--mvw-table-label-bg-color);
       border-radius: 2px;
 
       &:not(:last-of-type) {
@@ -203,10 +203,10 @@
     }
 
     a {
-      color: var(--vbr-widget-link-color);
+      color: var(--mvw-link-color);
     }
     a:hover {
-      color: var(--vbr-widget-hover-color);
+      color: var(--mvw-hover-color);
     }
 
     .is-team-name-long {
@@ -228,7 +228,7 @@
 
   tr {
     &.is-highlighted {
-      color: var(--vbr-widget-danger-color-a400);
+      color: var(--mvw-danger-color-a400);
     }
     &.is-optional {
       opacity: 0.5;
@@ -236,22 +236,22 @@
   }
 
   tr:nth-child(even) {
-    background: var(--vbr-widget-table-stripped-bg-color);
+    background: var(--mvw-table-stripped-bg-color);
 
     td.is-active {
-      background-color: var(--vbr-widget-table-active-even-bg-color);
+      background-color: var(--mvw-table-active-even-bg-color);
     }
   }
 
   tbody {
     tr:focus-within,
     tr:hover {
-      color: var(--vbr-widget-table-hover-color);
-      background-color: var(--vbr-widget-table-hover-bg-color);
+      color: var(--mvw-table-hover-color);
+      background-color: var(--mvw-table-hover-bg-color);
 
       td.is-active {
-        color: var(--vbr-widget-table-active-hover-color);
-        background-color: var(--vbr-widget-table-active-hover-bg-color);
+        color: var(--mvw-table-active-hover-color);
+        background-color: var(--mvw-table-active-hover-bg-color);
       }
     }
   }

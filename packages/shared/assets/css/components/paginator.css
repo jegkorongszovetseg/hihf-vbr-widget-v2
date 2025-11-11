@@ -1,13 +1,13 @@
 @layer components.variables {
   :where(:host) {
-    --vbr-widget-paginator-color: light-dark(var(--vbr-primary-color-500), var(--vbr-primary-color-400));
-    --vbr-widget-paginator-bg-color: light-dark(var(--vbr-color-white), var(--vbr-primary-color-950));
-    --vbr-widget-paginator-hover-color: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-300));
-    --vbr-widget-paginator-hover-bg-color: light-dark(var(--vbr-primary-color-100), var(--vbr-primary-color-900));
-    --vbr-widget-paginator-border-color: light-dark(var(--vbr-primary-color-100), var(--vbr-primary-color-700));
-    --vbr-widget-paginator-active-color: light-dark(var(--vbr-color-white), var(--vbr-color-black));
-    --vbr-widget-paginator-active-bg-color: light-dark(var(--vbr-primary-color-900), var(--vbr-primary-color-50));
-    --vbr-widget-paginator-disabled-color: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-600));
+    --mvw-paginator-color: light-dark(var(--mvw-primary-color-500), var(--mvw-primary-color-400));
+    --mvw-paginator-bg-color: light-dark(var(--mvw-color-white), var(--mvw-primary-color-950));
+    --mvw-paginator-hover-color: light-dark(var(--mvw-primary-color-700), var(--mvw-primary-color-300));
+    --mvw-paginator-hover-bg-color: light-dark(var(--mvw-primary-color-100), var(--mvw-primary-color-900));
+    --mvw-paginator-border-color: light-dark(var(--mvw-primary-color-100), var(--mvw-primary-color-700));
+    --mvw-paginator-active-color: light-dark(var(--mvw-color-white), var(--mvw-color-black));
+    --mvw-paginator-active-bg-color: light-dark(var(--mvw-primary-color-900), var(--mvw-primary-color-50));
+    --mvw-paginator-disabled-color: light-dark(var(--mvw-primary-color-200), var(--mvw-primary-color-600));
   }
 }
 
@@ -27,9 +27,9 @@
       padding: var(--size-6) var(--size-12); /* 6px 12px; */
       text-decoration: none;
       cursor: pointer;
-      color: var(--vbr-widget-paginator-color);
-      border: 1px solid var(--vbr-widget-paginator-border-color);
-      background-color: var(--vbr-widget-paginator-bg-color);
+      color: var(--mvw-paginator-color);
+      border: 1px solid var(--mvw-paginator-border-color);
+      background-color: var(--mvw-paginator-bg-color);
       margin-left: -1px;
 
       .icon {
@@ -39,22 +39,22 @@
       }
 
       &:hover:not(&.is-disabled, &.is-active) {
-        color: var(--vbr-widget-paginator-hover-color);
-        background-color: var(--vbr-widget-paginator-hover-bg-color);
+        color: var(--mvw-paginator-hover-color);
+        background-color: var(--mvw-paginator-hover-bg-color);
       }
 
       &:disabled,
       &.is-disabled {
-        color: var(--vbr-widget-paginator-disabled-color);
-        background-color: var(--vbr-widget-paginator-bg-color);
+        color: var(--mvw-paginator-disabled-color);
+        background-color: var(--mvw-paginator-bg-color);
         pointer-events: none;
         cursor: default;
       }
 
       &.is-active {
-        color: var(--vbr-widget-paginator-active-color);
-        background-color: var(--vbr-widget-paginator-active-bg-color);
-        border-color: var(--vbr-widget-paginator-active-bg-color);
+        color: var(--mvw-paginator-active-color);
+        background-color: var(--mvw-paginator-active-bg-color);
+        border-color: var(--mvw-paginator-active-bg-color);
         cursor: default;
       }
     }

@@ -41,34 +41,34 @@ img.is-loaded {
 }
 
 a {
-  color: var(--vbr-widget-link-color);
+  color: var(--mvw-link-color);
   text-decoration: none;
 
   &:hover {
-    color: var(--vbr-widget-hover-color);
+    color: var(--mvw-hover-color);
   }
 }
 
 .loading-indicator {
   padding: 1em;
   font-weight: 600;
-  color: var(--vbr-widget-loading-indicator-text-color);
+  color: var(--mvw-loading-indicator-text-color);
   text-align: center;
 }
 
 .floating-content {
   &.is-tooltip {
-    background-color: var(--vbr-widget-tooltip-bg-color);
-    color: var(--vbr-widget-tooltip-color);
+    background-color: var(--mvw-tooltip-bg-color);
+    color: var(--mvw-tooltip-color);
     font-weight: bold;
     padding: 5px 10px;
     border-radius: 4px;
-    font-size: var(--vbr-widget-tooltip-font-size);
+    font-size: var(--mvw-tooltip-font-size);
     white-space: nowrap;
     pointer-events: none;
 
     .is-arrow {
-      background-color: var(--vbr-widget-tooltip-bg-color);
+      background-color: var(--mvw-tooltip-bg-color);
     }
   }
 
@@ -77,7 +77,7 @@ a {
     box-shadow: 2px 14px 23px 0px rgba(0, 0, 0, 0.25);
 
     .is-arrow {
-      background-color: var(--vbr-widget-primary-color-50);
+      background-color: var(--mvw-primary-color-50);
     }
   }
 
@@ -112,9 +112,9 @@ a {
   gap: 15px;
   margin: 10px 0;
   padding: 10px 20px;
-  background-color: var(--vbr-widget-error-notice-bg-color);
-  color: var(--vbr-widget-error-notice-color);
-  border: 1px solid var(--vbr-widget-error-notice-border-color);
+  background-color: var(--mvw-error-notice-bg-color);
+  color: var(--mvw-error-notice-color);
+  border: 1px solid var(--mvw-error-notice-border-color);
 
   button {
     text-decoration: underline;
@@ -123,8 +123,8 @@ a {
 
 .timezone-selector {
   padding: 3px 0;
-  color: var(--vbr-widget-timezone-selector-color);
-  font-size: var(--vbr-widget-timezone-selector-font-size);
+  color: var(--mvw-timezone-selector-color);
+  font-size: var(--mvw-timezone-selector-font-size);
   font-weight: 500;
   background-color: light-dark(red, blue);
 
@@ -136,11 +136,11 @@ a {
 .is-badge {
   display: inline-block;
   padding: 0.125em 0.25em;
-  color: var(--vbr-widget-badge-color);
-  font-size: var(--vbr-widget-badge-font-size);
+  color: var(--mvw-badge-color);
+  font-size: var(--mvw-badge-font-size);
   font-weight: 700;
   text-transform: uppercase;
-  background-color: var(--vbr-widget-badge-bg-color);
+  background-color: var(--mvw-badge-bg-color);
   border-radius: 3px;
 
   & + .is-badge {
@@ -148,37 +148,37 @@ a {
   }
 
   &.is-invert {
-    color: var(--vbr-widget-badge-bg-color);
-    background-color: var(--vbr-widget-badge-color);
+    color: var(--mvw-badge-bg-color);
+    background-color: var(--mvw-badge-color);
   }
 
   &.is-green {
-    color: var(--vbr-widget-primary-color-0);
-    background-color: var(--vbr-widget-live-game-color);
+    color: var(--mvw-primary-color-0);
+    background-color: var(--mvw-live-game-color);
   }
 
   &.is-red {
-    color: var(--vbr-widget-primary-color-0);
-    background-color: var(--vbr-widget-danger-color-a400);
+    color: var(--mvw-primary-color-0);
+    background-color: var(--mvw-danger-color-a400);
   }
 
   &.is-yellow {
-    color: var(--vbr-widget-primary-color-0);
-    background-color: var(--vbr-widget-neutral-color);
+    color: var(--mvw-primary-color-0);
+    background-color: var(--mvw-neutral-color);
   }
 
   &.is-dark {
-    color: var(--vbr-widget-primary-color-0);
-    background-color: var(--vbr-widget-primary-color-700);
+    color: var(--mvw-primary-color-0);
+    background-color: var(--mvw-primary-color-700);
   }
 
   &.is-large {
-    font-size: var(--vbr-widget-badge-large-font-size);
+    font-size: var(--mvw-badge-large-font-size);
     padding: 0.15em 0.35em;
   }
 
   &.is-extra-large {
-    font-size: var(--vbr-widget-badge-extra-large-font-size);
+    font-size: var(--mvw-badge-extra-large-font-size);
     padding: 0.2695em 0.5165em;
   }
 }

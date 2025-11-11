@@ -1,10 +1,10 @@
 .progress {
   display: flex;
-  height: var(--vbr-widget-progress-height);
+  height: var(--mvw-progress-height);
   overflow: hidden;
-  font-size: var(--vbr-widget-typography-font-size-50);
-  background-color: var(--vbr-widget-progress-bg-color);
-  border-radius: var(--vbr-widget-progress-border-radius);
+  font-size: var(--mvw-typography-font-size-50);
+  background-color: var(--mvw-progress-bg-color);
+  border-radius: var(--mvw-progress-border-radius);
 }
 
 .progress-bar {
@@ -13,15 +13,15 @@
   justify-content: center;
   overflow: hidden;
   width: 100%;
-  color: var(--vbr-widget-primary-color-0);
+  color: var(--mvw-primary-color-0);
   text-align: center;
   white-space: nowrap;
-  background-color: var(--vbr-widget-progress-bar-color);
+  background-color: var(--mvw-progress-bar-color);
 }
 
 .progress-bar-stripped {
-  --color: var(--vbr-widget-progress-bar-stripe-color);
-  --angle: var(--vbr-widget-progress-bar-stripe-angle);
+  --color: var(--mvw-progress-bar-stripe-color);
+  --angle: var(--mvw-progress-bar-stripe-angle);
 
   background-image: linear-gradient(
     var(--angle),
@@ -34,7 +34,7 @@
     transparent
   );
 
-  background-size: var(--vbr-widget-progress-height) var(--vbr-widget-progress-height);
+  background-size: var(--mvw-progress-height) var(--mvw-progress-height);
 }
 
 .progress-bar-animated {
@@ -47,7 +47,7 @@
 
 @keyframes progress-bar-stripes {
   0% {
-    background-position-x: var(--vbr-widget-progress-height);
+    background-position-x: var(--mvw-progress-height);
   }
 }
 
@@ -63,7 +63,7 @@
 
   .is-value {
     font-weight: 700;
-    color: var(--vbr-widget-primary-color-900);
+    color: var(--mvw-primary-color-900);
   }
 
   .is-value-start {
@@ -78,7 +78,7 @@
   }
 
   .is-bar {
-    background-color: var(--vbr-widget-primary-color-50);
+    background-color: var(--mvw-primary-color-50);
     height: 8px;
     margin-block: 5px;
   }
@@ -91,8 +91,8 @@
   }
 
   .is-bar-start--progress {
-    background-color: var(--vbr-widget-gamecenter-home-team-identifier-color);
-    outline: 1px solid var(--vbr-widget-gamecenter-home-team-identifier-border-color);
+    background-color: var(--mvw-gamecenter-home-team-identifier-color);
+    outline: 1px solid var(--mvw-gamecenter-home-team-identifier-border-color);
     outline-offset: -1px;
     height: 100%;
     transition: width 0.3s ease-out;
@@ -103,8 +103,8 @@
   }
 
   .is-bar-end--progress {
-    background-color: var(--vbr-widget-gamecenter-away-team-identifier-color);
-    outline: 1px solid var(--vbr-widget-gamecenter-away-team-identifier-border-color);
+    background-color: var(--mvw-gamecenter-away-team-identifier-color);
+    outline: 1px solid var(--mvw-gamecenter-away-team-identifier-border-color);
     outline-offset: -1px;
     height: 100%;
   }
@@ -113,9 +113,9 @@
     grid-area: title;
 
     justify-self: center;
-    font-size: var(--vbr-widget-typography-font-size-400);
+    font-size: var(--mvw-typography-font-size-400);
     font-weight: 700;
     line-height: 1.5rem;
-    color: var(--vbr-widget-primary-color-500);
+    color: var(--mvw-primary-color-500);
   }
 }

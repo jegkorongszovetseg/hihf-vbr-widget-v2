@@ -11,90 +11,55 @@
     font-family: inherit;
 
     /* Special Colors */
-    --vbr-widget-text-live: #8bc34a;
-    --vbr-error: #fb2c36;
+    --mvw-live: #8bc34a;
+    --mvw-error: #fb2c36;
 
     /* Link */
-    --vbr-widget-link-color: light-dark(var(--vbr-secondary-color-700), var(--vbr-secondary-color-400));
-    --vbr-widget-link-hover-color: light-dark(var(--vbr-secondary-color-900), var(--vbr-secondary-color-200));
+    --mvw-link-color: light-dark(var(--mvw-secondary-color-700), var(--mvw-secondary-color-400));
+    --mvw-link-hover-color: light-dark(var(--mvw-secondary-color-900), var(--mvw-secondary-color-200));
 
     /* Text */
-    --vbr-widget-text-faded: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-600));
-    --vbr-widget-text-dimmed: light-dark(var(--vbr-primary-color-400), var(--vbr-primary-color-500));
-    --vbr-widget-text-muted: light-dark(var(--vbr-primary-color-500), var(--vbr-primary-color-400));
-    --vbr-widget-text-toned: light-dark(var(--vbr-primary-color-600), var(--vbr-primary-color-300));
-    --vbr-widget-text-default: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-200));
-    --vbr-widget-text-highlighted: light-dark(var(--vbr-primary-color-900), var(--vbr-primary-color-50));
-    --vbr-widget-text-inverted: light-dark(var(--vbr-primary-color-50), var(--vbr-primary-color-950));
+    --mvw-text-faded: light-dark(var(--mvw-primary-color-200), var(--mvw-primary-color-600));
+    --mvw-text-dimmed: light-dark(var(--mvw-primary-color-400), var(--mvw-primary-color-500));
+    --mvw-text-muted: light-dark(var(--mvw-primary-color-500), var(--mvw-primary-color-400));
+    --mvw-text-toned: light-dark(var(--mvw-primary-color-600), var(--mvw-primary-color-300));
+    --mvw-text-default: light-dark(var(--mvw-primary-color-700), var(--mvw-primary-color-200));
+    --mvw-text-highlighted: light-dark(var(--mvw-primary-color-900), var(--mvw-primary-color-50));
+    --mvw-text-inverted: light-dark(var(--mvw-primary-color-50), var(--mvw-primary-color-950));
 
     /* Background */
-    --vbr-widget-bg-muted: light-dark(var(--vbr-primary-color-50), var(--vbr-primary-color-900));
-    --vbr-widget-bg-highlighted: var(--vbr-secondary-color-500);
-    --vbr-widget-bg-inverted: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-100));
+    --mvw-bg-muted: light-dark(var(--mvw-primary-color-50), var(--mvw-primary-color-900));
+    --mvw-bg-highlighted: var(--mvw-secondary-color-500);
+    --mvw-bg-inverted: light-dark(var(--mvw-primary-color-700), var(--mvw-primary-color-100));
 
     /* Border */
-    --vbr-widget-border-faded: light-dark(var(--vbr-primary-color-100), var(--vbr-primary-color-800));
-    --vbr-widget-border-muted: light-dark(var(--vbr-primary-color-200), var(--vbr-primary-color-700));
-    --vbr-widget-border-highlighted: var(--vbr-secondary-color-500);
+    --mvw-border-faded: light-dark(var(--mvw-primary-color-100), var(--mvw-primary-color-800));
+    --mvw-border-muted: light-dark(var(--mvw-primary-color-200), var(--mvw-primary-color-700));
+    --mvw-border-highlighted: var(--mvw-secondary-color-500);
 
     /* --Components-- */
 
     /* Trigger */
-    --vbr-widget-popover-trigger-hover-bg-color: light-dark(
-      var(--vbr-secondary-color-200),
-      var(--vbr-primary-color-800)
-    );
-    /* --vbr-widget-popover-trigger-focus-bg-color: var(--vbr-widget-secondary-color-300); */
+    --mvw-popover-trigger-hover-bg-color: light-dark(var(--mvw-secondary-color-200), var(--mvw-primary-color-800));
+    /* --mvw-popover-trigger-focus-bg-color: var(--mvw-secondary-color-300); */
 
     /* Tooltip */
-    --vbr-widget-tooltip-font-size: var(--font-size-200);
-    --vbr-widget-tooltip-color: light-dark(white, black);
-    --vbr-widget-tooltip-bg-color: light-dark(black, white);
-    --vbr-widget-floating-content-bg-color: light-dark(white, var(--vbr-primary-color-700));
-
-    /* Tabs */
-    --vbr-widget-tab-btn-font-size: var(--font-size-500);
-    --vbr-widget-tab-btn-font-weight: 500;
-    /* --vbr-widget-tab-btn-bg-color: var(--vbr-color-white); */
-    --vbr-widget-tab-btn-color: light-dark(var(--vbr-primary-color-300), var(--vbr-primary-color-500));
-    --vbr-widget-tab-btn-border-style: solid;
-    --vbr-widget-tab-btn-border-width: 0 0 3px 0;
-    --vbr-widget-tab-btn-text-transform: uppercase;
-    --vbr-widget-tab-btn-hover-color: light-dark(var(--vbr-primary-color-500), var(--vbr-primary-color-300));
-    /* --vbr-widget-tab-btn-hover-bg-color: var(--vbr-color-white); */
-    --vbr-widget-tab-btn-hover-border-color: transparent;
-    /* --vbr-widget-tab-btn-active-bg-color: var(--vbr-widget-primary-color-0); */
-    --vbr-widget-tab-btn-active-color: light-dark(var(--vbr-primary-color-900), var(--vbr-primary-color-50));
-    --vbr-widget-tab-btn-active-border-color: var(--vbr-widget-border-highlighted);
-
-    /* Toggle */
-    --vbr-widget-toggle-group-gap: var(--size-6);
-    --vbr-widget-toggle-group-nav-padding: 0;
-    --vbr-widget-toggle-group-border-width: 0;
-    --vbr-widget-toggle-group-btn-padding: var(--size-4) var(--size-8);
-    --vbr-widget-toggle-group-btn-size: var(--font-size-400);
-    --vbr-widget-toggle-group-btn-color: light-dark(var(--vbr-primary-color-900), var(--vbr-primary-color-100));
-    --vbr-widget-toggle-group-btn-bg-color: light-dark(var(--vbr-primary-color-50), var(--vbr-primary-color-900));
-    --vbr-widget-toggle-group-btn-active-color: var(--vbr-primary-color-0);
-    --vbr-widget-toggle-group-btn-active-bg-color: var(--vbr-widget-bg-highlighted);
-    --vbr-widget-toggle-group-btn-radius: var(--radius-2);
-
-    /* Card */
-    --vbr-widget-card-color: light-dark(var(--vbr-primary-color-950), var(--vbr-primary-color-200));
-    --vbr-widget-card-bg-color: light-dark(var(--vbr-color-white), var(--vbr-primary-color-950));
-    --vbr-widget-card-tonal-active-bg-color: light-dark(var(--vbr-primary-color-50), var(--vbr-primary-color-900));
+    --mvw-tooltip-font-size: var(--font-size-200);
+    --mvw-tooltip-color: light-dark(white, black);
+    --mvw-tooltip-bg-color: light-dark(black, white);
+    --mvw-floating-content-bg-color: light-dark(white, var(--mvw-primary-color-700));
   }
 
   :where(a[href]) {
-    color: var(--vbr-widget-link-color);
+    color: var(--mvw-link-color);
     text-decoration: none;
 
     &:hover {
-      color: var(--vbr-widget-link-hover-color);
+      color: var(--mvw-link-hover-color);
     }
 
     &:visited {
-      color: var(--vbr-widget-link-color);
+      color: var(--mvw-link-color);
     }
   }
 }

@@ -1,14 +1,22 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-card-color: light-dark(var(--mvw-primary-color-950), var(--mvw-primary-color-200));
+    --mvw-card-bg-color: light-dark(var(--mvw-color-white), var(--mvw-primary-color-950));
+    --mvw-card-tonal-active-bg-color: light-dark(var(--mvw-primary-color-50), var(--mvw-primary-color-900));
+  }
+}
+
 @layer components {
   :where(details) {
     --_accordion-transition-time: 0.2s;
-    --_bg-color: var(--vbr-widget-card-bg-color);
+    --_bg-color: var(--mvw-card-bg-color);
     --_shadow: none;
 
     container-type: inline-size;
     display: block;
     background-color: var(--_bg-color);
     border-radius: var(--radius-2);
-    color: var(--vbr-widget-card-color);
+    color: var(--mvw-card-color);
     box-shadow: var(--_shadow);
     transition: all var(--_accordion-transition-time) ease-out;
 
@@ -68,7 +76,7 @@
 
     &.tonal {
       &[open] {
-        background-color: var(--vbr-widget-card-tonal-active-bg-color);
+        background-color: var(--mvw-card-tonal-active-bg-color);
       }
     }
 

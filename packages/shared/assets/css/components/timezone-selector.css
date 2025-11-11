@@ -1,15 +1,15 @@
 @layer components.variables {
   :where(:host) {
-    --vbr-widget-timezone-selector-color: light-dark(var(--vbr-primary-color-500), var(--vbr-primary-color-500));
-    --vbr-widget-timezone-selector-font-size: var(--font-size-300);
+    --mvw-timezone-selector-color: light-dark(var(--mvw-primary-color-500), var(--mvw-primary-color-500));
+    --mvw-timezone-selector-font-size: var(--font-size-300);
   }
 }
 
 @layer components {
   :where(.timezone-selector) {
     padding: 3px 0;
-    color: var(--vbr-widget-timezone-selector-color);
-    font-size: var(--vbr-widget-timezone-selector-font-size);
+    color: var(--mvw-timezone-selector-color);
+    font-size: var(--mvw-timezone-selector-font-size);
     font-weight: 500;
 
     .is-active {

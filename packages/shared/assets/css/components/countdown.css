@@ -1,35 +1,35 @@
 @layer components.variables {
   :where(:host) {
     /* Countdown */
-    --vbr-widget-countdown-title-height: calc(var(--size-16) * 2);
-    --vbr-widget-countdown-title-bg: light-dark(var(--vbr-primary-color-900), var(--vbr-primary-color-100));
-    --vbr-widget-countdown-gamedata-height: calc(var(--size-16) * 4);
-    --vbr-widget-countdown-active-color: light-dark(var(--vbr-secondary-color-500), var(--vbr-secondary-color-800));
-    --vbr-widget-countdown-gamedata-bg: light-dark(var(--vbr-primary-color-700), var(--vbr-primary-color-300));
-    --vbr-widget-countdown-result-bg: light-dark(var(--vbr-primary-color-800), var(--vbr-primary-color-200));
+    --mvw-countdown-title-height: calc(var(--size-16) * 2);
+    --mvw-countdown-title-bg: light-dark(var(--mvw-primary-color-900), var(--mvw-primary-color-100));
+    --mvw-countdown-gamedata-height: calc(var(--size-16) * 4);
+    --mvw-countdown-active-color: light-dark(var(--mvw-secondary-color-500), var(--mvw-secondary-color-800));
+    --mvw-countdown-gamedata-bg: light-dark(var(--mvw-primary-color-700), var(--mvw-primary-color-300));
+    --mvw-countdown-result-bg: light-dark(var(--mvw-primary-color-800), var(--mvw-primary-color-200));
   }
 }
 
 @layer components {
   :where(.game-countdown) {
     display: grid;
-    grid-template-rows: var(--vbr-widget-countdown-title-height) 1fr var(--vbr-widget-countdown-gamedata-height);
+    grid-template-rows: var(--mvw-countdown-title-height) 1fr var(--mvw-countdown-gamedata-height);
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
 
     .game-countdown-title {
       text-align: center;
       font-size: var(--font-size-300);
       font-weight: 700;
-      line-height: var(--vbr-widget-countdown-title-height);
-      color: var(--vbr-widget-text-faded);
-      background-color: var(--vbr-widget-countdown-title-bg);
+      line-height: var(--mvw-countdown-title-height);
+      color: var(--mvw-text-faded);
+      background-color: var(--mvw-countdown-title-bg);
     }
 
     .game-countdown-container {
       display: grid;
       grid-template-areas: 'stack';
       place-items: center;
-      background-color: var(--vbr-widget-countdown-result-bg);
+      background-color: var(--mvw-countdown-result-bg);
 
       > div {
         visibility: hidden;
@@ -48,7 +48,7 @@
       gap: 0 var(--size-8);
       align-items: center;
 
-      color: var(--vbr-widget-text-dimmed);
+      color: var(--mvw-text-dimmed);
       font-weight: 700;
 
       .is-separator {
@@ -85,7 +85,7 @@
       }
 
       .is-live {
-        color: var(--vbr-widget-countdown-active-color);
+        color: var(--mvw-countdown-active-color);
       }
     }
 
@@ -99,10 +99,10 @@
       font-size: var(--font-size-50);
       font-weight: 700;
       text-transform: uppercase;
-      color: var(--vbr-widget-text-dimmed);
+      color: var(--mvw-text-dimmed);
 
       .is-number {
-        color: var(--vbr-widget-countdown-active-color);
+        color: var(--mvw-countdown-active-color);
       }
     }
 
@@ -114,16 +114,16 @@
       align-content: center;
       align-items: center;
       padding-inline: var(--size-16);
-      background-color: var(--vbr-widget-countdown-gamedata-bg);
-      font-size: var(--vbr-font-size-500);
+      background-color: var(--mvw-countdown-gamedata-bg);
+      font-size: var(--mvw-font-size-500);
       font-weight: 700;
       line-height: var(--font-lineheight-400);
-      color: light-dark(var(--vbr-primary-color-50), var(--vbr-primary-color-800));
+      color: light-dark(var(--mvw-primary-color-50), var(--mvw-primary-color-800));
 
       .is-game-date {
         grid-area: game-date;
         text-align: center;
-        color: var(--vbr-widget-text-faded);
+        color: var(--mvw-text-faded);
         font-size: var(--font-size-100);
       }
 

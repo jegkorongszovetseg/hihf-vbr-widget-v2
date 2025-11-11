@@ -7,13 +7,13 @@ export function useTeamColors(gameData) {
       return {};
 
     return {
-      '--vbr-widget-gamecenter-home-team-identifier-color': `#${homeTeam.color}`,
-      '--vbr-widget-gamecenter-away-team-identifier-color': `#${awayTeam.color}`,
+      '--mvw-gamecenter-home-team-identifier-color': `#${homeTeam.color}`,
+      '--mvw-gamecenter-away-team-identifier-color': `#${awayTeam.color}`,
       ...(homeTeam.color === 'ffffff' && {
-        '--vbr-widget-gamecenter-home-team-identifie-borderr-color': '#343434',
+        '--mvw-gamecenter-home-team-identifie-borderr-color': '#343434',
       }),
       ...(awayTeam.color === 'ffffff' && {
-        '--vbr-widget-gamecenter-away-team-identifier-border-color': '#343434',
+        '--mvw-gamecenter-away-team-identifier-border-color': '#343434',
       }),
     };
   });

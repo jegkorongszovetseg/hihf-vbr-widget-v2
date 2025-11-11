@@ -8,7 +8,7 @@
     align-items: center;
 
     &:not(:last-of-type) {
-      border-bottom: 1px solid var(--vbr-widget-border-faded);
+      border-bottom: 1px solid var(--mvw-border-faded);
     }
 
     img {
@@ -18,10 +18,10 @@
     }
 
     .game-result {
-      color: var(--vbr-widget-text-highlighted);
+      color: var(--mvw-text-highlighted);
 
       &.is-live {
-        color: var(--vbr-widget-text-live);
+        color: var(--mvw-live);
       }
     }
 

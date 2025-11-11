@@ -12,10 +12,10 @@ Előfordulhat, hogy az oldal tartalmaz különféle menüsávokat az oldal tetej
 
 ```css
 mjsz-vbr-schedule-liga {
-  --vbr-widget-sticky-top-offset: 50px;
+  --mvw-sticky-top-offset: 50px;
 
   @media all and (min-width: 768px) {
-    --vbr-widget-sticky-top-offset: 63px;
+    --mvw-sticky-top-offset: 63px;
   }
 }
 ```

@@ -1,6 +1,6 @@
 @layer components.variables {
   :where(:host) {
-    --vbr-widget-avatar-border-color: light-dark(var(--vbr-primary-color-100), var(--vbr-primary-color-700));
+    --mvw-avatar-border-color: light-dark(var(--mvw-primary-color-100), var(--mvw-primary-color-700));
   }
 }
 
@@ -16,7 +16,7 @@
     overflow: clip;
     position: relative;
     border-radius: 100%;
-    border: 1px solid var(--vbr-widget-avatar-border-color);
+    border: 1px solid var(--mvw-avatar-border-color);
 
     img {
       block-size: 100%;

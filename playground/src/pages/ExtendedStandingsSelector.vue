@@ -51,9 +51,9 @@ const data = [
 
 <!-- <style>
 mjsz-vbr-standings-selector {
-  --vbr-widget-standings-selector-title-size: 16px;
-  --vbr-widget-standings-selector-title-color: var(--vbr-widget-primary-color-700);
-  --vbr-widget-standings-selector-title-bg-color: linear-gradient(
+  --mvw-standings-selector-title-size: 16px;
+  --mvw-standings-selector-title-color: var(--mvw-primary-color-700);
+  --mvw-standings-selector-title-bg-color: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,
     rgba(255, 255, 255, 0) 96%,
@@ -61,20 +61,20 @@ mjsz-vbr-standings-selector {
     rgba(0, 0, 0, 0.2) 100%
   );
 
-  --vbr-widget-table-default-bg-color: transparent;
-  --vbr-widget-table-header-bg-color: linear-gradient(
+  --mvw-table-default-bg-color: transparent;
+  --mvw-table-header-bg-color: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,
     rgba(255, 255, 255, 0) 96%,
     rgba(0, 0, 0, 0.2) 96%,
     rgba(0, 0, 0, 0.2) 100%
   );
-  --vbr-widget-table-header-font-size: 11px;
-  --vbr-widget-table-header-hover-bg-color: transparent;
-  --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-300);
-  --vbr-widget-table-stripped-bg-color: transparent;
+  --mvw-table-header-font-size: 11px;
+  --mvw-table-header-hover-bg-color: transparent;
+  --mvw-table-cell-light-color: var(--mvw-primary-color-300);
+  --mvw-table-stripped-bg-color: transparent;
 
-  /* --vbr-widget-standings-selector-section-title-bg: linear-gradient(
+  /* --mvw-standings-selector-section-title-bg: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.2) 0%,
     rgba(0, 0, 0, 0.2) 4%,

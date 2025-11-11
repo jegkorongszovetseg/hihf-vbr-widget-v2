@@ -6,51 +6,51 @@
 
   font-family: 'Roboto Condensed', Avenir, Helvetica, Arial, sans-serif;
 
-  --vbr-widget-primary-color-0: #ffffff;
-  --vbr-widget-primary-color-50: #eceff1;
-  --vbr-widget-primary-color-100: #cfd8dc;
-  --vbr-widget-primary-color-200: #b0bec5;
-  --vbr-widget-primary-color-300: #90a4ae;
-  --vbr-widget-primary-color-400: #78909c;
-  --vbr-widget-primary-color-500: #607d8b;
-  --vbr-widget-primary-color-600: #546e7a;
-  --vbr-widget-primary-color-700: #455a64;
-  --vbr-widget-primary-color-800: #37474f;
-  --vbr-widget-primary-color-900: #263238;
+  --mvw-primary-color-0: #ffffff;
+  --mvw-primary-color-50: #eceff1;
+  --mvw-primary-color-100: #cfd8dc;
+  --mvw-primary-color-200: #b0bec5;
+  --mvw-primary-color-300: #90a4ae;
+  --mvw-primary-color-400: #78909c;
+  --mvw-primary-color-500: #607d8b;
+  --mvw-primary-color-600: #546e7a;
+  --mvw-primary-color-700: #455a64;
+  --mvw-primary-color-800: #37474f;
+  --mvw-primary-color-900: #263238;
 
-  --vbr-widget-secondary-color-100: #dcedc8;
-  --vbr-widget-secondary-color-200: #badb94;
-  --vbr-widget-secondary-color-300: #aed581;
-  --vbr-widget-secondary-color-400: #9ccc65;
-  --vbr-widget-secondary-color-500: #8bc34a;
-  --vbr-widget-secondary-color-700: #689f38;
-  --vbr-widget-secondary-color-800: #558b2f;
-  --vbr-widget-secondary-color-900: #33691e;
+  --mvw-secondary-color-100: #dcedc8;
+  --mvw-secondary-color-200: #badb94;
+  --mvw-secondary-color-300: #aed581;
+  --mvw-secondary-color-400: #9ccc65;
+  --mvw-secondary-color-500: #8bc34a;
+  --mvw-secondary-color-700: #689f38;
+  --mvw-secondary-color-800: #558b2f;
+  --mvw-secondary-color-900: #33691e;
 
-  --vbr-widget-danger-color-50: #ffebee;
-  --vbr-widget-danger-color-100: #ffcdd2;
-  --vbr-widget-danger-color-200: #ef9a9a;
-  --vbr-widget-danger-color-300: #e57373;
-  --vbr-widget-danger-color-400: #ef5350;
-  --vbr-widget-danger-color-500: #f44336;
-  --vbr-widget-danger-color-700: #d32f2f;
-  --vbr-widget-danger-color-900: #b71c1c;
-  --vbr-widget-danger-color-a400: #ff1744;
+  --mvw-danger-color-50: #ffebee;
+  --mvw-danger-color-100: #ffcdd2;
+  --mvw-danger-color-200: #ef9a9a;
+  --mvw-danger-color-300: #e57373;
+  --mvw-danger-color-400: #ef5350;
+  --mvw-danger-color-500: #f44336;
+  --mvw-danger-color-700: #d32f2f;
+  --mvw-danger-color-900: #b71c1c;
+  --mvw-danger-color-a400: #ff1744;
 
-  --vbr-widget-live-game-color: #8bc34a;
-  --vbr-widget-neutral-color: #ffc107;
+  --mvw-live-game-color: #8bc34a;
+  --mvw-neutral-color: #ffc107;
 
-  --vbr-widget-typography-font-size-50: 0.625rem; /* 10px */
-  --vbr-widget-typography-font-size-100: 0.6875rem; /* 11px */
-  --vbr-widget-typography-font-size-200: 0.75rem; /* 12px */
-  --vbr-widget-typography-font-size-300: 0.8125rem; /* 13px */
-  --vbr-widget-typography-font-size-400: 0.875rem; /* 14px */
-  --vbr-widget-typography-font-size-500: 1rem; /* 16px */
-  --vbr-widget-typography-font-size-600: 1.125rem; /* 18px */
-  --vbr-widget-typography-font-size-700: 1.25rem; /* 20px */
-  --vbr-widget-typography-font-size-800: 1.5rem; /* 24px */
-  --vbr-widget-typography-font-size-900: 1.75rem; /* 28px */
-  --vbr-widget-typography-font-size-950: 2rem; /* 32px */
+  --mvw-typography-font-size-50: 0.625rem; /* 10px */
+  --mvw-typography-font-size-100: 0.6875rem; /* 11px */
+  --mvw-typography-font-size-200: 0.75rem; /* 12px */
+  --mvw-typography-font-size-300: 0.8125rem; /* 13px */
+  --mvw-typography-font-size-400: 0.875rem; /* 14px */
+  --mvw-typography-font-size-500: 1rem; /* 16px */
+  --mvw-typography-font-size-600: 1.125rem; /* 18px */
+  --mvw-typography-font-size-700: 1.25rem; /* 20px */
+  --mvw-typography-font-size-800: 1.5rem; /* 24px */
+  --mvw-typography-font-size-900: 1.75rem; /* 28px */
+  --mvw-typography-font-size-950: 2rem; /* 32px */
 
   @include calcLineHeight(50);
   @include calcLineHeight(100);
@@ -64,228 +64,228 @@
   @include calcLineHeight(900);
   @include calcLineHeight(950);
 
-  --vbr-widget-typography-heading-weight: 500;
+  --mvw-typography-heading-weight: 500;
 
-  --vbr-widget-typography-heading-1-size: var(--vbr-widget-typography-font-size-800);
-  --vbr-widget-typography-heading-2-size: var(--vbr-widget-typography-font-size-700);
-  --vbr-widget-typography-heading-3-size: var(--vbr-widget-typography-font-size-600);
-  --vbr-widget-typography-heading-4-size: var(--vbr-widget-typography-font-size-500);
-  --vbr-widget-typography-heading-5-size: var(--vbr-widget-typography-font-size-400);
-  --vbr-widget-typography-heading-6-size: var(--vbr-widget-typography-font-size-200);
+  --mvw-typography-heading-1-size: var(--mvw-typography-font-size-800);
+  --mvw-typography-heading-2-size: var(--mvw-typography-font-size-700);
+  --mvw-typography-heading-3-size: var(--mvw-typography-font-size-600);
+  --mvw-typography-heading-4-size: var(--mvw-typography-font-size-500);
+  --mvw-typography-heading-5-size: var(--mvw-typography-font-size-400);
+  --mvw-typography-heading-6-size: var(--mvw-typography-font-size-200);
 
-  --vbr-widget-link-color: var(--vbr-widget-secondary-color-700);
-  --vbr-widget-hover-color: var(--vbr-widget-secondary-color-900);
+  --mvw-link-color: var(--mvw-secondary-color-700);
+  --mvw-hover-color: var(--mvw-secondary-color-900);
 
-  --vbr-widget-table-header-font-size: var(--vbr-widget-typography-font-size-200);
-  --vbr-widget-table-default-column-width: 30px;
-  --vbr-widget-table-default-bg-color: var(--vbr-widget-primary-color-0);
-  --vbr-widget-table-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-table-neutral-color: var(--vbr-widget-primary-color-300);
-  --vbr-widget-table-header-bg-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-table-header-hover-bg-color: var(--vbr-widget-primary-color-700);
-  --vbr-widget-table-header-color: var(--vbr-widget-primary-color-200);
-  --vbr-widget-table-header-active-bg-color: var(--vbr-widget-primary-color-700);
-  --vbr-widget-table-header-active-color: var(--vbr-widget-primary-color-0);
-  --vbr-widget-table-hover-color: var(--vbr-widget-secondary-color-900);
-  --vbr-widget-table-hover-bg-color: var(--vbr-widget-secondary-color-100);
-  --vbr-widget-table-active-color: var(--vbr-widget-secondary-color-900);
-  --vbr-widget-table-active-bg-color: var(--vbr-widget-secondary-color-200);
-  --vbr-widget-table-active-even-bg-color: var(--vbr-widget-secondary-color-300);
-  --vbr-widget-table-active-hover-color: var(--vbr-widget-secondary-color-900);
-  --vbr-widget-table-active-hover-bg-color: var(--vbr-widget-secondary-color-400);
-  --vbr-widget-table-portrait-border-color: var(--vbr-widget-primary-color-100);
-  --vbr-widget-table-portrait-bg-color: var(--vbr-widget-primary-color-50);
-  --vbr-widget-table-cell-light-color: var(--vbr-widget-primary-color-400);
-  --vbr-widget-table-cell-dark-color: var(--vbr-widget-primary-color-900);
-  --vbr-widget-table-stripped-bg-color: #f8f9fa;
-  --vbr-widget-table-label-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-table-label-bg-color: var(--vbr-widget-primary-color-50);
-  --vbr-widget-table-cell-logo-size: 20px;
-  --vbr-widget-table-cell-portrait-size: 26px;
-  --vbr-widget-text-faded: var(--vbr-widget-primary-color-200);
+  --mvw-table-header-font-size: var(--mvw-typography-font-size-200);
+  --mvw-table-default-column-width: 30px;
+  --mvw-table-default-bg-color: var(--mvw-primary-color-0);
+  --mvw-table-color: var(--mvw-primary-color-800);
+  --mvw-table-neutral-color: var(--mvw-primary-color-300);
+  --mvw-table-header-bg-color: var(--mvw-primary-color-800);
+  --mvw-table-header-hover-bg-color: var(--mvw-primary-color-700);
+  --mvw-table-header-color: var(--mvw-primary-color-200);
+  --mvw-table-header-active-bg-color: var(--mvw-primary-color-700);
+  --mvw-table-header-active-color: var(--mvw-primary-color-0);
+  --mvw-table-hover-color: var(--mvw-secondary-color-900);
+  --mvw-table-hover-bg-color: var(--mvw-secondary-color-100);
+  --mvw-table-active-color: var(--mvw-secondary-color-900);
+  --mvw-table-active-bg-color: var(--mvw-secondary-color-200);
+  --mvw-table-active-even-bg-color: var(--mvw-secondary-color-300);
+  --mvw-table-active-hover-color: var(--mvw-secondary-color-900);
+  --mvw-table-active-hover-bg-color: var(--mvw-secondary-color-400);
+  --mvw-table-portrait-border-color: var(--mvw-primary-color-100);
+  --mvw-table-portrait-bg-color: var(--mvw-primary-color-50);
+  --mvw-table-cell-light-color: var(--mvw-primary-color-400);
+  --mvw-table-cell-dark-color: var(--mvw-primary-color-900);
+  --mvw-table-stripped-bg-color: #f8f9fa;
+  --mvw-table-label-color: var(--mvw-primary-color-500);
+  --mvw-table-label-bg-color: var(--mvw-primary-color-50);
+  --mvw-table-cell-logo-size: 20px;
+  --mvw-table-cell-portrait-size: 26px;
+  --mvw-text-faded: var(--mvw-primary-color-200);
 
-  --vbr-widget-paginator-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-paginator-bg-color: var(--vbr-widget-primary-color-0);
-  --vbr-widget-paginator-hover-color: var(--vbr-widget-primary-color-700);
-  --vbr-widget-paginator-hover-bg-color: var(--vbr-widget-primary-color-100);
-  --vbr-widget-paginator-border-color: var(--vbr-widget-primary-color-100);
-  --vbr-widget-paginator-active-color: var(--vbr-widget-primary-color-0);
-  --vbr-widget-paginator-active-bg-color: var(--vbr-widget-primary-color-900);
-  --vbr-widget-paginator-disabled-color: var(--vbr-widget-primary-color-200);
+  --mvw-paginator-color: var(--mvw-primary-color-500);
+  --mvw-paginator-bg-color: var(--mvw-primary-color-0);
+  --mvw-paginator-hover-color: var(--mvw-primary-color-700);
+  --mvw-paginator-hover-bg-color: var(--mvw-primary-color-100);
+  --mvw-paginator-border-color: var(--mvw-primary-color-100);
+  --mvw-paginator-active-color: var(--mvw-primary-color-0);
+  --mvw-paginator-active-bg-color: var(--mvw-primary-color-900);
+  --mvw-paginator-disabled-color: var(--mvw-primary-color-200);
 
-  --vbr-widget-tooltip-font-size: var(--vbr-widget-typography-font-size-200);
-  --vbr-widget-tooltip-color: #ffffff;
-  --vbr-widget-tooltip-bg-color: #000000;
+  --mvw-tooltip-font-size: var(--mvw-typography-font-size-200);
+  --mvw-tooltip-color: #ffffff;
+  --mvw-tooltip-bg-color: #000000;
 
-  --vbr-widget-popover-trigger-hover-bg-color: var(--vbr-widget-secondary-color-200);
-  --vbr-widget-popover-trigger-focus-bg-color: var(--vbr-widget-secondary-color-300);
-  --vbr-widget-popover-bg-color: var(--vbr-widget-primary-color-0);
+  --mvw-popover-trigger-hover-bg-color: var(--mvw-secondary-color-200);
+  --mvw-popover-trigger-focus-bg-color: var(--mvw-secondary-color-300);
+  --mvw-popover-bg-color: var(--mvw-primary-color-0);
 
-  --vbr-widget-dropdown-item-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-dropdown-item-hover-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-dropdown-item-hover-bg-color: var(--vbr-widget-primary-color-50);
-  --vbr-widget-dropdown-item-selected-color: var(--vbr-widget-secondary-color-700);
-  --vbr-widget-dropdown-item-selected-hover-bg-color: var(--vbr-widget-secondary-color-100);
+  --mvw-dropdown-item-color: var(--mvw-primary-color-500);
+  --mvw-dropdown-item-hover-color: var(--mvw-primary-color-800);
+  --mvw-dropdown-item-hover-bg-color: var(--mvw-primary-color-50);
+  --mvw-dropdown-item-selected-color: var(--mvw-secondary-color-700);
+  --mvw-dropdown-item-selected-hover-bg-color: var(--mvw-secondary-color-100);
 
-  --vbr-widget-error-notice-bg-color: var(--vbr-widget-danger-color-50);
-  --vbr-widget-error-notice-border-color: var(--vbr-widget-danger-color-100);
-  --vbr-widget-error-notice-color: var(--vbr-widget-danger-color-700);
+  --mvw-error-notice-bg-color: var(--mvw-danger-color-50);
+  --mvw-error-notice-border-color: var(--mvw-danger-color-100);
+  --mvw-error-notice-color: var(--mvw-danger-color-700);
 
-  --vbr-widget-base-input-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-base-input-font-size: var(--vbr-widget-typography-font-size-400);
-  --vbr-widget-base-input-border-color: var(--vbr-widget-primary-color-300);
-  --vbr-widget-base-input-border-radius: 3px;
+  --mvw-base-input-color: var(--mvw-primary-color-800);
+  --mvw-base-input-font-size: var(--mvw-typography-font-size-400);
+  --mvw-base-input-border-color: var(--mvw-primary-color-300);
+  --mvw-base-input-border-radius: 3px;
 
-  --vbr-widget-form-label-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-form-label-font-size: var(--vbr-widget-typography-font-size-200);
+  --mvw-form-label-color: var(--mvw-primary-color-500);
+  --mvw-form-label-font-size: var(--mvw-typography-font-size-200);
 
-  --vbr-widget-timezone-selector-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-timezone-selector-font-size: var(--vbr-widget-typography-font-size-400);
+  --mvw-timezone-selector-color: var(--mvw-primary-color-500);
+  --mvw-timezone-selector-font-size: var(--mvw-typography-font-size-400);
 
-  --vbr-widget-badge-bg-color: var(--vbr-widget-primary-color-50);
-  --vbr-widget-badge-color: var(--vbr-widget-primary-color-400);
-  --vbr-widget-badge-font-size: var(--vbr-widget-typography-font-size-50);
-  --vbr-widget-badge-large-font-size: var(--vbr-widget-typography-font-size-100);
-  --vbr-widget-badge-extra-large-font-size: var(--vbr-widget-typography-font-size-300);
+  --mvw-badge-bg-color: var(--mvw-primary-color-50);
+  --mvw-badge-color: var(--mvw-primary-color-400);
+  --mvw-badge-font-size: var(--mvw-typography-font-size-50);
+  --mvw-badge-large-font-size: var(--mvw-typography-font-size-100);
+  --mvw-badge-extra-large-font-size: var(--mvw-typography-font-size-300);
 
-  --vbr-widget-tab-btn-padding: 0.625rem 1rem;
-  --vbr-widget-tab-btn-font-size: var(--vbr-widget-typography-font-size-500);
-  --vbr-widget-tab-btn-font-weight: 500;
-  --vbr-widget-tab-btn-bg-color: var(--vbr-widget-primary-color-0);
-  --vbr-widget-tab-btn-color: var(--vbr-widget-primary-color-300);
-  --vbr-widget-tab-btn-border-color: transparent;
-  --vbr-widget-tab-btn-border-style: solid;
-  --vbr-widget-tab-btn-border-width: 0 0 3px 0;
-  --vbr-widget-tab-btn-text-transform: uppercase;
-  --vbr-widget-tab-btn-hover-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-tab-btn-hover-bg-color: var(--vbr-widget-primary-color-0);
-  --vbr-widget-tab-btn-hover-border-color: transparent;
-  --vbr-widget-tab-btn-active-bg-color: var(--vbr-widget-primary-color-0);
-  --vbr-widget-tab-btn-active-color: var(--vbr-widget-primary-color-900);
-  --vbr-widget-tab-btn-active-border-color: var(--vbr-widget-secondary-color-500);
+  --mvw-tab-btn-padding: 0.625rem 1rem;
+  --mvw-tab-btn-font-size: var(--mvw-typography-font-size-500);
+  --mvw-tab-btn-font-weight: 500;
+  --mvw-tab-btn-bg-color: var(--mvw-primary-color-0);
+  --mvw-tab-btn-color: var(--mvw-primary-color-300);
+  --mvw-tab-btn-border-color: transparent;
+  --mvw-tab-btn-border-style: solid;
+  --mvw-tab-btn-border-width: 0 0 3px 0;
+  --mvw-tab-btn-text-transform: uppercase;
+  --mvw-tab-btn-hover-color: var(--mvw-primary-color-500);
+  --mvw-tab-btn-hover-bg-color: var(--mvw-primary-color-0);
+  --mvw-tab-btn-hover-border-color: transparent;
+  --mvw-tab-btn-active-bg-color: var(--mvw-primary-color-0);
+  --mvw-tab-btn-active-color: var(--mvw-primary-color-900);
+  --mvw-tab-btn-active-border-color: var(--mvw-secondary-color-500);
 
-  --vbr-widget-toggle-group-gap: 0.625rem;
-  --vbr-widget-toggle-group-btn-padding: 3px 10px;
-  --vbr-widget-toggle-group-btn-size: var(--vbr-widget-typography-font-size-400);
-  --vbr-widget-toggle-group-btn-bg-color: var(--vbr-widget-primary-color-50);
-  --vbr-widget-toggle-group-btn-active-color: var(--vbr-widget-primary-color-0);
-  --vbr-widget-toggle-group-btn-active-bg-color: var(--vbr-widget-live-game-color);
-  --vbr-widget-toggle-group-btn-radius: 4px;
+  --mvw-toggle-group-gap: 0.625rem;
+  --mvw-toggle-group-btn-padding: 3px 10px;
+  --mvw-toggle-group-btn-size: var(--mvw-typography-font-size-400);
+  --mvw-toggle-group-btn-bg-color: var(--mvw-primary-color-50);
+  --mvw-toggle-group-btn-active-color: var(--mvw-primary-color-0);
+  --mvw-toggle-group-btn-active-bg-color: var(--mvw-live-game-color);
+  --mvw-toggle-group-btn-radius: 4px;
 
-  --vbr-widget-progress-height: 10px;
-  --vbr-widget-progress-border-radius: 5px;
-  --vbr-widget-progress-bg-color: var(--vbr-widget-primary-color-50);
-  --vbr-widget-progress-bar-color: var(--vbr-widget-live-game-color);
-  --vbr-widget-progress-bar-stripe-color: rgba(255, 255, 255, 0.2);
-  --vbr-widget-progress-bar-stripe-angle: 45deg;
+  --mvw-progress-height: 10px;
+  --mvw-progress-border-radius: 5px;
+  --mvw-progress-bg-color: var(--mvw-primary-color-50);
+  --mvw-progress-bar-color: var(--mvw-live-game-color);
+  --mvw-progress-bar-stripe-color: rgba(255, 255, 255, 0.2);
+  --mvw-progress-bar-stripe-angle: 45deg;
 
-  --vbr-widget-gamecenter-result-size: 6rem;
-  --vbr-widget-gamecenter-result-weight: 700;
-  --vbr-widget-gamecenter-result-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-gamecenter-teamname-size: var(--vbr-widget-typography-font-size-700);
-  --vbr-widget-gamecenter-teamname-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-gamecenter-teamname-weight: 700;
-  --vbr-widget-gamecenter-title-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-gamecenter-title-size: var(--vbr-widget-typography-font-size-500);
-  --vbr-widget-gamecenter-title-weight: 700;
-  --vbr-widget-gamecenter-gamedate-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-gamecenter-gamedate-size: var(--vbr-widget-typography-font-size-500);
-  --vbr-widget-gamecenter-local-gamedate-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-gamecenter-local-gamedate-size: var(--vbr-widget-typography-font-size-300);
-  --vbr-widget-gamecenter-gamestatus-color: var(--vbr-widget-primary-color-600);
-  --vbr-widget-gamecenter-gamestatus-size: var(--vbr-widget-typography-font-size-400);
-  --vbr-widget-gamecenter-periodresults-color: var(--vbr-widget-primary-color-600);
-  --vbr-widget-gamecenter-periodresults-size: var(--vbr-widget-typography-font-size-700);
-  --vbr-widget-gamecenter-period-header-bg-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-gamecenter-period-header-color: var(--vbr-widget-primary-color-0);
-  --vbr-widget-gamecenter-period-header-size: var(--vbr-widget-typography-font-size-300);
-  --vbr-widget-gamecenter-period-header-weight: 500;
-  --vbr-widget-gamecenter-stats-bg-color: var(--vbr-widget-primary-color-50);
-  --vbr-widget-gamecenter-stats-border-color: var(--vbr-widget-primary-color-100);
-  --vbr-widget-gamecenter-stats-title-size: var(--vbr-widget-typography-font-size-300);
-  --vbr-widget-gamecenter-stats-title-color: var(--vbr-widget-primary-color-400);
-  --vbr-widget-gamecenter-stats-size: var(--vbr-widget-typography-font-size-500);
-  --vbr-widget-gamecenter-stats-color: var(--vbr-widget-primary-color-800);
+  --mvw-gamecenter-result-size: 6rem;
+  --mvw-gamecenter-result-weight: 700;
+  --mvw-gamecenter-result-color: var(--mvw-primary-color-800);
+  --mvw-gamecenter-teamname-size: var(--mvw-typography-font-size-700);
+  --mvw-gamecenter-teamname-color: var(--mvw-primary-color-800);
+  --mvw-gamecenter-teamname-weight: 700;
+  --mvw-gamecenter-title-color: var(--mvw-primary-color-800);
+  --mvw-gamecenter-title-size: var(--mvw-typography-font-size-500);
+  --mvw-gamecenter-title-weight: 700;
+  --mvw-gamecenter-gamedate-color: var(--mvw-primary-color-500);
+  --mvw-gamecenter-gamedate-size: var(--mvw-typography-font-size-500);
+  --mvw-gamecenter-local-gamedate-color: var(--mvw-primary-color-500);
+  --mvw-gamecenter-local-gamedate-size: var(--mvw-typography-font-size-300);
+  --mvw-gamecenter-gamestatus-color: var(--mvw-primary-color-600);
+  --mvw-gamecenter-gamestatus-size: var(--mvw-typography-font-size-400);
+  --mvw-gamecenter-periodresults-color: var(--mvw-primary-color-600);
+  --mvw-gamecenter-periodresults-size: var(--mvw-typography-font-size-700);
+  --mvw-gamecenter-period-header-bg-color: var(--mvw-primary-color-800);
+  --mvw-gamecenter-period-header-color: var(--mvw-primary-color-0);
+  --mvw-gamecenter-period-header-size: var(--mvw-typography-font-size-300);
+  --mvw-gamecenter-period-header-weight: 500;
+  --mvw-gamecenter-stats-bg-color: var(--mvw-primary-color-50);
+  --mvw-gamecenter-stats-border-color: var(--mvw-primary-color-100);
+  --mvw-gamecenter-stats-title-size: var(--mvw-typography-font-size-300);
+  --mvw-gamecenter-stats-title-color: var(--mvw-primary-color-400);
+  --mvw-gamecenter-stats-size: var(--mvw-typography-font-size-500);
+  --mvw-gamecenter-stats-color: var(--mvw-primary-color-800);
 
-  --vbr-widget-gamecenter-team-container-title-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-gamecenter-team-container-title-bg-color: var(--vbr-widget-primary-color-100);
-  --vbr-widget-gamecenter-team-container-border-color: var(--vbr-widget-primary-color-100);
+  --mvw-gamecenter-team-container-title-color: var(--mvw-primary-color-800);
+  --mvw-gamecenter-team-container-title-bg-color: var(--mvw-primary-color-100);
+  --mvw-gamecenter-team-container-border-color: var(--mvw-primary-color-100);
 
-  --vbr-widget-gamecenter-events-evented-person-size: var(--vbr-widget-typography-font-size-500);
-  --vbr-widget-gamecenter-events-evented-person-weight: 600;
-  --vbr-widget-gamecenter-events-assitst-list-size: var(--vbr-widget-typography-font-size-400);
-  --vbr-widget-gamecenter-events-poi-list-size: var(--vbr-widget-typography-font-size-200);
-  --vbr-widget-gamecenter-events-score-size: var(--vbr-widget-typography-font-size-500);
-  --vbr-widget-gamecenter-events-penalty-size: var(--vbr-widget-typography-font-size-400);
-  --vbr-widget-gamecenter-events-goalie-direction-size: var(--vbr-widget-typography-font-size-400);
-  --vbr-widget-gamecenter-events-timeout-bg-color: #2870ed;
+  --mvw-gamecenter-events-evented-person-size: var(--mvw-typography-font-size-500);
+  --mvw-gamecenter-events-evented-person-weight: 600;
+  --mvw-gamecenter-events-assitst-list-size: var(--mvw-typography-font-size-400);
+  --mvw-gamecenter-events-poi-list-size: var(--mvw-typography-font-size-200);
+  --mvw-gamecenter-events-score-size: var(--mvw-typography-font-size-500);
+  --mvw-gamecenter-events-penalty-size: var(--mvw-typography-font-size-400);
+  --mvw-gamecenter-events-goalie-direction-size: var(--mvw-typography-font-size-400);
+  --mvw-gamecenter-events-timeout-bg-color: #2870ed;
 
-  --vbr-widget-gamecenter-card-title-color: var(--vbr-widget-primary-color-900);
-  --vbr-widget-gamecenter-card-secondary-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-gamecenter-card-tertiary-color: var(--vbr-widget-primary-color-300);
-  --vbr-widget-gamecenter-card-border-color: var(--vbr-widget-primary-color-100);
-  --vbr-widget-gamecenter-card-bg-color: var(--vbr-widget-primary-color-0);
+  --mvw-gamecenter-card-title-color: var(--mvw-primary-color-900);
+  --mvw-gamecenter-card-secondary-color: var(--mvw-primary-color-500);
+  --mvw-gamecenter-card-tertiary-color: var(--mvw-primary-color-300);
+  --mvw-gamecenter-card-border-color: var(--mvw-primary-color-100);
+  --mvw-gamecenter-card-bg-color: var(--mvw-primary-color-0);
 
-  --vbr-widget-gamecenter-card-event-goal-border-color: var(--vbr-widget-primary-color-700);
-  --vbr-widget-gamecenter-card-event-goal-bg-color: var(--vbr-widget-primary-color-700);
+  --mvw-gamecenter-card-event-goal-border-color: var(--mvw-primary-color-700);
+  --mvw-gamecenter-card-event-goal-bg-color: var(--mvw-primary-color-700);
 
-  --vbr-widget-gamecenter-home-team-identifier-color: #2870ed;
-  --vbr-widget-gamecenter-away-team-identifier-color: #ff6129;
-  --vbr-widget-gamecenter-home-team-identifier-border-color: transparent;
-  --vbr-widget-gamecenter-away-team-identifier-border-color: transparent;
+  --mvw-gamecenter-home-team-identifier-color: #2870ed;
+  --mvw-gamecenter-away-team-identifier-color: #ff6129;
+  --mvw-gamecenter-home-team-identifier-border-color: transparent;
+  --mvw-gamecenter-away-team-identifier-border-color: transparent;
 
-  --vbr-widget-main-image-wrapper-horizontal-margin: 0;
+  --mvw-main-image-wrapper-horizontal-margin: 0;
 
-  --vbr-widget-sticky-top-offset: 0;
+  --mvw-sticky-top-offset: 0;
 
-  --vbr-widget-loading-indicator-text-color: var(--vbr-widget-hover-color);
+  --mvw-loading-indicator-text-color: var(--mvw-hover-color);
 
-  --vbr-widget-games-timeline-game-date-size: var(--vbr-widget-typography-font-size-100);
-  --vbr-widget-games-timeline-game-date-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-games-timeline-game-team-color: var(--vbr-widget-primary-color-700);
-  --vbr-widget-games-timeline-game-team-size: var(--vbr-widget-typography-font-size-300);
-  --vbr-widget-games-timeline-game-status-color: var(--vbr-widget-primary-color-300);
-  --vbr-widget-games-timeline-game-status-size: var(--vbr-widget-typography-font-size-200);
-  --vbr-widget-games-timeline-game-hover-bg-color: linear-gradient(#fff, #f5f6f7 50%, #fff);
-  --vbr-widget-games-timeline-arrow-color: var(--vbr-widget-primary-color-300);
-  --vbr-widget-games-timeline-arrow-hover-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-games-timeline-arrow-disabled-color: var(--vbr-widget-primary-color-100);
-  --vbr-widget-games-timeline-arrow-border-color: var(--vbr-widget-primary-color-100);
-  --vbr-widget-games-timeline-external-link-color: var(--vbr-widget-primary-color-500);
-  --vbr-widget-games-timeline-external-link-size: var(--vbr-widget-typography-font-size-200);
+  --mvw-games-timeline-game-date-size: var(--mvw-typography-font-size-100);
+  --mvw-games-timeline-game-date-color: var(--mvw-primary-color-500);
+  --mvw-games-timeline-game-team-color: var(--mvw-primary-color-700);
+  --mvw-games-timeline-game-team-size: var(--mvw-typography-font-size-300);
+  --mvw-games-timeline-game-status-color: var(--mvw-primary-color-300);
+  --mvw-games-timeline-game-status-size: var(--mvw-typography-font-size-200);
+  --mvw-games-timeline-game-hover-bg-color: linear-gradient(#fff, #f5f6f7 50%, #fff);
+  --mvw-games-timeline-arrow-color: var(--mvw-primary-color-300);
+  --mvw-games-timeline-arrow-hover-color: var(--mvw-primary-color-500);
+  --mvw-games-timeline-arrow-disabled-color: var(--mvw-primary-color-100);
+  --mvw-games-timeline-arrow-border-color: var(--mvw-primary-color-100);
+  --mvw-games-timeline-external-link-color: var(--mvw-primary-color-500);
+  --mvw-games-timeline-external-link-size: var(--mvw-typography-font-size-200);
 
-  --vbr-widget-standings-selector-title-size: var(--vbr-widget-typography-font-size-500);
-  --vbr-widget-standings-selector-title-color: var(--vbr-widget-primary-color-700);
-  --vbr-widget-standings-selector-title-transform: none;
-  --vbr-widget-standings-selector-title-padding: 0 0.625em 0.5625em;
-  --vbr-widget-standings-selector-title-bg-color: transparent;
+  --mvw-standings-selector-title-size: var(--mvw-typography-font-size-500);
+  --mvw-standings-selector-title-color: var(--mvw-primary-color-700);
+  --mvw-standings-selector-title-transform: none;
+  --mvw-standings-selector-title-padding: 0 0.625em 0.5625em;
+  --mvw-standings-selector-title-bg-color: transparent;
 
-  --vbr-widget-standings-selector-section-title-bg: var(--vbr-widget-primary-color-50);
-  --vbr-widget-standings-selector-section-title-size: var(--vbr-widget-typography-font-size-400);
-  --vbr-widget-standings-selector-section-title-color: var(--vbr-widget-primary-color-700);
-  --vbr-widget-standings-selector-section-title-padding: 0.25em 0;
-  --vbr-widget-standings-selector-section-logo-size: 30px;
-  --vbr-widget-standings-selector-section-team-color: var(--vbr-widget-primary-color-900);
+  --mvw-standings-selector-section-title-bg: var(--mvw-primary-color-50);
+  --mvw-standings-selector-section-title-size: var(--mvw-typography-font-size-400);
+  --mvw-standings-selector-section-title-color: var(--mvw-primary-color-700);
+  --mvw-standings-selector-section-title-padding: 0.25em 0;
+  --mvw-standings-selector-section-logo-size: 30px;
+  --mvw-standings-selector-section-team-color: var(--mvw-primary-color-900);
 
-  --vbr-widget-top-list-bg-color: var(--vbr-widget-primary-color-900);
-  --vbr-widget-top-list-title-color: var(--vbr-widget-primary-color-50);
-  --vbr-widget-top-list-title-separator-color: var(--vbr-widget-primary-color-700);
-  --vbr-widget-top-list-value-color: var(--vbr-widget-primary-color-300);
-  --vbr-widget-top-list-player-separator-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-top-list-image-border-color: var(--vbr-widget-primary-color-600);
-  --vbr-widget-top-list-image-bg-color: var(--vbr-widget-primary-color-800);
-  --vbr-widget-top-list-selector-border-color: var(--vbr-widget-primary-color-400);
+  --mvw-top-list-bg-color: var(--mvw-primary-color-900);
+  --mvw-top-list-title-color: var(--mvw-primary-color-50);
+  --mvw-top-list-title-separator-color: var(--mvw-primary-color-700);
+  --mvw-top-list-value-color: var(--mvw-primary-color-300);
+  --mvw-top-list-player-separator-color: var(--mvw-primary-color-800);
+  --mvw-top-list-image-border-color: var(--mvw-primary-color-600);
+  --mvw-top-list-image-bg-color: var(--mvw-primary-color-800);
+  --mvw-top-list-selector-border-color: var(--mvw-primary-color-400);
 
-  --vbr-widget-countdown-title-height: 2rem;
-  --vbr-widget-countdown-title-bg: var(--vbr-widget-primary-color-900);
-  --vbr-widget-countdown-gamedata-height: 4rem;
-  --vbr-widget-countdown-gamedata-bg: var(--vbr-widget-primary-color-700);
-  --vbr-widget-countdown-result-bg: var(--vbr-widget-primary-color-800);
+  --mvw-countdown-title-height: 2rem;
+  --mvw-countdown-title-bg: var(--mvw-primary-color-900);
+  --mvw-countdown-gamedata-height: 4rem;
+  --mvw-countdown-gamedata-bg: var(--mvw-primary-color-700);
+  --mvw-countdown-result-bg: var(--mvw-primary-color-800);
 
-  --vbr-widget-playoffs-header-bg: var(--vbr-widget-primary-color-800);
-  --vbr-widget-playoffs-header-color: var(--vbr-widget-primary-color-100);
-  --vbr-widget-playoffs-header-size: var(--vbr-widget-typography-font-size-500);
-  --vbr-widget-playoffs-details-bg: var(--vbr-widget-primary-color-50);
+  --mvw-playoffs-header-bg: var(--mvw-primary-color-800);
+  --mvw-playoffs-header-color: var(--mvw-primary-color-100);
+  --mvw-playoffs-header-size: var(--mvw-typography-font-size-500);
+  --mvw-playoffs-details-bg: var(--mvw-primary-color-50);
 
   --ease-spring-1: linear(
     0,

@@ -21,48 +21,48 @@
     }
 
     .is-title {
-      color: var(--vbr-widget-gamecenter-title-color);
-      font-size: var(--vbr-widget-gamecenter-title-size);
-      font-weight: var(--vbr-widget-gamecenter-title-weight);
+      color: var(--mvw-gamecenter-title-color);
+      font-size: var(--mvw-gamecenter-title-size);
+      font-weight: var(--mvw-gamecenter-title-weight);
       text-transform: uppercase;
     }
 
     .is-gamedate {
-      color: var(--vbr-widget-gamecenter-gamedate-color);
-      font-size: var(--vbr-widget-gamecenter-gamedate-size);
+      color: var(--mvw-gamecenter-gamedate-color);
+      font-size: var(--mvw-gamecenter-gamedate-size);
       text-transform: uppercase;
     }
 
     .is-local-gamedate {
-      color: var(--vbr-widget-gamecenter-local-gamedate-color);
-      font-size: var(--vbr-widget-gamecenter-local-gamedate-size);
+      color: var(--mvw-gamecenter-local-gamedate-color);
+      font-size: var(--mvw-gamecenter-local-gamedate-size);
       text-transform: uppercase;
     }
 
     .is-game-result {
-      color: var(--vbr-widget-gamecenter-result-color);
-      font-weight: var(--vbr-widget-gamecenter-result-weight);
-      font-size: var(--vbr-widget-gamecenter-result-size);
-      line-height: var(--vbr-widget-gamecenter-result-size);
+      color: var(--mvw-gamecenter-result-color);
+      font-weight: var(--mvw-gamecenter-result-weight);
+      font-size: var(--mvw-gamecenter-result-size);
+      line-height: var(--mvw-gamecenter-result-size);
     }
 
     .is-team-name {
       display: block;
       padding: 8px 0;
-      color: var(--vbr-widget-gamecenter-teamname-color);
-      font-weight: var(--vbr-widget-gamecenter-teamname-weight);
-      font-size: var(--vbr-widget-gamecenter-teamname-size);
+      color: var(--mvw-gamecenter-teamname-color);
+      font-weight: var(--mvw-gamecenter-teamname-weight);
+      font-size: var(--mvw-gamecenter-teamname-size);
     }
 
     .is-game-status {
-      color: var(--vbr-widget-gamecenter-gamestatus-color);
-      font-size: var(--vbr-widget-gamecenter-gamestatus-size);
+      color: var(--mvw-gamecenter-gamestatus-color);
+      font-size: var(--mvw-gamecenter-gamestatus-size);
       text-transform: uppercase;
     }
 
     .is-period-results {
-      color: var(--vbr-widget-gamecenter-periodresults-color);
-      font-size: var(--vbr-widget-gamecenter-periodresults-size);
+      color: var(--mvw-gamecenter-periodresults-color);
+      font-size: var(--mvw-gamecenter-periodresults-size);
       font-weight: 500;
     }
 
@@ -74,13 +74,13 @@
     }
 
     .is-game-status-live {
-      color: var(--vbr-widget-live-game-color);
+      color: var(--mvw-live-game-color);
     }
 
     .is-live-vistors {
       padding-block: 8px;
-      font-size: var(--vbr-widget-gamecenter-local-gamedate-size);
-      color: var(--vbr-widget-gamecenter-local-gamedate-color);
+      font-size: var(--mvw-gamecenter-local-gamedate-size);
+      color: var(--mvw-gamecenter-local-gamedate-color);
     }
 
     .is-external-contents {
@@ -92,7 +92,7 @@
       a {
         display: flex;
         align-items: center;
-        font-size: var(--vbr-widget-gamecenter-local-gamedate-size);
+        font-size: var(--mvw-gamecenter-local-gamedate-size);
 
         &:after {
           content: '/';
@@ -125,7 +125,7 @@
       flex-direction: column;
       gap: 20px;
       padding: 16px;
-      background-color: var(--vbr-widget-primary-color-50);
+      background-color: var(--mvw-primary-color-50);
     }
   }
 
@@ -137,8 +137,8 @@
     gap: 20px;
     justify-items: center;
     padding: 20px;
-    background-color: var(--vbr-widget-gamecenter-stats-bg-color);
-    border: 1px solid var(--vbr-widget-gamecenter-stats-border-color);
+    background-color: var(--mvw-gamecenter-stats-bg-color);
+    border: 1px solid var(--mvw-gamecenter-stats-border-color);
 
     @include tablet {
       --columns: repeat(2, 1fr);
@@ -152,18 +152,18 @@
     text-align: center;
 
     dt {
-      font-size: var(--vbr-widget-gamecenter-stats-title-size);
-      color: var(--vbr-widget-gamecenter-stats-title-color);
+      font-size: var(--mvw-gamecenter-stats-title-size);
+      color: var(--mvw-gamecenter-stats-title-color);
       text-transform: uppercase;
 
       button {
-        width: var(--vbr-widget-gamecenter-stats-title-size);
+        width: var(--mvw-gamecenter-stats-title-size);
       }
     }
 
     dd {
-      font-size: var(--vbr-widget-gamecenter-stats-size);
-      color: var(--vbr-widget-gamecenter-stats-color);
+      font-size: var(--mvw-gamecenter-stats-size);
+      color: var(--mvw-gamecenter-stats-color);
     }
   }
 
@@ -171,16 +171,16 @@
     container-name: rows;
     container-type: inline-size;
     margin-bottom: 20px;
-    border: 1px solid var(--vbr-widget-gamecenter-stats-border-color);
+    border: 1px solid var(--mvw-gamecenter-stats-border-color);
 
     .is-period-header {
       padding: 10px 20px;
-      font-size: var(--vbr-widget-gamecenter-period-header-size);
-      font-weight: var(--vbr-widget-gamecenter-period-header-weight);
+      font-size: var(--mvw-gamecenter-period-header-size);
+      font-weight: var(--mvw-gamecenter-period-header-weight);
       text-align: center;
       text-transform: uppercase;
-      color: var(--vbr-widget-gamecenter-period-header-color);
-      background-color: var(--vbr-widget-gamecenter-period-header-bg-color);
+      color: var(--mvw-gamecenter-period-header-color);
+      background-color: var(--mvw-gamecenter-period-header-bg-color);
     }
 
     .is-no-action {
@@ -204,7 +204,7 @@
     }
 
     &:nth-child(odd) {
-      background-color: var(--vbr-widget-table-stripped-bg-color);
+      background-color: var(--mvw-table-stripped-bg-color);
     }
 
     > * {
@@ -231,27 +231,27 @@
     }
 
     .is-penalty-icon {
-      color: var(--vbr-widget-primary-color-300);
+      color: var(--mvw-primary-color-300);
     }
 
     .is-goal-so-icon {
-      color: var(--vbr-widget-primary-color-500);
+      color: var(--mvw-primary-color-500);
     }
 
     .is-goal-icon {
-      color: var(--vbr-widget-danger-color-a400);
+      color: var(--mvw-danger-color-a400);
     }
 
     .is-timer-icon {
-      color: var(--vbr-widget-secondary-color-500);
+      color: var(--mvw-secondary-color-500);
     }
 
     .is-goalie-in-icon {
-      color: var(--vbr-widget-secondary-color-500);
+      color: var(--mvw-secondary-color-500);
     }
 
     .is-goalie-out-icon {
-      color: var(--vbr-widget-danger-color-a400);
+      color: var(--mvw-danger-color-a400);
     }
 
     .is-time-cell {
@@ -259,42 +259,42 @@
     }
 
     .is-penalty-cell {
-      font-size: var(--vbr-widget-gamecenter-events-penalty-size);
+      font-size: var(--mvw-gamecenter-events-penalty-size);
       text-align: center;
     }
 
     .is-score {
-      font-size: var(--vbr-widget-gamecenter-events-score-size);
+      font-size: var(--mvw-gamecenter-events-score-size);
       font-weight: 700;
       text-align: center;
-      color: var(--vbr-widget-danger-color-a400);
+      color: var(--mvw-danger-color-a400);
     }
 
     .is-score-so {
-      font-size: var(--vbr-widget-gamecenter-events-score-size);
+      font-size: var(--mvw-gamecenter-events-score-size);
       font-weight: 700;
       text-align: center;
-      color: var(--vbr-widget-primary-color-500);
+      color: var(--mvw-primary-color-500);
     }
 
     .is-score-so-goal {
-      color: var(--vbr-widget-live-game-color);
+      color: var(--mvw-live-game-color);
     }
 
     .is-goalie-direction {
-      font-size: var(--vbr-widget-gamecenter-events-goalie-direction-size);
+      font-size: var(--mvw-gamecenter-events-goalie-direction-size);
       text-align: center;
-      color: var(--vbr-widget-primary-color-400);
+      color: var(--mvw-primary-color-400);
     }
 
     .is-evented-person {
-      font-size: var(--vbr-widget-gamecenter-events-evented-person-size);
-      font-weight: var(--vbr-widget-gamecenter-events-evented-person-weight);
+      font-size: var(--mvw-gamecenter-events-evented-person-size);
+      font-weight: var(--mvw-gamecenter-events-evented-person-weight);
     }
 
     .is-assists-list {
-      font-size: var(--vbr-widget-gamecenter-events-assitst-list-size);
-      color: var(--vbr-widget-primary-color-400);
+      font-size: var(--mvw-gamecenter-events-assitst-list-size);
+      color: var(--mvw-primary-color-400);
 
       span::after {
         content: ' / ';
@@ -306,8 +306,8 @@
     }
 
     .is-poi-data {
-      font-size: var(--vbr-widget-gamecenter-events-poi-list-size);
-      color: var(--vbr-widget-primary-color-400);
+      font-size: var(--mvw-gamecenter-events-poi-list-size);
+      color: var(--mvw-primary-color-400);
 
       ul {
         display: inline-flex;
@@ -328,24 +328,24 @@
     .is-player-number {
       font-weight: 400;
       font-style: italic;
-      color: var(--vbr-widget-primary-color-500);
+      color: var(--mvw-primary-color-500);
     }
 
     .is-light-cell {
-      color: var(--vbr-widget-primary-color-400);
+      color: var(--mvw-primary-color-400);
     }
   }
 
   &-data-table {
-    border: 1px solid var(--vbr-widget-gamecenter-team-container-border-color);
+    border: 1px solid var(--mvw-gamecenter-team-container-border-color);
     min-width: 0;
 
     h2 {
       padding: 8px;
-      font-size: var(--vbr-widget-gamecenter-team-container-title-size);
+      font-size: var(--mvw-gamecenter-team-container-title-size);
       font-weight: 500;
-      color: var(--vbr-widget-gamecenter-team-container-title-color);
-      background-color: var(--vbr-widget-gamecenter-team-container-title-bg-color);
+      color: var(--mvw-gamecenter-team-container-title-color);
+      background-color: var(--mvw-gamecenter-team-container-title-bg-color);
     }
   }
 

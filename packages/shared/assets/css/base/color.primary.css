@@ -1,17 +1,17 @@
 :where(:host) {
-  --vbr-color-white: #fff;
-  --vbr-color-black: #000;
+  --mvw-color-white: #fff;
+  --mvw-color-black: #000;
 
-  --vbr-primary-color-0: #ffffff;
-  --vbr-primary-color-50: #eceff1;
-  --vbr-primary-color-100: #cfd8dc;
-  --vbr-primary-color-200: #b0bec5;
-  --vbr-primary-color-300: #90a4ae;
-  --vbr-primary-color-400: #78909c;
-  --vbr-primary-color-500: #607d8b;
-  --vbr-primary-color-600: #546e7a;
-  --vbr-primary-color-700: #455a64;
-  --vbr-primary-color-800: #37474f;
-  --vbr-primary-color-900: #263238;
-  --vbr-primary-color-950: #182024;
+  --mvw-primary-color-0: #ffffff;
+  --mvw-primary-color-50: #eceff1;
+  --mvw-primary-color-100: #cfd8dc;
+  --mvw-primary-color-200: #b0bec5;
+  --mvw-primary-color-300: #90a4ae;
+  --mvw-primary-color-400: #78909c;
+  --mvw-primary-color-500: #607d8b;
+  --mvw-primary-color-600: #546e7a;
+  --mvw-primary-color-700: #455a64;
+  --mvw-primary-color-800: #37474f;
+  --mvw-primary-color-900: #263238;
+  --mvw-primary-color-950: #182024;
 }

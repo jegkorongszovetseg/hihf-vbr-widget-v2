@@ -11,7 +11,7 @@
 }
 
 .is-card > div {
-  border-bottom: 1px solid var(--vbr-widget-primary-color-100);
+  border-bottom: 1px solid var(--mvw-primary-color-100);
 
   &:last-of-type {
     border: none;
@@ -20,7 +20,7 @@
 
 .is-sticky {
   position: sticky;
-  top: var(--vbr-widget-sticky-top-offset);
+  top: var(--mvw-sticky-top-offset);
   z-index: 10;
 }
 
@@ -33,7 +33,7 @@
   grid-gap: 1rem;
   grid-template-columns: 2fr 1fr 2fr;
   padding: 2rem 0;
-  border-bottom: 1px solid var(--vbr-widget-primary-color-100);
+  border-bottom: 1px solid var(--mvw-primary-color-100);
 
   &.is-optional {
     opacity: 0.4;
@@ -65,7 +65,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--vbr-widget-primary-color-500);
+    color: var(--mvw-primary-color-500);
   }
 
   .is-home-team {
@@ -98,17 +98,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      color: var(--vbr-widget-primary-color-900);
+      color: var(--mvw-primary-color-900);
 
       &:hover {
-        color: var(--vbr-widget-primary-color-600);
+        color: var(--mvw-primary-color-600);
       }
     }
 
     &.is-live {
-      color: var(--vbr-widget-live-game-color);
+      color: var(--mvw-live-game-color);
       a {
-        color: var(--vbr-widget-live-game-color);
+        color: var(--mvw-live-game-color);
       }
     }
   }
@@ -116,7 +116,7 @@
 
 .section-selector {
   margin: 20px 0;
-  border-bottom: 1px solid var(--vbr-widget-primary-color-200);
+  border-bottom: 1px solid var(--mvw-primary-color-200);
 }
 
 .main-image-wrapper {
@@ -126,8 +126,8 @@
   display: grid;
   grid-template-columns: 1fr var(--overlay-size) 1fr;
   grid-template-rows: 1fr 1fr 1fr calc(var(--overlay-size) / 2) calc(var(--overlay-size) / 2);
-  margin-left: var(--vbr-widget-main-image-wrapper-horizontal-margin);
-  margin-right: var(--vbr-widget-main-image-wrapper-horizontal-margin);
+  margin-left: var(--mvw-main-image-wrapper-horizontal-margin);
+  margin-right: var(--mvw-main-image-wrapper-horizontal-margin);
 
   &:has(img.is-default) {
     min-height: 470px;
@@ -141,7 +141,7 @@
     justify-content: center;
     align-items: center;
 
-    background-color: var(--vbr-widget-primary-color-50);
+    background-color: var(--mvw-primary-color-50);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 
     .is-default {
