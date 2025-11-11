@@ -79,6 +79,7 @@ const {
 
 const convertedGames = computed(() =>
   convert(games.value)
+    .reverse(selectedPanel.value === PANEL_GAMES_PLAYED)
     .schedule(timezone.value, locale.value)
     .more(0, page.value * limit + limit)
     .groupByDays()

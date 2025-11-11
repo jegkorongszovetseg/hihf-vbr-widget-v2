@@ -179,6 +179,13 @@ export function convert(data = []) {
       this.result = this.result.slice(0, limit);
       return this;
     },
+
+    reverse(enabled) {
+      if (enabled) {
+        this.result = [...this.result].reverse();
+      }
+      return this;
+    },
   };
 }
 

@@ -16,6 +16,6 @@ import { store } from '../store.js';
 <template>
   <div class="p-5">
     <!-- <Calendar :locale="store.locale" season-id="216" external-game-resolver="/GameCenter?gameId={id}" /> -->
-    <mjsz-vbr-calendar :locale="store.locale" season-id="217" external-game-resolver="/GameCenter?gameId={id}" />
+    <mjsz-vbr-calendar :locale="store.locale" season-id="218" external-game-resolver="/GameCenter?gameId={id}" />
   </div>
 </template>
