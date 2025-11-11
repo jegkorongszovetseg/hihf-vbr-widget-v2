@@ -1,7 +1,7 @@
 <script setup>
-import { baseProps, COLUMNS_FIELD_PLAYERS_PENALTY, playerStatsProps, SORT_STATE_DESCEND, teamStatsProps } from '@mjsz-vbr-elements/core';
 import { ErrorNotice, I18NProvider, Paginator, StatisticsTable } from '@mjsz-vbr-elements/core/components';
 import { fetchVBRData, useErrorProvider, usePage, useSort } from '@mjsz-vbr-elements/core/composables';
+import { baseProps, COLUMNS_FIELD_PLAYERS_PENALTY, playerStatsProps, SORT_STATE_DESCEND, teamStatsProps } from '@mjsz-vbr-elements/core/constants';
 import {
   convert,
   externalPlayerLinkResolver,
@@ -111,3 +111,5 @@ function resolveExternalPlayerLink(params) {
 <style src="@mjsz-vbr-elements/shared/css/components/table.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/avatar.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />

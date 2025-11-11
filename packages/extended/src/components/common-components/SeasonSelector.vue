@@ -44,7 +44,7 @@ function changeSection(id) {
 </script>
 
 <template>
-  <div class="g-row">
+  <div class="">
     <FormField :label="t('selection.season')" name="season" class="mb-md">
       <BaseSelect id="season" v-model="championshipId">
         <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">

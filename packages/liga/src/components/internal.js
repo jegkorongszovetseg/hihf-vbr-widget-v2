@@ -28,12 +28,12 @@ export const COLUMNS_PLAYERS = {
   jerseyNr: {
     label: 'table.jerseyNumber.short',
     tooltip: 'table.jerseyNumber.tooltip',
-    class: 'font-bold text-xl',
+    class: 'font-bold',
     sortOrders: [{ target: 'jerseyNr', direction: SORT_STATE_ASCEND }],
   },
   playerPortrait: {
     label: '',
-    class: 'is-has-image',
+    class: 'has-avatar',
   },
   name: {
     label: 'table.name.short',

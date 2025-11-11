@@ -85,3 +85,5 @@ function resolveExternalTeamLink(params) {
 <style src="@mjsz-vbr-elements/shared/css/components/table.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />

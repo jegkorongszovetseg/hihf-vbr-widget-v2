@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { useI18n } from '../composables';
 import BaseSelect from './BaseSelect.vue';
+import FormField from './FormField.vue';
 
 const props = defineProps({
   seasons: {
@@ -49,15 +50,14 @@ function changeSection(id) {
 </script>
 
 <template>
-  <div class="g-row g-gap-normal is-mb-5">
-    <div>
-      <label for="season" class="label">{{ t('selection.season') }}</label>
+  <div class="flex-container mb-md">
+    <FormField :label="t('selection.season')" name="season">
       <BaseSelect id="season" v-model="championshipId">
         <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">
           {{ season.seasonName }}
         </option>
       </BaseSelect>
-    </div>
+    </FormField>
     <slot />
   </div>
   <div v-if="!isSectionSelectionDisabled">

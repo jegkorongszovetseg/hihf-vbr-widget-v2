@@ -73,10 +73,10 @@ function setSlotRef(el) {
 }
 
 const events = {
-  mouseenter: show,
-  mouseleave: hide,
-  focus: show,
-  blur: hide,
+  onMouseenter: show,
+  onMouseleave: hide,
+  onFocus: show,
+  onBlur: hide,
 };
 
 onClickOutside(floating, () => {
