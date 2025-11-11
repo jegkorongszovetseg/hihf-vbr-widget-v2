@@ -137,8 +137,6 @@ function onReTry() {
 
 <style src="@mjsz-vbr-elements/shared/css/components/form-field.css" />
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/components/card.css" /> -->
-
 <style src="@mjsz-vbr-elements/shared/css/components/accordion.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/paginator.css" />
@@ -146,11 +144,3 @@ function onReTry() {
 <style src="@mjsz-vbr-elements/shared/css/components/definition-list.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/recruitment-info.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/paginator.scss" lang="scss"></style> -->

@@ -80,19 +80,3 @@ const normalizedData = computed(() => typeof props.data === 'string' ? JSON.pars
 <style src="@mjsz-vbr-elements/shared/css/components/list.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/components/playoffs.css" /> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/standings-selector.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/dropdown.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/playoffs.scss" lang="scss"></style> -->

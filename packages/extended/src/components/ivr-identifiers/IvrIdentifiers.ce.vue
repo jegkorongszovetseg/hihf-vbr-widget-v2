@@ -89,12 +89,6 @@ const messages = { en, hu };
   </I18NProvider>
 </template>
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style> -->
-
 <style src="@mjsz-vbr-elements/shared/css/core.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/form-field.css" />

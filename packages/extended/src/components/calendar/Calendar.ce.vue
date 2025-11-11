@@ -153,33 +153,6 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
   </I18NProvider>
 </template>
 
-<!-- <style scoped>
-@layer components {
-  :where(.card-item) {
-    display: grid;
-    grid-gap: var(--size-16);
-    grid-template-columns: 2fr 20px 1fr 20px 2fr;
-    grid-template-areas: 'name name name name name' 'date date date date date' 'home-team home-team-logo game-data away-team-logo away-team';
-    padding: var(--size-16);
-    align-items: center;
-
-    &:not(:last-of-type) {
-      border-bottom: 1px solid var(--vbr-primary-color-100);
-    }
-
-    .is-logo-image {
-      display: block;
-      width: 100%;
-      aspect-ratio: 1;
-    }
-
-    @container card-wrapper (width > 768px) {
-      grid-template-columns: 2fr 40px 1fr 40px 2fr;
-    }
-  }
-}
-</style> -->
-
 <style src="@mjsz-vbr-elements/shared/css/core.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/card.css" />
@@ -191,11 +164,3 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
 <style src="@mjsz-vbr-elements/shared/css/components/typography.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/game-item.css" />
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style> -->
