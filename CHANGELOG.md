@@ -1,3 +1,8 @@
+## [2.32.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.31.2...v2.32.0) (2025-11-11)
+
+### Features
+
+* **extended/calendar:** Display played games in reverse order. ([07a7769](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/07a7769bd8b8b9c5ea514fed94a49199cfbe29f1))
 ## [2.31.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.31.1...v2.31.2) (2025-10-28)
 
 ### Bug Fixes
