@@ -1,4 +1,4 @@
-import { convertAddress, format, pick } from '@mjsz-vbr-elements/core/utils';
+import { convertAddress, format, map, omit, pick } from '@mjsz-vbr-elements/core/utils';
 
 export const PAGE_INFO = 'Info';
 export const PAGE_GAMES = 'Games';
@@ -44,4 +44,8 @@ export function transformTeamInfo(data) {
     tableData.push({ teamKey: key, teamValue: value });
   }
   return { team: data?.team, organizationInfo: tableData };
+}
+
+export function removeSortOrders(columns) {
+  return map(omit(['sortOrders']), columns);
 }

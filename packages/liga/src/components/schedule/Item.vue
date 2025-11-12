@@ -74,7 +74,7 @@ const { t } = useI18n();
         <div class="is-text-sm is-whitespace-nowrap">
           {{ game.periodResults }}
         </div>
-        <div v-if="game.gameStatus !== 2" class="is-text-xs is-uppercase is-whitespace-nowrap">
+        <div v-if="game.gameStatus !== 2" class="text-xs uppercase is-whitespace-nowrap">
           {{ t(`game.period.${game.period}`) }}
         </div>
       </template>

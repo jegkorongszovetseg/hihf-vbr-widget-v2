@@ -75,7 +75,7 @@ const tooltipContainer = ref(null);
           :championship-id="championshipId"
           :player-id="props.playerId"
         >
-          <h1 class="is-heading-1 is-uppercase">
+          <h1 class="uppercase">
             {{ playerData.name }}
           </h1>
           <div class="main-image-wrapper" style="--overlay-size: 180px">

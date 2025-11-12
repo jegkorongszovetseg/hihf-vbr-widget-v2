@@ -49,7 +49,7 @@ const externalGameLink = params => externalGameLinkResolver(props.externalGameRe
 </script>
 
 <template>
-  <div class="is-mb-5">
+  <div class="mb-md">
     <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
       <ErrorProvider v-slot="{ hasError, error }">
         <ErrorNotice v-if="hasError" :error="error" />
@@ -68,10 +68,10 @@ const externalGameLink = params => externalGameLinkResolver(props.externalGameRe
           :championship-id="championshipId"
           :team-id="teamId"
         >
-          <h1 class="is-heading-1 is-uppercase is-mb-5">
+          <h1 class="uppercase">
             {{ teamInfo?.team?.longName }}
           </h1>
-          <div class="main-image-wrapper" style="--overlay-radius: 0px">
+          <div class="hero" style="--overlay-radius: 0px">
             <div class="is-main-image">
               <Image
                 :key="teamInfo?.team?.id"
@@ -161,18 +161,4 @@ const externalGameLink = params => externalGameLinkResolver(props.externalGameRe
 
 <style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/teams.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/components/hero.css" />

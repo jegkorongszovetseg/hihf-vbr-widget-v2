@@ -4,6 +4,7 @@ import { omit } from '@mjsz-vbr-elements/core/utils';
 import { ref } from 'vue';
 import PlayersDataTable from '../../common/PlayersDataTable.vue';
 import { COLUMNS_PLAYERS } from '../../internal';
+import { removeSortOrders } from '../team.internal';
 
 defineProps({
   data: {
@@ -30,7 +31,7 @@ defineProps({
 const tooltipContainer = ref(null);
 
 const { t } = useI18n();
-const { columns } = useColumns(omit(['teamName'], COLUMNS_PLAYERS));
+const { columns } = useColumns(omit(['teamName'], removeSortOrders(COLUMNS_PLAYERS)));
 </script>
 
 <template>
