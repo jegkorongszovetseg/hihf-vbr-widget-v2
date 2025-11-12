@@ -189,7 +189,7 @@ export const COLUMNS_GAMES = {
 export const COLUMNS_PLAYER_SEASON_STATS = {
   playerPortrait: {
     label: '',
-    class: 'is-has-image',
+    class: 'has-avatar',
   },
   season: {
     label: 'table.season.short',

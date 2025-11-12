@@ -1,4 +1,4 @@
-import { convertAddress, format, omit } from '@mjsz-vbr-elements/core/utils';
+import { convertAddress, format, pick } from '@mjsz-vbr-elements/core/utils';
 
 export const PAGE_INFO = 'Info';
 export const PAGE_GAMES = 'Games';
@@ -28,8 +28,8 @@ export const COLUMNS_TEAM_INFO_ICERINK = {
 };
 
 export function transformTeamInfo(data) {
-  const organizationdData = omit(
-    ['team', 'organizationType', 'organizationShortName', 'organizationLogo', 'organizationRepresentatives', 'arenas'],
+  const organizationdData = pick(
+    ['organizationAddresses', 'organizationCountry', 'organizationEmail', 'organizationFoundingDate', 'organizationName', 'organizationPhoneNumber', 'organizationWebpage'],
     data,
   );
   const tableData = [];

@@ -24,6 +24,16 @@
       --_color: var(--mvw-color-white);
     }
 
+    &.error {
+      --_bg-color: var(--mvw-error);
+      --_color: var(--mvw-color-white);
+    }
+
+    &.warning {
+      --_bg-color: var(--mvw-warning);
+      --_color: var(--mvw-color-white);
+    }
+
     /* Size */
     &.xs {
       font-size: var(--font-size-50);

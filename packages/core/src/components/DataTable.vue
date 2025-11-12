@@ -6,6 +6,7 @@ import { computed, toRefs } from 'vue';
 import { useI18n } from '../composables/useI18n';
 import { useLazyLoadingState } from '../composables/useLazyLoadingState';
 import { LAZY_LOADING_STATE_DELAY, SORT_STATE_ASCEND, SORT_STATE_DESCEND, SORT_STATE_ORIGINAL } from '../constants.js';
+import { filterAllowedClasses } from '../utils';
 import FloatingPanel from './FloatingPanel.vue';
 
 const props = defineProps({
@@ -66,7 +67,7 @@ function sortBy(column, prop) {
             <th
               :ref="setRef"
               :class="[
-                [column.class],
+                [filterAllowedClasses(column.class)],
                 {
                   'is-active': prop === sort.sortTarget && sort.orders[0].direction !== SORT_STATE_ORIGINAL,
                   'is-sortable': column.sortOrders,

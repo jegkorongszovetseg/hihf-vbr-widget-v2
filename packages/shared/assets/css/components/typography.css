@@ -1,6 +1,6 @@
 @layer components {
   :where(h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6) {
-    color: var(--text-highlighted);
+    color: var(--mvw-text-highlighted);
     font-weight: 700;
     text-wrap: pretty;
   }

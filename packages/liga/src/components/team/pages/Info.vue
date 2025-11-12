@@ -22,7 +22,7 @@ const localizedData = computed(() => props.data.map(d => ({ ...d, teamKeyIntl: t
 
 <template>
   <div>
-    <h2 class="is-heading-2">
+    <h2>
       {{ t('teams.teamInfo') }}
     </h2>
     <ResponsiveTable>

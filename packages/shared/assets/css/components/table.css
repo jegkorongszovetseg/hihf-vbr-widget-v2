@@ -128,6 +128,11 @@
         color: var(--mvw-text-faded);
       }
 
+      &.is-possible-empty:empty:before {
+        content: '0';
+        color: var(--mvw-text-faded);
+      }
+
       /* &:has(.is-logo-image) {
         padding-inline-end: 0;
       } */
@@ -143,10 +148,10 @@
         color: var(--mvw-table-neutral-color);
       }
 
-      .badge {
+      /* .badge {
         --_bg-color: var(--mvw-table-label-bg-color);
         --_color: var(--mvw-table-label-color);
-      }
+      } */
 
       .is-team-name-long {
         display: block;
