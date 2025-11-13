@@ -121,8 +121,6 @@ const resolveExternalPlayerLink = playerId => externalPlayerLinkResolver(props.e
 
 <style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/components/typography.css" />
-
 <style src="@mjsz-vbr-elements/shared/css/components/paginator.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/form-field.css" />

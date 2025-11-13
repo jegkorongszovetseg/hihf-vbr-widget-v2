@@ -60,14 +60,18 @@ function changeSection(id) {
     </FormField>
     <slot />
   </div>
-  <div v-if="!isSectionSelectionDisabled">
-    <button
-      v-for="section in sections"
-      :key="section.phaseId"
-      class="tab-button" :class="{ 'is-active': section.sectionId === sectionId }"
-      @click="changeSection(section)"
-    >
-      {{ section.sectionName }}
-    </button>
-  </div>
+  <nav v-if="!isSectionSelectionDisabled" class="tabs underlined mb-md">
+    <div role="tablist" :aria-label="t('selection.sections')">
+      <button
+        v-for="section in sections"
+        :key="section.phaseId"
+        role="tab"
+        type="button"
+        :aria-selected="section.phaseName === sectionId"
+        @click="changeSection(section)"
+      >
+        {{ section.phaseName }}
+      </button>
+    </div>
+  </nav>
 </template>
