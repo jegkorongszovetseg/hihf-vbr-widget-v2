@@ -62,28 +62,34 @@ function externalTeamLink(teamId, championshipId) {
 
           <LoadingIndicator v-if="isLoading" />
 
-          <ul v-else class="wrapped-grid" style="--min-width: 80px; --max-width: 160px">
-            <li v-for="team in teams" :key="team.teamId">
-              <a :href="externalTeamLink(team.teamId, championshipId)" class="is-text-lg font-bold">
+          <div v-else role="list" class="grid-container" style="--min-width: 80px; --max-width: 160px; --gap: calc(var(--size-16) * 2); --align-items: start;">
+            <div v-for="team in teams" :key="team.teamId" role="listitem">
+              <a :href="externalTeamLink(team.teamId, championshipId)" class="text-lg font-bold">
                 <Image :key="team.teamId" class="is-team-logo" :src="team.teamLogo" />
-                {{ team.teamName }}
+                <div class="text-center">
+                  {{ team.teamName }}
+                </div>
               </a>
-            </li>
-          </ul>
+            </div>
+          </div>
         </DataProvider>
       </ErrorProvider>
     </I18NProvider>
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/form-field.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
+<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
 
-<style src="@mjsz-vbr-elements/shared/css/teams.scss" lang="scss"></style>
+<!-- <style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style> -->
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+<!-- <style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style> -->
 
-<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
+<!-- <style src="@mjsz-vbr-elements/shared/css/teams.scss" lang="scss"></style> -->
+
+<!-- <style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style> -->
+
+<!-- <style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style> -->

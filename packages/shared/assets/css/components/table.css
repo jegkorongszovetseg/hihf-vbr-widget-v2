@@ -142,6 +142,7 @@
         vertical-align: middle;
         width: var(--mvw-table-cell-logo-size);
         height: var(--mvw-table-cell-logo-size);
+        max-inline-size: fit-content;
       }
 
       .is-duplicated {

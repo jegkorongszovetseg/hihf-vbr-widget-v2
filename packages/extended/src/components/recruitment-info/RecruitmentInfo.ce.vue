@@ -126,7 +126,7 @@ function onReTry() {
         :range-length="5"
         @change="onPaginatorChange"
       />
-      <div v-if="convertedRows.totalItems > 0" style="text-align: right">
+      <div v-if="convertedRows.totalItems > 0" class="text-end">
         {{ t('table.info', { min: range[0], max: range[1], total: convertedRows.totalItems }) }}
       </div>
     </div>

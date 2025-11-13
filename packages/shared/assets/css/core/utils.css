@@ -89,10 +89,15 @@
 
   /* Layout */
   .grid-container {
+    --min-width: 230px;
+    --max-width: 1fr;
+    --gap: var(--size-16);
+    --align-items: center;
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    align-items: center;
-    gap: var(--size-16);
+    grid-template-columns: repeat(auto-fit, minmax(var(--min-width), var(--max-width)));
+    align-items: var(--align-items);
+    gap: var(--gap);
   }
 
   .flex-container {

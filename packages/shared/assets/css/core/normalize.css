@@ -23,10 +23,10 @@
     display: inline-block;
   }
 
-  /* :where(img, svg, video) {
+  :where(img, svg, video) {
     block-size: auto;
     max-inline-size: 100%;
-  } */
+  }
 
   :where(img) {
     opacity: 0;

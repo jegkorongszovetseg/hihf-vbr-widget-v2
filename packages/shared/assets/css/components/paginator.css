@@ -33,9 +33,10 @@
       margin-left: -1px;
 
       .icon {
-        width: 16px;
-        height: 16px;
+        width: var(--size-16);
+        height: var(--size-16);
         margin: 0 -4px;
+        max-inline-size: var(--size-16);
       }
 
       &:hover:not(&.is-disabled, &.is-active) {
