@@ -1,6 +1,6 @@
 import { path, split } from 'ramda';
 
-const ALLOWED_TH_CLASSES = ['text-start', 'text-center', 'text-end'];
+const ALLOWED_TH_CLASSES = ['text-start', 'text-center', 'text-end', 'w-auto'];
 
 export function toKebabCase(str) {
   return (
