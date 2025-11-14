@@ -53,13 +53,13 @@ const gridTemaplateAreas = `--_grid-template-areas: 'name name name name name' '
       <Image :key="game.homeTeam.id" :src="game.homeTeam.logo" />
     </div>
 
-    <div class="grid text-center" :class="[{ 'is-live': game.gameStatus === 1 }]" style="grid-area: game-data;">
+    <div class="grid text-center" style="grid-area: game-data;">
       <div class="">
         <span v-if="game.isOvertime" class="badge">{{ t('common.overtimeShort') }}</span>
         <span v-if="game.isShootout" class="badge">{{ t('common.shootoutShort') }}</span>
         <span v-if="game.seriesStandings" class="badge inverted">{{ game.seriesStandings }}</span>
       </div>
-      <a :href="gameLink(game)" :target="target" class="game-result">
+      <a :href="gameLink(game)" :target="target" class="game-result" :class="[{ 'is-live': game.gameStatus === 1 }]">
         <span v-if="game.gameStatus > 0 && game.gameStatus < 3" class="text-xl font-bold">
           {{ game.homeTeamScore }} : {{ game.awayTeamScore }}
         </span>

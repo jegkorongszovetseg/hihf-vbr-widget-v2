@@ -57,6 +57,13 @@
           background-color: var(--mvw-table-active-even-bg-color);
         }
       }
+
+      &.is-highlighted {
+        color: var(--mvw-error);
+      }
+      &.is-optional {
+        opacity: 0.5;
+      }
     }
 
     /* Cells */
@@ -131,6 +138,11 @@
       &.is-possible-empty:empty:before {
         content: '0';
         color: var(--mvw-text-faded);
+      }
+
+      &.is-horizontal-content {
+        display: inline-flex;
+        align-items: center;
       }
 
       /* &:has(.is-logo-image) {

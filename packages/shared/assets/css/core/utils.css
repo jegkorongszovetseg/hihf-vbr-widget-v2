@@ -31,6 +31,10 @@
     text-align: center;
   }
 
+  .text-xs {
+    font-size: var(--font-size-200);
+  }
+
   .text-sm {
     font-size: var(--font-size-400);
   }
@@ -64,6 +68,9 @@
     width: auto;
   }
 
+  .mx-sm {
+    margin-inline: var(--size-8);
+  }
   .mb-sm {
     margin-block-end: var(--size-8);
   }
@@ -148,7 +155,7 @@
           display: none;
         }
         .team-name-short {
-          display: block;
+          display: inline-block;
         }
       }
     }

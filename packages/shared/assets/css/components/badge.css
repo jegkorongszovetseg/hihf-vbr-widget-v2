@@ -13,6 +13,10 @@
     background-color: var(--_bg-color);
     border-radius: var(--radius-2);
 
+    svg {
+      fill: currentColor;
+    }
+
     /* Variant */
     &.inverted {
       --_bg-color: var(--mvw-bg-inverted);

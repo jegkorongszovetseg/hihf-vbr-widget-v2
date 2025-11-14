@@ -131,23 +131,23 @@ body.liga {
     --mvw-countdown-result-bg: var(--mvw-primary-color-800); */
   }
 }
-
+/*
 mjsz-vbr-team-liga,
 mjsz-vbr-player-liga {
   --mvw-typography-heading-1-size: 35px;
   --mvw-typography-heading-2-size: 28px;
   --mvw-main-image-wrapper-horizontal-margin: -15px;
-}
+} */
 
-mjsz-vbr-schedule-liga {
+/* mjsz-vbr-schedule-liga {
   --mvw-sticky-top-offset: 50px;
 
   @media all and (min-width: 768px) {
     --mvw-sticky-top-offset: 0;
   }
-}
+} */
 
-mjsz-vbr-top-list-liga {
+/* mjsz-vbr-top-list-liga {
   --mvw-top-list-bg-color: var(--mvw-secondary-color-500);
   --mvw-top-list-title-separator-color: var(--mvw-secondary-color-300);
   --mvw-top-list-player-separator-color: var(--mvw-secondary-color-400);
@@ -168,7 +168,7 @@ mjsz-vbr-top-list-liga {
   --mvw-hover-color: var(--mvw-primary-color-0);
 
   --mvw-loading-indicator-text-color: var(--mvw-secondary-color-100);
-}
+} */
 
 /* mjsz-vbr-standings-selector {
   --mvw-standings-selector-title-size: 16px;
