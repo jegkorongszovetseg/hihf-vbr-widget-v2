@@ -50,7 +50,7 @@ defineProps({
     </h2>
     <ul>
       <li v-for="(player, index) in list" :key="player.player.playerId" :class="{ 'is-large': index === 0 }">
-        <div class="is-images">
+        <div class="is-images avatar">
           <Image class="is-player" :src="player.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
         </div>
         <a :href="playerResolver(player)" class="is-player">{{ player.name }}</a>
