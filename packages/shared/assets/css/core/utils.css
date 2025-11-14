@@ -80,9 +80,17 @@
     margin-block-start: calc(var(--size-16) * 2);
   }
 
+  .py-md {
+    padding-block: var(--size-16);
+  }
+
   /* Display */
   .flex {
     display: flex;
+  }
+
+  .grid {
+    display: grid;
   }
 
   .block {
@@ -91,6 +99,16 @@
 
   .rounded {
     border-radius: 1e5px;
+  }
+
+  .is-sticky {
+    position: sticky;
+    top: var(--mvw-sticky-top-offset);
+    z-index: 10;
+  }
+
+  .is-blured-bg {
+    backdrop-filter: blur(10px);
   }
 
   /* Layout */
