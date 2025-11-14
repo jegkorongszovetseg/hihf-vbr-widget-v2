@@ -1,73 +1,80 @@
 @layer components.variables {
   :where(:host) {
-    --mvw-playoffs-header-bg: var(--mvw-primary-color-800);
-    --mvw-playoffs-header-color: var(--mvw-primary-color-100);
+    --mvw-playoffs-header-bg: light-dark(var(--mvw-primary-color-800), var(--mvw-primary-color-300));
+    --mvw-playoffs-header-color: light-dark(var(--mvw-primary-color-100), var(--mvw-primary-color-800));
     --mvw-playoffs-header-size: var(--font-size-500);
-    --mvw-playoffs-details-bg: var(--mvw-primary-color-50);
+    --mvw-playoffs-details-bg: light-dark(var(--mvw-primary-color-100), var(--mvw-primary-color-800));
   }
 }
 
 @layer components {
   :where(.playoffs) {
+    --_logo-size: 70px;
+
     .section-title {
-      padding: 10px;
+      padding: var(--size-8);
       text-align: center;
       font-size: var(--mvw-playoffs-header-size);
       font-weight: 700;
       color: var(--mvw-playoffs-header-color);
       background-color: var(--mvw-playoffs-header-bg);
     }
+
     .section-details {
       display: grid;
-      grid-template-columns: 1fr;
       align-items: center;
       justify-items: center;
-      gap: 20px;
-      padding: 20px;
+      gap: var(--size-16);
+      padding: var(--size-16);
       background-color: var(--mvw-playoffs-details-bg);
 
-      @include mobile {
-        grid-template-columns: 1fr fit-content(100px) fit-content(100px) fit-content(100px) 1fr;
-      }
-
-      /* .is-team-name-long {
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      .is-team-name-short {
-        display: none;
-      }
-
-      @container section-details (max-width: 768px) {
-        .is-team-name-long {
-          display: none;
-        }
-        .is-team-name-short {
-          display: block;
-        }
-      } */
-
-      .is-logo-image {
-        width: 70px;
-        height: 70px;
+      @media (width > 576px) {
+        grid-template-columns:
+          1fr fit-content(var(--_logo-size)) fit-content(var(--_logo-size)) fit-content(var(--_logo-size))
+          1fr;
       }
 
       .is-result {
-        font-size: 4rem;
+        font-size: var(--mvw-playoffs-reasult-size, calc(var(--font-size-500) * 4));
         font-weight: 700;
         text-align: center;
-        color: var(--mvw-primary-color-800);
+        color: var(--mvw-text-highlighted);
       }
 
       .is-team-name {
         font-size: var(--font-size-700);
         font-weight: 700;
-        color: var(--mvw-primary-color-800);
+        color: var(--mvw-text-highlighted);
       }
-      .is-right {
-        text-align: right;
+    }
+
+    .table-grid {
+      display: grid;
+      grid-template-columns:
+        70px 160px 60px minmax(160px, 1fr) minmax(40px, 60px) 5ch minmax(160px, 1fr)
+        minmax(180px, 1.2fr);
+      color: var(--mvw-table-color);
+
+      &:nth-child(odd) > div {
+        background-color: var(
+          --mvw-table-stripped-bg-color,
+          light-dark(var(--mvw-primary-color-50), var(--mvw-primary-color-900))
+        );
+      }
+
+      &:hover > div {
+        background-color: var(
+          --mvw-table-hover-bg-color,
+          light-dark(var(--mvw-secondary-color-100), var(--mvw-secondary-color-400))
+        );
+      }
+
+      &.is-optional {
+        opacity: 0.5;
+      }
+
+      > div {
+        padding: var(--size-8);
       }
     }
   }

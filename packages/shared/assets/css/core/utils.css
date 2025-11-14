@@ -12,6 +12,12 @@
     text-transform: uppercase;
   }
 
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   /* Text */
   .text-start {
     text-align: start;
