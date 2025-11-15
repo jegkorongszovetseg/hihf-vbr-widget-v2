@@ -59,6 +59,10 @@
     color: var(--mvw-text-toned);
   }
 
+  .text-default {
+    color: var(--mvw-text-default);
+  }
+
   .text-highlighted {
     color: var(--mvw-text-highlighted);
   }

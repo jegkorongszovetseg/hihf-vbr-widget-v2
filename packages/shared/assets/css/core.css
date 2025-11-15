@@ -15,5 +15,8 @@
 /* Theme */
 @import 'theme.css';
 
+/* Common Components */
+@import 'components/loading-indicator.css';
+
 /* Utils */
 @import 'core/utils.css';

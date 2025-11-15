@@ -23,7 +23,7 @@ const { t } = useI18n();
     <h2 v-once>
       {{ data.name }} <span class="italic">#{{ data.jerseyNr }}</span>
     </h2>
-    <div style="display: flex; align-items: center; justify-content: center">
+    <div class="text-default" style="display: flex; align-items: center; justify-content: center">
       {{ data.birthDate }} ({{ t('players.age', { years: data.age }) }}) /&nbsp;
       <template v-for="flag in data.player.nationality" :key="flag">
         <FloatingPanel
