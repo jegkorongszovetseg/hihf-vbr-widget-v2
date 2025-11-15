@@ -113,7 +113,7 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
         >
           <ScheduleSelector
             ref="selectorElement"
-            class="is-sticky is-blured-bg"
+            class="sticky blured-bg"
             :seasons="seasons"
             :championship-id="championshipId"
             :months="months"

@@ -18,13 +18,13 @@
   }
 }
 
-.is-sticky {
+.sticky {
   position: sticky;
   top: var(--mvw-sticky-top-offset);
   z-index: 10;
 }
 
-.is-blured-bg {
+.blured-bg {
   backdrop-filter: blur(10px);
 }
 
