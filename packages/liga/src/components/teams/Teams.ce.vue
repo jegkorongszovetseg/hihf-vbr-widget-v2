@@ -81,15 +81,3 @@ function externalTeamLink(teamId, championshipId) {
 <style src="@mjsz-vbr-elements/shared/css/core.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/form-field.css" />
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/teams.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style> -->

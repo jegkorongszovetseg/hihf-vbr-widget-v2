@@ -213,13 +213,3 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
 <style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style> -->
