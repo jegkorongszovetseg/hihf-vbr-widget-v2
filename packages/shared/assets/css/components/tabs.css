@@ -11,6 +11,7 @@
     --mvw-tab-btn-hover-border-color: transparent;
     --mvw-tab-btn-active-color: light-dark(var(--mvw-primary-color-900), var(--mvw-primary-color-50));
     --mvw-tab-btn-active-border-color: var(--mvw-border-highlighted);
+    --mvw-tab-btn-group-separator-color: var(--mvw-border-muted);
 
     /* Toggle */
     --mvw-toggle-group-gap: var(--size-6);
@@ -49,7 +50,7 @@
     &.underlined {
       /* Tab list */
       & > [role='tablist'] {
-        border-bottom: 1px solid var(--mvw-border-muted);
+        border-bottom: 1px solid var(--mvw-tab-btn-group-separator-color);
 
         button {
           background: transparent;

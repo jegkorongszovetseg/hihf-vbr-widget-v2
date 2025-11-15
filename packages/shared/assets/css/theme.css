@@ -1,8 +1,10 @@
 @layer theme {
+  [data-theme='light'],
   :host-context(.light) {
     color-scheme: only light;
   }
 
+  [data-theme='dark'],
   :host-context(.dark) {
     color-scheme: only dark;
   }

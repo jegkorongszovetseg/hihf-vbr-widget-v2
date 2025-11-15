@@ -158,7 +158,7 @@ function onRetry() {
 
 <template>
   <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
-    <div class="liga-top-list">
+    <div class="liga-top-list" data-theme="dark">
       <div v-if="hasError" style="padding: 1rem;">
         <ErrorNotice :error="error" use-retry @retry="onRetry" />
       </div>

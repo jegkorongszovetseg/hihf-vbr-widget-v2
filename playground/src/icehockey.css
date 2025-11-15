@@ -75,6 +75,32 @@ body.liga {
 
     --mvw-bg-inverted: light-dark(var(--mvw-secondary-color-900), var(--mvw-secondary-color-100));
 
+    mjsz-vbr-top-list-liga {
+      --mvw-top-list-bg-color: var(--mvw-secondary-color-500);
+      --mvw-top-list-title-separator-color: var(--mvw-secondary-color-300);
+      --mvw-top-list-player-separator-color: var(--mvw-secondary-color-400);
+      --mvw-top-list-image-border-color: var(--mvw-secondary-color-300);
+      --mvw-top-list-image-bg-color: var(--mvw-secondary-color-400);
+      --mvw-top-list-selector-border-color: var(--mvw-secondary-color-300);
+      --mvw-top-list-value-color: var(--mvw-secondary-color-100);
+
+      --mvw-tab-btn-color: var(--mvw-secondary-color-200) !important;
+      --mvw-tab-btn-bg-color: transparent;
+      --mvw-tab-btn-hover-color: var(--mvw-secondary-color-50);
+      --mvw-tab-btn-hover-bg-color: transparent;
+      --mvw-tab-btn-active-color: var(--mvw-secondary-color-50);
+      --mvw-tab-btn-active-bg-color: transparent;
+      --mvw-tab-btn-active-border-color: var(--mvw-primary-color-0) !important;
+
+      --mvw-link-color: var(--mvw-secondary-color-100);
+      --mvw-hover-color: var(--mvw-primary-color-0);
+
+      --mvw-loading-indicator-text-color: var(--mvw-secondary-color-100);
+
+      --mvw-avatar-border-color: var(--mvw-secondary-color-100);
+      --mvw-tab-btn-group-separator-color: var(--mvw-secondary-color-300);
+    }
+
     /* Old */
 
     --mvw-primary-color-0: #ffffff;
@@ -145,29 +171,6 @@ mjsz-vbr-player-liga {
   @media all and (min-width: 768px) {
     --mvw-sticky-top-offset: 0;
   }
-} */
-
-/* mjsz-vbr-top-list-liga {
-  --mvw-top-list-bg-color: var(--mvw-secondary-color-500);
-  --mvw-top-list-title-separator-color: var(--mvw-secondary-color-300);
-  --mvw-top-list-player-separator-color: var(--mvw-secondary-color-400);
-  --mvw-top-list-image-border-color: var(--mvw-secondary-color-300);
-  --mvw-top-list-image-bg-color: var(--mvw-secondary-color-400);
-  --mvw-top-list-selector-border-color: var(--mvw-secondary-color-300);
-  --mvw-top-list-value-color: var(--mvw-secondary-color-100);
-
-  --mvw-tab-btn-color: var(--mvw-secondary-color-200) !important;
-  --mvw-tab-btn-bg-color: transparent;
-  --mvw-tab-btn-hover-color: var(--mvw-secondary-color-50);
-  --mvw-tab-btn-hover-bg-color: transparent;
-  --mvw-tab-btn-active-color: var(--mvw-secondary-color-50);
-  --mvw-tab-btn-active-bg-color: transparent;
-  --mvw-tab-btn-active-border-color: var(--mvw-primary-color-0) !important;
-
-  --mvw-link-color: var(--mvw-secondary-color-100);
-  --mvw-hover-color: var(--mvw-primary-color-0);
-
-  --mvw-loading-indicator-text-color: var(--mvw-secondary-color-100);
 } */
 
 /* mjsz-vbr-standings-selector {

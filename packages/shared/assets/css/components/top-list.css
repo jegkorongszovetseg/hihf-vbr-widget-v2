@@ -15,20 +15,15 @@
   :where(.liga-top-list) {
     background-color: var(--mvw-top-list-bg-color);
 
-    /* .liga-top-list-wrapper {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
-    } */
-
     .top-list-container {
-      padding: 1rem;
+      padding: var(--size-16);
 
       h2 {
         display: grid;
         grid-template-columns: 1fr auto;
         align-items: center;
-        padding-block: 0.5rem;
-        font-size: 14px;
+        padding-block: var(--size-8);
+        font-size: var(--font-size-400);
         font-weight: 700;
         text-transform: uppercase;
         color: var(--mvw-top-list-title-color);
@@ -41,43 +36,49 @@
         }
       }
 
+      [role='list'],
       ul {
         display: grid;
-        gap: 0.5rem;
+        gap: var(--size-8);
       }
 
+      [role='listitem'],
       li {
         display: grid;
         grid-template-columns: 30px 1fr auto;
         grid-template-areas: 'logo player value' 'logo team value';
         align-items: center;
-        gap: 0.25rem 0.5rem;
-        padding-block: 0.5rem;
-        font-size: 13px;
+        gap: var(--size-4) var(--size-8);
+        padding-block: var(--size-8);
+        font-size: var(--font-size-300);
         line-height: 1;
         border-bottom: 1px solid var(--mvw-top-list-player-separator-color);
 
+        .avatar {
+          --_width: 26px;
+        }
+
         &.is-large {
-          font-size: 14px;
+          font-size: var(--font-size-400);
           font-weight: 700;
 
-          .is-images .is-player {
-            width: 30px;
+          .avatar {
+            --_width: 32px;
           }
         }
 
-        :is(.is-player, .is-team) {
+        /* :is(.is-player, .is-team) {
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-        }
+        } */
 
         a.is-player {
           grid-area: player;
         }
         a.is-team {
           grid-area: team;
-          font-size: 10px;
+          font-size: var(--font-size-50);
         }
 
         span {
@@ -89,16 +90,6 @@
         .is-images {
           grid-area: logo;
           justify-self: center;
-
-          .is-player {
-            overflow: hidden;
-            border-radius: 50%;
-            border: 1px solid var(--mvw-top-list-image-border-color);
-            display: block;
-            width: 24px;
-            aspect-ratio: 1;
-            background-color: var(--mvw-top-list-image-bg-color);
-          }
         }
       }
     }

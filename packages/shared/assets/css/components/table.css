@@ -161,13 +161,8 @@
         color: var(--mvw-table-neutral-color);
       }
 
-      /* .badge {
-        --_bg-color: var(--mvw-table-label-bg-color);
-        --_color: var(--mvw-table-label-color);
-      } */
-
       .is-team-name-long {
-        display: block;
+        display: inline-block;
       }
 
       .is-team-name-short {
@@ -179,7 +174,7 @@
           display: none;
         }
         .is-team-name-short {
-          display: block;
+          display: inline-block;
         }
       }
     }
