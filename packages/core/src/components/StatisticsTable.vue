@@ -121,7 +121,7 @@ const onSort = payload => emit('sort', payload);
       </template>
 
       <template #cell-playerPortrait="{ row }">
-        <div class="is-portrait-image">
+        <div class="avatar">
           <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
         </div>
       </template>
@@ -168,25 +168,29 @@ const onSort = payload => emit('sort', payload);
       </template>
 
       <template #cell-gameResult="{ row }">
-        <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>
+        <span v-if="row.gameStatus === 0" class="text-highlighted">-:-</span>
         <a
           v-else
           :href="externalGameResolver(row)"
           :target="externalGameResolverTarget"
-          :class="{ 'is-text-dark': row.gameStatus !== 1, 'is-text-accent': row.gameStatus === 1 }"
+          :class="{ 'text-highlighted': row.gameStatus !== 1, 'is-text-accent': row.gameStatus === 1 }"
         >
           {{ row.homeTeamScore }}:{{ row.awayTeamScore }}
         </a>
       </template>
 
       <template #cell-gameResultType="{ row }">
-        <span v-if="row.isOvertime" class="label">{{ t('common.overtimeShort') }}</span>
-        <span v-if="row.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
-        <span v-if="row.seriesStandings" class="label">{{ row.seriesStandings }}</span>
+        <span v-if="row.isOvertime" class="badge">{{ t('common.overtimeShort') }}</span>
+        <span v-if="row.isShootout" class="badge">{{ t('common.shootoutShort') }}</span>
+        <span v-if="row.seriesStandings" class="badge">{{ row.seriesStandings }}</span>
       </template>
 
       <template #loading>
         <LoadingIndicator />
+      </template>
+
+      <template v-if="$slots.caption" #caption>
+        <slot name="caption" />
       </template>
     </DataTable>
   </ResponsiveTable>

@@ -152,12 +152,22 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/paginator.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/paginator.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/responsive-table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/dropdown.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/table.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/timezone-selector.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/icon-button.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/list.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />

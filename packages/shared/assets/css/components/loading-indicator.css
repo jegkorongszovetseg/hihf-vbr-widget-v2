@@ -1,0 +1,8 @@
+@layer components {
+  :where(.loading-indicator) {
+    padding: var(--size-16);
+    font-weight: 600;
+    color: var(--mvw-loading-indicator-text-color, var(--mvw-text-toned));
+    text-align: center;
+  }
+}

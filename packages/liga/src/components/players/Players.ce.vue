@@ -2,6 +2,7 @@
 import {
   ErrorNotice,
   ErrorProvider,
+  FormField,
   I18NProvider,
   Paginator,
   SeasonSelector,
@@ -86,10 +87,9 @@ const externalTeamLink = params => externalTeamLinkResolver(props.externalTeamRe
             is-section-selection-disabled
             @on-change-season="changeSeason"
           >
-            <div>
-              <label for="player" class="label">{{ t('selection.filterName') }}</label>
+            <FormField :label="t('selection.filterName')" name="player">
               <input id="player" type="text" class="base-input" :value="query" @input="onInput">
-            </div>
+            </FormField>
           </SeasonSelector>
 
           <PlayersDataTable
@@ -104,7 +104,7 @@ const externalTeamLink = params => externalTeamLinkResolver(props.externalTeamRe
             @sort="onSort"
           />
 
-          <div style="display: flex; justify-content: space-between; align-items: center">
+          <div class="grid-container">
             <Paginator
               :page="page"
               :items-per-page="props.limit"
@@ -112,7 +112,7 @@ const externalTeamLink = params => externalTeamLinkResolver(props.externalTeamRe
               :range-length="5"
               @change="onPaginatorChange"
             />
-            <div v-if="players.totalItems > 0">
+            <div v-if="players.totalItems > 0" class="text-muted text-end">
               {{ range.join('-') }} / {{ players.totalItems }}
             </div>
           </div>
@@ -124,18 +124,18 @@ const externalTeamLink = params => externalTeamLinkResolver(props.externalTeamRe
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/form-field.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/responsive-table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/paginator.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/paginator.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/avatar.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />

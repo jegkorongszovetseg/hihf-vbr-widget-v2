@@ -44,6 +44,6 @@ function capitalizeFirstLetter(string) {
 }
 
 export function sortSubPhases(phases) {
-  const sort = ({ name }) => ['Negyeddöntő', 'Elődöntő', 'Döntő'].indexOf(name);
+  const sort = ({ phaseTypeName }) => ['Negyeddöntő', 'Elődöntő', 'Döntő'].indexOf(phaseTypeName);
   return sortBy(sort, phases);
 }

@@ -11,7 +11,7 @@ Az egyes elemek stílusát így lehet változtatni:
 ```css
 mjsz-vbr-standings,
 mjsz-vbr-schedule {
-  --vbr-widget-table-header-font-size: 11px;
+  --mvw-table-header-font-size: 11px;
 }
 ```
 
@@ -19,6 +19,6 @@ Minden elem:
 
 ```css
 * {
-  --vbr-widget-table-header-font-size: 11px;
+  --mvw-table-header-font-size: 11px;
 }
 ```

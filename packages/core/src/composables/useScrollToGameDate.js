@@ -19,7 +19,7 @@ export function useScrollToGameDate(options = {}) {
     const dateElement = unrefElement(element).querySelector(`div[data-gamedate="${idDate}"]`);
     if (!dateElement)
       return;
-    const topOffset = getComputedStyle(dateElement).getPropertyValue('--vbr-widget-sticky-top-offset') || 0;
+    const topOffset = getComputedStyle(dateElement).getPropertyValue('--mvw-sticky-top-offset') || 0;
     const computedOffset
       = (dateElement.getBoundingClientRect()?.top ?? 0) - unref(offset) - Number.parseFloat(topOffset);
     window.scrollTo(0, computedOffset);

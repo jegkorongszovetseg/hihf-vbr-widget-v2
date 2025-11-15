@@ -17,19 +17,19 @@ export const PLAYER_STATS_COLUMNS = {
   number: {
     label: 'table.jerseyNumber.short',
     tooltip: 'table.jerseyNumber.tooltip',
-    class: 'is-text-italic',
+    class: 'italic',
     sortOrders: [{ target: 'number', direction: SORT_STATE_ASCEND }],
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-text-bold',
+    class: 'text-start font-bold',
     sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
   },
   cora: {
     label: '',
     tooltip: '',
-    class: 'is-text-bold',
+    class: 'font-bold',
   },
   position: {
     label: 'table.position.short',
@@ -89,12 +89,12 @@ export const GOALIES_STATS_COLUMNS = {
   jerseyNumber: {
     label: 'table.jerseyNumber.short',
     tooltip: 'table.jerseyNumber.tooltip',
-    class: 'is-text-italic',
+    class: 'italic',
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-text-bold',
+    class: 'text-start font-bold',
   },
   mipMin: {
     label: 'table.toi.short',
@@ -126,12 +126,12 @@ export const TEAM_OFFICIALS_COLUMNS = {
   role: {
     label: 'table.role.short',
     tooltip: 'table.role.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-text-bold',
+    class: 'text-start font-bold',
   },
 };
 

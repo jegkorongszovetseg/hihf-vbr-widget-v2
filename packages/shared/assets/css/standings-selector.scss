@@ -3,11 +3,11 @@
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
-    padding: var(--vbr-widget-standings-selector-title-padding);
-    text-transform: var(--vbr-widget-standings-selector-title-transform);
-    font-size: var(--vbr-widget-standings-selector-title-size);
-    color: var(--vbr-widget-standings-selector-title-color);
-    background: var(--vbr-widget-standings-selector-title-bg-color);
+    padding: var(--mvw-standings-selector-title-padding);
+    text-transform: var(--mvw-standings-selector-title-transform);
+    font-size: var(--mvw-standings-selector-title-size);
+    color: var(--mvw-standings-selector-title-color);
+    background: var(--mvw-standings-selector-title-bg-color);
   }
 
   .is-title-text {

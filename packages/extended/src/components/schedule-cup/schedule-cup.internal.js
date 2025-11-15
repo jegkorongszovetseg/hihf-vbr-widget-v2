@@ -2,37 +2,37 @@ export const COLUMNS_SCHEDULE = {
   gameName: {
     label: 'table.gameName.short',
     tooltip: 'table.gameName.tooltip',
-    class: 'is-text-left is-text-light',
+    class: 'text-start text-dimmed',
   },
   gameDateDate: {
     label: 'table.gameDate.short',
     tooltip: 'table.gameDate.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   gameDateTime: {
     label: 'table.gameDateTime.short',
     tooltip: 'table.gameDateTime.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   divisionName: {
     label: 'table.section.short',
     tooltip: 'table.section.tooltip',
-    class: 'is-has-image is-text-light',
+    class: 'is-has-image text-dimmed',
   },
   homeTeamName: {
     label: 'table.organizer.short',
     tooltip: 'table.organizer.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
   },
   location: {
     label: 'table.location.short',
     tooltip: 'table.location.tooltip',
-    class: 'is-text-left is-w-auto',
+    class: 'text-start w-auto',
   },
   document: {
     label: 'table.document.short',
     tooltip: 'table.document.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
 };
 

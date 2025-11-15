@@ -95,26 +95,26 @@ const { t } = useI18n();
         </template>
       </template>
       <template #cell-homeTeamLogo="{ row }">
-        <Image v-if="row.homeTeam" :key="row.homeTeam.id" class="is-logo-image is-right" :src="row.homeTeam.logo" />
+        <Image v-if="row.homeTeam" :key="row.homeTeam.id" class="is-logo-image" :src="row.homeTeam.logo" />
       </template>
       <template #cell-awayTeamLogo="{ row }">
-        <Image v-if="row.awayTeam" :key="row.awayTeam.id" class="is-logo-image is-right" :src="row.awayTeam.logo" />
+        <Image v-if="row.awayTeam" :key="row.awayTeam.id" class="is-logo-image" :src="row.awayTeam.logo" />
       </template>
       <template #cell-gameResult="{ row }">
-        <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>
+        <span v-if="row.gameStatus === 0" class="text-highlighted">-:-</span>
         <a
           v-else
           :href="externalGameResolver(row.gameId)"
           :target="externalGameResolverTarget"
-          :class="{ 'is-text-dark': row.gameStatus !== 1, 'is-text-accent': row.gameStatus === 1 }"
+          :class="{ 'text-highlighted': row.gameStatus !== 1, 'is-text-accent': row.gameStatus === 1 }"
         >
           {{ row.homeTeamScore }}:{{ row.awayTeamScore }}
         </a>
       </template>
       <template #cell-gameResultType="{ row }">
-        <span v-if="row.isOvertime" class="label">{{ t('common.overtimeShort') }}</span>
-        <span v-if="row.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
-        <span v-if="row.seriesStandings" class="label">{{ row.seriesStandings }}</span>
+        <span v-if="row.isOvertime" class="badge">{{ t('common.overtimeShort') }}</span>
+        <span v-if="row.isShootout" class="badge">{{ t('common.shootoutShort') }}</span>
+        <span v-if="row.seriesStandings" class="badge">{{ row.seriesStandings }}</span>
       </template>
       <template #cell-broadcast="{ row }">
         <IconBroadcast v-if="row.broadcast" />
@@ -125,27 +125,35 @@ const { t } = useI18n();
       </template>
       <template #cell-more="{ row }">
         <FloatingPanel :offset="2" placement="left" theme="content" :append-to="rootElement">
-          <template #default="{ setRef, show, hide }">
-            <button :ref="setRef" @click.stop="show" @focus="show" @blur="hide">
+          <template #default="{ setRef, toggle }">
+            <button :ref="setRef" type="button" aria-label="more" class="icon-button" @click.stop.prevent="toggle">
               <IconMore />
             </button>
           </template>
           <template #content>
-            <ul class="is-dropdown-menu">
+            <ul class="list">
               <li>
                 <a
                   :href="externalGameResolver(row.gameId)"
                   class="is-dropdown-item"
                   :target="externalGameResolverTarget"
                 >
-                  <IconSheet width="14" />
-                  {{ t('common.report') }}
+                  <div class="start">
+                    <IconSheet />
+                  </div>
+                  <div class="text">
+                    {{ t('common.report') }}
+                  </div>
                 </a>
               </li>
               <li v-if="row.video">
                 <a :href="row.video" class="is-dropdown-item" target="_blank">
-                  <IconYoutube width="14" />
-                  {{ t('common.video') }}
+                  <div class="start">
+                    <IconYoutube />
+                  </div>
+                  <div class="text">
+                    {{ t('common.video') }}
+                  </div>
                 </a>
               </li>
             </ul>

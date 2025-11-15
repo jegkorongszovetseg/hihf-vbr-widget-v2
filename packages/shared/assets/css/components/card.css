@@ -1,0 +1,11 @@
+@layer components {
+  :where(.card) {
+    container-type: inline-size;
+    container-name: card-wrapper;
+
+    padding: var(--size-16);
+    background-color: light-dark(var(--mvw-color-white), var(--mvw-primary-color-900));
+    border-radius: var(--radius-2);
+    box-shadow: var(--shadow-3);
+  }
+}

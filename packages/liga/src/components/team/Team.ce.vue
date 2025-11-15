@@ -49,7 +49,7 @@ const externalGameLink = params => externalGameLinkResolver(props.externalGameRe
 </script>
 
 <template>
-  <div class="is-mb-5">
+  <div class="mb-md">
     <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
       <ErrorProvider v-slot="{ hasError, error }">
         <ErrorNotice v-if="hasError" :error="error" />
@@ -68,10 +68,10 @@ const externalGameLink = params => externalGameLinkResolver(props.externalGameRe
           :championship-id="championshipId"
           :team-id="teamId"
         >
-          <h1 class="is-heading-1 is-uppercase is-mb-5">
+          <h1 class="uppercase">
             {{ teamInfo?.team?.longName }}
           </h1>
-          <div class="main-image-wrapper" style="--overlay-radius: 0px">
+          <div class="hero" style="--overlay-radius: 0px">
             <div class="is-main-image">
               <Image
                 :key="teamInfo?.team?.id"
@@ -84,32 +84,42 @@ const externalGameLink = params => externalGameLinkResolver(props.externalGameRe
             </div>
           </div>
 
-          <div class="is-mt-5">
-            <button
-              class="tab-button" :class="{ 'is-active': page === PAGE_INFO }"
-              @click="onChangePage(PAGE_INFO)"
-            >
-              {{ t('teams.tabs.teamInfo') }}
-            </button>
-            <button
-              class="tab-button" :class="{ 'is-active': page === PAGE_GAMES }"
-              @click="onChangePage(PAGE_GAMES)"
-            >
-              {{ t('teams.tabs.games') }}
-            </button>
-            <button
-              class="tab-button" :class="{ 'is-active': page === PAGE_PLAYER_STATS }"
-              @click="onChangePage(PAGE_PLAYER_STATS)"
-            >
-              {{ t('teams.playerStats') }}
-            </button>
-            <button
-              class="tab-button" :class="{ 'is-active': page === PAGE_ROSTER }"
-              @click="onChangePage(PAGE_ROSTER)"
-            >
-              {{ t('teams.roster') }}
-            </button>
-          </div>
+          <nav class="tabs underlined">
+            <div role="tablist" :aria-label="t('selection.sections')">
+              <button
+                role="tab"
+                type="button"
+                :aria-selected="page === PAGE_INFO"
+                @click="onChangePage(PAGE_INFO)"
+              >
+                {{ t('teams.tabs.teamInfo') }}
+              </button>
+              <button
+                role="tab"
+                type="button"
+                :aria-selected="page === PAGE_GAMES"
+                @click="onChangePage(PAGE_GAMES)"
+              >
+                {{ t('teams.tabs.games') }}
+              </button>
+              <button
+                role="tab"
+                type="button"
+                :aria-selected="page === PAGE_PLAYER_STATS"
+                @click="onChangePage(PAGE_PLAYER_STATS)"
+              >
+                {{ t('teams.playerStats') }}
+              </button>
+              <button
+                role="tab"
+                type="button"
+                :aria-selected="page === PAGE_ROSTER"
+                @click="onChangePage(PAGE_ROSTER)"
+              >
+                {{ t('teams.roster') }}
+              </button>
+            </div>
+          </nav>
 
           <PageInfo v-if="page === PAGE_INFO" :data="teamInfo.organizationInfo" />
           <PageGames v-if="page === PAGE_GAMES" :data="games" :game-resolver="externalGameLink" />
@@ -133,18 +143,22 @@ const externalGameLink = params => externalGameLinkResolver(props.externalGameRe
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/responsive-table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/teams.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/avatar.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/typography.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/hero.css" />
