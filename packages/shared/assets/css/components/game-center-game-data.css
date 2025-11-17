@@ -1,0 +1,91 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-gamecenter-result-size: calc(var(--size-16) * 6);
+    --mvw-gamecenter-result-weight: 700;
+    --mvw-gamecenter-result-color: light-dark(var(--mvw-primary-color-800), var(--mvw-primary-color-200));
+    --mvw-gamecenter-periodresults-color: var(--mvw-text-dimmed);
+    --mvw-gamecenter-periodresults-size: var(--font-size-700);
+    --mvw-gamecenter-teamname-size: var(--font-size-700);
+    --mvw-gamecenter-teamname-color: light-dark(var(--mvw-primary-color-800), var(--mvw-primary-color-200));
+    --mvw-gamecenter-teamname-weight: 700;
+    --mvw-gamecenter-gamestatus-color: var(--mvw-text-muted);
+    --mvw-gamecenter-gamestatus-size: var(--font-size-400);
+  }
+}
+
+@layer components {
+  :where(.gamecenter-game-data) {
+    margin-bottom: calc(var(--size-16) * 2);
+    text-align: center;
+
+    .is-teams-and-results {
+      display: grid;
+      justify-items: center;
+      align-items: flex-end;
+
+      @media (width > 500px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .game-result {
+      color: var(--mvw-gamecenter-result-color);
+      font-weight: var(--mvw-gamecenter-result-weight);
+      font-size: var(--mvw-gamecenter-result-size);
+      line-height: var(--mvw-gamecenter-result-size);
+
+      &.live {
+        color: var(--mvw-live);
+      }
+    }
+
+    .is-period-results {
+      color: var(--mvw-gamecenter-periodresults-color);
+      font-size: var(--mvw-gamecenter-periodresults-size);
+      font-weight: 500;
+    }
+
+    .is-game-status {
+      color: var(--mvw-gamecenter-gamestatus-color);
+      font-size: var(--mvw-gamecenter-gamestatus-size);
+      line-height: var(--font-lineheight-600);
+      text-transform: uppercase;
+    }
+
+    .is-team-name {
+      padding: var(--size-8) 0;
+      color: var(--mvw-gamecenter-teamname-color);
+      font-weight: var(--mvw-gamecenter-teamname-weight);
+      font-size: var(--mvw-gamecenter-teamname-size);
+    }
+
+    .is-external-contents {
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      a {
+        display: flex;
+        align-items: center;
+        /* font-size: var(--mvw-gamecenter-local-gamedate-size); */
+
+        &:after {
+          content: '/';
+          margin: 0 5px;
+        }
+
+        &:last-of-type:after {
+          content: '';
+        }
+      }
+
+      .is-icon {
+        margin-right: 5px;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+}

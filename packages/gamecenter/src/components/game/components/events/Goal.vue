@@ -75,7 +75,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
                 :ref="setRef"
                 :tabindex="0"
                 :aria-label="`${player.jerseyNumber} ${player.lastName} ${player.firstName}`"
-                v-on="events"
+                v-bind="events"
               >
                 {{ player.jerseyNumber }}
               </li>
@@ -99,7 +99,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
                 :ref="setRef"
                 :tabindex="0"
                 :aria-label="`${player.jerseyNumber} ${player.lastName} ${player.firstName}`"
-                v-on="events"
+                v-bind="events"
               >
                 {{ player.jerseyNumber }}
               </li>

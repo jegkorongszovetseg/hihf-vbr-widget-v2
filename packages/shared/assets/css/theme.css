@@ -16,6 +16,7 @@
     --mvw-live: #8bc34a;
     --mvw-error: #fb2c36;
     --mvw-warning: #ffc107;
+    --mvw-info: #2870ed;
 
     /* Link */
     --mvw-link-color: light-dark(var(--mvw-secondary-color-700), var(--mvw-secondary-color-400));

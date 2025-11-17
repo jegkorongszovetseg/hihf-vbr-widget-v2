@@ -35,17 +35,17 @@ const { visitorsLabel, isVisible: isVisitorsLabelVisible } = useAttendanceSocket
 
 <template>
   <div class="gamecenter-game-data">
-    <div class="is-title-container">
-      <div v-once class="is-title">
+    <div class="mb-md">
+      <div v-once class="text-highlighted uppercase font-bold">
         {{ gameData.championshipName }} - {{ gameData.divisionName }} - {{ gameData.gameName }} /
         {{ gameData.location.locationName }}
       </div>
-      <div v-once class="is-gamedate">
+      <div v-once class="text-muted is-gamedate">
         {{ format(gameData.gameDate, 'L dddd - HH:mm', null, locale) }} ({{
           offsetName(new Date(gameData.gameDate), null, locale)
         }})
       </div>
-      <div v-once class="is-local-gamedate">
+      <div v-once class="text-muted text-sm is-local-gamedate">
         {{ t('localTime') }} ({{ gameData.location.locationCountryISO || gameData.location.locationName }}):
         {{ format(gameData.gameDate, 'L dddd - HH:mm', gameData.location.timezone, locale) }} ({{
           offsetName(new Date(gameData.gameDate), gameData.location.timezone, locale)
@@ -66,50 +66,50 @@ const { visitorsLabel, isVisible: isVisitorsLabelVisible } = useAttendanceSocket
           {{ t('video') }}
         </a>
       </div>
-      <p v-if="gameData.gameStatus <= 1 && isVisitorsLabelVisible" class="is-live-vistors">
+      <p v-if="gameData.gameStatus <= 1 && isVisitorsLabelVisible" class="text-xs text-muted">
         {{ visitorsLabel }}
       </p>
     </div>
 
     <div class="is-teams-and-results">
       <div v-once>
-        <Image :src="gameData.homeTeam?.logo" class="is-team-logo" :default-src="DEAFULT_LOGO_TEAM_A" />
+        <Image :src="gameData.homeTeam?.logo" :width="128" :default-src="DEAFULT_LOGO_TEAM_A" />
         <h1 class="is-team-name">
           {{ gameData.homeTeam?.longName }}
         </h1>
       </div>
       <div>
-        <p v-if="gameData.gameStatus > 1" class="is-game-status">
+        <div v-if="gameData.gameStatus > 1" class="is-game-status">
           {{ t(`gameStatus.status-${gameData.gameStatus}`) }}
-        </p>
-        <p v-if="gameData.gameStatus === 1" class="is-game-status">
+        </div>
+        <div v-if="gameData.gameStatus === 1" class="is-game-status">
           {{ t(`periods.${convertPeriodName(gameData.period)}`) }}
-        </p>
+        </div>
         <template v-if="gameData.gameStatus > 1">
-          <p v-if="gameData.isOvertime">
-            <span class="is-badge is-invert is-large">{{ t('afterOvertime') }}</span>
-          </p>
-          <p v-if="gameData.isShootout">
-            <span class="is-badge is-invert is-large">{{ t('afterShootout') }}</span>
-          </p>
+          <div v-if="gameData.isOvertime">
+            <span class="badge lg inverted">{{ t('afterOvertime') }}</span>
+          </div>
+          <div v-if="gameData.isShootout">
+            <span class="badge lg inverted">{{ t('afterShootout') }}</span>
+          </div>
         </template>
-        <p v-if="gameData.gameStatus === 1" class="is-game-status">
+        <div v-if="gameData.gameStatus === 1" class="is-game-status">
           {{ gameData.actualTime }}
-        </p>
+        </div>
 
         <GamePeriodProgress v-if="gameData.gameStatus === 1" :game-data="gameData" />
 
-        <div class="is-game-result" :class="[{ 'is-game-status-live': gameData.gameStatus === 1 }]">
+        <div class="game-result" :class="[{ live: gameData.gameStatus === 1 }]">
           <span v-if="gameData.gameStatus === 0">-</span>
           <span v-else>{{ gameData.homeTeamScore }}</span>:<span v-if="gameData.gameStatus === 0">-</span>
           <span v-else>{{ gameData.awayTeamScore }}</span>
         </div>
-        <p class="is-period-results">
+        <div class="is-period-results">
           {{ gameData.periodResults }}
-        </p>
+        </div>
       </div>
       <div v-once>
-        <Image :src="gameData.awayTeam?.logo" :default-src="DEAFULT_LOGO_TEAM_B" class="is-team-logo" />
+        <Image :src="gameData.awayTeam?.logo" :default-src="DEAFULT_LOGO_TEAM_B" :width="128" />
         <h1 class="is-team-name">
           {{ gameData.awayTeam?.longName }}
         </h1>

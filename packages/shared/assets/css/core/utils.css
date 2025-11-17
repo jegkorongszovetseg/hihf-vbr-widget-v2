@@ -81,6 +81,9 @@
   .mb-md {
     margin-block-end: var(--size-16);
   }
+  .mb-xl {
+    margin-block-end: calc(var(--size-16) * 2);
+  }
   .mt-md {
     margin-block-start: var(--size-16);
   }
