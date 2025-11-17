@@ -48,8 +48,8 @@ const onSort = payload => emit('sort', payload);
         <template #cell-name="{ row }">
           {{ row.name }}
           <FloatingPanel v-if="row.isBP" placement="top" :content="t('bestPlayer')" :append-to="tooltipContainer">
-            <template #default="{ setRef, show, hide }">
-              <span :ref="setRef" class="text-highlighted" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">
+            <template #default="{ setRef, events }">
+              <span :ref="setRef" class="text-highlighted" v-bind="events">
                 <IconStar />
               </span>
             </template>

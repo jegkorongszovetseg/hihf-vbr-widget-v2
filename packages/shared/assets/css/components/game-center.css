@@ -1,13 +1,5 @@
 @layer components.variables {
   :where(:host) {
-    /* --mvw-gamecenter-title-color: var(--mvw-primary-color-800); */
-    /* --mvw-gamecenter-title-size: var(--mvw-typography-font-size-500); */
-    /* --mvw-gamecenter-title-weight: 700; */
-    /* --mvw-gamecenter-gamedate-color: var(--mvw-primary-color-500); */
-    /* --mvw-gamecenter-gamedate-size: var(--mvw-typography-font-size-500); */
-    /* --mvw-gamecenter-local-gamedate-color: var(--mvw-primary-color-500); */
-    /* --mvw-gamecenter-local-gamedate-size: var(--font-size-300); */
-
     /* --mvw-gamecenter-stats-bg-color: var(--mvw-primary-color-50); */
     /* --mvw-gamecenter-stats-border-color: var(--mvw-primary-color-100); */
     --mvw-gamecenter-stats-title-size: var(--font-size-300);
@@ -20,9 +12,15 @@
     --mvw-gamecenter-period-header-size: var(--font-size-300);
     --mvw-gamecenter-period-header-weight: 500;
 
-    /* --mvw-gamecenter-team-container-title-color: var(--mvw-primary-color-800); */
-    /* --mvw-gamecenter-team-container-title-bg-color: var(--mvw-primary-color-100); */
-    /* --mvw-gamecenter-team-container-border-color: var(--mvw-primary-color-100); */
+    --mvw-gamecenter-team-container-title-color: light-dark(var(--mvw-primary-color-800), var(--mvw-primary-color-200));
+    --mvw-gamecenter-team-container-title-bg-color: light-dark(
+      var(--mvw-primary-color-100),
+      var(--mvw-primary-color-800)
+    );
+    --mvw-gamecenter-team-container-border-color: light-dark(
+      var(--mvw-primary-color-100),
+      var(--mvw-primary-color-800)
+    );
 
     --mvw-gamecenter-events-evented-person-size: var(--font-size-500);
     --mvw-gamecenter-events-evented-person-weight: 600;
@@ -202,7 +200,7 @@
     }
 
     .is-score-so-goal {
-      color: var(--mvw-live-game-color);
+      color: var(--mvw-live);
     }
 
     .is-goalie-direction {
@@ -259,6 +257,20 @@
 
     .is-light-cell {
       color: var(--mvw-text-dimmed);
+    }
+  }
+
+  :where(.gamecenter-data-table) {
+    border: 1px solid var(--mvw-gamecenter-team-container-border-color);
+    min-width: 0;
+
+    h2 {
+      padding: 8px;
+      margin: 0;
+      font-size: var(--mvw-gamecenter-team-container-title-size);
+      font-weight: 500;
+      color: var(--mvw-gamecenter-team-container-title-color);
+      background-color: var(--mvw-gamecenter-team-container-title-bg-color);
     }
   }
 }

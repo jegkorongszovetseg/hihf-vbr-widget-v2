@@ -38,13 +38,13 @@ const awayOnIce = computed(() => props.event.awayOnIce);
     {{ event.score }}
   </div>
   <div>
-    <span v-if="event.advantage" class="is-badge is-large">
+    <span v-if="event.advantage" class="badge lg">
       {{ event.advantage }}
     </span>
-    <span v-if="event.en" class="is-badge is-large"> EN </span>
+    <span v-if="event.en" class="badge lg"> EN </span>
   </div>
   <div>
-    <span v-if="event.ps || event.gws || event.gwg" class="is-badge is-invert is-large">
+    <span v-if="event.ps || event.gws || event.gwg" class="badge inverted lg">
       <template v-if="event.ps">PS</template>
       <template v-if="event.gws">GWS</template>
       <template v-if="event.gwg">GWG</template>

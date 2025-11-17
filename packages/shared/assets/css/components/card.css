@@ -15,6 +15,8 @@
     &.bordered {
       --_bg-color: light-dark(var(--mvw-primary-color-50), var(--mvw-primary-color-950));
       --_border: 1px solid light-dark(var(--mvw-primary-color-100), var(--mvw-primary-color-900));
+      box-shadow: none;
+      border-radius: 0;
     }
   }
 }
