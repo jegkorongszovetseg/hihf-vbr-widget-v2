@@ -51,7 +51,7 @@ const awayGoalies = computed(() => sortByStartingFive(props.data?.goalies?.[prop
   <div class="gamecenter-data-column">
     <GamePlayerStatsProvider v-slot="{ rows, sort, onSort }" :rows="homePlayers">
       <GameDataTable
-        class="is-home-team 'gamecenter-timeline-data-table"
+        class="is-home-team gamecenter-timeline-data-table"
         :columns="columns"
         :rows="rows"
         :title="homeTeamName"

@@ -142,7 +142,7 @@ const websocketURL = computed(() => getWebsocketURL(`/v2/game-attendance?gameid=
 
 <style src="@mjsz-vbr-elements/shared/css/components/table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/components/typography.css" />
+<!-- <style src="@mjsz-vbr-elements/shared/css/components/typography.css" /> -->
 
 <style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
 
@@ -155,6 +155,8 @@ const websocketURL = computed(() => getWebsocketURL(`/v2/game-attendance?gameid=
 <style src="@mjsz-vbr-elements/shared/css/components/progress.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/card.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
 
 <!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
 

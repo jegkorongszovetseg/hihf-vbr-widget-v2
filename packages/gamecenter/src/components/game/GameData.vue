@@ -40,12 +40,12 @@ const { visitorsLabel, isVisible: isVisitorsLabelVisible } = useAttendanceSocket
         {{ gameData.championshipName }} - {{ gameData.divisionName }} - {{ gameData.gameName }} /
         {{ gameData.location.locationName }}
       </div>
-      <div v-once class="text-muted is-gamedate">
+      <div v-once class="text-muted">
         {{ format(gameData.gameDate, 'L dddd - HH:mm', null, locale) }} ({{
           offsetName(new Date(gameData.gameDate), null, locale)
         }})
       </div>
-      <div v-once class="text-muted text-sm is-local-gamedate">
+      <div v-once class="text-muted text-sm">
         {{ t('localTime') }} ({{ gameData.location.locationCountryISO || gameData.location.locationName }}):
         {{ format(gameData.gameDate, 'L dddd - HH:mm', gameData.location.timezone, locale) }} ({{
           offsetName(new Date(gameData.gameDate), gameData.location.timezone, locale)

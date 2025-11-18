@@ -1,0 +1,65 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-gamecenter-home-team-identifier-color: var(--mvw-info);
+    --mvw-gamecenter-away-team-identifier-color: #ff6129;
+    --mvw-gamecenter-home-team-identifier-border-color: transparent;
+    --mvw-gamecenter-away-team-identifier-border-color: transparent;
+  }
+}
+@layer components {
+  :where(.gamecenter-timeline) {
+    .gamecenter-timeline-game-data {
+      .is-goal-scorers {
+        font-size: var(--font-size-200);
+        font-weight: 700;
+        line-height: var(--lineheight-200);
+        color: var(--mvw-primary-color-500);
+
+        span {
+          font-weight: 400;
+        }
+      }
+
+      .period-results {
+        width: 100%;
+        border-collapse: collapse;
+
+        tr:first-of-type {
+          td {
+            border-bottom: 1px solid var(--mvw-border-faded);
+          }
+        }
+
+        td {
+          font-size: var(--font-size-500);
+          font-weight: 500;
+          color: var(--mvw-text-default);
+        }
+
+        td:nth-child(2) {
+          font-size: var(--font-size-400);
+          text-align: left;
+        }
+
+        span {
+          display: inline-block;
+          width: 9px;
+          height: 9px;
+          border: 1px solid var(--mvw-border-faded);
+          border-radius: 50%;
+
+          &.is-home-team {
+            background-color: var(--mvw-gamecenter-home-team-identifier-color);
+            outline: 1px solid var(--mvw-gamecenter-home-team-identifier-border-color);
+            outline-offset: -2px;
+          }
+          &.is-away-team {
+            background-color: var(--mvw-gamecenter-away-team-identifier-color);
+            outline: 1px solid var(--mvw-gamecenter-away-team-identifier-border-color);
+            outline-offset: -2px;
+          }
+        }
+      }
+    }
+  }
+}

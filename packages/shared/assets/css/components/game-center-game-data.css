@@ -21,7 +21,7 @@
     .is-teams-and-results {
       display: grid;
       justify-items: center;
-      align-items: flex-end;
+      align-items: end;
 
       @media (width > 500px) {
         grid-template-columns: repeat(3, 1fr);

@@ -34,7 +34,7 @@
 }
 
 @layer components {
-  :where(table) {
+  :where(.table) {
     border-collapse: collapse;
     max-inline-size: 100%;
     position: relative;
