@@ -6,7 +6,7 @@
     --mvw-gamecenter-periodresults-color: var(--mvw-text-dimmed);
     --mvw-gamecenter-periodresults-size: var(--font-size-700);
     --mvw-gamecenter-teamname-size: var(--font-size-700);
-    --mvw-gamecenter-teamname-color: light-dark(var(--mvw-primary-color-800), var(--mvw-primary-color-200));
+    --mvw-gamecenter-teamname-color: light-dark(var(--mvw-primary-color-900), var(--mvw-primary-color-100));
     --mvw-gamecenter-teamname-weight: 700;
     --mvw-gamecenter-gamestatus-color: var(--mvw-text-muted);
     --mvw-gamecenter-gamestatus-size: var(--font-size-400);

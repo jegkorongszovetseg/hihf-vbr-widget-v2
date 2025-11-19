@@ -11,7 +11,7 @@
 
     .is-value {
       font-weight: 700;
-      color: var(--mvw-primary-color-900);
+      color: var(--mvw-text-highlighted);
     }
 
     .is-value-start {
@@ -26,7 +26,7 @@
     }
 
     .is-bar {
-      background-color: var(--mvw-primary-color-50);
+      background-color: var(--mvw-bg-muted);
       height: 8px;
       margin-block: 5px;
     }
@@ -61,10 +61,10 @@
       grid-area: title;
 
       justify-self: center;
-      font-size: var(--mvw-typography-font-size-400);
+      font-size: var(--font-size-400);
       font-weight: 700;
       line-height: 1.5rem;
-      color: var(--mvw-primary-color-500);
+      color: var(--mvw-text-muted);
     }
   }
 }
