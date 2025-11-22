@@ -39,11 +39,6 @@
 
     --mvw-gamecenter-card-event-goal-border-color: var(--mvw-primary-color-700);
     --mvw-gamecenter-card-event-goal-bg-color: var(--mvw-primary-color-700);
-
-    /* --mvw-gamecenter-home-team-identifier-color: #2870ed;
-    --mvw-gamecenter-away-team-identifier-color: #ff6129;
-    --mvw-gamecenter-home-team-identifier-border-color: transparent;
-    --mvw-gamecenter-away-team-identifier-border-color: transparent; */
   }
 }
 

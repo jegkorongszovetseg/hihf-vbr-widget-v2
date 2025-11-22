@@ -36,7 +36,7 @@ const onSort = payload => emit('sort', payload);
 
 <template>
   <div>
-    <h2>{{ title }}</h2>
+    <h3>{{ title }}</h3>
     <ResponsiveTable v-slot="{ el: rootElement }">
       <DataTable
         :columns="props.columns"

@@ -40,7 +40,11 @@
 
     .is-bar-start--progress {
       background-color: var(--mvw-gamecenter-home-team-identifier-color);
-      outline: 1px solid var(--mvw-gamecenter-home-team-identifier-border-color);
+      outline: 1px solid
+        light-dark(
+          oklch(from var(--mvw-gamecenter-home-team-identifier-color) calc(l - 0.4) c h),
+          oklch(from var(--mvw-gamecenter-home-team-identifier-color) calc(l + 0.4) c h)
+        );
       outline-offset: -1px;
       height: 100%;
       transition: width 0.3s ease-out;
@@ -52,7 +56,11 @@
 
     .is-bar-end--progress {
       background-color: var(--mvw-gamecenter-away-team-identifier-color);
-      outline: 1px solid var(--mvw-gamecenter-away-team-identifier-border-color);
+      outline: 1px solid
+        light-dark(
+          oklch(from var(--mvw-gamecenter-away-team-identifier-color) calc(l - 0.4) c h),
+          oklch(from var(--mvw-gamecenter-away-team-identifier-color) calc(l + 0.4) c h)
+        );
       outline-offset: -1px;
       height: 100%;
     }

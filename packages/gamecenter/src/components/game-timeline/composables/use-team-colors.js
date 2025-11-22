@@ -9,12 +9,6 @@ export function useTeamColors(gameData) {
     return {
       '--mvw-gamecenter-home-team-identifier-color': `#${homeTeam.color}`,
       '--mvw-gamecenter-away-team-identifier-color': `#${awayTeam.color}`,
-      ...(homeTeam.color === 'ffffff' && {
-        '--mvw-gamecenter-home-team-identifie-border-color': '#343434',
-      }),
-      ...(awayTeam.color === 'ffffff' && {
-        '--mvw-gamecenter-away-team-identifier-border-color': '#343434',
-      }),
     };
   });
 
