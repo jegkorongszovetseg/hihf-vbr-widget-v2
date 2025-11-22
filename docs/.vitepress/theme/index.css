@@ -12,7 +12,7 @@ mjsz-vbr-schedule-liga {
   }
 }
 
-mjsz-vbr-game-timeline {
+/* mjsz-vbr-game-timeline {
   font-family: 'Roboto Condensed', Avenir, Helvetica, Arial, sans-serif;
 
   --mvw-primary-color-0: #ffffff;
@@ -50,4 +50,4 @@ mjsz-vbr-game-timeline {
   --mvw-gamecenter-card-event-goal-border-color: var(--mvw-primary-color-700);
   --mvw-gamecenter-card-event-goal-bg-color: var(--mvw-primary-color-700);
   --mvw-gamecenter-card-tertiary-color: var(--mvw-primary-color-400);
-}
+} */
