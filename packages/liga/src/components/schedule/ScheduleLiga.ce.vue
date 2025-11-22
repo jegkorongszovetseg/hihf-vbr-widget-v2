@@ -6,7 +6,7 @@ import {
   LoadingIndicator,
   TimezoneSelector,
 } from '@mjsz-vbr-elements/core/components';
-import { gameProps } from '@mjsz-vbr-elements/core/constants';
+import { gameProps } from '@mjsz-vbr-elements/core/props';
 import { externalGameLinkResolver, format, getLocalTimezone, offsetName } from '@mjsz-vbr-elements/core/utils';
 import { unrefElement } from '@vueuse/core';
 import { computed, ref, unref } from 'vue';

@@ -1,7 +1,7 @@
 <script setup>
 import { I18NProvider, Image, LoadingIndicator, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useServices } from '@mjsz-vbr-elements/core/composables';
-import { gameProps } from '@mjsz-vbr-elements/core/constants';
+import { gameProps } from '@mjsz-vbr-elements/core/props';
 import { externalGameLinkResolver, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
 import { computed } from 'vue';
 import en from '../../locales/en.json';

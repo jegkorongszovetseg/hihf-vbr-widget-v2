@@ -2,7 +2,8 @@
 import { COLUMNS_FIELD_PLAYERS } from '@mjsz-vbr-elements/core/columns';
 import { ErrorNotice, I18NProvider, Paginator, StatisticsTable } from '@mjsz-vbr-elements/core/components';
 import { fetchVBRData, useErrorProvider, usePage, useSort } from '@mjsz-vbr-elements/core/composables';
-import { baseProps, playerStatsProps, SORT_STATE_DESCEND, teamStatsProps } from '@mjsz-vbr-elements/core/constants';
+import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core/constants';
+import { baseProps, playerStatsProps, teamStatsProps } from '@mjsz-vbr-elements/core/props';
 import {
   convert,
   externalPlayerLinkResolver,

@@ -1,6 +1,6 @@
 <script setup>
 import { ErrorNotice, ErrorProvider, I18NProvider, Paginator, StatisticsTable } from '@mjsz-vbr-elements/core/components';
-import { playerStatsProps, teamStatsProps } from '@mjsz-vbr-elements/core/constants';
+import { playerStatsProps, teamStatsProps } from '@mjsz-vbr-elements/core/props';
 import { externalPlayerLinkResolver, externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { ref } from 'vue';
 import en from '../../locales/en.json';
