@@ -375,7 +375,7 @@ export const selectFirstPhaseName = compose(prop('phaseName'), head);
 
 export const sortByPhaseId = sortBy(prop('phaseId'));
 
-export const transformPlayers = data => compose(sortBy(prop('name')), map(compose(playerName, teamName)))(data);
+export const transformPlayers = compose(sortBy(prop('name')), map(compose(playerName, teamName)));
 
 export const selectLastSections = compose(prop('phaseName'), last);
 

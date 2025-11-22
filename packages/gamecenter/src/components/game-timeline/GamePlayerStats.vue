@@ -45,13 +45,13 @@ const awayGoalies = computed(() => sortByStartingFive(props.data?.goalies?.[prop
 </script>
 
 <template>
-  <h2 class="is-heading-2">
+  <h2 class="text-center">
     {{ t('title.fieldPlayers') }}
   </h2>
   <div class="gamecenter-data-column">
     <GamePlayerStatsProvider v-slot="{ rows, sort, onSort }" :rows="homePlayers">
       <GameDataTable
-        class="is-home-team 'gamecenter-timeline-data-table"
+        class="is-home-team gamecenter-timeline-data-table"
         :columns="columns"
         :rows="rows"
         :title="homeTeamName"
@@ -71,7 +71,7 @@ const awayGoalies = computed(() => sortByStartingFive(props.data?.goalies?.[prop
     </GamePlayerStatsProvider>
   </div>
 
-  <h2 class="is-heading-2">
+  <h2 class="text-center">
     {{ t('title.goalies') }}
   </h2>
   <div class="gamecenter-data-columns">

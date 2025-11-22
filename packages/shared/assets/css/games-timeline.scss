@@ -50,20 +50,20 @@
       display: block;
       height: 22px;
       width: 22px;
-      color: var(--vbr-widget-games-timeline-arrow-color);
+      color: var(--mvw-games-timeline-arrow-color);
       transition: all 0.2s;
     }
 
     &:hover {
       svg {
-        color: var(--vbr-widget-games-timeline-arrow-hover-color);
+        color: var(--mvw-games-timeline-arrow-hover-color);
       }
     }
 
     &:disabled {
       cursor: not-allowed;
       svg {
-        color: var(--vbr-widget-games-timeline-arrow-disabled-color);
+        color: var(--mvw-games-timeline-arrow-disabled-color);
       }
     }
 
@@ -78,12 +78,12 @@
 
     &:first-of-type:after {
       right: 0;
-      border-right: 1px solid var(--vbr-widget-games-timeline-arrow-border-color);
+      border-right: 1px solid var(--mvw-games-timeline-arrow-border-color);
       box-shadow: 1px 0 3px 0 rgba(0, 0, 0, 0.1);
     }
     &:last-of-type:before {
       left: 0;
-      border-left: 1px solid var(--vbr-widget-games-timeline-arrow-border-color);
+      border-left: 1px solid var(--mvw-games-timeline-arrow-border-color);
       box-shadow: -1px 0 3px 0 rgba(0, 0, 0, 0.1);
     }
 
@@ -96,7 +96,7 @@
   .is-no-games {
     width: 100%;
     text-align: center;
-    color: var(--vbr-widget-games-timeline-game-date-color);
+    color: var(--mvw-games-timeline-game-date-color);
   }
 }
 
@@ -113,7 +113,7 @@
   cursor: pointer;
 
   &:hover {
-    background-image: var(--vbr-widget-games-timeline-game-hover-bg-color);
+    background-image: var(--mvw-games-timeline-game-hover-bg-color);
   }
 
   time {
@@ -121,9 +121,9 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: var(--vbr-widget-games-timeline-game-date-size);
+    font-size: var(--mvw-games-timeline-game-date-size);
     font-weight: 700;
-    color: var(--vbr-widget-games-timeline-game-date-color);
+    color: var(--mvw-games-timeline-game-date-color);
   }
 
   .is-home-team-logo {
@@ -142,9 +142,9 @@
 
   :is(.is-home-team-name, .is-away-team-name) {
     justify-self: start;
-    font-size: var(--vbr-widget-games-timeline-game-team-size);
+    font-size: var(--mvw-games-timeline-game-team-size);
     font-weight: 700;
-    color: var(--vbr-widget-games-timeline-game-team-color);
+    color: var(--mvw-games-timeline-game-team-color);
     overflow: hidden;
     width: 100%;
     text-overflow: ellipsis;
@@ -166,8 +166,8 @@
 
   .is-status {
     grid-area: status;
-    font-size: var(--vbr-widget-games-timeline-game-status-size);
-    color: var(--vbr-widget-games-timeline-game-status-color);
+    font-size: var(--mvw-games-timeline-game-status-size);
+    color: var(--mvw-games-timeline-game-status-color);
     overflow: hidden;
     width: 100%;
     text-overflow: ellipsis;
@@ -182,16 +182,16 @@
   height: 100%;
 
   &:hover {
-    background-image: var(--vbr-widget-games-timeline-game-hover-bg-color);
+    background-image: var(--mvw-games-timeline-game-hover-bg-color);
   }
 
   button {
     display: flex;
     align-items: center;
-    font-size: var(--vbr-widget-games-timeline-external-link-size);
+    font-size: var(--mvw-games-timeline-external-link-size);
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--vbr-widget-games-timeline-external-link-color);
+    color: var(--mvw-games-timeline-external-link-color);
 
     svg {
       display: inline-block;
@@ -206,9 +206,9 @@
   align-items: center;
   place-content: center;
   width: 100%;
-  font-size: var(--vbr-widget-typography-font-size-400);
+  font-size: var(--mvw-typography-font-size-400);
   font-weight: 500;
-  color: var(--vbr-widget-error-notice-color);
+  color: var(--mvw-error-notice-color);
 
   svg {
     display: block;

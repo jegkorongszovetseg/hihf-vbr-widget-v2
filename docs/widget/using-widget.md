@@ -23,9 +23,8 @@ A `head` részbe illesztve az alábbi kódot, az oldaladon elérhetővé válnak
 <script>
   MjszVbrElementsCore.createConfig({
     modules: [MjszVbrElements, MjszVbrElementsExtended, MjszVbrElementsLiga, MjszVbrElementsGamecenter],
-    apiKey: 'xxxxx',
-    ...
-  });
+    apiKey: 'your-api-key',
+  })
 </script>
 ```
 

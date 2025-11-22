@@ -1,5 +1,5 @@
 <script setup>
-import { ErrorNotice, ErrorProvider, I18NProvider } from '@mjsz-vbr-elements/core/components';
+import { ErrorNotice, ErrorProvider, FormField, I18NProvider } from '@mjsz-vbr-elements/core/components';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
 import DataProvider from './DataProvider.vue';
@@ -51,43 +51,37 @@ const messages = { en, hu };
             />
           </div>
           <div>
-            <section class="is-mb-5">
-              <label for="seasonId">{{ t('selection.seasonId') }}</label>
-              <p id="seasonId" v-text="seasonId" />
-            </section>
+            <FormField :label="t('selection.championships')" name="seasonId" class="mb-md">
+              <span id="seasonId" v-text="seasonId" />
+            </FormField>
 
-            <section class="is-mb-5">
-              <label for="championshipName">{{ t('selection.championshipName') }}</label>
-              <p
-                id="championshipName"
-                v-text="championshipList.find((champ) => champ.championshipId === championshipId)?.championshipName"
-              />
-            </section>
+            <FormField :label="t('selection.championshipName')" name="championshipName" class="mb-md">
+              <span id="championshipName" v-text="championshipList.find((champ) => champ.championshipId === championshipId)?.championshipName" />
+            </FormField>
 
-            <section class="is-mb-5">
-              <label for="championshipId">{{ t('selection.championshipId') }}</label>
-              <p id="championshipId" v-text="championshipId" />
-            </section>
+            <FormField :label="t('selection.championshipId')" name="championshipId" class="mb-md">
+              <span id="championshipId" v-text="championshipId" />
+            </FormField>
 
-            <section class="is-mb-5">
-              <label for="sections">{{ t('selection.sections') }}:</label>
-
-              <div id="sections" class="toggle-group">
-                <template v-for="section in sections" :key="section.sectionId">
+            <FormField :label="t('selection.sections')" name="sections" class="mb-md">
+              <nav id="sections" class="tabs filled">
+                <div role="tablist" :aria-label="t('selection.sections')">
                   <button
-                    :class="{ 'is-active': section.sectionId === sectionId }"
+                    v-for="section in sections"
+                    :key="section.phaseId"
+                    role="tab"
+                    :aria-selected="section.sectionId === sectionId "
                     @click="onChangeSection(section.sectionId)"
                   >
                     {{ section.sectionName }}
                   </button>
-                </template>
-              </div>
-            </section>
+                </div>
+              </nav>
+            </FormField>
 
-            <section class="is-mb-5">
-              <label for="phases">{{ t('selection.phasesDivision') }}:</label>
+            <FormField :label="t('selection.phasesDivision')" name="phases" class="mb-md">
               <pre id="phases" v-text="phaseData" />
-            </section>
+            </FormField>
           </div>
         </div>
       </DataProvider>
@@ -95,27 +89,21 @@ const messages = { en, hu };
   </I18NProvider>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/form-field.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
 
 <style scoped>
 .main-layout {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.main-layout > div:nth-child(2) {
-  flex: 1;
-}
+  display: grid;
+  gap: var(--size-16);
 
-pre {
-  padding: 10px;
-  white-space: pre-wrap;
-  overflow-x: auto;
-  background-color: var(--vbr-widget-primary-color-50);
-  border-radius: 5px;
+  @media (width > 60ch) {
+    grid-template-columns: 25ch 1fr;
+  }
 }
 </style>

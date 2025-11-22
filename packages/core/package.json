@@ -24,6 +24,9 @@
     },
     "./columns": {
       "import": "./dist/columns.js"
+    },
+    "./props": {
+      "import": "./dist/props.js"
     }
   },
   "module": "./dist/index.js",

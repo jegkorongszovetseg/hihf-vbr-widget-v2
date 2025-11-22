@@ -1,7 +1,7 @@
 <script setup>
-import { gameProps } from '@mjsz-vbr-elements/core';
-import { I18NProvider, Image, LoadingIndicator, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
-import { useServices } from '@mjsz-vbr-elements/core/composables';
+import { ErrorNotice, I18NProvider, Image, LoadingIndicator, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
+import { useErrorProvider, useServices } from '@mjsz-vbr-elements/core/composables';
+import { gameProps } from '@mjsz-vbr-elements/core/props';
 import { externalGameLinkResolver, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
 import { computed } from 'vue';
 import en from '../../locales/en.json';
@@ -29,12 +29,15 @@ const props = defineProps({
 
 const DEFAULT_LIGA_GAME_RESOLVER = '/game/id/{gameId}';
 
+const { onError, error, hasError } = useErrorProvider();
+
 const { state: playoffs, isLoading, execute } = useServices({
   options: {
     path: '/v2/playoffs-tree',
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: props.championshipId })),
   },
+  onError,
 });
 
 execute();
@@ -56,13 +59,16 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
 <template>
   <div class="playoffs">
     <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
+      <ErrorNotice v-if="hasError" :error="error" />
+
       <LoadingIndicator v-if="isLoading" />
+
       <div v-for="playoff in playoffs" :key="`${playoff.divisionStage2Name}-${playoff.divisionStageNumber}`">
         <div class="section-title">
           {{ t(`playoffs.${playoff.divisionStage2Name}`) }}<span v-if="playoff.divisionStageNumber">-{{ playoff.divisionStageNumber }}</span>
         </div>
         <div class="section-details">
-          <div class="is-team-name is-right">
+          <div class="is-team-name text-end">
             {{ playoff.homeTeam?.longName }}
           </div>
           <div>
@@ -85,33 +91,43 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
             :key="game.id"
             class="table-grid" :class="{ 'is-optional': game.optional }"
           >
-            <div>{{ game.gameName }}</div>
-            <div>{{ formatGameDate(game.gameDate) }}</div>
-            <div>{{ formatGameTime(game.gameDate) }}</div>
-            <div class="is-text-right is-text-bold">
-              <span class="is-team-name-long">{{ game.homeTeam?.longName }}</span>
-              <span class="is-team-name-short">{{ game.homeTeam?.shortName }}</span>
+            <div class="text-dimmed">
+              {{ game.gameName }}
             </div>
-            <div class="is-text-center">
-              <span v-if="game.gameStatus === 0" class="is-text-dark">-:-</span>
+            <div class="text-muted">
+              {{ formatGameDate(game.gameDate) }}
+            </div>
+            <div class="text-muted">
+              {{ formatGameTime(game.gameDate) }}
+            </div>
+            <div class="responsive-team-name">
+              <div class="text-highlighted text-end font-bold">
+                <span class="team-name-long">{{ game.homeTeam?.longName }}</span>
+                <span class="team-name-short">{{ game.homeTeam?.shortName }}</span>
+              </div>
+            </div>
+            <div class="text-center">
+              <span v-if="game.gameStatus === 0" class="text-highlighted">-:-</span>
               <a
                 v-else
                 :href="externalGameResolver(game)"
                 :target="externalGameTarget"
-                class="is-text-bold"
-                :class="[{ 'is-text-dark': game.gameStatus !== 1, 'is-text-accent': game.gameStatus === 1 }]"
+                class="font-bold"
+                :class="[{ 'text-highlighted': game.gameStatus !== 1, 'is-text-accent': game.gameStatus === 1 }]"
               >
                 {{ game.homeTeamScore }}:{{ game.awayTeamScore }}
               </a>
             </div>
             <div>
-              <span v-if="game.seriesStandings" class="is-badge is-dark">{{ game.seriesStandings }}</span>
+              <span v-if="game.seriesStandings" class="badge xl inverted">{{ game.seriesStandings }}</span>
             </div>
-            <div class="is-text-bold">
-              <span class="is-team-name-long">{{ game.awayTeam?.longName }}</span>
-              <span class="is-team-name-short">{{ game.awayTeam?.shortName }}</span>
+            <div class="responsive-team-name">
+              <div class="text-highlighted font-bold">
+                <span class="team-name-long">{{ game.awayTeam?.longName }}</span>
+                <span class="team-name-short">{{ game.awayTeam?.shortName }}</span>
+              </div>
             </div>
-            <div class="is-text-light is-truncate is-text-right">
+            <div class="text-dimmed truncate text-end">
               {{ game.location?.locationName ?? '' }}
             </div>
           </div>
@@ -121,10 +137,12 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/playoffs.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/responsive-table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/playoffs.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />

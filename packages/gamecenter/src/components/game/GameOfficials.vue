@@ -37,10 +37,12 @@ const linesmen = computed(() =>
 
 <template>
   <div v-if="!isEmpty(referees) || !isEmpty(linesmen)" class="gamecenter-game-stats">
-    <div class="gamecenter-game-stats-container-wrapper">
-      <GameStatsContainer :title="t('gameStats.referees')" :data="referees" />
-      <GameStatsContainer :title="t('gameStats.linesmen')" :data="linesmen" />
-      <GameStatsContainer v-if="gameData.attendance" :title="t('gameStats.attendance')" :data="attendanceData" />
+    <div class="card bordered mb-md">
+      <div class="gamecenter-game-stats-container-wrapper">
+        <GameStatsContainer :title="t('gameStats.referees')" :data="referees" />
+        <GameStatsContainer :title="t('gameStats.linesmen')" :data="linesmen" />
+        <GameStatsContainer v-if="gameData.attendance" :title="t('gameStats.attendance')" :data="attendanceData" />
+      </div>
     </div>
   </div>
 </template>

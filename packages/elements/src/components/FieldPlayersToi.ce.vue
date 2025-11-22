@@ -1,8 +1,9 @@
 <script setup>
-import { baseProps, playerStatsProps, SORT_STATE_DESCEND, teamStatsProps } from '@mjsz-vbr-elements/core';
 import { COLUMNS_FIELD_PLAYERS_TOI } from '@mjsz-vbr-elements/core/columns';
 import { ErrorNotice, I18NProvider, Paginator, StatisticsTable } from '@mjsz-vbr-elements/core/components';
 import { fetchVBRData, useErrorProvider, usePage, useSort } from '@mjsz-vbr-elements/core/composables';
+import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core/constants';
+import { baseProps, playerStatsProps, teamStatsProps } from '@mjsz-vbr-elements/core/props';
 import {
   convert,
   convertTimesSecToMin,
@@ -121,10 +122,16 @@ function resolveExternalPlayerLink(params) {
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/paginator.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/paginator.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/responsive-table.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/table.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/avatar.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />

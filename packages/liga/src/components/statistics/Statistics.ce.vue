@@ -1,6 +1,6 @@
 <script setup>
-import { playerStatsProps, teamStatsProps } from '@mjsz-vbr-elements/core';
 import { ErrorNotice, ErrorProvider, I18NProvider, Paginator, StatisticsTable } from '@mjsz-vbr-elements/core/components';
+import { playerStatsProps, teamStatsProps } from '@mjsz-vbr-elements/core/props';
 import { externalPlayerLinkResolver, externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { ref } from 'vue';
 import en from '../../locales/en.json';
@@ -87,7 +87,7 @@ const resolveExternalPlayerLink = playerId => externalPlayerLinkResolver(props.e
             @sort="onSort"
           />
 
-          <div style="display: flex; align-items: center">
+          <div class="grid-container">
             <Paginator
               :page="page"
               :items-per-page="props.limit"
@@ -95,7 +95,7 @@ const resolveExternalPlayerLink = playerId => externalPlayerLinkResolver(props.e
               :range-length="5"
               @change="onPaginatorChange"
             />
-            <div v-if="rows.totalItems > 0" style="flex-grow: 1; text-align: right">
+            <div v-if="rows.totalItems > 0" class="text-muted text-end">
               {{ t('table.info', { min: range[0], max: range[1], total: rows.totalItems }) }}
             </div>
           </div>
@@ -107,14 +107,20 @@ const resolveExternalPlayerLink = playerId => externalPlayerLinkResolver(props.e
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/responsive-table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/paginator.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/avatar.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/paginator.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/form-field.css" />

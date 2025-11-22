@@ -65,7 +65,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
                   :ref="setRef"
                   :tabindex="0"
                   :aria-label="`${player.jerseyNumber} ${player.lastName} ${player.firstName}`"
-                  v-on="events"
+                  v-bind="events"
                 >
                   {{ player.jerseyNumber }}
                 </li>
@@ -89,7 +89,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
                   :ref="setRef"
                   :tabindex="0"
                   :aria-label="`${player.jerseyNumber} ${player.lastName} ${player.firstName}`"
-                  v-on="events"
+                  v-bind="events"
                 >
                   {{ player.jerseyNumber }}
                 </li>
@@ -98,7 +98,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
           </ul>
         </li>
         <li>
-          <span v-if="event.ps || event.gws || event.gwg" class="is-badge is-invert is-large">
+          <span v-if="event.ps || event.gws || event.gwg" class="badge lg inverted">
             <template v-if="event.ps">PS</template>
             <template v-if="event.gws">GWS</template>
             <template v-if="event.gwg">GWG</template>

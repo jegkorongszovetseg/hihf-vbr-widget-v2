@@ -13,7 +13,7 @@ outline: false
 ## Példa
 
 <ClientOnly>
-  <mjsz-vbr-countdown locale="hu" game-id="81797" />
+  <mjsz-vbr-countdown locale="hu" game-id="82879" />
 </ClientOnly>
 
 ## Változók

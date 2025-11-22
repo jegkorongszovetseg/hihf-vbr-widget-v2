@@ -1,5 +1,5 @@
 <script setup>
-import { BaseSelect } from '@mjsz-vbr-elements/core/components';
+import { BaseSelect, FormField } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { useVModels } from '@vueuse/core';
 import { computed } from 'vue';
@@ -56,17 +56,15 @@ const isGameTypeDisabled = computed(() => selectedTeam.value === null);
 </script>
 
 <template>
-  <div class="g-grid" style="column-gap: 8px; padding-block: 15px; --columns-tablet: repeat(4, max-content);">
-    <div>
-      <label for="season" class="label">{{ t('selection.season') }}</label>
+  <div class="flex-container py-md">
+    <FormField name="season" :label="t('selection.season')">
       <BaseSelect id="season" v-model="championshipId">
         <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">
           {{ season.seasonName }}
         </option>
       </BaseSelect>
-    </div>
-    <div>
-      <label for="months" class="label">{{ t('selection.month') }}</label>
+    </FormField>
+    <FormField name="months" :label="t('selection.month')">
       <BaseSelect id="months" v-model="selectedMonth">
         <option :value="null">
           {{ t('common.all') }}
@@ -75,9 +73,8 @@ const isGameTypeDisabled = computed(() => selectedTeam.value === null);
           {{ month.name }}
         </option>
       </BaseSelect>
-    </div>
-    <div>
-      <label for="teams" class="label">{{ t('selection.teams') }}</label>
+    </FormField>
+    <FormField name="teams" :label="t('selection.teams')">
       <BaseSelect id="teams" v-model="selectedTeam">
         <option :value="null">
           {{ t('common.all') }}
@@ -86,9 +83,8 @@ const isGameTypeDisabled = computed(() => selectedTeam.value === null);
           {{ team.teamName }}
         </option>
       </BaseSelect>
-    </div>
-    <div>
-      <label for="type" class="label">{{ t('selection.homeOrAway') }}</label>
+    </FormField>
+    <FormField name="type" :label="t('selection.homeOrAway')">
       <BaseSelect id="type" v-model="selectedTeamGameType" :disabled="isGameTypeDisabled">
         <option value="all">
           {{ t('common.all') }}
@@ -100,6 +96,6 @@ const isGameTypeDisabled = computed(() => selectedTeam.value === null);
           {{ t('selection.away') }}
         </option>
       </BaseSelect>
-    </div>
+    </FormField>
   </div>
 </template>

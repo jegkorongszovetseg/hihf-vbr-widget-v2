@@ -9,22 +9,7 @@ body {
   min-height: 100vh;
 }
 
-/*
-mjsz-vbr-schedule {
-  font-family: 'Roboto Slab', serif;
+html.dark {
+  /* background-color: oklch(12.9% 0.042 264.695); */
+  background-color: #182024;
 }
-
-mjsz-vbr-calendar {
-  font-family: 'Roboto', sans-serif;
-}
-
-mjsz-vbr-schedule-liga {
-  font-family: 'Roboto Slab', serif;
-
-  --vbr-widget-sticky-top-offset: 50px;
-
-  @media all and (min-width: 768px) {
-    --vbr-widget-sticky-top-offset: 0;
-  }
-}
-  */

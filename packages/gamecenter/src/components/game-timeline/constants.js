@@ -14,11 +14,11 @@ export const GAME_OFFICIALS_COLUMNS = {
   role: {
     label: 'table.role.short',
     tooltip: 'table.role.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-text-bold',
+    class: 'text-start font-bold',
   },
 };

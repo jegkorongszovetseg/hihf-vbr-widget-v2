@@ -1,12 +1,12 @@
 <script setup>
-import { useLigaCss } from '../composables/use-liga-css';
+// import { useLigaCss } from '../composables/use-liga-css';
 // import { TopListLiga } from '@mjsz-vbr-elements/liga';
 import { store } from '../store.js';
 
-import '../../../packages/shared/assets/css/common.scss';
-import '../../../packages/shared/assets/css/top-list.scss';
+// import '../../../packages/shared/assets/css/common.scss';
+// import '../../../packages/shared/assets/css/top-list.scss';
 
-useLigaCss();
+// useLigaCss();
 
 const playerResolver = `LigaPlayer?playerId={player.playerId}&championshipId={championshipId}`;
 const teamResolver = `LigaTeam?teamId={team.id}&championshipId={championshipId}`;

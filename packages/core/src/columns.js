@@ -4,22 +4,22 @@ export const COLUMNS_SCHEDULE = {
   gameName: {
     label: 'table.gameName.short',
     tooltip: 'table.gameName.tooltip',
-    class: 'is-text-left is-text-light',
+    class: 'text-start text-dimmed',
   },
   gameDateDate: {
     label: 'table.gameDate.short',
     tooltip: 'table.gameDate.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   gameDateTime: {
     label: 'table.gameDateTime.short',
     tooltip: 'table.gameDateTime.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   homeTeamName: {
     label: 'table.homeTeam.short',
     tooltip: 'table.homeTeam.tooltip',
-    class: 'is-text-right is-w-auto is-text-bold',
+    class: 'text-end w-auto font-bold',
   },
   homeTeamLogo: {
     label: '',
@@ -27,7 +27,7 @@ export const COLUMNS_SCHEDULE = {
   },
   gameResult: {
     label: '',
-    class: 'is-text-bold is-text-xl',
+    class: 'font-bold text-xl',
   },
   gameResultType: {
     label: '',
@@ -40,12 +40,12 @@ export const COLUMNS_SCHEDULE = {
   awayTeamName: {
     label: 'table.awayTeam.short',
     tooltip: 'table.awayTeam.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
   },
   location: {
     label: 'table.location.short',
     tooltip: 'table.location.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   broadcast: {
     label: 'table.broadcast.short',
@@ -59,7 +59,7 @@ export const COLUMNS_SCHEDULE = {
 export const COLUMNS_STANDINGS_P_3 = {
   index: {
     label: 'table.blank',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   teamLogo: {
     label: '',
@@ -68,7 +68,7 @@ export const COLUMNS_STANDINGS_P_3 = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   gamesPlayed: {
@@ -127,7 +127,7 @@ export const COLUMNS_STANDINGS_P_3 = {
   points: {
     label: 'table.points.short',
     tooltip: 'table.points.tooltip',
-    class: 'is-text-bold',
+    class: 'font-bold',
     sortOrders: [
       { target: 'points', direction: SORT_STATE_DESCEND },
       { target: 'gamesPlayed', direction: SORT_STATE_ASCEND },
@@ -141,7 +141,7 @@ export const COLUMNS_STANDINGS_P_3 = {
 export const COLUMNS_STANDINGS_P_PER = {
   index: {
     label: 'table.blank',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   teamLogo: {
     label: '',
@@ -150,7 +150,7 @@ export const COLUMNS_STANDINGS_P_PER = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   gamesPlayed: {
@@ -214,7 +214,7 @@ export const COLUMNS_STANDINGS_P_PER = {
   points: {
     label: 'table.points.short',
     tooltip: 'table.points.tooltip',
-    class: 'is-text-bold',
+    class: 'font-bold',
     sortOrders: [
       { target: 'points', direction: SORT_STATE_DESCEND },
       { target: 'gamesPlayed', direction: SORT_STATE_ASCEND },
@@ -228,7 +228,7 @@ export const COLUMNS_STANDINGS_P_PER = {
 export const COLUMNS_STANDINGS_P_2 = {
   index: {
     label: '#',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   teamLogo: {
     label: '',
@@ -237,7 +237,7 @@ export const COLUMNS_STANDINGS_P_2 = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   gamesPlayed: {
@@ -284,7 +284,7 @@ export const COLUMNS_STANDINGS_P_2 = {
   points: {
     label: 'table.points.short',
     tooltip: 'table.points.tooltip',
-    class: 'is-text-bold',
+    class: 'font-bold',
     sortOrders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
   },
 };
@@ -292,7 +292,7 @@ export const COLUMNS_STANDINGS_P_2 = {
 export const COLUMNS_STANDINGS_SHORT = {
   index: {
     label: '#',
-    class: 'is-text-left is-text-italic is-text-light',
+    class: 'text-start italic text-dimmed',
   },
   teamLogo: {
     label: '',
@@ -301,48 +301,48 @@ export const COLUMNS_STANDINGS_SHORT = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
   },
   gamesPlayed: {
     label: 'table.game.short',
     tooltip: 'table.game.tooltip',
-    class: 'is-text-light',
+    class: 'text-dimmed',
   },
   w: {
     label: 'table.wins.short',
     tooltip: 'table.wins.tooltip',
-    class: 'is-text-light',
+    class: 'text-dimmed',
   },
   l: {
     label: 'table.losses.short',
     tooltip: 'table.losses.tooltip',
-    class: 'is-text-light',
+    class: 'text-dimmed',
   },
   gd: {
     label: 'table.goalDiff.short',
     tooltip: 'table.goalDiff.tooltip',
-    class: 'is-text-light',
+    class: 'text-dimmed',
   },
   points: {
     label: 'table.points.short',
     tooltip: 'table.points.tooltip',
-    class: 'is-text-bold',
+    class: 'font-bold',
   },
 };
 
 export const COLUMNS_FIELD_PLAYERS = {
   index: {
     label: '#',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   playerPortrait: {
     label: '',
-    class: 'is-has-image',
+    class: 'has-avatar',
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
     sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
   },
   teamLogo: {
@@ -352,7 +352,7 @@ export const COLUMNS_FIELD_PLAYERS = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto',
+    class: 'text-start w-auto',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   gp: {
@@ -401,16 +401,16 @@ export const COLUMNS_FIELD_PLAYERS = {
 export const COLUMNS_FIELD_PLAYERS_PENALTY = {
   index: {
     label: 'table.blank',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   playerPortrait: {
     label: '',
-    class: 'is-has-image',
+    class: 'has-avatar',
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
     sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
   },
   teamLogo: {
@@ -420,7 +420,7 @@ export const COLUMNS_FIELD_PLAYERS_PENALTY = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto',
+    class: 'text-start w-auto',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   gp: {
@@ -478,16 +478,16 @@ export const COLUMNS_FIELD_PLAYERS_PENALTY = {
 export const COLUMNS_FIELD_PLAYERS_TOI = {
   index: {
     label: '#',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   playerPortrait: {
     label: '',
-    class: 'is-has-image',
+    class: 'has-avatar',
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
     sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
   },
   teamLogo: {
@@ -497,7 +497,7 @@ export const COLUMNS_FIELD_PLAYERS_TOI = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto',
+    class: 'text-start w-auto',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   gp: {
@@ -580,16 +580,16 @@ export const COLUMNS_FIELD_PLAYERS_TOI = {
 export const COLUMNS_GOALIES = {
   index: {
     label: 'table.blank',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   playerPortrait: {
     label: '',
-    class: 'is-has-image',
+    class: 'has-avatar',
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
     sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
   },
   teamLogo: {
@@ -599,7 +599,7 @@ export const COLUMNS_GOALIES = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto',
+    class: 'text-start w-auto',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   gkd: {
@@ -657,16 +657,16 @@ export const COLUMNS_GOALIES = {
 export const COLUMNS_PLAYERS_NATIONAL = {
   index: {
     label: '#',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   playerPortrait: {
     label: '',
-    class: 'is-has-image',
+    class: 'has-avatar',
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
     sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
   },
   gp: {
@@ -700,7 +700,7 @@ export const COLUMNS_PLAYERS_NATIONAL = {
 export const COLUMNS_TEAM_ATTENDANCE = {
   index: {
     label: 'table.blank',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   teamLogo: {
     label: '',
@@ -709,7 +709,7 @@ export const COLUMNS_TEAM_ATTENDANCE = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   home: {
@@ -771,7 +771,7 @@ export const COLUMNS_TEAM_ATTENDANCE = {
 export const COLUMNS_TEAMS_FAIRPLAY = {
   index: {
     label: 'table.blank',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   teamLogo: {
     label: '',
@@ -780,7 +780,7 @@ export const COLUMNS_TEAMS_FAIRPLAY = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   gp: {
@@ -843,7 +843,7 @@ export const COLUMNS_TEAMS_FAIRPLAY = {
 export const COLUMNS_TEAMS_PENALTY_KILLING = {
   index: {
     label: 'table.blank',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   teamLogo: {
     label: '',
@@ -852,7 +852,7 @@ export const COLUMNS_TEAMS_PENALTY_KILLING = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   gp: {
@@ -900,7 +900,7 @@ export const COLUMNS_TEAMS_PENALTY_KILLING = {
 export const COLUMNS_TEAMS_POWERPLAY = {
   index: {
     label: 'table.blank',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   teamLogo: {
     label: '',
@@ -909,7 +909,7 @@ export const COLUMNS_TEAMS_POWERPLAY = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   gp: {
@@ -957,7 +957,7 @@ export const COLUMNS_TEAMS_POWERPLAY = {
 export const COLUMNS_SCORING_EFFICIENCY = {
   index: {
     label: 'table.blank',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   teamLogo: {
     label: '',
@@ -966,7 +966,7 @@ export const COLUMNS_SCORING_EFFICIENCY = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   gp: {

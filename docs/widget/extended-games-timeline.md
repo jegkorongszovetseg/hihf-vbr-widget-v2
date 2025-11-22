@@ -11,7 +11,7 @@ Az idővonal mérkőzéseit 5 percenként kérdezzük le. Ha egy mérkőzés elk
 ```html
 <mjsz-vbr-games-timeline
   locale="hu"
-  service-path="/v2/championship-calendar?championshipId=3783"
+  service-path="/v2/championship-calendar?championshipId=3898"
   external-game-resolver="/widget/gamecenter-timeline.html?gameid={gameId}"
   external-schedule-url="/widget/extended-calendar.html"
 />
@@ -20,7 +20,7 @@ Az idővonal mérkőzéseit 5 percenként kérdezzük le. Ha egy mérkőzés elk
 ## Példa
 
 <ClientOnly>
-  <mjsz-vbr-games-timeline locale="hu" service-path="/v2/championship-calendar?championshipId=3783" external-game-resolver="/widget/gamecenter-timeline.html?gameid={gameId}" external-schedule-url="/widget/extended-calendar.html" />
+  <mjsz-vbr-games-timeline locale="hu" service-path="/v2/championship-calendar?championshipId=3898" external-game-resolver="/widget/gamecenter-timeline.html?gameid={gameId}" external-schedule-url="/widget/extended-calendar.html" />
 </ClientOnly>
 
 ## Változók

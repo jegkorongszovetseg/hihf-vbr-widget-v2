@@ -1,0 +1,94 @@
+@layer normalize {
+  *,
+  ::before,
+  ::after {
+    /* Set box sizing instead of inheriting */
+    /* https://www.oddbird.net/2025/09/04/box-model/ */
+    box-sizing: border-box;
+  }
+
+  * {
+    scrollbar-width: thin;
+  }
+
+  :where(input, button, textarea),
+  :where(input[type='file'])::-webkit-file-upload-button {
+    color: inherit;
+    font-size: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+  }
+
+  :where(img, svg, video, canvas, audio, iframe, embed, object) {
+    display: inline-block;
+  }
+
+  :where(img, svg, video) {
+    block-size: auto;
+    max-inline-size: 100%;
+  }
+
+  :where(img) {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+
+    &.is-loaded {
+      opacity: 1;
+    }
+  }
+
+  :where(svg:not([width])) {
+    inline-size: var(--size-16);
+  }
+
+  :where(input, button, textarea),
+  :where(input[type='file'])::-webkit-file-upload-button {
+    color: inherit;
+    font-size: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+  }
+
+  :where(
+    a[href],
+    area,
+    button,
+    [role='button'],
+    input,
+    label[for],
+    select,
+    summary,
+    textarea,
+    [tabindex]:not([tabindex*='-'])
+  ) {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  :where(:not(fieldset, progress, meter)) {
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    border-style: solid;
+    border-width: 0;
+  }
+
+  :where(button) {
+    appearance: button;
+    -webkit-appearance: button;
+    background-color: transparent;
+    background-image: none;
+  }
+
+  :where(dd, pre) {
+    margin: 0;
+  }
+
+  :where(ul, li) {
+    margin: 0;
+    padding: 0;
+  }
+
+  :where(ol, ul) {
+    list-style: none;
+  }
+}

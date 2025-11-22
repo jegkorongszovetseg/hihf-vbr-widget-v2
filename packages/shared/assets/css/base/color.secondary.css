@@ -1,0 +1,11 @@
+:where(:host) {
+  --mvw-secondary-color-100: #dcedc8;
+  --mvw-secondary-color-200: #badb94;
+  --mvw-secondary-color-300: #aed581;
+  --mvw-secondary-color-400: #9ccc65;
+  --mvw-secondary-color-500: #8bc34a;
+  --mvw-secondary-color-700: #689f38;
+  --mvw-secondary-color-800: #558b2f;
+  --mvw-secondary-color-900: #33691e;
+  --mvw-secondary-color-950: #14290c;
+}

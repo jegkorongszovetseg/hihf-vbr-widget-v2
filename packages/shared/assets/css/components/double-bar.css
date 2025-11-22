@@ -1,0 +1,78 @@
+@layer components {
+  :where(.double-bar) {
+    display: grid;
+    grid-template-columns: 0.3fr 1fr 1fr 0.3fr;
+    grid-template-areas: 'value-start title title value-end' 'bar-start bar-start bar-end bar-end';
+    align-items: center;
+
+    @media (width > 500px) {
+      grid-template-areas: 'title title title title' 'value-start bar-start bar-end value-end';
+    }
+
+    .is-value {
+      font-weight: 700;
+      color: var(--mvw-text-highlighted);
+    }
+
+    .is-value-start {
+      grid-area: value-start;
+      padding-inline-end: 0.5rem;
+      justify-self: end;
+    }
+
+    .is-value-end {
+      grid-area: value-end;
+      padding-inline-start: 0.5rem;
+    }
+
+    .is-bar {
+      background-color: var(--mvw-bg-muted);
+      height: 8px;
+      margin-block: 5px;
+    }
+
+    .is-bar-start {
+      grid-area: bar-start;
+
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .is-bar-start--progress {
+      background-color: var(--mvw-gamecenter-home-team-identifier-color);
+      outline: 1px solid
+        light-dark(
+          oklch(from var(--mvw-gamecenter-home-team-identifier-color) calc(l - 0.4) c h),
+          oklch(from var(--mvw-gamecenter-home-team-identifier-color) calc(l + 0.4) c h)
+        );
+      outline-offset: -1px;
+      height: 100%;
+      transition: width 0.3s ease-out;
+    }
+
+    .is-bar-end {
+      grid-area: bar-end;
+    }
+
+    .is-bar-end--progress {
+      background-color: var(--mvw-gamecenter-away-team-identifier-color);
+      outline: 1px solid
+        light-dark(
+          oklch(from var(--mvw-gamecenter-away-team-identifier-color) calc(l - 0.4) c h),
+          oklch(from var(--mvw-gamecenter-away-team-identifier-color) calc(l + 0.4) c h)
+        );
+      outline-offset: -1px;
+      height: 100%;
+    }
+
+    .is-title {
+      grid-area: title;
+
+      justify-self: center;
+      font-size: var(--font-size-400);
+      font-weight: 700;
+      line-height: 1.5rem;
+      color: var(--mvw-text-muted);
+    }
+  }
+}

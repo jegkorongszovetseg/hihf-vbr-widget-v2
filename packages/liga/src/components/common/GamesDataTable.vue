@@ -42,11 +42,11 @@ const { t } = useI18n();
     <DataTable :rows="rows" :columns="columns" :is-loading="isLoading" :append-to="appendTo">
       <template #cell-resultType="{ row }">
         <span
-          class="is-badge" :class="[
+          class="badge" :class="[
             {
-              'is-green': ['W', 'OTW', 'SOW'].includes(row.resultType),
-              'is-red': ['L', 'OTL', 'SOL'].includes(row.resultType),
-              'is-yellow': row.resultType === 'D',
+              live: ['W', 'OTW', 'SOW'].includes(row.resultType),
+              error: ['L', 'OTL', 'SOL'].includes(row.resultType),
+              warning: row.resultType === 'D',
             },
           ]"
         >
@@ -60,19 +60,19 @@ const { t } = useI18n();
       </template>
 
       <template #cell-gameResult="{ row }">
-        <span v-if="row.gameStatus === 0" class="is-text-dark">-:-</span>
+        <span v-if="row.gameStatus === 0" class="text-highlighted">-:-</span>
         <a
           v-else
           :href="gameResolver(row)"
-          :class="{ 'is-text-dark': row.gameStatus !== 1, 'is-text-accent': row.gameStatus === 1 }"
+          :class="{ 'text-highlighted': row.gameStatus !== 1, 'is-text-accent': row.gameStatus === 1 }"
         >
           {{ row.gameResult }}
         </a>
       </template>
 
       <template #cell-gameResultType="{ row }">
-        <span v-if="row.isOvertime" class="label">{{ t('common.overtimeShort') }}</span>
-        <span v-if="row.isShootout" class="label">{{ t('common.shootoutShort') }}</span>
+        <span v-if="row.isOvertime" class="badge">{{ t('common.overtimeShort') }}</span>
+        <span v-if="row.isShootout" class="badge">{{ t('common.shootoutShort') }}</span>
       </template>
 
       <template #cell-powerplay="{ row }">

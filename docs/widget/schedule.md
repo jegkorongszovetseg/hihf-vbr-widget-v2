@@ -15,11 +15,10 @@ Csapatok mérkőzései a bajnokságban
 <ClientOnly>
   <mjsz-vbr-schedule
     locale="hu"
-    championship-id="3450"
-    phase-id="45196"
+    championship-id="3898"
+    phase-id="46113"
     timezone-selector
     auto-initial-page
-    auto-refresh
   />
 </ClientOnly>
 

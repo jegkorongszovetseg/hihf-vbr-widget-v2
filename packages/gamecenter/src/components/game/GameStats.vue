@@ -49,7 +49,7 @@ const dvgPercent = computed(() => buildDvgPercent(props.gameStats?.teamPowerPlay
 </script>
 
 <template>
-  <div class="gamecenter-game-stats">
+  <div class="card bordered mb-md">
     <div class="gamecenter-game-stats-container-wrapper">
       <GameStatsContainer :title="t('teamsStats.sog')" :data="sog" />
       <GameStatsContainer :title="t('teamsStats.saves')" :data="saves" />

@@ -9,13 +9,19 @@ import { store } from '../store.js';
   <div style="height: 110px; outline: 1px solid #ccc">
     <!-- <GamesTimeline
       :locale="store.locale"
+      service-path="/v2/public-calendar?seasonId=218"
+      external-game-resolver="/GameCenterTimeline?gameid={gameId}"
+      external-schedule-url="/ExtendedCalendar"
+    /> -->
+    <!-- <mjsz-vbr-games-timeline
+      :locale="store.locale"
       service-path="/v2/championship-calendar?championshipId=3898"
       external-game-resolver="/GameCenterTimeline?gameid={gameId}"
       external-schedule-url="/ExtendedCalendar"
     /> -->
     <mjsz-vbr-games-timeline
       :locale="store.locale"
-      service-path="/v2/championship-calendar?championshipId=3898"
+      service-path="/v2/public-calendar?seasonId=218"
       external-game-resolver="/GameCenterTimeline?gameid={gameId}"
       external-schedule-url="/ExtendedCalendar"
     />

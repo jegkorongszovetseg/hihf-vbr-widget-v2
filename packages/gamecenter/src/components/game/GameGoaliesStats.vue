@@ -38,7 +38,7 @@ const awayPlayers = computed(() => sortByStartingFive(props.data?.[props.awayTea
 </script>
 
 <template>
-  <div class="gamecenter-data-columns">
+  <div class="grid-container mb-md" style="--min-width: 500px; align-items: start;">
     <GameGolaiesStatsProvider v-slot="{ rows }" :rows="homePlayers">
       <GameDataTable
         class="gamecenter-data-table"

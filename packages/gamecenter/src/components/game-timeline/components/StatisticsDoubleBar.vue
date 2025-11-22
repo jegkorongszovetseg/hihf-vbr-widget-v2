@@ -33,7 +33,7 @@ const barWidthEnd = computed(() => ({ width: `${(props.valueEnd / props.max) * 1
 </script>
 
 <template>
-  <div class="statistics-double-bar">
+  <div class="double-bar">
     <div class="is-value is-value-start">
       <slot name="value-start">
         {{ valueStart }}

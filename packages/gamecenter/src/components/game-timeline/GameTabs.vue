@@ -31,36 +31,53 @@ function onTabChange(value) {
 </script>
 
 <template>
-  <div class="gamecenter-timeline-tab-buttons">
-    <button
-      class="tab-button" :class="{ 'is-active': activeTab === TAB_EVENTS }"
-      @click="onTabChange(TAB_EVENTS)"
-    >
-      {{ t('menu.events') }}
-    </button>
-    <button
-      class="tab-button" :class="{ 'is-active': activeTab === TAB_LINEUPS }"
-      @click="onTabChange(TAB_LINEUPS)"
-    >
-      {{ t('menu.lineups') }}
-    </button>
-    <button
-      class="tab-button" :class="{ 'is-active': activeTab === TAB_TEAM_STATS }"
-      @click="onTabChange(TAB_TEAM_STATS)"
-    >
-      {{ t('menu.teamStats') }}
-    </button>
-    <button
-      class="tab-button" :class="{ 'is-active': activeTab === TAB_PLAYER_STATS }"
-      @click="onTabChange(TAB_PLAYER_STATS)"
-    >
-      {{ t('menu.playerStats') }}
-    </button>
-    <button
-      class="tab-button" :class="{ 'is-active': activeTab === TAB_OFFICIALS }"
-      @click="onTabChange(TAB_OFFICIALS)"
-    >
-      {{ t('menu.officials') }}
-    </button>
-  </div>
+  <nav class="tabs underlined">
+    <div role="tablist" class="text-center gamecenter-timeline-tab-buttons">
+      <button
+        role="tab"
+        type="button"
+        :aria-selected="activeTab === TAB_EVENTS"
+        class="tab-button" :class="{ 'is-active': activeTab === TAB_EVENTS }"
+        @click="onTabChange(TAB_EVENTS)"
+      >
+        {{ t('menu.events') }}
+      </button>
+      <button
+        role="tab"
+        type="button"
+        :aria-selected="activeTab === TAB_LINEUPS"
+        class="tab-button" :class="{ 'is-active': activeTab === TAB_LINEUPS }"
+        @click="onTabChange(TAB_LINEUPS)"
+      >
+        {{ t('menu.lineups') }}
+      </button>
+      <button
+        role="tab"
+        type="button"
+        :aria-selected="activeTab === TAB_TEAM_STATS"
+        class="tab-button" :class="{ 'is-active': activeTab === TAB_TEAM_STATS }"
+        @click="onTabChange(TAB_TEAM_STATS)"
+      >
+        {{ t('menu.teamStats') }}
+      </button>
+      <button
+        role="tab"
+        type="button"
+        :aria-selected="activeTab === TAB_PLAYER_STATS"
+        class="tab-button" :class="{ 'is-active': activeTab === TAB_PLAYER_STATS }"
+        @click="onTabChange(TAB_PLAYER_STATS)"
+      >
+        {{ t('menu.playerStats') }}
+      </button>
+      <button
+        role="tab"
+        type="button"
+        :aria-selected="activeTab === TAB_OFFICIALS"
+        class="tab-button" :class="{ 'is-active': activeTab === TAB_OFFICIALS }"
+        @click="onTabChange(TAB_OFFICIALS)"
+      >
+        {{ t('menu.officials') }}
+      </button>
+    </div>
+  </nav>
 </template>
