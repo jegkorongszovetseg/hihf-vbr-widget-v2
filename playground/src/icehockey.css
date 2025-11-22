@@ -12,7 +12,7 @@ html.icehockey {
   }
 
   * {
-    font-family: 'Roboto Condensed', Avenir, Helvetica, Arial, sans-serif;
+    --mvw-font: 'Roboto Condensed', Avenir, Helvetica, Arial, sans-serif;
 
     --font-size-50: 10px;
     --font-size-100: 11px;
@@ -44,7 +44,7 @@ html.icehockey {
 
 body.liga {
   * {
-    --mvw-primary-color-50: #f9fafb;
+    /* --mvw-primary-color-50: #f9fafb;
     --mvw-primary-color-100: #f3f4f6;
     --mvw-primary-color-200: #e5e7eb;
     --mvw-primary-color-300: #d1d5db;
@@ -64,18 +64,9 @@ body.liga {
     --mvw-secondary-color-600: #1e88e5;
     --mvw-secondary-color-700: #1976d2;
     --mvw-secondary-color-800: #1565c0;
-    --mvw-secondary-color-900: #0d47a1;
+    --mvw-secondary-color-900: #0d47a1; */
 
-    /* --mvw-text-faded: light-dark(var(--mvw-primary-color-200), var(--mvw-primary-color-600));
-    --mvw-text-dimmed: light-dark(var(--mvw-primary-color-400), var(--mvw-primary-color-500));
-    --mvw-text-muted: light-dark(var(--mvw-primary-color-500), var(--mvw-primary-color-400));
-    --mvw-text-toned: light-dark(var(--mvw-primary-color-600), var(--mvw-primary-color-300));
-    --mvw-text-default: light-dark(var(--mvw-primary-color-700), var(--mvw-primary-color-200));
-    --mvw-text-highlighted: light-dark(var(--mvw-primary-color-900), var(--mvw-primary-color-50)); */
-
-    --mvw-bg-inverted: light-dark(var(--mvw-secondary-color-900), var(--mvw-secondary-color-100));
-
-    mjsz-vbr-top-list-liga {
+    /* mjsz-vbr-top-list-liga {
       --mvw-top-list-bg-color: var(--mvw-secondary-color-500);
       --mvw-top-list-title-separator-color: var(--mvw-secondary-color-300);
       --mvw-top-list-player-separator-color: var(--mvw-secondary-color-400);
@@ -99,11 +90,11 @@ body.liga {
 
       --mvw-avatar-border-color: var(--mvw-secondary-color-100);
       --mvw-tab-btn-group-separator-color: var(--mvw-secondary-color-300);
-    }
+    } */
 
     /* Old */
 
-    --mvw-primary-color-0: #ffffff;
+    /* --mvw-primary-color-0: #ffffff;
     --mvw-primary-color-50: #f9fafb;
     --mvw-primary-color-100: #f3f4f6;
     --mvw-primary-color-200: #e5e7eb;
@@ -113,9 +104,9 @@ body.liga {
     --mvw-primary-color-600: #4b5563;
     --mvw-primary-color-700: #374151;
     --mvw-primary-color-800: #1f2937;
-    --mvw-primary-color-900: #111827;
+    --mvw-primary-color-900: #111827; */
 
-    --mvw-secondary-color-50: #e3f2fd;
+    /* --mvw-secondary-color-50: #e3f2fd;
     --mvw-secondary-color-100: #bbdefb;
     --mvw-secondary-color-200: #90caf9;
     --mvw-secondary-color-300: #64b5f6;
@@ -124,7 +115,7 @@ body.liga {
     --mvw-secondary-color-600: #1e88e5;
     --mvw-secondary-color-700: #1976d2;
     --mvw-secondary-color-800: #1565c0;
-    --mvw-secondary-color-900: #0d47a1;
+    --mvw-secondary-color-900: #0d47a1; */
 
     /* --mvw-tab-btn-color: var(--mvw-primary-color-400); */
     /* --mvw-tab-btn-active-border-color: var(--mvw-secondary-color-500); */

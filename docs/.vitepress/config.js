@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => {
       socialLinks: [{ icon: 'github', link: 'https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2' }],
       nav: [
         { text: 'Widget', link: '/widget/' },
-        { text: 'Stílusok', link: '/styles/' },
+        { text: 'Theme', link: '/styles/' },
         { text: 'VBR API', link: '/vbr-api/' },
         { text: 'IVR Azonosítók', link: '/vbr-api/identifiers' },
         { text: 'Stories', link: 'https://api.icehockey.hu/widgets/stories/v2' },
@@ -86,7 +86,8 @@ export default defineConfig(({ mode }) => {
         '/styles/': [
           {
             items: [
-              { text: 'Használat', link: '/styles/' },
+              { text: 'Téma kezelés', link: '/styles/' },
+              { text: 'Design System', link: '/styles/design-system' },
               { text: 'Változók listája', link: '/styles/css-variables' },
             ],
           },

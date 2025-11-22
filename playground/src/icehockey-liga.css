@@ -1,0 +1,25 @@
+body.liga {
+  * {
+    --mvw-primary-color-50: #f9fafb;
+    --mvw-primary-color-100: #f3f4f6;
+    --mvw-primary-color-200: #e5e7eb;
+    --mvw-primary-color-300: #d1d5db;
+    --mvw-primary-color-400: #9ca3af;
+    --mvw-primary-color-500: #6b7280;
+    --mvw-primary-color-600: #4b5563;
+    --mvw-primary-color-700: #374151;
+    --mvw-primary-color-800: #1f2937;
+    --mvw-primary-color-900: #111827;
+
+    --mvw-secondary-color-50: #e3f2fd;
+    --mvw-secondary-color-100: #bbdefb;
+    --mvw-secondary-color-200: #90caf9;
+    --mvw-secondary-color-300: #64b5f6;
+    --mvw-secondary-color-400: #42a5f5;
+    --mvw-secondary-color-500: #2196f3;
+    --mvw-secondary-color-600: #1e88e5;
+    --mvw-secondary-color-700: #1976d2;
+    --mvw-secondary-color-800: #1565c0;
+    --mvw-secondary-color-900: #0d47a1;
+  }
+}
