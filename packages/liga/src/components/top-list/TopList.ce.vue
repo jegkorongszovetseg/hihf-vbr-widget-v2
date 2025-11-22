@@ -200,3 +200,5 @@ function onRetry() {
 <style src="@mjsz-vbr-elements/shared/css/components/top-list.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/avatar.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />

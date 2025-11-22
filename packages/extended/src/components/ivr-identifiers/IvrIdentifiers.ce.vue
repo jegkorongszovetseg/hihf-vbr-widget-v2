@@ -95,6 +95,8 @@ const messages = { en, hu };
 
 <style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />
 
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
+
 <style scoped>
 .main-layout {
   display: grid;

@@ -1,6 +1,6 @@
 <script setup>
-import { I18NProvider, Image, LoadingIndicator, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
-import { useServices } from '@mjsz-vbr-elements/core/composables';
+import { ErrorNotice, I18NProvider, Image, LoadingIndicator, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
+import { useErrorProvider, useServices } from '@mjsz-vbr-elements/core/composables';
 import { gameProps } from '@mjsz-vbr-elements/core/props';
 import { externalGameLinkResolver, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
 import { computed } from 'vue';
@@ -29,12 +29,15 @@ const props = defineProps({
 
 const DEFAULT_LIGA_GAME_RESOLVER = '/game/id/{gameId}';
 
+const { onError, error, hasError } = useErrorProvider();
+
 const { state: playoffs, isLoading, execute } = useServices({
   options: {
     path: '/v2/playoffs-tree',
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: props.championshipId })),
   },
+  onError,
 });
 
 execute();
@@ -56,7 +59,10 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
 <template>
   <div class="playoffs">
     <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
+      <ErrorNotice v-if="hasError" :error="error" />
+
       <LoadingIndicator v-if="isLoading" />
+
       <div v-for="playoff in playoffs" :key="`${playoff.divisionStage2Name}-${playoff.divisionStageNumber}`">
         <div class="section-title">
           {{ t(`playoffs.${playoff.divisionStage2Name}`) }}<span v-if="playoff.divisionStageNumber">-{{ playoff.divisionStageNumber }}</span>
@@ -138,3 +144,5 @@ const formatGameTime = date => format(date, 'HH:mm', timezone, props.locale);
 <style src="@mjsz-vbr-elements/shared/css/components/playoffs.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />

@@ -19,6 +19,8 @@ export async function fetchVBRData(route, apiKey, data) {
       .then((response) => {
         if (response.error)
           return reject(response);
+        if (response.data.message)
+          return reject(response.data);
         resolve(response.data);
       })
       .catch((error) => {

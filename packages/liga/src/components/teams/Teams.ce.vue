@@ -48,6 +48,7 @@ function externalTeamLink(teamId, championshipId) {
         <ErrorNotice v-if="hasError" :error="error" />
 
         <DataProvider
+          v-if="!hasError"
           v-slot="{ teams, seasons, isLoading, championshipId, changeSeason }"
           :api-key="props.apiKey"
           :locale="locale"
@@ -81,3 +82,5 @@ function externalTeamLink(teamId, championshipId) {
 <style src="@mjsz-vbr-elements/shared/css/core.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/form-field.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
