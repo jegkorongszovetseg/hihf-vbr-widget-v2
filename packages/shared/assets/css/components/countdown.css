@@ -2,11 +2,11 @@
   :where(:host) {
     /* Countdown */
     --mvw-countdown-title-height: calc(var(--size-16) * 2);
-    --mvw-countdown-title-bg: light-dark(var(--mvw-primary-color-900), var(--mvw-primary-color-100));
+    --mvw-countdown-title-bg: light-dark(var(--mvw-color-primary-900), var(--mvw-color-primary-100));
     --mvw-countdown-gamedata-height: calc(var(--size-16) * 4);
-    --mvw-countdown-active-color: light-dark(var(--mvw-secondary-color-500), var(--mvw-secondary-color-800));
-    --mvw-countdown-gamedata-bg: light-dark(var(--mvw-primary-color-700), var(--mvw-primary-color-300));
-    --mvw-countdown-result-bg: light-dark(var(--mvw-primary-color-800), var(--mvw-primary-color-200));
+    --mvw-countdown-active-color: light-dark(var(--mvw-color-secondary-500), var(--mvw-color-secondary-800));
+    --mvw-countdown-gamedata-bg: light-dark(var(--mvw-color-primary-700), var(--mvw-color-primary-300));
+    --mvw-countdown-result-bg: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-200));
   }
 }
 
@@ -118,7 +118,7 @@
       font-size: var(--mvw-font-size-500);
       font-weight: 700;
       line-height: var(--font-lineheight-400);
-      color: light-dark(var(--mvw-primary-color-50), var(--mvw-primary-color-800));
+      color: light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-800));
 
       .is-game-date {
         grid-area: game-date;

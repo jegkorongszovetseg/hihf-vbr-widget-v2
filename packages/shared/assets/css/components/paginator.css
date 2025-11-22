@@ -1,13 +1,13 @@
 @layer components.variables {
   :where(:host) {
-    --mvw-paginator-color: light-dark(var(--mvw-primary-color-500), var(--mvw-primary-color-400));
-    --mvw-paginator-bg-color: light-dark(var(--mvw-color-white), var(--mvw-primary-color-950));
-    --mvw-paginator-hover-color: light-dark(var(--mvw-primary-color-700), var(--mvw-primary-color-300));
-    --mvw-paginator-hover-bg-color: light-dark(var(--mvw-primary-color-100), var(--mvw-primary-color-900));
-    --mvw-paginator-border-color: light-dark(var(--mvw-primary-color-100), var(--mvw-primary-color-700));
+    --mvw-paginator-color: light-dark(var(--mvw-color-primary-500), var(--mvw-color-primary-400));
+    --mvw-paginator-bg-color: light-dark(var(--mvw-color-white), var(--mvw-color-primary-950));
+    --mvw-paginator-hover-color: light-dark(var(--mvw-color-primary-700), var(--mvw-color-primary-300));
+    --mvw-paginator-hover-bg-color: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-900));
+    --mvw-paginator-border-color: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-700));
     --mvw-paginator-active-color: light-dark(var(--mvw-color-white), var(--mvw-color-black));
-    --mvw-paginator-active-bg-color: light-dark(var(--mvw-primary-color-900), var(--mvw-primary-color-50));
-    --mvw-paginator-disabled-color: light-dark(var(--mvw-primary-color-200), var(--mvw-primary-color-600));
+    --mvw-paginator-active-bg-color: light-dark(var(--mvw-color-primary-900), var(--mvw-color-primary-50));
+    --mvw-paginator-disabled-color: light-dark(var(--mvw-color-primary-200), var(--mvw-color-primary-600));
   }
 }
 

@@ -1,6 +1,6 @@
 @layer components.variables {
   :where(:host) {
-    --mvw-timezone-selector-color: light-dark(var(--mvw-primary-color-500), var(--mvw-primary-color-500));
+    --mvw-timezone-selector-color: light-dark(var(--mvw-color-primary-500), var(--mvw-color-primary-500));
     --mvw-timezone-selector-font-size: var(--font-size-300);
   }
 }

@@ -24,17 +24,17 @@
     }
 
     &.live {
-      --_bg-color: var(--mvw-live);
+      --_bg-color: var(--mvw-color-live);
       --_color: var(--mvw-color-white);
     }
 
     &.error {
-      --_bg-color: var(--mvw-error);
+      --_bg-color: var(--mvw-color-error);
       --_color: var(--mvw-color-white);
     }
 
     &.warning {
-      --_bg-color: var(--mvw-warning);
+      --_bg-color: var(--mvw-color-warning);
       --_color: var(--mvw-color-white);
     }
 

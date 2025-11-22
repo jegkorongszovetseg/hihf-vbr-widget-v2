@@ -1,6 +1,6 @@
 @layer components.variables {
   :where(:host) {
-    --mvw-avatar-border-color: light-dark(var(--mvw-primary-color-100), var(--mvw-primary-color-700));
+    --mvw-avatar-border-color: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-700));
   }
 }
 

@@ -14,7 +14,7 @@
       justify-items: center;
       align-items: start;
       row-gap: 1rem;
-      background-color: var(--mvw-primary-color-0);
+      background-color: var(--mvw-color-primary-0);
 
       @include mobile {
         grid-template-columns: repeat(3, 1fr);
@@ -79,7 +79,7 @@
     }
 
     .is-game-status-live {
-      color: var(--mvw-live-game-color);
+      color: var(--mvw-color-live-game-color);
     }
 
     .is-external-contents {
@@ -114,14 +114,14 @@
     .is-attendance {
       font-size: var(--mvw-typography-font-size-400);
       line-height: var(--mvw-typography-font-lineheight-600);
-      color: var(--mvw-primary-color-500);
+      color: var(--mvw-color-primary-500);
     }
 
     .is-goal-scorers {
       font-size: var(--mvw-typography-font-size-200);
       font-weight: 700;
       line-height: var(--mvw-typography-font-lineheight-200);
-      color: var(--mvw-primary-color-500);
+      color: var(--mvw-color-primary-500);
 
       span {
         font-weight: 400;
@@ -139,7 +139,7 @@
     padding: 0.5rem;
     width: 100%;
     color: #fff;
-    background-color: var(--mvw-primary-color-700);
+    background-color: var(--mvw-color-primary-700);
     position: sticky;
     top: 0;
     display: none;
@@ -158,7 +158,7 @@
       display: none;
       font-size: var(--mvw-typography-font-size-500);
       font-weight: 700;
-      color: var(--mvw-primary-color-100);
+      color: var(--mvw-color-primary-100);
     }
 
     .is-home-team {
@@ -174,7 +174,7 @@
       font-size: var(--mvw-typography-font-size-200);
       font-weight: 500;
       text-transform: uppercase;
-      color: var(--mvw-live-game-color);
+      color: var(--mvw-color-live-game-color);
     }
 
     img {
@@ -197,7 +197,7 @@
     margin-block-end: 1rem;
     font-size: var(--mvw-typography-font-size-700);
     font-weight: 700;
-    color: var(--mvw-primary-color-800);
+    color: var(--mvw-color-primary-800);
     text-align: center;
     text-transform: uppercase;
   }
@@ -207,7 +207,7 @@
     margin-block-end: 1rem;
     font-size: var(--mvw-typography-font-size-500);
     font-weight: 700;
-    color: var(--mvw-primary-color-800);
+    color: var(--mvw-color-primary-800);
     text-align: center;
     text-transform: uppercase;
   }
@@ -216,7 +216,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    border-bottom: 1px solid var(--mvw-primary-color-100);
+    border-bottom: 1px solid var(--mvw-color-primary-100);
     margin-block-end: 2rem;
   }
 
@@ -224,13 +224,13 @@
     width: 100%;
 
     tr:first-of-type {
-      border-bottom: 1px solid var(--mvw-primary-color-100);
+      border-bottom: 1px solid var(--mvw-color-primary-100);
     }
 
     td {
       font-size: var(--mvw-typography-font-size-500);
       font-weight: 500;
-      color: var(--mvw-primary-color-700);
+      color: var(--mvw-color-primary-700);
     }
 
     td:nth-child(2) {
@@ -262,7 +262,7 @@
     .is-no-action {
       padding-block: 0.5rem;
       text-align: center;
-      color: var(--mvw-primary-color-300);
+      color: var(--mvw-color-primary-300);
     }
 
     .is-period-header {
@@ -282,7 +282,7 @@
         font-size: var(--mvw-typography-font-size-500);
         font-weight: 500;
         line-height: var(--mvw-typography-font-lineheight-500);
-        background-color: var(--mvw-primary-color-900);
+        background-color: var(--mvw-color-primary-900);
         border-radius: 6px;
       }
 
@@ -294,8 +294,8 @@
         padding-block: 0.25rem;
         font-size: small;
         font-weight: 500;
-        color: var(--mvw-primary-color-500);
-        background-color: var(--mvw-primary-color-100);
+        color: var(--mvw-color-primary-500);
+        background-color: var(--mvw-color-primary-100);
         border-radius: 0.5rem;
 
         svg {
@@ -309,7 +309,7 @@
       div {
         grid-column: 1/-1;
         grid-row: 3;
-        background-color: var(--mvw-primary-color-100);
+        background-color: var(--mvw-color-primary-100);
       }
     }
   }
@@ -327,7 +327,7 @@
     .is-timeline {
       grid-column: 2/3;
       grid-row: 1/-1;
-      background-color: var(--mvw-primary-color-200);
+      background-color: var(--mvw-color-primary-200);
     }
 
     .is-details-container {
@@ -412,36 +412,36 @@
 
       &.is-penalty {
         .is-event-type-icon {
-          color: var(--mvw-primary-color-0);
+          color: var(--mvw-color-primary-0);
           background-color: var(--mvw-danger-color-a400);
         }
       }
 
       &.is-timeout {
         .is-event-type-icon {
-          color: var(--mvw-primary-color-0);
+          color: var(--mvw-color-primary-0);
           background-color: var(--mvw-gamecenter-events-timeout-bg-color);
         }
       }
 
       &.is-goalies {
         .is-event-type-icon {
-          color: var(--mvw-primary-color-900);
+          color: var(--mvw-color-primary-900);
           background-color: var(--mvw-neutral-color);
         }
       }
 
       &.is-penalty-shot-goal {
         .is-event-type-icon {
-          color: var(--mvw-primary-color-0);
-          background-color: var(--mvw-live-game-color);
+          color: var(--mvw-color-primary-0);
+          background-color: var(--mvw-color-live-game-color);
         }
       }
 
       &.is-penalty-shot-no-goal {
         .is-event-type-icon {
-          color: var(--mvw-primary-color-400);
-          background-color: var(--mvw-primary-color-100);
+          color: var(--mvw-color-primary-400);
+          background-color: var(--mvw-color-primary-100);
         }
       }
 
@@ -450,21 +450,21 @@
         outline-color: var(--mvw-gamecenter-card-event-goal-border-color);
 
         .is-event-type-icon {
-          color: var(--mvw-primary-color-0);
-          background-color: var(--mvw-live-game-color);
+          color: var(--mvw-color-primary-0);
+          background-color: var(--mvw-color-live-game-color);
         }
 
         .is-details-title {
-          color: var(--mvw-primary-color-0);
+          color: var(--mvw-color-primary-0);
         }
 
         .is-evented-person {
-          color: var(--mvw-primary-color-100);
+          color: var(--mvw-color-primary-100);
         }
 
         .is-assists-list {
           font-size: var(--mvw-typography-font-size-400);
-          /* color: var(--mvw-primary-color-400); */
+          /* color: var(--mvw-color-primary-400); */
 
           span:not(:last-of-type):after {
             content: '/';
@@ -524,7 +524,7 @@
         font-size: var(--mvw-typography-font-size-500);
         font-weight: 500;
         line-height: var(--mvw-typography-font-lineheight-500);
-        background-color: var(--mvw-primary-color-900);
+        background-color: var(--mvw-color-primary-900);
         border-radius: 6px;
       }
     }
@@ -577,7 +577,7 @@
 
     hr {
       margin-block: 1.5rem;
-      border-top: 1px solid var(--mvw-primary-color-100);
+      border-top: 1px solid var(--mvw-color-primary-100);
     }
 
     .is-container {
@@ -696,7 +696,7 @@
         grid-area: name;
 
         font-weight: 600;
-        color: var(--mvw-primary-color-700);
+        color: var(--mvw-color-primary-700);
       }
       li:nth-child(3) {
         grid-area: role;
@@ -738,12 +738,12 @@
       li:nth-child(2) {
         grid-area: number;
         font-style: italic;
-        color: var(--mvw-primary-color-500);
+        color: var(--mvw-color-primary-500);
       }
       li:nth-child(3) {
         grid-area: name;
         font-weight: 600;
-        color: var(--mvw-primary-color-700);
+        color: var(--mvw-color-primary-700);
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
@@ -762,8 +762,8 @@
           padding: 0.2rem;
           width: 12px;
           height: 12px;
-          color: var(--mvw-primary-color-0);
-          background-color: var(--mvw-live-game-color);
+          color: var(--mvw-color-primary-0);
+          background-color: var(--mvw-color-live-game-color);
           border-radius: 100%;
         }
       }

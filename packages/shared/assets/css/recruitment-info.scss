@@ -39,7 +39,7 @@
   }
 
   &[open] {
-    background-color: var(--mvw-primary-color-50);
+    background-color: var(--mvw-color-primary-50);
   }
 
   ul {
@@ -51,10 +51,10 @@
 
   li {
     display: contents;
-    color: var(--mvw-primary-color-400);
+    color: var(--mvw-color-primary-400);
 
     > div {
-      color: var(--mvw-primary-color-900);
+      color: var(--mvw-color-primary-900);
     }
 
     span {
@@ -75,7 +75,7 @@
   font-weight: 700;
   padding-block: 1em;
   text-align: center;
-  color: var(--mvw-primary-color-300);
+  color: var(--mvw-color-primary-300);
 }
 
 .recruitment-paginator-container {
@@ -83,5 +83,5 @@
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   align-items: center;
 
-  color: var(--mvw-primary-color-500);
+  color: var(--mvw-color-primary-500);
 }

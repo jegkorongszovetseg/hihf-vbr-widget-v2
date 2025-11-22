@@ -1,21 +1,21 @@
 @layer components.variables {
   :where(:host) {
-    --mvw-gamecenter-home-team-identifier-color: var(--mvw-info);
-    --mvw-gamecenter-away-team-identifier-color: var(--mvw-team);
+    --mvw-gamecenter-home-team-identifier-color: var(--mvw-color-info);
+    --mvw-gamecenter-away-team-identifier-color: var(--mvw-color-team);
 
     --mvw-gamecenter-card-title-color: var(--mvw-text-highlighted);
     --mvw-gamecenter-card-secondary-color: var(--mvw-text-muted);
     --mvw-gamecenter-card-tertiary-color: var(--mvw-text-faded);
-    --mvw-gamecenter-card-border-color: light-dark(var(--mvw-primary-color-100), var(--mvw-primary-color-700));
-    --mvw-gamecenter-card-bg-color: light-dark(var(--mvw-color-white), var(--mvw-primary-color-950));
+    --mvw-gamecenter-card-border-color: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-700));
+    --mvw-gamecenter-card-bg-color: light-dark(var(--mvw-color-white), var(--mvw-color-primary-950));
 
-    --mvw-gamecenter-team-container-title-color: light-dark(var(--mvw-primary-color-800), var(--mvw-primary-color-200));
+    --mvw-gamecenter-team-container-title-color: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-200));
 
     --mvw-gamecenter-card-event-goal-border-color: light-dark(
-      var(--mvw-primary-color-700),
-      var(--mvw-primary-color-300)
+      var(--mvw-color-primary-700),
+      var(--mvw-color-primary-300)
     );
-    --mvw-gamecenter-card-event-goal-bg-color: light-dark(var(--mvw-primary-color-700), var(--mvw-color-white));
+    --mvw-gamecenter-card-event-goal-bg-color: light-dark(var(--mvw-color-primary-700), var(--mvw-color-white));
 
     --mvw-gamecenter-events-evented-person-size: var(--font-size-500);
     --mvw-gamecenter-events-evented-person-weight: 600;
@@ -24,7 +24,7 @@
     --mvw-gamecenter-events-score-size: var(--font-size-500);
     --mvw-gamecenter-events-penalty-size: var(--font-size-400);
     --mvw-gamecenter-events-goalie-direction-size: var(--font-size-400);
-    --mvw-gamecenter-events-timeout-bg-color: var(--mvw-info);
+    --mvw-gamecenter-events-timeout-bg-color: var(--mvw-color-info);
   }
 }
 
@@ -327,7 +327,7 @@
             width: 12px;
             height: 12px;
             color: var(--mvw-color-white);
-            background-color: var(--mvw-live);
+            background-color: var(--mvw-color-live);
             border-radius: 100%;
           }
         }
@@ -504,7 +504,7 @@
         &.is-penalty {
           .is-event-type-icon {
             color: var(--mvw-color-white);
-            background-color: var(--mvw-error);
+            background-color: var(--mvw-color-error);
           }
         }
 
@@ -518,14 +518,14 @@
         &.is-goalies {
           .is-event-type-icon {
             color: var(--mvw-color-black);
-            background-color: var(--mvw-warning);
+            background-color: var(--mvw-color-warning);
           }
         }
 
         &.is-penalty-shot-goal {
           .is-event-type-icon {
             color: var(--mvw-color-white);
-            background-color: var(--mvw-live);
+            background-color: var(--mvw-color-live);
           }
         }
 
@@ -542,7 +542,7 @@
 
           .is-event-type-icon {
             color: var(--mvw-text-inverted);
-            background-color: var(--mvw-live);
+            background-color: var(--mvw-color-live);
           }
 
           .is-details-title {
@@ -555,7 +555,7 @@
 
           .is-assists-list {
             font-size: var(--font-size-400);
-            /* color: var(--mvw-primary-color-400); */
+            /* color: var(--mvw-color-primary-400); */
 
             span:not(:last-of-type):after {
               content: '/';
@@ -582,7 +582,7 @@
 
           .is-badge.is-invert {
             color: var(--mvw-color-white);
-            background-color: var(--mvw-error);
+            background-color: var(--mvw-color-error);
           }
         }
 

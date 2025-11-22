@@ -13,7 +13,7 @@
   justify-content: center;
   overflow: hidden;
   width: 100%;
-  color: var(--mvw-primary-color-0);
+  color: var(--mvw-color-primary-0);
   text-align: center;
   white-space: nowrap;
   background-color: var(--mvw-progress-bar-color);
@@ -63,7 +63,7 @@
 
   .is-value {
     font-weight: 700;
-    color: var(--mvw-primary-color-900);
+    color: var(--mvw-color-primary-900);
   }
 
   .is-value-start {
@@ -78,7 +78,7 @@
   }
 
   .is-bar {
-    background-color: var(--mvw-primary-color-50);
+    background-color: var(--mvw-color-primary-50);
     height: 8px;
     margin-block: 5px;
   }
@@ -116,6 +116,6 @@
     font-size: var(--mvw-typography-font-size-400);
     font-weight: 700;
     line-height: 1.5rem;
-    color: var(--mvw-primary-color-500);
+    color: var(--mvw-color-primary-500);
   }
 }

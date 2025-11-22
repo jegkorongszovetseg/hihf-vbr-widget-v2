@@ -1,16 +1,16 @@
 @layer components.variables {
   :where(:host) {
     --mvw-standings-selector-title-size: var(--font-size-500);
-    --mvw-standings-selector-title-color: light-dark(var(--mvw-primary-color-700), var(--mvw-primary-color-300));
+    --mvw-standings-selector-title-color: light-dark(var(--mvw-color-primary-700), var(--mvw-color-primary-300));
     --mvw-standings-selector-title-transform: none;
     --mvw-standings-selector-title-padding: 0 0.625em 0.5625em;
     --mvw-standings-selector-title-bg-color: transparent;
 
-    --mvw-standings-selector-section-title-bg: light-dark(var(--mvw-primary-color-50), var(--mvw-primary-color-900));
+    --mvw-standings-selector-section-title-bg: light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-900));
     --mvw-standings-selector-section-title-size: var(--font-size-400);
     --mvw-standings-selector-section-title-color: light-dark(
-      var(--mvw-primary-color-700),
-      var(--mvw-primary-color-300)
+      var(--mvw-color-primary-700),
+      var(--mvw-color-primary-300)
     );
     --mvw-standings-selector-section-title-padding: var(--size-8);
     --mvw-standings-selector-section-logo-size: 30px;

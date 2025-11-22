@@ -1,8 +1,8 @@
 @layer components.variables {
   :where(:host) {
-    --mvw-error-notice-bg-color: color-mix(in oklab, var(--mvw-error) 10%, transparent);
-    --mvw-error-notice-border-color: color-mix(in oklab, var(--mvw-error) 25%, transparent);
-    --mvw-error-notice-color: var(--mvw-error);
+    --mvw-color-error-notice-bg-color: color-mix(in oklab, var(--mvw-color-error) 10%, transparent);
+    --mvw-color-error-notice-border-color: color-mix(in oklab, var(--mvw-color-error) 25%, transparent);
+    --mvw-color-error-notice-color: var(--mvw-color-error);
   }
 }
 
@@ -14,9 +14,9 @@
     gap: 15px;
     margin: 10px 0;
     padding: 10px 20px;
-    background-color: var(--mvw-error-notice-bg-color);
-    color: var(--mvw-error-notice-color);
-    border: 1px solid var(--mvw-error-notice-border-color);
+    background-color: var(--mvw-color-error-notice-bg-color);
+    color: var(--mvw-color-error-notice-color);
+    border: 1px solid var(--mvw-color-error-notice-border-color);
     border-radius: var(--radius-2);
 
     button {

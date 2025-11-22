@@ -44,108 +44,108 @@ html.icehockey {
 
 body.liga {
   * {
-    /* --mvw-primary-color-50: #f9fafb;
-    --mvw-primary-color-100: #f3f4f6;
-    --mvw-primary-color-200: #e5e7eb;
-    --mvw-primary-color-300: #d1d5db;
-    --mvw-primary-color-400: #9ca3af;
-    --mvw-primary-color-500: #6b7280;
-    --mvw-primary-color-600: #4b5563;
-    --mvw-primary-color-700: #374151;
-    --mvw-primary-color-800: #1f2937;
-    --mvw-primary-color-900: #111827;
+    /* --mvw-color-primary-50: #f9fafb;
+    --mvw-color-primary-100: #f3f4f6;
+    --mvw-color-primary-200: #e5e7eb;
+    --mvw-color-primary-300: #d1d5db;
+    --mvw-color-primary-400: #9ca3af;
+    --mvw-color-primary-500: #6b7280;
+    --mvw-color-primary-600: #4b5563;
+    --mvw-color-primary-700: #374151;
+    --mvw-color-primary-800: #1f2937;
+    --mvw-color-primary-900: #111827;
 
-    --mvw-secondary-color-50: #e3f2fd;
-    --mvw-secondary-color-100: #bbdefb;
-    --mvw-secondary-color-200: #90caf9;
-    --mvw-secondary-color-300: #64b5f6;
-    --mvw-secondary-color-400: #42a5f5;
-    --mvw-secondary-color-500: #2196f3;
-    --mvw-secondary-color-600: #1e88e5;
-    --mvw-secondary-color-700: #1976d2;
-    --mvw-secondary-color-800: #1565c0;
-    --mvw-secondary-color-900: #0d47a1; */
+    --mvw-color-secondary-50: #e3f2fd;
+    --mvw-color-secondary-100: #bbdefb;
+    --mvw-color-secondary-200: #90caf9;
+    --mvw-color-secondary-300: #64b5f6;
+    --mvw-color-secondary-400: #42a5f5;
+    --mvw-color-secondary-500: #2196f3;
+    --mvw-color-secondary-600: #1e88e5;
+    --mvw-color-secondary-700: #1976d2;
+    --mvw-color-secondary-800: #1565c0;
+    --mvw-color-secondary-900: #0d47a1; */
 
     /* mjsz-vbr-top-list-liga {
-      --mvw-top-list-bg-color: var(--mvw-secondary-color-500);
-      --mvw-top-list-title-separator-color: var(--mvw-secondary-color-300);
-      --mvw-top-list-player-separator-color: var(--mvw-secondary-color-400);
-      --mvw-top-list-image-border-color: var(--mvw-secondary-color-300);
-      --mvw-top-list-image-bg-color: var(--mvw-secondary-color-400);
-      --mvw-top-list-selector-border-color: var(--mvw-secondary-color-300);
-      --mvw-top-list-value-color: var(--mvw-secondary-color-100);
+      --mvw-top-list-bg-color: var(--mvw-color-secondary-500);
+      --mvw-top-list-title-separator-color: var(--mvw-color-secondary-300);
+      --mvw-top-list-player-separator-color: var(--mvw-color-secondary-400);
+      --mvw-top-list-image-border-color: var(--mvw-color-secondary-300);
+      --mvw-top-list-image-bg-color: var(--mvw-color-secondary-400);
+      --mvw-top-list-selector-border-color: var(--mvw-color-secondary-300);
+      --mvw-top-list-value-color: var(--mvw-color-secondary-100);
 
-      --mvw-tab-btn-color: var(--mvw-secondary-color-200) !important;
+      --mvw-tab-btn-color: var(--mvw-color-secondary-200) !important;
       --mvw-tab-btn-bg-color: transparent;
-      --mvw-tab-btn-hover-color: var(--mvw-secondary-color-50);
+      --mvw-tab-btn-hover-color: var(--mvw-color-secondary-50);
       --mvw-tab-btn-hover-bg-color: transparent;
-      --mvw-tab-btn-active-color: var(--mvw-secondary-color-50);
+      --mvw-tab-btn-active-color: var(--mvw-color-secondary-50);
       --mvw-tab-btn-active-bg-color: transparent;
-      --mvw-tab-btn-active-border-color: var(--mvw-primary-color-0) !important;
+      --mvw-tab-btn-active-border-color: var(--mvw-color-primary-0) !important;
 
-      --mvw-link-color: var(--mvw-secondary-color-100);
-      --mvw-hover-color: var(--mvw-primary-color-0);
+      --mvw-link-color: var(--mvw-color-secondary-100);
+      --mvw-hover-color: var(--mvw-color-primary-0);
 
-      --mvw-loading-indicator-text-color: var(--mvw-secondary-color-100);
+      --mvw-loading-indicator-text-color: var(--mvw-color-secondary-100);
 
-      --mvw-avatar-border-color: var(--mvw-secondary-color-100);
-      --mvw-tab-btn-group-separator-color: var(--mvw-secondary-color-300);
+      --mvw-avatar-border-color: var(--mvw-color-secondary-100);
+      --mvw-tab-btn-group-separator-color: var(--mvw-color-secondary-300);
     } */
 
     /* Old */
 
-    /* --mvw-primary-color-0: #ffffff;
-    --mvw-primary-color-50: #f9fafb;
-    --mvw-primary-color-100: #f3f4f6;
-    --mvw-primary-color-200: #e5e7eb;
-    --mvw-primary-color-300: #d1d5db;
-    --mvw-primary-color-400: #9ca3af;
-    --mvw-primary-color-500: #6b7280;
-    --mvw-primary-color-600: #4b5563;
-    --mvw-primary-color-700: #374151;
-    --mvw-primary-color-800: #1f2937;
-    --mvw-primary-color-900: #111827; */
+    /* --mvw-color-primary-0: #ffffff;
+    --mvw-color-primary-50: #f9fafb;
+    --mvw-color-primary-100: #f3f4f6;
+    --mvw-color-primary-200: #e5e7eb;
+    --mvw-color-primary-300: #d1d5db;
+    --mvw-color-primary-400: #9ca3af;
+    --mvw-color-primary-500: #6b7280;
+    --mvw-color-primary-600: #4b5563;
+    --mvw-color-primary-700: #374151;
+    --mvw-color-primary-800: #1f2937;
+    --mvw-color-primary-900: #111827; */
 
-    /* --mvw-secondary-color-50: #e3f2fd;
-    --mvw-secondary-color-100: #bbdefb;
-    --mvw-secondary-color-200: #90caf9;
-    --mvw-secondary-color-300: #64b5f6;
-    --mvw-secondary-color-400: #42a5f5;
-    --mvw-secondary-color-500: #2196f3;
-    --mvw-secondary-color-600: #1e88e5;
-    --mvw-secondary-color-700: #1976d2;
-    --mvw-secondary-color-800: #1565c0;
-    --mvw-secondary-color-900: #0d47a1; */
+    /* --mvw-color-secondary-50: #e3f2fd;
+    --mvw-color-secondary-100: #bbdefb;
+    --mvw-color-secondary-200: #90caf9;
+    --mvw-color-secondary-300: #64b5f6;
+    --mvw-color-secondary-400: #42a5f5;
+    --mvw-color-secondary-500: #2196f3;
+    --mvw-color-secondary-600: #1e88e5;
+    --mvw-color-secondary-700: #1976d2;
+    --mvw-color-secondary-800: #1565c0;
+    --mvw-color-secondary-900: #0d47a1; */
 
-    /* --mvw-tab-btn-color: var(--mvw-primary-color-400); */
-    /* --mvw-tab-btn-active-border-color: var(--mvw-secondary-color-500); */
+    /* --mvw-tab-btn-color: var(--mvw-color-primary-400); */
+    /* --mvw-tab-btn-active-border-color: var(--mvw-color-secondary-500); */
 
-    /* --mvw-table-header-bg-color: var(--mvw-secondary-color-500);
-    --mvw-table-header-hover-bg-color: var(--mvw-secondary-color-600);
-    --mvw-table-header-color: var(--mvw-secondary-color-100);
-    --mvw-table-header-active-bg-color: var(--mvw-secondary-color-800);
-    --mvw-text-faded: var(--mvw-primary-color-400);
+    /* --mvw-table-header-bg-color: var(--mvw-color-secondary-500);
+    --mvw-table-header-hover-bg-color: var(--mvw-color-secondary-600);
+    --mvw-table-header-color: var(--mvw-color-secondary-100);
+    --mvw-table-header-active-bg-color: var(--mvw-color-secondary-800);
+    --mvw-text-faded: var(--mvw-color-primary-400);
     --mvw-table-stripped-bg-color: #f6f6f6; */
 
-    /* --mvw-gamecenter-card-border-color: var(--mvw-primary-color-300);
-    --mvw-gamecenter-card-event-goal-border-color: var(--mvw-primary-color-700);
-    --mvw-gamecenter-card-event-goal-bg-color: var(--mvw-primary-color-700);
-    --mvw-gamecenter-card-tertiary-color: var(--mvw-primary-color-400);
+    /* --mvw-gamecenter-card-border-color: var(--mvw-color-primary-300);
+    --mvw-gamecenter-card-event-goal-border-color: var(--mvw-color-primary-700);
+    --mvw-gamecenter-card-event-goal-bg-color: var(--mvw-color-primary-700);
+    --mvw-gamecenter-card-tertiary-color: var(--mvw-color-primary-400);
 
-    --mvw-paginator-border-color: var(--mvw-primary-color-300);
-    --mvw-paginator-disabled-color: var(--mvw-primary-color-300);
-    --mvw-paginator-active-bg-color: var(--mvw-secondary-color-500);
+    --mvw-paginator-border-color: var(--mvw-color-primary-300);
+    --mvw-paginator-disabled-color: var(--mvw-color-primary-300);
+    --mvw-paginator-active-bg-color: var(--mvw-color-secondary-500);
 
-    --mvw-toggle-group-btn-bg-color: var(--mvw-primary-color-200);
-    --mvw-toggle-group-btn-active-bg-color: var(--mvw-secondary-color-500);
+    --mvw-toggle-group-btn-bg-color: var(--mvw-color-primary-200);
+    --mvw-toggle-group-btn-active-bg-color: var(--mvw-color-secondary-500);
 
-    --mvw-playoffs-header-bg: var(--mvw-secondary-color-500);
-    --mvw-playoffs-header-color: var(--mvw-primary-color-50);
-    --mvw-playoffs-details-bg: var(--mvw-secondary-color-50);
+    --mvw-playoffs-header-bg: var(--mvw-color-secondary-500);
+    --mvw-playoffs-header-color: var(--mvw-color-primary-50);
+    --mvw-playoffs-details-bg: var(--mvw-color-secondary-50);
 
-    --mvw-countdown-title-bg: var(--mvw-primary-color-900);
-    --mvw-countdown-gamedata-bg: var(--mvw-primary-color-700);
-    --mvw-countdown-result-bg: var(--mvw-primary-color-800); */
+    --mvw-countdown-title-bg: var(--mvw-color-primary-900);
+    --mvw-countdown-gamedata-bg: var(--mvw-color-primary-700);
+    --mvw-countdown-result-bg: var(--mvw-color-primary-800); */
   }
 }
 /*
@@ -166,7 +166,7 @@ mjsz-vbr-player-liga {
 
 /* mjsz-vbr-standings-selector {
   --mvw-standings-selector-title-size: 16px;
-  --mvw-standings-selector-title-color: var(--mvw-primary-color-700);
+  --mvw-standings-selector-title-color: var(--mvw-color-primary-700);
   --mvw-standings-selector-title-bg-color: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,
@@ -185,7 +185,7 @@ mjsz-vbr-player-liga {
   );
   --mvw-table-header-font-size: 11px;
   --mvw-table-header-hover-bg-color: transparent;
-  --mvw-table-cell-light-color: var(--mvw-primary-color-400);
+  --mvw-table-cell-light-color: var(--mvw-color-primary-400);
   --mvw-table-stripped-bg-color: transparent;
 } */
 

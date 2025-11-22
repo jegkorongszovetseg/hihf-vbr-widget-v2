@@ -1,9 +1,9 @@
 @layer components.variables {
   :where(:host) {
-    --mvw-playoffs-header-bg: light-dark(var(--mvw-primary-color-800), var(--mvw-primary-color-300));
-    --mvw-playoffs-header-color: light-dark(var(--mvw-primary-color-100), var(--mvw-primary-color-800));
+    --mvw-playoffs-header-bg: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-300));
+    --mvw-playoffs-header-color: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-800));
     --mvw-playoffs-header-size: var(--font-size-500);
-    --mvw-playoffs-details-bg: light-dark(var(--mvw-primary-color-100), var(--mvw-primary-color-800));
+    --mvw-playoffs-details-bg: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-800));
   }
 }
 
@@ -58,14 +58,14 @@
       &:nth-child(odd) > div {
         background-color: var(
           --mvw-table-stripped-bg-color,
-          light-dark(var(--mvw-primary-color-50), var(--mvw-primary-color-900))
+          light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-900))
         );
       }
 
       &:hover > div {
         background-color: var(
           --mvw-table-hover-bg-color,
-          light-dark(var(--mvw-secondary-color-100), var(--mvw-secondary-color-400))
+          light-dark(var(--mvw-color-secondary-100), var(--mvw-color-secondary-400))
         );
       }
 

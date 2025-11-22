@@ -112,7 +112,7 @@
       object-position: top;
       overflow: hidden;
       border-radius: 100%;
-      border: 1px solid var(--mvw-primary-color-100);
+      border: 1px solid var(--mvw-color-primary-100);
 
       img {
         width: var(--mvw-table-cell-portrait-size);
@@ -133,7 +133,7 @@
     }
 
     .is-text-accent {
-      color: var(--mvw-secondary-color-500);
+      color: var(--mvw-color-secondary-500);
     }
 
     &.w-auto {
@@ -147,7 +147,7 @@
 
     &.is-text-positive,
     .is-text-positive {
-      color: var(--mvw-live-game-color);
+      color: var(--mvw-color-live-game-color);
     }
 
     &.is-text-negative,

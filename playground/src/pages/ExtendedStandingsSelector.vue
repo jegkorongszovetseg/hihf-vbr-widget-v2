@@ -52,7 +52,7 @@ const data = [
 <!-- <style>
 mjsz-vbr-standings-selector {
   --mvw-standings-selector-title-size: 16px;
-  --mvw-standings-selector-title-color: var(--mvw-primary-color-700);
+  --mvw-standings-selector-title-color: var(--mvw-color-primary-700);
   --mvw-standings-selector-title-bg-color: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,
@@ -71,7 +71,7 @@ mjsz-vbr-standings-selector {
   );
   --mvw-table-header-font-size: 11px;
   --mvw-table-header-hover-bg-color: transparent;
-  --mvw-table-cell-light-color: var(--mvw-primary-color-300);
+  --mvw-table-cell-light-color: var(--mvw-color-primary-300);
   --mvw-table-stripped-bg-color: transparent;
 
   /* --mvw-standings-selector-section-title-bg: linear-gradient(

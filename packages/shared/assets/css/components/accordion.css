@@ -1,8 +1,8 @@
 @layer components.variables {
   :where(:host) {
-    --mvw-card-color: light-dark(var(--mvw-primary-color-950), var(--mvw-primary-color-200));
-    --mvw-card-bg-color: light-dark(var(--mvw-color-white), var(--mvw-primary-color-950));
-    --mvw-card-tonal-active-bg-color: light-dark(var(--mvw-primary-color-50), var(--mvw-primary-color-900));
+    --mvw-card-color: light-dark(var(--mvw-color-primary-950), var(--mvw-color-primary-200));
+    --mvw-card-bg-color: light-dark(var(--mvw-color-white), var(--mvw-color-primary-950));
+    --mvw-card-tonal-active-bg-color: light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-900));
   }
 }
 

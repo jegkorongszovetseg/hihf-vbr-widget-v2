@@ -3,10 +3,10 @@
     --mvw-form-label-font-size: var(--font-size-200);
     --mvw-form-label-color: var(--mvw-text-muted);
 
-    --mvw-input-color: light-dark(var(--mvw-primary-color-800), var(--mvw-primary-color-200));
+    --mvw-input-color: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-200));
     --mvw-input-font-size: var(--font-size-400);
-    --mvw-input-border-color: light-dark(var(--mvw-primary-color-300), var(--mvw-primary-color-700));
-    --mvw-input-bg-color: light-dark(var(--mvw-color-white), var(--mvw-primary-color-950));
+    --mvw-input-border-color: light-dark(var(--mvw-color-primary-300), var(--mvw-color-primary-700));
+    --mvw-input-bg-color: light-dark(var(--mvw-color-white), var(--mvw-color-primary-950));
     --mvw-input-border-radius: var(--radius-2);
   }
 }

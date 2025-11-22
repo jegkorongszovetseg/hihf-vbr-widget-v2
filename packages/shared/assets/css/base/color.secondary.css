@@ -1,11 +1,11 @@
 :where(:host) {
-  --mvw-secondary-color-100: #dcedc8;
-  --mvw-secondary-color-200: #badb94;
-  --mvw-secondary-color-300: #aed581;
-  --mvw-secondary-color-400: #9ccc65;
-  --mvw-secondary-color-500: #8bc34a;
-  --mvw-secondary-color-700: #689f38;
-  --mvw-secondary-color-800: #558b2f;
-  --mvw-secondary-color-900: #33691e;
-  --mvw-secondary-color-950: #14290c;
+  --mvw-color-secondary-100: #dcedc8;
+  --mvw-color-secondary-200: #badb94;
+  --mvw-color-secondary-300: #aed581;
+  --mvw-color-secondary-400: #9ccc65;
+  --mvw-color-secondary-500: #8bc34a;
+  --mvw-color-secondary-700: #689f38;
+  --mvw-color-secondary-800: #558b2f;
+  --mvw-color-secondary-900: #33691e;
+  --mvw-color-secondary-950: #14290c;
 }

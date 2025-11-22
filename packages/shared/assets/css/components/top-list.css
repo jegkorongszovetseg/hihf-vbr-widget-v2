@@ -1,13 +1,13 @@
 @layer components.variables {
   :where(:host) {
-    --mvw-top-list-bg-color: var(--mvw-primary-color-900);
-    --mvw-top-list-title-color: var(--mvw-primary-color-50);
-    --mvw-top-list-title-separator-color: var(--mvw-primary-color-700);
-    --mvw-top-list-value-color: var(--mvw-primary-color-300);
-    --mvw-top-list-player-separator-color: var(--mvw-primary-color-800);
-    --mvw-top-list-image-border-color: var(--mvw-primary-color-600);
-    --mvw-top-list-image-bg-color: var(--mvw-primary-color-800);
-    --mvw-top-list-selector-border-color: var(--mvw-primary-color-400);
+    --mvw-top-list-bg-color: var(--mvw-color-primary-900);
+    --mvw-top-list-title-color: var(--mvw-color-primary-50);
+    --mvw-top-list-title-separator-color: var(--mvw-color-primary-700);
+    --mvw-top-list-value-color: var(--mvw-color-primary-300);
+    --mvw-top-list-player-separator-color: var(--mvw-color-primary-800);
+    --mvw-top-list-image-border-color: var(--mvw-color-primary-600);
+    --mvw-top-list-image-bg-color: var(--mvw-color-primary-800);
+    --mvw-top-list-selector-border-color: var(--mvw-color-primary-400);
   }
 }
 

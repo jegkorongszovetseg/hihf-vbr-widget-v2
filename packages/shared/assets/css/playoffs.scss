@@ -51,7 +51,7 @@
     }
 
     .is-text-accent {
-      color: var(--mvw-secondary-color-500);
+      color: var(--mvw-color-secondary-500);
     }
 
     .is-team-name-long {
@@ -123,13 +123,13 @@
       font-size: 4rem;
       font-weight: 700;
       text-align: center;
-      color: var(--mvw-primary-color-800);
+      color: var(--mvw-color-primary-800);
     }
 
     .is-team-name {
       font-size: var(--mvw-typography-font-size-700);
       font-weight: 700;
-      color: var(--mvw-primary-color-800);
+      color: var(--mvw-color-primary-800);
     }
     .is-right {
       text-align: right;

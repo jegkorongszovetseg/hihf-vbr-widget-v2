@@ -34,35 +34,35 @@ Alapértelmezett színek:
   --mvw-color-black: #000;
 
   /* Primary colors */
-  --mvw-primary-color-0: #ffffff;
-  --mvw-primary-color-50: #eceff1;
-  --mvw-primary-color-100: #cfd8dc;
-  --mvw-primary-color-200: #b0bec5;
-  --mvw-primary-color-300: #90a4ae;
-  --mvw-primary-color-400: #78909c;
-  --mvw-primary-color-500: #607d8b;
-  --mvw-primary-color-600: #546e7a;
-  --mvw-primary-color-700: #455a64;
-  --mvw-primary-color-800: #37474f;
-  --mvw-primary-color-900: #263238;
-  --mvw-primary-color-950: #182024;
+  --mvw-color-primary-0: #ffffff;
+  --mvw-color-primary-50: #eceff1;
+  --mvw-color-primary-100: #cfd8dc;
+  --mvw-color-primary-200: #b0bec5;
+  --mvw-color-primary-300: #90a4ae;
+  --mvw-color-primary-400: #78909c;
+  --mvw-color-primary-500: #607d8b;
+  --mvw-color-primary-600: #546e7a;
+  --mvw-color-primary-700: #455a64;
+  --mvw-color-primary-800: #37474f;
+  --mvw-color-primary-900: #263238;
+  --mvw-color-primary-950: #182024;
 
   /* Secondary colors */
-  --mvw-secondary-color-100: #dcedc8;
-  --mvw-secondary-color-200: #badb94;
-  --mvw-secondary-color-300: #aed581;
-  --mvw-secondary-color-400: #9ccc65;
-  --mvw-secondary-color-500: #8bc34a;
-  --mvw-secondary-color-700: #689f38;
-  --mvw-secondary-color-800: #558b2f;
-  --mvw-secondary-color-900: #33691e;
-  --mvw-secondary-color-950: #14290c;
+  --mvw-color-secondary-100: #dcedc8;
+  --mvw-color-secondary-200: #badb94;
+  --mvw-color-secondary-300: #aed581;
+  --mvw-color-secondary-400: #9ccc65;
+  --mvw-color-secondary-500: #8bc34a;
+  --mvw-color-secondary-700: #689f38;
+  --mvw-color-secondary-800: #558b2f;
+  --mvw-color-secondary-900: #33691e;
+  --mvw-color-secondary-950: #14290c;
 
   /* Special Colors */
-  --mvw-live: #8bc34a;
-  --mvw-error: #fb2c36;
-  --mvw-warning: #ffc107;
-  --mvw-info: #2870ed;
-  --mvw-team: #ff6129;
+  --mvw-color-live: #8bc34a;
+  --mvw-color-error: #fb2c36;
+  --mvw-color-warning: #ffc107;
+  --mvw-color-info: #2870ed;
+  --mvw-color-team: #ff6129;
 }
 ```

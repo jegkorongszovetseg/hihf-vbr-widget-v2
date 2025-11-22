@@ -2,8 +2,8 @@
   :where(:host) {
     --mvw-progress-height: 10px;
     --mvw-progress-border-radius: 5px;
-    --mvw-progress-bg-color: light-dark(var(--mvw-primary-color-50), var(--mvw-primary-color-900));
-    --mvw-progress-bar-color: var(--mvw-live);
+    --mvw-progress-bg-color: light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-900));
+    --mvw-progress-bar-color: var(--mvw-color-live);
     --mvw-progress-bar-stripe-color: rgba(from var(--mvw-color-white) r g b / 20%);
     --mvw-progress-bar-stripe-angle: 45deg;
   }

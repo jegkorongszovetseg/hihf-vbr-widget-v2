@@ -77,7 +77,7 @@ a {
     box-shadow: 2px 14px 23px 0px rgba(0, 0, 0, 0.25);
 
     .is-arrow {
-      background-color: var(--mvw-primary-color-50);
+      background-color: var(--mvw-color-primary-50);
     }
   }
 
@@ -112,9 +112,9 @@ a {
   gap: 15px;
   margin: 10px 0;
   padding: 10px 20px;
-  background-color: var(--mvw-error-notice-bg-color);
-  color: var(--mvw-error-notice-color);
-  border: 1px solid var(--mvw-error-notice-border-color);
+  background-color: var(--mvw-color-error-notice-bg-color);
+  color: var(--mvw-color-error-notice-color);
+  border: 1px solid var(--mvw-color-error-notice-border-color);
 
   button {
     text-decoration: underline;
@@ -153,23 +153,23 @@ a {
   }
 
   &.is-green {
-    color: var(--mvw-primary-color-0);
-    background-color: var(--mvw-live-game-color);
+    color: var(--mvw-color-primary-0);
+    background-color: var(--mvw-color-live-game-color);
   }
 
   &.is-red {
-    color: var(--mvw-primary-color-0);
+    color: var(--mvw-color-primary-0);
     background-color: var(--mvw-danger-color-a400);
   }
 
   &.is-yellow {
-    color: var(--mvw-primary-color-0);
+    color: var(--mvw-color-primary-0);
     background-color: var(--mvw-neutral-color);
   }
 
   &.is-dark {
-    color: var(--mvw-primary-color-0);
-    background-color: var(--mvw-primary-color-700);
+    color: var(--mvw-color-primary-0);
+    background-color: var(--mvw-color-primary-700);
   }
 
   &.is-large {

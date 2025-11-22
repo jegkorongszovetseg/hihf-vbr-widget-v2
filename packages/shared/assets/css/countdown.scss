@@ -8,7 +8,7 @@
     font-size: var(--mvw-typography-font-size-300);
     font-weight: 700;
     line-height: var(--mvw-countdown-title-height);
-    color: var(--mvw-primary-color-200);
+    color: var(--mvw-color-primary-200);
     background-color: var(--mvw-countdown-title-bg);
   }
 
@@ -36,7 +36,7 @@
     align-items: center;
     // padding-block: 1rem;
 
-    color: var(--mvw-primary-color-300);
+    color: var(--mvw-color-primary-300);
     font-weight: 700;
 
     .is-separator {
@@ -73,7 +73,7 @@
     }
 
     .is-live {
-      color: var(--mvw-live-game-color);
+      color: var(--mvw-color-live-game-color);
     }
   }
 
@@ -87,10 +87,10 @@
     font-size: var(--mvw-typography-font-size-50);
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--mvw-primary-color-300);
+    color: var(--mvw-color-primary-300);
 
     .is-number {
-      color: var(--mvw-live-game-color);
+      color: var(--mvw-color-live-game-color);
     }
   }
 
@@ -106,12 +106,12 @@
     font-size: var(--mvw-typography-font-size-500);
     font-weight: 700;
     line-height: var(--mvw-typography-font-lineheight-400);
-    color: var(--mvw-primary-color-50);
+    color: var(--mvw-color-primary-50);
 
     .is-game-date {
       grid-area: game-date;
       text-align: center;
-      color: var(--mvw-primary-color-200);
+      color: var(--mvw-color-primary-200);
       font-size: var(--mvw-typography-font-size-100);
     }
 
