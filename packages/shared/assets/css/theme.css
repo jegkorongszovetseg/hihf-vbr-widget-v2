@@ -10,7 +10,7 @@
   }
 
   :host {
-    font-family: inherit;
+    font-family: var(--mvw-font, inherit);
 
     /* Special Colors */
     --mvw-live: #8bc34a;
