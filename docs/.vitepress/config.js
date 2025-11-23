@@ -86,9 +86,9 @@ export default defineConfig(({ mode }) => {
         '/styles/': [
           {
             items: [
-              { text: 'Téma kezelés', link: '/styles/' },
+              { text: 'Theme (Téma) kezelés', link: '/styles/' },
               { text: 'Design System', link: '/styles/design-system' },
-              { text: 'Változók listája', link: '/styles/css-variables' },
+              { text: 'CSS Változók', link: '/styles/css-variables' },
             ],
           },
         ],

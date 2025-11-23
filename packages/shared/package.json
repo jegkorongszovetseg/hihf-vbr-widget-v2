@@ -19,10 +19,15 @@
     "./css/*.css": {
       "import": "./assets/css/*.css",
       "require": "./assets/css/*.css"
+    },
+    "./css/*": {
+      "import": "./assets/css/*",
+      "require": "./assets/css/*"
     }
   },
   "module": "./dist/icons/index.js",
   "files": [
+    "assets/css",
     "dist"
   ],
   "scripts": {

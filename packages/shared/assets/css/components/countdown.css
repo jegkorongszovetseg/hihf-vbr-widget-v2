@@ -18,7 +18,7 @@
 
     .game-countdown-title {
       text-align: center;
-      font-size: var(--font-size-300);
+      font-size: var(--font-size-400);
       font-weight: 700;
       line-height: var(--mvw-countdown-title-height);
       color: var(--mvw-text-faded);
@@ -72,7 +72,7 @@
 
       .is-period-results {
         grid-area: period-results;
-        font-size: var(--font-size-300);
+        font-size: var(--font-size-400);
         text-align: center;
       }
 
@@ -96,7 +96,7 @@
       justify-content: space-around;
       padding: var(--size-16);
 
-      font-size: var(--font-size-50);
+      font-size: var(--font-size-100);
       font-weight: 700;
       text-transform: uppercase;
       color: var(--mvw-text-dimmed);
@@ -124,7 +124,7 @@
         grid-area: game-date;
         text-align: center;
         color: var(--mvw-text-faded);
-        font-size: var(--font-size-100);
+        font-size: var(--font-size-200);
       }
 
       .is-home-team-logo {

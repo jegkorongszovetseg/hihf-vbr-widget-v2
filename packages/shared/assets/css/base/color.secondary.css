@@ -1,4 +1,4 @@
-:where(:host) {
+:where(:host, :root) {
   --mvw-color-secondary-100: #dcedc8;
   --mvw-color-secondary-200: #badb94;
   --mvw-color-secondary-300: #aed581;

@@ -20,7 +20,7 @@ const isResizeable = ref(true);
     </fieldset>
 
     <div class="m-auto max-w-[460px]" :class="{ 'resize-x overflow-hidden': isResizeable }">
-      <mjsz-vbr-countdown :locale="store.locale" :game-id="82797" />
+      <mjsz-vbr-countdown :locale="store.locale" :game-id="82878" />
     </div>
   </div>
 </template>

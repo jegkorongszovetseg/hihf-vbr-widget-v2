@@ -39,6 +39,15 @@ Ha például a `html` elemhez hozzáadod a `dark` osztályt, akkor a widgetek s�
 </html>
 ```
 
+A saját témádban a `light-dark()` CSS function segítségével tudod egyszerűen kezelni a világos és sötét témához tartozó értékeket. Például:
+
+```css
+* {
+  --mvw-link-color: light-dark(var(--mvw-color-secondary-700), var(--mvw-color-secondary-400));
+  --mvw-link-hover-color: light-dark(var(--mvw-color-secondary-900), var(--mvw-color-secondary-200));
+}
+```
+
 ## Példa Theme
 
 Az Erste Liga oldalon ezt a téma beállítást használjuk:
