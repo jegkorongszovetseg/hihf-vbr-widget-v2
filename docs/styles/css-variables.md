@@ -4,12 +4,15 @@ A widgetek használják a CSS változokat, sok esetben a CSS utility class segí
 
 ::: info Szöveg
 
-<div style="display: flex; gap: 1rem; padding: 1rem; justify-content: center;">
+<div style="display: flex; flex-wrap: wrap; gap: 1rem; padding: 1rem; justify-content: center; align-items: center;">
+  <div style="color: var(--mvw-text-pale)">Text Pale</div>
   <div class="text-faded">Text Faded</div>
   <div class="text-dimmed">Text Dimmed</div>
   <div class="text-muted">Text Muted</div>
+  <div style="color: var(--mvw-text-toned)">Text Toned</div>
   <div class="text-default">Text Default</div>
   <div class="text-highlighted">Text Highlighted</div>
+  <div style="color: var(--mvw-text-inverted); background: var(--mvw-bg-inverted); padding: 0.5rem 1rem;">Text inverted</div>
 </div>
 :::
 
