@@ -1,5 +1,4 @@
 <script setup>
-import { gameProps } from '@mjsz-vbr-elements/core';
 import {
   ErrorNotice,
   ErrorProvider,
@@ -7,6 +6,7 @@ import {
   I18NProvider,
   LoadingIndicator,
 } from '@mjsz-vbr-elements/core/components';
+import { gameProps } from '@mjsz-vbr-elements/core/props';
 import { externalGameLinkResolver, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
 import { computed, ref } from 'vue';
 import en from '../../locales/en.json';
@@ -101,7 +101,7 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
           </div>
         </nav>
 
-        <nav class="tabs filled">
+        <nav class="tabs filled mb-md">
           <div role="tablist" :aria-label="t('selection.sections')">
             <button
               v-for="month in months"

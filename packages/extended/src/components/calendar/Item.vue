@@ -61,11 +61,11 @@ const { t } = useI18n();
       <Image :key="game.homeTeam.id" class="is-logo-image" :src="game.homeTeam.logo" />
     </div>
 
-    <div class="text-center" :class="[{ 'is-live': game.gameStatus === 1 }]" style="grid-area: game-data">
+    <div class="text-center" style="grid-area: game-data">
       <span v-if="game.gameStatus === 0" class="text-xl font-bold text-highlighted">
         - : -
       </span>
-      <a :href="gameLink(game)" :target="target" class="game-result">
+      <a :href="gameLink(game)" :target="target" class="game-result" :class="[{ 'is-live': game.gameStatus === 1 }]">
 
         <span v-if="game.gameStatus > 0 && game.gameStatus < 3" class="text-xl font-bold">
           {{ game.homeTeamScore }} : {{ game.awayTeamScore }}
