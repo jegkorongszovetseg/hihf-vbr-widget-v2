@@ -322,10 +322,10 @@
           }
 
           svg {
-            display: inline-block;
+            display: block;
             padding: var(--size-4);
-            width: 12px;
-            height: 12px;
+            width: 20px;
+            height: 20px;
             color: var(--mvw-color-white);
             background-color: var(--mvw-color-live);
             border-radius: 100%;
