@@ -6,7 +6,7 @@ Az egyes widget elemek kinézetét css változókon keresztül lehet állítani.
 
 ## Saját Téma beállítása
 
-GlobáliasaHa szt szeretnéd, hogy a beállítások minden elemre érvényes legyen akkor azt így lehet beállítani:
+Ha szt szeretnéd, hogy a beállítások minden elemre érvényes legyen akkor azt így lehet beállítani:
 
 ```css
 * {
@@ -25,9 +25,13 @@ mjsz-vbr-schedule {
 }
 ```
 
+::: tip
+Az elérhető widgetek (pl.: mjsz-vbr-standings, mjsz-vbr-schedule ) [itt](/widget/available-widgets) találod.
+:::
+
 ## Light/Dark téma kezelése
 
-A MJSZ widgetek támogatják a light és dark témát. Alapértelmezés szerint a widget automatikusan igazodik a böngésző vagy operációs rendszer beállításaihoz. Manuálisan is beállíthatod a témát CSS változóval vagy osztály hozzáadásával:
+A MJSZ widgetek támogatják a light és dark témát. Alapértelmezés szerint a widget automatikusan igazodik a böngésző vagy operációs rendszer beállításaihoz. Manuálisan is beállíthatod a témát osztály hozzáadásával:
 
 Ha például a `html` elemhez hozzáadod a `dark` osztályt, akkor a widgetek sötét témában jelennek meg:
 
@@ -38,6 +42,9 @@ Ha például a `html` elemhez hozzáadod a `dark` osztályt, akkor a widgetek s�
   </body>
 </html>
 ```
+
+A `light` téma az alapértelmezett, azt külön nem szökséges beállítani. Ha sötét témát szeretnél használni, add hozzá a `dark` osztályt a `html` elemhez.
+Ha saját megoldásod például a body-hez adja hozzá a `dark` osztályt akkor is működni fog a váltás.
 
 A saját témádban a `light-dark()` CSS function segítségével tudod egyszerűen kezelni a világos és sötét témához tartozó értékeket. Például:
 
