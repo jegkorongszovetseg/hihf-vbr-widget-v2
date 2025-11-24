@@ -2,7 +2,7 @@
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { pickCoaches, playerName } from '@mjsz-vbr-elements/core/utils';
-import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
+import { IconHockeyPuck } from '@mjsz-vbr-elements/shared/icons';
 import { computed } from 'vue';
 import { groupLinesByTeams } from './internal';
 

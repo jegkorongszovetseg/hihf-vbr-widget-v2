@@ -1,6 +1,6 @@
 <script setup>
 import { BaseSelect, FloatingPanel, FormField } from '@mjsz-vbr-elements/core';
-// import IconMenu from '@mjsz-vbr-elements/shared/icons/IconMenu.js';
+import { IconMenu } from '@mjsz-vbr-elements/shared/icons';
 </script>
 
 <template>
@@ -20,8 +20,7 @@ import { BaseSelect, FloatingPanel, FormField } from '@mjsz-vbr-elements/core';
     <FloatingPanel :offset="2" placement="bottom-end" theme="content" :append-to="null" :is-arrow-visible="false">
       <template #default="{ setRef, toggle }">
         <button :ref="setRef" type="button" class="icon-button" @click="toggle">
-          <!-- <IconMenu style="display: block; height: 20px;" /> -->
-          Button
+          <IconMenu />
         </button>
       </template>
       <template #content="{ close }">

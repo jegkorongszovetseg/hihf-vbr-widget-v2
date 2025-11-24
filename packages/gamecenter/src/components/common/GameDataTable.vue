@@ -1,7 +1,7 @@
 <script setup>
 import { DataTable, FloatingPanel, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import IconStar from '@mjsz-vbr-elements/shared/icons/IconStar';
+import { IconStar } from '@mjsz-vbr-elements/shared/icons';
 import { ref } from 'vue';
 
 const props = defineProps({

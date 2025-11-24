@@ -9,8 +9,8 @@
     ".": {
       "import": "./dist/icons/index.js"
     },
-    "./icons/*": {
-      "import": "./dist/icons/*.js"
+    "./icons": {
+      "import": "./dist/icons/index.js"
     },
     "./css/*.css": {
       "import": "./assets/css/*.css",

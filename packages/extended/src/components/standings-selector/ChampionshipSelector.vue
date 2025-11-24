@@ -1,6 +1,6 @@
 <script setup>
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
-import IconMenu from '@mjsz-vbr-elements/shared/icons/IconMenu';
+import { IconMenu } from '@mjsz-vbr-elements/shared/icons';
 
 defineOptions({
   inheritAttrs: false,

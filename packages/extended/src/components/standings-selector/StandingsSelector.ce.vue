@@ -1,7 +1,7 @@
 <script setup>
 import { COLUMNS_STANDINGS_SHORT } from '@mjsz-vbr-elements/core';
 import { AdditionalStandingsText, ErrorNotice, ErrorProvider, I18NProvider, StatisticsTable } from '@mjsz-vbr-elements/core/components';
-import IconRight from '@mjsz-vbr-elements/shared/icons/IconRight';
+import { IconRight } from '@mjsz-vbr-elements/shared/icons';
 import { computed, ref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';

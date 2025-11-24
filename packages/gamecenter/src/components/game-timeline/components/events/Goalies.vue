@@ -1,8 +1,6 @@
 <script setup>
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import IconArrowDown from '@mjsz-vbr-elements/shared/icons/IconArrowDown';
-import IconArrowUp from '@mjsz-vbr-elements/shared/icons/IconArrowUp';
-import IconChange from '@mjsz-vbr-elements/shared/icons/IconChange';
+import { IconArrowDown, IconArrowUp, IconChange } from '@mjsz-vbr-elements/shared/icons';
 import GameEventLayout from '../GameEventLayout.vue';
 import TeamLogo from './TeamLogo.vue';
 

@@ -1,7 +1,7 @@
 <script setup>
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { DEFAULT_PORTRAIT_IMAGE_URL } from '@mjsz-vbr-elements/core/constants';
-import IconRight from '@mjsz-vbr-elements/shared/icons/IconRight';
+import { IconRight } from '@mjsz-vbr-elements/shared/icons';
 import { noop } from '@vueuse/core';
 
 defineProps({

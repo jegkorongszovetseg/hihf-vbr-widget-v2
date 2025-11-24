@@ -1,8 +1,5 @@
 <script setup>
-import IconBroadcast from '@mjsz-vbr-elements/shared/icons/IconBroadcast';
-import IconMore from '@mjsz-vbr-elements/shared/icons/IconMore';
-import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
-import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
+import { IconBroadcast, IconMore, IconSheet, IconYoutube } from '@mjsz-vbr-elements/shared/icons';
 import { whenever } from '@vueuse/core';
 import { computed, ref } from 'vue';
 import { COLUMNS_SCHEDULE } from '../columns';

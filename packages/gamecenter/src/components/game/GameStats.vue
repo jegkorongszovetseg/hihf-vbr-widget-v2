@@ -1,7 +1,7 @@
 <script setup>
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import IconMore from '@mjsz-vbr-elements/shared/icons/IconMore';
+import { IconMore } from '@mjsz-vbr-elements/shared/icons';
 import { computed } from 'vue';
 import GameStatsContainer from './components/GameStatsContainer.vue';
 import { buildAdv, buildAdvPercent, buildDvgPercent, buildSaves, buildSOG } from './internal';

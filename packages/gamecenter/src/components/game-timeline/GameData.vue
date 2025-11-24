@@ -2,8 +2,7 @@
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
-import IconSheet from '@mjsz-vbr-elements/shared/icons/IconSheet';
-import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
+import { IconSheet, IconYoutube } from '@mjsz-vbr-elements/shared/icons';
 import { computed, toRefs } from 'vue';
 import { useAttendanceSocket } from '../../composables/use-attendance-socket';
 import GamePeriodProgress from '../game/components/GamePeriodProgress.vue';

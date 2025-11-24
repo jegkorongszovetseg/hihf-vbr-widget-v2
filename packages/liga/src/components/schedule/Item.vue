@@ -1,8 +1,7 @@
 <script setup>
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import IconBroadcast from '@mjsz-vbr-elements/shared/icons/IconBroadcast';
-import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
+import { IconBroadcast, IconYoutube } from '@mjsz-vbr-elements/shared/icons';
 import { noop } from '@vueuse/core';
 
 defineProps({

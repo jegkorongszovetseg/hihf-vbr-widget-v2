@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import IconTimer from '@mjsz-vbr-elements/shared/icons/IconTimer';
+import { IconTimer } from '@mjsz-vbr-elements/shared/icons';
 import GameEventLayout from '../GameEventLayout.vue';
 import TeamLogo from './TeamLogo.vue';
 

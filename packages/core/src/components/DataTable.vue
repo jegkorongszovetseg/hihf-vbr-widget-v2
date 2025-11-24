@@ -1,7 +1,5 @@
 <script setup>
-import IconSort from '@mjsz-vbr-elements/shared/icons/IconSort';
-import IconSortAsc from '@mjsz-vbr-elements/shared/icons/IconSortAsc';
-import IconSortDesc from '@mjsz-vbr-elements/shared/icons/IconSortDesc';
+import { IconSort, IconSortAsc, IconSortDesc } from '@mjsz-vbr-elements/shared/icons';
 import { computed, toRefs } from 'vue';
 import { useI18n } from '../composables/useI18n';
 import { useLazyLoadingState } from '../composables/useLazyLoadingState';

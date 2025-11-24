@@ -2,8 +2,7 @@
 import { DataTable, Image, LoadingIndicator, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useColumns, useError } from '@mjsz-vbr-elements/core/composables';
 import * as Errors from '@mjsz-vbr-elements/core/constants';
-import IconArrowDown from '@mjsz-vbr-elements/shared/icons/IconArrowDown';
-import IconArrowUp from '@mjsz-vbr-elements/shared/icons/IconArrowUp';
+import { IconArrowDown, IconArrowUp } from '@mjsz-vbr-elements/shared/icons';
 import { computed, toRefs } from 'vue';
 
 const props = defineProps({
