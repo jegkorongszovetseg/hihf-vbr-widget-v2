@@ -61,6 +61,9 @@ importers:
       '@mjsz-vbr-elements/liga':
         specifier: workspace:^
         version: link:../packages/liga
+      '@mjsz-vbr-elements/shared':
+        specifier: workspace:^
+        version: link:../packages/shared
       ramda:
         specifier: ^0.31.3
         version: 0.31.3
@@ -302,6 +305,9 @@ importers:
       '@mjsz-vbr-elements/liga':
         specifier: workspace:^
         version: link:../packages/liga
+      '@vueuse/core':
+        specifier: ^13.4.0
+        version: 13.4.0(vue@3.5.22(typescript@5.7.3))
       vue:
         specifier: ^3.5.22
         version: 3.5.22(typescript@5.7.3)

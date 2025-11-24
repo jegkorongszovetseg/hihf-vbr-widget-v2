@@ -15,9 +15,10 @@
   :where(.form-field) {
     --_border-color: var(--mvw-input-border-color);
     --_bg-color: var(--mvw-input-bg-color);
+    --_height: var(--size-32);
     --_color: var(--mvw-input-color);
-    --_field-padding-block: var(--size-4);
-    --_field-padding-inline: var(--size-8);
+    --_field-padding-block: var(--size-6);
+    --_field-padding-inline: var(--size-10);
 
     contain: layout;
     position: relative;
@@ -26,16 +27,25 @@
     & pre,
     & input,
     & select {
+      appearance: none;
+      block-size: var(--_height);
       min-inline-size: 0;
       font-family: inherit;
       font-size: var(--mvw-input-font-size);
       color: var(--_color);
-      /* inline-size: 100%; */
       line-height: var(--font-lineheight-100);
       background-color: var(--_bg-color);
       border: var(--field-border-width, 1px) solid var(--_border-color);
       border-radius: var(--mvw-input-border-radius);
       padding: var(--_field-padding-block) var(--_field-padding-inline);
+    }
+
+    & select {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23888' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right var(--size-6) center;
+      background-size: 16px 12px;
+      padding-inline-end: var(--size-24);
     }
 
     & pre {
