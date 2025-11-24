@@ -1,7 +1,7 @@
 <script setup>
 import { flip, offset, shift } from '@floating-ui/dom';
 import { onClickOutside, unrefElement } from '@vueuse/core';
-import { computed, nextTick, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { arrow, useFloating } from '../composables/useFloating';
 
 const props = defineProps({
@@ -51,15 +51,12 @@ const { x, y, arrowX, arrowY, placement, reference, floating, strategy } = useFl
   enabled: open,
 });
 
-async function show() {
+function show() {
   if (props.disabled)
     return;
   if (open.value)
     return;
   open.value = true;
-  await nextTick();
-  const focusable = unrefElement(floating).querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-  focusable[0]?.focus();
 }
 
 function hide() {
@@ -92,10 +89,18 @@ function toggle() {
     return hide();
   show();
 }
+
+function nextFocus(event) {
+  if (!open.value)
+    return;
+  const focusable = unrefElement(floating).querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  focusable[0]?.focus();
+  event.preventDefault();
+}
 </script>
 
 <template>
-  <slot :set-ref="setSlotRef" :toggle="toggle" :show="show" :hide="hide" :events="events" />
+  <slot :set-ref="setSlotRef" :next-focus="nextFocus" :open="open" :toggle="toggle" :show="show" :hide="hide" :events="events" />
   <div
     ref="floating"
     :data-placement="placement"

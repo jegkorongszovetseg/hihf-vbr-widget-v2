@@ -50,11 +50,14 @@
     grid-template-columns: var(--columns);
     gap: var(--size-16);
     justify-items: center;
-    /* padding: var(--size-16); */
 
-    /* --_bg-color: var(--mvw-gamecenter-stats-bg-color); */
-    /* background-color: var(--mvw-gamecenter-stats-bg-color); */
-    /* border: 1px solid var(--mvw-gamecenter-stats-border-color); */
+    .is-popover-content {
+      padding: var(--size-16);
+
+      dl + dl {
+        margin-block-start: var(--size-12);
+      }
+    }
 
     @media (width > 768px) {
       --columns: repeat(2, 1fr);

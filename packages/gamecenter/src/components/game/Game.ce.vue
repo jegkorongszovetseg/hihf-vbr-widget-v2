@@ -142,8 +142,6 @@ const websocketURL = computed(() => getWebsocketURL(`/v2/game-attendance?gameid=
 
 <style src="@mjsz-vbr-elements/shared/css/components/table.css" />
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/components/typography.css" /> -->
-
 <style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
@@ -158,14 +156,4 @@ const websocketURL = computed(() => getWebsocketURL(`/v2/game-attendance?gameid=
 
 <style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
 
-<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/game-center.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/progress.scss" lang="scss"></style> -->
+<style src="@mjsz-vbr-elements/shared/css/components/icon-button.css" />

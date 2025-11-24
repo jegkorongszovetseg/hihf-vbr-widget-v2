@@ -122,8 +122,8 @@ const { t } = useI18n();
       </template>
       <template #cell-more="{ row }">
         <FloatingPanel :offset="2" placement="left" theme="content" :append-to="rootElement">
-          <template #default="{ setRef, toggle }">
-            <button :ref="setRef" type="button" aria-label="more" class="icon-button" @click.stop.prevent="toggle">
+          <template #default="{ setRef, open, toggle, nextFocus }">
+            <button :ref="setRef" type="button" aria-label="more" :data-state="open ? 'open' : 'closed'" class="icon-button" @click.stop.prevent="toggle" @keydown.tab="nextFocus">
               <IconMore />
             </button>
           </template>

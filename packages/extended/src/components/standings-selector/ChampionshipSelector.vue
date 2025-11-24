@@ -28,8 +28,8 @@ const emit = defineEmits(['change']);
 
 <template>
   <FloatingPanel :offset="2" placement="bottom-end" theme="content" :append-to="target" :is-arrow-visible="false">
-    <template #default="{ setRef, toggle }">
-      <button :ref="setRef" type="button" class="icon-button" @click="toggle">
+    <template #default="{ setRef, open, toggle }">
+      <button :ref="setRef" type="button" :data-state="open ? 'open' : 'closed'" class="icon-button" @click="toggle">
         <IconMenu style="display: block; height: 20px;" />
       </button>
     </template>

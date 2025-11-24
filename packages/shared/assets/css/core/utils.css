@@ -94,6 +94,10 @@
     margin-block-start: calc(var(--size-16) * 2);
   }
 
+  .p-sm {
+    padding-block: var(--size-8);
+  }
+
   .py-md {
     padding-block: var(--size-16);
   }

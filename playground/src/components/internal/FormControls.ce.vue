@@ -4,7 +4,7 @@ import { IconMenu } from '@mjsz-vbr-elements/shared/icons';
 </script>
 
 <template>
-  <div class="flex" style="gap: var(--size-16)">
+  <div class="flex" style="gap: var(--size-16); align-items: end;">
     <FormField label="Select" name="select">
       <BaseSelect id="select">
         <option>Test</option>
@@ -17,9 +17,9 @@ import { IconMenu } from '@mjsz-vbr-elements/shared/icons';
       <input id="input">
     </FormField>
 
-    <FloatingPanel :offset="2" placement="bottom-end" theme="content" :append-to="null" :is-arrow-visible="false">
-      <template #default="{ setRef, toggle }">
-        <button :ref="setRef" type="button" class="icon-button" @click="toggle">
+    <FloatingPanel :offset="6" placement="bottom-end" theme="content" :append-to="null" :is-arrow-visible="false">
+      <template #default="{ open, setRef, toggle, nextFocus }">
+        <button :ref="setRef" type="button" class="icon-button" :data-state="open ? 'open' : 'closed'" @click="toggle" @keydown="nextFocus">
           <IconMenu />
         </button>
       </template>
@@ -64,3 +64,5 @@ import { IconMenu } from '@mjsz-vbr-elements/shared/icons';
 <style src="../../../../packages/shared/assets/css/components/floating-content.css" />
 
 <style src="../../../../packages/shared/assets/css/components/list.css" />
+
+<style src="../../../../packages/shared/assets/css/components/icon-button.css" />

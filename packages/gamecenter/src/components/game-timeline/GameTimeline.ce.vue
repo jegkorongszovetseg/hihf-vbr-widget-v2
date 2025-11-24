@@ -201,17 +201,3 @@ useGameDataSocket(getWebsocketURL(`/v2/game-data?gameid=${gameId.value}&apiKey=$
 <style src="@mjsz-vbr-elements/shared/css/components/double-bar.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/progress.css" />
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/progress.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style> -->
-
-<!-- <style src="@mjsz-vbr-elements/shared/css/game-center-timeline.scss" lang="scss"></style> -->

@@ -58,9 +58,9 @@ const dvgPercent = computed(() => buildDvgPercent(props.gameStats?.teamPowerPlay
       <GameStatsContainer :title="t('teamsStats.penaltyKilling')" :data="dvgPercent" />
       <GameStatsContainer :data="advTime.advTime">
         {{ t('teamsStats.advantageTime') }}
-        <FloatingPanel :offset="2" placement="top" theme="content" append-to="#popover-container">
-          <template #default="{ setRef, show, hide }">
-            <button :ref="setRef" @click.stop="show" @focus="show" @blur="hide">
+        <FloatingPanel :offset="10" placement="top" theme="content" append-to="#popover-container">
+          <template #default="{ setRef, open, toggle, hide }">
+            <button :ref="setRef" class="icon-button xs" :data-state="open ? 'open' : 'closed'" @click.stop.prevent="toggle" @blur="hide">
               <IconMore />
             </button>
           </template>
