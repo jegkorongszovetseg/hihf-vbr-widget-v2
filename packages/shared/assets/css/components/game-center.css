@@ -129,7 +129,7 @@
     }
 
     > * {
-      padding: 10px;
+      padding: var(--size-12);
     }
 
     .is-team-logo-cell {
@@ -263,8 +263,8 @@
     border: 1px solid var(--mvw-gamecenter-team-container-border-color);
     min-width: 0;
 
-    h2 {
-      padding: 8px;
+    h3 {
+      padding: var(--size-8);
       margin: 0;
       font-size: var(--mvw-gamecenter-team-container-title-size);
       font-weight: 500;
