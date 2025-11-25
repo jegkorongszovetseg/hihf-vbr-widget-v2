@@ -26,6 +26,7 @@ export default defineConfig({
         resolve(__dirname, 'src/utils.js'),
         resolve(__dirname, 'src/columns.js'),
         resolve(__dirname, 'src/constants.js'),
+        resolve(__dirname, 'src/props.js'),
       ],
       formats: ['es'],
     },

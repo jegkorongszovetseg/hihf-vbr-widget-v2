@@ -1,0 +1,35 @@
+@layer components {
+  :where(.card-item) {
+    --_grid-template-areas: 'name name name name name' 'date date date date date'
+      'home-team home-team-logo game-data away-team-logo away-team';
+
+    display: grid;
+    grid-gap: var(--size-8);
+    grid-template-columns: 1fr 20px 1.5fr 20px 1fr;
+    grid-template-areas: var(--_grid-template-areas);
+    padding: var(--size-16);
+    align-items: center;
+
+    &:not(:last-of-type) {
+      border-bottom: 1px solid var(--mvw-border-faded);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+    }
+
+    .game-result {
+      color: var(--mvw-text-highlighted);
+
+      &.is-live {
+        color: var(--mvw-color-live);
+      }
+    }
+
+    @container card-wrapper (width > 768px) {
+      grid-template-columns: 2fr 40px 1fr 40px 2fr;
+    }
+  }
+}

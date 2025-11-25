@@ -1,7 +1,7 @@
 {
   "name": "@mjsz-vbr-elements/liga",
   "type": "module",
-  "version": "2.32.0",
+  "version": "2.33.1",
   "private": false,
   "description": "Data visualization for MJSZ VBR",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",

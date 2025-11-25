@@ -1,0 +1,86 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-card-color: light-dark(var(--mvw-color-primary-950), var(--mvw-color-primary-200));
+    --mvw-card-bg-color: light-dark(var(--mvw-color-white), var(--mvw-color-primary-950));
+    --mvw-card-tonal-active-bg-color: light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-900));
+  }
+}
+
+@layer components {
+  :where(details) {
+    --_accordion-transition-time: 0.2s;
+    --_bg-color: var(--mvw-card-bg-color);
+    --_shadow: none;
+
+    container-type: inline-size;
+    display: block;
+    background-color: var(--_bg-color);
+    border-radius: var(--radius-2);
+    color: var(--mvw-card-color);
+    box-shadow: var(--_shadow);
+    transition: all var(--_accordion-transition-time) ease-out;
+
+    @media (prefers-reduced-motion: no-preference) {
+      interpolate-size: allow-keywords;
+    }
+
+    &::details-content {
+      block-size: 0;
+      opacity: 0;
+      overflow-y: clip;
+      transition:
+        content-visibility var(--_accordion-transition-time) allow-discrete,
+        opacity var(--_accordion-transition-time),
+        block-size var(--_accordion-transition-time);
+    }
+
+    &[open]::details-content {
+      block-size: auto;
+      opacity: 1;
+    }
+
+    & > summary {
+      background-color: inherit;
+      cursor: pointer;
+      font-weight: 700;
+      padding-block: var(--size-16);
+      user-select: none;
+
+      align-items: center;
+      display: flex;
+      gap: var(--size-8);
+      list-style: none;
+
+      &::marker,
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      strong {
+        flex: 1;
+      }
+
+      svg {
+        transition: rotate 0.8s var(--ease-spring-1, ease);
+      }
+    }
+
+    &[open] > summary svg {
+      rotate: 180deg;
+    }
+
+    &.elevated {
+      --_shadow: var(--shadow-3);
+    }
+
+    &.tonal {
+      &[open] {
+        background-color: var(--mvw-card-tonal-active-bg-color);
+      }
+    }
+
+    &:where(.tonal) > * {
+      padding-inline: var(--size-16);
+    }
+  }
+}

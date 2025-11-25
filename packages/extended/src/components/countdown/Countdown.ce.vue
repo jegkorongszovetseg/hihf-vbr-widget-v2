@@ -148,8 +148,6 @@ function startGame(game) {
   </I18NProvider>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/countdown.scss" lang="scss"></style>
-
-<style src="@mjsz-vbr-elements/shared/css/animation.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/countdown.css" />

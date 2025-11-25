@@ -1,7 +1,7 @@
 <script setup>
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import IconWhistle from '@mjsz-vbr-elements/shared/icons/IconWhistle';
+import { IconWhistle } from '@mjsz-vbr-elements/shared/icons';
 import { computed, ref } from 'vue';
 import { convertPenaltyCause } from '../../internal';
 import TeamLogo from './TeamLogo.vue';

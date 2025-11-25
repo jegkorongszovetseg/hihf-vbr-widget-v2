@@ -5,13 +5,13 @@ import {
   ErrorNotice,
   ErrorProvider,
   I18NProvider,
+  SeasonSelector,
 } from '@mjsz-vbr-elements/core/components';
 import { externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { ref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
 import DataProvider from './DataProvider.vue';
-import Selector from './Selector.vue';
 import { COLUMNS_LIVE_STANDINGS_P_3, TOGGLE_DEFAULT, TOGGLE_LIVE } from './standings.internal';
 import StandingsTable from './StandingsTable.vue';
 
@@ -70,29 +70,35 @@ const externalTeamLink = teamId => externalTeamLinkResolver(props.externalTeamRe
           :locale="locale"
           :championship-name="championshipName"
         >
-          <Selector :seasons="seasons" :championship-id="championshipId" @update:championship-id="changeSeason" />
-          <div class="section-selector">
-            <button
-              v-for="rawSection in sections"
-              :key="rawSection.phaseId"
-              class="tab-button" :class="{ 'is-active': rawSection.phaseName === section }"
-              @click="changeSection(rawSection.phaseName)"
-            >
-              {{ rawSection.phaseName }}
-            </button>
-          </div>
+          <SeasonSelector
+            :seasons="seasons"
+            :championship-id="championshipId"
+            :sections="sections"
+            :section-id="section"
+            @on-change-season="changeSeason"
+            @on-change-section="changeSection"
+          />
 
-          <div v-if="isLiveStandingsActive" class="toggle-group">
-            <button :class="{ 'is-active': standingsType === TOGGLE_LIVE }" @click="onChangeStandingsType(TOGGLE_LIVE)">
-              {{ t('standings.live') }}
-            </button>
-            <button
-              :class="{ 'is-active': standingsType === TOGGLE_DEFAULT }"
-              @click="onChangeStandingsType(TOGGLE_DEFAULT)"
-            >
-              {{ t('standings.default') }}
-            </button>
-          </div>
+          <nav v-if="isLiveStandingsActive" class="tabs filled mb-md">
+            <div role="tablist" :aria-label="t('selection.sections')">
+              <button
+                role="tab"
+                type="button"
+                :aria-selected="standingsType === TOGGLE_LIVE"
+                @click="onChangeStandingsType(TOGGLE_LIVE)"
+              >
+                {{ t('standings.live') }}
+              </button>
+              <button
+                role="tab"
+                type="button"
+                :aria-selected="standingsType === TOGGLE_DEFAULT "
+                @click="onChangeStandingsType(TOGGLE_DEFAULT)"
+              >
+                {{ t('standings.default') }}
+              </button>
+            </div>
+          </nav>
 
           <StandingsTable
             v-if="standingsType === TOGGLE_LIVE && isLiveStandingsActive"
@@ -124,16 +130,20 @@ const externalTeamLink = teamId => externalTeamLinkResolver(props.externalTeamRe
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/responsive-table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/avatar.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/form-field.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/badge.css" />

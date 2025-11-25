@@ -1,7 +1,7 @@
 {
   "name": "docs",
   "type": "module",
-  "version": "2.32.0",
+  "version": "2.33.1",
   "private": true,
   "description": "",
   "author": "",
@@ -19,6 +19,7 @@
     "@mjsz-vbr-elements/extended": "workspace:^",
     "@mjsz-vbr-elements/gamecenter": "workspace:^",
     "@mjsz-vbr-elements/liga": "workspace:^",
+    "@mjsz-vbr-elements/shared": "workspace:^",
     "ramda": "^0.31.3"
   },
   "devDependencies": {

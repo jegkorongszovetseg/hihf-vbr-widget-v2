@@ -12,7 +12,7 @@ export const FETCH_GAMES_INTERVAL = 1000 * 60 * 2;
 export const COLUMNS_LIVE_STANDINGS_P_3 = {
   index: {
     label: 'table.blank',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   teamLogo: {
     label: '',
@@ -21,7 +21,7 @@ export const COLUMNS_LIVE_STANDINGS_P_3 = {
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold is-horizontal-content',
+    class: 'text-start w-auto font-bold is-horizontal-content',
   },
   score: {
     label: 'table.score.short',
@@ -70,7 +70,7 @@ export const COLUMNS_LIVE_STANDINGS_P_3 = {
   points: {
     label: 'table.points.short',
     tooltip: 'table.points.tooltip',
-    class: 'is-text-bold',
+    class: 'font-bold',
   },
 };
 

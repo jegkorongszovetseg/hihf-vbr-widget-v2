@@ -1,7 +1,7 @@
 {
   "name": "@mjsz-vbr-elements/core",
   "type": "module",
-  "version": "2.32.0",
+  "version": "2.33.1",
   "private": false,
   "description": "Data visualization for MJSZ VBR",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
@@ -24,6 +24,9 @@
     },
     "./columns": {
       "import": "./dist/columns.js"
+    },
+    "./props": {
+      "import": "./dist/props.js"
     }
   },
   "module": "./dist/index.js",

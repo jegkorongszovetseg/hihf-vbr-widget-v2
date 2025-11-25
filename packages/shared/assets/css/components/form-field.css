@@ -1,0 +1,74 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-form-label-font-size: var(--font-size-200);
+    --mvw-form-label-color: var(--mvw-text-muted);
+
+    --mvw-input-color: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-200));
+    --mvw-input-font-size: var(--font-size-400);
+    --mvw-input-border-color: light-dark(var(--mvw-color-primary-300), var(--mvw-color-primary-700));
+    --mvw-input-bg-color: light-dark(var(--mvw-color-white), var(--mvw-color-primary-950));
+    --mvw-input-border-radius: var(--radius-2);
+  }
+}
+
+@layer components {
+  :where(.form-field) {
+    --_border-color: var(--mvw-input-border-color);
+    --_bg-color: var(--mvw-input-bg-color);
+    --_height: var(--size-32);
+    --_color: var(--mvw-input-color);
+    --_field-padding-block: var(--size-6);
+    --_field-padding-inline: var(--size-10);
+
+    contain: layout;
+    position: relative;
+    color: var(--mvw-text-default);
+
+    & pre,
+    & input,
+    & select {
+      appearance: none;
+      block-size: var(--_height);
+      min-inline-size: 0;
+      font-family: inherit;
+      font-size: var(--mvw-input-font-size);
+      color: var(--_color);
+      line-height: var(--font-lineheight-100);
+      background-color: var(--_bg-color);
+      border: var(--field-border-width, 1px) solid var(--_border-color);
+      border-radius: var(--mvw-input-border-radius);
+      padding: var(--_field-padding-block) var(--_field-padding-inline);
+    }
+
+    & select {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23888' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right var(--size-6) center;
+      background-size: 16px 12px;
+      padding-inline-end: var(--size-24);
+    }
+
+    & pre {
+      line-height: var(--font-lineheight-500);
+    }
+
+    & input::placeholder {
+      color: rgb(from var(--_color) r g b / 50%);
+    }
+
+    label {
+      display: block;
+      font-size: var(--mvw-form-label-font-size);
+      line-height: var(--font-lineheight-700);
+      color: var(--mvw-form-label-color);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    &.full-width {
+      :where(& input, & select) {
+        inline-size: 100%;
+      }
+    }
+  }
+}

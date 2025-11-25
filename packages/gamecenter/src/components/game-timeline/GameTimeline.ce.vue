@@ -176,16 +176,28 @@ useGameDataSocket(getWebsocketURL(`/v2/game-data?gameid=${gameId.value}&apiKey=$
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/responsive-table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/typography.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/progress.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/game-center-timeline.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/avatar.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/game-center-timeline.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/game-center-game-data.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/double-bar.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/progress.css" />

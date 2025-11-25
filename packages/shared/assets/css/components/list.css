@@ -1,0 +1,138 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-list-item-font-size: var(--font-size-400);
+    --mvw-list-item-color: light-dark(var(--mvw-color-primary-500), var(--mvw-color-primary-200));
+    --mvw-list-item-hover-color: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-50));
+    --mvw-list-item-hover-bg-color: light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-900));
+    --mvw-list-item-selected-color: light-dark(var(--mvw-color-secondary-700), var(--mvw-color-secondary-300));
+  }
+}
+@layer components {
+  :where(.list) {
+    list-style: none;
+    margin: 0;
+    padding: var(--size-4);
+
+    @media (pointer: coarse) {
+      &,
+      * {
+        user-select: none;
+      }
+    }
+
+    :where(li, option, [role='group'] > label) {
+      align-items: center;
+      /* background: var(--_bg-color) var(--ripple, none); */
+      display: flex;
+      /* font-size: var(--font-size-sm); */
+      gap: var(--size-4);
+      isolation: isolate;
+      min-block-size: 40px;
+      /* padding: var(--size-4) var(--size-6); */
+      position: relative;
+
+      &::before {
+        display: none; /* removing checkmark from option */
+      }
+
+      * {
+        font-size: inherit;
+      }
+
+      /* Clickable list item */
+      &:has(> a, > button, > label) {
+        background: transparent;
+        display: block;
+        min-block-size: auto;
+        padding: 0;
+      }
+
+      /* Select option */
+      /* &:where(option) {
+        align-items: center;
+        background-color: var(--_bg-color);
+        color: inherit;
+        cursor: pointer;
+        display: flex;
+        gap: var(--size-8);
+        inline-size: 100%;
+        margin: 0;
+        min-block-size: 40px;
+        padding: var(--size-4) var(--size-8);
+        text-align: start;
+        text-decoration: none;
+        z-index: 0;
+
+        &:hover {
+          background-color: light-dark(var(--gray-2), var(--gray-14));
+        }
+
+        &:checked {
+          background-color: oklch(from var(--primary) l c h / 30%);
+        }
+      } */
+
+      & > a,
+      & > button,
+      & > label {
+        align-items: center;
+        color: var(--mvw-list-item-color);
+        cursor: pointer;
+        display: flex;
+        gap: var(--size-8);
+        inline-size: 100%;
+        margin: 0;
+        outline-offset: -1px;
+        font-size: var(--mvw-list-item-font-size);
+        padding: var(--size-4) var(--size-6);
+        text-align: start;
+        text-decoration: none;
+        border-radius: var(--radius-2);
+        z-index: 0;
+
+        &:focus,
+        &:focus-visible,
+        &:hover {
+          color: var(--mvw-list-item-hover-color);
+          background-color: var(--mvw-list-item-hover-bg-color);
+        }
+
+        &[aria-selected='true'] {
+          color: var(--mvw-list-item-selected-color);
+        }
+
+        /* Text */
+        .text {
+          flex: 1;
+          line-height: 1.6;
+
+          :where(h1, h2, h3, h4, h5, h6, p, span) {
+            color: inherit;
+            font-weight: 400;
+          }
+
+          p + p {
+            font-size: var(--font-size-100);
+          }
+        }
+
+        /* Leading content */
+        .start {
+          align-self: center;
+          align-items: center;
+          display: grid;
+          z-index: 1;
+
+          /* &:has(svg) {
+            max-inline-size: calc(var(--mvw-list-item-font-size) - 10px);
+          } */
+
+          svg {
+            /* padding-block-start: 0.125rem; */
+            inline-size: var(--mvw-list-item-font-size);
+          }
+        }
+      }
+    }
+  }
+}

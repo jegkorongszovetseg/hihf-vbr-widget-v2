@@ -1,7 +1,7 @@
 <script setup>
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import IconMore from '@mjsz-vbr-elements/shared/icons/IconMore';
+import { IconMore } from '@mjsz-vbr-elements/shared/icons';
 import { computed } from 'vue';
 import GameStatsContainer from './components/GameStatsContainer.vue';
 import { buildAdv, buildAdvPercent, buildDvgPercent, buildSaves, buildSOG } from './internal';
@@ -49,7 +49,7 @@ const dvgPercent = computed(() => buildDvgPercent(props.gameStats?.teamPowerPlay
 </script>
 
 <template>
-  <div class="gamecenter-game-stats">
+  <div class="card bordered mb-md">
     <div class="gamecenter-game-stats-container-wrapper">
       <GameStatsContainer :title="t('teamsStats.sog')" :data="sog" />
       <GameStatsContainer :title="t('teamsStats.saves')" :data="saves" />
@@ -58,9 +58,9 @@ const dvgPercent = computed(() => buildDvgPercent(props.gameStats?.teamPowerPlay
       <GameStatsContainer :title="t('teamsStats.penaltyKilling')" :data="dvgPercent" />
       <GameStatsContainer :data="advTime.advTime">
         {{ t('teamsStats.advantageTime') }}
-        <FloatingPanel :offset="2" placement="top" theme="content" append-to="#popover-container">
-          <template #default="{ setRef, show, hide }">
-            <button :ref="setRef" @click.stop="show" @focus="show" @blur="hide">
+        <FloatingPanel :offset="10" placement="top" theme="content" append-to="#popover-container">
+          <template #default="{ setRef, open, toggle, hide }">
+            <button :ref="setRef" class="icon-button xs" :data-state="open ? 'open' : 'closed'" @click.stop.prevent="toggle" @blur="hide">
               <IconMore />
             </button>
           </template>

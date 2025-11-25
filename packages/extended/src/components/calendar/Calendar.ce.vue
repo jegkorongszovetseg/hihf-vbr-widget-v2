@@ -1,5 +1,4 @@
 <script setup>
-import { gameProps } from '@mjsz-vbr-elements/core';
 import {
   ErrorNotice,
   ErrorProvider,
@@ -7,6 +6,7 @@ import {
   I18NProvider,
   LoadingIndicator,
 } from '@mjsz-vbr-elements/core/components';
+import { gameProps } from '@mjsz-vbr-elements/core/props';
 import { externalGameLinkResolver, format, getLocalTimezone } from '@mjsz-vbr-elements/core/utils';
 import { computed, ref } from 'vue';
 import en from '../../locales/en.json';
@@ -64,47 +64,59 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
         :season-id="seasonId"
         :api-key="apiKey"
       >
-        <div id="top" class="flex overflow-x-auto is-mb-5">
-          <button
-            class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_GAMES_PLAYED }"
-            @click="changePanel(PANEL_GAMES_PLAYED)"
-          >
-            {{ t('calendar.gamesPlayed') }}
-          </button>
-          <button
-            class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_TODAYS_GAMES }"
-            @click="changePanel(PANEL_TODAYS_GAMES)"
-          >
-            {{ t('calendar.todaysGames') }}
-          </button>
-          <button
-            class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_NEXT_GAMES }"
-            @click="changePanel(PANEL_NEXT_GAMES)"
-          >
-            {{ t('calendar.nextGames') }}
-          </button>
-          <button
-            class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_WEEK_GAMES }"
-            @click="changePanel(PANEL_WEEK_GAMES)"
-          >
-            {{ t('calendar.weekGames') }}
-          </button>
-        </div>
+        <nav class="tabs underlined mb-md">
+          <div id="top" role="tablist" :aria-label="t('selection.sections')" class="flex overflow-x-auto">
+            <button
+              role="tab"
+              type="button"
+              :aria-selected="selectedPanel === PANEL_GAMES_PLAYED"
+              @click="changePanel(PANEL_GAMES_PLAYED)"
+            >
+              {{ t('calendar.gamesPlayed') }}
+            </button>
+            <button
+              role="tab"
+              type="button"
+              :aria-selected="selectedPanel === PANEL_TODAYS_GAMES"
+              @click="changePanel(PANEL_TODAYS_GAMES)"
+            >
+              {{ t('calendar.todaysGames') }}
+            </button>
+            <button
+              role="tab"
+              type="button"
+              :aria-selected="selectedPanel === PANEL_NEXT_GAMES"
+              @click="changePanel(PANEL_NEXT_GAMES)"
+            >
+              {{ t('calendar.nextGames') }}
+            </button>
+            <button
+              role="tab"
+              type="button"
+              :aria-selected="selectedPanel === PANEL_WEEK_GAMES"
+              @click="changePanel(PANEL_WEEK_GAMES)"
+            >
+              {{ t('calendar.weekGames') }}
+            </button>
+          </div>
+        </nav>
 
-        <div class="toggle-group">
-          <button
-            v-for="month in months"
-            :key="month.id"
-            type="button"
-            :class="{ 'is-active': selectedMonth === month.id }"
-            :disabled="isLoading"
-            @click="setMonth(month)"
-          >
-            {{ month.name }}
-          </button>
-        </div>
+        <nav class="tabs filled mb-md">
+          <div role="tablist" :aria-label="t('selection.sections')">
+            <button
+              v-for="month in months"
+              :key="month.id"
+              type="button"
+              :aria-selected="selectedMonth === month.id"
+              :disabled="isLoading"
+              @click="setMonth(month)"
+            >
+              {{ month.name }}
+            </button>
+          </div>
+        </nav>
 
-        <div v-if="games.totalItems === 0 && !isLoading" class="is-text-center">
+        <div v-if="games.totalItems === 0 && !isLoading" class="text-center text-muted">
           {{ t('calendar.noGame') }}
         </div>
 
@@ -112,8 +124,8 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
           <LoadingIndicator v-if="isLoading" />
 
           <div v-for="(gameDay, key) in games.rows" :key="key" :data-gamedate="key">
-            <span class="is-text-base">{{ format(new Date(key), 'LL dddd', timezone, locale) }}</span>
-            <div class="is-card">
+            <span class="block h6 text-highlighted mt-xl mb-md">{{ format(new Date(key), 'LL dddd', timezone, locale) }}</span>
+            <div class="card">
               <template v-for="game in gameDay" :key="game.id">
                 <GameItem
                   :game="game"
@@ -141,10 +153,14 @@ const resolveExternalGameLink = game => externalGameLinkResolver(props.externalG
   </I18NProvider>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/card.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/typography.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/game-item.css" />

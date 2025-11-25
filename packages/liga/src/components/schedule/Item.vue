@@ -1,8 +1,7 @@
 <script setup>
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import IconBroadcast from '@mjsz-vbr-elements/shared/icons/IconBroadcast';
-import IconYoutube from '@mjsz-vbr-elements/shared/icons/IconYoutube';
+import { IconBroadcast, IconYoutube } from '@mjsz-vbr-elements/shared/icons';
 import { noop } from '@vueuse/core';
 
 defineProps({
@@ -27,11 +26,13 @@ defineProps({
   },
 });
 const { t } = useI18n();
+
+const gridTemaplateAreas = `--_grid-template-areas: 'name name name name name' 'home-team home-team-logo game-data away-team-logo away-team';`;
 </script>
 
 <template>
-  <div class="card-item" :class="{ 'is-optional': game.optional }">
-    <div class="is-info is-text-base">
+  <div class="card-item" :style="gridTemaplateAreas" :class="{ 'is-optional': game.optional }">
+    <div class="text-muted text-sm text-center" style="grid-area: name;">
       {{ game.gameName }} - {{ game.divisionName }} - {{ game.location.locationName }}
       <template v-if="game.broadcast">
         -&nbsp;<IconBroadcast height="16" />&nbsp;
@@ -41,51 +42,56 @@ const { t } = useI18n();
       </template>
     </div>
 
-    <div class="is-home-team is-text-base">
-      <template v-if="game.homeTeam">
-        <span class="is-team-name-short">{{ game.homeTeam.shortName }}</span>
-        <span class="is-team-name-long">{{ game.homeTeam.longName }}</span>
-        <Image :key="game.homeTeam.id" class="is-logo-image" :src="game.homeTeam.logo" />
-      </template>
+    <div class="responsive-team-name" style="grid-area: home-team;">
+      <div v-if="game.homeTeam" class="text-end text-highlighted font-bold">
+        <span class="team-name-short">{{ game.homeTeam.shortName }}</span>
+        <span class="team-name-long">{{ game.homeTeam.longName }}</span>
+      </div>
+    </div>
+    <div style="grid-area: home-team-logo;">
+      <Image :key="game.homeTeam.id" :src="game.homeTeam.logo" />
     </div>
 
-    <div class="is-game-data" :class="[{ 'is-live': game.gameStatus === 1 }]">
-      <div class="g-row">
-        <span v-if="game.isOvertime" class="is-badge is-invert">{{ t('common.overtimeShort') }}</span>
-        <span v-if="game.isShootout" class="is-badge is-invert">{{ t('common.shootoutShort') }}</span>
-        <span v-if="game.seriesStandings" class="is-badge">{{ game.seriesStandings }}</span>
+    <div class="grid text-center" style="grid-area: game-data;">
+      <div class="">
+        <span v-if="game.isOvertime" class="badge">{{ t('common.overtimeShort') }}</span>
+        <span v-if="game.isShootout" class="badge">{{ t('common.shootoutShort') }}</span>
+        <span v-if="game.seriesStandings" class="badge inverted">{{ game.seriesStandings }}</span>
       </div>
-      <a :href="gameLink(game)" :target="target">
-        <span v-if="game.gameStatus > 0 && game.gameStatus < 3" class="is-text-xl is-text-bold">
+      <a :href="gameLink(game)" :target="target" class="game-result" :class="[{ 'is-live': game.gameStatus === 1 }]">
+        <span v-if="game.gameStatus > 0 && game.gameStatus < 3" class="text-xl font-bold">
           {{ game.homeTeamScore }} : {{ game.awayTeamScore }}
         </span>
-        <span v-if="game.gameStatus === 3" class="is-text-xl is-text-bold">
+        <span v-if="game.gameStatus === 3" class="text-xl font-bold">
           {{ t('game.status.jury') }}
         </span>
-        <span v-if="game.gameStatus === 4" class="is-text-xl is-text-bold">
+        <span v-if="game.gameStatus === 4" class="text-xl font-bold">
           {{ t('game.status.delayed') }}
         </span>
         <span v-if="game.gameStatus === 0">
           {{ game.gameDateTime }}
         </span>
       </a>
-      <span v-if="game.gameStatus === 0" class="is-text-xs is-opacity-40">({{ offsetName }})</span>
+      <span v-if="game.gameStatus === 0" class="text-sm text-faded">({{ offsetName }})</span>
       <template v-if="game.gameStatus > 0">
-        <div class="is-text-sm is-whitespace-nowrap">
+        <div class="text-sm text-muted is-whitespace-nowrap">
           {{ game.periodResults }}
         </div>
-        <div v-if="game.gameStatus !== 2" class="is-text-xs is-uppercase is-whitespace-nowrap">
+        <div v-if="game.gameStatus !== 2" class="text-xs uppercase text-muted is-whitespace-nowrap">
           {{ t(`game.period.${game.period}`) }}
         </div>
       </template>
     </div>
 
-    <div class="is-away-team is-text-base">
-      <template v-if="game.awayTeam">
-        <Image :key="game.awayTeam.id" class="is-logo-image" :src="game.awayTeam.logo" />
-        <span class="is-team-name-short">{{ game.awayTeam.shortName }}</span>
-        <span class="is-team-name-long">{{ game.awayTeam.longName }}</span>
-      </template>
+    <div style="grid-area: away-team-logo;">
+      <Image :key="game.awayTeam.id" class="is-logo-image" :src="game.awayTeam.logo" />
+    </div>
+
+    <div class="responsive-team-name" style="grid-area: away-team;">
+      <div v-if="game.awayTeam" class="text-highlighted font-bold">
+        <span class="team-name-short">{{ game.awayTeam.shortName }}</span>
+        <span class="team-name-long">{{ game.awayTeam.longName }}</span>
+      </div>
     </div>
   </div>
 </template>

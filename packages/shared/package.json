@@ -1,7 +1,7 @@
 {
   "name": "@mjsz-vbr-elements/shared",
   "type": "module",
-  "version": "2.32.0",
+  "version": "2.33.1",
   "private": false,
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
@@ -9,22 +9,21 @@
     ".": {
       "import": "./dist/icons/index.js"
     },
-    "./icons/*": {
-      "import": "./dist/icons/*.js"
+    "./icons": {
+      "import": "./dist/icons/index.js"
     },
-    "./css/*.scss": {
-      "import": "./assets/css/*.scss",
-      "require": "./assets/css/*.scss"
+    "./css/*.css": {
+      "import": "./assets/css/*.css",
+      "require": "./assets/css/*.css"
     }
   },
   "module": "./dist/icons/index.js",
   "files": [
+    "assets/css",
     "dist"
   ],
   "scripts": {
-    "build:variables": "sass --no-source-map ./assets/css/_variables.scss ./dist/variables.css",
-    "build:icons": "vite build",
-    "build": "pnpm run build:icons && pnpm run build:variables"
+    "build": "vite build"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.0",

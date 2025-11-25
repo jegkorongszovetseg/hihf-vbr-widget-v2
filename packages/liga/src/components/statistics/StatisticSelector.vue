@@ -1,5 +1,5 @@
 <script setup>
-import { BaseSelect } from '@mjsz-vbr-elements/core/components';
+import { BaseSelect, FormField } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { computed } from 'vue';
 import { REPORT_TYPE_PLAYERS, REPORT_TYPE_TEAMS } from './statistics.internal';
@@ -98,17 +98,15 @@ function onStatTypeChange(value) {
 </script>
 
 <template>
-  <div class="g-row is-mb-5" style="flex-wrap: wrap; gap: 20px; margin: 20px 0">
-    <div>
-      <label for="season" class="label">{{ t('selection.season') }}</label>
+  <div class="flex-container mb-md">
+    <FormField :label="t('selection.season')" name="season">
       <BaseSelect id="season" v-model="seasonSelect">
         <option v-for="season in seasons" :key="season.championshipId" :value="season.championshipId">
           {{ season.seasonName }}
         </option>
       </BaseSelect>
-    </div>
-    <div>
-      <label for="section" class="label">{{ t('selection.section') }}</label>
+    </FormField>
+    <FormField :label="t('selection.section')" name="section">
       <BaseSelect id="section" v-model="sectionSelect">
         <option
           v-for="sectionName in sections"
@@ -118,18 +116,16 @@ function onStatTypeChange(value) {
           {{ sectionName.phaseName }}
         </option>
       </BaseSelect>
-    </div>
-    <div>
-      <label for="report" class="label">{{ t('selection.report') }}</label>
+    </FormField>
+    <FormField :label="t('selection.report')" name="report">
       <BaseSelect id="report" v-model="reportSelect">
         <option v-for="{ name, value } in reports" :key="value" :value="value">
           {{ name }}
         </option>
       </BaseSelect>
-    </div>
+    </FormField>
     <template v-if="reportType === 'players'">
-      <div>
-        <label for="teams" class="label">{{ t('selection.teams') }}</label>
+      <FormField :label=" t('selection.teams')" name="teams">
         <BaseSelect id="teams" v-model="teamSelect" :disabled="reportType !== 'players'">
           <option :value="null">
             {{ t('common.all') }}
@@ -138,9 +134,8 @@ function onStatTypeChange(value) {
             {{ teamName }}
           </option>
         </BaseSelect>
-      </div>
-      <div>
-        <label for="player" class="label">{{ t('selection.filterName') }}</label>
+      </FormField>
+      <FormField :label="t('selection.filterName')" name="player">
         <input
           id="player"
           v-model="playerName"
@@ -148,24 +143,28 @@ function onStatTypeChange(value) {
           class="base-input"
           :disabled="reportType !== 'players'"
         >
-      </div>
+      </FormField>
     </template>
   </div>
 
-  <div>
-    <button
-      type="button"
-      class="tab-button" :class="{ 'is-active': reportType === REPORT_TYPE_PLAYERS }"
-      @click="onStatTypeChange(REPORT_TYPE_PLAYERS)"
-    >
-      {{ t('selection.players') }}
-    </button>
-    <button
-      type="button"
-      class="tab-button" :class="{ 'is-active': reportType === REPORT_TYPE_TEAMS }"
-      @click="onStatTypeChange(REPORT_TYPE_TEAMS)"
-    >
-      {{ t('selection.teams') }}
-    </button>
-  </div>
+  <nav class="tabs underlined">
+    <div role="tablist" :aria-label="t('selection.sections')">
+      <button
+        role="tab"
+        type="button"
+        :aria-selected="reportType === REPORT_TYPE_PLAYERS"
+        @click="onStatTypeChange(REPORT_TYPE_PLAYERS)"
+      >
+        {{ t('selection.players') }}
+      </button>
+      <button
+        role="tab"
+        type="button"
+        :aria-selected="reportType === REPORT_TYPE_TEAMS"
+        @click="onStatTypeChange(REPORT_TYPE_TEAMS)"
+      >
+        {{ t('selection.teams') }}
+      </button>
+    </div>
+  </nav>
 </template>

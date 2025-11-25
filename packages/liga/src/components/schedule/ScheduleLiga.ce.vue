@@ -1,5 +1,4 @@
 <script setup>
-import { gameProps } from '@mjsz-vbr-elements/core';
 import {
   ErrorNotice,
   ErrorProvider,
@@ -7,6 +6,7 @@ import {
   LoadingIndicator,
   TimezoneSelector,
 } from '@mjsz-vbr-elements/core/components';
+import { gameProps } from '@mjsz-vbr-elements/core/props';
 import { externalGameLinkResolver, format, getLocalTimezone, offsetName } from '@mjsz-vbr-elements/core/utils';
 import { unrefElement } from '@vueuse/core';
 import { computed, ref, unref } from 'vue';
@@ -113,7 +113,7 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
         >
           <ScheduleSelector
             ref="selectorElement"
-            class="is-sticky is-blured-bg"
+            class="sticky blured-bg"
             :seasons="seasons"
             :championship-id="championshipId"
             :months="months"
@@ -126,30 +126,43 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
             @update:selected-team="changeTeam"
             @update:selected-team-game-type="changeTeamType"
           />
-          <div class="section-selector">
-            <button
-              v-for="rawSection in sections"
-              :key="rawSection.id"
-              class="tab-button" :class="{ 'is-active': rawSection.name === section }"
-              @click="changeSection(rawSection.name)"
-            >
-              {{ rawSection.name }}
-            </button>
-          </div>
+          <nav class="tabs underlined mb-md">
+            <div role="tablist">
+              <button
+                v-for="rawSection in sections"
+                :key="rawSection.id"
+                role="tab"
+                type="button"
+                :aria-selected="rawSection.phaseName === section"
+                @click="changeSection(rawSection.phaseName)"
+              >
+                {{ rawSection.phaseName }}
+              </button>
+            </div>
+          </nav>
 
-          <div v-if="subPhases.length > 1" class="toggle-group">
-            <button :class="{ 'is-active': subPhase === '' }" @click="changeSubSection('')">
-              {{ t('common.all') }}
-            </button>
-            <button
-              v-for="{ name } in subPhases"
-              :key="name"
-              :class="{ 'is-active': name === subPhase }"
-              @click="changeSubSection(name)"
-            >
-              {{ name }}
-            </button>
-          </div>
+          <nav v-if="subPhases.length > 1" class="tabs filled">
+            <div role="tablist">
+              <button
+                role="tab"
+                type="button"
+                :aria-selected="subPhase === ''"
+                @click="changeSubSection('')"
+              >
+                {{ t('common.all') }}
+              </button>
+              <button
+                v-for="{ phaseTypeName } in subPhases"
+                :key="phaseTypeName"
+                role="tab"
+                type="button"
+                :aria-selected="phaseTypeName === subPhase"
+                @click="changeSubSection(phaseTypeName)"
+              >
+                {{ phaseTypeName }}
+              </button>
+            </div>
+          </nav>
 
           <TimezoneSelector
             v-if="props.timezoneSelector"
@@ -164,8 +177,8 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
 
           <template v-else>
             <div v-for="(gameDay, key) in games.rows" :key="key" :data-gamedate="key">
-              <span class="is-text-base">{{ format(new Date(key), 'L dddd', timezone, locale) }}</span>
-              <div class="is-card">
+              <h6>{{ format(new Date(key), 'L dddd', timezone, locale) }}</h6>
+              <div class="card">
                 <template v-for="game in gameDay" :key="game.id">
                   <GameItem
                     :game="game"
@@ -183,12 +196,20 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/form-field.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/card.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/game-item.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/timezone-selector.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/typography.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/badge.css" />

@@ -158,25 +158,29 @@ function onRetry() {
 
 <template>
   <I18NProvider v-slot="{ t }" :locale="props.locale" :messages="messages">
-    <div class="liga-top-list">
+    <div class="liga-top-list" data-theme="dark">
       <div v-if="hasError" style="padding: 1rem;">
         <ErrorNotice :error="error" use-retry @retry="onRetry" />
       </div>
       <template v-else>
-        <div v-if="!isEmpty(sections) && sections.length > 1" class="liga-top-list-selector">
-          <button
-            v-for="section in sections"
-            :key="section.phaseBaseId"
-            class="tab-button" :class="{ 'is-active': section.phaseBaseId === phaseBaseId }"
-            @click="onChangeSection(section.phaseBaseId)"
-          >
-            {{ section.phaseName }}
-          </button>
-        </div>
+        <nav v-if="!isEmpty(sections) && sections.length > 1" class="tabs underlined">
+          <div role="tablist" class="liga-top-list-selector">
+            <button
+              v-for="section in sections"
+              :key="section.phaseBaseId"
+              role="tab"
+              type="button"
+              :aria-selected="section.phaseBaseId === phaseBaseId"
+              @click="onChangeSection(section.phaseBaseId)"
+            >
+              {{ section.phaseName }}
+            </button>
+          </div>
+        </nav>
 
         <LoadingIndicator v-if="isLoading" />
 
-        <div v-else class="liga-top-list-wrapper">
+        <div v-else class="grid-container" style="--min-width: 185px; --gap: 0;">
           <TopListContainer :title="t('report.points')" :list="points.rows" data-key="points" external-id="points" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
           <TopListContainer :title="t('report.goals')" :list="goals.rows" data-key="goals" external-id="goals" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
           <TopListContainer :title="t('report.assists')" :list="assists.rows" data-key="assists" external-id="assists" :player-resolver="externalPlayerLink" :team-resolver="externalTeamLink" :stat-resolver="externalStatsLink" />
@@ -189,8 +193,12 @@ function onRetry() {
   </I18NProvider>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/top-list.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/top-list.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/avatar.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />

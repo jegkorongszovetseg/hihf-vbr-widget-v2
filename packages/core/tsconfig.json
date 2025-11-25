@@ -2,6 +2,11 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "composite": true,
+    "rootDir": "./src",
+    "paths": {
+      "@mjsz-vbr-elements/shared": ["../shared/index.js"],
+      "@mjsz-vbr-elements/shared/*": ["../shared/*"]
+    },
     "outDir": "./dist"
   },
   "include": ["./src/*", "./src/components/*", "./src/composables/*", "./src/utils/*", "./src/locales/*.json"]

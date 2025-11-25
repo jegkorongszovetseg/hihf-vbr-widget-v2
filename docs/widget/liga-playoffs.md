@@ -3,7 +3,7 @@
 ## Használat
 
 ```html
-<mjsz-vbr-playoffs locale="hu" championship-id="3314" />
+<mjsz-vbr-playoffs locale="hu" championship-id="3783" />
 ```
 
 ## Példa
@@ -11,6 +11,6 @@
 <ClientOnly>
   <mjsz-vbr-playoffs
     locale="hu"
-    championship-id="3314"
+    championship-id="3783"
   />
 </ClientOnly>

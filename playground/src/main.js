@@ -8,6 +8,7 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import { handleHotUpdate, routes } from 'vue-router/auto-routes';
 import App from './App.vue';
+import InternalElements from './components/InternalElements';
 import './style.css';
 import 'uno.css';
 import '@unocss/reset/tailwind.css';
@@ -24,7 +25,7 @@ if (import.meta.hot) {
 const app = createApp(App);
 
 app.use(MjszVbrElementsCore, {
-  modules: [MjszVbrElements, MjszVbrElementsExtended, MjszVbrElementsLiga, MjszVbrElementsGamecenter, MjszInternal],
+  modules: [MjszVbrElements, MjszVbrElementsExtended, MjszVbrElementsLiga, MjszVbrElementsGamecenter, InternalElements, MjszInternal],
   apiKey: import.meta.env.VITE_VBR_API_KEY,
 });
 

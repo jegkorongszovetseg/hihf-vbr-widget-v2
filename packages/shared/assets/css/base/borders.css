@@ -1,0 +1,8 @@
+:where(:host) {
+  --radius-1: 2px;
+  --radius-2: 5px;
+  --radius-3: 16px;
+  --radius-4: 32px;
+  --radius-5: 64px;
+  --radius-6: 96px;
+}

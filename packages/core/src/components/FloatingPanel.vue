@@ -1,6 +1,6 @@
 <script setup>
 import { flip, offset, shift } from '@floating-ui/dom';
-import { onClickOutside } from '@vueuse/core';
+import { onClickOutside, unrefElement } from '@vueuse/core';
 import { computed, ref } from 'vue';
 import { arrow, useFloating } from '../composables/useFloating';
 
@@ -59,10 +59,8 @@ function show() {
   open.value = true;
 }
 
-function hide(event) {
+function hide() {
   if (!open.value)
-    return;
-  if (!event)
     return;
   open.value = false;
 }
@@ -72,21 +70,37 @@ function setSlotRef(el) {
 }
 
 const events = {
-  mouseenter: show,
-  mouseleave: hide,
-  focus: show,
-  blur: hide,
+  onMouseenter: show,
+  onMouseleave: hide,
+  onFocus: show,
+  onBlur: hide,
 };
 
-onClickOutside(floating, (event) => {
-  if (reference.value?.contains(event.target))
+onClickOutside(floating, () => {
+  if (!open.value)
     return;
   hide();
+}, {
+  ignore: [reference],
 });
+
+function toggle() {
+  if (open.value)
+    return hide();
+  show();
+}
+
+function nextFocus(event) {
+  if (!open.value)
+    return;
+  const focusable = unrefElement(floating).querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  focusable[0]?.focus();
+  event.preventDefault();
+}
 </script>
 
 <template>
-  <slot :set-ref="setSlotRef" :show="show" :hide="hide" :events="events" />
+  <slot :set-ref="setSlotRef" :next-focus="nextFocus" :open="open" :toggle="toggle" :show="show" :hide="hide" :events="events" />
   <div
     ref="floating"
     :data-placement="placement"
@@ -96,7 +110,7 @@ onClickOutside(floating, (event) => {
       left: x ? `${x}px` : '',
     }"
   >
-    <transition name="transition-fade" mode="out-in">
+    <transition name="transition-fade">
       <div v-if="open" class="floating-content" :class="[[`is-${props.theme}`]]">
         <slot name="content" :close="hide">
           {{ content }}

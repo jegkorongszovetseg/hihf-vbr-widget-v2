@@ -1,7 +1,7 @@
 <script setup>
 import { COLUMNS_STANDINGS_SHORT } from '@mjsz-vbr-elements/core';
 import { AdditionalStandingsText, ErrorNotice, ErrorProvider, I18NProvider, StatisticsTable } from '@mjsz-vbr-elements/core/components';
-import IconRight from '@mjsz-vbr-elements/shared/icons/IconRight';
+import { IconRight } from '@mjsz-vbr-elements/shared/icons';
 import { computed, ref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
@@ -67,16 +67,20 @@ const normalizedData = computed(() => typeof props.data === 'string' ? JSON.pars
   </I18NProvider>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/standings-selector.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/standings-selector.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/responsive-table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/dropdown.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/list.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/playoffs.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/icon-button.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />

@@ -17,7 +17,7 @@ const resolver = `LigaTeam?teamId={team.id}&championshipId={championshipId}`;
 </script>
 
 <template>
-  <div class="p-5 max-w-[1170px] mx-auto bg-gray-100">
+  <div class="p-5 max-w-[1170px] mx-auto">
     <!-- <StandingsLiga :locale="store.locale" championship-name="Erste Liga"></StandingsLiga> -->
     <mjsz-vbr-teams-liga :locale="store.locale" championship-name="Erste Liga" :external-team-resolver="resolver" />
   </div>

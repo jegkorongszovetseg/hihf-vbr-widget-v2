@@ -1,0 +1,29 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-avatar-border-color: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-700));
+  }
+}
+
+@layer components {
+  :where(.avatar) {
+    --_width: 20px;
+
+    display: inline-flex;
+    vertical-align: middle;
+    aspect-ratio: 1;
+    inline-size: var(--_width);
+    justify-content: center;
+    overflow: clip;
+    position: relative;
+    border-radius: 100%;
+    border: 1px solid var(--mvw-avatar-border-color);
+
+    img {
+      block-size: 100%;
+      inline-size: 100%;
+      inset: 0;
+      object-fit: cover;
+      position: absolute;
+    }
+  }
+}
