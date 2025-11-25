@@ -36,7 +36,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
         {{ event.advantage }}
       </span>
       <span v-if="event.en"> EN </span>
-      ({{ event.score }})
+      <span v-else-if="event.score">({{ event.score }})</span>
     </template>
 
     <template #details-list>

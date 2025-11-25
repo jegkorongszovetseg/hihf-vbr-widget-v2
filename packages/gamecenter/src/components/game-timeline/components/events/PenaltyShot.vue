@@ -27,7 +27,10 @@ const { t } = useI18n();
       </template>
       <template v-else>
         {{ t('events.missed') }}
-      </template> - ({{ event.score }})
+      </template>
+      <template v-if="event.score">
+        - ({{ event.score }})
+      </template>
     </template>
 
     <template #details-list>
