@@ -9,6 +9,7 @@
     color-scheme: only dark;
   }
 
+  :root,
   :host {
     font-family: var(--mvw-font, inherit);
 
