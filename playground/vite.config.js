@@ -24,6 +24,7 @@ export default defineConfig({
       '@mjsz-vbr-elements/extended': resolve(__dirname, '../packages/extended/src/index.js'),
       '@mjsz-vbr-elements/liga': resolve(__dirname, '../packages/liga/src/index.js'),
       '@mjsz-vbr-elements/gamecenter': resolve(__dirname, '../packages/gamecenter/src/index.js'),
+      '@mjsz-vbr-elements/internal': resolve(__dirname, '../packages/internal/src/index.js'),
     },
   },
   plugins: [
@@ -31,7 +32,7 @@ export default defineConfig({
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: tag => tag.startsWith('mjsz-vbr-'),
+          isCustomElement: tag => tag.startsWith('mjsz-'),
         },
       },
     }),
