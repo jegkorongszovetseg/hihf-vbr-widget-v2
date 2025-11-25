@@ -14,7 +14,7 @@ import { IconMenu } from '@mjsz-vbr-elements/shared/icons';
       </BaseSelect>
     </FormField>
     <FormField label="Input" name="input">
-      <input id="input">
+      <input id="input" placeholder="Placeholder">
     </FormField>
 
     <FloatingPanel :offset="6" placement="bottom-end" theme="content" :append-to="null" :is-arrow-visible="false">

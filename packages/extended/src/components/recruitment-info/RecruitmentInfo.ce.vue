@@ -71,7 +71,7 @@ function onReTry() {
 
 <template>
   <I18NProvider v-slot="{ t }" :locale="locale" :messages="messages">
-    <FormField :label="t('selection.filter')" name="filter" class="mb-md">
+    <FormField :label="t('selection.filter')" name="filter" class="full-width mb-md" style="max-width: 220px;">
       <input id="filter" v-model="query" :placeholder="t('recruitmentInfo.filterByNameAndLocation')" type="text" autocomplete="off">
     </FormField>
 
@@ -91,8 +91,8 @@ function onReTry() {
         <Image
           :src="`https://ivr-api.icehockey.hu${item.organizationLogo}`"
           default-src="data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg' fill='%23cfd8dc'%3E%3Ccircle cx='15' cy='15' r='15' /%3E%3C/svg%3E"
-          width="30"
-          height="30"
+          :width="30"
+          :height="30"
           style="object-fit: contain;"
         />
         <strong>{{ item.organizationName }} <span v-if="item.recruitmentTeamName">({{ item.recruitmentTeamName }})</span></strong>
@@ -109,7 +109,7 @@ function onReTry() {
         </svg>
       </summary>
       <div :id="`content-${index}`" class="content" role="region" :aria-labelledby="`summary-${index}`">
-        <ul class="definition-list dotted">
+        <ul class="definition-list dotted mb-md">
           <li v-for="(recruitment, key) in item.recruitment" :key="key">
             <span class="term">{{ t(`recruitmentInfo.${key}`) }}</span>
             <hr>

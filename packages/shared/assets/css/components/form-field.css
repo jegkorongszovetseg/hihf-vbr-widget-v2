@@ -52,6 +52,10 @@
       line-height: var(--font-lineheight-500);
     }
 
+    & input::placeholder {
+      color: rgb(from var(--_color) r g b / 50%);
+    }
+
     label {
       display: block;
       font-size: var(--mvw-form-label-font-size);
