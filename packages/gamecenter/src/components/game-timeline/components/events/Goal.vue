@@ -2,7 +2,7 @@
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { isEmpty, reject } from '@mjsz-vbr-elements/core/utils';
-import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
+import { IconHockeyPuck } from '@mjsz-vbr-elements/shared/icons';
 import { computed, ref } from 'vue';
 import GameEventLayout from '../GameEventLayout.vue';
 import TeamLogo from './TeamLogo.vue';
@@ -36,7 +36,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
         {{ event.advantage }}
       </span>
       <span v-if="event.en"> EN </span>
-      ({{ event.score }})
+      <span v-else-if="event.score">({{ event.score }})</span>
     </template>
 
     <template #details-list>
@@ -65,7 +65,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
                   :ref="setRef"
                   :tabindex="0"
                   :aria-label="`${player.jerseyNumber} ${player.lastName} ${player.firstName}`"
-                  v-on="events"
+                  v-bind="events"
                 >
                   {{ player.jerseyNumber }}
                 </li>
@@ -89,7 +89,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
                   :ref="setRef"
                   :tabindex="0"
                   :aria-label="`${player.jerseyNumber} ${player.lastName} ${player.firstName}`"
-                  v-on="events"
+                  v-bind="events"
                 >
                   {{ player.jerseyNumber }}
                 </li>
@@ -98,7 +98,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
           </ul>
         </li>
         <li>
-          <span v-if="event.ps || event.gws || event.gwg" class="is-badge is-invert is-large">
+          <span v-if="event.ps || event.gws || event.gwg" class="badge lg inverted">
             <template v-if="event.ps">PS</template>
             <template v-if="event.gws">GWS</template>
             <template v-if="event.gwg">GWG</template>

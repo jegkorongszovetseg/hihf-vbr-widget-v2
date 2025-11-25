@@ -1,7 +1,6 @@
 import { resolve } from 'node:path';
-import presetUno from '@unocss/preset-uno';
-import presetWind from '@unocss/preset-wind';
 import vue from '@vitejs/plugin-vue';
+import { presetWind3 } from 'unocss';
 import UnoCSS from 'unocss/vite';
 import VueRouter from 'unplugin-vue-router/vite';
 import { defineConfig } from 'vite';
@@ -24,6 +23,8 @@ export default defineConfig({
       '@mjsz-vbr-elements/extended': resolve(__dirname, '../packages/extended/src/index.js'),
       '@mjsz-vbr-elements/liga': resolve(__dirname, '../packages/liga/src/index.js'),
       '@mjsz-vbr-elements/gamecenter': resolve(__dirname, '../packages/gamecenter/src/index.js'),
+      '@mjsz-vbr-elements/shared/icons': resolve(__dirname, '../packages/shared/dist/icons/index.js'),
+      // '@mjsz-vbr-elements/shared/icons/*': resolve(__dirname, '../packages/shared/dist/icons/index.js'),
     },
   },
   plugins: [
@@ -31,12 +32,12 @@ export default defineConfig({
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: tag => tag.startsWith('mjsz-vbr-'),
+          isCustomElement: tag => tag.startsWith('mjsz-vbr-') || tag.startsWith('internal-'),
         },
       },
     }),
     UnoCSS({
-      presets: [presetUno(), presetWind()],
+      presets: [presetWind3()],
     }),
   ],
 });

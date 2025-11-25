@@ -1,0 +1,26 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-color-error-notice-bg-color: color-mix(in oklab, var(--mvw-color-error) 10%, transparent);
+    --mvw-color-error-notice-border-color: color-mix(in oklab, var(--mvw-color-error) 25%, transparent);
+    --mvw-color-error-notice-color: var(--mvw-color-error);
+  }
+}
+
+@layer components {
+  :where(.error-notice) {
+    display: flex;
+    align-items: center;
+    justify-items: flex-start;
+    gap: 15px;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: var(--mvw-color-error-notice-bg-color);
+    color: var(--mvw-color-error-notice-color);
+    border: 1px solid var(--mvw-color-error-notice-border-color);
+    border-radius: var(--radius-2);
+
+    button {
+      text-decoration: underline;
+    }
+  }
+}

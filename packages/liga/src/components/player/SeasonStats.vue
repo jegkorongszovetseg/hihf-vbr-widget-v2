@@ -29,10 +29,10 @@ const { columns } = useColumns(computed(() => props.columns));
 </script>
 
 <template>
-  <h2 class="is-heading-2">
+  <h2>
     {{ rows[0]?.season ?? '' }}
   </h2>
-  <ResponsiveTable>
+  <ResponsiveTable class="mb-md">
     <DataTable :rows="rows" :columns="columns" :is-loading="isLoading" :append-to="appendTo" />
   </ResponsiveTable>
 </template>

@@ -1,0 +1,280 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-games-timeline-game-date-size: var(--font-size-100);
+    --mvw-games-timeline-game-team-size: var(--font-size-300);
+    --mvw-games-timeline-game-status-size: var(--font-size-200);
+    --mvw-games-timeline-game-hover-bg-color: linear-gradient(
+      light-dark(var(--mvw-color-white), var(--mvw-color-primary-950)),
+      light-dark(
+          hsl(from var(--mvw-color-white) h s calc(l - 5)),
+          hsl(from var(--mvw-color-primary-950) h s calc(l + 5))
+        )
+        50%,
+      light-dark(var(--mvw-color-white), var(--mvw-color-primary-950))
+    );
+  }
+}
+
+@layer components {
+  :where(.games-timeline) {
+    display: grid;
+    grid-template-columns: 30px 1fr 30px;
+    align-items: center;
+    height: 100%;
+
+    container-type: inline-size;
+    container-name: games-timeline;
+
+    > div {
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .is-slide {
+      flex-shrink: 0;
+      flex-grow: 0;
+      flex-basis: 100%;
+      scroll-snap-align: start;
+
+      @container games-timeline (width > 375px) {
+        flex-basis: 50%;
+      }
+      @container games-timeline (width > 500px) {
+        flex-basis: 33.3334%;
+      }
+      @container games-timeline (width > 700px) {
+        flex-basis: 25%;
+      }
+      @container games-timeline (width > 880px) {
+        flex-basis: 20%;
+      }
+    }
+
+    > button {
+      position: relative;
+      display: grid;
+      place-content: center;
+      height: 100%;
+
+      svg {
+        display: block;
+        height: 22px;
+        width: 22px;
+        color: var(--mvw-text-dimmed);
+        transition: all 0.2s;
+      }
+
+      &:hover {
+        svg {
+          color: var(--mvw-text-muted);
+        }
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        svg {
+          color: var(--mvw-text-faded);
+        }
+      }
+
+      &:before,
+      &:after {
+        position: absolute;
+        content: '';
+        top: 10px;
+        height: 90px;
+        transition: opacity 0.2s;
+      }
+
+      &:first-of-type:after {
+        right: 0;
+        border-right: 1px solid var(--mvw-border-faded);
+        box-shadow: 1px 0 3px 0 rgba(0, 0, 0, 0.1);
+      }
+      &:last-of-type:before {
+        left: 0;
+        border-left: 1px solid var(--mvw-border-faded);
+        box-shadow: -1px 0 3px 0 rgba(0, 0, 0, 0.1);
+      }
+
+      &:disabled:first-of-type:after,
+      &:disabled:last-of-type:before {
+        opacity: 0;
+      }
+    }
+
+    .is-no-games {
+      width: 100%;
+      text-align: center;
+      color: var(--mvw-text-muted);
+    }
+  }
+
+  .games-timeline-game {
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-areas: 'gamedate gamedate gamedate' 'home-logo home-team home-score' 'away-logo away-team away-score' 'status status status';
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 5px;
+    justify-items: center;
+    align-items: center;
+    padding: 0.625rem;
+    line-height: 1;
+    cursor: pointer;
+
+    &:hover {
+      background-image: var(--mvw-games-timeline-game-hover-bg-color);
+    }
+
+    time {
+      grid-area: gamedate;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: var(--mvw-games-timeline-game-date-size);
+      font-weight: 700;
+      color: var(--mvw-text-muted);
+    }
+
+    .is-home-team-logo {
+      grid-area: home-logo;
+    }
+    .is-away-team-logo {
+      grid-area: away-logo;
+    }
+    :is(.is-home-team-logo, .is-away-team-logo) {
+      .is-team-logo {
+        display: block;
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    :is(.is-home-team-name, .is-away-team-name) {
+      justify-self: start;
+      font-size: var(--mvw-games-timeline-game-team-size);
+      font-weight: 700;
+      color: var(--mvw-text-default);
+      overflow: hidden;
+      width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .is-home-team-name {
+      grid-area: home-team;
+    }
+    .is-away-team-name {
+      grid-area: away-team;
+    }
+
+    .is-home-team-score {
+      grid-area: home-score;
+    }
+    .is-away-team-score {
+      grid-area: away-score;
+    }
+
+    .is-status {
+      grid-area: status;
+      font-size: var(--mvw-games-timeline-game-status-size);
+      color: var(--mvw-text-dimmed);
+      overflow: hidden;
+      width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: center;
+    }
+  }
+
+  .games-timeline-schedule-link {
+    display: grid;
+    place-content: center;
+    height: 100%;
+
+    &:hover {
+      background-image: var(--mvw-games-timeline-game-hover-bg-color);
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      font-size: var(--font-size-200);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--mvw-text-toned);
+
+      svg {
+        display: inline-block;
+        width: 14px;
+      }
+    }
+  }
+
+  .games-timeline-error-indicator {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    place-content: center;
+    width: 100%;
+    font-size: var(--font-size-400);
+    font-weight: 500;
+    color: var(--mvw-color-error);
+
+    svg {
+      display: block;
+      width: 20px;
+    }
+
+    button {
+      text-decoration: underline;
+    }
+  }
+
+  .score-display {
+    height: 20px;
+    padding: 0 5px !important;
+
+    .is-score {
+      display: grid;
+      grid-template-areas: 'stack';
+      justify-items: center;
+      position: relative;
+      overflow: hidden;
+      mask-image: linear-gradient(to bottom, transparent 0, black 30%, black 70%, transparent 100%);
+
+      > span {
+        grid-area: stack;
+        line-height: 20px;
+      }
+    }
+
+    .is-slide-transition-enter-active,
+    .is-slide-transition-leave-active {
+      transition: all 420ms linear;
+    }
+
+    .is-slide-transition-enter-from {
+      transform: translateY(100%);
+    }
+
+    .is-slide-transition-enter-to {
+      transform: translateY(0);
+    }
+
+    .is-slide-transition-leave-from {
+      transform: translateY(0);
+    }
+
+    .is-slide-transition-leave-to {
+      transform: translateY(-100%);
+    }
+  }
+}

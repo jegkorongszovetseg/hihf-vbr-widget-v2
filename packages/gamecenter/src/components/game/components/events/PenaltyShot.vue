@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
+import { IconHockeyPuck } from '@mjsz-vbr-elements/shared/icons';
 import TeamLogo from './TeamLogo.vue';
 
 defineProps({
@@ -32,7 +32,7 @@ const { t } = useI18n();
     {{ event.score }}
   </div>
   <div>
-    <span class="is-badge is-large" :class="[{ 'is-green': event.goal }]">
+    <span class="badge lg" :class="[{ live: event.goal }]">
       <template v-if="event.goal">{{ t('events.score') }}</template>
       <template v-else>{{ t('events.missed') }}</template>
     </span>

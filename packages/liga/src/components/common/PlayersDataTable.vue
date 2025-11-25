@@ -1,7 +1,7 @@
 <script setup>
-import { DEFAULT_PORTRAIT_IMAGE_URL } from '@mjsz-vbr-elements/core';
 import { DataTable, FloatingPanel, Image, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
+import { DEFAULT_PORTRAIT_IMAGE_URL } from '@mjsz-vbr-elements/core/constants';
 import { flagResolver } from '@mjsz-vbr-elements/core/utils';
 
 const props = defineProps({
@@ -66,7 +66,7 @@ const onSort = payload => emit('sort', payload);
       @sort="onSort"
     >
       <template #cell-playerPortrait="{ row }">
-        <div class="is-portrait-image">
+        <div class="avatar">
           <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
         </div>
       </template>
@@ -80,27 +80,22 @@ const onSort = payload => emit('sort', payload);
       </template>
 
       <template #cell-nationality="{ row }">
-        <div class="g-row">
-          <template v-for="nationality in row.nationalityCode" :key="nationality">
-            <FloatingPanel
-              v-slot="{ setRef, show, hide }"
-              placement="top"
-              :content="t(`nationality.${nationality}`)"
-              :append-to="appendTo"
+        <template v-for="nationality in row.player.nationality" :key="nationality">
+          <FloatingPanel
+            v-slot="{ setRef, events }"
+            placement="top"
+            :content="t(`nationality.${nationality}`)"
+            :append-to="appendTo"
+          >
+            <div
+              :ref="setRef"
+              class="avatar"
+              v-bind="events"
             >
-              <div
-                :ref="setRef"
-                class="is-rounded is-w-5"
-                @mouseenter="show"
-                @mouseleave="hide"
-                @focus="show"
-                @blur="hide"
-              >
-                <Image :src="flagResolver(nationality)" />
-              </div>
-            </FloatingPanel>
-          </template>
-        </div>
+              <Image :src="flagResolver(nationality)" />
+            </div>
+          </FloatingPanel>
+        </template>
       </template>
 
       <template #cell-position="{ row }">

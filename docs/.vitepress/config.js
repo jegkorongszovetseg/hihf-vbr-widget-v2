@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => {
       socialLinks: [{ icon: 'github', link: 'https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2' }],
       nav: [
         { text: 'Widget', link: '/widget/' },
-        { text: 'Stílusok', link: '/styles/' },
+        { text: 'Theme', link: '/styles/' },
         { text: 'VBR API', link: '/vbr-api/' },
         { text: 'IVR Azonosítók', link: '/vbr-api/identifiers' },
         { text: 'Stories', link: 'https://api.icehockey.hu/widgets/stories/v2' },
@@ -55,6 +55,7 @@ export default defineConfig(({ mode }) => {
               { text: 'Bajnokságok', link: '/widget/extended-championship' },
               { text: 'Kupa Menetrend', link: '/widget/extended-cup-schedule' },
               { text: 'Mérkőzés idővonal', link: '/widget/extended-games-timeline' },
+              { text: 'Tabella választó', link: '/widget/extended-standings-selector' },
               { text: 'Toborzási Információk', link: '/widget/extended-recruitment-info' },
               { text: 'Versenynaptár', link: '/widget/extended-calendar' },
               { text: 'Visszaszámláló', link: '/widget/extended-countdown' },
@@ -85,8 +86,9 @@ export default defineConfig(({ mode }) => {
         '/styles/': [
           {
             items: [
-              { text: 'Használat', link: '/styles/' },
-              { text: 'Változók listája', link: '/styles/css-variables' },
+              { text: 'Theme (Téma) kezelés', link: '/styles/' },
+              { text: 'Design System', link: '/styles/design-system' },
+              { text: 'CSS Változók', link: '/styles/css-variables' },
             ],
           },
         ],

@@ -1,7 +1,6 @@
 <script setup>
 import { sortByDomNode } from '@mjsz-vbr-elements/core/utils';
-import IconLeft from '@mjsz-vbr-elements/shared/icons/IconLeft';
-import IconRight from '@mjsz-vbr-elements/shared/icons/IconRight';
+import { IconLeft, IconRight } from '@mjsz-vbr-elements/shared/icons';
 import { unrefElement, useScroll } from '@vueuse/core';
 import { computed, nextTick, onMounted, provide, ref, useTemplateRef, watch } from 'vue';
 import { CarouselContext } from './internal';

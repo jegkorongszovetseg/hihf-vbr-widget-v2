@@ -1,5 +1,5 @@
 <script setup>
-import IconRight from '@mjsz-vbr-elements/shared/icons/IconRight';
+import { IconRight } from '@mjsz-vbr-elements/shared/icons';
 
 const props = defineProps({
   title: {

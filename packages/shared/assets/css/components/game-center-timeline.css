@@ -1,0 +1,665 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-gamecenter-home-team-identifier-color: var(--mvw-color-info);
+    --mvw-gamecenter-away-team-identifier-color: var(--mvw-color-team);
+
+    --mvw-gamecenter-card-title-color: var(--mvw-text-highlighted);
+    --mvw-gamecenter-card-secondary-color: var(--mvw-text-muted);
+    --mvw-gamecenter-card-tertiary-color: var(--mvw-text-faded);
+    --mvw-gamecenter-card-border-color: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-700));
+    --mvw-gamecenter-card-bg-color: light-dark(var(--mvw-color-white), var(--mvw-color-primary-950));
+
+    --mvw-gamecenter-team-container-title-color: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-200));
+
+    --mvw-gamecenter-card-event-goal-border-color: light-dark(
+      var(--mvw-color-primary-700),
+      var(--mvw-color-primary-300)
+    );
+    --mvw-gamecenter-card-event-goal-bg-color: light-dark(var(--mvw-color-primary-700), var(--mvw-color-white));
+
+    --mvw-gamecenter-events-evented-person-size: var(--font-size-500);
+    --mvw-gamecenter-events-evented-person-weight: 600;
+    --mvw-gamecenter-events-assitst-list-size: var(--font-size-400);
+    --mvw-gamecenter-events-poi-list-size: var(--font-size-200);
+    --mvw-gamecenter-events-score-size: var(--font-size-500);
+    --mvw-gamecenter-events-penalty-size: var(--font-size-400);
+    --mvw-gamecenter-events-goalie-direction-size: var(--font-size-400);
+    --mvw-gamecenter-events-timeout-bg-color: var(--mvw-color-info);
+  }
+}
+
+@layer components {
+  :where(.gamecenter-timeline) {
+    container-name: rows;
+    container-type: inline-size;
+
+    .gamecenter-timeline-game-data {
+      .is-goal-scorers {
+        font-size: var(--font-size-200);
+        font-weight: 700;
+        line-height: var(--lineheight-200);
+        color: var(--mvw-text-muted);
+
+        span {
+          font-weight: 400;
+        }
+      }
+
+      .period-results {
+        width: 100%;
+        border-collapse: collapse;
+
+        tr:first-of-type {
+          td {
+            border-bottom: 1px solid var(--mvw-border-faded);
+          }
+        }
+
+        td {
+          font-size: var(--font-size-500);
+          font-weight: 500;
+          color: var(--mvw-text-default);
+        }
+
+        td:nth-child(2) {
+          font-size: var(--font-size-400);
+          text-align: left;
+        }
+
+        span {
+          display: inline-block;
+          width: 9px;
+          height: 9px;
+          border-style: solid;
+          border-width: 1px;
+          border-radius: 50%;
+
+          &.is-home-team {
+            border-color: light-dark(
+              oklch(from var(--mvw-gamecenter-home-team-identifier-color) calc(l - 0.4) c h),
+              oklch(from var(--mvw-gamecenter-home-team-identifier-color) calc(l + 0.4) c h)
+            );
+            background-color: var(--mvw-gamecenter-home-team-identifier-color);
+          }
+          &.is-away-team {
+            border-color: light-dark(
+              oklch(from var(--mvw-gamecenter-away-team-identifier-color) calc(l - 0.4) c h),
+              oklch(from var(--mvw-gamecenter-away-team-identifier-color) calc(l + 0.4) c h)
+            );
+            background-color: var(--mvw-gamecenter-away-team-identifier-color);
+          }
+        }
+      }
+    }
+
+    .gamecenter-timeline-data-table {
+      margin-block-end: var(--size-16);
+      min-width: 0;
+
+      h3 {
+        padding: var(--size-8);
+        font-size: var(--mvw-gamecenter-team-container-title-size);
+        font-weight: 700;
+        color: var(--mvw-gamecenter-team-container-title-color);
+
+        &:before {
+          display: inline-block;
+          content: '';
+          width: var(--size-8);
+          aspect-ratio: 1;
+          background-color: transparent;
+          border: 1px solid transparent;
+          border-radius: 100%;
+          margin-inline-end: var(--size-8);
+          margin-block-end: 1px;
+        }
+      }
+
+      &.is-home-team {
+        h3:before {
+          border-color: light-dark(
+            oklch(from var(--mvw-gamecenter-home-team-identifier-color) calc(l - 0.4) c h),
+            oklch(from var(--mvw-gamecenter-home-team-identifier-color) calc(l + 0.4) c h)
+          );
+          background-color: var(--mvw-gamecenter-home-team-identifier-color);
+        }
+      }
+      &.is-away-team {
+        h3:before {
+          border-color: light-dark(
+            oklch(from var(--mvw-gamecenter-away-team-identifier-color) calc(l - 0.4) c h),
+            oklch(from var(--mvw-gamecenter-away-team-identifier-color) calc(l + 0.4) c h)
+          );
+          background-color: var(--mvw-gamecenter-away-team-identifier-color);
+        }
+      }
+    }
+
+    .gamecenter-timeline-lineups {
+      margin-block-start: var(--size-16);
+      padding-block-end: var(--size-32);
+
+      hr {
+        margin-block: var(--size-24);
+        border-top: 1px solid var(--mvw-border-faded);
+      }
+
+      .is-container {
+        display: grid;
+        gap: var(--size-32);
+
+        @container rows (width >= 768px) {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .gamecenter-timeline-lineups-lines {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: 'ld' 'rd' 'lw' 'c' 'rw';
+        gap: var(--size-8);
+
+        &.is-away-team {
+          grid-template-areas: 'ld' 'rd' 'lw' 'c' 'rw';
+        }
+
+        .is-ld {
+          grid-area: ld;
+        }
+
+        .is-rd {
+          grid-area: rd;
+        }
+
+        .is-lw {
+          grid-area: lw;
+        }
+
+        .is-c {
+          grid-area: c;
+        }
+
+        .is-rw {
+          grid-area: rw;
+        }
+
+        .is-gk {
+          width: 100%;
+        }
+
+        &.is-away-team .is-player-wrapper {
+          border-inline-start: none;
+          border-inline-end: 3px solid var(--mvw-gamecenter-away-team-identifier-color);
+        }
+
+        @container rows (width >= 768px) {
+          grid-template-columns: 1fr 1fr;
+          grid-template-areas: '. lw' 'ld lw' 'ld c' 'rd c' 'rd rw' '. rw';
+          grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+          &.is-away-team {
+            grid-template-areas: 'lw .' 'lw ld' 'c ld' 'c rd' 'rw rd' 'rw .';
+          }
+
+          &:has(.is-gk) {
+            display: flex;
+            justify-content: center;
+            grid-template-columns: none;
+            grid-template-areas: none;
+          }
+
+          .is-gk {
+            width: 50%;
+          }
+        }
+      }
+
+      .gamecenter-timeline-lineups-lines-simple {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--size-8);
+
+        @container rows (width >= 768px) {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .gamecenter-timeline-lineups-lines-referees {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--size-8);
+
+        @container rows (width >= 768px) {
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+      }
+
+      .is-official-person-container {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        grid-template-areas: 'img name' 'img role';
+        align-content: start;
+        column-gap: var(--size-8);
+        padding: var(--size-12);
+        outline: 1px solid var(--mvw-gamecenter-card-border-color);
+        background-color: var(--mvw-gamecenter-card-bg-color);
+        border-radius: var(--size-8);
+
+        &.is-home-team {
+          border-inline-start: 3px solid var(--mvw-gamecenter-home-team-identifier-color);
+        }
+        &.is-away-team {
+          border-inline-end: 3px solid var(--mvw-gamecenter-away-team-identifier-color);
+        }
+
+        li:nth-child(1) {
+          grid-area: img;
+        }
+
+        li:nth-child(2) {
+          grid-area: name;
+
+          font-weight: 600;
+          color: var(--mvw-text-default);
+        }
+        li:nth-child(3) {
+          grid-area: role;
+
+          align-self: center;
+          font-size: var(--font-size-200);
+          line-height: 1;
+          color: var(--mvw-gamecenter-card-tertiary-color);
+          text-transform: uppercase;
+        }
+
+        img {
+          display: block;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+      }
+
+      .is-player-wrapper {
+        display: grid;
+        grid-template-columns: 40px auto 1fr;
+        grid-template-areas: 'img number name' 'img position name';
+        column-gap: var(--size-8);
+        padding: var(--size-12);
+        background-color: var(--mvw-gamecenter-card-bg-color);
+        border-inline-start: 3px solid var(--mvw-gamecenter-home-team-identifier-color);
+        outline: 1px solid var(--mvw-gamecenter-card-border-color);
+        border-radius: var(--size-8);
+        overflow: hidden;
+
+        li {
+          line-height: var(--font-lineheight-200);
+        }
+
+        li:nth-child(1) {
+          grid-area: img;
+        }
+        li:nth-child(2) {
+          grid-area: number;
+          font-style: italic;
+          color: var(--mvw-text-muted);
+        }
+        li:nth-child(3) {
+          grid-area: name;
+          font-weight: 600;
+          color: var(--mvw-text-default);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
+
+          ul {
+            display: inline-flex;
+            gap: var(--size-2);
+            vertical-align: middle;
+          }
+
+          svg {
+            display: block;
+            padding: var(--size-4);
+            width: 20px;
+            height: 20px;
+            color: var(--mvw-color-white);
+            background-color: var(--mvw-color-live);
+            border-radius: 100%;
+          }
+        }
+        li:nth-child(4) {
+          grid-area: position;
+          align-self: center;
+          font-size: var(--font-size-200);
+          line-height: 1;
+          color: var(--mvw-gamecenter-card-tertiary-color);
+          text-transform: uppercase;
+        }
+
+        img {
+          display: block;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+      }
+    }
+    /* Events */
+    .gamecenter-timeline-game-events {
+      .is-no-action {
+        padding-block: var(--size-8);
+        text-align: center;
+        color: var(--mvw-text-dimmed);
+      }
+
+      .is-period-header {
+        padding-block: 1rem;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        grid-template-rows: auto 1fr 1px 1fr;
+
+        p {
+          grid-column: 2;
+          grid-row: 1;
+          justify-self: center;
+          margin-bottom: var(--size-4);
+          padding-inline: var(--size-8);
+          width: max-content;
+          color: var(--mvw-text-inverted);
+          font-size: var(--font-size-500);
+          font-weight: 500;
+          line-height: var(--font-lineheight-500);
+          background-color: var(--mvw-bg-inverted);
+          border-radius: 6px;
+        }
+
+        span {
+          grid-column: 2;
+          grid-row: 2/-1;
+
+          padding-inline: var(--size-8);
+          padding-block: var(--size-4);
+          font-size: small;
+          font-weight: 500;
+          color: var(--mvw-text-muted);
+          background-color: var(--mvw-bg-elevated);
+          border-radius: var(--size-8);
+
+          svg {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            vertical-align: sub;
+          }
+        }
+
+        div {
+          grid-column: 1/-1;
+          grid-row: 3;
+          background-color: var(--mvw-bg-elevated);
+        }
+      }
+    }
+
+    .gamecenter-timeline-game-event {
+      --columns: 0.15fr 2px 0.15fr 1fr;
+      --areas: '. . . .' 'time time time details' '. . . .';
+
+      display: grid;
+      grid-template-columns: var(--columns);
+      grid-template-rows: 0.5rem 1fr 0.5rem;
+      grid-template-areas: var(--areas);
+      gap: 0.25rem;
+
+      .is-timeline {
+        grid-column: 2/3;
+        grid-row: 1/-1;
+        background-color: var(--mvw-bg-accented);
+      }
+
+      .is-details-container {
+        grid-area: details;
+
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-areas: 'type-icon detail-title' 'type-icon detail-list';
+        column-gap: var(--size-16);
+        padding: var(--size-16);
+        border-inline-end: 5px solid var(--mvw-gamecenter-home-team-identifier-color);
+        background-color: var(--mvw-gamecenter-card-bg-color);
+        border-radius: var(--size-8);
+        align-items: start;
+        outline: 1px solid var(--mvw-gamecenter-card-border-color);
+
+        &:not(:has(.is-details-list)) {
+          grid-template-areas: 'type-icon detail-title';
+          align-items: center;
+        }
+
+        .is-details-title {
+          grid-area: detail-title;
+
+          font-weight: 700;
+          text-transform: uppercase;
+          color: var(--mvw-gamecenter-card-title-color);
+        }
+
+        .is-details-list {
+          grid-area: detail-list;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+
+          .is-details-sub-title {
+            font-size: var(--font-size-400);
+            color: var(--mvw-gamecenter-card-secondary-color);
+          }
+
+          .is-evented-person {
+            font-weight: var(--mvw-gamecenter-events-evented-person-weight);
+            color: var(--mvw-gamecenter-card-secondary-color);
+          }
+
+          .is-player-number {
+            font-weight: 400;
+            font-style: italic;
+          }
+        }
+
+        .is-team-logo {
+          grid-area: team-logo;
+
+          display: none;
+
+          justify-self: center;
+          align-self: center;
+
+          img {
+            width: 40px;
+            height: 40px;
+          }
+        }
+
+        .is-event-type-icon {
+          grid-area: type-icon;
+          padding: var(--size-8);
+          border-radius: 100%;
+
+          svg {
+            display: block;
+            width: 14px;
+            height: 14px;
+
+            @container rows (width > 410px) {
+              width: 24px;
+              height: 24px;
+            }
+          }
+        }
+
+        &.is-penalty {
+          .is-event-type-icon {
+            color: var(--mvw-color-white);
+            background-color: var(--mvw-color-error);
+          }
+        }
+
+        &.is-timeout {
+          .is-event-type-icon {
+            color: var(--mvw-color-white);
+            background-color: var(--mvw-gamecenter-events-timeout-bg-color);
+          }
+        }
+
+        &.is-goalies {
+          .is-event-type-icon {
+            color: var(--mvw-color-black);
+            background-color: var(--mvw-color-warning);
+          }
+        }
+
+        &.is-penalty-shot-goal {
+          .is-event-type-icon {
+            color: var(--mvw-color-white);
+            background-color: var(--mvw-color-live);
+          }
+        }
+
+        &.is-penalty-shot-no-goal {
+          .is-event-type-icon {
+            color: var(--mvw-text-dimmed);
+            background-color: var(--mvw-bg-elevated);
+          }
+        }
+
+        &.is-goal {
+          background-color: var(--mvw-gamecenter-card-event-goal-bg-color);
+          outline-color: var(--mvw-gamecenter-card-event-goal-border-color);
+
+          .is-event-type-icon {
+            color: var(--mvw-text-inverted);
+            background-color: var(--mvw-color-live);
+          }
+
+          .is-details-title {
+            color: var(--mvw-text-inverted);
+          }
+
+          .is-evented-person {
+            color: var(--mvw-text-pale);
+          }
+
+          .is-assists-list {
+            font-size: var(--font-size-400);
+            /* color: var(--mvw-color-primary-400); */
+
+            span:not(:last-of-type):after {
+              content: '/';
+              margin-inline: 0.25rem;
+            }
+          }
+
+          .is-poi-data {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--size-4);
+            font-size: var(--font-size-200);
+            color: var(--mvw-gamecenter-card-tertiary-color);
+
+            ul {
+              display: flex;
+              gap: var(--size-2);
+
+              li:not(:last-of-type):after {
+                content: ',';
+              }
+            }
+          }
+
+          .is-badge.is-invert {
+            color: var(--mvw-color-white);
+            background-color: var(--mvw-color-error);
+          }
+        }
+
+        @container rows (width > 410px) {
+          grid-template-columns: auto 1fr auto;
+          grid-template-areas: 'type-icon detail-title team-logo' 'type-icon detail-list team-logo';
+
+          &:not(:has(.is-details-list)) {
+            grid-template-areas: 'type-icon detail-title team-logo';
+            align-items: center;
+          }
+
+          .is-team-logo {
+            display: block;
+          }
+        }
+      }
+
+      .is-timestamp {
+        grid-area: time;
+
+        justify-self: center;
+        align-self: center;
+
+        p {
+          margin: 0;
+          padding-inline: var(--size-8);
+          width: max-content;
+          color: var(--mvw-text-inverted);
+          font-size: var(--font-size-500);
+          font-weight: 500;
+          line-height: var(--font-lineheight-500);
+          background-color: var(--mvw-bg-inverted);
+          border-radius: 6px;
+        }
+      }
+
+      &[data-team='away'] {
+        .is-details-container {
+          border-color: var(--mvw-gamecenter-away-team-identifier-color);
+        }
+      }
+
+      @container rows (width > 500px) {
+        --columns: 1fr 0.15fr 2px 0.15fr 1fr;
+        --areas: '. . . . .' 'details time time time .' '. . . . .';
+
+        .is-timeline {
+          grid-column: 3/4;
+          grid-row: 1/-1;
+        }
+
+        &[data-team='away'] {
+          --areas: '. . . . .' '. time time time details' '. . . . .';
+        }
+
+        &[data-team='home'] .is-details-container {
+          grid-template-columns: auto 1fr;
+          grid-template-areas: 'team-logo detail-title type-icon' 'team-logo detail-list type-icon';
+
+          &:not(:has(.is-details-list)) {
+            grid-template-areas: 'team-logo detail-title type-icon';
+          }
+
+          border-inline-end: none;
+          border-inline-start: 5px solid var(--mvw-gamecenter-home-team-identifier-color);
+
+          .is-details-list,
+          .is-details-title {
+            text-align: right;
+          }
+
+          .is-poi-data {
+            justify-content: flex-end;
+          }
+        }
+      }
+    }
+  }
+}

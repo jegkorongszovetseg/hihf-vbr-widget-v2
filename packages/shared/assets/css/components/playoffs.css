@@ -1,0 +1,81 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-playoffs-header-bg: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-300));
+    --mvw-playoffs-header-color: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-800));
+    --mvw-playoffs-header-size: var(--font-size-500);
+    --mvw-playoffs-details-bg: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-800));
+  }
+}
+
+@layer components {
+  :where(.playoffs) {
+    --_logo-size: 70px;
+
+    .section-title {
+      padding: var(--size-8);
+      text-align: center;
+      font-size: var(--mvw-playoffs-header-size);
+      font-weight: 700;
+      color: var(--mvw-playoffs-header-color);
+      background-color: var(--mvw-playoffs-header-bg);
+    }
+
+    .section-details {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      gap: var(--size-16);
+      padding: var(--size-16);
+      background-color: var(--mvw-playoffs-details-bg);
+
+      @media (width > 576px) {
+        grid-template-columns:
+          1fr fit-content(var(--_logo-size)) fit-content(var(--_logo-size)) fit-content(var(--_logo-size))
+          1fr;
+      }
+
+      .is-result {
+        font-size: var(--mvw-playoffs-reasult-size, calc(var(--font-size-500) * 4));
+        font-weight: 700;
+        text-align: center;
+        color: var(--mvw-text-highlighted);
+      }
+
+      .is-team-name {
+        font-size: var(--font-size-700);
+        font-weight: 700;
+        color: var(--mvw-text-highlighted);
+      }
+    }
+
+    .table-grid {
+      display: grid;
+      grid-template-columns:
+        70px 160px 60px minmax(160px, 1fr) minmax(40px, 60px) 5ch minmax(160px, 1fr)
+        minmax(180px, 1.2fr);
+      color: var(--mvw-table-color);
+
+      &:nth-child(odd) > div {
+        background-color: var(
+          --mvw-table-stripped-bg-color,
+          light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-900))
+        );
+      }
+
+      &:hover > div {
+        background-color: var(
+          --mvw-table-hover-bg-color,
+          light-dark(var(--mvw-color-secondary-100), var(--mvw-color-secondary-400))
+        );
+      }
+
+      &.is-optional {
+        opacity: 0.5;
+      }
+
+      > div {
+        padding: var(--size-8);
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ import DataTable from './components/DataTable.vue';
 import ErrorNotice from './components/ErrorNotice.vue';
 import ErrorProvider from './components/ErrorProvider.vue';
 import FloatingPanel from './components/FloatingPanel.vue';
+import FormField from './components/FormField.vue';
 import I18NProvider from './components/I18NProvider.vue';
 import Image from './components/Image.vue';
 import LoadingIndicator from './components/LoadingIndicator.vue';
@@ -23,6 +24,7 @@ export {
   ErrorProvider,
   FetchMoreObserver,
   FloatingPanel,
+  FormField,
   I18NProvider,
   Image,
   LoadingIndicator,

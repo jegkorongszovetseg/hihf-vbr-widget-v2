@@ -1,0 +1,205 @@
+@layer components.variables {
+  :where(:host) {
+    /* Table */
+    --mvw-table-header-font-size: var(--font-size-200);
+    --mvw-table-default-column-width: 40px;
+    --mvw-table-default-bg-color: light-dark(var(--mvw-color-white), var(--mvw-color-primary-900));
+    --mvw-table-color: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-200));
+    --mvw-table-neutral-color: light-dark(var(--mvw-color-primary-300), var(--mvw-color-primary-700));
+    --mvw-table-header-bg-color: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-200));
+    --mvw-table-header-color: light-dark(var(--mvw-color-primary-200), var(--mvw-color-primary-800));
+    --mvw-table-header-hover-bg-color: light-dark(var(--mvw-color-primary-700), var(--mvw-color-primary-300));
+    --mvw-table-header-active-bg-color: light-dark(var(--mvw-color-primary-700), var(--mvw-color-primary-300));
+    --mvw-table-header-active-color: light-dark(var(--mvw-color-white), var(--mvw-color-primary-900));
+    --mvw-table-hover-color: light-dark(var(--mvw-color-primary-900), var(--mvw-color-white));
+    --mvw-table-hover-bg-color: light-dark(var(--mvw-color-secondary-100), var(--mvw-color-primary-950));
+    --mvw-table-active-color: light-dark(var(--mvw-color-secondary-900), var(--mvw-color-secondary-100));
+    --mvw-table-active-bg-color: light-dark(var(--mvw-color-secondary-200), var(--mvw-color-secondary-800));
+    --mvw-table-active-even-bg-color: light-dark(var(--mvw-color-secondary-300), var(--mvw-color-secondary-700));
+    --mvw-table-active-hover-color: light-dark(var(--mvw-color-secondary-900), var(--mvw-color-secondary-100));
+    --mvw-table-active-hover-bg-color: light-dark(var(--mvw-color-secondary-400), var(--mvw-color-secondary-500));
+    --mvw-table-portrait-border-color: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-900));
+    --mvw-table-portrait-bg-color: light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-900));
+    --mvw-table-stripped-bg-color: light-dark(
+      hsl(from var(--mvw-color-primary-50) h s calc(l + 3)),
+      hsl(from var(--mvw-color-primary-900) h s calc(l + 2))
+    );
+    --mvw-table-label-color: light-dark(var(--mvw-color-primary-500), var(--mvw-color-primary-400));
+    --mvw-table-label-bg-color: light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-900));
+    --mvw-table-cell-logo-size: 20px;
+    --mvw-table-cell-portrait-size: 26px;
+    --mvw-table-caption-color: light-dark(var(--mvw-color-primary-400), var(--mvw-color-primary-600));
+    --mvw-table-caption-font-size: var(--font-size-200);
+  }
+}
+
+@layer components {
+  :where(.table) {
+    border-collapse: collapse;
+    max-inline-size: 100%;
+    position: relative;
+    color: var(--mvw-table-color);
+    background-color: var(--mvw-table-default-bg-color);
+
+    /* Rows */
+    tr {
+      background-color: var(--surface-default);
+      border-top: 1px solid var(--border-color);
+
+      &:hover {
+        background-color: oklch(from var(--surface-filled) l c h / 75%);
+      }
+
+      &:nth-child(even) {
+        background: var(--mvw-table-stripped-bg-color);
+
+        td.is-active {
+          background-color: var(--mvw-table-active-even-bg-color);
+        }
+      }
+
+      &.is-highlighted {
+        color: var(--mvw-color-error);
+      }
+      &.is-optional {
+        opacity: 0.5;
+      }
+    }
+
+    /* Cells */
+    :is(th, td) {
+      padding: var(--size-8);
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    th {
+      background: var(--mvw-table-header-bg-color);
+      color: var(--mvw-table-header-color);
+      font-size: var(--mvw-table-header-font-size);
+      font-weight: 700;
+      text-align: center;
+      width: var(--mvw-table-default-column-width);
+
+      &:focus-visible,
+      &:hover {
+        background-color: var(--mvw-table-header-hover-bg-color);
+        outline: none;
+      }
+
+      &.is-sortable {
+        position: relative;
+        cursor: pointer;
+
+        .is-icon-sort {
+          opacity: 0.5;
+        }
+      }
+
+      &.is-active {
+        background-color: var(--mvw-table-header-active-bg-color);
+        color: var(--mvw-table-header-active-color);
+
+        .is-icon-sort {
+          opacity: 1;
+        }
+      }
+
+      &.is-has-image,
+      &.has-avatar {
+        width: 0;
+      }
+
+      .is-icon-sort {
+        width: var(--size-12);
+        height: var(--size-12);
+        margin-inline-start: var(--size-4);
+      }
+    }
+
+    td {
+      &.is-active {
+        font-weight: 700;
+        color: var(--mvw-table-active-color);
+        background: var(--mvw-table-active-bg-color);
+      }
+
+      &.has-avatar {
+        .avatar {
+          --_width: var(--mvw-table-cell-portrait-size);
+        }
+      }
+
+      &[data-value='0'],
+      &.is-zero {
+        color: var(--mvw-text-faded);
+      }
+
+      &.is-possible-empty:empty:before {
+        content: '0';
+        color: var(--mvw-text-faded);
+      }
+
+      &.is-horizontal-content {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      /* &:has(.is-logo-image) {
+        padding-inline-end: 0;
+      } */
+
+      .is-logo-image {
+        display: inline-block;
+        vertical-align: middle;
+        width: var(--mvw-table-cell-logo-size);
+        height: var(--mvw-table-cell-logo-size);
+        max-inline-size: fit-content;
+      }
+
+      .is-duplicated {
+        color: var(--mvw-table-neutral-color);
+      }
+
+      .is-team-name-long {
+        display: inline-block;
+      }
+
+      .is-team-name-short {
+        display: none;
+      }
+
+      @container table-wrapper (max-width: 768px) {
+        .is-team-name-long {
+          display: none;
+        }
+        .is-team-name-short {
+          display: inline-block;
+        }
+      }
+    }
+
+    /* Caption */
+    caption {
+      caption-side: bottom;
+      color: var(--mvw-table-caption-color);
+      font-size: var(--mvw-table-caption-font-size, 0.75rem);
+      padding: var(--size-12) 0;
+      text-align: start;
+    }
+
+    /* Body */
+    tbody {
+      tr:focus-within,
+      tr:hover {
+        color: var(--mvw-table-hover-color);
+        background-color: var(--mvw-table-hover-bg-color);
+
+        td.is-active {
+          color: var(--mvw-table-active-hover-color);
+          background-color: var(--mvw-table-active-hover-bg-color);
+        }
+      }
+    }
+  }
+}

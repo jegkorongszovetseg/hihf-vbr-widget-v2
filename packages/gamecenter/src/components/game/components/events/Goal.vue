@@ -1,7 +1,7 @@
 <script setup>
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
 import { isEmpty, reject } from '@mjsz-vbr-elements/core/utils';
-import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
+import { IconHockeyPuck } from '@mjsz-vbr-elements/shared/icons';
 import { computed, ref } from 'vue';
 import TeamLogo from './TeamLogo.vue';
 
@@ -38,13 +38,13 @@ const awayOnIce = computed(() => props.event.awayOnIce);
     {{ event.score }}
   </div>
   <div>
-    <span v-if="event.advantage" class="is-badge is-large">
+    <span v-if="event.advantage" class="badge lg">
       {{ event.advantage }}
     </span>
-    <span v-if="event.en" class="is-badge is-large"> EN </span>
+    <span v-if="event.en" class="badge lg"> EN </span>
   </div>
   <div>
-    <span v-if="event.ps || event.gws || event.gwg" class="is-badge is-invert is-large">
+    <span v-if="event.ps || event.gws || event.gwg" class="badge inverted lg">
       <template v-if="event.ps">PS</template>
       <template v-if="event.gws">GWS</template>
       <template v-if="event.gwg">GWG</template>
@@ -75,7 +75,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
                 :ref="setRef"
                 :tabindex="0"
                 :aria-label="`${player.jerseyNumber} ${player.lastName} ${player.firstName}`"
-                v-on="events"
+                v-bind="events"
               >
                 {{ player.jerseyNumber }}
               </li>
@@ -99,7 +99,7 @@ const awayOnIce = computed(() => props.event.awayOnIce);
                 :ref="setRef"
                 :tabindex="0"
                 :aria-label="`${player.jerseyNumber} ${player.lastName} ${player.firstName}`"
-                v-on="events"
+                v-bind="events"
               >
                 {{ player.jerseyNumber }}
               </li>

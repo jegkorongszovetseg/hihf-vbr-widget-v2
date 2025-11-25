@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import IconWhistle from '@mjsz-vbr-elements/shared/icons/IconWhistle';
+import { IconWhistle } from '@mjsz-vbr-elements/shared/icons';
 import { computed } from 'vue';
 import { convertPenaltyCause } from '../../../game/internal';
 import GameEventLayout from '../GameEventLayout.vue';

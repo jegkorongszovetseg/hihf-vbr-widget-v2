@@ -42,7 +42,7 @@ const { columns } = useColumns(
 </script>
 
 <template>
-  <h2 class="is-heading-2">
+  <h2>
     {{ t('teams.games') }}
   </h2>
   <GamesDataTable :rows="data" :columns="columns" :game-resolver="gameResolver" :append-to="tooltipContainer" />

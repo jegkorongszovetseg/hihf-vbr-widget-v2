@@ -1,0 +1,275 @@
+@layer components.variables {
+  :where(:host) {
+    /* --mvw-gamecenter-stats-bg-color: var(--mvw-color-primary-50); */
+    /* --mvw-gamecenter-stats-border-color: var(--mvw-color-primary-100); */
+    --mvw-gamecenter-stats-title-size: var(--font-size-300);
+    /* --mvw-gamecenter-stats-title-color: var(--mvw-color-primary-400); */
+    --mvw-gamecenter-stats-size: var(--font-size-500);
+    /* --mvw-gamecenter-stats-color: var(--mvw-color-primary-800); */
+
+    --mvw-gamecenter-period-header-bg-color: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-300));
+    --mvw-gamecenter-period-header-color: light-dark(var(--mvw-color-white), var(--mvw-color-primary-900));
+    --mvw-gamecenter-period-header-size: var(--font-size-300);
+    --mvw-gamecenter-period-header-weight: 500;
+
+    --mvw-gamecenter-team-container-title-color: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-200));
+    --mvw-gamecenter-team-container-title-bg-color: light-dark(
+      var(--mvw-color-primary-100),
+      var(--mvw-color-primary-800)
+    );
+    --mvw-gamecenter-team-container-border-color: light-dark(
+      var(--mvw-color-primary-100),
+      var(--mvw-color-primary-800)
+    );
+
+    --mvw-gamecenter-events-evented-person-size: var(--font-size-500);
+    --mvw-gamecenter-events-evented-person-weight: 600;
+    --mvw-gamecenter-events-assitst-list-size: var(--font-size-400);
+    --mvw-gamecenter-events-poi-list-size: var(--font-size-200);
+    --mvw-gamecenter-events-score-size: var(--font-size-500);
+    --mvw-gamecenter-events-penalty-size: var(--font-size-400);
+    --mvw-gamecenter-events-goalie-direction-size: var(--font-size-400);
+    /* --mvw-gamecenter-events-timeout-bg-color: #2870ed; */
+
+    --mvw-gamecenter-card-title-color: var(--mvw-color-primary-900);
+    --mvw-gamecenter-card-secondary-color: var(--mvw-color-primary-500);
+    --mvw-gamecenter-card-tertiary-color: var(--mvw-color-primary-300);
+    --mvw-gamecenter-card-border-color: var(--mvw-color-primary-100);
+    --mvw-gamecenter-card-bg-color: var(--mvw-color-primary-0);
+
+    --mvw-gamecenter-card-event-goal-border-color: var(--mvw-color-primary-700);
+    --mvw-gamecenter-card-event-goal-bg-color: var(--mvw-color-primary-700);
+  }
+}
+
+@layer components {
+  :where(.gamecenter-game-stats-container-wrapper) {
+    --columns: 1fr;
+
+    display: grid;
+    grid-template-columns: var(--columns);
+    gap: var(--size-16);
+    justify-items: center;
+
+    .is-popover-content {
+      padding: var(--size-16);
+      width: max-content;
+
+      dl + dl {
+        margin-block-start: var(--size-12);
+      }
+    }
+
+    @media (width > 768px) {
+      --columns: repeat(2, 1fr);
+    }
+    @media (width > 992px) {
+      --columns: repeat(3, 1fr);
+    }
+  }
+
+  :where(.gamecenter-game-stats-container) {
+    text-align: center;
+
+    dt {
+      font-size: var(--mvw-gamecenter-stats-title-size);
+      color: var(--mvw-gamecenter-stats-title-color, var(--mvw-text-dimmed));
+      text-transform: uppercase;
+
+      button {
+        width: var(--mvw-gamecenter-stats-title-size);
+      }
+    }
+
+    dd {
+      font-size: var(--mvw-gamecenter-stats-size);
+      color: var(--mvw-gamecenter-stats-color, var(--mvw-text-default));
+    }
+  }
+
+  :where(.gamecenter-game-events) {
+    container-name: rows;
+    container-type: inline-size;
+    margin-bottom: var(--size-16);
+    border: 1px solid var(--mvw-gamecenter-stats-border-color);
+
+    .is-period-header {
+      padding: var(--size-8) var(--size-16);
+      font-size: var(--mvw-gamecenter-period-header-size);
+      font-weight: var(--mvw-gamecenter-period-header-weight);
+      text-align: center;
+      text-transform: uppercase;
+      color: var(--mvw-gamecenter-period-header-color);
+      background-color: var(--mvw-gamecenter-period-header-bg-color);
+    }
+
+    .is-no-action {
+      padding: var(--size-8);
+      text-align: center;
+    }
+  }
+
+  :where(.gamecenter-game-event) {
+    --cols: 1fr 1fr 1fr 1fr 1fr 1fr 6fr;
+    display: grid;
+    grid-template-columns: var(--cols);
+    align-items: center;
+    color: var(--mvw-text-default);
+
+    @container rows (max-width: 500px) {
+      --cols: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+      > *:last-of-type {
+        grid-column: 2/7;
+      }
+    }
+
+    &:nth-child(odd) {
+      background-color: var(--mvw-table-stripped-bg-color);
+    }
+
+    > * {
+      padding: 10px;
+    }
+
+    .is-team-logo-cell {
+      span {
+        display: inline-block;
+      }
+
+      img {
+        display: block;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .is-icon-cell {
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    .is-penalty-icon {
+      color: var(--mvw-text-dimmed);
+    }
+
+    .is-goal-so-icon {
+      color: var(--mvw-text-muted);
+    }
+
+    .is-goal-icon {
+      color: var(--mvw-color-error);
+    }
+
+    .is-timer-icon {
+      color: var(--mvw-color-secondary-500);
+    }
+
+    .is-goalie-in-icon {
+      color: var(--mvw-color-secondary-500);
+    }
+
+    .is-goalie-out-icon {
+      color: var(--mvw-color-error);
+    }
+
+    .is-time-cell {
+      font-weight: 700;
+    }
+
+    .is-penalty-cell {
+      font-size: var(--mvw-gamecenter-events-penalty-size);
+      text-align: center;
+    }
+
+    .is-score {
+      font-size: var(--mvw-gamecenter-events-score-size);
+      font-weight: 700;
+      text-align: center;
+      color: var(--mvw-color-error);
+    }
+
+    .is-score-so {
+      font-size: var(--mvw-gamecenter-events-score-size);
+      font-weight: 700;
+      text-align: center;
+      color: var(--mvw-text-muted);
+    }
+
+    .is-score-so-goal {
+      color: var(--mvw-color-live);
+    }
+
+    .is-goalie-direction {
+      font-size: var(--mvw-gamecenter-events-goalie-direction-size);
+      text-align: center;
+      color: var(--mvw-text-dimmed);
+    }
+
+    .is-evented-person {
+      font-size: var(--mvw-gamecenter-events-evented-person-size);
+      font-weight: var(--mvw-gamecenter-events-evented-person-weight);
+    }
+
+    .is-assists-list {
+      font-size: var(--mvw-gamecenter-events-assitst-list-size);
+      color: var(--mvw-text-dimmed);
+
+      span::after {
+        content: ' / ';
+      }
+
+      span:last-child::after {
+        content: '';
+      }
+    }
+
+    .is-poi-data {
+      font-size: var(--mvw-gamecenter-events-poi-list-size);
+      color: var(--mvw-text-dimmed);
+
+      ul {
+        display: inline-flex;
+        padding: 0;
+        list-style-type: none;
+
+        li {
+          &::after {
+            content: ',';
+            margin-right: 2px;
+          }
+        }
+
+        li:last-child::after {
+          content: '';
+        }
+      }
+    }
+
+    .is-player-number {
+      font-weight: 400;
+      font-style: italic;
+      color: var(--mvw-text-muted);
+    }
+
+    .is-light-cell {
+      color: var(--mvw-text-dimmed);
+    }
+  }
+
+  :where(.gamecenter-data-table) {
+    border: 1px solid var(--mvw-gamecenter-team-container-border-color);
+    min-width: 0;
+
+    h2 {
+      padding: 8px;
+      margin: 0;
+      font-size: var(--mvw-gamecenter-team-container-title-size);
+      font-weight: 500;
+      color: var(--mvw-gamecenter-team-container-title-color);
+      background-color: var(--mvw-gamecenter-team-container-title-bg-color);
+    }
+  }
+}
