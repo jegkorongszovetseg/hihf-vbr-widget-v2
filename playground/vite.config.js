@@ -25,6 +25,7 @@ export default defineConfig({
       '@mjsz-vbr-elements/gamecenter': resolve(__dirname, '../packages/gamecenter/src/index.js'),
       '@mjsz-vbr-elements/shared/icons': resolve(__dirname, '../packages/shared/dist/icons/index.js'),
       // '@mjsz-vbr-elements/shared/icons/*': resolve(__dirname, '../packages/shared/dist/icons/index.js'),
+      '@mjsz-vbr-elements/internal': resolve(__dirname, '../packages/internal/src/index.js'),
     },
   },
   plugins: [
@@ -32,7 +33,7 @@ export default defineConfig({
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: tag => tag.startsWith('mjsz-vbr-') || tag.startsWith('internal-'),
+          isCustomElement: tag => tag.startsWith('mjsz-') || tag.startsWith('internal-'),
         },
       },
     }),
