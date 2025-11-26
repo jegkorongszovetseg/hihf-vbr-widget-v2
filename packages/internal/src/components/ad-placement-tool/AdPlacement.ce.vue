@@ -1,9 +1,10 @@
 <script setup>
-import { isBetween } from '@mjsz-vbr-elements/core/utils';
+import { useFetch } from '@vueuse/core';
 import { computed, useTemplateRef } from 'vue';
 import { usePopover } from './internal';
+import Media from './Media.vue';
 
-const props = defineProps({
+defineProps({
   areaId: {
     type: String,
     default: '',
@@ -17,51 +18,73 @@ const props = defineProps({
 
 const popoverRef = useTemplateRef('popover');
 
-const banners = [
-  {
-    id: '238',
-    active: true,
-    type: 'popover', // responsive | static | popover
-    link: '/',
-    start: new Date(2025, 10, 23, 12, 0),
-    end: new Date(2025, 10, 26, 12, 0),
-  },
-];
+// const banners = [
+// {
+//   id: '239',
+//   type: 'responsive', // responsive | static | popover
+//   link: '/',
 
-const { hide } = usePopover(popoverRef);
+//   params: {
+//     media: 'https://picsum.photos/id/238/750/200',
+//     mediaLarge: 'https://picsum.photos/id/239/1170/130',
+//   },
+// },
+// {
+//   id: '240',
+//   type: 'static', // responsive | static | popover
+//   link: '/',
 
-const activeAds = computed(() => {
-  return banners.filter(banner => banner.active && isBetween(new Date(), banner.start, banner.end));
-});
+//   params: {
+//     media: 'https://picsum.photos/id/239/320/640',
+//   },
+// },
+// {
+//   id: '241',
+//   type: 'popover', // responsive | static | popover
+//   link: '/',
+
+//   params: {
+//     media: 'https://picsum.photos/id/239/640/440',
+//     type: 'image/jpg',
+//     width: 600,
+//     height: 300,
+//     closeTimeout: 100000,
+//   },
+// },
+//   {
+//     id: '242',
+//     type: 'popover', // responsive | static | popover
+//     link: '/',
+
+//     params: {
+//       media: 'https://jegkorongszovetseg.hu/_upload/editor/banner/video/MJSZ_15s_V02_1920x1080_1_web_1.mp4',
+//       type: 'video/mp4',
+//       width: 600,
+//       height: 300,
+//       closeTimeout: 100000,
+//     },
+//   },
+// ];
+
+const { isFinished, data } = useFetch('http://localhost:3007/internal/ad-placement').get().json();
+
+const { hide } = usePopover(popoverRef, computed(() => data.value.params.closeTimeout || 30000));
 
 const currentAd = computed(() => {
-  const random = Math.floor(Math.random() * activeAds.value.length);
-  return activeAds.value[random];
+  return data.value;
 });
-
-const media = computed(() => `(min-width: ${props.mobileBreakpoint})`);
 </script>
 
 <template>
-  <div class="ad-placement-tool">
+  <div v-if="isFinished" class="ad-placement-tool">
     <template v-if="currentAd.type === 'popover'">
-      <div id="mjsz-popover" ref="popover" popover="auto">
-        <a :href="currentAd.link || undefined">
-          <img :src="`https://picsum.photos/id/${currentAd.id}/640/360`">
-        </a>
+      <dialog id="mjsz-popover" ref="popover">
+        <Media :current-ad="currentAd" :mobile-breakpoint="mobileBreakpoint" />
         <button type="button" class="close" @click="hide" />
-      </div>
+      </dialog>
     </template>
     <template v-else>
-      <component :is="currentAd.link ? 'a' : 'div'" :href="currentAd.link || undefined">
-        <picture>
-          <source v-if="currentAd.type === 'responsive'" :srcset="`https://picsum.photos/id/${currentAd.id}/1170/130`" :media="media">
-          <img :src="`https://picsum.photos/id/${currentAd.id}/750/160`">
-        </picture>
-      </component>
-      <!-- <a v-if="currentAd.type === 'responsive'" :href="currentAd.link || undefined" class="mobile">
-        <img :src="`https://picsum.photos/id/${currentAd.id}/750/160`">
-      </a> -->
+      <Media :current-ad="currentAd" :mobile-breakpoint="mobileBreakpoint" />
     </template>
   </div>
 </template>
@@ -72,11 +95,13 @@ const media = computed(() => `(min-width: ${props.mobileBreakpoint})`);
 }
 
 [popover] {
+  --popover-padding: var(--size-10);
+
   display: grid;
   grid-template-areas: 'stack';
-  padding: 10px;
+  padding: var(--popover-padding);
   border-radius: 8px;
-
+  background-color: var(--mvw-color-white);
   opacity: 0;
 
   transition:
@@ -87,10 +112,12 @@ const media = computed(() => `(min-width: ${props.mobileBreakpoint})`);
   :is(button, a) {
     grid-area: stack;
   }
-  img {
+
+  :where(img, video) {
     display: block;
-    width: min(100%, 640px);
-    height: auto;
+    object-fit: cover;
+    // width: min(100vw, 640px);
+    // height: min(100vh, 320px);
   }
   button {
     align-self: start;
@@ -124,6 +151,10 @@ const media = computed(() => `(min-width: ${props.mobileBreakpoint})`);
 }
 
 .ad-placement-tool {
+  :where(img) {
+    opacity: 1;
+  }
+
   .close {
     position: absolute;
     right: 4px;
@@ -157,3 +188,5 @@ const media = computed(() => `(min-width: ${props.mobileBreakpoint})`);
   }
 }
 </style>
+
+<style src="@mjsz-vbr-elements/shared/css/core.css" />

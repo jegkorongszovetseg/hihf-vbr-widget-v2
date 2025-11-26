@@ -12,11 +12,11 @@ export function usePopover(popoverRef, timeout = 30000) {
   });
 
   function show() {
-    unref(popoverRef).showPopover();
+    unref(popoverRef).showModal();
   }
 
   function hide() {
-    unref(popoverRef).hidePopover();
+    unref(popoverRef).close();
     stop();
   }
 
