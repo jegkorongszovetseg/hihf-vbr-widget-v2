@@ -1,10 +1,15 @@
-import { useTimeoutFn } from '@vueuse/core';
+import { useEventListener, useTimeoutFn } from '@vueuse/core';
 import { unref, watch } from 'vue';
 
-export function usePopover(popoverRef, timeout = 30000) {
+export function usePopover(dialogRef, timeout = 30000) {
   const { start, stop } = useTimeoutFn(hide, timeout, { immediate: false });
 
-  watch(popoverRef, (reference) => {
+  useEventListener(dialogRef, 'click', (event) => {
+    if (event.target === unref(dialogRef))
+      hide();
+  });
+
+  watch(dialogRef, (reference) => {
     if (!reference)
       return;
     show();
@@ -12,11 +17,11 @@ export function usePopover(popoverRef, timeout = 30000) {
   });
 
   function show() {
-    unref(popoverRef).showModal();
+    unref(dialogRef).showModal();
   }
 
   function hide() {
-    unref(popoverRef).close();
+    unref(dialogRef).close();
     stop();
   }
 

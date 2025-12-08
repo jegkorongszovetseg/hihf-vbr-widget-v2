@@ -18,13 +18,13 @@ const mediaQuery = computed(() => `(min-width: ${props.currentAd.params?.breakpo
 
 <template>
   <component :is="currentAd.link ? 'a' : 'div'" :href="currentAd.link || undefined">
-    <video v-if="currentAd.params?.mediaType?.includes('video')" :width="currentAd.params.width" :height="currentAd.params.height" controls autoplay muted>
+    <video v-if="currentAd.params?.mediaType?.includes('video')" :width="currentAd.params.width" :height="currentAd.params.height" autoplay muted>
       <source :src="currentAd.params?.media" :type="currentAd.params?.mediaType">
     </video>
     <picture v-else>
-      <source v-if="currentAd.type === 'responsive'" :srcset="currentAd.params?.mediaLarge" :media="mediaQuery">
-      <img v-if="currentAd.type === 'popover'" :src="currentAd.params.media" :style="`width: min(100vw, ${currentAd.params.width}px); height: min(100vh, ${currentAd.params.height}px);`">
-      <img v-else :src="currentAd.params.media">
+      <source v-if="currentAd.type === 'responsive'" :srcset="`http://localhost:3007${currentAd.media[1].path}`" :media="mediaQuery">
+      <img v-if="currentAd.type === 'popover'" :src="currentAd.media[0].path" :style="`width: min(100vw, ${currentAd.currentAd.media[0].width}px); height: min(100vh, ${currentAd.currentAd.media[0].height}px);`">
+      <img v-else :src="`http://localhost:3007${currentAd.media[0].path}`">
     </picture>
   </component>
 </template>

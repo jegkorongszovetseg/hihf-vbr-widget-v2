@@ -4,7 +4,7 @@ import { computed, useTemplateRef } from 'vue';
 import { usePopover } from './internal';
 import Media from './Media.vue';
 
-defineProps({
+const props = defineProps({
   areaId: {
     type: String,
     default: '',
@@ -18,57 +18,9 @@ defineProps({
 
 const popoverRef = useTemplateRef('popover');
 
-// const banners = [
-// {
-//   id: '239',
-//   type: 'responsive', // responsive | static | popover
-//   link: '/',
+const { isFinished, data, error } = useFetch(`http://localhost:3007/internal/ad-placement?areaid=${props.areaId}`, { timeout: 100 }).get().json();
 
-//   params: {
-//     media: 'https://picsum.photos/id/238/750/200',
-//     mediaLarge: 'https://picsum.photos/id/239/1170/130',
-//   },
-// },
-// {
-//   id: '240',
-//   type: 'static', // responsive | static | popover
-//   link: '/',
-
-//   params: {
-//     media: 'https://picsum.photos/id/239/320/640',
-//   },
-// },
-// {
-//   id: '241',
-//   type: 'popover', // responsive | static | popover
-//   link: '/',
-
-//   params: {
-//     media: 'https://picsum.photos/id/239/640/440',
-//     type: 'image/jpg',
-//     width: 600,
-//     height: 300,
-//     closeTimeout: 100000,
-//   },
-// },
-//   {
-//     id: '242',
-//     type: 'popover', // responsive | static | popover
-//     link: '/',
-
-//     params: {
-//       media: 'https://jegkorongszovetseg.hu/_upload/editor/banner/video/MJSZ_15s_V02_1920x1080_1_web_1.mp4',
-//       type: 'video/mp4',
-//       width: 600,
-//       height: 300,
-//       closeTimeout: 100000,
-//     },
-//   },
-// ];
-
-const { isFinished, data } = useFetch('http://localhost:3007/internal/ad-placement').get().json();
-
-const { hide } = usePopover(popoverRef, computed(() => data.value.params.closeTimeout || 30000));
+const { hide } = usePopover(popoverRef, computed(() => data.value?.params?.closeTimeout ?? 30000));
 
 const currentAd = computed(() => {
   return data.value;
@@ -76,9 +28,9 @@ const currentAd = computed(() => {
 </script>
 
 <template>
-  <div v-if="isFinished" class="ad-placement-tool">
+  <div v-if="isFinished && !error" class="ad-placement-tool">
     <template v-if="currentAd.type === 'popover'">
-      <dialog id="mjsz-popover" ref="popover">
+      <dialog ref="popover">
         <Media :current-ad="currentAd" :mobile-breakpoint="mobileBreakpoint" />
         <button type="button" class="close" @click="hide" />
       </dialog>
@@ -90,15 +42,15 @@ const currentAd = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-[popover]:popover-open {
+dialog:open {
+  display: grid;
+  grid-template-areas: 'stack';
   opacity: 1;
 }
 
-[popover] {
+dialog {
   --popover-padding: var(--size-10);
 
-  display: grid;
-  grid-template-areas: 'stack';
   padding: var(--popover-padding);
   border-radius: 8px;
   background-color: var(--mvw-color-white);
@@ -111,6 +63,10 @@ const currentAd = computed(() => {
 
   :is(button, a) {
     grid-area: stack;
+  }
+
+  :where(a) {
+    outline: none;
   }
 
   :where(img, video) {
@@ -126,12 +82,12 @@ const currentAd = computed(() => {
 }
 
 @starting-style {
-  [popover]:popover-open {
+  dialog:open {
     opacity: 0;
   }
 }
 
-[popover]::backdrop {
+dialog::backdrop {
   background-color: transparent;
   transition:
     display 0.3s allow-discrete,
@@ -140,41 +96,38 @@ const currentAd = computed(() => {
   backdrop-filter: blur(2px);
 }
 
-[popover]:popover-open::backdrop {
+dialog:open::backdrop {
   background-color: rgb(0 0 0 / 75%);
 }
 
 @starting-style {
-  [popover]:popover-open::backdrop {
+  dialog:open::backdrop {
     background-color: transparent;
   }
 }
 
 .ad-placement-tool {
-  :where(img) {
+  :where(img, video) {
     opacity: 1;
   }
 
   .close {
     position: absolute;
-    right: 4px;
-    top: 4px;
-    width: 32px;
-    height: 32px;
+    right: calc(var(--popover-padding) * -1);
+    top: calc(var(--popover-padding) * -1);
+    width: 24px;
+    height: 24px;
     margin: 0;
     padding: 0;
-    opacity: 0.3;
-    background: none;
+    background: white;
     border: none;
-  }
-  .close:hover {
-    opacity: 1;
+    border-end-start-radius: 8px;
   }
   .close:before,
   .close:after {
     position: absolute;
-    left: 50%;
-    top: 7px;
+    left: 43%;
+    top: 5px;
     content: ' ';
     height: 16px;
     width: 2px;

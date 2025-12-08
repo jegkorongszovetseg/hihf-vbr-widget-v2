@@ -14,7 +14,7 @@ const internal = computed(() => routes.value.filter(route => route.name.includes
 </script>
 
 <template>
-  <div class="flex">
+  <div class="flex flex-wrap">
     <ul class="flex-1 p-5">
       <li v-for="route in elements" :key="route.name">
         <RouterLink v-slot="{ href }" :to="{ name: route.name }" class="text-slate-600 dark:text-slate-300">
