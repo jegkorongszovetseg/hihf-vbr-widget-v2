@@ -1,4 +1,5 @@
 <script setup>
+import { VBR_API_BASE_URL } from '@mjsz-vbr-elements/core/constants';
 import { useFetch } from '@vueuse/core';
 import { computed, useTemplateRef } from 'vue';
 import { usePopover } from './internal';
@@ -18,7 +19,7 @@ const props = defineProps({
 
 const popoverRef = useTemplateRef('popover');
 
-const { isFinished, data, error } = useFetch(`http://localhost:3007/internal/ad-placement?areaid=${props.areaId}`, { timeout: 100 }).get().json();
+const { isFinished, data, error } = useFetch(`${VBR_API_BASE_URL.replace('/vbr', '')}/internal/ad-placement?areaid=${props.areaId}`, { timeout: 100 }).get().json();
 
 const { hide } = usePopover(popoverRef, computed(() => data.value?.params?.closeTimeout ?? 30000));
 
