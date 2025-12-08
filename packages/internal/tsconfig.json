@@ -7,11 +7,13 @@
     "paths": {
       "@mjsz-vbr-elements/core": ["../core/src/index.js"],
       "@mjsz-vbr-elements/core/*": ["../core/src/*"],
+      "@mjsz-vbr-elements/core/constants": ["../core/src/constants.js"],
       "@mjsz-vbr-elements/shared": ["../shared/index.js"],
-      "@mjsz-vbr-elements/shared/*": ["../shared/*"]
+      "@mjsz-vbr-elements/shared/*": ["../shared/*"],
+      "@mjsz-vbr-elements/shared/icons": ["../shared/index.js"]
     },
     "outDir": "./dist"
   },
-  "include": ["src", "src/**/*"],
-  "exclude": ["dist/*"]
+  "include": ["src/**/*"],
+  "exclude": ["dist"]
 }

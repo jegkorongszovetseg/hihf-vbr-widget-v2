@@ -1,0 +1,31 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@mjsz-vbr-elements/core": ["./packages/core/src/index.js"],
+      "@mjsz-vbr-elements/core/*": ["./packages/core/src/*"],
+      "@mjsz-vbr-elements/elements": ["./packages/elements/src/index.js"],
+      "@mjsz-vbr-elements/elements/*": ["./packages/elements/src/*"],
+      "@mjsz-vbr-elements/extended": ["./packages/extended/src/index.js"],
+      "@mjsz-vbr-elements/extended/*": ["./packages/extended/src/*"],
+      "@mjsz-vbr-elements/gamecenter": ["./packages/gamecenter/src/index.js"],
+      "@mjsz-vbr-elements/gamecenter/*": ["./packages/gamecenter/src/*"],
+      "@mjsz-vbr-elements/liga": ["./packages/liga/src/index.js"],
+      "@mjsz-vbr-elements/liga/*": ["./packages/liga/src/*"],
+      "@mjsz-vbr-elements/internal": ["./packages/internal/src/index.js"],
+      "@mjsz-vbr-elements/internal/*": ["./packages/internal/src/*"],
+      "@mjsz-vbr-elements/shared": ["./packages/shared/index.js"],
+      "@mjsz-vbr-elements/shared/*": ["./packages/shared/*"],
+      "@mjsz-vbr-elements/shared/icons": ["./packages/shared/index.js"]
+    }
+  },
+  "references": [
+    { "path": "./packages/core" },
+    { "path": "./packages/elements" },
+    { "path": "./packages/extended" },
+    { "path": "./packages/gamecenter" },
+    { "path": "./packages/liga" },
+    { "path": "./packages/internal" }
+  ]
+}
