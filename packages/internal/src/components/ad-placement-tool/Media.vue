@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { VBR_API_BASE_URL } from '@mjsz-vbr-elements/core/constants';
 import { computed } from 'vue';
 
 const props = defineProps({
@@ -13,18 +14,22 @@ const props = defineProps({
   },
 });
 
-const mediaQuery = computed(() => `(min-width: ${props.currentAd.params?.breakpoint || props.mobileBreakpoint})`);
+const mediaQuery = computed(() => `(min-width: ${props.currentAd?.breakpoint || props.mobileBreakpoint})`);
+
+function setMedaiPath(path: string) {
+  return `${VBR_API_BASE_URL.replace('/vbr', '')}${path}`;
+}
 </script>
 
 <template>
   <component :is="currentAd.link ? 'a' : 'div'" :href="currentAd.link || undefined">
-    <video v-if="currentAd.params?.mediaType?.includes('video')" :width="currentAd.params.width" :height="currentAd.params.height" autoplay muted>
-      <source :src="currentAd.params?.media" :type="currentAd.params?.mediaType">
+    <video v-if="currentAd.media[0]?.mediaType?.includes('video')" :width="currentAd.media[0].width" :height="currentAd.media[0].height" autoplay muted>
+      <source :src="currentAd.media[0]?.media" :type="currentAd.media[0]?.mediaType">
     </video>
     <picture v-else>
-      <source v-if="currentAd.type === 'responsive'" :srcset="`http://localhost:3007${currentAd.media[1].path}`" :media="mediaQuery">
-      <img v-if="currentAd.type === 'popover'" :src="currentAd.media[0].path" :style="`width: min(100vw, ${currentAd.currentAd.media[0].width}px); height: min(100vh, ${currentAd.currentAd.media[0].height}px);`">
-      <img v-else :src="`http://localhost:3007${currentAd.media[0].path}`">
+      <source v-if="currentAd.type === 'responsive'" :srcset="setMedaiPath(currentAd.media[1].path)" :media="mediaQuery">
+      <img v-if="currentAd.type === 'popover'" :src="setMedaiPath(currentAd.media[0].path)" :style="`width: min(100vw, ${currentAd.media[0].width}px); height: min(100vh, ${currentAd.media[0].height}px);`">
+      <img v-else :src="setMedaiPath(currentAd.media[0].path)">
     </picture>
   </component>
 </template>

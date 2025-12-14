@@ -4,7 +4,7 @@
 
 <template>
   <div>
-    <mjsz-ad-placement area-id="6931333aa5ed5608bf441752" />
+    <mjsz-ad-placement area-id="693d5df3d0ddcf0ade840b77" />
   </div>
 </template>
 

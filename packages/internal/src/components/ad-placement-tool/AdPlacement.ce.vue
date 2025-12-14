@@ -19,25 +19,21 @@ const props = defineProps({
 
 const popoverRef = useTemplateRef('popover');
 
-const { isFinished, data, error } = useFetch(`${VBR_API_BASE_URL.replace('/vbr', '')}/internal/ad-placement?areaid=${props.areaId}`, { timeout: 100 }).get().json();
+const { isFinished, data, error } = useFetch(`${VBR_API_BASE_URL.replace('/vbr', '')}/internal/ad-placement?areaid=${props.areaId}`, { timeout: 1000 }).get().json();
 
 const { hide } = usePopover(popoverRef, computed(() => data.value?.params?.closeTimeout ?? 30000));
-
-const currentAd = computed(() => {
-  return data.value;
-});
 </script>
 
 <template>
   <div v-if="isFinished && !error" class="ad-placement-tool">
-    <template v-if="currentAd.type === 'popover'">
+    <template v-if="data.type === 'popover'">
       <dialog ref="popover">
-        <Media :current-ad="currentAd" :mobile-breakpoint="mobileBreakpoint" />
+        <Media :current-ad="data" :mobile-breakpoint="mobileBreakpoint" />
         <button type="button" class="close" @click="hide" />
       </dialog>
     </template>
     <template v-else>
-      <Media :current-ad="currentAd" :mobile-breakpoint="mobileBreakpoint" />
+      <Media :current-ad="data" :mobile-breakpoint="mobileBreakpoint" />
     </template>
   </div>
 </template>
