@@ -137,7 +137,7 @@
     --align-items: center;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--min-width), var(--max-width)));
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--min-width), 100%), var(--max-width)));
     align-items: var(--align-items);
     gap: var(--gap);
   }
