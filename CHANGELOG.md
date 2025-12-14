@@ -1,3 +1,8 @@
+## [2.33.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.33.1...v2.33.2) (2025-12-14)
+
+### Bug Fixes
+
+* **css:** Auto columns min column size calculation ([b3d00fe](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/b3d00fe5cf53ad2bf3b3cbfc85fe465922802fb4))
 ## [2.33.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.33.0...v2.33.1) (2025-11-25)
 
 ### Bug Fixes
