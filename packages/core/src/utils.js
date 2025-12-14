@@ -1,4 +1,5 @@
 export * from './utils/convert';
+export * from './utils/cookie';
 export * from './utils/datetime';
 export * from './utils/dom';
 export * from './utils/errors';

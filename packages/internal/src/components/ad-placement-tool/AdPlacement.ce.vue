@@ -1,5 +1,6 @@
 <script setup>
 import { VBR_API_BASE_URL } from '@mjsz-vbr-elements/core/constants';
+import { cookie } from '@mjsz-vbr-elements/core/utils';
 import { useFetch } from '@vueuse/core';
 import { computed, useTemplateRef } from 'vue';
 import { usePopover } from './internal';
@@ -21,7 +22,10 @@ const popoverRef = useTemplateRef('popover');
 
 const { isFinished, data, error } = useFetch(`${VBR_API_BASE_URL.replace('/vbr', '')}/internal/ad-placement?areaid=${props.areaId}`, { timeout: 1000 }).get().json();
 
-const { hide } = usePopover(popoverRef, computed(() => data.value?.params?.closeTimeout ?? 30000));
+const { hide } = usePopover(popoverRef, computed(() => data.value?.closeTimeout ?? 30000), {
+  check: () => cookie.checkCookie(`mjsz-popover-${data.value?._id}`),
+  set: () => cookie.setCookie(`mjsz-popover-${data.value?._id}`, 1, data.value?.expiration ?? 1),
+});
 </script>
 
 <template>

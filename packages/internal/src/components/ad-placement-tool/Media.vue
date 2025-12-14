@@ -33,7 +33,3 @@ function setMedaiPath(path: string) {
     </picture>
   </component>
 </template>
-
-<style scoped>
-
-</style>
