@@ -17,15 +17,16 @@
       "@mjsz-vbr-elements/internal/*": ["./packages/internal/src/*"],
       "@mjsz-vbr-elements/shared": ["./packages/shared/index.js"],
       "@mjsz-vbr-elements/shared/*": ["./packages/shared/*"],
-      "@mjsz-vbr-elements/shared/icons": ["./packages/shared/index.js"]
+      "@mjsz-vbr-elements/shared/icons": ["./packages/shared/index.js"],
+      "@mjsz-vbr-elements/shared/css/*": ["./packages/shared/assets/css/*"]
     }
   },
-  "references": [
-    { "path": "./packages/core" },
-    { "path": "./packages/elements" },
-    { "path": "./packages/extended" },
-    { "path": "./packages/gamecenter" },
-    { "path": "./packages/liga" },
-    { "path": "./packages/internal" }
+  "include": [
+    "packages/*/src/**/*",
+    "playground/src/**/*"
+  ],
+  "exclude": [
+    "**/dist",
+    "**/node_modules"
   ]
 }
