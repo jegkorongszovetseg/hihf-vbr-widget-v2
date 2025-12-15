@@ -15,14 +15,14 @@ export function usePopover(dialogRef, timeout = 30000, {
   watch(dialogRef, (reference) => {
     if (!reference)
       return;
-    if (check())
+    if (check?.())
       return;
     show();
     start();
   });
 
   function show() {
-    set();
+    set?.();
     unref(dialogRef).showModal();
   }
 

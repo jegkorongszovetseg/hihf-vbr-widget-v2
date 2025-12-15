@@ -28,7 +28,7 @@ function setMedaiPath(path: string) {
     </video>
     <picture v-else>
       <source v-if="currentAd.type === 'responsive'" :srcset="setMedaiPath(currentAd.media[1].path)" :media="mediaQuery">
-      <img v-if="currentAd.type === 'popover'" :src="setMedaiPath(currentAd.media[0].path)" :style="`width: min(100vw, ${currentAd.media[0].width}px); height: min(100vh, ${currentAd.media[0].height}px);`">
+      <img v-if="currentAd.type === 'popover'" :src="setMedaiPath(currentAd.media[0].path)" :style="`width: clamp(0px, ${currentAd.media[0].width}px, 750px); height: auto;`">
       <img v-else :src="setMedaiPath(currentAd.media[0].path)">
     </picture>
   </component>
