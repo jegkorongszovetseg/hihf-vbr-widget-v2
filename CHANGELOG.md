@@ -1,3 +1,8 @@
+## [2.34.1](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.34.0...v2.34.1) (2025-12-15)
+
+### Bug Fixes
+
+* **chore:** Fix publish environment variables ([de76825](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/commit/de76825ca0b000e3b414aa956bc50864c63fb212))
 ## [2.34.0](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.33.2...v2.34.0) (2025-12-15)
 ## [2.33.2](https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/compare/v2.33.1...v2.33.2) (2025-12-14)
 
