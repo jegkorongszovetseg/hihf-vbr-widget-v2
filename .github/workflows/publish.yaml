@@ -36,6 +36,8 @@ jobs:
 
       - name: Build packages
         run: pnpm run build
+        env:
+          VITE_VBR_API_URL: ${{ vars.VITE_VBR_API_URL }}
 
       - name: Run tests
         run: pnpm run test:ci
