@@ -20,7 +20,7 @@
   }
 
   :where(img, svg, video, canvas, audio, iframe, embed, object) {
-    display: inline-block;
+    display: block;
   }
 
   :where(img, svg, video) {
