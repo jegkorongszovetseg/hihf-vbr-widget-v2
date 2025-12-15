@@ -1,7 +1,7 @@
 <script setup>
 import { DataTable, Image, LoadingIndicator, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useColumns, useError } from '@mjsz-vbr-elements/core/composables';
-import * as Errors from '@mjsz-vbr-elements/core/constants';
+import * as Errors from '@mjsz-vbr-elements/core/utils';
 import { IconArrowDown, IconArrowUp } from '@mjsz-vbr-elements/shared/icons';
 import { computed, toRefs } from 'vue';
 
