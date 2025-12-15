@@ -22,7 +22,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s",
-    "release": "pnpm test:ci && bumpp -r -x \"pnpm run changelog\" --all",
+    "release": "pnpm run lint:fix && pnpm test:ci && pnpm run build && bumpp -r -x \"pnpm run changelog\" --all",
     "publish:release": "pnpm run build && pnpm -r publish --access public"
   },
   "devDependencies": {

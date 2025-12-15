@@ -1,9 +1,14 @@
 name: Publish to NPM
 
 on:
+  # Git tag push-ra triggerel (bumpp után)
+  push:
+    tags:
+      - 'v*'
+  # GitHub Release létrehozásakor
   release:
     types: [created]
-  # Vagy manuális trigger:
+  # Manuális trigger
   workflow_dispatch:
     inputs:
       version:
