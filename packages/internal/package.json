@@ -9,7 +9,7 @@
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/hihf-vbr-widget-v2.git"
+    "url": "https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2.git"
   },
   "exports": {
     ".": {
