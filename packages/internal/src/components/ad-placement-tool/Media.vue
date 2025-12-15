@@ -17,7 +17,7 @@ const props = defineProps({
 const mediaQuery = computed(() => `(min-width: ${props.currentAd?.breakpoint || props.mobileBreakpoint})`);
 
 function setMedaiPath(path: string) {
-  return `${VBR_API_BASE_URL.replace('/vbr', '')}${path}`;
+  return `${VBR_API_BASE_URL}${path}`;
 }
 </script>
 

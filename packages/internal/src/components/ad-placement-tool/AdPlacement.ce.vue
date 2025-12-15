@@ -20,7 +20,7 @@ const props = defineProps({
 
 const popoverRef = useTemplateRef('popover');
 
-const { isFinished, data, error } = useFetch(`${VBR_API_BASE_URL.replace('/vbr', '')}/internal/ad-placement?areaid=${props.areaId}`, { timeout: 1000 }).get().json();
+const { isFinished, data, error } = useFetch(`${VBR_API_BASE_URL}/internal/ad-placement?areaid=${props.areaId}`, { timeout: 1000 }).get().json();
 
 const { hide } = usePopover(popoverRef, computed(() => data.value?.closeTimeout ?? 30000), {
   check: () => cookie.checkCookie(`mjsz-popover-${data.value?._id}`),

@@ -1,4 +1,5 @@
 export const VBR_API_BASE_URL = import.meta.env.VITE_VBR_API_URL;
+export const VBR_API_WEBSOCKET_BASE_URL = import.meta.env.VITE_VBR_API_WEBSOCKET_URL;
 
 export const DEFAULT_EXTERNAL_GAME_URL = 'https://www.jegkorongszovetseg.hu/event/game/{gameId}';
 

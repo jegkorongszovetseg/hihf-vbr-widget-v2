@@ -111,6 +111,7 @@
       }
 
       .is-icon-sort {
+        display: inline-block;
         width: var(--size-12);
         height: var(--size-12);
         margin-inline-start: var(--size-4);
