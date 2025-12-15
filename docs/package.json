@@ -18,6 +18,7 @@
     "@mjsz-vbr-elements/elements": "workspace:^",
     "@mjsz-vbr-elements/extended": "workspace:^",
     "@mjsz-vbr-elements/gamecenter": "workspace:^",
+    "@mjsz-vbr-elements/internal": "workspace:^",
     "@mjsz-vbr-elements/liga": "workspace:^",
     "@mjsz-vbr-elements/shared": "workspace:^",
     "ramda": "^0.31.3"

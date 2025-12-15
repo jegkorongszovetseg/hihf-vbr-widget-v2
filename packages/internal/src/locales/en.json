@@ -1,0 +1,98 @@
+{
+  "schedule": "Schedule",
+  "registration": "Application form",
+  "selection": {
+    "report": "Report",
+    "video": "Video",
+    "season": "Season",
+    "seasons": "Seasons",
+    "section": "Section",
+    "sections": "Sections",
+    "phases": "Phases",
+    "phasesDivision": "Phases (phase-Name=division)",
+    "noPhases": "No Phases",
+    "teams": "Teams",
+    "filterName": "Filter by Name",
+    "filter": "Filter",
+    "players": "Players",
+    "month": "Month",
+    "homeOrAway": "Home or Away",
+    "home": "Home",
+    "away": "Away",
+    "schedule": "Schedule",
+    "standings": "Standings",
+    "playerStats": "Player Statistics",
+    "teamStats": "Team Statistics",
+    "championships": "Championships",
+    "championshipName": "Championship Name (Championship-Name):",
+    "championshipId": "Championship Identifier (Championship-id):",
+    "seasonId": "Season Identifier (season-Id):"
+  },
+  "report": {
+    "points": "Points",
+    "goals": "Goals",
+    "assists": "Assists",
+    "penalties": "Penalties",
+    "goalies": "Goalies",
+    "goaliesLimit": "Goalies under 40%",
+    "teamAttendance": "Attendance",
+    "teamFairplay": "Fairplay",
+    "teamPenaltyKilling": "Penalty Killing",
+    "teamPowerplay": "Powerplay",
+    "teamScoringEfficiency": "Scoring Efficiency"
+  },
+  "playoffs": {
+    "Negyeddöntő1": "Quarterfinal 1",
+    "Negyeddöntő2": "Quarterfinal 2",
+    "Negyeddöntő3": "Quarterfinal 3",
+    "Negyeddöntő4": "Quarterfinal 4",
+    "Elődöntő1": "Semifinal 1",
+    "Elődöntő2": "Semifinal 2",
+    "Döntő": "Final"
+  },
+  "table": {
+    "section": {
+      "short": "Section",
+      "tooltip": "Section"
+    },
+    "organizer": {
+      "short": "Organizer",
+      "tooltip": "Organizer Team"
+    },
+    "document": {
+      "short": "Document",
+      "tooltip": "Application Form/Schedule"
+    }
+  },
+  "calendar": {
+    "gamesPlayed": "Games played",
+    "todaysGames": "Today's games",
+    "nextGames": "Next games",
+    "weekGames": "Games of the week",
+    "noGame": "No games can be displayed",
+    "more": "More"
+  },
+  "gamesTimeline": {
+    "allSchedule": "Games Schedule",
+    "errorText": "Something went wrong!",
+    "errorCta": "Try Again",
+    "noGames": "No games can be displayed"
+  },
+  "countdown": {
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds"
+  },
+  "recruitmentInfo": {
+    "filterByNameAndLocation": "Filter by name or location",
+    "noResult": "No results to display",
+    "recruitmentTeamName": "Team name",
+    "recruitmentArenaName": "Icerink",
+    "recruitmentArenaAddress": "Icerink address",
+    "recruitmentContactName": "Contact",
+    "recruitmentContactPhone": "Phone",
+    "recruitmentContactEmail": "E-mail",
+    "recruitmentContactUrl": "Website"
+  }
+}

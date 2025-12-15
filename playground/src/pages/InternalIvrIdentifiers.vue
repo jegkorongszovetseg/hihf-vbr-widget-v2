@@ -9,6 +9,6 @@ import { store } from '../store.js';
 <template>
   <div class="p-5">
     <!-- <IVRIdentifiers :locale="store.locale" /> -->
-    <mjsz-vbr-ibr-identifiers :locale="store.locale" />
+    <mjsz-ivr-identifiers :locale="store.locale" />
   </div>
 </template>

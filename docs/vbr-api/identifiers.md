@@ -1,3 +1,3 @@
 # Azonosítók lekérdezése
 
-<mjsz-vbr-ibr-identifiers locale="hu" />
+<mjsz-ivr-identifiers locale="hu" />

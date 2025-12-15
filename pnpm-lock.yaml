@@ -58,6 +58,9 @@ importers:
       '@mjsz-vbr-elements/gamecenter':
         specifier: workspace:^
         version: link:../packages/gamecenter
+      '@mjsz-vbr-elements/internal':
+        specifier: workspace:^
+        version: link:../packages/internal
       '@mjsz-vbr-elements/liga':
         specifier: workspace:^
         version: link:../packages/liga

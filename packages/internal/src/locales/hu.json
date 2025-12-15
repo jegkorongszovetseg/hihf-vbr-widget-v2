@@ -1,0 +1,98 @@
+{
+  "schedule": "Sorsolás",
+  "registration": "Jelentkezés",
+  "selection": {
+    "report": "Riport",
+    "video": "Videó",
+    "season": "Szezon",
+    "seasons": "Szezonok",
+    "section": "Szakasz",
+    "sections": "Szakaszok",
+    "phases": "Szakaszok",
+    "phasesDivision": "Fázisok (phase-Name=division)",
+    "noPhases": "Nincsenek szakaszok",
+    "teams": "Csapatok",
+    "filterName": "Szűrés névre",
+    "filter": "Szűrés",
+    "players": "Játékosok",
+    "month": "Hónap",
+    "homeOrAway": "Hazai vagy Vendég",
+    "home": "Hazai",
+    "away": "Vendég",
+    "schedule": "Menetrend",
+    "standings": "Tabella",
+    "playerStats": "Játékos statisztika",
+    "teamStats": "Csapat Statisztika",
+    "championships": "Bajnokságok",
+    "championshipName": "Bajnokság Neve (Championship-Name):",
+    "championshipId": "Bajnokság azonosító (Championship-id):",
+    "seasonId": "Szezon azonosító (season-Id):"
+  },
+  "report": {
+    "points": "Pontok",
+    "goals": "Gólok",
+    "assists": "Gólpasszok",
+    "penalties": "Büntetések",
+    "goalies": "Kapusok",
+    "goaliesLimit": "Kapusok 40% jégidő alatt",
+    "teamAttendance": "Nézőszám",
+    "teamFairplay": "Büntetések",
+    "teamPenaltyKilling": "Emberhátrányok",
+    "teamPowerplay": "Emberelőnyök",
+    "teamScoringEfficiency": "Hatékonyság"
+  },
+  "playoffs": {
+    "Negyeddöntő1": "Negyeddöntő 1",
+    "Negyeddöntő2": "Negyeddöntő 2",
+    "Negyeddöntő3": "Negyeddöntő 3",
+    "Negyeddöntő4": "Negyeddöntő 4",
+    "Elődöntő1": "Elődöntő 1",
+    "Elődöntő2": "Elődöntő 2",
+    "Döntő": "Döntő"
+  },
+  "table": {
+    "section": {
+      "short": "Szakasz",
+      "tooltip": "Szakasz"
+    },
+    "organizer": {
+      "short": "Rendező",
+      "tooltip": "Rendező csapat"
+    },
+    "document": {
+      "short": "Dokumentum",
+      "tooltip": "Jelentkezés/Sorsolás"
+    }
+  },
+  "calendar": {
+    "gamesPlayed": "Lejátszott mérkőzések",
+    "todaysGames": "Mai mérkőzések",
+    "nextGames": "Következő mérkőzések",
+    "weekGames": "A hét mérkőzései",
+    "noGame": "Nincs megjeleníthető mérkőzés",
+    "more": "Még több"
+  },
+  "gamesTimeline": {
+    "allSchedule": "Teljes menetrend",
+    "errorText": "Valami hiba történt!",
+    "errorCta": "Próbáld újra",
+    "noGames": "Nincs megjeleníthető mérkőzés"
+  },
+  "countdown": {
+    "days": "Nap",
+    "hours": "Óra",
+    "minutes": "Perc",
+    "seconds": "Másodperc"
+  },
+  "recruitmentInfo": {
+    "filterByNameAndLocation": "Szűrés név vagy település szerint",
+    "noResult": "Nincs megjeleníthető találat",
+    "recruitmentTeamName": "Csapat név",
+    "recruitmentArenaName": "Jégpálya",
+    "recruitmentArenaAddress": "Jégpálya címe",
+    "recruitmentContactName": "Kapcsolattartó",
+    "recruitmentContactPhone": "Telefonszám",
+    "recruitmentContactEmail": "E-mail",
+    "recruitmentContactUrl": "Honlap"
+  }
+}
