@@ -7,9 +7,10 @@
       "@mjsz-vbr-elements/core/*": ["../core/src/*"],
       "@mjsz-vbr-elements/shared": ["../shared/index.js"],
       "@mjsz-vbr-elements/shared/*": ["../shared/*"],
-      "@mjsz-vbr-elements/shared/icons": ["../shared/index.js"]
+      "@mjsz-vbr-elements/shared/icons": ["../shared/index.js"],
+      "@mjsz-vbr-elements/shared/css/*": ["../shared/assets/css/*"]
     }
   },
-  "include": ["src/**/*", "src/locales/**/*.json"],
+  "include": ["src/**/*"],
   "exclude": ["dist"]
 }

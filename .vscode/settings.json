@@ -48,5 +48,8 @@
     "pcss",
     "postcss"
   ],
-  "svg.preview.background": "transparent"
+  "svg.preview.background": "transparent",
+
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
