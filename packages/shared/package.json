@@ -4,7 +4,12 @@
   "version": "2.33.2",
   "private": false,
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
+  "license": "MIT",
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/hihf-vbr-widget-v2.git"
+  },
   "exports": {
     ".": {
       "import": "./dist/icons/index.js"
@@ -31,5 +36,9 @@
     "sass": "^1.89.2",
     "vite": "^7.0.0",
     "vite-svg-loader": "^5.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   }
 }
