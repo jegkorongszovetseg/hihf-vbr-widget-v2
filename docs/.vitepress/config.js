@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => {
         { text: 'VBR API', link: '/vbr-api/' },
         { text: 'IVR Azonosítók', link: '/vbr-api/identifiers' },
         { text: 'Stories', link: 'https://api.icehockey.hu/widgets/stories/v2' },
-        { text: pkg.version, link: '/changelog' },
+        { text: pkg.version, link: 'https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2/releases' },
       ],
       sidebar: {
         '/widget/': [
@@ -102,7 +102,7 @@ export default defineConfig(({ mode }) => {
       template: {
         compilerOptions: {
           isCustomElement: (tag) => {
-            return tag.includes('mjsz-vbr-');
+            return tag.includes('mjsz-');
           },
         },
       },

@@ -80,7 +80,7 @@ const messages = { en, hu };
             </FormField>
 
             <FormField :label="t('selection.phasesDivision')" name="phases" class="mb-md">
-              <pre id="phases" v-text="phaseData" />
+              <pre id="phases" style="--_height: auto;" v-text="phaseData" />
             </FormField>
           </div>
         </div>

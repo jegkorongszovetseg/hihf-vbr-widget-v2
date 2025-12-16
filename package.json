@@ -21,15 +21,13 @@
     "test:ci": "vitest run",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s",
-    "release": "pnpm run lint:fix && pnpm test:ci && pnpm run build && bumpp -r -x \"pnpm run changelog\" --all",
+    "release": "pnpm run lint:fix && pnpm test:ci && pnpm run build && bumpp -r --all",
     "publish:release": "pnpm run build && pnpm -r publish --access public"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.16.1",
     "@vue/test-utils": "^2.4.6",
     "bumpp": "^10.2.0",
-    "conventional-changelog-cli": "^5.0.0",
     "eslint": "^9.30.0",
     "eslint-plugin-format": "^1.0.1",
     "happy-dom": "^18.0.1",
