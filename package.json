@@ -5,14 +5,17 @@
   "private": true,
   "packageManager": "pnpm@10.12.4",
   "description": "Data visualization for MJSZ VBR",
+  "author": "Ákos Stegner <akos.stegner@gmail.com>",
+  "license": "ISC",
+  "keywords": [],
+  "engines": {
+    "node": ">=24"
+  },
   "workspaces": [
     "packages/*",
     "playground/**",
     "histoire/**"
   ],
-  "author": "Ákos Stegner <akos.stegner@gmail.com>",
-  "license": "ISC",
-  "keywords": [],
   "scripts": {
     "playground": "pnpm run -C playground dev",
     "playground:localhost": "pnpm run -C playground dev --mode localhost",
