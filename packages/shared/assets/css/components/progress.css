@@ -1,0 +1,67 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-progress-height: 10px;
+    --mvw-progress-border-radius: 5px;
+    --mvw-progress-bg-color: light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-900));
+    --mvw-progress-bar-color: var(--mvw-color-live);
+    --mvw-progress-bar-stripe-color: rgba(from var(--mvw-color-white) r g b / 20%);
+    --mvw-progress-bar-stripe-angle: 45deg;
+  }
+}
+
+@layer components {
+  :where(.progress) {
+    display: flex;
+    height: var(--mvw-progress-height, 10px);
+    overflow: hidden;
+    /* font-size: var(--font-size-50); */
+    background-color: var(--mvw-progress-bg-color);
+    border-radius: var(--mvw-progress-border-radius);
+
+    .progress-bar {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      width: 100%;
+      color: var(--mvw-color-white);
+      text-align: center;
+      white-space: nowrap;
+      background-color: var(--mvw-progress-bar-color);
+      transition: width 1s ease;
+    }
+
+    .progress-bar-stripped {
+      --color: var(--mvw-progress-bar-stripe-color);
+      --angle: var(--mvw-progress-bar-stripe-angle);
+
+      background-image: linear-gradient(
+        var(--angle),
+        var(--color) 25%,
+        transparent 25%,
+        transparent 50%,
+        var(--color) 50%,
+        var(--color) 75%,
+        transparent 75%,
+        transparent
+      );
+
+      background-size: var(--mvw-progress-height) var(--mvw-progress-height);
+      background-repeat: repeat;
+    }
+
+    .progress-bar-animated {
+      animation: 1s linear infinite progress-bar-stripes;
+
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
+    }
+  }
+
+  @keyframes progress-bar-stripes {
+    0% {
+      background-position-x: var(--mvw-progress-height);
+    }
+  }
+}

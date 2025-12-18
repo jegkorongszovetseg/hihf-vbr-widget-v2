@@ -4,20 +4,24 @@ import { fetchVBRData, useError, useI18n, usePage, useSort } from '@mjsz-vbr-ele
 import {
   convert,
   convertPhaseName,
+  convertSeasons,
+  convertTeams,
   convertTimesMinToMinSec,
   convertTimesSecToMin,
+  head,
   InvalidSeasonName,
+  path,
+  pick,
   playerName,
+  prop,
   rawConvert,
+  sortBy,
   teamName,
   WidgetError,
 } from '@mjsz-vbr-elements/core/utils';
 import { useUrlSearchParams } from '@vueuse/core';
-import { head, path, pick, prop, sortBy } from 'ramda';
 import { computed, reactive, unref } from 'vue';
 import {
-  convertSeasons,
-  convertTeams,
   PLAYERS_REPORTS_SELECT,
   REPORT_TYPE_PLAYERS,
   REPORTS_MAP,

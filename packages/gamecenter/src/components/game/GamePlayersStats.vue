@@ -37,7 +37,7 @@ const awayPlayers = computed(() => convertPlayersTOI(props.data?.[props.awayTeam
 </script>
 
 <template>
-  <div class="gamecenter-data-column">
+  <div class="grid-container mb-md" style="--min-width: 580px; align-items: start;">
     <GamePlayerStatsProvider v-slot="{ rows, sort, onSort }" :rows="homePlayers">
       <GameDataTable
         class="gamecenter-data-table"

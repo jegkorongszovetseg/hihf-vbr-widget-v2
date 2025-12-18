@@ -1,7 +1,6 @@
 <script setup>
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
-import { convert } from '@mjsz-vbr-elements/core/utils';
-import { head } from 'ramda';
+import { convert, head } from '@mjsz-vbr-elements/core/utils';
 import { computed, reactive } from 'vue';
 import { transformStandings } from './internal';
 
@@ -42,13 +41,13 @@ const { state, isLoading, execute } = useServices({
 const convertedRows = computed(() => convert(state.value).addContinuousIndex().value());
 
 const componentProps = computed(() => ({
-  tag: service.path ? 'a' : 'p',
+  tag: service.path ? 'a' : 'span',
   props: {
     ...(service.path && { href: service.path }),
   },
 }));
 
-function onChange({ championshipId, phaseId, name, path, phase, isPlayoffs }) {
+function onChange({ item: { championshipId, phaseId, name, path, phase, isPlayoffs }, close }) {
   service.championshipId = championshipId;
   service.path = path || '';
   service.phaseId = phaseId;
@@ -58,6 +57,7 @@ function onChange({ championshipId, phaseId, name, path, phase, isPlayoffs }) {
 
   reset();
   execute();
+  close?.();
 }
 </script>
 

@@ -1,7 +1,6 @@
 <script setup>
 import { DataTable, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
-import { map } from 'ramda';
 import { computed, ref } from 'vue';
 import { COLUMNS_TEAM_INFO } from '../team.internal.js';
 
@@ -18,12 +17,12 @@ const { t } = useI18n();
 const { columns: columnsTeamInfo } = useColumns(COLUMNS_TEAM_INFO);
 // const { columns: columnsIcerink } = useColumns(COLUMNS_TEAM_INFO_ICERINK);
 
-const localizedData = computed(() => map(d => ({ ...d, teamKeyIntl: t(`teams.info.${d.teamKey}`) }))(props.data));
+const localizedData = computed(() => props.data.map(d => ({ ...d, teamKeyIntl: t(`teams.info.${d.teamKey}`) })));
 </script>
 
 <template>
   <div>
-    <h2 class="is-heading-2">
+    <h2>
       {{ t('teams.teamInfo') }}
     </h2>
     <ResponsiveTable>

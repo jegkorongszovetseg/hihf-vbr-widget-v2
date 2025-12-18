@@ -1,7 +1,6 @@
-import { SORT_STATE_ASCEND, SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core';
+import { SORT_STATE_ASCEND, SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core/constants';
 
-import { convertSecToMin, convertTimesSecToMin, rawConvert } from '@mjsz-vbr-elements/core/utils';
-import { compose, mergeLeft, reject, replace, split, test, toUpper } from 'ramda';
+import { convertPenaltyCauseName, convertPeriodResults, convertSecToMin, convertTimesSecToMin, mergeLeft, rawConvert } from '@mjsz-vbr-elements/core/utils';
 
 export const DEAFULT_LOGO_TEAM_A
   = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMzYgMzYiPjxwYXRoIGZpbGw9IiNERDJFNDQiIGQ9Ik0zNiAzMmE0IDQgMCAwIDEtNCA0SDRhNCA0IDAgMCAxLTQtNFY0YTQgNCAwIDAgMSA0LTRoMjhhNCA0IDAgMCAxIDQgNHYyOHoiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNMTQuNzQ3IDkuMTI1Yy41MjctMS40MjYgMS43MzYtMi41NzMgMy4zMTctMi41NzNjMS42NDMgMCAyLjc5MiAxLjA4NSAzLjMxOCAyLjU3M2w2LjA3NyAxNi44NjdjLjE4Ni40OTYuMjQ4LjkzMS4yNDggMS4xNDdjMCAxLjIwOS0uOTkyIDIuMDQ2LTIuMTM5IDIuMDQ2Yy0xLjMwMyAwLTEuOTU0LS42ODItMi4yNjQtMS42MTFsLS45MzEtMi45MTVoLTguNjJsLS45MyAyLjg4NGMtLjMxLjk2MS0uOTYxIDEuNjQyLTIuMjMyIDEuNjQyYy0xLjI0IDAtMi4yOTQtLjkzLTIuMjk0LTIuMTdjMC0uNDk2LjE1NS0uODY4LjIxNy0xLjAyM2w2LjIzMy0xNi44Njd6bS4zNCAxMS4yNTZoNS44OTFsLTIuODgzLTguOTkyaC0uMDYybC0yLjk0NiA4Ljk5MnoiLz48L3N2Zz4=';
@@ -18,19 +17,19 @@ export const PLAYER_STATS_COLUMNS = {
   number: {
     label: 'table.jerseyNumber.short',
     tooltip: 'table.jerseyNumber.tooltip',
-    class: 'is-text-italic',
+    class: 'italic',
     sortOrders: [{ target: 'number', direction: SORT_STATE_ASCEND }],
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-text-bold',
+    class: 'text-start font-bold',
     sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
   },
   cora: {
     label: '',
     tooltip: '',
-    class: 'is-text-bold',
+    class: 'font-bold',
   },
   position: {
     label: 'table.position.short',
@@ -90,12 +89,12 @@ export const GOALIES_STATS_COLUMNS = {
   jerseyNumber: {
     label: 'table.jerseyNumber.short',
     tooltip: 'table.jerseyNumber.tooltip',
-    class: 'is-text-italic',
+    class: 'italic',
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-text-bold',
+    class: 'text-start font-bold',
   },
   mipMin: {
     label: 'table.toi.short',
@@ -127,12 +126,12 @@ export const TEAM_OFFICIALS_COLUMNS = {
   role: {
     label: 'table.role.short',
     tooltip: 'table.role.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-text-bold',
+    class: 'text-start font-bold',
   },
 };
 
@@ -142,11 +141,11 @@ export function callFunctions(...args) {
   }
 }
 
-export const convertPeriodName = name => replace('. ', '-', name || '');
+export const convertPeriodName = name => (name || '').replace('. ', '-');
 
 export function rawPeriodIndex(gameData) {
   const periodResults = gameData?.periodResults ?? '';
-  let rawLength = compose(reject(test(/-:-/)), split(','))(periodResults).length;
+  let rawLength = convertPeriodResults(periodResults).length;
   if (gameData.isShootout) {
     rawLength = rawLength - 2;
   }
@@ -240,7 +239,7 @@ export function buildDvgPercent(data) {
 export function convertPenaltyCause(event) {
   return {
     ...event,
-    penaltyCause: compose(toUpper, replace('_', '-'))(event.penaltyCause),
+    penaltyCause: convertPenaltyCauseName(event.penaltyCause),
   };
 }
 

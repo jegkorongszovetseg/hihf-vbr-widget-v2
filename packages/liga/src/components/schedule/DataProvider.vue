@@ -1,5 +1,4 @@
 <script setup>
-import { REFRESH_DELAY } from '@mjsz-vbr-elements/core';
 import {
   useError,
   useLazyLoadingState,
@@ -7,6 +6,7 @@ import {
   useServices,
   useVisibilityChange,
 } from '@mjsz-vbr-elements/core/composables';
+import { REFRESH_DELAY } from '@mjsz-vbr-elements/core/constants';
 import { convert, scrollToTop, sortGames } from '@mjsz-vbr-elements/core/utils';
 import { useAsyncQueue, useTimeoutFn, useTimeoutPoll, useUrlSearchParams } from '@vueuse/core';
 import { computed, reactive, toRef, toRefs, unref } from 'vue';
@@ -164,7 +164,7 @@ const convertedRows = computed(() => {
 });
 
 const subPhases = computed(() => {
-  const mainPhase = state.sections.find(item => item.name === state.section);
+  const mainPhase = state.sections.find(item => item.phaseName === state.section);
   return sortSubPhases(mainPhase?.phases ?? []);
 });
 

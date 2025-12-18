@@ -1,6 +1,5 @@
-import { SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core';
-import { InvalidSeasonName, WidgetError } from '@mjsz-vbr-elements/core/utils';
-import { ascend, compose, descend, head, last, map, path, pick, prop, reject, sort } from 'ramda';
+import { SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core/constants';
+import { convertSeasons, convertTeams, head, InvalidSeasonName, removeUnneededPhases, selectFirstPhaseName, selectLastSections, WidgetError } from '@mjsz-vbr-elements/core/utils';
 
 export function transformSeasons(seasons, state) {
   if (seasons.length === 0)
@@ -10,58 +9,42 @@ export function transformSeasons(seasons, state) {
     state.championshipId = head(state.seasons).championshipId;
 }
 
-export function transformSections(sections, state) {
-  state.sections = path([0, 'phases'], sections);
-  state.section = compose(prop('phaseName'), head)(state.sections);
-}
-
 export function transformStandingSections(sections, state) {
-  const phaseNames = (p) => {
-    return ['Rájátszás', 'Újrajátszandó'].includes(p.phaseName);
-  };
-  state.sections = compose(reject(phaseNames), path([0, 'phases']))(sections);
-  state.section = compose(prop('phaseName'), head)(state.sections);
+  state.sections = removeUnneededPhases(sections);
+  state.section = selectFirstPhaseName(state.sections);
 }
 
 export function transformPhases(sections, state) {
   state.sections = [...sections];
   if (!state.section)
-    state.section = compose(prop('name'), last)(state.sections);
-}
-
-export function convertTeams(teams) {
-  return sort(ascend(prop('teamName')), teams);
+    state.section = selectLastSections(state.sections);
 }
 
 export function transformTeams(teams, state) {
   state.teams = convertTeams(teams);
 }
 
-export function convertSeasons(seasons) {
-  return compose(sort(descend(prop('seasonName'))), map(pick(['championshipId', 'seasonName'])))(seasons);
-}
-
 export const COLUMNS_PLAYERS = {
   jerseyNr: {
     label: 'table.jerseyNumber.short',
     tooltip: 'table.jerseyNumber.tooltip',
-    class: 'is-text-bold is-text-xl',
+    class: 'font-bold',
     sortOrders: [{ target: 'jerseyNr', direction: SORT_STATE_ASCEND }],
   },
   playerPortrait: {
     label: '',
-    class: 'is-has-image',
+    class: 'has-avatar',
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
     sortOrders: [{ target: 'name', direction: SORT_STATE_ASCEND }],
   },
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto is-text-bold',
+    class: 'text-start w-auto font-bold',
     sortOrders: [{ target: 'teamName', direction: SORT_STATE_ASCEND }],
   },
   position: {
@@ -75,13 +58,13 @@ export const COLUMNS_PLAYERS = {
   birthDate: {
     label: 'table.birthDate.short',
     tooltip: 'table.birthDate.tooltip',
-    class: 'is-text-right',
+    class: 'text-end',
     sortOrders: [{ target: 'birthDate', direction: SORT_STATE_ASCEND }],
   },
   birthPlace: {
     label: 'table.birthPlace.short',
     tooltip: 'table.birthPlace.tooltip',
-    class: 'is-text-right',
+    class: 'text-end',
     sortOrders: [{ target: 'birthPlace', direction: SORT_STATE_ASCEND }],
   },
 };
@@ -90,22 +73,22 @@ export const COLUMNS_GAMES = {
   gameDateDate: {
     label: 'table.gameDate.short',
     tooltip: 'table.gameDate.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   gameDateTime: {
     label: 'table.gameDateTime.short',
     tooltip: 'table.gameDateTime.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-text-light',
+    class: 'text-start text-dimmed',
   },
   gameResult: {
     label: 'table.result.short',
     tooltip: 'table.result.tooltip',
-    class: 'is-text-bold',
+    class: 'font-bold',
   },
   gameResultType: {
     label: '',
@@ -114,7 +97,7 @@ export const COLUMNS_GAMES = {
   opponent: {
     label: 'table.opponent.short',
     tooltip: 'table.opponent.tooltip',
-    class: 'is-text-left is-text-light',
+    class: 'text-start text-dimmed',
   },
   resultType: {
     label: 'table.resultType.short',
@@ -140,17 +123,17 @@ export const COLUMNS_GAMES = {
   sog: {
     label: 'table.sog.short',
     tooltip: 'table.sog.tooltip',
-    class: 'is-text-left is-text-bold',
+    class: 'text-start font-bold',
   },
   toi: {
     label: 'table.toi.short',
     tooltip: 'table.toi.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   sa: {
     label: 'table.sa.short',
     tooltip: 'table.sa.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   ga: {
     label: 'table.ga.short',
@@ -163,22 +146,22 @@ export const COLUMNS_GAMES = {
   ppgf: {
     label: 'table.ppgf.short',
     tooltip: 'table.ppgf.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   shga: {
     label: 'table.shga.short',
     tooltip: 'table.shga.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   saves: {
     label: 'table.saves.short',
     tooltip: 'table.saves.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   svsPercent: {
     label: 'table.svsPercent.short',
     tooltip: 'table.svsPercent.tooltip',
-    class: 'is-text-left',
+    class: 'text-start',
   },
   shots: {
     label: 'table.sog.short',
@@ -206,22 +189,22 @@ export const COLUMNS_GAMES = {
 export const COLUMNS_PLAYER_SEASON_STATS = {
   playerPortrait: {
     label: '',
-    class: 'is-has-image',
+    class: 'has-avatar',
   },
   season: {
     label: 'table.season.short',
     tooltip: 'table.season.tooltip',
-    class: 'is-text-left is-text-light',
+    class: 'text-start text-dimmed',
   },
   teamName: {
     label: 'table.team.short',
     tooltip: 'table.team.tooltip',
-    class: 'is-text-left is-w-auto',
+    class: 'text-start w-auto',
   },
   name: {
     label: 'table.name.short',
     tooltip: 'table.name.tooltip',
-    class: 'is-text-bold is-text-left',
+    class: 'font-bold text-start',
   },
   gp: {
     label: 'table.game.short',

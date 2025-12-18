@@ -1,7 +1,7 @@
 <script setup>
 import { FloatingPanel } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import IconWhistle from '@mjsz-vbr-elements/shared/icons/IconWhistle';
+import { IconWhistle } from '@mjsz-vbr-elements/shared/icons';
 import { computed, ref } from 'vue';
 import { convertPenaltyCause } from '../../internal';
 import TeamLogo from './TeamLogo.vue';
@@ -51,11 +51,22 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
     <div ref="tooltipContainer" />
   </div>
   <div class="is-light-cell">
-    <template v-if="event.penaltyLength !== 0">
+    <template v-if="Boolean(event.penaltyLength)">
       {{ t('events.penaltyLength', [event.penaltyLength]) }}
     </template>
-    <template v-if="event.perc === 0">
-      PS
+    <template v-if="event.ps">
+      <FloatingPanel
+        v-slot="{ setRef, events }"
+        :offset="2"
+        placement="top"
+        theme="tooltip"
+        :content="t('penalties.PS')"
+        :append-to="tooltipContainer"
+      >
+        <span :ref="setRef" :tabindex="0" :aria-label="t(`penalties.${convertedEvent.penaltyCause}`)" v-on="events">
+          PS
+        </span>
+      </FloatingPanel>
     </template>
   </div>
   <div class="is-light-cell">

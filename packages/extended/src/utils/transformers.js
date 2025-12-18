@@ -1,5 +1,4 @@
-import { InvalidSeasonName, WidgetError } from '@mjsz-vbr-elements/core/utils';
-import { compose, descend, head, map, path, pick, prop, sort, sortBy } from 'ramda';
+import { convertSeasons, filterAndSortSections, head, InvalidSeasonName, path, selectFirstSectionId, WidgetError } from '@mjsz-vbr-elements/core/utils';
 
 export function transformSeasons(seasons, state) {
   if (seasons.length === 0)
@@ -10,11 +9,7 @@ export function transformSeasons(seasons, state) {
 }
 
 export function transformSections(sections, state) {
-  state.sections = sortBy(prop('sectionId'))(sections);
-  state.sectionId = compose(prop('sectionId'), head)(state.sections);
+  state.sections = filterAndSortSections(sections);
+  state.sectionId = selectFirstSectionId(state.sections);
   state.phaseId = path([0, 'phases', 0], sections)?.phaseId ?? null;
-}
-
-export function convertSeasons(seasons) {
-  return compose(sort(descend(prop('seasonName'))), map(pick(['championshipId', 'seasonName'])))(seasons);
 }

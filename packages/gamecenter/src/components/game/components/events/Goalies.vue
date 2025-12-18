@@ -1,6 +1,5 @@
 <script setup>
-import IconArrowDown from '@mjsz-vbr-elements/shared/icons/IconArrowDown';
-import IconArrowUp from '@mjsz-vbr-elements/shared/icons/IconArrowUp';
+import { IconArrowDown, IconArrowUp } from '@mjsz-vbr-elements/shared/icons';
 import TeamLogo from './TeamLogo.vue';
 
 defineProps({

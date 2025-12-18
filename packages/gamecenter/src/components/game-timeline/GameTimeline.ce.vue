@@ -1,9 +1,8 @@
 <script setup>
 import { ErrorNotice, I18NProvider } from '@mjsz-vbr-elements/core/components';
 import { useGameDataSocket, useServices } from '@mjsz-vbr-elements/core/composables';
-import { getWebsocketURL, resolveApiKey } from '@mjsz-vbr-elements/core/utils';
+import { getWebsocketURL, isEmpty, resolveApiKey, transformEventsForGameTimeline } from '@mjsz-vbr-elements/core/utils';
 import { useUrlSearchParams } from '@vueuse/core';
-import { isEmpty } from 'ramda';
 import { computed, ref } from 'vue';
 import commonEN from '../../locales/en/common.json';
 import extendeEN from '../../locales/en/extended.json';
@@ -20,7 +19,7 @@ import GameOfficials from './GameOfficials.vue';
 import GamePlayerStats from './GamePlayerStats.vue';
 import GameTabs from './GameTabs.vue';
 import GameTeamStats from './GameTeamStats.vue';
-import { handleServices, transformEvents } from './internal';
+import { handleServices } from './internal';
 
 const props = defineProps({
   locale: {
@@ -77,7 +76,7 @@ const { state: gameEvents, execute: getEvents } = useServices({
     apiKey: props.apiKey,
     params: { gameId: gameId.value },
   },
-  transform: data => transformEvents(data),
+  transform: data => transformEventsForGameTimeline(data),
 
   onError: e => addApiError('gameEvents', e),
   onSuccess: () => removeApiError('gameEvents'),
@@ -177,16 +176,28 @@ useGameDataSocket(getWebsocketURL(`/v2/game-data?gameid=${gameId.value}&apiKey=$
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/responsive-table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/typography.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/progress.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/game-center-timeline.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/avatar.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/game-center-timeline.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/game-center-game-data.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/double-bar.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/progress.css" />

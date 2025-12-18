@@ -1,9 +1,8 @@
 <script setup>
-import * as Errors from '@mjsz-vbr-elements/core';
 import { DataTable, Image, LoadingIndicator, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useColumns, useError } from '@mjsz-vbr-elements/core/composables';
-import IconArrowDown from '@mjsz-vbr-elements/shared/icons/IconArrowDown';
-import IconArrowUp from '@mjsz-vbr-elements/shared/icons/IconArrowUp';
+import * as Errors from '@mjsz-vbr-elements/core/utils';
+import { IconArrowDown, IconArrowUp } from '@mjsz-vbr-elements/shared/icons';
 import { computed, toRefs } from 'vue';
 
 const props = defineProps({
@@ -122,30 +121,30 @@ const onSort = payload => emit('sort', payload);
             <span class="is-team-name-long">{{ row.team?.longName }}</span>
             <span class="is-team-name-short">{{ row.team?.shortName }}</span>
 
-            <template v-if="row.isActiveGame && row.diff !== 0">
-              <IconArrowUp v-if="row.diff > 0" width="12" height="12" class="is-text-positive" />
-              <IconArrowDown v-if="row.diff < 0" width="12" height="12" class="is-text-negative" />
-              <span :class="{ 'is-text-positive': row.diff > 0, 'is-text-negative': row.diff < 0 }">{{ row.diff }}</span>
-            </template>
+            <div v-if="row.isActiveGame && row.diff !== 0" class="badge mx-sm" :class="{ live: row.diff > 0, error: row.diff < 0 }">
+              <IconArrowUp v-if="row.diff > 0" width="12" height="12" />
+              <IconArrowDown v-if="row.diff < 0" width="12" height="12" />
+              <span>{{ `${row.diff > 0 ? '+' : ''}${row.diff}` }}</span>
+            </div>
           </a>
         </template>
         <template v-else>
           <span class="is-team-name-long">{{ row.team?.longName }} <span v-if="row.penaltyPoints"><sup>*</sup></span></span>
           <span class="is-team-name-short">{{ row.team?.shortName }} <span v-if="row.penaltyPoints"><sup>*</sup></span></span>
 
-          <template v-if="row.isActiveGame && row.diff !== 0">
-            <IconArrowUp v-if="row.diff > 0" width="12" height="12" class="is-text-positive" />
-            <IconArrowDown v-if="row.diff < 0" width="12" height="12" class="is-text-negative" />
-            <span :class="{ 'is-text-positive': row.diff > 0, 'is-text-negative': row.diff < 0 }">{{ row.diff }}</span>
-          </template>
+          <div v-if="row.isActiveGame && row.diff !== 0" class="badge mx-sm" :class="{ live: row.diff > 0, error: row.diff < 0 }">
+            <IconArrowUp v-if="row.diff > 0" width="12" height="12" />
+            <IconArrowDown v-if="row.diff < 0" width="12" height="12" />
+            <span>{{ `${row.diff > 0 ? '+' : ''}${row.diff}` }}</span>
+          </div>
         </template>
       </template>
 
       <template #cell-score="{ row }">
         <span
           v-if="row.isActiveGame"
-          class="is-badge is-large" :class="[
-            { 'is-green': row.scoreType === 'W', 'is-red': row.scoreType === 'L', 'is-yellow': row.scoreType === 'D' },
+          class="badge lg" :class="[
+            { live: row.scoreType === 'W', error: row.scoreType === 'L', warning: row.scoreType === 'D' },
           ]"
         >{{ row.score }}
         </span>

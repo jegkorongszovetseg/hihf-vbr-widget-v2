@@ -1,0 +1,54 @@
+@layer components {
+  :where(.badge) {
+    --_bg-color: var(--mvw-bg-muted);
+    --_color: var(--mvw-text-muted);
+
+    padding: var(--size-2) var(--size-4);
+    display: inline-flex;
+    gap: var(--size-2);
+    font-size: var(--font-size-100);
+    font-weight: 700;
+    line-height: var(--font-lineheight-300);
+    color: var(--_color);
+    background-color: var(--_bg-color);
+    border-radius: var(--radius-2);
+
+    svg {
+      fill: currentColor;
+    }
+
+    /* Variant */
+    &.inverted {
+      --_bg-color: var(--mvw-bg-inverted);
+      --_color: var(--mvw-text-inverted);
+    }
+
+    &.live {
+      --_bg-color: var(--mvw-color-live);
+      --_color: var(--mvw-color-white);
+    }
+
+    &.error {
+      --_bg-color: var(--mvw-color-error);
+      --_color: var(--mvw-color-white);
+    }
+
+    &.warning {
+      --_bg-color: var(--mvw-color-warning);
+      --_color: var(--mvw-color-white);
+    }
+
+    /* Size */
+    &.xs {
+      font-size: var(--font-size-50);
+    }
+    &.lg {
+      font-size: var(--font-size-300);
+      padding: var(--size-4) var(--size-6);
+    }
+
+    & + & {
+      margin-inline-start: var(--size-4);
+    }
+  }
+}

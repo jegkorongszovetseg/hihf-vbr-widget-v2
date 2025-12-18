@@ -1,0 +1,190 @@
+@layer components.variables {
+  :where(:host) {
+    /* Countdown */
+    --mvw-countdown-title-height: calc(var(--size-16) * 2);
+    --mvw-countdown-title-bg: light-dark(var(--mvw-color-primary-900), var(--mvw-color-primary-100));
+    --mvw-countdown-gamedata-height: calc(var(--size-16) * 4);
+    --mvw-countdown-active-color: light-dark(var(--mvw-color-secondary-500), var(--mvw-color-secondary-800));
+    --mvw-countdown-gamedata-bg: light-dark(var(--mvw-color-primary-700), var(--mvw-color-primary-300));
+    --mvw-countdown-result-bg: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-200));
+  }
+}
+
+@layer components {
+  :where(.game-countdown) {
+    display: grid;
+    grid-template-rows: var(--mvw-countdown-title-height) 1fr var(--mvw-countdown-gamedata-height);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+
+    .game-countdown-title {
+      text-align: center;
+      font-size: var(--font-size-400);
+      font-weight: 700;
+      line-height: var(--mvw-countdown-title-height);
+      color: var(--mvw-text-faded);
+      background-color: var(--mvw-countdown-title-bg);
+    }
+
+    .game-countdown-container {
+      display: grid;
+      grid-template-areas: 'stack';
+      place-items: center;
+      background-color: var(--mvw-countdown-result-bg);
+
+      > div {
+        visibility: hidden;
+      }
+
+      > div.is-visible {
+        visibility: visible;
+      }
+    }
+
+    .game-countdown-result {
+      grid-area: stack;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      grid-template-areas: 'period period period' 'home-score separator away-score' 'period-results period-results period-results';
+      gap: 0 var(--size-8);
+      align-items: center;
+
+      color: var(--mvw-text-dimmed);
+      font-weight: 700;
+
+      .is-separator {
+        grid-area: separator;
+        /* font-size: 3.125rem; */
+        line-height: 1;
+        font-size: clamp(2rem, 10vw, 5rem);
+      }
+
+      :is(.is-home-score, .is-away-score) {
+        display: flex;
+      }
+
+      .is-home-score {
+        grid-area: home-score;
+      }
+
+      .is-away-score {
+        grid-area: away-score;
+      }
+
+      .is-period-results {
+        grid-area: period-results;
+        font-size: var(--font-size-400);
+        text-align: center;
+      }
+
+      .is-period {
+        grid-area: period;
+        font-size: var(--font-size-50);
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .is-live {
+        color: var(--mvw-countdown-active-color);
+      }
+    }
+
+    .game-countdown-counter {
+      grid-area: stack;
+      display: flex;
+      gap: var(--size-16);
+      justify-content: space-around;
+      padding: var(--size-16);
+
+      font-size: var(--font-size-100);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--mvw-text-dimmed);
+
+      .is-number {
+        color: var(--mvw-countdown-active-color);
+      }
+    }
+
+    .game-countdown-gamedata {
+      display: grid;
+      grid-template-columns: 40px 1fr auto 1fr 40px;
+      grid-template-areas: 'home-team-logo game-date game-date game-date away-team-logo' 'home-team-logo home-team separator away-team away-team-logo';
+      gap: 0 0.5rem;
+      align-content: center;
+      align-items: center;
+      padding-inline: var(--size-16);
+      background-color: var(--mvw-countdown-gamedata-bg);
+      font-size: var(--mvw-font-size-500);
+      font-weight: 700;
+      line-height: var(--font-lineheight-400);
+      color: light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-800));
+
+      .is-game-date {
+        grid-area: game-date;
+        text-align: center;
+        color: var(--mvw-text-faded);
+        font-size: var(--font-size-200);
+      }
+
+      .is-home-team-logo {
+        grid-area: home-team-logo;
+      }
+      .is-away-team-logo {
+        grid-area: away-team-logo;
+      }
+
+      :is(.is-home-team, .is-away-team) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .is-home-team {
+        grid-area: home-team;
+        text-align: end;
+      }
+      .is-away-team {
+        grid-area: away-team;
+      }
+
+      .is-separator {
+        grid-area: separator;
+        text-align: center;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1;
+      }
+    }
+
+    .is-number {
+      display: grid;
+      grid-template-areas: 'stack';
+      justify-items: center;
+      position: relative;
+      overflow: hidden;
+      mask-image: linear-gradient(to bottom, transparent 0, black 16%, black 84%, transparent 100%);
+      animation: 400ms fade-in ease-out;
+
+      > span {
+        grid-area: stack;
+        font-size: clamp(3.125rem, 10vw, 5rem);
+        line-height: 1;
+        font-weight: 700;
+      }
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

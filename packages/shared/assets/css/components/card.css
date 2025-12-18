@@ -1,0 +1,22 @@
+@layer components {
+  :where(.card) {
+    --_border: none;
+    --_bg-color: light-dark(var(--mvw-color-white), var(--mvw-color-primary-900));
+
+    container-type: inline-size;
+    container-name: card-wrapper;
+
+    padding: var(--size-16);
+    background-color: var(--_bg-color);
+    border: var(--_border);
+    border-radius: var(--radius-2);
+    box-shadow: var(--shadow-3);
+
+    &.bordered {
+      --_bg-color: light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-950));
+      --_border: 1px solid light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-900));
+      box-shadow: none;
+      border-radius: 0;
+    }
+  }
+}

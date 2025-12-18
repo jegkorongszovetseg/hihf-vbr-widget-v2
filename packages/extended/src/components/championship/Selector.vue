@@ -1,5 +1,5 @@
 <script setup>
-import { BaseSelect } from '@mjsz-vbr-elements/core/components';
+import { BaseSelect, FormField } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { useVModels } from '@vueuse/core';
 
@@ -24,23 +24,32 @@ const props = defineProps({
     required: true,
   },
 
+  query: {
+    type: String,
+    required: true,
+  },
+
   isReportsVisible: {
+    type: Boolean,
+    default: false,
+  },
+
+  isNameFilterVisible: {
     type: Boolean,
     default: false,
   },
 });
 
-const emit = defineEmits(['update:phaseId', 'update:report']);
+const emit = defineEmits(['update:phaseId', 'update:report', 'update:query']);
 
 const { t } = useI18n();
 
-const { phaseId, report } = useVModels(props, emit);
+const { phaseId, report, query } = useVModels(props, emit);
 </script>
 
 <template>
-  <div class="g-row" style="column-gap: 8px">
-    <div>
-      <label for="phases" class="label">{{ t('selection.phases') }}</label>
+  <div class="flex-container">
+    <FormField :label="t('selection.phases')" name="phases" class="mb-md">
       <BaseSelect id="phases" v-model="phaseId" :disabled="phaseId === null">
         <option v-if="phaseId === null" :value="null">
           {{ t('selection.noPhases') }}
@@ -49,14 +58,18 @@ const { phaseId, report } = useVModels(props, emit);
           {{ phase.phaseName }}
         </option>
       </BaseSelect>
-    </div>
-    <div v-if="isReportsVisible">
-      <label for="report" class="label">{{ t('selection.report') }}</label>
+    </FormField>
+
+    <FormField v-if="isReportsVisible" :label="t('selection.report')" name="report">
       <BaseSelect id="report" v-model="report">
         <option v-for="{ value, name } in reports" :key="value" :value="value">
           {{ name }}
         </option>
       </BaseSelect>
-    </div>
+    </FormField>
+
+    <FormField v-if="isNameFilterVisible" :label="t('selection.filter')" name="filter">
+      <input id="filter" v-model="query" :placeholder="t('selection.filterName')" type="search" autocomplete="off">
+    </FormField>
   </div>
 </template>

@@ -11,7 +11,10 @@ import {
   COLUMNS_TEAMS_POWERPLAY,
 } from '@mjsz-vbr-elements/core/columns';
 import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core/constants';
-import { prop, sortBy } from 'ramda';
+import {
+  filterAndSortSections,
+  sortByPhaseId,
+} from '@mjsz-vbr-elements/core/utils';
 
 export const PANEL_SCHEDULE = 'schedule';
 export const PANEL_STANDINGS = 'standings';
@@ -19,9 +22,11 @@ export const PANEL_PLAYERS = 'players';
 export const PANEL_TEAMS = 'teams';
 
 export function transformSections(sections, state, initialPhaseId = null) {
-  state.championships = sortBy(prop('sectionId'))(sections);
+  const filteredSections = filterAndSortSections(sections);
+  state.championships = filteredSections;
   state.selectedChampionshipId = state.championships?.[0]?.sectionId;
-  const phases = sortBy(prop('phaseId'))(sections?.[0]?.phases ?? []);
+
+  const phases = sortByPhaseId(filteredSections?.[0]?.phases ?? []);
   const index = phases.findIndex(item => item.phaseId === Number(initialPhaseId));
 
   state.phaseId = index > -1 ? Number(initialPhaseId) : phases[0]?.phaseId;

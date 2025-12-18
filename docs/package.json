@@ -1,7 +1,7 @@
 {
   "name": "docs",
   "type": "module",
-  "version": "2.29.2",
+  "version": "2.37.0",
   "private": true,
   "description": "",
   "author": "",
@@ -9,8 +9,9 @@
   "keywords": [],
   "main": "index.js",
   "scripts": {
-    "docs:dev": "vitepress dev --port 5555",
-    "docs:build": "vitepress build",
+    "generate:vars": "node scripts/generate-component-variables.js",
+    "docs:dev": "pnpm generate:vars && vitepress dev --port 5555",
+    "docs:build": "pnpm generate:vars && vitepress build",
     "docs:preview": "vitepress preview"
   },
   "dependencies": {
@@ -18,10 +19,12 @@
     "@mjsz-vbr-elements/elements": "workspace:^",
     "@mjsz-vbr-elements/extended": "workspace:^",
     "@mjsz-vbr-elements/gamecenter": "workspace:^",
+    "@mjsz-vbr-elements/internal": "workspace:^",
     "@mjsz-vbr-elements/liga": "workspace:^",
+    "@mjsz-vbr-elements/shared": "workspace:^",
     "ramda": "^0.31.3"
   },
   "devDependencies": {
-    "vitepress": "1.5.0"
+    "vitepress": "^2.0.0-alpha.15"
   }
 }

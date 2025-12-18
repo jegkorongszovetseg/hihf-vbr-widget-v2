@@ -1,0 +1,12 @@
+{
+  "selection": {
+    "seasons": "Szezonok",
+    "sections": "Szakaszok",
+    "phases": "Szakaszok",
+    "phasesDivision": "Fázisok (phase-Name=division)",
+    "championships": "Bajnokságok",
+    "championshipName": "Bajnokság Neve (Championship-Name):",
+    "championshipId": "Bajnokság azonosító (Championship-id):",
+    "seasonId": "Szezon azonosító (season-Id):"
+  }
+}

@@ -1,0 +1,97 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-top-list-bg-color: var(--mvw-color-primary-900);
+    --mvw-top-list-title-color: var(--mvw-color-primary-50);
+    --mvw-top-list-title-separator-color: var(--mvw-color-primary-700);
+    --mvw-top-list-value-color: var(--mvw-color-primary-300);
+    --mvw-top-list-player-separator-color: var(--mvw-color-primary-800);
+    --mvw-top-list-image-border-color: var(--mvw-color-primary-600);
+    --mvw-top-list-image-bg-color: var(--mvw-color-primary-800);
+    --mvw-top-list-selector-border-color: var(--mvw-color-primary-400);
+  }
+}
+
+@layer components {
+  :where(.liga-top-list) {
+    background-color: var(--mvw-top-list-bg-color);
+
+    .top-list-container {
+      padding: var(--size-16);
+
+      h2 {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        padding-block: var(--size-8);
+        font-size: var(--font-size-400);
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--mvw-top-list-title-color);
+        border-bottom: 1px solid var(--mvw-top-list-title-separator-color);
+
+        svg {
+          display: block;
+          width: 14px;
+          height: 14px;
+        }
+      }
+
+      [role='list'],
+      ul {
+        display: grid;
+        gap: var(--size-8);
+      }
+
+      [role='listitem'],
+      li {
+        display: grid;
+        grid-template-columns: 30px 1fr auto;
+        grid-template-areas: 'logo player value' 'logo team value';
+        align-items: center;
+        gap: var(--size-4) var(--size-8);
+        padding-block: var(--size-8);
+        font-size: var(--font-size-300);
+        line-height: 1;
+        border-bottom: 1px solid var(--mvw-top-list-player-separator-color);
+
+        .avatar {
+          --_width: 26px;
+        }
+
+        &.is-large {
+          font-size: var(--font-size-400);
+          font-weight: 700;
+
+          .avatar {
+            --_width: 32px;
+          }
+        }
+
+        /* :is(.is-player, .is-team) {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        } */
+
+        a.is-player {
+          grid-area: player;
+        }
+        a.is-team {
+          grid-area: team;
+          font-size: var(--font-size-50);
+        }
+
+        span {
+          grid-area: value;
+          font-weight: 700;
+          color: var(--mvw-top-list-value-color);
+        }
+
+        .is-images {
+          grid-area: logo;
+          justify-self: center;
+        }
+      }
+    }
+  }
+}

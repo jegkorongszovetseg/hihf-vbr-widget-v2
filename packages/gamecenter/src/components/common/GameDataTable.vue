@@ -1,7 +1,7 @@
 <script setup>
 import { DataTable, FloatingPanel, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import IconStar from '@mjsz-vbr-elements/shared/icons/IconStar';
+import { IconStar } from '@mjsz-vbr-elements/shared/icons';
 import { ref } from 'vue';
 
 const props = defineProps({
@@ -36,7 +36,7 @@ const onSort = payload => emit('sort', payload);
 
 <template>
   <div>
-    <h2>{{ title }}</h2>
+    <h3>{{ title }}</h3>
     <ResponsiveTable v-slot="{ el: rootElement }">
       <DataTable
         :columns="props.columns"
@@ -48,8 +48,8 @@ const onSort = payload => emit('sort', payload);
         <template #cell-name="{ row }">
           {{ row.name }}
           <FloatingPanel v-if="row.isBP" placement="top" :content="t('bestPlayer')" :append-to="tooltipContainer">
-            <template #default="{ setRef, show, hide }">
-              <span :ref="setRef" class="is-text-dark" @mouseenter="show" @mouseleave="hide" @focus="show" @blur="hide">
+            <template #default="{ setRef, events }">
+              <span :ref="setRef" class="text-highlighted" v-bind="events">
                 <IconStar />
               </span>
             </template>

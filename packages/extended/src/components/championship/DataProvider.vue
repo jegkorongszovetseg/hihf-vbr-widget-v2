@@ -13,15 +13,16 @@ import {
   convertPhaseName,
   convertTimesMinToMinSec,
   convertTimesSecToMin,
+  head,
   playerName,
   rawConvert,
   scheduleOptionalRowClass,
+  sortByPhaseId,
   sortGames,
   teamName,
 } from '@mjsz-vbr-elements/core/utils';
 import { noop, useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
-import { head, prop, sortBy } from 'ramda';
-import { computed, reactive, toRef, unref } from 'vue';
+import { computed, reactive, ref, toRef, unref } from 'vue';
 import { transformSeasons } from '../internal';
 import {
   ALL_REPORTS_MAP,
@@ -94,6 +95,7 @@ const state = reactive({
   report: 'points',
 });
 const timezone = toRef(props, 'timezone');
+const query = ref('');
 const { onError } = useError();
 
 const { sort, change: onSort } = useSort({
@@ -150,7 +152,7 @@ const currentReportList = computed(() =>
 
 const phases = computed(() => {
   const championship = state.championships.find(item => item.sectionId === state.selectedChampionshipId);
-  return convertPhaseName(sortBy(prop('phaseId'))(championship?.phases ?? []));
+  return convertPhaseName(sortByPhaseId(championship?.phases ?? []));
 });
 
 const currentLimit = computed(() => (state.selectedPanel === PANEL_SCHEDULE ? 0 : props.limit));
@@ -168,6 +170,7 @@ const rawConvertedRows = computed(() =>
 
 const convertedRows = computed(() => {
   return convert(unref(rawConvertedRows))
+    .filter(unref(query), ['name'])
     .sorted(sort)
     .addContinuousIndex()
     .schedule(unref(timezone), unref(props.locale))
@@ -182,7 +185,7 @@ function changeSeason(value) {
 }
 
 function changeChampionship(value) {
-  state.selectedChampionshipId = value;
+  state.selectedChampionshipId = value.sectionId;
   state.phaseId = phases.value[0]?.phaseId ?? null;
   fetchData();
 }
@@ -211,6 +214,11 @@ function onChangeReport(value) {
   setFetchData(value);
 }
 
+function onUpdateQuery(value) {
+  query.value = value;
+  onPaginatorChange(1);
+}
+
 function setFetchData(value) {
   const report = ALL_REPORTS_MAP.get(value);
 
@@ -219,6 +227,7 @@ function setFetchData(value) {
   state.columns = report.columns(props.allPeriodVisible);
   sort.sortTarget = report.sort?.sortTarget ?? '';
   sort.orders = report.sort?.orders ?? [];
+  query.value = '';
   fetchData();
   onPaginatorChange(1);
 }
@@ -230,6 +239,7 @@ function setFetchData(value) {
       ...state,
       sort,
       page,
+      query,
       phases,
       isLoading,
       games: convertedRows,
@@ -238,6 +248,7 @@ function setFetchData(value) {
       changePanel,
       changePhase,
       changeSeason,
+      onUpdateQuery,
       onChangeReport,
       onPaginatorChange,
       changeChampionship,

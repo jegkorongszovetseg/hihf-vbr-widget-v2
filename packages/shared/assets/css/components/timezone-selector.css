@@ -1,0 +1,19 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-timezone-selector-color: light-dark(var(--mvw-color-primary-500), var(--mvw-color-primary-500));
+    --mvw-timezone-selector-font-size: var(--font-size-300);
+  }
+}
+
+@layer components {
+  :where(.timezone-selector) {
+    padding: 3px 0;
+    color: var(--mvw-timezone-selector-color);
+    font-size: var(--mvw-timezone-selector-font-size);
+    font-weight: 500;
+
+    .is-active {
+      font-weight: 700;
+    }
+  }
+}

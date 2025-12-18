@@ -1,11 +1,16 @@
 {
   "name": "@mjsz-vbr-elements/core",
   "type": "module",
-  "version": "2.29.2",
+  "version": "2.37.0",
   "private": false,
   "description": "Data visualization for MJSZ VBR",
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
+  "license": "MIT",
   "homepage": "https://api.icehockey.hu/widgets/docs/v2/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jegkorongszovetseg/hihf-vbr-widget-v2.git"
+  },
   "exports": {
     ".": {
       "import": "./dist/index.js"
@@ -24,6 +29,9 @@
     },
     "./columns": {
       "import": "./dist/columns.js"
+    },
+    "./props": {
+      "import": "./dist/props.js"
     }
   },
   "module": "./dist/index.js",
@@ -52,5 +60,9 @@
     "vite": "^7.0.0",
     "vite-plugin-banner": "^0.8.1",
     "vite-plugin-compression2": "^2.2.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   }
 }

@@ -1,0 +1,74 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-tooltip-font-size: var(--font-size-200);
+    --mvw-tooltip-color: light-dark(white, black);
+    --mvw-tooltip-bg-color: light-dark(black, white);
+    --mvw-floating-content-bg-color: light-dark(white, var(--mvw-color-primary-800));
+  }
+}
+
+@layer components {
+  :where(.floating-content) {
+    &.is-tooltip {
+      background-color: var(--mvw-tooltip-bg-color);
+      color: var(--mvw-tooltip-color);
+      font-weight: bold;
+      padding: var(--size-4) var(--size-8);
+      border-radius: var(--radius-2);
+      font-size: var(--mvw-tooltip-font-size);
+      white-space: nowrap;
+      pointer-events: none;
+
+      .is-arrow {
+        background-color: var(--mvw-tooltip-bg-color);
+      }
+    }
+
+    &.is-content {
+      background-color: var(--mvw-floating-content-bg-color);
+      border-radius: var(--radius-2);
+      box-shadow: var(--shadow-6);
+
+      .is-arrow {
+        background-color: var(--mvw-floating-content-bg-color);
+      }
+    }
+
+    .is-arrow {
+      width: 8px;
+      height: 8px;
+      transform: rotate(45deg);
+
+      [data-placement^='top'] & {
+        bottom: -4px;
+        clip-path: polygon(80% 0, 100% 0, 100% 100%, 0 100%, 0 80%);
+      }
+
+      [data-placement^='bottom'] & {
+        top: -4px;
+        clip-path: polygon(100% 0, 0 0, 0 100%);
+      }
+
+      [data-placement^='left'] & {
+        right: -4px;
+        clip-path: polygon(100% 0, 0 0, 100% 100%);
+      }
+
+      [data-placement^='right'] & {
+        left: -4px;
+        clip-path: polygon(100% 0, 0 0, 0 100%);
+      }
+    }
+  }
+
+  .transition-fade-enter-active,
+  .transition-fade-leave-active {
+    transition: all 0.7s var(--ease-spring-1);
+  }
+
+  .transition-fade-enter-from,
+  .transition-fade-leave-to {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+}

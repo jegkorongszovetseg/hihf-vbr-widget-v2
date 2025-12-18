@@ -1,7 +1,6 @@
 <script setup>
 import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
-import { offsetName } from '@mjsz-vbr-elements/core/utils';
-import { pick } from 'ramda';
+import { offsetName, pick } from '@mjsz-vbr-elements/core/utils';
 import { computed, ref } from 'vue';
 import GamesDataTable from '../../common/GamesDataTable.vue';
 import { COLUMNS_GAMES } from '../../internal.js';
@@ -43,7 +42,7 @@ const { columns } = useColumns(
 </script>
 
 <template>
-  <h2 class="is-heading-2">
+  <h2>
     {{ t('teams.games') }}
   </h2>
   <GamesDataTable :rows="data" :columns="columns" :game-resolver="gameResolver" :append-to="tooltipContainer" />

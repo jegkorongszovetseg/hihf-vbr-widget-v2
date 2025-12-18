@@ -1,0 +1,79 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-standings-selector-title-size: var(--font-size-500);
+    --mvw-standings-selector-title-color: light-dark(var(--mvw-color-primary-700), var(--mvw-color-primary-300));
+    --mvw-standings-selector-title-transform: none;
+    --mvw-standings-selector-title-padding: 0 0.625em 0.5625em;
+    --mvw-standings-selector-title-bg-color: transparent;
+
+    --mvw-standings-selector-section-title-bg: light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-900));
+    --mvw-standings-selector-section-title-size: var(--font-size-400);
+    --mvw-standings-selector-section-title-color: light-dark(
+      var(--mvw-color-primary-700),
+      var(--mvw-color-primary-300)
+    );
+    --mvw-standings-selector-section-title-padding: var(--size-8);
+    --mvw-standings-selector-section-logo-size: 30px;
+  }
+}
+
+@layer components {
+  :where(.standings-selector) {
+    .standings-selector-title {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: var(--mvw-standings-selector-title-padding);
+      text-transform: var(--mvw-standings-selector-title-transform);
+      font-size: var(--mvw-standings-selector-title-size);
+      color: var(--mvw-standings-selector-title-color);
+      background: var(--mvw-standings-selector-title-bg-color);
+    }
+
+    .is-title-text {
+      svg {
+        height: 16px;
+        vertical-align: middle;
+      }
+    }
+
+    :where(.playoffs) {
+      ul {
+        display: grid;
+        grid-template-columns:
+          minmax(0, 1fr) var(--mvw-standings-selector-section-logo-size) auto var(
+            --mvw-standings-selector-section-logo-size
+          )
+          minmax(0, 1fr);
+        gap: 12px;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        padding-block: 8px;
+
+        &:first-of-type {
+          text-align: end;
+        }
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1;
+      }
+
+      .section-title {
+        padding: var(--mvw-standings-selector-section-title-padding);
+        color: var(--mvw-standings-selector-section-title-color);
+        background-color: var(--mvw-standings-selector-section-title-bg);
+        font-size: var(--mvw-standings-selector-section-title-size);
+        font-weight: 700;
+        text-align: center;
+      }
+    }
+  }
+}

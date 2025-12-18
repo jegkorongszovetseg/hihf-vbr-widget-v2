@@ -1,5 +1,5 @@
 <script setup>
-import { ErrorNotice, I18NProvider, Image, LoadingIndicator, Paginator } from '@mjsz-vbr-elements/core/components';
+import { ErrorNotice, FormField, I18NProvider, Image, LoadingIndicator, Paginator } from '@mjsz-vbr-elements/core/components';
 import { useErrorProvider, usePage, useServices } from '@mjsz-vbr-elements/core/composables';
 import { convert } from '@mjsz-vbr-elements/core/utils';
 import { computed, ref, watch } from 'vue';
@@ -71,31 +71,54 @@ function onReTry() {
 
 <template>
   <I18NProvider v-slot="{ t }" :locale="locale" :messages="messages">
-    <div class="recruitment-info-filter">
-      <label for="organization" class="label">{{ t('selection.filter') }}</label>
-      <input id="organization" v-model="query" :placeholder="t('recruitmentInfo.filterByNameAndLocation')" type="text" autocomplete="off" class="base-input">
-    </div>
+    <FormField :label="t('selection.filter')" name="filter" class="full-width mb-md" style="max-width: 220px;">
+      <input id="filter" v-model="query" :placeholder="t('recruitmentInfo.filterByNameAndLocation')" type="text" autocomplete="off">
+    </FormField>
 
     <ErrorNotice v-if="hasError" :error="error" use-retry @retry="onReTry" />
 
     <LoadingIndicator v-if="isLoading" />
 
-    <div v-if="state.length > 0 && convertedRows.rows.length === 0" class="no-result">
+    <div
+      v-if="state.length > 0 && convertedRows.rows.length === 0"
+      class="text-muted text-center font-bold"
+    >
       {{ t('recruitmentInfo.noResult') }}
     </div>
 
-    <details v-for="item in convertedRows.rows" :key="item.organizationName" class="recruitment-info-card">
-      <summary>
-        <Image :src="`https://ivr-api.icehockey.hu${item.organizationLogo}`" default-src="data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg' fill='%23cfd8dc'%3E%3Ccircle cx='15' cy='15' r='15' /%3E%3C/svg%3E" />
+    <details v-for="(item, index) in convertedRows.rows" :key="item.organizationName" class="tonal elevated mb-md">
+      <summary :id="`summary-${index}`" :aria-controls="`content-${index}`">
+        <Image
+          :src="`https://ivr-api.icehockey.hu${item.organizationLogo}`"
+          default-src="data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg' fill='%23cfd8dc'%3E%3Ccircle cx='15' cy='15' r='15' /%3E%3C/svg%3E"
+          :width="30"
+          :height="30"
+          style="object-fit: contain;"
+        />
         <strong>{{ item.organizationName }} <span v-if="item.recruitmentTeamName">({{ item.recruitmentTeamName }})</span></strong>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M4.293 8.293a1 1 0 0 1 1.414 0L12 14.586l6.293-6.293a1 1 0 1 1 1.414 1.414l-7 7a1 1 0 0 1-1.414 0l-7-7a1 1 0 0 1 0-1.414"
+          />
+        </svg>
       </summary>
-      <ul>
-        <li v-for="(recruitment, key) in item.recruitment" :key="key">
-          <span>{{ t(`recruitmentInfo.${key}`) }}:</span> <div v-html="recruitment" />
-        </li>
-      </ul>
+      <div :id="`content-${index}`" class="content" role="region" :aria-labelledby="`summary-${index}`">
+        <ul class="definition-list dotted mb-md">
+          <li v-for="(recruitment, key) in item.recruitment" :key="key">
+            <span class="term">{{ t(`recruitmentInfo.${key}`) }}</span>
+            <hr>
+            <span class="description" v-html="recruitment" />
+          </li>
+        </ul>
+      </div>
     </details>
-    <div class="recruitment-paginator-container">
+    <div class="grid-container text-muted">
       <Paginator
         :page="page"
         :items-per-page="props.limit"
@@ -103,17 +126,21 @@ function onReTry() {
         :range-length="5"
         @change="onPaginatorChange"
       />
-      <div v-if="convertedRows.totalItems > 0" style="text-align: right">
+      <div v-if="convertedRows.totalItems > 0" class="text-end">
         {{ t('table.info', { min: range[0], max: range[1], total: convertedRows.totalItems }) }}
       </div>
     </div>
   </I18NProvider>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/recruitment-info.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/form-field.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/accordion.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/paginator.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/paginator.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/definition-list.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />

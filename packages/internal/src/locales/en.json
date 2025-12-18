@@ -1,0 +1,12 @@
+{
+  "selection": {
+    "seasons": "Seasons",
+    "sections": "Sections",
+    "phases": "Phases",
+    "phasesDivision": "Phases (phase-Name=division)",
+    "championships": "Championships",
+    "championshipName": "Championship Name (Championship-Name):",
+    "championshipId": "Championship Identifier (Championship-id):",
+    "seasonId": "Season Identifier (season-Id):"
+  }
+}

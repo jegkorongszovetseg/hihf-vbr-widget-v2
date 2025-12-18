@@ -1,0 +1,51 @@
+@layer components {
+  :where(.hero) {
+    --overlay-size: var(--mvw-hero-overlay-size, 160px);
+    --overlay-radius: 50%;
+
+    display: grid;
+    grid-template-columns: 1fr var(--overlay-size) 1fr;
+    grid-template-rows: 1fr 1fr 1fr calc(var(--overlay-size) / 2) calc(var(--overlay-size) / 2);
+    margin-left: var(--mvw-main-image-wrapper-horizontal-margin);
+    margin-right: var(--mvw-main-image-wrapper-horizontal-margin);
+
+    &:has(img.is-default) {
+      min-height: 470px;
+    }
+
+    .is-main-image {
+      grid-column: 1/4;
+      grid-row: 1/5;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-900));
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+
+      .is-default {
+        filter: grayscale(1);
+        opacity: 0.3;
+        mix-blend-mode: multiply;
+      }
+
+      img:not(.is-default) {
+        width: 100%;
+      }
+    }
+    .is-ovarlay-image {
+      grid-row: 4/-1;
+      grid-column: 2;
+      justify-self: center;
+      overflow: hidden;
+      border-radius: var(--overlay-radius);
+      z-index: 1;
+
+      img {
+        width: 100%;
+        aspect-ratio: 1;
+      }
+    }
+  }
+}

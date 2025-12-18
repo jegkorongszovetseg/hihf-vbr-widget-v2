@@ -31,7 +31,7 @@ const awayTeamMembers = computed(() => convertTeamMembersToRows(props.gameOffici
 </script>
 
 <template>
-  <div class="gamecenter-data-columns">
+  <div class="grid-container" style="--min-width: 500px; align-items: start;">
     <GameDataTable
       class="gamecenter-data-table"
       :columns="columns"

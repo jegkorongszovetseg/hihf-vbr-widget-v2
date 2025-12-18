@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import IconWarning from '@mjsz-vbr-elements/shared/icons/IconWarning';
+import { IconWarning } from '@mjsz-vbr-elements/shared/icons';
 
 const emit = defineEmits(['tryAgain']);
 

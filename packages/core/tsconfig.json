@@ -1,8 +1,13 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "composite": true,
-    "outDir": "./dist"
+    "baseUrl": ".",
+    "paths": {
+      "@mjsz-vbr-elements/shared": ["../shared/index.js"],
+      "@mjsz-vbr-elements/shared/*": ["../shared/*"],
+      "@mjsz-vbr-elements/shared/icons": ["../shared/index.js"]
+    }
   },
-  "include": ["./src/*", "./src/components/*", "./src/composables/*", "./src/utils/*", "./src/locales/*.json"]
+  "include": ["src/**/*", "src/locales/*.json"],
+  "exclude": ["dist"]
 }

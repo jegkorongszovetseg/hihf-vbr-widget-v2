@@ -1,0 +1,63 @@
+@layer theme {
+  [data-theme='light'],
+  :host-context(.light) {
+    color-scheme: only light;
+  }
+
+  [data-theme='dark'],
+  :host-context(.dark) {
+    color-scheme: only dark;
+  }
+
+  :root,
+  :host {
+    font-family: var(--mvw-font, inherit);
+
+    /* Special Colors */
+    --mvw-color-live: #8bc34a;
+    --mvw-color-error: #fb2c36;
+    --mvw-color-warning: #ffc107;
+    --mvw-color-info: #2870ed;
+    --mvw-color-team: #ff6129;
+
+    /* Link */
+    --mvw-link-color: light-dark(var(--mvw-color-secondary-700), var(--mvw-color-secondary-400));
+    --mvw-link-hover-color: light-dark(var(--mvw-color-secondary-900), var(--mvw-color-secondary-200));
+
+    /* Text */
+    --mvw-text-pale: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-700));
+    --mvw-text-faded: light-dark(var(--mvw-color-primary-200), var(--mvw-color-primary-600));
+    --mvw-text-dimmed: light-dark(var(--mvw-color-primary-400), var(--mvw-color-primary-500));
+    --mvw-text-muted: light-dark(var(--mvw-color-primary-500), var(--mvw-color-primary-400));
+    --mvw-text-toned: light-dark(var(--mvw-color-primary-600), var(--mvw-color-primary-300));
+    --mvw-text-default: light-dark(var(--mvw-color-primary-700), var(--mvw-color-primary-200));
+    --mvw-text-highlighted: light-dark(var(--mvw-color-primary-900), var(--mvw-color-primary-50));
+    --mvw-text-inverted: light-dark(var(--mvw-color-white), var(--mvw-color-primary-950));
+
+    /* Background */
+    --mvw-bg-default: light-dark(var(--mvw-color-white), var(--mvw-color-primary-950));
+    --mvw-bg-muted: light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-900));
+    --mvw-bg-elevated: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-800));
+    --mvw-bg-accented: light-dark(var(--mvw-color-primary-200), var(--mvw-color-primary-700));
+    --mvw-bg-highlighted: var(--mvw-color-secondary-500);
+    --mvw-bg-inverted: light-dark(var(--mvw-color-primary-900), var(--mvw-color-primary-50));
+
+    /* Border */
+    --mvw-border-faded: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-800));
+    --mvw-border-muted: light-dark(var(--mvw-color-primary-200), var(--mvw-color-primary-700));
+    --mvw-border-highlighted: var(--mvw-color-secondary-500);
+  }
+
+  :where(a[href]) {
+    color: var(--mvw-link-color);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--mvw-link-hover-color);
+    }
+
+    &:visited {
+      color: var(--mvw-link-color);
+    }
+  }
+}

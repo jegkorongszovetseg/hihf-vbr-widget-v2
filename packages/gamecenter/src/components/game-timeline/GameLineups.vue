@@ -1,10 +1,10 @@
 <script setup>
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import { playerName } from '@mjsz-vbr-elements/core/utils';
-import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
+import { pickCoaches, playerName } from '@mjsz-vbr-elements/core/utils';
+import { IconHockeyPuck } from '@mjsz-vbr-elements/shared/icons';
 import { computed } from 'vue';
-import { groupLinesByTeams, pickCoaches } from './internal';
+import { groupLinesByTeams } from './internal';
 
 const props = defineProps({
   data: {

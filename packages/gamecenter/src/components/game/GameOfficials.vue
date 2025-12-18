@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import { compose, isEmpty, join, map, reject } from 'ramda';
+import { isEmpty, joinOfficals } from '@mjsz-vbr-elements/core/utils';
 import { computed, toRefs } from 'vue';
 import GameStatsContainer from './components/GameStatsContainer.vue';
 
@@ -25,18 +25,10 @@ const attendanceData = computed(() => {
 });
 
 const referees = computed(() =>
-  compose(
-    join(', '),
-    map(item => `${item.lastName} ${item.firstName}`),
-    reject(item => !item),
-  )([props.gameOfficials?.gameOfficials?.first_referee, props.gameOfficials?.gameOfficials?.second_referee]),
+  joinOfficals([props.gameOfficials?.gameOfficials?.first_referee, props.gameOfficials?.gameOfficials?.second_referee]),
 );
 const linesmen = computed(() =>
-  compose(
-    join(', '),
-    map(item => `${item.lastName} ${item.firstName}`),
-    reject(item => !item),
-  )([
+  joinOfficals([
     props.gameOfficials?.gameOfficials?.first_line_judge,
     props.gameOfficials?.gameOfficials?.second_line_judge,
   ]),
@@ -45,10 +37,12 @@ const linesmen = computed(() =>
 
 <template>
   <div v-if="!isEmpty(referees) || !isEmpty(linesmen)" class="gamecenter-game-stats">
-    <div class="gamecenter-game-stats-container-wrapper">
-      <GameStatsContainer :title="t('gameStats.referees')" :data="referees" />
-      <GameStatsContainer :title="t('gameStats.linesmen')" :data="linesmen" />
-      <GameStatsContainer v-if="gameData.attendance" :title="t('gameStats.attendance')" :data="attendanceData" />
+    <div class="card bordered mb-md">
+      <div class="gamecenter-game-stats-container-wrapper">
+        <GameStatsContainer :title="t('gameStats.referees')" :data="referees" />
+        <GameStatsContainer :title="t('gameStats.linesmen')" :data="linesmen" />
+        <GameStatsContainer v-if="gameData.attendance" :title="t('gameStats.attendance')" :data="attendanceData" />
+      </div>
     </div>
   </div>
 </template>

@@ -1,6 +1,5 @@
 <script setup>
-import IconLeft from '@mjsz-vbr-elements/shared/icons/IconLeft';
-import IconRight from '@mjsz-vbr-elements/shared/icons/IconRight';
+import { IconLeft, IconRight } from '@mjsz-vbr-elements/shared/icons';
 import { computed } from 'vue';
 import usePagination from '../composables/usePagination';
 

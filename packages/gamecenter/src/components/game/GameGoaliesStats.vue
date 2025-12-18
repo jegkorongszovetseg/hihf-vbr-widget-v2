@@ -1,6 +1,6 @@
 <script setup>
 import { useColumns } from '@mjsz-vbr-elements/core/composables';
-import { descend, prop, sortWith } from 'ramda';
+import { sortByStartingFive } from '@mjsz-vbr-elements/core/utils';
 import { computed } from 'vue';
 import GameDataTable from '../common/GameDataTable.vue';
 import GameGolaiesStatsProvider from './components/GameGoaliesStatsProvider.vue';
@@ -31,16 +31,14 @@ const props = defineProps({
   },
 });
 
-const transform = sortWith([descend(prop('startingFive'))]);
-
 const { columns } = useColumns(GOALIES_STATS_COLUMNS);
 
-const homePlayers = computed(() => transform(props.data?.[props.homeTeamId] ?? []));
-const awayPlayers = computed(() => transform(props.data?.[props.awayTeamId] ?? []));
+const homePlayers = computed(() => sortByStartingFive(props.data?.[props.homeTeamId] ?? []));
+const awayPlayers = computed(() => sortByStartingFive(props.data?.[props.awayTeamId] ?? []));
 </script>
 
 <template>
-  <div class="gamecenter-data-columns">
+  <div class="grid-container mb-md" style="--min-width: 500px; align-items: start;">
     <GameGolaiesStatsProvider v-slot="{ rows }" :rows="homePlayers">
       <GameDataTable
         class="gamecenter-data-table"

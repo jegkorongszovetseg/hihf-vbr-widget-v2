@@ -1,0 +1,63 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-paginator-color: light-dark(var(--mvw-color-primary-500), var(--mvw-color-primary-400));
+    --mvw-paginator-bg-color: light-dark(var(--mvw-color-white), var(--mvw-color-primary-950));
+    --mvw-paginator-hover-color: light-dark(var(--mvw-color-primary-700), var(--mvw-color-primary-300));
+    --mvw-paginator-hover-bg-color: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-900));
+    --mvw-paginator-border-color: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-700));
+    --mvw-paginator-active-color: light-dark(var(--mvw-color-white), var(--mvw-color-black));
+    --mvw-paginator-active-bg-color: light-dark(var(--mvw-color-primary-900), var(--mvw-color-primary-50));
+    --mvw-paginator-disabled-color: light-dark(var(--mvw-color-primary-200), var(--mvw-color-primary-600));
+  }
+}
+
+@layer components {
+  :where(.paginator) {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 0;
+
+    button,
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--size-6) var(--size-12); /* 6px 12px; */
+      text-decoration: none;
+      cursor: pointer;
+      color: var(--mvw-paginator-color);
+      border: 1px solid var(--mvw-paginator-border-color);
+      background-color: var(--mvw-paginator-bg-color);
+      margin-left: -1px;
+
+      .icon {
+        width: var(--size-16);
+        height: var(--size-16);
+        margin: 0 -4px;
+        max-inline-size: var(--size-16);
+      }
+
+      &:hover:not(&.is-disabled, &.is-active) {
+        color: var(--mvw-paginator-hover-color);
+        background-color: var(--mvw-paginator-hover-bg-color);
+      }
+
+      &:disabled,
+      &.is-disabled {
+        color: var(--mvw-paginator-disabled-color);
+        background-color: var(--mvw-paginator-bg-color);
+        pointer-events: none;
+        cursor: default;
+      }
+
+      &.is-active {
+        color: var(--mvw-paginator-active-color);
+        background-color: var(--mvw-paginator-active-bg-color);
+        border-color: var(--mvw-paginator-active-bg-color);
+        cursor: default;
+      }
+    }
+  }
+}

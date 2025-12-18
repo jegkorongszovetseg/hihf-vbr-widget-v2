@@ -1,11 +1,11 @@
 <script setup>
 import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
+import { sortByStartingFive } from '@mjsz-vbr-elements/core/utils';
 import { computed } from 'vue';
 import GameDataTable from '../common/GameDataTable.vue';
 import GameGolaiesStatsProvider from '../game/components/GameGoaliesStatsProvider.vue';
 import GamePlayerStatsProvider from '../game/components/GamePlayerStatsProvider.vue';
 import { convertPlayersTOI, GOALIES_STATS_COLUMNS, PLAYER_STATS_COLUMNS } from '../game/internal';
-import { transformGoalieStats } from './internal';
 
 const props = defineProps({
   data: {
@@ -40,18 +40,18 @@ const { columns: goliesColumns } = useColumns(GOALIES_STATS_COLUMNS);
 const homePlayers = computed(() => convertPlayersTOI(props.data?.players?.[props.homeTeamId] ?? []));
 const awayPlayers = computed(() => convertPlayersTOI(props.data?.players?.[props.awayTeamId] ?? []));
 
-const homeGoalies = computed(() => transformGoalieStats(props.data?.goalies?.[props.homeTeamId] ?? []));
-const awayGoalies = computed(() => transformGoalieStats(props.data?.goalies?.[props.awayTeamId] ?? []));
+const homeGoalies = computed(() => sortByStartingFive(props.data?.goalies?.[props.homeTeamId] ?? []));
+const awayGoalies = computed(() => sortByStartingFive(props.data?.goalies?.[props.awayTeamId] ?? []));
 </script>
 
 <template>
-  <h2 class="is-heading-2">
+  <h2 class="text-center">
     {{ t('title.fieldPlayers') }}
   </h2>
   <div class="gamecenter-data-column">
     <GamePlayerStatsProvider v-slot="{ rows, sort, onSort }" :rows="homePlayers">
       <GameDataTable
-        class="is-home-team 'gamecenter-timeline-data-table"
+        class="is-home-team gamecenter-timeline-data-table"
         :columns="columns"
         :rows="rows"
         :title="homeTeamName"
@@ -71,7 +71,7 @@ const awayGoalies = computed(() => transformGoalieStats(props.data?.goalies?.[pr
     </GamePlayerStatsProvider>
   </div>
 
-  <h2 class="is-heading-2">
+  <h2 class="text-center">
     {{ t('title.goalies') }}
   </h2>
   <div class="gamecenter-data-columns">

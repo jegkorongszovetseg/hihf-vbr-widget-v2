@@ -1,5 +1,5 @@
 <script setup>
-import IconWarning from '@mjsz-vbr-elements/shared/icons/IconWarning';
+import { IconWarning } from '@mjsz-vbr-elements/shared/icons';
 import { computed } from 'vue';
 import { useI18n } from '../composables/useI18n';
 

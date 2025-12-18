@@ -1,7 +1,4 @@
-import { InvalidSeasonName, WidgetError } from '@mjsz-vbr-elements/core/utils';
-import { ascend, compose, descend, head, map, path, pick, prop, sort } from 'ramda';
-
-export const convertTeams = teams => sort(ascend(prop('teamName')), teams);
+import { convertSeasons, convertTeams, head, InvalidSeasonName, path, selectFirstPhaseName, WidgetError } from '@mjsz-vbr-elements/core/utils';
 
 export function transformSeasons(seasons, state) {
   if (seasons.length === 0)
@@ -13,15 +10,9 @@ export function transformSeasons(seasons, state) {
 
 export function transformSections(sections, state) {
   state.sections = path([0, 'phases'], sections);
-  // if (state.sections && !state.sections.includes(state.section)) {
-  state.section = compose(prop('phaseName'), head)(state.sections);
-  // }
+  state.section = selectFirstPhaseName(state.sections);
 }
 
 export function transformTeams(teams, state) {
   state.teams = convertTeams(teams);
-}
-
-export function convertSeasons(seasons) {
-  return compose(sort(descend(prop('seasonName'))), map(pick(['championshipId', 'seasonName'])))(seasons);
 }

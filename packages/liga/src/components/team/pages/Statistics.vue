@@ -2,7 +2,7 @@
 import { DataTable, Image, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { DEFAULT_PORTRAIT_IMAGE_URL } from '@mjsz-vbr-elements/core/constants';
-import { omit } from 'ramda';
+import { omit } from '@mjsz-vbr-elements/core/utils';
 import { ref } from 'vue';
 import { COLUMNS_PLAYER_SEASON_STATS } from '../../internal.js';
 
@@ -34,13 +34,13 @@ defineProps({
 });
 
 const playersColumns = omit(
-  ['seasonId', 'teamName', 'gkd', 'gpi', 'pimPerGame', 'mipMin', 'mipPercent', 'ga', 'gaa', 'sog', 'svs', 'svsPercent'],
+  ['season', 'teamName', 'gkd', 'gpi', 'pimPerGame', 'mipMin', 'mipPercent', 'ga', 'gaa', 'sog', 'svs', 'svsPercent'],
   COLUMNS_PLAYER_SEASON_STATS,
 );
 
 const goalieColumns = omit(
   [
-    'seasonId',
+    'season',
     'teamName',
     'gp',
     'goals',
@@ -65,7 +65,7 @@ const { columns: columnsGoalies } = useColumns(goalieColumns);
 
 <template>
   <div>
-    <h2 class="is-heading-2">
+    <h2>
       {{ t('teams.fieldPlayers') }}
     </h2>
     <ResponsiveTable>
@@ -76,7 +76,7 @@ const { columns: columnsGoalies } = useColumns(goalieColumns);
         :append-to="tooltipContainer"
       >
         <template #cell-playerPortrait="{ row }">
-          <div class="is-portrait-image">
+          <div class="avatar">
             <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
           </div>
         </template>
@@ -87,13 +87,13 @@ const { columns: columnsGoalies } = useColumns(goalieColumns);
       </DataTable>
     </ResponsiveTable>
 
-    <h2 class="is-heading-2">
+    <h2>
       {{ t('teams.goalies') }}
     </h2>
     <ResponsiveTable>
       <DataTable :columns="columnsGoalies" :rows="goalies" :is-loading="isLoading" :append-to="tooltipContainer">
         <template #cell-playerPortrait="{ row }">
-          <div class="is-portrait-image">
+          <div class="avatar">
             <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />
           </div>
         </template>

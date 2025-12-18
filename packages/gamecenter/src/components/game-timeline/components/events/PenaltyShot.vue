@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import IconHockeyPuck from '@mjsz-vbr-elements/shared/icons/IconHockeyPuck';
+import { IconHockeyPuck } from '@mjsz-vbr-elements/shared/icons';
 import GameEventLayout from '../GameEventLayout.vue';
 import TeamLogo from './TeamLogo.vue';
 
@@ -27,7 +27,10 @@ const { t } = useI18n();
       </template>
       <template v-else>
         {{ t('events.missed') }}
-      </template> - ({{ event.score }})
+      </template>
+      <template v-if="event.score">
+        - ({{ event.score }})
+      </template>
     </template>
 
     <template #details-list>

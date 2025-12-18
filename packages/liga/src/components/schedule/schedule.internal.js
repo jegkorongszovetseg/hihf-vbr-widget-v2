@@ -1,6 +1,5 @@
-import { isBetween } from '@mjsz-vbr-elements/core/utils';
+import { head, isBetween, last, pick, sortBy } from '@mjsz-vbr-elements/core/utils';
 import { noop, watchOnce } from '@vueuse/core';
-import { head, indexOf, last, pick, sortBy } from 'ramda';
 import { ref, watch } from 'vue';
 
 export function useCollectMonths(rows = [], locale = 'hu', onUpdated = noop) {
@@ -45,6 +44,6 @@ function capitalizeFirstLetter(string) {
 }
 
 export function sortSubPhases(phases) {
-  const sort = ({ name }) => indexOf(name, ['Negyeddöntő', 'Elődöntő', 'Döntő']);
-  return sortBy(sort)(phases);
+  const sort = ({ phaseTypeName }) => ['Negyeddöntő', 'Elődöntő', 'Döntő'].indexOf(phaseTypeName);
+  return sortBy(sort, phases);
 }

@@ -1,5 +1,19 @@
-const modules = import.meta.glob('./assets/icons/*.svg');
-
-for (const path in modules) {
-  modules[path]();
-}
+export * as IconArrowDown from './assets/icons/IconArrowDown.svg';
+export * as IconArrowUp from './assets/icons/IconArrowUp.svg';
+export * as IconBroadcast from './assets/icons/IconBroadcast.svg';
+export * as IconChange from './assets/icons/IconChange.svg';
+export * as IconHockeyPuck from './assets/icons/IconHockeyPuck.svg';
+export * as IconLaunch from './assets/icons/IconLaunch.svg';
+export * as IconLeft from './assets/icons/IconLeft.svg';
+export * as IconMenu from './assets/icons/IconMenu.svg';
+export * as IconMore from './assets/icons/IconMore.svg';
+export * as IconRight from './assets/icons/IconRight.svg';
+export * as IconSheet from './assets/icons/IconSheet.svg';
+export * as IconSort from './assets/icons/IconSort.svg';
+export * as IconSortAsc from './assets/icons/IconSortAsc.svg';
+export * as IconSortDesc from './assets/icons/IconSortDesc.svg';
+export * as IconStar from './assets/icons/IconStar.svg';
+export * as IconTimer from './assets/icons/IconTimer.svg';
+export * as IconWarning from './assets/icons/IconWarning.svg';
+export * as IconWhistle from './assets/icons/IconWhistle.svg';
+export * as IconYoutube from './assets/icons/IconYoutube.svg';

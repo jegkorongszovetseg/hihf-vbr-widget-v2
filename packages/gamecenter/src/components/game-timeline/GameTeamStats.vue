@@ -35,9 +35,9 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
 
 <template>
   <div class="gamecenter-timeline-team-stats">
-    <h1 class="is-heading-2">
+    <h2 class="text-center">
       {{ t('teamsStats.sog') }}
-    </h1>
+    </h2>
     <div class="is-stat-container">
       <template v-for="({ max, valueStart, valueEnd }, index) in sog" :key="index">
         <StatisticsDoubleBar
@@ -49,9 +49,9 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
       </template>
     </div>
 
-    <h1 class="is-heading-2">
+    <h2 class="text-center">
       {{ t('teamsStats.saves') }}
-    </h1>
+    </h2>
     <div class="is-stat-container">
       <template v-for="({ max, valueStart, valueEnd }, key) in saves" :key="key">
         <StatisticsDoubleBar
@@ -63,9 +63,9 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
       </template>
     </div>
 
-    <h1 class="is-heading-2">
+    <h2 class="text-center">
       {{ t('teamsStats.pim') }}
-    </h1>
+    </h2>
     <div class="is-stat-container">
       <template v-for="({ max, valueStart, valueEnd }, key) in pim" :key="key">
         <StatisticsDoubleBar
@@ -77,9 +77,9 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
       </template>
     </div>
 
-    <h1 class="is-heading-2">
+    <h2 class="text-center">
       {{ t('teamsStats.advPercent') }}
-    </h1>
+    </h2>
     <div class="is-stat-container">
       <template v-for="({ max, valueStart, valueEnd, suffix }, key) in advPercent" :key="key">
         <StatisticsDoubleBar
@@ -92,9 +92,9 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
       </template>
     </div>
 
-    <h1 class="is-heading-2">
+    <h2 class="text-center">
       {{ t('teamsStats.penaltyKilling') }}
-    </h1>
+    </h2>
     <div class="is-stat-container">
       <template v-for="({ max, valueStart, valueEnd, suffix }, key) in dvgPercent" :key="key">
         <StatisticsDoubleBar
@@ -107,9 +107,9 @@ const advTime = computed(() => buildAdv(props.gameStats?.teamPowerPlay ?? {}));
       </template>
     </div>
 
-    <h1 class="is-heading-2">
+    <h2 class="text-center">
       {{ t('teamsStats.advantageTime') }}
-    </h1>
+    </h2>
     <div class="is-stat-container">
       <StatisticsDoubleBar
         :max="advTime.advTime.max"

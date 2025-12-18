@@ -1,8 +1,7 @@
 <script setup>
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
-import { convert, format, isAfter, isBefore } from '@mjsz-vbr-elements/core/utils';
+import { convert, format, head, isAfter, isBefore, last } from '@mjsz-vbr-elements/core/utils';
 import { useUrlSearchParams } from '@vueuse/core';
-import { head, last } from 'ramda';
 import { computed, ref, shallowRef, toRefs, watch } from 'vue';
 import {
   gamesFilterMap,
@@ -80,6 +79,7 @@ const {
 
 const convertedGames = computed(() =>
   convert(games.value)
+    .reverse(selectedPanel.value === PANEL_GAMES_PLAYED)
     .schedule(timezone.value, locale.value)
     .more(0, page.value * limit + limit)
     .groupByDays()

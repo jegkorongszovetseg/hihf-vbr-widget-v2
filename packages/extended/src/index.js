@@ -1,10 +1,9 @@
 import { defineCustomElement } from 'vue';
-import { Calendar, Championship, Countdown, GamesTimeline, GamesTimelineSocket, IVRIdentifiers, RecruitmentInfo, ScheduleCup, StandingsSelector } from './components';
+import { Calendar, Championship, Countdown, GamesTimeline, GamesTimelineSocket, RecruitmentInfo, ScheduleCup, StandingsSelector } from './components';
 
 const CalendarCE = defineCustomElement(Calendar);
 const ChampionshipCE = defineCustomElement(Championship);
 const ScheduleCupCE = defineCustomElement(ScheduleCup);
-const IVRIdentifiersCE = defineCustomElement(IVRIdentifiers);
 const GamesTimelineCE = defineCustomElement(GamesTimeline);
 const GamesTimelineSocketCE = defineCustomElement(GamesTimelineSocket);
 const StandingsSelectorCE = defineCustomElement(StandingsSelector);
@@ -20,10 +19,6 @@ export {
   CountdownCE,
   GamesTimeline,
   GamesTimelineCE,
-  GamesTimelineSocket,
-  GamesTimelineSocketCE,
-  IVRIdentifiers,
-  IVRIdentifiersCE,
   RecruitmentInfo,
   RecruitmentInfoCE,
   ScheduleCup,
@@ -36,7 +31,6 @@ export function register() {
   customElements.define('mjsz-vbr-calendar', CalendarCE);
   customElements.define('mjsz-vbr-championship', ChampionshipCE);
   customElements.define('mjsz-vbr-schedule-cup', ScheduleCupCE);
-  customElements.define('mjsz-vbr-ibr-identifiers', IVRIdentifiersCE);
   customElements.define('mjsz-vbr-games-timeline', GamesTimelineCE);
   customElements.define('mjsz-vbr-games-timeline-socket', GamesTimelineSocketCE);
   customElements.define('mjsz-vbr-standings-selector', StandingsSelectorCE);

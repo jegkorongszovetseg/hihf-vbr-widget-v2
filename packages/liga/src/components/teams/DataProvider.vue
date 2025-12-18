@@ -1,8 +1,9 @@
 <script setup>
 import { useError, useLazyLoadingState, useServices } from '@mjsz-vbr-elements/core/composables';
+import { convertTeams } from '@mjsz-vbr-elements/core/utils';
 import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
 import { computed, reactive } from 'vue';
-import { convertTeams, transformSeasons } from '../internal';
+import { transformSeasons } from '../internal';
 
 const props = defineProps({
   championshipName: {

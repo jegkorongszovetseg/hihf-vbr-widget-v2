@@ -17,9 +17,9 @@ import {
 import { computed, ref, unref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
+import SeasonSelector from '../common-components/SeasonSelector.vue';
 import { PANEL_PLAYERS, PANEL_SCHEDULE, PANEL_STANDINGS, PANEL_TEAMS } from './championship.internal';
 import DataProvider from './DataProvider.vue';
-import SeasonSelector from './SeasonSelector.vue';
 import Selector from './Selector.vue';
 
 const props = defineProps({
@@ -89,6 +89,7 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
             sort,
             page,
             games,
+            query,
             phases,
             report,
             phaseId,
@@ -104,6 +105,7 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
             changePanel,
             changePhase,
             changeSeason,
+            onUpdateQuery,
             onChangeReport,
             onPaginatorChange,
             changeChampionship,
@@ -115,55 +117,64 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
           :initial-phase-id="initialPhaseId"
           :all-period-visible="totalPeriodPlayedVisible"
         >
-          <SeasonSelector :seasons="seasons" :championship-id="championshipId" @update:championship-id="changeSeason" />
-
-          <div class="section-selector">
-            <button
-              v-for="rawChampionships in championships"
-              :key="rawChampionships.phaseId"
-              class="tab-button" :class="{ 'is-active': rawChampionships.sectionId === selectedChampionshipId }"
-              @click="changeChampionship(rawChampionships.sectionId)"
-            >
-              {{ rawChampionships.sectionName }}
-            </button>
-          </div>
+          <SeasonSelector
+            :seasons="seasons"
+            :sections="championships"
+            :championship-id="championshipId"
+            :section-id="selectedChampionshipId"
+            @on-change-season="changeSeason"
+            @on-change-section="changeChampionship"
+          />
 
           <Selector
+            :query="query"
             :phases="phases"
             :phase-id="phaseId"
             :reports="reports"
             :report="report"
             :is-reports-visible="selectedPanel === PANEL_PLAYERS || selectedPanel === PANEL_TEAMS"
+            :is-name-filter-visible="selectedPanel === PANEL_PLAYERS"
             @update:phase-id="changePhase"
             @update:report="onChangeReport"
+            @update:query="onUpdateQuery"
           />
 
-          <div class="section-selector">
-            <button
-              class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_SCHEDULE }"
-              @click="changePanel(PANEL_SCHEDULE)"
-            >
-              {{ t('selection.schedule') }}
-            </button>
-            <button
-              class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_STANDINGS }"
-              @click="changePanel(PANEL_STANDINGS)"
-            >
-              {{ t('selection.standings') }}
-            </button>
-            <button
-              class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_PLAYERS }"
-              @click="changePanel(PANEL_PLAYERS)"
-            >
-              {{ t('selection.playerStats') }}
-            </button>
-            <button
-              class="tab-button" :class="{ 'is-active': selectedPanel === PANEL_TEAMS }"
-              @click="changePanel(PANEL_TEAMS)"
-            >
-              {{ t('selection.teamStats') }}
-            </button>
-          </div>
+          <nav class="tabs underlined">
+            <div role="tablist" :aria-label="t('selection.sections')">
+              <button
+                role="tab"
+                type="button"
+                :aria-selected="selectedPanel === PANEL_SCHEDULE"
+                @click="changePanel(PANEL_SCHEDULE)"
+              >
+                {{ t('selection.schedule') }}
+              </button>
+              <button
+                role="tab"
+                type="button"
+                :aria-selected="selectedPanel === PANEL_STANDINGS"
+                @click="changePanel(PANEL_STANDINGS)"
+              >
+                {{ t('selection.standings') }}
+              </button>
+              <button
+                role="tab"
+                type="button"
+                :aria-selected="selectedPanel === PANEL_PLAYERS"
+                @click="changePanel(PANEL_PLAYERS)"
+              >
+                {{ t('selection.playerStats') }}
+              </button>
+              <button
+                role="tab"
+                type="button"
+                :aria-selected="selectedPanel === PANEL_TEAMS"
+                @click="changePanel(PANEL_TEAMS)"
+              >
+                {{ t('selection.teamStats') }}
+              </button>
+            </div>
+          </nav>
 
           <!-- <TimezoneSelector
             v-if="props.timezoneSelector"
@@ -209,20 +220,22 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/responsive-table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/paginator.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/form-field.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/dropdown.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/paginator.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/avatar.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />

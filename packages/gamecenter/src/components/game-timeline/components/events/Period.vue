@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import IconTimer from '@mjsz-vbr-elements/shared/icons/IconTimer';
+import { IconTimer } from '@mjsz-vbr-elements/shared/icons';
 
 defineProps({
   event: {
@@ -15,7 +15,7 @@ const { t } = useI18n();
 <template>
   <div class="is-period-header">
     <div />
-    <p>{{ event.eventPeriod === 'pre' ? '-15:00' : event.eventTime }}</p>
+    <p>{{ event.eventPeriod === 'pre' ? '-20:00' : event.eventTime }}</p>
     <span><IconTimer /> {{ t(`periods.${event.eventPeriod}`) }}</span>
   </div>
 </template>

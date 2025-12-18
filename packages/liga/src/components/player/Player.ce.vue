@@ -75,10 +75,10 @@ const tooltipContainer = ref(null);
           :championship-id="championshipId"
           :player-id="props.playerId"
         >
-          <h1 class="is-heading-1 is-uppercase">
+          <h1 class="uppercase">
             {{ playerData.name }}
           </h1>
-          <div class="main-image-wrapper" style="--overlay-size: 180px">
+          <div class="hero" style="--overlay-size: 180px">
             <div class="is-main-image">
               <Image
                 :key="playerData.player?.playerId"
@@ -100,22 +100,26 @@ const tooltipContainer = ref(null);
             :append-to="tooltipContainer"
           />
 
-          <div class="is-mt-5">
-            <button
-              type="button"
-              class="tab-button" :class="{ 'is-active': pane === PANE_GAMES }"
-              @click="onChangePane(PANE_GAMES)"
-            >
-              {{ t('players.games') }}
-            </button>
-            <button
-              type="button"
-              class="tab-button" :class="{ 'is-active': pane === PANE_SEASONS }"
-              @click="onChangePane(PANE_SEASONS)"
-            >
-              {{ t('players.seasons') }}
-            </button>
-          </div>
+          <nav class="tabs underlined">
+            <div role="tablist" :aria-label="t('selection.sections')">
+              <button
+                role="tab"
+                type="button"
+                :aria-selected="pane === PANE_GAMES"
+                @click="onChangePane(PANE_GAMES)"
+              >
+                {{ t('players.games') }}
+              </button>
+              <button
+                role="tab"
+                type="button"
+                :aria-selected="pane === PANE_SEASONS"
+                @click="onChangePane(PANE_SEASONS)"
+              >
+                {{ t('players.seasons') }}
+              </button>
+            </div>
+          </nav>
 
           <Games
             v-if="pane === PANE_GAMES"
@@ -140,20 +144,22 @@ const tooltipContainer = ref(null);
   </div>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/typography.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/responsive-table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/grid.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/table.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/forms.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/teams.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/floating-content.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/cards.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/avatar.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/paginator.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/typography.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/responsive-table.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/hero.css" />
