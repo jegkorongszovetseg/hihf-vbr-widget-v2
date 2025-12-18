@@ -24,17 +24,27 @@ const props = defineProps({
     required: true,
   },
 
+  query: {
+    type: String,
+    required: true,
+  },
+
   isReportsVisible: {
+    type: Boolean,
+    default: false,
+  },
+
+  isNameFilterVisible: {
     type: Boolean,
     default: false,
   },
 });
 
-const emit = defineEmits(['update:phaseId', 'update:report']);
+const emit = defineEmits(['update:phaseId', 'update:report', 'update:query']);
 
 const { t } = useI18n();
 
-const { phaseId, report } = useVModels(props, emit);
+const { phaseId, report, query } = useVModels(props, emit);
 </script>
 
 <template>
@@ -56,6 +66,10 @@ const { phaseId, report } = useVModels(props, emit);
           {{ name }}
         </option>
       </BaseSelect>
+    </FormField>
+
+    <FormField v-if="isNameFilterVisible" :label="t('selection.filter')" name="filter">
+      <input id="filter" v-model="query" :placeholder="t('selection.filterName')" type="search" autocomplete="off">
     </FormField>
   </div>
 </template>

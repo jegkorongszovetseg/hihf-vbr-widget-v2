@@ -89,6 +89,7 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
             sort,
             page,
             games,
+            query,
             phases,
             report,
             phaseId,
@@ -104,6 +105,7 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
             changePanel,
             changePhase,
             changeSeason,
+            onUpdateQuery,
             onChangeReport,
             onPaginatorChange,
             changeChampionship,
@@ -125,13 +127,16 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
           />
 
           <Selector
+            :query="query"
             :phases="phases"
             :phase-id="phaseId"
             :reports="reports"
             :report="report"
             :is-reports-visible="selectedPanel === PANEL_PLAYERS || selectedPanel === PANEL_TEAMS"
+            :is-name-filter-visible="selectedPanel === PANEL_PLAYERS"
             @update:phase-id="changePhase"
             @update:report="onChangeReport"
+            @update:query="onUpdateQuery"
           />
 
           <nav class="tabs underlined">
