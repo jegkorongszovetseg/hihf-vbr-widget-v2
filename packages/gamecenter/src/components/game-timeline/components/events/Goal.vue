@@ -45,8 +45,8 @@ const awayOnIce = computed(() => props.event.awayOnIce);
       <ul class="is-details-list">
         <li class="is-evented-person">
           <span class="is-player-number">{{ event.jerseyNumber }}&nbsp;</span>
-          <a :href="playerResolver({ player: { playerId: event.playerId } })">
-            {{ event.lastName }} {{ event.firstName }}
+          <a :href="playerResolver({ player: { playerId: event.playerId } })" target="_blank">
+            {{ event.lastName }} {{ event.firstName }} {{ mode }}
           </a>
         </li>
         <li class="is-assists-list">
