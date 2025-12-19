@@ -15,6 +15,7 @@
     position: relative;
 
     &:hover:after {
+      transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
       content: '';
       display: inline-block;
       margin-inline-start: var(--size-2);

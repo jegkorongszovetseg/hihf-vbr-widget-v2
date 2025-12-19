@@ -6,7 +6,7 @@
     --mvw-gamecenter-card-title-color: var(--mvw-text-highlighted);
     --mvw-gamecenter-card-secondary-color: var(--mvw-text-muted);
     --mvw-gamecenter-card-tertiary-color: var(--mvw-text-faded);
-    --mvw-gamecenter-card-border-color: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-700));
+    --mvw-gamecenter-card-border-color: var(--mvw-border-muted);
     --mvw-gamecenter-card-bg-color: light-dark(var(--mvw-color-white), var(--mvw-color-primary-950));
 
     --mvw-gamecenter-team-container-title-color: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-200));
@@ -461,6 +461,7 @@
           }
 
           .is-evented-person {
+            --mvw-link-color: var(--mvw-gamecenter-card-secondary-color);
             font-weight: var(--mvw-gamecenter-events-evented-person-weight);
             color: var(--mvw-gamecenter-card-secondary-color);
           }

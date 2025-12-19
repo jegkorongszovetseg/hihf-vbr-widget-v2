@@ -46,13 +46,15 @@ const awayOnIce = computed(() => props.event.awayOnIce);
         <li class="is-evented-person">
           <span class="is-player-number">{{ event.jerseyNumber }}&nbsp;</span>
           <a :href="playerResolver({ player: { playerId: event.playerId } })" target="_blank">
-            {{ event.lastName }} {{ event.firstName }} {{ mode }}
+            {{ event.lastName }} {{ event.firstName }}
           </a>
         </li>
         <li class="is-assists-list">
           <template v-for="assist in assists" :key="assist">
-            <span class="is-evented-person"><i class="is-player-number">{{ assist.jerseyNumber }}</i> {{ assist.lastName }}
-              {{ assist.firstName }}</span>
+            <span class="is-evented-person"><i class="is-player-number">{{ assist.jerseyNumber }}&nbsp;</i>
+              <a :href="playerResolver({ player: { playerId: assist.playerId } })" target="_blank">
+                {{ assist.lastName }} {{ assist.firstName }}
+              </a></span>
           </template>
         </li>
         <li v-if="!isEmpty(homeOnIce) || !isEmpty(awayOnIce)" class="is-poi-data">
