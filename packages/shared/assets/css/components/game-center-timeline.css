@@ -35,6 +35,8 @@
 
     .gamecenter-timeline-game-data {
       .is-goal-scorers {
+        --mvw-link-color: var(--mvw-text-muted);
+
         font-size: var(--font-size-200);
         font-weight: 700;
         line-height: var(--lineheight-200);
@@ -305,6 +307,8 @@
           color: var(--mvw-text-muted);
         }
         li:nth-child(3) {
+          --mvw-link-color: var(--mvw-text-default);
+
           grid-area: name;
           font-weight: 600;
           color: var(--mvw-text-default);
