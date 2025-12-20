@@ -38,17 +38,20 @@ const onChangeTimezone = tz => emit('change', tz);
   <div class="timezone-selector">
     <i18n path="common.selectTimezone" tag="span">
       <template #timezone>
-        <a href="#" @click.prevent="onChangeTimezone(localTimeZone)">{{ localZoneName }}</a>
+        <button type="button" data-variant="link" @click="onChangeTimezone(localTimeZone)">
+          {{ localZoneName }}
+        </button>
       </template>
     </i18n>
-    <a
+    <button
       v-for="country in timezoneCountries"
       :key="country.countryLabelKey"
-      href="#"
+      type="button"
+      data-variant="link"
       :class="{ 'is-active': country.isActive }"
       @click.prevent="onChangeTimezone(country.timezone)"
     >
       {{ t(`common.${country.countryLabelKey}`) }} ({{ country.zoneOffsetName }})
-    </a>
+    </button>
   </div>
 </template>

@@ -208,6 +208,8 @@ const externalGameResolverTarget = computed(() => (props.isGameTargetExternal ? 
 
 <style src="@mjsz-vbr-elements/shared/css/components/timezone-selector.css" />
 
+<style src="@mjsz-vbr-elements/shared/css/components/button.css" />
+
 <style src="@mjsz-vbr-elements/shared/css/components/typography.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />

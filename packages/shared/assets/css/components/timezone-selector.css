@@ -12,8 +12,8 @@
     font-size: var(--mvw-timezone-selector-font-size);
     font-weight: 500;
 
-    .is-active {
-      font-weight: 700;
+    button + button {
+      margin-inline-start: var(--size-4);
     }
   }
 }

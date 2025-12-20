@@ -1,0 +1,21 @@
+@layer components {
+  :where(button) {
+    --_lighten: oklch(from var(--mvw-link-color) calc(l * 1.15) c h);
+    --_darken: oklch(from var(--mvw-link-color) calc(l * 0.85) c h);
+
+    &[data-variant='link'] {
+      padding: 0;
+      color: var(--mvw-link-color);
+      cursor: pointer;
+
+      &:hover {
+        color: light-dark(var(--_darken), var(--_lighten));
+      }
+
+      &.is-active {
+        font-weight: 700;
+        color: light-dark(var(--_darken), var(--_lighten));
+      }
+    }
+  }
+}
