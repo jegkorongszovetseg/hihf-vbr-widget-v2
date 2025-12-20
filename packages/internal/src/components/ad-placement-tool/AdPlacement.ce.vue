@@ -113,7 +113,7 @@ dialog:open::backdrop {
   }
 
   :where(a[target='_blank']):after {
-    background: none;
+    content: none;
   }
 
   .close {
