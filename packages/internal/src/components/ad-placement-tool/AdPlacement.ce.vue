@@ -112,6 +112,10 @@ dialog:open::backdrop {
     opacity: 1;
   }
 
+  :where(a[target='_blank']):after {
+    background: none;
+  }
+
   .close {
     position: absolute;
     right: calc(var(--popover-padding) * -1);
