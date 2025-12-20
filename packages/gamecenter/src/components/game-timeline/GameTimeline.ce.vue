@@ -10,7 +10,7 @@ import commonHU from '../../locales/hu/common.json';
 import extendedHU from '../../locales/hu/extended.json';
 import { useApiErrors } from '../game/composables';
 // import ScoreBoard from './components/ScoreBoard.vue';
-import { useTeamColors } from './composables/use-team-colors';
+import { usePlayerResolverProvider, useTeamColors } from './composables';
 import { TAB_EVENTS, TAB_LINEUPS, TAB_OFFICIALS, TAB_PLAYER_STATS, TAB_TEAM_STATS } from './constants';
 import GameData from './GameData.vue';
 import GameEvents from './GameEvents.vue';
@@ -35,6 +35,11 @@ const props = defineProps({
   gameId: {
     type: [Number, String],
     default: 0,
+  },
+
+  externalPlayerResolver: {
+    type: [String, Function],
+    default: '',
   },
 });
 
@@ -107,6 +112,7 @@ handleServices({
   services: { getGameData, getGameStats, getEvents, getGameOfficials },
 });
 
+usePlayerResolverProvider(props.externalPlayerResolver, gameData);
 const colors = useTeamColors(gameData);
 
 const resolvedApiKey = resolveApiKey(props.apiKey);

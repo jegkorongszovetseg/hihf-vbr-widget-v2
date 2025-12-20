@@ -3,6 +3,7 @@ import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { IconWhistle } from '@mjsz-vbr-elements/shared/icons';
 import { computed } from 'vue';
 import { convertPenaltyCause } from '../../../game/internal';
+import { usePlayerResolver } from '../../composables';
 import GameEventLayout from '../GameEventLayout.vue';
 import TeamLogo from './TeamLogo.vue';
 
@@ -19,6 +20,7 @@ const props = defineProps({
 });
 
 const { t } = useI18n();
+const { resolver: playerResolver } = usePlayerResolver();
 
 const convertedEvent = computed(() => convertPenaltyCause(props.event));
 </script>
@@ -43,8 +45,10 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
         <li class="is-evented-person">
           <span v-if="event.jerseyNumber === null">{{ t('events.teamPenalty') }}</span>
           <template v-else>
-            <span class="is-player-number">{{ event.jerseyNumber }}</span>
-            {{ event.lastName }} {{ event.firstName }}
+            <span class="is-player-number">{{ event.jerseyNumber }}&nbsp;</span>
+            <a :href="playerResolver({ player: { playerId: event.playerId } })" target="_blank">
+              {{ event.lastName }} {{ event.firstName }}
+            </a>
           </template>
         </li>
         <li class="is-details-sub-title">

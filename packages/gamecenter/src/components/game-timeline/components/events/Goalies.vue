@@ -1,6 +1,7 @@
 <script setup>
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { IconArrowDown, IconArrowUp, IconChange } from '@mjsz-vbr-elements/shared/icons';
+import { usePlayerResolver } from '../../composables';
 import GameEventLayout from '../GameEventLayout.vue';
 import TeamLogo from './TeamLogo.vue';
 
@@ -17,6 +18,7 @@ defineProps({
 });
 
 const { t } = useI18n();
+const { resolver: playerResolver } = usePlayerResolver();
 </script>
 
 <template>
@@ -28,7 +30,10 @@ const { t } = useI18n();
     <template #details-list>
       <ul class="is-details-list">
         <li class="is-evented-person">
-          <span class="is-player-number">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
+          <span class="is-player-number">{{ event.jerseyNumber }}&nbsp;</span>
+          <a :href="playerResolver({ player: { playerId: event.playerId } })" target="_blank">
+            {{ event.lastName }} {{ event.firstName }}
+          </a>
         </li>
       </ul>
     </template>

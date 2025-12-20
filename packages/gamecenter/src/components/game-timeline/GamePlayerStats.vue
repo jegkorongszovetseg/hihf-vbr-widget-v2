@@ -6,6 +6,7 @@ import GameDataTable from '../common/GameDataTable.vue';
 import GameGolaiesStatsProvider from '../game/components/GameGoaliesStatsProvider.vue';
 import GamePlayerStatsProvider from '../game/components/GamePlayerStatsProvider.vue';
 import { convertPlayersTOI, GOALIES_STATS_COLUMNS, PLAYER_STATS_COLUMNS } from '../game/internal';
+import { usePlayerResolver } from './composables';
 
 const props = defineProps({
   data: {
@@ -33,6 +34,7 @@ const props = defineProps({
 });
 
 const { t } = useI18n();
+const { resolver: playerResolver } = usePlayerResolver();
 
 const { columns } = useColumns(PLAYER_STATS_COLUMNS);
 const { columns: goliesColumns } = useColumns(GOALIES_STATS_COLUMNS);
@@ -56,6 +58,7 @@ const awayGoalies = computed(() => sortByStartingFive(props.data?.goalies?.[prop
         :rows="rows"
         :title="homeTeamName"
         :sort="sort"
+        :player-resolver="playerResolver"
         @sort="onSort"
       />
     </GamePlayerStatsProvider>
@@ -66,6 +69,7 @@ const awayGoalies = computed(() => sortByStartingFive(props.data?.goalies?.[prop
         :rows="rows"
         :title="awayTeamName"
         :sort="sort"
+        :player-resolver="playerResolver"
         @sort="onSort"
       />
     </GamePlayerStatsProvider>
@@ -81,6 +85,7 @@ const awayGoalies = computed(() => sortByStartingFive(props.data?.goalies?.[prop
         :columns="goliesColumns"
         :rows="rows"
         :title="homeTeamName"
+        :player-resolver="playerResolver"
       />
     </GameGolaiesStatsProvider>
     <GameGolaiesStatsProvider v-slot="{ rows }" :rows="awayGoalies">
@@ -89,6 +94,7 @@ const awayGoalies = computed(() => sortByStartingFive(props.data?.goalies?.[prop
         :columns="goliesColumns"
         :rows="rows"
         :title="awayTeamName"
+        :player-resolver="playerResolver"
       />
     </GameGolaiesStatsProvider>
   </div>

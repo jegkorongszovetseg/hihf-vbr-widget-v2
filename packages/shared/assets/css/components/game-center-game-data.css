@@ -6,7 +6,7 @@
     --mvw-gamecenter-periodresults-color: var(--mvw-text-dimmed);
     --mvw-gamecenter-periodresults-size: var(--font-size-700);
     --mvw-gamecenter-teamname-size: var(--font-size-700);
-    --mvw-gamecenter-teamname-color: light-dark(var(--mvw-color-primary-900), var(--mvw-color-primary-100));
+    --mvw-gamecenter-teamname-color: var(--mvw-text-highlighted);
     --mvw-gamecenter-teamname-weight: 700;
     --mvw-gamecenter-gamestatus-color: var(--mvw-text-muted);
     --mvw-gamecenter-gamestatus-size: var(--font-size-400);
@@ -22,9 +22,15 @@
       display: grid;
       justify-items: center;
       align-items: end;
+      gap: var(--size-16);
 
       @media (width > 500px) {
         grid-template-columns: repeat(3, 1fr);
+      }
+
+      > div {
+        display: grid;
+        justify-items: center;
       }
     }
 
@@ -70,12 +76,12 @@
         align-items: center;
         /* font-size: var(--mvw-gamecenter-local-gamedate-size); */
 
-        &:after {
+        &:before {
           content: '/';
           margin: 0 5px;
         }
 
-        &:last-of-type:after {
+        &:first-of-type:before {
           content: '';
         }
       }

@@ -4,6 +4,7 @@ import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { pickCoaches, playerName } from '@mjsz-vbr-elements/core/utils';
 import { IconHockeyPuck } from '@mjsz-vbr-elements/shared/icons';
 import { computed } from 'vue';
+import { usePlayerResolver } from './composables';
 import { groupLinesByTeams } from './internal';
 
 const props = defineProps({
@@ -37,6 +38,7 @@ const props = defineProps({
 });
 
 const { t } = useI18n();
+const { resolver: playerResolver } = usePlayerResolver();
 
 const teamsPlayers = computed(() => groupLinesByTeams(props.data, props.homeTeamId, props.awayTeamId));
 
@@ -62,7 +64,9 @@ const awayCoaches = computed(() => pickCoaches(props.gameOfficials?.gameTeamMemb
             <li><Image :src="player.player.picture" /></li>
             <li>{{ player.number }}</li>
             <li>
-              {{ playerName(player)?.name ?? '' }}
+              <a :href="playerResolver(player)" target="_blank">
+                {{ playerName(player)?.name ?? '' }}
+              </a>
               <ul>
                 <li v-for="i in player.goal" :key="i">
                   <IconHockeyPuck />

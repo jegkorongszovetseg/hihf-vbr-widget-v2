@@ -6,7 +6,7 @@
     --mvw-gamecenter-card-title-color: var(--mvw-text-highlighted);
     --mvw-gamecenter-card-secondary-color: var(--mvw-text-muted);
     --mvw-gamecenter-card-tertiary-color: var(--mvw-text-faded);
-    --mvw-gamecenter-card-border-color: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-700));
+    --mvw-gamecenter-card-border-color: var(--mvw-border-muted);
     --mvw-gamecenter-card-bg-color: light-dark(var(--mvw-color-white), var(--mvw-color-primary-950));
 
     --mvw-gamecenter-team-container-title-color: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-200));
@@ -35,6 +35,8 @@
 
     .gamecenter-timeline-game-data {
       .is-goal-scorers {
+        --mvw-link-color: var(--mvw-text-muted);
+
         font-size: var(--font-size-200);
         font-weight: 700;
         line-height: var(--lineheight-200);
@@ -305,6 +307,8 @@
           color: var(--mvw-text-muted);
         }
         li:nth-child(3) {
+          --mvw-link-color: var(--mvw-text-default);
+
           grid-area: name;
           font-weight: 600;
           color: var(--mvw-text-default);
@@ -319,6 +323,7 @@
             display: inline-flex;
             gap: var(--size-2);
             vertical-align: middle;
+            margin-inline-start: var(--size-4);
           }
 
           svg {
@@ -460,6 +465,7 @@
           }
 
           .is-evented-person {
+            --mvw-link-color: var(--mvw-gamecenter-card-secondary-color);
             font-weight: var(--mvw-gamecenter-events-evented-person-weight);
             color: var(--mvw-gamecenter-card-secondary-color);
           }
@@ -550,6 +556,7 @@
           }
 
           .is-evented-person {
+            --mvw-link-color: var(--mvw-text-pale);
             color: var(--mvw-text-pale);
           }
 

@@ -4,6 +4,7 @@ import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { isEmpty, reject } from '@mjsz-vbr-elements/core/utils';
 import { IconHockeyPuck } from '@mjsz-vbr-elements/shared/icons';
 import { computed, ref } from 'vue';
+import { usePlayerResolver } from '../../composables';
 import GameEventLayout from '../GameEventLayout.vue';
 import TeamLogo from './TeamLogo.vue';
 
@@ -22,6 +23,7 @@ const props = defineProps({
 const tooltipContainer = ref(null);
 
 const { t } = useI18n();
+const { resolver: playerResolver } = usePlayerResolver();
 
 const assists = computed(() => reject(player => isEmpty(player), [props.event.assists1, props.event.assists2]));
 const homeOnIce = computed(() => props.event.homeOnIce);
@@ -42,12 +44,17 @@ const awayOnIce = computed(() => props.event.awayOnIce);
     <template #details-list>
       <ul class="is-details-list">
         <li class="is-evented-person">
-          <span class="is-player-number">{{ event.jerseyNumber }}</span> {{ event.lastName }} {{ event.firstName }}
+          <span class="is-player-number">{{ event.jerseyNumber }}&nbsp;</span>
+          <a :href="playerResolver({ player: { playerId: event.playerId } })" target="_blank">
+            {{ event.lastName }} {{ event.firstName }}
+          </a>
         </li>
         <li class="is-assists-list">
           <template v-for="assist in assists" :key="assist">
-            <span class="is-evented-person"><i class="is-player-number">{{ assist.jerseyNumber }}</i> {{ assist.lastName }}
-              {{ assist.firstName }}</span>
+            <span class="is-evented-person"><i class="is-player-number">{{ assist.jerseyNumber }}&nbsp;</i>
+              <a :href="playerResolver({ player: { playerId: assist.playerId } })" target="_blank">
+                {{ assist.lastName }} {{ assist.firstName }}
+              </a></span>
           </template>
         </li>
         <li v-if="!isEmpty(homeOnIce) || !isEmpty(awayOnIce)" class="is-poi-data">

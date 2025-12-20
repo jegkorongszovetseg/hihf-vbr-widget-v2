@@ -1,6 +1,5 @@
 <script setup>
 // import { ScheduleLiga } from '@mjsz-vbr-elements/liga';
-// import { useLigaCss } from '../composables/use-liga-css';
 import { store } from '../store.js';
 
 // import '../../../packages/shared/assets/css/common.scss';
@@ -8,8 +7,6 @@ import { store } from '../store.js';
 // import '../../../packages/shared/assets/css/cards.scss';
 // import '../../../packages/shared/assets/css/grid.scss';
 // import '../../../packages/shared/assets/css/forms.scss';
-
-// useLigaCss();
 
 const gameLinkResolver = '/GameCenter?gameId={gameId}';
 </script>

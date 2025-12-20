@@ -8,6 +8,7 @@ import { useAttendanceSocket } from '../../composables/use-attendance-socket';
 import GamePeriodProgress from '../game/components/GamePeriodProgress.vue';
 import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from '../game/internal';
 import PeriodResults from './components/PeriodResults.vue';
+import { usePlayerResolver } from './composables';
 import { buildPeriodResultsByTeam, filterGoalScorers } from './internal';
 
 const props = defineProps({
@@ -35,6 +36,7 @@ const props = defineProps({
 const { gameData, websocketUrl } = toRefs(props);
 
 const { t } = useI18n();
+const { resolver: playerResolver } = usePlayerResolver();
 
 const convertedPeriodResults = computed(() => buildPeriodResultsByTeam(props.gameData.periodResults));
 const homeGoalScorer = computed(() => filterGoalScorers(props.gameEvents, props.gameData.homeTeam?.id));
@@ -92,7 +94,10 @@ const attendanceLabel = computed(() => {
         </h1>
         <ul class="is-goal-scorers">
           <li v-for="person in homeGoalScorer" :key="person.id">
-            {{ person.name }} <span>{{ person.eventTime }}</span>
+            <a :href="playerResolver({ player: { playerId: person.id } })" target="_blank">
+              {{ person.name }}
+            </a>
+            <span>&nbsp;{{ person.eventTime }}</span>
           </li>
         </ul>
       </div>
@@ -141,7 +146,10 @@ const attendanceLabel = computed(() => {
         </h1>
         <ul class="is-goal-scorers">
           <li v-for="person in awayGoalScorer" :key="person.id">
-            {{ person.name }} <span>{{ person.eventTime }}</span>
+            <a :href="playerResolver({ player: { playerId: person.id } })" target="_blank">
+              {{ person.name }}
+            </a>
+            <span>&nbsp;{{ person.eventTime }}</span>
           </li>
         </ul>
       </div>

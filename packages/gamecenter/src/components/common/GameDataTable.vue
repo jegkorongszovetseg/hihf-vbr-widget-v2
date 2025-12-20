@@ -24,6 +24,11 @@ const props = defineProps({
     type: Object,
     default: () => ({}),
   },
+
+  playerResolver: {
+    type: Function,
+    default: null,
+  },
 });
 const emit = defineEmits(['sort']);
 
@@ -46,7 +51,10 @@ const onSort = payload => emit('sort', payload);
         @sort="onSort"
       >
         <template #cell-name="{ row }">
-          {{ row.name }}
+          <a v-if="playerResolver" :href="playerResolver({ player: row.player })" target="_blank">{{ row.name }}</a>
+          <template v-else>
+            {{ row.name }}
+          </template>
           <FloatingPanel v-if="row.isBP" placement="top" :content="t('bestPlayer')" :append-to="tooltipContainer">
             <template #default="{ setRef, events }">
               <span :ref="setRef" class="text-highlighted" v-bind="events">

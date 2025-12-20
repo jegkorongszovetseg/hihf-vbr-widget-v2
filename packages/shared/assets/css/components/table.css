@@ -146,9 +146,12 @@
         align-items: center;
       }
 
-      /* &:has(.is-logo-image) {
-        padding-inline-end: 0;
-      } */
+      a[target='_blank']:after {
+        content: '';
+        position: absolute;
+        left: 100%;
+        top: calc(50% - 0.4em);
+      }
 
       .is-logo-image {
         display: inline-block;

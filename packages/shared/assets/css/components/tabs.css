@@ -3,13 +3,13 @@
     /* Tabs */
     --mvw-tab-btn-font-size: var(--font-size-500);
     --mvw-tab-btn-font-weight: 500;
-    --mvw-tab-btn-color: light-dark(var(--mvw-color-primary-300), var(--mvw-color-primary-500));
+    --mvw-tab-btn-color: var(--mvw-text-dimmed);
     --mvw-tab-btn-border-style: solid;
     --mvw-tab-btn-border-width: 0 0 3px 0;
     --mvw-tab-btn-text-transform: uppercase;
-    --mvw-tab-btn-hover-color: light-dark(var(--mvw-color-primary-500), var(--mvw-color-primary-300));
+    --mvw-tab-btn-hover-color: var(--mvw-text-muted);
     --mvw-tab-btn-hover-border-color: transparent;
-    --mvw-tab-btn-active-color: light-dark(var(--mvw-color-primary-900), var(--mvw-color-primary-50));
+    --mvw-tab-btn-active-color: var(--mvw-text-highlighted);
     --mvw-tab-btn-active-border-color: var(--mvw-border-highlighted);
     --mvw-tab-btn-group-separator-color: var(--mvw-border-muted);
 

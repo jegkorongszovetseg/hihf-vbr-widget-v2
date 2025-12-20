@@ -55,7 +55,7 @@
         minmax(180px, 1.2fr);
       color: var(--mvw-table-color);
 
-      &:nth-child(odd) > div {
+      &:nth-child(even) > div {
         background-color: var(
           --mvw-table-stripped-bg-color,
           light-dark(var(--mvw-color-primary-50), var(--mvw-color-primary-900))
