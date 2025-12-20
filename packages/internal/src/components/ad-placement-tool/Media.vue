@@ -22,7 +22,7 @@ function setMedaiPath(path: string) {
 </script>
 
 <template>
-  <component :is="currentAd.link ? 'a' : 'div'" :href="currentAd.link || undefined">
+  <component :is="currentAd.link ? 'a' : 'div'" :href="currentAd.link || undefined" :target="currentAd.link ? '_blank' : undefined">
     <video v-if="currentAd.media[0]?.mediaType?.includes('video')" :width="currentAd.media[0].width" :height="currentAd.media[0].height" autoplay muted>
       <source :src="currentAd.media[0]?.media" :type="currentAd.media[0]?.mediaType">
     </video>
