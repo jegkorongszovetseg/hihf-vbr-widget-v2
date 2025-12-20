@@ -9,9 +9,8 @@
   "keywords": [],
   "main": "index.js",
   "scripts": {
-    "generate:vars": "node scripts/generate-component-variables.js",
-    "docs:dev": "pnpm generate:vars && vitepress dev --port 5555",
-    "docs:build": "pnpm generate:vars && vitepress build",
+    "docs:dev": "vitepress dev --port 5555",
+    "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
   },
   "dependencies": {

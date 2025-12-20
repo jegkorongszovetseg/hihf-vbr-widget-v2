@@ -28,7 +28,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "vite build"
+    "build": "vite build && node scripts/generate-component-variables.js"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.0",
