@@ -1,6 +1,6 @@
 <script setup>
 import { VBR_API_BASE_URL } from '@mjsz-vbr-elements/core/constants';
-import { cookie } from '@mjsz-vbr-elements/core/utils';
+import { cookie, isNotEmpty } from '@mjsz-vbr-elements/core/utils';
 import { useFetch } from '@vueuse/core';
 import { computed, useTemplateRef } from 'vue';
 import { usePopover } from './internal';
@@ -29,7 +29,7 @@ const { hide } = usePopover(popoverRef, computed(() => data.value?.closeTimeout 
 </script>
 
 <template>
-  <div v-if="isFinished && !error" class="ad-placement-tool">
+  <div v-if="isFinished && !error && isNotEmpty(data)" class="ad-placement-tool">
     <template v-if="data.type === 'popover'">
       <dialog ref="popover">
         <Media :current-ad="data" :mobile-breakpoint="mobileBreakpoint" />
