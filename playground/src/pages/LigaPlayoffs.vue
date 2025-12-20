@@ -1,9 +1,6 @@
 <script setup>
-import { useLigaCss } from '../composables/use-liga-css';
 import { store } from '../store.js';
-import '../../../packages/shared/assets/css/playoffs.scss';
-
-useLigaCss();
+// import '../../../packages/shared/assets/css/playoffs.scss';
 </script>
 
 <template>
