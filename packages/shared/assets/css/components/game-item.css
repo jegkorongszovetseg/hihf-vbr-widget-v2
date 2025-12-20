@@ -25,6 +25,10 @@
       vertical-align: middle;
     }
 
+    :where(a[target='_blank']):hover:after {
+      content: none;
+    }
+
     .game-result {
       color: var(--mvw-text-highlighted);
 
