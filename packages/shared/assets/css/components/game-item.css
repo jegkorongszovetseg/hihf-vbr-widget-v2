@@ -20,6 +20,11 @@
       aspect-ratio: 1;
     }
 
+    svg {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
     .game-result {
       color: var(--mvw-text-highlighted);
 
