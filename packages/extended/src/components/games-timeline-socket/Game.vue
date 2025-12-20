@@ -2,7 +2,7 @@
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { useGameDataSocket, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { externalGameLinkResolver, getWebsocketURL } from '@mjsz-vbr-elements/core/utils';
-import IconLaunch from '@mjsz-vbr-elements/shared/icons/IconLaunch';
+import { IconLaunch } from '@mjsz-vbr-elements/shared/icons';
 import { computed, shallowRef, watch } from 'vue';
 import { isPeriodTimeVisible } from '../games-timeline/internal';
 import ScoreDisplay from '../games-timeline/ScoreDisplay.vue';

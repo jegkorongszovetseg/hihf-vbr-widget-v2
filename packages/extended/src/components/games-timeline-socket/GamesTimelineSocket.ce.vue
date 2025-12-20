@@ -1,9 +1,8 @@
 <script setup>
 import { I18NProvider, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
 import { useServices, useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
-import { format, getLocalTimezone, isAfter, offsetName, resolveApiKey } from '@mjsz-vbr-elements/core/utils';
+import { format, getLocalTimezone, isAfter, isEmpty, offsetName, resolveApiKey } from '@mjsz-vbr-elements/core/utils';
 import { refDebounced, useIntervalFn } from '@vueuse/core';
-import { isEmpty } from 'ramda';
 import { computed, ref, triggerRef } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
@@ -174,6 +173,8 @@ function onTryAgain() {
   </I18NProvider>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/common.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/core.css" />
 
-<style src="@mjsz-vbr-elements/shared/css/games-timeline.scss" lang="scss"></style>
+<style src="@mjsz-vbr-elements/shared/css/components/games-timeline.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
