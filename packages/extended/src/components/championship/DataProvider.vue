@@ -13,6 +13,7 @@ import {
   convertPhaseName,
   convertTimesMinToMinSec,
   convertTimesSecToMin,
+  externalPlayerLinkResolver,
   head,
   playerName,
   rawConvert,
@@ -73,6 +74,11 @@ const props = defineProps({
   allPeriodVisible: {
     type: Boolean,
     default: false,
+  },
+
+  externalPlayerResolver: {
+    type: [String, Function],
+    default: '',
   },
 });
 
@@ -231,6 +237,8 @@ function setFetchData(value) {
   fetchData();
   onPaginatorChange(1);
 }
+
+const resolveExternalPlayerLink = player => externalPlayerLinkResolver(props.externalPlayerResolver, { ...player, championshipId: state.championshipId });
 </script>
 
 <template>
@@ -252,6 +260,7 @@ function setFetchData(value) {
       onChangeReport,
       onPaginatorChange,
       changeChampionship,
+      resolveExternalPlayerLink,
     }"
   />
 </template>

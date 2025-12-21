@@ -72,7 +72,7 @@ function onReTry() {
 <template>
   <I18NProvider v-slot="{ t }" :locale="locale" :messages="messages">
     <FormField :label="t('selection.filter')" name="filter" class="full-width mb-md" style="max-width: 220px;">
-      <input id="filter" v-model="query" :placeholder="t('recruitmentInfo.filterByNameAndLocation')" type="text" autocomplete="off">
+      <input id="filter" v-model="query" :placeholder="t('recruitmentInfo.filterByNameAndLocation')" type="search" autocomplete="off">
     </FormField>
 
     <ErrorNotice v-if="hasError" :error="error" use-retry @retry="onReTry" />
