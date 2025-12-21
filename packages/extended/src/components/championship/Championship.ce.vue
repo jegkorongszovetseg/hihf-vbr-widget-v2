@@ -48,6 +48,11 @@ const props = defineProps({
     default: '',
   },
 
+  externalPlayerResolver: {
+    type: [String, Function],
+    default: '',
+  },
+
   limit: {
     type: Number,
     default: 20,
@@ -59,6 +64,11 @@ const props = defineProps({
   },
 
   totalPeriodPlayedVisible: {
+    type: Boolean,
+    default: false,
+  },
+
+  isPlayerLinked: {
     type: Boolean,
     default: false,
   },
@@ -109,6 +119,7 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
             onChangeReport,
             onPaginatorChange,
             changeChampionship,
+            resolveExternalPlayerLink,
           }"
           :locale="locale"
           :timezone="timezone"
@@ -116,6 +127,7 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
           :limit="limit"
           :initial-phase-id="initialPhaseId"
           :all-period-visible="totalPeriodPlayedVisible"
+          :external-player-resolver="externalPlayerResolver"
         >
           <SeasonSelector
             :seasons="seasons"
@@ -192,8 +204,10 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
             :sort="sort"
             :is-loading="isLoading"
             :offset-name="currentOffsetName"
+            :is-player-linked="isPlayerLinked"
             :external-team-resolver="resolveExternalTeamLink"
             :external-game-resolver="externalGameLink"
+            :external-player-resolver="resolveExternalPlayerLink"
             :append-to="tooltipContainer"
             :hide-columns="selectedPanel === PANEL_SCHEDULE ? 'broadcast' : ''"
             @sort="onSort"

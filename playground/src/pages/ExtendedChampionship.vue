@@ -11,12 +11,21 @@ import { store } from '../store.js';
 // import '../../../packages/shared/assets/css/forms.scss';
 // import '../../../packages/shared/assets/css/dropdown.scss';
 // import '../../../packages/shared/assets/css/paginator.scss';
+
+const playerResolver = `LigaPlayer?playerId={player.playerId}&championshipId={championshipId}`;
 </script>
 
 <template>
   <div class="p-5">
     <!-- <Championship :locale="store.locale" championship-name="U-16 Bajnokság" /> -->
     <!-- <mjsz-vbr-championship :locale="store.locale" championship-name="Magyar Kupa" :initial-phase-id="45856" /> -->
-    <mjsz-vbr-championship :locale="store.locale" championship-name="U-16 Bajnokság" initial-phase-id="46165" total-period-played-visible />
+    <mjsz-vbr-championship
+      :locale="store.locale"
+      championship-name="U-16 Bajnokság"
+      initial-phase-id="46165"
+      total-period-played-visible
+      :external-player-resolver="playerResolver"
+      is-player-linked
+    />
   </div>
 </template>

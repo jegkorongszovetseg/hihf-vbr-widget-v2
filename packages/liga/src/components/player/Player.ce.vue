@@ -41,6 +41,11 @@ const props = defineProps({
     type: String,
     default: '',
   },
+
+  disableActionImage: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const messages = { en, hu };
@@ -79,7 +84,7 @@ const tooltipContainer = ref(null);
             {{ playerData.name }}
           </h1>
           <div class="hero" style="--overlay-size: 180px">
-            <div class="is-main-image">
+            <div v-if="!disableActionImage" class="is-main-image">
               <Image
                 :key="playerData.player?.playerId"
                 :src="playerData.playerAction"
