@@ -4,8 +4,8 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const componentsDir = path.resolve(__dirname, '../../packages/shared/assets/css/components');
-const outputFile = path.resolve(__dirname, '../styles/component-variables.md');
+const componentsDir = path.resolve(__dirname, '../assets/css/components');
+const outputFile = path.resolve(__dirname, '../dist/docs/component-variables.md');
 
 function extractLayerVariables(cssContent) {
   const match = cssContent.match(/@layer\s+components\.variables\s*\{([\s\S]*?)^\}/m);
@@ -26,25 +26,7 @@ function formatComponentName(filename) {
 function generateMarkdown() {
   const files = fs.readdirSync(componentsDir).filter(f => f.endsWith('.css'));
 
-  let markdown = `---
-outline: deep
----
-
-# Komponens CSS Változók
-
-Lehetséges az egyes összetevők egyedi beállítása is.
-Minden komponenshez tartozó CSS változók a \`@layer components.variables\` blokkban találhatók.
-
-::: tip A fájlodban ezeket a CSS változókat testreszabhatod
-
-\`\`\`css
-* {
-  --mvw-avatar-border-color: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-700));
-}
-\`\`\`
-:::
-
-`;
+  let markdown = '';
 
   for (const file of files) {
     const filePath = path.join(componentsDir, file);
@@ -59,6 +41,12 @@ Minden komponenshez tartozó CSS változók a \`@layer components.variables\` bl
       markdown += variables.trim();
       markdown += '\n```\n\n';
     }
+  }
+
+  // Ensure output directory exists
+  const outputDir = path.dirname(outputFile);
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
   }
 
   fs.writeFileSync(outputFile, markdown);
