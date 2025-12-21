@@ -139,7 +139,7 @@ function onStatTypeChange(value) {
         <input
           id="player"
           v-model="playerName"
-          type="text"
+          type="search"
           class="base-input"
           :disabled="reportType !== 'players'"
         >

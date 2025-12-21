@@ -88,7 +88,7 @@ const externalTeamLink = params => externalTeamLinkResolver(props.externalTeamRe
             @on-change-season="changeSeason"
           >
             <FormField :label="t('selection.filterName')" name="player">
-              <input id="player" type="text" class="base-input" :value="query" @input="onInput">
+              <input id="player" type="search" class="base-input" :value="query" @input="onInput">
             </FormField>
           </SeasonSelector>
 
