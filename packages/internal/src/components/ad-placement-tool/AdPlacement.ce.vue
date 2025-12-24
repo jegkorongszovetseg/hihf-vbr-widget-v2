@@ -3,7 +3,7 @@ import { VBR_API_BASE_URL } from '@mjsz-vbr-elements/core/constants';
 import { cookie, isNotEmpty } from '@mjsz-vbr-elements/core/utils';
 import { useFetch } from '@vueuse/core';
 import { computed, useTemplateRef } from 'vue';
-import { usePopover } from './internal';
+import { useImpression, usePopover } from './internal';
 import Media from './Media.vue';
 
 const props = defineProps({
@@ -19,13 +19,30 @@ const props = defineProps({
 });
 
 const popoverRef = useTemplateRef('popover');
+const mediaRef = useTemplateRef('media');
+
+// const userId = useStorage('mjsz-ad', crypto.randomUUID());
 
 const { isFinished, data, error } = useFetch(`${VBR_API_BASE_URL}/internal/ad-placement?areaid=${props.areaId}`, { timeout: 1000 }).get().json();
 
 const { hide } = usePopover(popoverRef, computed(() => data.value?.closeTimeout ?? 30000), {
   check: () => cookie.checkCookie(`mjsz-popover-${data.value?._id}`),
-  set: () => cookie.setCookie(`mjsz-popover-${data.value?._id}`, 1, data.value?.expiration ?? 1),
+  set: () => {
+    onSendImpression();
+    cookie.setCookie(`mjsz-popover-${data.value?._id}`, 1, data.value?.expiration ?? 1);
+  },
 });
+
+useImpression(mediaRef, {
+  fetch: onSendImpression,
+});
+
+function onSendImpression() {
+  // console.log('SEND-IMPRESSION', {
+  //   userId: userId.value,
+  //   adId: data.value._id,
+  // });
+}
 </script>
 
 <template>
@@ -37,7 +54,7 @@ const { hide } = usePopover(popoverRef, computed(() => data.value?.closeTimeout 
       </dialog>
     </template>
     <template v-else>
-      <Media :current-ad="data" :mobile-breakpoint="mobileBreakpoint" />
+      <Media ref="media" :current-ad="data" :mobile-breakpoint="mobileBreakpoint" />
     </template>
   </div>
 </template>
