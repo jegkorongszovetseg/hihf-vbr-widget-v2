@@ -13,6 +13,7 @@
   :where(.progress) {
     display: flex;
     height: var(--mvw-progress-height, 10px);
+    width: 100%;
     overflow: hidden;
     /* font-size: var(--font-size-50); */
     background-color: var(--mvw-progress-bg-color);
