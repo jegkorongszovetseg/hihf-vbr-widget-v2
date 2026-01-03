@@ -40,21 +40,25 @@ useImpression(mediaRef, {
 const clickURL = computed(() => data.value?.link ? `${VBR_API_BASE_URL}/internal/click?adId=${data.value?._id}&areaId=${props.areaId}&url=${data.value.link}` : undefined);
 
 function onSendImpression() {
-  navigator.sendBeacon(`${VBR_API_BASE_URL}/internal/track`, JSON.stringify({
+  const payload = {
     type: 'impression',
     adId: data.value?._id,
     areaId: props.areaId,
     userId: userId.value,
-  }));
+  };
+  const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+  navigator.sendBeacon(`${VBR_API_BASE_URL}/internal/track`, blob);
 }
 
 function onClick() {
-  navigator.sendBeacon(`${VBR_API_BASE_URL}/internal/track`, JSON.stringify({
+  const payload = {
     type: 'click',
     adId: data.value?._id,
     areaId: props.areaId,
     userId: userId.value,
-  }));
+  };
+  const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+  navigator.sendBeacon(`${VBR_API_BASE_URL}/internal/track`, blob);
 }
 </script>
 
