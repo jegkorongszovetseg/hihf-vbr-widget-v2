@@ -12,7 +12,14 @@ const props = defineProps({
     type: String,
     required: true,
   },
+
+  clickUrl: {
+    type: String,
+    required: true,
+  },
 });
+
+const emit = defineEmits(['click']);
 
 const mediaQuery = computed(() => `(min-width: ${props.currentAd?.breakpoint || props.mobileBreakpoint})`);
 
@@ -22,7 +29,7 @@ function setMedaiPath(path: string) {
 </script>
 
 <template>
-  <component :is="currentAd.link ? 'a' : 'div'" :href="currentAd.link || undefined" :target="currentAd.link ? '_blank' : undefined">
+  <component :is="currentAd.link ? 'a' : 'div'" :href="clickUrl" :target="currentAd.link ? '_blank' : undefined" @click="emit('click')">
     <video v-if="currentAd.media?.[0]?.mediaType?.includes('video')" :width="currentAd.media?.[0].width" :height="currentAd.media?.[0].height" autoplay muted>
       <source :src="currentAd.media?.[0]?.media" :type="currentAd.media?.[0]?.mediaType">
     </video>

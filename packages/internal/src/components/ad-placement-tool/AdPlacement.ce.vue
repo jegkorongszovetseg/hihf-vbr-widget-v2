@@ -1,9 +1,9 @@
 <script setup>
 import { VBR_API_BASE_URL } from '@mjsz-vbr-elements/core/constants';
 import { cookie, isNotEmpty } from '@mjsz-vbr-elements/core/utils';
-import { useFetch } from '@vueuse/core';
+import { useFetch, useStorage } from '@vueuse/core';
 import { computed, useTemplateRef } from 'vue';
-import { usePopover } from './internal';
+import { useImpression, usePopover } from './internal';
 import Media from './Media.vue';
 
 const props = defineProps({
@@ -19,25 +19,55 @@ const props = defineProps({
 });
 
 const popoverRef = useTemplateRef('popover');
+const mediaRef = useTemplateRef('media');
+
+const userId = useStorage('mjsz-ad', crypto.randomUUID());
 
 const { isFinished, data, error } = useFetch(`${VBR_API_BASE_URL}/internal/ad-placement?areaid=${props.areaId}`, { timeout: 1000 }).get().json();
 
 const { hide } = usePopover(popoverRef, computed(() => data.value?.closeTimeout ?? 30000), {
   check: () => cookie.checkCookie(`mjsz-popover-${data.value?._id}`),
-  set: () => cookie.setCookie(`mjsz-popover-${data.value?._id}`, 1, data.value?.expiration ?? 1),
+  set: () => {
+    onSendImpression();
+    cookie.setCookie(`mjsz-popover-${data.value?._id}`, 1, data.value?.expiration ?? 1);
+  },
 });
+
+useImpression(mediaRef, {
+  fetch: onSendImpression,
+});
+
+const clickURL = computed(() => data.value?.link ? `${VBR_API_BASE_URL}/internal/click?adId=${data.value?._id}&areaId=${props.areaId}&url=${data.value.link}` : undefined);
+
+function onSendImpression() {
+  navigator.sendBeacon(`${VBR_API_BASE_URL}/internal/track`, JSON.stringify({
+    type: 'impression',
+    adId: data.value?._id,
+    areaId: props.areaId,
+    userId: userId.value,
+  }));
+}
+
+function onClick() {
+  navigator.sendBeacon(`${VBR_API_BASE_URL}/internal/track`, JSON.stringify({
+    type: 'click',
+    adId: data.value?._id,
+    areaId: props.areaId,
+    userId: userId.value,
+  }));
+}
 </script>
 
 <template>
   <div v-if="isFinished && !error && isNotEmpty(data)" class="ad-placement-tool">
     <template v-if="data.type === 'popover'">
       <dialog ref="popover">
-        <Media :current-ad="data" :mobile-breakpoint="mobileBreakpoint" />
+        <Media :current-ad="data" :mobile-breakpoint="mobileBreakpoint" :click-url="clickURL" @click="onClick" />
         <button type="button" class="close" @click="hide" />
       </dialog>
     </template>
     <template v-else>
-      <Media :current-ad="data" :mobile-breakpoint="mobileBreakpoint" />
+      <Media ref="media" :current-ad="data" :mobile-breakpoint="mobileBreakpoint" :click-url="clickURL" @click="onClick" />
     </template>
   </div>
 </template>
