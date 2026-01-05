@@ -37,7 +37,7 @@ useImpression(mediaRef, {
   fetch: onSendImpression,
 });
 
-const clickURL = computed(() => data.value?.link ? `${VBR_API_BASE_URL}/internal/click?adId=${data.value?._id}&areaId=${props.areaId}&url=${data.value.link}` : undefined);
+const clickURL = computed(() => data.value?.link ? `${VBR_API_BASE_URL}/internal/click?adId=${data.value?._id}&areaId=${props.areaId}&userId=${userId.value}&url=${data.value.link}` : undefined);
 
 function onSendImpression() {
   const payload = {
