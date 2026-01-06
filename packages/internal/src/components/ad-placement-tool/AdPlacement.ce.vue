@@ -146,6 +146,10 @@ dialog:open::backdrop {
     opacity: 1;
   }
 
+  :where(a) {
+    display: inline-block;
+  }
+
   :where(a[target='_blank']):after {
     content: none;
   }
