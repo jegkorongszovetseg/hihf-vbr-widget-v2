@@ -430,8 +430,8 @@
         grid-area: details;
 
         display: grid;
-        grid-template-columns: auto 1fr;
-        grid-template-areas: 'type-icon detail-title' 'type-icon detail-list';
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas: 'type-icon . team-logo' 'detail-title detail-title detail-title' 'detail-list detail-list detail-list';
         column-gap: var(--size-16);
         padding: var(--size-16);
         border-inline-end: 5px solid var(--mvw-gamecenter-home-team-identifier-color);
@@ -441,7 +441,7 @@
         outline: 1px solid var(--mvw-gamecenter-card-border-color);
 
         &:not(:has(.is-details-list)) {
-          grid-template-areas: 'type-icon detail-title';
+          grid-template-areas: 'type-icon . team-logo' 'detail-title detail-title detail-title';
           align-items: center;
         }
 
@@ -479,7 +479,7 @@
         .is-team-logo {
           grid-area: team-logo;
 
-          display: none;
+          /* display: none; */
 
           justify-self: center;
           align-self: center;
