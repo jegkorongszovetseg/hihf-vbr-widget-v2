@@ -129,6 +129,10 @@
     backdrop-filter: blur(10px);
   }
 
+  .justify-center {
+    justify-items: center;
+  }
+
   /* Layout */
   .grid-container {
     --min-width: 230px;

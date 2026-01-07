@@ -80,7 +80,7 @@ const tooltipContainer = ref(null);
           :championship-id="championshipId"
           :player-id="props.playerId"
         >
-          <h1 class="uppercase">
+          <h1 v-if="!disableActionImage" class="uppercase">
             {{ playerData.name }}
           </h1>
           <div class="hero" style="--overlay-size: 180px">
@@ -96,7 +96,7 @@ const tooltipContainer = ref(null);
             </div>
           </div>
 
-          <PlayerInfo :data="playerData" :append-to="tooltipContainer" />
+          <PlayerInfo :data="playerData" :append-to="tooltipContainer" :is-birth-year-only="disableActionImage" />
 
           <SeasonsStats
             :rows="currentSeasonStats"
@@ -168,3 +168,5 @@ const tooltipContainer = ref(null);
 <style src="@mjsz-vbr-elements/shared/css/components/badge.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/hero.css" />
+
+<style src="@mjsz-vbr-elements/shared/css/components/list.css" />
