@@ -27,6 +27,7 @@ const gameResolver = 'https://www.ersteliga.hu/game/id/{gameId}';
       championship-id="3450"
       player-id="1111"
       :external-game-resolver="gameResolver"
+      :disable-action-image="false"
     />
   </div>
 </template>

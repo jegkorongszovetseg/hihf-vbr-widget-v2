@@ -44,7 +44,7 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
       :content="t(`penalties.${convertedEvent.penaltyCause}`)"
       :append-to="tooltipContainer"
     >
-      <span :ref="setRef" :tabindex="0" :aria-label="t(`penalties.${convertedEvent.penaltyCause}`)" v-on="events">
+      <span :ref="setRef" :tabindex="0" :aria-label="t(`penalties.${convertedEvent.penaltyCause}`)" v-bind="events">
         {{ convertedEvent.penaltyCause }}
       </span>
     </FloatingPanel>
@@ -63,7 +63,7 @@ const convertedEvent = computed(() => convertPenaltyCause(props.event));
         :content="t('penalties.PS')"
         :append-to="tooltipContainer"
       >
-        <span :ref="setRef" :tabindex="0" :aria-label="t(`penalties.${convertedEvent.penaltyCause}`)" v-on="events">
+        <span :ref="setRef" :tabindex="0" :aria-label="t(`penalties.${convertedEvent.penaltyCause}`)" v-bind="events">
           PS
         </span>
       </FloatingPanel>

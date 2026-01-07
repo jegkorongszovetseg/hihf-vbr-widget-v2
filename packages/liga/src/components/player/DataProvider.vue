@@ -1,8 +1,8 @@
 <script setup>
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
-import { getLocalTimezone, omit, pick, removeCurrentFromSeasonStats, transformCurrentSeasonStats } from '@mjsz-vbr-elements/core/utils';
+import { convert, omit, pick, removeCurrentFromSeasonStats, transformCurrentSeasonStats } from '@mjsz-vbr-elements/core/utils';
 import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
-import { computed, reactive } from 'vue';
+import { computed, reactive, unref } from 'vue';
 import { COLUMNS_GAMES, COLUMNS_PLAYER_SEASON_STATS } from '../internal';
 import {
   PANE_GAMES,
@@ -36,7 +36,6 @@ const PLAYER_SEASON_STATS_API = '/v2/player-season-stats';
 const GOALIE_STATS_API = '/v2/goalie-season-stats';
 const PLAYER_GAMES_API = '/v2/player-games';
 const GOALIE_GAMES_API = '/v2/goalie-games';
-const timezone = getLocalTimezone();
 
 const params = useUrlSearchParams('history');
 
@@ -58,7 +57,7 @@ const { state: playerData, isLoading: isLoadingPlayerData } = useServices({
     params: computed(() => ({ championshipId: state.championshipId, playerId: state.playerId })),
     immediate: true,
   },
-  transform: res => transformPlayerData(res, props.locale),
+  transform: res => transformPlayerData(res),
   onError,
   onSuccess: (res) => {
     const { position } = res;
@@ -97,7 +96,7 @@ const {
     params: computed(() => ({ championshipId: state.championshipId, playerId: state.playerId })),
     immediate: false,
   },
-  transform: res => transformGames(res, state, props.locale, timezone),
+  transform: res => transformGames(res, state),
   onError,
 });
 
@@ -203,6 +202,12 @@ const gameColumns = computed(() =>
       ),
 );
 
+const convertedPlayerGames = computed(() => {
+  return convert(unref(playerGames))
+    .schedule(null, props.locale)
+    .value();
+});
+
 function fetchData() {
   useAsyncQueue([fetchSeasonStats, fetchGames]);
 }
@@ -220,7 +225,7 @@ function onChangePane(value) {
       isPlayerSeasonsLoading,
       isGamesLoading,
       playerData,
-      playerGames,
+      playerGames: convertedPlayerGames.rows,
       playerSeasonStats,
       currentSeasonStats,
       gameColumns,

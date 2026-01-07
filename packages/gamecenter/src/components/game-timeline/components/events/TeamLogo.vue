@@ -33,7 +33,7 @@ const defaultSrc = computed(() => (props.isHomeTeam ? DEAFULT_LOGO_TEAM_A : DEAF
     :content="name"
     :append-to="tooltipContainer"
   >
-    <span :ref="setRef" :tabindex="0" :aria-label="name" v-on="events">
+    <span :ref="setRef" :tabindex="0" :aria-label="name" v-bind="events">
       <Image :src="logo" :default-src="defaultSrc" />
     </span>
   </FloatingPanel>
