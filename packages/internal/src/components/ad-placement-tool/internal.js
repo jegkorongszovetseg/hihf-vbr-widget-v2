@@ -1,3 +1,4 @@
+import { isAfter } from '@mjsz-vbr-elements/core/utils';
 import { noop, useEventListener, useIntersectionObserver, useTimeoutFn } from '@vueuse/core';
 import { unref, watch } from 'vue';
 
@@ -68,4 +69,8 @@ export function useImpression(target, { minVisibleRatio = 0.5, minVisibleTime = 
       stopTimer();
     }
   }
+}
+
+export function validateEndDateTime(date) {
+  return isAfter(new Date(), new Date(date), 'minute');
 }
