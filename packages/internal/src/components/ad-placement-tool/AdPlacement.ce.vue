@@ -3,7 +3,7 @@ import { VBR_API_BASE_URL } from '@mjsz-vbr-elements/core/constants';
 import { cookie, isNotEmpty } from '@mjsz-vbr-elements/core/utils';
 import { useFetch, useStorage } from '@vueuse/core';
 import { computed, useTemplateRef } from 'vue';
-import { useImpression, usePopover } from './internal';
+import { useImpression, usePopover, validateEndDateTime } from './internal';
 import Media from './Media.vue';
 
 const props = defineProps({
@@ -40,6 +40,8 @@ useImpression(mediaRef, {
 const clickURL = computed(() => data.value?.link ? `${VBR_API_BASE_URL}/internal/click?adId=${data.value?._id}&areaId=${props.areaId}&userId=${userId.value}&url=${data.value.link}` : undefined);
 
 function onSendImpression() {
+  if (validateEndDateTime(data.value.end))
+    return;
   const payload = {
     type: 'impression',
     adId: data.value?._id,
@@ -51,6 +53,8 @@ function onSendImpression() {
 }
 
 function onClick() {
+  if (validateEndDateTime(data.value.end))
+    return;
   const payload = {
     type: 'click',
     adId: data.value?._id,
