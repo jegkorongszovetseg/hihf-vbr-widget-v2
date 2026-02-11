@@ -1,0 +1,32 @@
+@layer components {
+  :where(.marquee) {
+    --_speed: 5s;
+    --_direction: forwards;
+
+    overflow: clip;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black var(--size-16),
+      black calc(100% - var(--size-16)),
+      transparent
+    );
+
+    .marquee-track {
+      display: flex;
+      gap: var(--size-16);
+      padding-left: var(--size-16);
+      width: max-content;
+    }
+
+    &:hover .marquee-track {
+      animation: marquee-move var(--_speed, 10s) linear infinite var(--_direction, forwards);
+    }
+  }
+
+  @keyframes marquee-move {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}

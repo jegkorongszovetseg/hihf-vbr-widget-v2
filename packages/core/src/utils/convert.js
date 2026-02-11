@@ -302,7 +302,6 @@ export function convertGameNames(row) {
     row.championshipName,
     ...(row.championshipName !== row.sectionName ? [row.sectionName] : []),
     row.divisionName,
-    // row.gameName,
   ];
   return {
     ...row,

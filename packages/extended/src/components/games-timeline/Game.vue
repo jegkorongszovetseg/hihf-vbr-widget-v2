@@ -24,9 +24,9 @@ const emit = defineEmits(['navigateTo']);
 const { t } = useI18n();
 
 const statusText = computed(() => {
-  const { gameStatus, championshipName, divisionName, period, periodTime } = props.gameData;
+  const { gameStatus, championshipName, divisionName, period, periodTime, sectionName } = props.gameData;
   if (gameStatus !== 1)
-    return `${championshipName} - ${divisionName}`;
+    return gameNames({ championshipName, divisionName, sectionName });
   if (period && isPeriodTimeVisible(period))
     return `${t(`game.period.${period}`)} - ${periodTime}`;
   if (period && !isPeriodTimeVisible(period))
@@ -40,6 +40,14 @@ function navigateTo() {
     return emit('navigateTo', { url: externalGameUrl, target: '_blank' });
   const url = externalGameLinkResolver(props.externalGameResolver, { gameId: id });
   emit('navigateTo', { url, target: '_self' });
+}
+
+function gameNames(game) {
+  return [
+    game.championshipName,
+    ...(game.championshipName !== game.sectionName ? [game.sectionName] : []),
+    game.divisionName,
+  ].join(' - ');
 }
 </script>
 
@@ -80,8 +88,11 @@ function navigateTo() {
         {{ gameData.awayTeamScore }}
       </ScoreDisplay>
     </div>
-    <div class="is-status">
-      {{ statusText }}
+    <div class="marquee is-status">
+      <div class="marquee-track">
+        <span>{{ statusText }}</span>
+        <span>{{ statusText }}</span>
+      </div>
     </div>
   </div>
 </template>
