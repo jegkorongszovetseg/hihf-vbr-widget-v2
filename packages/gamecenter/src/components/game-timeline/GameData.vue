@@ -49,13 +49,24 @@ const attendanceLabel = computed(() => {
     return visitorsLabel.value;
   return t('gameData.attendance', [gameData.value?.attendance ?? 0]);
 });
+
+const gameNames = computed(() => {
+  const base = [
+    gameData.value.championshipName,
+    ...(gameData.value.championshipName !== gameData.value.sectionName ? [gameData.value.sectionName] : []),
+    gameData.value.divisionName,
+    gameData.value.gameName,
+  ];
+
+  return base.join(' - ');
+});
 </script>
 
 <template>
   <div class="gamecenter-game-data gamecenter-timeline-game-data">
     <div class="is-title-container">
       <div v-once class="text-highlighted uppercase font-bold">
-        {{ gameData.championshipName }} - {{ gameData.divisionName }} - {{ gameData.gameName }} /
+        {{ gameNames }} /
         {{ gameData.location.locationName }}
       </div>
       <div class="text-muted">

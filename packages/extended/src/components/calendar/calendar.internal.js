@@ -1,5 +1,6 @@
 import {
   addDays,
+  convertGameNames,
   convertGamePeriodResults,
   currentWeekStartEnd,
   endOfMonth,
@@ -17,7 +18,7 @@ export const PANEL_WEEK_GAMES = 'weekGames';
 
 export function transformGames(games, dateRage) {
   dateRage.value = { firstGame: games.firstGame, lastGame: games.lastGame };
-  return rawConvert(games.games, convertGamePeriodResults);
+  return rawConvert(games.games, convertGamePeriodResults, convertGameNames);
 }
 
 // '2024-06-08'
