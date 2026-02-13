@@ -1,6 +1,7 @@
 @layer components {
   :where(.marquee) {
-    --_speed: 5s;
+    --_width: 0px;
+    --_speed: 8s;
     --_direction: forwards;
 
     overflow: clip;
@@ -17,10 +18,21 @@
       gap: var(--size-16);
       padding-left: var(--size-16);
       width: max-content;
+      line-height: initial;
+
+      --px-width: tan(atan2(var(--_width), 1px));
+      --duration: calc(var(--px-width) / 1000 * var(--_speed));
     }
 
-    &:hover .marquee-track {
-      animation: marquee-move var(--_speed, 10s) linear infinite var(--_direction, forwards);
+    &[data-overflow='true']:hover .marquee-track {
+      animation: marquee-move var(--duration) linear infinite var(--_direction);
+    }
+
+    &[data-overflow='false'] {
+      .marquee-track {
+        margin: 0 auto;
+        padding: 0;
+      }
     }
   }
 

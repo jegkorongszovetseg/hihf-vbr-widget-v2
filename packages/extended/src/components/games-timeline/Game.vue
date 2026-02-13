@@ -5,6 +5,7 @@ import { externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { IconLaunch } from '@mjsz-vbr-elements/shared/icons';
 import { computed } from 'vue';
 import { isPeriodTimeVisible } from './internal';
+import Marquee from './Marquee.vue';
 import ScoreDisplay from './ScoreDisplay.vue';
 
 const props = defineProps({
@@ -88,11 +89,9 @@ function gameNames(game) {
         {{ gameData.awayTeamScore }}
       </ScoreDisplay>
     </div>
-    <div class="marquee is-status">
-      <div class="marquee-track">
-        <span>{{ statusText }}</span>
-        <span>{{ statusText }}</span>
-      </div>
+    <div v-if="gameData.gameStatus === 1" class="is-status">
+      {{ statusText }}
     </div>
+    <Marquee v-else :status-text="statusText" class="is-status" />
   </div>
 </template>
