@@ -74,6 +74,7 @@ function propsData(payload = {}) {
     gameData: {
       gameStatus,
       championshipName: 'Erste Liga',
+      sectionName: 'Erste Liga',
       divisionName: 'Alapszakasz',
       period,
       periodTime: '15:00',
