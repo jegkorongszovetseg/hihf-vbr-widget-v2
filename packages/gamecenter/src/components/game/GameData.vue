@@ -3,7 +3,7 @@ import { Image } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
 import { IconSheet, IconYoutube } from '@mjsz-vbr-elements/shared/icons';
-import { toRefs } from 'vue';
+import { computed, toRefs } from 'vue';
 import { useAttendanceSocket } from '../../composables/use-attendance-socket';
 import GamePeriodProgress from './components/GamePeriodProgress.vue';
 import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from './internal';
@@ -30,13 +30,24 @@ const { gameData, websocketUrl } = toRefs(props);
 const { t } = useI18n();
 
 const { visitorsLabel, isVisible: isVisitorsLabelVisible } = useAttendanceSocket(websocketUrl, gameData);
+
+const gameNames = computed(() => {
+  const base = [
+    gameData.value.championshipName,
+    ...(gameData.value.championshipName !== gameData.value.sectionName ? [gameData.value.sectionName] : []),
+    gameData.value.divisionName,
+    gameData.value.gameName,
+  ];
+
+  return base.join(' - ');
+});
 </script>
 
 <template>
   <div class="gamecenter-game-data">
     <div class="mb-md">
       <div v-once class="text-highlighted uppercase font-bold">
-        {{ gameData.championshipName }} - {{ gameData.divisionName }} - {{ gameData.gameName }} /
+        {{ gameNames }} /
         {{ gameData.location.locationName }}
       </div>
       <div v-once class="text-muted">

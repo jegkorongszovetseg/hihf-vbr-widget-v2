@@ -5,6 +5,7 @@ import { externalGameLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { IconLaunch } from '@mjsz-vbr-elements/shared/icons';
 import { computed } from 'vue';
 import { isPeriodTimeVisible } from './internal';
+import Marquee from './Marquee.vue';
 import ScoreDisplay from './ScoreDisplay.vue';
 
 const props = defineProps({
@@ -24,9 +25,9 @@ const emit = defineEmits(['navigateTo']);
 const { t } = useI18n();
 
 const statusText = computed(() => {
-  const { gameStatus, championshipName, divisionName, period, periodTime } = props.gameData;
+  const { gameStatus, championshipName, divisionName, period, periodTime, sectionName } = props.gameData;
   if (gameStatus !== 1)
-    return `${championshipName} - ${divisionName}`;
+    return gameNames({ championshipName, divisionName, sectionName });
   if (period && isPeriodTimeVisible(period))
     return `${t(`game.period.${period}`)} - ${periodTime}`;
   if (period && !isPeriodTimeVisible(period))
@@ -40,6 +41,14 @@ function navigateTo() {
     return emit('navigateTo', { url: externalGameUrl, target: '_blank' });
   const url = externalGameLinkResolver(props.externalGameResolver, { gameId: id });
   emit('navigateTo', { url, target: '_self' });
+}
+
+function gameNames(game) {
+  return [
+    game.championshipName,
+    ...(game.championshipName !== game.sectionName ? [game.sectionName] : []),
+    game.divisionName,
+  ].join(' - ');
 }
 </script>
 
@@ -80,8 +89,9 @@ function navigateTo() {
         {{ gameData.awayTeamScore }}
       </ScoreDisplay>
     </div>
-    <div class="is-status">
+    <div v-if="gameData.gameStatus === 1" class="is-status">
       {{ statusText }}
     </div>
+    <Marquee v-else :status-text="statusText" class="is-status" />
   </div>
 </template>

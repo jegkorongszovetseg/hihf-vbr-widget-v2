@@ -37,13 +37,16 @@ const { t } = useI18n();
 <template>
   <div class="card-item" :class="{ 'is-optional': game.optional }">
     <div class="text-muted text-sm text-center" style="grid-area: name">
-      <a :href="gameLink(game)">{{ game.gameName }}</a>&nbsp;- {{ game.championshipName }} - {{ game.divisionName }} - {{ game.location.locationName }}
-      <template v-if="game.broadcast">
-        -&nbsp;<IconBroadcast height="16" />&nbsp;
-      </template>
-      <template v-if="game.video">
-        -&nbsp;<a :href="game.video" target="_blank"><IconYoutube height="18" /></a>
-      </template>
+      <a :href="gameLink(game)">{{ game.gameName }}</a>&nbsp;- {{ game.gameNames }}
+      <div>
+        {{ game.location.locationName }}
+        <template v-if="game.broadcast">
+          -&nbsp;<IconBroadcast height="16" />&nbsp;
+        </template>
+        <template v-if="game.video">
+          -&nbsp;<a :href="game.video" target="_blank"><IconYoutube height="18" /></a>
+        </template>
+      </div>
     </div>
 
     <div class="text-muted text-sm text-center" style="grid-area: date">
