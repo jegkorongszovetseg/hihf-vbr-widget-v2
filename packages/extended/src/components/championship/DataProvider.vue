@@ -31,6 +31,7 @@ import {
   PANEL_SCHEDULE,
   PANEL_TEAMS,
   PLAYERS_REPORTS_SELECT,
+  removeReport,
   TEAMS_REPORTS_SELECT,
   transformSections,
 } from './championship.internal.js';
@@ -79,6 +80,11 @@ const props = defineProps({
   externalPlayerResolver: {
     type: [String, Function],
     default: '',
+  },
+
+  isGoalieStatsDisabled: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -152,8 +158,16 @@ const isLoading = useLazyLoadingState([sectionLoading, seasonsLoading, gamesLoad
 
 useAsyncQueue([fetchSeasons, fetchSection, fetchData]);
 
+const currentPlayerReportList = computed(() => {
+  const playerReportList = PLAYERS_REPORTS_SELECT(t);
+  if (props.isGoalieStatsDisabled) {
+    return removeReport(['goalies', 'goaliesunderlimit'], playerReportList);
+  }
+  return playerReportList;
+});
+
 const currentReportList = computed(() =>
-  state.selectedPanel === PANEL_PLAYERS ? PLAYERS_REPORTS_SELECT(t) : TEAMS_REPORTS_SELECT(t),
+  state.selectedPanel === PANEL_PLAYERS ? currentPlayerReportList.value : TEAMS_REPORTS_SELECT(t),
 );
 
 const phases = computed(() => {

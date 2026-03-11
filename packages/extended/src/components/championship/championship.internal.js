@@ -13,6 +13,7 @@ import {
 import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core/constants';
 import {
   filterAndSortSections,
+  reject,
   sortByPhaseId,
 } from '@mjsz-vbr-elements/core/utils';
 
@@ -197,3 +198,5 @@ export function TEAMS_REPORTS_SELECT(t) {
     },
   ];
 }
+
+export const removeReport = (keys, rows) => reject(report => keys.includes(report.value), rows);
