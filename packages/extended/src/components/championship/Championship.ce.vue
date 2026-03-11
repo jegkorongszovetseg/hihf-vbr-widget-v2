@@ -72,6 +72,11 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+
+  isGoalieStatsDisabled: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const tooltipContainer = ref(null);
@@ -128,6 +133,7 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
           :initial-phase-id="initialPhaseId"
           :all-period-visible="totalPeriodPlayedVisible"
           :external-player-resolver="externalPlayerResolver"
+          :is-goalie-stats-disabled="isGoalieStatsDisabled"
         >
           <SeasonSelector
             :seasons="seasons"

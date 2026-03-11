@@ -21,11 +21,12 @@ const playerResolver = `LigaPlayer?playerId={player.playerId}&championshipId={ch
     <!-- <mjsz-vbr-championship :locale="store.locale" championship-name="Magyar Kupa" :initial-phase-id="45856" /> -->
     <mjsz-vbr-championship
       :locale="store.locale"
-      championship-name="U-16 Bajnokság"
+      championship-name="U-12 Bajnokság"
       initial-phase-id="46165"
       total-period-played-visible
       :external-player-resolver="playerResolver"
       :is-player-linked="true"
+      :is-goalie-stats-disabled="true"
     />
   </div>
 </template>
