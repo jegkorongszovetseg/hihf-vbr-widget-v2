@@ -28,15 +28,15 @@
   "dependencies": {
     "@mjsz-vbr-elements/core": "workspace:^",
     "@mjsz-vbr-elements/shared": "workspace:^",
-    "@vueuse/core": "^13.4.0",
-    "vue": "^3.5.22"
+    "@vueuse/core": "^14.2.1",
+    "vue": "^3.5.30"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.0",
-    "sass-embedded": "^1.89.2",
-    "vite": "^7.0.0",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "sass-embedded": "^1.98.0",
+    "vite": "^8.0.0",
     "vite-plugin-banner": "^0.8.1",
-    "vite-plugin-compression2": "^2.2.0"
+    "vite-plugin-compression2": "^2.5.1"
   },
   "publishConfig": {
     "access": "public",

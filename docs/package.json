@@ -21,9 +21,9 @@
     "@mjsz-vbr-elements/internal": "workspace:^",
     "@mjsz-vbr-elements/liga": "workspace:^",
     "@mjsz-vbr-elements/shared": "workspace:^",
-    "ramda": "^0.31.3"
+    "ramda": "^0.32.0"
   },
   "devDependencies": {
-    "vitepress": "^2.0.0-alpha.15"
+    "vitepress": "^2.0.0-alpha.16"
   }
 }
