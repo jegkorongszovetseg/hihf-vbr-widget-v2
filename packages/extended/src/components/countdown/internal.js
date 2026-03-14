@@ -13,7 +13,7 @@ export function countdown(_targetDate, onFinished = noop) {
   const targetDate = shallowRef(null);
 
   const { pause, resume } = useIntervalFn(() => {
-    const now = new Date().getTime();
+    const now = Date.now();
     let distance = targetDate.value - now;
     if (distance <= 0) {
       pause();

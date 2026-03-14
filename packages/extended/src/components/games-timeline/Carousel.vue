@@ -69,7 +69,7 @@ function updateScrollPosition(options) {
 
 function onScrollend() {
   const parentLeft = unrefElement(containerRef).getBoundingClientRect()?.left;
-  const newIndex = Array.from(unrefElement(containerRef).children).findIndex(
+  const newIndex = [...unrefElement(containerRef).children].findIndex(
     element => Math.round(element.getBoundingClientRect().left - parentLeft) >= 0,
   );
   currentIndex.value = newIndex;

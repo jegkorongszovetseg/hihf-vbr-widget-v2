@@ -30,6 +30,7 @@ export default defineConfig({
       ],
       formats: ['es'],
     },
+    cssMinify: 'esbuild',
     copyPublicDir: false,
     rollupOptions: {
       external: ['vue'],

@@ -2,6 +2,8 @@ import { isEmpty, map, mergeDeepRight, path, split, trim } from 'ramda';
 import { computed, defineComponent, h, inject, provide, reactive } from 'vue';
 
 const I18nContext = Symbol('I18nContext');
+const INTERPOLATION_RE = /\{(\w+)\}/g;
+const BRACES_SPLIT_RE = /\{|\}/;
 
 const state = reactive({
   messages: {},
@@ -97,7 +99,7 @@ function getTranslation(locale, keys, messages) {
 }
 
 function replacer(tpl, data) {
-  return tpl.replace(/\{(\w+)\}/g, ($1, $2) => {
+  return tpl.replace(INTERPOLATION_RE, ($1, $2) => {
     return data[$2];
   });
 }
@@ -118,7 +120,7 @@ export const i18n = defineComponent({
   setup(props, { slots }) {
     const keys = map(trim, split('.', props.path));
     const transition = resolveTransition(keys);
-    const interpolationItems = split(/\{|\}/, transition);
+    const interpolationItems = split(BRACES_SPLIT_RE, transition);
 
     const children = Object.keys(slots).map((item) => {
       const index = interpolationItems.indexOf(item);

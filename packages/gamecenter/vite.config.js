@@ -25,6 +25,7 @@ export default defineConfig({
       fileName: 'index',
       formats: ['es', 'iife'],
     },
+    cssMinify: 'esbuild',
     copyPublicDir: false,
     rollupOptions: {
       external: [

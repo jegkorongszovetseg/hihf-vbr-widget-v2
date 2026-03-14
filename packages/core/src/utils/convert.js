@@ -86,7 +86,7 @@ export function convert(data = []) {
 
     addIndex(target = null) {
       this.result.reduce((rows, row, index) => {
-        const lastRow = rows[rows.length - 1] || [];
+        const lastRow = rows.at(-1) || [];
         const isSameRow = target && lastRow[target] === row[target];
         row.index = isSameRow ? lastRow.index : index + 1;
         row.indexClass = isSameRow ? 'is-duplicated' : null;
@@ -182,7 +182,7 @@ export function convert(data = []) {
 
     reverse(enabled) {
       if (enabled) {
-        this.result = [...this.result].reverse();
+        this.result = this.result.toReversed();
       }
       return this;
     },
@@ -245,6 +245,10 @@ export function teamResultType(row) {
   };
 }
 
+const WRAPPED_PARENS_RE = /^\(|\)$/g;
+const TRAILING_COMMA_RE = /$/;
+const GAME_PERIOD_RESULTS_RE = /\(.*?\)/;
+
 export function scheduleOptionalRowClass(row) {
   return {
     ...row,
@@ -293,7 +297,7 @@ export function convertTimesSecToMin(targets = []) {
 export function convertGamePeriodResults(row) {
   return {
     ...row,
-    periodResults: row.result?.match(/\(.*?\)/)?.[0] ?? '',
+    periodResults: row.result?.match(GAME_PERIOD_RESULTS_RE)?.[0] ?? '',
   };
 }
 
@@ -395,7 +399,7 @@ export const convertPenaltyCauseName = compose(toUpper, replace('_', '-'));
 
 export const convertPeriodResults = compose(reject(test(/-:-/)), split(','));
 
-export const convertPeriodResultsToArray = compose(map(split(':')), map(trim), split(','), replace(/^\(|\)$/g, ''));
+export const convertPeriodResultsToArray = compose(map(split(':')), map(trim), split(','), replace(WRAPPED_PARENS_RE, ''));
 
 export const sortByStartingFive = sortWith([descend(prop('startingFive'))]);
 
@@ -472,7 +476,7 @@ export function mergePlayerStats({ goalieStats, fieldPlayers, playersPenalty }) 
 export const transformFieledPlayersStats = curry((row, teamId) => pipe(filter(pathEq(teamId, ['team', 'id'])), map(playerName))(row));
 
 export function convertAddress(data) {
-  const addCommaToCityName = data.city ? over(lensProp('city'), replace(/$/, ',')) : () => ({});
+  const addCommaToCityName = data.city ? over(lensProp('city'), replace(TRAILING_COMMA_RE, ',')) : () => ({});
   return compose(join(' '), values, addCommaToCityName, omit(['type']))(data);
 }
 

@@ -75,7 +75,7 @@ Ha szükséges NPM login:
 npm login
 ```
 
-# jsdelivr
+## jsdelivr
 
 Purge cache: [tool](https://www.jsdelivr.com/tools/purge)
 

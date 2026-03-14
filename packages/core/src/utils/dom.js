@@ -16,7 +16,7 @@ export function appendTo(element, targetSelector = 'body') {
 }
 
 export function sortByDomNode(nodes, resolveKey = () => ({})) {
-  return nodes.slice().sort((aItem, zItem) => {
+  return nodes.toSorted((aItem, zItem) => {
     const a = resolveKey(aItem);
     const z = resolveKey(zItem);
 
