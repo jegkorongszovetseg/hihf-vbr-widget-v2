@@ -28,8 +28,15 @@ jobs:
           ref: ${{ github.event.pull_request.base.sha }}
           path: base
 
+      - name: Read pnpm version from head package.json
+        id: pnpm-version
+        run: |
+          echo "version=$(node -e "const pkg=require('./head/package.json'); const match=(pkg.packageManager||'').match(/^pnpm@(.+)$/); if(!match){throw new Error('packageManager must be in pnpm@<version> format');} process.stdout.write(match[1]);")" >> "$GITHUB_OUTPUT"
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
+        with:
+          version: ${{ steps.pnpm-version.outputs.version }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
