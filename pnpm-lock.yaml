@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@vitejs/plugin-vue@6.0.5':
+    hash: c66d08ddf11c1e15c27d19335add3ffa3b0c226dd8531907509e4a19c9408baf
+    path: patches/@vitejs__plugin-vue@6.0.5.patch
+
 importers:
 
   .:
@@ -93,7 +98,7 @@ importers:
         version: 1.0.0-alpha.2(histoire@1.0.0-alpha.2(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2)))(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
       '@vitejs/plugin-vue':
         specifier: ^6.0.5
-        version: 6.0.5(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
+        version: 6.0.5(patch_hash=c66d08ddf11c1e15c27d19335add3ffa3b0c226dd8531907509e4a19c9408baf)(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
       histoire:
         specifier: 1.0.0-alpha.2
         version: 1.0.0-alpha.2(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))
@@ -133,7 +138,7 @@ importers:
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^6.0.5
-        version: 6.0.5(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
+        version: 6.0.5(patch_hash=c66d08ddf11c1e15c27d19335add3ffa3b0c226dd8531907509e4a19c9408baf)(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
       vite:
         specifier: ^8.0.0
         version: 8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2)
@@ -161,7 +166,7 @@ importers:
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^6.0.5
-        version: 6.0.5(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
+        version: 6.0.5(patch_hash=c66d08ddf11c1e15c27d19335add3ffa3b0c226dd8531907509e4a19c9408baf)(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
       sass-embedded:
         specifier: ^1.98.0
         version: 1.98.0
@@ -192,7 +197,7 @@ importers:
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^6.0.5
-        version: 6.0.5(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
+        version: 6.0.5(patch_hash=c66d08ddf11c1e15c27d19335add3ffa3b0c226dd8531907509e4a19c9408baf)(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
       sass-embedded:
         specifier: ^1.98.0
         version: 1.98.0
@@ -223,7 +228,7 @@ importers:
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^6.0.5
-        version: 6.0.5(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
+        version: 6.0.5(patch_hash=c66d08ddf11c1e15c27d19335add3ffa3b0c226dd8531907509e4a19c9408baf)(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
       sass-embedded:
         specifier: ^1.98.0
         version: 1.98.0
@@ -254,7 +259,7 @@ importers:
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^6.0.5
-        version: 6.0.5(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
+        version: 6.0.5(patch_hash=c66d08ddf11c1e15c27d19335add3ffa3b0c226dd8531907509e4a19c9408baf)(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
       sass-embedded:
         specifier: ^1.98.0
         version: 1.98.0
@@ -285,7 +290,7 @@ importers:
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^6.0.5
-        version: 6.0.5(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
+        version: 6.0.5(patch_hash=c66d08ddf11c1e15c27d19335add3ffa3b0c226dd8531907509e4a19c9408baf)(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
       sass-embedded:
         specifier: ^1.98.0
         version: 1.98.0
@@ -303,7 +308,7 @@ importers:
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^6.0.5
-        version: 6.0.5(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
+        version: 6.0.5(patch_hash=c66d08ddf11c1e15c27d19335add3ffa3b0c226dd8531907509e4a19c9408baf)(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
       glob:
         specifier: ^13.0.6
         version: 13.0.6
@@ -358,7 +363,7 @@ importers:
         version: 66.6.6
       '@vitejs/plugin-vue':
         specifier: ^6.0.5
-        version: 6.0.5(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
+        version: 6.0.5(patch_hash=c66d08ddf11c1e15c27d19335add3ffa3b0c226dd8531907509e4a19c9408baf)(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
       unocss:
         specifier: ^66.6.6
         version: 66.6.6(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))
@@ -6538,13 +6543,13 @@ snapshots:
       unplugin-utils: 0.3.1
       vite: 8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2)
 
-  '@vitejs/plugin-vue@6.0.5(vite@7.3.1(jiti@2.6.1)(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))':
+  '@vitejs/plugin-vue@6.0.5(patch_hash=c66d08ddf11c1e15c27d19335add3ffa3b0c226dd8531907509e4a19c9408baf)(vite@7.3.1(jiti@2.6.1)(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-rc.2
       vite: 7.3.1(jiti@2.6.1)(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2)
       vue: 3.5.30(typescript@5.7.3)
 
-  '@vitejs/plugin-vue@6.0.5(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))':
+  '@vitejs/plugin-vue@6.0.5(patch_hash=c66d08ddf11c1e15c27d19335add3ffa3b0c226dd8531907509e4a19c9408baf)(vite@8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-rc.2
       vite: 8.0.0(esbuild@0.27.1)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2)
@@ -9595,7 +9600,7 @@ snapshots:
       '@shikijs/transformers': 3.23.0
       '@shikijs/types': 3.23.0
       '@types/markdown-it': 14.1.2
-      '@vitejs/plugin-vue': 6.0.5(vite@7.3.1(jiti@2.6.1)(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
+      '@vitejs/plugin-vue': 6.0.5(patch_hash=c66d08ddf11c1e15c27d19335add3ffa3b0c226dd8531907509e4a19c9408baf)(vite@7.3.1(jiti@2.6.1)(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(tsx@4.19.2)(yaml@2.8.2))(vue@3.5.30(typescript@5.7.3))
       '@vue/devtools-api': 8.0.5
       '@vue/shared': 3.5.30
       '@vueuse/core': 14.2.1(vue@3.5.30(typescript@5.7.3))

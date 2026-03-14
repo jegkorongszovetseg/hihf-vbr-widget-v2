@@ -1,11 +1,12 @@
 shellEmulator: true
 
 trustPolicy: no-downgrade
-
 packages:
   - 'packages/*'
   - 'playground/**'
   - 'docs/**'
   - 'histoire/**'
+patchedDependencies:
+  '@vitejs/plugin-vue@6.0.5': patches/@vitejs__plugin-vue@6.0.5.patch
 onlyBuiltDependencies:
   - simple-git-hooks

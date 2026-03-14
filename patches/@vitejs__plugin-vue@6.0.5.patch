@@ -1,0 +1,29 @@
+diff --git a/dist/index.mjs b/dist/index.mjs
+index d603fbdf4b075a8f44adb9997ef02d44d819ad71..5b91471b6c13445466e69d2f557e2c9442dc52a9 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -1538,13 +1538,14 @@ function attrsToQuery(attrs, langFallback, forceLangFallback = false) {
+ //#region src/style.ts
+ async function transformStyle(code, descriptor, index, options, pluginContext, filename) {
+ 	const block = descriptor.styles[index];
++	const isScoped = descriptor.styles[index]?.scoped ?? block?.scoped ?? false;
+ 	const result = await options.compiler.compileStyleAsync({
+ 		...options.style,
+ 		filename: descriptor.filename,
+ 		id: `data-v-${descriptor.id}`,
+ 		isProd: options.isProduction,
+ 		source: code,
+-		scoped: block.scoped,
++		scoped: isScoped,
+ 		...options.cssDevSourcemap ? { postcssOptions: { map: {
+ 			from: filename,
+ 			inline: false,
+@@ -1566,7 +1567,7 @@ async function transformStyle(code, descriptor, index, options, pluginContext, f
+ 	return {
+ 		code: result.code,
+ 		map,
+-		meta: block.scoped && !descriptor.isTemp ? { vite: { cssScopeTo: [descriptor.filename, "default"] } } : void 0
++		meta: isScoped && !descriptor.isTemp ? { vite: { cssScopeTo: [descriptor.filename, "default"] } } : void 0
+ 	};
+ }
+ 
