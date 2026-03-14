@@ -1,5 +1,11 @@
+shellEmulator: true
+
+trustPolicy: no-downgrade
+
 packages:
   - 'packages/*'
   - 'playground/**'
   - 'docs/**'
   - 'histoire/**'
+onlyBuiltDependencies:
+  - simple-git-hooks

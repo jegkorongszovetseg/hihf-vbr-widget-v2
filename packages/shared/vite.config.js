@@ -19,10 +19,8 @@ export default defineConfig({
       fileName: 'index',
       formats: ['es'],
     },
+    cssMinify: 'esbuild',
     outDir: resolve(__dirname, 'dist/icons'),
-    watch: {
-      include: [resolve(__dirname, 'assets/icons')],
-    },
     rollupOptions: {
       external: ['vue'],
       output: {
