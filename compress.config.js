@@ -8,8 +8,4 @@ export const compressConfig = [
     ],
     include: /iife.js$/,
   }),
-  // compression({
-  //   algorithm: 'brotliCompress',
-  //   include: /iife.js$/,
-  // }),
 ];
