@@ -89,13 +89,12 @@ const messages = { en, hu };
   </I18NProvider>
 </template>
 
-<style src="@mjsz-vbr-elements/shared/css/core.css" />
-
-<style src="@mjsz-vbr-elements/shared/css/components/form-field.css" />
-
-<style src="@mjsz-vbr-elements/shared/css/components/tabs.css" />
-
-<style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
+<style>
+@import '@mjsz-vbr-elements/shared/css/core.css';
+@import '@mjsz-vbr-elements/shared/css/components/form-field.css';
+@import '@mjsz-vbr-elements/shared/css/components/tabs.css';
+@import '@mjsz-vbr-elements/shared/css/components/error-notice.css';
+</style>
 
 <style scoped>
 .main-layout {

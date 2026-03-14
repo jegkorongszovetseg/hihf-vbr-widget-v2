@@ -18,10 +18,13 @@ outline: false
 
 ## Változók:
 
-| prop              | Default | Leírás                            | Megjegyzés       |
-| :---------------- | :------ | :-------------------------------- | :--------------- |
-| api-key           | null    | Api kulcs                         |
-| locale            | hu      | Nyelv                             | Elérhető nyelvek |
-| championship-name |         | Bajnokság Neve                    |                  |
-| limit             | 20      | Játékosok oldalanként             |                  |
-| initial-phase-id  |         | Alapértelmezett szakasz azonosító |                  |
+| prop                     | Default | Leírás                               | Megjegyzés       |
+| :----------------------- | :------ | :----------------------------------- | :--------------- |
+| api-key                  | null    | Api kulcs                            |
+| locale                   | hu      | Nyelv                                | Elérhető nyelvek |
+| championship-name        |         | Bajnokság Neve                       |                  |
+| limit                    | 20      | Játékosok oldalanként                |                  |
+| initial-phase-id         |         | Alapértelmezett szakasz azonosító    |                  |
+| totalPeriodPlayedVisible | false   | Az összes lejátszot harmad látszódik |                  |
+| isGoalieStatsDisabled    | false   | Kapus statisztika nem látszik        |                  |
+| isPlayerLinked           | false   | Játékos adatlap linkelhető           |                  |
