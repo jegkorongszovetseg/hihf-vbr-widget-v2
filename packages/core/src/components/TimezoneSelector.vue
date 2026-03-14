@@ -23,7 +23,7 @@ const localZoneName = computed(() => offsetName(new Date(), null, props.locale))
 const localTimeZone = getLocalTimezone();
 
 const timezoneCountries = computed(() => {
-  return Array.from(AVAILABLE_TIMEZONES_BY_COUNTRY.values()).map(item => ({
+  return Array.from(AVAILABLE_TIMEZONES_BY_COUNTRY.values(), item => ({
     ...item,
     isActive:
       offsetName(new Date(), props.currentZone, props.locale) === offsetName(new Date(), item.timezone, props.locale),

@@ -41,7 +41,7 @@ Minden utility class és komponens CSS változót használ a világos és söté
 
 :::
 
-# Háttér
+## Háttér
 
 ::: info Hátter
 
@@ -78,7 +78,7 @@ A háttérszínek esetén is használhatod a világos és sötét módok színé
 
 :::
 
-# Keret
+## Keret
 
 A keret színek esetén is használhatod a világos és sötét módok beállításához:
 
@@ -100,7 +100,7 @@ A keret színek esetén is használhatod a világos és sötét módok beállít
 
 :::
 
-# Link
+## Link
 
 A link színt is testreszabhatod:
 

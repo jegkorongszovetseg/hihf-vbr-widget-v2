@@ -3,12 +3,13 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const LAYER_COMPONENTS_VARIABLES_RE = /@layer\s+components\.variables\s*\{([\s\S]*?)^\}/m;
 
 const componentsDir = path.resolve(__dirname, '../assets/css/components');
 const outputFile = path.resolve(__dirname, '../dist/docs/component-variables.md');
 
 function extractLayerVariables(cssContent) {
-  const match = cssContent.match(/@layer\s+components\.variables\s*\{([\s\S]*?)^\}/m);
+  const match = cssContent.match(LAYER_COMPONENTS_VARIABLES_RE);
   if (match) {
     return match[0];
   }
