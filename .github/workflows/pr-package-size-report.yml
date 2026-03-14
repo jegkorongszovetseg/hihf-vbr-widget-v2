@@ -1,0 +1,213 @@
+name: PR Package Size Report
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  package-size-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout head branch
+        uses: actions/checkout@v4
+        with:
+          path: head
+
+      - name: Checkout base branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: base
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: pnpm
+          cache-dependency-path: head/pnpm-lock.yaml
+
+      - name: Build base branch packages
+        working-directory: base
+        env:
+          VITE_VBR_API_URL: ${{ vars.VITE_VBR_API_URL }}
+          VITE_VBR_API_WEBSOCKET_URL: ${{ vars.VITE_VBR_API_WEBSOCKET_URL }}
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run build
+
+      - name: Measure base package sizes
+        working-directory: base
+        run: |
+          mkdir -p ../.size-report
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+
+          const packagesDir = path.join(process.cwd(), 'packages');
+
+          function getDirSizeBytes(dir) {
+            let total = 0;
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const fullPath = path.join(dir, entry.name);
+              if (entry.isDirectory()) {
+                total += getDirSizeBytes(fullPath);
+              }
+              else if (entry.isFile()) {
+                total += fs.statSync(fullPath).size;
+              }
+            }
+            return total;
+          }
+
+          const sizes = {};
+          for (const entry of fs.readdirSync(packagesDir, { withFileTypes: true })) {
+            if (!entry.isDirectory())
+              continue;
+            const distDir = path.join(packagesDir, entry.name, 'dist');
+            sizes[entry.name] = fs.existsSync(distDir) ? getDirSizeBytes(distDir) : 0;
+          }
+
+          fs.writeFileSync(path.join(process.cwd(), '../.size-report/base.json'), JSON.stringify(sizes, null, 2));
+          NODE
+
+      - name: Build head branch packages
+        working-directory: head
+        env:
+          VITE_VBR_API_URL: ${{ vars.VITE_VBR_API_URL }}
+          VITE_VBR_API_WEBSOCKET_URL: ${{ vars.VITE_VBR_API_WEBSOCKET_URL }}
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run build
+
+      - name: Measure head package sizes
+        working-directory: head
+        run: |
+          mkdir -p ../.size-report
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+
+          const packagesDir = path.join(process.cwd(), 'packages');
+
+          function getDirSizeBytes(dir) {
+            let total = 0;
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const fullPath = path.join(dir, entry.name);
+              if (entry.isDirectory()) {
+                total += getDirSizeBytes(fullPath);
+              }
+              else if (entry.isFile()) {
+                total += fs.statSync(fullPath).size;
+              }
+            }
+            return total;
+          }
+
+          const sizes = {};
+          for (const entry of fs.readdirSync(packagesDir, { withFileTypes: true })) {
+            if (!entry.isDirectory())
+              continue;
+            const distDir = path.join(packagesDir, entry.name, 'dist');
+            sizes[entry.name] = fs.existsSync(distDir) ? getDirSizeBytes(distDir) : 0;
+          }
+
+          fs.writeFileSync(path.join(process.cwd(), '../.size-report/head.json'), JSON.stringify(sizes, null, 2));
+          NODE
+
+      - name: Comment package size table on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('node:fs');
+
+            const marker = '<!-- package-size-report -->';
+            const base = JSON.parse(fs.readFileSync('.size-report/base.json', 'utf8'));
+            const head = JSON.parse(fs.readFileSync('.size-report/head.json', 'utf8'));
+
+            const packageNames = Array.from(new Set([...Object.keys(base), ...Object.keys(head)])).sort();
+
+            function formatBytes(bytes) {
+              if (!bytes)
+                return '0 B';
+              const units = ['B', 'KB', 'MB', 'GB'];
+              let value = bytes;
+              let unit = 0;
+              while (value >= 1024 && unit < units.length - 1) {
+                value /= 1024;
+                unit += 1;
+              }
+              return `${value.toFixed(2)} ${units[unit]}`;
+            }
+
+            function formatDelta(delta) {
+              if (delta === 0)
+                return '0 B';
+              const sign = delta > 0 ? '+' : '-';
+              return `${sign}${formatBytes(Math.abs(delta))}`;
+            }
+
+            const rows = packageNames.map((name) => {
+              const baseSize = base[name] ?? 0;
+              const headSize = head[name] ?? 0;
+              const delta = headSize - baseSize;
+
+              return `| ${name} | ${formatBytes(baseSize)} | ${formatBytes(headSize)} | ${formatDelta(delta)} |`;
+            });
+
+            const table = [
+              marker,
+              '## Package size report',
+              '',
+              '| Package | Base | PR branch | Diff |',
+              '| --- | ---: | ---: | ---: |',
+              ...rows,
+              '',
+              '_Measured from each package `dist` folder after `pnpm run build`._',
+            ].join('\n');
+
+            core.summary
+              .addHeading('Package size report')
+              .addRaw(table)
+              .write();
+
+            const issue_number = context.issue.number;
+
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number,
+              per_page: 100,
+            });
+
+            const existing = comments.find(comment =>
+              comment.user?.type === 'Bot' && comment.body?.includes(marker),
+            );
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body: table,
+              });
+            }
+            else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number,
+                body: table,
+              });
+            }
