@@ -7,7 +7,7 @@ import {
 } from '../constants';
 import { templateReplacer } from './string';
 
-const getSettingVariable = (key = '') => window?.__MJSZ_VBR_WIDGET__?.[key];
+const getSettingVariable = (key = '') => globalThis?.__MJSZ_VBR_WIDGET__?.[key];
 
 export function externalGameLinkResolver(rawResolver, params = {}) {
   if (params.externalGameUrl)
