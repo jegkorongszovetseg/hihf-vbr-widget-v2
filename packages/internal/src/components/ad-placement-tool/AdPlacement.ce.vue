@@ -70,7 +70,9 @@ function onClick() {
   <div v-if="isFinished && !error && isNotEmpty(data)" class="ad-placement-tool">
     <template v-if="data.type === 'popover'">
       <dialog ref="popover">
-        <Media :current-ad="data" :mobile-breakpoint="mobileBreakpoint" :click-url="clickURL" @click="onClick" />
+        <div class="popover-content">
+          <Media :current-ad="data" :mobile-breakpoint="mobileBreakpoint" :click-url="clickURL" @click="onClick" />
+        </div>
         <button type="button" class="close" @click="hide" />
       </dialog>
     </template>
@@ -81,28 +83,17 @@ function onClick() {
 </template>
 
 <style lang="scss" scoped>
-dialog:open {
-  display: grid;
-  grid-template-areas: 'stack';
-  opacity: 1;
-}
-
 dialog {
-  --popover-padding: var(--size-10);
-
-  padding: var(--popover-padding);
-  border-radius: 8px;
+  position: relative;
+  padding: 0;
+  border-radius: var(--size-8);
   background-color: var(--mvw-color-white);
-  opacity: 0;
+  overflow: visible;
 
   transition:
     opacity 0.3s,
     overlay 0.3s allow-discrete,
     display 0.3s allow-discrete;
-
-  :is(button, a) {
-    grid-area: stack;
-  }
 
   :where(a) {
     outline: none;
@@ -111,38 +102,39 @@ dialog {
   :where(img, video) {
     display: block;
     object-fit: cover;
-    // width: min(100vw, 640px);
-    // height: min(100vh, 320px);
-  }
-  button {
-    align-self: start;
-    justify-self: end;
-  }
-}
-
-@starting-style {
-  dialog:open {
-    opacity: 0;
   }
 }
 
 dialog::backdrop {
-  background-color: transparent;
   transition:
-    display 0.3s allow-discrete,
-    overlay 0.3s allow-discrete,
-    background-color 0.3s;
+    background-color 0.3s,
+    display 0.3s allow-discrete;
   backdrop-filter: blur(2px);
-}
-
-dialog:open::backdrop {
   background-color: rgb(0 0 0 / 75%);
 }
 
 @starting-style {
-  dialog:open::backdrop {
-    background-color: transparent;
+  dialog:open,
+  dialog[open] {
+    opacity: 0;
   }
+
+  dialog:open::backdrop,
+  dialog[open]::backdrop {
+    background-color: rgb(0 0 0 / 0%);
+  }
+}
+
+dialog:not([open]) {
+  opacity: 0;
+
+  &::backdrop {
+    background-color: rgb(0 0 0 / 0%);
+  }
+}
+
+.popover-content {
+  padding: var(--size-10);
 }
 
 .ad-placement-tool {
@@ -160,15 +152,15 @@ dialog:open::backdrop {
 
   .close {
     position: absolute;
-    right: calc(var(--popover-padding) * -1);
-    top: calc(var(--popover-padding) * -1);
+    right: 0;
+    top: 0;
     width: 24px;
     height: 24px;
     margin: 0;
     padding: 0;
     background: white;
     border: none;
-    border-end-start-radius: 8px;
+    border-radius: var(--size-8);
   }
   .close:before,
   .close:after {
