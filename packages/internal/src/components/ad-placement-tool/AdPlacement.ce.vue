@@ -85,17 +85,19 @@ function onClick() {
 <style lang="scss" scoped>
 .ad-placement-tool {
   dialog {
-    position: relative;
+    position: fixed;
+    margin: auto;
     padding: 0;
+    inset: 0;
     border-radius: var(--size-8);
     background-color: var(--mvw-color-white);
     scrollbar-gutter: stable;
     overscroll-behavior: contain;
 
     transition:
-      opacity 0.3s,
-      overlay 0.3s allow-discrete,
-      display 0.3s allow-discrete;
+      opacity 300ms,
+      overlay 300ms allow-discrete,
+      display 300ms allow-discrete;
 
     :where(a) {
       display: block;
@@ -112,8 +114,9 @@ function onClick() {
     overflow: hidden;
     overscroll-behavior: contain;
     transition:
-      background-color 0.3s,
-      display 0.3s allow-discrete;
+      background-color 300ms,
+      overlay 300ms allow-discrete,
+      display 300ms allow-discrete;
     backdrop-filter: blur(2px);
     background-color: rgb(0 0 0 / 75%);
   }
