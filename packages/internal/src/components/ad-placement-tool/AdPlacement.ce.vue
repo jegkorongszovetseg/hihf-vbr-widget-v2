@@ -83,61 +83,68 @@ function onClick() {
 </template>
 
 <style lang="scss" scoped>
-dialog {
-  position: relative;
-  padding: 0;
-  border-radius: var(--size-8);
-  background-color: var(--mvw-color-white);
-  overflow: visible;
-
-  transition:
-    opacity 0.3s,
-    overlay 0.3s allow-discrete,
-    display 0.3s allow-discrete;
-
-  :where(a) {
-    outline: none;
-  }
-
-  :where(img, video) {
-    display: block;
-    object-fit: cover;
-  }
-}
-
-dialog::backdrop {
-  transition:
-    background-color 0.3s,
-    display 0.3s allow-discrete;
-  backdrop-filter: blur(2px);
-  background-color: rgb(0 0 0 / 75%);
-}
-
-@starting-style {
-  dialog:open,
-  dialog[open] {
-    opacity: 0;
-  }
-
-  dialog:open::backdrop,
-  dialog[open]::backdrop {
-    background-color: rgb(0 0 0 / 0%);
-  }
-}
-
-dialog:not([open]) {
-  opacity: 0;
-
-  &::backdrop {
-    background-color: rgb(0 0 0 / 0%);
-  }
-}
-
-.popover-content {
-  padding: var(--size-10);
-}
-
 .ad-placement-tool {
+  dialog {
+    position: fixed;
+    margin: auto;
+    padding: 0;
+    inset: 0;
+    border-radius: var(--size-8);
+    background-color: var(--mvw-color-white);
+    scrollbar-gutter: stable;
+    overscroll-behavior: contain;
+
+    transition:
+      opacity 300ms,
+      overlay 300ms allow-discrete,
+      display 300ms allow-discrete;
+
+    :where(a) {
+      display: block;
+      outline: none;
+    }
+
+    :where(img, video) {
+      display: block;
+      object-fit: cover;
+    }
+  }
+
+  dialog::backdrop {
+    overflow: hidden;
+    overscroll-behavior: contain;
+    transition:
+      background-color 300ms,
+      overlay 300ms allow-discrete,
+      display 300ms allow-discrete;
+    backdrop-filter: blur(2px);
+    background-color: rgb(0 0 0 / 75%);
+  }
+
+  @starting-style {
+    dialog:open,
+    dialog[open] {
+      opacity: 0;
+    }
+
+    dialog:open::backdrop,
+    dialog[open]::backdrop {
+      background-color: rgb(0 0 0 / 0%);
+    }
+  }
+
+  dialog:not([open]) {
+    opacity: 0;
+
+    &::backdrop {
+      background-color: rgb(0 0 0 / 0%);
+    }
+  }
+
+  .popover-content {
+    padding: var(--size-10);
+  }
+
   :where(img, video) {
     opacity: 1;
   }

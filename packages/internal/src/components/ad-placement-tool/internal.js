@@ -1,5 +1,5 @@
 import { isAfter } from '@mjsz-vbr-elements/core/utils';
-import { noop, useEventListener, useIntersectionObserver, useTimeoutFn } from '@vueuse/core';
+import { defaultDocument, noop, useEventListener, useIntersectionObserver, useTimeoutFn } from '@vueuse/core';
 import { unref, watch } from 'vue';
 
 export function usePopover(dialogRef, timeout = 30000, {
@@ -25,11 +25,17 @@ export function usePopover(dialogRef, timeout = 30000, {
   function show() {
     set?.();
     unref(dialogRef).showModal();
+    if (!defaultDocument)
+      return;
+    defaultDocument.body.style = 'overflow: hidden';
   }
 
   function hide() {
     unref(dialogRef).close();
     stop();
+    if (!defaultDocument)
+      return;
+    defaultDocument.body.style = '';
   }
 
   return {
