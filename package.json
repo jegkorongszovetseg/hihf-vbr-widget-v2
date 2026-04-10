@@ -1,7 +1,7 @@
 {
   "name": "@mjsz-vbr-elements/monorepo",
   "type": "module",
-  "version": "2.43.1",
+  "version": "2.43.2",
   "private": true,
   "packageManager": "pnpm@10.32.1",
   "description": "Data visualization for MJSZ VBR",
