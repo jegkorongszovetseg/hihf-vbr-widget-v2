@@ -2,7 +2,7 @@
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
 import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
-import { IconSheet, IconYoutube } from '@mjsz-vbr-elements/shared/icons';
+import { IconSheet, IconVideo, IconYoutube } from '@mjsz-vbr-elements/shared/icons';
 import { computed, toRefs } from 'vue';
 import { useAttendanceSocket } from '../../composables/use-attendance-socket';
 import GamePeriodProgress from './components/GamePeriodProgress.vue';
@@ -11,6 +11,11 @@ import { convertPeriodName, DEAFULT_LOGO_TEAM_A, DEAFULT_LOGO_TEAM_B } from './i
 const props = defineProps({
   gameData: {
     type: Object,
+    required: true,
+  },
+
+  gameId: {
+    type: String,
     required: true,
   },
 
@@ -41,6 +46,8 @@ const gameNames = computed(() => {
 
   return base.join(' - ');
 });
+const isMjszTvLinkVisible = computed(() => gameData.value?.location?.hasStudioAutomatedCamera && gameData.value.gameStatus > 0);
+const mjszTvLink = computed(() => `https://www.mjsz.tv/${props.locale}/game?ext-id=${props.gameId}`);
 </script>
 
 <template>
@@ -74,6 +81,10 @@ const gameNames = computed(() => {
         <a v-if="gameData.video" :href="gameData.video" target="_blank">
           <IconYoutube class="is-icon" />
           {{ t('video') }}
+        </a>
+        <a v-if="isMjszTvLinkVisible" :href="mjszTvLink" target="_blank">
+          <IconVideo class="is-icon" />
+          mjsz.tv
         </a>
       </div>
       <p v-if="gameData.gameStatus <= 1 && isVisitorsLabelVisible" class="text-xs text-muted">
