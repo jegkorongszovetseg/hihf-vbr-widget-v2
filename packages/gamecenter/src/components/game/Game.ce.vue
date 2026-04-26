@@ -98,7 +98,7 @@ const websocketURL = computed(() => getWebsocketURL(`/v2/game-attendance?gameid=
     <I18NProvider :locale="props.locale" :messages="messages">
       <ErrorNotice v-for="error in errors" :key="error.key" :error="error" />
 
-      <GameData v-if="isNotEmpty(gameData)" :game-data="gameData" :locale="props.locale" :websocket-url="websocketURL" />
+      <GameData v-if="isNotEmpty(gameData)" :game-data="gameData" :game-id="gameId" :locale="props.locale" :websocket-url="websocketURL" />
 
       <GameOfficials v-if="isNotEmpty(gameData)" :game-data="gameData" :game-officials="gameOfficials" />
 

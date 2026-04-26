@@ -14,6 +14,7 @@ export * as IconSortAsc from './assets/icons/IconSortAsc.svg';
 export * as IconSortDesc from './assets/icons/IconSortDesc.svg';
 export * as IconStar from './assets/icons/IconStar.svg';
 export * as IconTimer from './assets/icons/IconTimer.svg';
+export * as IconVideo from './assets/icons/IconVideo.svg';
 export * as IconWarning from './assets/icons/IconWarning.svg';
 export * as IconWhistle from './assets/icons/IconWhistle.svg';
 export * as IconYoutube from './assets/icons/IconYoutube.svg';
