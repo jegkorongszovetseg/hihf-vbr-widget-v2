@@ -1,7 +1,7 @@
 {
   "name": "@mjsz-vbr-elements/shared",
   "type": "module",
-  "version": "2.43.2",
+  "version": "2.44.0",
   "private": false,
   "author": "Ákos Stegner <akos.stegner@gmail.com>",
   "license": "MIT",
