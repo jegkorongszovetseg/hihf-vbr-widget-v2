@@ -1,3 +1,4 @@
+export * from './utils/columns';
 export * from './utils/convert';
 export * from './utils/cookie';
 export * from './utils/datetime';
