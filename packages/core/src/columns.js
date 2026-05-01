@@ -29,6 +29,10 @@ export const COLUMNS_SCHEDULE = {
     label: '',
     class: 'font-bold text-xl',
   },
+  mjszTv: {
+    label: 'TV',
+    tooltip: 'MJSZ.TV',
+  },
   gameResultType: {
     label: '',
     tooltip: '',

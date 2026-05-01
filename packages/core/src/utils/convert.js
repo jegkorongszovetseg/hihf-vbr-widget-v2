@@ -142,6 +142,8 @@ export function convert(data = []) {
         gameResult: `${row.homeTeamScore}-${row.awayTeamScore}`,
         gameDateDate: format(row.gameDate, 'L dddd', timezone, locale),
         gameDateTime: format(row.gameDate, 'HH:mm', timezone, locale),
+        isMjszTvLinkVisible: mjszTvLinkVisibility(row),
+        mjszTvLink: createMjszTvLink({ locale, gameId: row.gameId }),
       }));
       return this;
     },
