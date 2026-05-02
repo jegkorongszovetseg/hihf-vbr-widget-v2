@@ -111,6 +111,10 @@ export function addDays(date, day) {
   return dayjs(date).add(day, 'day');
 }
 
+export function addYears(date, year = 1) {
+  return dayjs(date).add(year, 'year');
+}
+
 export function startOfMonth(date) {
   return dayjs(date).startOf('month');
 }

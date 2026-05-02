@@ -12,6 +12,7 @@ import {
 } from '@mjsz-vbr-elements/core/columns';
 import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core/constants';
 import {
+  addColumn,
   filterAndSortSections,
   reject,
   sortByPhaseId,
@@ -36,7 +37,10 @@ export function transformSections(sections, state, initialPhaseId = null) {
 export const ALL_REPORTS_MAP = new Map()
   .set('schedule', {
     api: '/v2/games-list',
-    columns: () => COLUMNS_SCHEDULE,
+    columns: () => addColumn(COLUMNS_SCHEDULE, 7, { mjszTv: {
+      label: 'TV',
+      tooltip: 'MJSZ.TV',
+    } }),
     sort: {},
   })
   .set('standings', {

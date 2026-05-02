@@ -43,7 +43,7 @@ import {
   values,
 } from 'ramda';
 import { SORT_STATE_ASCEND, SORT_STATE_ORIGINAL } from '../constants.js';
-import { convertMinToMinSec, convertMinToSec, convertSecToMin, format } from './datetime.js';
+import { addYears, convertMinToMinSec, convertMinToSec, convertSecToMin, format, isBefore } from './datetime.js';
 import { generateId } from './generate-id.js';
 
 export function convert(data = []) {
@@ -142,6 +142,8 @@ export function convert(data = []) {
         gameResult: `${row.homeTeamScore}-${row.awayTeamScore}`,
         gameDateDate: format(row.gameDate, 'L dddd', timezone, locale),
         gameDateTime: format(row.gameDate, 'HH:mm', timezone, locale),
+        isMjszTvLinkVisible: mjszTvLinkVisibility(row),
+        mjszTvLink: createMjszTvLink({ locale, gameId: row.gameId }),
       }));
       return this;
     },
@@ -494,4 +496,14 @@ function sortByJerseyNumber(d) {
 
 function mergeArrayByTeamId(a, b) {
   return values(mergeWith(mergeLeft, indexBy(path(['player', 'playerId']), a), indexBy(path(['player', 'playerId']), b)));
+}
+
+export function mjszTvLinkVisibility(gameData) {
+  return gameData?.location?.hasStudioAutomatedCamera
+    && gameData.gameStatus > 0
+    && isBefore(new Date(), addYears(gameData.gameDate, 1));
+}
+
+export function createMjszTvLink({ locale = 'hu', gameId }) {
+  return `https://www.mjsz.tv/${locale}/game?ext-id=${gameId}`;
 }

@@ -1,7 +1,7 @@
 <script setup>
 import { Image } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import { format, offsetName } from '@mjsz-vbr-elements/core/utils';
+import { createMjszTvLink, format, mjszTvLinkVisibility, offsetName } from '@mjsz-vbr-elements/core/utils';
 import { IconSheet, IconVideo, IconYoutube } from '@mjsz-vbr-elements/shared/icons';
 import { computed, toRefs } from 'vue';
 import { useAttendanceSocket } from '../../composables/use-attendance-socket';
@@ -46,8 +46,8 @@ const gameNames = computed(() => {
 
   return base.join(' - ');
 });
-const isMjszTvLinkVisible = computed(() => gameData.value?.location?.hasStudioAutomatedCamera && gameData.value.gameStatus > 0);
-const mjszTvLink = computed(() => `https://www.mjsz.tv/${props.locale}/game?ext-id=${props.gameId}`);
+const isMjszTvLinkVisible = computed(() => mjszTvLinkVisibility(gameData.value));
+const mjszTvLink = computed(() => createMjszTvLink({ locale: props.locale, gameId: props.gameId }));
 </script>
 
 <template>

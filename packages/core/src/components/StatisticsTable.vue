@@ -1,4 +1,5 @@
 <script setup>
+import { IconVideo } from '@mjsz-vbr-elements/shared/icons';
 import { computed, toRefs } from 'vue';
 import { useI18n } from '../composables';
 import { useColumns } from '../composables/useColumns.js';
@@ -183,6 +184,12 @@ const onSort = payload => emit('sort', payload);
         <span v-if="row.isOvertime" class="badge">{{ t('common.overtimeShort') }}</span>
         <span v-if="row.isShootout" class="badge">{{ t('common.shootoutShort') }}</span>
         <span v-if="row.seriesStandings" class="badge">{{ row.seriesStandings }}</span>
+      </template>
+
+      <template #cell-mjszTv="{ row }">
+        <a v-if="row.isMjszTvLinkVisible" :href="row.mjszTvLink" target="_blank">
+          <IconVideo />
+        </a>
       </template>
 
       <template #loading>

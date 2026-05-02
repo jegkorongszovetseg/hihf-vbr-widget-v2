@@ -9,6 +9,7 @@ import {
   useSort,
 } from '@mjsz-vbr-elements/core/composables';
 import {
+  addColumn,
   convert,
   convertPhaseName,
   convertTimesMinToMinSec,
@@ -102,7 +103,10 @@ const state = reactive({
   selectedPanel: PANEL_SCHEDULE,
   api: '/v2/games-list',
   apiParams: {},
-  columns: COLUMNS_SCHEDULE,
+  columns: addColumn(COLUMNS_SCHEDULE, 7, { mjszTv: {
+    label: 'TV',
+    tooltip: 'MJSZ.TV',
+  } }),
   sort: null,
   report: 'points',
 });
