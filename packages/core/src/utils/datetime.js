@@ -23,17 +23,21 @@ dayjs.extend(_isToday);
 dayjs.extend(_weekday);
 dayjs.extend(_minMax);
 
-export const getLocalTimezone = () => dayjs.tz.guess();
+const localTimezone = dayjs.tz.guess();
+
+export const getLocalTimezone = () => localTimezone;
 
 export function format(datetime = '', format = '', timezone = '', locale = 'hu') {
-  timezone = timezone || dayjs.tz.guess();
-  return dayjs(datetime).isValid() ? dayjs(datetime).tz(timezone).locale(locale).format(format) : '';
+  timezone = timezone || localTimezone;
+  const d = dayjs(datetime);
+  return d.isValid() ? d.tz(timezone).locale(locale).format(format) : '';
 }
 
 export function offsetName(datetime = '', timezone = '', lang = 'hu') {
-  if (!dayjs(datetime).isValid())
+  const d = dayjs(datetime);
+  if (!d.isValid())
     return '';
-  timezone = timezone || dayjs.tz.guess();
+  timezone = timezone || localTimezone;
   const dtf = new Intl.DateTimeFormat(getLocaleForLang(lang), {
     timeZone: timezone,
     timeZoneName: 'short',
@@ -134,5 +138,5 @@ export function max(dates) {
   if (Array.isArray(dates)) {
     dates = dates.map(date => dayjs(date));
   }
-  return dayjs.max(...dates);
+  return dayjs.max(dates);
 }
