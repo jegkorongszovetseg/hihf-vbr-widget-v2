@@ -1,13 +1,10 @@
 name: PR Package Size Report
 
 on:
-  push:
   pull_request:
     types:
       - opened
-      - reopened
       - synchronize
-      - ready_for_review
 
 permissions:
   contents: read
@@ -16,6 +13,8 @@ permissions:
 jobs:
   package-size-report:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout head branch
