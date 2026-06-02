@@ -499,7 +499,8 @@ function mergeArrayByTeamId(a, b) {
 }
 
 export function mjszTvLinkVisibility(gameData) {
-  return gameData?.location?.hasStudioAutomatedCamera
+  return gameData.location?.hasStudioAutomatedCamera
+    && !gameData.broadcastForbidden
     && gameData.gameStatus > 0
     && isBefore(new Date(), addYears(gameData.gameDate, 1));
 }

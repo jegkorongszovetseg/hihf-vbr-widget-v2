@@ -119,6 +119,8 @@
     }
 
     td {
+      font-variant-numeric: tabular-nums;
+
       &.is-active {
         font-weight: 700;
         color: var(--mvw-table-active-color);
