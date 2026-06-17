@@ -19,14 +19,17 @@
   :where(.games-timeline) {
     display: grid;
     grid-template-columns: 30px 1fr 30px;
-    align-items: center;
+    align-items: stretch;
     height: 100%;
 
     container-type: inline-size;
     container-name: games-timeline;
 
     > div {
-      display: flex;
+      position: relative;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 100%;
       overflow-x: auto;
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
@@ -36,26 +39,23 @@
       &::-webkit-scrollbar {
         display: none;
       }
+
+      @container games-timeline (width > 375px) {
+        grid-auto-columns: 50%;
+      }
+      @container games-timeline (width > 500px) {
+        grid-auto-columns: 33.3334%;
+      }
+      @container games-timeline (width > 700px) {
+        grid-auto-columns: 25%;
+      }
+      @container games-timeline (width > 880px) {
+        grid-auto-columns: 20%;
+      }
     }
 
     .is-slide {
-      flex-shrink: 0;
-      flex-grow: 0;
-      flex-basis: 100%;
       scroll-snap-align: start;
-
-      @container games-timeline (width > 375px) {
-        flex-basis: 50%;
-      }
-      @container games-timeline (width > 500px) {
-        flex-basis: 33.3334%;
-      }
-      @container games-timeline (width > 700px) {
-        flex-basis: 25%;
-      }
-      @container games-timeline (width > 880px) {
-        flex-basis: 20%;
-      }
     }
 
     > button {
@@ -115,6 +115,13 @@
       width: 100%;
       text-align: center;
       color: var(--mvw-text-muted);
+    }
+
+    .is-loading-overlay {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
     }
   }
 

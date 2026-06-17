@@ -135,11 +135,11 @@ function onTryAgain() {
 <template>
   <I18NProvider v-slot="{ t }" :locale="locale" :messages="messages">
     <Carousel :key="isLoadingDebounced" :initial-index="initialIndex">
-      <div v-if="!error && isLoadingDebounced" style="width: 100%">
+      <div v-if="!error && isLoadingDebounced" class="is-loading-overlay">
         <LoadingIndicator />
       </div>
-      <TrayAgain v-else-if="error && isEmpty(games)" @try-again="onTryAgain" />
-      <div v-else-if="convertedGames.length === 0" class="is-no-games">
+      <TrayAgain v-else-if="error && isEmpty(games)" class="is-loading-overlay" @try-again="onTryAgain" />
+      <div v-else-if="convertedGames.length === 0" class="is-no-games is-loading-overlay">
         {{ t('gamesTimeline.noGames') }}
       </div>
       <template v-else>
