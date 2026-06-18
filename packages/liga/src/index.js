@@ -4,6 +4,7 @@ import {
   PlayerLiga,
   PlayersLiga,
   Playoffs,
+  PlayoffsTree,
   ScheduleLiga,
   StandingsLiga,
   Statistics,
@@ -21,6 +22,7 @@ const TeamLigaCE = defineCustomElement(TeamLiga);
 const PlayersLigaCE = defineCustomElement(PlayersLiga);
 const PlayerLigaCE = defineCustomElement(PlayerLiga);
 const TopListLigaCE = defineCustomElement(TopListLiga);
+const PlayoffsTreeCE = defineCustomElement(PlayoffsTree);
 
 export {
   PlayerLiga,
@@ -29,6 +31,8 @@ export {
   PlayersLigaCE,
   Playoffs,
   PlayoffsCE,
+  PlayoffsTree,
+  PlayoffsTreeCE,
   ScheduleLiga,
   ScheduleLigaCE,
   StandingsLiga,
@@ -53,6 +57,7 @@ export function register() {
   customElements.define('mjsz-vbr-player-liga', PlayerLigaCE);
   customElements.define('mjsz-vbr-team-liga', TeamLigaCE);
   customElements.define('mjsz-vbr-top-list-liga', TopListLigaCE);
+  customElements.define('mjsz-vbr-playoffs-tree', PlayoffsTreeCE);
 }
 
 export default {
