@@ -1,0 +1,53 @@
+@layer components.variables {
+  :where(:host) {
+    --mvw-playoffs-tree-column-gap: var(--size-32);
+    --mvw-playoffs-tree-node-gap: var(--size-32);
+    --mvw-playoffs-tree-card-bg: light-dark(var(--mvw-color-primary-100), var(--mvw-color-primary-800));
+    --mvw-playoffs-tree-connector-color: light-dark(var(--mvw-color-primary-200), var(--mvw-color-primary-700));
+  }
+}
+
+@layer components {
+  :where(.playoffs-tree) {
+    display: grid;
+    gap: var(--mvw-playoffs-tree-column-gap);
+    position: relative;
+
+    > .tree-column {
+      display: grid;
+      align-content: space-around;
+      gap: var(--mvw-playoffs-tree-node-gap);
+    }
+
+    .tree-node {
+      padding: var(--size-12);
+      background-color: var(--mvw-playoffs-tree-card-bg);
+      border-radius: var(--size-8);
+
+      &.is-bye {
+        background-color: transparent;
+      }
+
+      /* Összekötő vonalak a gyerek node-okhoz */
+      &.has-children::before {
+        content: '';
+        position: fixed;
+        top: anchor(var(--child-top) center);
+        bottom: anchor(var(--child-bottom) center);
+        left: anchor(var(--child-top) right);
+        right: calc(anchor(var(--self) left) + var(--mvw-playoffs-tree-column-gap) / 2);
+        border: 1px solid var(--mvw-playoffs-tree-connector-color);
+        border-left: none;
+        border-radius: 0 var(--size-8) var(--size-8) 0;
+      }
+      &.has-children::after {
+        content: '';
+        position: fixed;
+        top: anchor(var(--self) center);
+        right: anchor(var(--self) left);
+        border-top: 1px solid var(--mvw-playoffs-tree-connector-color);
+        width: calc(var(--mvw-playoffs-tree-column-gap) / 2);
+      }
+    }
+  }
+}
