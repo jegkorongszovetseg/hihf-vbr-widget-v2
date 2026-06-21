@@ -4,11 +4,12 @@ import { useErrorProvider, useServices } from '@mjsz-vbr-elements/core/composabl
 import { computed } from 'vue';
 import { buildPlayoffTree } from './buildPlayoffTree.js';
 // import { games } from './internal.js';
+import NodeCard from './NodeCard.vue';
 
 const props = defineProps({
   numberOfTeams: {
     type: Number,
-    default: 6,
+    default: 5,
   },
   championshipId: {
     type: [Number, String],
@@ -55,28 +56,13 @@ function nodeStyle(node) {
 
     <div v-else-if="!hasError" class="playoffs-tree" :style="{ gridTemplateColumns: `repeat(${treeColumns}, 1fr)` }">
       <div v-for="(column, colIndex) in treeData.columns" :key="colIndex" class="tree-column">
-        <div
+        <NodeCard
           v-for="(node, nodeIndex) in column"
           :key="nodeIndex"
-          class="tree-node"
           :class="{ 'is-bye': node.type === 'bye', 'has-children': node.childIds.length > 0 }"
           :style="nodeStyle(node)"
-        >
-          <template v-if="node.type === 'match'">
-            <div class="match-team">
-              {{ node.match.homeTeam?.longName }}
-            </div>
-            <div class="match-result">
-              {{ node.match.seriesStandings }}
-            </div>
-            <div class="match-team">
-              {{ node.match.awayTeam?.longName }}
-            </div>
-          </template>
-          <template v-else>
-            <div class="bye-node" />
-          </template>
-        </div>
+          :data="node"
+        />
       </div>
     </div>
   </I18NProvider>
@@ -87,15 +73,3 @@ function nodeStyle(node) {
 <style src="@mjsz-vbr-elements/shared/css/components/error-notice.css" />
 
 <style src="@mjsz-vbr-elements/shared/css/components/playoffs-tree.css" />
-
-<style lang="scss" scoped>
-.tree-node {
-  text-align: center;
-}
-
-.bye-node {
-  min-height: 4rem;
-  border: 1px dashed #e0e0e0;
-  border-radius: 4px;
-}
-</style>
