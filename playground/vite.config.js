@@ -5,10 +5,20 @@ import UnoCSS from 'unocss/vite';
 import VueRouter from 'unplugin-vue-router/vite';
 import { defineConfig } from 'vite';
 
+const RSS_FEED_PATH_REGEX = /^\/rss-feed/;
+
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
     port: 5134,
+    proxy: {
+      '/rss-feed': {
+        target: 'https://sportolonemzet.hu',
+        changeOrigin: true,
+        secure: true,
+        rewrite: path => path.replace(RSS_FEED_PATH_REGEX, '/feed'),
+      },
+    },
   },
   envDir: resolve(__dirname, '../'),
   resolve: {
