@@ -11,7 +11,7 @@
     }
   }
 
-  :where(a[target='_blank']) {
+  :where(a[target='_blank']:not([data-default-link])) {
     position: relative;
 
     &:hover:after {

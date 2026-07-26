@@ -8,5 +8,8 @@
     "championshipName": "Championship Name (Championship-Name):",
     "championshipId": "Championship Identifier (Championship-id):",
     "seasonId": "Season Identifier (season-Id):"
+  },
+  "rssReader": {
+    "registration": "Registration"
   }
 }

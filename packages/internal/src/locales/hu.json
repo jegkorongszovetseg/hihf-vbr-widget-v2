@@ -8,5 +8,8 @@
     "championshipName": "Bajnokság Neve (Championship-Name):",
     "championshipId": "Bajnokság azonosító (Championship-id):",
     "seasonId": "Szezon azonosító (season-Id):"
+  },
+  "rssReader": {
+    "registration": "Regisztráció"
   }
 }

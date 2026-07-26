@@ -171,4 +171,18 @@
       }
     }
   }
+
+  :where(.text-list) {
+    li {
+      text-wrap-style: balance;
+      padding-block: var(--size-8);
+      border-top: 1px solid var(--mvw-border-muted);
+    }
+
+    &.compact {
+      li:not(:first-child) {
+        border-top: 1px solid var(--mvw-border-muted);
+      }
+    }
+  }
 }
