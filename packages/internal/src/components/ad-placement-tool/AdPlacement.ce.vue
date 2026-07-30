@@ -82,7 +82,7 @@ function onClick() {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .ad-placement-tool {
   dialog {
     position: fixed;
