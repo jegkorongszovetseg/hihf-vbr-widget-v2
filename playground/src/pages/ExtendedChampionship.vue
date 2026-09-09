@@ -27,6 +27,7 @@ const playerResolver = `LigaPlayer?playerId={player.playerId}&championshipId={ch
       :external-player-resolver="playerResolver"
       :is-player-linked="true"
       :is-goalie-stats-disabled="true"
+      :is-only-schedule-visible="false"
     />
   </div>
 </template>

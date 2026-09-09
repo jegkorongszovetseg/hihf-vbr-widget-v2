@@ -77,6 +77,11 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+
+  isOnlyScheduleVisible: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const tooltipContainer = ref(null);
@@ -167,30 +172,32 @@ const resolveExternalTeamLink = teamName => externalTeamLinkResolver(props.exter
               >
                 {{ t('selection.schedule') }}
               </button>
-              <button
-                role="tab"
-                type="button"
-                :aria-selected="selectedPanel === PANEL_STANDINGS"
-                @click="changePanel(PANEL_STANDINGS)"
-              >
-                {{ t('selection.standings') }}
-              </button>
-              <button
-                role="tab"
-                type="button"
-                :aria-selected="selectedPanel === PANEL_PLAYERS"
-                @click="changePanel(PANEL_PLAYERS)"
-              >
-                {{ t('selection.playerStats') }}
-              </button>
-              <button
-                role="tab"
-                type="button"
-                :aria-selected="selectedPanel === PANEL_TEAMS"
-                @click="changePanel(PANEL_TEAMS)"
-              >
-                {{ t('selection.teamStats') }}
-              </button>
+              <template v-if="!isOnlyScheduleVisible">
+                <button
+                  role="tab"
+                  type="button"
+                  :aria-selected="selectedPanel === PANEL_STANDINGS"
+                  @click="changePanel(PANEL_STANDINGS)"
+                >
+                  {{ t('selection.standings') }}
+                </button>
+                <button
+                  role="tab"
+                  type="button"
+                  :aria-selected="selectedPanel === PANEL_PLAYERS"
+                  @click="changePanel(PANEL_PLAYERS)"
+                >
+                  {{ t('selection.playerStats') }}
+                </button>
+                <button
+                  role="tab"
+                  type="button"
+                  :aria-selected="selectedPanel === PANEL_TEAMS"
+                  @click="changePanel(PANEL_TEAMS)"
+                >
+                  {{ t('selection.teamStats') }}
+                </button>
+              </template>
             </div>
           </nav>
 
