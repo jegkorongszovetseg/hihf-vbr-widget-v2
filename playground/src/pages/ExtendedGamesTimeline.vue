@@ -13,18 +13,18 @@ import { store } from '../store.js';
       external-game-resolver="/GameCenterTimeline?gameid={gameId}"
       external-schedule-url="/ExtendedCalendar"
     /> -->
-    <!-- <mjsz-vbr-games-timeline
-      :locale="store.locale"
-      service-path="/v2/championship-calendar?championshipId=3898"
-      external-game-resolver="/GameCenterTimeline?gameid={gameId}"
-      external-schedule-url="/ExtendedCalendar"
-    /> -->
     <mjsz-vbr-games-timeline
       :locale="store.locale"
-      service-path="/v2/public-calendar?seasonId=218"
+      service-path="/v2/championship-calendar?championshipId=4126"
       external-game-resolver="/GameCenterTimeline?gameid={gameId}"
       external-schedule-url="/ExtendedCalendar"
     />
+    <!-- <mjsz-vbr-games-timeline
+      :locale="store.locale"
+      service-path="/v2/public-calendar?seasonId=251"
+      external-game-resolver="/GameCenterTimeline?gameid={gameId}"
+      external-schedule-url="/ExtendedCalendar"
+    /> -->
     <div style="height: 1000px;" />
   </div>
 </template>

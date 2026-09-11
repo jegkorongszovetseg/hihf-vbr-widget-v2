@@ -1,7 +1,7 @@
 <script setup>
 import { I18NProvider, LoadingIndicator } from '@mjsz-vbr-elements/core/components';
 import { useServices, useVisibilityChange } from '@mjsz-vbr-elements/core/composables';
-import { format, getLocalTimezone, isAfter, isEmpty, offsetName } from '@mjsz-vbr-elements/core/utils';
+import { format, getLocalTimezone, isEmpty, offsetName } from '@mjsz-vbr-elements/core/utils';
 import { refDebounced, useIntervalFn } from '@vueuse/core';
 import { computed, ref, triggerRef } from 'vue';
 import en from '../../locales/en.json';
@@ -10,7 +10,7 @@ import Carousel from './Carousel.vue';
 import CarouselItem from './CarouselItem.vue';
 import ExternalSchedule from './ExternalSchedule.vue';
 import Game from './Game.vue';
-import { mergeGames, useGameDataService } from './internal';
+import { getInitialIndex, mergeGames, useGameDataService } from './internal';
 import TrayAgain from './TryAgain.vue';
 
 const props = defineProps({
@@ -77,11 +77,7 @@ useVisibilityChange(
   },
 );
 
-const initialIndex = computed(() => {
-  if (isEmpty(games.value))
-    return 0;
-  return games.value.findIndex(game => !isAfter(new Date(game.gameDate), new Date(), 'day')) + 1;
-});
+const initialIndex = computed(() => getInitialIndex(games.value));
 
 const convertedGames = computed(() =>
   games.value.map(game => ({
