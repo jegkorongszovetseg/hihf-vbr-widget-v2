@@ -1,4 +1,5 @@
 import { fetchVBRData } from '@mjsz-vbr-elements/core/composables';
+import { isAfter, isEmpty } from '@mjsz-vbr-elements/core/utils';
 import { useAsyncState } from '@vueuse/core';
 
 export const CarouselContext = Symbol('CarouselContext');
@@ -33,6 +34,21 @@ export function mergeGames(income, base, key) {
     return acc;
   }, []);
   return merged;
+}
+
+export function getInitialIndex(games) {
+  if (isEmpty(games))
+    return 0;
+
+  const today = new Date();
+  const firstGameIndex = games.findIndex(game => !isAfter(new Date(game.gameDate), today, 'day'));
+
+  if (firstGameIndex === -1)
+    return games.length;
+  if (firstGameIndex === 0 && isAfter(today, new Date(games[0].gameDate), 'day'))
+    return 0;
+
+  return firstGameIndex + 1;
 }
 
 function createMap(data, key) {

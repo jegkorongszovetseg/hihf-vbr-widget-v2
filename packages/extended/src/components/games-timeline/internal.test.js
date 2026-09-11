@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest';
-import { mergeGames } from './internal';
+import { describe, expect, it, vi } from 'vitest';
+import { getInitialIndex, mergeGames } from './internal';
 
 describe('mergeGames', () => {
   it('a merge működik, ha a meglévő tömb(base) üres', () => {
@@ -128,3 +128,37 @@ describe('mergeGames', () => {
     expect(result).toEqual(expected);
   });
 });
+
+describe('getInitialIndex', () => {
+  it('a lista hosszát adja vissza, ha a mai nap az első meccs előtt van', () => {
+    vi.setSystemTime(new Date('2026-09-11T12:00:00Z'));
+    const games = gamesWithDates('2026-09-14', '2026-09-13', '2026-09-12');
+
+    expect(getInitialIndex(games)).toBe(games.length);
+  });
+
+  it('az első találat utáni indexet adja vissza, ha a mai nap az első meccs napja', () => {
+    vi.setSystemTime(new Date('2026-09-11T12:00:00Z'));
+    const games = gamesWithDates('2026-09-11', '2026-09-10', '2026-09-09');
+
+    expect(getInitialIndex(games)).toBe(1);
+  });
+
+  it('az első mai vagy korábbi meccs utáni indexet adja vissza két meccsnap között', () => {
+    vi.setSystemTime(new Date('2026-09-11T12:00:00Z'));
+    const games = gamesWithDates('2026-09-14', '2026-09-12', '2026-09-10', '2026-09-08');
+
+    expect(getInitialIndex(games)).toBe(3);
+  });
+
+  it('nullát ad vissza, ha a mai nap az utolsó meccs után van', () => {
+    vi.setSystemTime(new Date('2026-09-11T12:00:00Z'));
+    const games = gamesWithDates('2026-09-08', '2026-09-06', '2026-09-04');
+
+    expect(getInitialIndex(games)).toBe(0);
+  });
+});
+
+function gamesWithDates(...gameDates) {
+  return gameDates.map(gameDate => ({ gameDate }));
+}
