@@ -82,6 +82,10 @@ const gameNames = computed(() => {
       </div>
 
       <div class="is-external-contents">
+        <a v-if="gameData.lineupReportUrl" :href="gameData.lineupReportUrl" target="_blank">
+          <IconSheet class="is-icon" />
+          {{ t('lineup') }}
+        </a>
         <a v-if="gameData.electronicReportUrl" :href="gameData.electronicReportUrl" target="_blank">
           <IconSheet class="is-icon" />
           {{ t('sheet') }}
