@@ -135,6 +135,14 @@ const gameNames = computed(() => {
           {{ gameData.actualTime }}
         </p>
 
+        <p v-if="gameData.gameStatus === 3" class="is-game-status">
+          <span class="badge lg inverted">{{ t('game.status.jury') }}</span>
+        </p>
+
+        <p v-if="gameData.gameStatus === 4" class="is-game-status">
+          <span class="badge lg inverted">{{ t('game.status.delayed') }}</span>
+        </p>
+
         <GamePeriodProgress v-if="gameData.gameStatus === 1" :game-data="gameData" />
 
         <div class="game-result" :class="[{ live: gameData.gameStatus === 1 }]">
