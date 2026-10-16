@@ -160,7 +160,9 @@ export function convertPeriodEvents(gameData, gameEvents) {
   const periods = {};
   if (gameData.isShootout) {
     periods.so = [];
-    periods.ot = [];
+    if (gameData?.overtimeLength > 0) {
+      periods.ot = [];
+    }
   }
   if (gameData.isOvertime) {
     periods.ot = [];
