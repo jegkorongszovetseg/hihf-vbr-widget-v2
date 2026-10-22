@@ -536,3 +536,32 @@ function escape(value) {
   }
   return str;
 }
+
+export function jsonToHtml(data, sortTarget) {
+  if (!data.length)
+    return '';
+
+  const headers = Object.keys(data[0]);
+  const headerRow = headers.map(header => `<th>${escapeHtml(header)}</th>`).join('');
+  const rows = data.map(row => `<tr>${headers.map((header) => {
+    const value = escapeHtml(row[header]);
+    return `<td>${header === sortTarget ? `<b>${value}</b>` : value}</td>`;
+  }).join('')}</tr>`).join('');
+
+  return `<table><thead><tr>${headerRow}</tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+const HTML_ESCAPE_RE = /[&<>"']/g;
+const HTML_ESCAPE_MAP = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  '\'': '&#39;',
+};
+
+function escapeHtml(value) {
+  if (value === null || value === undefined)
+    return '';
+  return String(value).replace(HTML_ESCAPE_RE, character => HTML_ESCAPE_MAP[character]);
+}

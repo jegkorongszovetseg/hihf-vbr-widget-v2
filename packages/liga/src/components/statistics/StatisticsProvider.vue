@@ -12,9 +12,11 @@ import {
   head,
   InvalidSeasonName,
   jsonToCsv,
+  jsonToHtml,
   path,
   pick,
   playerName,
+  printTable,
   prop,
   rawConvert,
   sortBy,
@@ -272,8 +274,16 @@ async function init() {
 }
 init();
 
+function createNameArray(state) {
+  // return [state.championshipId, state.reportType, state.currentReport];
+  const report = state.currentReport;
+
+  const seasonName = state.seasons.find(item => item.championshipId === state.championshipId).seasonName;
+  return [seasonName, props.championshipName, state.reportType, report];
+}
+
 function onDownloadCsv() {
-  const filename = [state.championshipId, state.reportType, state.currentReport, state.section].join('-');
+  const filename = createNameArray(state).join('-');
   const normalizedData = normalizeReportData(state, sort);
   download(jsonToCsv(normalizedData), filename);
 }
@@ -291,6 +301,12 @@ function filterAllReportData(state, sort) {
     .sorted(sort)
     .addIndex(sort.sortTarget)
     .value();
+}
+
+function onPrint() {
+  const name = createNameArray(state).join(' - ');
+  const normalizedData = normalizeReportData(state, sort);
+  printTable(jsonToHtml(normalizedData, sort.sortTarget), name);
 }
 </script>
 
@@ -327,6 +343,7 @@ function filterAllReportData(state, sort) {
         onTeamChange,
         onPlayerInput,
         onDownloadCsv,
+        onPrint,
       },
       onPaginatorChange,
       onSort,

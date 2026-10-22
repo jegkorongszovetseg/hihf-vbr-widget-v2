@@ -70,6 +70,7 @@ const emit = defineEmits([
   'onTeamChange',
   'onStatTypeChange',
   'onDownloadCsv',
+  'onPrint',
 ]);
 
 const { t } = useI18n();
@@ -162,20 +163,17 @@ function onStatTypeChange(value) {
         <template #content>
           <ul class="list">
             <li>
-              <a
-                href="#"
-                class="is-dropdown-item"
-              >
+              <button type="button" class="is-dropdown-item" @click="emit('onPrint')">
                 <div class="start">
                   <IconPrint />
                 </div>
                 <div class="text">
                   {{ t('export.print') }}
                 </div>
-              </a>
+              </button>
             </li>
             <li>
-              <button class="is-dropdown-item" @click="emit('onDownloadCsv')">
+              <button type="button" class="is-dropdown-item" @click="emit('onDownloadCsv')">
                 <div class="start">
                   <IconFileSpreadsheet />
                 </div>

@@ -1,5 +1,26 @@
 import { describe, expect, it } from 'vitest';
-import { convertPhaseName } from './convert';
+import { convertPhaseName, jsonToHtml } from './convert';
+
+describe('jsonToHtml', () => {
+  it('hTML táblává alakítja az objektumok kulcsait és értékeit', () => {
+    expect(jsonToHtml([
+      { name: 'Ákos', score: 12 },
+      { name: 'Béla', score: 8 },
+    ])).toBe('<table><thead><tr><th>name</th><th>score</th></tr></thead><tbody><tr><td>Ákos</td><td>12</td></tr><tr><td>Béla</td><td>8</td></tr></tbody></table>');
+  });
+
+  it('félkövérrel jelöli a sortTarget kulcsához tartozó értékeket', () => {
+    expect(jsonToHtml([
+      { name: 'Ákos', score: '<12>' },
+    ], 'score')).toBe('<table><thead><tr><th>name</th><th>score</th></tr></thead><tbody><tr><td>Ákos</td><td><b>&lt;12&gt;</b></td></tr></tbody></table>');
+  });
+
+  it('üres sztringet ad üres adatnál és escape-eli a HTML-tartalmat', () => {
+    expect(jsonToHtml([])).toBe('');
+    expect(jsonToHtml([{ '<name>': '<script>&"\' </script>', 'empty': null }]))
+      .toBe('<table><thead><tr><th>&lt;name&gt;</th><th>empty</th></tr></thead><tbody><tr><td>&lt;script&gt;&amp;&quot;&#39; &lt;/script&gt;</td><td></td></tr></tbody></table>');
+  });
+});
 
 describe('convertPhaseName', () => {
   it('a phases üres []', () => {
