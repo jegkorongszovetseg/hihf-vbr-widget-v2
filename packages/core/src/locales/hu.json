@@ -475,6 +475,7 @@
     "label": "Export",
     "button": "Exportálás",
     "print": "Nyomtatás",
-    "csv": "CSV"
+    "csv": "CSV",
+    "copy": "Másolás"
   }
 }

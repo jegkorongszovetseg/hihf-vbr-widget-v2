@@ -9,6 +9,7 @@ import {
   convertTimesMinToMinSec,
   convertTimesSecToMin,
   download,
+  format,
   head,
   InvalidSeasonName,
   jsonToCsv,
@@ -55,7 +56,7 @@ const props = defineProps({
   },
 });
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const { onError } = useError();
 
 const params = useUrlSearchParams('history');
@@ -277,14 +278,13 @@ init();
 function createNameArray(state) {
   const report = state.currentReport;
   const seasonName = state.seasons.find(item => item.championshipId === state.championshipId).seasonName;
-  const now = new Date();
-  const timestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}-${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
-  return [seasonName, props.championshipName, state.reportType, report, timestamp];
+  const reportName = currentReportList.value.find(item => item.value === report).name;
+  return [seasonName, props.championshipName, t(`selection.${state.reportType}`), reportName];
 }
 
 function onDownloadCsv() {
   const nameArray = createNameArray(state);
-  const filename = `${nameArray.join('-')}.csv`;
+  const filename = `${nameArray.join('-')}-${format(new Date(), 'YYYY-MM-DD_HH_mm_ss')}.csv`;
   const normalizedData = normalizeReportData(state, sort);
   download(jsonToCsv(normalizedData, getReportHeaderLabels(state.columns)), filename);
 }
@@ -307,14 +307,25 @@ function filterAllReportData(state, sort) {
 function onPrint() {
   const name = createNameArray(state).join(' - ');
   const normalizedData = normalizeReportData(state, sort);
-  printTable(jsonToHtml(normalizedData, sort.sortTarget, getReportHeaderLabels(state.columns)), name);
+  printTable(jsonToHtml(normalizedData, sort.sortTarget, getReportHeaderLabels(state.columns)), name, format(new Date(), 'L LT', '', locale.value));
 }
 
 function getReportHeaderLabels(columns) {
-  return Object.fromEntries(Object.entries(columns).map(([key, column]) => [
-    key,
-    column.label ? t(column.label) : column.label ?? key,
-  ]));
+  return Object.fromEntries(Object.entries(columns).map(([key, column]) => [key, {
+    short: column.label ? t(column.label) : column.label ?? key,
+    tooltip: column.tooltip ? t(column.tooltip) : '',
+  }]));
+}
+
+async function onCopy() {
+  const normalizedData = normalizeReportData(state, sort);
+  const html = jsonToHtml(normalizedData, sort.sortTarget, getReportHeaderLabels(state.columns));
+
+  await navigator.clipboard.write([
+    new ClipboardItem({
+      'text/html': new Blob([html], { type: 'text/html' }),
+    }),
+  ]);
 }
 </script>
 
@@ -352,6 +363,7 @@ function getReportHeaderLabels(columns) {
         onPlayerInput,
         onDownloadCsv,
         onPrint,
+        onCopy,
       },
       onPaginatorChange,
       onSort,

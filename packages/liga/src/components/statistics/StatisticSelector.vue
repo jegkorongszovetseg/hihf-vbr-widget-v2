@@ -1,7 +1,7 @@
 <script setup>
 import { BaseSelect, FloatingPanel, FormField } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
-import { IconDownload, IconFileSpreadsheet, IconPrint } from '@mjsz-vbr-elements/shared/icons';
+import { IconCopy, IconDownload, IconFileSpreadsheet, IconPrint } from '@mjsz-vbr-elements/shared/icons';
 import { computed } from 'vue';
 import { REPORT_TYPE_PLAYERS, REPORT_TYPE_TEAMS } from './statistics.internal';
 
@@ -71,6 +71,7 @@ const emit = defineEmits([
   'onStatTypeChange',
   'onDownloadCsv',
   'onPrint',
+  'onCopy',
 ]);
 
 const { t } = useI18n();
@@ -102,6 +103,21 @@ const playerName = computed({
 
 function onStatTypeChange(value) {
   emit('onStatTypeChange', value);
+}
+
+function onDownloadCsv(close) {
+  close();
+  emit('onDownloadCsv');
+}
+
+function onPrint(close) {
+  close();
+  emit('onPrint');
+}
+
+function onCopy(close) {
+  close();
+  emit('onCopy');
 }
 </script>
 
@@ -160,10 +176,10 @@ function onStatTypeChange(value) {
             <IconDownload />{{ t('export.button') }}
           </button>
         </template>
-        <template #content>
+        <template #content="{ close }">
           <ul class="list">
             <li>
-              <button type="button" class="is-dropdown-item" @click="emit('onPrint')">
+              <button type="button" class="is-dropdown-item" @click="onPrint(close)">
                 <div class="start">
                   <IconPrint />
                 </div>
@@ -173,12 +189,22 @@ function onStatTypeChange(value) {
               </button>
             </li>
             <li>
-              <button type="button" class="is-dropdown-item" @click="emit('onDownloadCsv')">
+              <button type="button" class="is-dropdown-item" @click="onDownloadCsv(close)">
                 <div class="start">
                   <IconFileSpreadsheet />
                 </div>
                 <div class="text">
                   {{ t('export.csv') }}
+                </div>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="is-dropdown-item" @click="onCopy(close)">
+                <div class="start">
+                  <IconCopy />
+                </div>
+                <div class="text">
+                  {{ t('export.copy') }}
                 </div>
               </button>
             </li>

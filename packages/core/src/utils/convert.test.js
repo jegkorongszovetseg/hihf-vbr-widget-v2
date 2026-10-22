@@ -7,6 +7,12 @@ describe('jsonToCsv', () => {
       { name: 'Ákos', score: 12 },
     ], { name: 'Name', score: 'Points; total' })).toBe('Name;"Points; total"\nÁkos;12');
   });
+
+  it('objektumként megadott fejlécből csak a rövid jelölést exportálja', () => {
+    expect(jsonToCsv([
+      { wins: 3 },
+    ], { wins: { short: 'W', tooltip: 'Wins' } })).toBe('W\n3');
+  });
 });
 
 describe('jsonToHtml', () => {
@@ -27,6 +33,13 @@ describe('jsonToHtml', () => {
     expect(jsonToHtml([
       { name: 'Ákos', score: 12 },
     ], undefined, { name: 'Name', score: 'Points' })).toBe('<table><thead><tr><th>Name</th><th>Points</th></tr></thead><tbody><tr><td>Ákos</td><td>12</td></tr></tbody></table>');
+  });
+
+  it('a rövid fejlécekhez magyarázó táblát fűz', () => {
+    expect(jsonToHtml([
+      { wins: 3 },
+    ], undefined, { wins: { short: 'W', tooltip: 'Wins' } }))
+      .toBe('<table><thead><tr><th>W</th></tr></thead><tbody><tr><td>3</td></tr></tbody></table><table><tbody><tr><th>W</th><td>Wins</td></tr></tbody></table>');
   });
 
   it('üres sztringet ad üres adatnál és escape-eli a HTML-tartalmat', () => {

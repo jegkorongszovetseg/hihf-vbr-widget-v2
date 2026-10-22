@@ -474,6 +474,7 @@
     "label": "Export",
     "button": "Export",
     "print": "Print",
-    "csv": "CSV"
+    "csv": "CSV",
+    "copy": "Copy"
   }
 }

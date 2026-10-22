@@ -522,7 +522,10 @@ export function jsonToCsv(data, headerLabels = {}) {
   );
 
   return [
-    headers.map(header => escape(headerLabels[header] ?? header)).join(';'),
+    headers.map((header) => {
+      const label = headerLabels[header];
+      return escape(label?.short ?? label ?? header);
+    }).join(';'),
     ...rows,
   ].join('\n');
 }
@@ -542,13 +545,25 @@ export function jsonToHtml(data, sortTarget, headerLabels = {}) {
     return '';
 
   const headers = Object.keys(data[0]);
-  const headerRow = headers.map(header => `<th>${escapeHtml(headerLabels[header] ?? header)}</th>`).join('');
+  const headerRow = headers.map((header) => {
+    const label = headerLabels[header];
+    return `<th>${escapeHtml(label?.short ?? label ?? header)}</th>`;
+  }).join('');
   const rows = data.map(row => `<tr>${headers.map((header) => {
     const value = escapeHtml(row[header]);
     return `<td>${header === sortTarget ? `<b>${value}</b>` : value}</td>`;
   }).join('')}</tr>`).join('');
+  const explanations = headers
+    .map((header) => {
+      const label = headerLabels[header];
+      if (!label?.short || !label.tooltip)
+        return '';
+      return `<tr><td>${escapeHtml(label.short)}</td><td>${escapeHtml(label.tooltip)}</td></tr>`;
+    })
+    .join('');
 
-  return `<table><thead><tr>${headerRow}</tr></thead><tbody>${rows}</tbody></table>`;
+  const explanationTable = explanations ? `<table class="explanation"><tbody>${explanations}</tbody></table>` : '';
+  return `<table><thead><tr>${headerRow}</tr></thead><tbody>${rows}</tbody></table>${explanationTable}`;
 }
 
 const HTML_ESCAPE_RE = /[&<>"']/g;

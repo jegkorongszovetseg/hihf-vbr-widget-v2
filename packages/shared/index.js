@@ -2,6 +2,7 @@ export * as IconArrowDown from './assets/icons/IconArrowDown.svg';
 export * as IconArrowUp from './assets/icons/IconArrowUp.svg';
 export * as IconBroadcast from './assets/icons/IconBroadcast.svg';
 export * as IconChange from './assets/icons/IconChange.svg';
+export * as IconCopy from './assets/icons/IconCopy.svg';
 export * as IconDownload from './assets/icons/IconDownload.svg';
 export * as IconFileSpreadsheet from './assets/icons/IconFileSpreadsheet.svg';
 export * as IconHockeyPuck from './assets/icons/IconHockeyPuck.svg';
