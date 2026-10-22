@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { convertPhaseName, jsonToHtml } from './convert';
+import { convertPhaseName, jsonToCsv, jsonToHtml } from './convert';
+
+describe('jsonToCsv', () => {
+  it('a megadott fejléc-fordításokat jeleníti meg', () => {
+    expect(jsonToCsv([
+      { name: 'Ákos', score: 12 },
+    ], { name: 'Name', score: 'Points; total' })).toBe('Name;"Points; total"\nÁkos;12');
+  });
+});
 
 describe('jsonToHtml', () => {
   it('hTML táblává alakítja az objektumok kulcsait és értékeit', () => {
@@ -13,6 +21,12 @@ describe('jsonToHtml', () => {
     expect(jsonToHtml([
       { name: 'Ákos', score: '<12>' },
     ], 'score')).toBe('<table><thead><tr><th>name</th><th>score</th></tr></thead><tbody><tr><td>Ákos</td><td><b>&lt;12&gt;</b></td></tr></tbody></table>');
+  });
+
+  it('a megadott fejléc-fordításokat jeleníti meg', () => {
+    expect(jsonToHtml([
+      { name: 'Ákos', score: 12 },
+    ], undefined, { name: 'Name', score: 'Points' })).toBe('<table><thead><tr><th>Name</th><th>Points</th></tr></thead><tbody><tr><td>Ákos</td><td>12</td></tr></tbody></table>');
   });
 
   it('üres sztringet ad üres adatnál és escape-eli a HTML-tartalmat', () => {

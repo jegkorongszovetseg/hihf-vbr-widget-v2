@@ -275,17 +275,18 @@ async function init() {
 init();
 
 function createNameArray(state) {
-  // return [state.championshipId, state.reportType, state.currentReport];
   const report = state.currentReport;
-
   const seasonName = state.seasons.find(item => item.championshipId === state.championshipId).seasonName;
-  return [seasonName, props.championshipName, state.reportType, report];
+  const now = new Date();
+  const timestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}-${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+  return [seasonName, props.championshipName, state.reportType, report, timestamp];
 }
 
 function onDownloadCsv() {
-  const filename = createNameArray(state).join('-');
+  const nameArray = createNameArray(state);
+  const filename = `${nameArray.join('-')}.csv`;
   const normalizedData = normalizeReportData(state, sort);
-  download(jsonToCsv(normalizedData), filename);
+  download(jsonToCsv(normalizedData, getReportHeaderLabels(state.columns)), filename);
 }
 
 function normalizeReportData(state, sort) {
@@ -306,7 +307,14 @@ function filterAllReportData(state, sort) {
 function onPrint() {
   const name = createNameArray(state).join(' - ');
   const normalizedData = normalizeReportData(state, sort);
-  printTable(jsonToHtml(normalizedData, sort.sortTarget), name);
+  printTable(jsonToHtml(normalizedData, sort.sortTarget, getReportHeaderLabels(state.columns)), name);
+}
+
+function getReportHeaderLabels(columns) {
+  return Object.fromEntries(Object.entries(columns).map(([key, column]) => [
+    key,
+    column.label ? t(column.label) : column.label ?? key,
+  ]));
 }
 </script>
 

@@ -511,7 +511,7 @@ export function createMjszTvLink({ locale = 'hu', gameId }) {
 
 const doubleQuoteRe = /"/g;
 
-export function jsonToCsv(data) {
+export function jsonToCsv(data, headerLabels = {}) {
   if (!data.length)
     return '';
 
@@ -522,7 +522,7 @@ export function jsonToCsv(data) {
   );
 
   return [
-    headers.join(';'),
+    headers.map(header => escape(headerLabels[header] ?? header)).join(';'),
     ...rows,
   ].join('\n');
 }
@@ -531,18 +531,18 @@ function escape(value) {
   if (value === null || value === undefined)
     return '';
   const str = String(value);
-  if (str.includes('"') || str.includes(',') || str.includes('\n')) {
+  if (str.includes('"') || str.includes(',') || str.includes(';') || str.includes('\n')) {
     return `"${str.replace(doubleQuoteRe, '""')}"`;
   }
   return str;
 }
 
-export function jsonToHtml(data, sortTarget) {
+export function jsonToHtml(data, sortTarget, headerLabels = {}) {
   if (!data.length)
     return '';
 
   const headers = Object.keys(data[0]);
-  const headerRow = headers.map(header => `<th>${escapeHtml(header)}</th>`).join('');
+  const headerRow = headers.map(header => `<th>${escapeHtml(headerLabels[header] ?? header)}</th>`).join('');
   const rows = data.map(row => `<tr>${headers.map((header) => {
     const value = escapeHtml(row[header]);
     return `<td>${header === sortTarget ? `<b>${value}</b>` : value}</td>`;
