@@ -3,6 +3,25 @@
     --_lighten: oklch(from var(--mvw-link-color) calc(l * 1.15) c h);
     --_darken: oklch(from var(--mvw-link-color) calc(l * 0.85) c h);
 
+    &:has(svg) {
+      display: flex;
+      gap: var(--size-4);
+      align-items: center;
+    }
+
+    &[data-variant='outline'] {
+      block-size: var(--size-32);
+      font-size: var(--mvw-input-font-size);
+      border: var(--field-border-width, 1px) solid var(--mvw-input-border-color);
+      border-radius: var(--mvw-input-border-radius);
+      padding-inline: var(--_field-padding-inline);
+    }
+
+    &[data-state='open'] {
+      color: var(--mvw-text-highlighted);
+      background-color: var(--mvw-bg-muted);
+    }
+
     &[data-variant='link'] {
       padding: 0;
       color: var(--mvw-link-color);

@@ -1,6 +1,7 @@
 <script setup>
-import { BaseSelect, FormField } from '@mjsz-vbr-elements/core/components';
+import { BaseSelect, FloatingPanel, FormField } from '@mjsz-vbr-elements/core/components';
 import { useI18n } from '@mjsz-vbr-elements/core/composables';
+import { IconDownload, IconFileSpreadsheet, IconPrint } from '@mjsz-vbr-elements/shared/icons';
 import { computed } from 'vue';
 import { REPORT_TYPE_PLAYERS, REPORT_TYPE_TEAMS } from './statistics.internal';
 
@@ -54,6 +55,11 @@ const props = defineProps({
     type: String,
     default: '',
   },
+
+  appendTo: {
+    type: [Object, String],
+    default: null,
+  },
 });
 
 const emit = defineEmits([
@@ -63,6 +69,7 @@ const emit = defineEmits([
   'onReportChange',
   'onTeamChange',
   'onStatTypeChange',
+  'onDownloadCsv',
 ]);
 
 const { t } = useI18n();
@@ -125,7 +132,7 @@ function onStatTypeChange(value) {
       </BaseSelect>
     </FormField>
     <template v-if="reportType === 'players'">
-      <FormField :label=" t('selection.teams')" name="teams">
+      <FormField :label="t('selection.teams')" name="teams">
         <BaseSelect id="teams" v-model="teamSelect" :disabled="reportType !== 'players'">
           <option :value="null">
             {{ t('common.all') }}
@@ -145,6 +152,42 @@ function onStatTypeChange(value) {
         >
       </FormField>
     </template>
+    <FormField :label="t('export.label')" name="teams">
+      <FloatingPanel :offset="2" placement="bottom-end" :append-to="appendTo" theme="content" :is-arrow-visible="false">
+        <template #default="{ setRef, open, toggle, nextFocus }">
+          <button :ref="setRef" type="button" aria-label="more" data-variant="outline" :data-state="open ? 'open' : 'closed'" class="button" @click.stop.prevent="toggle" @keydown.tab="nextFocus">
+            <IconDownload />{{ t('export.button') }}
+          </button>
+        </template>
+        <template #content>
+          <ul class="list">
+            <li>
+              <a
+                href="#"
+                class="is-dropdown-item"
+              >
+                <div class="start">
+                  <IconPrint />
+                </div>
+                <div class="text">
+                  {{ t('export.print') }}
+                </div>
+              </a>
+            </li>
+            <li>
+              <button class="is-dropdown-item" @click="emit('onDownloadCsv')">
+                <div class="start">
+                  <IconFileSpreadsheet />
+                </div>
+                <div class="text">
+                  {{ t('export.csv') }}
+                </div>
+              </button>
+            </li>
+          </ul>
+        </template>
+      </FloatingPanel>
+    </FormField>
   </div>
 
   <nav class="tabs underlined">

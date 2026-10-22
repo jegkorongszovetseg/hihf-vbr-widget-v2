@@ -508,3 +508,31 @@ export function mjszTvLinkVisibility(gameData) {
 export function createMjszTvLink({ locale = 'hu', gameId }) {
   return `https://www.mjsz.tv/${locale}/game?ext-id=${gameId}`;
 }
+
+const doubleQuoteRe = /"/g;
+
+export function jsonToCsv(data) {
+  if (!data.length)
+    return '';
+
+  const headers = Object.keys(data[0]);
+
+  const rows = data.map(row =>
+    headers.map(h => escape(row[h])).join(';'),
+  );
+
+  return [
+    headers.join(';'),
+    ...rows,
+  ].join('\n');
+}
+
+function escape(value) {
+  if (value === null || value === undefined)
+    return '';
+  const str = String(value);
+  if (str.includes('"') || str.includes(',') || str.includes('\n')) {
+    return `"${str.replace(doubleQuoteRe, '""')}"`;
+  }
+  return str;
+}

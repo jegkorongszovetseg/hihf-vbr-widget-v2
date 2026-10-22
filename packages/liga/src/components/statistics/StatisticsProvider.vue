@@ -8,8 +8,10 @@ import {
   convertTeams,
   convertTimesMinToMinSec,
   convertTimesSecToMin,
+  download,
   head,
   InvalidSeasonName,
+  jsonToCsv,
   path,
   pick,
   playerName,
@@ -269,6 +271,27 @@ async function init() {
   await fetchStatistic();
 }
 init();
+
+function onDownloadCsv() {
+  const filename = [state.championshipId, state.reportType, state.currentReport, state.section].join('-');
+  const normalizedData = normalizeReportData(state, sort);
+  download(jsonToCsv(normalizedData), filename);
+}
+
+function normalizeReportData(state, sort) {
+  const filteredData = filterAllReportData(state, sort);
+  const columnKeys = Object.keys(state.columns);
+  return filteredData.rows.map(row => pick(columnKeys, row));
+}
+
+function filterAllReportData(state, sort) {
+  return convert(state.rows)
+    .filter(state.teamFilter, [['team', 'id']], true)
+    .filter(state.playerFilter, ['name'])
+    .sorted(sort)
+    .addIndex(sort.sortTarget)
+    .value();
+}
 </script>
 
 <template>
@@ -303,6 +326,7 @@ init();
         onStatTypeChange,
         onTeamChange,
         onPlayerInput,
+        onDownloadCsv,
       },
       onPaginatorChange,
       onSort,
