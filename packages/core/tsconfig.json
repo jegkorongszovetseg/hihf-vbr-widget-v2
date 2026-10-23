@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@mjsz-vbr-elements/shared": ["../shared/index.js"],
       "@mjsz-vbr-elements/shared/*": ["../shared/*"],
