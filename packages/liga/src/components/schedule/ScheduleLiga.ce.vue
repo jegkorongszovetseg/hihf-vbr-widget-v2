@@ -12,6 +12,7 @@ import { unrefElement } from '@vueuse/core';
 import { computed, ref, unref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
+import ro from '../../locales/ro.json';
 import DataProvider from './DataProvider.vue';
 import GameItem from './Item.vue';
 import ScheduleSelector from './ScheduleSelector.vue';
@@ -52,7 +53,7 @@ const props = defineProps({
 
 const DEFAULT_LIGA_GAME_RESOLVER = '/game/id/{gameId}';
 
-const messages = { en, hu };
+const messages = { en, hu, ro };
 
 const mainElement = ref(null);
 const selectorElement = ref(null);

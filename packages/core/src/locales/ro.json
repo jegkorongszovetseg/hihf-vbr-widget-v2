@@ -1,0 +1,469 @@
+{
+  "errors": {
+    "undefined-column": "Coloana {column} nu există!",
+    "invalid-season-name": "Numele sezonului nu este valid",
+    "api-key-not-found": "Cheia API nu a fost găsită",
+    "gameData": "Datele meciului: {0}",
+    "gameStats": "Statisticile meciului: {0}",
+    "gameEvents": "Evenimentele meciului: {0}",
+    "gameOfficials": "Oficialii meciului: {0}"
+  },
+  "common": {
+    "loading": "Se încarcă...",
+    "noData": "Nu există date de afișat",
+    "selectTimezone": "*Toate orele sunt afișate conform fusului orar al computerului ({timezone}). Schimbă: ",
+    "hungary": "Ungaria",
+    "romania": "România",
+    "shootoutShort": "SO",
+    "overtimeShort": "OT",
+    "all": "Toate",
+    "report": "Foaia de joc",
+    "video": "Video",
+    "retry": "Încearcă din nou"
+  },
+  "additionalText": {
+    "inheritedPoints": {
+      "prependix": "Pe baza rezultatelor din faza precedentă a campionatului, ",
+      "content": "echipa {team} are {points} puncte suplimentare",
+      "appendix": "."
+    },
+    "penaltyPoints": {
+      "prependix": "* ",
+      "content": "{points} puncte scăzute echipei {team}",
+      "appendix": " în urma deciziei Comisiei de Disciplină."
+    }
+  },
+  "table": {
+    "blank": "#",
+    "info": "{min} - {max} din {total} înregistrări",
+    "team": {
+      "short": "Echipă",
+      "tooltip": "Numele echipei"
+    },
+    "game": {
+      "short": "MJ",
+      "tooltip": "Meciuri jucate"
+    },
+    "pper": {
+      "short": "Perioade",
+      "tooltip": "Numărul total de perioade jucate"
+    },
+    "wins": {
+      "short": "V",
+      "tooltip": "Victorii"
+    },
+    "draw": {
+      "short": "E",
+      "tooltip": "Egaluri"
+    },
+    "otw": {
+      "short": "VPrel",
+      "tooltip": "Victorii în prelungiri"
+    },
+    "sow": {
+      "short": "VSD",
+      "tooltip": "Victorii la loviturile de departajare"
+    },
+    "sol": {
+      "short": "ÎSD",
+      "tooltip": "Înfrângeri la loviturile de departajare"
+    },
+    "otl": {
+      "short": "ÎPrel",
+      "tooltip": "Înfrângeri în prelungiri"
+    },
+    "losses": {
+      "short": "Î",
+      "tooltip": "Înfrângeri"
+    },
+    "goalFor": {
+      "short": "GM",
+      "tooltip": "Goluri marcate"
+    },
+    "goalAgainst": {
+      "short": "GP",
+      "tooltip": "Goluri primite"
+    },
+    "goalDiff": {
+      "short": "DG",
+      "tooltip": "Diferența de goluri"
+    },
+    "points": {
+      "short": "P",
+      "tooltip": "Puncte"
+    },
+    "name": {
+      "short": "Nume",
+      "tooltip": "Numele jucătorului"
+    },
+    "goals": {
+      "short": "G",
+      "tooltip": "Goluri"
+    },
+    "assists": {
+      "short": "A",
+      "tooltip": "Pase decisive"
+    },
+    "plusMinus": {
+      "short": "+/-",
+      "tooltip": "Plus/minus"
+    },
+    "sog": {
+      "short": "Ș",
+      "tooltip": "Șuturi pe poartă"
+    },
+    "so": {
+      "short": "MFI",
+      "tooltip": "Meciuri fără gol primit"
+    },
+    "sogPercent": {
+      "short": "Ș%",
+      "tooltip": "Procentajul șuturilor pe poartă"
+    },
+    "gameName": {
+      "short": "#",
+      "tooltip": "Numele meciului"
+    },
+    "gameDate": {
+      "short": "Data",
+      "tooltip": "Data programată a meciului"
+    },
+    "gameDateTime": {
+      "short": "*Ora ({offsetName})",
+      "tooltip": "Ora programată a meciului (numele fusului orar)"
+    },
+    "homeTeam": {
+      "short": "Gazde",
+      "tooltip": "Echipa gazdă"
+    },
+    "awayTeam": {
+      "short": "Oaspeți",
+      "tooltip": "Echipa oaspete"
+    },
+    "location": {
+      "short": "Locație",
+      "tooltip": "Locația meciului"
+    },
+    "broadcast": {
+      "short": "Transmisiune",
+      "tooltip": "Transmisiune televizată"
+    },
+    "minorPenalties": {
+      "short": "MINOR",
+      "tooltip": "Penalizări minore"
+    },
+    "majorPenalties": {
+      "short": "MAJOR",
+      "tooltip": "Penalizări majore"
+    },
+    "misconducts": {
+      "short": "MISC",
+      "tooltip": "Penalizări pentru comportament nesportiv"
+    },
+    "gameMisconducts": {
+      "short": "GA-MI",
+      "tooltip": "Penalizări de meci pentru comportament nesportiv"
+    },
+    "pim": {
+      "short": "PM",
+      "tooltip": "Minute de penalizare"
+    },
+    "pimPerGame": {
+      "short": "PM/M",
+      "tooltip": "Minute de penalizare pe meci"
+    },
+    "gpgk": {
+      "short": "MJ",
+      "tooltip": "Meciuri în care a fost înscris pe foaia de joc"
+    },
+    "gpi": {
+      "short": "MJ",
+      "tooltip": "Meciuri în care a jucat"
+    },
+    "toi": {
+      "short": "TJG",
+      "tooltip": "Timp petrecut pe gheață"
+    },
+    "toiPercent": {
+      "short": "TJG%",
+      "tooltip": "Timp petrecut pe gheață, exprimat procentual"
+    },
+    "ga": {
+      "short": "GP",
+      "tooltip": "Goluri primite"
+    },
+    "gaa": {
+      "short": "GPM",
+      "tooltip": "Media golurilor primite"
+    },
+    "sa": {
+      "short": "ȘP",
+      "tooltip": "Șuturi primite"
+    },
+    "svs": {
+      "short": "AP",
+      "tooltip": "Șuturi apărate"
+    },
+    "svsPercent": {
+      "short": "AP%",
+      "tooltip": "Procentajul șuturilor apărate"
+    },
+    "homeHeader": {
+      "short": "Gazde:",
+      "tooltip": ""
+    },
+    "awayHeader": {
+      "short": "Oaspeți:",
+      "tooltip": ""
+    },
+    "totalHeader": {
+      "short": "Total:",
+      "tooltip": ""
+    },
+    "homeGame": {
+      "short": "MJ",
+      "tooltip": "Meciuri jucate acasă"
+    },
+    "awayGame": {
+      "short": "MJ",
+      "tooltip": "Meciuri jucate în deplasare"
+    },
+    "totalGame": {
+      "short": "MJ",
+      "tooltip": "Numărul total de meciuri jucate"
+    },
+    "homeAttendance": {
+      "short": "Spectatori",
+      "tooltip": "Spectatori la meciurile de acasă"
+    },
+    "awayAttendance": {
+      "short": "Spectatori",
+      "tooltip": "Spectatori la meciurile din deplasare"
+    },
+    "totalAttendance": {
+      "short": "Spectatori",
+      "tooltip": "Numărul total de spectatori"
+    },
+    "homeAttendanceAvg": {
+      "short": "Medie",
+      "tooltip": "Media spectatorilor la meciurile de acasă"
+    },
+    "awayAttendanceAvg": {
+      "short": "Medie",
+      "tooltip": "Media spectatorilor la meciurile din deplasare"
+    },
+    "totalAttendanceAvg": {
+      "short": "Medie",
+      "tooltip": "Media totală a spectatorilor"
+    },
+    "powerplayDisadvantages": {
+      "short": "INF",
+      "tooltip": "Inferiorități numerice (numărul situațiilor de inferioritate)"
+    },
+    "dvgTime": {
+      "short": "INF-T",
+      "tooltip": "Timp petrecut în inferioritate numerică"
+    },
+    "dvgTimePP1": {
+      "short": "INF-T PP1",
+      "tooltip": "Timp petrecut în inferioritate numerică simplă"
+    },
+    "dvgTimePP2": {
+      "short": "INF-T PP2",
+      "tooltip": "Timp petrecut în inferioritate numerică dublă"
+    },
+    "ppga": {
+      "short": "GPIN",
+      "tooltip": "Goluri primite în inferioritate numerică"
+    },
+    "shgf": {
+      "short": "GMÎN",
+      "tooltip": "Goluri marcate în inferioritate numerică"
+    },
+    "pkPercent": {
+      "short": "INF%",
+      "tooltip": "Procentajul de neutralizare a superiorității numerice"
+    },
+    "adv": {
+      "short": "SUP",
+      "tooltip": "Superiorități numerice (numărul situațiilor de superioritate)"
+    },
+    "advTime": {
+      "short": "SUP-T",
+      "tooltip": "Timp petrecut în superioritate numerică"
+    },
+    "advTimePP1": {
+      "short": "SUP-T PP1",
+      "tooltip": "Timp petrecut în superioritate numerică simplă"
+    },
+    "advTimePP2": {
+      "short": "SUP-T PP2",
+      "tooltip": "Timp petrecut în superioritate numerică dublă"
+    },
+    "ppgf": {
+      "short": "GMSN",
+      "tooltip": "Goluri marcate în superioritate numerică"
+    },
+    "shga": {
+      "short": "GPÎN",
+      "tooltip": "Goluri primite în superioritate numerică"
+    },
+    "ppPercent": {
+      "short": "SUP%",
+      "tooltip": "Procentajul de valorificare a superiorității numerice"
+    },
+    "gfgp": {
+      "short": "GM/MJ",
+      "tooltip": "Media golurilor marcate pe meci"
+    },
+    "gagp": {
+      "short": "GP/MJ",
+      "tooltip": "Media golurilor primite pe meci"
+    },
+    "sogp": {
+      "short": "Ș/MJ",
+      "tooltip": "Media șuturilor pe poartă pe meci"
+    },
+    "sagp": {
+      "short": "ȘP/MJ",
+      "tooltip": "Media șuturilor primite pe meci"
+    },
+    "jerseyNumber": {
+      "short": "#",
+      "tooltip": "Numărul de pe tricou"
+    },
+    "row": {
+      "short": "Rând",
+      "tooltip": "Rând"
+    },
+    "position": {
+      "short": "Poziție",
+      "tooltip": "Poziție"
+    },
+    "teamOfficials": {
+      "short": "Oficialii echipei",
+      "tooltip": "Oficialii echipei"
+    },
+    "score": {
+      "short": "Scor",
+      "tooltip": "Scorul actual al meciului"
+    },
+    "opponent": {
+      "short": "Adversar",
+      "tooltip": "Adversar"
+    },
+    "result": {
+      "short": "Rezultat",
+      "tooltip": "Rezultat"
+    },
+    "resultType": {
+      "short": "#",
+      "tooltip": "Tipul rezultatului"
+    },
+    "atoi": {
+      "short": "TMMG",
+      "tooltip": "Timpul mediu petrecut pe gheață"
+    },
+    "shf": {
+      "short": "Sch",
+      "tooltip": "Schimburi"
+    },
+    "ashf": {
+      "short": "Sch/MJ",
+      "tooltip": "Media schimburilor"
+    },
+    "eqToi": {
+      "short": "EG-TJG",
+      "tooltip": "Timp petrecut pe gheață la egalitate numerică"
+    },
+    "pp1Toi": {
+      "short": "SUP1-TJG",
+      "tooltip": "Timp petrecut pe gheață în superioritate numerică simplă"
+    },
+    "pp2Toi": {
+      "short": "SUP2-TJG",
+      "tooltip": "Timp petrecut pe gheață în superioritate numerică dublă"
+    },
+    "sh1Toi": {
+      "short": "INF1-TJG",
+      "tooltip": "Timp petrecut pe gheață în inferioritate numerică simplă"
+    },
+    "sh2Toi": {
+      "short": "INF2-TJG",
+      "tooltip": "Timp petrecut pe gheață în inferioritate numerică dublă"
+    },
+    "eqAToi": {
+      "short": "EG-TMMG",
+      "tooltip": "Timpul mediu petrecut pe gheață la egalitate numerică"
+    },
+    "pp1AToi": {
+      "short": "SUP1-TMMG",
+      "tooltip": "Timpul mediu petrecut pe gheață în superioritate numerică simplă"
+    },
+    "pp2AToi": {
+      "short": "SUP2-TMMG",
+      "tooltip": "Timpul mediu petrecut pe gheață în superioritate numerică dublă"
+    },
+    "sh1AToi": {
+      "short": "INF1-TMMG",
+      "tooltip": "Timpul mediu petrecut pe gheață în inferioritate numerică simplă"
+    },
+    "sh2AToi": {
+      "short": "INF2-TMMG",
+      "tooltip": "Timpul mediu petrecut pe gheață în inferioritate numerică dublă"
+    },
+    "role": {
+      "short": "Rol",
+      "tooltip": "Rol"
+    }
+  },
+  "game": {
+    "data": {
+      "localTime": "Ora locală a meciului"
+    },
+    "status": {
+      "jury": "Decizia comisiei de joc",
+      "delayed": "Meci amânat"
+    },
+    "period": {
+      "wu": "Încălzire",
+      "pre": "Încălzire încheiată",
+      "p1": "Prima repriză",
+      "p1_int": "Prima repriză încheiată",
+      "p2": "A doua repriză",
+      "p2_int": "A doua repriză încheiată",
+      "p3": "A treia repriză",
+      "p3_int": "A treia repriză încheiată",
+      "p4": "A patra repriză",
+      "p4_int": "A patra repriză încheiată",
+      "p5": "A cincea repriză",
+      "p5_int": "A cincea repriză încheiată",
+      "p6": "A șasea repriză",
+      "p6_int": "A șasea repriză încheiată",
+      "ot": "Prelungiri",
+      "ot_int": "Prelungiri încheiate",
+      "so": "Lovituri de departajare",
+      "so_int": "Lovituri de departajare încheiate",
+      "end": "Meci încheiat",
+      "Bemelegítés": "Încălzire",
+      "Bemelegítés vége": "Încălzire încheiată",
+      "1. harmad": "Prima repriză",
+      "1. harmad vége": "Prima repriză încheiată",
+      "2. harmad": "A doua repriză",
+      "2. harmad vége": "A doua repriză încheiată",
+      "3. harmad": "A treia repriză",
+      "3. harmad vége": "A treia repriză încheiată",
+      "4. harmad": "A patra repriză",
+      "4. harmad vége": "A patra repriză încheiată",
+      "5. harmad": "A cincea repriză",
+      "5. harmad vége": "A cincea repriză încheiată",
+      "6. harmad": "A șasea repriză",
+      "6. harmad vége": "A șasea repriză încheiată",
+      "Hosszabbítás": "Prelungiri",
+      "Hosszabbítás vége": "Prelungiri încheiate",
+      "Büntetőlövések": "Lovituri de departajare",
+      "Végeredmény": "Meci încheiat",
+      "Szétlövés": "Lovituri de departajare"
+    }
+  }
+}

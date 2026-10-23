@@ -3,6 +3,7 @@ import { ErrorNotice, ErrorProvider, I18NProvider, Image } from '@mjsz-vbr-eleme
 import { ref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
+import ro from '../../locales/ro.json';
 // import { externalTeamLinkResolver, offsetName } from '@mjsz-vbr-elements/core/utils';
 import DataProvider from './DataProvider.vue';
 import Games from './Games.vue';
@@ -48,7 +49,7 @@ const props = defineProps({
   },
 });
 
-const messages = { en, hu };
+const messages = { en, hu, ro };
 
 const tooltipContainer = ref(null);
 

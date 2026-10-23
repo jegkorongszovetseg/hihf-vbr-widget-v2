@@ -4,6 +4,7 @@ import { computed, defineComponent } from 'vue';
 import { createI18n } from '../composables/useI18n';
 import en from '../locales/en.json';
 import hu from '../locales/hu.json';
+import ro from '../locales/ro.json';
 
 export default defineComponent({
   props: {
@@ -18,7 +19,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const messages = mergeDeepRight({ hu, en }, props.messages);
+    const messages = mergeDeepRight({ hu, en, ro }, props.messages);
     const { translate } = createI18n({
       locale: computed(() => props.locale),
       messages,

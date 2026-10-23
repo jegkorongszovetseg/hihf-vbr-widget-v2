@@ -11,6 +11,7 @@ import { externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import { ref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
+import ro from '../../locales/ro.json';
 import DataProvider from './DataProvider.vue';
 import { COLUMNS_LIVE_STANDINGS_P_3, TOGGLE_DEFAULT, TOGGLE_LIVE } from './standings.internal';
 import StandingsTable from './StandingsTable.vue';
@@ -37,7 +38,7 @@ const props = defineProps({
   },
 });
 
-const messages = { en, hu };
+const messages = { en, hu, ro };
 
 const tooltipContainer = ref(null);
 
