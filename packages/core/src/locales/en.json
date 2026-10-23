@@ -164,10 +164,6 @@
       "short": "GA-MI",
       "tooltip": "Penalties Game Misconduct"
     },
-    "matchPenalties": {
-      "short": "MATCH",
-      "tooltip": "Penalties Match"
-    },
     "pim": {
       "short": "PIM",
       "tooltip": "Penalty Minutes"

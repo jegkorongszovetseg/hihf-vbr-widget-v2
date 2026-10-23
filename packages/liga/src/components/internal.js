@@ -291,11 +291,6 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
     tooltip: 'table.gameMisconducts.tooltip',
     class: 'is-possible-empty',
   },
-  p25: {
-    label: 'table.matchPenalties.short',
-    tooltip: 'table.matchPenalties.tooltip',
-    class: 'is-possible-empty',
-  },
   pim: {
     label: 'table.pim.short',
     tooltip: 'table.pim.tooltip',

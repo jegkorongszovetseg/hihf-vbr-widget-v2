@@ -148,7 +148,6 @@ const seasonColumns = computed(() =>
           'p5',
           'p10',
           'p20',
-          'p25',
           'gkd',
           'gpi',
           'mipMin',

@@ -164,10 +164,6 @@
       "short": "GA-MI",
       "tooltip": "Fegyelmi büntetés (20p)"
     },
-    "matchPenalties": {
-      "short": "MATCH",
-      "tooltip": "Végleges kiállítások (25p)"
-    },
     "pim": {
       "short": "BÜP",
       "tooltip": "Büntetés Percek"

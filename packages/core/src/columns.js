@@ -460,14 +460,6 @@ export const COLUMNS_FIELD_PLAYERS_PENALTY = {
       { target: 'pim', direction: SORT_STATE_DESCEND },
     ],
   },
-  p25: {
-    label: 'table.matchPenalties.short',
-    tooltip: 'table.matchPenalties.tooltip',
-    sortOrders: [
-      { target: 'p25', direction: SORT_STATE_DESCEND },
-      { target: 'pim', direction: SORT_STATE_DESCEND },
-    ],
-  },
   pim: {
     label: 'table.pim.short',
     tooltip: 'table.pim.tooltip',
@@ -817,14 +809,6 @@ export const COLUMNS_TEAMS_FAIRPLAY = {
     tooltip: 'table.gameMisconducts.tooltip',
     sortOrders: [
       { target: 'p20', direction: SORT_STATE_DESCEND },
-      { target: 'pim', direction: SORT_STATE_DESCEND },
-    ],
-  },
-  p25: {
-    label: 'table.matchPenalties.short',
-    tooltip: 'table.matchPenalties.tooltip',
-    sortOrders: [
-      { target: 'p25', direction: SORT_STATE_DESCEND },
       { target: 'pim', direction: SORT_STATE_DESCEND },
     ],
   },
