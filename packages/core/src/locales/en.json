@@ -465,5 +465,12 @@
       "Végeredmény": "Game Completed",
       "Szétlövés": "Shoot Out"
     }
+  },
+  "export": {
+    "label": "Export",
+    "button": "Export",
+    "print": "Print",
+    "csv": "CSV",
+    "copy": "Copy"
   }
 }

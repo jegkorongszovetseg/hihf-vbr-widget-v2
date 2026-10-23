@@ -508,3 +508,75 @@ export function mjszTvLinkVisibility(gameData) {
 export function createMjszTvLink({ locale = 'hu', gameId }) {
   return `https://www.mjsz.tv/${locale}/game?ext-id=${gameId}`;
 }
+
+const doubleQuoteRe = /"/g;
+
+export function jsonToCsv(data, headerLabels = {}) {
+  if (!data.length)
+    return '';
+
+  const headers = Object.keys(data[0]);
+
+  const rows = data.map(row =>
+    headers.map(h => escape(row[h])).join(';'),
+  );
+
+  return [
+    headers.map((header) => {
+      const label = headerLabels[header];
+      return escape(label?.short ?? label ?? header);
+    }).join(';'),
+    ...rows,
+  ].join('\n');
+}
+
+function escape(value) {
+  if (value === null || value === undefined)
+    return '';
+  const str = String(value);
+  if (str.includes('"') || str.includes(',') || str.includes(';') || str.includes('\n')) {
+    return `"${str.replace(doubleQuoteRe, '""')}"`;
+  }
+  return str;
+}
+
+export function jsonToHtml(data, sortTarget, headerLabels = {}) {
+  if (!data.length)
+    return '';
+
+  const headers = Object.keys(data[0]);
+  const headerRow = headers.map((header) => {
+    const label = headerLabels[header];
+    return `<th>${escapeHtml(label?.short ?? label ?? header)}</th>`;
+  }).join('');
+  const rows = data.map(row => `<tr>${headers.map((header) => {
+    const value = escapeHtml(row[header]);
+    return `<td>${header === sortTarget ? `<b>${value}</b>` : value}</td>`;
+  }).join('')}</tr>`).join('');
+  const explanations = headers
+    .map((header) => {
+      const label = headerLabels[header];
+      if (!label?.short || !label.tooltip)
+        return '';
+      return `<tr><td>${escapeHtml(label.short)}</td><td>${escapeHtml(label.tooltip)}</td></tr>`;
+    })
+    .join('');
+
+  const explanationTable = explanations ? `<table class="explanation"><tbody>${explanations}</tbody></table>` : '';
+  return `<table><thead><tr>${headerRow}</tr></thead><tbody>${rows}</tbody></table>${explanationTable}`;
+}
+
+const HTML_ESCAPE_RE = /[&<>"']/g;
+const HTML_ESCAPE_MAP = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  '\'': '&#39;',
+};
+
+function escapeHtml(value) {
+  if (value === null || value === undefined)
+    return '';
+  return String(value).replace(HTML_ESCAPE_RE, character => HTML_ESCAPE_MAP[character]);
+}
