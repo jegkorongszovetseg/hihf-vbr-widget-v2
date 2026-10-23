@@ -5,6 +5,7 @@ import { externalPlayerLinkResolver, externalTeamLinkResolver } from '@mjsz-vbr-
 import { ref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
+import ro from '../../locales/ro.json';
 import StatisticSelector from './StatisticSelector.vue';
 import StatisticsProvider from './StatisticsProvider.vue';
 
@@ -39,7 +40,7 @@ const props = defineProps({
   ...teamStatsProps,
 });
 
-const messages = { en, hu };
+const messages = { en, hu, ro };
 
 const tooltipContainer = ref(null);
 

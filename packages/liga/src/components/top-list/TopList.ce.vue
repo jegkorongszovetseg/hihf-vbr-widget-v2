@@ -11,6 +11,7 @@ import { useArraySome } from '@vueuse/core';
 import { computed, ref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
+import ro from '../../locales/ro.json';
 import { groupSections } from './internal';
 import TopListContainer from './List.vue';
 
@@ -51,7 +52,7 @@ const props = defineProps({
   },
 });
 
-const messages = { en, hu };
+const messages = { en, hu, ro };
 
 const phaseBaseId = ref(0);
 

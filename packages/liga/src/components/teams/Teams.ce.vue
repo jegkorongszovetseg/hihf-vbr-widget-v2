@@ -10,6 +10,7 @@ import {
 import { externalTeamLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
+import ro from '../../locales/ro.json';
 import DataProvider from './DataProvider.vue';
 
 const props = defineProps({
@@ -34,7 +35,7 @@ const props = defineProps({
   },
 });
 
-const messages = { en, hu };
+const messages = { en, hu, ro };
 
 function externalTeamLink(teamId, championshipId) {
   return externalTeamLinkResolver(props.externalTeamResolver, { team: { id: teamId }, championshipId });

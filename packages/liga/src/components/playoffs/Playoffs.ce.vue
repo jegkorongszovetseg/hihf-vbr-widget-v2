@@ -6,6 +6,7 @@ import { externalGameLinkResolver, format, getLocalTimezone } from '@mjsz-vbr-el
 import { computed } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
+import ro from '../../locales/ro.json';
 
 const props = defineProps({
   locale: {
@@ -44,7 +45,7 @@ execute();
 
 const timezone = getLocalTimezone();
 
-const messages = { en, hu };
+const messages = { en, hu, ro };
 
 function externalGameResolver(game) {
   return externalGameLinkResolver(props.externalGameResolver || DEFAULT_LIGA_GAME_RESOLVER, game);

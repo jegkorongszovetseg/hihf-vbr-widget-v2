@@ -3,6 +3,7 @@ import { ErrorNotice, ErrorProvider, I18NProvider, Image } from '@mjsz-vbr-eleme
 import { externalGameLinkResolver, externalPlayerLinkResolver } from '@mjsz-vbr-elements/core/utils';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
+import ro from '../../locales/ro.json';
 import DataProvider from './DataProvider.vue';
 import PageGames from './pages/Games.vue';
 import PageInfo from './pages/Info.vue';
@@ -42,7 +43,7 @@ const props = defineProps({
   },
 });
 
-const messages = { en, hu };
+const messages = { en, hu, ro };
 
 const externalPlayerLink = params => externalPlayerLinkResolver(props.externalPlayerResolver, params);
 const externalGameLink = params => externalGameLinkResolver(props.externalGameResolver, params);

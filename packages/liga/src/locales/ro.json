@@ -1,0 +1,127 @@
+{
+  "selection": {
+    "report": "Raport",
+    "video": "Video",
+    "season": "Sezon",
+    "section": "Secțiune",
+    "phases": "Faze",
+    "noPhases": "Fără faze",
+    "teams": "Echipe",
+    "filterName": "Filtrează după nume",
+    "players": "Jucători",
+    "month": "Lună",
+    "homeOrAway": "Acasă sau în deplasare",
+    "home": "Acasă",
+    "away": "Deplasare"
+  },
+  "table": {
+    "nationality": {
+      "short": "Naționalitate",
+      "tooltip": "Naționalitate"
+    },
+    "birthDate": {
+      "short": "Data nașterii",
+      "tooltip": "Data nașterii"
+    },
+    "birthPlace": {
+      "short": "Locul nașterii",
+      "tooltip": "Locul nașterii"
+    },
+    "season": {
+      "short": "Sezon",
+      "tooltip": "Sezon"
+    },
+    "pp": {
+      "short": "PP",
+      "tooltip": "Superioritate numerică"
+    },
+    "pk": {
+      "short": "PK",
+      "tooltip": "Inferioritate numerică"
+    }
+  },
+  "report": {
+    "toi": "Timp petrecut pe gheață",
+    "points": "Puncte",
+    "goals": "Goluri",
+    "assists": "Pase decisive",
+    "penalties": "Penalizări",
+    "goalies": "Portari",
+    "goaliesLimit": "Portari sub 40%",
+    "teamAttendance": "Spectatori",
+    "teamFairplay": "Fair-play",
+    "teamPenaltyKilling": "Inferioritate numerică",
+    "teamPowerplay": "Superioritate numerică",
+    "teamScoringEfficiency": "Eficiență ofensivă"
+  },
+  "playoffs": {
+    "Negyeddöntő": "Sferturi de finală",
+    "Elődöntő": "Semifinală",
+    "Döntő": "Finală"
+  },
+  "teams": {
+    "tabs": {
+      "teamInfo": "Informații despre echipă",
+      "games": "Meciuri"
+    },
+    "goalies": "Portari",
+    "defenders": "Fundași",
+    "forwards": "Atacanți",
+    "fieldPlayers": "Jucători de câmp",
+    "games": "Meciuri",
+    "teamInfo": "Informații despre organizație",
+    "roster": "Lot",
+    "playerStats": "Statistici jucători",
+    "info": {
+      "organizationName": "Numele organizației:",
+      "organizationCountry": "Țara organizației:",
+      "organizationEmail": "E-mailul organizației:",
+      "organizationWebpage": "Site-ul organizației:",
+      "organizationPhoneNumber": "Numărul de telefon al organizației:",
+      "organizationAddresses": "Adresa organizației:",
+      "organizationFoundingDate": "Anul înființării organizației:"
+    }
+  },
+  "players": {
+    "age": "{years} ani",
+    "games": "Meciuri",
+    "seasons": "Sezoane"
+  },
+  "standings": {
+    "live": "În direct",
+    "default": "Clasament general"
+  },
+  "nationality": {
+    "hu": "Maghiar",
+    "ro": "Român",
+    "us": "American",
+    "il": "Israelian",
+    "ca": "Canadian",
+    "lv": "Leton",
+    "ee": "Estonian",
+    "ru": "Rus",
+    "fi": "Finlandez",
+    "si": "Sloven",
+    "sk": "Slovac",
+    "nl": "Olandez",
+    "by": "Belarus",
+    "cz": "Ceh",
+    "ua": "Ucrainean",
+    "lt": "Lituanian",
+    "it": "Italian",
+    "gb-eng": "Englez",
+    "rs": "Sârb",
+    "se": "Suedez",
+    "de": "German",
+    "gb": "Britanic",
+    "kz": "Kazah",
+    "dk": "Danez",
+    "pl": "Polonez",
+    "at": "Austriac",
+    "ch": "Elvețian",
+    "fr": "Francez",
+    "es": "Spaniol",
+    "hr": "Croat",
+    "no": "Norvegian"
+  }
+}

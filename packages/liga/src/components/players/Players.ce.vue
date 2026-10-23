@@ -11,6 +11,7 @@ import { externalPlayerLinkResolver, externalTeamLinkResolver } from '@mjsz-vbr-
 import { ref } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
+import ro from '../../locales/ro.json';
 import PlayersDataTable from '../common/PlayersDataTable.vue';
 import { COLUMNS_PLAYERS } from '../internal';
 import DataProvider from './DataProvider.vue';
@@ -47,7 +48,7 @@ const props = defineProps({
   },
 });
 
-const messages = { en, hu };
+const messages = { en, hu, ro };
 
 const tooltipContainer = ref(null);
 

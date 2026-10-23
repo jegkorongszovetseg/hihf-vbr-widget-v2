@@ -18,7 +18,7 @@ export const SORT_STATE_ORIGINAL = 'original';
 export const SORT_STATE_DESCEND = 'descend';
 export const SORT_STATE_ASCEND = 'ascend';
 
-export const LOCALE_FOR_LANG = new Map().set('hu', 'hu-hu').set('en', 'hu-gb');
+export const LOCALE_FOR_LANG = new Map().set('hu', 'hu-hu').set('en', 'hu-gb').set('ro', 'ro-ro');
 
 export const AVAILABLE_TIMEZONES_BY_COUNTRY = new Map()
   .set('Europe/Budapest', { countryLabelKey: 'hungary', timezone: 'Europe/Budapest' })

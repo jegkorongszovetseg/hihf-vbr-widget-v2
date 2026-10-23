@@ -11,6 +11,7 @@ import utc from 'dayjs/plugin/utc';
 import _weekday from 'dayjs/plugin/weekday';
 import { LOCALE_FOR_LANG } from '../constants.js';
 import 'dayjs/locale/hu';
+import 'dayjs/locale/ro';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
