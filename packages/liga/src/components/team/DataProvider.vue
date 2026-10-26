@@ -4,7 +4,6 @@ import {
   gameDateTime,
   gameResult,
   getLocalTimezone,
-  mergePlayerStats,
   rawConvert,
   sortGames,
   teamOpponent,
@@ -12,7 +11,7 @@ import {
   transformFieledPlayersStats,
   transformRosters,
 } from '@mjsz-vbr-elements/core/utils';
-import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
+import { useUrlSearchParams } from '@vueuse/core';
 import { computed, reactive, watch } from 'vue';
 import {
   PAGE_GAMES,
@@ -52,7 +51,7 @@ const state = reactive({
   page: params.page || PAGE_INFO,
   teamId: Number(params.teamId) || Number(props.teamId),
   championshipId: Number(params.championshipId) || Number(props.championshipId),
-  statistics: {},
+  // statistics: {},
   isStatsLoading: false,
 });
 
@@ -96,33 +95,43 @@ const { state: roster, execute: fetchTeamRoster } = useServices({
   onError,
 });
 
-const { state: fieldPlayers, execute: fetchFieldLeaders } = useServices({
-  options: {
-    path: '/v2/players-stats',
-    apiKey: props.apiKey,
-    params: computed(() => ({ championshipId: state.championshipId })),
-  },
-  transform: res => transformFieledPlayersStats(res, state.teamId),
-  onError,
-});
+// const { state: fieldPlayers, execute: fetchFieldLeaders } = useServices({
+//   options: {
+//     path: '/v2/players-stats',
+//     apiKey: props.apiKey,
+//     params: computed(() => ({ championshipId: state.championshipId })),
+//   },
+//   transform: res => transformFieledPlayersStats(res, state.teamId),
+//   onError,
+// });
 
-const { state: fieldPlayersPenalty, execute: fetchFieldPenalty } = useServices({
-  options: {
-    path: '/v2/players-penalty',
-    apiKey: props.apiKey,
-    params: computed(() => ({ championshipId: state.championshipId })),
-  },
-  transform: res => transformFieledPlayersStats(res, state.teamId),
-  onError,
-});
+// const { state: fieldPlayersPenalty, execute: fetchFieldPenalty } = useServices({
+//   options: {
+//     path: '/v2/players-penalty',
+//     apiKey: props.apiKey,
+//     params: computed(() => ({ championshipId: state.championshipId })),
+//   },
+//   transform: res => transformFieledPlayersStats(res, state.teamId),
+//   onError,
+// });
 
-const { state: goalieStats, execute: fetchGoalieStats } = useServices({
+// const { state: goalieStats, execute: fetchGoalieStats } = useServices({
+//   options: {
+//     path: '/v2/players-goalie',
+//     apiKey: props.apiKey,
+//     params: computed(() => ({ championshipId: state.championshipId })),
+//   },
+//   transform: res => transformFieledPlayersStats(res, state.teamId),
+//   onError,
+// });
+
+const { state: playerStatsByTeam, execute: fetchPlayerStatsByTeam } = useServices({
   options: {
-    path: '/v2/players-goalie',
+    path: '/v2/player-season-stats-by-team',
     apiKey: props.apiKey,
-    params: computed(() => ({ championshipId: state.championshipId })),
+    params: computed(() => ({ championshipId: state.championshipId, teamId: state.teamId })),
   },
-  transform: res => transformFieledPlayersStats(res, state.teamId),
+  transform: res => ({ players: transformFieledPlayersStats(res.players), goalies: transformFieledPlayersStats(res.goalies) }),
   onError,
 });
 
@@ -150,17 +159,18 @@ function fetchData(page) {
       fetchTeamRoster();
       break;
     case PAGE_PLAYER_STATS:
-      state.isStatsLoading = true;
-      useAsyncQueue([fetchGoalieStats, fetchFieldLeaders, fetchFieldPenalty], {
-        onFinished: () => {
-          state.isStatsLoading = false;
-          state.statistics = mergePlayerStats({
-            goalieStats: goalieStats.value,
-            fieldPlayers: fieldPlayers.value,
-            playersPenalty: fieldPlayersPenalty.value,
-          });
-        },
-      });
+      fetchPlayerStatsByTeam();
+      // state.isStatsLoading = true;
+      // useAsyncQueue([fetchGoalieStats, fetchFieldLeaders, fetchFieldPenalty], {
+      //   onFinished: () => {
+      //     state.isStatsLoading = false;
+      //     state.statistics = mergePlayerStats({
+      //       goalieStats: goalieStats.value,
+      //       fieldPlayers: fieldPlayers.value,
+      //       playersPenalty: fieldPlayersPenalty.value,
+      //     });
+      //   },
+      // });
       // state.isStatsLoading = false;
       break;
 
@@ -171,5 +181,5 @@ function fetchData(page) {
 </script>
 
 <template>
-  <slot v-bind="{ ...state, games, teamInfo, roster, fieldPlayers, fieldPlayersPenalty, onChangePage }" />
+  <slot v-bind="{ ...state, games, teamInfo, roster, playerStatsByTeam, onChangePage }" />
 </template>

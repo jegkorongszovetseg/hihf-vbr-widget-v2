@@ -206,6 +206,11 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
     tooltip: 'table.name.tooltip',
     class: 'font-bold text-start',
   },
+  position: {
+    label: 'table.position.short',
+    tooltip: 'table.position.tooltip',
+    class: 'uppercase',
+  },
   gp: {
     label: 'table.game.short',
     tooltip: 'table.game.tooltip',
@@ -222,6 +227,10 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
     label: 'table.points.short',
     tooltip: 'table.points.tooltip',
   },
+  pim: {
+    label: 'table.pim.short',
+    tooltip: 'table.pim.tooltip',
+  },
   plusMinus: {
     label: 'table.plusMinus.short',
     tooltip: 'table.plusMinus.tooltip',
@@ -234,7 +243,6 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
     label: 'table.sogPercent.short',
     tooltip: 'table.sogPercent.tooltip',
   },
-
   gkd: {
     label: 'table.gpgk.short',
     tooltip: 'table.gpgk.tooltip',
@@ -244,8 +252,8 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
     tooltip: 'table.gpi.tooltip',
   },
   mipMin: {
-    label: 'table.toi.short',
-    tooltip: 'table.toi.tooltip',
+    label: 'table.mip.short',
+    tooltip: 'table.mip.tooltip',
   },
   mipPercent: {
     label: 'table.toiPercent.short',
@@ -259,9 +267,21 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
     label: 'table.gaa.short',
     tooltip: 'table.gaa.tooltip',
   },
+  ppga: {
+    label: 'table.ppga.short',
+    tooltip: 'table.ppga.tooltip',
+  },
   sog: {
     label: 'table.sa.short',
     tooltip: 'table.sa.tooltip',
+  },
+  toiMin: {
+    label: 'table.toi.short',
+    tooltip: 'table.toi.tooltip',
+  },
+  atoiMin: {
+    label: 'table.toiPerGame.short',
+    tooltip: 'table.toiPerGame.tooltip',
   },
   svs: {
     label: 'table.svs.short',
@@ -270,6 +290,10 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
   svsPercent: {
     label: 'table.svsPercent.short',
     tooltip: 'table.svsPercent.tooltip',
+  },
+  sit: {
+    label: 'table.sit.short',
+    tooltip: 'table.sit.tooltip',
   },
   p2: {
     label: 'table.minorPenalties.short',
@@ -291,13 +315,20 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
     tooltip: 'table.gameMisconducts.tooltip',
     class: 'is-possible-empty',
   },
-  pim: {
-    label: 'table.pim.short',
-    tooltip: 'table.pim.tooltip',
-    class: 'is-possible-empty',
-  },
   pimPerGame: {
     label: 'table.pimPerGame.short',
     tooltip: 'table.pimPerGame.tooltip',
+  },
+  shf: {
+    label: 'table.shf.short',
+    tooltip: 'table.shf.tooltip',
+  },
+  ashf: {
+    label: 'table.ashf.short',
+    tooltip: 'table.ashf.tooltip',
+  },
+  so: {
+    label: 'table.so.short',
+    tooltip: 'table.so.tooltip',
   },
 };

@@ -2,7 +2,7 @@
 import { DataTable, Image, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
 import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
 import { DEFAULT_PORTRAIT_IMAGE_URL } from '@mjsz-vbr-elements/core/constants';
-import { omit } from '@mjsz-vbr-elements/core/utils';
+import { pick } from '@mjsz-vbr-elements/core/utils';
 import { ref } from 'vue';
 import { COLUMNS_PLAYER_SEASON_STATS } from '../../internal.js';
 
@@ -33,25 +33,29 @@ defineProps({
   },
 });
 
-const playersColumns = omit(
-  ['season', 'teamName', 'gkd', 'gpi', 'pimPerGame', 'mipMin', 'mipPercent', 'ga', 'gaa', 'sog', 'svs', 'svsPercent'],
+const playersColumns = pick(
+  ['playerPortrait', 'name', 'position', 'gp', 'goals', 'assists', 'points', 'pim', 'plusMinus', 'shots', 'shotPercent', 'toiMin', 'atoiMin', 'shf', 'ashf'],
   COLUMNS_PLAYER_SEASON_STATS,
 );
 
-const goalieColumns = omit(
+const goalieColumns = pick(
   [
-    'season',
-    'teamName',
-    'gp',
-    'goals',
-    'points',
-    'assists',
-    'plusMinus',
+    'playerPortrait',
+    'name',
+    'gkd',
+    'gpi',
     'mipMin',
     'mipPercent',
-    'shoots',
-    'shootPercent',
-    'pimPerGame',
+    'ga',
+    'gaa',
+    'ppga',
+    'sa',
+    'svs',
+    'svsPercent',
+    'sit',
+    'so',
+    'goals',
+    'assists',
   ],
   COLUMNS_PLAYER_SEASON_STATS,
 );

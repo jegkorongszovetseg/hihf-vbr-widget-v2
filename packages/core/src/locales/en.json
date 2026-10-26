@@ -89,7 +89,7 @@
       "tooltip": "Goal Differential"
     },
     "points": {
-      "short": "P",
+      "short": "PTS",
       "tooltip": "Points"
     },
     "name": {
@@ -109,16 +109,16 @@
       "tooltip": "Plus/Minus"
     },
     "sog": {
-      "short": "S",
+      "short": "SOG",
       "tooltip": "Shots on Goal"
+    },
+    "sogPercent": {
+      "short": "SG%",
+      "tooltip": "Percentage of Goals from Total shots"
     },
     "so": {
       "short": "SO",
       "tooltip": "Shutouts"
-    },
-    "sogPercent": {
-      "short": "S%",
-      "tooltip": "Shooting percentage"
     },
     "gameName": {
       "short": "#",
@@ -166,7 +166,7 @@
     },
     "pim": {
       "short": "PIM",
-      "tooltip": "Penalty Minutes"
+      "tooltip": "Penalties in Minutes"
     },
     "pimPerGame": {
       "short": "PIM/G",
@@ -181,12 +181,20 @@
       "tooltip": "Games Played In"
     },
     "toi": {
-      "short": "TOI",
-      "tooltip": "Time On Ice"
+      "short": "TM",
+      "tooltip": "Time minutes played"
     },
     "toiPercent": {
-      "short": "TOI%",
-      "tooltip": "Time On Ice as Percentage"
+      "short": "MIP%",
+      "tooltip": "MIP as Percentage"
+    },
+    "mip": {
+      "short": "MIP",
+      "tooltip": "Minutes and Seconds played"
+    },
+    "toiPerGame": {
+      "short": "M/G",
+      "tooltip": "Minutes per Game"
     },
     "ga": {
       "short": "GA",
@@ -205,8 +213,8 @@
       "tooltip": "Saves"
     },
     "svsPercent": {
-      "short": "SV%",
-      "tooltip": "Save Percentage"
+      "short": "SVS%",
+      "tooltip": "SVS as Percentage of Total SOG"
     },
     "homeHeader": {
       "short": "Home:",
@@ -337,8 +345,8 @@
       "tooltip": "Row"
     },
     "position": {
-      "short": "Position",
-      "tooltip": "Position"
+      "short": "Pos.",
+      "tooltip": "Position on team"
     },
     "teamOfficials": {
       "short": "Team officials",
@@ -365,12 +373,12 @@
       "tooltip": "Average Time On Ice"
     },
     "shf": {
-      "short": "SHF",
-      "tooltip": "Shifts"
+      "short": "TSh",
+      "tooltip": "Total Shifts Played"
     },
     "ashf": {
-      "short": "ASHF",
-      "tooltip": "Average Shifts"
+      "short": "AT/S",
+      "tooltip": "Average Time per Shift"
     },
     "eqToi": {
       "short": "EQ-TOI",
@@ -415,6 +423,10 @@
     "role": {
       "short": "Role",
       "tooltip": "Role"
+    },
+    "sit": {
+      "short": "SIT",
+      "tooltip": "Situational Plus/Minus"
     }
   },
   "game": {

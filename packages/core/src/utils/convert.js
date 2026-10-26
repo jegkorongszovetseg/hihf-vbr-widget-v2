@@ -475,7 +475,7 @@ export function mergePlayerStats({ goalieStats, fieldPlayers, playersPenalty }) 
   };
 }
 
-export const transformFieledPlayersStats = curry((row, teamId) => pipe(filter(pathEq(teamId, ['team', 'id'])), map(playerName))(row));
+export const transformFieledPlayersStats = rows => rawConvert(rows, convertTimesSecToMin(['toi', 'atoi']), convertTimesMinToMinSec(['mip']), (playerName));
 
 export function convertAddress(data) {
   const addCommaToCityName = data.city ? over(lensProp('city'), replace(TRAILING_COMMA_RE, ',')) : () => ({});

@@ -60,8 +60,8 @@ const externalGameLink = params => externalGameLinkResolver(props.externalGameRe
             page,
             roster,
             games,
-            statistics,
             isStatsLoading,
+            playerStatsByTeam,
             onChangePage,
           }"
           :api-key="props.apiKey"
@@ -125,8 +125,8 @@ const externalGameLink = params => externalGameLinkResolver(props.externalGameRe
           <PageGames v-if="page === PAGE_GAMES" :data="games" :game-resolver="externalGameLink" />
           <Statistics
             v-if="page === PAGE_PLAYER_STATS"
-            :field-players="statistics.fieldPlayers"
-            :goalies="statistics.goalies"
+            :field-players="playerStatsByTeam.players"
+            :goalies="playerStatsByTeam.goalies"
             :championship-id="championshipId"
             :is-loading="isStatsLoading"
             :external-player-resolver="externalPlayerLink"
