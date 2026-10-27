@@ -49,8 +49,8 @@ const params = useUrlSearchParams('history');
 
 const state = reactive({
   page: params.page || PAGE_INFO,
-  teamId: Number(params.teamId) || Number(props.teamId),
-  championshipId: Number(params.championshipId) || Number(props.championshipId),
+  teamId: Number(props.teamId),
+  championshipId: Number(props.championshipId),
   // statistics: {},
   isStatsLoading: false,
 });
@@ -95,37 +95,7 @@ const { state: roster, execute: fetchTeamRoster } = useServices({
   onError,
 });
 
-// const { state: fieldPlayers, execute: fetchFieldLeaders } = useServices({
-//   options: {
-//     path: '/v2/players-stats',
-//     apiKey: props.apiKey,
-//     params: computed(() => ({ championshipId: state.championshipId })),
-//   },
-//   transform: res => transformFieledPlayersStats(res, state.teamId),
-//   onError,
-// });
-
-// const { state: fieldPlayersPenalty, execute: fetchFieldPenalty } = useServices({
-//   options: {
-//     path: '/v2/players-penalty',
-//     apiKey: props.apiKey,
-//     params: computed(() => ({ championshipId: state.championshipId })),
-//   },
-//   transform: res => transformFieledPlayersStats(res, state.teamId),
-//   onError,
-// });
-
-// const { state: goalieStats, execute: fetchGoalieStats } = useServices({
-//   options: {
-//     path: '/v2/players-goalie',
-//     apiKey: props.apiKey,
-//     params: computed(() => ({ championshipId: state.championshipId })),
-//   },
-//   transform: res => transformFieledPlayersStats(res, state.teamId),
-//   onError,
-// });
-
-const { state: playerStatsByTeam, execute: fetchPlayerStatsByTeam } = useServices({
+const { state: playerStatsByTeam, execute: fetchPlayerStatsByTeam, isLoading: isStatsLoading } = useServices({
   options: {
     path: '/v2/player-season-stats-by-team',
     apiKey: props.apiKey,
@@ -160,18 +130,6 @@ function fetchData(page) {
       break;
     case PAGE_PLAYER_STATS:
       fetchPlayerStatsByTeam();
-      // state.isStatsLoading = true;
-      // useAsyncQueue([fetchGoalieStats, fetchFieldLeaders, fetchFieldPenalty], {
-      //   onFinished: () => {
-      //     state.isStatsLoading = false;
-      //     state.statistics = mergePlayerStats({
-      //       goalieStats: goalieStats.value,
-      //       fieldPlayers: fieldPlayers.value,
-      //       playersPenalty: fieldPlayersPenalty.value,
-      //     });
-      //   },
-      // });
-      // state.isStatsLoading = false;
       break;
 
     default:
@@ -181,5 +139,5 @@ function fetchData(page) {
 </script>
 
 <template>
-  <slot v-bind="{ ...state, games, teamInfo, roster, playerStatsByTeam, onChangePage }" />
+  <slot v-bind="{ ...state, games, teamInfo, roster, playerStatsByTeam, isStatsLoading, onChangePage }" />
 </template>
