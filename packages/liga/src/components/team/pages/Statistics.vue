@@ -34,7 +34,26 @@ const props = defineProps({
 });
 
 const playersColumns = pick(
-  ['playerPortrait', 'name', 'position', 'gp', 'goals', 'assists', 'points', 'pim', 'plusMinus', 'shots', 'shotPercent', 'toiMin', 'atoiMin', 'shf', 'ashf'],
+  [
+    'playerPortrait',
+    'name',
+    'position',
+    'gp',
+    'goals',
+    'assists',
+    'points',
+    'pim',
+    'plusMinus',
+    'gwg',
+    'ppg',
+    'shg',
+    'shots',
+    'shotPercent',
+    'toiMin',
+    'atoiMin',
+    'shf',
+    'ashf',
+  ],
   COLUMNS_PLAYER_SEASON_STATS,
 );
 

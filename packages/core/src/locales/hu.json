@@ -427,6 +427,18 @@
     "sit": {
       "short": "SIT",
       "tooltip": "Helyzetfüggő Plusz/Mínusz"
+    },
+    "gwg": {
+      "short": "GWG",
+      "tooltip": "Győztes Gólok"
+    },
+    "ppg": {
+      "short": "PPG",
+      "tooltip": "Emberelőnyös Gólok"
+    },
+    "shg": {
+      "short": "SHG",
+      "tooltip": "Emberhátrányos Gólok"
     }
   },
   "game": {

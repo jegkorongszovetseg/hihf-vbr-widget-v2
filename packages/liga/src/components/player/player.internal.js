@@ -1,5 +1,6 @@
 import {
   convertTimesMinToMinSec,
+  convertTimesSecToMin,
   gameResult,
   rawConvert,
   reverse,
@@ -22,7 +23,7 @@ export function transformPlayerData(data) {
   };
 }
 
-export const transformSeasonStats = data => rawConvert(reverse(data), teamName, convertTimesMinToMinSec(['mip']));
+export const transformSeasonStats = data => rawConvert(reverse(data), teamName, convertTimesMinToMinSec(['mip']), convertTimesSecToMin(['toi', 'atoi']));
 
 // export function removeCurrentFromSeasonStats(championshipId, data) {
 //   return reject(propEq(championshipId, 'championshipId'))(data);

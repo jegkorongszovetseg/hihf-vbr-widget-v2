@@ -427,6 +427,18 @@
     "sit": {
       "short": "SIT",
       "tooltip": "Situational Plus/Minus"
+    },
+    "gwg": {
+      "short": "GWG",
+      "tooltip": "Game Winning Goals"
+    },
+    "ppg": {
+      "short": "PPG",
+      "tooltip": "Power Play Goals"
+    },
+    "shg": {
+      "short": "SHG",
+      "tooltip": "Shorthanded Goals"
     }
   },
   "game": {

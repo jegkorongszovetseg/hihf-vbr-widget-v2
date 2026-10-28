@@ -336,4 +336,19 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
     tooltip: 'table.so.tooltip',
     sortOrders: [{ target: 'so', direction: SORT_STATE_DESCEND }],
   },
+  gwg: {
+    label: 'table.gwg.short',
+    tooltip: 'table.gwg.tooltip',
+    sortOrders: [{ target: 'gwg', direction: SORT_STATE_DESCEND }],
+  },
+  ppg: {
+    label: 'table.ppg.short',
+    tooltip: 'table.ppg.tooltip',
+    sortOrders: [{ target: 'ppg', direction: SORT_STATE_DESCEND }],
+  },
+  shg: {
+    label: 'table.shg.short',
+    tooltip: 'table.shg.tooltip',
+    sortOrders: [{ target: 'shg', direction: SORT_STATE_DESCEND }],
+  },
 };
