@@ -29,10 +29,11 @@ const tooltipContainer = ref(null);
 
 const { columns } = useColumns(
   props.columns,
-  null,
-  computed(() => ({
-    offsetName: props.offsetName,
-  })),
+  {
+    variables: computed(() => ({
+      offsetName: props.offsetName,
+    })),
+  },
 );
 const { t } = useI18n();
 </script>

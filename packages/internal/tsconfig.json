@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@mjsz-vbr-elements/core": ["../core/src/index.js"],
       "@mjsz-vbr-elements/core/*": ["../core/src/*"],

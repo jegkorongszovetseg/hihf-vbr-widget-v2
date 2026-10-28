@@ -1,4 +1,4 @@
-import { SORT_STATE_ASCEND } from '@mjsz-vbr-elements/core/constants';
+import { SORT_STATE_ASCEND, SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core/constants';
 import { convertSeasons, convertTeams, head, InvalidSeasonName, removeUnneededPhases, selectFirstPhaseName, selectLastSections, WidgetError } from '@mjsz-vbr-elements/core/utils';
 
 export function transformSeasons(seasons, state) {
@@ -206,103 +206,149 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
     tooltip: 'table.name.tooltip',
     class: 'font-bold text-start',
   },
+  position: {
+    label: 'table.position.short',
+    tooltip: 'table.position.tooltip',
+    class: 'uppercase',
+  },
   gp: {
     label: 'table.game.short',
     tooltip: 'table.game.tooltip',
+    sortOrders: [{ target: 'gp', direction: SORT_STATE_DESCEND }],
   },
   goals: {
     label: 'table.goals.short',
     tooltip: 'table.goals.tooltip',
+    sortOrders: [{ target: 'goals', direction: SORT_STATE_DESCEND }, { target: 'assists', direction: SORT_STATE_DESCEND }],
   },
   assists: {
     label: 'table.assists.short',
     tooltip: 'table.assists.tooltip',
+    sortOrders: [{ target: 'assists', direction: SORT_STATE_DESCEND }, { target: 'goals', direction: SORT_STATE_DESCEND }],
   },
   points: {
     label: 'table.points.short',
     tooltip: 'table.points.tooltip',
-  },
-  plusMinus: {
-    label: 'table.plusMinus.short',
-    tooltip: 'table.plusMinus.tooltip',
-  },
-  shots: {
-    label: 'table.sog.short',
-    tooltip: 'table.sog.tooltip',
-  },
-  shotPercent: {
-    label: 'table.sogPercent.short',
-    tooltip: 'table.sogPercent.tooltip',
-  },
-
-  gkd: {
-    label: 'table.gpgk.short',
-    tooltip: 'table.gpgk.tooltip',
-  },
-  gpi: {
-    label: 'table.gpi.short',
-    tooltip: 'table.gpi.tooltip',
-  },
-  mipMin: {
-    label: 'table.toi.short',
-    tooltip: 'table.toi.tooltip',
-  },
-  mipPercent: {
-    label: 'table.toiPercent.short',
-    tooltip: 'table.toiPercent.tooltip',
-  },
-  ga: {
-    label: 'table.ga.short',
-    tooltip: 'table.ga.tooltip',
-  },
-  gaa: {
-    label: 'table.gaa.short',
-    tooltip: 'table.gaa.tooltip',
-  },
-  sog: {
-    label: 'table.sa.short',
-    tooltip: 'table.sa.tooltip',
-  },
-  svs: {
-    label: 'table.svs.short',
-    tooltip: 'table.svs.tooltip',
-  },
-  svsPercent: {
-    label: 'table.svsPercent.short',
-    tooltip: 'table.svsPercent.tooltip',
-  },
-  p2: {
-    label: 'table.minorPenalties.short',
-    tooltip: 'table.minorPenalties.tooltip',
-    class: 'is-possible-empty',
-  },
-  p5: {
-    label: 'table.majorPenalties.short',
-    tooltip: 'table.majorPenalties.tooltip',
-    class: 'is-possible-empty',
-  },
-  p10: {
-    label: 'table.misconducts.short',
-    tooltip: 'table.misconducts.tooltip',
-    class: 'is-possible-empty',
-  },
-  p20: {
-    label: 'table.gameMisconducts.short',
-    tooltip: 'table.gameMisconducts.tooltip',
-    class: 'is-possible-empty',
-  },
-  p25: {
-    label: 'table.matchPenalties.short',
-    tooltip: 'table.matchPenalties.tooltip',
-    class: 'is-possible-empty',
+    sortOrders: [{ target: 'points', direction: SORT_STATE_DESCEND }, { target: 'goals', direction: SORT_STATE_DESCEND }],
   },
   pim: {
     label: 'table.pim.short',
     tooltip: 'table.pim.tooltip',
+    sortOrders: [{ target: 'pim', direction: SORT_STATE_ASCEND }],
+  },
+  plusMinus: {
+    label: 'table.plusMinus.short',
+    tooltip: 'table.plusMinus.tooltip',
+    sortOrders: [{ target: 'plusMinus', direction: SORT_STATE_DESCEND }],
+  },
+  shots: {
+    label: 'table.sog.short',
+    tooltip: 'table.sog.tooltip',
+    sortOrders: [{ target: 'shots', direction: SORT_STATE_DESCEND }],
+  },
+  shotPercent: {
+    label: 'table.sogPercent.short',
+    tooltip: 'table.sogPercent.tooltip',
+    sortOrders: [{ target: 'shotPercent', direction: SORT_STATE_DESCEND }],
+  },
+  gkd: {
+    label: 'table.gpgk.short',
+    tooltip: 'table.gpgk.tooltip',
+    sortOrders: [{ target: 'gkd', direction: SORT_STATE_DESCEND }],
+  },
+  gpi: {
+    label: 'table.gpi.short',
+    tooltip: 'table.gpi.tooltip',
+    sortOrders: [{ target: 'gpi', direction: SORT_STATE_DESCEND }],
+  },
+  mipMin: {
+    label: 'table.mip.short',
+    tooltip: 'table.mip.tooltip',
     class: 'is-possible-empty',
+    sortOrders: [{ target: 'mip', direction: SORT_STATE_DESCEND }],
+  },
+  mipPercent: {
+    label: 'table.toiPercent.short',
+    tooltip: 'table.toiPercent.tooltip',
+    sortOrders: [{ target: 'mipPercent', direction: SORT_STATE_DESCEND }],
+  },
+  ga: {
+    label: 'table.ga.short',
+    tooltip: 'table.ga.tooltip',
+    sortOrders: [{ target: 'ga', direction: SORT_STATE_DESCEND }],
+  },
+  gaa: {
+    label: 'table.gaa.short',
+    tooltip: 'table.gaa.tooltip',
+    sortOrders: [{ target: 'gaa', direction: SORT_STATE_DESCEND }],
+  },
+  ppga: {
+    label: 'table.ppga.short',
+    tooltip: 'table.ppga.tooltip',
+    sortOrders: [{ target: 'ppga', direction: SORT_STATE_DESCEND }],
+  },
+  sog: {
+    label: 'table.sa.short',
+    tooltip: 'table.sa.tooltip',
+    sortOrders: [{ target: 'sog', direction: SORT_STATE_DESCEND }],
+  },
+  toiMin: {
+    label: 'table.toi.short',
+    tooltip: 'table.toi.tooltip',
+    sortOrders: [{ target: 'toi', direction: SORT_STATE_DESCEND }],
+  },
+  atoiMin: {
+    label: 'table.toiPerGame.short',
+    tooltip: 'table.toiPerGame.tooltip',
+    sortOrders: [{ target: 'atoi', direction: SORT_STATE_DESCEND }],
+  },
+  svs: {
+    label: 'table.svs.short',
+    tooltip: 'table.svs.tooltip',
+    sortOrders: [{ target: 'svs', direction: SORT_STATE_DESCEND }],
+  },
+  svsPercent: {
+    label: 'table.svsPercent.short',
+    tooltip: 'table.svsPercent.tooltip',
+    sortOrders: [{ target: 'svsPercent', direction: SORT_STATE_DESCEND }],
+  },
+  sit: {
+    label: 'table.sit.short',
+    tooltip: 'table.sit.tooltip',
+    sortOrders: [{ target: 'sit', direction: SORT_STATE_DESCEND }],
   },
   pimPerGame: {
     label: 'table.pimPerGame.short',
     tooltip: 'table.pimPerGame.tooltip',
+  },
+  shf: {
+    label: 'table.shf.short',
+    tooltip: 'table.shf.tooltip',
+    sortOrders: [{ target: 'shf', direction: SORT_STATE_DESCEND }],
+  },
+  ashf: {
+    label: 'table.ashf.short',
+    tooltip: 'table.ashf.tooltip',
+    sortOrders: [{ target: 'ashf', direction: SORT_STATE_DESCEND }],
+  },
+  so: {
+    label: 'table.so.short',
+    tooltip: 'table.so.tooltip',
+    sortOrders: [{ target: 'so', direction: SORT_STATE_DESCEND }],
+  },
+  gwg: {
+    label: 'table.gwg.short',
+    tooltip: 'table.gwg.tooltip',
+    sortOrders: [{ target: 'gwg', direction: SORT_STATE_DESCEND }],
+  },
+  ppg: {
+    label: 'table.ppg.short',
+    tooltip: 'table.ppg.tooltip',
+    sortOrders: [{ target: 'ppg', direction: SORT_STATE_DESCEND }],
+  },
+  shg: {
+    label: 'table.shg.short',
+    tooltip: 'table.shg.tooltip',
+    sortOrders: [{ target: 'shg', direction: SORT_STATE_DESCEND }],
   },
 };

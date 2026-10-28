@@ -53,8 +53,8 @@ const age = computed(() => yearToNow(props.data.birthDate, locale.value));
               <Image :src="flagResolver(flag)" />
             </span>
           </FloatingPanel>
-          {{ data.birthPlace }}
         </template>
+        {{ data.birthPlace }}
       </li>
       <li>
         {{ data.position }}

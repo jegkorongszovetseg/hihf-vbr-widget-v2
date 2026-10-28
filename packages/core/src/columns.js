@@ -381,10 +381,30 @@ export const COLUMNS_FIELD_PLAYERS = {
     tooltip: 'table.points.tooltip',
     sortOrders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
   },
+  pim: {
+    label: 'table.pim.short',
+    tooltip: 'table.pim.tooltip',
+    sortOrders: [{ target: 'pim', direction: SORT_STATE_ASCEND }],
+  },
   plusMinus: {
     label: 'table.plusMinus.short',
     tooltip: 'table.plusMinus.tooltip',
     sortOrders: [{ target: 'plusMinus', direction: SORT_STATE_DESCEND }],
+  },
+  gwg: {
+    label: 'table.gwg.short',
+    tooltip: 'table.gwg.tooltip',
+    sortOrders: [{ target: 'gwg', direction: SORT_STATE_DESCEND }],
+  },
+  ppg: {
+    label: 'table.ppg.short',
+    tooltip: 'table.ppg.tooltip',
+    sortOrders: [{ target: 'ppg', direction: SORT_STATE_DESCEND }],
+  },
+  shg: {
+    label: 'table.shg.short',
+    tooltip: 'table.shg.tooltip',
+    sortOrders: [{ target: 'shg', direction: SORT_STATE_DESCEND }],
   },
   shots: {
     label: 'table.sog.short',
@@ -394,7 +414,12 @@ export const COLUMNS_FIELD_PLAYERS = {
   shotPercent: {
     label: 'table.sogPercent.short',
     tooltip: 'table.sogPercent.tooltip',
-    sortOrders: [{ target: 'shootPercent', direction: SORT_STATE_DESCEND }],
+    sortOrders: [{ target: 'shotPercent', direction: SORT_STATE_DESCEND }],
+  },
+  toiMin: {
+    label: 'table.toi.short',
+    tooltip: 'table.toi.tooltip',
+    sortOrders: [{ target: 'toi', direction: SORT_STATE_DESCEND }],
   },
 };
 
@@ -457,14 +482,6 @@ export const COLUMNS_FIELD_PLAYERS_PENALTY = {
     tooltip: 'table.gameMisconducts.tooltip',
     sortOrders: [
       { target: 'p20', direction: SORT_STATE_DESCEND },
-      { target: 'pim', direction: SORT_STATE_DESCEND },
-    ],
-  },
-  p25: {
-    label: 'table.matchPenalties.short',
-    tooltip: 'table.matchPenalties.tooltip',
-    sortOrders: [
-      { target: 'p25', direction: SORT_STATE_DESCEND },
       { target: 'pim', direction: SORT_STATE_DESCEND },
     ],
   },
@@ -817,14 +834,6 @@ export const COLUMNS_TEAMS_FAIRPLAY = {
     tooltip: 'table.gameMisconducts.tooltip',
     sortOrders: [
       { target: 'p20', direction: SORT_STATE_DESCEND },
-      { target: 'pim', direction: SORT_STATE_DESCEND },
-    ],
-  },
-  p25: {
-    label: 'table.matchPenalties.short',
-    tooltip: 'table.matchPenalties.tooltip',
-    sortOrders: [
-      { target: 'p25', direction: SORT_STATE_DESCEND },
       { target: 'pim', direction: SORT_STATE_DESCEND },
     ],
   },
