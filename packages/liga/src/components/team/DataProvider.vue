@@ -4,6 +4,7 @@ import {
   gameDateTime,
   gameResult,
   getLocalTimezone,
+  localeSort,
   rawConvert,
   sortGames,
   teamOpponent,
@@ -101,7 +102,7 @@ const { state: playerStatsByTeam, execute: fetchPlayerStatsByTeam, isLoading: is
     apiKey: props.apiKey,
     params: computed(() => ({ championshipId: state.championshipId, teamId: state.teamId })),
   },
-  transform: res => ({ players: transformFieledPlayersStats(res.players), goalies: transformFieledPlayersStats(res.goalies) }),
+  transform: res => ({ players: localeSort(transformFieledPlayersStats(res.players)), goalies: localeSort(transformFieledPlayersStats(res.goalies)) }),
   onError,
 });
 

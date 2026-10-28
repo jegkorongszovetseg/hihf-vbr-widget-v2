@@ -5,6 +5,7 @@
     --mvw-table-default-column-width: 40px;
     --mvw-table-default-bg-color: light-dark(var(--mvw-color-white), var(--mvw-color-primary-900));
     --mvw-table-color: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-200));
+    --mvw-table-zero-color: rgb(from var(--mvw-text-default) r g b / 0.3);
     --mvw-table-neutral-color: light-dark(var(--mvw-color-primary-300), var(--mvw-color-primary-700));
     --mvw-table-header-bg-color: light-dark(var(--mvw-color-primary-800), var(--mvw-color-primary-200));
     --mvw-table-header-color: light-dark(var(--mvw-color-primary-200), var(--mvw-color-primary-800));
@@ -135,12 +136,12 @@
 
       &[data-value='0'],
       &.is-zero {
-        color: var(--mvw-text-faded);
+        color: var(--mvw-table-zero-color);
       }
 
       &.is-possible-empty:empty:before {
         content: '0';
-        color: var(--mvw-text-faded);
+        color: var(--mvw-table-zero-color);
       }
 
       &.is-horizontal-content {

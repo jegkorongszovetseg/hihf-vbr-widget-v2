@@ -12,15 +12,11 @@ import {
   head,
   ifElse,
   includes,
-  indexBy,
-  innerJoin,
   isEmpty,
   join,
   last,
   lensProp,
   map,
-  mergeLeft,
-  mergeWith,
   omit,
   over,
   path,
@@ -461,20 +457,6 @@ export const transformRosters = compose(
   map(compose(playerName, teamName, upperCase(['position']))),
 );
 
-export function mergePlayerStats({ goalieStats, fieldPlayers, playersPenalty }) {
-  const goaliesIds = map(path(['player', 'playerId']))(goalieStats);
-  const rejectGoalies = r => goaliesIds.includes(r.player.playerId);
-  const withoutGoalies = reject(rejectGoalies, playersPenalty);
-  const onlyGoalies = innerJoin((record, id) => record.player.playerId === id, playersPenalty, goaliesIds);
-
-  const mergedFieldPlayers = mergeArrayByTeamId(fieldPlayers, withoutGoalies);
-  const mergedGoalies = mergeArrayByTeamId(goalieStats, onlyGoalies);
-  return {
-    fieldPlayers: localeSort(mergedFieldPlayers),
-    goalies: localeSort(mergedGoalies),
-  };
-}
-
 export const transformFieledPlayersStats = rows => rawConvert(rows, convertTimesSecToMin(['toi', 'atoi']), convertTimesMinToMinSec(['mip']), (playerName));
 
 export function convertAddress(data) {
@@ -492,10 +474,6 @@ function groupByPosition(data) {
 
 function sortByJerseyNumber(d) {
   return Number(d.jerseyNr);
-}
-
-function mergeArrayByTeamId(a, b) {
-  return values(mergeWith(mergeLeft, indexBy(path(['player', 'playerId']), a), indexBy(path(['player', 'playerId']), b)));
 }
 
 export function mjszTvLinkVisibility(gameData) {

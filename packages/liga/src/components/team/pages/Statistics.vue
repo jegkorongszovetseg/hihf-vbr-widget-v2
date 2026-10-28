@@ -1,12 +1,12 @@
 <script setup>
 import { DataTable, Image, ResponsiveTable } from '@mjsz-vbr-elements/core/components';
-import { useColumns, useI18n } from '@mjsz-vbr-elements/core/composables';
+import { useColumns, useI18n, useSort } from '@mjsz-vbr-elements/core/composables';
 import { DEFAULT_PORTRAIT_IMAGE_URL } from '@mjsz-vbr-elements/core/constants';
-import { pick } from '@mjsz-vbr-elements/core/utils';
-import { ref } from 'vue';
+import { convert, pick } from '@mjsz-vbr-elements/core/utils';
+import { computed, ref, unref } from 'vue';
 import { COLUMNS_PLAYER_SEASON_STATS } from '../../internal.js';
 
-defineProps({
+const props = defineProps({
   fieldPlayers: {
     type: Array,
     default: () => [],
@@ -63,6 +63,29 @@ const goalieColumns = pick(
 const tooltipContainer = ref(null);
 
 const { t } = useI18n();
+
+const { sort, change: onSort } = useSort({
+  sortTarget: null,
+  orders: [],
+});
+
+const { sort: sortGoalies, change: onSortGoalies } = useSort({
+  sortTarget: null,
+  orders: [],
+});
+
+const convertedFieldPlayersRows = computed(() => {
+  return convert(unref(props.fieldPlayers))
+    .sorted(sort)
+    .value();
+});
+
+const convertedGoaliesRows = computed(() => {
+  return convert(unref(props.goalies))
+    .sorted(sortGoalies)
+    .value();
+});
+
 const { columns: columnsFieldPlayers } = useColumns(playersColumns);
 const { columns: columnsGoalies } = useColumns(goalieColumns);
 </script>
@@ -75,9 +98,11 @@ const { columns: columnsGoalies } = useColumns(goalieColumns);
     <ResponsiveTable>
       <DataTable
         :columns="columnsFieldPlayers"
-        :rows="fieldPlayers"
+        :rows="convertedFieldPlayersRows.rows"
         :is-loading="isLoading"
         :append-to="tooltipContainer"
+        :sort
+        @sort="onSort"
       >
         <template #cell-playerPortrait="{ row }">
           <div class="avatar">
@@ -95,7 +120,14 @@ const { columns: columnsGoalies } = useColumns(goalieColumns);
       {{ t('teams.goalies') }}
     </h2>
     <ResponsiveTable>
-      <DataTable :columns="columnsGoalies" :rows="goalies" :is-loading="isLoading" :append-to="tooltipContainer">
+      <DataTable
+        :columns="columnsGoalies"
+        :rows="convertedGoaliesRows.rows"
+        :is-loading="isLoading"
+        :append-to="tooltipContainer"
+        :sort="sortGoalies"
+        @sort="onSortGoalies"
+      >
         <template #cell-playerPortrait="{ row }">
           <div class="avatar">
             <Image :key="row.player.playerId" :src="row.player.picture" :default-src="DEFAULT_PORTRAIT_IMAGE_URL" />

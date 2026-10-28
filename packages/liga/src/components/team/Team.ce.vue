@@ -48,8 +48,8 @@ const messages = { en, hu };
 
 const params = useUrlSearchParams('history');
 
-const activeChampionshipId = computed(() => Number(params.championshipId) || Number(props.championshipId));
-const activeTeamId = computed(() => Number(params.teamId) || Number(props.teamId));
+const activeChampionshipId = computed(() => String(params.championshipId) || String(props.championshipId));
+const activeTeamId = computed(() => String(params.teamId) || String(props.teamId));
 
 const externalPlayerLink = params => externalPlayerLinkResolver(props.externalPlayerResolver, params);
 const externalGameLink = params => externalGameLinkResolver(props.externalGameResolver, params);
