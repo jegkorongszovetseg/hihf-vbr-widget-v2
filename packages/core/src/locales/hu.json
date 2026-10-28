@@ -101,7 +101,7 @@
       "tooltip": "Gólpasszok"
     },
     "points": {
-      "short": "P",
+      "short": "PTS",
       "tooltip": "Pontok"
     },
     "plusMinus": {
@@ -109,16 +109,16 @@
       "tooltip": "Plussz/Minusz"
     },
     "sog": {
-      "short": "S",
+      "short": "SOG",
       "tooltip": "Lövések"
+    },
+    "sogPercent": {
+      "short": "SG%",
+      "tooltip": "Lövés Hatékonyság"
     },
     "so": {
       "short": "SO",
       "tooltip": "Kapott gól nélküli mérkőzések"
-    },
-    "sogPercent": {
-      "short": "S%",
-      "tooltip": "Lövés Hatékonyság"
     },
     "gameName": {
       "short": "#",
@@ -165,11 +165,11 @@
       "tooltip": "Fegyelmi büntetés (20p)"
     },
     "pim": {
-      "short": "BÜP",
+      "short": "PIM",
       "tooltip": "Büntetés Percek"
     },
     "pimPerGame": {
-      "short": "BÜP/M",
+      "short": "PIM/M",
       "tooltip": "Mérkőzésenkénti Büntetés Percek"
     },
     "gpgk": {
@@ -181,12 +181,20 @@
       "tooltip": "Mérkőzésen Játszott"
     },
     "toi": {
-      "short": "TOI",
-      "tooltip": "Jégen Töltött Idő"
+      "short": "TM",
+      "tooltip": "Összes Jégen Töltött Idő (perc)"
     },
     "toiPercent": {
-      "short": "TOI%",
-      "tooltip": "Jégen Töltött Idő Százalék"
+      "short": "MIP%",
+      "tooltip": "Jégen Töltött Idő Százalékban"
+    },
+    "mip": {
+      "short": "MIP",
+      "tooltip": "Jégen Töltött Idő (perc és másodperc)"
+    },
+    "toiPerGame": {
+      "short": "M/G",
+      "tooltip": "Jégen Töltött Idő mérkőzésenként"
     },
     "ga": {
       "short": "GA",
@@ -205,7 +213,7 @@
       "tooltip": "Védett Lövés"
     },
     "svsPercent": {
-      "short": "VH%",
+      "short": "SVS%",
       "tooltip": "Védés Hatékonyság"
     },
     "homeHeader": {
@@ -337,7 +345,7 @@
       "tooltip": "Sor"
     },
     "position": {
-      "short": "Po",
+      "short": "Pos",
       "tooltip": "Poszt"
     },
     "teamOfficials": {
@@ -365,12 +373,12 @@
       "tooltip": "Átlagos jégen töltött idő"
     },
     "shf": {
-      "short": "SHF",
+      "short": "TSh",
       "tooltip": "Jégre lépések száma"
     },
     "ashf": {
-      "short": "ASHF",
-      "tooltip": "Jégre lépések száma átlagosan"
+      "short": "AT/S",
+      "tooltip": "Jégre lépések átlagos ideje"
     },
     "eqToi": {
       "short": "EQ-TOI",
@@ -415,6 +423,22 @@
     "role": {
       "short": "Szerep",
       "tooltip": "Szerep"
+    },
+    "sit": {
+      "short": "SIT",
+      "tooltip": "Helyzetfüggő Plusz/Mínusz"
+    },
+    "gwg": {
+      "short": "GWG",
+      "tooltip": "Győztes Gólok"
+    },
+    "ppg": {
+      "short": "PPG",
+      "tooltip": "Emberelőnyös Gólok"
+    },
+    "shg": {
+      "short": "SHG",
+      "tooltip": "Emberhátrányos Gólok"
     }
   },
   "game": {

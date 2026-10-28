@@ -38,8 +38,9 @@ const props = defineProps({
 
 const { columns } = useColumns(
   computed(() => props.columns),
-  null,
-  computed(() => ({ offsetName: offsetName(new Date(), null, 'hu') })),
+  {
+    variables: computed(() => ({ offsetName: offsetName(new Date(), null, 'hu') })),
+  },
 );
 const resolveExternalGameLink = params => externalGameLinkResolver(props.gameResolver, params);
 </script>

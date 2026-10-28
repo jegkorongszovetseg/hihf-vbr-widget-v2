@@ -2,21 +2,25 @@ import { keys, map, omit, split, trim } from 'ramda';
 import { computed, ref, unref } from 'vue';
 import { useI18n } from './useI18n';
 
-export function useColumns(columns, hiddenColumns = '', variables = {}) {
+export function useColumns(columns, options) {
+  const { hiddenColumns = '', variables = {}, sort = true } = options || {};
   const errorRef = ref('');
   const { t } = useI18n();
 
   const validatedColumns = computed(() => {
+    let resolvedColumns = unref(columns);
     if (unref(hiddenColumns)) {
       try {
         const columnsToHide = validateColumnsName(unref(columns), unref(hiddenColumns));
-        return omit(columnsToHide, unref(columns));
+        resolvedColumns = omit(columnsToHide, resolvedColumns);
       }
       catch (err) {
         errorRef.value = err;
       }
     }
-    return unref(columns);
+    if (!unref(sort))
+      resolvedColumns = map(column => omit(['sortOrders'], column), resolvedColumns);
+    return resolvedColumns;
   });
 
   const convert = column => ({

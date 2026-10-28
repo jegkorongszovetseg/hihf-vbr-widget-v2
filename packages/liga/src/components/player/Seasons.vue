@@ -25,7 +25,7 @@ const props = defineProps({
   },
 });
 
-const { columns } = useColumns(computed(() => props.columns));
+const { columns } = useColumns(computed(() => props.columns), { sort: false });
 </script>
 
 <template>

@@ -80,10 +80,12 @@ const { onError } = useError();
 
 const { columns, error } = useColumns(
   currentColumns,
-  hideColumns,
-  computed(() => ({
-    offsetName: props.offsetName,
-  })),
+  {
+    hiddenColumns: hideColumns,
+    variables: computed(() => ({
+      offsetName: props.offsetName,
+    })),
+  },
 );
 if (error.value) {
   onError(

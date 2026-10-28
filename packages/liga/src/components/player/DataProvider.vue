@@ -1,6 +1,6 @@
 <script setup>
 import { useError, useServices } from '@mjsz-vbr-elements/core/composables';
-import { convert, omit, pick, removeCurrentFromSeasonStats, transformCurrentSeasonStats } from '@mjsz-vbr-elements/core/utils';
+import { convert, pick, removeCurrentFromSeasonStats, transformCurrentSeasonStats } from '@mjsz-vbr-elements/core/utils';
 import { useAsyncQueue, useUrlSearchParams } from '@vueuse/core';
 import { computed, reactive, unref } from 'vue';
 import { COLUMNS_GAMES, COLUMNS_PLAYER_SEASON_STATS } from '../internal';
@@ -110,24 +110,25 @@ const currentSeasonStats = computed(() =>
 const currentSeasonColumns = computed(() =>
   state.isGoalie
     ? pick(
-        ['teamName', 'gkd', 'gpi', 'mipMin', 'mipPercent', 'ga', 'gaa', 'sog', 'svs', 'svsPercent'],
+        ['teamName', 'gkd', 'gpi', 'mipMin', 'mipPercent', 'ga', 'gaa', 'sog', 'svs', 'svsPercent', 'sit', 'so', 'goals', 'assists'],
         COLUMNS_PLAYER_SEASON_STATS,
       )
-    : omit(
-        [
-          'playerPortrait',
-          'season',
-          'ga',
-          'gaa',
-          'sog',
-          'svs',
-          'svsPercent',
-          'mipMin',
-          'mipPercent',
-          'gkd',
-          'gpi',
-          'name',
-        ],
+    : pick(
+        ['teamName', 'gp', 'goals', 'assists', 'points', 'pim', 'plusMinus', 'shots', 'shotPercent', 'toiMin', 'atoiMin', 'shf', 'ashf'],
+        // [
+        //   'playerPortrait',
+        //   'season',
+        //   'ga',
+        //   'gaa',
+        //   'sog',
+        //   'svs',
+        //   'svsPercent',
+        //   'mipMin',
+        //   'mipPercent',
+        //   'gkd',
+        //   'gpi',
+        //   'name',
+        // ],
         COLUMNS_PLAYER_SEASON_STATS,
       ),
 );
@@ -135,29 +136,28 @@ const currentSeasonColumns = computed(() =>
 const seasonColumns = computed(() =>
   state.isGoalie
     ? pick(
-        ['season', 'teamName', 'gkd', 'gpi', 'mipMin', 'ga', 'gaa', 'sog', 'svs', 'svsPercent'],
-        COLUMNS_PLAYER_SEASON_STATS,
-      )
-    : omit(
         [
-          'playerPortrait',
-          'name',
-          'shotPercent',
-          'pimPerGame',
-          'p2',
-          'p5',
-          'p10',
-          'p20',
+          'season',
+          'teamName',
           'gkd',
           'gpi',
           'mipMin',
           'mipPercent',
           'ga',
           'gaa',
-          'sog',
+          'ppga',
+          'sa',
           'svs',
           'svsPercent',
+          'sit',
+          'so',
+          'goals',
+          'assists',
         ],
+        COLUMNS_PLAYER_SEASON_STATS,
+      )
+    : pick(
+        ['season', 'teamName', 'gp', 'goals', 'assists', 'points', 'pim', 'plusMinus', 'shots', 'shotPercent', 'toiMin', 'atoiMin', 'shf', 'ashf'],
         COLUMNS_PLAYER_SEASON_STATS,
       ),
 );

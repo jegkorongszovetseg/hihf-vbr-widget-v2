@@ -49,10 +49,12 @@ const { onError } = useError();
 
 const { columns, error } = useColumns(
   COLUMNS_SCHEDULE,
-  computed(() => props.hideColumns),
-  computed(() => ({
-    offsetName: props.offsetName,
-  })),
+  {
+    hiddenColumns: computed(() => props.hideColumns),
+    variables: computed(() => ({
+      offsetName: props.offsetName,
+    })),
+  },
 );
 
 whenever(

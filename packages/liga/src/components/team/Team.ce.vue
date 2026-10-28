@@ -1,6 +1,8 @@
 <script setup>
 import { ErrorNotice, ErrorProvider, I18NProvider, Image } from '@mjsz-vbr-elements/core/components';
 import { externalGameLinkResolver, externalPlayerLinkResolver } from '@mjsz-vbr-elements/core/utils';
+import { useUrlSearchParams } from '@vueuse/core';
+import { computed } from 'vue';
 import en from '../../locales/en.json';
 import hu from '../../locales/hu.json';
 import DataProvider from './DataProvider.vue';
@@ -44,6 +46,11 @@ const props = defineProps({
 
 const messages = { en, hu };
 
+const params = useUrlSearchParams('history');
+
+const activeChampionshipId = computed(() => String(params.championshipId) || String(props.championshipId));
+const activeTeamId = computed(() => String(params.teamId) || String(props.teamId));
+
 const externalPlayerLink = params => externalPlayerLinkResolver(props.externalPlayerResolver, params);
 const externalGameLink = params => externalGameLinkResolver(props.externalGameResolver, params);
 </script>
@@ -60,13 +67,13 @@ const externalGameLink = params => externalGameLinkResolver(props.externalGameRe
             page,
             roster,
             games,
-            statistics,
             isStatsLoading,
+            playerStatsByTeam,
             onChangePage,
           }"
           :api-key="props.apiKey"
-          :championship-id="championshipId"
-          :team-id="teamId"
+          :championship-id="activeChampionshipId"
+          :team-id="activeTeamId"
         >
           <h1 class="uppercase">
             {{ teamInfo?.team?.longName }}
@@ -125,16 +132,16 @@ const externalGameLink = params => externalGameLinkResolver(props.externalGameRe
           <PageGames v-if="page === PAGE_GAMES" :data="games" :game-resolver="externalGameLink" />
           <Statistics
             v-if="page === PAGE_PLAYER_STATS"
-            :field-players="statistics.fieldPlayers"
-            :goalies="statistics.goalies"
-            :championship-id="championshipId"
+            :field-players="playerStatsByTeam.players"
+            :goalies="playerStatsByTeam.goalies"
+            :championship-id="activeChampionshipId"
             :is-loading="isStatsLoading"
             :external-player-resolver="externalPlayerLink"
           />
           <PageRoster
             v-if="page === PAGE_ROSTER"
             :data="roster"
-            :championship-id="championshipId"
+            :championship-id="activeChampionshipId"
             :external-player-resolver="externalPlayerLink"
           />
         </DataProvider>
