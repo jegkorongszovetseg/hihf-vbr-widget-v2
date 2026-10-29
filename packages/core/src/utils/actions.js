@@ -24,14 +24,11 @@ export function printTable(html, name, createdAt = '') {
   doc.head.innerHTML = `
     <title>${name}</title>
     <style>
-      @page {
-        size: landscape;
-      }
-
       body { font-family: Arial; }
       p { font-size: 12pt; }
-      h1 { text-transform: capitalize }
-      table { width: 100%; border-collapse: collapse; }
+      h1 { text-transform: capitalize; font-size: 18pt; }
+      h3 { font-size: 12pt; font-weight: 400; }
+      table { width: 100%; border-collapse: collapse; font-size: 8pt; }
       table th { border-bottom: 2pt solid black; padding: 4pt; }
       table td { border-bottom: 1pt solid lightgrey; padding: 4pt; }
 
