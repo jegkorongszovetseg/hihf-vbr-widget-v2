@@ -490,5 +490,12 @@
       "Végeredmény": "Végeredmény",
       "Szétlövés": "Szétlövés"
     }
+  },
+  "export": {
+    "label": "Export",
+    "button": "Exportálás",
+    "print": "Nyomtatás",
+    "csv": "CSV",
+    "copy": "Másolás"
   }
 }
