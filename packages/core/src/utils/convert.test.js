@@ -39,7 +39,7 @@ describe('jsonToHtml', () => {
     expect(jsonToHtml([
       { wins: 3 },
     ], undefined, { wins: { short: 'W', tooltip: 'Wins' } }))
-      .toBe('<table><thead><tr><th>W</th></tr></thead><tbody><tr><td>3</td></tr></tbody></table><table><tbody><tr><th>W</th><td>Wins</td></tr></tbody></table>');
+      .toBe('<table><thead><tr><th>W</th></tr></thead><tbody><tr><td>3</td></tr></tbody></table><table class="explanation"><tbody><tr><td>W</td><td>Wins</td></tr></tbody></table>');
   });
 
   it('üres sztringet ad üres adatnál és escape-eli a HTML-tartalmat', () => {
