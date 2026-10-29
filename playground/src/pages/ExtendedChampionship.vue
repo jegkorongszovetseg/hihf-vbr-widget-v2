@@ -26,7 +26,7 @@ const playerResolver = `LigaPlayer?playerId={player.playerId}&championshipId={ch
       total-period-played-visible
       :external-player-resolver="playerResolver"
       :is-player-linked="true"
-      :is-goalie-stats-disabled="true"
+      :is-goalie-stats-disabled="false"
       :is-only-schedule-visible="false"
     />
   </div>
