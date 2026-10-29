@@ -15,42 +15,12 @@ export const REPORT_TYPE_PLAYERS = 'players';
 export const REPORT_TYPE_TEAMS = 'teams';
 
 export const REPORTS_MAP = new Map()
-  .set('points', {
+  .set('fieldplayers', {
     api: '/v2/players-stats',
     columns: COLUMNS_FIELD_PLAYERS,
     sort: {
       sortTarget: 'points',
       orders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
-    },
-  })
-  .set('goals', {
-    api: '/v2/players-stats',
-    columns: COLUMNS_FIELD_PLAYERS,
-    sort: {
-      sortTarget: 'goals',
-      orders: [
-        { target: 'goals', direction: SORT_STATE_DESCEND },
-        { target: 'assists', direction: SORT_STATE_DESCEND },
-      ],
-    },
-  })
-  .set('assists', {
-    api: '/v2/players-stats',
-    columns: COLUMNS_FIELD_PLAYERS,
-    sort: {
-      sortTarget: 'assists',
-      orders: [
-        { target: 'assists', direction: SORT_STATE_DESCEND },
-        { target: 'goals', direction: SORT_STATE_DESCEND },
-      ],
-    },
-  })
-  .set('plusminus', {
-    api: '/v2/players-stats',
-    columns: COLUMNS_FIELD_PLAYERS,
-    sort: {
-      sortTarget: 'plusMinus',
-      orders: [{ target: 'plusMinus', direction: SORT_STATE_DESCEND }],
     },
   })
   .set('playerspenalties', {
@@ -131,20 +101,8 @@ export const REPORTS_MAP = new Map()
 export function PLAYERS_REPORTS_SELECT(t) {
   return [
     {
-      name: t('report.points'),
-      value: 'points',
-    },
-    {
-      name: t('report.goals'),
-      value: 'goals',
-    },
-    {
-      name: t('report.assists'),
-      value: 'assists',
-    },
-    {
-      name: '+/-',
-      value: 'plusminus',
+      name: t('report.fieldPlayers'),
+      value: 'fieldplayers',
     },
     {
       name: t('report.penalties'),
@@ -194,7 +152,7 @@ export function setDefaultReport(params) {
   if (params.report)
     return params.report;
   if (params.type) {
-    return params.type === REPORT_TYPE_PLAYERS ? 'points' : 'teamAttandance';
+    return params.type === REPORT_TYPE_PLAYERS ? 'fieldplayers' : 'teamAttandance';
   }
-  return 'points';
+  return 'fieldplayers';
 }
