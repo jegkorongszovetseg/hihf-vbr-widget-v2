@@ -29,9 +29,7 @@
     "seasonId": "Season Identifier (season-Id):"
   },
   "report": {
-    "points": "Points",
-    "goals": "Goals",
-    "assists": "Assists",
+    "fieldPlayers": "Field Players",
     "penalties": "Penalties",
     "goalies": "Goalies",
     "goaliesLimit": "Goalies under 40%",

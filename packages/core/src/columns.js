@@ -629,14 +629,10 @@ export const COLUMNS_GOALIES = {
     tooltip: 'table.gpi.tooltip',
     sortOrders: [{ target: 'gpi', direction: SORT_STATE_DESCEND }],
   },
-  so: {
-    label: 'table.so.short',
-    tooltip: 'table.so.tooltip',
-    sortOrders: [{ target: 'so', direction: SORT_STATE_DESCEND }],
-  },
+
   mipMin: {
-    label: 'table.toi.short',
-    tooltip: 'table.toi.tooltip',
+    label: 'table.mip.short',
+    tooltip: 'table.mip.tooltip',
     sortOrders: [{ target: 'mip', direction: SORT_STATE_DESCEND }],
   },
   mipPercent: {
@@ -654,20 +650,56 @@ export const COLUMNS_GOALIES = {
     tooltip: 'table.gaa.tooltip',
     sortOrders: [{ target: 'gaa', direction: SORT_STATE_DESCEND }],
   },
-  sog: {
-    label: 'table.sa.short',
-    tooltip: 'table.sa.tooltip',
-    sortOrders: [{ target: 'sog', direction: SORT_STATE_DESCEND }],
+  ppga: {
+    label: 'table.ppga.short',
+    tooltip: 'table.ppga.tooltip',
+    sortOrders: [{ target: 'ppga', direction: SORT_STATE_DESCEND }],
+  },
+  shga: {
+    label: 'table.shga.short',
+    tooltip: 'table.shga.tooltip',
+    sortOrders: [{ target: 'shga', direction: SORT_STATE_DESCEND }],
   },
   svs: {
     label: 'table.svs.short',
     tooltip: 'table.svs.tooltip',
     sortOrders: [{ target: 'svs', direction: SORT_STATE_DESCEND }],
   },
+  sog: {
+    label: 'table.sog.short',
+    tooltip: 'table.sog.tooltip',
+    sortOrders: [{ target: 'sog', direction: SORT_STATE_DESCEND }],
+  },
   svsPercent: {
     label: 'table.svsPercent.short',
     tooltip: 'table.svsPercent.tooltip',
     sortOrders: [{ target: 'svsPercent', direction: SORT_STATE_DESCEND }],
+  },
+  sit: {
+    label: 'table.sit.short',
+    tooltip: 'table.sit.tooltip',
+    sortOrders: [{ target: 'sit', direction: SORT_STATE_DESCEND }],
+  },
+  so: {
+    label: 'table.so.short',
+    tooltip: 'table.so.tooltip',
+    sortOrders: [{ target: 'so', direction: SORT_STATE_DESCEND }],
+  },
+  goals: {
+    label: 'table.goals.short',
+    tooltip: 'table.goals.tooltip',
+    sortOrders: [
+      { target: 'goals', direction: SORT_STATE_DESCEND },
+      { target: 'assists', direction: SORT_STATE_DESCEND },
+    ],
+  },
+  assists: {
+    label: 'table.assists.short',
+    tooltip: 'table.assists.tooltip',
+    sortOrders: [
+      { target: 'assists', direction: SORT_STATE_DESCEND },
+      { target: 'goals', direction: SORT_STATE_DESCEND },
+    ],
   },
 };
 

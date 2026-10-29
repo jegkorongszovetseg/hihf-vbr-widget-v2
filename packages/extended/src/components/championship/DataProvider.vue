@@ -108,7 +108,7 @@ const state = reactive({
     tooltip: 'MJSZ.TV',
   } }),
   sort: null,
-  report: 'points',
+  report: 'fieldplayers',
 });
 const timezone = toRef(props, 'timezone');
 const query = ref('');

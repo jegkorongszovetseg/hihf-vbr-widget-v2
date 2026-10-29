@@ -42,9 +42,7 @@
   },
   "report": {
     "toi": "Time On Ice",
-    "points": "Points",
-    "goals": "Goals",
-    "assists": "Assists",
+    "fieldPlayers": "Field Players",
     "penalties": "Penalties",
     "goalies": "Goalies",
     "goaliesLimit": "Goalies under 40%",

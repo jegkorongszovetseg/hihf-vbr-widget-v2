@@ -29,9 +29,7 @@
     "seasonId": "Szezon azonosító (season-Id):"
   },
   "report": {
-    "points": "Pontok",
-    "goals": "Gólok",
-    "assists": "Gólpasszok",
+    "fieldPlayers": "Mezőnyjátékosok",
     "penalties": "Büntetések",
     "goalies": "Kapusok",
     "goaliesLimit": "Kapusok 40% jégidő alatt",

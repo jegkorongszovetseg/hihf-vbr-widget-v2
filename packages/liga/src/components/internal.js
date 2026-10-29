@@ -351,4 +351,9 @@ export const COLUMNS_PLAYER_SEASON_STATS = {
     tooltip: 'table.shg.tooltip',
     sortOrders: [{ target: 'shg', direction: SORT_STATE_DESCEND }],
   },
+  shga: {
+    label: 'table.shga.short',
+    tooltip: 'table.shga.tooltip',
+    sortOrders: [{ target: 'shga', direction: SORT_STATE_DESCEND }],
+  },
 };
