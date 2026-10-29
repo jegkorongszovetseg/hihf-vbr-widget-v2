@@ -68,6 +68,7 @@ const goalieColumns = pick(
     'ga',
     'gaa',
     'ppga',
+    'shga',
     'sa',
     'svs',
     'svsPercent',

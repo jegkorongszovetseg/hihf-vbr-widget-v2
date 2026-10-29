@@ -110,25 +110,11 @@ const currentSeasonStats = computed(() =>
 const currentSeasonColumns = computed(() =>
   state.isGoalie
     ? pick(
-        ['teamName', 'gkd', 'gpi', 'mipMin', 'mipPercent', 'ga', 'gaa', 'sog', 'svs', 'svsPercent', 'sit', 'so', 'goals', 'assists'],
+        ['teamName', 'gkd', 'gpi', 'mipMin', 'mipPercent', 'ga', 'gaa', 'ppga', 'shga', 'sog', 'svs', 'svsPercent', 'sit', 'so', 'goals', 'assists'],
         COLUMNS_PLAYER_SEASON_STATS,
       )
     : pick(
         ['teamName', 'gp', 'goals', 'assists', 'points', 'pim', 'plusMinus', 'shots', 'shotPercent', 'toiMin', 'atoiMin', 'shf', 'ashf'],
-        // [
-        //   'playerPortrait',
-        //   'season',
-        //   'ga',
-        //   'gaa',
-        //   'sog',
-        //   'svs',
-        //   'svsPercent',
-        //   'mipMin',
-        //   'mipPercent',
-        //   'gkd',
-        //   'gpi',
-        //   'name',
-        // ],
         COLUMNS_PLAYER_SEASON_STATS,
       ),
 );
@@ -146,6 +132,7 @@ const seasonColumns = computed(() =>
           'ga',
           'gaa',
           'ppga',
+          'shga',
           'sa',
           'svs',
           'svsPercent',
