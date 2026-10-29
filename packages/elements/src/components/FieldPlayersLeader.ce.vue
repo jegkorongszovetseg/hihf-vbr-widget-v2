@@ -6,6 +6,7 @@ import { SORT_STATE_DESCEND } from '@mjsz-vbr-elements/core/constants';
 import { baseProps, playerStatsProps, teamStatsProps } from '@mjsz-vbr-elements/core/props';
 import {
   convert,
+  convertTimesSecToMin,
   externalPlayerLinkResolver,
   externalTeamLinkResolver,
   playerName,
@@ -48,7 +49,7 @@ const { sort, change: onSort } = useSort({
   orders: [{ target: 'points', direction: SORT_STATE_DESCEND }],
 });
 
-const rows = computed(() => rawConvert(unref(rawRows), playerName, teamName));
+const rows = computed(() => rawConvert(unref(rawRows), playerName, teamName, convertTimesSecToMin(['toi', 'atoi'])));
 
 const convertedRows = computed(() => {
   return convert(unref(rows))
